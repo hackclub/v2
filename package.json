@@ -1,0 +1,26 @@
+{
+  "name": "hackclub.com",
+  "version": "0.0.1",
+  "description": "New Hack Club website",
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "build": "NODE_ENV=production webpack",
+    "start": "npm run dev"
+  },
+  "author": "Lachlan Campbell",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "rebass": "^1.0.4",
+    "palx": "^1.0.2",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
+  }
+}

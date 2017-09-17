@@ -5,6 +5,9 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "NODE_ENV=production webpack",
+    "minify": "minify -o docs/bundle.js docs/bundle.js",
+    "deploy": "now docs --public",
+    "go": "npm run build && npm run minify && npm run deploy",
     "start": "npm run dev"
   },
   "author": "Lachlan Campbell",
@@ -16,10 +19,10 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
+    "palx": "^1.0.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "rebass": "^1.0.4",
-    "palx": "^1.0.2",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.8.2"
   }

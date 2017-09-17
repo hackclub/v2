@@ -17,6 +17,7 @@ import { keys } from 'lodash'
 const Swatch = Flex.extend.attrs({
   m: 2,
   p: 4,
+  column: true,
   align: 'center',
   justify: 'center'
 })`
@@ -48,8 +49,12 @@ const App = () => (
             key={key}
             bg={key}
             color={['white', 'snow', 'smoke'].includes(key) ? 'black' : 'white'}
-            children={key}
-          />
+          >
+            <Text f={2} bold>
+              {key}
+            </Text>
+            <Text f={0}>{theme.colors[key]}</Text>
+          </Swatch>
         ))}
       </Flex>
       <Bar w={1 / 3} />

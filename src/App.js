@@ -15,11 +15,30 @@ import {
   Label,
   Input,
   Tabs,
-  TabItem
+  TabItem,
+  Relative,
+  Absolute,
+  Image
 } from 'rebass'
 import Bar from './Bar'
 import theme, { brand, grays } from './theme'
 import { keys } from 'lodash'
+
+const Flag = Image.extend`
+  top: 0;
+  left: 0;
+  position: absolute;
+  max-width: 14rem;
+  padding-left: 1rem;
+  z-index: 0;
+`
+
+const Hero = Container.extend`
+  max-width: 48rem;
+  padding: 0;
+  text-align: center;
+  z-index: 1;
+`
 
 const Swatch = Flex.extend.attrs({
   m: 2,
@@ -35,16 +54,33 @@ const Swatch = Flex.extend.attrs({
 
 const App = () => (
   <Provider theme={theme}>
-    <Banner bg="primary">
-      <Flex align="flex-start">
-        <Heading f={7} my={0} color="white">
-          Hack Club
+    <Banner bg="primary" py={6} px={2}>
+      <Flag src="https://cdn.rawgit.com/hackclub/hackclub/629b7921/internals/logos/banner_orpheus_hand.svg" />
+      <Hero style={{ maxWidth: 48 * 16, textAlign: 'center', zIndex: 2 }}>
+        <Heading f={[5, 6, 7]} my={0} color="white">
+          Start an amazing coding club at your high school.
         </Heading>
-        <Badge bg="primary" ml={0} f={3} children={2} />
-      </Flex>
-      <Lead f={5} color="snow">
-        Let's go.
-      </Lead>
+        <Lead
+          f={[3, 4]}
+          color="snow"
+          mt={3}
+          mb={4}
+          mx="auto"
+          w={[1, 2 / 3]}
+          style={{ lineHeight: 1.6 }}
+        >
+          Hack Club is the largest nonprofit network of student-led high school
+          coding clubs.
+        </Lead>
+        <Flex justify="center" wrap>
+          <Button bg="white" color="primary" f={4}>
+            Start a Club
+          </Button>
+          <ButtonOutline bg="primary" color="white" f={4} ml={3}>
+            Donate
+          </ButtonOutline>
+        </Flex>
+      </Hero>
     </Banner>
     <Container py={4} color="black" style={{ maxWidth: 56 * 16 }}>
       <Bar w={1 / 3} mt={0} mb={4} />

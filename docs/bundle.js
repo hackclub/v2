@@ -12561,7 +12561,7 @@ var palette = exports.palette = (0, _palx2.default)(blue);
 var grays = exports.grays = {
   black: palette.black,
   slate: palette.gray[8],
-  silver: palette.gray[5],
+  silver: palette.gray[7],
   smoke: palette.gray[2],
   snow: palette.gray[0],
   white: '#ffffff'
@@ -24312,7 +24312,10 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _templateObject = _taggedTemplateLiteral(['\n  width: 8rem;\n  height: 8rem;\n  border-radius: 4px;\n'], ['\n  width: 8rem;\n  height: 8rem;\n  border-radius: 4px;\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  top: 0;\n  left: 0;\n  position: absolute;\n  max-width: 14rem;\n  padding-left: 1rem;\n  z-index: 0;\n'], ['\n  top: 0;\n  left: 0;\n  position: absolute;\n  max-width: 14rem;\n  padding-left: 1rem;\n  z-index: 0;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['background: ', ' url(\'geo.svg\') repeat;'], ['background: ', ' url(\'geo.svg\') repeat;']),
+    _templateObject3 = _taggedTemplateLiteral(['\n  max-width: 48rem;\n  padding: 0;\n  text-align: center;\n  z-index: 1;\n'], ['\n  max-width: 48rem;\n  padding: 0;\n  text-align: center;\n  z-index: 1;\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\n  width: 8rem;\n  height: 8rem;\n  border-radius: 4px;\n'], ['\n  width: 8rem;\n  height: 8rem;\n  border-radius: 4px;\n']);
 
 var _react = __webpack_require__(5);
 
@@ -24334,40 +24337,71 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+var Flag = _rebass.Image.extend(_templateObject);
+
+var Hero = _rebass.Banner.extend(_templateObject2, _theme.brand.primary);
+
+var HeroContainer = _rebass.Container.extend(_templateObject3);
+
 var Swatch = _rebass.Flex.extend.attrs({
   m: 2,
   p: 4,
+  column: true,
   align: 'center',
   justify: 'center'
-})(_templateObject);
+})(_templateObject4);
 
 var App = function App() {
   return _react2.default.createElement(
     _rebass.Provider,
     { theme: _theme2.default },
     _react2.default.createElement(
-      _rebass.Banner,
-      { bg: 'primary' },
+      Hero,
+      { bg: 'primary', py: 6, px: 2 },
+      _react2.default.createElement(Flag, { src: 'https://cdn.rawgit.com/hackclub/hackclub/629b7921/internals/logos/banner_orpheus_hand.svg' }),
       _react2.default.createElement(
-        _rebass.Flex,
-        { align: 'flex-start' },
+        HeroContainer,
+        {
+          style: { maxWidth: 48 * 16, textAlign: 'center', zIndex: 2 }
+        },
         _react2.default.createElement(
           _rebass.Heading,
-          { f: 7, my: 0, color: 'white' },
-          'Hack Club'
+          { f: [5, 6, 7], my: 0, color: 'white' },
+          'Start an amazing coding club at your high school.'
         ),
-        _react2.default.createElement(_rebass.Badge, { bg: 'primary', ml: 0, f: 3, children: 2 })
-      ),
-      _react2.default.createElement(
-        _rebass.Lead,
-        { f: 5, color: 'snow' },
-        'Let\'s go.'
+        _react2.default.createElement(
+          _rebass.Lead,
+          {
+            f: [3, 4],
+            color: 'snow',
+            mt: 3,
+            mb: 4,
+            mx: 'auto',
+            w: [1, 2 / 3],
+            style: { lineHeight: 1.6 }
+          },
+          'Hack Club is the largest nonprofit network of student-led high school coding clubs.'
+        ),
+        _react2.default.createElement(
+          _rebass.Flex,
+          { justify: 'center', wrap: true },
+          _react2.default.createElement(
+            _rebass.Button,
+            { bg: 'white', color: 'primary', f: 4 },
+            'Start a Club'
+          ),
+          _react2.default.createElement(
+            _rebass.ButtonOutline,
+            { bg: 'primary', color: 'white', f: 4, ml: 3 },
+            'Donate'
+          )
+        )
       )
     ),
     _react2.default.createElement(
       _rebass.Container,
       { py: 4, color: 'black', style: { maxWidth: 56 * 16 } },
-      _react2.default.createElement(_Bar2.default, { w: 1 / 3, mb: 3 }),
+      _react2.default.createElement(_Bar2.default, { w: 1 / 3, mt: 0, mb: 4 }),
       _react2.default.createElement(
         _rebass.Heading,
         { mt: 3 },
@@ -24382,13 +24416,74 @@ var App = function App() {
         _rebass.Flex,
         { mx: -2, mt: 3, mb: 4, wrap: true },
         (0, _lodash.keys)(_extends({}, _theme.brand, _theme.grays)).map(function (key) {
-          return _react2.default.createElement(Swatch, {
-            key: key,
-            bg: key,
-            color: ['white', 'snow', 'smoke'].includes(key) ? 'black' : 'white',
-            children: key
-          });
+          return _react2.default.createElement(
+            Swatch,
+            {
+              key: key,
+              bg: key,
+              color: ['white', 'snow', 'smoke'].includes(key) ? 'black' : 'white'
+            },
+            _react2.default.createElement(
+              _rebass.Text,
+              { f: 2, bold: true },
+              key
+            ),
+            _react2.default.createElement(
+              _rebass.Text,
+              { f: 0 },
+              _theme2.default.colors[key]
+            )
+          );
         })
+      ),
+      _react2.default.createElement(_Bar2.default, { w: 1 / 3, my: 4 }),
+      _react2.default.createElement(
+        _rebass.Heading,
+        { mt: 4 },
+        'Elements'
+      ),
+      _react2.default.createElement(
+        _rebass.Subhead,
+        { mt: 4, mb: 2 },
+        'Buttons'
+      ),
+      _react2.default.createElement(
+        _rebass.Flex,
+        { wrap: true },
+        _react2.default.createElement(
+          _rebass.Button,
+          { bg: 'primary', mr: 2 },
+          'Primary'
+        ),
+        _react2.default.createElement(
+          _rebass.ButtonOutline,
+          { color: 'muted', mr: 2 },
+          'Muted'
+        )
+      ),
+      _react2.default.createElement(
+        _rebass.Subhead,
+        { mt: 4, mb: 2 },
+        'Tabs'
+      ),
+      _react2.default.createElement(
+        _rebass.Tabs,
+        { w: 1 / 3 },
+        _react2.default.createElement(
+          _rebass.TabItem,
+          { active: true },
+          'Zach'
+        ),
+        _react2.default.createElement(
+          _rebass.TabItem,
+          null,
+          'Max'
+        ),
+        _react2.default.createElement(
+          _rebass.TabItem,
+          null,
+          'Harrison'
+        )
       ),
       _react2.default.createElement(_Bar2.default, { w: 1 / 3 })
     )
@@ -32034,7 +32129,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _templateObject = _taggedTemplateLiteral(['\n  from {\n    transform: scaleX(0);\n  }\n  to {\n    transform: scaleX(1);\n  }\n'], ['\n  from {\n    transform: scaleX(0);\n  }\n  to {\n    transform: scaleX(1);\n  }\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n  margin: 0;\n  border: 0;\n  height: 3px;\n  background-image: ', ';\n  transform-origin: 0;\n  animation-name: ', ';\n  animation-duration: 1s;\n  animation-timing-function: ease-out;\n  animation-fill-mode: forwards;\n'], ['\n  margin: 0;\n  border: 0;\n  height: 3px;\n  background-image: ', ';\n  transform-origin: 0;\n  animation-name: ', ';\n  animation-duration: 1s;\n  animation-timing-function: ease-out;\n  animation-fill-mode: forwards;\n']);
+    _templateObject2 = _taggedTemplateLiteral(['\n  border: 0;\n  height: 3px;\n  background-image: ', ';\n  transform-origin: 0;\n  animation-name: ', ';\n  animation-duration: 1s;\n  animation-timing-function: ease-out;\n  animation-fill-mode: forwards;\n'], ['\n  border: 0;\n  height: 3px;\n  background-image: ', ';\n  transform-origin: 0;\n  animation-name: ', ';\n  animation-duration: 1s;\n  animation-timing-function: ease-out;\n  animation-fill-mode: forwards;\n']);
 
 var _rebass = __webpack_require__(89);
 
@@ -32050,7 +32145,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var grow = (0, _styledComponents.keyframes)(_templateObject);
 
-var Bar = _rebass.Divider.extend(_templateObject2, (0, _theme.gradient)(90, _theme.colors.primary, _theme.colors.accent), grow);
+var Bar = _rebass.Divider.extend.attrs({ my: 3, mx: 0 })(_templateObject2, (0, _theme.gradient)(90, _theme.colors.primary, _theme.colors.accent), grow);
 
 exports.default = Bar;
 

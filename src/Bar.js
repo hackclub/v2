@@ -11,8 +11,7 @@ const grow = keyframes`
   }
 `
 
-const Bar = Divider.extend`
-  margin: 0;
+const Bar = Divider.extend.attrs({ my: 3, mx: 0 })`
   border: 0;
   height: 3px;
   background-image: ${gradient(90, colors.primary, colors.accent)};

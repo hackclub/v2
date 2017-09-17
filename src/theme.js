@@ -7,7 +7,7 @@ export const palette = palx(blue)
 export const grays = {
   black: palette.black,
   slate: palette.gray[8],
-  silver: palette.gray[5],
+  silver: palette.gray[7],
   smoke: palette.gray[2],
   snow: palette.gray[0],
   white: '#ffffff'

@@ -19,6 +19,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
+    "dot-prop": "^4.2.0",
     "palx": "^1.0.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

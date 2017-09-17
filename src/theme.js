@@ -1,4 +1,5 @@
 import palx from 'palx'
+import dotProp from 'dot-prop'
 
 const red = '#e42d42'
 const blue = '#2d9ce4'
@@ -28,7 +29,8 @@ export const colors = {
   ...palette
 }
 
-export const cx = key => colors[key] || key
+export const cx = key =>
+  dotProp.has(colors, key) ? dotProp.get(colors, key) : key
 export const gradient = (n, from, to) =>
   `linear-gradient(${n}deg, ${cx(from)}, ${cx(to)})`
 export const geo = color => `background: ${color} url('geo.svg') repeat;`

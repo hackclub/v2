@@ -33,7 +33,9 @@ const Flag = Image.extend`
   z-index: 0;
 `
 
-const Hero = Container.extend`
+const Hero = Banner.extend`background: ${brand.primary} url('geo.svg') repeat;`
+
+const HeroContainer = Container.extend`
   max-width: 48rem;
   padding: 0;
   text-align: center;
@@ -54,9 +56,11 @@ const Swatch = Flex.extend.attrs({
 
 const App = () => (
   <Provider theme={theme}>
-    <Banner bg="primary" py={6} px={2}>
+    <Hero bg="primary" py={6} px={2}>
       <Flag src="https://cdn.rawgit.com/hackclub/hackclub/629b7921/internals/logos/banner_orpheus_hand.svg" />
-      <Hero style={{ maxWidth: 48 * 16, textAlign: 'center', zIndex: 2 }}>
+      <HeroContainer
+        style={{ maxWidth: 48 * 16, textAlign: 'center', zIndex: 2 }}
+      >
         <Heading f={[5, 6, 7]} my={0} color="white">
           Start an amazing coding club at your high school.
         </Heading>
@@ -80,8 +84,8 @@ const App = () => (
             Donate
           </ButtonOutline>
         </Flex>
-      </Hero>
-    </Banner>
+      </HeroContainer>
+    </Hero>
     <Container py={4} color="black" style={{ maxWidth: 56 * 16 }}>
       <Bar w={1 / 3} mt={0} mb={4} />
       <Heading mt={3}>Colors</Heading>

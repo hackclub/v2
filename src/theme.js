@@ -28,9 +28,14 @@ export const colors = {
   ...palette
 }
 
-const cx = key => colors[key] || key
+export const cx = key => colors[key] || key
 export const gradient = (n, from, to) =>
   `linear-gradient(${n}deg, ${cx(from)}, ${cx(to)})`
+export const geo = color => `background: ${color} url('geo.svg') repeat;`
+
+export const mx = [32, 48, 64, 80].map(
+  w => `@media screen and (min-width:${w}em)`
+)
 
 const theme = {
   colors,

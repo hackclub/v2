@@ -18,11 +18,17 @@ import {
   TabItem,
   Relative,
   Absolute,
-  Image
+  Image,
+  Link,
+  Row,
+  Column
 } from 'rebass'
 import Bar from './Bar'
-import theme, { brand, grays } from './theme'
+import Icon from './Icon'
+import theme, { brand, grays, geo } from './theme'
 import { keys } from 'lodash'
+
+import Footer from './Footer'
 
 const Flag = Image.extend`
   top: 0;
@@ -33,7 +39,9 @@ const Flag = Image.extend`
   z-index: 0;
 `
 
-const Hero = Banner.extend`background: ${brand.primary} url('geo.svg') repeat;`
+const Hero = Banner.extend.attrs({ is: 'header', py: 6, px: 2 })`
+  ${geo(brand.primary)}
+`
 
 const HeroContainer = Container.extend`
   max-width: 48rem;
@@ -56,7 +64,7 @@ const Swatch = Flex.extend.attrs({
 
 const App = () => (
   <Provider theme={theme}>
-    <Hero bg="primary" py={6} px={2}>
+    <Hero>
       <Flag src="https://cdn.rawgit.com/hackclub/hackclub/629b7921/internals/logos/banner_orpheus_hand.svg" />
       <HeroContainer
         style={{ maxWidth: 48 * 16, textAlign: 'center', zIndex: 2 }}
@@ -88,8 +96,7 @@ const App = () => (
     </Hero>
     <Container py={4} color="black" style={{ maxWidth: 56 * 16 }}>
       <Bar w={1 / 3} mt={0} mb={4} />
-      <Heading mt={3}>Colors</Heading>
-      <Text>These are Hack Club's colors.</Text>
+      {/* <Heading mt={3}>Colors</Heading>
       <Flex mx={-2} mt={3} mb={4} wrap>
         {keys({ ...brand, ...grays }).map(key => (
           <Swatch
@@ -104,34 +111,9 @@ const App = () => (
           </Swatch>
         ))}
       </Flex>
-      <Bar w={1 / 3} my={4} />
-      <Heading mt={4}>Elements</Heading>
-      <Subhead mt={4} mb={2}>
-        Buttons
-      </Subhead>
-      <Flex wrap>
-        <Button bg="primary" mr={2}>
-          Primary
-        </Button>
-        <ButtonOutline color="muted" mr={2}>
-          Muted
-        </ButtonOutline>
-      </Flex>
-      {/* <Subhead mt={4} mb={2}>
-        Forms
-      </Subhead>
-      <Label htmlFor="name">Name</Label>
-      <Input id="name" placeholder="Zach Latta" /> */}
-      <Subhead mt={4} mb={2}>
-        Tabs
-      </Subhead>
-      <Tabs w={1 / 3}>
-        <TabItem active>Zach</TabItem>
-        <TabItem>Max</TabItem>
-        <TabItem>Harrison</TabItem>
-      </Tabs>
-      <Bar w={1 / 3} />
+      <Bar w={1 / 3} /> */}
     </Container>
+    <Footer />
   </Provider>
 )
 

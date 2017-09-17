@@ -1,25 +1,13 @@
 import React from 'react'
 import { Avatar, Flex, Box } from 'rebass'
 import { random, sample } from 'lodash'
-import { mx, geo, grays } from './theme'
-import avatars from './avatar'
+
+const Bubble = ({ src, ...props }) => (
+  <Avatar size={sample([16, 32, 48, 64])} src={src} m={sample([1, 2])} />
+)
 
 const Bubbles = () => (
-  <Flex align="center" wrap style={{ position: 'relative' }}>
-    {avatars.map(url => (
-      <Avatar
-        size={sample([16, 32, 48, 64])}
-        key={url}
-        src={url}
-        m={sample([1, 2])}
-        style={{
-          position: 'absolute',
-          top: random(12, 768),
-          right: random(0, 100) + 'vw'
-        }}
-      />
-    ))}
-  </Flex>
+  <Bubble src="https://ca.slack-edge.com/T0266FRGM-U0266FRGP-bfe9aa82f6b1-128" />
 )
 
 export default Bubbles

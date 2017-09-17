@@ -95,10 +95,8 @@ const App = () => (
         </Flex>
       </HeroContainer>
     </Hero>
-    <Bubbles />
     <Container py={4} color="black" style={{ maxWidth: 56 * 16 }}>
       <Bar w={1 / 3} mt={0} mb={4} />
-      <Box style={{ height: '125vh' }} />
       {/* <Heading mt={3}>Colors</Heading>
       <Flex mx={-2} mt={3} mb={4} wrap>
         {keys({ ...brand, ...grays }).map(key => (

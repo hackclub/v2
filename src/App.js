@@ -33,18 +33,21 @@ import { keys } from 'lodash'
 import Footer from './Footer'
 
 const Flag = Box.extend`
-  background: url(https://cdn.rawgit.com/hackclub/hackclub/629b7921/internals/logos/banner_orpheus_hand.svg)
-    no-repeat;
-  background-position: top center;
-  background-size: auto contain;
+  background: url(https://cdn.rawgit.com/hackclub/hackclub/629b7921/internals/logos/banner_orpheus_hand.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
   position: absolute;
   top: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
   height: 5rem;
   z-index: 0;
 
   ${mx[0]} {
+    background-origin: content-box;
     background-position: top left;
+    padding-left: 1rem;
     height: 6rem;
   }
 `

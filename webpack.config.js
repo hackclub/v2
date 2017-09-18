@@ -1,5 +1,6 @@
-const webpack = require('webpack')
 const path = require('path')
+const webpack = require('webpack')
+const UglifyEsPlugin = require('uglify-es-webpack-plugin')
 
 module.exports = {
   entry: './src/entry.js',
@@ -26,7 +27,8 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    })
+    }),
+    new UglifyEsPlugin()
   ],
 
   devServer: {

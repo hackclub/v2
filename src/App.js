@@ -27,18 +27,26 @@ import Bar from './Bar'
 import Icon from './Icon'
 import Hint from './Hint'
 import Stat from './Stat'
-import theme, { brand, grays, geo } from './theme'
+import theme, { brand, grays, geo, tilt, mx } from './theme'
 import { keys } from 'lodash'
 
 import Footer from './Footer'
 
-const Flag = Image.extend`
-  top: 0;
-  left: 0;
+const Flag = Box.extend`
+  background: url(https://cdn.rawgit.com/hackclub/hackclub/629b7921/internals/logos/banner_orpheus_hand.svg)
+    no-repeat;
+  background-position: top center;
+  background-size: auto contain;
   position: absolute;
-  max-width: 14rem;
-  padding-left: 1rem;
+  top: 0;
+  width: 100%;
+  height: 5rem;
   z-index: 0;
+
+  ${mx[0]} {
+    background-position: top left;
+    height: 6rem;
+  }
 `
 
 const Hero = Banner.extend.attrs({ is: 'header' })`
@@ -46,10 +54,14 @@ const Hero = Banner.extend.attrs({ is: 'header' })`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 4rem;
-  padding-bottom: 8rem;
-  clip-path: polygon(75% 0%, 100% 0, 100% 75%, 0 100%, 0 0);
-  -webkit-clip-path: polygon(75% 0%, 100% 0, 100% 75%, 0 100%, 0 0);
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  ${tilt(90)}
+  ${mx[1]} {
+    ${tilt(75)}
+    padding-top: 4rem;
+    padding-bottom: 8rem;
+  }
 `
 
 const HeroContainer = Container.extend`
@@ -88,7 +100,7 @@ const Subheadline = Lead.extend.attrs({
 const App = () => (
   <Provider theme={theme}>
     <Hero>
-      <Flag src="https://cdn.rawgit.com/hackclub/hackclub/629b7921/internals/logos/banner_orpheus_hand.svg" />
+      <Flag />
       <HeroContainer
         style={{ maxWidth: 48 * 16, textAlign: 'center', zIndex: 2 }}
       >
@@ -97,13 +109,14 @@ const App = () => (
           Hack Club is the largest nonprofit network of student-led high school
           coding clubs.
         </Subheadline>
-        <Flex justify="center" wrap>
+        <Flex justify="center" wrap m={-2}>
           <Button
             is="a"
             href="https://hackclub.com/start"
             bg="white"
             color="primary"
             f={4}
+            m={2}
           >
             Start a Club
           </Button>
@@ -113,7 +126,7 @@ const App = () => (
             bg="primary"
             color="white"
             f={4}
-            ml={3}
+            m={2}
           >
             Donate
           </ButtonOutline>

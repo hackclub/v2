@@ -3,9 +3,12 @@ import { Image, Link } from 'rebass'
 import { replace } from 'lodash'
 import { cx } from './theme'
 
-const Icon = ({ name = 'square', fill = '#ffffff', size = 16, ...props }) => (
+export const url = (name = 'square', size = 16, fill = '#ffffff') =>
+  `//icon.now.sh/${name}/${size}/${replace(cx(fill), '#', '')}`
+
+const Icon = ({ name, fill, size = 16, ...props }) => (
   <Image
-    src={`//icon.now.sh/${name}/${size}/${replace(cx(fill), '#', '')}`}
+    src={url(name, size, replace(cx(fill), '#', ''))}
     alt={`${name} icon`}
     style={{ width: size, height: size, display: 'inline-block' }}
     {...props}

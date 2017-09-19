@@ -148,8 +148,9 @@ const App = () => (
         together.
       </Description>
       <Flex my={3} mx={-3} justify="center" wrap>
+        <Stat value={180} label="clubs" />
         <Stat value={13} label="countries" />
-        <Stat value={24} label="states" />
+        <Stat value={25} label="states" />
         <Stat value="2K+" label="members" />
       </Flex>
       {/* <Flex>

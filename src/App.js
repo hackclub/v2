@@ -99,6 +99,12 @@ const Subheadline = Lead.extend.attrs({
   w: [1, 2 / 3],
   color: 'snow'
 })`line-height: 1.5;`
+const Description = Lead.extend.attrs({ f: [4, 5], mx: 'auto', mb: 0 })`
+  line-height: 1.3;
+  max-width: 36rem;
+  text-align: center;
+`
+
 
 const App = () => (
   <Provider theme={theme}>
@@ -136,9 +142,12 @@ const App = () => (
         </Flex>
       </HeroContainer>
     </Hero>
-    <Container py={4} color="black" style={{ maxWidth: 56 * 16 }}>
-      <Flex my={4} justify="center" mx={-3} wrap>
-        <Stat value={163} label="clubs" />
+    <Container pt={3} pb={5} color="black">
+      <Description>
+        Hack Clubs are places where students learn to make things with code
+        together.
+      </Description>
+      <Flex my={3} mx={-3} justify="center" wrap>
         <Stat value={13} label="countries" />
         <Stat value={24} label="states" />
         <Stat value="2K+" label="members" />

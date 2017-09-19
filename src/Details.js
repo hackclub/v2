@@ -3,7 +3,7 @@ import { Flex, Subhead, Box, Text } from 'rebass'
 import { url } from './Icon'
 import { mx, grays } from './theme'
 
-const Base = Box.extend.attrs({ p: 4, w: [1, 0.5], mx: 3 })`
+const Base = Box.extend.attrs({ p: 4, w: [1, 0.5], my: 2, mx: [null, 3] })`
   max-width: 26rem;
   border: 2px dashed ${grays.smoke};
   border-radius: .5rem;
@@ -35,7 +35,12 @@ const Question = Subhead.extend.attrs({
 const Answer = Text.extend.attrs({ my: 0, f: 2, color: 'silver' })``
 
 const Details = props => (
-  <Flex mx={-3} justify="center" {...props}>
+  <Flex
+    direction={['column', 'row']}
+    mx={[null, -3]}
+    justify="center"
+    {...props}
+  >
     <About>
       <Question>Who are you?</Question>
       <Answer>

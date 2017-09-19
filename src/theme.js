@@ -38,16 +38,16 @@ export const geo = color => `background: ${color} url('geo.svg') repeat;`
 const cp = n => `clip-path: polygon(${n}% 0%, 100% 0, 100% ${n}%, 0 100%, 0 0);`
 export const tilt = n => [cp(n), '-webkit-' + cp(n)].join('\n')
 
-export const mx = [32, 48, 64, 80].map(
-  w => `@media screen and (min-width:${w}em)`
-)
+export const mp = [32, 48, 64, 80]
+export const mx = mp.map(w => `@media screen and (min-width:${w}em)`)
+export const mm = mp.map(w => `@media screen and (max-width:${w}em)`)
 
 const theme = {
   colors,
   radius: 4,
   weights: [400, 700],
   font:
-    '"Fakt Soft", Interface, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+    '"Fakt Soft", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
   monospace: 'SFMono-Regular, "Roboto Mono", Menlo, monospace'
 }
 

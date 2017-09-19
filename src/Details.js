@@ -1,18 +1,40 @@
 import React from 'react'
-import { Flex, Subhead, Box, Text } from 'rebass'
+import { Flex, Card, Subhead, Text } from 'rebass'
 import { url } from './Icon'
-import { mx, grays } from './theme'
+import { geo, brand, wk, mx } from './theme'
 
-const Base = Box.extend.attrs({ p: 4, w: [1, 0.5], my: 2, mx: [null, 3] })`
+const tilt = n =>
+  wk(
+    `clip-path: polygon(100% 0%, 100% 0%, 100% ${n}%, 0% 100%, 0 ${100 - n}%);`
+  )
+const Background = Flex.extend.attrs({
+  direction: ['column', 'row'],
+  mx: [null, -3],
+  justify: 'center',
+  w: 1,
+  px: 3,
+  bg: 'primary'
+})`
+  ${geo(brand.primary)}
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  ${tilt(95)}
+  ${mx[1]} {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    ${tilt(85)}
+  }
+`
+
+const Base = Card.extend.attrs({ p: 4, w: [1, 0.5], my: 2, mx: [null, 3] })`
   max-width: 26rem;
-  border: 2px dashed ${grays.smoke};
   border-radius: .5rem;
-  background-color: ${grays.snow};
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.05);
   background-repeat: no-repeat;
-  background-position: top .75rem right .75rem,
-                       top .75rem left .75rem,
-                       bottom .75rem left .75rem,
-                       bottom .75rem right .75rem;
+  background-position: top .75rem right 1rem,
+                       top .75rem left 1rem,
+                       bottom .75rem left 1rem,
+                       bottom .75rem right 1rem;
 `
 
 const ppl = url('people', 48, 'gray.1')
@@ -35,12 +57,7 @@ const Question = Subhead.extend.attrs({
 const Answer = Text.extend.attrs({ my: 0, f: 2, color: 'silver' })``
 
 const Details = props => (
-  <Flex
-    direction={['column', 'row']}
-    mx={[null, -3]}
-    justify="center"
-    {...props}
-  >
+  <Background {...props}>
     <About>
       <Question>Who are you?</Question>
       <Answer>
@@ -56,7 +73,7 @@ const Details = props => (
         making apps, games, and websites—not breaking into bank accounts.
       </Answer>
     </Hacking>
-  </Flex>
+  </Background>
 )
 
 export default Details

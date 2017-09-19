@@ -27,7 +27,7 @@ import Bar from './Bar'
 import Icon from './Icon'
 import Details from './Details'
 import Stat from './Stat'
-import theme, { brand, grays, geo, tilt, mx } from './theme'
+import theme, { brand, grays, geo, wk, mx, mm } from './theme'
 import { keys } from 'lodash'
 
 import Footer from './Footer'
@@ -52,6 +52,8 @@ const Flag = Box.extend`
   }
 `
 
+const tilt = n =>
+  wk(`clip-path: polygon(${n}% 0%, 100% 0, 100% ${n}%, 0 100%, 0 0);`)
 const Hero = Banner.extend.attrs({ is: 'header' })`
   ${geo(brand.primary)}
   display: flex;
@@ -59,9 +61,9 @@ const Hero = Banner.extend.attrs({ is: 'header' })`
   align-items: center;
   padding-top: 6rem;
   padding-bottom: 6rem;
-  ${tilt(90)}
+  ${tilt(95)}
   ${mx[1]} {
-    ${tilt(75)}
+    ${tilt(85)}
     padding-top: 4rem;
     padding-bottom: 8rem;
   }
@@ -105,6 +107,30 @@ const Description = Lead.extend.attrs({ f: [4, 5], mx: 'auto', mb: 0 })`
   text-align: center;
 `
 
+const Features = Flex.extend.attrs({
+  align: 'center',
+  justify: 'center',
+  mx: [-3, -4]
+})``
+const FeatureHuman = Image.extend.attrs({
+  w: [1 / 4, 'auto'],
+  mx: [3, 4]
+})`
+  line-height: .7;
+  ${mm[1]} {
+    &:last-of-type { display: none; }
+  }
+`
+const FeatureList = Box.extend.attrs({ is: 'ul', pl: 0, pr: [2, 4] })`
+  list-style: none;
+`
+const Feature = Text.extend.attrs({
+  is: 'li',
+  f: 4,
+  mt: 0,
+  mb: 1,
+  bold: true
+})``
 
 const App = () => (
   <Provider theme={theme}>
@@ -153,13 +179,23 @@ const App = () => (
         <Stat value={25} label="states" />
         <Stat value="2K+" label="members" />
       </Flex>
-      {/* <Flex>
-        <Image src="https://hackclub.com/staticPage/home/person_2-ca37a2607352f0f946f3f658dc304a0c.svg" />
-        <Image src="https://hackclub.com/staticPage/home/person_1-50caa3ddfb0c690fdc3acdf94c0b29c1.svg" />
-      </Flex> */}
-      <Bar w={1 / 3} my={4} mx="auto" />
-      <Details />
-      {/* <Heading mt={3}>Colors</Heading>
+      <Features>
+        <FeatureHuman src="https://hackclub.com/staticPage/home/person_5-ed9941eca0249eb215bb44c8c74577eb.svg" />
+        <FeatureList>
+          {[
+            'Student-led',
+            'High school clubs',
+            'Global community',
+            'Leadership training',
+            'Open source + transparent'
+          ].map((a, i) => <Feature key={`feat-${i}`} children={a} />)}
+        </FeatureList>
+        <FeatureHuman src="https://hackclub.com/staticPage/home/person_3-abb269f6c0c1cc6d2b4618239db0c148.svg" />
+      </Features>
+    </Container>
+    <Details />
+    <Bar w={1 / 3} my={4} mx="auto" />
+    {/* <Heading mt={3}>Colors</Heading>
       <Flex mx={-2} mt={3} mb={4} wrap>
         {keys({ ...brand, ...grays }).map(key => (
           <Swatch
@@ -175,7 +211,6 @@ const App = () => (
         ))}
       </Flex>
       <Bar w={1 / 3} /> */}
-    </Container>
     <Footer />
   </Provider>
 )

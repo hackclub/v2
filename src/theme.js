@@ -34,9 +34,7 @@ export const cx = key =>
 export const gradient = (n, from, to) =>
   `linear-gradient(${n}deg, ${cx(from)}, ${cx(to)})`
 export const geo = color => `background: ${color} url('geo.svg') repeat;`
-
-const cp = n => `clip-path: polygon(${n}% 0%, 100% 0, 100% ${n}%, 0 100%, 0 0);`
-export const tilt = n => [cp(n), '-webkit-' + cp(n)].join('\n')
+export const wk = a => [a, '-webkit-' + a].join('\n')
 
 export const mp = [32, 48, 64, 80]
 export const mx = mp.map(w => `@media screen and (min-width:${w}em)`)

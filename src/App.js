@@ -25,6 +25,7 @@ import {
 } from 'rebass'
 import Bar from './Bar'
 import Icon from './Icon'
+import About from './About'
 import Hint from './Hint'
 import Stat from './Stat'
 import theme, { brand, grays, geo, tilt, mx } from './theme'
@@ -143,12 +144,15 @@ const App = () => (
         <Stat value={24} label="states" />
         <Stat value="2K+" label="members" />
       </Flex>
-      <Hint mb={5} />
       {/* <Flex>
         <Image src="https://hackclub.com/staticPage/home/person_2-ca37a2607352f0f946f3f658dc304a0c.svg" />
         <Image src="https://hackclub.com/staticPage/home/person_1-50caa3ddfb0c690fdc3acdf94c0b29c1.svg" />
       </Flex> */}
       {/* <Bar w={1 / 3} mt={4} mx="auto" /> */}
+      <Flex mx={-3} justify="center">
+        <About w={[1, 1 / 2]} mx={3} />
+        <Hint w={[1, 1 / 2]} mx={3} />
+      </Flex>
       {/* <Heading mt={3}>Colors</Heading>
       <Flex mx={-2} mt={3} mb={4} wrap>
         {keys({ ...brand, ...grays }).map(key => (

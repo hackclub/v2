@@ -9,7 +9,6 @@ const tilt = n =>
   )
 const Background = Flex.extend.attrs({
   direction: ['column', 'row'],
-  mx: [null, -3],
   justify: 'center',
   w: 1,
   px: 3,
@@ -37,12 +36,12 @@ const Base = Card.extend.attrs({ p: 4, w: [1, 0.5], my: 2, mx: [null, 3] })`
                        bottom .75rem right 1rem;
 `
 
-const ppl = url('people', 48, 'gray.1')
+const ppl = url('people', 48, 'gray.0')
 const About = Base.extend`
   background-image: url(${ppl}), url(${ppl}), url(${ppl}), url(${ppl});
 `
 
-const hack = url('code', 48, 'gray.1')
+const hack = url('code', 48, 'gray.0')
 const Hacking = Base.extend`
   background-image: url(${hack}), url(${hack}), url(${hack}), url(${hack});
 `
@@ -61,9 +60,8 @@ const Details = props => (
     <About>
       <Question>Who are you?</Question>
       <Answer>
-        We’re a San Francisco-based nonprofit. We provide everything needed to
-        start a successful club: curriculum for meetings, guidelines, and a
-        global online community of club leaders.
+        We’re a San Francisco-based nonprofit. We provide clubs with curriculum,
+        guidelines, help, a global community of club leaders, and more.
       </Answer>
     </About>
     <Hacking>

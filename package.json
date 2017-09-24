@@ -11,20 +11,17 @@
   },
   "author": "Lachlan Campbell",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "babel-register": "^6.26.0",
     "dot-prop": "^4.2.0",
     "palx": "^1.0.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "rebass": "^1.0.4",
     "uglify-es-webpack-plugin": "^0.10.0",
-    "uglifyjs-webpack-plugin": "^1.0.0-beta.2",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.8.2"
   }

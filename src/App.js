@@ -77,18 +77,6 @@ const HeroContainer = Container.extend`
   z-index: 1;
 `
 
-const Swatch = Flex.extend.attrs({
-  m: 2,
-  p: 4,
-  column: true,
-  align: 'center',
-  justify: 'center'
-})`
-  width: 8rem;
-  height: 8rem;
-  border-radius: 4px;
-`
-
 const Headline = Heading.extend.attrs({
   f: [5, 6, 7],
   my: 0,
@@ -196,22 +184,6 @@ const App = () => (
     </Container>
     <Details />
     <Bar w={1 / 3} my={4} mx="auto" />
-    {/* <Heading mt={3}>Colors</Heading>
-      <Flex mx={-2} mt={3} mb={4} wrap>
-        {keys({ ...brand, ...grays }).map(key => (
-          <Swatch
-            key={key}
-            bg={key}
-            color={['white', 'snow', 'smoke'].includes(key) ? 'black' : 'white'}
-          >
-            <Text f={2} bold>
-              {key}
-            </Text>
-            <Text f={0}>{theme.colors[key]}</Text>
-          </Swatch>
-        ))}
-      </Flex>
-      <Bar w={1 / 3} /> */}
     <Footer />
   </Provider>
 )

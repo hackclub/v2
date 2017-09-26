@@ -46,8 +46,8 @@ class Map extends Component {
         forEach(res.data, club => {
           const { name } = club
           const coordinates = [
-            toNumber(club.latitude),
-            toNumber(club.longitude)
+            toNumber(club.longitude),
+            toNumber(club.latitude)
           ]
           locations.push({ name, coordinates })
         })

@@ -4,8 +4,6 @@
   "description": "New Hack Club website",
   "scripts": {
     "dev": "next",
-    "build": "next build",
-    "go": "npm run build && now --public",
     "start": "node server.js"
   },
   "author": "Lachlan Campbell",
@@ -18,9 +16,9 @@
     "express": "^4.15.5",
     "next": "^3.2.2",
     "palx": "^1.0.2",
+    "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-simple-maps": "^0.8.3",
-    "react": "^15.6.2",
     "rebass": "^1.0.4",
     "unfetch": "^3.0.0"
   }

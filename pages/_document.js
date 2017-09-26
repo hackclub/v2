@@ -17,10 +17,14 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <title>Hack Club</title>
+          <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1.0"
+          />
           <style
             children={`*{box-sizing:border-box}body{line-height:1.6;margin:0}`}
           />
-          <link rel="stylesheet" href="fakt-soft.css" />
+          <link rel="stylesheet" href="/static/fakt-soft.css" />
           {this.props.styleTags}
         </Head>
         <body>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import fetch from 'unfetch'
+import axios from 'axios'
 import { forEach, toNumber, join } from 'lodash'
 import {
   ComposableMap,
@@ -40,7 +40,8 @@ class Map extends Component {
 
   fetchData() {
     const locations = []
-    fetch(CORS + DATA)
+    axios
+      .get(CORS + DATA)
       .then(res => {
         forEach(res.data, club => {
           const { name } = club

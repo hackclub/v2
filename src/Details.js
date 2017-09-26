@@ -21,7 +21,7 @@ const Background = Flex.extend.attrs({
   ${mx[1]} {
     padding-top: 6rem;
     padding-bottom: 6rem;
-    ${tilt(85)}
+    ${tilt(80)}
   }
 `
 

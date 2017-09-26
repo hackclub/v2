@@ -59,12 +59,13 @@ const Hero = Banner.extend.attrs({ is: 'header' })`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-  ${tilt(95)}
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  min-height: 50vh;
+  ${tilt(90)}
   ${mx[1]} {
     ${tilt(85)}
-    padding-top: 4rem;
+    min-height: 70vh;
     padding-bottom: 8rem;
   }
 `

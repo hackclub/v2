@@ -20,8 +20,10 @@
     "palx": "^1.0.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-simple-maps": "^0.8.3",
     "rebass": "^1.0.4",
     "uglify-es-webpack-plugin": "^0.10.0",
+    "unfetch": "^3.0.0",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.8.2"
   }

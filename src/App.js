@@ -25,6 +25,7 @@ import {
 } from 'rebass'
 import Bar from './Bar'
 import Icon from './Icon'
+import Bubbles from './Bubbles'
 import Details from './Details'
 import Stat from './Stat'
 import theme, { brand, grays, geo, wk, mx, mm } from './theme'
@@ -168,6 +169,7 @@ const App = () => (
         <Stat value={25} label="states" />
         <Stat value="2K+" label="members" />
       </Flex>
+      <Bubbles my={3} />
       <Features>
         <FeatureHuman src="https://hackclub.com/staticPage/home/person_5-ed9941eca0249eb215bb44c8c74577eb.svg" />
         <FeatureList>

@@ -4,6 +4,7 @@
   "description": "New Hack Club website",
   "scripts": {
     "dev": "next",
+    "build": "next build",
     "start": "node server.js"
   },
   "author": "Lachlan Campbell",

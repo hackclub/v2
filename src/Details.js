@@ -58,17 +58,17 @@ const Answer = Text.extend.attrs({ my: 0, f: 2, color: 'silver' })``
 const Details = props => (
   <Background {...props}>
     <About>
-      <Question>Who are you?</Question>
+      <Question>Who's behind this?</Question>
       <Answer>
-        We’re a San Francisco-based nonprofit. We provide clubs with curriculum,
-        guidelines, help, a global community of club leaders, and more.
+        We’re a San Francisco-based nonprofit run by Zach Latta + Max Wofford +
+        Harrison Shoebridge.
       </Answer>
     </About>
     <Hacking>
       <Question>Hacking?!</Question>
       <Answer>
-        When we say "hack", we're referring to solving problems with code. We're
-        making apps, games, and websites—not breaking into bank accounts.
+        We‘re solving problems with code—making apps and websites—not breaking
+        into anything.
       </Answer>
     </Hacking>
   </Background>

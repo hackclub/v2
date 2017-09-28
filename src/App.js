@@ -14,8 +14,7 @@ import {
   ButtonOutline,
   Label,
   Input,
-  Tabs,
-  TabItem,
+  Circle,
   Relative,
   Absolute,
   Image,
@@ -91,48 +90,75 @@ const Subheadline = Lead.extend.attrs({
   w: [1, 2 / 3],
   color: 'snow'
 })`line-height: 1.5;`
-const Description = Lead.extend.attrs({ f: [4, 5], mx: 'auto', mb: 0 })`
-  line-height: 1.3;
-  max-width: 36rem;
-  text-align: center;
+const Description = Lead.extend.attrs({ f: [4, 5], mb: 0 })`
+  line-height: 1.5;
+  /* max-width: 36rem; */
 `
 
-const Features = Flex.extend.attrs({
-  align: 'center',
-  justify: 'center',
-  mx: [-3, -4]
-})``
-const FeatureHuman = Image.extend.attrs({
-  w: [1 / 4, 'auto'],
-  mx: [3, 4]
-})`
-  line-height: .7;
-  ${mm[1]} {
-    &:last-of-type { display: none; }
+const Split = Row.extend.attrs({ mx: -3, my: 3, align: 'center' })`
+  flex-flow: column wrap;
+
+  ${mx[1]} {
+    flex-flow: row nowrap;
+  }
+
+  > div {
+    flex: 1 1 auto;
   }
 `
-const FeatureList = Box.extend.attrs({ is: 'ul', pl: 0, pr: [2, 4] })`
-  list-style: none;
-`
-const Feature = Text.extend.attrs({
-  is: 'li',
-  f: 4,
+const SplitWide = Column.extend`${mx[1]} {max-width: 60%;}`
+const SplitNarrow = Flex.extend.attrs({ px: 3 })`${mx[1]} {max-width: 40%;}`
+
+const BodyHeading = Heading.extend.attrs({
+  is: 'h2',
+  f: 5,
+  mt: 4,
+  mb: 2,
+  color: 'primary'
+})`line-height: 1.25;`
+const BodySubhead = Subhead.extend.attrs({
+  is: 'h3',
+  f: [3, 4],
   mt: 0,
   mb: 1,
-  bold: true
-})``
+  color: 'silver'
+})`
+  font-weight: normal;
+  line-height: 1.5;
+`
+
+const Placeholder = Circle.extend.attrs({ size: 256 })`
+  ${geo(brand.info)}
+`
+
+const CTA = Button.extend.attrs({
+  is: 'a',
+  bg: 'primary',
+  color: 'white',
+  f: 4,
+  py: 3,
+  px: 4,
+  my: 3
+})`
+  box-shadow: 0 0 8px rgba(0, 0, 0, .25);
+  float: right;
+  transition: .1s box-shadow ease-in-out;
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+  }
+`
 
 const App = () => (
   <Provider theme={theme}>
     <Hero>
       <Flag />
       <HeroContainer
-        style={{ maxWidth: 48 * 16, textAlign: 'center', zIndex: 2 }}
+        style={{ maxWidth: 48 * 16, zIndex: 2, textAlign: 'center' }}
       >
         <Headline>Start an amazing coding club at your high school.</Headline>
         <Subheadline>
-          Hack Club is the largest nonprofit network of student-led high school
-          coding clubs.
+          Hack Clubs are places where students learn to make things with code
+          together.
         </Subheadline>
         <Flex justify="center" wrap m={-2}>
           <Button
@@ -158,34 +184,67 @@ const App = () => (
         </Flex>
       </HeroContainer>
     </Hero>
-    <Container pt={3} pb={5} color="black">
-      <Description>
-        Hack Clubs are places where students learn to make things with code
-        together.
-      </Description>
-      <Flex my={3} mx={-3} justify="center" wrap>
-        <Stat value={180} label="clubs" />
-        <Stat value={13} label="countries" />
-        <Stat value={25} label="states" />
-        <Stat value="2K+" label="members" />
-      </Flex>
-      <Bubbles my={3} />
-      <Features>
-        <FeatureHuman src="https://hackclub.com/staticPage/home/person_5-ed9941eca0249eb215bb44c8c74577eb.svg" />
-        <FeatureList>
-          {[
-            'Student-led',
-            'High school clubs',
-            'Global community',
-            'Leadership training',
-            'Open source + transparent'
-          ].map((a, i) => <Feature key={`feat-${i}`} children={a} />)}
-        </FeatureList>
-        <FeatureHuman src="https://hackclub.com/staticPage/home/person_3-abb269f6c0c1cc6d2b4618239db0c148.svg" />
-      </Features>
+    <Container pt={3} pb={5} maxWidth={48 * 16} color="black">
+      <Split>
+        <SplitNarrow>
+          <Bubbles />
+        </SplitNarrow>
+        <SplitWide>
+          <BodyHeading>
+            We’re a global community of people like you.
+          </BodyHeading>
+          <BodySubhead>
+            We are thousands of students, hackers, helpers, and everyone in
+            between.
+          </BodySubhead>
+        </SplitWide>
+      </Split>
+      <Split>
+        <SplitWide>
+          <BodyHeading>We’re starting a movement.</BodyHeading>
+          <BodySubhead>
+            Hack Club is the largest nonprofit network of student-led high
+            school coding clubs.
+          </BodySubhead>
+        </SplitWide>
+        <SplitNarrow>
+          <Flex mx={-2} justify="center" wrap>
+            <Stat value={180} label="clubs" />
+            <Stat value={13} label="countries" />
+            <Stat value={25} label="states" />
+            <Stat value="2K+" label="members" />
+          </Flex>
+        </SplitNarrow>
+      </Split>
+      <Split>
+        <SplitNarrow>
+          <Flex align="center" justify="center">
+            <Placeholder />
+          </Flex>
+        </SplitNarrow>
+        <SplitWide>
+          <BodyHeading>
+            We’ve got everything you need for your club.
+          </BodyHeading>
+          <BodySubhead>Talk to our team for guidance anytime.</BodySubhead>
+          <BodySubhead>Chat 24/7 with the community on Slack.</BodySubhead>
+          <BodySubhead>Read our open source lesson plans.</BodySubhead>
+          <BodySubhead>Get free stickers for your club.</BodySubhead>
+        </SplitWide>
+      </Split>
+      <Split>
+        <SplitWide>
+          <BodyHeading f={6}>Start a Hack Club</BodyHeading>
+          <BodySubhead>Build the class you wish you could take.</BodySubhead>
+          <BodySubhead>Bring the movement to your school.</BodySubhead>
+        </SplitWide>
+        <SplitNarrow>
+          <CTA href="https://hackclub.com/start">Start a Club »</CTA>
+        </SplitNarrow>
+      </Split>
     </Container>
     <Details />
-    <Bar w={1 / 3} my={4} mx="auto" />
+    {/* <Bar w={1 / 3} my={4} mx="auto" /> */}
     <Footer />
   </Provider>
 )

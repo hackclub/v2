@@ -13,7 +13,7 @@ const LeftCol = Column.extend.attrs({ w: [1, 0.4], mb: 2 })`
   }
 `
 const RightCol = Column.extend.attrs({ w: [1, 0.6] })`
-  flex: 1 1 auto;
+  text-align: left;
 `
 
 const Service = ({ href, icon, fill = 'muted', size = 32, ...props }) => (

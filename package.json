@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "node server.js"
+    "start": "node server.js",
+    "map-data": "node map/data.js",
+    "map-render": "babel-node map/render.js",
+    "map-repng": "repng map/Map.js -f static/map -w 2048"
   },
   "author": "Lachlan Campbell",
   "dependencies": {

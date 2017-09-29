@@ -54,7 +54,7 @@ const Footer = () => (
           <Text>
             576 Natoma St<br />San Francisco, CA 94103
           </Text>
-          <Text mt={2}>Nonprofit EIN: 81-290849</Text>
+          <Text mt={2}>Nonprofit EIN: 81-2908499</Text>
           <Text mt={2}>
             <Link href="https://conduct.hackclub.com" color="info">
               Read our Code of Conduct

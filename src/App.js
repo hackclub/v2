@@ -127,6 +127,8 @@ const BodySubhead = Subhead.extend.attrs({
   line-height: 1.5;
 `
 
+const Community = Box.extend`text-align: center;`
+
 const Placeholder = Circle.extend.attrs({ size: 256 })`
   ${geo(brand.info)}
 `
@@ -184,24 +186,21 @@ const App = () => (
         </Flex>
       </HeroContainer>
     </Hero>
-    <Container pt={3} pb={5} maxWidth={48 * 16} color="black">
-      <Split>
-        <SplitNarrow>
-          <Bubbles />
-        </SplitNarrow>
-        <SplitWide>
-          <BodyHeading>
-            We’re a global community of people like you.
-          </BodyHeading>
-          <BodySubhead>
-            We are thousands of students, hackers, helpers, and everyone in
-            between.
-          </BodySubhead>
-        </SplitWide>
-      </Split>
+    <Bubbles>
+      <Community>
+        <BodyHeading f={6} mt={0}>
+          We the students.
+        </BodyHeading>
+        <BodySubhead my={0}>
+          We’re a global community of high school students like you who value
+          coding education.
+        </BodySubhead>
+      </Community>
+    </Bubbles>
+    <Container pt={0} pb={5} maxWidth={48 * 16} bg="white" color="black">
       <Split>
         <SplitWide>
-          <BodyHeading>We’re starting a movement.</BodyHeading>
+          <BodyHeading mt={0}>We’re starting a movement.</BodyHeading>
           <BodySubhead>
             Hack Club is the largest nonprofit network of student-led high
             school coding clubs.

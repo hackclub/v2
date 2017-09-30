@@ -127,8 +127,6 @@ const BodySubhead = Subhead.extend.attrs({
   line-height: 1.5;
 `
 
-const Community = Box.extend`text-align: center;`
-
 const App = () => (
   <Provider theme={theme}>
     <Hero>
@@ -166,15 +164,13 @@ const App = () => (
       </HeroContainer>
     </Hero>
     <Bubbles>
-      <Community>
-        <BodyHeading f={6} mt={0}>
-          We the students.
-        </BodyHeading>
-        <BodySubhead my={0}>
-          We’re a global community of high school students like you who value
-          coding education.
-        </BodySubhead>
-      </Community>
+      <BodyHeading f={6} mt={0}>
+        We the students.
+      </BodyHeading>
+      <BodySubhead my={0}>
+        We’re a global community of high school students like you who value
+        coding education.
+      </BodySubhead>
     </Bubbles>
     <Container maxWidth={48 * 16} bg="white" color="black">
       <Split>

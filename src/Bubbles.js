@@ -129,6 +129,7 @@ const Body = Box.extend.attrs({ px: 3, mx: 'auto' })`
   max-width: 24rem;
   box-shadow: 0 0 4rem 4rem rgba(250, 250, 250, 0.95);
   background-color: rgba(250, 250, 250, 0.95);
+  text-align: center;
   z-index: 2;
 
   ${mx[1]} {

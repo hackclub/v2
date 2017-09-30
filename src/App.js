@@ -129,27 +129,6 @@ const BodySubhead = Subhead.extend.attrs({
 
 const Community = Box.extend`text-align: center;`
 
-const Placeholder = Circle.extend.attrs({ size: 256 })`
-  ${geo(brand.info)}
-`
-
-const CTA = Button.extend.attrs({
-  is: 'a',
-  bg: 'primary',
-  color: 'white',
-  f: 4,
-  py: 3,
-  px: 4,
-  my: 3
-})`
-  box-shadow: 0 0 8px rgba(0, 0, 0, .25);
-  float: right;
-  transition: .1s box-shadow ease-in-out;
-  &:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
-  }
-`
-
 const App = () => (
   <Provider theme={theme}>
     <Hero>
@@ -216,11 +195,6 @@ const App = () => (
         </SplitNarrow>
       </Split>
       <Split>
-        <SplitNarrow>
-          <Flex align="center" justify="center">
-            <Placeholder />
-          </Flex>
-        </SplitNarrow>
         <SplitWide>
           <BodyHeading>
             We’ve got everything you need for your club.
@@ -230,15 +204,8 @@ const App = () => (
           <BodySubhead>Read our open source lesson plans.</BodySubhead>
           <BodySubhead>Get free stickers for your club.</BodySubhead>
         </SplitWide>
-      </Split>
-      <Split>
-        <SplitWide>
-          <BodyHeading f={6}>Start a Hack Club</BodyHeading>
-          <BodySubhead>Build the class you wish you could take.</BodySubhead>
-          <BodySubhead>Bring the movement to your school.</BodySubhead>
-        </SplitWide>
         <SplitNarrow>
-          <CTA href="https://hackclub.com/start">Start a Club »</CTA>
+          <Flex align="center" justify="center" />
         </SplitNarrow>
       </Split>
     </Container>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Card, Subhead, Text } from 'rebass'
+import { Flex, Heading, Subhead, Column, Button } from 'rebass'
 import { url } from './Icon'
 import { geo, brand, wk, mx } from './theme'
 
@@ -9,7 +9,8 @@ const tilt = n =>
   )
 const Background = Flex.extend.attrs({
   direction: ['column', 'row'],
-  justify: 'center',
+  justify: 'space-around',
+  align: 'center',
   w: 1,
   px: 3,
   bg: 'primary'
@@ -25,52 +26,55 @@ const Background = Flex.extend.attrs({
   }
 `
 
-const Base = Card.extend.attrs({ p: 4, w: [1, 0.5], my: 2, mx: [null, 3] })`
-  max-width: 26rem;
-  border-radius: .5rem;
-  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.05);
-  background-repeat: no-repeat;
-  background-position: top .75rem right 1rem,
-                       top .75rem left 1rem,
-                       bottom .75rem left 1rem,
-                       bottom .75rem right 1rem;
-`
-
-const ppl = url('people', 48, 'gray.0')
-const About = Base.extend`
-  background-image: url(${ppl}), url(${ppl}), url(${ppl}), url(${ppl});
-`
-
-const hack = url('code', 48, 'gray.0')
-const Hacking = Base.extend`
-  background-image: url(${hack}), url(${hack}), url(${hack}), url(${hack});
-`
-
-const Question = Subhead.extend.attrs({
+const BodyHeading = Heading.extend.attrs({
+  is: 'h2',
+  f: 5,
+  mt: 4,
+  mb: 2,
+  color: 'white'
+})`line-height: 1.25;`
+const Description = Subhead.extend.attrs({
+  is: 'h3',
+  f: [3, 4],
   mt: 0,
-  mb: 3,
-  caps: true,
-  f: 2,
-  color: 'slate'
-})``
-const Answer = Text.extend.attrs({ my: 0, f: 2, color: 'silver' })``
+  mb: 1,
+  color: 'smoke'
+})`
+  font-weight: normal;
+  line-height: 1.5;
+`
+
+const CTA = Button.extend.attrs({
+  is: 'a',
+  bg: 'white',
+  color: 'primary',
+  f: 4,
+  py: 3,
+  px: 4,
+  mx: 2
+})`
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
+  transition: .1s box-shadow ease-in-out;
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+  }
+`
+
+const Left = Column.extend.attrs({ mt: 3 })`text-align: right;`
+const Right = Column.extend.attrs({ mt: 3 })`text-align: left;`
 
 const Details = props => (
   <Background {...props}>
-    <About>
-      <Question>Who's behind this?</Question>
-      <Answer>
-        We’re a San Francisco-based nonprofit run by Zach Latta + Max Wofford +
-        Harrison Shoebridge.
-      </Answer>
-    </About>
-    <Hacking>
-      <Question>Hacking?!</Question>
-      <Answer>
-        We‘re solving problems with code—making apps and websites—not breaking
-        into anything.
-      </Answer>
-    </Hacking>
+    <Left>
+      <BodyHeading f={6} mt={0}>
+        Start a Hack Club
+      </BodyHeading>
+      <Description>Build the class you wish you could take.</Description>
+      <Description mb={0}>Bring the movement to your school.</Description>
+    </Left>
+    <Right>
+      <CTA href="https://hackclub.com/start">Start a Club »</CTA>
+    </Right>
   </Background>
 )
 

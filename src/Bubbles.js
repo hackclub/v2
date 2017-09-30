@@ -113,7 +113,7 @@ const Root = Flex.extend.attrs({
   height: 24rem;
   position: relative;
   ${mx[1]} {
-    height: 36rem;
+    height: 32rem;
   }
 `
 
@@ -138,10 +138,6 @@ const Body = Box.extend.attrs({ px: 3, mx: 'auto' })`
 
 const Bubble = Avatar.extend`
   margin: 0.5em;
-
-  &:hover {
-    opacity: 0.85;
-  }
 
   &:nth-child(odd) {
     margin-left: 1.5em;

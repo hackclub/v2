@@ -32,15 +32,10 @@ import { keys } from 'lodash'
 
 import Footer from './Footer'
 
-const Flag = Box.extend`
-  background: url(https://cdn.rawgit.com/hackclub/hackclub/629b7921/internals/logos/banner_orpheus_hand.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+const FLAG_URL =
+  'https://cdn.rawgit.com/hackclub/hackclub/629b7921/internals/logos/banner_orpheus_hand.svg'
+const Flag = Absolute.extend.attrs({ top: true, left: true, right: true })`
+  background: url(${FLAG_URL}) center no-repeat;
   height: 5rem;
   z-index: 0;
 

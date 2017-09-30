@@ -176,7 +176,7 @@ const App = () => (
         </BodySubhead>
       </Community>
     </Bubbles>
-    <Container pt={0} pb={5} maxWidth={48 * 16} bg="white" color="black">
+    <Container maxWidth={48 * 16} bg="white" color="black">
       <Split>
         <SplitWide>
           <BodyHeading mt={0}>We’re starting a movement.</BodyHeading>
@@ -202,7 +202,7 @@ const App = () => (
           <BodySubhead>Talk to our team for guidance anytime.</BodySubhead>
           <BodySubhead>Chat 24/7 with the community on Slack.</BodySubhead>
           <BodySubhead>Read our open source lesson plans.</BodySubhead>
-          <BodySubhead>Get free stickers for your club.</BodySubhead>
+          <BodySubhead>Get swag for your club.</BodySubhead>
         </SplitWide>
         <SplitNarrow>
           <Flex align="center" justify="center" />

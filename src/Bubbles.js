@@ -109,11 +109,13 @@ const Root = Flex.extend.attrs({
   justify: 'center',
   align: 'center'
 })`
+  position: relative;
   max-width: 100vw;
   height: 24rem;
-  position: relative;
+  overflow-y: hidden;
   ${mx[1]} {
     height: 32rem;
+    overflow-y: visible;
   }
 `
 
@@ -141,7 +143,7 @@ const Bubble = Avatar.extend`
 
   &:nth-child(odd) {
     margin-left: 1.5em;
-    margin-top: -.25em;
+    margin-top: 0;
   }
   &:nth-child(even) {
     margin-right: 1em;

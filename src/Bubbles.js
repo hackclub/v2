@@ -15,7 +15,6 @@ const ids = [
   'T0266FRGM-U2FJ82L22-bf6db1c487c3',
   'T0266FRGM-U3X783S30-8d8b45025871',
   'T0266FRGM-U3XRNJG5Q-2a6945374437',
-  //
   'T0266FRGM-U0F68NNJ0-faad93c7a61b',
   'T0266FRGM-U0F7WSLDV-g9358d60c3ac',
   'T0266FRGM-U0F8G21GB-g48efd379276',
@@ -61,7 +60,6 @@ const ids = [
   'T0266FRGM-U0CJ3HBML-9b78493c948d',
   'T0266FRGM-U0CV9QK42-g22f71b19a9c',
   'T0266FRGM-U0D7LJBEK-g1184d44c304',
-  //
   'T0266FRGM-U0D7YGZJP-gf1f8206e3cf',
   'T0266FRGM-U0D9ZFQ2J-6e1f3044ac85',
   'T0266FRGM-U0DA0T2BZ-gd657f62d6b2',
@@ -132,7 +130,7 @@ const Body = Box.extend.attrs({ px: 3, mx: 'auto' })`
   z-index: 2;
 
   ${mx[1]} {
-    border-radius: 4rem;
+    border-radius: 8rem;
     box-shadow: 0 0 8rem 8rem rgba(250, 250, 250, 0.95);
     max-width: 32rem;
   }
@@ -145,11 +143,11 @@ const Bubble = Avatar.extend`
     opacity: 0.85;
   }
 
-  &:nth-child(even) {
+  &:nth-child(odd) {
     margin-left: 1.5em;
     margin-top: -.25em;
   }
-  &:nth-child(odd) {
+  &:nth-child(even) {
     margin-right: 1em;
   }
   &:nth-child(6n) {
@@ -193,24 +191,19 @@ const Bubble = Avatar.extend`
   }
 `
 
-const Bubbles = ({ children }) => {
-  // const width =
-  //   typeof window != 'undefined' ? document.documentElement.clientWidth : 1536
-  // const a = take(ids, width / 24)
-  return (
-    <Root>
-      <Fill>
-        {shuffle(ids).map(id => (
-          <Bubble
-            src={`https://ca.slack-edge.com/${id}-128`}
-            size={sample([28, 32, 48, 56, 64, 72])}
-            key={`a-${id}`}
-          />
-        ))}
-      </Fill>
-      <Body children={children} />
-    </Root>
-  )
-}
+const Bubbles = ({ children }) => (
+  <Root>
+    <Fill>
+      {shuffle(ids).map(id => (
+        <Bubble
+          src={`https://ca.slack-edge.com/${id}-128`}
+          size={sample([28, 32, 48, 56, 64, 72])}
+          key={`a-${id}`}
+        />
+      ))}
+    </Fill>
+    <Body children={children} />
+  </Root>
+)
 
 export default Bubbles

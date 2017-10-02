@@ -25,27 +25,13 @@ import {
 import Bar from './Bar'
 import Icon from './Icon'
 import Bubbles from './Bubbles'
+import Flag from './Flag'
 import Details from './Details'
 import Stat from './Stat'
 import theme, { brand, grays, geo, wk, mx, mm } from './theme'
 import { keys } from 'lodash'
 
 import Footer from './Footer'
-
-const FLAG_URL =
-  'https://cdn.rawgit.com/hackclub/hackclub/629b7921/internals/logos/banner_orpheus_hand.svg'
-const Flag = Absolute.extend.attrs({ top: true, left: true, right: true })`
-  background: url(${FLAG_URL}) center no-repeat;
-  height: 5rem;
-  z-index: 0;
-
-  ${mx[0]} {
-    background-origin: content-box;
-    background-position: top left;
-    padding-left: 1rem;
-    height: 6rem;
-  }
-`
 
 const tilt = n =>
   wk(`clip-path: polygon(${n}% 0%, 100% 0, 100% ${n}%, 0 100%, 0 0);`)

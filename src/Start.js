@@ -70,7 +70,7 @@ const Right = Column.extend.attrs({ mt: 3 })`
   }
 `
 
-const Details = props => (
+const Start = props => (
   <Background {...props}>
     <Left>
       <Large>Start a Hack Club</Large>
@@ -83,4 +83,4 @@ const Details = props => (
   </Background>
 )
 
-export default Details
+export default Start

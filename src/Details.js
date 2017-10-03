@@ -4,9 +4,8 @@ import { url } from './Icon'
 import { geo, brand, wk, mx } from './theme'
 
 const tilt = n =>
-  wk(
-    `clip-path: polygon(100% 0%, 100% 0%, 100% ${n}%, 0% 100%, 0 ${100 - n}%);`
-  )
+  wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%);`)
+
 const Background = Flex.extend.attrs({
   direction: ['column', 'row'],
   justify: 'space-around',
@@ -17,8 +16,7 @@ const Background = Flex.extend.attrs({
   ${geo(brand.primary)}
   padding-top: 3rem;
   padding-bottom: 3rem;
-  ${tilt(95)}
-  text-align: center;
+  ${tilt(90)}
   ${mx[1]} {
     padding-top: 6rem;
     padding-bottom: 6rem;

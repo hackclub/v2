@@ -107,16 +107,13 @@ const ids = [
 
 const Root = Flex.extend.attrs({
   justify: 'center',
-  align: 'center'
+  align: 'center',
+  px: 3
 })`
   position: relative;
   max-width: 100vw;
-  height: 24rem;
+  height: 100vh;
   overflow-y: hidden;
-  ${mx[1]} {
-    height: 32rem;
-    overflow-y: visible;
-  }
 `
 
 const Fill = Flex.extend.attrs({ justify: 'center', wrap: true })`
@@ -125,17 +122,18 @@ const Fill = Flex.extend.attrs({ justify: 'center', wrap: true })`
   z-index: -1;
 `
 
-const Body = Box.extend.attrs({ px: 3, mx: 'auto' })`
-  max-width: 24rem;
-  box-shadow: 0 0 4rem 4rem rgba(250, 250, 250, 0.95);
+const Cloud = Box.extend.attrs({ px: 3, pt: 3, mx: 'auto' })`
+  max-width: 32rem;
+  border-radius: 4rem;
+  box-shadow: 0 0 2rem 2rem rgba(250, 250, 250, 0.95);
   background-color: rgba(250, 250, 250, 0.95);
   text-align: center;
   z-index: 2;
 
   ${mx[1]} {
+    max-width: 48rem;
     border-radius: 8rem;
     box-shadow: 0 0 8rem 8rem rgba(250, 250, 250, 0.95);
-    max-width: 32rem;
   }
 `
 
@@ -193,7 +191,7 @@ const Bubble = Avatar.extend`
 const Bubbles = ({ children }) => (
   <Root>
     <Fill>
-      {shuffle(ids).map(id => (
+      {shuffle([...ids, ...ids]).map(id => (
         <Bubble
           src={`https://ca.slack-edge.com/${id}-128`}
           size={sample([28, 32, 48, 56, 64, 72])}
@@ -201,7 +199,7 @@ const Bubbles = ({ children }) => (
         />
       ))}
     </Fill>
-    <Body children={children} />
+    <Cloud children={children} />
   </Root>
 )
 

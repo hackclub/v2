@@ -18,10 +18,11 @@ import {
   Relative,
   Absolute,
   Image,
-  Link,
   Row,
   Column
 } from 'rebass'
+import styled from 'styled-components'
+import Link from 'next/link'
 import Bar from './Bar'
 import Icon from './Icon'
 import Bubbles from './Bubbles'
@@ -34,21 +35,23 @@ import { keys } from 'lodash'
 import Footer from './Footer'
 
 const tilt = n =>
-  wk(`clip-path: polygon(${n}% 0%, 100% 0, 100% ${n}%, 0 100%, 0 0);`)
+  wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%);`)
 const Hero = Banner.extend.attrs({ is: 'header' })`
   ${geo(brand.primary)}
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-  min-height: 50vh;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  margin-top: -4rem;
+  min-height: initial !important;
   ${tilt(90)}
   ${mx[1]} {
-    ${tilt(85)}
-    min-height: 70vh;
+    ${tilt(80)}
+    padding-top: 8rem;
     padding-bottom: 8rem;
   }
+  h3 { opacity: .85; }
 `
 
 const HeroContainer = Container.extend`
@@ -59,9 +62,9 @@ const HeroContainer = Container.extend`
 `
 
 const Headline = Heading.extend.attrs({
-  f: [5, 6, 7],
+  f: [6, 7],
   my: 0,
-  color: 'white'
+  color: 'primary'
 })`line-height: 1.1;`
 const Subheadline = Lead.extend.attrs({
   f: [3, 4],
@@ -69,7 +72,7 @@ const Subheadline = Lead.extend.attrs({
   mb: 4,
   mx: 'auto',
   w: [1, 2 / 3],
-  color: 'snow'
+  color: 'grey'
 })`line-height: 1.5;`
 const Description = Lead.extend.attrs({ f: [4, 5], mb: 0 })`
   line-height: 1.5;
@@ -108,69 +111,55 @@ const BodySubhead = Subhead.extend.attrs({
   line-height: 1.5;
 `
 
+const CTA = Button.extend.attrs({
+  is: 'a',
+  f: 4,
+  py: 3,
+  px: 4,
+  m: 2
+})`
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .2);
+  transition: .2s box-shadow ease-out;
+  &:hover {
+    box-shadow: 0 4px 12px 2px rgba(0, 0, 0, .3);
+  }
+`
+
 const App = () => (
   <Provider theme={theme}>
-    <Hero>
+    <Bubbles>
       <Flag />
-      <HeroContainer
-        style={{ maxWidth: 48 * 16, zIndex: 2, textAlign: 'center' }}
-      >
-        <Headline>Start an amazing coding club at your high school.</Headline>
-        <Subheadline>
-          Hack Clubs are places where students learn to make things with code
-          together.
-        </Subheadline>
-        <Flex justify="center" wrap m={-2}>
-          <Button
-            is="a"
-            href="https://hackclub.com/start"
-            bg="white"
-            color="primary"
-            f={4}
-            m={2}
-          >
-            Start a Club
-          </Button>
-          <ButtonOutline
-            is="a"
-            href="https://hackclub.com/donate"
-            bg="primary"
-            color="white"
-            f={4}
-            m={2}
-          >
-            Donate
-          </ButtonOutline>
-        </Flex>
+      <Headline>We the students.</Headline>
+      <Subheadline>
+        Hack Clubs are places where students learn to make things with code
+        together.
+      </Subheadline>
+      <Flex justify="center" wrap m={-2}>
+        <CTA href="/about" bg="white" color="primary">
+          Read More
+        </CTA>
+        <CTA href="https://hackclub.com/start" bg="primary" color="white">
+          Start a Club
+        </CTA>
+      </Flex>
+    </Bubbles>
+    <Hero>
+      <HeroContainer>
+        <BodyHeading color="white" f={6} mt={0}>
+          We’re starting a movement.
+        </BodyHeading>
+        <BodySubhead color="white" my={0}>
+          We’re a global community of high school students with a vision.
+        </BodySubhead>
       </HeroContainer>
     </Hero>
-    <Bubbles>
-      <BodyHeading f={6} mt={0}>
-        We the students.
-      </BodyHeading>
-      <BodySubhead my={0}>
-        We’re a global community of high school students like you who value
-        coding education.
-      </BodySubhead>
-    </Bubbles>
     <Container maxWidth={48 * 16} bg="white" color="black">
-      <Split>
-        <SplitWide>
-          <BodyHeading mt={0}>We’re starting a movement.</BodyHeading>
-          <BodySubhead>
-            Hack Club is the largest nonprofit network of student-led high
-            school coding clubs.
-          </BodySubhead>
-        </SplitWide>
-        <SplitNarrow>
-          <Flex mx={-2} justify="center" wrap>
-            <Stat value={180} label="clubs" />
-            <Stat value={13} label="countries" />
-            <Stat value={25} label="states" />
-            <Stat value="2K+" label="members" />
-          </Flex>
-        </SplitNarrow>
-      </Split>
+      <Flex mx={-2} justify="center" wrap>
+        <Stat value={180} label="clubs" />
+        <Stat value={13} label="countries" />
+        <Stat value={25} label="states" />
+        <Stat value="2K+" label="members" />
+      </Flex>
       <Split>
         <SplitWide>
           <BodyHeading>

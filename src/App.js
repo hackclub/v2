@@ -131,8 +131,8 @@ const App = () => (
       <Flag />
       <Headline>We the students.</Headline>
       <Subheadline>
-        Hack Clubs are places where students learn to make things with code
-        together.
+        Hack Clubs are places where students learn to code and build amazing
+        things together.
       </Subheadline>
       <Flex justify="center" wrap m={-2}>
         <CTA href="/about" bg="white" color="primary">

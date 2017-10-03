@@ -1,8 +1,9 @@
+const Uglify = require('uglifyjs-webpack-plugin')
+
 module.exports = {
-  webpack (cfg) {
-    cfg.plugins = cfg.plugins.filter(
-      (plugin) => (plugin.constructor.name !== 'UglifyJsPlugin')
-    )
-    return cfg
-  },
+  webpack: function(c) {
+    c.plugins = c.plugins.filter(p => p.constructor.name !== 'UglifyJsPlugin')
+    c.plugins.push(new Uglify())
+    return c
+  }
 }

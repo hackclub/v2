@@ -130,8 +130,8 @@ export default () => (
       <Flag />
       <Headline>We the students.</Headline>
       <Subheadline>
-        Hack Clubs are places where students learn to make things with code
-        together.
+        Hack Clubs are places where students learn to code and build amazing
+        things together.
       </Subheadline>
       <Flex justify="center" wrap m={-2}>
         <CTA href="/about" bg="white" color="primary">
@@ -145,7 +145,7 @@ export default () => (
     <Hero>
       <HeroContainer>
         <BodyHeading color="white" f={6} mt={0}>
-          We’re starting a movement.
+          At Hack Club, it’s all about you.
         </BodyHeading>
         <BodySubhead color="white" my={0}>
           We’re a global community of high school students with a vision.

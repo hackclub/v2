@@ -35,7 +35,7 @@ import Footer from '../src/Footer'
 
 const tilt = n =>
   wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`)
-const Hero = Banner.extend`
+const Stripe = Banner.extend`
   ${geo(brand.primary)};
   display: flex;
   flex-direction: column;
@@ -56,7 +56,7 @@ const Hero = Banner.extend`
   }
 `
 
-const HeroContainer = Container.extend`
+const StripeContainer = Container.extend`
   max-width: 48rem;
   padding: 0;
   text-align: center;
@@ -145,16 +145,16 @@ export default () => (
         </CTA>
       </Flex>
     </Bubbles>
-    <Hero>
-      <HeroContainer>
+    <Stripe>
+      <StripeContainer>
         <BodyHeading color="white" f={6} mt={0}>
           At Hack Club, it’s all about you.
         </BodyHeading>
         <BodySubhead color="white" my={0}>
           We’re a global community of high school students with a vision.
         </BodySubhead>
-      </HeroContainer>
-    </Hero>
+      </StripeContainer>
+    </Stripe>
     <Container maxWidth={48 * 16} bg="white" color="black">
       <Flex mx={-2} justify="center" wrap>
         <Stat value={180} label="clubs" />

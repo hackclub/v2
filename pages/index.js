@@ -34,23 +34,26 @@ import { keys } from 'lodash'
 import Footer from '../src/Footer'
 
 const tilt = n =>
-  wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%);`)
-const Hero = Banner.extend.attrs({ is: 'header' })`
-  ${geo(brand.primary)}
+  wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`)
+const Hero = Banner.extend`
+  ${geo(brand.primary)};
   display: flex;
   flex-direction: column;
   align-items: center;
+  ${tilt(90)};
   padding-top: 6rem;
   padding-bottom: 6rem;
   margin-top: -4rem;
   min-height: initial !important;
-  ${tilt(90)}
+
   ${mx[1]} {
-    ${tilt(80)}
+    ${tilt(80)};
     padding-top: 8rem;
     padding-bottom: 8rem;
   }
-  h3 { opacity: .85; }
+  h3 {
+    opacity: 0.85;
+  }
 `
 
 const HeroContainer = Container.extend`

@@ -4,7 +4,7 @@ import Icon from './Icon'
 import { mx, geo, grays } from './theme'
 
 const Base = Box.extend.attrs({ is: 'footer', py: 5, px: 2 })`
-  ${geo(grays.snow)}
+  ${geo(grays.snow)};
 `
 
 const LeftCol = Column.extend.attrs({ w: [1, 0.4], mb: 2 })`
@@ -60,11 +60,6 @@ const Footer = () => (
               Read our Code of Conduct
             </Link>
           </Text>
-          {/* </RightCol>
-      </Row>
-      <Row w={1}>
-        <LeftCol />
-        <RightCol> */}
           <Text f={1} color="silver" mt={3}>
             © 2017 Hack Club.
           </Text>

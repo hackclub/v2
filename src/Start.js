@@ -13,7 +13,7 @@ const Background = Flex.extend.attrs({
   w: 1,
   bg: 'primary'
 })`
-  ${geo(brand.primary)}
+  ${geo(brand.primary)};
   padding-top: 3rem;
   padding-bottom: 3rem;
   ${tilt(90)}

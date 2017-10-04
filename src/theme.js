@@ -34,7 +34,7 @@ export const cx = key =>
 export const gradient = (n, from, to) =>
   `linear-gradient(${n}deg, ${cx(from)}, ${cx(to)})`
 export const geo = color =>
-  `background: ${color} url('/static/pattern.svg') repeat;`
+  `background: ${color} url('/static/pattern.svg') repeat`
 export const wk = a => [a, '-webkit-' + a].join('\n')
 
 export const mp = [32, 48, 64, 80]

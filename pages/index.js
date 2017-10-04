@@ -47,9 +47,13 @@ const Stripe = Banner.extend`
   min-height: initial !important;
 
   ${mx[1]} {
-    ${tilt(80)};
+    ${tilt(75)};
     padding-top: 8rem;
     padding-bottom: 8rem;
+  }
+  ${mx[2]} {
+    /* padding-top: 10rem;
+    padding-bottom: 10rem; */
   }
   h3 {
     opacity: 0.85;
@@ -151,31 +155,26 @@ export default () => (
           At Hack Club, it’s all about you.
         </BodyHeading>
         <BodySubhead color="white" my={0}>
-          We’re a global community of high school students with a vision.
+          Hack Clubs are coding clubs that are led by students, for students.
         </BodySubhead>
       </StripeContainer>
     </Stripe>
-    <Container maxWidth={48 * 16} bg="white" color="black">
-      <Flex mx={-2} justify="center" wrap>
+    <Container maxWidth={36 * 16} bg="white" color="black">
+      <BodyHeading>Learning is different at Hack Clubs.</BodyHeading>
+      <BodySubhead>
+        Start with guided workshops, then start your own.
+      </BodySubhead>
+      <Flex mx={-4} my={3} justify="center" wrap>
         <Stat value={180} label="clubs" />
         <Stat value={13} label="countries" />
         <Stat value={25} label="states" />
         <Stat value="2K+" label="members" />
       </Flex>
-      <Split>
-        <SplitWide>
-          <BodyHeading>
-            We’ve got everything you need for your club.
-          </BodyHeading>
-          <BodySubhead>Talk to our team for guidance anytime.</BodySubhead>
-          <BodySubhead>Chat 24/7 with the community on Slack.</BodySubhead>
-          <BodySubhead>Read our open source lesson plans.</BodySubhead>
-          <BodySubhead>Get swag for your club.</BodySubhead>
-        </SplitWide>
-        <SplitNarrow>
-          <Flex align="center" justify="center" />
-        </SplitNarrow>
-      </Split>
+      <BodyHeading>We’ve got everything you need for your club.</BodyHeading>
+      <BodySubhead>Talk to our team for guidance anytime.</BodySubhead>
+      <BodySubhead>Chat 24/7 with the community on Slack.</BodySubhead>
+      <BodySubhead>Read our open source lesson plans.</BodySubhead>
+      <BodySubhead>Get swag for your club.</BodySubhead>
     </Container>
     <Start />
     {/* <Bar w={1 / 3} my={4} mx="auto" /> */}

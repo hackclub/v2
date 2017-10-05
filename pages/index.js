@@ -50,6 +50,7 @@ const Stripe = Banner.extend`
     ${tilt(75)};
     padding-top: 8rem;
     padding-bottom: 8rem;
+    margin-top: -6rem;
   }
   ${mx[2]} {
     /* padding-top: 10rem;

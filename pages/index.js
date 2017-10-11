@@ -68,12 +68,12 @@ const StripeContainer = Container.extend`
   z-index: 1;
 `
 
-const Headline = Heading.extend.attrs({
+const Title = Heading.extend.attrs({
   f: [6, 7],
   my: 0,
   color: 'primary'
 })`line-height: 1.1;`
-const Subheadline = Lead.extend.attrs({
+const Subtitle = Lead.extend.attrs({
   f: [3, 4],
   mt: 3,
   mb: 4,
@@ -100,14 +100,14 @@ const Split = Row.extend.attrs({ mx: -3, my: 3, align: 'center' })`
 const SplitWide = Column.extend`${mx[1]} {max-width: 60%;}`
 const SplitNarrow = Flex.extend.attrs({ px: 3 })`${mx[1]} {max-width: 40%;}`
 
-const BodyHeading = Heading.extend.attrs({
+const Headline = Heading.extend.attrs({
   is: 'h2',
   f: 5,
   mt: 4,
   mb: 2,
   color: 'primary'
 })`line-height: 1.25;`
-const BodySubhead = Subhead.extend.attrs({
+const Subheadline = Subhead.extend.attrs({
   is: 'h3',
   f: [3, 4],
   mt: 0,
@@ -136,11 +136,11 @@ export default () => (
   <Provider theme={theme}>
     <Bubbles>
       <Flag />
-      <Headline>We the students.</Headline>
-      <Subheadline>
+      <Title>We the students.</Title>
+      <Subtitle>
         Hack Clubs are places where students learn to code and build amazing
         things together.
-      </Subheadline>
+      </Subtitle>
       <Flex justify="center" wrap m={-2}>
         <CTA href="/about" bg="white" color="primary">
           Read More
@@ -152,30 +152,30 @@ export default () => (
     </Bubbles>
     <Stripe>
       <StripeContainer>
-        <BodyHeading color="white" f={6} mt={0}>
+        <Headline color="white" f={6} mt={0}>
           At Hack Club, it’s all about you.
-        </BodyHeading>
-        <BodySubhead color="white" my={0}>
+        </Headline>
+        <Subheadline color="white" my={0}>
           Hack Clubs are coding clubs that are led by students, for students.
-        </BodySubhead>
+        </Subheadline>
       </StripeContainer>
     </Stripe>
     <Container maxWidth={36 * 16} bg="white" color="black">
-      <BodyHeading>Learning is different at Hack Clubs.</BodyHeading>
-      <BodySubhead>
-        Start with guided workshops, then start your own.
-      </BodySubhead>
+      <Headline>Hack Club gives you a club in a box.</Headline>
+      <Subheadline>
+        We‘ve got everything you‘ll need for your club.
+      </Subheadline>
       <Flex mx={-4} my={3} justify="center" wrap>
         <Stat value={180} label="clubs" />
         <Stat value={13} label="countries" />
         <Stat value={25} label="states" />
         <Stat value="2K+" label="members" />
       </Flex>
-      <BodyHeading>We’ve got everything you need for your club.</BodyHeading>
-      <BodySubhead>Talk to our team for guidance anytime.</BodySubhead>
-      <BodySubhead>Chat 24/7 with the community on Slack.</BodySubhead>
-      <BodySubhead>Read our open source lesson plans.</BodySubhead>
-      <BodySubhead>Get swag for your club.</BodySubhead>
+      <Headline>We’ve got everything you need for your club.</Headline>
+      <Subheadline>Talk to our team for guidance anytime.</Subheadline>
+      <Subheadline>Chat 24/7 with the community on Slack.</Subheadline>
+      <Subheadline>Read our open source lesson plans.</Subheadline>
+      <Subheadline>Get swag for your club.</Subheadline>
     </Container>
     <Start />
     {/* <Bar w={1 / 3} my={4} mx="auto" /> */}

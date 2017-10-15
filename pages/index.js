@@ -162,10 +162,8 @@ export default () => (
     </Stripe>
     <Container maxWidth={36 * 16} bg="white" color="black">
       <Headline>Hack Club gives you a club in a box.</Headline>
-      <Subheadline>
-        We‘ve got everything you‘ll need for your club.
-      </Subheadline>
       <Flex mx={-4} my={3} justify="center" wrap>
+      <Subheadline>We’ve got everything you’ll need for your club.</Subheadline>
         <Stat value={180} label="clubs" />
         <Stat value={13} label="countries" />
         <Stat value={25} label="states" />

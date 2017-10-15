@@ -69,6 +69,7 @@ const StripeContainer = Container.extend`
 `
 
 const Title = Heading.extend.attrs({
+  is: 'h1',
   f: [6, 7],
   my: 0,
   color: 'primary'
@@ -134,8 +135,8 @@ const CTA = Button.extend.attrs({
 
 export default () => (
   <Provider theme={theme}>
+    <Flag />
     <Bubbles>
-      <Flag />
       <Title>We the students.</Title>
       <Subtitle>
         Hack Clubs are places where students learn to code and build amazing

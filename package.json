@@ -16,14 +16,13 @@
     "axios": "^0.16.2",
     "dot-prop": "^4.2.0",
     "express": "^4.16.2",
-    "next": "^4.0.2",
+    "next": "^4.0.5",
     "palx": "^1.0.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-simple-maps": "^0.8.4",
     "rebass": "^1.0.4",
     "uglifyjs-webpack-plugin": "^1.0.0-beta.3",
-    "unfetch": "^3.0.0",
-    "webpack": "^3.6.0"
+    "unfetch": "^3.0.0"
   }
 }

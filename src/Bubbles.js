@@ -24,8 +24,9 @@ const Fill = Flex.extend.attrs({ justify: 'center', wrap: true })`
   z-index: -1;
 `
 
-const Cloud = Box.extend.attrs({ px: 3, pt: 3, mx: 'auto' })`
+const Cloud = Box.extend`
   max-width: 32rem;
+  margin: auto;
   border-radius: 4rem;
   box-shadow: 0 0 2rem 2rem rgba(250, 250, 250, 0.95);
   background-color: rgba(250, 250, 250, 0.95);

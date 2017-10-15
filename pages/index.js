@@ -52,10 +52,6 @@ const Stripe = Banner.extend`
     padding-bottom: 8rem;
     margin-top: -6rem;
   }
-  ${mx[2]} {
-    /* padding-top: 10rem;
-    padding-bottom: 10rem; */
-  }
   h3 {
     opacity: 0.85;
   }
@@ -163,8 +159,8 @@ export default () => (
     </Stripe>
     <Container maxWidth={36 * 16} bg="white" color="black">
       <Headline>Hack Club gives you a club in a box.</Headline>
-      <Flex mx={-4} my={3} justify="center" wrap>
       <Subheadline>We’ve got everything you’ll need for your club.</Subheadline>
+      <Flex mx={-2} my={3} justify="center" wrap>
         <Stat value={180} label="clubs" />
         <Stat value={13} label="countries" />
         <Stat value={25} label="states" />

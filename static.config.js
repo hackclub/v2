@@ -40,6 +40,7 @@ export default {
         <Html>
           <Head>
             <meta charSet="UTF-8" />
+            <title>Hack Club</title>
             <meta
               name="viewport"
               content="width=device-width, initial-scale=1"

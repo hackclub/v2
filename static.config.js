@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import { ServerStyleSheet } from 'styled-components'
+import { injectGlobal, ServerStyleSheet } from 'styled-components'
 const Uglify = require('uglifyjs-webpack-plugin')
 
 export default {
@@ -36,6 +36,26 @@ export default {
       const newChildren = sheet.collectStyles(children)
       const styleTags = sheet.getStyleElement()
 
+      const css = `
+        *{box-sizing:border-box}body{line-height:1.6;margin:0}
+
+        @font-face {
+          font-family: Averta;
+          font-style: normal;
+          font-weight: normal;
+          src: local('☺'), url(/fonts/averta-regular.woff2) format('woff2'), url(/fonts/averta-regular.woff) format('woff');
+          unicode-range: U + 0000 - F8FE, U + F900-FFFF;
+        }
+
+        @font-face {
+          font-family: Averta;
+          font-style: normal;
+          font-weight: bold;
+          src: local('☺'), url(/fonts/averta-bold.woff2) format('woff2'), url(/fonts/averta-bold.woff) format('woff');
+          unicode-range: U + 0000 - F8FE, U + F900-FFFF;
+        }
+      `
+
       return (
         <Html>
           <Head>
@@ -45,10 +65,7 @@ export default {
               name="viewport"
               content="width=device-width, initial-scale=1"
             />
-            <style
-              children={`*{box-sizing:border-box}body{line-height:1.6;margin:0}`}
-            />
-            <link rel="stylesheet" href="/fakt-soft.css" />
+            <style dangerouslySetInnerHTML={{ __html: css }} />
             {styleTags}
           </Head>
           <Body>{newChildren}</Body>

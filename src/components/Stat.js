@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Lead, Text } from 'rebass'
 import { url } from './Icon'
-import { mx, geo, grays } from './theme'
+import { mx, geo, grays } from '../theme'
 
 const Base = Box.extend.attrs({ m: 2, w: 8 * 16 })`text-align: center;`
 

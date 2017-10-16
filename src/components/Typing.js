@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Box } from 'rebass'
-import { colors } from './theme'
+import { colors } from '../theme'
 
 const bulge = keyframes`
   50% {

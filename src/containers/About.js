@@ -22,9 +22,9 @@ import {
   Row,
   Column
 } from 'rebass'
-import theme from '../src/theme'
-import Flag from '../src/Flag'
-import Footer from '../src/Footer'
+import theme from '../theme'
+import Flag from '../components/Flag'
+import Footer from '../components/Footer'
 
 const FONT = "SFMono-Regular, 'Roboto Mono', Menlo, 'Courier New', monospace"
 

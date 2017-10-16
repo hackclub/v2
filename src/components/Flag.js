@@ -1,6 +1,6 @@
 import React from 'react'
 import { Absolute } from 'rebass'
-import { mx } from './theme'
+import { mx } from '../theme'
 
 const FLAG_URL =
   'https://cdn.rawgit.com/hackclub/hackclub/629b7921/internals/logos/banner_orpheus_hand.svg'

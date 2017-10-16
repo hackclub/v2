@@ -1,6 +1,6 @@
 import { Divider } from 'rebass'
 import styled, { keyframes } from 'styled-components'
-import { colors, gradient } from './theme'
+import { colors, gradient } from '../theme'
 
 const grow = keyframes`
   from {

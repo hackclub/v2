@@ -1,7 +1,7 @@
 import React from 'react'
 import { Subhead, Container, Flex, Box, Text, Row, Column, Link } from 'rebass'
 import Icon from './Icon'
-import { mx, geo, grays } from './theme'
+import { mx, geo, grays } from '../theme'
 
 const Base = Box.extend.attrs({ is: 'footer', py: 5, px: 2 })`
   ${geo(grays.snow)};

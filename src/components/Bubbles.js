@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Avatar, Flex, Box } from 'rebass'
 import { sample } from 'lodash'
-import { mx } from './theme'
+import { mx } from '../theme'
 import fetch from 'unfetch'
 
 const BUBBLES_URL =

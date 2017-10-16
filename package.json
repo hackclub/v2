@@ -1,27 +1,29 @@
 {
   "name": "hackclub.com",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "New Hack Club website",
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "node server.js",
-    "map-data": "node map/data.js",
-    "map-render": "babel-node map/render.js",
-    "map-repng": "repng map/Map.js -f static/map -w 2048",
-    "heroku-postbuild": "npm run build"
+    "dev": "react-static start",
+    "build": "react-static build",
+    "start": "serve dist -p 3000",
+    "heroku-postbuild": "npm run build",
+    "map-data": "node src/map/data.js",
+    "map-render": "babel-node src/map/render.js",
+    "map-repng": "repng src/map/Map.js -f public/map -w 2048"
   },
   "author": "Lachlan Campbell",
   "dependencies": {
     "axios": "^0.16.2",
+    "babel-preset-env": "^1.6.0",
     "dot-prop": "^4.2.0",
-    "express": "^4.16.2",
-    "next": "^4.0.5",
     "palx": "^1.0.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-router": "^4.2.0",
     "react-simple-maps": "^0.8.4",
+    "react-static": "1.x.x",
     "rebass": "^1.0.4",
+    "serve": "^6.2.0",
     "uglifyjs-webpack-plugin": "^1.0.0-beta.3",
     "unfetch": "^3.0.0"
   }

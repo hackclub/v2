@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Heading, Subhead, Column, Button } from 'rebass'
 import { url } from './Icon'
-import { geo, brand, wk, mx } from './theme'
+import { geo, brand, wk, mx } from '../theme'
 
 const tilt = n =>
   wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`)

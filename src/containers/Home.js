@@ -22,16 +22,15 @@ import {
   Column
 } from 'rebass'
 import styled from 'styled-components'
-import Bar from '../src/Bar'
-import Icon from '../src/Icon'
-import Bubbles from '../src/Bubbles'
-import Flag from '../src/Flag'
-import Start from '../src/Start'
-import Stat from '../src/Stat'
-import theme, { brand, grays, geo, wk, mx, mm } from '../src/theme'
+import Bar from '../components/Bar'
+import Icon from '../components/Icon'
+import Bubbles from '../components/Bubbles'
+import Flag from '../components/Flag'
+import Start from '../components/Start'
+import Stat from '../components/Stat'
+import Footer from '../components/Footer'
+import theme, { brand, grays, geo, wk, mx, mm } from '../theme'
 import { keys } from 'lodash'
-
-import Footer from '../src/Footer'
 
 const tilt = n =>
   wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`)

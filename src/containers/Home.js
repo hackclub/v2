@@ -28,6 +28,8 @@ import Bubbles from '../components/Bubbles'
 import Flag from '../components/Flag'
 import Start from '../components/Start'
 import Stat from '../components/Stat'
+import Features from '../components/Features'
+import Superpower from '../components/Superpower'
 import Footer from '../components/Footer'
 import theme, { brand, grays, geo, wk, mx, mm } from '../theme'
 import { keys } from 'lodash'
@@ -156,20 +158,15 @@ export default () => (
         </Subheadline>
       </StripeContainer>
     </Stripe>
-    <Container maxWidth={36 * 16} bg="white" color="black">
-      <Headline>Hack Club gives you a club in a box.</Headline>
-      <Subheadline>We’ve got everything you’ll need for your club.</Subheadline>
+    <Features />
+    <Superpower />
+    <Container maxWidth={48 * 16} bg="white" color="black">
       <Flex mx={-2} my={3} justify="center" wrap>
         <Stat value={180} label="clubs" />
         <Stat value={13} label="countries" />
         <Stat value={25} label="states" />
         <Stat value="2K+" label="members" />
       </Flex>
-      <Headline>We’ve got everything you need for your club.</Headline>
-      <Subheadline>Talk to our team for guidance anytime.</Subheadline>
-      <Subheadline>Chat 24/7 with the community on Slack.</Subheadline>
-      <Subheadline>Read our open source lesson plans.</Subheadline>
-      <Subheadline>Get swag for your club.</Subheadline>
     </Container>
     <Start />
     {/* <Bar w={1 / 3} my={4} mx="auto" /> */}

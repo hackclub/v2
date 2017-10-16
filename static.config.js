@@ -44,6 +44,9 @@ export default {
               name="viewport"
               content="width=device-width, initial-scale=1"
             />
+            <style
+              children={`*{box-sizing:border-box}body{line-height:1.6;margin:0}`}
+            />
             <link rel="stylesheet" href="/fakt-soft.css" />
             {styleTags}
           </Head>

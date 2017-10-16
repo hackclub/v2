@@ -16,8 +16,6 @@
     "axios": "^0.16.2",
     "babel-preset-env": "^1.6.0",
     "dot-prop": "^4.2.0",
-    "express": "^4.16.2",
-    "next": "^4.0.5",
     "palx": "^1.0.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

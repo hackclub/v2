@@ -63,8 +63,8 @@ export default {
             <meta charSet="UTF-8" />
             <title children={data.name} />
             <meta name="twitter:card" content="summary" />
-            <meta name="twitter:image" content={data.card} />
-            <meta name="og:image" content={data.card} />
+            <meta name="twitter:image" content={data.img} />
+            <meta name="og:image" content={data.img} />
             <meta name="og:title" content={data.name} />
             <meta name="twitter:title" content={data.name} />
             <meta name="og:description" content={data.description} />

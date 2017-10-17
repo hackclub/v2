@@ -7,31 +7,36 @@ import {
   Flex,
   Box,
   Text,
-  Subhead,
-  Button,
-  ButtonOutline,
-  Label,
-  Input,
-  Circle,
-  Relative,
-  Absolute,
-  Image,
-  Row,
-  Column
+  Subhead
 } from 'rebass'
 import { Link } from 'react-static'
 import { colors } from '../theme'
 
-const Base = Container.extend.attrs({ py: 4, my: 4 })`
-  background-color: ${colors.snow};
-  border-radius: 4rem;
+const Base = Box.extend.attrs({ py: 4, my: 4 })`
+  background: url(/diagonal.svg) top center repeat-x;
+  background-size: 10% 100%;
   text-align: center;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: url(/diagonal.svg) bottom right repeat-x;
+    background-size: 10% 100%;
+  }
 `
 
 const Headline = Heading.extend.attrs({ f: 6 })`
   mark {
-    background-color: transparent;
-    color: ${colors.orange[4]};
+    background: transparent url(/underline.svg) bottom left no-repeat;
+    background-size: 100% 0.75rem;
+    padding-bottom: 0.25rem;
+    color: ${colors.orange[5]};
     text-transform: uppercase;
   }
 `
@@ -46,6 +51,7 @@ const Subheadline = Subhead.extend.attrs({
   }
   a {
     color: ${colors.primary};
+    text-decoration: none;
   }
 `
 
@@ -55,7 +61,7 @@ export default () => (
       Coding is a <mark>superpower</mark>.
     </Headline>
     <Subheadline>
-      <span children="Let’s teach it like that. " />
+      <span children="So let’s teach it like that. " />
       <Link to="/about">Read our manifesto »</Link>
     </Subheadline>
   </Base>

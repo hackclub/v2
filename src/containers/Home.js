@@ -27,9 +27,9 @@ import Icon from '../components/Icon'
 import Bubbles from '../components/Bubbles'
 import Flag from '../components/Flag'
 import Start from '../components/Start'
-import Stat from '../components/Stat'
 import Features from '../components/Features'
 import Superpower from '../components/Superpower'
+import Collage from '../components/Collage'
 import Footer from '../components/Footer'
 import theme, { brand, grays, geo, wk, mx, mm } from '../theme'
 import { keys } from 'lodash'
@@ -160,14 +160,7 @@ export default () => (
     </Stripe>
     <Features />
     <Superpower />
-    <Container maxWidth={48 * 16} bg="white" color="black">
-      <Flex mx={-2} my={3} justify="center" wrap>
-        <Stat value={180} label="clubs" />
-        <Stat value={13} label="countries" />
-        <Stat value={25} label="states" />
-        <Stat value="2K+" label="members" />
-      </Flex>
-    </Container>
+    <Collage />
     <Start />
     {/* <Bar w={1 / 3} my={4} mx="auto" /> */}
     <Footer />

@@ -28,16 +28,28 @@ const Base = Container.extend`
   grid-template-columns: 1fr 3fr;
   max-width: 64rem;
   margin-top: 4rem;
+
+  aside {
+    justify-self: end;
+  }
 `
 
 const Headline = Heading.extend`
-  color: ${colors.slate};
   text-transform: uppercase;
   text-align: right;
   line-height: 1.3;
   div {
-    color: ${colors.red};
+    color: ${colors.primary};
     font-size: 3rem;
+
+    &:last-of-type {
+      position: relative;
+      &:after {
+        color: ${colors.slate};
+        content: '.';
+        position: absolute;
+      }
+    }
   }
   small {
     color: ${colors.slate};
@@ -49,39 +61,54 @@ const Headline = Heading.extend`
   }
 `
 
-const Feat = Box.extend`
+const Feat = Box.extend.attrs({ mb: 4 })`
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'title desc';
+  align-items: center;
 
-  &:nth-child(2n) > :first-child {
-    grid-column: 2;
+  h3 {
+    grid-area: title;
+  }
+  p {
+    grid-area: desc;
+  }
+
+  &:nth-child(2n) {
+    grid-template-areas: 'desc title';
   }
 `
 const Feature = ({ title, desc, ...props }) => (
-  <Feat mb={3}>
-    <Heading color="primary" children={title} />
+  <Feat>
+    <Subhead color="primary" f={5} children={title} />
     <Text f={4} color="slate" children={desc} />
   </Feat>
 )
 
 export default () => (
   <Base>
-    <Box>
+    <aside>
       <Headline>
         <small>Start with a</small>
         <div>club</div>
         <small>in a</small>
         <div>box</div>
       </Headline>
-    </Box>
+    </aside>
     <Box>
       <Feature
         title="Training, assistance, whatever, wherever."
-        desc="Stuff goes here."
+        desc="Meet with our staff, members, or experienced club leaders for advice."
       />
-      <Feature title="Start from 11." desc="Stuff goes here." />
-      <Feature title="A community that cares." desc="Stuff goes here." />
+      <Feature
+        title="Start from 11."
+        desc="We provide you with starter content: workshops, example materials, guides, posters."
+      />
+      <Feature
+        title="A community that cares."
+        desc="Talk to thousands of other members at all skill levels 24/7 in our Slack."
+      />
     </Box>
   </Base>
 )

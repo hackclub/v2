@@ -7,6 +7,8 @@
     "build": "react-static build",
     "start": "serve dist -p 3000",
     "heroku-postbuild": "npm run build",
+    "social":
+      "repng src/components/Social.js -w 512 -h 512 -o public -f social",
     "map-data": "node src/map/data.js",
     "map-render": "babel-node src/map/render.js",
     "map-repng": "repng src/map/Map.js -f public/map -w 2048"

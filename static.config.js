@@ -1,7 +1,8 @@
-import axios from 'axios'
 import React, { Component } from 'react'
 import { injectGlobal, ServerStyleSheet } from 'styled-components'
 const Uglify = require('uglifyjs-webpack-plugin')
+const data = require('./data')
+const colors = require('./src/theme').colors
 
 export default {
   getSiteProps: () => ({
@@ -60,7 +61,17 @@ export default {
         <Html>
           <Head>
             <meta charSet="UTF-8" />
-            <title>Hack Club</title>
+            <title children={data.name} />
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:image" content={data.card} />
+            <meta name="og:image" content={data.card} />
+            <meta name="og:title" content={data.name} />
+            <meta name="twitter:title" content={data.name} />
+            <meta name="og:description" content={data.description} />
+            <meta name="twitter:description" content={data.description} />
+            <meta name="description" content={data.description} />
+            <meta name="twitter:site" content={data.twitter} />
+            <meta name="theme-color" content={colors.primary} />
             <meta
               name="viewport"
               content="width=device-width, initial-scale=1"

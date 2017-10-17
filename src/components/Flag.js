@@ -2,10 +2,8 @@ import React from 'react'
 import { Absolute } from 'rebass'
 import { mx } from '../theme'
 
-const FLAG_URL =
-  'https://cdn.rawgit.com/hackclub/hackclub/629b7921/internals/logos/banner_orpheus_hand.svg'
 const Flag = Absolute.extend.attrs({ top: true, left: true, right: true })`
-  background: url(${FLAG_URL}) center no-repeat;
+  background: url(/orpheus_flag.svg) center no-repeat;
   height: 5rem;
   z-index: 0;
 

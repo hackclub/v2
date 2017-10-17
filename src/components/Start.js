@@ -80,6 +80,7 @@ const Start = props => (
     <Right>
       <CTA href="https://hackclub.com/start">Start a Club »</CTA>
     </Right>
+    <style children="footer{margin-top:-5rem;padding-top:8rem !important}" />
   </Background>
 )
 

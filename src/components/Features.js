@@ -19,28 +19,28 @@ import {
   Row,
   Column
 } from 'rebass'
-import { colors } from '../theme'
+import { colors, mx, mm } from '../theme'
 import styled from 'styled-components'
 
-const Base = Container.extend`
+const Base = Container.extend.attrs({ px: 4 })`
   display: grid;
   grid-gap: 4rem;
-  grid-template-columns: 1fr 3fr;
-  max-width: 64rem;
   margin-top: 4rem;
 
-  aside {
-    justify-self: end;
+  ${mx[1]} {
+    grid-template-columns: 1fr 3fr;
+    h2 {
+      justify-self: end;
+    }
   }
 `
 
 const Headline = Heading.extend`
+  font-size: 3rem;
+  text-align: center;
   text-transform: uppercase;
-  text-align: right;
-  line-height: 1.3;
   div {
     color: ${colors.primary};
-    font-size: 3rem;
 
     &:last-of-type {
       position: relative;
@@ -51,12 +51,37 @@ const Headline = Heading.extend`
       }
     }
   }
-  small {
+  span {
     color: ${colors.slate};
-    font-size: 1.5rem;
+  }
 
-    &:last-of-type {
-      font-size: 2.25rem;
+  ${mm[1]} {
+    div {
+      display: inline;
+      margin-left: 0.25em;
+      margin-right: 0.25em;
+    }
+    span {
+      &:first-of-type {
+        display: block;
+        width: 100%;
+      }
+      &:last-of-type {
+        color: ${colors.primary};
+      }
+    }
+  }
+  ${mx[1]} {
+    text-align: right;
+    div {
+      font-size: 3rem;
+    }
+    span {
+      font-size: 1.5rem;
+
+      &:last-of-type {
+        font-size: 2.25rem;
+      }
     }
   }
 `
@@ -88,14 +113,12 @@ const Feature = ({ title, desc, ...props }) => (
 
 export default () => (
   <Base>
-    <aside>
-      <Headline>
-        <small>Start with a</small>
-        <div>club</div>
-        <small>in a</small>
-        <div>box</div>
-      </Headline>
-    </aside>
+    <Headline>
+      <span>Start with a</span>
+      <div>club</div>
+      <span>in a</span>
+      <div>box</div>
+    </Headline>
     <Box>
       <Feature
         title="Training, assistance, whatever, wherever."

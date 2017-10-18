@@ -12,9 +12,9 @@ import {
 import { Link } from 'react-static'
 import { colors } from '../theme'
 
-const Base = Box.extend.attrs({ py: 4, my: 4 })`
+const Base = Box.extend.attrs({ px: 3, py: 5, my: 4 })`
   background: url(/diagonal.svg) top center repeat-x;
-  background-size: 10% 100%;
+  background-size: auto 100%;
   text-align: center;
   position: relative;
 
@@ -27,11 +27,11 @@ const Base = Box.extend.attrs({ py: 4, my: 4 })`
     bottom: 0;
     z-index: -1;
     background: url(/diagonal.svg) bottom right repeat-x;
-    background-size: 10% 100%;
+    background-size: auto 100%;
   }
 `
 
-const Headline = Heading.extend.attrs({ f: 6 })`
+const Headline = Heading.extend.attrs({ f: [7, null, 6] })`
   mark {
     background: transparent url(/underline.svg) bottom left no-repeat;
     background-size: 100% 0.75rem;
@@ -43,8 +43,8 @@ const Headline = Heading.extend.attrs({ f: 6 })`
 
 const Subheadline = Subhead.extend.attrs({
   color: 'slate',
-  f: 4,
-  mt: 2
+  f: [5, null, 4],
+  mt: 3
 })`
   span {
     font-weight: normal;

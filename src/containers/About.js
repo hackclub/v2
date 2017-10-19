@@ -30,12 +30,14 @@ const Headline = Heading.extend.attrs({
 `
 
 const P = Text.extend.attrs({ f: 3, mb: 2 })`
-  &:first-of-type:first-letter {
-    initial-letter: 2;
-    -webkit-initial-letter: 2;
-    color: ${colors.slate};
-    font-weight: bold;
-    margin-right: .5rem;
+  @supports (initial-letter: 2) or (-webkit-initial-letter: 2) {
+    &:first-of-type:first-letter {
+      initial-letter: 2;
+      -webkit-initial-letter: 2;
+      color: ${colors.slate};
+      font-weight: bold;
+      margin-right: .5rem;
+    }
   }
 `
 

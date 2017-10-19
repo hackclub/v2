@@ -9,13 +9,14 @@ const Base = Box.extend.attrs({ my: 5 })`
   justify-content: center;
   align-items: center;
   div {
-    background-size: 100% auto;
-    height: 86px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 4rem;
   }
 
   ${mx[1]} {
     grid-template-columns: repeat(8, 1fr);
-    div { height: 106px; }
+    div { height: 6rem; }
   }
 `
 

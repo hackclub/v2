@@ -1,5 +1,6 @@
 import React from 'react'
-import { Flex, Heading, Subhead, Column, Button } from 'rebass'
+import { Flex, Heading, Subhead, Column } from 'rebass'
+import Button from './Button'
 import { url } from './Icon'
 import { geo, brand, wk, mx } from '../theme'
 
@@ -43,22 +44,6 @@ const Description = Subhead.extend.attrs({
   opacity: .85;
 `
 
-const CTA = Button.extend.attrs({
-  is: 'a',
-  bg: 'white',
-  color: 'primary',
-  f: 4,
-  py: 3,
-  px: 4,
-  mx: 2
-})`
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .35);
-  transition: .1s box-shadow ease-in-out;
-  &:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, .35);
-  }
-`
-
 const Left = Column.extend.attrs({ mt: 3 })`
   ${mx[0]} {
     text-align: right;
@@ -78,7 +63,12 @@ const Start = props => (
       <Description mb={0}>Bring the movement to your school.</Description>
     </Left>
     <Right>
-      <CTA href="https://hackclub.com/start">Start a Club »</CTA>
+      <Button
+        bg="white"
+        color="primary"
+        href="https://hackclub.com/start"
+        children="Start a Club »"
+      />
     </Right>
     <style children="footer{margin-top:-5rem;padding-top:8rem !important}" />
   </Background>

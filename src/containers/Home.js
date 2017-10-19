@@ -8,7 +8,6 @@ import {
   Heading,
   Lead,
   Subhead,
-  Button,
   Text
 } from 'rebass'
 import { Link } from 'react-static'
@@ -93,19 +92,7 @@ const Subheadline = Subhead.extend.attrs({
   line-height: 1.5;
 `
 
-const CTA = Button.extend.attrs({
-  is: 'a',
-  f: 4,
-  py: 3,
-  px: 4,
-  m: 2
-})`
-  box-shadow: 0 2px 12px rgba(0, 0, 0, .2);
-  transition: .2s box-shadow ease-out;
-  &:hover {
-    box-shadow: 0 4px 12px 2px rgba(0, 0, 0, .3);
-  }
-`
+const CTA = Button.extend.attrs({ is: 'a', py: 3, px: 4, m: 2 })``
 
 export default () => (
   <Provider theme={theme}>
@@ -120,7 +107,7 @@ export default () => (
         <CTA is={Link} to="/about" bg="white" color="primary">
           Read More
         </CTA>
-        <CTA href="https://hackclub.com/start" bg="primary" color="white">
+        <CTA is="a" href="https://hackclub.com/start">
           Start a Club
         </CTA>
       </Flex>

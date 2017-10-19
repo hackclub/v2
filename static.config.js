@@ -76,6 +76,7 @@ export default {
               name="viewport"
               content="width=device-width, initial-scale=1"
             />
+            <meta name="format-detection" content="telephone=no" />
             <style dangerouslySetInnerHTML={{ __html: css }} />
             {styleTags}
           </Head>

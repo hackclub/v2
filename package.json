@@ -6,7 +6,7 @@
     "dev": "react-static start",
     "build": "react-static build",
     "start": "serve dist -p 3000",
-    "postinstall": "npm run build",
+    "preinstall": "npm run build",
     "social":
       "repng src/components/Social.js -w 512 -h 512 -o public -f social",
     "map-data": "node src/map/data.js",

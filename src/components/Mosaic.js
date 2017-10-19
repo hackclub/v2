@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Flex, Box, Heading, Image } from 'rebass'
 import { mx } from '../theme'
-import { times } from 'lodash'
+import { range, shuffle } from 'lodash'
 
 const Base = Box.extend.attrs({ my: 5 })`
   display: grid;
@@ -22,7 +22,7 @@ const Base = Box.extend.attrs({ my: 5 })`
 
 export default () => (
   <Base>
-    {times(32, i => (
+    {shuffle(range(32)).map(i => (
       <div
         style={{ backgroundImage: `url(/mosaic/${i + 1}.jpg)` }}
         key={`img-${i}`}

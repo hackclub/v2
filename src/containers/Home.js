@@ -21,8 +21,8 @@ import {
   Row,
   Column
 } from 'rebass'
-import styled from 'styled-components'
-import Bar from '../components/Bar'
+import { Link } from 'react-static'
+import Button from '../components/Button'
 import Icon from '../components/Icon'
 import Bubbles from '../components/Bubbles'
 import Flag from '../components/Flag'
@@ -141,7 +141,7 @@ export default () => (
         things together.
       </Subtitle>
       <Flex justify="center" wrap m={-2}>
-        <CTA href="/about" bg="white" color="primary">
+        <CTA is={Link} to="/about" bg="white" color="primary">
           Read More
         </CTA>
         <CTA href="https://hackclub.com/start" bg="primary" color="white">

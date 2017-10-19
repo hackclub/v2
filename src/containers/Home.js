@@ -2,24 +2,14 @@ import React from 'react'
 import {
   Provider,
   Banner,
-  Heading,
-  Badge,
-  Lead,
+  Box,
   Container,
   Flex,
-  Box,
-  Text,
+  Heading,
+  Lead,
   Subhead,
   Button,
-  ButtonOutline,
-  Label,
-  Input,
-  Circle,
-  Relative,
-  Absolute,
-  Image,
-  Row,
-  Column
+  Text
 } from 'rebass'
 import { Link } from 'react-static'
 import Button from '../components/Button'
@@ -84,20 +74,6 @@ const Description = Lead.extend.attrs({ f: [4, 5], mb: 0 })`
   line-height: 1.5;
   /* max-width: 36rem; */
 `
-
-const Split = Row.extend.attrs({ mx: -3, my: 3, align: 'center' })`
-  flex-flow: column wrap;
-
-  ${mx[1]} {
-    flex-flow: row nowrap;
-  }
-
-  > div {
-    flex: 1 1 auto;
-  }
-`
-const SplitWide = Column.extend`${mx[1]} {max-width: 60%;}`
-const SplitNarrow = Flex.extend.attrs({ px: 3 })`${mx[1]} {max-width: 40%;}`
 
 const Headline = Heading.extend.attrs({
   is: 'h2',

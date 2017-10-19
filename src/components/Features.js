@@ -1,26 +1,6 @@
 import React from 'react'
-import {
-  Heading,
-  Badge,
-  Lead,
-  Container,
-  Flex,
-  Box,
-  Text,
-  Subhead,
-  Button,
-  ButtonOutline,
-  Label,
-  Input,
-  Circle,
-  Relative,
-  Absolute,
-  Image,
-  Row,
-  Column
-} from 'rebass'
+import { Heading, Container, Flex, Box, Text, Subhead } from 'rebass'
 import { colors, mx, mm } from '../theme'
-import styled from 'styled-components'
 
 const Base = Container.extend.attrs({ px: 4 })`
   display: grid;

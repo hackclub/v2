@@ -1,16 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Avatar, Flex, Box } from 'rebass'
-import { sample } from 'lodash'
+import { times, sample } from 'lodash'
 import { mx } from '../theme'
-import fetch from 'unfetch'
-
-const BUBBLES_URL =
-  'https://api.hackclub.com/v1/home/slack_users?page=1&inc=72&res=192'
 
 const Root = Flex.extend.attrs({
-  justify: 'center',
+  justify: 'space-around',
   align: 'center',
-  px: 3
+  pt: 3,
+  px: [1, 3]
 })`
   position: relative;
   max-width: 100vw;
@@ -28,7 +25,7 @@ const Cloud = Box.extend`
   max-width: 32rem;
   margin: auto;
   border-radius: 4rem;
-  box-shadow: 0 0 2rem 2rem rgba(250, 250, 250, 0.95);
+  box-shadow: 0 0 2rem 4rem rgba(250, 250, 250, 0.95);
   background-color: rgba(250, 250, 250, 0.95);
   text-align: center;
   z-index: 2;
@@ -40,7 +37,7 @@ const Cloud = Box.extend`
 `
 
 const Bubble = Avatar.extend`
-  margin: 0.5em;
+  margin: 0.75em;
   &:nth-child(odd) {
     margin-left: 1.5em;
     margin-top: 0;
@@ -62,61 +59,26 @@ const Bubble = Avatar.extend`
     width: 1.5em;
     height: 1.5em;
   }
-  /* fill gap left by diagonal cutoff */
   ${mx[1]} {
     &:first-child {
-      position: absolute;
-      width: 48px;
-      height: 48px;
-      right: 0;
-      top: -4rem;
-    }
-    &:nth-child(2) {
-      position: absolute;
-      width: 32px;
-      height: 32px;
-      right: 9rem;
-      top: -3rem;
-    }
-    &:nth-child(3) {
-      position: absolute;
-      width: 24px;
-      height: 24px;
-      right: 18rem;
-      top: -3rem;
+      margin-left: 6rem;
     }
   }
 `
 
-class Bubbles extends Component {
-  constructor() {
-    super()
-    this.state = { list: [] }
-  }
-
-  componentDidMount() {
-    fetch(BUBBLES_URL)
-      .then(r => r.json())
-      .then(d => d.profile_pictures)
-      .then(list => this.setState({ list }))
-  }
-
-  render() {
-    return (
-      <Root>
-        <Fill>
-          {this.state.list.map((item, i) => (
-            <Bubble
-              src={item}
-              size={sample([28, 32, 48, 56, 64, 72, 84])}
-              key={`a-${i}`}
-            />
-          ))}
-        </Fill>
-        <Cloud children={this.props.children} />
-      </Root>
-    )
-  }
-}
+const Bubbles = ({ children }) => (
+  <Root>
+    <Fill>
+      {times(92, i => (
+        <Bubble
+          src={`/avatars/${i + 1}.jpg`}
+          size={sample([48, 56, 64, 72, 84, 96])}
+          key={`a-${i}`}
+        />
+      ))}
+    </Fill>
+    <Cloud children={children} />
+  </Root>
+)
 
 export default Bubbles

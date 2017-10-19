@@ -4,7 +4,7 @@ import { times, sample } from 'lodash'
 import { mx } from '../theme'
 
 const Root = Flex.extend.attrs({
-  justify: 'space-around',
+  justify: 'center',
   align: 'center',
   pt: 3,
   px: [1, 3]
@@ -15,24 +15,25 @@ const Root = Flex.extend.attrs({
   overflow-y: hidden;
 `
 
-const Fill = Flex.extend.attrs({ justify: 'center', wrap: true })`
+const Fill = Flex.extend.attrs({ justify: 'space-around', wrap: true })`
   position: absolute;
   top: 0;
   z-index: -1;
 `
 
 const Cloud = Box.extend`
-  max-width: 32rem;
+  max-width: 48rem;
   margin: auto;
   border-radius: 4rem;
   box-shadow: 0 0 2rem 4rem rgba(250, 250, 250, 0.95);
   background-color: rgba(250, 250, 250, 0.95);
   text-align: center;
+  position: relative;
   z-index: 2;
-  ${mx[1]} {
-    max-width: 48rem;
+  @media (min-height: 24em) {
     border-radius: 8rem;
-    box-shadow: 0 0 8rem 8rem rgba(250, 250, 250, 0.95);
+    box-shadow: 0 0 4rem 4rem rgba(250, 250, 250, 0.95);
+    top: -2rem;
   }
 `
 

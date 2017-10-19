@@ -16,11 +16,11 @@ export const grays = {
 
 export const brand = {
   primary: red,
-  accent: palette.fuschia[5],
-  muted: grays.silver,
+  accent: palette.indigo[4],
   success: palette.teal[5],
   info: palette.blue[5],
-  danger: palette.red[5]
+  danger: palette.red[5],
+  muted: grays.silver
 }
 
 export const colors = {

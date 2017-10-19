@@ -10,8 +10,7 @@ const BUBBLES_URL =
 const Root = Flex.extend.attrs({
   justify: 'center',
   align: 'center',
-  px: 3,
-  bg: 'white'
+  px: 3
 })`
   position: relative;
   max-width: 100vw;

@@ -30,6 +30,7 @@ import Start from '../components/Start'
 import Features from '../components/Features'
 import Superpower from '../components/Superpower'
 import Collage from '../components/Collage'
+import Mosaic from '../components/Mosaic'
 import Footer from '../components/Footer'
 import theme, { brand, grays, geo, wk, mx, mm } from '../theme'
 import { keys } from 'lodash'
@@ -161,6 +162,7 @@ export default () => (
     <Features />
     <Superpower />
     <Collage />
+    <Mosaic />
     <Start />
     {/* <Bar w={1 / 3} my={4} mx="auto" /> */}
     <Footer />

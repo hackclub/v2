@@ -1,6 +1,6 @@
 import React from 'react'
 import { Avatar, Flex, Box } from 'rebass'
-import { times, sample } from 'lodash'
+import { shuffle, range } from 'lodash'
 import { mx } from '../theme'
 
 const Root = Flex.extend.attrs({
@@ -70,7 +70,7 @@ const Bubble = Avatar.extend`
 const Bubbles = ({ children }) => (
   <Root>
     <Fill>
-      {times(92, i => (
+      {shuffle(range(92)).map(i => (
         <Bubble
           src={`/avatars/${i + 1}.jpg`}
           size={sample([48, 56, 64, 72, 84, 96])}

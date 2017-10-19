@@ -1,19 +1,23 @@
 import React from 'react'
-import { Box, Lead, Text } from 'rebass'
-import { url } from './Icon'
-import { mx, geo, grays } from '../theme'
+import { Box, Text } from 'rebass'
 
-const Base = Box.extend.attrs({ m: 2, w: 8 * 16 })`text-align: center;`
+const Base = Box.extend.attrs({ my: 1 })`text-align: center;`
 
-const Number = Lead.extend.attrs({ f: 7, mb: 0, bold: true })`
+const Number = Text.extend.attrs({ color: 'white', f: 7 })`
+  font-weight: bold;
   line-height: 1;
 `
+const Description = Text.extend.attrs({
+  color: 'white',
+  f: 2,
+  caps: true
+})`opacity: .8;`
 
 const Stat = ({ label, value, children, ...props }) => (
   <Base {...props}>
     {children}
     <Number children={value} />
-    {label && <Text f={2} caps color="slate" children={label} />}
+    {label && <Description children={label} />}
   </Base>
 )
 

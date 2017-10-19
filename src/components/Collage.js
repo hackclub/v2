@@ -1,47 +1,52 @@
 import React from 'react'
 import { Container, Flex, Box, Heading, Image } from 'rebass'
+import { mx } from '../theme'
 import Stat from './Stat'
 
-const Base = Container.extend.attrs({ my: 5 })`
-  display: grid;
-  grid-gap: 2rem;
-  grid-template-columns: repeat(4, 1fr);
-  > :nth-child(1) {
-    grid-column: 1 / span 3;
-    grid-row: 1;
+const Base = Container.extend.attrs({ maxWidth: 48 * 16 })`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -6rem;
+  > div {
+    border-radius: 9999px;
+    flex: 1 1 auto;
   }
-  > :nth-child(2) {
-    grid-column: 3 / span 2;
-    grid-row: 2;
+  > :first-child {
+    padding: 2rem;
+    text-align: center;
+    z-index: 2;
   }
-  > :nth-child(3) {
-    grid-column: 4;
-    grid-row: 1;
-    align-self: flex-end;
+  > :last-child {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem;
+    margin-top: -2rem;
+    z-index: 1;
   }
-  > :nth-child(4) {
-    grid-column: 1 / span 2;
-    grid-row: 2;
-    align-self: flex-start;
+  ${mx[1]} {
+    flex-direction: row;
+    > :first-child {
+    }
+    > :last-child {
+      margin-left: -2rem;
+    }
   }
 `
 
 export default () => (
   <Base>
-    <Image src="http://placebear.com/768/256" />
-    <Image src="http://placebear.com/768/384" />
-    <Heading color="primary" f={6}>
-      Your club will be rad.
-    </Heading>
-    <Box>
-      <Flex justify="flex-end" wrap>
-        <Stat value={180} label="clubs" />
-        <Stat value={13} label="countries" />
-      </Flex>
-      <Flex justify="flex-end" wrap>
-        <Stat value={25} label="states" />
-        <Stat value="2K+" label="members" />
-      </Flex>
+    <Flex align="center" justify="center" bg="primary">
+      <Heading color="white" f={6}>
+        Education is global, and so is Hack Club.
+      </Heading>
+    </Flex>
+    <Box bg="accent">
+      <Stat value={180} label="clubs" />
+      <Stat value={13} label="countries" />
+      <Stat value={25} label="states" />
+      <Stat value="2K+" label="members" />
     </Box>
   </Base>
 )

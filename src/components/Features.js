@@ -2,13 +2,13 @@ import React from 'react'
 import { Heading, Container, Flex, Box, Text, Subhead } from 'rebass'
 import { colors, mx, mm } from '../theme'
 
-const Base = Container.extend.attrs({ px: 4 })`
+const Base = Container.extend.attrs({ px: 4, mt: 4 })`
   display: grid;
-  grid-gap: 4rem;
-  margin-top: 4rem;
+  grid-gap: 1rem;
 
   ${mx[1]} {
     grid-template-columns: 1fr 3fr;
+    grid-gap: 4rem;
     h2 {
       justify-self: end;
     }
@@ -67,21 +67,23 @@ const Headline = Heading.extend`
 `
 
 const Feat = Box.extend.attrs({ mb: 4 })`
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: 'title desc';
-  align-items: center;
+  ${mx[1]} {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'title desc';
+    align-items: center;
 
-  h3 {
-    grid-area: title;
-  }
-  p {
-    grid-area: desc;
-  }
+    &:nth-child(2n) {
+      grid-template-areas: 'desc title';
+    }
 
-  &:nth-child(2n) {
-    grid-template-areas: 'desc title';
+    h3 {
+      grid-area: title;
+    }
+    p {
+      grid-area: desc;
+    }
   }
 `
 const Feature = ({ title, desc, ...props }) => (

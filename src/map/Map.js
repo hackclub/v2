@@ -13,14 +13,10 @@ const geo = require('./geo')
 const styled = require('styled-components').default
 
 const StyledGeo = styled(Geography)`
-  fill: ${grays.smoke};
-  stroke: ${grays.snow};
-  stroke-width: 0.75;
+  fill: ${colors.blue[0]};
+  stroke: ${colors.snow};
+  stroke-width: 1;
   outline: none;
-  /* hide antarctica */
-  &[d^='M239.4352835706319'] {
-    display: none;
-  }
 `
 
 export default props => (

@@ -22,39 +22,31 @@ import Collage from '../components/Collage'
 import Mosaic from '../components/Mosaic'
 import Footer from '../components/Footer'
 import Map from '../map/Map'
-import theme, { brand, grays, geo, wk, mx, mm } from '../theme'
+import theme, { colors, geo, wk, mx, mm } from '../theme'
 import { keys } from 'lodash'
 
 const tilt = n =>
   wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`)
-const Stripe = Banner.extend`
-  ${geo(brand.primary)};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+const Stripe = Banner.extend.attrs({ bg: colors.blue[5] })`
   ${tilt(90)};
-  padding-top: 6rem;
-  padding-bottom: 6rem;
   margin-top: -4rem;
-  min-height: initial !important;
+
+  .rsm-svg {
+    width: 100vw;
+    transform: scale(1.25);
+  }
 
   ${mx[1]} {
-    ${tilt(75)};
-    padding-top: 8rem;
-    padding-bottom: 8rem;
+    ${tilt(85)};
     margin-top: -6rem;
-  }
-  h3 {
-    opacity: 0.85;
+    min-height: 55vw !important;
   }
 `
 
-const StripeContainer = Container.extend`
-  max-width: 48rem;
-  padding: 0;
+const StripeContainer = Container.extend.attrs({ maxWidth: 48 * 16, p: 0 })`
+  position: absolute;
   text-align: center;
   z-index: 1;
-`
 
   h2, h3 {
     color: ${colors.black};
@@ -90,16 +82,20 @@ export default () => (
     <Flag />
     <Bubbles />
     <Stripe>
+      <Map />
       <StripeContainer>
-        <Headline color="white" f={6} mt={0}>
-          At Hack Club, it’s all about you.
+        <Headline f={6} mt={0}>
+          Hack Club brings {' '}
+          <mark>coding clubs</mark>
+          {' to '}
+          <mark>high schools</mark>
+          {' '} everywhere.
         </Headline>
-        <Subheadline color="white" my={0}>
-          Hack Clubs are coding clubs that are led by students, for students.
+        <Subheadline my={0}>
+          Education needs to be <mark>by students, for students</mark>.
         </Subheadline>
       </StripeContainer>
     </Stripe>
-    <Map />
     <Features />
     <Superpower />
     <Collage />

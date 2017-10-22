@@ -1,11 +1,6 @@
-require('babel-register')
-const fs = require('fs')
-const path = require('path')
-const { renderToStaticMarkup } = require('react-dom/server')
-const h = require('react').createElement
-const Map = require('./Map').default
+const Pageres = require('pageres')
 
-const body = renderToStaticMarkup(h(Map))
-
-const filename = path.join(__dirname, './map/index.html')
-fs.writeFileSync(filename, body)
+new Pageres({ delay: 8 })
+  .src('0.0.0.0:3000/map', ['1024x768'], { crop: true, filename: 'map' })
+  .dest('./public')
+  .run()

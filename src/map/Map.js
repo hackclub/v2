@@ -23,7 +23,7 @@ const StyledGeo = styled(Geography)`
   }
 `
 
-const Map = props => (
+export default props => (
   <ComposableMap
     width={1024}
     style={{
@@ -33,7 +33,7 @@ const Map = props => (
     {...props}
   >
     <ZoomableGroup disablePanning>
-      <Geographies geographyUrl="/geo.json">
+      <Geographies geographyUrl="https://file-lnbwkoqokp.now.sh">
         {(geographies, projection) =>
           geographies.map((geography, i) => (
             <StyledGeo key={i} geography={geography} projection={projection} />
@@ -58,5 +58,3 @@ const Map = props => (
     </ZoomableGroup>
   </ComposableMap>
 )
-
-export default Map

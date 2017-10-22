@@ -7,8 +7,7 @@
     "build": "react-static build",
     "start": "serve dist -p 3000",
     "postinstall": "npm run build",
-    "social":
-      "repng src/components/Social.js -w 512 -h 512 -o public -f social",
+    "social": "repng src/components/Social.js -w 512 -h 512 -o public -f social",
     "map-data": "node src/map/data.js",
     "map-render": "babel-node src/map/render.js",
     "map-repng": "repng src/map/Map.js -f public/map -w 2048"
@@ -28,5 +27,8 @@
     "serve": "^6.2.0",
     "uglifyjs-webpack-plugin": "^1.0.0-beta.3",
     "unfetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "pageres": "^4.5.1"
   }
 }

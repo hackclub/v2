@@ -18,6 +18,10 @@ export default {
       component: 'src/containers/About'
     },
     {
+      path: '/map',
+      component: 'src/map/Map'
+    },
+    {
       is404: true,
       component: 'src/containers/404'
     }

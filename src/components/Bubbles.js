@@ -70,7 +70,7 @@ const Bubble = Avatar.extend`
 const Bubbles = ({ children }) => (
   <Root>
     <Fill>
-      {shuffle(range(92)).map(i => (
+      {shuffle([...range(92), ...range(92)]).map(i => (
         <Bubble
           src={`/avatars/${i + 1}.jpg`}
           size={sample([48, 56, 64, 72, 84, 96])}

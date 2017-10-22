@@ -31,7 +31,7 @@ const Base = Box.extend.attrs({ px: 3, py: 5, my: 4 })`
   }
 `
 
-const Headline = Heading.extend.attrs({ f: [7, null, 6] })`
+const Headline = Heading.extend.attrs({ f: 6 })`
   mark {
     background: transparent url(/underline.svg) bottom left no-repeat;
     background-size: 100% 0.75rem;

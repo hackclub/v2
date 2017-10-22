@@ -1,5 +1,7 @@
 import React from 'react'
-import { Avatar, Flex, Box } from 'rebass'
+import { Avatar, Flex, Box, Heading, Lead } from 'rebass'
+import CTA from './CTA'
+import { Link } from 'react-static'
 import { shuffle, range, sample } from 'lodash'
 import { mx } from '../theme'
 
@@ -67,18 +69,47 @@ const Bubble = Avatar.extend`
   }
 `
 
+const Title = Heading.extend.attrs({
+  is: 'h1',
+  f: [6, 7],
+  my: 0,
+  color: 'primary'
+})`line-height: 1.1;`
+const Subtitle = Lead.extend.attrs({
+  f: [3, 4],
+  mt: 3,
+  mb: 4,
+  mx: 'auto',
+  w: [1, 2 / 3],
+  color: 'grey'
+})`line-height: 1.5;`
+
 const Bubbles = ({ children }) => (
   <Root>
     <Fill>
-      {shuffle([...range(92), ...range(92)]).map(i => (
+      {shuffle([...range(92), ...range(92)]).map((i, n) => (
         <Bubble
           src={`/avatars/${i + 1}.jpg`}
           size={sample([48, 56, 64, 72, 84, 96])}
-          key={`a-${i}`}
+          key={`a-${n}`}
         />
       ))}
     </Fill>
-    <Cloud children={children} />
+    <Cloud>
+      <Title>We the students.</Title>
+      <Subtitle>
+        Hack Clubs are places where students learn to code and build amazing
+        things together.
+      </Subtitle>
+      <Flex justify="center" wrap m={-2}>
+        <CTA is={Link} to="/about" bg="white" color="primary">
+          Read More
+        </CTA>
+        <CTA href="https://hackclub.com/start">
+          Start a Club
+        </CTA>
+      </Flex>
+    </Cloud>
   </Root>
 )
 

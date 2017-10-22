@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flex, Heading, Subhead, Column } from 'rebass'
-import Button from './Button'
+import CTA from './CTA'
 import { url } from './Icon'
 import { geo, brand, wk, mx } from '../theme'
 
@@ -63,9 +63,8 @@ const Start = props => (
       <Description mb={0}>Bring the movement to your school.</Description>
     </Left>
     <Right>
-      <Button
-        px={4}
-        py={3}
+      <CTA
+        m={0}
         bg="white"
         color="primary"
         href="https://hackclub.com/start"

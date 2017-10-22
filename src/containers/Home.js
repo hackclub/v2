@@ -56,23 +56,15 @@ const StripeContainer = Container.extend`
   z-index: 1;
 `
 
-const Title = Heading.extend.attrs({
-  is: 'h1',
-  f: [6, 7],
-  my: 0,
-  color: 'primary'
-})`line-height: 1.1;`
-const Subtitle = Lead.extend.attrs({
-  f: [3, 4],
-  mt: 3,
-  mb: 4,
-  mx: 'auto',
-  w: [1, 2 / 3],
-  color: 'grey'
-})`line-height: 1.5;`
-const Description = Lead.extend.attrs({ f: [4, 5], mb: 0 })`
-  line-height: 1.5;
-  /* max-width: 36rem; */
+  h2, h3 {
+    color: ${colors.black};
+  }
+  mark {
+    background-color: ${colors.yellow[4]};
+    color: ${colors.black};
+    padding-left: .25em;
+    padding-right: .25em;
+  }
 `
 
 const Headline = Heading.extend.attrs({
@@ -93,26 +85,10 @@ const Subheadline = Subhead.extend.attrs({
   line-height: 1.5;
 `
 
-const CTA = Button.extend.attrs({ is: 'a', py: 3, px: 4, m: 2 })``
-
 export default () => (
   <Provider theme={theme}>
     <Flag />
-    <Bubbles>
-      <Title>We the students.</Title>
-      <Subtitle>
-        Hack Clubs are places where students learn to code and build amazing
-        things together.
-      </Subtitle>
-      <Flex justify="center" wrap m={-2}>
-        <CTA is={Link} to="/about" bg="white" color="primary">
-          Read More
-        </CTA>
-        <CTA is="a" href="https://hackclub.com/start">
-          Start a Club
-        </CTA>
-      </Flex>
-    </Bubbles>
+    <Bubbles />
     <Stripe>
       <StripeContainer>
         <Headline color="white" f={6} mt={0}>

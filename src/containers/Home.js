@@ -21,6 +21,7 @@ import Superpower from '../components/Superpower'
 import Collage from '../components/Collage'
 import Mosaic from '../components/Mosaic'
 import Footer from '../components/Footer'
+import Map from '../map/Map'
 import theme, { brand, grays, geo, wk, mx, mm } from '../theme'
 import { keys } from 'lodash'
 
@@ -122,6 +123,7 @@ export default () => (
         </Subheadline>
       </StripeContainer>
     </Stripe>
+    <Map />
     <Features />
     <Superpower />
     <Collage />

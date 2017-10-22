@@ -7,7 +7,7 @@ const Root = Flex.extend.attrs({
   justify: 'center',
   align: 'center',
   pt: 3,
-  px: [1, 3]
+  px: 3
 })`
   position: relative;
   max-width: 100vw;

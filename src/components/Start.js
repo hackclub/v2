@@ -64,6 +64,8 @@ const Start = props => (
     </Left>
     <Right>
       <Button
+        px={4}
+        py={3}
         bg="white"
         color="primary"
         href="https://hackclub.com/start"

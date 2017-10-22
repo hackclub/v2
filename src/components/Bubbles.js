@@ -1,6 +1,6 @@
 import React from 'react'
 import { Avatar, Flex, Box } from 'rebass'
-import { shuffle, range } from 'lodash'
+import { shuffle, range, sample } from 'lodash'
 import { mx } from '../theme'
 
 const Root = Flex.extend.attrs({

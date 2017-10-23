@@ -66,7 +66,7 @@ const Start = props => (
         m={0}
         bg="white"
         color="primary"
-        href="https://hackclub.com/start"
+        href="/start"
         children="Start a Club »"
       />
     </Right>

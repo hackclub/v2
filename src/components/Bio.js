@@ -10,7 +10,7 @@ const Base = Box.extend.attrs({ bg: colors.blue[0], p: 3, my: 2 })`
 `
 const Role = Badge.extend.attrs({
   f: 1,
-  my: 0,
+  m: 0,
   px: 2,
   bg: 'muted',
   color: 'white'

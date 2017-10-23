@@ -58,9 +58,15 @@ const Bubble = Avatar.extend`
     height: 2.5em;
     margin-left: 1em;
   }
+  &:nth-child(5n) {
+    margin-top: 2em;
+  }
   &:nth-child(13n) {
     width: 1.5em;
     height: 1.5em;
+  }
+  &:nth-child(17n) {
+    margin-top: 3em;
   }
   ${mx[1]} {
     &:first-child {

@@ -28,7 +28,7 @@ const Background = Flex.extend.attrs({
 
 const Large = Heading.extend.attrs({
   is: 'h2',
-  f: 6,
+  f: [5, 6],
   mt: 0,
   mb: 2,
   color: 'white'

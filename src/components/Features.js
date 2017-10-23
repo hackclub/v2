@@ -30,7 +30,7 @@ const Feature = ({ icon, name, desc, ...props }) => (
 
 export default () => (
   <Base>
-    <Heading color="primary" f={6} align="center" mb={4}>
+    <Heading color="primary" f={[5, 6]} align="center" mb={4}>
       Start a club with all our resources.
     </Heading>
     <Feats>

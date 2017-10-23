@@ -8,7 +8,7 @@ const Base = Container.extend.attrs({ maxWidth: 48 * 16 })`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: -6rem;
+  margin-bottom: -4rem;
   > div {
     border-radius: 9999px;
     flex: 1 1 auto;

@@ -108,8 +108,8 @@ const Bubbles = ({ children }) => (
         things together.
       </Subtitle>
       <Flex justify="center" wrap m={-2}>
-        <CTA href="#more" bg="white" color="primary">
-          Read More
+        <CTA href="https://hackclub.com/donate" bg="white" color="primary">
+          Donate
         </CTA>
         <CTA href="https://hackclub.com/start">
           Start a Club

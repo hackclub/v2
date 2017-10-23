@@ -7,7 +7,7 @@ const {
   Markers,
   Marker
 } = require('react-simple-maps')
-const { colors, grays } = require('../theme')
+const { colors, mm } = require('../theme')
 const locations = require('./locations')
 const geo = require('./geo')
 const styled = require('styled-components').default
@@ -17,17 +17,13 @@ const StyledGeo = styled(Geography)`
   stroke: ${colors.snow};
   stroke-width: 1;
   outline: none;
+  ${mm[0]} {
+    &[d^='M111.4352835706319'] { display: none; } /* hide antartica */
+  }
 `
 
 export default props => (
-  <ComposableMap
-    width={1024}
-    style={{
-      width: '100%',
-      height: 'auto'
-    }}
-    {...props}
-  >
+  <ComposableMap width={768} {...props}>
     <ZoomableGroup disablePanning>
       <Geographies geographyUrl="/geo.json">
         {(geographies, projection) =>

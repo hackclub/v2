@@ -28,24 +28,26 @@ const tilt = n =>
   wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`)
 const Stripe = Banner.extend.attrs({ bg: colors.blue[5] })`
   ${tilt(90)};
+  min-height: initial !important;
   margin-top: -4rem;
-
-  .rsm-svg {
-    width: 100vw;
-    transform: scale(1.25);
-  }
 
   ${mx[1]} {
     ${tilt(85)};
     margin-top: -6rem;
-    min-height: 55vw !important;
+    min-height: 60vw !important;
   }
-  ${mm[1]} {
-    display: block !important;
+
+  .rsm-svg {
+    width: 100vw;
+    height: auto;
   }
 `
 
-const StripeContainer = Container.extend.attrs({ maxWidth: 48 * 16, p: 0 })`
+const StripeContainer = Container.extend.attrs({
+  maxWidth: 48 * 16,
+  p: 3,
+  pb: 0
+})`
   position: absolute;
   text-align: center;
   z-index: 1;
@@ -86,7 +88,7 @@ export default () => (
     <Stripe id="more">
       <Map />
       <StripeContainer>
-        <Headline f={6} mt={0}>
+        <Headline f={[4, 5, 6]} mt={0}>
           Hack Club brings {' '}
           <mark>coding clubs</mark>
           {' to '}

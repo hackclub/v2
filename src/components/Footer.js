@@ -32,7 +32,7 @@ const Footer = () => (
         </LeftCol>
         <RightCol>
           <Flex align="center" mx={-2}>
-            <Service href="https://hackclub.com/slack_invite" icon="slack" />
+            <Service href="/slack_invite" icon="slack" />
             <Service href="https://twitter.com/starthackclub" icon="twitter" />
             <Service href="https://github.com/hackclub" icon="github" />
             <Service

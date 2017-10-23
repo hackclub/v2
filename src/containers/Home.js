@@ -83,7 +83,7 @@ export default () => (
   <Provider theme={theme}>
     <Flag />
     <Bubbles />
-    <Stripe>
+    <Stripe id="more">
       <Map />
       <StripeContainer>
         <Headline f={6} mt={0}>

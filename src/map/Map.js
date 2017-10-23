@@ -29,7 +29,7 @@ export default props => (
     {...props}
   >
     <ZoomableGroup disablePanning>
-      <Geographies geographyUrl="https://file-lnbwkoqokp.now.sh">
+      <Geographies geographyUrl="/geo.json">
         {(geographies, projection) =>
           geographies.map((geography, i) => (
             <StyledGeo key={i} geography={geography} projection={projection} />

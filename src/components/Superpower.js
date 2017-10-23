@@ -28,6 +28,7 @@ const Base = Box.extend.attrs({ px: 3, py: 5, mt: 5 })`
     z-index: -1;
     background: url(/diagonal.svg) bottom right repeat-x;
     background-size: auto 100%;
+    background-position-x: 5%;
   }
 `
 

@@ -38,9 +38,7 @@ const Base = Container.extend.attrs({ maxWidth: 48 * 16 })`
 export default () => (
   <Base>
     <Flex align="center" justify="center" bg="primary">
-      <Heading color="white" f={6}>
-        Education is global, and so is Hack Club.
-      </Heading>
+      <Heading color="white" f={6}>We‘re making a movement.</Heading>
     </Flex>
     <Box bg="accent">
       <Stat value={180} label="clubs" />

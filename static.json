@@ -2,7 +2,7 @@
   "root": "dist/",
   "proxies": {
     "/": {
-      "origin": "https://hackclub.com"
+      "origin": "https://legacy.hackclub.com"
     }
   }
 }

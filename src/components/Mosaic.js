@@ -3,11 +3,12 @@ import { Container, Flex, Box, Heading, Image } from 'rebass'
 import { mx } from '../theme'
 import { range, shuffle } from 'lodash'
 
-const Base = Box.extend.attrs({ mb: 5 })`
+const Base = Box.extend`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-content: center;
   align-items: center;
+
   div {
     background-repeat: no-repeat;
     background-size: cover;

@@ -17,11 +17,12 @@ const Background = Flex.extend.attrs({
   ${geo(brand.primary)};
   padding-top: 4rem;
   padding-bottom: 4rem;
+  margin-top: -4rem;
   ${tilt(90)}
   ${mx[2]} {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-    ${tilt(80)}
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    ${tilt(85)}
   }
 `
 

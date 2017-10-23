@@ -62,7 +62,7 @@ export default () => (
     </Headline>
     <Subheadline>
       <span children="So let’s teach it like that. " />
-      <Link to="/about">Read our manifesto »</Link>
+      {/*<Link to="/about">Read our manifesto »</Link>*/}
     </Subheadline>
   </Base>
 )

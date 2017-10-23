@@ -12,7 +12,7 @@ import {
 import { Link } from 'react-static'
 import { colors } from '../theme'
 
-const Base = Box.extend.attrs({ px: 3, py: 5, my: 4 })`
+const Base = Box.extend.attrs({ px: 3, py: 5, mt: 5 })`
   background: url(/diagonal.svg) top center repeat-x;
   background-size: auto 100%;
   text-align: center;

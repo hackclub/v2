@@ -3,11 +3,11 @@ import { Heading, Container, Flex, Box, Text, Subhead } from 'rebass'
 import Icon from './Icon'
 import { colors, mx, mm } from '../theme'
 
-const Base = Container.extend.attrs({ px: 3, my: 4 })``
+const Base = Container.extend.attrs({ px: 3, my: 4, maxWidth: 72 * 16 })``
 const Feats = Box.extend`
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 1rem;
+  grid-gap: 2rem;
 
   ${mx[1]} {
     grid-template-columns: repeat(3, 1fr);
@@ -15,6 +15,7 @@ const Feats = Box.extend`
 `
 const Feat = Box.extend.attrs({ p: 3 })`
   border-radius: .5rem;
+  p { line-height: 1.5; }
 `
 const Feature = ({ icon, name, desc, ...props }) => (
   <Feat {...props}>
@@ -33,22 +34,22 @@ export default () => (
     </Heading>
     <Feats>
       <Feature
-        bg="teal.6"
+        bg="success"
         icon="line_weight"
         name="Starter materials"
-        desc="We‘re a community."
+        desc="Start on the right foot with starting curricula, leadership guidelines, and club suggestions."
       />
       <Feature
-        bg="fuschia.5"
+        bg="accent"
         icon="question_answer"
         name="A community that cares"
-        desc="We‘re a community."
+        desc="You and your club members will meet like-minded students from around the world in our Slack."
       />
       <Feature
         bg="primary"
         icon="live_help"
         name="Coaching and assitance"
-        desc="We‘re a community."
+        desc="You‘ll get regular mentorship through office hours and calls for help where it counts."
       />
     </Feats>
   </Base>

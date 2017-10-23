@@ -49,7 +49,7 @@ export default () => (
       <Feature
         bg="primary"
         icon="live_help"
-        name="Coaching and assitance"
+        name="Coaching and assistance"
         desc="You‘ll get regular mentorship through office hours and calls for help where it counts."
       />
     </Feats>

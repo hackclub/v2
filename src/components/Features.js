@@ -38,7 +38,7 @@ export default () => (
         bg="success"
         icon="line_weight"
         name="Starter materials"
-        desc="Start on the right foot with starting curricula, leadership guidelines, and club suggestions."
+        desc="Start on the right foot with beginning curricula, leadership guidelines, and club suggestions."
       />
       <Feature
         bg="accent"

@@ -7,10 +7,11 @@ const Base = Container.extend.attrs({ px: 3, my: 4, maxWidth: 72 * 16 })``
 const Feats = Box.extend`
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 2rem;
+  grid-gap: 1rem;
 
   ${mx[1]} {
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
   }
 `
 const Feat = Box.extend.attrs({ p: 3 })`

@@ -40,6 +40,9 @@ const Stripe = Banner.extend.attrs({ bg: colors.blue[5] })`
     margin-top: -6rem;
     min-height: 55vw !important;
   }
+  ${mm[1]} {
+    display: block !important;
+  }
 `
 
 const StripeContainer = Container.extend.attrs({ maxWidth: 48 * 16, p: 0 })`
@@ -91,7 +94,9 @@ export default () => (
           {' '} everywhere.
         </Headline>
         <Subheadline my={0}>
-          Education needs to be <mark>by students, for students</mark>.
+          We‘re starting the {' '}
+          <mark>computer science education</mark>
+          {' '} students need.
         </Subheadline>
       </StripeContainer>
     </Stripe>

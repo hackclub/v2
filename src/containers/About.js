@@ -10,7 +10,9 @@ import {
   Subhead
 } from 'rebass'
 import theme, { colors } from '../theme'
+import { Link } from 'react-static'
 import Flag from '../components/Flag'
+import Bio from '../components/Bio'
 import Footer from '../components/Footer'
 
 const Base = Container.extend.attrs({
@@ -30,9 +32,8 @@ const Headline = Heading.extend.attrs({
 `
 
 const P = Text.extend.attrs({ f: 3, mb: 2 })`
-  @supports (initial-letter: 2) or (-webkit-initial-letter: 2) {
+  @supports (-webkit-initial-letter: 2) {
     &:first-of-type:first-letter {
-      initial-letter: 2;
       -webkit-initial-letter: 2;
       color: ${colors.slate};
       font-weight: bold;
@@ -46,27 +47,33 @@ export default () => (
     <Flag />
     <Base>
       <Headline>
-        <Box f={4}>The Hack Club</Box>
-        <Box f={6}>Manifesto</Box>
+        <Box f={4}>Hack Club</Box>
+        <Box f={6}>Team</Box>
       </Headline>
-      <P>
-        Bits are replacing atoms, algorithms are attaining agency, and
-        "infrastructure" is coming to mean cloud services, not roads and
-        railways. Within the next few years, algorithms will be driving our cars
-        and defining our virtual worlds.
-      </P>
-      <P>
-        Yet while the impact of technology is increasing, we are suffering a
-        crisis of opportunity: half American high schools don't offer computer
-        science courses and the ones that do fail to get beginners excited.
-      </P>
-      <P>
-        We need to change our approach and put students in charge.{' '}
-        <strong>
-          And that's what Hack Club is, students starting the computer science
-          classes their schools should offer.
-        </strong>
-      </P>
+      <Bio
+        img="https://hackclub.com/staticPage/team/zach_latta.jpg"
+        name="Zach Latta"
+        role="Executive Director"
+        text="Zach founded Hack Club in 2014 after he started a coding club at his high school. He previously led the engineering team at Yo and was a developer on Football Heroes. He cares about building things and learning."
+      />
+      <Bio
+        img="https://hackclub.com/staticPage/team/max_wofford.jpg"
+        name="Max Wofford"
+        role="Software Engineer"
+        text="Tapping into the hacking community, Max has found a common purpose with the founders of Hack Club and his passion for amplifying people’s ideas. He loves helping students scale their ideas into even more awesome products."
+      />
+      <Flex justify="center" mt={3}>
+        <Text
+          is={Link}
+          to="/"
+          color="primary"
+          f={3}
+          bold
+          style={{ textDecoration: 'none' }}
+        >
+          ← Home
+        </Text>
+      </Flex>
     </Base>
     <Footer />
   </Provider>

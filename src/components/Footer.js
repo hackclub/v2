@@ -1,5 +1,6 @@
 import React from 'react'
-import { Subhead, Container, Flex, Box, Text, Row, Column, Link } from 'rebass'
+import { Subhead, Container, Flex, Box, Text, Row, Column } from 'rebass'
+import { Link } from 'react-static'
 import Icon from './Icon'
 import { mx, geo, grays } from '../theme'
 
@@ -17,9 +18,9 @@ const RightCol = Column.extend.attrs({ w: [1, 0.6] })`
 `
 
 const Service = ({ href, icon, fill = 'muted', size = 32, ...props }) => (
-  <Link target="_blank" href={href} mx={2} {...props}>
+  <Box is="a" target="_blank" href={href} mx={2} {...props}>
     <Icon name={icon} size={size} fill={fill} />
-  </Link>
+  </Box>
 )
 
 const Footer = () => (
@@ -44,6 +45,9 @@ const Footer = () => (
             />
             <Service href="mailto:team@hackclub.com" icon="mail_outline" />
           </Flex>
+          <Text mt={2}>
+            <Text is={Link} to="/about" color="info">Meet our team</Text>
+          </Text>
         </RightCol>
       </Row>
       <Row w={1} wrap>
@@ -56,9 +60,9 @@ const Footer = () => (
           </Text>
           <Text mt={2}>Nonprofit EIN: 81-2908499</Text>
           <Text mt={2}>
-            <Link href="https://conduct.hackclub.com" color="info">
+            <Text is="a" href="https://conduct.hackclub.com" color="info">
               Read our Code of Conduct
-            </Link>
+            </Text>
           </Text>
           <Text f={1} color="silver" mt={3}>
             © 2017 Hack Club.

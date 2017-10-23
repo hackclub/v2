@@ -6,7 +6,7 @@ const colors = require('./src/theme').colors
 
 export default {
   getSiteProps: () => ({
-    title: 'Hack Club'
+    name: 'Hack Club'
   }),
   getRoutes: async () => [
     {

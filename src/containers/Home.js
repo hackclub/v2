@@ -23,7 +23,6 @@ import Mosaic from '../components/Mosaic'
 import Footer from '../components/Footer'
 import Map from '../map/Map'
 import theme, { colors, geo, wk, mx, mm } from '../theme'
-import { keys } from 'lodash'
 
 const tilt = n =>
   wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`)
@@ -52,7 +51,7 @@ const StripeContainer = Container.extend.attrs({ maxWidth: 48 * 16, p: 0 })`
     color: ${colors.black};
   }
   mark {
-    background-color: ${colors.yellow[4]};
+    background-color: rgba(250, 247, 133, .9);
     color: ${colors.black};
     padding-left: .25em;
     padding-right: .25em;

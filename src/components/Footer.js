@@ -64,8 +64,8 @@ const Footer = () => (
               Read our Code of Conduct
             </Text>
           </Text>
-          <Text f={1} color="silver" mt={3}>
-            © 2017 Hack Club.
+          <Text f={1} color="muted" mt={3}>
+            © 2017 Hack Club
           </Text>
         </RightCol>
       </Row>

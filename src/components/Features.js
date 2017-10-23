@@ -1,119 +1,55 @@
 import React from 'react'
 import { Heading, Container, Flex, Box, Text, Subhead } from 'rebass'
+import Icon from './Icon'
 import { colors, mx, mm } from '../theme'
 
-const Base = Container.extend.attrs({ px: 4, mt: 4 })`
+const Base = Container.extend.attrs({ px: 3, my: 4 })``
+const Feats = Box.extend`
   display: grid;
+  grid-template-columns: 1fr;
   grid-gap: 1rem;
 
   ${mx[1]} {
-    grid-template-columns: 1fr 3fr;
-    grid-gap: 4rem;
-    h2 {
-      justify-self: end;
-    }
+    grid-template-columns: repeat(3, 1fr);
   }
 `
-
-const Headline = Heading.extend`
-  font-size: 3rem;
-  text-align: center;
-  text-transform: uppercase;
-  div {
-    color: ${colors.primary};
-
-    &:last-of-type {
-      position: relative;
-      &:after {
-        color: ${colors.slate};
-        content: '.';
-        position: absolute;
-      }
-    }
-  }
-  span {
-    color: ${colors.slate};
-  }
-
-  ${mm[1]} {
-    div {
-      display: inline;
-      margin-left: 0.25em;
-      margin-right: 0.25em;
-    }
-    span {
-      &:first-of-type {
-        display: block;
-        width: 100%;
-      }
-      &:last-of-type {
-        color: ${colors.primary};
-      }
-    }
-  }
-  ${mx[1]} {
-    text-align: right;
-    div {
-      font-size: 3rem;
-    }
-    span {
-      font-size: 1.5rem;
-
-      &:last-of-type {
-        font-size: 2.25rem;
-      }
-    }
-  }
+const Feat = Box.extend.attrs({ p: 3 })`
+  border-radius: .5rem;
 `
-
-const Feat = Box.extend.attrs({ mb: 4 })`
-  ${mx[1]} {
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: 'title desc';
-    align-items: center;
-
-    &:nth-child(2n) {
-      grid-template-areas: 'desc title';
-    }
-
-    h3 {
-      grid-area: title;
-    }
-    p {
-      grid-area: desc;
-    }
-  }
-`
-const Feature = ({ title, desc, ...props }) => (
-  <Feat>
-    <Subhead color="primary" f={5} children={title} />
-    <Text f={4} color="slate" children={desc} />
+const Feature = ({ icon, name, desc, ...props }) => (
+  <Feat {...props}>
+    <Icon name={icon} fill="white" size={48} mx="auto" />
+    <Box mt={2}>
+      <Subhead color="white" f={4} mb={1} children={name} />
+      <Text f={3} color="white" children={desc} />
+    </Box>
   </Feat>
 )
 
 export default () => (
   <Base>
-    <Headline>
-      <span>Start with a</span>
-      <div>club</div>
-      <span>in a</span>
-      <div>box</div>
-    </Headline>
-    <Box>
+    <Heading color="primary" f={6} align="center" mb={3}>
+      Start a club with all our resources.
+    </Heading>
+    <Feats>
       <Feature
-        title="Training, assistance, whatever, wherever."
-        desc="Meet with our staff, members, or experienced club leaders for advice."
+        bg="teal.6"
+        icon="line_weight"
+        name="Starter materials"
+        desc="We‘re a community."
       />
       <Feature
-        title="Start from 11."
-        desc="We provide you with starter content: workshops, example materials, guides, posters."
+        bg="fuschia.5"
+        icon="question_answer"
+        name="A community that cares"
+        desc="We‘re a community."
       />
       <Feature
-        title="A community that cares."
-        desc="Talk to thousands of other members at all skill levels 24/7 in our Slack."
+        bg="primary"
+        icon="live_help"
+        name="Coaching and assitance"
+        desc="We‘re a community."
       />
-    </Box>
+    </Feats>
   </Base>
 )

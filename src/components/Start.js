@@ -8,17 +8,17 @@ const tilt = n =>
   wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`)
 
 const Background = Flex.extend.attrs({
-  direction: ['column', 'row'],
+  direction: ['column', null, 'row'],
   justify: 'space-around',
   align: 'center',
   w: 1,
   bg: 'primary'
 })`
   ${geo(brand.primary)};
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   ${tilt(90)}
-  ${mx[1]} {
+  ${mx[2]} {
     padding-top: 6rem;
     padding-bottom: 6rem;
     ${tilt(80)}
@@ -41,18 +41,16 @@ const Description = Subhead.extend.attrs({
 })`
   font-weight: normal;
   line-height: 1.5;
-  opacity: .85;
+  opacity: .9;
 `
 
-const Left = Column.extend.attrs({ mt: 3 })`
-  ${mx[0]} {
+const Left = Column.extend`
+  ${mx[2]} {
     text-align: right;
   }
 `
-const Right = Column.extend.attrs({ mt: 3 })`
-  ${mx[0]} {
-    text-align: left;
-  }
+const Right = Column.extend`
+  text-align: left;
 `
 
 const Start = props => (

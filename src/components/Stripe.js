@@ -1,15 +1,20 @@
 import React from 'react'
-import { Banner, Container, Heading, Subhead } from 'rebass'
+import { Flex, Container, Heading, Subhead } from 'rebass'
 import { colors, mx, wk } from '../theme'
 
 const tilt = n =>
   wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`)
-const Stripe = Banner.extend`
+const Stripe = Flex.extend.attrs({
+  align: 'center',
+  justify: 'center',
+  direction: 'column',
+  p: [3, 0]
+})`
   ${tilt(90)};
   background: ${colors.blue[5]} url('/map.svg') no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
+  background-position: center top;
   margin-top: -3rem;
-  min-height: initial !important;
   ${mx[1]} {
     margin-top: -6rem;
     min-height: 75vh !important;
@@ -27,7 +32,7 @@ const StripeContainer = Container.extend.attrs({
     color: ${colors.black};
   }
   mark {
-    background-color: rgba(250, 247, 133, .9);
+    background-color: rgba(250, 247, 133, .85);
     color: ${colors.black};
     padding-left: .25em;
     padding-right: .25em;

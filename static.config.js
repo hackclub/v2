@@ -65,7 +65,6 @@ export default {
         <Html>
           <Head>
             <meta charSet="UTF-8" />
-            <title children={data.name} />
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:image" content={data.img} />
             <meta name="og:image" content={data.img} />

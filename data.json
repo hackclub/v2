@@ -1,8 +1,7 @@
 {
   "name": "Hack Club",
-  "description":
-    "Learn in your own environment, your own way. Join a network of club leaders around the world who can help you every step of the way.",
-  "url": "https://lachlan.hackclub.com",
+  "description": "Join the movement of high school coding clubs around the world.",
+  "url": "https://hackclub.com",
   "twitter": "@starthackclub",
-  "img": "https://lachlan.hackclub.com/social.png"
+  "img": "https://hackclub.com/social.png"
 }

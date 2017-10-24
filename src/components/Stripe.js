@@ -12,7 +12,7 @@ const Stripe = Banner.extend`
   min-height: initial !important;
   ${mx[1]} {
     margin-top: -6rem;
-    min-height: 66vw !important;
+    min-height: 75vh !important;
   }
 `
 

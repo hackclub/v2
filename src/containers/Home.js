@@ -21,34 +21,26 @@ import Superpower from '../components/Superpower'
 import Collage from '../components/Collage'
 import Mosaic from '../components/Mosaic'
 import Footer from '../components/Footer'
-import Map from '../map/Map'
 import theme, { colors, geo, wk, mx, mm } from '../theme'
 
 const tilt = n =>
   wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`)
-const Stripe = Banner.extend.attrs({ bg: colors.blue[5] })`
+const Stripe = Banner.extend`
   ${tilt(90)};
+  background: ${colors.blue[5]} url('/map.svg') no-repeat;
+  background-size: 100% 100%;
+  margin-top: -3rem;
   min-height: initial !important;
-  margin-top: -4rem;
-
   ${mx[1]} {
-    ${tilt(85)};
     margin-top: -6rem;
-    min-height: 60vw !important;
-  }
-
-  .rsm-svg {
-    width: 100vw;
-    height: auto;
+    min-height: 66vw !important;
   }
 `
 
 const StripeContainer = Container.extend.attrs({
   maxWidth: 48 * 16,
-  p: 3,
-  pb: 0
+  p: 4
 })`
-  position: absolute;
   text-align: center;
   z-index: 1;
 
@@ -86,9 +78,8 @@ export default () => (
     <Flag />
     <Bubbles />
     <Stripe id="more">
-      <Map />
       <StripeContainer>
-        <Headline f={[4, 5, 6]} mt={0}>
+        <Headline f={[5, 6]} mt={0}>
           Hack Club brings {' '}
           <mark>coding clubs</mark>
           {' to '}

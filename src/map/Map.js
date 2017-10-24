@@ -17,9 +17,7 @@ const Geo = styled(Geography)`
   stroke: ${colors.snow};
   stroke-width: 1;
   outline: none;
-  ${mm[0]} {
-    &[d^='M111.4352835706319'] { display: none; } /* hide antartica */
-  }
+  &[d^='M111.4352835706319'] { display: none; } /* hide antartica */
 `
 
 const Pin = styled.circle.attrs({ cx: 0, cy: 0, r: 8 })`
@@ -31,7 +29,7 @@ const Pin = styled.circle.attrs({ cx: 0, cy: 0, r: 8 })`
 export default props => (
   <ComposableMap width={768} {...props}>
     <ZoomableGroup disablePanning>
-      <Geographies geographyUrl="/geo.json">
+      <Geographies geographyUrl="https://unpkg.com/world-atlas@1.1.4/world/50m.json">
         {(geographies, projection) =>
           geographies.map((geography, i) => (
             <Geo key={i} geography={geography} projection={projection} />

@@ -51,13 +51,13 @@ export default () => (
         <Box f={6}>Team</Box>
       </Headline>
       <Bio
-        img="/staticPage/team/zach_latta.jpg"
+        img="/team/zach.png"
         name="Zach Latta"
         role="Executive Director"
         text="Zach founded Hack Club in 2014 after he started a coding club at his high school. He previously led the engineering team at Yo and was a developer on Football Heroes. He cares about building things and learning."
       />
       <Bio
-        img="/staticPage/team/max_wofford.jpg"
+        img="/team/max.jpg"
         name="Max Wofford"
         role="Software Engineer"
         text="Tapping into the hacking community, Max has found a common purpose with the founders of Hack Club and his passion for amplifying people’s ideas. He loves helping students scale their ideas into even more awesome products."

@@ -15,6 +15,7 @@ export default () => (
   <Provider theme={theme}>
     <Flag />
     <Bubbles />
+    <Stripe />
     <Features />
     <Superpower />
     <Collage />

@@ -74,6 +74,12 @@ export default () => (
         role="Social Media"
         text="Mingjie leads a local club at Wootton High School in Rockville, Maryland. Aside from trying to engage more students into the world of hacking, he also cares about building a unique public identity for Hack Club."
       />
+      <Bio
+        img="/team/victor.png"
+        name="Victor Truong"
+        role="Finance"
+        text="Victor is the leader of a chapter at Rosemead High School in Los Angeles, California. He aims to make Hack Club's finances as transparent as possible, so people know how every penny is spent."
+      />
       <Flex justify="center" mt={3}>
         <Text
           is={Link}

@@ -58,9 +58,8 @@ export default {
 
       return (
         <Html>
-          <Head defaultTitle="Hack Club">
+          <Head>
             <meta charSet="UTF-8" />
-            <title>Hack Club</title>
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:image" content={data.img} />
             <meta name="og:image" content={data.img} />

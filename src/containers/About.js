@@ -10,7 +10,7 @@ import {
   Subhead
 } from 'rebass'
 import theme, { colors } from '../theme'
-import { Link } from 'react-static'
+import { Head, Link } from 'react-static'
 import Flag from '../components/Flag'
 import Bio from '../components/Bio'
 import Footer from '../components/Footer'
@@ -44,6 +44,7 @@ const P = Text.extend.attrs({ f: 3, mb: 2 })`
 
 export default () => (
   <Provider theme={theme}>
+    <Head><title>About Hack Club</title></Head>
     <Flag />
     <Base>
       <Headline>

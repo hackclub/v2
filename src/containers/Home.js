@@ -1,5 +1,6 @@
 import React from 'react'
 import { Provider } from 'rebass'
+import { Head } from 'react-static'
 import Flag from '../components/Flag'
 import Bubbles from '../components/Bubbles'
 import Stripe from '../components/Stripe'
@@ -13,6 +14,7 @@ import theme from '../theme'
 
 export default () => (
   <Provider theme={theme}>
+    <Head><title>Hack Club</title></Head>
     <Flag />
     <Bubbles />
     <Stripe />

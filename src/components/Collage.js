@@ -10,24 +10,26 @@ const Base = Container.extend.attrs({ maxWidth: 48 * 16 })`
   align-items: center;
   margin-bottom: -4rem;
   > div {
-    border-radius: 9999px;
+    border-radius: 3rem;
     flex: 1 1 auto;
-  }
-  > :first-child {
     padding: 2rem;
     text-align: center;
+  }
+  > :first-child {
+    padding: 1rem;
     z-index: 2;
   }
   > :last-child {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    padding: 3rem;
     margin-top: -2rem;
+    line-height: 1.25;
     z-index: 1;
   }
   ${mx[1]} {
     flex-direction: row;
     > :first-child {
+      padding: 2rem;
     }
     > :last-child {
       margin-left: -2rem;
@@ -38,7 +40,7 @@ const Base = Container.extend.attrs({ maxWidth: 48 * 16 })`
 export default () => (
   <Base>
     <Flex align="center" justify="center" bg="primary">
-      <Heading color="white" f={6}>We‘re making a movement.</Heading>
+      <Heading color="white" f={6}>We‘re creating a movement.</Heading>
     </Flex>
     <Box bg="accent">
       <Stat value={180} label="clubs" />

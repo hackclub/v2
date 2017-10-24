@@ -62,6 +62,18 @@ export default () => (
         role="Software Engineer"
         text="Tapping into the hacking community, Max has found a common purpose with the founders of Hack Club and his passion for amplifying people’s ideas. He loves helping students scale their ideas into even more awesome products."
       />
+      <Bio
+        img="/team/lachlan.jpg"
+        name="Lachlan Campbell"
+        role="Web Designer"
+        text="Lachlan, a club leader from State College, PA, joined the team to work on Hack Club‘s website. They care about making tools to make information more accessible."
+      />
+      <Bio
+        img="/team/mingjie.jpg"
+        name="Mingjie Jiang"
+        role="Social Media"
+        text="Mingjie leads a local Hack Club at Wootton High School in Rockville, Maryland. Aside from trying to engage more students into the world hacking, he also cares about building a unique public identity for Hack Club."
+      />
       <Flex justify="center" mt={3}>
         <Text
           is={Link}

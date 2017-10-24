@@ -1,5 +1,6 @@
 {
   "root": "dist/",
+  "https_only": true,
   "proxies": {
     "/": {
       "origin": "https://legacy.hackclub.com"

@@ -72,7 +72,7 @@ export default () => (
         img="/team/mingjie.jpg"
         name="Mingjie Jiang"
         role="Social Media"
-        text="Mingjie leads a local Hack Club at Wootton High School in Rockville, Maryland. Aside from trying to engage more students into the world hacking, he also cares about building a unique public identity for Hack Club."
+        text="Mingjie leads a local club at Wootton High School in Rockville, Maryland. Aside from trying to engage more students into the world of hacking, he also cares about building a unique public identity for Hack Club."
       />
       <Flex justify="center" mt={3}>
         <Text

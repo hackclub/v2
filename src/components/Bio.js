@@ -10,13 +10,14 @@ const Base = Box.extend.attrs({ bg: colors.blue[0], p: 3, my: 2 })`
 `
 const Role = Badge.extend.attrs({
   f: 1,
-  m: 0,
   px: 2,
   bg: 'muted',
   color: 'white'
 })`
   font-weight: normal;
+  line-height: 1.25;
   text-transform: uppercase;
+  margin: 0;
 `
 
 const Bio = ({ img, name, role, text }) => (

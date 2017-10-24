@@ -69,6 +69,7 @@ export default {
             <meta name="twitter:description" content={data.description} />
             <meta name="description" content={data.description} />
             <meta name="twitter:site" content={data.twitter} />
+            <link rel="icon" type="image/x-icon" href="/favicon.ico" />
             <meta name="theme-color" content={colors.primary} />
             <meta
               name="viewport"

@@ -22,12 +22,10 @@ export default {
       component: 'src/containers/404'
     }
   ],
-  webpack: (config, { dev }) => {
-    config.merge(function(c) {
-      c.plugins = c.plugins.filter(p => p.constructor.name !== 'UglifyJsPlugin')
-      c.plugins.push(new Uglify())
-      return c
-    })
+  webpack: (c, { dev }) => {
+    c.plugins = c.plugins.filter(p => p.constructor.name !== 'UglifyJsPlugin')
+    c.plugins.push(new Uglify())
+    return c
   },
   Html: class CustomHtml extends Component {
     render() {

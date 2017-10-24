@@ -8,27 +8,22 @@
     "start": "serve dist -p 3000",
     "postinstall": "npm run build",
     "social": "repng src/components/Social.js -w 512 -h 512 -o public -f social",
-    "map-data": "node src/map/data.js",
-    "map-render": "babel-node src/map/render.js",
-    "map-repng": "repng src/map/Map.js -f public/map -w 2048"
+    "map-data": "node src/map/data.js"
   },
   "author": "Lachlan Campbell",
   "dependencies": {
-    "axios": "^0.16.2",
-    "babel-preset-env": "^1.6.0",
+    "axios": "^0.17.0",
+    "babel-preset-env": "^1.6.1",
     "dot-prop": "^4.2.0",
     "palx": "^1.0.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-router": "^4.2.0",
-    "react-simple-maps": "^0.8.4",
-    "react-static": "1.x.x",
+    "react-simple-maps": "^0.9.0",
+    "react-static": "2.x.x",
     "rebass": "^1.0.4",
-    "serve": "^6.2.0",
-    "uglifyjs-webpack-plugin": "^1.0.0-beta.3",
+    "serve": "^6.3.1",
+    "uglifyjs-webpack-plugin": "^1.0.1",
     "unfetch": "^3.0.0"
-  },
-  "devDependencies": {
-    "pageres": "^4.5.1"
   }
 }

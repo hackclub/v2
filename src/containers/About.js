@@ -79,7 +79,7 @@ export default () => (
         img="/team/victor.png"
         name="Victor Truong"
         role="Finance"
-        text="Victor is the leader of a chapter at Rosemead High School in Los Angeles, California. He aims to make Hack Club's finances as transparent as possible, so people know how every penny is spent."
+        text="Victor is the leader of a chapter at Rosemead High School in Los Angeles, California. He aims to make Hack Club's finances as transparent as possible, and believes the way to do so is to let people know how each and every penny is being spent."
       />
       <Flex justify="center" mt={3}>
         <Text

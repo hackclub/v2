@@ -8,7 +8,7 @@ import Footer from '../components/Footer'
 
 export default () => (
   <Provider theme={theme}>
-    <Head><title>404 – Hack Club</title></Head>
+    <Head><title>Hack Club</title></Head>
     <Nav />
     <Container maxWidth={48 * 16} px={3} py={6} align="center">
       <Heading color="primary" f={[5, 6]}>404!</Heading>

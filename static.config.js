@@ -27,7 +27,7 @@ export default {
     c.plugins.push(new Uglify())
     return c
   },
-  Html: class CustomHtml extends Component {
+  Document: class CustomHtml extends Component {
     render() {
       const { Html, Head, Body, children } = this.props
 

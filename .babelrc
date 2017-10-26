@@ -1,4 +1,3 @@
 {
-  "extends": "react-static/.babelrc",
-  "presets": ["env"]
+  "extends": "react-static/.babelrc"
 }

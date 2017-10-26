@@ -13,7 +13,6 @@
   "author": "Lachlan Campbell",
   "dependencies": {
     "axios": "^0.17.0",
-    "babel-preset-env": "^1.6.1",
     "dot-prop": "^4.2.0",
     "palx": "^1.0.2",
     "react": "^16.0.0",

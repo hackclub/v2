@@ -40,7 +40,7 @@ const Base = Container.extend.attrs({ maxWidth: 48 * 16 })`
 export default () => (
   <Base>
     <Flex align="center" justify="center" bg="primary">
-      <Heading color="white" f={6}>We‘re creating a movement.</Heading>
+      <Heading color="white" f={6}>We’re creating a movement.</Heading>
     </Flex>
     <Box bg="accent">
       <Stat value={180} label="clubs" />

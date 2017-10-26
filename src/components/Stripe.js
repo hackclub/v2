@@ -68,7 +68,7 @@ export default () => (
         {' '} everywhere.
       </Headline>
       <Subheadline my={0}>
-        We‘re starting the {' '}
+        We’re starting the {' '}
         <mark>computer science education</mark>
         {' '} students need.
       </Subheadline>

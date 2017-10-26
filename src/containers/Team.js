@@ -44,7 +44,7 @@ const P = Text.extend.attrs({ f: 3, mb: 2 })`
 
 export default () => (
   <Provider theme={theme}>
-    <Head><title>About Hack Club</title></Head>
+    <Head><title>Team – Hack Club</title></Head>
     <Flag />
     <Base>
       <Headline>

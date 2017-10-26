@@ -14,8 +14,8 @@ export default {
       component: 'src/containers/Home'
     },
     {
-      path: '/about',
-      component: 'src/containers/About'
+      path: '/team',
+      component: 'src/containers/Team'
     },
     {
       is404: true,

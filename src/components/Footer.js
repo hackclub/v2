@@ -46,7 +46,7 @@ const Footer = () => (
             <Service href="mailto:team@hackclub.com" icon="mail_outline" />
           </Flex>
           <Text mt={2}>
-            <Text is={Link} to="/about" color="info">Meet our team</Text>
+            <Text is={Link} to="/team" color="info">Meet our team</Text>
           </Text>
         </RightCol>
       </Row>

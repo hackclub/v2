@@ -10,6 +10,7 @@ const Base = Box.extend`
   align-items: center;
 
   div {
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 4rem;

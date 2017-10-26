@@ -68,6 +68,9 @@ const Bubble = Avatar.extend`
   &:nth-child(17n) {
     margin-top: 3em;
   }
+  &:first-child {
+    margin-left: 4rem;
+  }
   ${mx[1]} {
     &:first-child {
       margin-left: 6rem;

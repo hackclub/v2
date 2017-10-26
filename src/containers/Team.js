@@ -11,12 +11,11 @@ import {
 } from 'rebass'
 import theme, { colors } from '../theme'
 import { Head, Link } from 'react-static'
-import Flag from '../components/Flag'
+import Nav from '../components/Nav'
 import Bio from '../components/Bio'
 import Footer from '../components/Footer'
 
 const Base = Container.extend.attrs({
-  mt: 5,
   py: 4,
   px: 3,
   maxWidth: 36 * 16
@@ -45,7 +44,7 @@ const P = Text.extend.attrs({ f: 3, mb: 2 })`
 export default () => (
   <Provider theme={theme}>
     <Head><title>Team – Hack Club</title></Head>
-    <Flag />
+    <Nav />
     <Base>
       <Headline>
         <Box f={4}>Hack Club</Box>

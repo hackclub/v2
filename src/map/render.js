@@ -64,7 +64,7 @@ axios
         console.error(result.error)
       } else {
         fs.writeFile(path, result.data, err => {
-          console.log(err || `✅ Saved map.svg`)
+          console.log(err || `✅ Saved ${path}`)
         })
       }
     })

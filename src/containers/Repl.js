@@ -141,7 +141,7 @@ export default () => (
       <Features headline={false} mb={4} />
     </Section>
     <Section>
-      <Subheadline>We’re creating a movement</Subheadline>
+      <Subheadline>Be part of a movement</Subheadline>
       <Text f={3} mt={1}>
         Hack Club is more than just you.
       </Text>

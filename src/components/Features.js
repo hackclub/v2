@@ -18,9 +18,9 @@ const Feat = Box.extend.attrs({ p: 3 })`
   border-radius: .5rem;
   p { line-height: 1.5; }
 `
-const Feature = ({ icon, name, desc, ...props }) => (
+const Feature = ({ icon, alt, name, desc, ...props }) => (
   <Feat {...props}>
-    <Icon name={icon} fill="white" size={48} mx="auto" />
+    <Icon name={icon} alt={alt} fill="white" size={48} mx="auto" />
     <Box mt={2}>
       <Subhead color="white" f={4} mb={1} children={name} />
       <Text f={3} color="white" children={desc} />
@@ -36,21 +36,24 @@ export default () => (
     <Feats>
       <Feature
         bg="success"
-        icon="line_weight"
+        icon="description"
+        alt="Documentation icon"
         name="Starter materials"
         desc="Start on the right foot with beginning curricula, leadership guidelines, and club suggestions."
       />
       <Feature
         bg="accent"
         icon="question_answer"
+        alt="Chat icon"
         name="A community that cares"
         desc="You and your club members will meet like-minded students from around the world in our Slack."
       />
       <Feature
         bg="primary"
         icon="live_help"
+        alt="Help icon"
         name="Coaching and assistance"
-        desc="You‘ll get regular mentorship through office hours and calls for help where it counts."
+        desc="You'll get regular mentorship through office hours and calls for help where it counts."
       />
     </Feats>
   </Base>

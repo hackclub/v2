@@ -102,7 +102,6 @@ const CTA = Box.extend.attrs({
   text-transform: uppercase;
   cursor: pointer;
 `
-const CTA2 = CTA.extend.attrs({ f: 3 })`opacity: 0.8;`
 
 export default () => (
   <Provider theme={theme}>
@@ -126,15 +125,10 @@ export default () => (
       </Absolute>
       <Tagline>You know the power of coding</Tagline>
       <Headline>Start a Hack Club.</Headline>
-      <Lead mt={[3, 4]}>
+      <Lead mt={[3, 4]} mb={[4, 5]}>
         Hack Club is a global network of high school coding clubs.
       </Lead>
-      <Flex align="center" mx={-2} mt={[4, 5]}>
-        <CTA2 is={Link} to="/">
-          Learn More
-        </CTA2>
-        <CTA href="/apply">Get started »</CTA>
-      </Flex>
+      <CTA href="/apply">Get started »</CTA>
     </Header>
     <Section>
       <Subheadline>Everything you’ll need</Subheadline>

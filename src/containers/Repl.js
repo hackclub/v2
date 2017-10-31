@@ -22,8 +22,10 @@ const css = `
   #root > div, #features *, #stats span {
     color: ${colors.green[6]} !important;
     font-family: ${theme.monospace} !important;
-    text-shadow: 0 1px 3px ${colors.green[4]};
     letter-spacing: -.02em;
+  }
+  p, a, #stats span {
+    text-shadow: 0 1px 2px ${colors.green[4]};
   }
   #features > div > div {
     background-color: #000;
@@ -38,7 +40,10 @@ const css = `
     padding-left: .5rem;
     padding-right: .5rem;
   }
-  #stats p { color: ${colors.green[8]}; }
+  #stats p {
+    color: ${colors.green[8]};
+    text-shadow: none;
+  }
   #stats span { font-weight: 400; }
 `
 
@@ -153,6 +158,6 @@ export default () => (
         <CTA href="/apply">Join the movement »</CTA>
       </Box>
     </Section>
-    <Footer>&copy; Hack Club</Footer>
+    <Footer><Text>&copy; Hack Club</Text></Footer>
   </Provider>
 )

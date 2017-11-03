@@ -43,7 +43,7 @@ export default {
       component: 'src/containers/404'
     }
   ],
-  webpack: (c, { dev }) => {
+  webpack: c => {
     c.plugins = c.plugins.filter(p => p.constructor.name !== 'UglifyJsPlugin')
     c.plugins.push(new Uglify())
     return c

@@ -80,6 +80,12 @@ export default () => (
         role="Finance"
         text="Victor is a club leader at Rosemead High School in Los Angeles, CA. He aims to make Hack Club’s finances as transparent as possible, and believes the way to do so is to let people know how each and every penny is being spent."
       />
+      <Bio
+        img="/team/athul.jpg"
+        name="Athul Blesson"
+        role="Indian Region"
+        text="Athul leads some of our largest clubs in India. After graduating from high school, he joined as our Regional Manager in India. He is passionate about bringing more students into the world of coding."
+      />
       <Flex justify="center" mt={3}>
         <Text
           is={Link}

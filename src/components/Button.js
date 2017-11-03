@@ -4,7 +4,7 @@ import theme, { cx } from '../theme'
 
 const Button = Box.extend.attrs({
   is: 'a',
-  f: 4,
+  f: [3, 4],
   m: 0,
   pl: 3,
   pr: 3,

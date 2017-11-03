@@ -1,2 +1,5 @@
 User-agent: *
+Disallow: /slack_invite
+Disallow: /apply
 Disallow: /signup/replit
+Sitemap: https://hackclub.com/sitemap.xml

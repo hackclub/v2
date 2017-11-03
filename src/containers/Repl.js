@@ -19,6 +19,11 @@ import Stat from '../components/Stat'
 
 const css = `
   body { background-color: #000; }
+  *::selection {
+    color: #000;
+    background: ${colors.green[6]};
+    text-shadow: none;
+  }
   #root > div, #features *, #stats span {
     color: ${colors.green[6]} !important;
     font-family: ${theme.monospace} !important;

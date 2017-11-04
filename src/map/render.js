@@ -25,6 +25,7 @@ const css = `.rsm-svg{width:100vw;height:100vh;object-fit:cover}
 circle{fill:${pin};stroke-width:0;opacity:.667}`
 
 const API = 'https://api.hackclub.com/v1/clubs'
+const GEO = 'https://unpkg.com/world-atlas@1.1.4/world/50m.json'
 const locations = []
 axios
   .get(API)
@@ -36,21 +37,18 @@ axios
     })
     return locations
   })
-  .then(data => {
-    fs.writeFile('./locations.json', JSON.stringify(locations), err => {
-      console.log(err || `✅ Saved ${locations.length} locations`)
-    })
+  .then(locations => {
+    return axios
+      .get(GEO)
+      .then(res => res.data)
+      .then(
+        paths =>
+          feature(paths, paths.objects[first(keys(paths.objects))]).features
+      )
+      .then(paths => ({ paths, locations }))
   })
-
-const GEO = 'https://unpkg.com/world-atlas@1.1.4/world/50m.json'
-axios
-  .get(GEO)
-  .then(res => res.data)
-  .then(
-    paths => feature(paths, paths.objects[first(keys(paths.objects))]).features
-  )
-  .then(paths => {
-    const body = renderToStaticMarkup(h(Map, { paths }))
+  .then(props => {
+    const body = renderToStaticMarkup(h(Map, props))
     const $ = cheerio.load(body)
     $('svg').attr('xmlns', 'http://www.w3.org/2000/svg')
     $('.rsm-zoomable-group').removeAttr('transform')

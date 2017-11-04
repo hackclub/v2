@@ -7,9 +7,8 @@ const {
   Markers,
   Marker
 } = require('react-simple-maps')
-const locations = require('./locations')
 
-const Map = ({ paths, ...props }) => (
+const Map = ({ paths, locations, ...props }) => (
   <ComposableMap width={768} {...props}>
     <ZoomableGroup disablePanning>
       <Geographies geographyPaths={paths}>

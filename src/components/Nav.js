@@ -30,7 +30,7 @@ const Item = Box.extend.attrs({ mx: 3, color: 'slate' })`
 export default props => (
   <Base {...props}>
     <Link to="/">
-      <Logo src="/logo-nav.png" />
+      <Logo src="/logo-nav.png" alt="Hack Club logo" />
     </Link>
     <Nav>
       <Item is="a" href="/workshops" children="Workshops" />

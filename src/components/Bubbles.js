@@ -3,7 +3,7 @@ import { Avatar, Flex, Box, Heading, Lead } from 'rebass'
 import CTA from './CTA'
 import { Link } from 'react-static'
 import { shuffle, range, sample } from 'lodash'
-import { mx } from '../theme'
+import { mx, mm } from '../theme'
 
 const Root = Flex.extend.attrs({
   justify: 'center',
@@ -76,11 +76,16 @@ const Bubble = Avatar.extend`
       margin-left: 6rem;
     }
   }
+  ${mm[1]} {
+    max-width: 72px;
+    max-height: 72px;
+    margin: 0.25em;
+  }
 `
 
 const Title = Heading.extend.attrs({
   is: 'h1',
-  f: [6, 7],
+  f: [5, 6, 7],
   my: 0,
   color: 'primary'
 })`line-height: 1.1;`

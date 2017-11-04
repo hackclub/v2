@@ -59,14 +59,14 @@ export default () => (
       <Bio
         img="/team/max.jpg"
         name="Max Wofford"
-        role="Software Engineer"
-        text="Tapping into the hacking community, Max has found a common purpose with the founders of Hack Club and his passion for amplifying people’s ideas. He loves helping students scale their ideas into even more awesome products."
+        role="Operations"
+        text="Tapping into the hacking community, Max has found a common goal with Hack Club and his passion for amplifying people’s ideas. He loves helping students scale their ideas into even more awesome products."
       />
       <Bio
         img="/team/lachlan.jpg"
         name="Lachlan Campbell"
         role="Web Designer"
-        text="Lachlan, a club leader from State College, PA, joined the team to work on Hack Club’s website. They care about making tools to make information more accessible."
+        text="Lachlan, a club leader from State College, PA, joined the team to work on Hack Club’s website. They care about bringing coding to more people and making tools to make information more accessible."
       />
       <Bio
         img="/team/mingjie.jpg"
@@ -78,7 +78,13 @@ export default () => (
         img="/team/victor.png"
         name="Victor Truong"
         role="Finance"
-        text="Victor is a club leader at Rosemead High School in Los Angeles, CA. He aims to make Hack Club’s finances as transparent as possible, and believes the way to do so is to let people know how each and every penny is being spent."
+        text="Victor is a club leader at Rosemead High School in Los Angeles, CA. He aims to make Hack Club’s finances as transparent as possible by letting people know how each and every penny is being spent."
+      />
+      <Bio
+        img="/team/athul.jpg"
+        name="Athul Blesson"
+        role="Indian Region"
+        text="Athul leads some of our largest clubs in India. After graduating from high school, he joined as our Regional Manager in India. He is passionate about bringing more students into the world of coding."
       />
       <Flex justify="center" mt={3}>
         <Text

@@ -59,7 +59,7 @@ export default () => (
       <Bio
         img="/team/max.jpg"
         name="Max Wofford"
-        role="Software Engineer"
+        role="Operations"
         text="Tapping into the hacking community, Max has found a common goal with Hack Club and his passion for amplifying people’s ideas. He loves helping students scale their ideas into even more awesome products."
       />
       <Bio

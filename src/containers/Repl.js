@@ -21,7 +21,7 @@ const css = `
   body { background-color: #000; }
   *::selection {
     color: #fff;
-    background: ${colors.green[6]};
+    background-color: ${colors.green[6]};
   }
   #root > div, #features *, #stats span {
     color: ${colors.green[6]} !important;

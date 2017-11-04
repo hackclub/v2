@@ -16,6 +16,7 @@ const Feats = Box.extend`
 `
 const Feat = Box.extend.attrs({ p: 3 })`
   border-radius: .5rem;
+  text-align: left;
   p { line-height: 1.5; }
 `
 const Feature = ({ icon, alt, name, desc, ...props }) => (
@@ -28,18 +29,24 @@ const Feature = ({ icon, alt, name, desc, ...props }) => (
   </Feat>
 )
 
-export default () => (
-  <Base>
-    <Heading color="primary" f={[5, 6]} align="center" mb={4}>
-      Start a club with all our resources.
-    </Heading>
+export default ({ headline = true, ...props }) => (
+  <Base id="features" {...props}>
+    {headline && (
+      <Heading
+        color="primary"
+        f={[5, 6]}
+        align="center"
+        mb={4}
+        children="Start a club with all our resources."
+      />
+    )}
     <Feats>
       <Feature
         bg="success"
         icon="description"
         alt="Documentation icon"
         name="Starter materials"
-        desc="Start on the right foot with beginning curricula, leadership guidelines, and club suggestions."
+        desc="Get going faster with curricula, leadership guidelines, and club suggestions."
       />
       <Feature
         bg="accent"

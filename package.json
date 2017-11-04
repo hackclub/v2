@@ -8,7 +8,7 @@
     "start": "serve dist -p 3000",
     "postinstall": "npm run build",
     "social": "repng src/components/Social.js -w 512 -h 512 -o public -f social",
-    "map-data": "node src/map/data.js"
+    "map-render": "node src/map/render.js"
   },
   "author": "Lachlan Campbell",
   "dependencies": {
@@ -22,7 +22,11 @@
     "react-static": "4.x.x",
     "rebass": "^1.0.4",
     "serve": "^6.4.0",
-    "uglifyjs-webpack-plugin": "^1.0.1",
-    "unfetch": "^3.0.0"
+    "uglifyjs-webpack-plugin": "^1.0.1"
+  },
+  "devDependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "minimist": "^1.2.0",
+    "svgo": "^0.7.2"
   }
 }

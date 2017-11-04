@@ -39,6 +39,10 @@ export default {
       component: 'src/containers/Team'
     },
     {
+      path: '/signup/replit',
+      component: 'src/containers/Repl'
+    },
+    {
       is404: true,
       component: 'src/containers/404'
     }

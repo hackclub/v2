@@ -14,6 +14,7 @@
   "dependencies": {
     "axios": "^0.17.0",
     "dot-prop": "^4.2.0",
+    "formik": "^0.10.0",
     "palx": "^1.0.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

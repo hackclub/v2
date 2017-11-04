@@ -39,6 +39,10 @@ export default {
       component: 'src/containers/Team'
     },
     {
+      path: '/signup',
+      component: 'src/containers/Signup'
+    },
+    {
       path: '/signup/replit',
       component: 'src/containers/Repl'
     },

@@ -23,7 +23,8 @@
     "react-static": "4.x.x",
     "rebass": "^1.0.4",
     "serve": "^6.4.1",
-    "uglifyjs-webpack-plugin": "^1.0.1"
+    "uglifyjs-webpack-plugin": "^1.0.1",
+    "yup": "^0.23.0"
   },
   "devDependencies": {
     "cheerio": "^1.0.0-rc.2",

@@ -1,8 +1,6 @@
 import React from 'react'
-import { Box, Text } from 'rebass'
+import { Box, Flex, Text } from 'rebass'
 import theme, { colors } from '../theme'
-import styled from 'styled-components'
-import { form, control, button } from 'react-validation'
 import Button from './Button'
 
 const chevron = () => {
@@ -11,7 +9,7 @@ const chevron = () => {
   const pathProps = `fill='%23${slate}' d='M2 0L0 2h4zm0 5L0 3h4z'`
   return `%3Csvg ${props}%3E%3Cpath ${pathProps}/%3E%3C/svg%3E`
 }
-const Input = Box.extend.attrs({
+export const Input = Box.extend.attrs({
   is: 'input',
   type: 'text',
   f: 'inherit',
@@ -44,49 +42,39 @@ const Input = Box.extend.attrs({
   }
 }))
 
-const Label = Box.extend.attrs({ is: 'label', f: 2, w: 1 })``
+export const Label = Box.extend.attrs({ is: 'label', f: 2, w: 1 })`
+  line-height: 1.5;
+`
 
-const Error = Text.extend.attrs({ color: 'error', mt: 1 })``
-const Field = ({
+export const Error = Text.extend.attrs({ color: 'error', f: 1, ml: 1 })`
+  text-transform: lowercase;
+  &:before { content: '— '; }
+`
+export const Field = ({
   type = 'text',
   name = 'name',
   label,
   p,
   children,
   error,
-  isChanged,
-  isUsed,
   ...props
 }) => (
-  <Label className={type} {...props}>
-    {label}
+  <Label className={type}>
+    <Flex align="center" mb=".125rem" wrap>
+      {label}
+      {error && <Error children={error} />}
+    </Flex>
     <Input
       name={name}
       type={type}
       is={['textarea', 'select'].indexOf(type) === -1 ? 'input' : type}
       placeholder={p}
       children={children}
+      {...props}
     />
-    {isChanged && isUsed && <Error children={error} />}
   </Label>
 )
 
-export const Form = ({
-  getValues,
-  validate,
-  validateAll,
-  showError,
-  hideError,
-  children,
-  ...props
-}) => (
-  <Box is="form" {...props}>
-    {children}
-  </Box>
 export const Submit = props => (
   <Button is="input" type="submit" bg="primary" color="white" {...props} />
 )
-
-)
-
-export default Field

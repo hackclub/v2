@@ -83,10 +83,10 @@ export const Form = ({
   <Box is="form" {...props}>
     {children}
   </Box>
+export const Submit = props => (
+  <Button is="input" type="submit" bg="primary" color="white" {...props} />
 )
 
-export const Submit = ({ hasErrors, ...props }) => (
-  <Button is="input" type="submit" f={2} {...props} disabled={hasErrors} />
 )
 
 export default Field

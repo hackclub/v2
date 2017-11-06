@@ -16,6 +16,7 @@ import theme, { colors, mx } from '../theme'
 import { Head } from 'react-static'
 import { withFormik } from 'formik'
 import yup from 'yup'
+import axios from 'axios'
 import Nav from '../components/Nav'
 import { Field, Submit } from '../components/Forms'
 import Footer from '../components/Footer'
@@ -40,7 +41,6 @@ const Base = Container.extend.attrs({
   ${mx[1]} {
     grid-template-columns: repeat(2, 1fr);
     h2, .textarea { grid-column: 1 / -1; }
-    input[type=submit] { max-width: 8rem; }
   }
 `
 
@@ -84,6 +84,13 @@ const next12Months = () => {
   return months
 }
 
+const statusMessage = status =>
+  status
+    ? {
+        success: 'Submitted—you’re all set! 🎈',
+        error: 'Something went wrong 😰'
+      }[status]
+    : 'Submit application 📝'
 const InnerForm = ({
   values,
   errors,
@@ -91,7 +98,8 @@ const InnerForm = ({
   handleChange,
   handleBlur,
   handleSubmit,
-  isSubmitting
+  isSubmitting,
+  status
 }) => (
   <Base onSubmit={handleSubmit}>
     <Subheading>About you</Subheading>
@@ -235,7 +243,11 @@ const InnerForm = ({
       onBlur={handleBlur}
       error={touched.steps_taken && errors.steps_taken}
     />
-    <Submit disabled={isSubmitting} onClick={handleSubmit} />
+    <Submit
+      disabled={isSubmitting}
+      onClick={handleSubmit}
+      value={statusMessage(status)}
+    />
   </Base>
 )
 
@@ -253,9 +265,20 @@ const ApplicationForm = withFormik({
     systems_hacked: yup.string().required(r),
     steps_taken: yup.string().required(r)
   }),
-  handleSubmit: (payload, { setSubmitting }) => {
-    console.log(payload)
-    setSubmitting(false)
+  handleSubmit: (data, { setSubmitting, setStatus }) => {
+    console.log(data)
+    axios
+      .post('https://hackclub.com/v1/club_applications', data)
+      .then(res => {
+        console.log(res)
+        setSubmitting(false)
+        setStatus('success')
+      })
+      .catch(e => {
+        console.error(e)
+        setSubmitting(false)
+        setStatus('error')
+      })
   },
   displayName: 'ApplicationForm'
 })(InnerForm)

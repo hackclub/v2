@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
   Provider,
   Banner,
@@ -112,11 +112,24 @@ const CTA = Box.extend.attrs({
   cursor: pointer;
 `
 
-export default () => (
+class ReplAnalytics extends Component {
+  componentDidMount() {
+    if (this.props.userId) {
+      window.analytics.identify(this.props.userId)
+    }
+  }
+
+  render() {
+    return ''
+  }
+}
+
+export default props => (
   <Provider theme={theme}>
     <Head>
       <title>Repl.it – Hack Club</title>
     </Head>
+    <ReplAnalytics userId={props.match.params.userId} />
     <style children={css} />
     <Header>
       <Absolute p={3} top left>

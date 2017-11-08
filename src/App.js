@@ -4,7 +4,7 @@ import { Router, Route, Switch } from 'react-static'
 import Home from 'containers/Home'
 import Team from 'containers/Team'
 import Repl from 'containers/Repl'
-import NotFound from 'containers/404'
+import NotFound from 'containers/NotFound'
 
 export default () => (
   <Router>

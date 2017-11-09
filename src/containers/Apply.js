@@ -252,7 +252,6 @@ const InnerForm = ({
     />
   </Base>
 )
-
 const r = 'required'
 const ApplicationForm = withFormik({
   mapPropsToValues: ({ params }) => ({ ...params }),
@@ -284,13 +283,12 @@ const ApplicationForm = withFormik({
   },
   displayName: 'ApplicationForm'
 })(InnerForm)
-
 const systems_hacked =
   'https://www.quora.com/When-have-you-most-successfully-hacked-a-non-computer-system-to-your-advantage'
 export default () => (
   <Provider theme={theme}>
     <Head>
-      <title>Sign up – Hack Club</title>
+      <title>Apply – Hack Club</title>
     </Head>
     <Header>
       <Nav />

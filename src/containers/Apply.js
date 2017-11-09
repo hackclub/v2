@@ -167,12 +167,12 @@ const InnerForm = ({
     />
     <Field
       label="When do you graduate?"
-      name="graduate"
+      name="graduate_year"
       type="select"
-      value={values.graduate}
+      value={values.graduate_year}
       onChange={handleChange}
       onBlur={handleBlur}
-      error={touched.graduate && errors.graduate}
+      error={touched.graduate_year && errors.graduate_year}
     >
       <option value="9010">Other</option>
       <option value="9001">2022</option>
@@ -188,12 +188,12 @@ const InnerForm = ({
     <Subheading>Your club</Subheading>
     <Field
       label="When do you want to start?"
-      name="start"
+      name="start_date"
       type="select"
-      value={values.start}
+      value={values.start_date}
       onChange={handleChange}
       onBlur={handleBlur}
-      error={touched.start && errors.start}
+      error={touched.start_date && errors.start_date}
     >
       {months.map(({ iso, label }, i) => (
         <option value={iso} key={`start-${i}`} children={label} />

@@ -28,8 +28,18 @@ const css = `
     font-family: ${theme.monospace} !important;
     letter-spacing: -.02em;
   }
-  p, a, #stats span {
-    text-shadow: 0 1px 2px ${colors.green[4]};
+  h1, h2, a:hover, #stats span {
+    text-shadow: 0 0 2px ${colors.green[4]};
+  }
+  h3 {
+    text-shadow: 0 0 1px ${colors.green[4]};
+  }
+  a:hover {
+    box-shadow: inset 0 0 4px ${colors.green[4]};
+  }
+  a {
+    transition: text-shadow box-shadow;
+    transition-duration: 0.5s;
   }
   #features > div > div {
     background-color: #000;

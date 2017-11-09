@@ -99,7 +99,8 @@ const InnerForm = ({
   handleBlur,
   handleSubmit,
   isSubmitting,
-  status
+  status,
+  months
 }) => (
   <Base onSubmit={handleSubmit}>
     <Subheading>About you</Subheading>
@@ -189,14 +190,15 @@ const InnerForm = ({
       label="When do you want to start?"
       name="start"
       type="select"
-      children={next12Months().map(({ iso, label }) => (
-        <option value={iso} key={iso} children={label} />
-      ))}
       value={values.start}
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.start && errors.start}
-    />
+    >
+      {months.map(({ iso, label }, i) => (
+        <option value={iso} key={`start-${i}`} children={label} />
+      ))}
+    </Field>
     <Field
       label="How did you hear about us?"
       name="referer"
@@ -296,7 +298,7 @@ export default () => (
         Submit your application
       </Heading>
     </Header>
-    <ApplicationForm />
+    <ApplicationForm months={next12Months()} />
     <Footer />
   </Provider>
 )

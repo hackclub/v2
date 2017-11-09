@@ -150,7 +150,7 @@ export default props => (
       <Lead mt={[3, 4]} mb={[4, 5]}>
         Hack Club is a global network of high school coding clubs.
       </Lead>
-      <CTA href="/apply">Get started »</CTA>
+      <CTA href="/apply/replit">Get started »</CTA>
     </Header>
     <Section>
       <Subheadline>Everything you’ll need</Subheadline>
@@ -172,7 +172,7 @@ export default props => (
         </Flex>
       </Flex>
       <Box my={5}>
-        <CTA href="/apply">Join the movement »</CTA>
+        <CTA href="/apply/replit">Join the movement »</CTA>
       </Box>
     </Section>
     <Footer><Text>&copy; Hack Club</Text></Footer>

@@ -20,6 +20,7 @@ export const brand = {
   success: palette.teal[5],
   info: palette.blue[5],
   danger: palette.red[5],
+  error: palette.red[7],
   muted: grays.silver
 }
 

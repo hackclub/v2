@@ -14,6 +14,7 @@
   "dependencies": {
     "axios": "^0.17.0",
     "dot-prop": "^4.2.0",
+    "formik": "^0.10.0",
     "palx": "^1.0.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -22,7 +23,9 @@
     "react-static": "4.x.x",
     "rebass": "^1.0.4",
     "serve": "^6.4.1",
-    "uglifyjs-webpack-plugin": "^1.0.1"
+    "uglifyjs-webpack-plugin": "^1.0.1",
+    "unfetch": "^3.0.0",
+    "yup": "^0.23.0"
   },
   "devDependencies": {
     "cheerio": "^1.0.0-rc.2",

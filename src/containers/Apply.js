@@ -87,7 +87,7 @@ const next12Months = () => {
 const statusMessage = status =>
   status
     ? {
-        success: 'Submitted—you’re all set! 🎈',
+        success: 'Submitted! 🎉',
         error: 'Something went wrong 😰'
       }[status]
     : 'Submit application 📝'

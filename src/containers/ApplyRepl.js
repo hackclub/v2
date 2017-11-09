@@ -84,7 +84,7 @@ export default () => (
       <Nav />
       <Heading is="h1" f={[5, 6]} mt={4}>Apply to Hack Club</Heading>
     </Header>
-    <ApplicationForm />
+    <ApplicationForm params={{referer: "repl.it", start_date: (new Date().toISOString())}}  />
     <Footer />
   </Provider>
 )

@@ -46,7 +46,12 @@ export const Label = Box.extend.attrs({ is: 'label', f: 2, w: 1 })`
   line-height: 1.5;
 `
 
-export const Error = Text.extend.attrs({ color: 'error', f: 1, ml: 1 })`
+export const Error = Text.extend.attrs({
+  className: 'error',
+  color: 'error',
+  f: 1,
+  ml: 1
+})`
   text-transform: lowercase;
   &:before { content: '— '; }
 `
@@ -59,7 +64,7 @@ export const Field = ({
   error,
   ...props
 }) => (
-  <Label className={type}>
+  <Label className={type} id={name}>
     <Flex align="center" mb=".125rem" wrap>
       {label}
       {error && <Error children={error} />}

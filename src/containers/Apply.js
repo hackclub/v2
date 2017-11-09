@@ -195,6 +195,7 @@ const InnerForm = ({
       onBlur={handleBlur}
       error={touched.start_date && errors.start_date}
     >
+      <option selected disabled>Select one</option>
       {months.map(({ iso, label }, i) => (
         <option value={iso} key={`start-${i}`} children={label} />
       ))}
@@ -260,7 +261,8 @@ const ApplicationForm = withFormik({
     last_name: yup.string().required(r),
     email: yup.string().email('invalid email address').required(r),
     high_school: yup.string().required(r),
-    graduate: yup.string().required(r),
+    graduate_year: yup.string().required(r),
+    start_date: yup.string().required(r),
     referer: yup.string().required(r),
     interesting_project: yup.string().required(r),
     systems_hacked: yup.string().required(r),

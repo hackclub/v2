@@ -5,7 +5,7 @@ import Home from 'containers/Home'
 import Team from 'containers/Team'
 import Apply from 'containers/Apply'
 import ApplyRepl from 'containers/ApplyRepl'
-import Repl from 'containers/Repl'
+import StartRepl from 'containers/StartRepl'
 import NotFound from 'containers/NotFound'
 
 export default () => (
@@ -15,7 +15,7 @@ export default () => (
       <Route path="/team" component={Team} />
       <Route path="/apply/replit" component={ApplyRepl} />
       <Route path="/apply" component={Apply} />
-      <Route path="/signup/replit/:userId" component={Repl} />
+      <Route path="/start/replit/:userId" component={StartRepl} />
       <Route component={NotFound} />
     </Switch>
   </Router>

@@ -29,13 +29,18 @@ const css = `
     font-family: ${theme.monospace} !important;
     letter-spacing: -.02em;
   }
+  h1 {
+    text-shadow: 0 0 2px ${colors.green[4]};
+  }
   p, a, h2, label {
     color: ${colors.green[6]} !important;
-    text-shadow: 0 1px 2px ${colors.green[4]};
   }
   input, select, textarea {
     border-radius: 0 !important;
     text-shadow: 0 !important;
+  }
+  select option {
+    background-color: #000 !important;
   }
   input:not([type=submit]), select, textarea {
     background-color: transparent !important;
@@ -49,7 +54,7 @@ const css = `
   .error {
     color: ${colors.error} !important;
     margin-left: .5rem !important;
-    text-shadow: none !important;
+    text-shadow: 0 0 1px ${colors.error} !important;
   }
   input[type=submit] {
     background-color: transparent;

@@ -51,7 +51,6 @@ const css = `
     margin-left: .5rem !important;
     text-shadow: none !important;
   }
-  label#referer { display: none !important; }
   input[type=submit] {
     background-color: transparent;
     border: 2px solid ${colors.green[6]};

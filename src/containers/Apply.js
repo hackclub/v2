@@ -16,7 +16,7 @@ import theme, { colors, mx } from '../theme'
 import { Head } from 'react-static'
 import { withFormik } from 'formik'
 import yup from 'yup'
-import axios from 'axios'
+import fetch from 'unfetch'
 import Nav from '../components/Nav'
 import { Field, Submit } from '../components/Forms'
 import Footer from '../components/Footer'
@@ -268,8 +268,11 @@ const ApplicationForm = withFormik({
   }),
   handleSubmit: (data, { setSubmitting, setStatus }) => {
     console.log(data)
-    axios
-      .post('https://hackclub.com/v1/club_applications', data)
+    fetch('https://hackclub.com/v1/club_applications', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
       .then(res => {
         console.log(res)
         setSubmitting(false)

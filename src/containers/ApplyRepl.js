@@ -105,8 +105,8 @@ class ApplyRepl extends Component {
       <Provider theme={theme}>
         <Head>
           <title>Apply – Hack Club</title>
-          <style children={css} />
         </Head>
+        <style children={css} />
         <Header>
           <Nav />
           <Heading is="h1" f={[5, 6]} mt={4}>Apply to Hack Club</Heading>

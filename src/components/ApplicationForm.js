@@ -145,12 +145,12 @@ const InnerForm = ({
     />
     <Field
       label="When do you graduate?"
-      name="graduate_year"
+      name="year"
       type="select"
-      value={values.graduate_year}
+      value={values.year}
       onChange={handleChange}
       onBlur={handleBlur}
-      error={touched.graduate_year && errors.graduate_year}
+      error={touched.year && errors.year}
     >
       <option value="9010">Other</option>
       <option value="9001">2022</option>
@@ -241,7 +241,7 @@ const ApplicationForm = withFormik({
     last_name: yup.string().required(r),
     email: yup.string().email('invalid email address').required(r),
     high_school: yup.string().required(r),
-    graduate_year: yup.string().required(r),
+    year: yup.string().required(r),
     start_date: yup.string().required(r),
     referrer: yup.string().required(r),
     interesting_project: yup.string().required(r),

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
   Provider,
   Banner,
@@ -79,23 +79,43 @@ const Header = Box.extend.attrs({
   p: 3
 })`text-align: center;`
 
-const referrer = () => {
-  const id = window.analytics.user()._getId()
+class ApplyRepl extends Component {
+  constructor(props)  {
+    super(props)
 
-  return (id ? `repl.it (user '${id}')` : 'repl.it (no user id)')
+    this.state = {
+      referrer: 'Loading...'
+    }
+  }
+
+  componentDidMount() {
+    if (!window) {return}
+
+    const id = window.analytics.user()._getId()
+
+    this.setState({
+      referrer: (id ? `repl.it (user '${id}')` : 'repl.it (no user id)')
+    })
+  }
+
+  render () {
+    const { referrer } = this.state
+
+    return (
+      <Provider theme={theme}>
+        <Head>
+          <title>Apply – Hack Club</title>
+          <style children={css} />
+        </Head>
+        <Header>
+          <Nav />
+          <Heading is="h1" f={[5, 6]} mt={4}>Apply to Hack Club</Heading>
+        </Header>
+        <ApplicationForm params={{referrer: referrer, start_date: (new Date().toISOString())}}  />
+        <Footer />
+      </Provider>
+    )
+  }
 }
 
-export default () => (
-  <Provider theme={theme}>
-    <Head>
-      <title>Apply – Hack Club</title>
-      <style children={css} />
-    </Head>
-    <Header>
-      <Nav />
-      <Heading is="h1" f={[5, 6]} mt={4}>Apply to Hack Club</Heading>
-    </Header>
-    <ApplicationForm params={{referrer: referrer(), start_date: (new Date().toISOString())}}  />
-    <Footer />
-  </Provider>
-)
+export default ApplyRepl

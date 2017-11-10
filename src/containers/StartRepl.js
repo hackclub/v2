@@ -185,7 +185,7 @@ class StartRepl extends Component {
           <Lead mt={[3, 4]} mb={[4, 5]}>
             Hack Club is a global network of high school coding clubs.
           </Lead>
-          <CTA href={`/apply/replit${paramString}`}>Get started »</CTA>
+          <CTA href={`/replit/apply${paramString}`}>Get started »</CTA>
         </Header>
         <Section>
           <Subheadline>Everything you’ll need</Subheadline>
@@ -207,7 +207,7 @@ class StartRepl extends Component {
             </Flex>
           </Flex>
           <Box my={5}>
-            <CTA href={`/apply/replit${paramString}`}>Join the movement »</CTA>
+            <CTA href={`/replit/apply${paramString}`}>Join the movement »</CTA>
           </Box>
         </Section>
         <Footer><Text>&copy; Hack Club</Text></Footer>

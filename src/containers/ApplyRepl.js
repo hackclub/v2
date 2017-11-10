@@ -84,7 +84,7 @@ class ApplyRepl extends Component {
     super(props)
 
     this.state = {
-      referrer: 'Loading...'
+      referer: 'Loading...'
     }
   }
 
@@ -94,12 +94,12 @@ class ApplyRepl extends Component {
     const id = window.analytics.user()._getId()
 
     this.setState({
-      referrer: (id ? `repl.it (user '${id}')` : 'repl.it (no user id)')
+      referer: (id ? `repl.it (user '${id}')` : 'repl.it (no user id)')
     })
   }
 
   render () {
-    const { referrer } = this.state
+    const { referer } = this.state
 
     return (
       <Provider theme={theme}>
@@ -111,7 +111,7 @@ class ApplyRepl extends Component {
           <Nav />
           <Heading is="h1" f={[5, 6]} mt={4}>Apply to Hack Club</Heading>
         </Header>
-        <ApplicationForm params={{referrer: referrer, start_date: (new Date().toISOString())}}  />
+        <ApplicationForm params={{referer: referer, start_date: (new Date().toISOString())}}  />
         <Footer />
       </Provider>
     )

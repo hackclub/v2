@@ -145,12 +145,12 @@ const InnerForm = ({
     />
     <Field
       label="When do you graduate?"
-      name="graduate_year"
+      name="year"
       type="select"
-      value={values.graduate_year}
+      value={values.year}
       onChange={handleChange}
       onBlur={handleBlur}
-      error={touched.graduate_year && errors.graduate_year}
+      error={touched.year && errors.year}
     >
       <option value="9010">Other</option>
       <option value="9001">2022</option>
@@ -181,12 +181,12 @@ const InnerForm = ({
     </Field>
     <Field
       label="How did you hear about us?"
-      name="referrer"
+      name="referer"
       type="text"
-      value={values.referrer}
+      value={values.referer}
       onChange={handleChange}
       onBlur={handleBlur}
-      error={touched.referrer && errors.referrer}
+      error={touched.referer && errors.referer}
       disabled
     />
     <Field
@@ -241,9 +241,9 @@ const ApplicationForm = withFormik({
     last_name: yup.string().required(r),
     email: yup.string().email('invalid email address').required(r),
     high_school: yup.string().required(r),
-    graduate_year: yup.string().required(r),
+    year: yup.string().required(r),
     start_date: yup.string().required(r),
-    referrer: yup.string().required(r),
+    referer: yup.string().required(r),
     interesting_project: yup.string().required(r),
     systems_hacked: yup.string().required(r),
     steps_taken: yup.string().required(r)
@@ -251,7 +251,7 @@ const ApplicationForm = withFormik({
   enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, setStatus }) => {
     console.log(data)
-    fetch('https://hackclub.com/v1/club_applications', {
+    fetch('https://api.hackclub.com/v1/club_applications', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)

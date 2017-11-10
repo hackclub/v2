@@ -123,7 +123,7 @@ const CTA = Box.extend.attrs({
 `
 
 class ReplAnalytics extends Component {
-  componentDidMount() {
+  componentDidUpdate() {
     const paramString = decodeURI(this.props.paramString)
     const paramArray = paramString.split(/\?|&/)
     paramArray.forEach(param => {

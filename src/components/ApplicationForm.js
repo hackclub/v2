@@ -248,6 +248,7 @@ const ApplicationForm = withFormik({
     systems_hacked: yup.string().required(r),
     steps_taken: yup.string().required(r)
   }),
+  enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, setStatus }) => {
     console.log(data)
     fetch('https://hackclub.com/v1/club_applications', {

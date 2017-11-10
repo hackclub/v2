@@ -29,6 +29,28 @@ export default {
   getSiteProps: () => ({
     name: 'Hack Club'
   }),
+  getRoutes: async () => [
+    {
+      path: '/',
+      component: 'src/containers/Home'
+    },
+    {
+      path: '/team',
+      component: 'src/containers/Team'
+    },
+    {
+      path: '/start/replit',
+      component: 'src/containers/StartRepl'
+    },
+    {
+      path: '/apply/replit',
+      component: 'src/containers/ApplyRepl'
+    },
+    {
+      is404: true,
+      component: 'src/containers/NotFound'
+    }
+  ],
   webpack: c => {
     c.plugins = c.plugins.filter(p => p.constructor.name !== 'UglifyJsPlugin')
     c.plugins.push(new Uglify())

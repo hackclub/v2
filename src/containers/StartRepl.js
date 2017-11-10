@@ -124,9 +124,14 @@ const CTA = Box.extend.attrs({
 
 class ReplAnalytics extends Component {
   componentDidMount() {
-    if (this.props.userId) {
-      window.analytics.identify(this.props.userId)
-    }
+    const paramString = decodeURI(this.props.paramString)
+    const paramArray = paramString.split(/\?|&/)
+    paramArray.forEach(param => {
+      let kv = param.split('=')
+      if (kv[0] == 'i') {
+        window.analytics.identify(kv[1])
+      }
+    })
   }
 
   render() {
@@ -134,57 +139,81 @@ class ReplAnalytics extends Component {
   }
 }
 
-export default props => (
-  <Provider theme={theme}>
-    <Head>
-      <title>Repl.it – Hack Club</title>
-    </Head>
-    <ReplAnalytics userId={props.match.params.userId} />
-    <style children={css} />
-    <Header>
-      <Absolute p={3} top left>
-        <Text
-          is={Link}
-          to="/"
-          caps
-          bold
-          f={3}
-          color="inherit"
-          style={{ textDecoration: 'none' }}
-        >
-          Hack Club
-        </Text>
-      </Absolute>
-      <Tagline>You know the power of coding</Tagline>
-      <Headline>Start a Hack Club.</Headline>
-      <Lead mt={[3, 4]} mb={[4, 5]}>
-        Hack Club is a global network of high school coding clubs.
-      </Lead>
-      <CTA href="/apply/replit">Get started »</CTA>
-    </Header>
-    <Section>
-      <Subheadline>Everything you’ll need</Subheadline>
-      <Features headline={false} mb={4} />
-    </Section>
-    <Section>
-      <Subheadline>Be part of a movement</Subheadline>
-      <Text f={3} mt={1}>
-        Hack Club is more than just you.
-      </Text>
-      <Flex justify="center" id="stats" my={4} wrap>
-        <Flex>
-          <Stat value={180} label="clubs" />
-          <Stat value={13} label="countries" />
-        </Flex>
-        <Flex>
-          <Stat value={25} label="states" />
-          <Stat value="2K+" label="members" />
-        </Flex>
-      </Flex>
-      <Box my={5}>
-        <CTA href="/apply/replit">Join the movement »</CTA>
-      </Box>
-    </Section>
-    <Footer><Text>&copy; Hack Club</Text></Footer>
-  </Provider>
-)
+class StartRepl extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      paramString: ''
+    }
+  }
+
+  componentDidMount() {
+    if (!window) {return}
+
+    this.setState({
+      paramString: window.location.search
+    })
+  }
+
+  render() {
+    const { paramString } = this.state
+
+    return (
+      <Provider theme={theme}>
+        <Head>
+          <title>Repl.it – Hack Club</title>
+        </Head>
+        <ReplAnalytics paramString={paramString} />
+        <style children={css} />
+        <Header>
+          <Absolute p={3} top left>
+            <Text
+              is={Link}
+              to="/"
+              caps
+              bold
+              f={3}
+              color="inherit"
+              style={{ textDecoration: 'none' }}
+            >
+              Hack Club
+            </Text>
+          </Absolute>
+          <Tagline>You know the power of coding</Tagline>
+          <Headline>Start a Hack Club.</Headline>
+          <Lead mt={[3, 4]} mb={[4, 5]}>
+            Hack Club is a global network of high school coding clubs.
+          </Lead>
+          <CTA href={`/apply/replit${paramString}`}>Get started »</CTA>
+        </Header>
+        <Section>
+          <Subheadline>Everything you’ll need</Subheadline>
+          <Features headline={false} mb={4} />
+        </Section>
+        <Section>
+          <Subheadline>Be part of a movement</Subheadline>
+          <Text f={3} mt={1}>
+            Hack Club is more than just you.
+          </Text>
+          <Flex justify="center" id="stats" my={4} wrap>
+            <Flex>
+              <Stat value={180} label="clubs" />
+              <Stat value={13} label="countries" />
+            </Flex>
+            <Flex>
+              <Stat value={25} label="states" />
+              <Stat value="2K+" label="members" />
+            </Flex>
+          </Flex>
+          <Box my={5}>
+            <CTA href={`/apply/replit${paramString}`}>Join the movement »</CTA>
+          </Box>
+        </Section>
+        <Footer><Text>&copy; Hack Club</Text></Footer>
+      </Provider>
+    )
+  }
+}
+
+export default StartRepl

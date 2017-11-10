@@ -39,11 +39,11 @@ export default {
       component: 'src/containers/Team'
     },
     {
-      path: '/start/replit',
+      path: '/replit/start',
       component: 'src/containers/StartRepl'
     },
     {
-      path: '/apply/replit',
+      path: '/replit/apply',
       component: 'src/containers/ApplyRepl'
     },
     {

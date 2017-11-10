@@ -181,12 +181,12 @@ const InnerForm = ({
     </Field>
     <Field
       label="How did you hear about us?"
-      name="referrer"
+      name="referer"
       type="text"
-      value={values.referrer}
+      value={values.referer}
       onChange={handleChange}
       onBlur={handleBlur}
-      error={touched.referrer && errors.referrer}
+      error={touched.referer && errors.referer}
       disabled
     />
     <Field
@@ -243,7 +243,7 @@ const ApplicationForm = withFormik({
     high_school: yup.string().required(r),
     year: yup.string().required(r),
     start_date: yup.string().required(r),
-    referrer: yup.string().required(r),
+    referer: yup.string().required(r),
     interesting_project: yup.string().required(r),
     systems_hacked: yup.string().required(r),
     steps_taken: yup.string().required(r)

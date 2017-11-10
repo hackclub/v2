@@ -251,7 +251,7 @@ const ApplicationForm = withFormik({
   enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, setStatus }) => {
     console.log(data)
-    fetch('https://hackclub.com/v1/club_applications', {
+    fetch('https://api.hackclub.com/v1/club_applications', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)

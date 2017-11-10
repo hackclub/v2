@@ -15,7 +15,7 @@ export default () => (
       <Route path="/team" component={Team} />
       <Route path="/apply/replit" component={ApplyRepl} />
       {/* <Route path="/apply" component={Apply} /> */}
-      <Route path="/start/replit/:userId" component={StartRepl} />
+      <Route path="/start/replit" component={StartRepl} />
       <Route component={NotFound} />
     </Switch>
   </Router>

@@ -79,6 +79,12 @@ const Header = Box.extend.attrs({
   p: 3
 })`text-align: center;`
 
+const referrer = () => {
+  const id = window.analytics.user()._getId()
+
+  return (id ? `repl.it (user '${id}')` : 'repl.it (no user id)')
+}
+
 export default () => (
   <Provider theme={theme}>
     <Head>
@@ -89,7 +95,7 @@ export default () => (
       <Nav />
       <Heading is="h1" f={[5, 6]} mt={4}>Apply to Hack Club</Heading>
     </Header>
-    <ApplicationForm params={{referrer: "repl.it", start_date: (new Date().toISOString())}}  />
+    <ApplicationForm params={{referrer: referrer(), start_date: (new Date().toISOString())}}  />
     <Footer />
   </Provider>
 )

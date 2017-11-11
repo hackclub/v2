@@ -249,7 +249,7 @@ const ApplicationForm = withFormik({
     steps_taken: yup.string().required(r)
   }),
   enableReinitialize: true,
-  handleSubmit: (data, { setSubmitting, setStatus }) => {
+  handleSubmit: (data, { setSubmitting, setStatus, resetForm }) => {
     console.log(data)
     fetch('https://api.hackclub.com/v1/club_applications', {
       method: 'POST',
@@ -258,7 +258,7 @@ const ApplicationForm = withFormik({
     })
       .then(res => {
         console.log(res)
-        setSubmitting(false)
+        resetForm()
         setStatus('success')
       })
       .catch(e => {

@@ -165,6 +165,10 @@ class StartRepl extends Component {
       <Provider theme={theme}>
         <Head>
           <title>Repl.it – Hack Club</title>
+          <link
+            rel="stylesheet"
+            href="//brick.a.ssl.fastly.net/Roboto+Mono:400:700"
+          />
         </Head>
         <ReplAnalytics paramString={paramString} />
         <style children={css} />

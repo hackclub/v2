@@ -108,6 +108,10 @@ class ApplyRepl extends Component {
       <Provider theme={theme}>
         <Head>
           <title>Apply – Hack Club</title>
+          <link
+            rel="stylesheet"
+            href="//brick.a.ssl.fastly.net/Roboto+Mono:400:700"
+          />
         </Head>
         <style children={css} />
         <Header>

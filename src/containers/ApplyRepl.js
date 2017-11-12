@@ -56,6 +56,7 @@ const css = `
     margin-left: .5rem !important;
     text-shadow: 0 0 1px ${colors.error} !important;
   }
+  #referer, #start_date { display: none !important; }
   input[type=submit] {
     background-color: transparent;
     border: 2px solid ${colors.green[6]};
@@ -80,25 +81,27 @@ const Header = Box.extend.attrs({
 })`text-align: center;`
 
 class ApplyRepl extends Component {
-  constructor(props)  {
+  constructor(props) {
     super(props)
 
     this.state = {
-      referer: 'Loading...'
+      referer: 'Loading…'
     }
   }
 
   componentDidMount() {
-    if (!window) {return}
+    if (!window) {
+      return
+    }
 
     const id = window.analytics.user()._getId()
 
     this.setState({
-      referer: (id ? `repl.it (user '${id}')` : 'repl.it (no user id)')
+      referer: id ? `repl.it (user ${id})` : 'repl.it (no user id)'
     })
   }
 
-  render () {
+  render() {
     const { referer } = this.state
 
     return (
@@ -111,7 +114,9 @@ class ApplyRepl extends Component {
           <Nav />
           <Heading is="h1" f={[5, 6]} mt={4}>Apply to Hack Club</Heading>
         </Header>
-        <ApplicationForm params={{referer: referer, start_date: (new Date().toISOString())}}  />
+        <ApplicationForm
+          params={{ referer, start_date: new Date().toISOString() }}
+        />
         <Footer />
       </Provider>
     )

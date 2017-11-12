@@ -172,7 +172,6 @@ const InnerForm = ({
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.start_date && errors.start_date}
-      disabled
     >
       <option value={0} disabled>Select one</option>
       {months.map(({ iso, label }, i) => (
@@ -187,7 +186,6 @@ const InnerForm = ({
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.referer && errors.referer}
-      disabled
     />
     <Field
       label="Please tell us about an interesting project, preferably outside of class, that you created or worked on."

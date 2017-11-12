@@ -39,6 +39,10 @@ export default {
       component: 'src/containers/Team'
     },
     {
+      path: '/apply',
+      component: 'src/containers/Apply'
+    },
+    {
       path: '/replit/start',
       component: 'src/containers/StartRepl'
     },

@@ -149,7 +149,9 @@ class StartRepl extends Component {
   }
 
   componentDidMount() {
-    if (!window) {return}
+    if (!window) {
+      return
+    }
 
     this.setState({
       paramString: window.location.search

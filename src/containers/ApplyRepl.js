@@ -89,12 +89,19 @@ class ApplyRepl extends Component {
     }
   }
 
-  componentDidMount() {
-    if (!window) {
-      return
+  getCookie(key) {
+    const cookieArray = document.cookie.split(';')
+    for (var i = 0; i < cookieArray.length; i++) {
+      let cookie = cookieArray[i]
+      let kv = cookie.split('=')
+      if (kv[0].trim() === key) {
+        return kv[1].trim()
+      }
     }
+  }
 
-    const id = window.analytics.user()._getId()
+  componentDidMount() {
+    const id = this.getCookie('replit_user_id')
 
     this.setState({
       referer: id ? `repl.it (user ${id})` : 'repl.it (no user id)'

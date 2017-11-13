@@ -129,11 +129,11 @@ class ReplAnalytics extends Component {
     paramArray.forEach(param => {
       let kv = param.split('=')
       if (kv[0] == 'i') {
-        window.analytics.identify(kv[1])
-
         const cValue = `replit_user_id=${kv[1]}`
         const cPath = 'path=/'
         document.cookie = `${cValue}; ${cPath}`
+
+        window.analytics.identify(kv[1])
       }
     })
   }

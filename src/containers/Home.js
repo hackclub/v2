@@ -15,7 +15,7 @@ import theme from '../theme'
 export default () => (
   <Provider theme={theme}>
     <Head><title>Hack Club</title></Head>
-    <Nav style={{ position: 'absolute', top: 0 }} cloud="true" />
+    <Nav style={{ position: 'absolute', top: 0 }} cloud />
     <Bubbles />
     <Stripe />
     <Features />

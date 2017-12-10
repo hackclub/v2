@@ -47,9 +47,7 @@ const Subheadline = Subhead.extend.attrs({
   f: [5, null, 4],
   mt: 3
 })`
-  span {
-    font-weight: normal;
-  }
+  font-weight: normal;
   a {
     color: ${colors.primary};
     text-decoration: none;
@@ -62,8 +60,7 @@ export default () => (
       Coding is a <mark>superpower</mark>.
     </Headline>
     <Subheadline>
-      <span children="So let’s teach it like that. " />
-      {/*<Link to="/about">Read our manifesto »</Link>*/}
+      So let’s teach it like that, at every high school.
     </Subheadline>
   </Base>
 )

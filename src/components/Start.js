@@ -50,16 +50,14 @@ const Left = Column.extend`
     text-align: right;
   }
 `
-const Right = Column.extend`
-  text-align: left;
-`
+const Right = Column.extend`text-align: left;`
 
 const Start = props => (
   <Background {...props}>
     <Left>
       <Large>Start a Hack Club</Large>
       <Description>Build the class you wish you could take.</Description>
-      <Description mb={0}>Bring the movement to your school.</Description>
+      <Description mb={0}>Bring the movement to your high school.</Description>
     </Left>
     <Right>
       <CTA

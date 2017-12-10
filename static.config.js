@@ -78,15 +78,18 @@ export default {
               content="width=device-width,initial-scale=1"
             />
             <meta name="format-detection" content="telephone=no" />
-            <meta name="twitter:card" content="summary" />
-            <meta name="twitter:image" content={data.img} />
-            <meta name="og:image" content={data.img} />
-            <meta name="og:title" content={data.name} />
-            <meta name="twitter:title" content={data.name} />
-            <meta name="og:description" content={data.description} />
+            <meta property="og:locale" content="en_US" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content={data.title} />
+            <meta property="og:url" content={data.url} />
+            <meta property="og:image" content={data.img} />
+            <meta property="og:site_name" content={data.name} />
+            <meta property="og:description" content={data.description} />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content={data.title} />
             <meta name="twitter:description" content={data.description} />
-            <meta name="description" content={data.description} />
-            <meta name="twitter:site" content={data.twitter} />
+            <meta name="twitter:image:src" content={data.img} />
+            <meta name="twitter:domain" content={data.url} />
             <link rel="icon" type="image/x-icon" href="/favicon.ico" />
             <meta name="theme-color" content={colors.primary} />
             <script dangerouslySetInnerHTML={{ __html: segment }} />

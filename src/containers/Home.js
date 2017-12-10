@@ -11,10 +11,13 @@ import Mosaic from '../components/Mosaic'
 import Start from '../components/Start'
 import Footer from '../components/Footer'
 import theme from '../theme'
+import data from '../../data'
 
 export default () => (
   <Provider theme={theme}>
-    <Head><title>Hack Club</title></Head>
+    <Head>
+      <title children={data.title} />
+    </Head>
     <Nav style={{ position: 'absolute', top: 0 }} mode="cloud" />
     <Bubbles />
     <Stripe />

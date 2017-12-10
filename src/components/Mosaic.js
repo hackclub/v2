@@ -4,8 +4,8 @@ import { mx } from '../theme'
 import { range, shuffle } from 'lodash'
 
 const Base = Box.extend`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
 
@@ -13,12 +13,17 @@ const Base = Box.extend`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    margin: 0;
     height: 4rem;
+    width: 100%;
+    max-width: 25%;
   }
 
   ${mx[1]} {
-    grid-template-columns: repeat(8, 1fr);
-    div { height: 6rem; }
+    div {
+      max-width: 12.5%;
+      height: 6rem;
+    }
   }
 `
 

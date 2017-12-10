@@ -20,10 +20,10 @@ const Base = Container.extend.attrs({ maxWidth: 48 * 16 })`
     h2 { line-height: 1.125; }
   }
   > :last-child {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: -1rem;
+    flex-flow: row wrap;
     line-height: 1.25;
+    margin-top: -1rem;
+    max-width: 32rem;
     z-index: 1;
   }
   ${mx[1]} {
@@ -44,11 +44,11 @@ export default () => (
         We’re creating a movement.
       </Heading>
     </Flex>
-    <Box bg="accent">
+    <Flex align="center" justify="center" bg="accent">
       <Stat value={180} label="clubs" />
       <Stat value={13} label="countries" />
       <Stat value={25} label="states" />
       <Stat value="2K+" label="members" />
-    </Box>
+    </Flex>
   </Base>
 )

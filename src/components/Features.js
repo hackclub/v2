@@ -4,17 +4,13 @@ import Icon from './Icon'
 import { colors, mx, mm } from '../theme'
 
 const Base = Container.extend.attrs({ px: 3, my: 4, maxWidth: 72 * 16 })``
-const Feats = Box.extend`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 1rem;
-
-  ${mx[1]} {
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 2rem;
-  }
-`
-const Feat = Box.extend.attrs({ p: 3 })`
+const Feats = Flex.extend.attrs({ direction: ['column', 'row'] })``
+const Feat = Container.extend.attrs({
+  p: 3,
+  m: [2, 3],
+  w: [1, 1 / 3],
+  maxWidth: 22 * 16
+})`
   border-radius: .5rem;
   text-align: left;
   p { line-height: 1.5; }
@@ -46,21 +42,21 @@ export default ({ headline = true, ...props }) => (
         icon="description"
         alt="Documentation icon"
         name="Starter materials"
-        desc="Get going faster with curricula, leadership guidelines, and club suggestions."
+        desc="Take off with curricula, guidelines, and leadership suggestions."
       />
       <Feature
         bg="accent"
         icon="question_answer"
         alt="Chat icon"
         name="A community that cares"
-        desc="You and your club members will meet like-minded students from around the world in our Slack."
+        desc="Meet like-minded students from around the world in our Slack."
       />
       <Feature
         bg="primary"
         icon="live_help"
         alt="Help icon"
         name="Coaching and assistance"
-        desc="You'll get regular mentorship through office hours and calls for help where it counts."
+        desc="Get regular mentorship where it counts via office hours and calls."
       />
     </Feats>
   </Base>

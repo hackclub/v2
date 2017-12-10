@@ -23,22 +23,6 @@ const Fill = Flex.extend.attrs({ justify: 'space-around', wrap: true })`
   z-index: -1;
 `
 
-const Cloud = Box.extend`
-  max-width: 48rem;
-  margin: auto;
-  border-radius: 4rem;
-  box-shadow: 0 0 2rem 4rem rgba(250, 250, 250, 0.95);
-  background-color: rgba(250, 250, 250, 0.95);
-  text-align: center;
-  position: relative;
-  z-index: 2;
-  @media (min-height: 24em) {
-    border-radius: 8rem;
-    box-shadow: 0 0 4rem 4rem rgba(250, 250, 250, 0.95);
-    top: -2rem;
-  }
-`
-
 const Bubble = Avatar.extend`
   margin: 0.75em;
   &:nth-child(odd) {
@@ -83,6 +67,24 @@ const Bubble = Avatar.extend`
   }
 `
 
+const Cloud = Box.extend`
+  margin: auto;
+  border-radius: 4rem;
+  box-shadow: 0 0 2rem 4rem rgba(252, 252, 252, 0.95);
+  background-color: rgba(252, 252, 252, 0.95);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  @media (min-height: 24em) {
+    box-sizing: content-box;
+    border-radius: 8rem;
+    box-shadow: 0 0 4rem 4rem rgba(252, 252, 252, 0.95);
+    max-width: 36rem;
+    padding: 2rem;
+    top: -2rem;
+  }
+`
+
 const Title = Heading.extend.attrs({
   is: 'h1',
   f: [5, 6, 7],
@@ -90,7 +92,7 @@ const Title = Heading.extend.attrs({
   my: 0,
   color: 'primary'
 })`
-  line-height: 1.125;
+  line-height: 1;
   max-width: 32rem;
 `
 const Subtitle = Lead.extend.attrs({
@@ -98,7 +100,6 @@ const Subtitle = Lead.extend.attrs({
   mt: 3,
   mb: 4,
   mx: 'auto',
-  w: [1, 2 / 3],
   color: 'grey'
 })`line-height: 1.5;`
 
@@ -120,8 +121,8 @@ const Bubbles = ({ children }) => (
         for the students.
       </Title>
       <Subtitle>
-        Hack Clubs are places where students learn to code and build amazing
-        things together.
+        Hack Clubs are high school clubs where students learn to code and build
+        amazing things together.
       </Subtitle>
       <Flex justify="center" wrap m={-2}>
         <CTA href="/donate" bg="white" color="primary">

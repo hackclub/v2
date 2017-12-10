@@ -86,9 +86,13 @@ const Bubble = Avatar.extend`
 const Title = Heading.extend.attrs({
   is: 'h1',
   f: [5, 6, 7],
+  mx: 'auto',
   my: 0,
   color: 'primary'
-})`line-height: 1.1;`
+})`
+  line-height: 1.125;
+  max-width: 32rem;
+`
 const Subtitle = Lead.extend.attrs({
   f: [3, 4],
   mt: 3,
@@ -110,7 +114,11 @@ const Bubbles = ({ children }) => (
       ))}
     </Fill>
     <Cloud>
-      <Title>We the students.</Title>
+      <Title>
+        By the students,
+        <br />
+        for the students.
+      </Title>
       <Subtitle>
         Hack Clubs are places where students learn to code and build amazing
         things together.
@@ -119,9 +127,7 @@ const Bubbles = ({ children }) => (
         <CTA href="/donate" bg="white" color="primary">
           Donate
         </CTA>
-        <CTA href="/start">
-          Start a Club
-        </CTA>
+        <CTA href="/start">Start a Club</CTA>
       </Flex>
     </Cloud>
   </Root>

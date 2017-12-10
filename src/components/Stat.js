@@ -1,7 +1,10 @@
 import React from 'react'
 import { Box, Text } from 'rebass'
 
-const Base = Box.extend.attrs({ my: 1, w: 128 })`text-align: center;`
+const Base = Box.extend.attrs({ my: 1, w: 128 })`
+  display: inline-block;
+  text-align: center;
+`
 
 const Number = Text.extend.attrs({ is: 'span', color: 'white', f: 7 })`
   font-weight: bold;

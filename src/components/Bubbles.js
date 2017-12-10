@@ -12,6 +12,7 @@ const Root = Flex.extend.attrs({
   px: 3
 })`
   position: relative;
+  min-height: 32rem;
   max-width: 100vw;
   height: 100vh;
   overflow-y: hidden;

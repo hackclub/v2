@@ -12,6 +12,7 @@ const Feat = Container.extend.attrs({
   maxWidth: 22 * 16
 })`
   border-radius: .5rem;
+  display: inline-block;
   text-align: left;
   p { line-height: 1.5; }
 `

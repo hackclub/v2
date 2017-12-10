@@ -13,6 +13,7 @@ const Base = Box.extend`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    display: inline-block;
     margin: 0;
     height: 4rem;
     width: 100%;

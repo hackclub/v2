@@ -15,6 +15,7 @@ const Stripe = Flex.extend.attrs({
   background-size: cover;
   background-position: center top;
   margin-top: -3rem;
+  min-height: 24rem;
   ${mx[1]} {
     margin-top: -6rem;
     min-height: 75vh !important;
@@ -61,16 +62,13 @@ export default () => (
   <Stripe id="more">
     <StripeContainer>
       <Headline f={[5, 6]} mt={0}>
-        Hack Club brings {' '}
-        <mark>coding clubs</mark>
+        Hack Club brings <mark>coding clubs</mark>
         {' to '}
-        <mark>high schools</mark>
-        {' '} everywhere.
+        <mark>high schools</mark> everywhere.
       </Headline>
       <Subheadline my={0}>
-        We’re starting the {' '}
-        <mark>computer science education</mark>
-        {' '} students need.
+        We’re starting the <mark>computer science education</mark> students
+        need.
       </Subheadline>
     </StripeContainer>
   </Stripe>

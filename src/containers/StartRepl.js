@@ -220,7 +220,7 @@ class StartRepl extends Component {
             <CTA href={`/replit/apply${paramString}`}>Join the movement »</CTA>
           </Box>
         </Section>
-        <Footer><Text>&copy; Hack Club</Text></Footer>
+        <Footer><Text>© Hack Club</Text></Footer>
       </Provider>
     )
   }

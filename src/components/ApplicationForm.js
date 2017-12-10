@@ -237,7 +237,11 @@ const ApplicationForm = withFormik({
   validationSchema: yup.object().shape({
     first_name: yup.string().required(r),
     last_name: yup.string().required(r),
-    email: yup.string().email('invalid email address').required(r),
+    email: yup
+      .string()
+      .required(r)
+      .email('invalid email address')
+      .matches(/^((?!hackclub\.com).)*$/, 'cannot be @hackclub.com'),
     high_school: yup.string().required(r),
     year: yup.string().required(r),
     start_date: yup.string().required(r),

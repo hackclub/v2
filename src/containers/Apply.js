@@ -31,6 +31,10 @@ export default () => (
   <Provider theme={theme}>
     <Head>
       <title>Apply – Hack Club</title>
+      <meta
+        name="description"
+        content="Submit your application to Hack Club and start a coding club at your high school."
+      />
     </Head>
     <Header>
       <Nav />

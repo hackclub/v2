@@ -17,6 +17,7 @@ export default () => (
   <Provider theme={theme}>
     <Head>
       <title children={data.title} />
+      <meta name="description" content={data.description} />
     </Head>
     <Nav style={{ position: 'absolute', top: 0 }} mode="cloud" />
     <Bubbles />

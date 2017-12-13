@@ -163,7 +163,7 @@ const InnerForm = ({
     </Field>
     <Subheading>Your club</Subheading>
     <Field
-      label="When do you want to start?"
+      label="When do you want to start? *"
       name="start_date"
       type="select"
       value={values.start_date || 0}
@@ -222,6 +222,10 @@ const InnerForm = ({
       onBlur={handleBlur}
       error={touched.steps_taken && errors.steps_taken}
     />
+    <Text>
+      * The soonest we're accepting applications for is the 2<sup>nd</sup>
+      semester of the 2017-2018 school year.
+    </Text>
     <Submit
       disabled={isSubmitting}
       onClick={handleSubmit}

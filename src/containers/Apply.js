@@ -41,6 +41,9 @@ export default () => (
       <Heading is="h1" color="white" f={[5, 6]} mt={4}>
         Submit your application
       </Heading>
+      <Subhead color="white">
+        We're accepting applications for 2018
+      </Subhead>
     </Header>
     <ApplicationForm />
     <Footer />

@@ -158,8 +158,6 @@ const InnerForm = ({
       <option value="9003">2020</option>
       <option value="9004">2019</option>
       <option value="9005">2018</option>
-      <option value="9006">2017</option>
-      <option value="9007">2016</option>
       <option value="9009">Teacher</option>
       <option value="9008">Graduated</option>
     </Field>

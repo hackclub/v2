@@ -223,8 +223,8 @@ const InnerForm = ({
       error={touched.steps_taken && errors.steps_taken}
     />
     <Text>
-      * The soonest we're accepting applications for is the 2<sup>nd</sup>
-      semester of the 2017-2018 school year.
+      * The soonest we're accepting applications for is the
+      2<sup>nd</sup> semester of the 2017-2018 school year.
     </Text>
     <Submit
       disabled={isSubmitting}

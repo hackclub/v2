@@ -43,6 +43,10 @@ export default {
       component: 'src/containers/Apply'
     },
     {
+      path: '/meetings',
+      component: 'src/containers/Meetings'
+    },
+    {
       path: '/replit/start',
       component: 'src/containers/StartRepl'
     },

@@ -131,7 +131,7 @@ const ModuleHeading = Subhead.extend.attrs({
     background-color: ${props => cx(props.color)};
   }
 `
-const ModuleBody = Text.extend.attrs({ my: 0, f: 3, color: colors.slate })`
+const ModuleBody = Text.extend.attrs({ my: 0, f: 3, color: 'slate' })`
   line-height: 1.5;
 `
 

@@ -186,7 +186,6 @@ const InnerForm = ({
       error={touched.referer && errors.referer}
     />
     <Subheading>Your club</Subheading>
-    <Subheading>Your club</Subheading>
     <Field
       label="Please tell us about an interesting project, preferably outside of class, that you created or worked on."
       name="interesting_project"

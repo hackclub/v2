@@ -222,15 +222,15 @@ const InnerForm = ({
       onBlur={handleBlur}
       error={touched.steps_taken && errors.steps_taken}
     />
-    <Text>
-      * The soonest we’re accepting applications for is the
-      2<sup>nd</sup> semester of the 2017–2018 school year.
-    </Text>
     <Submit
       disabled={isSubmitting}
       onClick={handleSubmit}
       value={statusMessage(status)}
     />
+    <Text>
+      * The soonest we’re accepting applications for is the
+      2<sup>nd</sup> semester of the 2017–2018 school year.
+    </Text>
   </Base>
 )
 const r = 'required'

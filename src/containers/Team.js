@@ -54,7 +54,7 @@ export default () => (
         img="/team/zach.png"
         name="Zach Latta"
         role="Executive Director"
-        text="Zach dropped out of high school after his freshman year to work in the technology technology industry and had over 5 million people using his software by the time he turned 17. He founded Hack Club to build the program he wish he had in high school and has been awarded the Thiel Fellowship and Forbes 30 Under 30 for his work."
+        text="Zach dropped out of high school after his freshman year to work in the technology industry and had over 5 million people using his software by the time he turned 17. He founded Hack Club to build the program he wish he had in high school and has been awarded the Thiel Fellowship and Forbes 30 Under 30 for his work."
       />
       <Bio
         img="/team/max.jpg"

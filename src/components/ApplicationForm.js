@@ -147,12 +147,13 @@ const InnerForm = ({
       label="When do you graduate?"
       name="year"
       type="select"
-      value={values.year}
+      value={values.year || "Select One"}
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.year && errors.year}
     >
       <option value="9010">Other</option>
+      <option value="Select One" disabled>Select one</option>
       <option value="9001">2022</option>
       <option value="9002">2021</option>
       <option value="9003">2020</option>

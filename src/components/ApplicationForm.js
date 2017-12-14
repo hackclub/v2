@@ -152,31 +152,30 @@ const InnerForm = ({
       onBlur={handleBlur}
       error={touched.year && errors.year}
     >
-      <option value="9010">Other</option>
       <option value="Select One" disabled>Select one</option>
       <option value="9001">2022</option>
       <option value="9002">2021</option>
       <option value="9003">2020</option>
       <option value="9004">2019</option>
       <option value="9005">2018</option>
-      <option value="9009">Teacher</option>
       <option value="9008">Graduated</option>
+      <option value="9009">Teacher</option>
+      <option value="9010">Other</option>
     </Field>
-    <Subheading>Your club</Subheading>
-    <Field
-      label="When do you want to start? *"
-      name="start_date"
-      type="select"
-      value={values.start_date || 0}
-      onChange={handleChange}
-      onBlur={handleBlur}
-      error={touched.start_date && errors.start_date}
-    >
-      <option value={0} disabled>Select one</option>
-      {months.map(({ iso, label }, i) => (
+    {/* <Field
+        label="When do you want to start? *"
+        name="start_date"
+        type="select"
+        value={values.start_date || 0}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        error={touched.start_date && errors.start_date}
+        >
+        <option value={0} disabled>Select one</option>
+        {months.map(({ iso, label }, i) => (
         <option value={iso} key={`start-${i}`} children={label} />
-      ))}
-    </Field>
+        ))}
+        </Field> */}
     <Field
       label="How did you hear about us?"
       name="referer"
@@ -186,6 +185,8 @@ const InnerForm = ({
       onBlur={handleBlur}
       error={touched.referer && errors.referer}
     />
+    <Subheading>Your club</Subheading>
+    <Subheading>Your club</Subheading>
     <Field
       label="Please tell us about an interesting project, preferably outside of class, that you created or worked on."
       name="interesting_project"

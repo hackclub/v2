@@ -46,7 +46,9 @@ export default () => (
         We’re accepting applications for 2018
       </Subhead>
     </Header>
-    <ApplicationForm />
+    <ApplicationForm
+      params={{start_date: new Date().toISOString()}}
+    />
     <Footer />
   </Provider>
 )

@@ -17,6 +17,7 @@ const Base = Container.extend.attrs({
   ${mx[1]} {
     grid-template-columns: repeat(2, 1fr);
     h2, .textarea, #referer { grid-column: 1 / -1; }
+    #start_date { display: none !important; }
   }
 `
 
@@ -162,20 +163,20 @@ const InnerForm = ({
       <option value="9009">Teacher</option>
       <option value="9010">Other</option>
     </Field>
-    {/* <Field
-        label="When do you want to start? *"
-        name="start_date"
-        type="select"
-        value={values.start_date || 0}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        error={touched.start_date && errors.start_date}
-        >
-        <option value={0} disabled>Select one</option>
-        {months.map(({ iso, label }, i) => (
+    <Field
+      label="When do you want to start? *"
+      name="start_date"
+      type="select"
+      value={values.start_date || 0}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      error={touched.start_date && errors.start_date}
+    >
+      <option value={0} disabled>Select one</option>
+      {months.map(({ iso, label }, i) => (
         <option value={iso} key={`start-${i}`} children={label} />
-        ))}
-        </Field> */}
+      ))}
+    </Field>
     <Field
       label="How did you hear about us?"
       name="referer"

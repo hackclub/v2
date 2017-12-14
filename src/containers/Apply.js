@@ -24,6 +24,7 @@ const Header = Box.extend.attrs({
   justify: 'center',
   direction: 'column',
   bg: 'primary',
+  color: 'white',
   p: 3
 })`text-align: center;`
 
@@ -38,11 +39,11 @@ export default () => (
     </Head>
     <Header>
       <Nav />
-      <Heading is="h1" color="white" f={[5, 6]} mt={4}>
+      <Heading is="h1" f={[5, 6]} mt={4}>
         Submit your application
       </Heading>
-      <Subhead color="white">
-        We're accepting applications for 2018
+      <Subhead>
+        We’re accepting applications for 2018
       </Subhead>
     </Header>
     <ApplicationForm />

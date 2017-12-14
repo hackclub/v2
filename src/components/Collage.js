@@ -45,7 +45,7 @@ export default () => (
       </Heading>
     </Flex>
     <Flex align="center" justify="center" bg="accent">
-      <Stat value={186} label="schools" />
+      <Stat value={189} label="schools" />
       <Stat value={13} label="countries" />
       <Stat value={32} label="states" />
       <Stat value="3K+" label="members" />

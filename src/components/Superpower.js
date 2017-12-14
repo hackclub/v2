@@ -32,7 +32,7 @@ const Base = Box.extend.attrs({ px: 3, py: 5, my: [4, 5] })`
   }
 `
 
-const Headline = Heading.extend.attrs({ f: 6 })`
+const Headline = Heading.extend.attrs({ f: 6, mb: 3 })`
   mark {
     background: transparent url(/underline.svg) bottom left no-repeat;
     background-size: 100% 0.75rem;
@@ -44,13 +44,11 @@ const Headline = Heading.extend.attrs({ f: 6 })`
 
 const Subheadline = Subhead.extend.attrs({
   color: 'slate',
-  f: [5, null, 4],
-  mt: 3
+  f: [5, null, 4]
 })`
   font-weight: normal;
   a {
     color: ${colors.primary};
-    text-decoration: none;
   }
 `
 
@@ -60,7 +58,8 @@ export default () => (
       Coding is a <mark>superpower</mark>.
     </Headline>
     <Subheadline>
-      So let’s teach it like that, at every high school.
+      So let’s teach it like that, at every high school.{' '}
+      <Link to="/meetings">Explore meetings »</Link>
     </Subheadline>
   </Base>
 )

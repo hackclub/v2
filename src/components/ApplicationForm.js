@@ -16,8 +16,7 @@ const Base = Container.extend.attrs({
   grid-gap: 1rem;
   ${mx[1]} {
     grid-template-columns: repeat(2, 1fr);
-    h2, .textarea, #referer { grid-column: 1 / -1; }
-    #start_date { display: none !important; }
+    h2, .textarea { grid-column: 1 / -1; }
   }
 `
 
@@ -148,12 +147,14 @@ const InnerForm = ({
       label="When do you graduate?"
       name="year"
       type="select"
-      value={values.year || "Select One"}
+      defaultValue={values.year || 'select'}
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.year && errors.year}
     >
-      <option value="Select One" disabled>Select one</option>
+      <option value="select" disabled>
+        Select one
+      </option>
       <option value="9001">2022</option>
       <option value="9002">2021</option>
       <option value="9003">2020</option>
@@ -167,12 +168,13 @@ const InnerForm = ({
       label="When do you want to start? *"
       name="start_date"
       type="select"
-      value={values.start_date || 0}
-      onChange={handleChange}
+      defaultValue={values.start_date || 'select'}
       onBlur={handleBlur}
       error={touched.start_date && errors.start_date}
     >
-      <option value={0} disabled>Select one</option>
+      <option value="select" disabled>
+        Select one
+      </option>
       {months.map(({ iso, label }, i) => (
         <option value={iso} key={`start-${i}`} children={label} />
       ))}
@@ -182,7 +184,6 @@ const InnerForm = ({
       name="referer"
       type="text"
       value={values.referer}
-      onChange={handleChange}
       onBlur={handleBlur}
       error={touched.referer && errors.referer}
     />

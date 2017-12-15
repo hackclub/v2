@@ -147,33 +147,34 @@ const InnerForm = ({
       label="When do you graduate?"
       name="year"
       type="select"
-      value={values.year}
+      defaultValue={values.year || 'select'}
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.year && errors.year}
     >
-      <option value="9010">Other</option>
+      <option value="select" disabled>
+        Select one
+      </option>
       <option value="9001">2022</option>
       <option value="9002">2021</option>
       <option value="9003">2020</option>
       <option value="9004">2019</option>
       <option value="9005">2018</option>
-      <option value="9006">2017</option>
-      <option value="9007">2016</option>
-      <option value="9009">Teacher</option>
       <option value="9008">Graduated</option>
+      <option value="9009">Teacher</option>
+      <option value="9010">Other</option>
     </Field>
-    <Subheading>Your club</Subheading>
     <Field
-      label="When do you want to start?"
+      label="When do you want to start? *"
       name="start_date"
       type="select"
-      value={values.start_date || 0}
-      onChange={handleChange}
+      defaultValue={values.start_date || 'select'}
       onBlur={handleBlur}
       error={touched.start_date && errors.start_date}
     >
-      <option value={0} disabled>Select one</option>
+      <option value="select" disabled>
+        Select one
+      </option>
       {months.map(({ iso, label }, i) => (
         <option value={iso} key={`start-${i}`} children={label} />
       ))}
@@ -183,10 +184,10 @@ const InnerForm = ({
       name="referer"
       type="text"
       value={values.referer}
-      onChange={handleChange}
       onBlur={handleBlur}
       error={touched.referer && errors.referer}
     />
+    <Subheading>Your club</Subheading>
     <Field
       label="Please tell us about an interesting project, preferably outside of class, that you created or worked on."
       name="interesting_project"
@@ -229,6 +230,10 @@ const InnerForm = ({
       onClick={handleSubmit}
       value={statusMessage(status)}
     />
+    <Text color="slate" f={2} style={{ lineHeight: '1.25' }}>
+      * The soonest we’re accepting applications for is the second semester of
+      the 2017–2018 school year.
+    </Text>
   </Base>
 )
 const r = 'required'

@@ -42,13 +42,9 @@ export default () => (
       <Heading is="h1" f={[5, 6]} mt={4}>
         Submit your application
       </Heading>
-      <Subhead>
-        We’re accepting applications for 2018
-      </Subhead>
+      <Subhead>We’re accepting applications for 2018</Subhead>
     </Header>
-    <ApplicationForm
-      params={{start_date: new Date().toISOString()}}
-    />
+    <ApplicationForm params={{ start_date: new Date().toISOString() }} />
     <Footer />
   </Provider>
 )

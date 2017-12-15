@@ -79,13 +79,8 @@ const ModuleBase = Flex.extend.attrs({
   }
 `
 
-const ModuleHeading = Subhead.extend.attrs({
-  mt: 0,
-  mb: 1,
-  f: 3,
-  color: 'white'
-})``
-const ModuleBody = Text.extend.attrs({ my: 0, f: 2, color: 'white' })`
+const ModuleHeading = Subhead.extend.attrs({ mt: 0, mb: 1, f: 3 })``
+const ModuleBody = Text.extend.attrs({ my: 0, f: 2 })`
   line-height: 1.5;
   position: relative;
 `
@@ -103,11 +98,7 @@ const Module = ({ icon, heading, body, ...props }) => (
   </ModuleBase>
 )
 
-const CTASection = Box.extend.attrs({
-  is: 'section',
-  px: 3,
-  my: [3, 5]
-})`
+const CTASection = Box.extend.attrs({ is: 'section', px: 3, my: [3, 5] })`
   text-align: center;
 `
 

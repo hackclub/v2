@@ -9,7 +9,7 @@ const Root = Flex.extend.attrs({
   justify: 'center',
   align: 'center',
   pt: 3,
-  px: 3
+  px: [0, 3]
 })`
   position: relative;
   min-height: 32rem;
@@ -53,14 +53,6 @@ const Bubble = Avatar.extend`
   &:nth-child(17n) {
     margin-top: 3em;
   }
-  &:first-child {
-    margin-left: 4rem;
-  }
-  ${mx[1]} {
-    &:first-child {
-      margin-left: 6rem;
-    }
-  }
   ${mm[1]} {
     max-width: 72px;
     max-height: 72px;
@@ -81,7 +73,7 @@ const Cloud = Box.extend`
     border-radius: 8rem;
     box-shadow: 0 0 4rem 4rem rgba(252, 252, 252, 0.95);
     max-width: 36rem;
-    padding: 2rem;
+    padding: 1rem;
     top: -2rem;
   }
 `

@@ -76,8 +76,7 @@ const Header = Box.extend.attrs({
   align: 'center',
   justify: 'center',
   direction: 'column',
-  bg: 'transparent',
-  p: 3
+  bg: 'transparent'
 })`text-align: center;`
 
 class ApplyRepl extends Component {
@@ -92,8 +91,8 @@ class ApplyRepl extends Component {
   getCookie(key) {
     const cookieArray = document.cookie.split(';')
     for (var i = 0; i < cookieArray.length; i++) {
-      let cookie = cookieArray[i]
-      let kv = cookie.split('=')
+      const cookie = cookieArray[i]
+      const kv = cookie.split('=')
       if (kv[0].trim() === key) {
         return kv[1].trim()
       }
@@ -123,7 +122,9 @@ class ApplyRepl extends Component {
         <style children={css} />
         <Header>
           <Nav />
-          <Heading is="h1" f={[5, 6]} mt={4}>Apply to Hack Club</Heading>
+          <Heading is="h1" f={[5, 6]} mt={4} px={3}>
+            Apply to Hack Club
+          </Heading>
         </Header>
         <ApplicationForm
           params={{ referer, start_date: new Date().toISOString() }}

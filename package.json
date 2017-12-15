@@ -20,17 +20,17 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router": "^4.2.0",
-    "react-simple-maps": "^0.10.0",
+    "react-simple-maps": "^0.10.1",
     "react-static": "4.x.x",
     "rebass": "^1.0.4",
     "serve": "^6.4.1",
-    "uglifyjs-webpack-plugin": "^1.1.1",
+    "uglifyjs-webpack-plugin": "^1.1.4",
     "unfetch": "^3.0.0",
     "yup": "^0.23.0"
   },
   "devDependencies": {
     "cheerio": "^1.0.0-rc.2",
     "minimist": "^1.2.0",
-    "svgo": "^0.7.2"
+    "svgo": "^1.0.3"
   }
 }

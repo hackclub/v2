@@ -11,10 +11,10 @@ const {
 const Map = ({ paths, locations, ...props }) => (
   <ComposableMap width={768} {...props}>
     <ZoomableGroup disablePanning>
-      <Geographies geographyPaths={paths}>
+      <Geographies geography={paths}>
         {(geographies, projection) =>
-          geographies.map((geography, i) => (
-            <Geography key={i} geography={geography} projection={projection} />
+          geographies.map(geo => (
+            <Geography key={geo.id} geography={geo} projection={projection} />
           ))}
       </Geographies>
       <Markers>
@@ -22,7 +22,7 @@ const Map = ({ paths, locations, ...props }) => (
           <Marker
             key={i}
             marker={marker}
-            children={<circle cx={0} cy={0} r={6} />}
+            children={<circle cx={0} cy={0} r={5} />}
           />
         ))}
       </Markers>

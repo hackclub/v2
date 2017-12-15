@@ -22,7 +22,7 @@ const args = require('minimist')(process.argv.slice(2), {
 const { fill, stroke, pin, path } = args
 const css = `.rsm-svg{width:100vw;height:100vh;object-fit:cover}
 .rsm-geographies path{fill:${fill};stroke:${stroke};stroke-width:1;outline:none}
-circle{fill:${pin};stroke-width:0;opacity:.667}`
+.rsm-marker{fill:${pin};stroke-width:0;opacity:.667}`
 
 const API = 'https://api.hackclub.com/v1/clubs'
 const GEO = 'https://unpkg.com/world-atlas@1.1.4/world/50m.json'
@@ -37,8 +37,8 @@ axios
     })
     return locations
   })
-  .then(locations => {
-    return axios
+  .then(locations =>
+    axios
       .get(GEO)
       .then(res => res.data)
       .then(
@@ -46,7 +46,7 @@ axios
           feature(paths, paths.objects[first(keys(paths.objects))]).features
       )
       .then(paths => ({ paths, locations }))
-  })
+  )
   .then(props => {
     const body = renderToStaticMarkup(h(Map, props))
     const $ = cheerio.load(body)

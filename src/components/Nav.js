@@ -1,23 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Box, Flex, Image } from 'rebass'
+import { Box, Flex } from 'rebass'
 import { Link } from 'react-static'
 import { colors, mx } from '../theme'
+import Flag from './Flag'
 
 const Base = Flex.extend.attrs({
-  px: 4,
-  py: 1,
-  justify: 'space-between',
+  pt: 0,
+  px: [3, 4],
+  pb: 2,
+  justify: ['center', 'space-between'],
   w: 1
 })`
+  position: relative;
   z-index: 4;
 `
 
-const Logo = Image.extend.attrs({ w: 48 })`
-  border-radius: 2rem;
-`
-
-const NavBar = Flex.extend.attrs({ is: 'nav', align: 'center', mx: -3 })(
+const NavBar = Flex.extend.attrs({ is: 'nav', align: 'center', mr: -3 })(
   [],
   props =>
     props.mode === 'cloud'
@@ -30,7 +29,7 @@ const NavBar = Flex.extend.attrs({ is: 'nav', align: 'center', mx: -3 })(
       : { color: colors[props.color] || props.color }
 )
 
-const Item = Box.extend.attrs({ mx: 3 })`
+const Item = Box.extend.attrs({ mx: [2, 3] })`
   color: inherit;
   text-decoration: none;
   font-weight: bold;
@@ -38,9 +37,7 @@ const Item = Box.extend.attrs({ mx: 3 })`
 
 const Nav = ({ mode = 'default', color = colors.white, ...props }) => (
   <Base {...props}>
-    <Link to="/">
-      <Logo src="/logo-nav.png" alt="Hack Club logo" />
-    </Link>
+    <Flag />
     <NavBar mode={mode} color={color}>
       <Item is="a" href="/workshops" children="Workshops" />
       <Item is={Link} to="/team" children="Our Team" />

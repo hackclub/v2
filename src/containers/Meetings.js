@@ -25,7 +25,7 @@ const Header = Flex.extend.attrs({
   justify: 'center',
   direction: 'column',
   bg: 'primary',
-  p: 3,
+  px: 3,
   pb: [4, 5]
 })`
   background-image: linear-gradient(-16deg, ${cx('orange.4')} 0%, ${cx(

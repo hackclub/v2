@@ -42,7 +42,9 @@ export default () => (
       <Heading is="h1" f={[5, 6]} mt={4}>
         Submit your application
       </Heading>
-      <Subhead>We’re accepting applications for 2018</Subhead>
+      <Heading f={[3, 4]} my={2} style={{ fontWeight: 'normal' }}>
+        We’re now accepting applications for 2018.
+      </Heading>
     </Header>
     <ApplicationForm params={{ start_date: new Date().toISOString() }} />
     <Footer />

@@ -229,9 +229,9 @@ const InnerForm = ({
       onClick={handleSubmit}
       value={statusMessage(status)}
     />
-    <Text>
-      * The soonest we’re accepting applications for is the
-      2<sup>nd</sup> semester of the 2017–2018 school year.
+    <Text color="slate" f={2} style={{ lineHeight: '1.25' }}>
+      * The soonest we’re accepting applications for is the second semester of
+      the 2017–2018 school year.
     </Text>
   </Base>
 )

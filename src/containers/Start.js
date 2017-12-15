@@ -57,62 +57,49 @@ const Four = props => (
 const Modules = Flex.extend.attrs({
   wrap: true,
   justify: 'center',
-  mt: 3
-})`text-align: left;`
+  mt: 3,
+  color: 'white'
+})``
 
 const ModuleBase = Flex.extend.attrs({
-  w: [1, 1 / 2],
-  pt: [3, 4],
-  pb: 3,
+  w: [1, 1 / 3],
+  py: 3,
   px: 2,
-  mx: [0, 2],
-  align: 'center',
-  color: 'white'
+  direction: 'column',
+  align: 'center'
 })`
   img {
     width: 3rem !important;
     height: 3rem !important;
     flex-shrink: 0;
-    margin-right: 1rem;
   }
 
   ${mx[1]} {
-    max-width: 32rem;
-    img { margin-right: 2rem; }
+    max-width: 20rem;
   }
 `
 
 const ModuleHeading = Subhead.extend.attrs({
   mt: 0,
   mb: 1,
-  f: [3, 4],
+  f: 3,
   color: 'white'
-})`
-  position: relative;
-
-  ${mx[1]} {
-    &:before {
-      content: "";
-      width: 64px;
-      height: 6px;
-      position: absolute;
-      left: 0;
-      top: -1rem;
-      background-color: ${colors.white};
-    }
-  }
-`
-const ModuleBody = Text.extend.attrs({ my: 0, f: 3, color: 'white' })`
+})``
+const ModuleBody = Text.extend.attrs({ my: 0, f: 2, color: 'white' })`
   line-height: 1.5;
+  position: relative;
+`
+const ModuleDivider = Box.extend.attrs({ w: 64, bg: 'white', mt: 3 })`
+  width: 64px;
+  height: 6px;
 `
 
 const Module = ({ icon, heading, body, ...props }) => (
   <ModuleBase>
     <Icon name={icon} fill="white" />
-    <Box>
-      <ModuleHeading children={heading} />
-      <ModuleBody children={body} />
-    </Box>
+    <ModuleHeading children={heading} />
+    <ModuleBody children={body} />
+    <ModuleDivider />
   </ModuleBase>
 )
 
@@ -150,6 +137,11 @@ export default () => (
           body="Join our Slack and meet thousands of other club leaders and members."
         />
         <Module
+          icon="chrome_reader_mode"
+          heading="Curriculum"
+          body="Give your members dozens of tutorials for making websites, apps, and games."
+        />
+        <Module
           icon="voice_chat"
           heading="Mentorship"
           body="Talk to our team for guidance and assistance whenever you need help."
@@ -157,12 +149,17 @@ export default () => (
         <Module
           icon="description"
           heading="Structure & guidelines"
-          body="Learn from hundreds of other clubs—we’ve got advice, documentation, and experience."
+          body="Learn from hundreds of other clubs—we’ve got advice, docs, and experience."
         />
         <Module
           icon="local_activity"
           heading="Local events"
           body="Attend hackathons, workshops, and other events from Hack Clubs nearby."
+        />
+        <Module
+          icon="wallpaper"
+          heading="Marketing"
+          body="Get stickers, posters, and ideas for spreading the word about your club."
         />
       </Modules>
     </Two>

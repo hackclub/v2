@@ -25,7 +25,8 @@ const Header = Box.extend.attrs({
   direction: 'column',
   bg: 'primary',
   color: 'white',
-  p: 3
+  px: 3,
+  pb: 3
 })`text-align: center;`
 
 export default () => (
@@ -42,7 +43,7 @@ export default () => (
       <Heading is="h1" f={[5, 6]} mt={4}>
         Submit your application
       </Heading>
-      <Heading f={[3, 4]} my={2} style={{ fontWeight: 'normal' }}>
+      <Heading f={[3, 4]} mt={2} style={{ fontWeight: 'normal' }}>
         We’re now accepting applications for 2018.
       </Heading>
     </Header>

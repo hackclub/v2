@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from './Button'
+import { Link } from 'react-static'
 
 const CTA = props => (
   <Button
@@ -9,6 +10,7 @@ const CTA = props => (
     m={2}
     bg="primary"
     color="white"
+    is={props.to ? Link : props.href ? 'a' : props.is}
     {...props}
   />
 )

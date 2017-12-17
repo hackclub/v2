@@ -219,9 +219,9 @@ export default () => (
     <Three>
       <Flex direction={['column', 'row']} align="center">
         <LeftCol>
-          <Heading f={[4, 5]}>Hack Clubs are always led by students.</Heading>
+          <Heading f={[4, 5]}>Hack Clubs are student-led.</Heading>
           <Text f={[3, 4]}>
-            Each club meets weekly after school at their high school.
+            Each club meets weekly after school<br />at their high school.
           </Text>
           <MeetingsLink is={Link} to="/meetings" mt={4}>
             Explore<br />meetings →

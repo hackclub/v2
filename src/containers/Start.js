@@ -39,21 +39,20 @@ const One = Section.extend`
   );
 `
 const Two = Section.extend`
-  background-color: ${cx('blue.6')};
+  background-color: ${cx('green.6')};
   background-image: linear-gradient(
-    16deg,
-    ${cx('blue.6')} 0%,
-    ${cx('blue.5')} 50%,
-    ${cx('indigo.4')} 100%
+    -32deg,
+    ${cx('teal.7')} 0%,
+    ${cx('lime.6')} 100%
   );
 `
 const Three = Section.extend`
-  background-color: ${cx('fuschia.5')};
+  background-color: ${cx('blue.6')};
   background-image: linear-gradient(
-    -32deg,
-    ${cx('fuschia.5')} 0%,
-    ${cx('fuschia.6')} 50%,
-    ${cx('pink.4')} 100%
+    -48deg,
+    ${cx('blue.7')} 0%,
+    ${cx('blue.6')} 50%,
+    ${cx('indigo.4')} 100%
   );
 `
 const Four = Section.extend`
@@ -121,7 +120,7 @@ const LeftCol = Flex.extend.attrs({
 
 const MeetingsLink = Box.extend.attrs({
   bg: 'white',
-  color: 'fuschia.5',
+  color: 'blue.6',
   f: 4,
   px: 4,
   py: 3,
@@ -133,7 +132,7 @@ const MeetingsLink = Box.extend.attrs({
   text-decoration: none;
 `
 
-const CardBase = Container.extend.attrs({ bg: 'fuschia.0', p: 3, mt: 3 })`
+const CardBase = Container.extend.attrs({ bg: 'blue.0', p: 3, mt: 3 })`
   border-radius: .25rem;
   box-shadow: 0 2px 16px 2px rgba(0,0,0,.1);
   max-width: 28rem;
@@ -150,7 +149,7 @@ const CardBase = Container.extend.attrs({ bg: 'fuschia.0', p: 3, mt: 3 })`
 `
 const Card = ({ name, children, ...props }) => (
   <CardBase {...props}>
-    <Subhead color="fuschia.5" m={0} f={3} children={name} />
+    <Subhead color="blue.6" m={0} f={3} children={name} />
     {children}
   </CardBase>
 )

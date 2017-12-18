@@ -131,7 +131,6 @@ const MeetingsLink = Box.extend.attrs({
   font-weight: bold;
   line-height: 1;
   text-decoration: none;
-  text-transform: uppercase;
 `
 
 const CardBase = Container.extend.attrs({ bg: 'fuschia.0', p: 3, mt: 3 })`
@@ -222,7 +221,7 @@ export default () => (
             Each club meets weekly after school<br />at their high school.
           </Text>
           <MeetingsLink is={Link} to="/meetings" mt={4}>
-            Explore<br />meetings →
+            Explore meetings →
           </MeetingsLink>
         </LeftCol>
         <Card name="Are you a teacher or parent?">

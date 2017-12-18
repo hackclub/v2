@@ -27,7 +27,6 @@ const Section = Flex.extend.attrs({
   px: 3
 })`
   text-align: center;
-  h2 img { display: inline-block; }
 `
 const One = Section.extend`
   padding-top: 0 !important;
@@ -180,8 +179,7 @@ export default () => (
     </One>
     <Two>
       <Heading f={[4, 5]}>
-        HQ provides the resources you’ll need to{' '}
-        <Icon name="directions_run" fill="white" size={36} />.
+        HQ provides the resources you’ll need to soar.
       </Heading>
       <Modules>
         <Module

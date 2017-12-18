@@ -250,7 +250,7 @@ export default () => (
         <Module
           icon="assignment"
           heading="Submit your application"
-          body="Fill out your contact info and a few questions to get going."
+          body="Fill out a few questions to get going—totally free."
         />
         <Module
           icon="ring_volume"

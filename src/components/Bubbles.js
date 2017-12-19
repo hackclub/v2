@@ -1,7 +1,7 @@
 import React from 'react'
+import { Link } from 'react-static'
 import { Avatar, Flex, Box, Heading, Lead } from 'rebass'
 import CTA from './CTA'
-import { Link } from 'react-static'
 import { shuffle, range, sample } from 'lodash'
 import { mx, mm } from '../theme'
 
@@ -121,7 +121,7 @@ const Bubbles = ({ children }) => (
         <CTA href="/donate" bg="white" color="primary">
           Donate
         </CTA>
-        <CTA href="/start">Start a Club</CTA>
+        <CTA to="/start">Start a Club</CTA>
       </Flex>
     </Cloud>
   </Root>

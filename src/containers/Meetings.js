@@ -213,7 +213,7 @@ export default () => (
       </Module>
     </Section>
     <CTASection>
-      <CTA href="/start">Start a Club</CTA>
+      <CTA to="/start">Start a Club</CTA>
     </CTASection>
     <Footer />
   </Provider>

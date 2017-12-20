@@ -14,7 +14,7 @@ module.exports = props =>
         height: width,
         paddingLeft: (width - widthIcon) / 2 + 16,
         background: `${theme.colors.primary}
-          url(http://0.0.0.0:3000/pattern.svg) repeat`,
+          url(/pattern.svg) repeat`,
         backgroundSize: width
       }
     },
@@ -22,7 +22,7 @@ module.exports = props =>
       style: {
         width: widthIcon,
         height: width,
-        background: 'url(http://0.0.0.0:3000/logo-stacked.svg) no-repeat',
+        background: 'url(/logo-stacked.svg) no-repeat',
         backgroundSize: '100% auto',
         backgroundPosition: 'center'
       }

@@ -169,6 +169,7 @@ const InnerForm = ({
       name="start_date"
       type="select"
       defaultValue={values.start_date || 'select'}
+      onChange={handleChange}
       onBlur={handleBlur}
       error={touched.start_date && errors.start_date}
     >
@@ -184,6 +185,7 @@ const InnerForm = ({
       name="referer"
       type="text"
       value={values.referer}
+      onChange={handleChange}
       onBlur={handleBlur}
       error={touched.referer && errors.referer}
     />

@@ -89,8 +89,7 @@ const Subtitle = Lead.extend.attrs({
   f: [3, 4],
   mt: 3,
   mb: 4,
-  mx: 'auto',
-  color: 'grey'
+  mx: 'auto'
 })`line-height: 1.5;`
 
 const Bubbles = ({ children }) => (
@@ -112,7 +111,7 @@ const Bubbles = ({ children }) => (
       </Title>
       <Subtitle>
         Hack Club is a nonprofit network of free student-led coding clubs where
-        members learn to code through building things.
+        high schoolers learn to code by building things.
       </Subtitle>
       <Flex justify="center" wrap m={-2}>
         <CTA href="/donate" bg="white" color="primary">

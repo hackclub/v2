@@ -3,7 +3,11 @@ import { Heading, Container, Flex, Box, Text, Subhead } from 'rebass'
 import Icon from './Icon'
 import { colors, mx, mm } from '../theme'
 
-const Base = Container.extend.attrs({ px: 3, my: 4, maxWidth: 72 * 16 })``
+const Base = Container.extend.attrs({
+  px: 3,
+  my: 4,
+  maxWidth: 72 * 16
+})`text-align: center;`
 const Feats = Flex.extend.attrs({ direction: ['column', 'row'] })``
 const Feat = Container.extend.attrs({
   p: 3,
@@ -32,9 +36,8 @@ export default ({ headline = true, ...props }) => (
       <Heading
         color="primary"
         f={[5, 6]}
-        align="center"
-        mb={4}
-        children="Start a club with all our resources."
+        mb={2}
+        children="Students: start a club with all our resources."
       />
     )}
     <Feats>

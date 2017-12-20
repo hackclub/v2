@@ -1,28 +1,32 @@
 import React from 'react'
-import { Flex, Heading, Subhead, Column } from 'rebass'
+import { Heading, Subhead, Column } from 'rebass'
+import Section from './Section'
 import CTA from './CTA'
-import { url } from './Icon'
-import { geo, brand, wk, mx } from '../theme'
+import { cx, wk, mx } from '../theme'
 
 const tilt = n =>
   wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`)
 
-const Background = Flex.extend.attrs({
+const Background = Section.extend.attrs({
   direction: ['column', null, 'row'],
-  justify: 'space-around',
-  align: 'center',
-  w: 1,
-  bg: 'primary'
+  justify: 'space-around'
 })`
-  ${geo(brand.primary)};
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  background-color: ${cx('red.5')};
+  background-image: linear-gradient(
+    48deg,
+    ${cx('red.6')} 0%,
+    ${cx('red.5')} 50%,
+    ${cx('orange.4')} 100%
+  );
+  padding: 4rem 0 !important;
   margin-top: -4rem;
   ${tilt(90)}
   ${mx[2]} {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 5rem 0 !important;
     ${tilt(85)}
+  }
+  > div {
+    margin-bottom: 1rem;
   }
 `
 
@@ -46,27 +50,26 @@ const Description = Subhead.extend.attrs({
 `
 
 const Left = Column.extend`
+  a {
+    font-size: 1.5rem;
+  }
   ${mx[2]} {
     text-align: right;
   }
 `
-const Right = Column.extend`text-align: left;`
+const Right = Column.extend`
+  text-align: left;
+`
 
 const Start = props => (
   <Background {...props}>
     <Left>
-      <Large>Start a Hack Club</Large>
-      <Description>Build the class you wish you could take.</Description>
-      <Description mb={0}>Bring the movement to your high school.</Description>
+      <Large>Start your Hack Club.</Large>
+      <Description>Build the class you wish you had.</Description>
+      <Description>Bring the movement to your school.</Description>
     </Left>
     <Right>
-      <CTA
-        m={0}
-        bg="white"
-        color="primary"
-        href="/start"
-        children="Start a Club »"
-      />
+      <CTA bg="white" color="primary" href="/start" children="Get started →" />
     </Right>
     <style children="footer{margin-top:-5rem;padding-top:8rem !important}" />
   </Background>

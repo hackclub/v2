@@ -16,9 +16,10 @@ const Stripe = Flex.extend.attrs({
   background-position: center top;
   margin-top: -3rem;
   min-height: 24rem;
+  max-height: 72rem;
   ${mx[1]} {
     margin-top: -6rem;
-    min-height: 75vh !important;
+    min-height: 75vh;
   }
 `
 

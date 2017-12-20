@@ -25,34 +25,35 @@ const Header = Flex.extend.attrs({
   justify: 'center',
   direction: 'column',
   bg: 'primary',
+  color: 'white',
   px: 3,
   pb: [4, 5]
 })`
-  background-image: linear-gradient(-16deg, ${cx('orange.4')} 0%, ${cx(
-  'red.5'
-)} 50%, ${cx('red.6')} 100%);
+  background-image: linear-gradient(
+    -16deg,
+    ${cx('orange.4')} 0%,
+    ${cx('red.5')} 50%,
+    ${cx('red.6')} 100%
+  );
 `
 
 const Headline = Heading.extend.attrs({
   is: 'h1',
-  color: 'white',
   f: [4, 5, 6],
   mx: 'auto',
   mt: 4,
   mb: 3
 })`
-  text-transform: uppercase;
-  line-height: 1.25;
+  line-height: 1.125;
   text-align: center;
   max-width: 48rem;
 `
 
 const Info = Heading.extend.attrs({
-  color: 'white',
   f: [3, 4],
   mx: 'auto'
 })`
-  font-weight: 400;
+  font-weight: normal;
   text-align: center;
   max-width: 36rem;
 `
@@ -159,9 +160,9 @@ export default () => (
         everyone is making.
       </Headline>
       <Info>
-        Clubs meet weekly at high schools.
+        Clubs meet weekly at high schools,
         <br />
-        run by their student leaders.
+        all run by their student leaders.
       </Info>
     </Header>
     <Section>

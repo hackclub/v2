@@ -15,19 +15,9 @@ import { Head, Link } from 'react-static'
 import Nav from '../components/Nav'
 import CTA from '../components/CTA'
 import Icon from '../components/Icon'
+import Section from '../components/Section'
 import Footer from '../components/Footer'
 
-const Section = Flex.extend.attrs({
-  is: 'section',
-  align: 'center',
-  justify: 'center',
-  direction: 'column',
-  color: 'white',
-  py: [4, 5],
-  px: 3
-})`
-  text-align: center;
-`
 const One = Section.extend`
   padding-top: 0 !important;
   background-color: ${cx('red.5')};
@@ -39,11 +29,12 @@ const One = Section.extend`
   );
 `
 const Two = Section.extend`
-  background-color: ${cx('green.6')};
+  background-color: ${cx('violet.6')};
   background-image: linear-gradient(
-    -32deg,
-    ${cx('teal.7')} 0%,
-    ${cx('lime.6')} 100%
+    48deg,
+    ${cx('violet.5')} 0%,
+    ${cx('violet.6')} 50%,
+    ${cx('indigo.4')} 100%
   );
 `
 const Three = Section.extend`
@@ -56,12 +47,11 @@ const Three = Section.extend`
   );
 `
 const Four = Section.extend`
-  background-color: ${cx('violet.6')};
+  background-color: ${cx('green.6')};
   background-image: linear-gradient(
-    48deg,
-    ${cx('violet.5')} 0%,
-    ${cx('violet.6')} 50%,
-    ${cx('indigo.4')} 100%
+    -32deg,
+    ${cx('teal.7')} 0%,
+    ${cx('lime.6')} 100%
   );
 `
 
@@ -70,6 +60,7 @@ const Modules = Flex.extend.attrs({
   justify: 'center',
   mt: 3
 })`
+  max-width: 64rem;
   ${mm[1]} {
     text-align: left;
   }
@@ -154,10 +145,9 @@ const Card = ({ name, children, ...props }) => (
   </CardBase>
 )
 
-const CTASection = Box.extend.attrs({ is: 'section', px: 3, mt: 4, mb: 2 })`
+const CTASection = Box.extend.attrs({ is: 'section', p: 3, pb: 0 })`
   a {
     font-size: 1.5rem;
-    ${mx[1]} { font-size: 1.75rem; }
   }
 `
 
@@ -176,6 +166,62 @@ export default () => (
       </Heading>
     </One>
     <Two>
+      <Heading f={[4, 5]}>Students: apply and start your club!</Heading>
+      <Modules>
+        <Module
+          icon="assignment"
+          heading="Submit your application"
+          body="Fill out a few questions to get going—totally free."
+        />
+        <Module
+          icon="ring_volume"
+          heading="Training call"
+          body="We’ll start getting to know you and making a plan for your club."
+        />
+        <Module
+          icon="event_available"
+          heading="Lead your club!"
+          body="Schedule your first meeting, start marketing, and get ready!"
+        />
+      </Modules>
+      <CTASection>
+        <CTA to="/apply" bg="white" color="primary">
+          Apply to Hack Club
+        </CTA>
+      </CTASection>
+    </Two>
+    <Three>
+      <Flex direction={['column', 'row']} align="center">
+        <LeftCol>
+          <Heading f={[4, 5]}>Hack Clubs are student-led.</Heading>
+          <Text f={[3, 4]}>
+            Each club meets weekly after school<br />at their high school.
+          </Text>
+          <MeetingsLink is={Link} to="/meetings" mt={4}>
+            See what clubs look like →
+          </MeetingsLink>
+        </LeftCol>
+        <Card name="Are you a teacher or parent?">
+          <Text>
+            We hate to say it, but we’re currently only accepting applications
+            from students.
+          </Text>
+          <Text>
+            Teachers and parents can help by recruiting students, sharing Hack
+            Club with the local PTA, and expressing interest in Hack Club to
+            school administration.
+          </Text>
+          <Text>
+            That said, shoot us an email at{' '}
+            <A color="primary" href="mailto:contact@hackclub.com">
+              contact@hackclub.com
+            </A>{' '}
+            and we’d really love to help where we can.
+          </Text>
+        </Card>
+      </Flex>
+    </Three>
+    <Four>
       <Heading f={[4, 5]}>
         HQ provides the resources you’ll need to soar.
       </Heading>
@@ -209,57 +255,6 @@ export default () => (
           icon="wallpaper"
           heading="Marketing"
           body="Get stickers, posters, and ideas for spreading the word about your club."
-        />
-      </Modules>
-    </Two>
-    <Three>
-      <Flex direction={['column', 'row']} align="center">
-        <LeftCol>
-          <Heading f={[4, 5]}>Hack Clubs are student-led.</Heading>
-          <Text f={[3, 4]}>
-            Each club meets weekly after school<br />at their high school.
-          </Text>
-          <MeetingsLink is={Link} to="/meetings" mt={4}>
-            Explore meetings →
-          </MeetingsLink>
-        </LeftCol>
-        <Card name="Are you a teacher or parent?">
-          <Text>
-            We hate to say it, but we’re currently only accepting applications
-            from students.
-          </Text>
-          <Text>
-            Teachers and parents can help by recruiting students, sharing Hack
-            Club with the local PTA, and expressing interest in Hack Club to
-            school administration.
-          </Text>
-          <Text>
-            That said, shoot us an email at{' '}
-            <A color="primary" href="mailto:contact@hackclub.com">
-              contact@hackclub.com
-            </A>{' '}
-            and we’d really love to help where we can.
-          </Text>
-        </Card>
-      </Flex>
-    </Three>
-    <Four>
-      <Heading f={[4, 5]}>It’s time to submit your application.</Heading>
-      <Modules>
-        <Module
-          icon="assignment"
-          heading="Submit your application"
-          body="Fill out a few questions to get going—totally free."
-        />
-        <Module
-          icon="ring_volume"
-          heading="Training call"
-          body="We’ll start getting to know you and making a plan for your club."
-        />
-        <Module
-          icon="event_available"
-          heading="Lead your club!"
-          body="Schedule your first meeting, start marketing, and get ready!"
         />
       </Modules>
       <CTASection>

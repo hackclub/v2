@@ -29,6 +29,7 @@ const StripeContainer = Container.extend.attrs({
   text-align: center;
   z-index: 1;
 
+  h2, h3 { line-height: 1.35; }
   mark {
     background-color: rgba(250, 247, 133, .85);
     color: ${colors.black} !important;
@@ -41,16 +42,13 @@ const Headline = Heading.extend.attrs({
   f: [5, 6],
   mt: 0,
   mb: 3
-})`line-height: 1.375;`
+})``
 
 const Subheadline = Subhead.extend.attrs({
   is: 'h3',
   f: [3, 4],
   m: 0
-})`
-  font-weight: normal;
-  line-height: 1.375;
-`
+})`font-weight: normal;`
 
 export default () => (
   <Stripe id="more">

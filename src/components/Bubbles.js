@@ -114,8 +114,8 @@ const Bubbles = ({ children }) => (
         for the students.
       </Title>
       <Subtitle>
-        Hack Clubs are high school clubs where students learn to code and build
-        amazing things together.
+        Hack Club is a nonprofit network of free student-led coding clubs where
+        members learn to code through building things.
       </Subtitle>
       <Flex justify="center" wrap m={-2}>
         <CTA href="/donate" bg="white" color="primary">

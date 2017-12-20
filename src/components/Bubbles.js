@@ -72,7 +72,7 @@ const Cloud = Box.extend`
     box-sizing: content-box;
     border-radius: 8rem;
     box-shadow: 0 0 4rem 4rem rgba(252, 252, 252, 0.95);
-    max-width: 36rem;
+    max-width: 32rem;
     padding: 1rem;
     top: -2rem;
   }
@@ -84,10 +84,7 @@ const Title = Heading.extend.attrs({
   mx: 'auto',
   my: 0,
   color: 'primary'
-})`
-  line-height: 1;
-  max-width: 32rem;
-`
+})`line-height: 1;`
 const Subtitle = Lead.extend.attrs({
   f: [3, 4],
   mt: 3,

@@ -51,6 +51,10 @@ export default {
       component: 'src/containers/Meetings'
     },
     {
+      path: '/philosophy',
+      component: 'src/containers/Philosophy'
+    },
+    {
       path: '/replit/start',
       component: 'src/containers/StartRepl'
     },

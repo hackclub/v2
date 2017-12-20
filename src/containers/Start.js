@@ -16,18 +16,8 @@ import Nav from '../components/Nav'
 import CTA from '../components/CTA'
 import Icon from '../components/Icon'
 import Footer from '../components/Footer'
+import Section from '../components/Section'
 
-const Section = Flex.extend.attrs({
-  is: 'section',
-  align: 'center',
-  justify: 'center',
-  direction: 'column',
-  color: 'white',
-  py: [4, 5],
-  px: 3
-})`
-  text-align: center;
-`
 const One = Section.extend`
   padding-top: 0 !important;
   background-color: ${cx('red.5')};

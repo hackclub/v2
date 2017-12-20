@@ -43,32 +43,33 @@ const StripeContainer = Container.extend.attrs({
 const Headline = Heading.extend.attrs({
   is: 'h2',
   f: 5,
-  mt: 4,
-  mb: 2,
+  mt: 10,
+  mb: 20,
   color: 'primary'
-})`line-height: 1.25;`
+})`line-height: 1.345;`
+
 const Subheadline = Subhead.extend.attrs({
   is: 'h3',
   f: [3, 4],
   mt: 0,
-  mb: 1,
+  mb: 0,
   color: 'muted'
 })`
   font-weight: normal;
-  line-height: 1.5;
+  line-height: 1.345;
 `
 
 export default () => (
   <Stripe id="more">
     <StripeContainer>
       <Headline f={[5, 6]} mt={0}>
-        Hack Club brings <mark>coding clubs</mark>
-        {' to '}
-        <mark>high schools</mark> everywhere.
+        <mark>1% of US high schools. 35 states. 13 countries.</mark>
       </Headline>
       <Subheadline my={0}>
-        We’re starting the <mark>computer science education</mark> students
-        need.
+        <mark>
+          Join the largest community of students building the class they wish
+          they could take.
+        </mark>
       </Subheadline>
     </StripeContainer>
   </Stripe>

@@ -35,7 +35,7 @@ export default () => (
       <title>Apply – Hack Club</title>
       <meta
         name="description"
-        content="Submit your application to Hack Club and start a coding club at your high school."
+        content="Submit your application to Hack Club and start a coding club at your high school. Start a Hack Club and be a part of one of the most supportive and inclusive communities of students helping other students learn to code."
       />
     </Head>
     <Header>

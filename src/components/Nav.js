@@ -39,7 +39,7 @@ const Nav = ({ mode = 'default', color = colors.white, ...props }) => (
   <Base {...props}>
     <Flag />
     <NavBar mode={mode} color={color}>
-      <Item is="a" href="/workshops" children="Workshops" />
+      <Item is="a" href="/workshops" children="In a club? Click here for workshops." />
       <Item is={Link} to="/team" children="Our Team" />
     </NavBar>
   </Base>

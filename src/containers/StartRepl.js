@@ -208,12 +208,12 @@ class StartRepl extends Component {
           </Text>
           <Flex justify="center" id="stats" my={4} wrap>
             <Flex>
-              <Stat value={180} label="clubs" />
+              <Stat value={189} label="clubs" />
               <Stat value={13} label="countries" />
             </Flex>
             <Flex>
-              <Stat value={25} label="states" />
-              <Stat value="2K+" label="members" />
+              <Stat value={32} label="states" />
+              <Stat value="3K+" label="members" />
             </Flex>
           </Flex>
           <Box my={5}>

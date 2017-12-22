@@ -18,7 +18,7 @@ const Background = Section.extend.attrs({
     ${cx('red.5')} 50%,
     ${cx('orange.4')} 100%
   );
-  padding: 4rem 0 !important;
+  padding: 6rem 0 !important;
   margin-top: -4rem;
   ${tilt(90)}
   ${mx[2]} {

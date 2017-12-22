@@ -33,6 +33,7 @@ const Item = Box.extend.attrs({ mx: [2, 3] })`
   color: inherit;
   text-decoration: none;
   font-weight: bold;
+  text-align: center;
 `
 
 const Nav = ({ mode = 'default', color = colors.white, ...props }) => (

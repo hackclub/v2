@@ -64,9 +64,9 @@ const Right = Column.extend`
 const Start = props => (
   <Background {...props}>
     <Left>
-      <Large>Start your Hack Club.</Large>
-      <Description>Build the class you wish you had.</Description>
+      <Large>Start a Hack Club.</Large>
       <Description>Bring the movement to your school.</Description>
+      <Description>Build the class you wish you could take.</Description>
     </Left>
     <Right>
       <CTA bg="white" color="primary" href="/start" children="Get started →" />

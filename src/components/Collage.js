@@ -42,7 +42,7 @@ export default () => (
   <Base>
     <Flex align="center" justify="center" bg="primary">
       <Heading color="white" f={6}>
-        We’re creating a movement.
+        United as one. Divided by zero.
       </Heading>
     </Flex>
     <Flex align="center" justify="center" bg="accent">

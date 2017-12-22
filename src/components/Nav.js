@@ -34,6 +34,11 @@ const Item = Box.extend.attrs({ mx: [2, 3] })`
   text-decoration: none;
   font-weight: bold;
   text-align: center;
+  max-width: 10em;
+
+  ${mx[1]} {
+    max-width: none;
+  }
 `
 
 const Nav = ({ mode = 'default', color = colors.white, ...props }) => (

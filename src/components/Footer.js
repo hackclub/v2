@@ -28,7 +28,7 @@ const Footer = () => (
     <Container>
       <Row w={1} wrap>
         <LeftCol>
-          <Subhead>Join the Club</Subhead>
+          <Subhead>Learn like a hacker.</Subhead>
         </LeftCol>
         <RightCol>
           <Flex align="center" mx={-2}>

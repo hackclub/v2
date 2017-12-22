@@ -4,7 +4,7 @@ import { Head } from 'react-static'
 import Nav from '../components/Nav'
 import Bubbles from '../components/Bubbles'
 import Stripe from '../components/Stripe'
-import Features from '../components/Features'
+import About from '../components/About'
 import Superpower from '../components/Superpower'
 import Collage from '../components/Collage'
 import Mosaic from '../components/Mosaic'
@@ -22,7 +22,7 @@ export default () => (
     <Nav style={{ position: 'absolute', top: 0 }} mode="cloud" />
     <Bubbles />
     <Stripe />
-    <Features />
+    <About />
     <Superpower />
     <Collage />
     <Mosaic />

@@ -3,6 +3,8 @@ import { Heading, Container, Flex, Box, Image, Text, Subhead } from 'rebass'
 import Icon from './Icon'
 import { colors, cx, mx, mm, wk } from '../theme'
 
+const defaultBackgroundColor = cx('gray.1')
+
 const Base = Container.extend.attrs({
   maxWidth: '100%',
   mt: 64 * -3,
@@ -17,10 +19,10 @@ const Base = Container.extend.attrs({
     top: 0;
     left: 0;
     right: 0;
-    bottom: ${64 * -1}px;
+    bottom: -64px;
     z-index: -1;
-    background: ${cx('gray.1')};
     ${wk('clip-path: polygon(0% 0%, 100% 0, 100% 75%, 0 100%)')}
+    background-color: ${props => props.backgroundcolor || defaultBackgroundColor};
     background-size: auto 100%;
     background-position-x: .5rem;
   }
@@ -61,8 +63,8 @@ const Bold = Text.extend.attrs({
   bold: true
 })``
 
-export default ({ headline = true, ...props }) => (
-  <Base id="features" {...props}>
+export default ({ ...props }) => (
+  <Base id="about" {...props}>
     <CenteringContainer>
       <Section id="section">
         <TextBlock>

@@ -5,5 +5,12 @@
     "By the students, for the students. Join the movement of high school coding clubs around the world.",
   "url": "https://hackclub.com",
   "twitter": "@starthackclub",
-  "img": "https://hackclub.com/social.png"
+  "img": "https://hackclub.com/social.png",
+  "stats": {
+    "percentage_of_us_high_schools": "1%",
+    "school_count": 189,
+    "state_count": 35,
+    "country_count": 13,
+    "approximate_members": "3K+"
+  }
 }

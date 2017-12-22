@@ -1,6 +1,7 @@
 import React from 'react'
 import { Flex, Container, Heading, Subhead } from 'rebass'
 import { colors, mx, wk } from '../theme'
+import { stats } from '../../data'
 
 const tilt = n =>
   wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`)
@@ -55,7 +56,11 @@ export default () => (
   <Stripe id="more">
     <StripeContainer>
       <Headline>
-        <mark>1% of US high schools. 35 states. 13 countries.</mark>
+        <mark>
+          {stats.percentage_of_us_high_schools} of US high schools.
+          <br />
+          {stats.state_count} states. {stats.country_count} countries.
+        </mark>
       </Headline>
       <Subheadline>
         <mark>

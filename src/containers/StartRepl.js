@@ -16,6 +16,7 @@ import theme, { colors, mx } from '../theme'
 import { Head, Link } from 'react-static'
 import Features from '../components/Features'
 import Stat from '../components/Stat'
+import { stats } from '../../data'
 
 const css = `
   body { background-color: #000; }
@@ -208,12 +209,12 @@ class StartRepl extends Component {
           </Text>
           <Flex justify="center" id="stats" my={4} wrap>
             <Flex>
-              <Stat value={189} label="clubs" />
-              <Stat value={13} label="countries" />
+              <Stat value={stats.school_count} label="clubs" />
+              <Stat value={stats.country_count} label="countries" />
             </Flex>
             <Flex>
-              <Stat value={32} label="states" />
-              <Stat value="3K+" label="members" />
+              <Stat value={stats.state_count} label="states" />
+              <Stat value={stats.approximate_members} label="members" />
             </Flex>
           </Flex>
           <Box my={5}>

@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Flex, Box, Heading, Image } from 'rebass'
 import { mx } from '../theme'
 import Stat from './Stat'
+import { stats } from '../../data'
 
 const Base = Container.extend.attrs({ maxWidth: 48 * 16 })`
   display: flex;
@@ -45,10 +46,10 @@ export default () => (
       </Heading>
     </Flex>
     <Flex align="center" justify="center" bg="accent">
-      <Stat value={189} label="schools" />
-      <Stat value={13} label="countries" />
-      <Stat value={32} label="states" />
-      <Stat value="3K+" label="members" />
+      <Stat value={stats.school_count} label="schools" />
+      <Stat value={stats.country_count} label="countries" />
+      <Stat value={stats.state_count} label="states" />
+      <Stat value={stats.approximate_members} label="members" />
     </Flex>
   </Base>
 )

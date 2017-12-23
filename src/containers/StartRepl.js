@@ -14,7 +14,7 @@ import {
 } from 'rebass'
 import theme, { colors, mx } from '../theme'
 import { Head, Link } from 'react-static'
-import Features from '../components/Features'
+import About from '../components/About'
 import Stat from '../components/Stat'
 import { stats } from '../../data'
 
@@ -199,8 +199,7 @@ class StartRepl extends Component {
           <CTA href={`/replit/apply${paramString}`}>Get started »</CTA>
         </Header>
         <Section>
-          <Subheadline>Everything you’ll need</Subheadline>
-          <Features headline={false} mb={4} />
+          <About backgroundcolor={`${colors.green[9]}66`} mb={4} />
         </Section>
         <Section>
           <Subheadline>Be part of a movement</Subheadline>

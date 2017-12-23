@@ -88,7 +88,7 @@ export default ({ ...props }) => (
           mentoring. Hack Club is heavily inspired by unschooling.
         </TextBlock>
       </Section>
-      <BannerImage src="/hacking.png" />
+      <BannerImage src="/about_hacking.jpg" />
     </CenteringContainer>
   </Base>
 )

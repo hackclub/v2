@@ -57,7 +57,11 @@ const CenteringContainer = Container.extend.attrs({
 const TextBlock = Text.extend.attrs({
   f: 4,
   my: 16
-})``
+})`
+  ${mm[1]} {
+    font-size: 16px !important;
+  }
+`
 
 const Bold = Text.extend.attrs({
   is: 'span',

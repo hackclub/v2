@@ -8,7 +8,8 @@ const defaultBackgroundColor = cx('gray.1')
 const Base = Container.extend.attrs({
   maxWidth: '100%',
   mt: 64 * -3,
-  pt: 64 * 3,
+  pt: 64 * 3.5,
+  pb: 64 * 2.5,
   pw: 64,
   w: 1
 })`
@@ -68,23 +69,23 @@ export default ({ ...props }) => (
     <CenteringContainer>
       <Section id="section">
         <TextBlock>
-          <Bold>What we do.</Bold> The Recurse Center is a self-directed,
-          community-driven educational retreat for programmers in New York City.
+          <Bold>How it works.</Bold> You, a student who knows how to code, get
+          1 - 2 others to start a Hack Club. You apply, we accept you, you use
+          the community's open source materials and remote office hours with the
+          staff to get your club started.
         </TextBlock>
         <TextBlock>
-          <Bold>Our philosophy.</Bold> We believe people learn best when they take
-          control of their own education and are free to explore what they’re
-          interested in. RC is heavily influenced by unschooling.
+          <Bold>What it looks like.</Bold> Every week, you and around 20 other
+          students come together to build. Meetings are like mini-hackathons.
+          People are working on projects, you lead workshops to introduce new
+          technologies, you and your co-leads are constantly mentoring. Your
+          members start with no experience.
         </TextBlock>
         <TextBlock>
-          <Bold>Never graduate.</Bold> RC doesn’t end after you leave. We have a
-          diverse, active, and engaged alumni community of over 1,100 smart,
-          enthusiastic, helpful programmers all over the world.
-        </TextBlock>
-        <TextBlock>
-          <Bold>Build a career.</Bold> We’re here to support you at every stage of
-          your career, whether you’re looking for a new job or not, and whether you
-          just finished RC or attended many years ago.
+          <Bold>Our philosophy.</Bold> We think people learn best when they take
+          control of their own education. At Hack Club, there are no teachers.
+          No lectures. Your job is to facilitate and provide guidance through
+          mentoring. Hack Club is heavily inspired by unschooling.
         </TextBlock>
       </Section>
       <BannerImage src="/hacking.png" />

@@ -128,8 +128,7 @@ const Bubbles = ({ children }) => (
         coding clubs.
       </Title>
       <Description>
-        Hack Club is a nonprofit network of free student-led coding clubs where
-        members learn to code by building projects.
+        Hack Club is a nonprofit network of free coding clubs where members learn to code like hackers – through tinkering, building projects, and taking things apart.
       </Description>
       <Flex justify="center" wrap mx={-2} mt={4}>
         <CTA href="/donate" bg="white" color="primary">

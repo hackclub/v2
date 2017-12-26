@@ -73,17 +73,17 @@ export default ({ ...props }) => (
     <CenteringContainer>
       <Section id="section">
         <TextBlock>
-          <Bold>How it works.</Bold> You, a student who knows how to code, get
-          1 - 2 others to start a Hack Club. You apply, we accept you, you use
-          the community's open source materials and remote office hours with the
-          staff to get your club started.
-        </TextBlock>
-        <TextBlock>
           <Bold>What it looks like.</Bold> Every week, you and around 20 other
           students come together to build. Meetings are like mini-hackathons.
           People are working on projects, you lead workshops to introduce new
           technologies, you and your co-leads are constantly mentoring. Your
           members start with no experience.
+        </TextBlock>
+        <TextBlock>
+          <Bold>How it works.</Bold> You, a student who knows how to code, get
+          1 - 2 others to start a Hack Club. You apply, we accept you, you use
+          the community's open source materials and remote office hours with the
+          staff to get your club started.
         </TextBlock>
         <TextBlock>
           <Bold>Our philosophy.</Bold> We think people learn best when they take

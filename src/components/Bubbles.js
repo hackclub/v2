@@ -73,7 +73,7 @@ const Cloud = Box.extend`
     box-sizing: content-box;
     border-radius: 8rem;
     box-shadow: 0 0 4rem 4rem rgba(252, 252, 252, 0.95);
-    max-width: 32rem;
+    max-width: 30rem;
     padding: 0 1rem;
     top: -2rem;
   }

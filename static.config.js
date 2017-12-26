@@ -59,6 +59,10 @@ export default {
       component: 'src/containers/ApplyRepl'
     },
     {
+      path: '/cloud9_setup',
+      component: 'src/containers/Cloud9'
+    },
+    {
       is404: true,
       component: 'src/containers/NotFound'
     }

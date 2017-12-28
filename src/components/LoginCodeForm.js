@@ -37,6 +37,7 @@ const InnerForm = ({
       disabled={isSubmitting}
       onClick={handleSubmit}
       value={statusMessage(status)}
+      mt="6px"
     />
   </form>
 )

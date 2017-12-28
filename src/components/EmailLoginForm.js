@@ -1,4 +1,5 @@
 import React from 'react'
+import { api } from '../../data'
 import { Field, Submit } from '../components/Forms'
 import { withFormik } from 'formik'
 import yup from 'yup'
@@ -7,10 +8,10 @@ import fetch from 'unfetch'
 const statusMessage = status => (
   status
     ? {
-      success: 'Sign-in token sent!',
+      success: 'Login code sent! Check your email.',
       error: 'Something went wrong'
     }[status]
-    : 'Get sign-in token'
+    : 'Get login code'
 )
 const InnerForm = ({
   values,
@@ -50,7 +51,7 @@ const EmailLoginForm = withFormik({
       .email()
   }),
   handleSubmit: (data, { props, setSubmitting, setStatus }) => {
-    fetch('https://api.hackclub.com/v1/TODO', {
+    fetch(`${api}/v1/applicants/auth`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
@@ -60,6 +61,7 @@ const EmailLoginForm = withFormik({
           console.log(res)
           setStatus('success')
           props.submitCallback()
+          setSubmitting(false)
         } else {
           throw res.statusText
         }

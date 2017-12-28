@@ -1,7 +1,10 @@
 import React from 'react'
-import { Field } from '../components/Forms'
+import { api } from '../../data'
+import { Field, Submit } from '../components/Forms'
 import { withFormik } from 'formik'
+import yup from 'yup'
 import fetch from 'unfetch'
+import { withRouter } from 'react-static'
 
 const statusMessage = status => (
   status
@@ -9,7 +12,7 @@ const statusMessage = status => (
       success: 'Logging in!',
       error: 'Something went wrong'
     }[status]
-    : 'Sign In'
+    : 'Login'
 )
 const InnerForm = ({
   values,
@@ -23,32 +26,45 @@ const InnerForm = ({
 }) => (
   <form onSubmit={handleSubmit}>
     <Field
-      label="Sign-in token"
-      name="token"
-      value={values.token}
+      label="Login code"
+      name="login_code"
+      value={values.loginCode}
       onChange={handleChange}
       onBlur={handleBlur}
-      error={touched.token && errors.token}
+      error={touched.loginCode && errors.loginCode}
+    />
+    <Submit
+      disabled={isSubmitting}
+      onClick={handleSubmit}
+      value={statusMessage(status)}
     />
   </form>
 )
 
-const AuthTokenForm = withFormik({
+const LoginCodeForm = withFormik({
   mapPropsToValues: ({ params }) => ({ ...params }),
+  validationSchema: yup.object().shape({
+    login_code: yup
+      .string()
+      .required('required')
+  }),
   handleSubmit: (data, { props, setSubmitting, setErrors, setStatus }) => {
-    fetch('https://api.hackclub.com/v1/TODO', {
+    fetch(`${api}/v1/applicants/exchange_login_code`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     })
       .then(res => {
         if (res.ok) {
-          console.log(res)
-          setStatus('success')
-          props.submitCallback()
+          return res.json()
         } else {
           throw res.statusText
         }
+      })
+      .then(json => {
+        window.localStorage.setItem('loginCode', json.auth_token)
+        setStatus('success')
+        props.history.push('/apply')
       })
       .catch(e => {
         console.error(e)
@@ -56,7 +72,7 @@ const AuthTokenForm = withFormik({
         setStatus('error')
       })
   },
-  displayName: 'AuthTokenForm'
+  displayName: 'LoginCodeForm'
 })(InnerForm)
 
-export default AuthTokenForm
+export default withRouter(LoginCodeForm)

@@ -1,16 +1,40 @@
 import React, { Component } from 'react'
-import FormContainer from '../components/FormContainer'
 import EmailLoginForm from '../components/EmailLoginForm'
-import AuthTokenForm from '../components/AuthTokenForm'
-import { Field, Submit } from '../components/Forms'
-import { Text, Heading } from 'rebass'
+import LoginCodeForm from '../components/LoginCodeForm'
+import { Box, Container, Provider, Text, Heading } from 'rebass'
+import theme, { mx } from '../theme'
+import Nav from '../components/Nav'
+import Footer from '../components/Footer'
 
-const Subheading = Heading.extend.attrs({
-  f: 4,
-  mt: 2,
-  mb: 0,
-  color: 'primary'
-})``
+const Header = Box.extend.attrs({
+  is: 'header',
+  align: 'center',
+  justify: 'center',
+  direction: 'column',
+  bg: 'primary',
+  color: 'white',
+  px: 3,
+  pb: 3
+})`text-align: center;`
+
+const Base = Container.extend.attrs({
+  py: 4,
+  px: 3,
+  maxWidth: 40 * 16
+})`
+  display: grid;
+  grid-gap: 1rem;
+  ${mx[1]} {
+    grid-template-columns: repeat(2, 1fr);
+    h2, .textarea { grid-column: 1 / -1; }
+  }
+`
+
+const Revealer = props => (
+  <div style={{visibility: props.reveal ? 'visible' : 'hidden'}}>
+    { props.children }
+  </div>
+)
 
 class ApplicationSignIn extends Component {
   constructor(props) {
@@ -28,10 +52,24 @@ class ApplicationSignIn extends Component {
     const { emailSent } = this.state
 
     return (
-      <FormContainer>
-        <EmailLoginForm submitCallback={this.submitCallback} />
-        {emailSent ? <AuthTokenForm /> : null}
-      </FormContainer>
+      <Provider theme={theme}>
+        <Header>
+          <Nav />
+          <Heading is="h1" f={[5, 6]} mt={4}>
+            Welcome!
+          </Heading>
+          <Heading f={[3, 4]} mt={2} style={{ fontWeight: 'normal' }}>
+            Login to get started or resume your application
+          </Heading>
+        </Header>
+        <Base>
+          <EmailLoginForm submitCallback={this.submitCallback} />
+          <Revealer reveal={emailSent}>
+            <LoginCodeForm />
+          </Revealer>
+        </Base>
+        <Footer />
+      </Provider>
     )
   }
 }

@@ -28,6 +28,10 @@ export default {
       component: 'src/containers/Apply'
     },
     {
+      path: 'apply/signin',
+      component: 'src/containers/ApplicationSignIn'
+    },
+    {
       path: '/meetings',
       component: 'src/containers/Meetings'
     },

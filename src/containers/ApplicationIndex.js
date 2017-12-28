@@ -6,6 +6,7 @@ import theme from '../theme'
 import LoadingAnimation from '../components/LoadingAnimation'
 import { LoginButton, LogoutButton } from '../components/AuthButton'
 import fetch from 'unfetch'
+import { withRouter } from 'react-static'
 
 const AuthButtons = props => {
   if (props.needsToAuth) {
@@ -39,9 +40,10 @@ const ApplicationListing = props => {
   )
 }
 
-const NewApplicationButton = props => {
+const NewApplicationButton = withRouter(props => {
   const { applicantId, authToken } = props
-  const createApplication = () => {
+  const handleClick = (e) => {
+    e.preventDefault()
     fetch(`${api}/v1/applicants/${applicantId}/club_applications`, {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${authToken}` }
@@ -55,14 +57,15 @@ const NewApplicationButton = props => {
       })
       .then(json => {
         console.log(json)
+        props.history.push({pathname: '/apply/edit', search: `?id=${json.id}`})
       })
       .catch(e => {
         console.error(e)
       })
   }
 
-  return <ListItem onClick={createApplication}>Start a new application</ListItem>
-}
+  return <ListItem onClick={handleClick} to='/apply/edit'>Start a new application</ListItem>
+})
 
 class ApplicationIndex extends Component {
   constructor(props) {

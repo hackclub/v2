@@ -25,6 +25,10 @@ export default {
     },
     {
       path: '/apply',
+      component: 'src/containers/ApplicationIndex'
+    },
+    { // Just kept around for reference
+      path: '/apply_old',
       component: 'src/containers/Apply'
     },
     {

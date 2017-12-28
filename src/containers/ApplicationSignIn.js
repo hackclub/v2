@@ -25,7 +25,7 @@ const Base = Container.extend.attrs({
   display: grid;
   grid-gap: 1rem;
   ${mx[1]} {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     h2, .textarea { grid-column: 1 / -1; }
   }
 `

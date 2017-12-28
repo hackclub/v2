@@ -64,7 +64,7 @@ const LoginCodeForm = withFormik({
         }
       })
       .then(json => {
-        window.localStorage.setItem('loginCode', json.auth_token)
+        window.localStorage.setItem('authToken', json.auth_token)
         setStatus('success')
         props.history.push('/apply')
       })

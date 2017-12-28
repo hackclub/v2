@@ -36,7 +36,7 @@ const Revealer = props => (
   </div>
 )
 
-class ApplicationSignIn extends Component {
+class ApplicationLogin extends Component {
   constructor(props) {
     super(props)
 
@@ -74,4 +74,4 @@ class ApplicationSignIn extends Component {
   }
 }
 
-export default ApplicationSignIn
+export default ApplicationLogin

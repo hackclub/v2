@@ -52,8 +52,15 @@ const InnerForm = ({
       body: JSON.stringify(data)
     })
       .then(res => (res.json()))
-      .then(json => {})
-      .catch(e => {alert(e)})
+      .then(json => {
+        draftButton.value = 'Save as draft'
+        draftButton.disabled = false
+      })
+      .catch(e => {
+        alert(e)
+        draftButton.value = 'Save as draft'
+        draftButton.disabled = false
+      })
   },
   inviteLeader = () => {
     const leaderInvite = window.document.querySelector('#leader_invite')

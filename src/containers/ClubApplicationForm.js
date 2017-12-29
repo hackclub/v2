@@ -1,17 +1,10 @@
 import React, { Component } from 'react'
 import { api } from '../../data'
-import { Field, Submit } from '../components/Forms'
+import { Field, Submit, Base, Subheading } from '../components/Forms'
 import LoadingAnimation from '../components/LoadingAnimation'
+import theme, { colors, mx } from '../theme'
 import { withFormik } from 'formik'
-import { Heading } from 'rebass'
 import fetch from 'unfetch'
-
-const Subheading = Heading.extend.attrs({
-  f: 4,
-  mt: 2,
-  mb: 0,
-  color: 'primary'
-})``
 
 const id = () => {
   const pairs = window.location.search.split(/\?|&/)
@@ -36,7 +29,7 @@ const formToObj = form => {
   return obj
 }
 
-const ClubForm = ({
+const InnerForm = ({
   values,
   errors,
   touched,
@@ -62,7 +55,7 @@ const ClubForm = ({
       .catch(e => {alert(e)})
   }
 }) => (
-  <form onSubmit={handleSubmit}>
+  <Base is="form" onSubmit={handleSubmit}>
     <Subheading>School</Subheading>
     <Field name="high_school_name"
            label="Name of high school"
@@ -213,17 +206,17 @@ const ClubForm = ({
         onClick={handleSubmit}
         value="Submit"
         /> */}
-  </form>
+  </Base>
 )
 
-const FormikForm = withFormik({
+const ClubForm = withFormik({
   mapPropsToValues: params => ( {...params} ),
   enableReinitialize: true,
   displayName: 'ClubForm',
   handleSubmit: (values, {props, setSubmitting, setErrors}) => {
     // this will submit as a final draft
   }
-})(ClubForm)
+})(InnerForm)
 
 export default class extends Component {
   constructor(props) {
@@ -261,7 +254,7 @@ export default class extends Component {
     if (status === 'loading' || formFields === null) {
       return(<LoadingAnimation />)
     } else {
-      return(<FormikForm {...formFields} />)
+      return(<ClubForm {...formFields} />)
     }
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box, Flex, Text } from 'rebass'
-import theme, { colors } from '../theme'
+import { Box, Container, Flex, Heading, Text } from 'rebass'
+import theme, { colors, mx } from '../theme'
 import Button from './Button'
 
 const chevron = () => {
@@ -83,3 +83,24 @@ export const Field = ({
 export const Submit = props => (
   <Button is="input" type="submit" bg="primary" color="white" {...props} />
 )
+
+export const Base = Container.extend.attrs({
+  is: 'form',
+  py: 4,
+  px: 3,
+  maxWidth: 40 * 16
+})`
+  display: grid;
+  grid-gap: 1rem;
+  ${mx[1]} {
+    grid-template-columns: repeat(2, 1fr);
+    h2, .textarea { grid-column: 1 / -1; }
+  }
+`
+
+export const Subheading = Heading.extend.attrs({
+  f: 4,
+  mt: 2,
+  mb: 0,
+  color: 'primary'
+})``

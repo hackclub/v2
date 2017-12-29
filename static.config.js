@@ -37,7 +37,7 @@ export default {
     },
     {
       path: 'apply/edit',
-      component: 'src/containers/ApplicationEdit'
+      component: 'src/containers/ClubApplicationForm'
     },
     {
       path: '/meetings',

@@ -92,6 +92,11 @@ const InnerForm = ({
            error={touched.high_school_address && errors.high_school_address}
            type="textarea" />
     <Subheading>Leaders</Subheading>
+    <ul>
+      {values.applicant_profiles.map((profile, index) => (
+        <li key={index}>{profile.applicant.email}</li>
+      ))}
+    </ul>
     <Field name="leaders_video_url"
            label="Please enter the URL of a 1 minute unlisted (not private) YouTube video introducing the leaders"
            onChange={handleChange}

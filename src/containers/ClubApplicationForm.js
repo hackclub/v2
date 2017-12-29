@@ -30,15 +30,8 @@ const formToObj = form => {
   })
   return obj
 }
-const InnerForm = ({
-  values,
-  errors,
-  touched,
-  handleChange,
-  handleBlur,
-  handleSubmit,
-  isSubmitting,
-  saveDraft = (e) => {
+function saveDraftFunction() {
+  return (e) => {
     const draftButton = e.target
     draftButton.value = 'Saving...'
     draftButton.disabled = true
@@ -61,8 +54,10 @@ const InnerForm = ({
         draftButton.value = 'Save as draft'
         draftButton.disabled = false
       })
-  },
-  inviteLeader = () => {
+  }
+}
+function inviteLeaderFunction() {
+  return () => {
     const leaderInvite = window.document.querySelector('#leader_invite')
     const data = {email: leaderInvite.value}
     const schema = yup.object().shape({
@@ -82,13 +77,25 @@ const InnerForm = ({
         })
           .then(res => (res.json()))
           .then(json => {
-            alert(`Invite sent to ${data.email}`)
+            alert(`Invite sent to ${data.email}. Refresh for their email to be added to the list.`)
             leaderInvite.value = ''
           })
           .catch(e => {alert(e)})
       })
       .catch(e => {alert(e)})
   }
+}
+
+const InnerForm = ({
+  values,
+  errors,
+  touched,
+  handleChange,
+  handleBlur,
+  handleSubmit,
+  isSubmitting,
+  saveDraft = saveDraftFunction(),
+  inviteLeader = inviteLeaderFunction()
 }) => (
   <Base is="form" onSubmit={handleSubmit}>
     <Subheading>School</Subheading>

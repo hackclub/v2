@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { api } from '../../data'
-import { Provider, Text } from 'rebass'
+import { Provider, Text, Small } from 'rebass'
 import Button from '../components/Button'
 import theme from '../theme'
 import LoadingAnimation from '../components/LoadingAnimation'
@@ -25,9 +25,31 @@ const ListItem = props => (
   <Button is={Link} {...props} />
 )
 
-const ApplicationCard = props => (
-  <ListItem to={`/apply/edit?id=${props.app.id}`}>Update at {props.app.updated_at}</ListItem>
-)
+const timeSince = time => {
+  const seconds = Math.floor((new Date() - new Date(time)) / 1000);
+  const intervals = [
+    [Math.floor(seconds / (60 * 60 * 24 * 7)), 'weeks'],
+    [Math.floor(seconds / (60 * 60 * 24)), 'days'],
+    [Math.floor(seconds / (60 * 60)), 'hours'],
+    [Math.floor(seconds / 60), 'minutes']
+  ]
+  for (var i = 0; i < intervals.length; i++) {
+    let interval = intervals[i]
+    if (interval[0] > 1) {
+      return interval.join(' ')
+    }
+  }
+  return 'less than a minute'
+}
+
+const ApplicationCard = props => {
+  return (
+    <ListItem to={`/apply/edit?id=${props.app.id}`}>
+      <Text>{props.app.high_school_name || "Untitled Application"}</Text>
+      <Small>Last edited {timeSince(props.app.updated_at)} ago</Small>
+    </ListItem>
+  )
+}
 
 const ApplicationListing = props => (
   <ul>

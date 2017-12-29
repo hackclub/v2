@@ -39,7 +39,7 @@ const InnerForm = ({
 const statusMessage = status =>
   status
     ? {
-        success: 'Invitation sent! Check your email 📬',
+        success: 'Sent! Check your email 📬',
         error: 'Something went wrong 😰'
       }[status]
     : 'Get Invitation'

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Box, Flex } from 'rebass'
 import { Link } from 'react-static'
-import { colors, mx } from '../theme'
+import { colors, mm } from '../theme'
 import Flag from './Flag'
 
 const Base = Flex.extend.attrs({
@@ -29,15 +29,14 @@ const NavBar = Flex.extend.attrs({ is: 'nav', align: 'center', mr: -3 })(
       : { color: colors[props.color] || props.color }
 )
 
-const Item = Box.extend.attrs({ mx: [2, 3] })`
+const Item = Box.extend.attrs({ mx: [1, 3] })`
   color: inherit;
   text-decoration: none;
   font-weight: bold;
   text-align: center;
-  max-width: 10em;
 
-  ${mx[1]} {
-    max-width: none;
+  ${mm[1]} {
+    max-width: 8em;
   }
 `
 
@@ -45,11 +44,12 @@ const Nav = ({ mode = 'default', color = colors.white, ...props }) => (
   <Base {...props}>
     <Flag />
     <NavBar mode={mode} color={color}>
-      <Item is="a" href="/workshops" children="In a club? Click here for workshops." />
       <Item is={Link} to="/team" children="Our Team" />
+      <Item is="a" href="/workshops" children="In a club? Get workshops →" />
     </NavBar>
   </Base>
 )
+
 Nav.propTypes = {
   mode: PropTypes.oneOf(['default', 'cloud']),
   color: PropTypes.string

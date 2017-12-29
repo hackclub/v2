@@ -44,12 +44,15 @@ class ApplicationLogin extends Component {
     this.submitCallback = this.submitCallback.bind(this)
   }
 
-  submitCallback() {
-    this.setState({ emailSent: true })
+  submitCallback(data) {
+    this.setState({
+      ...data,
+      emailSent: true
+    })
   }
 
   render() {
-    const { emailSent } = this.state
+    const { emailSent, applicantId } = this.state
 
     return (
       <Provider theme={theme}>
@@ -65,7 +68,7 @@ class ApplicationLogin extends Component {
         <Base>
           <EmailLoginForm submitCallback={this.submitCallback} />
           <Revealer reveal={emailSent}>
-            <LoginCodeForm />
+            <LoginCodeForm id={applicantId} />
           </Revealer>
         </Base>
         <Footer />

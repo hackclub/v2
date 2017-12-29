@@ -66,8 +66,8 @@ const EmailLoginForm = withFormik({
       })
       .then(json => {
         window.localStorage.setItem('applicantId', json.id)
+        props.submitCallback({applicantId: json.id})
         setStatus('success')
-        props.submitCallback()
         setSubmitting(false)
       })
       .catch(e => {

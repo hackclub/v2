@@ -51,7 +51,7 @@ const LoginCodeForm = withFormik({
       .required('required')
   }),
   handleSubmit: (data, { props, setSubmitting, setErrors, setStatus }) => {
-    fetch(`${api}/v1/applicants/exchange_login_code`, {
+    fetch(`${api}/v1/applicants/${props.id}/exchange_login_code`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)

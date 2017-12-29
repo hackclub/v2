@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { api } from '../../data'
 import { Field, Submit, Base, Subheading } from '../components/Forms'
+import Button from '../components/Button'
 import LoadingAnimation from '../components/LoadingAnimation'
 import theme, { colors, mx } from '../theme'
 import { withFormik } from 'formik'
+import yup from 'yup'
 import fetch from 'unfetch'
 
 const id = () => {
@@ -28,7 +30,6 @@ const formToObj = form => {
   })
   return obj
 }
-
 const InnerForm = ({
   values,
   errors,
@@ -52,6 +53,33 @@ const InnerForm = ({
     })
       .then(res => (res.json()))
       .then(json => {})
+      .catch(e => {alert(e)})
+  },
+  inviteLeader = () => {
+    const leaderInvite = window.document.querySelector('#leader_invite')
+    const data = {email: leaderInvite.value}
+    const schema = yup.object().shape({
+      email: yup.string().required().email()
+    })
+
+    schema
+      .validate(data)
+      .then(data => {
+        fetch(`${api}/v1/club_applications/${id()}/add_applicant`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${authToken()}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+          .then(res => (res.json()))
+          .then(json => {
+            alert(`Invite sent to ${data.email}`)
+            leaderInvite.value = ''
+          })
+          .catch(e => {alert(e)})
+      })
       .catch(e => {alert(e)})
   }
 }) => (
@@ -97,6 +125,8 @@ const InnerForm = ({
         <li key={index}>{profile.applicant.email}</li>
       ))}
     </ul>
+    <Field label="Email address of co-leader" id="leader_invite" />
+    <Button onClick={inviteLeader}>Add co-leader</Button>
     <Field name="leaders_video_url"
            label="Please enter the URL of a 1 minute unlisted (not private) YouTube video introducing the leaders"
            onChange={handleChange}

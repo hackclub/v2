@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { api } from '../../data'
-import { Box, Container, Provider, Text, Heading, Link as A } from 'rebass'
+import { Provider, Text } from 'rebass'
 import Button from '../components/Button'
 import theme from '../theme'
 import LoadingAnimation from '../components/LoadingAnimation'
 import { LoginButton, LogoutButton } from '../components/AuthButton'
 import fetch from 'unfetch'
-import { withRouter } from 'react-static'
+import { withRouter, Link } from 'react-static'
 
 const AuthButtons = props => {
   if (props.needsToAuth) {
@@ -21,24 +21,21 @@ const AuthButtons = props => {
   }
 }
 
-const ListItem = Button.extend.attrs({
-})``
-
-const ApplicationCard = props => (
-  <ListItem> Update at {props.app.updated_at} </ListItem>
+const ListItem = props => (
+  <Button is={Link} {...props} />
 )
 
-const ApplicationListing = props => {
-  return (
-    <div>
-      <ul>
-      {props.apps.map((app, index) => (
-        <ApplicationCard app={app} key={index} />
-      ))}
-      </ul>
-    </div>
-  )
-}
+const ApplicationCard = props => (
+  <ListItem to={`/apply/edit?id=${props.app.id}`}>Update at {props.app.updated_at}</ListItem>
+)
+
+const ApplicationListing = props => (
+  <ul>
+    {props.apps.map((app, index) => (
+      <ApplicationCard app={app} key={index} />
+    ))}
+  </ul>
+)
 
 const NewApplicationButton = withRouter(props => {
   const { applicantId, authToken } = props
@@ -48,20 +45,20 @@ const NewApplicationButton = withRouter(props => {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${authToken}` }
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          throw res
-        }
-      })
-      .then(json => {
-        console.log(json)
-        props.history.push({pathname: '/apply/edit', search: `?id=${json.id}`})
-      })
-      .catch(e => {
-        console.error(e)
-      })
+     .then(res => {
+       if (res.ok) {
+         return res.json()
+       } else {
+         throw res
+       }
+     })
+     .then(json => {
+       console.log(json)
+       props.history.push({pathname: '/apply/edit', search: `?id=${json.id}`})
+     })
+     .catch(e => {
+       console.error(e)
+     })
   }
 
   return <ListItem onClick={handleClick} to='/apply/edit'>Start a new application</ListItem>

@@ -37,7 +37,7 @@ export default {
     },
     {
       path: '/apply/leader',
-      component: 'src/containers/LeaderApplicationForm'
+      component: 'src/containers/LeaderApplication'
     },
     {
       path: '/meetings',

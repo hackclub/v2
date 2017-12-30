@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { api } from '../../data'
-import { Provider, Text, Small } from 'rebass'
+import { Box, Provider, Text, Small } from 'rebass'
 import Button from '../components/Button'
 import theme from '../theme'
 import LoadingAnimation from '../components/LoadingAnimation'
@@ -22,7 +22,7 @@ const AuthButtons = props => {
 }
 
 const ListItem = props => (
-  <Button is={Link} {...props} />
+  <Button {...props} is={Link} children={<Text>{props.children}</Text>} />
 )
 
 const timeSince = time => {
@@ -43,18 +43,29 @@ const timeSince = time => {
 }
 
 const ApplicationCard = props => {
+  const leaderProfile = props.app.applicant_profiles.find(profile => (
+    profile.applicant.id == props.applicantId
+  ))
+
   return (
-    <ListItem to={`/apply/club?id=${props.app.id}`}>
+    <Box>
       <Text>{props.app.high_school_name || "Untitled Application"}</Text>
+      <ListItem to={`/apply/club?id=${props.app.id}`}>
+        Edit Club Application
+      </ListItem>
+
+      <ListItem to={`/apply/leader?id=${leaderProfile.id}`}>
+        Edit Leader Profile
+      </ListItem>
       <Small>Last edited {timeSince(props.app.updated_at)} ago</Small>
-    </ListItem>
+    </Box>
   )
 }
 
 const ApplicationListing = props => (
   <ul>
     {props.apps.map((app, index) => (
-      <ApplicationCard app={app} key={index} />
+      <ApplicationCard key={index} app={app} {...props} />
     ))}
   </ul>
 )
@@ -150,7 +161,7 @@ class ApplicationIndex extends Component {
         <Provider theme={theme}>
           <AuthButtons needsToAuth={status === 'needsToAuth'} />
           <NewApplicationButton authToken={authToken} applicantId={applicantId} />
-          <ApplicationListing apps={this.apps} />
+          <ApplicationListing apps={this.apps} applicantId={applicantId} />
         </Provider>
       )
     }

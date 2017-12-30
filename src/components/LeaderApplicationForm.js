@@ -30,12 +30,12 @@ const InnerForm = (props) => {
              value={values.leader_email}
              error={touched.leader_email && errors.leader_email}
       />
-      <Field name="leader_birthdate"
-             label="Birthdate"
+      <Field name="leader_birthday"
+             label="Birthday"
              onChange={handleChange}
              onBlur={handleBlur}
-             value={values.leader_birthdate}
-             error={touched.leader_birthdate && errors.leader_birthdate}
+             value={values.leader_birthday}
+             error={touched.leader_birthday && errors.leader_birthday}
              type="date"
       />
       <Field name="leader_year_in_school"
@@ -156,10 +156,14 @@ const InnerForm = (props) => {
              label="Are you a technical leader? (You are a programmer who can teach without outside assistance)"
              onChange={handleChange}
              onBlur={handleBlur}
-             value={values.skills_is_technical}
+             value={values.skills_is_technical || 'select'}
              error={touched.skills_is_technical && errors.skills_is_technical}
-             type="checkbox"
-      />
+             type="select"
+      >
+        <option value="select" disabled>Select One</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </Field>
       <Submit
         value="Save as draft"
         disabled={isSubmitting}

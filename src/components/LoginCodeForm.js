@@ -51,10 +51,11 @@ const LoginCodeForm = withFormik({
       .required('required')
   }),
   handleSubmit: (data, { props, setSubmitting, setErrors, setStatus }) => {
+    const strippedLoginCode = data.login_code.replace(/\D/g,'')
     fetch(`${api}/v1/applicants/${props.id}/exchange_login_code`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
+      body: JSON.stringify({login_code: strippedLoginCode})
     })
       .then(res => {
         if (res.ok) {

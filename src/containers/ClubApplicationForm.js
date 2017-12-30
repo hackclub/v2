@@ -136,7 +136,10 @@ const InnerForm = ({
     <Subheading>Leaders</Subheading>
     <ul>
       {values.applicant_profiles.map((profile, index) => (
-        <li key={index}>{profile.applicant.email}</li>
+        <li key={index}>
+          {profile.applicant.email}
+          {profile.completed_at === null ? " (Incomplete)" : " (Complete)"}
+        </li>
       ))}
     </ul>
     <Field label="Email address of co-leader" id="leader_invite" />

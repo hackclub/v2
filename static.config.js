@@ -33,7 +33,7 @@ export default {
     },
     {
       path: '/apply/club',
-      component: 'src/containers/ClubApplicationForm'
+      component: 'src/containers/ClubApplication'
     },
     {
       path: '/apply/leader',

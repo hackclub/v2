@@ -4,67 +4,31 @@ import { Field, Submit, Base, Subheading } from '../components/Forms'
 import Button from '../components/Button'
 import { withFormik } from 'formik'
 
-const formToObj = form => {
-  var obj = {}
-  const formData = new FormData(form)
-  formData.forEach((v, k) => {
-    obj[k] = v
-  })
-  return obj
-}
-const saveDraft = (e) => {
-  return null
-  const draftButton = e.target
-  draftButton.value = 'Saving...'
-  draftButton.disabled = true
-  const data = formToObj(e.target.form)
-  fetch(`${api}/v1/club_applications/${props.id}`, {
-    method: 'PATCH',
-    headers: {
-      'Authorization': `Bearer ${props.authToken}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-    .then(res => (res.json()))
-    .then(json => {
-      draftButton.value = 'Save as draft'
-      draftButton.disabled = false
-    })
-    .catch(e => {
-      alert(e)
-      draftButton.value = 'Save as draft'
-      draftButton.disabled = false
-    })
-}
-const inviteLeader = () => {
-  return null
-  const leaderInvite = window.document.querySelector('#leader_invite')
-  const data = {email: leaderInvite.value}
-  const schema = yup.object().shape({
-    email: yup.string().required().email()
-  })
-
-  schema
-    .validate(data)
-    .then(data => {
-      fetch(`${api}/v1/club_applications/${props.id}/add_applicant`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${props.authToken}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-        .then(res => (res.json()))
-        .then(json => {
-          alert(`Invite sent to ${data.email}. Refresh for their email to be added to the list.`)
-          leaderInvite.value = ''
-        })
-        .catch(e => {alert(e)})
-    })
-    .catch(e => {alert(e)})
-}
+/* const saveDraft = (e) => {
+ *   return null
+ *   const draftButton = e.target
+ *   draftButton.value = 'Saving...'
+ *   draftButton.disabled = true
+ *   const data = formToObj(e.target.form)
+ *   fetch(`${api}/v1/club_applications/${props.id}`, {
+ *     method: 'PATCH',
+ *     headers: {
+ *       'Authorization': `Bearer ${props.authToken}`,
+ *       'Content-Type': 'application/json'
+ *     },
+ *     body: JSON.stringify(data)
+ *   })
+ *     .then(res => (res.json()))
+ *     .then(json => {
+ *       draftButton.value = 'Save as draft'
+ *       draftButton.disabled = false
+ *     })
+ *     .catch(e => {
+ *       alert(e)
+ *       draftButton.value = 'Save as draft'
+ *       draftButton.disabled = false
+ *     })
+ * }*/
 
 const InnerForm = (props) => {
   const {
@@ -114,16 +78,6 @@ const InnerForm = (props) => {
              error={touched.high_school_address && errors.high_school_address}
              type="textarea" />
       <Subheading>Leaders</Subheading>
-      <ul>
-        {values.applicant_profiles.map((profile, index) => (
-          <li key={index}>
-            {profile.applicant.email}
-            {profile.completed_at === null ? " (Incomplete)" : " (Complete)"}
-          </li>
-        ))}
-      </ul>
-      <Field label="Email address of co-leader" id="leader_invite" />
-      <Button onClick={inviteLeader}>Add co-leader</Button>
       <Field name="leaders_video_url"
              label="Please enter the URL of a 1 minute unlisted (not private) YouTube video introducing the leaders"
              onChange={handleChange}
@@ -228,8 +182,8 @@ const InnerForm = (props) => {
              error={touched.curious_how_did_hear && errors.curious_how_did_hear}
              type="textarea" />
       <Submit
-        onClick={saveDraft}
         value="Save as draft"
+        disabled={isSubmitting}
       />
 
       {/* TODO: Add a submit button that submits instead of saving a draft */}
@@ -245,8 +199,7 @@ const InnerForm = (props) => {
 const ClubApplicationForm = withFormik({
   mapPropsToValues: props => ( props.params ),
   enableReinitialize: true,
-  handleSubmit: (data, { setStatus, props }) => {
-    setStatus('submitting')
+  handleSubmit: (data, { setStatus, props, setSubmitting }) => {
     fetch(`${api}/v1/club_applications/${props.id}`, {
       method: 'PATCH',
       headers: {
@@ -262,11 +215,11 @@ const ClubApplicationForm = withFormik({
           throw res
         }})
       .then(json => {
-        setStatus('success')
+        setSubmitting(false)
       })
       .catch(e => {
-        setStatus('error')
         alert(e)
+        setSubmitting(false)
       })
   },
   displayName: 'ClubApplicationForm'

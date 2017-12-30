@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { api } from '../../data'
 import LoadingAnimation from '../components/LoadingAnimation'
 import ClubApplicationForm from '../components/ClubApplicationForm'
+import LeaderInviteForm from '../components/LeaderInviteForm'
 import yup from 'yup'
 import fetch from 'unfetch'
 
@@ -54,10 +55,16 @@ export default class extends Component {
       return(<LoadingAnimation />)
     } else {
       return(
-        <ClubApplicationForm params={ formFields }
-            id={ id }
-            authToken={ authToken }
-            />
+        <div>
+          <ClubApplicationForm params={ formFields }
+                               id={ id }
+                               authToken={ authToken }
+          />
+          <LeaderInviteForm params={ formFields }
+                            id={ id }
+                            authToken={ authToken }
+          />
+        </div>
       )
     }
   }

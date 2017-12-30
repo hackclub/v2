@@ -4,33 +4,30 @@ import { Field, Submit, Base, Subheading } from '../components/Forms'
 import Button from '../components/Button'
 import { withFormik } from 'formik'
 
-/* const saveDraft = (e) => {
- *   return null
- *   const draftButton = e.target
- *   draftButton.value = 'Saving...'
- *   draftButton.disabled = true
- *   const data = formToObj(e.target.form)
- *   fetch(`${api}/v1/club_applications/${props.id}`, {
- *     method: 'PATCH',
- *     headers: {
- *       'Authorization': `Bearer ${props.authToken}`,
- *       'Content-Type': 'application/json'
- *     },
- *     body: JSON.stringify(data)
- *   })
- *     .then(res => (res.json()))
- *     .then(json => {
- *       draftButton.value = 'Save as draft'
- *       draftButton.disabled = false
- *     })
- *     .catch(e => {
- *       alert(e)
- *       draftButton.value = 'Save as draft'
- *       draftButton.disabled = false
- *     })
- * }*/
-
 const InnerForm = (props) => {
+  const markSubmitted = () => {
+    fetch(`${ api }/v1/club_applications/${props.id}/submit`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${props.authToken}`
+      }
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          throw res
+        }})
+      .then(json => {
+        alert(json)
+      })
+      .catch(e => {
+        console.error(e)
+        if (e.status === 422) {
+          alert("Can't submit. Finish filling out the application and make sure all co-leads have filled out their profiles.")
+        }
+      })
+  }
   const {
     values,
     errors,
@@ -40,7 +37,7 @@ const InnerForm = (props) => {
     handleSubmit,
     isSubmitting
   } = props
-  return(
+  return (
     <Base is="form" onSubmit={handleSubmit}>
       <Subheading>School</Subheading>
       <Field name="high_school_name"
@@ -186,12 +183,7 @@ const InnerForm = (props) => {
         disabled={isSubmitting}
       />
 
-      {/* TODO: Add a submit button that submits instead of saving a draft */}
-      {/* <Submit
-          disabled={isSubmitting || !isValid}
-          onClick={handleSubmit}
-          value="Submit"
-          /> */}
+      <Button disabled={isSubmitting} onClick={markSubmitted}>Submit</Button>
     </Base>
   )
 }

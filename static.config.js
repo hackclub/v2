@@ -32,12 +32,16 @@ export default {
       component: 'src/containers/Apply'
     },
     {
-      path: 'apply/login',
+      path: '/apply/login',
       component: 'src/containers/ApplicationLogin'
     },
     {
-      path: 'apply/edit',
+      path: '/apply/club',
       component: 'src/containers/ClubApplicationForm'
+    },
+    {
+      path: '/apply/leader',
+      component: 'src/containers/LeaderApplicationForm'
     },
     {
       path: '/meetings',

@@ -44,7 +44,7 @@ const timeSince = time => {
 
 const ApplicationCard = props => {
   return (
-    <ListItem to={`/apply/edit?id=${props.app.id}`}>
+    <ListItem to={`/apply/club?id=${props.app.id}`}>
       <Text>{props.app.high_school_name || "Untitled Application"}</Text>
       <Small>Last edited {timeSince(props.app.updated_at)} ago</Small>
     </ListItem>
@@ -76,14 +76,14 @@ const NewApplicationButton = withRouter(props => {
      })
      .then(json => {
        console.log(json)
-       props.history.push({pathname: '/apply/edit', search: `?id=${json.id}`})
+       props.history.push({pathname: '/apply/club', search: `?id=${json.id}`})
      })
      .catch(e => {
        console.error(e)
      })
   }
 
-  return <ListItem onClick={handleClick} to='/apply/edit'>Start a new application</ListItem>
+  return <ListItem onClick={handleClick} to='/apply/club'>Start a new application</ListItem>
 })
 
 class ApplicationIndex extends Component {

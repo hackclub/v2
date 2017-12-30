@@ -26,7 +26,7 @@ const InnerForm = ({
 }) => (
   <form onSubmit={handleSubmit}>
     <Field
-      label="We just sent a login code to that address. Once you get it, please check your inbox."
+      label="We just sent a login code to that address. Please check your inbox."
       name="login_code"
       p="Paste your login code"
       value={values.loginCode}

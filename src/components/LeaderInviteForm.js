@@ -43,7 +43,7 @@ const InnerForm = (props) => {
 const LeaderInviteForm = withFormik({
   mapPropsToValues: props => ( props.params ),
   handleSubmit: (data, {resetForm, props}) => {
-    fetch(`${api}/v1/club_applications/${props.id}/add_applicant`, {
+    fetch(`${api}/v1/new_club_applications/${props.id}/add_applicant`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${props.authToken}`,

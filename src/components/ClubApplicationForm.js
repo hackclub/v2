@@ -6,7 +6,7 @@ import { withFormik } from 'formik'
 
 const InnerForm = (props) => {
   const markSubmitted = () => {
-    fetch(`${ api }/v1/club_applications/${props.id}/submit`, {
+    fetch(`${ api }/v1/new_club_applications/${props.id}/submit`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${props.authToken}`
@@ -192,7 +192,7 @@ const ClubApplicationForm = withFormik({
   mapPropsToValues: props => ( props.params ),
   enableReinitialize: true,
   handleSubmit: (data, { setStatus, props, setSubmitting }) => {
-    fetch(`${api}/v1/club_applications/${props.id}`, {
+    fetch(`${api}/v1/new_club_applications/${props.id}`, {
       method: 'PATCH',
       headers: {
         'Authorization': `Bearer ${props.authToken}`,

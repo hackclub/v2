@@ -74,7 +74,7 @@ const NewApplicationButton = withRouter(props => {
   const { applicantId, authToken } = props
   const handleClick = (e) => {
     e.preventDefault()
-    fetch(`${api}/v1/applicants/${applicantId}/club_applications`, {
+    fetch(`${api}/v1/applicants/${applicantId}/new_club_applications`, {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${authToken}` }
     })
@@ -121,7 +121,7 @@ class ApplicationIndex extends Component {
     console.log(this.state)
 
     // Populate the list of applications
-    fetch(`${api}/v1/applicants/${applicantId}/club_applications`, {
+    fetch(`${api}/v1/applicants/${applicantId}/new_club_applications`, {
       headers: { 'Authorization': `Bearer ${authToken}` }
     })
       .then(res => {

@@ -29,7 +29,7 @@ export default class extends Component {
   }
 
   componentDidMount() {
-    fetch(`${api}/v1/club_applications/${this.state.id}`, {
+    fetch(`${api}/v1/new_club_applications/${this.state.id}`, {
       method: 'GET',
       headers: { 'Authorization': `Bearer ${this.state.authToken}`, },
     })

@@ -122,9 +122,9 @@ const InnerForm = ({
            error={touched.high_school_type && errors.high_school_type}
     >
       <option disabled value="select">Select One</option>
-      <option value="0">Public</option>
-      <option value="1">Private</option>
-      <option value="2">Charter</option>
+      <option value="public_school">Public school</option>
+      <option value="private_school">Private school</option>
+      <option value="charter_school">Charter school</option>
     </Field>
     <Field name="high_school_address"
            label="High school's full address"

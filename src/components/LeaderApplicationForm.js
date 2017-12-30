@@ -42,31 +42,47 @@ const InnerForm = (props) => {
              label="Year in school"
              onChange={handleChange}
              onBlur={handleBlur}
-             value={values.leader_year_in_school || 'select'}
+             value={values.leader_year_in_school || "select"}
              error={touched.leader_year_in_school && errors.leader_year_in_school}
              type="select"
       >
-        <option value='select'>Select One</option>
+        <option value="select">Select One</option>
+        <option value="freshman">Freshman</option>
+        <option value="sophomore">Sophomore</option>
+        <option value="junior">Junior</option>
+        <option value="senior">Senior</option>
+        <option value="other_year">Other year</option>
       </Field>
       <Field name="leader_gender"
              label="Gender"
              onChange={handleChange}
              onBlur={handleBlur}
-             value={values.leader_gender || 'select'}
+             value={values.leader_gender || "select"}
              error={touched.leader_gender && errors.leader_gender}
              type="select"
       >
-        <option value='select'>Select One</option>
+        <option value="select">Select One</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="genderqueer">Genderqueer</option>
+        <option value="agender">Agender</option>
+        <option value="other">Other</option>
       </Field>
       <Field name="leader_ethnicity"
              label="Ethnicity"
              onChange={handleChange}
              onBlur={handleBlur}
-             value={values.leader_ethnicity || 'select'}
+             value={values.leader_ethnicity || "select"}
              error={touched.leader_ethnicity && errors.leader_ethnicity}
              type="select"
       >
-        <option value='select'>Select One</option>
+        <option value="select">Select One</option>
+        <option value="hispanic_or_latino">Hispanic or Latino</option>
+        <option value="white">White</option>
+        <option value="black">Black</option>
+        <option value="native_american_or_indian">Native American or Indian</option>
+        <option value="asian_or_pacific_islander">Asian or Pacific Islander</option>
+        <option value="other_ethnicity">Other ethnicity</option>
       </Field>
       <Field name="leader_phone_number"
              label="Phone number"

@@ -1,4 +1,5 @@
 import React from 'react'
+import { api } from '../../data'
 import { Field, Submit, Base, Subheading } from '../components/Forms'
 import { withFormik } from 'formik'
 
@@ -146,16 +147,29 @@ const InnerForm = (props) => {
       <Submit
         value="Save as draft"
         disabled={isSubmitting}
+        onClick={handleSubmit}
       />
     </Base>
   )
 }
 
 const LeaderApplicationForm = withFormik({
-  mapPropsToValues: params => params,
+  mapPropsToValues: props => ( props.params ),
   enableReinitialize: true,
-  handleSubmit: (data, { setSubmitting, setStatus }) => {
-    alert('TODO: handle submission')
+  handleSubmit: (data, { setSubmitting, setStatus, props }) => {
+    fetch(`${api}/v1/applicant_profiles/${props.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${props.authToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => (res.json()))
+      .then(json => {})
+      .catch(e => {
+        alert(e)
+      })
   },
   displayName: 'LeaderApplicationForm'
 })(InnerForm)

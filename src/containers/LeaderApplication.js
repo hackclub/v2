@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { api } from '../../data'
 import LeaderApplicationForm from '../components/LeaderApplicationForm'
+import LoadingAnimation from '../components/LoadingAnimation'
 
 export default class extends Component {
   constructor(props) {
@@ -10,21 +12,48 @@ export default class extends Component {
     for (var i = 0; i < params.length; i++) {
       let param = params[i]
       if (param.split('=')[0] === 'id') {
-        id = param.split('=')[0]
+        id = param.split('=')[1]
       }
     }
+    const authToken = window.localStorage.getItem('authToken')
 
     this.state = {
       status: 'loading',
       formFields: undefined,
-      authToken: window.localStorage.getItem('authToken'),
-      id: id
+      authToken,
+      id
     }
+
+
+    fetch(`${api}/v1/applicant_profiles/${id}`, {
+      method: 'GET',
+      headers: { 'Authorization': `Bearer ${authToken}`, },
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          throw res
+        }})
+      .then(json => {
+        this.setState({
+          status: 'loaded',
+          formFields: json
+        })
+      })
+      .catch(e => {alert(e)})
   }
 
   render() {
-    return (
-      <LeaderApplicationForm params={ this.state.formFields } />
-    )
+    const { status, formFields, id, authToken } = this.state
+    if (status === 'loading') {
+      return (<LoadingAnimation />)
+    } else {
+      return (
+        <LeaderApplicationForm params={ formFields }
+                               id={ id }
+                               authToken={ authToken } />
+      )
+    }
   }
 }

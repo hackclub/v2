@@ -75,7 +75,7 @@ class InnerForm extends Component {
           </Text>
           <StyledInput
             name="loginCode"
-            placeholder="Login Code."
+            placeholder="Login Code"
             value={values.loginCode}
             onChange={(e) => {
               e.target.value = this.formatAsLoginCode(e.target.value)

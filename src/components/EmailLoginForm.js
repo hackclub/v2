@@ -1,20 +1,34 @@
 import React from 'react'
 import { api } from '../../data'
-import { Box, Input, Text } from 'rebass'
+import { Label, Input, Text } from 'rebass'
+import { brand} from '../theme'
 import { withFormik } from 'formik'
 import yup from 'yup'
 import fetch from 'unfetch'
 
 const defaultTitle = 'Login to apply'
 const StyledInput = Input.extend.attrs({
+  f: 3,
+  p: '0.5rem',
+  mb: '3rem',
+  width: '20rem',
   bg: 'white',
   color: 'primary'
 })`
 text-align: center;
+justify: center;
 ::placeholder {
   text-align: center;
+  color: ${brand.primary};
+  opacity: 0.5;
 }
 `
+
+const StyledLabel = Label.extend`
+display: block;
+text-align: center;
+`
+
 const InnerForm = ({
   values,
   errors,
@@ -26,19 +40,21 @@ const InnerForm = ({
   status
 }) => (
   <form onSubmit={handleSubmit}>
-    <Box is="label" className="email" id="email">
-      <Text mb=".125rem" align="center" f={5}>
-        {errors.email || defaultTitle}
+    <StyledLabel className="email" id="email">
+      <Text mb="2rem" align="center" f={4}>
+        {errors.email || "Enter your email."}
       </Text>
       <StyledInput
         name="email"
-        placeholder="Your email address"
+        placeholder="Email Address"
         value={values.email}
         onChange={handleChange}
         onBlur={handleBlur}
         disabled={isSubmitting}
+        autocomplete="off"
+        autofocus
       />
-    </Box>
+    </StyledLabel>
   </form>
 )
 

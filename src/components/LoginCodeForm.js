@@ -1,22 +1,36 @@
 import React from 'react'
 import { api } from '../../data'
-import { Box, Input, Text } from 'rebass'
-import { Field } from '../components/Forms'
+import { Label, Input, Text } from 'rebass'
+import { brand} from '../theme'
 import { withFormik } from 'formik'
 import yup from 'yup'
 import fetch from 'unfetch'
 import { withRouter } from 'react-static'
 
-const defaultTitle = 'Cool! We just sent a confirmation code to that address'
+const defaultTitle = 'Cool! We just sent a login code to that address.'
 const StyledInput = Input.extend.attrs({
+  f: 3,
+  p: '0.5rem',
+  mb: '3rem',
+  mx: 'auto',
+  width: '20rem',
   bg: 'white',
   color: 'primary'
 })`
 text-align: center;
+justify: center;
 ::placeholder {
   text-align: center;
+  color: ${brand.primary};
+  opacity: 0.5;
 }
 `
+
+const StyledLabel = Label.extend`
+display: block;
+text-align: center;
+`
+
 const InnerForm = ({
   values,
   errors,
@@ -28,19 +42,21 @@ const InnerForm = ({
   status
 }) => (
   <form onSubmit={handleSubmit}>
-    <Box is="label" className="loginCode" id="loginCode">
-      <Text mb=".125rem" align="center" f={5}>
+    <StyledLabel className="loginCode" id="loginCode">
+      <Text mb="2rem" align="center" f={4}>
         {errors.loginCode || status || defaultTitle}
       </Text>
       <StyledInput
         name="loginCode"
-        placeholder="Confirmation Code"
+        placeholder="Login Code."
         value={values.loginCode}
         onChange={handleChange}
         onBlur={handleBlur}
         disabled={isSubmitting}
+        autocomplete="off"
+        autofocus
       />
-    </Box>
+    </StyledLabel>
   </form>
 )
 

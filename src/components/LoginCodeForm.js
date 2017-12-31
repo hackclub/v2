@@ -7,7 +7,6 @@ import yup from 'yup'
 import fetch from 'unfetch'
 import { withRouter } from 'react-static'
 
-const defaultTitle = 'Cool! We just sent a login code to that address.'
 const StyledInput = Input.extend.attrs({
   f: 3,
   p: '0.5rem',
@@ -44,7 +43,7 @@ const InnerForm = ({
   <form onSubmit={handleSubmit}>
     <StyledLabel className="loginCode" id="loginCode">
       <Text mb="2rem" align="center" f={4}>
-        {errors.loginCode || status || defaultTitle}
+        {'Cool! We just sent a login code to that address.'}
       </Text>
       <StyledInput
         name="loginCode"
@@ -57,6 +56,9 @@ const InnerForm = ({
         autoFocus
       />
     </StyledLabel>
+    <Text f={1} mt='-2.5rem' align="center" style={errors.loginCode ? null : {visibility: 'hidden'} }>
+      {errors.loginCode || 'placeholder'}
+    </Text>
   </form>
 )
 
@@ -65,9 +67,12 @@ const LoginCodeForm = withFormik({
   validationSchema: yup.object().shape({
     loginCode: yup
       .string()
-      .required(defaultTitle)
   }),
-  handleSubmit: (data, { props, setSubmitting, setStatus }) => {
+  handleSubmit: (data, { props, setSubmitting, setErrors }) => {
+    if (!data.loginCode) {
+      setSubmitting(false)
+      return null
+    }
     const strippedLoginCode = data.loginCode.replace(/\D/g,'')
     fetch(`${api}/v1/applicants/${props.id}/exchange_login_code`, {
       method: 'POST',
@@ -88,7 +93,7 @@ const LoginCodeForm = withFormik({
       })
       .catch(e => {
         console.error(e)
-        setStatus("That doesn't look like the code we sent")
+        setErrors({loginCode: "That doesn't look like the code we sent"})
         setSubmitting(false)
       })
   },

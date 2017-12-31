@@ -6,7 +6,6 @@ import { withFormik } from 'formik'
 import yup from 'yup'
 import fetch from 'unfetch'
 
-const defaultTitle = 'Login to apply'
 const StyledInput = Input.extend.attrs({
   f: 3,
   p: '0.5rem',
@@ -42,7 +41,7 @@ const InnerForm = ({
   <form onSubmit={handleSubmit}>
     <StyledLabel className="email" id="email">
       <Text mb="2rem" align="center" f={4}>
-        {errors.email || "Enter your email."}
+        Enter your email.
       </Text>
       <StyledInput
         name="email"
@@ -55,6 +54,9 @@ const InnerForm = ({
         autoFocus
       />
     </StyledLabel>
+    <Text f={1} mt='-2.5rem' align="center" style={errors.email ? null : {visibility: 'hidden'} }>
+      {errors.email || 'placeholder'}
+    </Text>
   </form>
 )
 
@@ -64,10 +66,13 @@ const EmailLoginForm = withFormik({
   validationSchema: yup.object().shape({
     email: yup
       .string()
-      .required(defaultTitle)
-      .email('That email address is invalid')
+      .email("That doesn't look like a valid email.")
   }),
-  handleSubmit: (data, { errors, setErrors, props, setSubmitting }) => {
+  handleSubmit: (data, { props, setSubmitting }) => {
+    if (!data.email) {
+      setSubmitting(false)
+      return null
+    }
     fetch(`${api}/v1/applicants/auth`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

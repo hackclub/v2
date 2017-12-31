@@ -80,6 +80,22 @@ const InnerForm = (props) => {
              required
       />
       <Subheading>Leaders</Subheading>
+      <Field name="point_of_contact_id"
+             label="Point of contact"
+             onChange={handleChange}
+             onBlur={handleBlur}
+             value={values.point_of_contact_id || 'select'}
+             error={touched.point_of_contact_id && errors.point_of_contact_id}
+             type="select"
+             required
+      >
+        <option disabled value="select">Select One</option>
+        {
+          values.applicant_profiles.map((profile, index) => (
+            <option value={profile.applicant.id} key={index}>{profile.applicant.email}</option>
+          ))
+        }
+      </Field>
       <Field name="leaders_video_url"
              label="Please enter the URL of a 1 minute unlisted (not private) YouTube video introducing the leaders"
              onChange={handleChange}

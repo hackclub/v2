@@ -3,7 +3,44 @@ import { api } from '../../data'
 import { Field, Submit, Base, Subheading } from '../components/Forms'
 import Button from '../components/Button'
 import { withFormik } from 'formik'
+import { Link } from 'react-static'
+import { Text } from 'rebass'
 import yup from 'yup'
+import theme from '../theme'
+
+const ApplicationList = props => {
+  let completeProfiles = []
+  let incompleteProfiles = []
+  props.values.applicant_profiles.forEach(profile => {
+    if (profile.completed_at === null) {
+      incompleteProfiles.push(profile)
+    } else {
+      completeProfiles.push(profile)
+    }
+  })
+
+  return (
+    <ul>
+      <Text>Complete Profiles</Text>
+      {completeProfiles.map((profile, index) => (
+        <Button is={Link}
+                to={profile.id == props.id ? `/apply/leader?id=${profile.id}` : '/apply'}
+                bg="success"
+                children={profile.applicant.email}
+                key={index} />
+      ))}
+
+      <Text>Incomplete Profiles</Text>
+      {incompleteProfiles.map((profile, index) => (
+        <Button is={Link}
+                to={profile.id == props.id ? `/apply/leader?id=${profile.id}` : '/apply'}
+                bg="primary"
+                children={profile.applicant.email}
+                key={index} />
+      ))}
+    </ul>
+  )
+}
 
 const InnerForm = (props) => {
   const {
@@ -17,14 +54,7 @@ const InnerForm = (props) => {
   } = props
   return (
     <Base is="form" onSubmit={handleSubmit}>
-      <ul>
-        {values.applicant_profiles.map((profile, index) => (
-          <li key={index}>
-            {profile.applicant.email}
-            {profile.completed_at === null ? " (Incomplete)" : " (Complete)"}
-          </li>
-        ))}
-      </ul>
+      <ApplicationList values={values} id={props.id} />
       <Field name="email"
              label="Invite a co-leader"
              onChange={handleChange}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { api } from '../../data'
 import { Label, Input, Text } from 'rebass'
 import { brand} from '../theme'
@@ -29,37 +29,55 @@ display: block;
 text-align: center;
 `
 
-const InnerForm = ({
-  values,
-  errors,
-  touched,
-  handleChange,
-  handleBlur,
-  handleSubmit,
-  isSubmitting,
-  status
-}) => (
-  <form onSubmit={handleSubmit}>
-    <StyledLabel className="loginCode" id="loginCode">
-      <Text mb="2rem" align="center" f={4}>
-        {'Cool! We just sent a login code to that address.'}
-      </Text>
-      <StyledInput
-        name="loginCode"
-        placeholder="Login Code."
-        value={values.loginCode}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        disabled={isSubmitting}
-        autoComplete="off"
-        autoFocus
-      />
-    </StyledLabel>
-    <Text f={1} mt='-2.5rem' align="center" style={errors.loginCode ? null : {visibility: 'hidden'} }>
-      {errors.loginCode || 'placeholder'}
-    </Text>
-  </form>
-)
+class InnerForm extends Component {
+  formatAsLoginCode(rawInput) {
+    // groups of 3 digits
+    const matchGroups = rawInput.replace(/[^0-9]/g, '') // strip nums
+                                .match(/.{1,3}/g) // group in 3s
+
+    return (matchGroups || []) // empty array if no matches
+      .slice(0, 2) // no more than 2 groups
+      .join('-')
+  }
+
+  render() {
+    const {
+      values,
+      errors,
+      touched,
+      handleChange,
+      handleBlur,
+      handleSubmit,
+      isSubmitting,
+      status
+    } = this.props
+    return (
+      <form onSubmit={handleSubmit}>
+        <StyledLabel className="loginCode" id="loginCode">
+          <Text mb="2rem" align="center" f={4}>
+            {'Cool! We just sent a login code to that address.'}
+          </Text>
+          <StyledInput
+            name="loginCode"
+            placeholder="Login Code."
+            value={values.loginCode}
+            onChange={(e) => {
+              e.target.value = this.formatAsLoginCode(e.target.value)
+              handleChange(e)
+            }}
+            onBlur={handleBlur}
+            disabled={isSubmitting}
+            autoComplete="off"
+            autoFocus
+          />
+        </StyledLabel>
+        <Text f={1} mt='-2.5rem' align="center" style={errors.loginCode ? null : {visibility: 'hidden'} }>
+          {errors.loginCode || 'placeholder'}
+        </Text>
+      </form>
+    )
+  }
+}
 
 const LoginCodeForm = withFormik({
   mapPropsToValues: ({ params }) => ({ ...params }),

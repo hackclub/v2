@@ -9,7 +9,7 @@ export const destroySession = () => {
 }
 
 export const LogoutButton = () => (
-  <Button is={Link} to="/apply" onClick={destroySession} children="Logout" />
+  <Button is={Link} to="/" onClick={destroySession} children="Logout" />
 )
 
 export const BackButton = () => {

@@ -22,6 +22,7 @@ const InnerForm = (props) => {
              onBlur={handleBlur}
              value={values.leader_name}
              error={touched.leader_name && errors.leader_name}
+             required
       />
       <Field name="leader_email"
              label="Email"
@@ -29,6 +30,7 @@ const InnerForm = (props) => {
              onBlur={handleBlur}
              value={values.leader_email}
              error={touched.leader_email && errors.leader_email}
+             required
       />
       <Field name="leader_birthday"
              label="Birthday"
@@ -37,6 +39,7 @@ const InnerForm = (props) => {
              value={values.leader_birthday}
              error={touched.leader_birthday && errors.leader_birthday}
              type="date"
+             required
       />
       <Field name="leader_year_in_school"
              label="Year in school"
@@ -45,6 +48,7 @@ const InnerForm = (props) => {
              value={values.leader_year_in_school || "select"}
              error={touched.leader_year_in_school && errors.leader_year_in_school}
              type="select"
+             required
       >
         <option value="select">Select One</option>
         <option value="freshman">Freshman</option>
@@ -60,6 +64,7 @@ const InnerForm = (props) => {
              value={values.leader_gender || "select"}
              error={touched.leader_gender && errors.leader_gender}
              type="select"
+             required
       >
         <option value="select">Select One</option>
         <option value="male">Male</option>
@@ -75,6 +80,7 @@ const InnerForm = (props) => {
              value={values.leader_ethnicity || "select"}
              error={touched.leader_ethnicity && errors.leader_ethnicity}
              type="select"
+             required
       >
         <option value="select">Select One</option>
         <option value="hispanic_or_latino">Hispanic or Latino</option>
@@ -90,6 +96,7 @@ const InnerForm = (props) => {
              onBlur={handleBlur}
              value={values.leader_phone_number}
              error={touched.leader_phone_number && errors.leader_phone_number}
+             required
       />
       <Field name="leader_address"
              label="Mailing address"
@@ -98,6 +105,7 @@ const InnerForm = (props) => {
              value={values.leader_address}
              error={touched.leader_address && errors.leader_address}
              type="textarea"
+             required
       />
       <Subheading>Presence</Subheading>
       <Field name="presence_personal_website"
@@ -143,6 +151,7 @@ const InnerForm = (props) => {
              value={values.skills_system_hacked}
              error={touched.skills_system_hacked && errors.skills_system_hacked}
              type="textarea"
+             required
       />
       <Field name="skills_impressive_achievement"
              label="Please tell us in one or two sentences about the most impressive thing you have built or achieved."
@@ -151,6 +160,7 @@ const InnerForm = (props) => {
              value={values.skills_impressive_achievement}
              error={touched.skills_impressive_achievement && errors.skills_impressive_achievement}
              type="textarea"
+             required
       />
       <Field name="skills_is_technical"
              label="Are you a technical leader? (You are a programmer who can teach without outside assistance)"
@@ -159,6 +169,7 @@ const InnerForm = (props) => {
              value={values.skills_is_technical || 'select'}
              error={touched.skills_is_technical && errors.skills_is_technical}
              type="select"
+             required
       >
         <option value="select" disabled>Select One</option>
         <option value="true">Yes</option>

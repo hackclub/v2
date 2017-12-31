@@ -55,6 +55,16 @@ export const Error = Text.extend.attrs({
   text-transform: lowercase;
   &:before { content: '— '; }
 `
+
+export const Required = Text.extend.attrs({
+  is: 'span',
+  className: 'required',
+  color: 'primary',
+  f: 1,
+  ml: 1,
+  children: '*'
+})``
+
 export const Field = ({
   type = 'text',
   name = 'name',
@@ -62,11 +72,13 @@ export const Field = ({
   p,
   children,
   error,
+  required,
   ...props
 }) => (
   <Label className={type} id={name}>
-    <Flex align="center" mb=".125rem" wrap>
+    <Flex align="center" mb=".125rem" style={{display: 'inline'}} wrap>
       {label}
+      {required ? <Required /> : null}
       {error && <Error children={error} />}
     </Flex>
     <Input

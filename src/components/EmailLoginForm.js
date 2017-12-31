@@ -51,8 +51,8 @@ const InnerForm = ({
         onChange={handleChange}
         onBlur={handleBlur}
         disabled={isSubmitting}
-        autocomplete="off"
-        autofocus
+        autoComplete="off"
+        autoFocus
       />
     </StyledLabel>
   </form>

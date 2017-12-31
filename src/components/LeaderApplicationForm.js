@@ -86,7 +86,7 @@ const InnerForm = (props) => {
         <option value="hispanic_or_latino">Hispanic or Latino</option>
         <option value="white">White</option>
         <option value="black">Black</option>
-        <option value="native_american_or_indian">Native American or Indian</option>
+        <option value="native_american_or_indian">Native American or American Indian</option>
         <option value="asian_or_pacific_islander">Asian or Pacific Islander</option>
         <option value="other_ethnicity">Other ethnicity</option>
       </Field>

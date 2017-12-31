@@ -213,7 +213,6 @@ const InnerForm = (props) => {
              value={values.curious_what_convinced}
              error={touched.curious_what_convinced && errors.curious_what_convinced}
              type="textarea"
-             required
       />
       <Field name="curious_how_did_hear"
              label="How did you hear about Hack Club?"
@@ -222,7 +221,6 @@ const InnerForm = (props) => {
              value={values.curious_how_did_hear}
              error={touched.curious_how_did_hear && errors.curious_how_did_hear}
              type="textarea"
-             required
       />
       <Submit
         value="Save as draft"

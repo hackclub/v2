@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Head } from 'react-static'
 import EmailLoginForm from '../components/EmailLoginForm'
 import LoginCodeForm from '../components/LoginCodeForm'
 import { Box, Provider } from 'rebass'
@@ -41,6 +42,9 @@ class ApplicationLogin extends Component {
 
     return (
       <Provider theme={theme}>
+        <Head>
+          <title children="Login" />
+        </Head>
         <Base>
           {
             emailSent ?

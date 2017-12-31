@@ -4,7 +4,8 @@ import LoadingAnimation from '../components/LoadingAnimation'
 import ClubApplicationForm from '../components/ClubApplicationForm'
 import LeaderInviteForm from '../components/LeaderInviteForm'
 import theme from '../theme'
-import { BackButton, LogoutButton } from '../components/AuthButton'
+import Login from '../components/Login'
+import { LogoutButton } from '../components/AuthButton'
 import { Provider } from 'rebass'
 import yup from 'yup'
 import fetch from 'unfetch'
@@ -21,54 +22,74 @@ export default class extends Component {
         id = param.split('=')[1]
       }
     }
-    const authToken = window.localStorage.getItem('authToken')
 
     this.state = {
       status: 'loading',
       formFields: undefined,
-      authToken,
+      authToken: window.localStorage.getItem('authToken'),
       id
     }
   }
 
   componentDidMount() {
-    fetch(`${api}/v1/new_club_applications/${this.state.id}`, {
-      method: 'GET',
-      headers: { 'Authorization': `Bearer ${this.state.authToken}`, },
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          throw res
-        }})
-      .then(json => {
-        this.setState({
-          status: 'loaded',
-          formFields: json
-        })
+    const { authToken, id } = this.state
+    const needsToAuth = (authToken === null || id === null)
+    if (needsToAuth) {
+      const status = 'needsToAuth'
+      this.setState({status})
+    } else {
+      fetch(`${api}/v1/new_club_applications/${id}`, {
+        method: 'GET',
+        headers: { 'Authorization': `Bearer ${authToken}`, },
       })
-      .catch(e => {alert(e)})
+        .then(res => {
+          if (res.ok) {
+            return res.json()
+          } else {
+            throw res
+          }})
+        .then(json => {
+          this.setState({
+            status: 'loaded',
+            formFields: json
+          })
+        })
+        .catch(e => {
+          if (e.status === 401) {
+            const status = 'needsToAuth'
+            this.setState({status})
+          }
+          alert(e)
+        })
+    }
+  }
+
+  content() {
+    const { status, formFields, id, authToken } = this.state
+
+    if (status === 'needsToAuth') {
+      return <Login />
+    } else if (status === 'loading') {
+      return <LoadingAnimation />
+    } else {
+      return (
+        <div>
+          <LogoutButton />
+          <ClubApplicationForm params={ formFields }
+                               id={ id }
+                               authToken={ authToken } />
+          <LeaderInviteForm params={ formFields }
+                            id={ id }
+                            authToken={ authToken } />
+        </div>
+      )
+    }
   }
 
   render() {
-    const { status, formFields, id, authToken } = this.state
     return (
       <Provider theme={theme}>
-        <LogoutButton />
-        <BackButton />
-        {
-          status === 'loading' ?
-          <LoadingAnimation /> :
-          <div>
-            <ClubApplicationForm params={ formFields }
-                                 id={ id }
-                                 authToken={ authToken } />
-            <LeaderInviteForm params={ formFields }
-                              id={ id }
-                              authToken={ authToken } />
-          </div>
-        }
+        {this.content()}
       </Provider>
     )
   }

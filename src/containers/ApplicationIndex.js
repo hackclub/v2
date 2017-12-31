@@ -4,22 +4,10 @@ import { Box, Provider, Text, Small } from 'rebass'
 import Button from '../components/Button'
 import theme from '../theme'
 import LoadingAnimation from '../components/LoadingAnimation'
-import { LoginButton, LogoutButton } from '../components/AuthButton'
+import Login from '../components/Login'
+import { LogoutButton } from '../components/AuthButton'
 import fetch from 'unfetch'
 import { withRouter, Link } from 'react-static'
-
-const AuthButtons = props => {
-  if (props.needsToAuth) {
-    return (
-      <div>
-        <Text>There's something wrong with your session. Please try logging in again.</Text>
-        <LoginButton />
-      </div>
-    )
-  } else {
-    return (<LogoutButton />)
-  }
-}
 
 const ListItem = props => (
   <Button {...props} is={Link} children={<Text>{props.children}</Text>} />
@@ -103,64 +91,70 @@ class ApplicationIndex extends Component {
 
     this.state = {
       status: 'loading',
-      authToken: null,
-      applicantId: null
+      authToken: window.localStorage.getItem('authToken'),
+      applicantId: window.localStorage.getItem('applicantId')
     }
   }
 
   componentDidMount() {
-    const authToken = window.localStorage.getItem('authToken')
-    const applicantId = window.localStorage.getItem('applicantId')
-
-    // Ensure user is authenticated
-    if (authToken === null || applicantId === null) {
-      this.props.history.push('/apply/login')
-    }
+    const { authToken, applicantId } = this.state
+    const needsToAuth = (authToken === null || applicantId === null)
 
     this.setState({authToken, applicantId})
-    console.log(this.state)
 
-    // Populate the list of applications
-    fetch(`${api}/v1/applicants/${applicantId}/new_club_applications`, {
-      headers: { 'Authorization': `Bearer ${authToken}` }
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          throw res
-        }
+    if (needsToAuth) {
+      const status = 'needsToAuth'
+      this.setState({status})
+    } else {
+      // Populate the list of applications
+      fetch(`${api}/v1/applicants/${applicantId}/new_club_applications`, {
+        headers: { 'Authorization': `Bearer ${authToken}` }
       })
-      .then(json => {
-        this.apps = json
-        console.log(json)
-        this.setState({
-          status: 'finshed'
+        .then(res => {
+          if (res.ok) {
+            return res.json()
+          } else {
+            throw res
+          }
         })
-      })
-      .catch(e => {
-        console.error(e)
-        if (e.status === 401) {
-          const status = 'needsToAuth'
+        .then(json => {
+          this.apps = json
+          console.log(json)
+          const status = 'finished'
           this.setState({status})
-        }
-      })
+        })
+        .catch(e => {
+          console.error(e)
+          if (e.status === 401) {
+            const status = 'needsToAuth'
+            this.setState({status})
+          }
+        })
+    }
+  }
+
+  content() {
+    const { status, authToken, applicantId } = this.state
+
+    if (status === 'needsToAuth') {
+      return <Login />
+    } else if (status === 'loading') {
+      return <LoadingAnimation />
+    } else {
+      return (
+        <div>
+          <LogoutButton />
+          <NewApplicationButton authToken={authToken} applicantId={applicantId} />
+          <ApplicationListing apps={this.apps} applicantId={applicantId} />
+        </div>
+      )
+    }
   }
 
   render() {
-    const { status, authToken, applicantId } = this.state
-
     return (
       <Provider theme={theme}>
-        <AuthButtons needsToAuth={status === 'needsToAuth'} />
-        {
-          status === 'loading' ?
-          <LoadingAnimation /> :
-          <div>
-            <NewApplicationButton authToken={authToken} applicantId={applicantId} />
-            <ApplicationListing apps={this.apps} applicantId={applicantId} />
-          </div>
-        }
+        {this.content()}
       </Provider>
     )
   }

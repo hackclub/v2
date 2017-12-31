@@ -5,7 +5,6 @@ import { brand} from '../theme'
 import { withFormik } from 'formik'
 import yup from 'yup'
 import fetch from 'unfetch'
-import { withRouter } from 'react-static'
 
 const StyledInput = Input.extend.attrs({
   f: 3,
@@ -89,7 +88,7 @@ const LoginCodeForm = withFormik({
       .then(json => {
         window.localStorage.setItem('authToken', json.auth_token)
         setSubmitting(false)
-        props.history.push('/apply')
+        window.location.reload()
       })
       .catch(e => {
         console.error(e)
@@ -100,4 +99,4 @@ const LoginCodeForm = withFormik({
   displayName: 'LoginCodeForm'
 })(InnerForm)
 
-export default withRouter(LoginCodeForm)
+export default LoginCodeForm

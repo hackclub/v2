@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { api } from '../../data'
 import LeaderApplicationForm from '../components/LeaderApplicationForm'
 import LoadingAnimation from '../components/LoadingAnimation'
+import Login from '../components/Login'
 import theme from '../theme'
-import { BackButton, LogoutButton } from '../components/AuthButton'
+import { LogoutButton } from '../components/AuthButton'
 import { Provider } from 'rebass'
 
 export default class extends Component {
@@ -18,16 +19,22 @@ export default class extends Component {
         id = param.split('=')[1]
       }
     }
-    const authToken = window.localStorage.getItem('authToken')
 
     this.state = {
       status: 'loading',
       formFields: undefined,
-      authToken,
+      authToken: window.localStorage.getItem('authToken'),
       id
     }
+  }
 
-
+  componentDidMount() {
+    const { authToken, id } = this.state
+    const needsToAuth = (authToken === null || id === null)
+    if (needsToAuth) {
+      const status = 'needsToAuth'
+      this.setState({status})
+    } else {
     fetch(`${api}/v1/applicant_profiles/${id}`, {
       method: 'GET',
       headers: { 'Authorization': `Bearer ${authToken}`, },
@@ -44,22 +51,39 @@ export default class extends Component {
           formFields: json
         })
       })
-      .catch(e => {alert(e)})
+      .catch(e => {
+        if (e.status === 401) {
+          const status = 'needsToAuth'
+          this.setState({status})
+        }
+        alert(e)
+      })
+    }
   }
 
-  render() {
+  content() {
     const { status, formFields, id, authToken } = this.state
-    return (
-      <Provider theme={theme}>
-        <LogoutButton />
-        <BackButton />
-        {
-          status === 'loading' ?
-          <LoadingAnimation /> :
+
+    if (status === 'needsToAuth') {
+      return <Login />
+    } else if (status === 'loading') {
+      return <LoadingAnimation />
+    } else {
+      return (
+        <div>
+          <LogoutButton />
           <LeaderApplicationForm params={ formFields }
                                  id={ id }
                                  authToken={ authToken } />
-        }
+        </div>
+      )
+    }
+  }
+
+  render() {
+    return (
+      <Provider theme={theme}>
+        {this.content()}
       </Provider>
     )
   }

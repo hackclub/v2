@@ -22,7 +22,7 @@ const Base = Box.extend.attrs({
   right: 0;
 `
 
-class ApplicationLogin extends Component {
+class Login extends Component {
   constructor(props) {
     super(props)
 
@@ -57,4 +57,4 @@ class ApplicationLogin extends Component {
   }
 }
 
-export default ApplicationLogin
+export default Login

@@ -45,7 +45,6 @@ class InnerForm extends Component {
 
     let result = ''
     result += digits.substring(0,3) // the first 3 digits
-    console.log(this.state.previousLength, digits.length)
     if (digits.length >= 3) {
       result += '-'
     }

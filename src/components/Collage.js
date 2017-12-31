@@ -22,7 +22,7 @@ const Base = Flex.extend`
     flex-flow: row wrap;
     line-height: 1.25;
     margin-top: -1rem;
-    max-width: 32rem;
+    max-width: 34rem;
     z-index: 1;
   }
   ${mediaQueries[1]} {

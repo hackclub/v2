@@ -150,21 +150,19 @@ class ApplicationIndex extends Component {
   render() {
     const { status, authToken, applicantId } = this.state
 
-    if (status === 'loading') {
-      return (
-        <Provider theme={theme}>
-          <LoadingAnimation />
-        </Provider>
-      )
-    } else {
-      return (
-        <Provider theme={theme}>
-          <AuthButtons needsToAuth={status === 'needsToAuth'} />
-          <NewApplicationButton authToken={authToken} applicantId={applicantId} />
-          <ApplicationListing apps={this.apps} applicantId={applicantId} />
-        </Provider>
-      )
-    }
+    return (
+      <Provider theme={theme}>
+        <AuthButtons needsToAuth={status === 'needsToAuth'} />
+        {
+          status === 'loading' ?
+          <LoadingAnimation /> :
+          <div>
+            <NewApplicationButton authToken={authToken} applicantId={applicantId} />
+            <ApplicationListing apps={this.apps} applicantId={applicantId} />
+          </div>
+        }
+      </Provider>
+    )
   }
 }
 

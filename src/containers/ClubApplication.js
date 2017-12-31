@@ -3,6 +3,9 @@ import { api } from '../../data'
 import LoadingAnimation from '../components/LoadingAnimation'
 import ClubApplicationForm from '../components/ClubApplicationForm'
 import LeaderInviteForm from '../components/LeaderInviteForm'
+import theme from '../theme'
+import { LogoutButton } from '../components/AuthButton'
+import { Provider } from 'rebass'
 import yup from 'yup'
 import fetch from 'unfetch'
 
@@ -50,22 +53,22 @@ export default class extends Component {
 
   render() {
     const { status, formFields, id, authToken } = this.state
-
-    if (status === 'loading') {
-      return(<LoadingAnimation />)
-    } else {
-      return(
-        <div>
-          <ClubApplicationForm params={ formFields }
-                               id={ id }
-                               authToken={ authToken }
-          />
-          <LeaderInviteForm params={ formFields }
-                            id={ id }
-                            authToken={ authToken }
-          />
-        </div>
-      )
-    }
+    return (
+      <Provider theme={theme}>
+        <LogoutButton />
+        {
+          status === 'loading' ?
+          <LoadingAnimation /> :
+          <div>
+            <ClubApplicationForm params={ formFields }
+                                 id={ id }
+                                 authToken={ authToken } />
+            <LeaderInviteForm params={ formFields }
+                              id={ id }
+                              authToken={ authToken } />
+          </div>
+        }
+      </Provider>
+    )
   }
 }

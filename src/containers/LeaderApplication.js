@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { api } from '../../data'
 import LeaderApplicationForm from '../components/LeaderApplicationForm'
 import LoadingAnimation from '../components/LoadingAnimation'
+import theme from '../theme'
+import { LogoutButton } from '../components/AuthButton'
+import { Provider } from 'rebass'
 
 export default class extends Component {
   constructor(props) {
@@ -46,14 +49,17 @@ export default class extends Component {
 
   render() {
     const { status, formFields, id, authToken } = this.state
-    if (status === 'loading') {
-      return (<LoadingAnimation />)
-    } else {
-      return (
-        <LeaderApplicationForm params={ formFields }
-                               id={ id }
-                               authToken={ authToken } />
-      )
-    }
+    return (
+      <Provider theme={theme}>
+        <LogoutButton />
+        {
+          status === 'loading' ?
+          <LoadingAnimation /> :
+          <LeaderApplicationForm params={ formFields }
+                                 id={ id }
+                                 authToken={ authToken } />
+        }
+      </Provider>
+    )
   }
 }

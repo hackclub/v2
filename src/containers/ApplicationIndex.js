@@ -50,41 +50,6 @@ const ApplicationCard = props => {
   )
 }
 
-const ApplicationListing = props => (
-  <ul>
-    {props.apps.map((app, index) => (
-      <ApplicationCard key={index} app={app} {...props} />
-    ))}
-  </ul>
-)
-
-const NewApplicationButton = withRouter(props => {
-  const { applicantId, authToken } = props
-  const handleClick = (e) => {
-    e.preventDefault()
-    fetch(`${api}/v1/applicants/${applicantId}/new_club_applications`, {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${authToken}` }
-    })
-     .then(res => {
-       if (res.ok) {
-         return res.json()
-       } else {
-         throw res
-       }
-     })
-     .then(json => {
-       console.log(json)
-       props.history.push({pathname: '/apply/club', search: `?id=${json.id}`})
-     })
-     .catch(e => {
-       console.error(e)
-     })
-  }
-
-  return <ListItem onClick={handleClick} to='/apply/club'>Start a new application</ListItem>
-})
-
 class ApplicationIndex extends Component {
   constructor(props) {
     super(props)
@@ -118,10 +83,28 @@ class ApplicationIndex extends Component {
           }
         })
         .then(json => {
-          this.apps = json
-          console.log(json)
-          const status = 'finished'
-          this.setState({status})
+          if (json.length === 0) {
+            return fetch(`${api}/v1/applicants/${applicantId}/new_club_applications`, {
+              method: 'POST',
+              headers: { 'Authorization': `Bearer ${authToken}` }
+            })
+              .then(res => {
+                if (res.ok) {
+                  return res.json()
+                } else {
+                  throw res
+                }
+              })
+          }
+          return json.sort((a, b) => {
+            return new Date(b.created_at) - new Date(a.created_at)
+          })[0]
+        })
+        .then(app => {
+          this.setState({
+            status: 'finished',
+            app: app
+          })
         })
         .catch(e => {
           console.error(e)
@@ -134,18 +117,17 @@ class ApplicationIndex extends Component {
   }
 
   content() {
-    const { status, authToken, applicantId } = this.state
+    const { app, status, authToken, applicantId } = this.state
 
     if (status === 'needsToAuth') {
       return <Login />
     } else if (status === 'loading') {
       return <LoadingAnimation />
-    } else {
+    } else if (status === 'finished') {
       return (
         <div>
           <LogoutButton />
-          <NewApplicationButton authToken={authToken} applicantId={applicantId} />
-          <ApplicationListing apps={this.apps} applicantId={applicantId} />
+          <ApplicationCard app={app} applicantId={applicantId} />
         </div>
       )
     }

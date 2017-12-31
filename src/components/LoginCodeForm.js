@@ -30,14 +30,30 @@ text-align: center;
 `
 
 class InnerForm extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {previousLength: 0}
+  }
   formatAsLoginCode(rawInput) {
-    // groups of 3 digits
-    const matchGroups = rawInput.replace(/[^0-9]/g, '') // strip nums
-                                .match(/.{1,3}/g) // group in 3s
+    let digits = rawInput.replace(/[^0-9]/g, '')
+    const isRemovingDash = (this.state.previousLength === 3 && digits.length === 3)
 
-    return (matchGroups || []) // empty array if no matches
-      .slice(0, 2) // no more than 2 groups
-      .join('-')
+    // remove the last digit with the trailing dash
+    if (isRemovingDash) {
+      digits = digits.slice(0, -1)
+    }
+
+    let result = ''
+    result += digits.substring(0,3) // the first 3 digits
+    console.log(this.state.previousLength, digits.length)
+    if (digits.length >= 3) {
+      result += '-'
+    }
+    result += digits.substring(3,6) // the next 3 digits
+
+    this.setState({previousLength: digits.length})
+
+    return result
   }
 
   render() {

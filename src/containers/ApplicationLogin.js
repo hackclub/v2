@@ -1,40 +1,25 @@
 import React, { Component } from 'react'
 import EmailLoginForm from '../components/EmailLoginForm'
 import LoginCodeForm from '../components/LoginCodeForm'
-import { Box, Container, Provider, Text, Heading } from 'rebass'
+import { Box, Provider } from 'rebass'
 import theme, { mx } from '../theme'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 
-const Header = Box.extend.attrs({
-  is: 'header',
-  align: 'center',
-  justify: 'center',
-  direction: 'column',
+const Base = Box.extend.attrs({
   bg: 'primary',
-  color: 'white',
-  px: 3,
-  pb: 3
-})`text-align: center;`
-
-const Base = Container.extend.attrs({
-  py: 4,
-  px: 3,
-  maxWidth: 40 * 16
+  color: 'white'
 })`
-  display: grid;
-  grid-gap: 1rem;
-  ${mx[1]} {
-    grid-template-columns: repeat(1, 1fr);
-    h2, .textarea { grid-column: 1 / -1; }
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 `
-
-const Revealer = props => (
-  <div style={{visibility: props.reveal ? 'visible' : 'hidden'}}>
-    { props.children }
-  </div>
-)
 
 class ApplicationLogin extends Component {
   constructor(props) {
@@ -56,22 +41,13 @@ class ApplicationLogin extends Component {
 
     return (
       <Provider theme={theme}>
-        <Header>
-          <Nav />
-          <Heading is="h1" f={[5, 6]} mt={4}>
-            Welcome!
-          </Heading>
-          <Heading f={[3, 4]} mt={2} style={{ fontWeight: 'normal' }}>
-            Login to get started or resume your application
-          </Heading>
-        </Header>
         <Base>
-          <EmailLoginForm submitCallback={this.submitCallback} />
-          <Revealer reveal={emailSent}>
-            <LoginCodeForm id={applicantId} />
-          </Revealer>
+          {
+            emailSent ?
+            <LoginCodeForm id={applicantId} /> :
+            <EmailLoginForm submitCallback={this.submitCallback} />
+          }
         </Base>
-        <Footer />
       </Provider>
     )
   }

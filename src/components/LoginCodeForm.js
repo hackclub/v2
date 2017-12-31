@@ -1,19 +1,22 @@
 import React from 'react'
 import { api } from '../../data'
-import { Field, Submit } from '../components/Forms'
+import { Box, Input, Text } from 'rebass'
+import { Field } from '../components/Forms'
 import { withFormik } from 'formik'
 import yup from 'yup'
 import fetch from 'unfetch'
 import { withRouter } from 'react-static'
 
-const statusMessage = status => (
-  status
-    ? {
-      success: 'Logging in!',
-      error: 'Something went wrong'
-    }[status]
-    : 'Login'
-)
+const defaultTitle = 'Cool! We just sent a confirmation code to that address'
+const StyledInput = Input.extend.attrs({
+  bg: 'white',
+  color: 'primary'
+})`
+text-align: center;
+::placeholder {
+  text-align: center;
+}
+`
 const InnerForm = ({
   values,
   errors,
@@ -25,33 +28,31 @@ const InnerForm = ({
   status
 }) => (
   <form onSubmit={handleSubmit}>
-    <Field
-      label="We just sent a login code to that address. Please check your inbox."
-      name="login_code"
-      p="Paste your login code"
-      value={values.loginCode}
-      onChange={handleChange}
-      onBlur={handleBlur}
-      error={touched.loginCode && errors.loginCode}
-    />
-    <Submit
-      disabled={isSubmitting}
-      onClick={handleSubmit}
-      value={statusMessage(status)}
-      mt="6px"
-    />
+    <Box is="label" className="loginCode" id="loginCode">
+      <Text mb=".125rem" align="center" f={5}>
+        {errors.loginCode || status || defaultTitle}
+      </Text>
+      <StyledInput
+        name="loginCode"
+        placeholder="Confirmation Code"
+        value={values.loginCode}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        disabled={isSubmitting}
+      />
+    </Box>
   </form>
 )
 
 const LoginCodeForm = withFormik({
   mapPropsToValues: ({ params }) => ({ ...params }),
   validationSchema: yup.object().shape({
-    login_code: yup
+    loginCode: yup
       .string()
-      .required('required')
+      .required(defaultTitle)
   }),
-  handleSubmit: (data, { props, setSubmitting, setErrors, setStatus }) => {
-    const strippedLoginCode = data.login_code.replace(/\D/g,'')
+  handleSubmit: (data, { props, setSubmitting, setStatus }) => {
+    const strippedLoginCode = data.loginCode.replace(/\D/g,'')
     fetch(`${api}/v1/applicants/${props.id}/exchange_login_code`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -66,13 +67,13 @@ const LoginCodeForm = withFormik({
       })
       .then(json => {
         window.localStorage.setItem('authToken', json.auth_token)
-        setStatus('success')
+        setSubmitting(false)
         props.history.push('/apply')
       })
       .catch(e => {
         console.error(e)
+        setStatus("That doesn't look like the code we sent")
         setSubmitting(false)
-        setStatus('error')
       })
   },
   displayName: 'LoginCodeForm'

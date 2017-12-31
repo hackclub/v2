@@ -1,18 +1,20 @@
 import React from 'react'
 import { api } from '../../data'
-import { Field, Submit } from '../components/Forms'
+import { Box, Input, Text } from 'rebass'
 import { withFormik } from 'formik'
 import yup from 'yup'
 import fetch from 'unfetch'
 
-const statusMessage = status => (
-  status
-    ? {
-      success: 'Login code sent! Check your email.',
-      error: 'Something went wrong'
-    }[status]
-    : 'Get login code'
-)
+const defaultTitle = 'Login to apply'
+const StyledInput = Input.extend.attrs({
+  bg: 'white',
+  color: 'primary'
+})`
+text-align: center;
+::placeholder {
+  text-align: center;
+}
+`
 const InnerForm = ({
   values,
   errors,
@@ -24,34 +26,32 @@ const InnerForm = ({
   status
 }) => (
   <form onSubmit={handleSubmit}>
-    <Field
-      label="Email"
-      name="email"
-      type="email"
-      p="cat@hackclub.com"
-      value={values.email}
-      onChange={handleChange}
-      onBlur={handleBlur}
-      error={touched.email && errors.email}
-    />
-    <Submit
-      disabled={isSubmitting}
-      onClick={handleSubmit}
-      value={statusMessage(status)}
-      mt="6px"
-    />
+    <Box is="label" className="email" id="email">
+      <Text mb=".125rem" align="center" f={5}>
+        {errors.email || defaultTitle}
+      </Text>
+      <StyledInput
+        name="email"
+        placeholder="Your email address"
+        value={values.email}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        disabled={isSubmitting}
+      />
+    </Box>
   </form>
 )
 
 const EmailLoginForm = withFormik({
   mapPropsToValues: ({ params }) => ({ ...params }),
+  validateOnChange: false,
   validationSchema: yup.object().shape({
     email: yup
       .string()
-      .required('required')
-      .email()
+      .required(defaultTitle)
+      .email('That email address is invalid')
   }),
-  handleSubmit: (data, { props, setSubmitting, setStatus }) => {
+  handleSubmit: (data, { errors, setErrors, props, setSubmitting }) => {
     fetch(`${api}/v1/applicants/auth`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -66,14 +66,12 @@ const EmailLoginForm = withFormik({
       })
       .then(json => {
         window.localStorage.setItem('applicantId', json.id)
-        props.submitCallback({applicantId: json.id})
-        setStatus('success')
         setSubmitting(false)
+        props.submitCallback({applicantId: json.id})
       })
       .catch(e => {
         console.error(e)
         setSubmitting(false)
-        setStatus('error')
       })
   },
   displayName: 'EmailLoginForm'

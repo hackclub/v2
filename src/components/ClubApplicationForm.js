@@ -194,7 +194,6 @@ const InnerForm = (props) => {
              value={values.formation_misc}
              error={touched.formation_misc && errors.formation_misc}
              type="textarea"
-             required
       />
       <Subheading>Other</Subheading>
       <Field name="other_surprising_or_amusing_discovery"

@@ -3,7 +3,7 @@ import { api } from '../../data'
 import LeaderApplicationForm from '../components/LeaderApplicationForm'
 import LoadingAnimation from '../components/LoadingAnimation'
 import theme from '../theme'
-import { LogoutButton } from '../components/AuthButton'
+import { BackButton, LogoutButton } from '../components/AuthButton'
 import { Provider } from 'rebass'
 
 export default class extends Component {
@@ -52,6 +52,7 @@ export default class extends Component {
     return (
       <Provider theme={theme}>
         <LogoutButton />
+        <BackButton />
         {
           status === 'loading' ?
           <LoadingAnimation /> :

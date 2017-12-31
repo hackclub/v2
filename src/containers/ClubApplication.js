@@ -4,7 +4,7 @@ import LoadingAnimation from '../components/LoadingAnimation'
 import ClubApplicationForm from '../components/ClubApplicationForm'
 import LeaderInviteForm from '../components/LeaderInviteForm'
 import theme from '../theme'
-import { LogoutButton } from '../components/AuthButton'
+import { BackButton, LogoutButton } from '../components/AuthButton'
 import { Provider } from 'rebass'
 import yup from 'yup'
 import fetch from 'unfetch'
@@ -56,6 +56,7 @@ export default class extends Component {
     return (
       <Provider theme={theme}>
         <LogoutButton />
+        <BackButton />
         {
           status === 'loading' ?
           <LoadingAnimation /> :

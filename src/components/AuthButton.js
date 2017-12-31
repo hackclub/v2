@@ -15,3 +15,12 @@ export const LogoutButton = () => (
 export const LoginButton = () => (
   <Button is={Link} to="/apply/login" children="Login →" />
 )
+
+export const BackButton = () => {
+  const { pathname } = window.location
+  const backLink = pathname.substring(0, pathname.lastIndexOf('/'))
+
+  return (
+    <Button is={Link} to={backLink} children="Back →" />
+  )
+}

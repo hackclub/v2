@@ -128,7 +128,7 @@ const Bubbles = ({ children }) => (
           Donate
         </LargeButton>
         <LargeButton.link to="/start" m={2}>
-          Learn More
+          Apply »
         </LargeButton.link>
       </Flex>
     </Cloud>

@@ -13,7 +13,7 @@ export const LogoutButton = () => (
 )
 
 export const LoginButton = () => (
-  <Button is={Link} to="/apply/login" children="Login →" />
+  <Button is={Link} to="/apply/login" children="Login »" />
 )
 
 export const BackButton = () => {
@@ -21,6 +21,6 @@ export const BackButton = () => {
   const backLink = pathname.substring(0, pathname.lastIndexOf('/'))
 
   return (
-    <Button is={Link} to={backLink} children="Back →" />
+    <Button is={Link} to={backLink} children="Back »" />
   )
 }

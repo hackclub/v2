@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { api } from '../../data'
-import { Card, Container, Box, Flex, Lead, Provider } from 'rebass'
+import { Border, Card, Container, Box, Flex, Lead, Provider, Heading } from 'rebass'
 import Button from '../components/Button'
 import theme, { cx, mx } from '../theme'
 import LoadingAnimation from '../components/LoadingAnimation'
@@ -20,7 +20,18 @@ const EditButton = Button.extend.attrs({
 })`
 text-align: left;
 ${mx[1]} {
+  margin-left: 10%;
   width: 90%;
+}
+`
+
+const CustomHeading = Heading.extend.attrs({
+  my: 2,
+  py: 2
+})`
+text-align: center;
+${mx[1]} {
+  text-align: left;
 }
 `
 
@@ -40,7 +51,7 @@ max-width: 75rem;
 `
 
 const CustomFlex = Flex.extend.attrs({
-  wrap: true,
+  wrap: 'wrap-reverse',
   my: 3
 })``
 
@@ -64,10 +75,6 @@ const ApplicationCard = props => {
     <Container my="auto">
       <CustomFlex>
         <CustomBox>
-          <EditButton to={`/apply/club?id=${id}`}>Edit Club Application</EditButton>
-          <EditButton to={`/apply/leader?id=${leaderProfile.id}`}>Edit Leader Profile</EditButton>
-        </CustomBox>
-        <CustomBox>
           <InfoCard>
             <Lead>Application</Lead>
             <ul>
@@ -82,6 +89,10 @@ const ApplicationCard = props => {
               <li>test</li>
             </ul>
           </InfoCard>
+        </CustomBox>
+        <CustomBox>
+          <EditButton to={`/apply/club?id=${id}`}>Edit Club Application</EditButton>
+          <EditButton to={`/apply/leader?id=${leaderProfile.id}`}>Edit Leader Profile</EditButton>
         </CustomBox>
       </CustomFlex>
     </Container>
@@ -164,6 +175,11 @@ class ApplicationIndex extends Component {
         return (
           <div>
             <Nav authenticated={true} />
+            <Container>
+              <Border top bottom color={cx('smoke')}>
+                <CustomHeading>Applying to Hack Club</CustomHeading>
+              </Border>
+            </Container>
             <ApplicationCard app={app} applicantId={applicantId} />
           </div>
         )

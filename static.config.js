@@ -28,10 +28,6 @@ export default {
       component: 'src/containers/ApplicationIndex'
     },
     {
-      path: '/apply/login',
-      component: 'src/containers/ApplicationLogin'
-    },
-    {
       path: '/apply/club',
       component: 'src/containers/ClubApplication'
     },

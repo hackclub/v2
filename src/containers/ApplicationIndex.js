@@ -19,9 +19,6 @@ const EditButton = Button.extend.attrs({
   w: 1
 })`
 text-align: left;
-&:hover {
-  /* background: ${cx('accent')};*/
-}
 ${mx[1]} {
   width: 90%;
 }

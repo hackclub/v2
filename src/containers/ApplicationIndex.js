@@ -1,52 +1,93 @@
 import React, { Component } from 'react'
 import { api } from '../../data'
-import { Box, Provider, Text, Small } from 'rebass'
+import { Card, Container, Box, Flex, Lead, Provider } from 'rebass'
 import Button from '../components/Button'
-import theme from '../theme'
+import theme, { cx, mx } from '../theme'
 import LoadingAnimation from '../components/LoadingAnimation'
 import Login from '../components/Login'
-import { LogoutButton } from '../components/AuthButton'
+import Nav from '../components/Nav'
 import fetch from 'unfetch'
-import { withRouter, Link } from 'react-static'
+import { Link } from 'react-static'
 
-const ListItem = props => (
-  <Button {...props} is={Link} children={<Text>{props.children}</Text>} />
-)
-
-const timeSince = time => {
-  const seconds = Math.floor((new Date() - new Date(time)) / 1000);
-  const intervals = [
-    [Math.floor(seconds / (60 * 60 * 24 * 7)), 'weeks'],
-    [Math.floor(seconds / (60 * 60 * 24)), 'days'],
-    [Math.floor(seconds / (60 * 60)), 'hours'],
-    [Math.floor(seconds / 60), 'minutes']
-  ]
-  for (var i = 0; i < intervals.length; i++) {
-    let interval = intervals[i]
-    if (interval[0] > 1) {
-      return interval.join(' ')
-    }
-  }
-  return 'less than a minute'
+const EditButton = Button.extend.attrs({
+  f: 3,
+  is: () => Link,
+  px: 4,
+  py: 4,
+  mx: 'auto',
+  my: 1,
+  w: 1
+})`
+text-align: left;
+&:hover {
+  /* background: ${cx('accent')};*/
 }
+${mx[1]} {
+  width: 90%;
+}
+`
+
+const InfoCard = Card.extend.attrs({
+  bg: 'smoke',
+  p: 4,
+})`
+border-radius: 4px;
+box-shadow: 0 2px 12px rgba(0,0,0,.125);
+`
+
+const ApplicationCardContainer = Container.extend.attrs({
+  mx: 'auto',
+  p: 4
+})`
+max-width: 75rem;
+`
+
+const CustomFlex = Flex.extend.attrs({
+  wrap: true,
+  my: 3
+})``
+
+const CustomBox = Box.extend.attrs({
+  width: 1,
+  my: 3
+})`
+${mx[1]} {
+  width: 50%;
+}
+`
 
 const ApplicationCard = props => {
-  const leaderProfile = props.app.applicant_profiles.find(profile => (
+  const { id, applicant_profiles } = props.app
+
+  const leaderProfile = applicant_profiles.find(profile => (
     profile.applicant.id == props.applicantId
   ))
 
   return (
-    <Box>
-      <Text>{props.app.high_school_name || "Untitled Application"}</Text>
-      <ListItem to={`/apply/club?id=${props.app.id}`}>
-        Edit Club Application
-      </ListItem>
-
-      <ListItem to={`/apply/leader?id=${leaderProfile.id}`}>
-        Edit Leader Profile
-      </ListItem>
-      <Small>Last edited {timeSince(props.app.updated_at)} ago</Small>
-    </Box>
+    <Container my="auto">
+      <CustomFlex>
+        <CustomBox>
+          <EditButton to={`/apply/club?id=${id}`}>Edit Club Application</EditButton>
+          <EditButton to={`/apply/leader?id=${leaderProfile.id}`}>Edit Leader Profile</EditButton>
+        </CustomBox>
+        <CustomBox>
+          <InfoCard>
+            <Lead>Application</Lead>
+            <ul>
+              <li>test</li>
+              <li>test</li>
+              <li>test</li>
+            </ul>
+            <Lead>Leaders</Lead>
+            <ul>
+              <li>test</li>
+              <li>test</li>
+              <li>test</li>
+            </ul>
+          </InfoCard>
+        </CustomBox>
+      </CustomFlex>
+    </Container>
   )
 }
 
@@ -68,8 +109,7 @@ class ApplicationIndex extends Component {
     this.setState({authToken, applicantId})
 
     if (needsToAuth) {
-      const status = 'needsToAuth'
-      this.setState({status})
+      this.setState({status: 'needsToAuth'})
     } else {
       // Populate the list of applications
       fetch(`${api}/v1/applicants/${applicantId}/new_club_applications`, {
@@ -109,8 +149,7 @@ class ApplicationIndex extends Component {
         .catch(e => {
           console.error(e)
           if (e.status === 401) {
-            const status = 'needsToAuth'
-            this.setState({status})
+            this.setState({status: 'needsToAuth'})
           }
         })
     }
@@ -119,17 +158,20 @@ class ApplicationIndex extends Component {
   content() {
     const { app, status, authToken, applicantId } = this.state
 
-    if (status === 'needsToAuth') {
-      return <Login />
-    } else if (status === 'loading') {
-      return <LoadingAnimation />
-    } else if (status === 'finished') {
-      return (
-        <div>
-          <LogoutButton />
-          <ApplicationCard app={app} applicantId={applicantId} />
-        </div>
-      )
+    switch (status) {
+      case 'needsToAuth':
+        return <Login />
+      case 'loading':
+        return <LoadingAnimation />
+      case 'finished':
+        return (
+          <div>
+            <Nav authenticated={true} />
+            <ApplicationCard app={app} applicantId={applicantId} />
+          </div>
+        )
+      default:
+        return <p>Something terrible has happened.</p>
     }
   }
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import Button from './Button'
 import theme from '../theme'
 import { Link } from 'react-static'
 
@@ -8,8 +7,8 @@ export const destroySession = () => {
   window.localStorage.removeItem('applicantId')
 }
 
-export const LogoutButton = () => (
-  <Button is={Link} to="/" onClick={destroySession} children="Logout" />
+export const LogoutButton = props => (
+  <Link to="/" onClick={destroySession} children="Logout" {...props} />
 )
 
 export const BackButton = () => {
@@ -17,6 +16,6 @@ export const BackButton = () => {
   const backLink = pathname.substring(0, pathname.lastIndexOf('/'))
 
   return (
-    <Button is={Link} to={backLink} children="Back »" />
+    <Link to={backLink} children="Back »" {...props} />
   )
 }

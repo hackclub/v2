@@ -1,7 +1,7 @@
 {
-  "name": "hackclub.com",
+  "name": "@hackclub/site",
   "version": "0.0.2",
-  "description": "New Hack Club website",
+  "description": "hackclub.com website",
   "scripts": {
     "dev": "react-static start",
     "build": "react-static build",
@@ -12,6 +12,7 @@
   },
   "author": "Lachlan Campbell",
   "dependencies": {
+    "@hackclub/design-system": "0.0.1-1",
     "axios": "^0.17.1",
     "dot-prop": "^4.2.0",
     "formik": "^0.10.5",
@@ -23,8 +24,8 @@
     "react-simple-maps": "^0.10.1",
     "react-static": "4.x.x",
     "rebass": "^1.0.4",
-    "serve": "^6.4.1",
-    "uglifyjs-webpack-plugin": "^1.1.4",
+    "serve": "^6.4.3",
+    "uglifyjs-webpack-plugin": "^1.1.5",
     "unfetch": "^3.0.0",
     "yup": "^0.23.0"
   },

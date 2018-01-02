@@ -9,19 +9,15 @@ import {
 } from '@hackclub/design-system'
 
 const Base = Flex.extend`
-  border-radius: ${props => props.theme.radii[1]}px;
+  border-radius: ${props => props.theme.radii[2]};
+  max-width: 36rem;
   img {
     flex-shrink: 0;
-  }
-  /* will be fixed in next DS release */
-  span {
-    border-radius: 4px;
-    line-height: 1.25;
   }
 `
 
 const Bio = ({ img, name, role, text, ...props }) => (
-  <Base bg="blue.0" p={3} my={2} {...props}>
+  <Base p={3} {...props}>
     <Avatar size="64px" src={img} mr={2} />
     <Box>
       <Flex align="center" wrap style={{ lineHeight: '1.25' }}>

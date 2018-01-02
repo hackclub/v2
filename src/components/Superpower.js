@@ -1,18 +1,8 @@
 import React from 'react'
-import {
-  Heading,
-  Badge,
-  Lead,
-  Container,
-  Flex,
-  Box,
-  Text,
-  Subhead
-} from 'rebass'
+import { Heading, Box, Link as A } from '@hackclub/design-system'
 import { Link } from 'react-static'
-import { colors } from '../theme'
 
-const Base = Box.extend.attrs({ px: 3, py: 5, my: [4, 5] })`
+const Base = Box.extend`
   background: url(/diagonal.svg) top center repeat-x;
   background-size: auto 100%;
   text-align: center;
@@ -28,38 +18,30 @@ const Base = Box.extend.attrs({ px: 3, py: 5, my: [4, 5] })`
     z-index: -1;
     background: url(/diagonal.svg) top right repeat-x;
     background-size: auto 100%;
-    background-position-x: .5rem;
+    background-position-x: 0.5rem;
   }
-`
 
-const Headline = Heading.extend.attrs({ f: 6, mb: 3 })`
   mark {
     background: transparent url(/underline.svg) bottom left no-repeat;
     background-size: 100% 0.75rem;
     padding-bottom: 0.25rem;
-    color: ${colors.orange[5]};
+    color: ${props => props.theme.colors.orange[5]};
     text-transform: uppercase;
   }
 `
 
-const Subheadline = Subhead.extend.attrs({
-  color: 'slate',
-  f: 4
-})`
-  font-weight: normal;
-  a {
-    color: ${colors.primary};
-  }
-`
+A.link = A.withComponent(Link)
 
 export default () => (
-  <Base>
-    <Headline>
+  <Base px={3} py={5} my={[4, 5]}>
+    <Heading.h2 fontSize={6} mb={3}>
       Coding is a <mark>superpower</mark>.
-    </Headline>
-    <Subheadline>
+    </Heading.h2>
+    <Heading.h3 color="slate" f={4} regular>
       So let’s teach it like that at every high school.{' '}
-      <Link to="/meetings">Explore meetings →</Link>
-    </Subheadline>
+      <A.link color="primary" to="/meetings" underline>
+        Explore meetings →
+      </A.link>
+    </Heading.h3>
   </Base>
 )

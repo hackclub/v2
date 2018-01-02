@@ -1,14 +1,10 @@
 import React from 'react'
-import { Container, Flex, Box, Heading, Image } from 'rebass'
-import { mx } from '../theme'
+import { Flex, Heading, mediaQueries } from '@hackclub/design-system'
 import Stat from './Stat'
 import { stats } from '../../data'
 
-const Base = Container.extend.attrs({ maxWidth: 48 * 16 })`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+const Base = Flex.extend`
+  max-width: 48rem;
   margin-bottom: -4rem;
   > div {
     border-radius: 3rem;
@@ -18,7 +14,9 @@ const Base = Container.extend.attrs({ maxWidth: 48 * 16 })`
   }
   > :first-child {
     z-index: 2;
-    h2 { line-height: 1.125; }
+    h2 {
+      line-height: 1.125;
+    }
   }
   > :last-child {
     flex-flow: row wrap;
@@ -27,8 +25,7 @@ const Base = Container.extend.attrs({ maxWidth: 48 * 16 })`
     max-width: 32rem;
     z-index: 1;
   }
-  ${mx[1]} {
-    flex-direction: row;
+  ${mediaQueries[1]} {
     > div {
       padding: 2rem;
     }
@@ -39,11 +36,17 @@ const Base = Container.extend.attrs({ maxWidth: 48 * 16 })`
 `
 
 export default () => (
-  <Base>
+  <Base
+    flexDirection={['column', 'row']}
+    align="center"
+    justify="center"
+    mx="auto"
+    px={4}
+  >
     <Flex align="center" justify="center" bg="primary">
-      <Heading color="white" f={6}>
+      <Heading.h2 color="white" f={6}>
         United as one. Divided by zero.
-      </Heading>
+      </Heading.h2>
     </Flex>
     <Flex align="center" justify="center" bg="accent">
       <Stat value={stats.school_count} label="schools" />

@@ -1,26 +1,19 @@
 import React from 'react'
-import { Box, Text } from 'rebass'
+import { Box, Text } from '@hackclub/design-system'
 
-const Base = Box.extend.attrs({ my: 1, w: 128 })`
+const Base = Box.extend`
   display: inline-block;
-  text-align: center;
-`
-
-const Number = Text.extend.attrs({ is: 'span', color: 'white', f: 7 })`
-  font-weight: bold;
   line-height: 1;
+  p {
+    opacity: 0.8;
+  }
 `
-const Description = Text.extend.attrs({
-  color: 'white',
-  f: 2,
-  caps: true
-})`opacity: .8;`
 
 const Stat = ({ label, value, children, ...props }) => (
-  <Base {...props}>
+  <Base my={1} w={128} color="white" align="center" {...props}>
     {children}
-    <Number children={value} />
-    {label && <Description children={label} />}
+    <Text.span f={7} m={0} bold children={value} />
+    {label && <Text f={2} m={0} caps children={label} />}
   </Base>
 )
 

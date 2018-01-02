@@ -1,6 +1,6 @@
 import React from 'react'
 import { api } from '../../data'
-import { Field, Submit, Base, Subheading } from '../components/Forms'
+import { Field, Submit, Form, Subheading } from '../components/Forms'
 import Button from '../components/Button'
 import { withFormik } from 'formik'
 import { Link } from 'react-static'
@@ -53,7 +53,7 @@ const InnerForm = (props) => {
     isSubmitting
   } = props
   return (
-    <Base is="form" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <ApplicationList values={values} id={props.id} />
       <Field name="email"
              label="Invite a co-leader"
@@ -66,7 +66,7 @@ const InnerForm = (props) => {
         value="Send invite"
         disabled={isSubmitting}
       />
-    </Base>
+    </form>
   )
 }
 

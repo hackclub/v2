@@ -1,7 +1,8 @@
 import React from 'react'
-import { Box, Container, Flex, Heading, Text } from 'rebass'
-import theme, { colors, mx } from '../theme'
+import { Column, Row, Box, Container, Flex, Heading, Text } from 'rebass'
+import { colors, mm, mx } from '../theme'
 import Button from './Button'
+import styled from 'styled-components'
 
 const chevron = () => {
   const props = `xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'`
@@ -39,7 +40,8 @@ export const Input = Box.extend.attrs({
   '&[type=select]': {
     background: `#fff url("data:image/svg+xml;charset=utf8,${chevron()}") no-repeat right .75rem center`,
     backgroundSize: '.5rem'
-  }
+  },
+  ...props
 }))
 
 export const Label = Box.extend.attrs({ is: 'label', f: 2, w: 1 })`
@@ -76,7 +78,7 @@ export const Field = ({
   ...props
 }) => (
   <Label className={type} id={name}>
-    <Flex align="center" mb=".125rem" style={{display: 'inline'}} wrap>
+    <Flex align="center" mb="25rem" style={{display: 'inline'}} wrap>
       {label}
       {required ? <Required /> : null}
       {error && <Error children={error} />}
@@ -85,6 +87,7 @@ export const Field = ({
       name={name}
       type={type}
       is={['textarea', 'select'].indexOf(type) === -1 ? 'input' : type}
+      height={type === 'textarea' ? '10rem' : 'inherit'}
       placeholder={p}
       children={children}
       {...props}
@@ -96,23 +99,83 @@ export const Submit = props => (
   <Button is="input" type="submit" bg="primary" color="white" {...props} />
 )
 
-export const Base = Container.extend.attrs({
+export const FormWrapper = Flex.extend.attrs({
+  is: () => Container
+})`
+${mm[1]} {
+  flex-direction: column;
+}
+`
+
+const CustomForm = Container.extend.attrs({
   is: 'form',
   py: 4,
   px: 3,
-  maxWidth: 40 * 16
+  maxWidth: 50 * 16
 })`
   display: grid;
   grid-gap: 1rem;
   ${mx[1]} {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     h2, .textarea { grid-column: 1 / -1; }
   }
 `
+const CustomBox = Box.extend.attrs({
+})``
+
+export const Form = props => (
+  <CustomBox>
+    <CustomForm {...props} />
+  </CustomBox>
+)
 
 export const Subheading = Heading.extend.attrs({
   f: 4,
-  mt: 2,
-  mb: 0,
+  mt: -1,
   color: 'primary'
+})`
+text-transform: capitalize;
+`
+
+const CustomFlex = Flex.extend.attrs({
+})`
+${mm[1]} {
+  flex-direction: column;
+}
+`
+const HeadingBox = Box.extend.attrs({
+  mr: 3
+})`
+text-align: right;
+order: 1;
+flex-grow: 0;
+flex-shrink: 0;
+flex-basis: 7rem;
+${mm[1]} {
+  flex-basis: auto;
+  text-align: left;
+}
+`
+const FieldsBox = Box.extend.attrs({
+})`
+order: 2;
+flex-grow: 1;
+`
+export const Fieldset = props => (
+  <CustomFlex>
+    <HeadingBox>
+      <Subheading id={props.section}>{props.section}</Subheading>
+    </HeadingBox>
+    <FieldsBox>
+      {props.children}
+    </FieldsBox>
+  </CustomFlex>
+)
+
+export const Aside = Container.extend.attrs({
+  is: () => Box,
+  bg: 'snow',
+  mx: 0,
+  my: 4,
+  px: 3
 })``

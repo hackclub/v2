@@ -5,7 +5,7 @@ import Button from '../components/Button'
 import theme, { cx, mx } from '../theme'
 import LoadingAnimation from '../components/LoadingAnimation'
 import Login from '../components/Login'
-import Nav from '../components/Nav'
+import ApplyNav from '../components/ApplyNav'
 import fetch from 'unfetch'
 import { Link } from 'react-static'
 
@@ -174,7 +174,7 @@ class ApplicationIndex extends Component {
       case 'finished':
         return (
           <div>
-            <Nav authenticated={true} />
+            <ApplyNav />
             <Container>
               <Border top bottom color={cx('smoke')}>
                 <CustomHeading>Applying to Hack Club</CustomHeading>

@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { api } from '../../data'
 import LoadingAnimation from '../components/LoadingAnimation'
 import ClubApplicationForm from '../components/ClubApplicationForm'
-import LeaderInviteForm from '../components/LeaderInviteForm'
+import ApplyNav from '../components/ApplyNav'
+import Footer from '../components/Footer'
 import theme from '../theme'
 import Login from '../components/Login'
-import { LogoutButton } from '../components/AuthButton'
 import { Provider } from 'rebass'
 import yup from 'yup'
 import fetch from 'unfetch'
@@ -74,13 +74,11 @@ export default class extends Component {
     } else {
       return (
         <div>
-          <LogoutButton />
+          <ApplyNav />
           <ClubApplicationForm params={ formFields }
                                id={ id }
                                authToken={ authToken } />
-          <LeaderInviteForm params={ formFields }
-                            id={ id }
-                            authToken={ authToken } />
+          <Footer />
         </div>
       )
     }

@@ -4,7 +4,8 @@ import LeaderApplicationForm from '../components/LeaderApplicationForm'
 import LoadingAnimation from '../components/LoadingAnimation'
 import Login from '../components/Login'
 import theme from '../theme'
-import { LogoutButton } from '../components/AuthButton'
+import ApplyNav from '../components/ApplyNav'
+import Footer from '../components/Footer'
 import { Provider } from 'rebass'
 
 export default class extends Component {
@@ -71,10 +72,11 @@ export default class extends Component {
     } else {
       return (
         <div>
-          <LogoutButton />
+          <ApplyNav />
           <LeaderApplicationForm params={ formFields }
                                  id={ id }
                                  authToken={ authToken } />
+          <Footer />
         </div>
       )
     }

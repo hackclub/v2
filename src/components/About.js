@@ -4,7 +4,8 @@ import {
   Container,
   Image,
   Text,
-  mediaQueries
+  mediaQueries,
+  cx
 } from '@hackclub/design-system'
 import { wk } from '../theme'
 
@@ -18,9 +19,7 @@ const Base = Box.extend`
     right: 0;
     bottom: -64px;
     z-index: -1;
-    background-color: ${props => props.theme.colors.gray[1]};
-    background-size: auto 100%;
-    background-position-x: 0.5rem;
+    background-color: ${props => cx(props.offset || 'gray.1')};
     ${wk('clip-path: polygon(0% 0%, 100% 0, 100% 75%, 0 100%)')};
   }
 

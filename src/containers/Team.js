@@ -50,42 +50,42 @@ export default () => (
         name="Zach Latta"
         role="Executive Director"
         text="Zach dropped out of high school after his freshman year to work in the technology industry and had over 5 million people using his software by the time he turned 17. He founded Hack Club to build the program he wish he had in high school and has been awarded the Thiel Fellowship and Forbes 30 Under 30 for his work."
-        bg="red.0"
+        bg="red"
       />
       <Bio
         img="/team/max.jpg"
         name="Max Wofford"
         role="Operations"
         text="Tapping into the hacking community, Max has found a common goal with Hack Club and his passion for amplifying people’s ideas. He loves helping students scale their ideas into even more awesome products."
-        bg="yellow.0"
+        bg="yellow"
       />
       <Bio
         img="/team/lachlan.jpg"
         name="Lachlan Campbell"
         role="Web Designer"
         text="Lachlan, a club leader from State College, PA, joined the team to work on Hack Club’s website. They care about bringing coding to more people and making tools to make information more accessible."
-        bg="blue.0"
+        bg="blue"
       />
       <Bio
         img="/team/mingjie.jpg"
         name="Mingjie Jiang"
         role="Social Media"
         text="Mingjie leads a local club at Wootton High School in Rockville, Maryland. Aside from trying to engage more students into the world of hacking, he also cares about building a unique public identity for Hack Club."
-        bg="orange.0"
-      />
-      <Bio
-        img="/team/victor.png"
-        name="Victor Truong"
-        role="Finance"
-        text="Victor is a club leader at Rosemead High School in Los Angeles, CA. He aims to make Hack Club’s finances as transparent as possible by letting people know how every penny is being spent."
-        bg="green.0"
+        bg="orange"
       />
       <Bio
         img="/team/athul.jpg"
         name="Athul Blesson"
         role="Indian Region"
         text="Athul leads some of our largest clubs in India. After graduating from high school, he joined as our Regional Manager in India. He is passionate about bringing more students into the world of coding."
-        bg="violet.0"
+        bg="violet"
+      />
+      <Bio
+        img="/team/victor.png"
+        name="Victor Truong"
+        role="Finance"
+        text="Victor is a club leader at Rosemead High School in Los Angeles, CA. He aims to make Hack Club’s finances as transparent as possible by letting people know how every penny is being spent."
+        bg="green"
       />
     </Base>
     <Footer />

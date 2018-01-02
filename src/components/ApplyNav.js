@@ -7,7 +7,7 @@ import Flag from './Flag'
 import styled from 'styled-components'
 
 const Item = Box.extend.attrs({
-  mx: 2,
+  f: 4,
   mt: 4,
   color: 'primary'
 })`
@@ -52,6 +52,13 @@ const Breadcrumb = props => {
   )
 }
 
+const BreadcrumbHolder = Item.extend.attrs({
+  children: Breadcrumb
+})`
+width: 40em;
+text-align: left;
+`
+
 const Logout = Item.extend.attrs({
   is: () => LogoutButton
 })``
@@ -68,12 +75,8 @@ const Base = Flex.extend.attrs({
 
 const ApplyNav = props => (
   <Base {...props}>
-    <Flex>
-      <Flag />
-      <Item>
-        <Breadcrumb />
-      </Item>
-    </Flex>
+    <Flag/>
+    <BreadcrumbHolder />
     <Logout />
   </Base>
 )

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading, Box, Link as A } from '@hackclub/design-system'
+import { Heading, Box, Link as A, mediaQueries } from '@hackclub/design-system'
 import { Link } from 'react-static'
 
 const Base = Box.extend`
@@ -18,7 +18,10 @@ const Base = Box.extend`
     z-index: -1;
     background: url(/diagonal.svg) top right repeat-x;
     background-size: auto 100%;
-    background-position-x: 0.5rem;
+    background-position-x: 1rem;
+    ${mediaQueries[1]} {
+      background-position-x: 5rem;
+    }
   }
 
   mark {

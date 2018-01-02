@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Head } from 'react-static'
 import { api } from '../../data'
 import LoadingAnimation from '../components/LoadingAnimation'
 import ClubApplicationForm from '../components/ClubApplicationForm'
@@ -87,6 +88,9 @@ export default class extends Component {
   render() {
     return (
       <Provider theme={theme}>
+        <Head>
+          <title children="Edit Club Application" />
+        </Head>
         {this.content()}
       </Provider>
     )

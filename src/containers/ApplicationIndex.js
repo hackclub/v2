@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Head } from 'react-static'
 import { api } from '../../data'
 import { Border, Card, Container, Box, Flex, Lead, Provider, Heading } from 'rebass'
 import Button from '../components/Button'
@@ -191,6 +192,9 @@ class ApplicationIndex extends Component {
   render() {
     return (
       <Provider theme={theme}>
+        <Head>
+          <title children="Apply" />
+        </Head>
         {this.content()}
       </Provider>
     )

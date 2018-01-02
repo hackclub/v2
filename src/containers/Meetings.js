@@ -1,80 +1,38 @@
 import React from 'react'
 import {
-  Provider,
-  Banner,
+  ThemeProvider,
   Heading,
-  Lead,
   Container,
   Flex,
   Box,
   Text,
-  Subhead,
-  Absolute,
-  Link as A
-} from 'rebass'
-import theme, { colors, cx, mx, mm } from '../theme'
-import { Head } from 'react-static'
+  LargeButton,
+  Icon,
+  mediaQueries,
+  cx
+} from '@hackclub/design-system'
+import { Head, Link } from 'react-static'
 import Nav from '../components/Nav'
-import Icon from '../components/Icon'
-import CTA from '../components/CTA'
+import Start from '../components/Start'
 import Footer from '../components/Footer'
 
-const Header = Flex.extend.attrs({
-  is: 'header',
-  align: 'center',
-  justify: 'center',
-  direction: 'column',
-  bg: 'primary',
-  color: 'white',
-  px: 3,
-  pb: [4, 5]
-})`
+const Header = Box.extend`
+  padding-top: 0 !important;
+  background-color: ${props => props.theme.colors.teal[6]};
   background-image: linear-gradient(
-    -16deg,
-    ${cx('orange.4')} 0%,
-    ${cx('red.5')} 50%,
-    ${cx('red.6')} 100%
+    -32deg,
+    ${props => props.theme.colors.lime[6]} 0%,
+    ${props => props.theme.colors.teal[6]} 50%,
+    ${props => props.theme.colors.teal[7]} 100%
   );
-`
 
-const Headline = Heading.extend.attrs({
-  is: 'h1',
-  f: [4, 5, 6],
-  mx: 'auto',
-  mt: 4,
-  mb: 3
-})`
-  line-height: 1.125;
-  text-align: center;
-  max-width: 48rem;
-`
-
-const Info = Heading.extend.attrs({
-  f: [3, 4],
-  mx: 'auto'
-})`
-  font-weight: normal;
-  text-align: center;
-  max-width: 36rem;
-`
-
-const Section = Container.extend.attrs({
-  is: 'section',
-  p: 3,
-  pb: [3, 5]
-})`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  position: relative;
-`
-
-const CTASection = Box.extend.attrs({
-  is: 'section',
-  px: 3,
-  mb: [3, 5]
-})`
-  text-align: center;
+  h1 {
+    line-height: 1.125;
+    max-width: 48rem;
+  }
+  h2 {
+    max-width: 36rem;
+  }
 `
 
 const Module = Flex.extend.attrs({
@@ -86,14 +44,14 @@ const Module = Flex.extend.attrs({
   max-width: 32rem;
   text-align: left;
 
-  ${mx[1]} {
+  ${mediaQueries[1]} {
     &:nth-of-type(1), &:nth-of-type(3) {
       transform: translateY(4rem);
     }
   }
 
   /* this is terrible */
-  ${mm[1]} {
+  @media screen and (max-width:32em) {
     &:nth-of-type(1), &:nth-of-type(2) {
       padding-right: 0;
     }
@@ -102,25 +60,26 @@ const Module = Flex.extend.attrs({
     }
   }
 
-  img {
+  svg {
     width: 4rem !important;
     height: 4rem !important;
     flex-shrink: 0;
     &:first-child { margin-right: 2rem; }
     &:last-child { margin-left: 1rem; }
-    ${mx[1]} {
+    ${mediaQueries[1]} {
       &:first-child { margin-right: 3rem; }
       &:last-child { margin-left: 2rem; }
     }
   }
 `
 
-const ModuleHeading = Subhead.extend.attrs({
+const ModuleHeading = Heading.h3.extend.attrs({
   mt: 0,
   mb: 1,
-  f: [3, 4]
+  f: [3, 4],
+  bold: true
 })`
-  color: ${colors.black};
+  color: ${props => props.theme.colors.black};
   position: relative;
   &:before {
     content: "";
@@ -136,9 +95,8 @@ const ModuleBody = Text.extend.attrs({ my: 0, f: 3, color: 'slate' })`
   line-height: 1.5;
 `
 
-const ModuleFigure = Box.extend.attrs({
-  is: 'figure',
-  bg: cx('fuschia.0'),
+const ModuleFigure = Box.withComponent('figure').extend.attrs({
+  bg: 'fuschia.0',
   mr: [4, 5],
   ml: 3
 })`
@@ -148,24 +106,33 @@ const ModuleFigure = Box.extend.attrs({
   flex-shrink: 0;
 `
 
+LargeButton.link = LargeButton.withComponent(Link)
+
 export default () => (
-  <Provider theme={theme}>
+  <ThemeProvider>
     <Head>
       <title>Meetings – Hack Club</title>
     </Head>
-    <Header>
+    <Header color="white" pb={4}>
       <Nav />
-      <Headline>
+      <Heading.h1 align="center" f={[3, 5, 6]} mx="auto" mt={4} mb={3}>
         At Hack Club meetings,<br />
         everyone is making.
-      </Headline>
-      <Info>
+      </Heading.h1>
+      <Heading.h2 f={1} mx="auto" align="center" bold={false} regular>
         Clubs meet weekly at high schools,
         <br />
         all run by their student leaders.
-      </Info>
+      </Heading.h2>
     </Header>
-    <Section>
+    <Flex
+      wrap
+      justify="space-around"
+      p={2}
+      pb={[5, 6]}
+      mx="auto"
+      style={{ position: 'relative', maxWidth: '64rem' }}
+    >
       <Module>
         <Box>
           <ModuleHeading color="blue.5">Get hacking!</ModuleHeading>
@@ -174,7 +141,7 @@ export default () => (
             project at their own pace.
           </ModuleBody>
         </Box>
-        <Icon name="memory" fill="blue.4" />
+        <Icon name="memory" color="blue.4" />
       </Module>
       <Module>
         <Box>
@@ -186,10 +153,10 @@ export default () => (
             creative projects to showcase.
           </ModuleBody>
         </Box>
-        <Icon name="flash_on" fill="yellow.4" />
+        <Icon name="flash_on" color="yellow.4" />
       </Module>
       <Module>
-        <Icon name="gesture" fill="teal.4" />
+        <Icon name="gesture" color="teal.4" />
         <Box>
           <ModuleHeading color="teal.5">
             No experience required.
@@ -203,7 +170,7 @@ export default () => (
         </Box>
       </Module>
       <Module>
-        <Icon name="screen_share" fill="violet.4" />
+        <Icon name="screen_share" color="violet.4" />
         <Box>
           <ModuleHeading color="violet.5">Demo time!</ModuleHeading>
           <ModuleBody>
@@ -212,10 +179,8 @@ export default () => (
           </ModuleBody>
         </Box>
       </Module>
-    </Section>
-    <CTASection>
-      <CTA to="/start">Start a Club</CTA>
-    </CTASection>
+    </Flex>
+    <Start />
     <Footer />
-  </Provider>
+  </ThemeProvider>
 )

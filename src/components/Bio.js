@@ -1,34 +1,34 @@
 import React from 'react'
-import { Lead, Flex, Box, Text, Subhead, Avatar, Badge } from 'rebass'
-import theme, { colors } from '../theme'
+import {
+  Flex,
+  Box,
+  Heading,
+  Text,
+  Avatar,
+  Badge
+} from '@hackclub/design-system'
 
-const Base = Box.extend.attrs({ bg: colors.blue[0], p: 3, my: 2 })`
-  display: grid;
-  grid-template-columns: 64px 1fr;
-  grid-column-gap: 1rem;
-  border-radius: .5rem;
-`
-const Role = Badge.extend.attrs({
-  f: 1,
-  px: 2,
-  bg: 'muted',
-  color: 'white'
-})`
-  font-weight: normal;
-  line-height: 1.25;
-  text-transform: uppercase;
-  margin: 0;
+const Base = Flex.extend`
+  border-radius: ${props => props.theme.radii[1]}px;
+  img {
+    flex-shrink: 0;
+  }
+  /* will be fixed in next DS release */
+  span {
+    border-radius: 4px;
+    line-height: 1.25;
+  }
 `
 
-const Bio = ({ img, name, role, text }) => (
-  <Base>
-    <Avatar size={64} src={img} />
+const Bio = ({ img, name, role, text, ...props }) => (
+  <Base bg="blue.0" p={3} my={2} {...props}>
+    <Avatar size="64px" src={img} mr={2} />
     <Box>
-      <Flex align="center" wrap>
-        <Subhead f={4} my={0} mr={2} children={name} />
-        <Role px={2} children={role} />
+      <Flex align="center" wrap style={{ lineHeight: '1.25' }}>
+        <Heading.h3 f={1} m={0} mr={2} regular={false} children={name} />
+        <Badge px={2} f={1} bg="muted" children={role} />
       </Flex>
-      <Text f={2} children={text} />
+      <Text f={2} m={0} color="black" children={text} />
     </Box>
   </Base>
 )

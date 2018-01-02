@@ -1,55 +1,40 @@
 import React from 'react'
 import {
-  Provider,
+  ThemeProvider,
+  Section,
   Heading,
-  Lead,
   Container,
-  Flex,
-  Box,
-  Text,
-  Subhead
-} from 'rebass'
-import theme, { colors } from '../theme'
+  Box
+} from '@hackclub/design-system'
 import { Head, Link } from 'react-static'
 import Nav from '../components/Nav'
 import Bio from '../components/Bio'
 import Footer from '../components/Footer'
 
-const Base = Container.extend.attrs({
-  py: 4,
-  px: 3,
-  maxWidth: 36 * 16
-})``
-
-const Headline = Heading.extend.attrs({
-  color: 'primary',
-  mb: 3,
-  align: 'center'
-})`
-  text-transform: uppercase;
-  letter-spacing: .1em;
-`
-
-const P = Text.extend.attrs({ f: 3, mb: 2 })`
-  @supports (-webkit-initial-letter: 2) {
-    &:first-of-type:first-letter {
-      -webkit-initial-letter: 2;
-      color: ${colors.slate};
-      font-weight: bold;
-      margin-right: .5rem;
-    }
-  }
+const Header = Box.extend`
+  padding-top: 0 !important;
+  background-color: ${props => props.theme.colors.red[5]};
+  background-image: linear-gradient(
+    -8deg,
+    ${props => props.theme.colors.orange[4]} 0%,
+    ${props => props.theme.colors.red[5]} 50%,
+    ${props => props.theme.colors.red[6]} 100%
+  );
 `
 
 export default () => (
-  <Provider theme={theme}>
-    <Head><title>Team – Hack Club</title></Head>
-    <Nav color="primary" />
-    <Base>
-      <Headline>
+  <ThemeProvider>
+    <Head>
+      <title>Team – Hack Club</title>
+    </Head>
+    <Header pb={[3, 4]}>
+      <Nav />
+      <Heading.h2 color="white" align="center" caps mt={3}>
         <Box f={4}>Hack Club</Box>
         <Box f={6}>Team</Box>
-      </Headline>
+      </Heading.h2>
+    </Header>
+    <Container py={4} px={3} maxWidth={36}>
       <Bio
         img="/team/zach.png"
         name="Zach Latta"
@@ -86,19 +71,7 @@ export default () => (
         role="Indian Region"
         text="Athul leads some of our largest clubs in India. After graduating from high school, he joined as our Regional Manager in India. He is passionate about bringing more students into the world of coding."
       />
-      <Flex justify="center" mt={3}>
-        <Text
-          is={Link}
-          to="/"
-          color="primary"
-          f={3}
-          bold
-          style={{ textDecoration: 'none' }}
-        >
-          ← Home
-        </Text>
-      </Flex>
-    </Base>
+    </Container>
     <Footer />
-  </Provider>
+  </ThemeProvider>
 )

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Head } from 'react-static'
 import { api } from '../../data'
-import { Border, Card, Container, Box, Flex, Lead, Provider, Heading } from 'rebass'
+import { Border, Card, Container, Box, Flex, Lead, Provider, Heading, Text } from 'rebass'
 import Button from '../components/Button'
 import theme, { cx, mx } from '../theme'
 import LoadingAnimation from '../components/LoadingAnimation'
@@ -65,11 +65,38 @@ ${mx[1]} {
 }
 `
 
+const timeSince = time => {
+  const seconds = Math.floor((new Date() - new Date(time)) / 1000);
+  const intervals = [
+    [Math.floor(seconds / (60 * 60 * 24 * 7)), 'weeks'],
+    [Math.floor(seconds / (60 * 60 * 24)), 'days'],
+    [Math.floor(seconds / (60 * 60)), 'hours'],
+    [Math.floor(seconds / 60), 'minutes']
+  ]
+  for (var i = 0; i < intervals.length; i++) {
+    let interval = intervals[i]
+    if (interval[0] > 1) {
+      return interval.join(' ')
+    }
+  }
+  return 'less than a minute'
+}
+
+const Neg = Text.extend.attrs({
+  is: 'span',
+  children: 'NOT',
+  bold: true,
+  color: 'primary'
+})``
+
 const ApplicationCard = props => {
-  const { id, applicant_profiles } = props.app
+  const { id, applicant_profiles, updated_at, created_at, submitted_at } = props.app
 
   const leaderProfile = applicant_profiles.find(profile => (
     profile.applicant.id == props.applicantId
+  ))
+  const coLeaderProfiles = applicant_profiles.filter(profile => (
+    profile.applicant.id != props.applicantId
   ))
 
   return (
@@ -79,15 +106,26 @@ const ApplicationCard = props => {
           <InfoCard>
             <Lead>Application</Lead>
             <ul>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
+              {
+                updated_at === created_at ?
+                <li>This application was just created</li> :
+                <li>This application was updated <strong>{timeSince(updated_at)}</strong> ago</li>
+              }
+              {
+                submitted_at ?
+                <li>You submitted this application <strong>{timeSince(submitted_at)}</strong> ago</li> :
+                <li>You have <Neg>NOT</Neg> submitted your application</li>
+              }
             </ul>
             <Lead>Leaders</Lead>
             <ul>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
+              <li>You have{leaderProfile.completed_at ? null : <Neg> NOT</Neg>} finished your leader profile</li>
+              {coLeaderProfiles.map((profile, index) => (
+                <li key={index}>
+                  <strong>{profile.applicant.email}</strong>
+                  {profile.completed_at ? null : <span> has <Neg>NOT</Neg></span>} finished their leader profile
+                </li>
+              ))}
             </ul>
           </InfoCard>
         </CustomBox>

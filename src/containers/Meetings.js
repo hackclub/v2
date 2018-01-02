@@ -115,15 +115,15 @@ export default () => (
     </Head>
     <Header color="white" pb={4}>
       <Nav />
-      <Heading.h1 align="center" f={[3, 5, 6]} mx="auto" mt={4} mb={3}>
+      <Heading.h1 align="center" f={[2, 4]} mx="auto" mt={4} mb={3}>
         At Hack Club meetings,<br />
         everyone is making.
       </Heading.h1>
-      <Heading.h2 f={1} mx="auto" align="center" bold={false} regular>
+      <Heading f={1} mx="auto" align="center" bold={false} regular>
         Clubs meet weekly at high schools,
         <br />
         all run by their student leaders.
-      </Heading.h2>
+      </Heading>
     </Header>
     <Flex
       wrap

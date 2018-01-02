@@ -42,7 +42,7 @@ export default props => (
         <Text f={[2, 4]} my={2}>
           <strong>How it works.</strong> You, a student who knows how to code,
           get 1 - 2 others to start a Hack Club. You apply, we accept you, you
-          use the community's open source materials and remote office hours with
+          use the community’s open source materials and remote office hours with
           the staff to get your club started.
         </Text>
         <Text f={[2, 4]} my={2}>

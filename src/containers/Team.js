@@ -28,6 +28,7 @@ const Base = Container.extend`
   grid-gap: 1rem;
   justify-content: center;
   ${mediaQueries[1]} {
+    grid-gap: 2rem;
     grid-template-columns: repeat(2, 1fr);
   }
 `

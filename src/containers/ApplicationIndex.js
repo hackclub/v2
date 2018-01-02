@@ -21,7 +21,7 @@ const EditButton = Button.extend.attrs({
 })`
 text-align: left;
 ${mx[1]} {
-  margin-left: 10%;
+  margin-right: 10%;
   width: 90%;
 }
 `
@@ -103,13 +103,21 @@ const ApplicationCard = props => {
     <Container my="auto">
       <CustomFlex>
         <CustomBox>
+          <EditButton to={`/apply/club?id=${id}`}>Edit Club Application</EditButton>
+          <EditButton to={`/apply/leader?id=${leaderProfile.id}`}>Edit Leader Profile</EditButton>
+        </CustomBox>
+        <CustomBox>
           <InfoCard>
             <Lead>Application</Lead>
             <ul>
               {
                 updated_at === created_at ?
                 <li>This application was just created</li> :
-                <li>This application was updated <strong>{timeSince(updated_at)}</strong> ago</li>
+                (
+                  submitted_at ?
+                  null :
+                  <li>This application was updated <strong>{timeSince(updated_at)}</strong> ago</li>
+                )
               }
               {
                 submitted_at ?
@@ -128,10 +136,6 @@ const ApplicationCard = props => {
               ))}
             </ul>
           </InfoCard>
-        </CustomBox>
-        <CustomBox>
-          <EditButton to={`/apply/club?id=${id}`}>Edit Club Application</EditButton>
-          <EditButton to={`/apply/leader?id=${leaderProfile.id}`}>Edit Leader Profile</EditButton>
         </CustomBox>
       </CustomFlex>
     </Container>
@@ -213,7 +217,7 @@ class ApplicationIndex extends Component {
       case 'finished':
         return (
           <div>
-            <ApplyNav />
+            <ApplyNav breadcrumb={false} />
             <Container>
               <Border top bottom color={cx('smoke')}>
                 <CustomHeading>Applying to Hack Club</CustomHeading>

@@ -73,12 +73,16 @@ const Base = Flex.extend.attrs({
   position: relative;
 `
 
-const ApplyNav = props => (
-  <Base {...props}>
-    <Flag/>
-    <BreadcrumbHolder />
-    <Logout />
-  </Base>
-)
+const ApplyNav = props => {
+  const { breadcrumb=true } = props
+
+  return (
+    <Base {...props}>
+      <Flag/>
+      {breadcrumb ? <BreadcrumbHolder /> : null}
+      <Logout />
+    </Base>
+  )
+}
 
 export default ApplyNav

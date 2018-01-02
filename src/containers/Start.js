@@ -1,23 +1,27 @@
 import React, { Fragment } from 'react'
 import {
-  Provider,
+  ThemeProvider,
   Heading,
-  Lead,
   Container,
   Flex,
   Box,
   Text,
-  Subhead,
-  Link as A
-} from 'rebass'
-import theme, { colors, cx, mx, mm } from '../theme'
+  Button,
+  LargeButton,
+  Section as S,
+  Link as A,
+  Module,
+  mediaQueries,
+  cx
+} from '@hackclub/design-system'
 import { Head, Link } from 'react-static'
 import Nav from '../components/Nav'
-import CTA from '../components/CTA'
-import Icon from '../components/Icon'
-import Section from '../components/Section'
 import Footer from '../components/Footer'
 
+/* will be fixed in next DS release */
+const Section = S.extend`
+  flex-direction: column;
+`
 const One = Section.extend`
   padding-top: 0 !important;
   background-color: ${cx('red.5')};
@@ -61,66 +65,6 @@ const Modules = Flex.extend.attrs({
   mt: 3
 })`
   max-width: 64rem;
-  ${mm[1]} {
-    text-align: left;
-  }
-`
-
-const ModuleBase = Flex.extend.attrs({
-  w: [1, 1 / 3],
-  p: 2,
-  direction: ['row', 'column'],
-  align: ['flex-start', 'center']
-})`
-  img {
-    width: 3rem !important;
-    height: 3rem !important;
-    flex-shrink: 0;
-    margin-right: 1rem;
-  }
-
-  ${mx[1]} {
-    max-width: 20rem;
-    img { margin-right: 0; }
-  }
-`
-
-const ModuleHeading = Subhead.extend.attrs({ mt: 0, mb: 1, f: 3 })``
-const ModuleBody = Text.extend.attrs({ my: 0, f: 2 })`
-  line-height: 1.5;
-  position: relative;
-`
-
-const Module = ({ icon, heading, body, ...props }) => (
-  <ModuleBase>
-    <Icon name={icon} fill="white" />
-    <div>
-      <ModuleHeading children={heading} />
-      <ModuleBody children={body} />
-    </div>
-  </ModuleBase>
-)
-
-const LeftCol = Flex.extend.attrs({
-  direction: 'column',
-  align: ['center', 'flex-end'],
-  mr: [0, 4]
-})`
-  ${mx[1]} { text-align: right; }
-`
-
-const MeetingsLink = Box.extend.attrs({
-  bg: 'white',
-  color: 'blue.6',
-  f: 4,
-  px: 4,
-  py: 3,
-  my: 3
-})`
-  border-radius: 4rem;
-  font-weight: bold;
-  line-height: 1;
-  text-decoration: none;
 `
 
 const CardBase = Container.extend.attrs({ bg: 'blue.0', p: 3, mt: 3 })`
@@ -129,7 +73,7 @@ const CardBase = Container.extend.attrs({ bg: 'blue.0', p: 3, mt: 3 })`
   max-width: 28rem;
   text-align: left;
 
-  ${mx[1]} { transform: rotate(2deg); }
+  ${mediaQueries[1]} { transform: rotate(2deg); }
 
   p {
     color: ${cx('slate')};
@@ -140,33 +84,30 @@ const CardBase = Container.extend.attrs({ bg: 'blue.0', p: 3, mt: 3 })`
 `
 const Card = ({ name, children, ...props }) => (
   <CardBase {...props}>
-    <Subhead color="blue.6" m={0} f={3} children={name} />
+    <Heading.h3 color="blue.6" m={0} f={3} children={name} />
     {children}
   </CardBase>
 )
 
-const CTASection = Box.extend.attrs({ is: 'section', p: 3, pb: 0 })`
-  a {
-    font-size: 1.5rem;
-  }
-`
+Button.link = Button.withComponent(Link)
+LargeButton.link = LargeButton.withComponent(Link)
 
 export default () => (
-  <Provider theme={theme}>
+  <ThemeProvider>
     <Head>
       <title>Start – Hack Club</title>
     </Head>
     <One>
       <Nav />
-      <Heading is="h1" f={[5, 6]} mt={[4, 5]}>
+      <Heading.h1 f={[5, 6]} mt={[4, 5]}>
         Let’s get your Hack Club started.
-      </Heading>
-      <Heading f={[3, 4]} my={2} style={{ fontWeight: 'normal' }}>
+      </Heading.h1>
+      <Heading.h2 f={[3, 4]} my={2} style={{ fontWeight: 'normal' }}>
         The awesome coding club at your high school is coming soon.
-      </Heading>
+      </Heading.h2>
     </One>
     <Two>
-      <Heading f={[4, 5]}>Students: apply and start your club!</Heading>
+      <Heading.h2 f={[4, 5]}>Students: apply and start your club!</Heading.h2>
       <Modules>
         <Module
           icon="assignment"
@@ -184,34 +125,34 @@ export default () => (
           body="Schedule your first meeting, start marketing, and get ready!"
         />
       </Modules>
-      <CTASection>
-        <CTA to="/apply" bg="white" color="primary">
+      <Box p={3} pb={0} align="center">
+        <LargeButton.link to="/apply" inverted>
           Apply to Hack Club
-        </CTA>
-      </CTASection>
+        </LargeButton.link>
+      </Box>
     </Two>
     <Three>
-      <Flex direction={['column', 'row']} align="center">
-        <LeftCol>
-          <Heading f={[4, 5]}>Hack Clubs are student-led.</Heading>
-          <Text f={[3, 4]}>
-            Each club meets weekly after school<br />at their high school.
+      <Flex flexDirection={['column', 'row']} align="center">
+        <Container maxWidth={28} align={['center', 'right']} mr={[0, 4]}>
+          <Heading.h2 f={[4, 5]}>Hack Clubs are student-led.</Heading.h2>
+          <Text f={[3, 4]} my={1}>
+            Each club meets weekly after school at their high school.
           </Text>
-          <MeetingsLink is={Link} to="/meetings" mt={4}>
+          <Button.link bg="info" my={3} inverted to="/meetings" mt={4}>
             See what clubs look like →
-          </MeetingsLink>
-        </LeftCol>
+          </Button.link>
+        </Container>
         <Card name="Are you a teacher or parent?">
-          <Text>
+          <Text m={0}>
             We hate to say it, but we’re currently only accepting applications
             from students.
           </Text>
-          <Text>
+          <Text m={0}>
             Teachers and parents can help by recruiting students, sharing Hack
             Club with the local PTA, and expressing interest in Hack Club to
             school administration.
           </Text>
-          <Text>
+          <Text m={0}>
             That said, shoot us an email at{' '}
             <A color="primary" href="mailto:contact@hackclub.com">
               contact@hackclub.com
@@ -222,9 +163,9 @@ export default () => (
       </Flex>
     </Three>
     <Four>
-      <Heading f={[4, 5]}>
+      <Heading.h2 f={[4, 5]}>
         HQ provides the resources you’ll need to soar.
-      </Heading>
+      </Heading.h2>
       <Modules>
         <Module
           icon="forum"
@@ -257,12 +198,12 @@ export default () => (
           body="Get stickers, posters, and ideas for spreading the word about your club."
         />
       </Modules>
-      <CTASection>
-        <CTA to="/apply" bg="white" color="primary">
+      <Box align="center" mt={4}>
+        <LargeButton.link to="/apply" inverted f={[3, 4]}>
           Apply to Hack Club
-        </CTA>
-      </CTASection>
+        </LargeButton.link>
+      </Box>
     </Four>
     <Footer />
-  </Provider>
+  </ThemeProvider>
 )

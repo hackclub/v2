@@ -6,30 +6,7 @@ import Button from '../components/Button'
 import { Column, Container, Flex, Box } from 'rebass'
 import { withFormik } from 'formik'
 
-const InnerForm = (props) => {
-  const markSubmitted = () => {
-    fetch(`${ api }/v1/new_club_applications/${props.id}/submit`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${props.authToken}`
-      }
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          throw res
-        }})
-      .then(json => {
-        alert(json)
-      })
-      .catch(e => {
-        console.error(e)
-        if (e.status === 422) {
-          alert("Can't submit. Finish filling out the application and make sure all co-leads have filled out their profiles.")
-        }
-      })
-  }
+const InnerForm = props => {
   const {
     values,
     errors,
@@ -37,8 +14,41 @@ const InnerForm = (props) => {
     handleChange,
     handleBlur,
     handleSubmit,
-    isSubmitting
+    isSubmitting,
+    id,
+    authToken,
+    params
   } = props
+  const markSubmitted = e => {
+    e.preventDefault()
+    if (values.submitted_at) {
+      alert('Application already submitted. If you want to make further edits, just "Save Draft"')
+    } else {
+      fetch(`${ api }/v1/new_club_applications/${id}/submit`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${authToken}`
+        }
+      })
+        .then(res => {
+          if (res.ok) {
+            return res.json()
+          } else {
+            throw res
+          }})
+        .then(json => {
+          alert(json)
+        })
+        .catch(e => {
+          console.error(e)
+          if (e.status === 422) {
+            alert("Can't submit. Finish filling out the application and make sure all co-leads have filled out their profiles.")
+          } else {
+            alert("Something went terribly wrong")
+          }
+        })
+    }
+  }
   return (
     <FormWrapper>
       <Form onSubmit={handleSubmit}>
@@ -233,17 +243,20 @@ const InnerForm = (props) => {
           />
         </Fieldset>
         <Submit
-          value="Save as draft"
+          value="Save Draft"
           disabled={isSubmitting}
         />
-
-        <Button disabled={isSubmitting} onClick={markSubmitted}>Submit</Button>
+        <Submit
+          value="Submit Application"
+          disabled={isSubmitting}
+          onClick={markSubmitted}
+        />
       </Form>
 
       <Aside>
-        <LeaderInviteForm params={ props.params }
-                          id={ props.id }
-                          authToken={ props.authToken } />
+        <LeaderInviteForm params={ params }
+                          id={ id }
+                          authToken={ authToken } />
       </Aside>
     </FormWrapper>
   )
@@ -252,7 +265,7 @@ const InnerForm = (props) => {
 const ClubApplicationForm = withFormik({
   mapPropsToValues: props => ( props.params ),
   enableReinitialize: true,
-  handleSubmit: (data, { setStatus, props, setSubmitting }) => {
+  handleSubmit: (data, {setSubmitting, props}) => {
     fetch(`${api}/v1/new_club_applications/${props.id}`, {
       method: 'PATCH',
       headers: {

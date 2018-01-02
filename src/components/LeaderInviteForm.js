@@ -9,36 +9,41 @@ import yup from 'yup'
 import theme from '../theme'
 
 const ApplicationList = props => {
-  let completeProfiles = []
-  let incompleteProfiles = []
+  let profiles = {
+    complete: [],
+    incomplete: []
+  }
   props.values.applicant_profiles.forEach(profile => {
-    if (profile.completed_at === null) {
-      incompleteProfiles.push(profile)
-    } else {
-      completeProfiles.push(profile)
-    }
+    profiles[profile.completed_at === null ? 'incomplete' : 'complete'].push(profile)
   })
 
-  return (
-    <ul>
-      <Text>Complete Profiles</Text>
-      {completeProfiles.map((profile, index) => (
-        <Button is={Link}
-                to={profile.id == props.id ? `/apply/leader?id=${profile.id}` : '/apply'}
-                bg="success"
-                children={profile.applicant.email}
-                key={index} />
-      ))}
+  const profileList = (title, type, color) => {
+    const list = profiles[type]
+    if (list.length === 0) {
+      return null
+    } else {
+      return (
+        <div>
+          <Text>{title} Profiles</Text>
+          <ul>
+            {list.map((profile, index) => (
+              <Button is={Link}
+                      to={profile.id == props.id ? `/apply/leader?id=${profile.id}` : '/apply'}
+                      bg={color}
+                      children={profile.applicant.email}
+                      key={index} />
+            ))}
+          </ul>
+        </div>
+      )
+    }
+  }
 
-      <Text>Incomplete Profiles</Text>
-      {incompleteProfiles.map((profile, index) => (
-        <Button is={Link}
-                to={profile.id == props.id ? `/apply/leader?id=${profile.id}` : '/apply'}
-                bg="primary"
-                children={profile.applicant.email}
-                key={index} />
-      ))}
-    </ul>
+  return (
+    <div>
+      {profileList('Complete', 'complete', 'success')}
+      {profileList('Incomplete', 'incomplete', 'primary')}
+    </div>
   )
 }
 
@@ -56,15 +61,12 @@ const InnerForm = (props) => {
     <form onSubmit={handleSubmit}>
       <ApplicationList values={values} id={props.id} />
       <Field name="email"
-             label="Invite a co-leader"
              onChange={handleChange}
              onBlur={handleBlur}
+             p="Co-leader's email address"
              value={values.email || ''}
              error={touched.email && errors.email}
-      />
-      <Submit
-        value="Send invite"
-        disabled={isSubmitting}
+             disabled={isSubmitting}
       />
     </form>
   )

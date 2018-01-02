@@ -202,10 +202,20 @@ const LeaderApplicationForm = withFormik({
       },
       body: JSON.stringify(data)
     })
-      .then(res => (res.json()))
-      .then(json => {})
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          throw res
+        }})
+      .then(json => {
+        alert("Saved!")
+        setSubmitting(false)
+      })
       .catch(e => {
+        console.error(e)
         alert(e)
+        setSubmitting(false)
       })
   },
   displayName: 'LeaderApplicationForm'

@@ -16,7 +16,7 @@ const Base = Section.extend`
   ${tilt(90)};
   background-color: ${props => props.theme.colors.red[5]};
   background-image: linear-gradient(
-    -38deg,
+    -48deg,
     ${props => props.theme.colors.orange[4]} 0%,
     ${props => props.theme.colors.red[5]} 50%,
     ${props => props.theme.colors.red[6]} 100%

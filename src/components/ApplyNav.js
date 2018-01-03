@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter, Link } from 'react-static'
+import { Link } from 'react-static'
 import { Text, Flex, Box } from 'rebass'
 import { cx, mx } from '../theme'
 import { LogoutButton } from './AuthButton'
@@ -23,15 +23,16 @@ ${mx[1]} {
 `
 
 const Crumb = styled(Link)`
-  color: ${props => cx(props.currentpath === 'true' ? 'primary' : 'muted')};
+  color: ${props => cx(props.currentpath === 'true' ? 'muted' : 'primary')};
   text-decoration: none;
+  text-transform: capitalize;
 `
 
 const Divider = Text.extend.attrs({
   is: 'span',
   mx: 2,
   children: '›',
-  color: 'muted'
+  color: 'primary'
 })``
 
 const Breadcrumb = props => {
@@ -46,7 +47,7 @@ const Breadcrumb = props => {
   return (
     <span>
       <Breadcrumb path={path} currentPath={false} />
-      <Divider />
+      { path.length > 1 ? <Divider /> : null }
       <Crumb to={link} currentpath={currentPath.toString()}>{name}</Crumb>
     </span>
   )

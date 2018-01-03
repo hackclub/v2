@@ -94,6 +94,9 @@ const InnerForm = props => {
           />
         </Fieldset>
         <Fieldset section="leaders">
+          <LeaderInviteForm params={ values }
+                            id={ id }
+                            authToken={ authToken } />
           <Field name="point_of_contact_id"
                  label="Point of contact"
                  onChange={handleChange}
@@ -252,12 +255,6 @@ const InnerForm = props => {
           onClick={markSubmitted}
         />
       </Form>
-
-      <Aside>
-        <LeaderInviteForm params={ params }
-                          id={ id }
-                          authToken={ authToken } />
-      </Aside>
     </FormWrapper>
   )
 }

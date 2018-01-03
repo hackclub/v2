@@ -1,5 +1,5 @@
 import React from 'react'
-import { Column, Row, Box, Container, Flex, Heading, Text } from 'rebass'
+import { Box, Container, Flex, Heading, Text } from 'rebass'
 import { colors, mm, mx } from '../theme'
 import Button from './Button'
 import styled from 'styled-components'
@@ -102,9 +102,7 @@ export const Submit = props => (
 export const FormWrapper = Flex.extend.attrs({
   is: () => Container
 })`
-${mm[1]} {
-  flex-direction: column;
-}
+flex-direction: column;
 `
 
 const CustomForm = Container.extend.attrs({
@@ -120,18 +118,14 @@ const CustomForm = Container.extend.attrs({
     h2, .textarea { grid-column: 1 / -1; }
   }
 `
-const CustomBox = Box.extend.attrs({
-})``
-
 export const Form = props => (
-  <CustomBox>
+  <Box>
     <CustomForm {...props} />
-  </CustomBox>
+  </Box>
 )
 
 export const Subheading = Heading.extend.attrs({
   f: 4,
-  mt: -1,
   color: 'primary'
 })`
 text-transform: capitalize;
@@ -166,16 +160,13 @@ export const Fieldset = props => (
     <HeadingBox>
       <Subheading id={props.section}>{props.section}</Subheading>
     </HeadingBox>
-    <FieldsBox>
+      <FieldsBox>
       {props.children}
     </FieldsBox>
   </CustomFlex>
 )
 
-export const Aside = Container.extend.attrs({
-  is: () => Box,
-  bg: 'snow',
-  mx: 0,
-  my: 4,
-  px: 3
-})``
+export const Aside = Box.extend.attrs({
+  bg: 'snow'
+})`
+`

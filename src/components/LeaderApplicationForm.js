@@ -149,7 +149,7 @@ const InnerForm = (props) => {
         </Fieldset>
         <Fieldset section="skills">
           <Field name="skills_system_hacked"
-                 label="Please tell us about the time you most successfully hacked some (non-computer) system to your advanced."
+                 label="Please tell us about the time you most successfully hacked some (non-computer) system to your advantage."
                  onChange={handleChange}
                  onBlur={handleBlur}
                  value={values.skills_system_hacked}

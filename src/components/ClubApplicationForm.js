@@ -204,7 +204,7 @@ const InnerForm = props => {
                  onBlur={handleBlur}
                  value={values.formation_registered}
                  error={touched.formation_registered && errors.formation_registered}
-                 label="Have you already registerd your club with your school?"
+                 label="Have you already registered your club with your school?"
                  required
           />
           <Field name="formation_misc"

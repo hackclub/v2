@@ -199,7 +199,7 @@ class StartRepl extends Component {
           <CTA href={`/replit/apply${paramString}`}>Get started »</CTA>
         </Header>
         <Section>
-          <About backgroundcolor={`${colors.green[9]}66`} mb={4} />
+          <About offset="#0f330a" mb={4} />
         </Section>
         <Section>
           <Subheadline>Be part of a movement</Subheadline>

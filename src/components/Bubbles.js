@@ -1,9 +1,15 @@
 import React from 'react'
 import { Link } from 'react-static'
-import { Avatar, Flex, Box, Heading, Lead } from 'rebass'
-import CTA from './CTA'
+import {
+  Avatar,
+  Flex,
+  Box,
+  Heading,
+  Text,
+  LargeButton,
+  mediaQueries
+} from '@hackclub/design-system'
 import { shuffle, range, sample } from 'lodash'
-import { mx, mm } from '../theme'
 
 const Root = Flex.extend.attrs({
   justify: 'center',
@@ -17,47 +23,47 @@ const Root = Flex.extend.attrs({
   max-width: 100vw;
   height: 100vh;
   overflow-y: hidden;
-`
 
-const Fill = Flex.extend.attrs({ justify: 'space-around', wrap: true })`
-  position: absolute;
-  top: 0;
-  z-index: -1;
-`
+  div:first-child {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+  }
 
-const Bubble = Avatar.extend`
-  margin: 0.75em;
-  &:nth-child(odd) {
-    margin-left: 1.5em;
-    margin-top: 0;
-  }
-  &:nth-child(even) {
-    margin-right: 1em;
-  }
-  &:nth-child(6n) {
-    width: 3em;
-    height: 3em;
-    margin-bottom: 1em;
-  }
-  &:nth-child(8n) {
-    width: 2.5em;
-    height: 2.5em;
-    margin-left: 1em;
-  }
-  &:nth-child(5n) {
-    margin-top: 2em;
-  }
-  &:nth-child(13n) {
-    width: 1.5em;
-    height: 1.5em;
-  }
-  &:nth-child(17n) {
-    margin-top: 3em;
-  }
-  ${mm[1]} {
-    max-width: 72px;
-    max-height: 72px;
-    margin: 0.25em;
+  img {
+    margin: 0.75em;
+    &:nth-child(odd) {
+      margin-left: 1.5em;
+      margin-top: 0;
+    }
+    &:nth-child(even) {
+      margin-right: 1em;
+    }
+    &:nth-child(6n) {
+      width: 3em;
+      height: 3em;
+      margin-bottom: 1em;
+    }
+    &:nth-child(8n) {
+      width: 2.5em;
+      height: 2.5em;
+      margin-left: 1em;
+    }
+    &:nth-child(5n) {
+      margin-top: 2em;
+    }
+    &:nth-child(13n) {
+      width: 1.5em;
+      height: 1.5em;
+    }
+    &:nth-child(17n) {
+      margin-top: 3em;
+    }
+    @media screen and (max-width:32em) {
+      max-width: 72px;
+      max-height: 72px;
+      margin: 0.25em;
+    }
   }
 `
 
@@ -77,64 +83,53 @@ const Cloud = Box.extend`
     padding: 0 1rem;
     top: -2rem;
   }
+  p:first-child {
+    line-height: 1.125;
+  }
+  h1 {
+    line-height: 1;
+  }
+  h2 {
+    line-height: 1.25;
+  }
 `
 
-const Mantra = Lead.extend.attrs({
-  f: [4, 5],
-  color: 'accent',
-  mx: 'auto',
-  bold: true
-})`
-  line-height: 1.125;
-  text-transform: uppercase;
-`
-const Title = Heading.extend.attrs({
-  is: 'h1',
-  f: [6, 7],
-  color: 'primary',
-  mx: 'auto',
-  mt: 2,
-  mb: 3
-})`line-height: 1;`
-const Description = Heading.extend.attrs({
-  f: [3, 4],
-  color: 'gray.9',
-  mx: 'auto'
-})`
-  font-weight: normal;
-  line-height: 1.5;
-`
+LargeButton.link = LargeButton.withComponent(Link)
 
 const Bubbles = ({ children }) => (
   <Root>
-    <Fill>
+    <Flex justify="space-around" wrap>
       {shuffle([...range(92), ...range(92)]).map((i, n) => (
-        <Bubble
+        <Avatar
           src={`/avatars/${i + 1}.jpg`}
-          size={sample([48, 56, 64, 72, 84, 96])}
+          size={sample([48, 56, 64, 72, 84, 96]) + 'px'}
           key={`a-${n}`}
         />
       ))}
-    </Fill>
+    </Flex>
     <Cloud>
-      <Mantra>
+      <Text fontSize={[4, 5]} color="accent" mx="auto" m={0} bold caps>
         By the students,
         <br />
         for the students.
-      </Mantra>
-      <Title>
+      </Text>
+      <Heading.h1 fontSize={[6, 7]} color="primary" mx="auto" mt={2} mb={3}>
         High school
         <br />
         coding clubs.
-      </Title>
-      <Description>
-        Hack Club is a nonprofit network of coding clubs where members learn to code like hackers – through tinkering, building projects, and taking things apart.
-      </Description>
+      </Heading.h1>
+      <Text fontSize={[3, 4]} color="gray.9" mx="auto" m={0}>
+        Hack Club is a nonprofit network of coding clubs where members learn to
+        code like hackers – through tinkering, building projects, and taking
+        things apart.
+      </Text>
       <Flex justify="center" wrap mx={-2} mt={4}>
-        <CTA href="/donate" bg="white" color="primary">
+        <LargeButton href="/donate" inverted m={2}>
           Donate
-        </CTA>
-        <CTA to="/start">Learn More</CTA>
+        </LargeButton>
+        <LargeButton.link to="/start" m={2}>
+          Learn More
+        </LargeButton.link>
       </Flex>
     </Cloud>
   </Root>

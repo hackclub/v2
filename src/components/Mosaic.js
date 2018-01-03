@@ -1,14 +1,8 @@
 import React from 'react'
-import { Container, Flex, Box, Heading, Image } from 'rebass'
-import { mx } from '../theme'
+import { Flex, Box, mediaQueries } from '@hackclub/design-system'
 import { range, shuffle } from 'lodash'
 
-const Base = Box.extend`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-
+const Base = Flex.extend`
   div {
     background-position: center;
     background-repeat: no-repeat;
@@ -18,10 +12,8 @@ const Base = Box.extend`
     height: 4rem;
     width: 100%;
     max-width: 25%;
-  }
 
-  ${mx[1]} {
-    div {
+    ${mediaQueries[1]} {
       max-width: 12.5%;
       height: 6rem;
     }
@@ -29,7 +21,7 @@ const Base = Box.extend`
 `
 
 export default () => (
-  <Base>
+  <Base wrap justify="center" align="center">
     {shuffle(range(32)).map(i => (
       <div
         style={{ backgroundImage: `url(/mosaic/${i + 1}.jpg)` }}

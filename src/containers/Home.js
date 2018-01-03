@@ -1,5 +1,5 @@
 import React from 'react'
-import { Provider } from 'rebass'
+import { ThemeProvider } from '@hackclub/design-system'
 import { Head } from 'react-static'
 import Nav from '../components/Nav'
 import Bubbles from '../components/Bubbles'
@@ -14,7 +14,7 @@ import theme from '../theme'
 import data from '../../data'
 
 export default () => (
-  <Provider theme={theme}>
+  <ThemeProvider>
     <Head>
       <title children={data.title} />
       <meta name="description" content={data.description} />
@@ -28,5 +28,5 @@ export default () => (
     <Mosaic />
     <Start />
     <Footer />
-  </Provider>
+  </ThemeProvider>
 )

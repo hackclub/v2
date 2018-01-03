@@ -49,16 +49,21 @@ class BreadcrumbClass extends Component {
   render() {
     const { path } = this.state
 
+    let runningPath = ['']
     return (
       <span>
         {
-          path.map((_, i) => {
-            const currentPath = path.slice(i)
-            const currentName = currentPath[0]
+          path.map((section, index) => {
+            runningPath.push(section)
+            let isLast = path.length - index > 1
             return (
-              <span key={i}>
-                <Crumb to={currentPath.join('/')} active={(currentPath.length === 1).toString()}>{currentName}</Crumb>
-                { currentPath.length > 1 ? <Divider /> : null }
+              <span key={index}>
+                <Crumb to={runningPath.join('/')}
+                       active={isLast.toString()}
+                >
+                  {section}
+                </Crumb>
+                { isLast ? <Divider /> : null }
               </span>
             )
           })

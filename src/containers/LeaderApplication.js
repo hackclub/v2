@@ -87,7 +87,7 @@ export default class extends Component {
     return (
       <Provider theme={theme}>
         <Head>
-          <title children="Edit Club Application" />
+          <title children="Edit Leader Application" />
         </Head>
         {this.content()}
       </Provider>

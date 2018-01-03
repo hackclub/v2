@@ -103,7 +103,7 @@ const ApplicationCard = props => {
     <Container my="auto">
       <CustomFlex>
         <CustomBox>
-          <EditButton to={`/apply/club?id=${id}`}>Edit Club Application</EditButton>
+          <EditButton to={`/apply/club?id=${id}`}>Edit Application</EditButton>
           <EditButton to={`/apply/leader?id=${leaderProfile.id}`}>Edit Leader Profile</EditButton>
         </CustomBox>
         <CustomBox>
@@ -222,7 +222,7 @@ class ApplicationIndex extends Component {
             <ApplyNav breadcrumb={0} />
             <Container>
               <Border top bottom color={cx('smoke')}>
-                <CustomHeading>Applying to Hack Club</CustomHeading>
+                <CustomHeading>Apply to Hack Club</CustomHeading>
               </Border>
             </Container>
             <ApplicationCard app={app} applicantId={applicantId} />

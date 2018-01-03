@@ -67,7 +67,6 @@ const InnerForm = props => {
                  onBlur={handleBlur}
                  value={values.high_school_url}
                  error={touched.high_school_url && errors.high_school_url}
-                 required
           />
           <Field name="high_school_type"
                  label="Type of school"
@@ -84,7 +83,7 @@ const InnerForm = props => {
             <option value="charter_school">Charter school</option>
           </Field>
           <Field name="high_school_address"
-                 label="High school's full address"
+                 label="High school's full address (include city, state/province, country)"
                  onChange={handleChange}
                  onBlur={handleBlur}
                  value={values.high_school_address}

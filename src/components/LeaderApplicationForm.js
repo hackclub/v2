@@ -101,7 +101,7 @@ const InnerForm = (props) => {
                  required
           />
           <Field name="leader_address"
-                 label="Mailing address"
+                 label="Your full address (include city, state/province, country)"
                  onChange={handleChange}
                  onBlur={handleBlur}
                  value={values.leader_address}
@@ -112,35 +112,40 @@ const InnerForm = (props) => {
         </Fieldset>
         <Fieldset section="presence">
           <Field name="presence_personal_website"
-                 label="Personal website"
+                 label="Personal website URL"
+                 p="https://"
                  onChange={handleChange}
                  onBlur={handleBlur}
                  value={values.presence_personal_website}
                  error={touched.presence_personal_website && errors.presence_personal_website}
           />
           <Field name="presence_github_url"
-                 label="Link to GitHub account"
+                 label="GitHub URL"
+                 p="https://"
                  onChange={handleChange}
                  onBlur={handleBlur}
                  value={values.presence_github_url}
                  error={touched.presence_github_url && errors.presence_github_url}
           />
           <Field name="presence_linkedin_url"
-                 label="Link to LinkedIn profile"
+                 label="LinkedIn URL"
+                 p="https://"
                  onChange={handleChange}
                  onBlur={handleBlur}
                  value={values.presence_linkedin_url}
                  error={touched.presence_linkedin_url && errors.presence_linkedin_url}
           />
           <Field name="presence_facebook_url"
-                 label="Link to Facebook profile"
+                 label="Facebook URL"
+                 p="https://"
                  onChange={handleChange}
                  onBlur={handleBlur}
                  value={values.presence_facebook_url}
                  error={touched.presence_facebook_url && errors.presence_facebook_url}
           />
           <Field name="presence_twitter_url"
-                 label="Link to Twitter account"
+                 label="Twitter URL"
+                 p="https://"
                  onChange={handleChange}
                  onBlur={handleBlur}
                  value={values.presence_twitter_url}

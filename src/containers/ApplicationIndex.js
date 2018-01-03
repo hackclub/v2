@@ -148,16 +148,18 @@ class ApplicationIndex extends Component {
 
     this.state = {
       status: 'loading',
-      authToken: window.localStorage.getItem('authToken'),
-      applicantId: window.localStorage.getItem('applicantId')
+      app: undefined,
+      authToken: undefined,
+      applicantId: undefined
     }
   }
 
   componentDidMount() {
-    const { authToken, applicantId } = this.state
-    const needsToAuth = (authToken === null || applicantId === null)
 
+    const authToken = window.localStorage.getItem('authToken')
+    const applicantId = window.localStorage.getItem('applicantId')
     this.setState({authToken, applicantId})
+    const needsToAuth = (authToken === null || applicantId === null)
 
     if (needsToAuth) {
       this.setState({status: 'needsToAuth'})
@@ -217,7 +219,7 @@ class ApplicationIndex extends Component {
       case 'finished':
         return (
           <div>
-            <ApplyNav breadcrumb={false} />
+            <ApplyNav breadcrumb={0} />
             <Container>
               <Border top bottom color={cx('smoke')}>
                 <CustomHeading>Applying to Hack Club</CustomHeading>

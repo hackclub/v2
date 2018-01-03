@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-static'
 import { Text, Flex, Box } from 'rebass'
 import { cx, mx } from '../theme'
 import LogoutButton from './LogoutButton'
 import Flag from './Flag'
 import styled from 'styled-components'
+import { withRouter } from 'react-static'
 
 const Item = Box.extend.attrs({
   f: 4,
@@ -23,7 +24,7 @@ ${mx[1]} {
 `
 
 const Crumb = styled(Link)`
-  color: ${props => cx(props.currentpath === 'true' ? 'muted' : 'primary')};
+  color: ${props => cx(props.active === 'true' ? 'primary' : 'muted')};
   text-decoration: none;
   text-transform: capitalize;
 `
@@ -35,23 +36,39 @@ const Divider = Text.extend.attrs({
   color: 'primary'
 })``
 
-const Breadcrumb = props => {
-  const { path=location.pathname.split('/'), currentPath=true } = props
-
-  if (path.length <= 1) {
-    return null
+class BreadcrumbClass extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { path: [] }
   }
 
-  const name = path.pop()
-  const link = currentPath ? '#' : `${path.join('/')}/${name}`
-  return (
-    <span>
-      <Breadcrumb path={path} currentPath={false} />
-      { path.length > 1 ? <Divider /> : null }
-      <Crumb to={link} currentpath={currentPath.toString()}>{name}</Crumb>
-    </span>
-  )
+  componentDidMount() {
+    this.setState({path: location.pathname.split('/').slice(1)})
+  }
+
+  render() {
+    const { path } = this.state
+
+    return (
+      <span>
+        {
+          path.map((_, i) => {
+            const currentPath = path.slice(i)
+            const currentName = currentPath[0]
+            return (
+              <span key={i}>
+                <Crumb to={currentPath.join('/')} active={(currentPath.length === 1).toString()}>{currentName}</Crumb>
+                { currentPath.length > 1 ? <Divider /> : null }
+              </span>
+            )
+          })
+        }
+      </span>
+    )
+  }
 }
+
+const Breadcrumb = withRouter(BreadcrumbClass)
 
 const BreadcrumbHolder = Item.extend.attrs({
   children: Breadcrumb

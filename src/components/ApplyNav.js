@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-static'
 import { Text, Flex, Box } from 'rebass'
 import { cx, mx } from '../theme'
-import { LogoutButton } from './AuthButton'
+import LogoutButton from './LogoutButton'
 import Flag from './Flag'
 import styled from 'styled-components'
 

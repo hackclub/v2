@@ -4,7 +4,6 @@ import { Box, Flex } from '@hackclub/design-system'
 import { Link } from 'react-static'
 import { colors, mediaQueries } from '@hackclub/design-system'
 import Flag from './Flag'
-import { LogoutButton } from './AuthButton'
 
 const Base = Flex.extend.attrs({
   pt: 0,

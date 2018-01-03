@@ -15,6 +15,15 @@ export default class extends Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      status: 'loading',
+      formFields: undefined,
+      id: undefined,
+      authToken: undefined
+    }
+  }
+
+  componentDidMount() {
     var id
     const params = window.location.search.slice(1).split(/&/)
     for (var i = 0; i < params.length; i++) {
@@ -23,17 +32,8 @@ export default class extends Component {
         id = param.split('=')[1]
       }
     }
-
-    this.state = {
-      status: 'loading',
-      formFields: undefined,
-      authToken: window.localStorage.getItem('authToken'),
-      id
-    }
-  }
-
-  componentDidMount() {
-    const { authToken, id } = this.state
+    const authToken = window.localStorage.getItem('authToken')
+    this.setState({authToken, id})
     const needsToAuth = (authToken === null || id === null)
     if (needsToAuth) {
       const status = 'needsToAuth'

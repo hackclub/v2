@@ -11,7 +11,7 @@ const Stripe = Flex.extend`
   background-size: cover;
   background-position: center top;
   margin-top: -3rem;
-  min-height: 24rem;
+  min-height: 32rem;
   max-height: 72rem;
   ${mediaQueries[1]} {
     margin-top: -6rem;
@@ -22,18 +22,18 @@ const Stripe = Flex.extend`
 const StripeContainer = Container.extend`
   z-index: 1;
 
-  h2,
-  h3 {
-    line-height: 1.35;
+  h2 mark {
+    display: block;
   }
-  h3 {
+  h3 mark {
     font-weight: normal;
   }
   mark {
-    background-color: rgba(250, 247, 133, 0.85);
+    background-color: rgba(250, 247, 133, 0.8);
     color: ${props => props.theme.colors.black} !important;
     padding-left: 0.25em;
     padding-right: 0.25em;
+    line-height: 1.35;
     width: 100%;
   }
 `
@@ -41,14 +41,13 @@ const StripeContainer = Container.extend`
 export default () => (
   <Stripe id="more" align="center" justify="center" direction="column" py={3}>
     <StripeContainer maxWidth={36} p={3} align="center">
-      <Heading.h2 f={5} mt={0} mb={3}>
+      <Heading.h2 f={[5, 6]} mt={0} mb={3}>
+        <mark>{stats.percentage_of_us_high_schools} of US high schools.</mark>
         <mark>
-          {stats.percentage_of_us_high_schools} of US high schools.
-          <br />
           {stats.state_count} states. {stats.country_count} countries.
         </mark>
       </Heading.h2>
-      <Heading.h3 f={[3, 4]} m={0} normal>
+      <Heading.h3 f={[3, 4]} m={0}>
         <mark>
           Join the largest community of students building the class they wish
           they could take.

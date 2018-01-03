@@ -108,17 +108,17 @@ const Bubbles = ({ children }) => (
       ))}
     </Flex>
     <Cloud>
-      <Text fontSize={[4, 5]} color="accent" mx="auto" m={0} bold caps>
+      <Text f={[4, 5]} color="accent" mx="auto" m={0} bold caps>
         By the students,
         <br />
         for the students.
       </Text>
-      <Heading.h1 fontSize={[6, 7]} color="primary" mx="auto" mt={2} mb={3}>
+      <Heading.h1 f={[6, 7]} color="primary" mx="auto" mt={2} mb={3}>
         High school
         <br />
         coding clubs.
       </Heading.h1>
-      <Text fontSize={[3, 4]} color="gray.9" mx="auto" m={0}>
+      <Text f={[3, 4]} color="gray.9" mx="auto" m={0}>
         Hack Club is a nonprofit network of coding clubs where members learn to
         code like hackers – through tinkering, building projects, and taking
         things apart.

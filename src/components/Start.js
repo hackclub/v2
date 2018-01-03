@@ -42,7 +42,7 @@ const Start = props => (
     flexDirection={['column', null, 'row']}
     {...props}
   >
-    <Box p={2} align={['center', 'right']}>
+    <Box px={[2, 3]} align={['center', 'right']}>
       <Heading.h2 f={[5, 6]} m={0}>
         Start a Hack Club.
       </Heading.h2>
@@ -53,7 +53,7 @@ const Start = props => (
         Build the class you wish you could take.
       </Heading.h3>
     </Box>
-    <Box p={2}>
+    <Box px={[2, 3]}>
       <LargeButton.link to="/start" inverted children="Get started »" />
     </Box>
     <style children="footer{margin-top:-5rem;padding-top:8rem !important}" />

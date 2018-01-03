@@ -37,10 +37,10 @@ A.link = A.withComponent(Link)
 
 export default () => (
   <Base px={3} py={5} my={[4, 5]}>
-    <Heading.h2 fontSize={6} mb={3}>
+    <Heading.h2 f={6} mb={3}>
       Coding is a <mark>superpower</mark>.
     </Heading.h2>
-    <Heading.h3 color="slate" f={4} regular>
+    <Heading.h3 color="slate" f={4} bold={false} regular>
       So let’s teach it like that at every high school.{' '}
       <A.link color="primary" to="/meetings" underline>
         Explore meetings →

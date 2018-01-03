@@ -13,12 +13,12 @@ const Base = Flex.withComponent('footer').extend`
 const LeftCol = Box.withComponent('aside').extend.attrs({
   px: 3,
   mb: 2,
-  w: [1, 0.6],
+  w: [1, 1 / 2],
   align: ['left', 'right']
 })``
 const RightCol = Box.withComponent('article').extend.attrs({
   px: 3,
-  w: [1, 0.4]
+  w: [1, 1 / 2]
 })``
 
 const Service = ({ href, icon, ...props }) => (

@@ -12,7 +12,7 @@
   },
   "author": "Lachlan Campbell",
   "dependencies": {
-    "@hackclub/design-system": "0.0.1-1",
+    "@hackclub/design-system": "0.0.1-2",
     "axios": "^0.17.1",
     "dot-prop": "^4.2.0",
     "formik": "^0.10.5",

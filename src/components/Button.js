@@ -6,11 +6,10 @@ const Button = Box.extend.attrs({
   is: 'a',
   f: 3,
   m: 0,
-  pl: 3,
-  pr: 3,
-  pt: 2,
-  pb: 2
+  px: 3,
+  py: 2,
 })([], props => ({
+  cursor: 'pointer',
   color: cx(props.color || 'white'),
   backgroundColor: cx(props.bg || 'primary'),
   fontFamily: 'inherit',

@@ -25,7 +25,15 @@ export default {
     },
     {
       path: '/apply',
-      component: 'src/containers/Apply'
+      component: 'src/containers/ApplicationIndex'
+    },
+    {
+      path: '/apply/club',
+      component: 'src/containers/ClubApplication'
+    },
+    {
+      path: '/apply/leader',
+      component: 'src/containers/LeaderApplication'
     },
     {
       path: '/meetings',

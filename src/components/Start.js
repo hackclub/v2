@@ -54,7 +54,7 @@ const Start = props => (
       </Heading.h3>
     </Box>
     <Box p={2}>
-      <LargeButton.link to="/start" inverted children="Get started →" />
+      <LargeButton.link to="/start" inverted children="Get started »" />
     </Box>
     <style children="footer{margin-top:-5rem;padding-top:8rem !important}" />
   </Base>

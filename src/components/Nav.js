@@ -4,6 +4,7 @@ import { Box, Flex } from '@hackclub/design-system'
 import { Link } from 'react-static'
 import { colors, mediaQueries } from '@hackclub/design-system'
 import Flag from './Flag'
+import { LogoutButton } from './AuthButton'
 
 const Base = Flex.extend.attrs({
   pt: 0,
@@ -51,14 +52,15 @@ const Nav = ({ mode, color, ...props }) => (
     <Flag />
     <NavBar mode={mode} color={color}>
       <Item.link to="/team" children="Our Team" />
-      <Item href="/workshops" children="In a club? Get workshops →" />
+      <Item href="/workshops" children="In a club? Get workshops »" />
     </NavBar>
   </Base>
 )
 
 Nav.propTypes = {
   mode: PropTypes.oneOf(['default', 'cloud']),
-  color: PropTypes.string
+  color: PropTypes.string,
+  authenticated: PropTypes.bool
 }
 
 Nav.defaultProps = {

@@ -22,9 +22,9 @@ export default class extends Component {
   }
 
   componentDidMount() {
-    var id
+    let id
     const params = window.location.search.slice(1).split(/&/)
-    for (var i = 0; i < params.length; i++) {
+    for (let i = 0; i < params.length; i++) {
       let param = params[i]
       if (param.split('=')[0] === 'id') {
         id = param.split('=')[1]
@@ -73,7 +73,7 @@ export default class extends Component {
       return <LoadingAnimation />
     } else {
       return (
-        <div>
+        <React.Fragment>
           <ApplyNav />
           <LeaderApplicationForm
             params={formFields}
@@ -81,7 +81,7 @@ export default class extends Component {
             authToken={authToken}
           />
           <Footer />
-        </div>
+        </React.Fragment>
       )
     }
   }

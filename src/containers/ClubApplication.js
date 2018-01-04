@@ -6,9 +6,7 @@ import LoadingAnimation from '../components/LoadingAnimation'
 import ClubApplicationForm from '../components/ClubApplicationForm'
 import ApplyNav from '../components/ApplyNav'
 import Footer from '../components/Footer'
-import theme from '../theme'
 import Login from '../components/Login'
-import { Provider } from 'rebass'
 import yup from 'yup'
 import fetch from 'unfetch'
 
@@ -76,7 +74,7 @@ export default class extends Component {
       return <LoadingAnimation />
     } else {
       return (
-        <div>
+        <React.Fragment>
           <ApplyNav />
           <ClubApplicationForm
             params={formFields}
@@ -84,7 +82,7 @@ export default class extends Component {
             authToken={authToken}
           />
           <Footer />
-        </div>
+        </React.Fragment>
       )
     }
   }

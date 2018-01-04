@@ -250,7 +250,7 @@ class ApplicationIndex extends Component {
         return <LoadingAnimation />
       case 'finished':
         return (
-          <div>
+          <React.Fragment>
             <ApplyNav breadcrumb={0} />
             <Container>
               <Border top bottom color={cx('smoke')}>
@@ -258,7 +258,7 @@ class ApplicationIndex extends Component {
               </Border>
             </Container>
             <ApplicationCard app={app} applicantId={applicantId} />
-          </div>
+          </React.Fragment>
         )
       default:
         return <p>Something terrible has happened.</p>

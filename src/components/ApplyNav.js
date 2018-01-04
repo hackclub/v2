@@ -1,40 +1,17 @@
 import React, { Component } from 'react'
 import { Link } from 'react-static'
-import { Text, Flex, Box } from 'rebass'
+import { Text, Flex, Box, Link as A } from '@hackclub/design-system'
 import { cx, mx } from '../theme'
+import { Item } from './Nav'
 import LogoutButton from './LogoutButton'
 import Flag from './Flag'
 import styled from 'styled-components'
 import { withRouter } from 'react-static'
 
-const Item = Box.extend.attrs({
-  f: 4,
-  mt: 4,
-  color: 'primary'
-})`
-text-decoration: none;
-font-weight: bold;
-text-align: center;
-max-width: 10em;
-radius: 4px;
-
-${mx[1]} {
-  max-width: none;
-}
-`
-
-const Crumb = styled(Link)`
-  color: ${props => cx(props.active === 'true' ? 'primary' : 'muted')};
-  text-decoration: none;
+const Crumb = A.withComponent(Link).extend`
+  opacity: ${props => (props.active === 'true' ? 0.8 : 1)};
   text-transform: capitalize;
 `
-
-const Divider = Text.extend.attrs({
-  is: 'span',
-  mx: 2,
-  children: '›',
-  color: 'primary'
-})``
 
 class BreadcrumbClass extends Component {
   constructor(props) {
@@ -48,60 +25,56 @@ class BreadcrumbClass extends Component {
 
   render() {
     const { path } = this.state
-
     let runningPath = ['']
     return (
-      <span>
+      <React.Fragment>
         {path.map((section, index) => {
           runningPath.push(section)
-          let isLast = path.length - index > 1
+          const isLast = path.length - index > 1
           return (
-            <span key={index}>
-              <Crumb to={runningPath.join('/')} active={isLast.toString()}>
+            <React.Fragment>
+              <Crumb
+                color="white"
+                to={runningPath.join('/')}
+                active={isLast.toString()}
+              >
                 {section}
               </Crumb>
-              {isLast ? <Divider /> : null}
-            </span>
+              {isLast ? (
+                <Text.span mx={2} color="white" regular children="›" />
+              ) : null}
+            </React.Fragment>
           )
         })}
-      </span>
+      </React.Fragment>
     )
   }
 }
 
 const Breadcrumb = withRouter(BreadcrumbClass)
 
-const BreadcrumbHolder = Item.extend.attrs({
-  children: Breadcrumb
-})`
-width: 40em;
-text-align: left;
-`
+// Prevent validateDOMNesting error
+Item.box = Item.withComponent(Box)
 
-const Logout = Item.extend.attrs({
-  is: () => LogoutButton
-})``
-
-const Base = Flex.extend.attrs({
-  pt: 0,
-  px: [3, 4],
-  pb: 2,
-  justify: 'space-between',
-  w: 1
-})`
-  position: relative;
-`
-
-const ApplyNav = props => {
-  const { breadcrumb = true } = props
-
-  return (
-    <Base {...props}>
-      <Flag />
-      {breadcrumb ? <BreadcrumbHolder /> : null}
-      <Logout />
-    </Base>
-  )
-}
+const ApplyNav = ({ breadcrumb = true, ...props }) => (
+  <Flex
+    bg="primary"
+    px={[2, 4]}
+    pb={2}
+    justify="space-between"
+    align="center"
+    w={1}
+    style={{ position: 'relative' }}
+    {...props}
+  >
+    <Flag />
+    {breadcrumb ? (
+      <Item.box f={[2, 4]} mt={2} w={32 * 16}>
+        <Breadcrumb />
+      </Item.box>
+    ) : null}
+    <LogoutButton mt={2} />
+  </Flex>
+)
 
 export default ApplyNav

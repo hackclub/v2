@@ -32,7 +32,7 @@ const NavBar = Flex.withComponent('nav').extend.attrs({
       : { color: colors[props.color] || props.color }
 )
 
-const Item = Box.withComponent('a').extend.attrs({ mx: [1, 3] })`
+export const Item = Box.withComponent('a').extend.attrs({ mx: [1, 3] })`
   color: inherit;
   text-decoration: none;
   font-weight: bold;

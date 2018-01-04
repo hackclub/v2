@@ -2,17 +2,15 @@ import React, { Component } from 'react'
 import { Head } from 'react-static'
 import { api } from '../../data'
 import {
-  Border,
   ThemeProvider,
   Card,
   Container,
   Box,
   Flex,
-  Lead,
-  Provider,
+  Text,
   Heading,
-  Text
-import Button from '../components/Button'
+  Button,
+  LargeButton
 } from '@hackclub/design-system'
 import LoadingAnimation from '../components/LoadingAnimation'
 import Login from '../components/Login'
@@ -20,60 +18,11 @@ import ApplyNav from '../components/ApplyNav'
 import fetch from 'unfetch'
 import { Link } from 'react-static'
 
-const EditButton = Button.extend.attrs({
-  f: 3,
-  is: () => Link,
-  px: 4,
-  py: 4,
-  mx: 'auto',
-  my: 1,
-  w: 1
-})`
-text-align: left;
-${mx[1]} {
-  margin-right: 10%;
-  width: 90%;
-}
-`
+LargeButton.link = LargeButton.withComponent(Link)
 
-const CustomHeading = Heading.extend.attrs({
-  my: 2,
-  py: 2
-})`
-text-align: center;
-${mx[1]} {
-  text-align: left;
-}
-`
-
-const InfoCard = Card.extend.attrs({
-  bg: 'smoke',
-  p: 4
-})`
-border-radius: 4px;
-box-shadow: 0 2px 12px rgba(0,0,0,.125);
-`
-
-const ApplicationCardContainer = Container.extend.attrs({
-  mx: 'auto',
-  p: 4
-})`
-max-width: 75rem;
-`
-
-const CustomFlex = Flex.extend.attrs({
-  wrap: 'wrap-reverse',
-  my: 3
-})``
-
-const CustomBox = Box.extend.attrs({
-  width: 1,
-  my: 3
-})`
-${mx[1]} {
-  width: 50%;
-}
-`
+const CustomHeading = props => (
+  <Heading.h2 m={0} align={['center', 'left']} f={3} caps {...props} />
+)
 
 const timeSince = time => {
   const seconds = Math.floor((new Date() - new Date(time)) / 1000)
@@ -92,12 +41,7 @@ const timeSince = time => {
   return 'less than a minute'
 }
 
-const Neg = Text.extend.attrs({
-  is: 'span',
-  children: 'NOT',
-  bold: true,
-  color: 'primary'
-})``
+const Neg = () => <Text.span color="error" bold children="NOT" />
 
 const ApplicationCard = props => {
   const {
@@ -116,60 +60,72 @@ const ApplicationCard = props => {
   )
 
   return (
-    <Container my="auto">
-      <CustomFlex>
-        <CustomBox>
-          <EditButton to={`/apply/club?id=${id}`}>Edit Application</EditButton>
-          <EditButton to={`/apply/leader?id=${leaderProfile.id}`}>
-            Edit Leader Profile
-          </EditButton>
-        </CustomBox>
-        <CustomBox>
-          <InfoCard>
-            <Lead>Application</Lead>
-            <ul>
-              {updated_at === created_at ? (
-                <li>This application was just created</li>
-              ) : submitted_at ? null : (
-                <li>
-                  This application was updated{' '}
-                  <strong>{timeSince(updated_at)}</strong> ago
-                </li>
-              )}
-              {submitted_at ? (
-                <li>
-                  You submitted this application{' '}
-                  <strong>{timeSince(submitted_at)}</strong> ago
-                </li>
-              ) : (
-                <li>
-                  You have <Neg>NOT</Neg> submitted your application
-                </li>
-              )}
-            </ul>
-            <Lead>Leaders</Lead>
-            <ul>
+    <React.Fragment>
+      <Container maxWidth={36} mt={3} p={3}>
+        <Card boxShadowSize="md" p={[3, 4]} color="black" bg="snow">
+          <CustomHeading color="primary">Application</CustomHeading>
+          <ul>
+            {updated_at === created_at ? (
+              <li>This application was just created</li>
+            ) : submitted_at ? null : (
               <li>
-                You have{leaderProfile.completed_at ? null : <Neg> NOT</Neg>}{' '}
-                finished your leader profile
+                This application was updated{' '}
+                <strong>{timeSince(updated_at)}</strong> ago
               </li>
-              {coLeaderProfiles.map((profile, index) => (
-                <li key={index}>
-                  <strong>{profile.applicant.email}</strong>
-                  {profile.completed_at ? null : (
-                    <span>
-                      {' '}
-                      has <Neg>NOT</Neg>
-                    </span>
-                  )}{' '}
-                  finished their leader profile
-                </li>
-              ))}
-            </ul>
-          </InfoCard>
-        </CustomBox>
-      </CustomFlex>
-    </Container>
+            )}
+            {submitted_at ? (
+              <li>
+                You submitted this application{' '}
+                <strong>{timeSince(submitted_at)}</strong> ago
+              </li>
+            ) : (
+              <li>
+                You have <Neg /> submitted your application
+              </li>
+            )}
+          </ul>
+          <CustomHeading color="accent">Leaders</CustomHeading>
+          <ul>
+            <li>
+              You have {leaderProfile.completed_at ? null : <Neg />} finished
+              your leader profile
+            </li>
+            {coLeaderProfiles.map((profile, index) => (
+              <li key={index}>
+                <strong>{profile.applicant.email} </strong>
+                {profile.completed_at ? null : (
+                  <span>
+                    has <Neg />{' '}
+                  </span>
+                )}
+                finished their leader profile
+              </li>
+            ))}
+          </ul>
+        </Card>
+        <Flex
+          align="center"
+          justify="center"
+          flexDirection={['column', 'row']}
+          my={3}
+          mx={[null, -2]}
+        >
+          <LargeButton.link
+            w={1}
+            m={2}
+            to={`/apply/club?id=${id}`}
+            children="Edit Application"
+          />
+          <LargeButton.link
+            w={1}
+            m={2}
+            bg="accent"
+            to={`/apply/leader?id=${leaderProfile.id}`}
+            children="Edit Leader Profile"
+          />
+        </Flex>
+      </Container>
+    </React.Fragment>
   )
 }
 
@@ -252,16 +208,22 @@ class ApplicationIndex extends Component {
         return (
           <React.Fragment>
             <ApplyNav breadcrumb={0} />
-            <Container>
-              <Border top bottom color={cx('smoke')}>
-                <CustomHeading>Apply to Hack Club</CustomHeading>
-              </Border>
-            </Container>
+            <Heading.h1
+              bg="primary"
+              color="white"
+              f={[5, 6]}
+              mt={-1}
+              py={4}
+              px={3}
+              align="center"
+            >
+              Apply to Hack Club
+            </Heading.h1>
             <ApplicationCard app={app} applicantId={applicantId} />
           </React.Fragment>
         )
       default:
-        return <p>Something terrible has happened.</p>
+        return <Text>Something terrible has happened.</Text>
     }
   }
 

@@ -55,7 +55,7 @@ const InnerForm = props => {
           console.error(e)
           if (e.status === 422) {
             alert(
-              "Can't submit. Finish filling out the application and make sure all co-leads have filled out their profiles."
+              'Can’t submit. Finish filling out the application and make sure all co-leads have filled out their profiles.'
             )
           } else {
             alert('Something went terribly wrong')

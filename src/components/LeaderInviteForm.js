@@ -1,16 +1,8 @@
 import React from 'react'
 import { api } from '../../data'
 import { Field } from '../components/Forms'
-import { Text, Column, Row } from 'rebass'
+import { Box, Flex, Text, IconButton, cx } from '@hackclub/design-system'
 import yup from 'yup'
-import { cx } from '../theme'
-import styled from 'styled-components'
-
-const InviteLink = styled.a`
-  color: ${cx('primary')};
-  background: white;
-  cursor: pointer;
-`
 
 const InnerForm = props => {
   const handleChange = e => {
@@ -19,6 +11,7 @@ const InnerForm = props => {
       handleSubmit()
     }
   }
+
   const handleSubmit = () => {
     const leaderInvite = document.querySelector('#leader_invite')
     const schema = yup.object().shape({
@@ -40,17 +33,15 @@ const InnerForm = props => {
           body: JSON.stringify(data)
         })
           .then(res => {
-            if (res.ok) {
-              return res.json()
-            } else {
-              throw res
-            }
+            return res.json()
+            if (!res.ok) throw res
           })
           .then(json => {
             alert(`Invite sent to ${data.email}!`)
             leaderInvite.value = ''
           })
           .catch(e => {
+            console.error(e.errors)
             alert(e)
           })
       })
@@ -67,21 +58,26 @@ const InnerForm = props => {
   }
 
   return (
-    <Row>
-      <Column width={3 / 5}>
-        <Text>
-          Please provide the email addresses of the other club leaders
-        </Text>
-        <Field
-          id="leader_invite"
-          onKeyDown={handleChange}
-          p="Co-leader's email"
-        />
-      </Column>
-      <Column style={{ alignSelf: 'flex-end' }}>
-        <InviteLink onClick={handleSubmit}>Add co-lead</InviteLink>
-      </Column>
-    </Row>
+    <Flex align="flex-end" mb={2}>
+      <Field
+        id="leader_invite"
+        onKeyDown={handleChange}
+        label="Please provide the email addresses of the other club leaders"
+        p="Co-leader's email"
+      />
+      <IconButton
+        name="add"
+        bg="success"
+        color="white"
+        size={24}
+        ml={3}
+        p={1}
+        mb={2}
+        circle
+        onClick={handleSubmit}
+        style={{ flexShrink: 'none' }}
+      />
+    </Flex>
   )
 }
 

@@ -48,6 +48,14 @@ export default {
       component: 'src/containers/ApplyRepl'
     },
     {
+      path: '/cloud9_setup',
+      component: 'src/containers/Cloud9'
+    },
+    {
+      path: '/redeem_tech_domain',
+      component: 'src/containers/RedeemTechDomain'
+    },
+    {
       is404: true,
       component: 'src/containers/NotFound'
     }

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { Head } from 'react-static'
 import { api } from '../../data'
+import { ThemeProvider, Heading, Container } from '@hackclub/design-system'
 import LeaderApplicationForm from '../components/LeaderApplicationForm'
 import LoadingAnimation from '../components/LoadingAnimation'
 import Login from '../components/Login'
 import theme from '../theme'
 import ApplyNav from '../components/ApplyNav'
 import Footer from '../components/Footer'
-import { Provider } from 'rebass'
 
 export default class extends Component {
   constructor(props) {
@@ -88,12 +88,12 @@ export default class extends Component {
 
   render() {
     return (
-      <Provider theme={theme}>
+      <ThemeProvider>
         <Head>
           <title children="Edit Leader Application" />
         </Head>
         {this.content()}
-      </Provider>
+      </ThemeProvider>
     )
   }
 }

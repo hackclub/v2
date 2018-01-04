@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Head } from 'react-static'
 import { api } from '../../data'
+import { ThemeProvider } from '@hackclub/design-system'
 import LoadingAnimation from '../components/LoadingAnimation'
 import ClubApplicationForm from '../components/ClubApplicationForm'
 import ApplyNav from '../components/ApplyNav'
@@ -90,12 +91,12 @@ export default class extends Component {
 
   render() {
     return (
-      <Provider theme={theme}>
+      <ThemeProvider>
         <Head>
           <title children="Edit Club Application" />
         </Head>
         {this.content()}
-      </Provider>
+      </ThemeProvider>
     )
   }
 }

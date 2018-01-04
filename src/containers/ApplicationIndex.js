@@ -3,6 +3,7 @@ import { Head } from 'react-static'
 import { api } from '../../data'
 import {
   Border,
+  ThemeProvider,
   Card,
   Container,
   Box,
@@ -11,9 +12,8 @@ import {
   Provider,
   Heading,
   Text
-} from 'rebass'
 import Button from '../components/Button'
-import theme, { cx, mx } from '../theme'
+} from '@hackclub/design-system'
 import LoadingAnimation from '../components/LoadingAnimation'
 import Login from '../components/Login'
 import ApplyNav from '../components/ApplyNav'
@@ -267,12 +267,12 @@ class ApplicationIndex extends Component {
 
   render() {
     return (
-      <Provider theme={theme}>
+      <ThemeProvider>
         <Head>
           <title children="Apply" />
         </Head>
         {this.content()}
-      </Provider>
+      </ThemeProvider>
     )
   }
 }

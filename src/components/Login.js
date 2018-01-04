@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import { Head } from 'react-static'
+import { ThemeProvider, Flex } from '@hackclub/design-system'
 import Flag from '../components/Flag'
 import EmailLoginForm from '../components/EmailLoginForm'
 import LoginCodeForm from '../components/LoginCodeForm'
-import { Box, Provider } from 'rebass'
-import theme, { mx } from '../theme'
-import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 
 const Base = Box.extend.attrs({
@@ -49,7 +47,7 @@ class Login extends Component {
     const { emailSent, applicantId } = this.state
 
     return (
-      <Provider theme={theme}>
+      <ThemeProvider>
         <Head>
           <title children="Login" />
         </Head>
@@ -61,7 +59,7 @@ class Login extends Component {
             <EmailLoginForm submitCallback={this.submitCallback} />
           )}
         </Base>
-      </Provider>
+      </ThemeProvider>
     )
   }
 }

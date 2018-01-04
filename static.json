@@ -5,5 +5,10 @@
     "/": {
       "origin": "https://legacy.hackclub.com"
     }
+  },
+  "headers": {
+    "/fonts/**": {
+      "Access-Control-Allow-Origin": "*"
+    }
   }
 }

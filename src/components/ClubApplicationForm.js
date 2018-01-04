@@ -12,7 +12,7 @@ import {
 } from '../components/Forms'
 import LeaderInviteForm from '../components/LeaderInviteForm'
 import Button from '../components/Button'
-import { Column, Container, Flex, Box } from 'rebass'
+import { Container, Flex, Box } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 
 const InnerForm = props => {
@@ -298,12 +298,23 @@ const InnerForm = props => {
             type="textarea"
           />
         </Fieldset>
-        <Submit value="Save Draft" disabled={isSubmitting} />
-        <Submit
-          value="Submit Application"
-          disabled={isSubmitting}
-          onClick={markSubmitted}
-        />
+        <Container maxWidth={24}>
+          <Submit
+            value="Save Draft"
+            disabled={isSubmitting}
+            w={1}
+            my={2}
+            bg="white"
+            color="primary"
+          />
+          <Submit
+            value="Submit Application"
+            disabled={isSubmitting}
+            onClick={markSubmitted}
+            w={1}
+            my={2}
+          />
+        </Container>
       </Form>
     </FormWrapper>
   )

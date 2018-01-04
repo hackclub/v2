@@ -1,5 +1,6 @@
 import React from 'react'
 import { api } from '../../data'
+import { Container } from '@hackclub/design-system'
 import {
   FormWrapper,
   Aside,
@@ -226,11 +227,9 @@ const InnerForm = props => {
             <option value="false">No</option>
           </Field>
         </Fieldset>
-        <Submit
-          value="Save as draft"
-          disabled={isSubmitting}
-          onClick={handleSubmit}
-        />
+        <Container maxWidth={24}>
+          <Submit value="Save Draft" disabled={isSubmitting} w={1} my={2} lg />
+        </Container>
       </Form>
     </FormWrapper>
   )
@@ -267,4 +266,5 @@ const LeaderApplicationForm = withFormik({
   },
   displayName: 'LeaderApplicationForm'
 })(InnerForm)
+
 export default LeaderApplicationForm

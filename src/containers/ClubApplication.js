@@ -33,22 +33,23 @@ export default class extends Component {
       }
     }
     const authToken = window.localStorage.getItem('authToken')
-    this.setState({authToken, id})
-    const needsToAuth = (authToken === null || id === null)
+    this.setState({ authToken, id })
+    const needsToAuth = authToken === null || id === null
     if (needsToAuth) {
       const status = 'needsToAuth'
-      this.setState({status})
+      this.setState({ status })
     } else {
       fetch(`${api}/v1/new_club_applications/${id}`, {
         method: 'GET',
-        headers: { 'Authorization': `Bearer ${authToken}`, },
+        headers: { Authorization: `Bearer ${authToken}` }
       })
         .then(res => {
           if (res.ok) {
             return res.json()
           } else {
             throw res
-          }})
+          }
+        })
         .then(json => {
           this.setState({
             status: 'loaded',
@@ -58,7 +59,7 @@ export default class extends Component {
         .catch(e => {
           if (e.status === 401) {
             const status = 'needsToAuth'
-            this.setState({status})
+            this.setState({ status })
           }
           alert(e)
         })
@@ -76,9 +77,11 @@ export default class extends Component {
       return (
         <div>
           <ApplyNav />
-          <ClubApplicationForm params={ formFields }
-                               id={ id }
-                               authToken={ authToken } />
+          <ClubApplicationForm
+            params={formFields}
+            id={id}
+            authToken={authToken}
+          />
           <Footer />
         </div>
       )

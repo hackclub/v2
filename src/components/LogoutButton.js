@@ -7,6 +7,6 @@ export const destroySession = () => {
   window.localStorage.removeItem('applicantId')
 }
 
-export default (props) => (
+export default props => (
   <Link to="/" onClick={destroySession} children="Logout" {...props} />
 )

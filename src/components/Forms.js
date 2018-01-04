@@ -78,7 +78,7 @@ export const Field = ({
   ...props
 }) => (
   <Label className={type} id={name}>
-    <Flex align="center" mb="25rem" style={{display: 'inline'}} wrap>
+    <Flex align="center" mb="25rem" style={{ display: 'inline' }} wrap>
       {label}
       {required ? <Required /> : null}
       {error && <Error children={error} />}
@@ -131,8 +131,7 @@ export const Subheading = Heading.extend.attrs({
 text-transform: capitalize;
 `
 
-const CustomFlex = Flex.extend.attrs({
-})`
+const CustomFlex = Flex.extend.attrs({})`
 ${mm[1]} {
   flex-direction: column;
 }
@@ -150,8 +149,7 @@ ${mm[1]} {
   text-align: left;
 }
 `
-const FieldsBox = Box.extend.attrs({
-})`
+const FieldsBox = Box.extend.attrs({})`
 order: 2;
 flex-grow: 1;
 `
@@ -160,9 +158,7 @@ export const Fieldset = props => (
     <HeadingBox>
       <Subheading id={props.section}>{props.section}</Subheading>
     </HeadingBox>
-      <FieldsBox>
-      {props.children}
-    </FieldsBox>
+    <FieldsBox>{props.children}</FieldsBox>
   </CustomFlex>
 )
 

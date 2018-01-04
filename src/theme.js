@@ -46,7 +46,8 @@ const theme = {
   radius: 4,
   weights: [400, 700],
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72, 96],
-  font: 'Averta, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+  font:
+    'Averta, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
   monospace: 'SFMono-Regular, "Roboto Mono", Menlo, monospace'
 }
 

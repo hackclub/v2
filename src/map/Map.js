@@ -15,7 +15,8 @@ const Map = ({ paths, locations, ...props }) => (
         {(geographies, projection) =>
           geographies.map(geo => (
             <Geography key={geo.id} geography={geo} projection={projection} />
-          ))}
+          ))
+        }
       </Geographies>
       <Markers>
         {locations.map((marker, i) => (

@@ -1,7 +1,7 @@
 import React from 'react'
 import { api } from '../../data'
 import { Label, Input, Text } from 'rebass'
-import { brand} from '../theme'
+import { brand } from '../theme'
 import { withFormik } from 'formik'
 import yup from 'yup'
 import fetch from 'unfetch'
@@ -24,8 +24,8 @@ justify: center;
 `
 
 const StyledLabel = Label.extend`
-display: block;
-text-align: center;
+  display: block;
+  text-align: center;
 `
 
 const InnerForm = ({
@@ -54,7 +54,12 @@ const InnerForm = ({
         autoFocus
       />
     </StyledLabel>
-    <Text f={1} mt='-2.5rem' align="center" style={errors.email ? null : {visibility: 'hidden'} }>
+    <Text
+      f={1}
+      mt="-2.5rem"
+      align="center"
+      style={errors.email ? null : { visibility: 'hidden' }}
+    >
       {errors.email || 'placeholder'}
     </Text>
   </form>
@@ -64,9 +69,7 @@ const EmailLoginForm = withFormik({
   mapPropsToValues: ({ params }) => ({ ...params }),
   validateOnChange: false,
   validationSchema: yup.object().shape({
-    email: yup
-      .string()
-      .email("That doesn't look like a valid email.")
+    email: yup.string().email("That doesn't look like a valid email.")
   }),
   handleSubmit: (data, { props, setSubmitting }) => {
     if (!data.email) {
@@ -88,7 +91,7 @@ const EmailLoginForm = withFormik({
       .then(json => {
         window.localStorage.setItem('applicantId', json.id)
         setSubmitting(false)
-        props.submitCallback({applicantId: json.id})
+        props.submitCallback({ applicantId: json.id })
       })
       .catch(e => {
         console.error(e)

@@ -1,7 +1,17 @@
 import React, { Component } from 'react'
 import { Head } from 'react-static'
 import { api } from '../../data'
-import { Border, Card, Container, Box, Flex, Lead, Provider, Heading, Text } from 'rebass'
+import {
+  Border,
+  Card,
+  Container,
+  Box,
+  Flex,
+  Lead,
+  Provider,
+  Heading,
+  Text
+} from 'rebass'
 import Button from '../components/Button'
 import theme, { cx, mx } from '../theme'
 import LoadingAnimation from '../components/LoadingAnimation'
@@ -38,7 +48,7 @@ ${mx[1]} {
 
 const InfoCard = Card.extend.attrs({
   bg: 'smoke',
-  p: 4,
+  p: 4
 })`
 border-radius: 4px;
 box-shadow: 0 2px 12px rgba(0,0,0,.125);
@@ -66,7 +76,7 @@ ${mx[1]} {
 `
 
 const timeSince = time => {
-  const seconds = Math.floor((new Date() - new Date(time)) / 1000);
+  const seconds = Math.floor((new Date() - new Date(time)) / 1000)
   const intervals = [
     [Math.floor(seconds / (60 * 60 * 24 * 7)), 'weeks'],
     [Math.floor(seconds / (60 * 60 * 24)), 'days'],
@@ -90,48 +100,69 @@ const Neg = Text.extend.attrs({
 })``
 
 const ApplicationCard = props => {
-  const { id, applicant_profiles, updated_at, created_at, submitted_at } = props.app
+  const {
+    id,
+    applicant_profiles,
+    updated_at,
+    created_at,
+    submitted_at
+  } = props.app
 
-  const leaderProfile = applicant_profiles.find(profile => (
-    profile.applicant.id == props.applicantId
-  ))
-  const coLeaderProfiles = applicant_profiles.filter(profile => (
-    profile.applicant.id != props.applicantId
-  ))
+  const leaderProfile = applicant_profiles.find(
+    profile => profile.applicant.id == props.applicantId
+  )
+  const coLeaderProfiles = applicant_profiles.filter(
+    profile => profile.applicant.id != props.applicantId
+  )
 
   return (
     <Container my="auto">
       <CustomFlex>
         <CustomBox>
           <EditButton to={`/apply/club?id=${id}`}>Edit Application</EditButton>
-          <EditButton to={`/apply/leader?id=${leaderProfile.id}`}>Edit Leader Profile</EditButton>
+          <EditButton to={`/apply/leader?id=${leaderProfile.id}`}>
+            Edit Leader Profile
+          </EditButton>
         </CustomBox>
         <CustomBox>
           <InfoCard>
             <Lead>Application</Lead>
             <ul>
-              {
-                updated_at === created_at ?
-                <li>This application was just created</li> :
-                (
-                  submitted_at ?
-                  null :
-                  <li>This application was updated <strong>{timeSince(updated_at)}</strong> ago</li>
-                )
-              }
-              {
-                submitted_at ?
-                <li>You submitted this application <strong>{timeSince(submitted_at)}</strong> ago</li> :
-                <li>You have <Neg>NOT</Neg> submitted your application</li>
-              }
+              {updated_at === created_at ? (
+                <li>This application was just created</li>
+              ) : submitted_at ? null : (
+                <li>
+                  This application was updated{' '}
+                  <strong>{timeSince(updated_at)}</strong> ago
+                </li>
+              )}
+              {submitted_at ? (
+                <li>
+                  You submitted this application{' '}
+                  <strong>{timeSince(submitted_at)}</strong> ago
+                </li>
+              ) : (
+                <li>
+                  You have <Neg>NOT</Neg> submitted your application
+                </li>
+              )}
             </ul>
             <Lead>Leaders</Lead>
             <ul>
-              <li>You have{leaderProfile.completed_at ? null : <Neg> NOT</Neg>} finished your leader profile</li>
+              <li>
+                You have{leaderProfile.completed_at ? null : <Neg> NOT</Neg>}{' '}
+                finished your leader profile
+              </li>
               {coLeaderProfiles.map((profile, index) => (
                 <li key={index}>
                   <strong>{profile.applicant.email}</strong>
-                  {profile.completed_at ? null : <span> has <Neg>NOT</Neg></span>} finished their leader profile
+                  {profile.completed_at ? null : (
+                    <span>
+                      {' '}
+                      has <Neg>NOT</Neg>
+                    </span>
+                  )}{' '}
+                  finished their leader profile
                 </li>
               ))}
             </ul>
@@ -155,18 +186,17 @@ class ApplicationIndex extends Component {
   }
 
   componentDidMount() {
-
     const authToken = window.localStorage.getItem('authToken')
     const applicantId = window.localStorage.getItem('applicantId')
-    this.setState({authToken, applicantId})
-    const needsToAuth = (authToken === null || applicantId === null)
+    this.setState({ authToken, applicantId })
+    const needsToAuth = authToken === null || applicantId === null
 
     if (needsToAuth) {
-      this.setState({status: 'needsToAuth'})
+      this.setState({ status: 'needsToAuth' })
     } else {
       // Populate the list of applications
       fetch(`${api}/v1/applicants/${applicantId}/new_club_applications`, {
-        headers: { 'Authorization': `Bearer ${authToken}` }
+        headers: { Authorization: `Bearer ${authToken}` }
       })
         .then(res => {
           if (res.ok) {
@@ -177,17 +207,19 @@ class ApplicationIndex extends Component {
         })
         .then(json => {
           if (json.length === 0) {
-            return fetch(`${api}/v1/applicants/${applicantId}/new_club_applications`, {
-              method: 'POST',
-              headers: { 'Authorization': `Bearer ${authToken}` }
+            return fetch(
+              `${api}/v1/applicants/${applicantId}/new_club_applications`,
+              {
+                method: 'POST',
+                headers: { Authorization: `Bearer ${authToken}` }
+              }
+            ).then(res => {
+              if (res.ok) {
+                return res.json()
+              } else {
+                throw res
+              }
             })
-              .then(res => {
-                if (res.ok) {
-                  return res.json()
-                } else {
-                  throw res
-                }
-              })
           }
           return json.sort((a, b) => {
             return new Date(b.created_at) - new Date(a.created_at)
@@ -202,7 +234,7 @@ class ApplicationIndex extends Component {
         .catch(e => {
           console.error(e)
           if (e.status === 401) {
-            this.setState({status: 'needsToAuth'})
+            this.setState({ status: 'needsToAuth' })
           }
         })
     }

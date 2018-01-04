@@ -31,35 +31,36 @@ export default class extends Component {
       }
     }
     const authToken = window.localStorage.getItem('authToken')
-    this.setState({id, authToken})
-    const needsToAuth = (authToken === null || id === null)
+    this.setState({ id, authToken })
+    const needsToAuth = authToken === null || id === null
     if (needsToAuth) {
       const status = 'needsToAuth'
-      this.setState({status})
+      this.setState({ status })
     } else {
-    fetch(`${api}/v1/applicant_profiles/${id}`, {
-      method: 'GET',
-      headers: { 'Authorization': `Bearer ${authToken}`, },
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          throw res
-        }})
-      .then(json => {
-        this.setState({
-          status: 'loaded',
-          formFields: json
+      fetch(`${api}/v1/applicant_profiles/${id}`, {
+        method: 'GET',
+        headers: { Authorization: `Bearer ${authToken}` }
+      })
+        .then(res => {
+          if (res.ok) {
+            return res.json()
+          } else {
+            throw res
+          }
         })
-      })
-      .catch(e => {
-        if (e.status === 401) {
-          const status = 'needsToAuth'
-          this.setState({status})
-        }
-        alert(e)
-      })
+        .then(json => {
+          this.setState({
+            status: 'loaded',
+            formFields: json
+          })
+        })
+        .catch(e => {
+          if (e.status === 401) {
+            const status = 'needsToAuth'
+            this.setState({ status })
+          }
+          alert(e)
+        })
     }
   }
 
@@ -74,9 +75,11 @@ export default class extends Component {
       return (
         <div>
           <ApplyNav />
-          <LeaderApplicationForm params={ formFields }
-                                 id={ id }
-                                 authToken={ authToken } />
+          <LeaderApplicationForm
+            params={formFields}
+            id={id}
+            authToken={authToken}
+          />
           <Footer />
         </div>
       )

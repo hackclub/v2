@@ -43,7 +43,7 @@ class BreadcrumbClass extends Component {
   }
 
   componentDidMount() {
-    this.setState({path: location.pathname.split('/').slice(1)})
+    this.setState({ path: location.pathname.split('/').slice(1) })
   }
 
   render() {
@@ -52,22 +52,18 @@ class BreadcrumbClass extends Component {
     let runningPath = ['']
     return (
       <span>
-        {
-          path.map((section, index) => {
-            runningPath.push(section)
-            let isLast = path.length - index > 1
-            return (
-              <span key={index}>
-                <Crumb to={runningPath.join('/')}
-                       active={isLast.toString()}
-                >
-                  {section}
-                </Crumb>
-                { isLast ? <Divider /> : null }
-              </span>
-            )
-          })
-        }
+        {path.map((section, index) => {
+          runningPath.push(section)
+          let isLast = path.length - index > 1
+          return (
+            <span key={index}>
+              <Crumb to={runningPath.join('/')} active={isLast.toString()}>
+                {section}
+              </Crumb>
+              {isLast ? <Divider /> : null}
+            </span>
+          )
+        })}
       </span>
     )
   }
@@ -97,11 +93,11 @@ const Base = Flex.extend.attrs({
 `
 
 const ApplyNav = props => {
-  const { breadcrumb=true } = props
+  const { breadcrumb = true } = props
 
   return (
     <Base {...props}>
-      <Flag/>
+      <Flag />
       {breadcrumb ? <BreadcrumbHolder /> : null}
       <Logout />
     </Base>

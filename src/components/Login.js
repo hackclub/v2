@@ -55,11 +55,11 @@ class Login extends Component {
         </Head>
         <FixedFlag />
         <Base>
-          {
-            emailSent ?
-            <LoginCodeForm id={applicantId} /> :
+          {emailSent ? (
+            <LoginCodeForm id={applicantId} />
+          ) : (
             <EmailLoginForm submitCallback={this.submitCallback} />
-          }
+          )}
         </Base>
       </Provider>
     )

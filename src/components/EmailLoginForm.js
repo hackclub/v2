@@ -6,10 +6,9 @@ import yup from 'yup'
 import fetch from 'unfetch'
 
 const StyledInput = Input.extend.attrs({
-  f: 3,
-  p: 2,
+  mx: 'auto',
   mb: 5,
-  width: '20rem',
+  w: 24 * 16,
   bg: 'white'
 })`
   border: none;
@@ -36,7 +35,7 @@ const InnerForm = ({
       Start your application
     </Heading.h1>
     <Label className="email" id="email">
-      <Text mb={2} align="center" f={5} color="white" normal>
+      <Text mb={2} align="center" f={4} color="white" normal>
         Enter your email
       </Text>
       <StyledInput

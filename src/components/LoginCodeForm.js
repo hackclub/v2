@@ -6,13 +6,13 @@ import yup from 'yup'
 import fetch from 'unfetch'
 
 const StyledInput = Input.extend.attrs({
-  fontSize: 4,
-  p: 2,
-  mb: 4,
+  f: 4,
   mx: 'auto',
-  w: '20rem',
+  mb: 5,
+  w: 24 * 16,
   bg: 'white'
 })`
+  border: none;
   text-align: center;
   ::placeholder {
     text-align: center;

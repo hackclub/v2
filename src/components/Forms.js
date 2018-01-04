@@ -1,52 +1,17 @@
 import React from 'react'
-import { Box, Container, Flex, Heading, Text } from 'rebass'
-import { colors, mm, mx } from '../theme'
-import Button from './Button'
-import styled from 'styled-components'
-
-const chevron = () => {
-  const props = `xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'`
-  const slate = colors.slate.replace('#', '')
-  const pathProps = `fill='%23${slate}' d='M2 0L0 2h4zm0 5L0 3h4z'`
-  return `%3Csvg ${props}%3E%3Cpath ${pathProps}/%3E%3C/svg%3E`
-}
-export const Input = Box.extend.attrs({
-  is: 'input',
-  type: 'text',
-  f: 'inherit',
-  w: 1,
-  m: 0,
-  py: 1,
-  px: 2,
-  color: 'inherit',
-  bg: 'transparent'
-})([], props => ({
-  position: 'relative',
-  fontFamily: 'inherit',
-  lineHeight: 'inherit',
-  display: 'inline-block',
-  verticalAlign: 'middle',
-  border: 0,
-  boxShadow: `inset 0 0 0 1px ${colors.smoke}`,
-  borderRadius: '4px',
-  appearance: 'none',
-  '&:focus': {
-    outline: 'none',
-    boxShadow: `inset 0 0 0 1px ${colors.info}`
-  },
-  '&:disabled': {
-    opacity: 1 / 4
-  },
-  '&[type=select]': {
-    background: `#fff url("data:image/svg+xml;charset=utf8,${chevron()}") no-repeat right .75rem center`,
-    backgroundSize: '.5rem'
-  },
-  ...props
-}))
-
-export const Label = Box.extend.attrs({ is: 'label', f: 2, w: 1 })`
-  line-height: 1.5;
-`
+import {
+  Box,
+  Container,
+  Flex,
+  Heading,
+  Text,
+  Label,
+  Input,
+  Button,
+  LargeButton,
+  mediaQueries,
+  colors
+} from '@hackclub/design-system'
 
 export const Error = Text.extend.attrs({
   className: 'error',
@@ -58,14 +23,9 @@ export const Error = Text.extend.attrs({
   &:before { content: '— '; }
 `
 
-export const Required = Text.extend.attrs({
-  is: 'span',
-  className: 'required',
-  color: 'primary',
-  f: 1,
-  ml: 1,
-  children: '*'
-})``
+export const Required = () => (
+  <Text.span className="required" color="primary" f={1} ml={1} children="*" />
+)
 
 export const Field = ({
   type = 'text',
@@ -76,93 +36,86 @@ export const Field = ({
   error,
   required,
   ...props
-}) => (
-  <Label className={type} id={name}>
-    <Flex align="center" mb="25rem" style={{ display: 'inline' }} wrap>
-      {label}
-      {required ? <Required /> : null}
-      {error && <Error children={error} />}
-    </Flex>
-    <Input
-      name={name}
-      type={type}
-      is={['textarea', 'select'].indexOf(type) === -1 ? 'input' : type}
-      height={type === 'textarea' ? '10rem' : 'inherit'}
-      placeholder={p}
-      children={children}
-      {...props}
-    />
-  </Label>
-)
+}) => {
+  const Tag = Input.withComponent(
+    ['textarea', 'select'].indexOf(type) === -1 ? 'input' : type
+  )
+  return (
+    <Label className={type} mb={2} id={name}>
+      <Flex align="center" mb="25rem" style={{ display: 'inline' }} wrap>
+        {label}
+        {required ? <Required /> : null}
+        {error && <Error children={error} />}
+      </Flex>
+      <Tag
+        name={name}
+        type={type}
+        height={type === 'textarea' ? '10rem' : 'inherit'}
+        placeholder={p}
+        children={children}
+        {...props}
+      />
+    </Label>
+  )
+}
 
-export const Submit = props => (
-  <Button is="input" type="submit" bg="primary" color="white" {...props} />
-)
+export const Submit = ({ lg, ...props }) => {
+  const Tag = props.lg
+    ? LargeButton.withComponent('input')
+    : Button.withComponent('input')
+  return <Tag type="submit" {...props} />
+}
 
-export const FormWrapper = Flex.extend.attrs({
-  is: () => Container
-})`
-flex-direction: column;
+export const FormWrapper = Flex.withComponent(Container).extend`
+  flex-direction: column;
 `
 
-const CustomForm = Container.extend.attrs({
-  is: 'form',
+export const Form = Container.withComponent('form').extend.attrs({
   py: 4,
   px: 3,
-  maxWidth: 50 * 16
+  maxWidth: 48
 })`
   display: grid;
   grid-gap: 1rem;
-  ${mx[1]} {
+  ${mediaQueries[1]} {
     grid-template-columns: repeat(1, 1fr);
     h2, .textarea { grid-column: 1 / -1; }
   }
 `
-export const Form = props => (
-  <Box>
-    <CustomForm {...props} />
-  </Box>
-)
 
-export const Subheading = Heading.extend.attrs({
+export const Subheading = Heading.h2.extend.attrs({
   f: 4,
   color: 'primary'
 })`
-text-transform: capitalize;
+  text-transform: capitalize;
 `
 
-const CustomFlex = Flex.extend.attrs({})`
-${mm[1]} {
-  flex-direction: column;
-}
-`
 const HeadingBox = Box.extend.attrs({
   mr: 3
 })`
-text-align: right;
-order: 1;
-flex-grow: 0;
-flex-shrink: 0;
-flex-basis: 7rem;
-${mm[1]} {
-  flex-basis: auto;
   text-align: left;
-}
+  order: 1;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  ${mediaQueries[1]} {
+    flex-basis: 7rem;
+    text-align: right;
+  }
 `
+
 const FieldsBox = Box.extend.attrs({})`
-order: 2;
-flex-grow: 1;
+  order: 2;
+  flex-grow: 1;
 `
+
 export const Fieldset = props => (
-  <CustomFlex>
+  <Flex flexDirection={['column', 'row']}>
     <HeadingBox>
       <Subheading id={props.section}>{props.section}</Subheading>
     </HeadingBox>
     <FieldsBox>{props.children}</FieldsBox>
-  </CustomFlex>
+  </Flex>
 )
 
-export const Aside = Box.extend.attrs({
-  bg: 'snow'
-})`
-`
+export const Aside = props => <Box bg="snow" {...props} />

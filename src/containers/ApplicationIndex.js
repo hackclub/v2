@@ -60,72 +60,70 @@ const ApplicationCard = props => {
   )
 
   return (
-    <React.Fragment>
-      <Container maxWidth={36} mt={3} p={3}>
-        <Card boxShadowSize="md" p={[3, 4]} color="black" bg="snow">
-          <CustomHeading color="primary">Application</CustomHeading>
-          <ul>
-            {updated_at === created_at ? (
-              <li>This application was just created</li>
-            ) : submitted_at ? null : (
-              <li>
-                This application was updated{' '}
-                <strong>{timeSince(updated_at)}</strong> ago
-              </li>
-            )}
-            {submitted_at ? (
-              <li>
-                You submitted this application{' '}
-                <strong>{timeSince(submitted_at)}</strong> ago
-              </li>
-            ) : (
-              <li>
-                You have <Neg /> submitted your application
-              </li>
-            )}
-          </ul>
-          <CustomHeading color="accent">Leaders</CustomHeading>
-          <ul>
+    <Container maxWidth={36} mt={3} p={3}>
+      <Card boxShadowSize="md" p={[3, 4]} color="black" bg="snow">
+        <CustomHeading color="primary">Application</CustomHeading>
+        <ul>
+          {updated_at === created_at ? (
+            <li>This application was just created</li>
+          ) : submitted_at ? null : (
             <li>
-              You have {leaderProfile.completed_at ? null : <Neg />} finished
-              your leader profile
+              This application was updated{' '}
+              <strong>{timeSince(updated_at)}</strong> ago
             </li>
-            {coLeaderProfiles.map((profile, index) => (
-              <li key={index}>
-                <strong>{profile.applicant.email} </strong>
-                {profile.completed_at ? null : (
-                  <span>
-                    has <Neg />{' '}
-                  </span>
-                )}
-                finished their leader profile
-              </li>
-            ))}
-          </ul>
-        </Card>
-        <Flex
-          align="center"
-          justify="center"
-          flexDirection={['column', 'row']}
-          my={3}
-          mx={[null, -2]}
-        >
-          <LargeButton.link
-            w={1}
-            m={2}
-            to={`/apply/club?id=${id}`}
-            children="Edit Application"
-          />
-          <LargeButton.link
-            w={1}
-            m={2}
-            bg="accent"
-            to={`/apply/leader?id=${leaderProfile.id}`}
-            children="Edit Leader Profile"
-          />
-        </Flex>
-      </Container>
-    </React.Fragment>
+          )}
+          {submitted_at ? (
+            <li>
+              You submitted this application{' '}
+              <strong>{timeSince(submitted_at)}</strong> ago
+            </li>
+          ) : (
+            <li>
+              You have <Neg /> submitted your application
+            </li>
+          )}
+        </ul>
+        <CustomHeading color="accent">Leaders</CustomHeading>
+        <ul>
+          <li>
+            You have {leaderProfile.completed_at ? null : <Neg />} finished your
+            leader profile
+          </li>
+          {coLeaderProfiles.map((profile, index) => (
+            <li key={index}>
+              <strong>{profile.applicant.email} </strong>
+              {profile.completed_at ? null : (
+                <span>
+                  has <Neg />{' '}
+                </span>
+              )}
+              finished their leader profile
+            </li>
+          ))}
+        </ul>
+      </Card>
+      <Flex
+        align="center"
+        justify="center"
+        flexDirection={['column', 'row']}
+        my={3}
+        mx={[null, -2]}
+      >
+        <LargeButton.link
+          w={1}
+          m={2}
+          to={`/apply/club?id=${id}`}
+          children="Edit Application"
+        />
+        <LargeButton.link
+          w={1}
+          m={2}
+          bg="accent"
+          to={`/apply/leader?id=${leaderProfile.id}`}
+          children="Edit Leader Profile"
+        />
+      </Flex>
+    </Container>
   )
 }
 

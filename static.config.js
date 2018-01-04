@@ -48,6 +48,10 @@ export default {
       component: 'src/containers/ApplyRepl'
     },
     {
+      path: '/redeem_tech_domain',
+      component: 'src/containers/RedeemTechDomain'
+    },
+    {
       is404: true,
       component: 'src/containers/NotFound'
     }

@@ -1,31 +1,24 @@
 import React from 'react'
 import { api } from '../../data'
-import { Label, Input, Text } from 'rebass'
-import { brand } from '../theme'
+import { Heading, Label, Input, Text } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import yup from 'yup'
 import fetch from 'unfetch'
 
 const StyledInput = Input.extend.attrs({
   f: 3,
-  p: '0.5rem',
-  mb: '3rem',
+  p: 2,
+  mb: 5,
   width: '20rem',
-  bg: 'white',
-  color: 'primary'
+  bg: 'white'
 })`
-text-align: center;
-justify: center;
-::placeholder {
+  border: none;
   text-align: center;
-  color: ${brand.primary};
-  opacity: 0.5;
-}
-`
-
-const StyledLabel = Label.extend`
-  display: block;
-  text-align: center;
+  ::placeholder {
+    text-align: center;
+    color: ${props => props.theme.colors.primary};
+    opacity: 0.5;
+  }
 `
 
 const InnerForm = ({
@@ -39,13 +32,16 @@ const InnerForm = ({
   status
 }) => (
   <form onSubmit={handleSubmit}>
-    <StyledLabel className="email" id="email">
-      <Text mb="2rem" align="center" f={4}>
-        Enter your email.
+    <Heading.h1 f={2} mb={3} caps>
+      Start your application
+    </Heading.h1>
+    <Label className="email" id="email">
+      <Text mb={2} align="center" f={5} color="white" normal>
+        Enter your email
       </Text>
       <StyledInput
         name="email"
-        placeholder="Email Address"
+        placeholder="Email address"
         value={values.email}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -53,7 +49,7 @@ const InnerForm = ({
         autoComplete="off"
         autoFocus
       />
-    </StyledLabel>
+    </Label>
     <Text
       f={1}
       mt="-2.5rem"
@@ -69,7 +65,7 @@ const EmailLoginForm = withFormik({
   mapPropsToValues: ({ params }) => ({ ...params }),
   validateOnChange: false,
   validationSchema: yup.object().shape({
-    email: yup.string().email("That doesn't look like a valid email.")
+    email: yup.string().email('That doesn’t look like a valid email.')
   }),
   handleSubmit: (data, { props, setSubmitting }) => {
     if (!data.email) {

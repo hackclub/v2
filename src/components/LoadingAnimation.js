@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import { Flex, Text } from 'rebass'
+import { Flex, Text } from '@hackclub/design-system'
 
-const Base = Flex.extend`
-  justify-content: center;
-  align-items: center;
+const Base = Flex.extend.attrs({ justify: 'center', align: 'center' })`
   position: absolute;
   top: 0;
   bottom: 0;

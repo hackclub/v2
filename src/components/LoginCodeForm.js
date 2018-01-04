@@ -1,32 +1,24 @@
 import React, { Component } from 'react'
 import { api } from '../../data'
-import { Label, Input, Text } from 'rebass'
-import { brand } from '../theme'
+import { Label, Input, Text } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import yup from 'yup'
 import fetch from 'unfetch'
 
 const StyledInput = Input.extend.attrs({
-  f: 3,
-  p: '0.5rem',
-  mb: '3rem',
+  fontSize: 4,
+  p: 2,
+  mb: 4,
   mx: 'auto',
-  width: '20rem',
-  bg: 'white',
-  color: 'primary'
+  w: '20rem',
+  bg: 'white'
 })`
-text-align: center;
-justify: center;
-::placeholder {
   text-align: center;
-  color: ${brand.primary};
-  opacity: 0.5;
-}
-`
-
-const StyledLabel = Label.extend`
-  display: block;
-  text-align: center;
+  ::placeholder {
+    text-align: center;
+    color: ${props => props.theme.colors.primary};
+    opacity: 0.5;
+  }
 `
 
 class InnerForm extends Component {
@@ -34,6 +26,7 @@ class InnerForm extends Component {
     super(props)
     this.state = { previousLength: 0 }
   }
+
   formatAsLoginCode(rawInput) {
     let digits = rawInput.replace(/[^0-9]/g, '')
     const isRemovingDash =
@@ -69,9 +62,9 @@ class InnerForm extends Component {
     } = this.props
     return (
       <form onSubmit={handleSubmit}>
-        <StyledLabel className="loginCode" id="loginCode">
-          <Text mb="2rem" align="center" f={4}>
-            {'Cool! We just sent a login code to that email.'}
+        <Label className="loginCode" id="loginCode" align="center">
+          <Text color="white" mb={3} align="center" f={4}>
+            Cool! We just sent a login code to your email.
           </Text>
           <StyledInput
             name="loginCode"
@@ -86,7 +79,7 @@ class InnerForm extends Component {
             autoComplete="off"
             autoFocus
           />
-        </StyledLabel>
+        </Label>
         <Text
           f={1}
           mt="-2.5rem"
@@ -130,7 +123,7 @@ const LoginCodeForm = withFormik({
       })
       .catch(e => {
         console.error(e)
-        setErrors({ loginCode: "That doesn't look like the code we sent" })
+        setErrors({ loginCode: 'That doesn’t look like the code we sent.' })
         setSubmitting(false)
       })
   },

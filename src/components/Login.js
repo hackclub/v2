@@ -49,7 +49,7 @@ class Login extends Component {
     return (
       <ThemeProvider>
         <Head>
-          <title children="Login" />
+          <title>Log in – Hack Club</title>
         </Head>
         <FixedFlag />
         <Base>

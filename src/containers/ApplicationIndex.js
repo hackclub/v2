@@ -269,7 +269,7 @@ class ApplicationIndex extends Component {
     return (
       <ThemeProvider>
         <Head>
-          <title children="Apply" />
+          <title>Apply – Hack Club</title>
         </Head>
         {this.content()}
       </ThemeProvider>

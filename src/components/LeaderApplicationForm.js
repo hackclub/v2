@@ -11,7 +11,7 @@ import {
   Form
 } from '../components/Forms'
 import { withFormik } from 'formik'
-import { Link } from 'react-static'
+import { Link, Prompt } from 'react-static'
 
 const InnerForm = props => {
   const {
@@ -22,11 +22,11 @@ const InnerForm = props => {
     handleBlur,
     handleSubmit,
     isSubmitting,
-    dirty
+    params
   } = props
   return (
     <FormWrapper>
-      {dirty ? <ConfirmClose /> : null}
+      {values != params ? <ConfirmClose /> : null}
       <Form onSubmit={handleSubmit}>
         <Fieldset section="leader">
           <Field
@@ -241,7 +241,7 @@ const InnerForm = props => {
 const LeaderApplicationForm = withFormik({
   mapPropsToValues: props => props.params,
   enableReinitialize: true,
-  handleSubmit: (data, { setSubmitting, setStatus, props }) => {
+  handleSubmit: (data, { setSubmitting, setStatus, props, resetForm }) => {
     fetch(`${api}/v1/applicant_profiles/${props.id}`, {
       method: 'PATCH',
       headers: {
@@ -260,6 +260,7 @@ const LeaderApplicationForm = withFormik({
       .then(json => {
         alert('Saved!')
         setSubmitting(false)
+        resetForm()
       })
       .catch(e => {
         console.error(e)

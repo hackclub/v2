@@ -12,6 +12,7 @@ import {
   mediaQueries,
   colors
 } from '@hackclub/design-system'
+import { Prompt } from 'react-static'
 
 export const Error = Text.extend.attrs({
   className: 'error',
@@ -34,7 +35,9 @@ export class ConfirmClose extends Component {
   }
 
   render() {
-    return null
+    return (
+      <Prompt message="Shucks, you haven’t saved yet! Sure you want to leave?" />
+    )
   }
 }
 

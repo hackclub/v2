@@ -36,7 +36,7 @@ export class ConfirmClose extends Component {
 
   render() {
     return (
-      <Prompt message="Shucks, you haven’t saved yet! Sure you want to leave?" />
+      <Prompt message="Wait, you haven’t saved yet! Sure you want to leave?" />
     )
   }
 }

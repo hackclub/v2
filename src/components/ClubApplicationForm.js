@@ -2,6 +2,7 @@ import React from 'react'
 import { api } from '../../data'
 import {
   Aside,
+  ConfirmClose,
   FormWrapper,
   Fieldset,
   FormAndTableRow,
@@ -24,6 +25,7 @@ const InnerForm = props => {
     handleBlur,
     handleSubmit,
     isSubmitting,
+    dirty,
     id,
     authToken,
     params
@@ -64,6 +66,7 @@ const InnerForm = props => {
   }
   return (
     <FormWrapper>
+      {dirty ? <ConfirmClose /> : null}
       <Form onSubmit={handleSubmit}>
         <Fieldset section="school">
           <Field

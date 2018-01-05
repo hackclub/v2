@@ -23,6 +23,21 @@ export const Error = Text.extend.attrs({
   &:before { content: '— '; }
 `
 
+export class ConfirmClose extends Component {
+  componentWillMount() {
+    // https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm
+    https: window.onbeforeunload = () => window.confirm()
+  }
+
+  componentWillUnmount() {
+    window.onbeforeunload = null
+  }
+
+  render() {
+    return null
+  }
+}
+
 export const Required = () => (
   <Text.span className="required" color="primary" f={1} ml={1} children="*" />
 )

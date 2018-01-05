@@ -4,6 +4,7 @@ import { Container } from '@hackclub/design-system'
 import {
   FormWrapper,
   Aside,
+  ConfirmClose,
   Fieldset,
   Field,
   Submit,
@@ -20,10 +21,12 @@ const InnerForm = props => {
     handleChange,
     handleBlur,
     handleSubmit,
-    isSubmitting
+    isSubmitting,
+    dirty
   } = props
   return (
     <FormWrapper>
+      {dirty ? <ConfirmClose /> : null}
       <Form onSubmit={handleSubmit}>
         <Fieldset section="leader">
           <Field

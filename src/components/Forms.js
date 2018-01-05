@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
   Box,
   Container,
@@ -27,36 +27,47 @@ export const Required = () => (
   <Text.span className="required" color="primary" f={1} ml={1} children="*" />
 )
 
-export const Field = ({
-  type = 'text',
-  name = 'name',
-  label,
-  p,
-  children,
-  error,
-  required,
-  ...props
-}) => {
-  const Tag = Input.withComponent(
-    ['textarea', 'select'].indexOf(type) === -1 ? 'input' : type
-  )
-  return (
-    <Label className={type} mb={2} id={name}>
-      <Flex align="center" mb="25rem" style={{ display: 'inline' }} wrap>
-        {label}
-        {required ? <Required /> : null}
-        {error && <Error children={error} />}
-      </Flex>
-      <Tag
-        name={name}
-        type={type}
-        height={type === 'textarea' ? '10rem' : 'inherit'}
-        placeholder={p}
-        children={children}
-        {...props}
-      />
-    </Label>
-  )
+export class Field extends Component {
+  componentWillMount() {
+    const { type } = this.props
+    const Tag = Input.withComponent(
+      ['textarea', 'select'].indexOf(type) === -1 ? 'input' : type
+    )
+
+    this.setState({Tag: Tag})
+  }
+
+  render() {
+    const {
+      type = 'text',
+      name = 'name',
+      label,
+      p,
+      children,
+      error,
+      required
+    } = this.props
+
+    const { Tag } = this.state
+
+    return (
+      <Label className={type} mb={2} id={name}>
+        <Flex align="center" mb="25rem" style={{ display: 'inline' }} wrap>
+          {label}
+          {required ? <Required /> : null}
+          {error && <Error children={error} />}
+        </Flex>
+        <Tag
+          name={name}
+          type={type}
+          height={type === 'textarea' ? '10rem' : 'inherit'}
+          placeholder={p}
+          children={children}
+          {...this.props}
+        />
+      </Label>
+    )
+  }
 }
 
 export const Submit = ({ lg, ...props }) => {

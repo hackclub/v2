@@ -45,7 +45,7 @@ export class Field extends Component {
       p,
       children,
       error,
-      required
+      isRequired
     } = this.props
 
     const { Tag } = this.state
@@ -54,7 +54,7 @@ export class Field extends Component {
       <Label className={type} mb={2} id={name}>
         <Flex align="center" mb="25rem" style={{ display: 'inline' }} wrap>
           {label}
-          {required ? <Required /> : null}
+          {isRequired ? <Required /> : null}
           {error && <Error children={error} />}
         </Flex>
         <Tag

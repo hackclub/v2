@@ -74,7 +74,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.high_school_name}
             error={touched.high_school_name && errors.high_school_name}
-            required
+            isRequired
           />
           <Field
             name="high_school_url"
@@ -92,7 +92,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.high_school_type || 'select'}
             error={touched.high_school_type && errors.high_school_type}
-            required
+            isRequired
           >
             <option disabled value="select">
               Select One
@@ -109,7 +109,7 @@ const InnerForm = props => {
             value={values.high_school_address}
             error={touched.high_school_address && errors.high_school_address}
             type="textarea"
-            required
+            isRequired
           />
         </Fieldset>
         <Fieldset section="leaders">
@@ -122,7 +122,7 @@ const InnerForm = props => {
             value={values.point_of_contact_id || 'select'}
             error={touched.point_of_contact_id && errors.point_of_contact_id}
             type="select"
-            required
+            isRequired
           >
             <option disabled value="select">
               Select One
@@ -140,7 +140,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.leaders_video_url}
             error={touched.leaders_video_url && errors.leaders_video_url}
-            required
+            isRequired
           />
           <Field
             name="leaders_interesting_project"
@@ -153,7 +153,7 @@ const InnerForm = props => {
               errors.leaders_interesting_project
             }
             type="textarea"
-            required
+            isRequired
           />
           <Field
             name="leaders_team_origin_story"
@@ -166,7 +166,7 @@ const InnerForm = props => {
               errors.leaders_team_origin_story
             }
             type="textarea"
-            required
+            isRequired
           />
         </Fieldset>
         <Fieldset section="progress">
@@ -178,7 +178,7 @@ const InnerForm = props => {
             value={values.progress_general}
             error={touched.progress_general && errors.progress_general}
             type="textarea"
-            required
+            isRequired
           />
           <Field
             name="progress_student_interest"
@@ -191,7 +191,7 @@ const InnerForm = props => {
               errors.progress_student_interest
             }
             type="textarea"
-            required
+            isRequired
           />
           <Field
             name="progress_meeting_yet"
@@ -201,7 +201,7 @@ const InnerForm = props => {
             value={values.progress_meeting_yet}
             error={touched.progress_meeting_yet && errors.progress_meeting_yet}
             type="textarea"
-            required
+            isRequired
           />
         </Fieldset>
         <Fieldset section="idea">
@@ -213,7 +213,7 @@ const InnerForm = props => {
             value={values.idea_why}
             error={touched.idea_why && errors.idea_why}
             type="textarea"
-            required
+            isRequired
           />
           <Field
             name="idea_other_coding_clubs"
@@ -225,7 +225,7 @@ const InnerForm = props => {
               touched.idea_other_coding_clubs && errors.idea_other_coding_clubs
             }
             type="textarea"
-            required
+            isRequired
           />
           <Field
             name="idea_other_general_clubs"
@@ -238,7 +238,7 @@ const InnerForm = props => {
               errors.idea_other_general_clubs
             }
             type="textarea"
-            required
+            isRequired
           />
         </Fieldset>
         <Fieldset section="formation">
@@ -249,7 +249,7 @@ const InnerForm = props => {
             value={values.formation_registered}
             error={touched.formation_registered && errors.formation_registered}
             label="Have you already registered your club with your school?"
-            required
+            isRequired
           />
           <Field
             name="formation_misc"
@@ -273,7 +273,7 @@ const InnerForm = props => {
               errors.other_surprising_or_amusing_discovery
             }
             type="textarea"
-            required
+            isRequired
           />
         </Fieldset>
         <Fieldset section="curious">

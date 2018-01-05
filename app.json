@@ -5,19 +5,14 @@
   "env": {
     "HOST": {
       "required": true
-    },
-    "PAPERTRAIL_API_TOKEN": {
-      "required": true
     }
   },
   "formation": {
     "web": {
-      "quantity": 1
+      "quantity": 1,
+      "size": "free"
     }
   },
-  "addons": [
-    "papertrail"
-  ],
   "buildpacks": [
     {
       "url": "heroku/nodejs"

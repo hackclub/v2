@@ -2,6 +2,7 @@ import React from 'react'
 import { api } from '../../data'
 import {
   Aside,
+  ConfirmClose,
   FormWrapper,
   Fieldset,
   FormAndTableRow,
@@ -64,6 +65,7 @@ const InnerForm = props => {
   }
   return (
     <FormWrapper>
+      {values != params ? <ConfirmClose /> : null}
       <Form onSubmit={handleSubmit}>
         <Fieldset section="school">
           <Field
@@ -322,7 +324,7 @@ const InnerForm = props => {
 const ClubApplicationForm = withFormik({
   mapPropsToValues: props => props.params,
   enableReinitialize: true,
-  handleSubmit: (data, { setSubmitting, props }) => {
+  handleSubmit: (data, { setSubmitting, props, resetForm }) => {
     fetch(`${api}/v1/new_club_applications/${props.id}`, {
       method: 'PATCH',
       headers: {
@@ -341,6 +343,7 @@ const ClubApplicationForm = withFormik({
       .then(json => {
         alert('Saved!')
         setSubmitting(false)
+        resetForm()
       })
       .catch(e => {
         console.error(e)

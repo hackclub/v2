@@ -12,6 +12,7 @@ import {
   mediaQueries,
   colors
 } from '@hackclub/design-system'
+import { Prompt } from 'react-static'
 
 export const Error = Text.extend.attrs({
   className: 'error',
@@ -22,6 +23,23 @@ export const Error = Text.extend.attrs({
   text-transform: lowercase;
   &:before { content: '— '; }
 `
+
+export class ConfirmClose extends Component {
+  componentWillMount() {
+    // https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm
+    https: window.onbeforeunload = () => window.confirm()
+  }
+
+  componentWillUnmount() {
+    window.onbeforeunload = null
+  }
+
+  render() {
+    return (
+      <Prompt message="Hold on, you're about to lose unsaved changes! Sure you want to leave?" />
+    )
+  }
+}
 
 export const Required = () => (
   <Text.span className="required" color="primary" f={1} ml={1} children="*" />

@@ -1,26 +1,20 @@
 import React, { Component } from 'react'
 import { Head } from 'react-static'
+import { ThemeProvider, Flex } from '@hackclub/design-system'
 import Flag from '../components/Flag'
 import EmailLoginForm from '../components/EmailLoginForm'
 import LoginCodeForm from '../components/LoginCodeForm'
-import { Box, Provider } from 'rebass'
-import theme, { mx } from '../theme'
-import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 
-const Base = Box.extend.attrs({
+const Base = Flex.extend.attrs({
+  flexDirection: 'column',
+  justify: 'center',
+  align: 'center',
   bg: 'primary',
   color: 'white'
 })`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  width: 100vw;
+  height: 100vh;
 `
 
 const FixedFlag = Flag.extend`
@@ -49,19 +43,19 @@ class Login extends Component {
     const { emailSent, applicantId } = this.state
 
     return (
-      <Provider theme={theme}>
+      <ThemeProvider>
         <Head>
-          <title children="Login" />
+          <title>Log in – Hack Club</title>
         </Head>
         <FixedFlag />
         <Base>
-          {
-            emailSent ?
-            <LoginCodeForm id={applicantId} /> :
+          {emailSent ? (
+            <LoginCodeForm id={applicantId} />
+          ) : (
             <EmailLoginForm submitCallback={this.submitCallback} />
-          }
+          )}
         </Base>
-      </Provider>
+      </ThemeProvider>
     )
   }
 }

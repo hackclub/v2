@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { Head } from 'react-static'
 import { api } from '../../data'
+import { ThemeProvider } from '@hackclub/design-system'
 import LoadingAnimation from '../components/LoadingAnimation'
 import ClubApplicationForm from '../components/ClubApplicationForm'
 import ApplyNav from '../components/ApplyNav'
 import Footer from '../components/Footer'
-import theme from '../theme'
 import Login from '../components/Login'
-import { Provider } from 'rebass'
 import yup from 'yup'
 import fetch from 'unfetch'
 
@@ -33,22 +32,23 @@ export default class extends Component {
       }
     }
     const authToken = window.localStorage.getItem('authToken')
-    this.setState({authToken, id})
-    const needsToAuth = (authToken === null || id === null)
+    this.setState({ authToken, id })
+    const needsToAuth = authToken === null || id === null
     if (needsToAuth) {
       const status = 'needsToAuth'
-      this.setState({status})
+      this.setState({ status })
     } else {
       fetch(`${api}/v1/new_club_applications/${id}`, {
         method: 'GET',
-        headers: { 'Authorization': `Bearer ${authToken}`, },
+        headers: { Authorization: `Bearer ${authToken}` }
       })
         .then(res => {
           if (res.ok) {
             return res.json()
           } else {
             throw res
-          }})
+          }
+        })
         .then(json => {
           this.setState({
             status: 'loaded',
@@ -58,7 +58,7 @@ export default class extends Component {
         .catch(e => {
           if (e.status === 401) {
             const status = 'needsToAuth'
-            this.setState({status})
+            this.setState({ status })
           }
           alert(e)
         })
@@ -74,25 +74,27 @@ export default class extends Component {
       return <LoadingAnimation />
     } else {
       return (
-        <div>
+        <React.Fragment>
           <ApplyNav />
-          <ClubApplicationForm params={ formFields }
-                               id={ id }
-                               authToken={ authToken } />
+          <ClubApplicationForm
+            params={formFields}
+            id={id}
+            authToken={authToken}
+          />
           <Footer />
-        </div>
+        </React.Fragment>
       )
     }
   }
 
   render() {
     return (
-      <Provider theme={theme}>
+      <ThemeProvider>
         <Head>
           <title children="Edit Club Application" />
         </Head>
         {this.content()}
-      </Provider>
+      </ThemeProvider>
     )
   }
 }

@@ -7,7 +7,7 @@ const Button = Box.extend.attrs({
   f: 3,
   m: 0,
   px: 3,
-  py: 2,
+  py: 2
 })([], props => ({
   cursor: 'pointer',
   color: cx(props.color || 'white'),
@@ -26,11 +26,15 @@ const Button = Box.extend.attrs({
   transition: '.2s box-shadow ease-out',
   '&:hover, &:focus': {
     outline: 0,
-    boxShadow: `0 2px 12px 2px ${props.bg === 'primary' ? 'rgba(228,45,66,.25)' : 'rgba(0,0,0,.25)'}`
+    boxShadow: `0 2px 12px 2px ${
+      props.bg === 'primary' ? 'rgba(228,45,66,.25)' : 'rgba(0,0,0,.25)'
+    }`
   },
   '&:active': {
     outline: 0,
-    boxShadow: `0 4px 16px 2px ${props.bg === 'primary' ? 'rgba(228,45,66,.375)' : 'rgba(0,0,0,.375)'}`
+    boxShadow: `0 4px 16px 2px ${
+      props.bg === 'primary' ? 'rgba(228,45,66,.375)' : 'rgba(0,0,0,.375)'
+    }`
   },
   '&:disabled': {
     opacity: 1 / 4

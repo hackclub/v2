@@ -6,7 +6,6 @@ import { mx, geo } from '../theme'
 
 const Base = Flex.withComponent('footer').extend`
   ${props => geo(props.theme.colors.snow)};
-  > div { max-width: 64rem; }
   div { flex: 1 1 auto; }
 `
 

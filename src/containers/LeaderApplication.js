@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { Head } from 'react-static'
 import { api } from '../../data'
+import { ThemeProvider, Heading, Container } from '@hackclub/design-system'
 import LeaderApplicationForm from '../components/LeaderApplicationForm'
 import LoadingAnimation from '../components/LoadingAnimation'
 import Login from '../components/Login'
 import theme from '../theme'
 import ApplyNav from '../components/ApplyNav'
 import Footer from '../components/Footer'
-import { Provider } from 'rebass'
 
 export default class extends Component {
   constructor(props) {
@@ -22,44 +22,45 @@ export default class extends Component {
   }
 
   componentDidMount() {
-    var id
+    let id
     const params = window.location.search.slice(1).split(/&/)
-    for (var i = 0; i < params.length; i++) {
+    for (let i = 0; i < params.length; i++) {
       let param = params[i]
       if (param.split('=')[0] === 'id') {
         id = param.split('=')[1]
       }
     }
     const authToken = window.localStorage.getItem('authToken')
-    this.setState({id, authToken})
-    const needsToAuth = (authToken === null || id === null)
+    this.setState({ id, authToken })
+    const needsToAuth = authToken === null || id === null
     if (needsToAuth) {
       const status = 'needsToAuth'
-      this.setState({status})
+      this.setState({ status })
     } else {
-    fetch(`${api}/v1/applicant_profiles/${id}`, {
-      method: 'GET',
-      headers: { 'Authorization': `Bearer ${authToken}`, },
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          throw res
-        }})
-      .then(json => {
-        this.setState({
-          status: 'loaded',
-          formFields: json
+      fetch(`${api}/v1/applicant_profiles/${id}`, {
+        method: 'GET',
+        headers: { Authorization: `Bearer ${authToken}` }
+      })
+        .then(res => {
+          if (res.ok) {
+            return res.json()
+          } else {
+            throw res
+          }
         })
-      })
-      .catch(e => {
-        if (e.status === 401) {
-          const status = 'needsToAuth'
-          this.setState({status})
-        }
-        alert(e)
-      })
+        .then(json => {
+          this.setState({
+            status: 'loaded',
+            formFields: json
+          })
+        })
+        .catch(e => {
+          if (e.status === 401) {
+            const status = 'needsToAuth'
+            this.setState({ status })
+          }
+          alert(e)
+        })
     }
   }
 
@@ -72,25 +73,27 @@ export default class extends Component {
       return <LoadingAnimation />
     } else {
       return (
-        <div>
+        <React.Fragment>
           <ApplyNav />
-          <LeaderApplicationForm params={ formFields }
-                                 id={ id }
-                                 authToken={ authToken } />
+          <LeaderApplicationForm
+            params={formFields}
+            id={id}
+            authToken={authToken}
+          />
           <Footer />
-        </div>
+        </React.Fragment>
       )
     }
   }
 
   render() {
     return (
-      <Provider theme={theme}>
+      <ThemeProvider>
         <Head>
           <title children="Edit Leader Application" />
         </Head>
         {this.content()}
-      </Provider>
+      </ThemeProvider>
     )
   }
 }

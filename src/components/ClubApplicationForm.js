@@ -43,7 +43,9 @@ const InnerForm = props => {
       })
         .then(res => {
           if (res.ok) {
-            alert("Application submitted! You'll get a confirmation email shortly.")
+            alert(
+              "Application submitted! You'll get a confirmation email shortly."
+            )
           } else {
             throw res
           }

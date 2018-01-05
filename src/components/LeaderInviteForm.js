@@ -64,7 +64,7 @@ const InnerForm = props => {
         onKeyDown={handleChange}
         label="Please provide the email addresses of the other club leaders"
         p="Co-leader's email"
-        style={{width: '100%'}}
+        style={{ width: '100%' }}
       />
       <IconButton
         name="add"

@@ -34,7 +34,7 @@ export class Field extends Component {
       ['textarea', 'select'].indexOf(type) === -1 ? 'input' : type
     )
 
-    this.setState({Tag: Tag})
+    this.setState({ Tag: Tag })
   }
 
   render() {

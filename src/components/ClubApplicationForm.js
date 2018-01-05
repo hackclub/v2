@@ -43,13 +43,10 @@ const InnerForm = props => {
       })
         .then(res => {
           if (res.ok) {
-            return res.json()
+            alert("Application submitted! You'll get a confirmation email shortly.")
           } else {
             throw res
           }
-        })
-        .then(json => {
-          alert(json)
         })
         .catch(e => {
           console.error(e)

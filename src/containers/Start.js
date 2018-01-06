@@ -139,7 +139,7 @@ export default () => (
             Each club meets weekly after school at their high school.
           </Text>
           <Button.link bg="info" my={3} inverted to="/meetings" mt={4}>
-            See what clubs look like →
+            See what clubs look like »
           </Button.link>
         </Container>
         <Card name="Are you a teacher or parent?">

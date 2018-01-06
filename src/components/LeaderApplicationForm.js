@@ -130,7 +130,7 @@ const InnerForm = props => {
         <Fieldset section="presence">
           <Field
             name="presence_personal_website"
-            label="Personal website URL"
+            label="Personal website link"
             placeholder="https://"
             onChange={handleChange}
             onBlur={handleBlur}
@@ -143,7 +143,7 @@ const InnerForm = props => {
           />
           <Field
             name="presence_github_url"
-            label="GitHub URL"
+            label="GitHub link"
             placeholder="https://"
             onChange={handleChange}
             onBlur={handleBlur}
@@ -153,7 +153,7 @@ const InnerForm = props => {
           />
           <Field
             name="presence_linkedin_url"
-            label="LinkedIn URL"
+            label="LinkedIn link"
             placeholder="https://"
             onChange={handleChange}
             onBlur={handleBlur}
@@ -165,7 +165,7 @@ const InnerForm = props => {
           />
           <Field
             name="presence_facebook_url"
-            label="Facebook URL"
+            label="Facebook link"
             placeholder="https://"
             onChange={handleChange}
             onBlur={handleBlur}
@@ -177,7 +177,7 @@ const InnerForm = props => {
           />
           <Field
             name="presence_twitter_url"
-            label="Twitter URL"
+            label="Twitter link"
             placeholder="https://"
             onChange={handleChange}
             onBlur={handleBlur}

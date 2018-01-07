@@ -68,7 +68,7 @@ const Footer = () => (
           </A>
         </Text>
         <Text f={1} color="muted" mt={3}>
-          © 2017 Hack Club
+          © 2018 Hack Club
         </Text>
       </RightCol>
     </Flex>

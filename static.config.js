@@ -56,6 +56,10 @@ export default {
       component: 'src/containers/RedeemTechDomain'
     },
     {
+      path: '/hack_camp',
+      component: 'src/containers/Camp'
+    },
+    {
       is404: true,
       component: 'src/containers/NotFound'
     }

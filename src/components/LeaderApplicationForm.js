@@ -139,6 +139,7 @@ const InnerForm = props => {
               touched.presence_personal_website &&
               errors.presence_personal_website
             }
+            type="url"
             optional
           />
           <Field
@@ -149,6 +150,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.presence_github_url}
             error={touched.presence_github_url && errors.presence_github_url}
+            type="url"
             optional
           />
           <Field
@@ -161,6 +163,7 @@ const InnerForm = props => {
             error={
               touched.presence_linkedin_url && errors.presence_linkedin_url
             }
+            type="url"
             optional
           />
           <Field
@@ -173,6 +176,7 @@ const InnerForm = props => {
             error={
               touched.presence_facebook_url && errors.presence_facebook_url
             }
+            type="url"
             optional
           />
           <Field
@@ -183,6 +187,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.presence_twitter_url}
             error={touched.presence_twitter_url && errors.presence_twitter_url}
+            type="url"
             optional
           />
         </Fieldset>

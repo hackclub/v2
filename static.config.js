@@ -101,7 +101,7 @@ export default {
             <meta name="twitter:domain" content={data.url} />
             <link rel="icon" type="image/x-icon" href="/favicon.ico" />
             <meta name="theme-color" content={colors.primary} />
-            {/* <script dangerouslySetInnerHTML={{ __html: segment }} /> */}
+            <script dangerouslySetInnerHTML={{ __html: segment }} />
             {renderMeta.styleTags}
           </Head>
           <Body children={children} />

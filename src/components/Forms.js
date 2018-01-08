@@ -41,9 +41,13 @@ export class ConfirmClose extends Component {
   }
 }
 
-export const Required = () => (
-  <Text.span className="required" color="primary" f={1} ml={1} children="*" />
-)
+export const Optional = Text.span.extend.attrs({
+  children: '(optional)',
+  className: 'optional',
+  f: 1,
+  ml: 1,
+  color: 'muted'
+})``
 
 export class Field extends Component {
   componentWillMount() {
@@ -63,7 +67,7 @@ export class Field extends Component {
       p,
       children,
       error,
-      isRequired
+      optional
     } = this.props
 
     const { Tag } = this.state
@@ -72,7 +76,7 @@ export class Field extends Component {
       <Label className={type} mb={2} id={name}>
         <Flex align="center" mb="25rem" style={{ display: 'inline' }} wrap>
           {label}
-          {isRequired ? <Required /> : null}
+          {optional ? <Optional /> : null}
           {error && <Error children={error} />}
         </Flex>
         <Tag

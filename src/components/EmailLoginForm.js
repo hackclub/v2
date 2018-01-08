@@ -42,7 +42,10 @@ const InnerForm = ({
         name="email"
         placeholder="Email address"
         value={values.email}
-        onChange={handleChange}
+        onChange={e => {
+          e.target.value = e.target.value.trim()
+          handleChange(e)
+        }}
         onBlur={handleBlur}
         disabled={isSubmitting}
         autoComplete="off"

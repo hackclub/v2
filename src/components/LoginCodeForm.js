@@ -27,10 +27,11 @@ class InnerForm extends Component {
     this.state = { previousLength: 0 }
   }
 
-  formatAsLoginCode(rawInput) {
+  formatAsLoginCode(event, rawInput) {
+    const typedDash = rawInput.slice(rawInput.length - 2) == '--'
     let digits = rawInput.replace(/[^0-9]/g, '')
     const isRemovingDash =
-      this.state.previousLength === 3 && digits.length === 3
+      this.state.previousLength === 3 && digits.length === 3 && !typedDash
 
     // remove the last digit with the trailing dash
     if (isRemovingDash) {
@@ -71,7 +72,7 @@ class InnerForm extends Component {
             placeholder="Login Code"
             value={values.loginCode}
             onChange={e => {
-              e.target.value = this.formatAsLoginCode(e.target.value)
+              e.target.value = this.formatAsLoginCode(e, e.target.value)
               handleChange(e)
             }}
             onBlur={handleBlur}

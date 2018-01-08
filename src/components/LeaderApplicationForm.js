@@ -36,7 +36,6 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.leader_name}
             error={touched.leader_name && errors.leader_name}
-            isRequired
           />
           <Field
             name="leader_email"
@@ -45,7 +44,6 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.leader_email}
             error={touched.leader_email && errors.leader_email}
-            isRequired
           />
           <Field
             name="leader_birthday"
@@ -55,7 +53,6 @@ const InnerForm = props => {
             value={values.leader_birthday}
             error={touched.leader_birthday && errors.leader_birthday}
             type="date"
-            isRequired
           />
           <Field
             name="leader_year_in_school"
@@ -67,7 +64,6 @@ const InnerForm = props => {
               touched.leader_year_in_school && errors.leader_year_in_school
             }
             type="select"
-            isRequired
           >
             <option value="select">Select One</option>
             <option value="freshman">Freshman</option>
@@ -84,7 +80,6 @@ const InnerForm = props => {
             value={values.leader_gender || 'select'}
             error={touched.leader_gender && errors.leader_gender}
             type="select"
-            isRequired
           >
             <option value="select">Select One</option>
             <option value="male">Male</option>
@@ -101,7 +96,6 @@ const InnerForm = props => {
             value={values.leader_ethnicity || 'select'}
             error={touched.leader_ethnicity && errors.leader_ethnicity}
             type="select"
-            isRequired
           >
             <option value="select">Select One</option>
             <option value="hispanic_or_latino">Hispanic or Latino</option>
@@ -122,7 +116,6 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.leader_phone_number}
             error={touched.leader_phone_number && errors.leader_phone_number}
-            isRequired
           />
           <Field
             name="leader_address"
@@ -132,13 +125,12 @@ const InnerForm = props => {
             value={values.leader_address}
             error={touched.leader_address && errors.leader_address}
             type="textarea"
-            isRequired
           />
         </Fieldset>
         <Fieldset section="presence">
           <Field
             name="presence_personal_website"
-            label="Personal website URL"
+            label="Personal website link"
             placeholder="https://"
             onChange={handleChange}
             onBlur={handleBlur}
@@ -147,19 +139,23 @@ const InnerForm = props => {
               touched.presence_personal_website &&
               errors.presence_personal_website
             }
+            type="url"
+            optional
           />
           <Field
             name="presence_github_url"
-            label="GitHub URL"
+            label="GitHub link"
             placeholder="https://"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.presence_github_url}
             error={touched.presence_github_url && errors.presence_github_url}
+            type="url"
+            optional
           />
           <Field
             name="presence_linkedin_url"
-            label="LinkedIn URL"
+            label="LinkedIn link"
             placeholder="https://"
             onChange={handleChange}
             onBlur={handleBlur}
@@ -167,10 +163,12 @@ const InnerForm = props => {
             error={
               touched.presence_linkedin_url && errors.presence_linkedin_url
             }
+            type="url"
+            optional
           />
           <Field
             name="presence_facebook_url"
-            label="Facebook URL"
+            label="Facebook link"
             placeholder="https://"
             onChange={handleChange}
             onBlur={handleBlur}
@@ -178,15 +176,19 @@ const InnerForm = props => {
             error={
               touched.presence_facebook_url && errors.presence_facebook_url
             }
+            type="url"
+            optional
           />
           <Field
             name="presence_twitter_url"
-            label="Twitter URL"
+            label="Twitter link"
             placeholder="https://"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.presence_twitter_url}
             error={touched.presence_twitter_url && errors.presence_twitter_url}
+            type="url"
+            optional
           />
         </Fieldset>
         <Fieldset section="skills">
@@ -198,7 +200,6 @@ const InnerForm = props => {
             value={values.skills_system_hacked}
             error={touched.skills_system_hacked && errors.skills_system_hacked}
             type="textarea"
-            isRequired
           />
           <Field
             name="skills_impressive_achievement"
@@ -211,7 +212,6 @@ const InnerForm = props => {
               errors.skills_impressive_achievement
             }
             type="textarea"
-            isRequired
           />
           <Field
             name="skills_is_technical"
@@ -221,7 +221,6 @@ const InnerForm = props => {
             value={values.skills_is_technical || 'select'}
             error={touched.skills_is_technical && errors.skills_is_technical}
             type="select"
-            isRequired
           >
             <option value="select" disabled>
               Select One

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Head } from 'react-static'
 import { api } from '../../data'
 import {
@@ -10,7 +10,8 @@ import {
   Text,
   Heading,
   Button,
-  LargeButton
+  LargeButton,
+  cx
 } from '@hackclub/design-system'
 import LoadingAnimation from '../components/LoadingAnimation'
 import Login from '../components/Login'
@@ -43,6 +44,29 @@ const timeSince = time => {
 
 const Neg = () => <Text.span color="error" bold children="NOT" />
 
+const Instructions = () => (
+  <Fragment>
+    <Heading f={4}>How do I fill out the application?</Heading>
+    <ol>
+      <li>
+        Find your leadership team.{' '}
+        <a href="https://github.com/hackclub/hackclub/blob/master/clubs/README.md#leadership-team">
+          Here’s how to do it.
+        </a>
+      </li>
+      <li>
+        Once you have your team, sit down together and fill out the application.
+        It should take about an hour if you all work on it together.
+      </li>
+      <li>Fill out your leadership profiles individually</li>
+      <li>
+        Submit your application once the application and leader profiles are
+        complete.
+      </li>
+    </ol>
+  </Fragment>
+)
+
 const ApplicationCard = props => {
   const {
     id,
@@ -61,7 +85,29 @@ const ApplicationCard = props => {
 
   return (
     <Container maxWidth={36} mt={3} p={3}>
+      <Flex
+        align="center"
+        justify="center"
+        flexDirection={['column', 'row']}
+        my={3}
+        mx={[null, -2]}
+      >
+        <LargeButton.link
+          w={1}
+          m={2}
+          to={`/apply/club?id=${id}`}
+          children="Edit Application"
+        />
+        <LargeButton.link
+          w={1}
+          m={2}
+          bg="accent"
+          to={`/apply/leader?id=${leaderProfile.id}`}
+          children="Edit Leader Profile"
+        />
+      </Flex>
       <Card boxShadowSize="md" p={[3, 4]} color="black" bg="snow">
+        <Instructions />
         <CustomHeading color="primary">Application</CustomHeading>
         <ul>
           {updated_at === created_at ? (
@@ -102,27 +148,6 @@ const ApplicationCard = props => {
           ))}
         </ul>
       </Card>
-      <Flex
-        align="center"
-        justify="center"
-        flexDirection={['column', 'row']}
-        my={3}
-        mx={[null, -2]}
-      >
-        <LargeButton.link
-          w={1}
-          m={2}
-          to={`/apply/club?id=${id}`}
-          children="Edit Application"
-        />
-        <LargeButton.link
-          w={1}
-          m={2}
-          bg="accent"
-          to={`/apply/leader?id=${leaderProfile.id}`}
-          children="Edit Leader Profile"
-        />
-      </Flex>
     </Container>
   )
 }

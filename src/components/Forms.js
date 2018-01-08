@@ -47,9 +47,7 @@ export const Optional = Text.span.extend.attrs({
   f: 1,
   ml: 1,
   color: 'muted'
-})`
-font-style: italic;
-`
+})``
 
 export class Field extends Component {
   componentWillMount() {

@@ -40,7 +40,7 @@ export default () => (
     <Header pb={4}>
       <Nav />
       <Heading.h1 f={[5, 6]} mt={[4, 5]}>
-        Hack Camp
+        Hack Camp has been discontinued.
       </Heading.h1>
       <Heading f={[3, 4]} my={2}>
         We’ve replaced camps in favor of clubs!
@@ -50,7 +50,7 @@ export default () => (
       <Container>
         <Text f={2}>
           Apply to our clubs program and we’ll help you launch and lead a coding
-          club at your school. It’s like summer camp, but it runs all year!
+          club at your school. It’s like summer camp, except that it runs all year!
         </Text>
         <Button.link bg={cx('campPrimary')} color="white" to="/start" my={4}>
           Learn More And Apply »

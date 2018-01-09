@@ -61,13 +61,13 @@ const Footer = () => (
         <Text m={0}>
           576 Natoma St<br />San Francisco, CA 94103
         </Text>
-        <Text>Nonprofit EIN: 81-2908499</Text>
-        <Text>
+        <Text my={2}>Nonprofit EIN: 81-2908499</Text>
+        <Text my={2}>
           <A href="https://conduct.hackclub.com" color="info" underline>
             Read our Code of Conduct
           </A>
         </Text>
-        <Text f={1} color="muted" mt={3}>
+        <Text f={1} color="muted" m={0}>
           © {new Date().getFullYear()} Hack Club
         </Text>
       </RightCol>

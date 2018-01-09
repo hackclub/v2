@@ -111,7 +111,7 @@ const InnerForm = props => {
           </Field>
           <Field
             name="leader_phone_number"
-            label="Phone number"
+            label="Phone number (include country code if not in the United States)"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.leader_phone_number}

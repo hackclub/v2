@@ -116,6 +116,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.leader_phone_number}
             error={touched.leader_phone_number && errors.leader_phone_number}
+            type="tel"
           />
           <Field
             name="leader_address"

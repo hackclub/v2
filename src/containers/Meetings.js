@@ -38,8 +38,9 @@ const Header = Box.extend`
 const Module = Flex.extend.attrs({
   w: [1, 1 / 2],
   p: 4,
+  pl: [0, 4],
   pb: [0, 4],
-  align: 'center'
+  alignItems: ['flex-start', 'center']
 })`
   max-width: 32rem;
   text-align: left;
@@ -50,25 +51,19 @@ const Module = Flex.extend.attrs({
     }
   }
 
-  /* this is terrible */
-  @media screen and (max-width:32em) {
-    &:nth-of-type(1), &:nth-of-type(2) {
-      padding-right: 0;
-    }
-    &:nth-of-type(3), &:nth-of-type(4) {
-      padding-left: 0;
-    }
-  }
-
   svg {
     width: 4rem !important;
     height: 4rem !important;
     flex-shrink: 0;
-    &:first-child { margin-right: 2rem; }
-    &:last-child { margin-left: 1rem; }
     ${mediaQueries[1]} {
       &:first-child { margin-right: 3rem; }
       &:last-child { margin-left: 2rem; }
+    }
+    /* this is terrible */
+    @media screen and (max-width:32em) {
+      order: -1 !important;
+      margin-left: 0;
+      margin-right: 1rem;
     }
   }
 `
@@ -81,14 +76,16 @@ const ModuleHeading = Heading.h3.extend.attrs({
 })`
   color: ${props => props.theme.colors.black};
   position: relative;
-  &:before {
-    content: "";
-    width: 8px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -1.5rem;
-    background-color: ${props => cx(props.color)};
+  ${mediaQueries[1]} {
+    &:before {
+      content: "";
+      width: 8px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -1.5rem;
+      background-color: ${props => cx(props.color)};
+    }
   }
 `
 const ModuleBody = Text.extend.attrs({ my: 0, f: 3, color: 'slate' })`

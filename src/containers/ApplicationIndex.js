@@ -22,7 +22,14 @@ import { Link } from 'react-static'
 LargeButton.link = LargeButton.withComponent(Link)
 
 const CustomHeading = props => (
-  <Heading.h2 m={0} align={['center', 'left']} f={3} caps {...props} />
+  <Heading.h2
+    m={0}
+    align={['center', 'left']}
+    f={3}
+    color="primary"
+    caps
+    {...props}
+  />
 )
 
 const timeSince = time => {
@@ -49,16 +56,16 @@ const Instructions = () => (
     <Heading f={4}>How do I fill out the application?</Heading>
     <ol>
       <li>
-        Find your leadership team.{' '}
-        <a href="https://github.com/hackclub/hackclub/blob/master/clubs/README.md#leadership-team">
-          Here’s how to do it.
-        </a>
+        Sit down with your co-leaders and fill out the application. If you’re
+        still choosing co-leaders,{' '}
+        <a href="https://github.com/hackclub/hackclub/blob/master/clubs/leadership_preface.md">
+          here’s what to consider
+        </a>. It should take about an hour if you work on it together.
       </li>
       <li>
-        Once you have your team, sit down together and fill out the application.
-        It should take about an hour if you all work on it together.
+        Fill out your leadership profiles individually. Each should take about
+        30 minutes.
       </li>
-      <li>Fill out your leadership profiles individually</li>
       <li>
         Submit your application once the application and leader profiles are
         complete.
@@ -101,14 +108,13 @@ const ApplicationCard = props => {
         <LargeButton.link
           w={1}
           m={2}
-          bg="accent"
           to={`/apply/leader?id=${leaderProfile.id}`}
           children="Edit Leader Profile"
         />
       </Flex>
       <Card boxShadowSize="md" p={[3, 4]} color="black" bg="snow">
         <Instructions />
-        <CustomHeading color="primary">Application</CustomHeading>
+        <CustomHeading>Application</CustomHeading>
         <ul>
           {updated_at === created_at ? (
             <li>This application was just created</li>
@@ -129,7 +135,7 @@ const ApplicationCard = props => {
             </li>
           )}
         </ul>
-        <CustomHeading color="accent">Leaders</CustomHeading>
+        <CustomHeading>Leader Profiles</CustomHeading>
         <ul>
           <li>
             You have {leaderProfile.completed_at ? null : <Neg />} finished your

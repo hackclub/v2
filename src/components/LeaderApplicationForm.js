@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { api } from '../../data'
 import { Container } from '@hackclub/design-system'
 import {
@@ -194,7 +194,16 @@ const InnerForm = props => {
         <Fieldset section="skills">
           <Field
             name="skills_system_hacked"
-            label="Please tell us about the time you most successfully hacked some (non-computer) system to your advantage."
+            label={
+              <Fragment>
+                Please tell us about the time you most successfully hacked some
+                (non-computer) system to your advantage.{' '}
+                <a href="https://www.quora.com/When-have-you-most-successfully-hacked-a-non-computer-system-to-your-advantage">
+                  Here are examples
+                </a>{' '}
+                of what we’re looking for.
+              </Fragment>
+            }
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.skills_system_hacked}

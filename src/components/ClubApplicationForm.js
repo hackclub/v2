@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { api } from '../../data'
 import {
   Aside,
@@ -133,7 +133,15 @@ const InnerForm = props => {
           </Field>
           <Field
             name="leaders_video_url"
-            label="Please enter the URL of a 1 minute unlisted (not private) YouTube video introducing the leaders"
+            label={
+              <Fragment>
+                Please enter the URL of a 1 minute unlisted (not private)
+                YouTube video introducing the leaders.{' '}
+                <a href="https://github.com/hackclub/hackclub/blob/master/clubs/youtube_video.md">
+                  Click here for instructions
+                </a>.
+              </Fragment>
+            }
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.leaders_video_url}
@@ -176,7 +184,7 @@ const InnerForm = props => {
           />
           <Field
             name="progress_student_interest"
-            label="Have you already polled for interest at your school? Are students interested? If you've already had meetings, how many people came?"
+            label="Have you already polled for interest at your school? Are students interested? If you’ve already had meetings, how many people came?"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.progress_student_interest}

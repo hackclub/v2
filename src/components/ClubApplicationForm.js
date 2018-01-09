@@ -188,7 +188,7 @@ const InnerForm = props => {
           />
           <Field
             name="progress_meeting_yet"
-            label="Have you begun meeting yet? We encourage you to not begin meeting until we accept you."
+            label="Have you begun meeting yet? If not, we encourage you to not begin meeting until we accept you."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.progress_meeting_yet}

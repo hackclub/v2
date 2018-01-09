@@ -22,7 +22,7 @@ import { Link } from 'react-static'
 LargeButton.link = LargeButton.withComponent(Link)
 
 const CustomHeading = props => (
-  <Heading.h2 m={0} align={['center', 'left']} f={3} caps {...props} />
+  <Heading.h2 m={0} align={['center', 'left']} f={3} color="primary" caps {...props} />
 )
 
 const timeSince = time => {
@@ -101,14 +101,13 @@ const ApplicationCard = props => {
         <LargeButton.link
           w={1}
           m={2}
-          bg="accent"
           to={`/apply/leader?id=${leaderProfile.id}`}
           children="Edit Leader Profile"
         />
       </Flex>
       <Card boxShadowSize="md" p={[3, 4]} color="black" bg="snow">
         <Instructions />
-        <CustomHeading color="primary">Application</CustomHeading>
+        <CustomHeading>Application</CustomHeading>
         <ul>
           {updated_at === created_at ? (
             <li>This application was just created</li>
@@ -129,7 +128,7 @@ const ApplicationCard = props => {
             </li>
           )}
         </ul>
-        <CustomHeading color="accent">Leaders</CustomHeading>
+        <CustomHeading>Leaders</CustomHeading>
         <ul>
           <li>
             You have {leaderProfile.completed_at ? null : <Neg />} finished your

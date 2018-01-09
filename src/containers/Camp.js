@@ -50,7 +50,8 @@ export default () => (
       <Container>
         <Text f={2}>
           Apply to our clubs program and we’ll help you launch and lead a coding
-          club at your school. It’s like summer camp, except that it runs all year!
+          club at your school. It’s like summer camp, except that it runs all
+          year long!
         </Text>
         <Button.link bg={cx('campPrimary')} color="white" to="/start" my={4}>
           Learn More And Apply »

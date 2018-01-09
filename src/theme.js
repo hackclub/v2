@@ -24,15 +24,9 @@ export const brand = {
   muted: grays.silver
 }
 
-export const campTheme = {
-  campPrimary: 'rgb(255, 75, 85)',
-  campSecondary: 'rgb(212, 78, 116)'
-}
-
 export const colors = {
   ...brand,
   ...grays,
-  ...campTheme,
   ...palette
 }
 

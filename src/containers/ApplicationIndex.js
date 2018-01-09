@@ -50,7 +50,7 @@ const Instructions = () => (
     <ol>
       <li>
         Find your leadership team.{' '}
-        <a href="https://github.com/hackclub/hackclub/blob/master/clubs/README.md#leadership-team">
+        <a href="https://github.com/hackclub/hackclub/blob/master/clubs/leadership_preface.md">
           Here’s how to do it.
         </a>
       </li>

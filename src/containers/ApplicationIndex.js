@@ -56,10 +56,10 @@ const Instructions = () => (
     <Heading f={4}>How do I fill out the application?</Heading>
     <ol>
       <li>
-        Sit down with your co-leaders and fill out the application. If you're
+        Sit down with your co-leaders and fill out the application. If you’re
         still choosing co-leaders,{' '}
         <a href="https://github.com/hackclub/hackclub/blob/master/clubs/leadership_preface.md">
-          here's what to consider
+          here’s what to consider
         </a>. It should take about an hour if you work on it together.
       </li>
       <li>

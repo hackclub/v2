@@ -184,7 +184,7 @@ const InnerForm = props => {
           />
           <Field
             name="progress_student_interest"
-            label="Have you already polled for interest at your school? Are students interested? If you've already had meetings, how many people came?"
+            label="Have you already polled for interest at your school? Are students interested? If you’ve already had meetings, how many people came?"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.progress_student_interest}

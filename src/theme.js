@@ -27,7 +27,6 @@ export const brand = {
 export const colors = {
   ...brand,
   ...grays,
-  ...campTheme,
   ...palette
 }
 

@@ -135,7 +135,7 @@ const ApplicationCard = props => {
             </li>
           )}
         </ul>
-        <CustomHeading>Leaders</CustomHeading>
+        <CustomHeading>Leader Profiles</CustomHeading>
         <ul>
           <li>
             You have {leaderProfile.completed_at ? null : <Neg />} finished your

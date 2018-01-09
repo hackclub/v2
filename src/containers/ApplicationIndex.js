@@ -11,6 +11,7 @@ import {
   Heading,
   Button,
   LargeButton,
+  Link as A,
   cx
 } from '@hackclub/design-system'
 import LoadingAnimation from '../components/LoadingAnimation'
@@ -58,9 +59,13 @@ const Instructions = () => (
       <li>
         Sit down with your co-leaders and fill out the application. If you’re
         still choosing co-leaders,{' '}
-        <a href="https://github.com/hackclub/hackclub/blob/master/clubs/leadership_preface.md">
+        <A
+          color="info"
+          underline
+          href="https://github.com/hackclub/hackclub/blob/master/clubs/leadership_preface.md"
+        >
           here’s what to consider
-        </a>. It should take about an hour if you work on it together.
+        </A>. It should take about an hour if you work on it together.
       </li>
       <li>
         Fill out your leadership profiles individually. Each should take about

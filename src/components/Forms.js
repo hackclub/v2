@@ -41,13 +41,15 @@ export class ConfirmClose extends Component {
   }
 }
 
-export const Optional = Text.span.extend.attrs({
-  children: '(optional)',
-  className: 'optional',
-  f: 1,
-  ml: 1,
-  color: 'muted'
-})``
+export const Optional = () => (
+  <Text.span
+    className="optional"
+    f={1}
+    ml={1}
+    color="muted"
+    children="(optional)"
+  />
+)
 
 export class Field extends Component {
   componentWillMount() {

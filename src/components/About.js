@@ -24,6 +24,8 @@ const Base = Box.extend`
   }
 
   img {
+    border-radius: ${props => props.theme.radii[2]};
+    max-width: 96%;
     transform: translate(0, 64px);
   }
 `

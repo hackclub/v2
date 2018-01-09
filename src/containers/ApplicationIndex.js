@@ -11,6 +11,7 @@ import {
   Heading,
   Button,
   LargeButton,
+  Link as A,
   cx
 } from '@hackclub/design-system'
 import LoadingAnimation from '../components/LoadingAnimation'
@@ -58,9 +59,9 @@ const Instructions = () => (
       <li>
         You apply as a group with the other leaders of the club. If you’re still
         choosing co-leaders to help you run your club,{' '}
-        <a href="https://github.com/hackclub/hackclub/blob/master/clubs/leadership_preface.md">
+        <A href="https://github.com/hackclub/hackclub/blob/master/clubs/leadership_preface.md">
           here’s what to consider
-        </a>.
+        </A>.
       </li>
       <li>
         Sit down with your co-leaders and fill out the application. It should

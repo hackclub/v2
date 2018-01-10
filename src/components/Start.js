@@ -37,11 +37,7 @@ const Base = Section.extend`
 LargeButton.link = LargeButton.withComponent(Link)
 
 const Start = props => (
-  <Base
-    justify="space-around"
-    flexDirection={['column', null, 'row']}
-    {...props}
-  >
+  <Base justify="space-around" flexDirection={['column', 'row']} {...props}>
     <Box p={[2, 3]} align={['center', 'right']}>
       <Heading.h2 f={[5, 6]} m={0}>
         Start a Hack Club.

@@ -20,7 +20,7 @@ const Base = Box.extend`
     background-size: auto 100%;
     background-position-x: 1rem;
     ${mediaQueries[1]} {
-      background-position-x: 5rem;
+      background-position-x: 6rem;
     }
   }
 

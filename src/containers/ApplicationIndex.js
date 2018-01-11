@@ -91,8 +91,11 @@ const ApplicationCard = props => {
         />
       </Flex>
       <Card boxShadowSize="md" p={[3, 4]} color="black" bg="snow">
-        <Text align="center" mb={[3, 4]}>
-          <A href="https://github.com/hackclub/hackclub/blob/master/clubs/FAQ.md">Frequently asked questions about applying to Hack Club</A>
+        <Text mb={[3, 4]}>
+          <A href="https://github.com/hackclub/hackclub/blob/master/clubs/FAQ.md">
+            Click here
+          </A>{' '}
+          for frequently asked questions about applying
         </Text>
         <CustomHeading>Application</CustomHeading>
         <ul>

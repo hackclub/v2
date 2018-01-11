@@ -80,7 +80,7 @@ export default () => (
         bg="blue"
       />
       <Bio
-        img="/people/victor.png"
+        img="/people/victor.jpg"
         name="Victor Truong"
         role="Finder"
         text="Victor believes that communities are a very powerful thing. That's why he built Hack Club Finder, a tool which simplifies the process of discovering and communicating with Hack Clubs near users. Since December 2017, it has helped thousands of people locate clubs."

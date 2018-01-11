@@ -47,7 +47,7 @@ export default () => (
     </Header>
     <Base py={[4, 5]} px={3}>
       <Bio
-        img="/team/zach.png"
+        img="/team/zach.jpg"
         name="Zach Latta"
         role="Executive Director"
         text="Zach dropped out of high school after his freshman year to work in the technology industry and had over 5 million people using his software by the time he turned 17. He founded Hack Club to build the program he wish he had in high school and has been awarded the Thiel Fellowship and Forbes 30 Under 30 for his work."
@@ -80,13 +80,6 @@ export default () => (
         role="Indian Region"
         text="Athul leads some of our largest clubs in India. After graduating from high school, he joined as our Regional Manager in India. He is passionate about bringing more students into the world of coding."
         bg="violet"
-      />
-      <Bio
-        img="/team/victor.png"
-        name="Victor Truong"
-        role="Finance"
-        text="Victor is a club leader at Rosemead High School in Los Angeles, CA. He aims to make Hack Club’s finances as transparent as possible by letting people know how every penny is being spent."
-        bg="green"
       />
     </Base>
     <Footer />

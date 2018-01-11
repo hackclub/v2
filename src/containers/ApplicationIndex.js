@@ -96,14 +96,11 @@ const ApplicationCard = props => {
         </Text>
         <CustomHeading>Application</CustomHeading>
         <ul>
-          {updated_at === created_at ? (
-            <li>This application was just created</li>
-          ) : submitted_at ? null : (
-            <li>
-              This application was updated{' '}
-              <strong>{timeSince(updated_at)}</strong> ago
-            </li>
-          )}
+          <li>
+            This application was{' '}
+            {updated_at === created_at ? 'created' : 'updated'}{' '}
+            <strong>{timeSince(updated_at)}</strong> ago
+          </li>
           {submitted_at ? (
             <li>
               You submitted this application{' '}

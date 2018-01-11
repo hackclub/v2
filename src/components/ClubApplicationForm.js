@@ -78,7 +78,7 @@ const InnerForm = props => {
           />
           <Field
             name="high_school_url"
-            label="Link to your high school's website, if any"
+            label="Link to your high school’s website, if any"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.high_school_url}
@@ -103,8 +103,8 @@ const InnerForm = props => {
           </Field>
           <Field
             name="high_school_address"
-            label="High school's full address (include city, state/province, country)"
-            hint="We use this address in a map of our clubs so it needs to be in the same format you'd write on an envelope."
+            label="High school’s full address (include city, state/province, country)"
+            hint="We use this address in a map of our clubs so it needs to be in the same format you’d write on an envelope."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.high_school_address}
@@ -218,7 +218,7 @@ const InnerForm = props => {
           />
           <Field
             name="idea_other_coding_clubs"
-            label="Has your school had coding clubs before? What's going to be new about your Hack Club?"
+            label="Has your school had coding clubs before? What’s going to be new about your Hack Club?"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.idea_other_coding_clubs}

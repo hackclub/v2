@@ -47,7 +47,7 @@ export default () => (
     </Header>
     <Base py={[4, 5]} px={3}>
       <Bio
-        img="/team/zach.png"
+        img="/team/zach.jpg"
         name="Zach Latta"
         role="Executive Director"
         text="Zach dropped out of high school after his freshman year to work in the technology industry and had over 5 million people using his software by the time he turned 17. He founded Hack Club to build the program he wish he had in high school and has been awarded the Thiel Fellowship and Forbes 30 Under 30 for his work."

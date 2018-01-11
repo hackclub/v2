@@ -27,10 +27,9 @@ export const Error = Text.extend.attrs({
 export const Hint = Text.extend.attrs({
   color: 'slate',
   f: 1,
-  mb: 1
-})`
-text-align: left;
-`
+  mb: 1,
+  align: 'left'
+})``
 
 export class ConfirmClose extends Component {
   componentWillMount() {

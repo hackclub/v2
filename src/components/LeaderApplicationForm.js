@@ -75,6 +75,7 @@ const InnerForm = props => {
           <Field
             name="leader_gender"
             label="Gender"
+            hint="We collect this info for foundations who donate to us. This doesn't have an effect on your application."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.leader_gender || 'select'}
@@ -91,6 +92,7 @@ const InnerForm = props => {
           <Field
             name="leader_ethnicity"
             label="Ethnicity"
+            hint="We collect this info for foundations who donate to us. This doesn't have an effect on your application."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.leader_ethnicity || 'select'}
@@ -121,6 +123,7 @@ const InnerForm = props => {
           <Field
             name="leader_address"
             label="Your full address (include city, state/province, country)"
+            hint="We may send you a letter, so you should write it the same you would an envelope"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.leader_address}

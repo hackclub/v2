@@ -104,6 +104,7 @@ const InnerForm = props => {
           <Field
             name="high_school_address"
             label="High school's full address (include city, state/province, country)"
+            hint="We use this address in a map of our clubs so it needs to be in the same format you'd write on an envelope."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.high_school_address}
@@ -116,6 +117,7 @@ const InnerForm = props => {
           <Field
             name="point_of_contact_id"
             label="Point of contact"
+            hint="To reduce emails, we just send emails to this designated person on your team."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.point_of_contact_id || 'select'}
@@ -262,6 +264,7 @@ const InnerForm = props => {
           <Field
             name="other_surprising_or_amusing_discovery"
             label="What is something surprising or amusing you discovered?"
+            hint="Suprise us ;)"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.other_surprising_or_amusing_discovery}

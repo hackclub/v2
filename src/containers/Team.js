@@ -5,6 +5,7 @@ import {
   Heading,
   Box,
   Container,
+  Flex,
   mediaQueries
 } from '@hackclub/design-system'
 import { Head, Link } from 'react-static'
@@ -47,39 +48,95 @@ export default () => (
     </Header>
     <Base py={[4, 5]} px={3}>
       <Bio
-        img="/team/zach.jpg"
+        img="/people/zach.jpg"
         name="Zach Latta"
         role="Executive Director"
         text="Zach dropped out of high school after his freshman year to work in the technology industry and had over 5 million people using his software by the time he turned 17. He founded Hack Club to build the program he wish he had in high school and has been awarded the Thiel Fellowship and Forbes 30 Under 30 for his work."
         bg="red"
       />
       <Bio
-        img="/team/max.jpg"
+        img="/people/max.jpg"
         name="Max Wofford"
         role="Operations"
         text="Tapping into the hacking community, Max has found a common goal with Hack Club and his passion for amplifying people’s ideas. He loves helping students scale their ideas into even more awesome products."
         bg="yellow"
       />
       <Bio
-        img="/team/lachlan.jpg"
+        img="/people/lachlan.jpg"
         name="Lachlan Campbell"
         role="Web Designer"
         text="Lachlan, a club leader from State College, PA, joined the team to work on Hack Club’s website. They care about bringing coding to more people and making tools to make information more accessible."
         bg="blue"
       />
       <Bio
-        img="/team/mingjie.jpg"
+        img="/people/mingjie.jpg"
         name="Mingjie Jiang"
         role="Social Media"
         text="Mingjie leads a local club at Wootton High School in Rockville, Maryland. Aside from trying to engage more students into the world of hacking, he also cares about building a unique public identity for Hack Club."
         bg="orange"
       />
       <Bio
-        img="/team/athul.jpg"
+        img="/people/athul.jpg"
         name="Athul Blesson"
         role="Indian Region"
         text="Athul leads some of our largest clubs in India. After graduating from high school, he joined as our Regional Manager in India. He is passionate about bringing more students into the world of coding."
         bg="violet"
+      />
+      <Bio
+        img="/people/gemma.jpg"
+        name="Gemma Busoni"
+        role="Community"
+        text="Text here"
+        bg="pink"
+      />
+      <Bio
+        img="/people/selynna.jpg"
+        name="Selynna Sun"
+        role="Hack Camp"
+        text="Selynna is a Hack Club alumnus and was on the founding team of Los Altos High School's Hack Club in Los Altos, CA. She also helped run Hack Camp in the summer of 2016 as an intern, and organized most community-facing events. Right now, she's a sophomore in college and aims to increase access to computer science education through organizing hackathons."
+        bg="red"
+      />
+      <Bio
+        img="/people/harrison.jpg"
+        name="Harrison Shoebridge"
+        role="Software Engineer"
+        text="Text here"
+        bg="yellow"
+      />
+      <Bio
+        img="/people/kyle.jpg"
+        name="Kyle Emile"
+        role="Operations"
+        text="Text here"
+        bg="orange"
+      />
+      <Bio
+        img="/people/samuel.jpg"
+        name="Samuel Escapa"
+        role="Open-source contributor"
+        text="Text here"
+        bg="blue"
+      />
+      <Bio
+        img="/people/victor.jpg"
+        name="Victor Truong"
+        role="Finder"
+        text="Victor believes that communities are a very powerful thing. That's why he built Hack Club Finder, a tool which simplifies the process of discovering and communicating with Hack Clubs near users. Since December 2017, it has helped thousands of people locate clubs."
+        bg="violet"
+      />
+      <Bio
+        img="/people/jessica.jpg"
+        name="Jessica Kwok"
+        role="Finances & Curriculum"
+        text="Text here"
+        bg="green"
+      />
+      <Bio
+        img="/people/matt.jpg"
+        name="Matt Hesby"
+        role="Community Support"
+        text="Text here"
+        bg="cyan"
       />
     </Base>
     <Footer />

@@ -81,6 +81,62 @@ export default () => (
         text="Athul leads some of the largest Hack Clubs in India. After graduating from high school, he joined as the Regional Manager in India. He is passionate about bringing more students into the world of coding."
         bg="violet"
       />
+      <Bio
+        img="/people/gemma.jpg"
+        name="Gemma Busoni"
+        role="Community"
+        text="Text here"
+        bg="pink"
+      />
+      <Bio
+        img="/people/selynna.jpg"
+        name="Selynna Sun"
+        role="Hack Camp"
+        text="Selynna is a Hack Club alumnus and was on the founding team of Los Altos High School's Hack Club in Los Altos, CA. She also helped run Hack Camp in the summer of 2016 as an intern, and organized most community-facing events. Right now, she's a sophomore in college and aims to increase access to computer science education through organizing hackathons."
+        bg="red"
+      />
+      <Bio
+        img="/people/harrison.jpg"
+        name="Harrison Shoebridge"
+        role="Software Engineer"
+        text="Text here"
+        bg="yellow"
+      />
+      <Bio
+        img="/people/kyle.jpg"
+        name="Kyle Emile"
+        role="Operations"
+        text="Text here"
+        bg="orange"
+      />
+      <Bio
+        img="/people/samuel.jpg"
+        name="Samuel Escapa"
+        role="Open-source contributor"
+        text="Text here"
+        bg="blue"
+      />
+      <Bio
+        img="/people/victor.jpg"
+        name="Victor Truong"
+        role="Finder"
+        text="Victor believes that communities are a very powerful thing. That's why he built Hack Club Finder, a tool which simplifies the process of discovering and communicating with Hack Clubs near users. Since December 2017, it has helped thousands of people locate clubs."
+        bg="violet"
+      />
+      <Bio
+        img="/people/jessica.jpg"
+        name="Jessica Kwok"
+        role="Finances & Curriculum"
+        text="Text here"
+        bg="green"
+      />
+      <Bio
+        img="/people/matt.jpg"
+        name="Matt Hesby"
+        role="Community Support"
+        text="Text here"
+        bg="cyan"
+      />
     </Base>
     <Footer />
   </ThemeProvider>

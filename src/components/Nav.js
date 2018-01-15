@@ -9,17 +9,15 @@ const Base = Flex.extend.attrs({
   pt: 0,
   px: [3, 4],
   pb: 2,
-  justify: ['center', 'space-between'],
+  justify: 'space-between',
+  align: 'center',
   w: 1
 })`
   position: relative;
   z-index: 4;
 `
 
-const NavBar = Flex.withComponent('nav').extend.attrs({
-  align: 'center',
-  mr: -3
-})(
+const NavBar = Flex.withComponent('nav').extend(
   [],
   props =>
     props.mode === 'cloud'
@@ -32,15 +30,17 @@ const NavBar = Flex.withComponent('nav').extend.attrs({
       : { color: colors[props.color] || props.color }
 )
 
-export const Item = Box.withComponent('a').extend.attrs({ mx: [1, 3] })`
+export const Item = Box.withComponent('a').extend.attrs({ mx: [2, 3] })`
   color: inherit;
   text-decoration: none;
   font-weight: bold;
   text-align: center;
-  max-width: 8em;
 
-  ${mediaQueries[1]} {
-    max-width: none;
+  &:last-of-type {
+    display: none;
+    ${mediaQueries[1]} {
+      display: inline-block;
+    }
   }
 `
 

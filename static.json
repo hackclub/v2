@@ -14,7 +14,7 @@
   "redirects": {
      "/finder": {
       "url": "https://finder.hackclub.com",
-      "status": 301
+      "status": 302
     }
   }
 }

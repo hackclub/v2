@@ -127,7 +127,7 @@ const Bubbles = ({ children }) => (
       </Text>
       <Flex justify="center" wrap mx={-2} mt={4}>
         <LargeButton href="https://finder.hackclub.com" inverted m={2}>
-          Find Clubs
+          Find a Club
         </LargeButton>
         <LargeButton.link to="/start" m={2}>
           Apply »

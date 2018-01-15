@@ -81,13 +81,6 @@ export default () => (
         text="Athul leads some of our largest clubs in India. After graduating from high school, he joined as our Regional Manager in India. He is passionate about bringing more students into the world of coding."
         bg="violet"
       />
-      <Bio
-        img="/team/victor.png"
-        name="Victor Truong"
-        role="Finance"
-        text="Victor is a club leader at Rosemead High School in Los Angeles, CA. He aims to make Hack Club’s finances as transparent as possible by letting people know how every penny is being spent."
-        bg="green"
-      />
     </Base>
     <Footer />
   </ThemeProvider>

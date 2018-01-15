@@ -126,8 +126,8 @@ const Bubbles = ({ children }) => (
         things apart.
       </Text>
       <Flex justify="center" wrap mx={-2} mt={4}>
-        <LargeButton href="/donate" inverted m={2}>
-          Donate
+        <LargeButton href="https://finder.hackclub.com" inverted m={2}>
+          Find Clubs
         </LargeButton>
         <LargeButton.link to="/start" m={2}>
           Apply »

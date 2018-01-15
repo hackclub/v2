@@ -12,7 +12,7 @@
     }
   },
   "redirects": {
-     "/finder": {
+    "/finder": {
       "url": "https://finder.hackclub.com",
       "status": 302
     }

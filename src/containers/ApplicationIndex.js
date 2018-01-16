@@ -75,26 +75,6 @@ const ApplicationCard = props => {
 
   return (
     <Container maxWidth={36} mt={3} p={3}>
-      <Flex
-        align="center"
-        justify="center"
-        flexDirection={['column', 'row']}
-        my={3}
-        mx={[null, -2]}
-      >
-        <LargeButton.link
-          w={1}
-          m={2}
-          to={`/apply/club?id=${id}`}
-          children="Edit Application"
-        />
-        <LargeButton.link
-          w={1}
-          m={2}
-          to={`/apply/leader?id=${leaderProfile.id}`}
-          children="Edit Leader Profile"
-        />
-      </Flex>
       <CustomCard>
         <CustomHeading>Application</CustomHeading>
         <ul>
@@ -133,7 +113,27 @@ const ApplicationCard = props => {
           ))}
         </ul>
       </CustomCard>
-      <CustomCard mt="1.5rem" pt="0 !important">
+      <Flex
+        align="center"
+        justify="center"
+        flexDirection={['column', 'row']}
+        my={3}
+        mx={[null, -2]}
+      >
+        <LargeButton.link
+          w={1}
+          m={2}
+          to={`/apply/club?id=${id}`}
+          children="Edit Application"
+        />
+        <LargeButton.link
+          w={1}
+          m={2}
+          to={`/apply/leader?id=${leaderProfile.id}`}
+          children="Edit Leader Profile"
+        />
+      </Flex>
+      <CustomCard pt="0 !important">
         <MarkdownRenderer path={'clubs/FAQ.md'} />
       </CustomCard>
     </Container>

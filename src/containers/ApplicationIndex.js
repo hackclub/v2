@@ -15,6 +15,7 @@ import {
   cx
 } from '@hackclub/design-system'
 import LoadingAnimation from '../components/LoadingAnimation'
+import MarkdownRenderer from '../components/MarkdownRenderer'
 import Login from '../components/Login'
 import ApplyNav from '../components/ApplyNav'
 import fetch from 'unfetch'
@@ -51,6 +52,10 @@ const timeSince = time => {
 }
 
 const Neg = () => <Text.span color="error" bold children="NOT" />
+
+const CustomCard = props => (
+  <Card boxShadowSize="md" p={[3, 4]} color="black" bg="snow" {...props} />
+)
 
 const ApplicationCard = props => {
   const {
@@ -90,13 +95,7 @@ const ApplicationCard = props => {
           children="Edit Leader Profile"
         />
       </Flex>
-      <Card boxShadowSize="md" p={[3, 4]} color="black" bg="snow">
-        <Text mb={[3, 4]}>
-          <A href="https://github.com/hackclub/hackclub/blob/master/clubs/FAQ.md">
-            Click here
-          </A>{' '}
-          for frequently asked questions about applying
-        </Text>
+      <CustomCard>
         <CustomHeading>Application</CustomHeading>
         <ul>
           <li>
@@ -133,7 +132,10 @@ const ApplicationCard = props => {
             </li>
           ))}
         </ul>
-      </Card>
+      </CustomCard>
+      <CustomCard mt="1.5rem" pt="0 !important">
+        <MarkdownRenderer path={'clubs/FAQ.md'} />
+      </CustomCard>
     </Container>
   )
 }

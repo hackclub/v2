@@ -15,6 +15,7 @@ import {
   cx
 } from '@hackclub/design-system'
 import LoadingAnimation from '../components/LoadingAnimation'
+import MarkdownRenderer from '../components/MarkdownRenderer'
 import Login from '../components/Login'
 import ApplyNav from '../components/ApplyNav'
 import fetch from 'unfetch'
@@ -52,6 +53,10 @@ const timeSince = time => {
 
 const Neg = () => <Text.span color="error" bold children="NOT" />
 
+const CustomCard = props => (
+  <Card boxShadowSize="md" p={[3, 4]} color="black" bg="snow" {...props} />
+)
+
 const ApplicationCard = props => {
   const {
     id,
@@ -70,33 +75,7 @@ const ApplicationCard = props => {
 
   return (
     <Container maxWidth={36} mt={3} p={3}>
-      <Flex
-        align="center"
-        justify="center"
-        flexDirection={['column', 'row']}
-        my={3}
-        mx={[null, -2]}
-      >
-        <LargeButton.link
-          w={1}
-          m={2}
-          to={`/apply/club?id=${id}`}
-          children="Edit Application"
-        />
-        <LargeButton.link
-          w={1}
-          m={2}
-          to={`/apply/leader?id=${leaderProfile.id}`}
-          children="Edit Leader Profile"
-        />
-      </Flex>
-      <Card boxShadowSize="md" p={[3, 4]} color="black" bg="snow">
-        <Text mb={[3, 4]}>
-          <A href="https://github.com/hackclub/hackclub/blob/master/clubs/FAQ.md">
-            Click here
-          </A>{' '}
-          for frequently asked questions about applying
-        </Text>
+      <CustomCard>
         <CustomHeading>Application</CustomHeading>
         <ul>
           <li>
@@ -133,7 +112,30 @@ const ApplicationCard = props => {
             </li>
           ))}
         </ul>
-      </Card>
+      </CustomCard>
+      <Flex
+        align="center"
+        justify="center"
+        flexDirection={['column', 'row']}
+        my={3}
+        mx={[null, -2]}
+      >
+        <LargeButton.link
+          w={1}
+          m={2}
+          to={`/apply/club?id=${id}`}
+          children="Edit Application"
+        />
+        <LargeButton.link
+          w={1}
+          m={2}
+          to={`/apply/leader?id=${leaderProfile.id}`}
+          children="Edit Leader Profile"
+        />
+      </Flex>
+      <CustomCard pt="0 !important">
+        <MarkdownRenderer path={'clubs/FAQ.md'} />
+      </CustomCard>
     </Container>
   )
 }

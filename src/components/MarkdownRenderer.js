@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { Heading, ThemeProvider } from '@hackclub/design-system'
-import fetch from 'unfetch'
-import { api } from '../../data'
+import apiClient from '../api'
 
 function flatten(text, child) {
   return typeof child === 'string'
@@ -45,22 +44,15 @@ export default class extends Component {
       status: 'loading'
     })
 
-    fetch(`${api}/v1/repo/${path}`)
-      .then(res => {
-        if (res.ok) {
-          return res.text()
-        } else {
-          throw res
-        }
-      })
+    apiClient
+      .get(`v1/repo/${path}`)
       .then(md => {
         this.setState({
           content: md,
           status: 'success'
         })
       })
-      .catch(e => {
-        console.error(e)
+      .catch(() => {
         this.setState({ status: 'error' })
       })
   }

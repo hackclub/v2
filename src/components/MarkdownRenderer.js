@@ -1,24 +1,24 @@
 import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { ThemeProvider } from '@hackclub/design-system'
+import { Heading, ThemeProvider } from '@hackclub/design-system'
 import fetch from 'unfetch'
 import { api } from '../../data'
-import { Heading } from '@hackclub/design-system'
 
 function flatten(text, child) {
   return typeof child === 'string'
-  ? text + child
-  : React.Children.toArray(child.props.children).reduce(flatten, text)
+    ? text + child
+    : React.Children.toArray(child.props.children).reduce(flatten, text)
 }
 
 const CustomHeading = props => {
   const children = React.Children.toArray(props.children)
   const text = children.reduce(flatten, '')
-  const slug = text.toLowerCase()
-                   .replace(/\s+/g, '-')
-                   .replace(/[^a-z-]/g, '')
+  const slug = text
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z-]/g, '')
 
-  return React.createElement(`h${props.level}`, {id: slug}, props.children)
+  return React.createElement(`h${props.level}`, { id: slug }, props.children)
 }
 
 export default class extends Component {
@@ -28,7 +28,7 @@ export default class extends Component {
     const { content, path } = props
 
     this.state = {
-      status: (content ? 'success' : (path ? 'loading' : 'error')),
+      status: content ? 'success' : path ? 'loading' : 'error',
       content: content
     }
   }
@@ -61,7 +61,7 @@ export default class extends Component {
       })
       .catch(e => {
         console.error(e)
-        this.setState({status: 'error'})
+        this.setState({ status: 'error' })
       })
   }
 
@@ -70,8 +70,9 @@ export default class extends Component {
 
     return (
       <ThemeProvider>
-        <ReactMarkdown source={content}
-                       renderers={{heading: CustomHeading, ...renderers}}
+        <ReactMarkdown
+          source={content}
+          renderers={{ heading: CustomHeading, ...renderers }}
         />
       </ThemeProvider>
     )

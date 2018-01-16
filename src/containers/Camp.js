@@ -45,8 +45,8 @@ export default () => (
     <Container maxWidth={32} py={[3, 4]} align="center">
       <Text f={3}>
         Apply to our clubs program and we’ll help you launch and lead a coding
-        club at your school. It’s like summer camp, except that it runs all
-        year long!
+        club at your school. It’s like summer camp, except that it runs all year
+        long!
       </Text>
       <Button.link bg={campTheme[0]} color="white" to="/start" my={4}>
         Learn More + Apply »

@@ -138,6 +138,34 @@ export default () => (
         text="Text here"
         bg="cyan"
       />
+      <Bio
+        img="/people/jonathan.jpg"
+        name="Jonathan Leung"
+        role="Role here"
+        text="Text here"
+        bg="red"
+      />
+      <Bio
+        img="/people/tom.jpg"
+        name="Tom Preston-Werner"
+        role="Mentor"
+        text="Text here"
+        bg="gray"
+      />
+      <Bio
+        img="/people/quinn.jpg"
+        name="Quinn Slack"
+        role="Mentor"
+        text="Text here"
+        bg="gray"
+      />
+      <Bio
+        img="/people/pierre.jpg"
+        name="Pierre Arys"
+        role="Adviser"
+        text="Text here"
+        bg="gray"
+      />
     </Base>
     <Footer />
   </ThemeProvider>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { Heading, ThemeProvider } from '@hackclub/design-system'
+import { Heading, ThemeProvider, Link as A } from '@hackclub/design-system'
 import apiClient from '../api'
 
 function flatten(text, child) {
@@ -64,7 +64,7 @@ export default class extends Component {
       <ThemeProvider>
         <ReactMarkdown
           source={content}
-          renderers={{ heading: CustomHeading, ...renderers }}
+          renderers={{ heading: CustomHeading, link: A, ...renderers }}
         />
       </ThemeProvider>
     )

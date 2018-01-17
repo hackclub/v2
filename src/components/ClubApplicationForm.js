@@ -267,7 +267,7 @@ const InnerForm = props => {
           <Field
             name="other_surprising_or_amusing_discovery"
             label="What is something surprising or amusing you discovered?"
-            hint="Suprise us ;)"
+            hint="Surprise us ;)"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.other_surprising_or_amusing_discovery}

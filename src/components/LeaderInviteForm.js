@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { api } from '../../data'
 import { Field } from '../components/Forms'
-import { Box, Flex, Text, IconButton, cx } from '@hackclub/design-system'
+import {
+  Box,
+  Flex,
+  Text,
+  IconButton,
+  cx,
+  Link as A
+} from '@hackclub/design-system'
 import yup from 'yup'
 
 const InnerForm = props => {
@@ -64,6 +71,17 @@ const InnerForm = props => {
         onKeyDown={handleChange}
         label="Please provide the email addresses of the other club leaders"
         placeholder="Co-leader's email"
+        hint={
+          <Fragment>
+            Still deciding who will be on your team?{' '}
+            <A
+              href="https://github.com/hackclub/hackclub/blob/master/clubs/leadership_preface.md"
+              target="_blank"
+            >
+              Consider this
+            </A>.
+          </Fragment>
+        }
       />
       <IconButton
         name="add"

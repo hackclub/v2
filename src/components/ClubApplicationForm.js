@@ -13,7 +13,7 @@ import {
 } from '../components/Forms'
 import LeaderInviteForm from '../components/LeaderInviteForm'
 import Button from '../components/Button'
-import { Container, Flex, Box } from '@hackclub/design-system'
+import { Container, Flex, Box, Link as A } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 
 const InnerForm = props => {
@@ -135,13 +135,16 @@ const InnerForm = props => {
           </Field>
           <Field
             name="leaders_video_url"
-            label={
+            label=" Please enter the URL of a 1 minute unlisted (not private) YouTube video introducing the leaders. "
+            hint={
               <Fragment>
-                Please enter the URL of a 1 minute unlisted (not private)
-                YouTube video introducing the leaders.{' '}
-                <a href="https://github.com/hackclub/hackclub/blob/master/clubs/youtube_video.md">
-                  Click here for instructions
-                </a>.
+                <A
+                  href="https://github.com/hackclub/hackclub/blob/master/clubs/youtube_video.md"
+                  target="_blank"
+                >
+                  Click here
+                </A>{' '}
+                for more details about the video.
               </Fragment>
             }
             onChange={handleChange}
@@ -264,7 +267,7 @@ const InnerForm = props => {
           <Field
             name="other_surprising_or_amusing_discovery"
             label="What is something surprising or amusing you discovered?"
-            hint="Suprise us ;)"
+            hint="Surprise us ;)"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.other_surprising_or_amusing_discovery}

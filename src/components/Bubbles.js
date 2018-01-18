@@ -11,12 +11,7 @@ import {
 } from '@hackclub/design-system'
 import { shuffle, range, sample } from 'lodash'
 
-const Root = Flex.extend.attrs({
-  justify: 'center',
-  align: 'center',
-  pt: 3,
-  px: [0, 3]
-})`
+const Root = Flex.extend`
   position: relative;
   min-height: 32rem;
   max-height: 72rem;
@@ -24,14 +19,22 @@ const Root = Flex.extend.attrs({
   height: 100vh;
   overflow-y: hidden;
 
-  div:first-child {
+  > div:first-of-type {
     position: absolute;
     top: 0;
-    z-index: -1;
   }
 
   img {
-    margin: 0.75em;
+    margin: 0.66em;
+    will-change: transform;
+    transform: scale(1, 1);
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in;
+    transition-delay: initial;
+    transition-property: transform;
+    &:hover {
+      transform: scale(1.25);
+    }
     &:nth-child(odd) {
       margin-left: 1.5em;
       margin-top: 0;
@@ -40,9 +43,8 @@ const Root = Flex.extend.attrs({
       margin-right: 1em;
     }
     &:nth-child(6n) {
-      width: 3em;
-      height: 3em;
-      margin-bottom: 1em;
+      width: 4em;
+      height: 4em;
     }
     &:nth-child(8n) {
       width: 2.5em;
@@ -59,7 +61,7 @@ const Root = Flex.extend.attrs({
     &:nth-child(17n) {
       margin-top: 3em;
     }
-    @media screen and (max-width:32em) {
+    @media screen and (max-width: 32em) {
       max-width: 72px;
       max-height: 72px;
       margin: 0.25em;
@@ -72,6 +74,7 @@ const Cloud = Box.extend`
   border-radius: 4rem;
   box-shadow: 0 0 2rem 4rem rgba(252, 252, 252, 0.95);
   background-color: rgba(252, 252, 252, 0.95);
+  max-width: 30rem;
   text-align: center;
   position: relative;
   z-index: 2;
@@ -79,7 +82,6 @@ const Cloud = Box.extend`
     box-sizing: content-box;
     border-radius: 8rem;
     box-shadow: 0 0 4rem 4rem rgba(252, 252, 252, 0.95);
-    max-width: 30rem;
     padding: 0 1rem;
     top: -2rem;
   }
@@ -97,8 +99,8 @@ const Cloud = Box.extend`
 LargeButton.link = LargeButton.withComponent(Link)
 
 const Bubbles = ({ children }) => (
-  <Root>
-    <Flex justify="space-around" wrap>
+  <Root justify="center" align="center" pt={3} px={[0, 3]}>
+    <Flex justify="space-around" wrap pt={2}>
       {shuffle([...range(92), ...range(92)]).map((i, n) => (
         <Avatar
           src={`/avatars/${i + 1}.jpg`}
@@ -124,8 +126,8 @@ const Bubbles = ({ children }) => (
         things apart.
       </Text>
       <Flex justify="center" wrap mx={-2} mt={4}>
-        <LargeButton href="/donate" inverted m={2}>
-          Donate
+        <LargeButton href="https://finder.hackclub.com" inverted m={2}>
+          Find a Club
         </LargeButton>
         <LargeButton.link to="/start" m={2}>
           Apply »

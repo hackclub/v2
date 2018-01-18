@@ -112,8 +112,7 @@ export default () => (
     <Container align="center" px={3}>
       <Heading.h2 mt={4}>Contributors</Heading.h2>
       <Text f={3} my={2}>
-        People that have contributed significantly to the Hack Club community in
-        one way or another.
+        People that have contributed significantly to the Hack Club community.
       </Text>
     </Container>
     <Base pt={3} pb={4} px={3}>
@@ -179,6 +178,12 @@ export default () => (
         name="Kyle Emile"
         role="Operations"
         bg="orange"
+      />
+      <Bio
+        img="/people/matthew.jpg"
+        name="Matthew Kwong"
+        role="Growth"
+        bg="lime"
       />
     </Base>
     <Footer />

@@ -110,6 +110,14 @@ export default () => (
         text="Text here"
         bg="orange"
       />
+    </Base>
+    <Container align="center" px={3}>
+      <Heading.h2 mt={4}>Contributors</Heading.h2>
+      <Text f={3} my={2}>
+        People that have contributed significantly to the Hack Club community.
+      </Text>
+    </Container>
+    <Base pt={3} pb={4} px={3}>
       <Bio
         img="/people/samuel.jpg"
         name="Samuel Escapa"
@@ -166,6 +174,12 @@ export default () => (
         role="Adviser"
         text="Text here"
         bg="gray"
+      />
+      <Bio
+        img="/people/matthew.jpg"
+        name="Matthew Kwong"
+        role="Growth"
+        bg="lime"
       />
     </Base>
     <Footer />

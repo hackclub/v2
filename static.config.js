@@ -19,6 +19,7 @@ export default {
       path: '/people',
       component: 'src/containers/People'
     },
+    {
       path: '/finder',
       component: 'src/containers/FinderRedirect'
     },

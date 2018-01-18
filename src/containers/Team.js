@@ -64,7 +64,7 @@ export default () => (
         img="/team/lachlan.jpg"
         name="Lachlan Campbell"
         role="Web Designer"
-        text="Lachlan, a club leader from State College, PA, joined the team to work on Hack Club’s website. They care about bringing coding to more people and making tools to make information more accessible."
+        text="Lachlan, a club leader from State College, PA, joined the team to work on Hack Club’s website. He cares about bringing coding to more people and creating tools to make information more accessible."
         bg="blue"
       />
       <Bio

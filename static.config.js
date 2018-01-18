@@ -16,6 +16,10 @@ export default {
       component: 'src/containers/Home'
     },
     {
+      path: '/finder',
+      component: 'src/containers/FinderRedirect'
+    },
+    {
       path: '/team',
       component: 'src/containers/Team'
     },

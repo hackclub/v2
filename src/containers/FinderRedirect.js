@@ -3,10 +3,8 @@ import React, { Component } from 'react'
 const URL = 'https://finder.hackclub.com'
 
 export default class extends Component {
-  componentWillMount() {
-    if (window) {
-      window.location = URL
-    }
+  componentDidMount() {
+    window.location = URL
   }
 
   render() {

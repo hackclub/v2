@@ -50,7 +50,7 @@ const Nav = ({ mode, color, ...props }) => (
   <Base {...props}>
     <Flag />
     <NavBar mode={mode} color={color}>
-      <Item.link to="/team" children="Our Team" />
+      <Item.link to="/people" children="People" />
       <Item href="/donate" children="Donate" />
       <Item href="/workshops" children="In a club? Get workshops »" />
     </NavBar>

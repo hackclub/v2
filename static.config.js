@@ -16,8 +16,8 @@ export default {
       component: 'src/containers/Home'
     },
     {
-      path: '/team',
-      component: 'src/containers/Team'
+      path: '/people',
+      component: 'src/containers/People'
     },
     {
       path: '/start',

@@ -10,11 +10,5 @@
     "/fonts/**": {
       "Access-Control-Allow-Origin": "*"
     }
-  },
-  "redirects": {
-    "/finder": {
-      "url": "https://finder.hackclub.com",
-      "status": 302
-    }
   }
 }

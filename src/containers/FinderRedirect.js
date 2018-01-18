@@ -4,7 +4,9 @@ const URL = 'https://finder.hackclub.com'
 
 export default class extends Component {
   componentWillMount() {
-    window && (window.location = URL)
+    if (window) {
+      window.location = URL
+    }
   }
 
   render() {

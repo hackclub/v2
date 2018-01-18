@@ -96,9 +96,9 @@ const ApplicationCard = props => {
         </p>
         <p>
           If you are accepted, we’ll schedule a training call to show you how to
-          leading a fantastic coding club and give you access to our resources.
-          We provide curriculum, a template for club structure, and access to
-          our online community of club leaders.
+          lead a fantastic coding club and give you access to our resources. We
+          provide curriculum, a template for club structure, and access to our
+          online community of club leaders.
         </p>
         <p>
           Once you start holding meetings we’ll check in with you weekly to make

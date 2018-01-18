@@ -1,13 +1,15 @@
 import React from 'react'
 import {
-  ThemeProvider,
-  Section,
-  Heading,
   Box,
   Container,
+  Heading,
+  Section,
+  Text,
+  ThemeProvider,
   mediaQueries
 } from '@hackclub/design-system'
-import { Head, Link } from 'react-static'
+import Helmet from 'react-helmet'
+import Link from 'gatsby-link'
 import Nav from '../components/Nav'
 import Bio from '../components/Bio'
 import Footer from '../components/Footer'

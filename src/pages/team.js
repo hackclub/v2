@@ -1,11 +1,11 @@
 import React from 'react'
 import {
-  ThemeProvider,
-  Section,
-  Heading,
   Box,
   Container,
-  Flex,
+  Heading,
+  Section,
+  Text,
+  ThemeProvider,
   mediaQueries
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
@@ -102,6 +102,7 @@ export default () => (
         text="Text here"
         bg="yellow"
       />
+      <Bio img="/people/quinn.jpg" name="Quinn Slack" role="Mentor" bg="gray" />
       <Bio
         img="/people/kyle.jpg"
         name="Kyle Emile"
@@ -123,6 +124,7 @@ export default () => (
         text="Victor believes that communities are a very powerful thing. That's why he built Hack Club Finder, a tool which simplifies the process of discovering and communicating with Hack Clubs near users. Since December 2017, it has helped thousands of people locate clubs."
         bg="violet"
       />
+      <Bio img="/people/sean.jpg" name="Sean Kim" role="Shipit" bg="fuschia" />
       <Bio
         img="/people/jessica.jpg"
         name="Jessica Kwok"

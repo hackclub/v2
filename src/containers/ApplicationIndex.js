@@ -91,7 +91,7 @@ const ApplicationCard = props => {
         </p>
         <p>
           You should fill this out with your team. After submitting your
-          application you’ll get a confirmation email. Within 3 days we'll send
+          application you’ll get a confirmation email. Within 3 days we’ll send
           you our decision.
         </p>
         <p>

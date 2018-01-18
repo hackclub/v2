@@ -13,7 +13,7 @@ import {
 } from '../components/Forms'
 import LeaderInviteForm from '../components/LeaderInviteForm'
 import Button from '../components/Button'
-import { Container, Flex, Box } from '@hackclub/design-system'
+import { Container, Flex, Box, Link as A } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 
 const InnerForm = props => {
@@ -78,7 +78,7 @@ const InnerForm = props => {
           />
           <Field
             name="high_school_url"
-            label="Link to your high school's website, if any"
+            label="Link to your high school’s website, if any"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.high_school_url}
@@ -103,7 +103,8 @@ const InnerForm = props => {
           </Field>
           <Field
             name="high_school_address"
-            label="High school's full address (include city, state/province, country)"
+            label="High school’s full address (include city, state/province, country)"
+            hint="We use this address in a map of our clubs so it needs to be in the same format you’d write on an envelope."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.high_school_address}
@@ -116,6 +117,7 @@ const InnerForm = props => {
           <Field
             name="point_of_contact_id"
             label="Point of contact"
+            hint="To reduce emails, we just send emails to this designated person on your team."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.point_of_contact_id || 'select'}
@@ -133,13 +135,16 @@ const InnerForm = props => {
           </Field>
           <Field
             name="leaders_video_url"
-            label={
+            label=" Please enter the URL of a 1 minute unlisted (not private) YouTube video introducing the leaders. "
+            hint={
               <Fragment>
-                Please enter the URL of a 1 minute unlisted (not private)
-                YouTube video introducing the leaders.{' '}
-                <a href="https://github.com/hackclub/hackclub/blob/master/clubs/youtube_video.md">
-                  Click here for instructions
-                </a>.
+                <A
+                  href="https://github.com/hackclub/hackclub/blob/master/clubs/youtube_video.md"
+                  target="_blank"
+                >
+                  Click here
+                </A>{' '}
+                for more details about the video.
               </Fragment>
             }
             onChange={handleChange}
@@ -216,7 +221,7 @@ const InnerForm = props => {
           />
           <Field
             name="idea_other_coding_clubs"
-            label="Has your school had coding clubs before? What's going to be new about your Hack Club?"
+            label="Has your school had coding clubs before? What’s going to be new about your Hack Club?"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.idea_other_coding_clubs}
@@ -262,6 +267,7 @@ const InnerForm = props => {
           <Field
             name="other_surprising_or_amusing_discovery"
             label="What is something surprising or amusing you discovered?"
+            hint="Surprise us ;)"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.other_surprising_or_amusing_discovery}

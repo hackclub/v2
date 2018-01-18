@@ -79,6 +79,7 @@ class InnerForm extends Component {
             disabled={isSubmitting}
             autoComplete="off"
             autoFocus
+            data-lpignore
           />
         </Label>
         <Text

@@ -15,6 +15,7 @@ import {
   cx
 } from '@hackclub/design-system'
 import LoadingAnimation from '../components/LoadingAnimation'
+import MarkdownRenderer from '../components/MarkdownRenderer'
 import Login from '../components/Login'
 import ApplyNav from '../components/ApplyNav'
 import fetch from 'unfetch'
@@ -52,31 +53,8 @@ const timeSince = time => {
 
 const Neg = () => <Text.span color="error" bold children="NOT" />
 
-const Instructions = () => (
-  <Fragment>
-    <Heading f={4}>How do I fill out the application?</Heading>
-    <ol>
-      <li>
-        You apply as a group with the other leaders of the club. If you’re still
-        choosing co-leaders to help you run your club,{' '}
-        <A href="https://github.com/hackclub/hackclub/blob/master/clubs/leadership_preface.md">
-          here’s what to consider
-        </A>.
-      </li>
-      <li>
-        Sit down with your co-leaders and fill out the application. It should
-        take about an hour if you work on it together.
-      </li>
-      <li>
-        Fill out your leader profiles individually. Each should take about 30
-        minutes.
-      </li>
-      <li>
-        Click "Submit Application" below the application once all your leader
-        profiles are complete.
-      </li>
-    </ol>
-  </Fragment>
+const CustomCard = props => (
+  <Card boxShadowSize="md" p={[3, 4]} color="black" bg="snow" {...props} />
 )
 
 const ApplicationCard = props => {
@@ -97,38 +75,14 @@ const ApplicationCard = props => {
 
   return (
     <Container maxWidth={36} mt={3} p={3}>
-      <Flex
-        align="center"
-        justify="center"
-        flexDirection={['column', 'row']}
-        my={3}
-        mx={[null, -2]}
-      >
-        <LargeButton.link
-          w={1}
-          m={2}
-          to={`/apply/club?id=${id}`}
-          children="Edit Application"
-        />
-        <LargeButton.link
-          w={1}
-          m={2}
-          to={`/apply/leader?id=${leaderProfile.id}`}
-          children="Edit Leader Profile"
-        />
-      </Flex>
-      <Card boxShadowSize="md" p={[3, 4]} color="black" bg="snow">
-        <Instructions />
+      <CustomCard>
         <CustomHeading>Application</CustomHeading>
         <ul>
-          {updated_at === created_at ? (
-            <li>This application was just created</li>
-          ) : submitted_at ? null : (
-            <li>
-              This application was updated{' '}
-              <strong>{timeSince(updated_at)}</strong> ago
-            </li>
-          )}
+          <li>
+            This application was{' '}
+            {updated_at === created_at ? 'created' : 'updated'}{' '}
+            <strong>{timeSince(updated_at)}</strong> ago
+          </li>
           {submitted_at ? (
             <li>
               You submitted this application{' '}
@@ -158,7 +112,30 @@ const ApplicationCard = props => {
             </li>
           ))}
         </ul>
-      </Card>
+      </CustomCard>
+      <Flex
+        align="center"
+        justify="center"
+        flexDirection={['column', 'row']}
+        my={3}
+        mx={[null, -2]}
+      >
+        <LargeButton.link
+          w={1}
+          m={2}
+          to={`/apply/club?id=${id}`}
+          children="Edit Application"
+        />
+        <LargeButton.link
+          w={1}
+          m={2}
+          to={`/apply/leader?id=${leaderProfile.id}`}
+          children="Edit Leader Profile"
+        />
+      </Flex>
+      <CustomCard pt="0 !important">
+        <MarkdownRenderer path={'clubs/FAQ.md'} />
+      </CustomCard>
     </Container>
   )
 }

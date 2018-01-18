@@ -24,6 +24,13 @@ export const Error = Text.extend.attrs({
   &:before { content: '— '; }
 `
 
+export const Hint = Text.extend.attrs({
+  color: 'slate',
+  f: 1,
+  mb: 1,
+  align: 'left'
+})``
+
 export class ConfirmClose extends Component {
   componentWillMount() {
     // https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm
@@ -69,6 +76,7 @@ export class Field extends Component {
       p,
       children,
       error,
+      hint,
       optional
     } = this.props
 
@@ -76,10 +84,11 @@ export class Field extends Component {
 
     return (
       <Label className={type} mb={2} id={name}>
-        <Flex align="center" mb="25rem" style={{ display: 'inline' }} wrap>
+        <Flex style={{ display: 'inline' }} wrap>
           {label}
           {optional ? <Optional /> : null}
           {error && <Error children={error} />}
+          {hint && <Hint children={hint} />}
         </Flex>
         <Tag
           name={name}
@@ -108,7 +117,7 @@ export const FormWrapper = Flex.withComponent(Container).extend`
 export const Form = Container.withComponent('form').extend.attrs({
   py: 4,
   px: 3,
-  maxWidth: 48
+  maxWidth: 42
 })`
   display: grid;
   grid-gap: 1rem;

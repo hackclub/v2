@@ -32,6 +32,10 @@ export default {
       component: 'src/containers/Cloud9'
     },
     {
+      path: '/finder',
+      component: 'src/containers/FinderRedirect'
+    },
+    {
       path: '/hack_camp',
       component: 'src/containers/Camp'
     },

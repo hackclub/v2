@@ -22,17 +22,14 @@ const Stripe = Flex.extend`
 const StripeContainer = Container.extend`
   z-index: 1;
 
-  h2 mark {
-    display: block;
-  }
   h3 mark {
     font-weight: normal;
   }
   mark {
     background-color: rgba(250, 247, 133, 0.8);
     color: ${props => props.theme.colors.black} !important;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
+    padding-left: 0.125em;
+    padding-right: 0.125em;
     line-height: 1.35;
     width: 100%;
   }
@@ -40,9 +37,10 @@ const StripeContainer = Container.extend`
 
 export default () => (
   <Stripe id="more" align="center" justify="center" direction="column" py={3}>
-    <StripeContainer maxWidth={36} p={3} align="center">
+    <StripeContainer maxWidth={36} p={2} align="center">
       <Heading.h2 f={[5, 6]} mt={0} mb={3}>
         <mark>{stats.percentage_of_us_high_schools} of US high schools.</mark>
+        <br />
         <mark>
           {stats.state_count} states. {stats.country_count} countries.
         </mark>

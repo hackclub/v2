@@ -15,7 +15,6 @@ import {
   cx
 } from '@hackclub/design-system'
 import LoadingAnimation from '../components/LoadingAnimation'
-import MarkdownRenderer from '../components/MarkdownRenderer'
 import Login from '../components/Login'
 import ApplyNav from '../components/ApplyNav'
 import fetch from 'unfetch'
@@ -76,6 +75,43 @@ const ApplicationCard = props => {
   return (
     <Container maxWidth={36} mt={3} p={3}>
       <CustomCard>
+        <p>
+          Welcome to your Hack Club application. You should fill this out with
+          the group of people you'll be leading your club with. Once you submit
+          your application you'll get a confirmation and hear back from us with
+          our decision in 3 days.
+        </p>
+        <p>
+          If you're accepted, we'll schedule a training call to show you the
+          tricks to leading a fantastic coding club and give you access to our
+          resources.
+        </p>
+        <p>
+          If you have any questions while applying, contact us at{' '}
+          <A href="mailto:team@hackclub.com">team@hackclub.com</A>.
+        </p>
+      </CustomCard>
+      <Flex
+        align="center"
+        justify="center"
+        flexDirection={['column', 'row']}
+        my={3}
+        mx={[null, -2]}
+      >
+        <LargeButton.link
+          w={1}
+          m={2}
+          to={`/apply/club?id=${id}`}
+          children="Edit Application"
+        />
+        <LargeButton.link
+          w={1}
+          m={2}
+          to={`/apply/leader?id=${leaderProfile.id}`}
+          children="Edit Leader Profile"
+        />
+      </Flex>
+      <CustomCard>
         <CustomHeading>Application</CustomHeading>
         <ul>
           <li>
@@ -112,29 +148,6 @@ const ApplicationCard = props => {
             </li>
           ))}
         </ul>
-      </CustomCard>
-      <Flex
-        align="center"
-        justify="center"
-        flexDirection={['column', 'row']}
-        my={3}
-        mx={[null, -2]}
-      >
-        <LargeButton.link
-          w={1}
-          m={2}
-          to={`/apply/club?id=${id}`}
-          children="Edit Application"
-        />
-        <LargeButton.link
-          w={1}
-          m={2}
-          to={`/apply/leader?id=${leaderProfile.id}`}
-          children="Edit Leader Profile"
-        />
-      </Flex>
-      <CustomCard pt="0 !important">
-        <MarkdownRenderer path={'clubs/FAQ.md'} />
       </CustomCard>
     </Container>
   )
@@ -217,7 +230,7 @@ class ApplicationIndex extends Component {
         return <LoadingAnimation />
       case 'finished':
         return (
-          <React.Fragment>
+          <Fragment>
             <ApplyNav breadcrumb={0} />
             <Heading.h1
               bg="primary"
@@ -231,7 +244,7 @@ class ApplicationIndex extends Component {
               Apply to Hack Club
             </Heading.h1>
             <ApplicationCard app={app} applicantId={applicantId} />
-          </React.Fragment>
+          </Fragment>
         )
       default:
         return <Text>Something terrible has happened.</Text>

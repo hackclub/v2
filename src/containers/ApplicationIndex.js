@@ -81,6 +81,15 @@ const ApplicationCard = props => {
           creating the club. We’ll work with you to get everything else ready.
         </p>
         <p>
+          Still looking for your leadership team? Here are{' '}
+          <A
+            href="https://github.com/hackclub/hackclub/blob/master/clubs/leadership_preface.md"
+            target="_blank"
+          >
+            things to consider
+          </A>.
+        </p>
+        <p>
           You should fill this out with your team. After submitting your
           application you’ll get a confirmation email. Within 3 days we'll send
           you our decision.

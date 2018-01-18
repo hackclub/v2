@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Text } from '@hackclub/design-system'
 
 const URL = 'https://finder.hackclub.com'
 
@@ -10,9 +9,9 @@ export default class extends Component {
 
   render() {
     return (
-      <Text>
+      <p>
         Redirecting you to <a href={URL}>{URL}</a>
-      </Text>
+      </p>
     )
   }
 }

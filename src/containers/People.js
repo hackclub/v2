@@ -1,17 +1,16 @@
 import React from 'react'
 import {
-  ThemeProvider,
-  Section,
-  Heading,
   Box,
   Container,
-  Flex,
+  Heading,
+  Text,
+  ThemeProvider,
   mediaQueries
 } from '@hackclub/design-system'
 import { Head, Link } from 'react-static'
-import Nav from '../components/Nav'
 import Bio from '../components/Bio'
 import Footer from '../components/Footer'
+import Nav from '../components/Nav'
 
 const Header = Box.extend`
   padding-top: 0 !important;
@@ -41,13 +40,18 @@ export default () => (
     </Head>
     <Header pb={[3, 4]}>
       <Nav />
-      <Heading.h2 color="white" align="center" caps mt={3}>
-        <Box f={4}>People behind</Box>
+      <Heading.h2 color="white" align="center" px={3} caps mt={3}>
+        <Box f={4}>The people behind</Box>
         <Box f={6}>Hack Club</Box>
       </Heading.h2>
     </Header>
-    <Heading.h2 align="center" mt={4}>Core</Heading.h2>
-    <Base py={[4, 5]} px={3}>
+    <Container align="center" px={3}>
+      <Heading.h2 mt={4}>Core</Heading.h2>
+      <Text f={3} my={2}>
+        The full-time staff and a few select hackers.
+      </Text>
+    </Container>
+    <Base pt={3} pb={4} px={3}>
       <Bio
         img="/people/zach.jpg"
         name="Zach Latta"
@@ -84,36 +88,39 @@ export default () => (
         bg="violet"
       />
     </Base>
-    <Heading.h2 align="center">Board</Heading.h2>
-    <Base py={[4, 5]} px={3}>
+    <Container align="center" px={3}>
+      <Heading.h2 mt={4}>Advisory Board</Heading.h2>
+      <Text f={3} my={2}>
+        People providing guidance and wisdom to Hack Club.
+      </Text>
+    </Container>
+    <Base pt={3} pb={4} px={3}>
       <Bio
         img="/people/tom.jpg"
         name="Tom Preston-Werner"
         role="Mentor"
-        text="Text here"
         bg="gray"
       />
-      <Bio
-        img="/people/quinn.jpg"
-        name="Quinn Slack"
-        role="Mentor"
-        text="Text here"
-        bg="gray"
-      />
+      <Bio img="/people/quinn.jpg" name="Quinn Slack" role="Mentor" bg="gray" />
       <Bio
         img="/people/pierre.jpg"
         name="Pierre Arys"
         role="Adviser"
-        text="Text here"
         bg="gray"
       />
     </Base>
-    <Heading.h2 align="center">Community</Heading.h2>
-    <Base py={[4, 5]} px={3}>
+    <Container align="center" px={3}>
+      <Heading.h2 mt={4}>Contributors</Heading.h2>
+      <Text f={3} my={2}>
+        People that have contributed significantly to the Hack Club community in
+        one way or another.
+      </Text>
+    </Container>
+    <Base pt={3} pb={4} px={3}>
       <Bio
         img="/people/samuel.jpg"
         name="Samuel Escapa"
-        role="Open-source contributor"
+        role="GitHub Contributor"
         bg="blue"
       />
       <Bio
@@ -122,6 +129,7 @@ export default () => (
         role="Finder"
         bg="violet"
       />
+      <Bio img="/people/sean.jpg" name="Sean Kim" role="Shipit" bg="fuschia" />
       <Bio
         img="/people/jessica.jpg"
         name="Jessica Kwok"
@@ -135,8 +143,13 @@ export default () => (
         bg="cyan"
       />
     </Base>
-    <Heading.h2 align="center">Alumni</Heading.h2>
-    <Base py={[4, 5]} px={3}>
+    <Container align="center" px={3}>
+      <Heading.h2 mt={4}>Alumni</Heading.h2>
+      <Text f={3} my={2}>
+        Former members of the Hack Club staff or core team.
+      </Text>
+    </Container>
+    <Base pt={3} pb={4} px={3}>
       <Bio
         img="/people/jonathan.jpg"
         name="Jonathan Leung"
@@ -147,13 +160,13 @@ export default () => (
         img="/people/gemma.jpg"
         name="Gemma Busoni"
         role="Community"
-        bg="indigo"
+        bg="pink"
       />
       <Bio
         img="/people/selynna.jpg"
         name="Selynna Sun"
         role="Hack Camp"
-        bg="fuschia"
+        bg="indigo"
       />
       <Bio
         img="/people/harrison.jpg"

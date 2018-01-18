@@ -1,6 +1,12 @@
 {
   "root": "dist/",
   "https_only": true,
+  "redirects": {
+    "/finder": {
+      "url": "https://finder.hackclub.com",
+      "status": 302
+    }
+  },
   "proxies": {
     "/": {
       "origin": "https://legacy.hackclub.com"
@@ -9,12 +15,6 @@
   "headers": {
     "/fonts/**": {
       "Access-Control-Allow-Origin": "*"
-    }
-  },
-  "redirects": {
-    "/finder": {
-      "url": "https://finder.hackclub.com",
-      "status": 302
     }
   }
 }

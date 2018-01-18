@@ -79,6 +79,8 @@ const ApplicationCard = props => {
           Welcome to your Hack Club application. All you need right now is your
           leadership team, usually a group of friends who all want to work on
           creating the club. We’ll work with you to get everything else ready.
+          We also welcome existing clubs looking for access to our resources and
+          online community.
         </p>
         <p>
           Still looking for your leadership team? Here are{' '}

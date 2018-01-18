@@ -77,14 +77,19 @@ const ApplicationCard = props => {
       <CustomCard>
         <p>
           Welcome to your Hack Club application. You should fill this out with
-          the group of people you'll be leading your club with. Once you submit
-          your application you'll get a confirmation and hear back from us with
-          our decision in 3 days.
+          the group of people you'll be leading your club with. After submitting
+          your application you'll get a confirmation email. Within 3 days we'll
+          send you our decision.
         </p>
         <p>
           If you're accepted, we'll schedule a training call to show you the
           tricks to leading a fantastic coding club and give you access to our
-          resources.
+          resources. We provide curriculum, a template for club structure, and
+          access to our online community of club leaders.
+        </p>
+        <p>
+          Once you start holding meetings we'll check in with you weekly to make
+          sure everything is going well.
         </p>
         <p>
           If you have any questions while applying, contact us at{' '}

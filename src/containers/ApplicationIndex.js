@@ -11,7 +11,7 @@ import {
   Heading,
   Button,
   LargeButton,
-  Link as A,
+  Link as DSLink,
   cx
 } from '@hackclub/design-system'
 import LoadingAnimation from '../components/LoadingAnimation'
@@ -21,6 +21,12 @@ import fetch from 'unfetch'
 import { Link } from 'react-static'
 
 LargeButton.link = LargeButton.withComponent(Link)
+
+const A = DSLink.extend`
+  :hover {
+    text-decoration: underline;
+  }
+`
 
 const CustomHeading = props => (
   <Heading.h2
@@ -75,41 +81,45 @@ const ApplicationCard = props => {
   return (
     <Container maxWidth={36} mt={3} p={3}>
       <CustomCard>
+        <Text>Here's what you need to apply:</Text>
+        <ul>
+          <li>
+            A group of friends in{' '}
+            <A
+              href="https://github.com/hackclub/hackclub/blob/master/clubs/leadership_preface.md"
+              target="_blank"
+            >
+              your team
+            </A>{' '}
+            ready to help you start your club
+          </li>
+        </ul>
+        <Text>After you submit your application:</Text>
+        <ul>
+          <li>We'll get back to you with our decision within 3 days</li>
+          <li>
+            If you're accepted we'll schedule a call to train you to lead your
+            club
+          </li>
+          <li>
+            We'll give you access to our curriculum, a template for your
+            meetings, and access to our online community of club leaders
+          </li>
+          <li>
+            Once you start having club meetings we'll check in with you each
+            week to make sure everything is going well
+          </li>
+        </ul>
         <p>
-          Welcome to your Hack Club application. All you need right now is your
-          leadership team, usually a group of friends who all want to work on
-          creating the club. We’ll work with you to get everything else ready.
-          We also welcome existing clubs looking for access to our resources and
-          online community.
+          Contact us at <A href="mailto:team@hackclub.com">team@hackclub.com</A>{' '}
+          if you have any questions while applying.
         </p>
-        <p>
-          Still looking for your leadership team? Here are{' '}
-          <A
-            href="https://github.com/hackclub/hackclub/blob/master/clubs/leadership_preface.md"
-            target="_blank"
-          >
-            things to consider
-          </A>.
-        </p>
-        <p>
-          You should fill this out with your team. After submitting your
-          application you’ll get a confirmation email. Within 3 days we’ll send
-          you our decision.
-        </p>
-        <p>
-          If you are accepted, we’ll schedule a training call to show you how to
-          lead a fantastic coding club and give you access to our resources. We
-          provide curriculum, a template for club structure, and access to our
-          online community of club leaders.
-        </p>
-        <p>
-          Once you start holding meetings we’ll check in with you weekly to make
-          sure everything is going well.
-        </p>
-        <p>
-          If you have any questions while applying, contact us at{' '}
-          <A href="mailto:team@hackclub.com">team@hackclub.com</A>.
-        </p>
+        <Text color="slate" f={1}>
+          <em>
+            * We also accept applications from clubs that have already held
+            meetings.
+          </em>
+        </Text>
       </CustomCard>
       <Flex
         align="center"

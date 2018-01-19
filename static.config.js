@@ -32,6 +32,10 @@ export default {
       component: 'src/containers/Cloud9'
     },
     {
+      path: '/find',
+      component: 'src/containers/FinderRedirect'
+    },
+    {
       path: '/finder',
       component: 'src/containers/FinderRedirect'
     },

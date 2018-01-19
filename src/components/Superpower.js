@@ -43,7 +43,7 @@ export default () => (
     <Heading.h3 color="slate" f={4} bold={false} regular>
       So let’s teach it like that at every high school.{' '}
       <A.link color="primary" to="/meetings" underline>
-        Explore meetings →
+        Explore meetings »
       </A.link>
     </Heading.h3>
   </Base>

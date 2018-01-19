@@ -11,17 +11,22 @@ import {
   Heading,
   Button,
   LargeButton,
-  Link as A,
+  Link as DSLink,
   cx
 } from '@hackclub/design-system'
 import LoadingAnimation from '../components/LoadingAnimation'
-import MarkdownRenderer from '../components/MarkdownRenderer'
 import Login from '../components/Login'
 import ApplyNav from '../components/ApplyNav'
 import fetch from 'unfetch'
 import { Link } from 'react-static'
 
 LargeButton.link = LargeButton.withComponent(Link)
+
+const A = DSLink.extend`
+  :hover {
+    text-decoration: underline;
+  }
+`
 
 const CustomHeading = props => (
   <Heading.h2
@@ -76,6 +81,62 @@ const ApplicationCard = props => {
   return (
     <Container maxWidth={36} mt={3} p={3}>
       <CustomCard>
+        <Text>
+          You only need{' '}
+          <A
+            href="https://github.com/hackclub/hackclub/blob/master/clubs/leadership_preface.md"
+            target="_blank"
+          >
+            a team
+          </A> to apply. After you submit your application:
+        </Text>
+        <ul>
+          <li>We’ll get back to you with our decision in 3 days</li>
+          <li>
+            If you’re accepted we’ll schedule a call to train you to lead your
+            club
+          </li>
+          <li>
+            We’ll give you access to our curriculum, a template for your
+            meetings, and our online community of club leaders
+          </li>
+          <li>
+            Once you start holding meetings we’ll check in with you each week to
+            make sure everything is going well
+          </li>
+        </ul>
+        <p>
+          Contact us at <A href="mailto:team@hackclub.com">team@hackclub.com</A>{' '}
+          if you have any questions while applying.
+        </p>
+        <Text color="slate" f={1}>
+          <em>
+            * We also accept applications from clubs that have already held
+            meetings.
+          </em>
+        </Text>
+      </CustomCard>
+      <Flex
+        align="center"
+        justify="center"
+        flexDirection={['column', 'row']}
+        my={3}
+        mx={[null, -2]}
+      >
+        <LargeButton.link
+          w={1}
+          m={2}
+          to={`/apply/club?id=${id}`}
+          children="Edit Application"
+        />
+        <LargeButton.link
+          w={1}
+          m={2}
+          to={`/apply/leader?id=${leaderProfile.id}`}
+          children="Edit Leader Profile"
+        />
+      </Flex>
+      <CustomCard>
         <CustomHeading>Application</CustomHeading>
         <ul>
           <li>
@@ -112,29 +173,6 @@ const ApplicationCard = props => {
             </li>
           ))}
         </ul>
-      </CustomCard>
-      <Flex
-        align="center"
-        justify="center"
-        flexDirection={['column', 'row']}
-        my={3}
-        mx={[null, -2]}
-      >
-        <LargeButton.link
-          w={1}
-          m={2}
-          to={`/apply/club?id=${id}`}
-          children="Edit Application"
-        />
-        <LargeButton.link
-          w={1}
-          m={2}
-          to={`/apply/leader?id=${leaderProfile.id}`}
-          children="Edit Leader Profile"
-        />
-      </Flex>
-      <CustomCard pt="0 !important">
-        <MarkdownRenderer path={'clubs/FAQ.md'} />
       </CustomCard>
     </Container>
   )
@@ -217,7 +255,7 @@ class ApplicationIndex extends Component {
         return <LoadingAnimation />
       case 'finished':
         return (
-          <React.Fragment>
+          <Fragment>
             <ApplyNav breadcrumb={0} />
             <Heading.h1
               bg="primary"
@@ -231,7 +269,7 @@ class ApplicationIndex extends Component {
               Apply to Hack Club
             </Heading.h1>
             <ApplicationCard app={app} applicantId={applicantId} />
-          </React.Fragment>
+          </Fragment>
         )
       default:
         return <Text>Something terrible has happened.</Text>

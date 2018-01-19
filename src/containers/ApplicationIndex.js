@@ -81,32 +81,27 @@ const ApplicationCard = props => {
   return (
     <Container maxWidth={36} mt={3} p={3}>
       <CustomCard>
-        <Text>Here's what you need to apply:</Text>
+        <Text>
+          All you need to apply is{' '}
+          <A
+            href="https://github.com/hackclub/hackclub/blob/master/clubs/leadership_preface.md"
+            target="_blank"
+          >
+            a team
+          </A>. After you submit your application:
+        </Text>
         <ul>
+          <li>We’ll get back to you with our decision within 3 days</li>
           <li>
-            A group of friends in{' '}
-            <A
-              href="https://github.com/hackclub/hackclub/blob/master/clubs/leadership_preface.md"
-              target="_blank"
-            >
-              your team
-            </A>{' '}
-            ready to help you start your club
-          </li>
-        </ul>
-        <Text>After you submit your application:</Text>
-        <ul>
-          <li>We'll get back to you with our decision within 3 days</li>
-          <li>
-            If you're accepted we'll schedule a call to train you to lead your
+            If you’re accepted we’ll schedule a call to train you to lead your
             club
           </li>
           <li>
-            We'll give you access to our curriculum, a template for your
+            We’ll give you access to our curriculum, a template for your
             meetings, and access to our online community of club leaders
           </li>
           <li>
-            Once you start having club meetings we'll check in with you each
+            Once you start having club meetings we’ll check in with you each
             week to make sure everything is going well
           </li>
         </ul>

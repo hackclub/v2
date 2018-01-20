@@ -16,22 +16,6 @@ export default {
       component: 'src/containers/Home'
     },
     {
-      path: '/people',
-      component: 'src/containers/People'
-    },
-    {
-      path: '/team',
-      component: 'src/containers/TeamRedirect'
-    },
-    {
-      path: '/finder',
-      component: 'src/containers/FinderRedirect'
-    },
-    {
-      path: '/start',
-      component: 'src/containers/Start'
-    },
-    {
       path: '/apply',
       component: 'src/containers/ApplicationIndex'
     },
@@ -44,28 +28,48 @@ export default {
       component: 'src/containers/LeaderApplication'
     },
     {
+      path: '/cloud9_setup',
+      component: 'src/containers/Cloud9'
+    },
+    {
+      path: '/find',
+      component: 'src/containers/FinderRedirect'
+    },
+    {
+      path: '/finder',
+      component: 'src/containers/FinderRedirect'
+    },
+    {
+      path: '/hack_camp',
+      component: 'src/containers/Camp'
+    },
+    {
       path: '/meetings',
       component: 'src/containers/Meetings'
     },
     {
-      path: '/replit/start',
-      component: 'src/containers/StartRepl'
-    },
-    {
-      path: '/replit/apply',
-      component: 'src/containers/ApplyRepl'
-    },
-    {
-      path: '/cloud9_setup',
-      component: 'src/containers/Cloud9'
+      path: '/people',
+      component: 'src/containers/People'
     },
     {
       path: '/redeem_tech_domain',
       component: 'src/containers/RedeemTechDomain'
     },
     {
-      path: '/hack_camp',
-      component: 'src/containers/Camp'
+      path: '/replit/apply',
+      component: 'src/containers/ApplyRepl'
+    },
+    {
+      path: '/replit/start',
+      component: 'src/containers/StartRepl'
+    },
+    {
+      path: '/start',
+      component: 'src/containers/Start'
+    },
+    {
+      path: '/team',
+      component: 'src/containers/Team'
     },
     {
       is404: true,

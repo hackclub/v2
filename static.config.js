@@ -68,10 +68,6 @@ export default {
       component: 'src/containers/Start'
     },
     {
-      path: '/team',
-      component: 'src/containers/Team'
-    },
-    {
       is404: true,
       component: 'src/containers/NotFound'
     }

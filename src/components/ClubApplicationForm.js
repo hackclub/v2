@@ -151,18 +151,6 @@ const InnerForm = props => {
             error={touched.leaders_video_url && errors.leaders_video_url}
           />
           <Field
-            name="leaders_interesting_project"
-            label="Please tell us about an interesting project, preferably outside of class, that two or more of you created together. Include URLs if possible."
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.leaders_interesting_project}
-            error={
-              touched.leaders_interesting_project &&
-              errors.leaders_interesting_project
-            }
-            type="textarea"
-          />
-          <Field
             name="leaders_team_origin_story"
             label="How long have you known your other club leaders and how did you meet?"
             onChange={handleChange}

@@ -11,7 +11,6 @@ import {
   Form,
   TableOfContents
 } from '../components/Forms'
-import LeaderInviteForm from '../components/LeaderInviteForm'
 import Button from '../components/Button'
 import { Container, Flex, Box, Link as A } from '@hackclub/design-system'
 import { withFormik } from 'formik'
@@ -113,7 +112,6 @@ const InnerForm = props => {
           />
         </Fieldset>
         <Fieldset section="leaders">
-          <LeaderInviteForm params={values} id={id} authToken={authToken} />
           <Field
             name="point_of_contact_id"
             label="Point of contact"

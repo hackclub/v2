@@ -14,7 +14,7 @@ import {
 } from '@hackclub/design-system'
 import { Prompt } from 'react-static'
 
-export const Error = Text.extend.attrs({
+export const Error = Text.span.extend.attrs({
   className: 'error',
   color: 'error',
   f: 1,

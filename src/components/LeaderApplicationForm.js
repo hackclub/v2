@@ -252,7 +252,6 @@ const InnerForm = props => {
 
 const LeaderApplicationForm = withFormik({
   mapPropsToValues: props => props.params,
-  enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, setStatus, props, resetForm }) => {
     fetch(`${api}/v1/applicant_profiles/${props.id}`, {
       method: 'PATCH',

@@ -12,11 +12,11 @@ import {
   Absolute,
   Link as A
 } from 'rebass'
-import theme, { colors, mx } from '../theme'
-import { Head } from 'react-static'
-import Nav from '../components/Nav'
-import ApplicationForm from '../components/ApplicationForm'
-import Footer from '../components/Footer'
+import theme, { colors, mx } from '../../theme'
+import Helmet from 'react-helmet'
+import Nav from '../../components/Nav'
+import ApplicationForm from '../../components/ApplicationForm'
+import Footer from '../../components/Footer'
 
 const css = `
   body { background-color: #000; }
@@ -112,13 +112,11 @@ class ApplyRepl extends Component {
 
     return (
       <Provider theme={theme}>
-        <Head>
-          <title>Apply – Hack Club</title>
-          <link
-            rel="stylesheet"
-            href="//brick.a.ssl.fastly.net/Roboto+Mono:400:700"
-          />
-        </Head>
+        <Helmet title="Apply – Hack Club" />
+        <link
+          rel="stylesheet"
+          href="//brick.a.ssl.fastly.net/Roboto+Mono:400:700"
+        />
         <style children={css} />
         <Header>
           <Nav />

@@ -1,5 +1,5 @@
 import React from 'react'
-import { api } from '../../data'
+import { api } from '../data.json'
 import { Heading, Label, Input, Text } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import yup from 'yup'

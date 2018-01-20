@@ -12,7 +12,7 @@ import {
   mediaQueries,
   colors
 } from '@hackclub/design-system'
-import { Prompt } from 'react-static'
+import { Prompt } from 'react-router'
 
 export const Error = Text.span.extend.attrs({
   className: 'error',

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Container, Heading, mediaQueries } from '@hackclub/design-system'
 import { wk } from '../theme'
-import { stats } from '../../data'
+import { stats } from '../data.json'
 
 const tilt = n =>
   wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`)

@@ -12,11 +12,12 @@ import {
   Absolute,
   ButtonOutline
 } from 'rebass'
-import theme, { colors, mx } from '../theme'
-import { Head, Link } from 'react-static'
-import About from '../components/About'
-import Stat from '../components/Stat'
-import { stats } from '../../data'
+import theme, { colors, mx } from '../../theme'
+import Helmet from 'react-helmet'
+import Link from 'gatsby-link'
+import About from '../../components/About'
+import Stat from '../../components/Stat'
+import { stats } from '../../data.json'
 
 const css = `
   body { background-color: #000; }
@@ -168,13 +169,11 @@ class StartRepl extends Component {
 
     return (
       <Provider theme={theme}>
-        <Head>
-          <title>Start – Hack Club</title>
-          <link
-            rel="stylesheet"
-            href="//brick.a.ssl.fastly.net/Roboto+Mono:400:700"
-          />
-        </Head>
+        <Helmet title="Start Your Hack Club" />
+        <link
+          rel="stylesheet"
+          href="//brick.a.ssl.fastly.net/Roboto+Mono:400:700"
+        />
         <ReplAnalytics paramString={paramString} />
         <style children={css} />
         <Header>

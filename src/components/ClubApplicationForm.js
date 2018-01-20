@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { api } from '../../data'
+import { api } from '../data.json'
 import {
   Aside,
   ConfirmClose,
@@ -341,4 +341,5 @@ const ClubApplicationForm = withFormik({
   },
   displayName: 'ClubApplicationForm'
 })(InnerForm)
+
 export default ClubApplicationForm

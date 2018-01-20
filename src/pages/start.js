@@ -8,20 +8,17 @@ import {
   Text,
   Button,
   LargeButton,
-  Section as S,
+  Section,
   Link as A,
   Module,
   mediaQueries,
   cx
 } from '@hackclub/design-system'
-import { Head, Link } from 'react-static'
+import Helmet from 'react-helmet'
+import Link from 'gatsby-link'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 
-/* will be fixed in next DS release */
-const Section = S.extend`
-  flex-direction: column;
-`
 const One = Section.extend`
   padding-top: 0 !important;
   background-color: ${cx('red.5')};
@@ -94,9 +91,7 @@ LargeButton.link = LargeButton.withComponent(Link)
 
 export default () => (
   <ThemeProvider>
-    <Head>
-      <title>Start – Hack Club</title>
-    </Head>
+    <Helmet title="Start Your Hack Club" />
     <One>
       <Nav />
       <Heading.h1 f={[5, 6]} mt={[4, 5]}>

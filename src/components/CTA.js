@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from './Button'
-import { Link } from 'react-static'
+import Link from 'gatsby-link'
 
 const CTA = props => (
   <Button

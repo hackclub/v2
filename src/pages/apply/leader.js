@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import { Head } from 'react-static'
-import { api } from '../../data'
-import { ThemeProvider } from '@hackclub/design-system'
-import LoadingAnimation from '../components/LoadingAnimation'
-import ClubApplicationForm from '../components/ClubApplicationForm'
-import ApplyNav from '../components/ApplyNav'
-import Footer from '../components/Footer'
-import Login from '../components/Login'
-import yup from 'yup'
-import fetch from 'unfetch'
+import Helmet from 'react-helmet'
+import { api } from '../../data.json'
+import { ThemeProvider, Heading, Container } from '@hackclub/design-system'
+import theme from '../../theme'
+import LeaderApplicationForm from '../../components/LeaderApplicationForm'
+import LoadingAnimation from '../../components/LoadingAnimation'
+import Login from '../../components/Login'
+import ApplyNav from '../../components/ApplyNav'
+import Footer from '../../components/Footer'
 
 export default class extends Component {
   constructor(props) {
@@ -23,22 +22,22 @@ export default class extends Component {
   }
 
   componentDidMount() {
-    var id
+    let id
     const params = window.location.search.slice(1).split(/&/)
-    for (var i = 0; i < params.length; i++) {
+    for (let i = 0; i < params.length; i++) {
       let param = params[i]
       if (param.split('=')[0] === 'id') {
         id = param.split('=')[1]
       }
     }
     const authToken = window.localStorage.getItem('authToken')
-    this.setState({ authToken, id })
+    this.setState({ id, authToken })
     const needsToAuth = authToken === null || id === null
     if (needsToAuth) {
       const status = 'needsToAuth'
       this.setState({ status })
     } else {
-      fetch(`${api}/v1/new_club_applications/${id}`, {
+      fetch(`${api}/v1/applicant_profiles/${id}`, {
         method: 'GET',
         headers: { Authorization: `Bearer ${authToken}` }
       })
@@ -76,7 +75,7 @@ export default class extends Component {
       return (
         <React.Fragment>
           <ApplyNav />
-          <ClubApplicationForm
+          <LeaderApplicationForm
             params={formFields}
             id={id}
             authToken={authToken}
@@ -90,9 +89,7 @@ export default class extends Component {
   render() {
     return (
       <ThemeProvider>
-        <Head>
-          <title children="Edit Club Application" />
-        </Head>
+        <Helmet title="Edit Leader Application – Hack Club" />
         {this.content()}
       </ThemeProvider>
     )

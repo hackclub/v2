@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
-import { Head } from 'react-static'
-import { api } from '../../data'
+import Helmet from 'react-helmet'
+import { api } from '../../data.json'
 import {
   ThemeProvider,
   Card,
@@ -14,14 +14,12 @@ import {
   Link as DSLink,
   cx
 } from '@hackclub/design-system'
-import LeaderInviteForm from '../components/LeaderInviteForm'
-import LoadingAnimation from '../components/LoadingAnimation'
-import Login from '../components/Login'
-import ApplyNav from '../components/ApplyNav'
+import LoadingAnimation from '../../components/LoadingAnimation'
+import Login from '../../components/Login'
+import LeaderInviteForm from '../../components/LeaderInviteForm'
+import ApplyNav from '../../components/ApplyNav'
 import fetch from 'unfetch'
-import { Link } from 'react-static'
-
-LargeButton.link = LargeButton.withComponent(Link)
+import Link from 'gatsby-link'
 
 const A = DSLink.extend`
   :hover {
@@ -296,9 +294,7 @@ class ApplicationIndex extends Component {
   render() {
     return (
       <ThemeProvider>
-        <Head>
-          <title>Apply – Hack Club</title>
-        </Head>
+        <Helmet title="Apply – Hack Club" />
         {this.content()}
       </ThemeProvider>
     )

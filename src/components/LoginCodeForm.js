@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { api } from '../../data'
+import { api } from '../data.json'
 import { Label, Input, Text } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import yup from 'yup'
@@ -79,7 +79,6 @@ class InnerForm extends Component {
             disabled={isSubmitting}
             autoComplete="off"
             autoFocus
-            data-lpignore
           />
         </Label>
         <Text

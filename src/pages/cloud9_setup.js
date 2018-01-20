@@ -1,11 +1,10 @@
 import React from 'react'
 import { ThemeProvider, Box, Heading, Section } from '@hackclub/design-system'
-import { Head } from 'react-static'
+import Helmet from 'react-helmet'
 import Nav from '../components/Nav'
 import Cloud9Form from '../components/Cloud9Form'
 
 const Header = Section.withComponent('header').extend`
-  flex-direction: column;
   padding-top: 0 !important;
   background-color: ${props => props.theme.colors.blue[6]};
   background-image: linear-gradient(
@@ -18,9 +17,7 @@ const Header = Section.withComponent('header').extend`
 
 export default () => (
   <ThemeProvider>
-    <Head>
-      <title>Cloud9 – Hack Club</title>
-    </Head>
+    <Helmet title="Cloud9 – Hack Club" />
     <Header pb={4} align="center">
       <Nav />
       <Heading.h1 f={[5, 6]} mt={4} mb={2}>

@@ -6,15 +6,13 @@ import {
   LargeButton,
   Text
 } from '@hackclub/design-system'
-import { Head } from 'react-static'
+import Helmet from 'react-helmet'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 
 export default () => (
   <ThemeProvider>
-    <Head>
-      <title>Hack Club</title>
-    </Head>
+    <Helmet title="404 – Hack Club" />
     <Nav color="primary" />
     <Container maxWidth={48} px={2} py={6} align="center">
       <Heading.h1 color="primary" f={[5, 6]}>

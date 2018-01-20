@@ -1,6 +1,6 @@
 import React from 'react'
 import { Heading, Box, Link as A, mediaQueries } from '@hackclub/design-system'
-import { Link } from 'react-static'
+import Link from 'gatsby-link'
 
 const Base = Box.extend`
   background: url(/diagonal.svg) top center repeat-x;
@@ -43,7 +43,7 @@ export default () => (
     <Heading.h3 color="slate" f={4} bold={false} regular>
       So let’s teach it like that at every high school.{' '}
       <A.link color="primary" to="/meetings" underline>
-        Explore meetings »
+        Explore meetings →
       </A.link>
     </Heading.h3>
   </Base>

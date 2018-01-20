@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { api } from '../../data'
+import { api } from '../data.json'
 import { Container } from '@hackclub/design-system'
 import {
   FormWrapper,
@@ -11,7 +11,7 @@ import {
   Form
 } from '../components/Forms'
 import { withFormik } from 'formik'
-import { Link, Prompt } from 'react-static'
+import Link from 'gatsby-link'
 
 const InnerForm = props => {
   const {
@@ -75,7 +75,7 @@ const InnerForm = props => {
           <Field
             name="leader_gender"
             label="Gender"
-            hint="We collect this info for foundations who donate to us. This doesn't affect our decision to accept you."
+            hint="We collect this info for foundations who donate to us. This doesn’t have an effect on your application."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.leader_gender || 'select'}
@@ -92,7 +92,7 @@ const InnerForm = props => {
           <Field
             name="leader_ethnicity"
             label="Ethnicity"
-            hint="We collect this info for foundations who donate to us. This doesn't affect our decision to accept you."
+            hint="We collect this info for foundations who donate to us. This doesn’t have an effect on your application."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.leader_ethnicity || 'select'}
@@ -252,6 +252,7 @@ const InnerForm = props => {
 
 const LeaderApplicationForm = withFormik({
   mapPropsToValues: props => props.params,
+  enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, setStatus, props, resetForm }) => {
     fetch(`${api}/v1/applicant_profiles/${props.id}`, {
       method: 'PATCH',

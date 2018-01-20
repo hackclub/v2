@@ -3,5 +3,5 @@
 The new Hack Club website.
 
 1. Clone, `cd`
-2. `npm i && npm run dev`
-3. Open [localhost:3000](http://localhost:3000)
+2. `yarn && yarn run dev`
+3. Open [localhost:8000](http://localhost:8000)

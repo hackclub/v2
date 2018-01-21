@@ -16,6 +16,7 @@ import {
 } from '@hackclub/design-system'
 import LeaderInviteForm from '../components/LeaderInviteForm'
 import LoadingAnimation from '../components/LoadingAnimation'
+import SubmitButton from '../components/SubmitButton'
 import Login from '../components/Login'
 import ApplyNav from '../components/ApplyNav'
 import fetch from 'unfetch'
@@ -71,7 +72,7 @@ const ApplicationCard = props => {
     created_at,
     submitted_at
   } = props.app
-  const { authToken, callback } = props
+  const { authToken, callback, app } = props
 
   const leaderProfile = applicant_profiles.find(
     profile => profile.applicant.id == props.applicantId
@@ -138,6 +139,9 @@ const ApplicationCard = props => {
           to={`/apply/leader?id=${leaderProfile.id}`}
           children="Edit Leader Profile"
         />
+      </Flex>
+      <Flex mb={3}>
+        <SubmitButton authToken={authToken} application={app} />
       </Flex>
       <CustomCard>
         <CustomHeading>Leader Profiles</CustomHeading>

@@ -74,7 +74,7 @@ export const Hint = Text.extend.attrs({
 export class ConfirmClose extends Component {
   componentWillMount() {
     // https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm
-    https: window.onbeforeunload = () => window.confirm()
+    window.onbeforeunload = () => window.confirm()
   }
 
   componentWillUnmount() {

@@ -20,7 +20,6 @@ export const clubApplicationSchema = yup.object().shape({
   high_school_name: yup.string().required(),
   high_school_type: yup.string().notOneOf(['select']).required(),
   high_school_address: yup.string().required(),
-  leaders_video_url: yup.string().required(),
   leaders_team_origin_story: yup.string().required(),
   progress_general: yup.string().required(),
   progress_student_interest: yup.string().required(),
@@ -118,25 +117,6 @@ const InnerForm = props => {
               </option>
             ))}
           </Field>
-          <Field
-            name="leaders_video_url"
-            label=" Please enter the URL of a 1 minute unlisted (not private) YouTube video introducing the leaders. "
-            hint={
-              <Fragment>
-                <A
-                  href="https://github.com/hackclub/hackclub/blob/master/clubs/youtube_video.md"
-                  target="_blank"
-                >
-                  Click here
-                </A>{' '}
-                for more details about the video.
-              </Fragment>
-            }
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.leaders_video_url}
-            error={touched.leaders_video_url && errors.leaders_video_url}
-          />
           <Field
             name="leaders_team_origin_story"
             label="How long have you known your other club leaders and how did you meet?"

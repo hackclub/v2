@@ -18,33 +18,34 @@ const SaveStatusText = Text.extend.attrs({
   p: 1,
   m: 1,
   bg: 'white',
-  children: props => props.saved ? 'Saved' : 'Saving...',
-  color: props => props.saved ? 'success' : 'primary'
+  children: props => (props.saved ? 'Saved' : 'Saving...'),
+  color: props => (props.saved ? 'success' : 'primary')
 })`
 position: fixed;
 bottom: 0;
 left: 0;
 border-style: solid;
 border-width: 1px;
-border-color: ${props => props.saved ? colors.success : colors.primary};
+border-color: ${props => (props.saved ? colors.success : colors.primary)};
 border-radius: 4px;
-opacity: ${props => props.saved ? 0 : 1};
-transition-duration: ${props => props.saved ? 2 : 1 }s;
-transition-delay: ${props => props.saved ? 2 : 0 }s;
+opacity: ${props => (props.saved ? 0 : 1)};
+transition-duration: ${props => (props.saved ? 2 : 1)}s;
+transition-delay: ${props => (props.saved ? 2 : 0)}s;
 transition-property: opacity;
 transition-timing-function: ease-in-out;
 `
 
 const SaveStatusLine = Box.extend.attrs({
-  w: 1,
+  w: 1
 })`
 position: fixed;
 bottom: 0;
 border-style: solid;
 border-width: 0;
 border-top-width: 1px;
-border-color: ${props => props.saved ? colors.success : colors.primary};
-box-shadow: 0 4px 8px 0 ${props => props.saved ? colors.success : colors.primary};
+border-color: ${props => (props.saved ? colors.success : colors.primary)};
+box-shadow: 0 4px 8px 0 ${props =>
+  props.saved ? colors.success : colors.primary};
 `
 
 const SaveStatus = props => (
@@ -98,7 +99,7 @@ export class AutoSaver extends Component {
         </Fragment>
       )
     } else {
-      return (<SaveStatus saved={true} />)
+      return <SaveStatus saved={true} />
     }
   }
 }

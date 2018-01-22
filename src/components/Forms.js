@@ -25,7 +25,7 @@ export class AutoSaver extends Component {
 
   componentWillMount() {
     const intervalId = setInterval(this.autoSave, 2000)
-    this.setState({ intervalId: intervalId })
+    this.setState({ intervalId })
   }
 
   componentWillUnmount() {
@@ -37,7 +37,7 @@ export class AutoSaver extends Component {
     const { previousValues } = this.state
     const unsavedChanges = previousValues !== values
 
-    this.setState({ unsavedChanges: unsavedChanges })
+    this.setState({ unsavedChanges })
 
     if (unsavedChanges && !isSubmitting) {
       // We have to call handleSubmit this way because formik:
@@ -105,7 +105,7 @@ export class Field extends Component {
       ['textarea', 'select'].indexOf(type) === -1 ? 'input' : type
     )
 
-    this.setState({ Tag: Tag })
+    this.setState({ Tag })
   }
 
   render() {

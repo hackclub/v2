@@ -8,311 +8,249 @@ import {
   Fieldset,
   Field,
   Submit,
-  Form
+  Form,
+  AutoSaver
 } from '../components/Forms'
 import { withFormik } from 'formik'
 import { Link, Prompt } from 'react-static'
 
-class AutoSaver extends Component {
-  constructor(props) {
-    super(props)
-    this.trySaving = this.trySaving.bind(this)
-  }
-  trySaving() {
-    const { handleSubmit, isSubmitting, previousVal, values } = this.props
+const InnerForm = props => {
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isSubmitting,
+    params
+  } = props
 
-    if (!isSubmitting) {
-      // We have to call handleSubmit this way:
-      // https://github.com/jaredpalmer/formik/issues/347
-      handleSubmit({ preventDefault: () => null })
-    }
-  }
-  componentWillMount() {
-    const intervalId = setInterval(this.trySaving, 5000)
-    this.setState({ intervalId: intervalId })
-  }
-  componentWillUnmount() {
-    clearInterval(this.state.intervalId)
-  }
-  render() {
-    return null
-  }
-}
-
-class InnerForm extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      previousVal: this.props.values
-    }
-
-    this.autoSave = this.autoSave.bind(this)
-  }
-
-  componentWillMount() {
-    const intervalId = setInterval(this.autoSave, 2000)
-    this.setState({ intervalId: intervalId })
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.state.intervalId)
-  }
-
-  autoSave() {
-    const { handleSubmit, isSubmitting, values } = this.props
-    const { previousVal } = this.state
-    const unsavedChanges = previousVal !== values
-    this.setState({ unsavedChanges: unsavedChanges })
-
-    if (unsavedChanges && !isSubmitting) {
-      // We have to call handleSubmit this way:
-      // https://github.com/jaredpalmer/formik/issues/347
-      handleSubmit({ preventDefault: () => null })
-      this.setState({
-        previousVal: values
-      })
-    }
-  }
-
-  render() {
-    const {
-      values,
-      errors,
-      touched,
-      handleChange,
-      handleBlur,
-      handleSubmit,
-      isSubmitting,
-      params
-    } = this.props
-    const { unsavedChanges } = this.state
-
-    return (
-      <FormWrapper>
-        {unsavedChanges ? <ConfirmClose /> : null}
-        <Form onSubmit={handleSubmit}>
-          <Fieldset section="leader">
-            <Field
-              name="leader_name"
-              label="Full Name"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.leader_name}
-              error={touched.leader_name && errors.leader_name}
-            />
-            <Field
-              name="leader_email"
-              label="Email"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.leader_email}
-              error={touched.leader_email && errors.leader_email}
-            />
-            <Field
-              name="leader_birthday"
-              label="Birthday"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.leader_birthday}
-              error={touched.leader_birthday && errors.leader_birthday}
-              type="date"
-            />
-            <Field
-              name="leader_year_in_school"
-              label="Year in school"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.leader_year_in_school || 'select'}
-              error={
-                touched.leader_year_in_school && errors.leader_year_in_school
-              }
-              type="select"
-            >
-              <option value="select">Select One</option>
-              <option value="freshman">Freshman</option>
-              <option value="sophomore">Sophomore</option>
-              <option value="junior">Junior</option>
-              <option value="senior">Senior</option>
-              <option value="other_year">Other year</option>
-            </Field>
-            <Field
-              name="leader_gender"
-              label="Gender"
-              hint="We collect this info for foundations who donate to us. This doesn't affect our decision to accept you."
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.leader_gender || 'select'}
-              error={touched.leader_gender && errors.leader_gender}
-              type="select"
-            >
-              <option value="select">Select One</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="genderqueer">Genderqueer</option>
-              <option value="agender">Agender</option>
-              <option value="other_gender">Other</option>
-            </Field>
-            <Field
-              name="leader_ethnicity"
-              label="Ethnicity"
-              hint="We collect this info for foundations who donate to us. This doesn't affect our decision to accept you."
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.leader_ethnicity || 'select'}
-              error={touched.leader_ethnicity && errors.leader_ethnicity}
-              type="select"
-            >
-              <option value="select">Select One</option>
-              <option value="hispanic_or_latino">Hispanic or Latino</option>
-              <option value="white">White</option>
-              <option value="black">Black</option>
-              <option value="native_american_or_indian">
-                Native American or American Indian
-              </option>
-              <option value="asian_or_pacific_islander">
-                Asian or Pacific Islander
-              </option>
-              <option value="other_ethnicity">Other ethnicity</option>
-            </Field>
-            <Field
-              name="leader_phone_number"
-              label="Phone number (include country code if not in the United States)"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.leader_phone_number}
-              error={touched.leader_phone_number && errors.leader_phone_number}
-              type="tel"
-            />
-            <Field
-              name="leader_address"
-              label="Your full address (include city, state/province, country)"
-              hint="We may send you a letter, so you should write it the same you would an envelope"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.leader_address}
-              error={touched.leader_address && errors.leader_address}
-              type="textarea"
-            />
-          </Fieldset>
-          <Fieldset section="presence">
-            <Field
-              name="presence_personal_website"
-              label="Personal website link"
-              placeholder="https://"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.presence_personal_website}
-              error={
-                touched.presence_personal_website &&
-                errors.presence_personal_website
-              }
-              type="url"
-              optional
-            />
-            <Field
-              name="presence_github_url"
-              label="GitHub link"
-              placeholder="https://"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.presence_github_url}
-              error={touched.presence_github_url && errors.presence_github_url}
-              type="url"
-              optional
-            />
-            <Field
-              name="presence_linkedin_url"
-              label="LinkedIn link"
-              placeholder="https://"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.presence_linkedin_url}
-              error={
-                touched.presence_linkedin_url && errors.presence_linkedin_url
-              }
-              type="url"
-              optional
-            />
-            <Field
-              name="presence_facebook_url"
-              label="Facebook link"
-              placeholder="https://"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.presence_facebook_url}
-              error={
-                touched.presence_facebook_url && errors.presence_facebook_url
-              }
-              type="url"
-              optional
-            />
-            <Field
-              name="presence_twitter_url"
-              label="Twitter link"
-              placeholder="https://"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.presence_twitter_url}
-              error={
-                touched.presence_twitter_url && errors.presence_twitter_url
-              }
-              type="url"
-              optional
-            />
-          </Fieldset>
-          <Fieldset section="skills">
-            <Field
-              name="skills_system_hacked"
-              label={
-                <Fragment>
-                  Please tell us about the time you most successfully hacked
-                  some (non-computer) system to your advantage.{' '}
-                  <a href="https://www.quora.com/When-have-you-most-successfully-hacked-a-non-computer-system-to-your-advantage">
-                    Here are examples
-                  </a>{' '}
-                  of what we’re looking for.
-                </Fragment>
-              }
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.skills_system_hacked}
-              error={
-                touched.skills_system_hacked && errors.skills_system_hacked
-              }
-              type="textarea"
-            />
-            <Field
-              name="skills_impressive_achievement"
-              label="Please tell us in one or two sentences about the most impressive thing you have built or achieved."
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.skills_impressive_achievement}
-              error={
-                touched.skills_impressive_achievement &&
-                errors.skills_impressive_achievement
-              }
-              type="textarea"
-            />
-            <Field
-              name="skills_is_technical"
-              label="Are you a technical leader? (You are a programmer who can teach without outside assistance)"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.skills_is_technical || 'select'}
-              error={touched.skills_is_technical && errors.skills_is_technical}
-              type="select"
-            >
-              <option value="select" disabled>
-                Select One
-              </option>
-              <option value={true}>Yes</option>
-              <option value={false}>No</option>
-            </Field>
-          </Fieldset>
-        </Form>
-      </FormWrapper>
-    )
-  }
+  return (
+    <FormWrapper>
+      <AutoSaver
+        handleSubmit={handleSubmit}
+        isSubmitting={isSubmitting}
+        values={values}
+      />
+      <Form onSubmit={handleSubmit}>
+        <Fieldset section="leader">
+          <Field
+            name="leader_name"
+            label="Full Name"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.leader_name}
+            error={touched.leader_name && errors.leader_name}
+          />
+          <Field
+            name="leader_email"
+            label="Email"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.leader_email}
+            error={touched.leader_email && errors.leader_email}
+          />
+          <Field
+            name="leader_birthday"
+            label="Birthday"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.leader_birthday}
+            error={touched.leader_birthday && errors.leader_birthday}
+            type="date"
+          />
+          <Field
+            name="leader_year_in_school"
+            label="Year in school"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.leader_year_in_school || 'select'}
+            error={
+              touched.leader_year_in_school && errors.leader_year_in_school
+            }
+            type="select"
+          >
+            <option value="select">Select One</option>
+            <option value="freshman">Freshman</option>
+            <option value="sophomore">Sophomore</option>
+            <option value="junior">Junior</option>
+            <option value="senior">Senior</option>
+            <option value="other_year">Other year</option>
+          </Field>
+          <Field
+            name="leader_gender"
+            label="Gender"
+            hint="We collect this info for foundations who donate to us. This doesn't affect our decision to accept you."
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.leader_gender || 'select'}
+            error={touched.leader_gender && errors.leader_gender}
+            type="select"
+          >
+            <option value="select">Select One</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="genderqueer">Genderqueer</option>
+            <option value="agender">Agender</option>
+            <option value="other_gender">Other</option>
+          </Field>
+          <Field
+            name="leader_ethnicity"
+            label="Ethnicity"
+            hint="We collect this info for foundations who donate to us. This doesn't affect our decision to accept you."
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.leader_ethnicity || 'select'}
+            error={touched.leader_ethnicity && errors.leader_ethnicity}
+            type="select"
+          >
+            <option value="select">Select One</option>
+            <option value="hispanic_or_latino">Hispanic or Latino</option>
+            <option value="white">White</option>
+            <option value="black">Black</option>
+            <option value="native_american_or_indian">
+              Native American or American Indian
+            </option>
+            <option value="asian_or_pacific_islander">
+              Asian or Pacific Islander
+            </option>
+            <option value="other_ethnicity">Other ethnicity</option>
+          </Field>
+          <Field
+            name="leader_phone_number"
+            label="Phone number (include country code if not in the United States)"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.leader_phone_number}
+            error={touched.leader_phone_number && errors.leader_phone_number}
+            type="tel"
+          />
+          <Field
+            name="leader_address"
+            label="Your full address (include city, state/province, country)"
+            hint="We may send you a letter, so you should write it the same you would an envelope"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.leader_address}
+            error={touched.leader_address && errors.leader_address}
+            type="textarea"
+          />
+        </Fieldset>
+        <Fieldset section="presence">
+          <Field
+            name="presence_personal_website"
+            label="Personal website link"
+            placeholder="https://"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.presence_personal_website}
+            error={
+              touched.presence_personal_website &&
+              errors.presence_personal_website
+            }
+            type="url"
+            optional
+          />
+          <Field
+            name="presence_github_url"
+            label="GitHub link"
+            placeholder="https://"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.presence_github_url}
+            error={touched.presence_github_url && errors.presence_github_url}
+            type="url"
+            optional
+          />
+          <Field
+            name="presence_linkedin_url"
+            label="LinkedIn link"
+            placeholder="https://"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.presence_linkedin_url}
+            error={
+              touched.presence_linkedin_url && errors.presence_linkedin_url
+            }
+            type="url"
+            optional
+          />
+          <Field
+            name="presence_facebook_url"
+            label="Facebook link"
+            placeholder="https://"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.presence_facebook_url}
+            error={
+              touched.presence_facebook_url && errors.presence_facebook_url
+            }
+            type="url"
+            optional
+          />
+          <Field
+            name="presence_twitter_url"
+            label="Twitter link"
+            placeholder="https://"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.presence_twitter_url}
+            error={touched.presence_twitter_url && errors.presence_twitter_url}
+            type="url"
+            optional
+          />
+        </Fieldset>
+        <Fieldset section="skills">
+          <Field
+            name="skills_system_hacked"
+            label={
+              <Fragment>
+                Please tell us about the time you most successfully hacked some
+                (non-computer) system to your advantage.{' '}
+                <a href="https://www.quora.com/When-have-you-most-successfully-hacked-a-non-computer-system-to-your-advantage">
+                  Here are examples
+                </a>{' '}
+                of what we’re looking for.
+              </Fragment>
+            }
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.skills_system_hacked}
+            error={touched.skills_system_hacked && errors.skills_system_hacked}
+            type="textarea"
+          />
+          <Field
+            name="skills_impressive_achievement"
+            label="Please tell us in one or two sentences about the most impressive thing you have built or achieved."
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.skills_impressive_achievement}
+            error={
+              touched.skills_impressive_achievement &&
+              errors.skills_impressive_achievement
+            }
+            type="textarea"
+          />
+          <Field
+            name="skills_is_technical"
+            label="Are you a technical leader? (You are a programmer who can teach without outside assistance)"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.skills_is_technical || 'select'}
+            error={touched.skills_is_technical && errors.skills_is_technical}
+            type="select"
+          >
+            <option value="select" disabled>
+              Select One
+            </option>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
+          </Field>
+        </Fieldset>
+      </Form>
+    </FormWrapper>
+  )
 }
 
 const LeaderApplicationForm = withFormik({

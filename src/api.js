@@ -4,8 +4,29 @@ const apiBase = "https://api.hackclub.com/"
 const methods = ['get', 'put', 'post', 'patch']
 
 const generateMethod = (method) => (
-  (path, options) => (
-    fetch(apiBase + path, {method: method, ...options})
+  (path, options) => {
+    // authToken is shorthand for Authorization: Bearer `authtoken`
+    let filteredOptions = {}
+    for (let [key, value] of Object.entries(options)) {
+      switch(key) {
+        case 'authToken':
+          filteredOptions = {
+            ...filteredOptions,
+            ...{ headers: { 'Authorization': `Bearer ${value}` }}
+          }
+          break
+        case 'data':
+          filteredOptions = {
+            ...filteredOptions,
+            ...{ body: JSON.stringify(value), headers: {'Content-Type': 'application/json'} }
+          }
+          break
+        default:
+          filteredOptions[key] = value
+          break
+      }
+    }
+    return fetch(apiBase + path, {method: method, ...filteredOptions})
       .then(res => {
         if (res.ok) {
           const contentType = res.headers.get("content-type")
@@ -22,7 +43,7 @@ const generateMethod = (method) => (
         console.error(e)
         throw e
       })
-  )
+  }
 )
 
 let apiClient = {}

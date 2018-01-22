@@ -64,7 +64,7 @@ export class AutoSaver extends Component {
   }
 
   componentWillMount() {
-    const intervalId = setInterval(this.autoSave, 2000)
+    const intervalId = setInterval(this.autoSave, 1000)
     this.setState({ intervalId })
   }
 

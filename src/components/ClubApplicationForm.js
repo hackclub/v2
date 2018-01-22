@@ -46,11 +46,6 @@ const InnerForm = props => {
   } = props
   return (
     <FormWrapper>
-      <AutoSaver
-        handleSubmit={handleSubmit}
-        isSubmitting={isSubmitting}
-        values={values}
-      />
       <Form onSubmit={handleSubmit}>
         <Fieldset section="school">
           <Field
@@ -255,6 +250,11 @@ const InnerForm = props => {
             optional
           />
         </Fieldset>
+        <AutoSaver
+          handleSubmit={handleSubmit}
+          isSubmitting={isSubmitting}
+          values={values}
+        />
       </Form>
     </FormWrapper>
   )

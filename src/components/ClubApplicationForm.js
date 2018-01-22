@@ -46,40 +46,6 @@ const InnerForm = props => {
     authToken,
     params
   } = props
-  const markSubmitted = e => {
-    e.preventDefault()
-    if (values.submitted_at) {
-      alert(
-        'Application already submitted. If you want to make further edits, just "Save Draft"'
-      )
-    } else {
-      fetch(`${api}/v1/new_club_applications/${id}/submit`, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${authToken}`
-        }
-      })
-        .then(res => {
-          if (res.ok) {
-            alert(
-              'Application submitted! You’ll get a confirmation email shortly.'
-            )
-          } else {
-            throw res
-          }
-        })
-        .catch(e => {
-          console.error(e)
-          if (e.status === 422) {
-            alert(
-              'Can’t submit. Finish filling out the application and make sure all co-leads have filled out their profiles.'
-            )
-          } else {
-            alert('Something went terribly wrong')
-          }
-        })
-    }
-  }
   return (
     <FormWrapper>
       {values != params ? <ConfirmClose /> : null}
@@ -314,13 +280,6 @@ const InnerForm = props => {
             my={2}
             bg="white"
             color="primary"
-          />
-          <Submit
-            value="Submit Application"
-            disabled={isSubmitting}
-            onClick={markSubmitted}
-            w={1}
-            my={2}
           />
         </Container>
       </Form>

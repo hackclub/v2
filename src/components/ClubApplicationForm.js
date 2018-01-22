@@ -55,6 +55,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.high_school_name}
             error={touched.high_school_name && errors.high_school_name}
+            disabled={values.submitted_at !== null}
           />
           <Field
             name="high_school_url"
@@ -63,6 +64,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.high_school_url}
             error={touched.high_school_url && errors.high_school_url}
+            disabled={values.submitted_at !== null}
             optional
           />
           <Field
@@ -73,6 +75,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.high_school_type || 'select'}
             error={touched.high_school_type && errors.high_school_type}
+            disabled={values.submitted_at !== null}
           >
             <option disabled value="select">
               Select One
@@ -90,6 +93,7 @@ const InnerForm = props => {
             value={values.high_school_address}
             error={touched.high_school_address && errors.high_school_address}
             type="textarea"
+            disabled={values.submitted_at !== null}
           />
         </Fieldset>
         <Fieldset section="leaders">
@@ -102,6 +106,7 @@ const InnerForm = props => {
             value={values.point_of_contact_id || 'select'}
             error={touched.point_of_contact_id && errors.point_of_contact_id}
             type="select"
+            disabled={values.submitted_at !== null}
           >
             <option disabled value="select">
               Select One
@@ -123,6 +128,7 @@ const InnerForm = props => {
               errors.leaders_team_origin_story
             }
             type="textarea"
+            disabled={values.submitted_at !== null}
           />
         </Fieldset>
         <Fieldset section="progress">
@@ -134,6 +140,7 @@ const InnerForm = props => {
             value={values.progress_general}
             error={touched.progress_general && errors.progress_general}
             type="textarea"
+            disabled={values.submitted_at !== null}
           />
           <Field
             name="progress_student_interest"
@@ -146,6 +153,7 @@ const InnerForm = props => {
               errors.progress_student_interest
             }
             type="textarea"
+            disabled={values.submitted_at !== null}
           />
           <Field
             name="progress_meeting_yet"
@@ -155,6 +163,7 @@ const InnerForm = props => {
             value={values.progress_meeting_yet}
             error={touched.progress_meeting_yet && errors.progress_meeting_yet}
             type="textarea"
+            disabled={values.submitted_at !== null}
           />
         </Fieldset>
         <Fieldset section="idea">
@@ -166,6 +175,7 @@ const InnerForm = props => {
             value={values.idea_why}
             error={touched.idea_why && errors.idea_why}
             type="textarea"
+            disabled={values.submitted_at !== null}
           />
           <Field
             name="idea_other_coding_clubs"
@@ -177,6 +187,7 @@ const InnerForm = props => {
               touched.idea_other_coding_clubs && errors.idea_other_coding_clubs
             }
             type="textarea"
+            disabled={values.submitted_at !== null}
           />
           <Field
             name="idea_other_general_clubs"
@@ -189,6 +200,7 @@ const InnerForm = props => {
               errors.idea_other_general_clubs
             }
             type="textarea"
+            disabled={values.submitted_at !== null}
           />
         </Fieldset>
         <Fieldset section="formation">
@@ -199,6 +211,7 @@ const InnerForm = props => {
             value={values.formation_registered}
             error={touched.formation_registered && errors.formation_registered}
             label="Have you already registered your club with your school?"
+            disabled={values.submitted_at !== null}
           />
           <Field
             name="formation_misc"
@@ -208,6 +221,7 @@ const InnerForm = props => {
             value={values.formation_misc}
             error={touched.formation_misc && errors.formation_misc}
             type="textarea"
+            disabled={values.submitted_at !== null}
             optional
           />
         </Fieldset>
@@ -224,6 +238,7 @@ const InnerForm = props => {
               errors.other_surprising_or_amusing_discovery
             }
             type="textarea"
+            disabled={values.submitted_at !== null}
           />
         </Fieldset>
         <Fieldset section="curious">
@@ -237,6 +252,7 @@ const InnerForm = props => {
               touched.curious_what_convinced && errors.curious_what_convinced
             }
             type="textarea"
+            disabled={values.submitted_at !== null}
             optional
           />
           <Field
@@ -247,6 +263,7 @@ const InnerForm = props => {
             value={values.curious_how_did_hear}
             error={touched.curious_how_did_hear && errors.curious_how_did_hear}
             type="textarea"
+            disabled={values.submitted_at !== null}
             optional
           />
         </Fieldset>

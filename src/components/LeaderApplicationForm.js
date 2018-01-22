@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { api } from '../../data'
 import { Container } from '@hackclub/design-system'
 import {

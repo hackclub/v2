@@ -14,6 +14,24 @@ import {
 import Button from '../components/Button'
 import { Container, Flex, Box, Link as A } from '@hackclub/design-system'
 import { withFormik } from 'formik'
+import yup from 'yup'
+
+export const clubApplicationSchema = yup.object().shape({
+  high_school_name: yup.string().required(),
+  high_school_type: yup.string().notOneOf(['select']).required(),
+  high_school_address: yup.string().required(),
+  leaders_video_url: yup.string().required(),
+  leaders_team_origin_story: yup.string().required(),
+  progress_general: yup.string().required(),
+  progress_student_interest: yup.string().required(),
+  progress_meeting_yet: yup.string().required(),
+  idea_why: yup.string().required(),
+  idea_other_coding_clubs: yup.string().required(),
+  idea_other_general_clubs: yup.string().required(),
+  formation_registered: yup.string().required(),
+  other_surprising_or_amusing_discovery: yup.string().required(),
+  point_of_contact_id: yup.string().notOneOf(['select']).required()
+})
 
 const InnerForm = props => {
   const {
@@ -27,40 +45,6 @@ const InnerForm = props => {
     id,
     authToken
   } = props
-  const markSubmitted = e => {
-    e.preventDefault()
-    if (values.submitted_at) {
-      alert(
-        'Application already submitted. If you want to make further edits, just "Save Draft"'
-      )
-    } else {
-      fetch(`${api}/v1/new_club_applications/${id}/submit`, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${authToken}`
-        }
-      })
-        .then(res => {
-          if (res.ok) {
-            alert(
-              'Application submitted! You’ll get a confirmation email shortly.'
-            )
-          } else {
-            throw res
-          }
-        })
-        .catch(e => {
-          console.error(e)
-          if (e.status === 422) {
-            alert(
-              'Can’t submit. Finish filling out the application and make sure all co-leads have filled out their profiles.'
-            )
-          } else {
-            alert('Something went terribly wrong')
-          }
-        })
-    }
-  }
   return (
     <FormWrapper>
       <AutoSaver
@@ -291,15 +275,6 @@ const InnerForm = props => {
             optional
           />
         </Fieldset>
-        <Container maxWidth={24}>
-          <Submit
-            value="Submit Application"
-            disabled={isSubmitting}
-            onClick={markSubmitted}
-            w={1}
-            my={2}
-          />
-        </Container>
       </Form>
     </FormWrapper>
   )

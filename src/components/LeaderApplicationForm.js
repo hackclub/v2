@@ -244,8 +244,8 @@ const InnerForm = props => {
             <option value="select" disabled>
               Select One
             </option>
-            <option value={true}>Yes</option>
-            <option value={false}>No</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
           </Field>
         </Fieldset>
       </Form>

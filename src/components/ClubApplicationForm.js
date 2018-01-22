@@ -9,7 +9,7 @@ import {
   Field,
   Submit,
   Form,
-  TableOfContents
+  AutoSaver
 } from '../components/Forms'
 import Button from '../components/Button'
 import { Container, Flex, Box, Link as A } from '@hackclub/design-system'
@@ -25,8 +25,7 @@ const InnerForm = props => {
     handleSubmit,
     isSubmitting,
     id,
-    authToken,
-    params
+    authToken
   } = props
   const markSubmitted = e => {
     e.preventDefault()
@@ -64,7 +63,11 @@ const InnerForm = props => {
   }
   return (
     <FormWrapper>
-      {values != params ? <ConfirmClose /> : null}
+      <AutoSaver
+        handleSubmit={handleSubmit}
+        isSubmitting={isSubmitting}
+        values={values}
+      />
       <Form onSubmit={handleSubmit}>
         <Fieldset section="school">
           <Field
@@ -290,14 +293,6 @@ const InnerForm = props => {
         </Fieldset>
         <Container maxWidth={24}>
           <Submit
-            value="Save Draft"
-            disabled={isSubmitting}
-            w={1}
-            my={2}
-            bg="white"
-            color="primary"
-          />
-          <Submit
             value="Submit Application"
             disabled={isSubmitting}
             onClick={markSubmitted}
@@ -329,9 +324,7 @@ const ClubApplicationForm = withFormik({
         }
       })
       .then(json => {
-        alert('Saved!')
         setSubmitting(false)
-        resetForm()
       })
       .catch(e => {
         console.error(e)

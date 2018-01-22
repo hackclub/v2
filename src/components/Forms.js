@@ -14,6 +14,17 @@ import {
 } from '@hackclub/design-system'
 import { Prompt } from 'react-static'
 
+const SaveStatus = Label.extend.attrs({
+  padding: '16px',
+  children: props => props.saved ? 'Saved' : 'Saving...',
+  color: props => props.saved ? 'slate' : 'accent'
+})`
+border-style: solid;
+border-width: 1px;
+border-color: ${props => props.saved ? colors.slate : colors.accent};
+border-radius: 4px;
+`
+
 export class AutoSaver extends Component {
   constructor(props) {
     super(props)
@@ -50,7 +61,16 @@ export class AutoSaver extends Component {
   }
 
   render() {
-    return this.state.unsavedChanges ? <ConfirmClose /> : null
+    if (this.state.unsavedChanges) {
+      return (
+        <Fragment>
+          <SaveStatus saved={false} />
+          <ConfirmClose />
+        </Fragment>
+      )
+    } else {
+      return (<SaveStatus saved={true} />)
+    }
   }
 }
 

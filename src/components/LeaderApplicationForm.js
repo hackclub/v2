@@ -8,7 +8,8 @@ import {
   Fieldset,
   Field,
   Submit,
-  Form
+  Form,
+  AutoSaver
 } from '../components/Forms'
 import { withFormik } from 'formik'
 import yup from 'yup'
@@ -39,9 +40,14 @@ const InnerForm = props => {
     isSubmitting,
     params
   } = props
+
   return (
     <FormWrapper>
-      {values != params ? <ConfirmClose /> : null}
+      <AutoSaver
+        handleSubmit={handleSubmit}
+        isSubmitting={isSubmitting}
+        values={values}
+      />
       <Form onSubmit={handleSubmit}>
         <Fieldset section="leader">
           <Field
@@ -257,9 +263,6 @@ const InnerForm = props => {
             <option value="false">No</option>
           </Field>
         </Fieldset>
-        <Container maxWidth={24}>
-          <Submit value="Save Draft" disabled={isSubmitting} w={1} my={2} lg />
-        </Container>
       </Form>
     </FormWrapper>
   )
@@ -267,7 +270,7 @@ const InnerForm = props => {
 
 const LeaderApplicationForm = withFormik({
   mapPropsToValues: props => props.params,
-  handleSubmit: (data, { setSubmitting, setStatus, props, resetForm }) => {
+  handleSubmit: (data, { setSubmitting, props }) => {
     fetch(`${api}/v1/applicant_profiles/${props.id}`, {
       method: 'PATCH',
       headers: {
@@ -284,9 +287,7 @@ const LeaderApplicationForm = withFormik({
         }
       })
       .then(json => {
-        alert('Saved!')
         setSubmitting(false)
-        resetForm()
       })
       .catch(e => {
         console.error(e)

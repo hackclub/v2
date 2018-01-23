@@ -15,10 +15,6 @@ import data from '../data.json'
 
 export default () => (
   <ThemeProvider>
-    <Helmet
-      title={data.title}
-      meta={[{ name: 'description', content: data.description }]}
-    />
     <Nav style={{ position: 'absolute', top: 0 }} mode="cloud" />
     <Bubbles />
     <Stripe />

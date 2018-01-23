@@ -52,7 +52,6 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.leader_name}
             error={touched.leader_name && errors.leader_name}
-            disabled={values.submitted_at !== null}
           />
           <Field
             name="leader_email"
@@ -61,7 +60,6 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.leader_email}
             error={touched.leader_email && errors.leader_email}
-            disabled={values.submitted_at !== null}
           />
           <Field
             name="leader_birthday"
@@ -71,7 +69,6 @@ const InnerForm = props => {
             value={values.leader_birthday}
             error={touched.leader_birthday && errors.leader_birthday}
             type="date"
-            disabled={values.submitted_at !== null}
           />
           <Field
             name="leader_year_in_school"
@@ -83,7 +80,6 @@ const InnerForm = props => {
               touched.leader_year_in_school && errors.leader_year_in_school
             }
             type="select"
-            disabled={values.submitted_at !== null}
           >
             <option value="select" disabled>Select One</option>
             <option value="freshman">Freshman</option>
@@ -101,7 +97,6 @@ const InnerForm = props => {
             value={values.leader_gender || 'select'}
             error={touched.leader_gender && errors.leader_gender}
             type="select"
-            disabled={values.submitted_at !== null}
           >
             <option value="select" disabled>Select One</option>
             <option value="male">Male</option>
@@ -119,7 +114,6 @@ const InnerForm = props => {
             value={values.leader_ethnicity || 'select'}
             error={touched.leader_ethnicity && errors.leader_ethnicity}
             type="select"
-            disabled={values.submitted_at !== null}
           >
             <option value="select" disabled>Select One</option>
             <option value="hispanic_or_latino">Hispanic or Latino</option>
@@ -141,7 +135,6 @@ const InnerForm = props => {
             value={values.leader_phone_number}
             error={touched.leader_phone_number && errors.leader_phone_number}
             type="tel"
-            disabled={values.submitted_at !== null}
           />
           <Field
             name="leader_address"
@@ -152,7 +145,6 @@ const InnerForm = props => {
             value={values.leader_address}
             error={touched.leader_address && errors.leader_address}
             type="textarea"
-            disabled={values.submitted_at !== null}
           />
         </Fieldset>
         <Fieldset section="presence">
@@ -168,7 +160,6 @@ const InnerForm = props => {
               errors.presence_personal_website
             }
             type="url"
-            disabled={values.submitted_at !== null}
             optional
           />
           <Field
@@ -180,7 +171,6 @@ const InnerForm = props => {
             value={values.presence_github_url}
             error={touched.presence_github_url && errors.presence_github_url}
             type="url"
-            disabled={values.submitted_at !== null}
             optional
           />
           <Field
@@ -194,7 +184,6 @@ const InnerForm = props => {
               touched.presence_linkedin_url && errors.presence_linkedin_url
             }
             type="url"
-            disabled={values.submitted_at !== null}
             optional
           />
           <Field
@@ -208,7 +197,6 @@ const InnerForm = props => {
               touched.presence_facebook_url && errors.presence_facebook_url
             }
             type="url"
-            disabled={values.submitted_at !== null}
             optional
           />
           <Field
@@ -220,7 +208,6 @@ const InnerForm = props => {
             value={values.presence_twitter_url}
             error={touched.presence_twitter_url && errors.presence_twitter_url}
             type="url"
-            disabled={values.submitted_at !== null}
             optional
           />
         </Fieldset>
@@ -242,7 +229,6 @@ const InnerForm = props => {
             value={values.skills_system_hacked}
             error={touched.skills_system_hacked && errors.skills_system_hacked}
             type="textarea"
-            disabled={values.submitted_at !== null}
           />
           <Field
             name="skills_impressive_achievement"
@@ -255,7 +241,6 @@ const InnerForm = props => {
               errors.skills_impressive_achievement
             }
             type="textarea"
-            disabled={values.submitted_at !== null}
           />
           <Field
             name="skills_is_technical"
@@ -265,7 +250,6 @@ const InnerForm = props => {
             value={values.skills_is_technical || 'select'}
             error={touched.skills_is_technical && errors.skills_is_technical}
             type="select"
-            disabled={values.submitted_at !== null}
           >
             <option value="select" disabled>
               Select One

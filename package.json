@@ -1,9 +1,10 @@
 {
-  "name": "hackclub",
+  "name": "@hackclub/site",
   "description": "hackclub.com",
   "version": "0.1.0",
   "author": "Lachlan Campbell <lachlan@hackclub.com>",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",

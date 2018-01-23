@@ -40,7 +40,6 @@ const InnerForm = props => {
     isSubmitting,
     params
   } = props
-
   return (
     <FormWrapper>
       <Form onSubmit={handleSubmit}>
@@ -81,7 +80,9 @@ const InnerForm = props => {
             }
             type="select"
           >
-            <option value="select" disabled>Select One</option>
+            <option value="select" disabled>
+              Select One
+            </option>
             <option value="freshman">Freshman</option>
             <option value="sophomore">Sophomore</option>
             <option value="junior">Junior</option>
@@ -98,7 +99,9 @@ const InnerForm = props => {
             error={touched.leader_gender && errors.leader_gender}
             type="select"
           >
-            <option value="select" disabled>Select One</option>
+            <option value="select" disabled>
+              Select One
+            </option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="genderqueer">Genderqueer</option>
@@ -115,7 +118,9 @@ const InnerForm = props => {
             error={touched.leader_ethnicity && errors.leader_ethnicity}
             type="select"
           >
-            <option value="select" disabled>Select One</option>
+            <option value="select" disabled>
+              Select One
+            </option>
             <option value="hispanic_or_latino">Hispanic or Latino</option>
             <option value="white">White</option>
             <option value="black">Black</option>

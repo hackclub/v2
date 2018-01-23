@@ -45,10 +45,10 @@ left: 0;
 border-style: solid;
 border-width: 0;
 border-top-width: 1px;
-opacity: ${props => (props.saved ? 2/3 : 1)};
+opacity: ${props => (props.saved ? 2 / 3 : 1)};
 transition-duration: 1s;
-color: ${props => props.saved ? colors.slate : colors.primary};
-box-shadow: 0 0 4px ${props => props.saved ? '0px' : '2px'};
+color: ${props => (props.saved ? colors.slate : colors.primary)};
+box-shadow: 0 0 4px ${props => (props.saved ? '0px' : '2px')};
 `
 
 const SaveStatus = props => (

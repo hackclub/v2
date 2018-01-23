@@ -15,12 +15,12 @@ import Footer from '../components/Footer'
 
 const Header = Box.extend`
   padding-top: 0 !important;
-  background-color: ${props => props.theme.colors.blue[5]};
+  background-color: ${props => props.theme.colors.indigo[5]};
   background-image: linear-gradient(
-    -16deg,
-    ${props => props.theme.colors.pink[4]} 0%,
-    ${props => props.theme.colors.pink[5]} 50%,
-    ${props => props.theme.colors.red[6]} 100%
+    -2deg,
+    ${props => props.theme.colors.violet[4]} 0%,
+    ${props => props.theme.colors.indigo[5]} 50%,
+    ${props => props.theme.colors.indigo[6]} 100%
   );
 `
 

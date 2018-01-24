@@ -125,12 +125,12 @@ const Bubbles = ({ children }) => (
         code like hackers – through tinkering, building projects, and taking
         things apart.
       </Text>
-      <Flex justify="center" wrap mx={-2} mt={4}>
+      <Flex justify="center" align="center" wrap mx={-2} mt={[3, 4]}>
         <LargeButton href="https://finder.hackclub.com" inverted m={2}>
           Find a Club
         </LargeButton>
-        <LargeButton.link to="/start" m={2}>
-          Apply »
+        <LargeButton.link to="/start" m={2} f={[3, 4]}>
+          Start »
         </LargeButton.link>
       </Flex>
     </Cloud>

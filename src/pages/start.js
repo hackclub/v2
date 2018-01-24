@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import {
   ThemeProvider,
   Heading,
+  Card,
   Container,
   Flex,
   Box,
@@ -64,27 +65,20 @@ const Modules = Flex.extend.attrs({
   max-width: 64rem;
 `
 
-const CardBase = Container.extend.attrs({ bg: 'blue.0', p: 3, mt: 3 })`
-  border-radius: .25rem;
-  box-shadow: 0 2px 16px 2px rgba(0,0,0,.1);
+const OthersCard = Card.extend`
   max-width: 28rem;
-  text-align: left;
 
-  ${mediaQueries[1]} { transform: rotate(2deg); }
+  ${mediaQueries[1]} {
+    transform: rotate(2deg);
+  }
 
   p {
-    color: ${cx('slate')};
+    color: ${props => props.theme.colors.slate};
     font-size: 1rem;
     line-height: 1.375;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
   }
 `
-const Card = ({ name, children, ...props }) => (
-  <CardBase {...props}>
-    <Heading.h3 color="blue.6" m={0} f={3} children={name} />
-    {children}
-  </CardBase>
-)
 
 Button.link = Button.withComponent(Link)
 LargeButton.link = LargeButton.withComponent(Link)
@@ -137,7 +131,17 @@ export default () => (
             See what clubs look like »
           </Button.link>
         </Container>
-        <Card name="Are you a teacher or parent?">
+        <OthersCard
+          bg="blue.0"
+          p={3}
+          mt={3}
+          mx="auto"
+          boxShadowSize="md"
+          align="left"
+        >
+          <Heading.h3 color="blue.6" m={0} f={3}>
+            Are you a teacher or parent?
+          </Heading.h3>
           <Text m={0}>
             We hate to say it, but we’re currently only accepting applications
             from students.
@@ -154,7 +158,7 @@ export default () => (
             </A>{' '}
             and we’d really love to help where we can.
           </Text>
-        </Card>
+        </OthersCard>
       </Flex>
     </Three>
     <Four>

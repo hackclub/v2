@@ -73,13 +73,13 @@ const ApplicationCard = props => {
   return (
     <Container maxWidth={36} mt={3} p={3}>
       <CustomCard>
-        <Text>You only need a team to apply. You can invite them here:</Text>
+        <Text>You only need a team to apply. Invite them here:</Text>
         <LeaderInviteForm id={id} authToken={authToken} callback={callback} />
         <Text>After you submit your application:</Text>
         <ul>
           <li>We’ll get back to you with our decision in 3 days</li>
           <li>
-            If you’re accepted we’ll schedule a call to train you to lead your
+            If you’re accepted, we’ll schedule a call to train you to lead your
             club
           </li>
           <li>
@@ -87,7 +87,7 @@ const ApplicationCard = props => {
             meetings, and our online community of club leaders
           </li>
           <li>
-            Once you start holding meetings we’ll check in with you each week to
+            Once you start holding meetings, we’ll check in with you each week to
             make sure everything is going well
           </li>
         </ul>
@@ -136,12 +136,14 @@ const ApplicationCard = props => {
         <LargeButton.link
           w={1}
           m={2}
+          inverted
           to={`/apply/club?id=${id}`}
           children="Edit Application"
         />
         <LargeButton.link
           w={1}
           m={2}
+          inverted
           to={`/apply/leader?id=${leaderProfile.id}`}
           children="Edit Leader Profile"
         />

@@ -9,12 +9,28 @@ import {
   Field,
   Submit,
   Form,
-  TableOfContents
+  AutoSaver
 } from '../components/Forms'
-import LeaderInviteForm from '../components/LeaderInviteForm'
 import Button from '../components/Button'
 import { Container, Flex, Box, Link as A } from '@hackclub/design-system'
 import { withFormik } from 'formik'
+import yup from 'yup'
+
+export const clubApplicationSchema = yup.object().shape({
+  high_school_name: yup.string().required(),
+  high_school_type: yup.string().notOneOf(['select']).required(),
+  high_school_address: yup.string().required(),
+  leaders_team_origin_story: yup.string().required(),
+  progress_general: yup.string().required(),
+  progress_student_interest: yup.string().required(),
+  progress_meeting_yet: yup.string().required(),
+  idea_why: yup.string().required(),
+  idea_other_coding_clubs: yup.string().required(),
+  idea_other_general_clubs: yup.string().required(),
+  formation_registered: yup.string().required(),
+  other_surprising_or_amusing_discovery: yup.string().required(),
+  point_of_contact_id: yup.string().notOneOf(['select']).required()
+})
 
 const InnerForm = props => {
   const {
@@ -26,46 +42,10 @@ const InnerForm = props => {
     handleSubmit,
     isSubmitting,
     id,
-    authToken,
-    params
+    authToken
   } = props
-  const markSubmitted = e => {
-    e.preventDefault()
-    if (values.submitted_at) {
-      alert(
-        'Application already submitted. If you want to make further edits, just "Save Draft"'
-      )
-    } else {
-      fetch(`${api}/v1/new_club_applications/${id}/submit`, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${authToken}`
-        }
-      })
-        .then(res => {
-          if (res.ok) {
-            alert(
-              'Application submitted! You’ll get a confirmation email shortly.'
-            )
-          } else {
-            throw res
-          }
-        })
-        .catch(e => {
-          console.error(e)
-          if (e.status === 422) {
-            alert(
-              'Can’t submit. Finish filling out the application and make sure all co-leads have filled out their profiles.'
-            )
-          } else {
-            alert('Something went terribly wrong')
-          }
-        })
-    }
-  }
   return (
     <FormWrapper>
-      {values != params ? <ConfirmClose /> : null}
       <Form onSubmit={handleSubmit}>
         <Fieldset section="school">
           <Field
@@ -75,6 +55,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.high_school_name}
             error={touched.high_school_name && errors.high_school_name}
+            disabled={values.submitted_at !== null}
           />
           <Field
             name="high_school_url"
@@ -83,6 +64,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.high_school_url}
             error={touched.high_school_url && errors.high_school_url}
+            disabled={values.submitted_at !== null}
             optional
           />
           <Field
@@ -93,6 +75,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.high_school_type || 'select'}
             error={touched.high_school_type && errors.high_school_type}
+            disabled={values.submitted_at !== null}
           >
             <option disabled value="select">
               Select One
@@ -110,10 +93,10 @@ const InnerForm = props => {
             value={values.high_school_address}
             error={touched.high_school_address && errors.high_school_address}
             type="textarea"
+            disabled={values.submitted_at !== null}
           />
         </Fieldset>
         <Fieldset section="leaders">
-          <LeaderInviteForm params={values} id={id} authToken={authToken} />
           <Field
             name="point_of_contact_id"
             label="Point of contact"
@@ -123,6 +106,7 @@ const InnerForm = props => {
             value={values.point_of_contact_id || 'select'}
             error={touched.point_of_contact_id && errors.point_of_contact_id}
             type="select"
+            disabled={values.submitted_at !== null}
           >
             <option disabled value="select">
               Select One
@@ -134,37 +118,6 @@ const InnerForm = props => {
             ))}
           </Field>
           <Field
-            name="leaders_video_url"
-            label=" Please enter the URL of a 1 minute unlisted (not private) YouTube video introducing the leaders. "
-            hint={
-              <Fragment>
-                <A
-                  href="https://github.com/hackclub/hackclub/blob/master/clubs/youtube_video.md"
-                  target="_blank"
-                >
-                  Click here
-                </A>{' '}
-                for more details about the video.
-              </Fragment>
-            }
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.leaders_video_url}
-            error={touched.leaders_video_url && errors.leaders_video_url}
-          />
-          <Field
-            name="leaders_interesting_project"
-            label="Please tell us about an interesting project, preferably outside of class, that two or more of you created together. Include URLs if possible."
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.leaders_interesting_project}
-            error={
-              touched.leaders_interesting_project &&
-              errors.leaders_interesting_project
-            }
-            type="textarea"
-          />
-          <Field
             name="leaders_team_origin_story"
             label="How long have you known your other club leaders and how did you meet?"
             onChange={handleChange}
@@ -175,6 +128,7 @@ const InnerForm = props => {
               errors.leaders_team_origin_story
             }
             type="textarea"
+            disabled={values.submitted_at !== null}
           />
         </Fieldset>
         <Fieldset section="progress">
@@ -186,6 +140,7 @@ const InnerForm = props => {
             value={values.progress_general}
             error={touched.progress_general && errors.progress_general}
             type="textarea"
+            disabled={values.submitted_at !== null}
           />
           <Field
             name="progress_student_interest"
@@ -198,6 +153,7 @@ const InnerForm = props => {
               errors.progress_student_interest
             }
             type="textarea"
+            disabled={values.submitted_at !== null}
           />
           <Field
             name="progress_meeting_yet"
@@ -207,6 +163,7 @@ const InnerForm = props => {
             value={values.progress_meeting_yet}
             error={touched.progress_meeting_yet && errors.progress_meeting_yet}
             type="textarea"
+            disabled={values.submitted_at !== null}
           />
         </Fieldset>
         <Fieldset section="idea">
@@ -218,6 +175,7 @@ const InnerForm = props => {
             value={values.idea_why}
             error={touched.idea_why && errors.idea_why}
             type="textarea"
+            disabled={values.submitted_at !== null}
           />
           <Field
             name="idea_other_coding_clubs"
@@ -229,6 +187,7 @@ const InnerForm = props => {
               touched.idea_other_coding_clubs && errors.idea_other_coding_clubs
             }
             type="textarea"
+            disabled={values.submitted_at !== null}
           />
           <Field
             name="idea_other_general_clubs"
@@ -241,6 +200,7 @@ const InnerForm = props => {
               errors.idea_other_general_clubs
             }
             type="textarea"
+            disabled={values.submitted_at !== null}
           />
         </Fieldset>
         <Fieldset section="formation">
@@ -251,6 +211,7 @@ const InnerForm = props => {
             value={values.formation_registered}
             error={touched.formation_registered && errors.formation_registered}
             label="Have you already registered your club with your school?"
+            disabled={values.submitted_at !== null}
           />
           <Field
             name="formation_misc"
@@ -260,6 +221,7 @@ const InnerForm = props => {
             value={values.formation_misc}
             error={touched.formation_misc && errors.formation_misc}
             type="textarea"
+            disabled={values.submitted_at !== null}
             optional
           />
         </Fieldset>
@@ -276,6 +238,7 @@ const InnerForm = props => {
               errors.other_surprising_or_amusing_discovery
             }
             type="textarea"
+            disabled={values.submitted_at !== null}
           />
         </Fieldset>
         <Fieldset section="curious">
@@ -289,6 +252,7 @@ const InnerForm = props => {
               touched.curious_what_convinced && errors.curious_what_convinced
             }
             type="textarea"
+            disabled={values.submitted_at !== null}
             optional
           />
           <Field
@@ -299,26 +263,15 @@ const InnerForm = props => {
             value={values.curious_how_did_hear}
             error={touched.curious_how_did_hear && errors.curious_how_did_hear}
             type="textarea"
+            disabled={values.submitted_at !== null}
             optional
           />
         </Fieldset>
-        <Container maxWidth={24}>
-          <Submit
-            value="Save Draft"
-            disabled={isSubmitting}
-            w={1}
-            my={2}
-            bg="white"
-            color="primary"
-          />
-          <Submit
-            value="Submit Application"
-            disabled={isSubmitting}
-            onClick={markSubmitted}
-            w={1}
-            my={2}
-          />
-        </Container>
+        <AutoSaver
+          handleSubmit={handleSubmit}
+          isSubmitting={isSubmitting}
+          values={values}
+        />
       </Form>
     </FormWrapper>
   )
@@ -326,7 +279,6 @@ const InnerForm = props => {
 
 const ClubApplicationForm = withFormik({
   mapPropsToValues: props => props.params,
-  enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, props, resetForm }) => {
     fetch(`${api}/v1/new_club_applications/${props.id}`, {
       method: 'PATCH',
@@ -344,9 +296,7 @@ const ClubApplicationForm = withFormik({
         }
       })
       .then(json => {
-        alert('Saved!')
         setSubmitting(false)
-        resetForm()
       })
       .catch(e => {
         console.error(e)

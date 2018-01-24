@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import {
   Box,
   Container,
@@ -14,7 +14,101 @@ import {
 } from '@hackclub/design-system'
 import { Prompt } from 'react-static'
 
-export const Error = Text.extend.attrs({
+const SaveStatusText = Text.extend.attrs({
+  f: [1, 3],
+  p: 1,
+  m: 2,
+  bg: 'white',
+  children: props => (props.saved ? 'Saved' : 'Saving...'),
+  color: props => (props.saved ? 'slate' : 'primary')
+})`
+position: fixed;
+bottom: 0;
+left: 0;
+border-style: solid;
+border-width: 1px;
+border-color: ${props => (props.saved ? colors.slate : colors.primary)};
+border-radius: 4px;
+opacity: ${props => (props.saved ? 0 : 1)};
+transition-duration: ${props => (props.saved ? 2 : 1)}s;
+transition-delay: ${props => (props.saved ? 4 : 0)}s;
+transition-property: opacity;
+transition-timing-function: ease-in-out;
+`
+
+const SaveStatusLine = Box.extend.attrs({
+  w: 1
+})`
+position: fixed;
+bottom: 0;
+left: 0;
+border-style: solid;
+border-width: 0;
+border-top-width: 1px;
+opacity: ${props => (props.saved ? 2 / 3 : 1)};
+transition-duration: 1s;
+color: ${props => (props.saved ? colors.slate : colors.primary)};
+box-shadow: 0 0 4px ${props => (props.saved ? '0px' : '2px')};
+`
+
+const SaveStatus = props => (
+  <Fragment>
+    <SaveStatusText saved={props.saved} />
+    <SaveStatusLine saved={props.saved} />
+    <Heading.h4 align="center">Your form is automatically saved ✨</Heading.h4>
+  </Fragment>
+)
+
+export class AutoSaver extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      previousValues: props.values
+    }
+    this.autoSave = this.autoSave.bind(this)
+  }
+
+  componentWillMount() {
+    const intervalId = setInterval(this.autoSave, 1000)
+    this.setState({ intervalId })
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.intervalId)
+  }
+
+  autoSave() {
+    const { handleSubmit, isSubmitting, values } = this.props
+    const { previousValues } = this.state
+    const unsavedChanges = previousValues !== values
+
+    this.setState({ unsavedChanges })
+
+    if (unsavedChanges && !isSubmitting) {
+      // We have to call handleSubmit this way because formik:
+      // https://github.com/jaredpalmer/formik/issues/347
+      handleSubmit({ preventDefault: () => null })
+      this.setState({
+        previousValues: values
+      })
+    }
+  }
+
+  render() {
+    if (this.state.unsavedChanges) {
+      return (
+        <Fragment>
+          <SaveStatus saved={false} />
+          <ConfirmClose />
+        </Fragment>
+      )
+    } else {
+      return <SaveStatus saved={true} />
+    }
+  }
+}
+
+export const Error = Text.span.extend.attrs({
   className: 'error',
   color: 'error',
   f: 1,
@@ -34,7 +128,7 @@ export const Hint = Text.extend.attrs({
 export class ConfirmClose extends Component {
   componentWillMount() {
     // https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm
-    https: window.onbeforeunload = () => window.confirm()
+    window.onbeforeunload = () => window.confirm()
   }
 
   componentWillUnmount() {
@@ -65,7 +159,7 @@ export class Field extends Component {
       ['textarea', 'select'].indexOf(type) === -1 ? 'input' : type
     )
 
-    this.setState({ Tag: Tag })
+    this.setState({ Tag })
   }
 
   render() {

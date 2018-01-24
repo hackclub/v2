@@ -14,7 +14,9 @@ import {
   Link as DSLink,
   cx
 } from '@hackclub/design-system'
+import LeaderInviteForm from '../components/LeaderInviteForm'
 import LoadingAnimation from '../components/LoadingAnimation'
+import SubmitButton from '../components/SubmitButton'
 import Login from '../components/Login'
 import ApplyNav from '../components/ApplyNav'
 import fetch from 'unfetch'
@@ -70,6 +72,7 @@ const ApplicationCard = props => {
     created_at,
     submitted_at
   } = props.app
+  const { authToken, callback, app } = props
 
   const leaderProfile = applicant_profiles.find(
     profile => profile.applicant.id == props.applicantId
@@ -88,7 +91,8 @@ const ApplicationCard = props => {
             target="_blank"
           >
             a team
-          </A> to apply. After you submit your application:
+          </A>{' '}
+          to apply. After you submit your application:
         </Text>
         <ul>
           <li>We’ll get back to you with our decision in 3 days</li>
@@ -136,7 +140,29 @@ const ApplicationCard = props => {
           children="Edit Leader Profile"
         />
       </Flex>
+      <Flex mb={3}>
+        <SubmitButton authToken={authToken} application={app} />
+      </Flex>
       <CustomCard>
+        <CustomHeading>Leader Profiles</CustomHeading>
+        <LeaderInviteForm id={id} authToken={authToken} callback={callback} />
+        <ul>
+          <li>
+            You have {leaderProfile.completed_at ? null : <Neg />} finished your
+            leader profile
+          </li>
+          {coLeaderProfiles.map((profile, index) => (
+            <li key={index}>
+              <strong>{profile.applicant.email} </strong>
+              {profile.completed_at ? null : (
+                <span>
+                  has <Neg />{' '}
+                </span>
+              )}
+              finished their leader profile
+            </li>
+          ))}
+        </ul>
         <CustomHeading>Application</CustomHeading>
         <ul>
           <li>
@@ -155,24 +181,6 @@ const ApplicationCard = props => {
             </li>
           )}
         </ul>
-        <CustomHeading>Leader Profiles</CustomHeading>
-        <ul>
-          <li>
-            You have {leaderProfile.completed_at ? null : <Neg />} finished your
-            leader profile
-          </li>
-          {coLeaderProfiles.map((profile, index) => (
-            <li key={index}>
-              <strong>{profile.applicant.email} </strong>
-              {profile.completed_at ? null : (
-                <span>
-                  has <Neg />{' '}
-                </span>
-              )}
-              finished their leader profile
-            </li>
-          ))}
-        </ul>
       </CustomCard>
     </Container>
   )
@@ -188,6 +196,56 @@ class ApplicationIndex extends Component {
       authToken: undefined,
       applicantId: undefined
     }
+
+    this.populateApplications = this.populateApplications.bind(this)
+  }
+
+  populateApplications(
+    authToken = this.state.authToken,
+    applicantId = this.state.applicantId
+  ) {
+    fetch(`${api}/v1/applicants/${applicantId}/new_club_applications`, {
+      headers: { Authorization: `Bearer ${authToken}` }
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          throw res
+        }
+      })
+      .then(json => {
+        if (json.length === 0) {
+          return fetch(
+            `${api}/v1/applicants/${applicantId}/new_club_applications`,
+            {
+              method: 'POST',
+              headers: { Authorization: `Bearer ${authToken}` }
+            }
+          ).then(res => {
+            if (res.ok) {
+              return res.json()
+            } else {
+              throw res
+            }
+          })
+        }
+        return json.sort((a, b) => {
+          return new Date(b.created_at) - new Date(a.created_at)
+        })[0]
+      })
+      .then(app => {
+        this.setState({
+          status: 'finished',
+          app: app
+        })
+      })
+      .catch(e => {
+        console.error(e)
+        if (e.status === 401) {
+          this.setState({ status: 'needsToAuth' })
+        }
+      })
   }
 
   componentDidMount() {
@@ -199,49 +257,7 @@ class ApplicationIndex extends Component {
     if (needsToAuth) {
       this.setState({ status: 'needsToAuth' })
     } else {
-      // Populate the list of applications
-      fetch(`${api}/v1/applicants/${applicantId}/new_club_applications`, {
-        headers: { Authorization: `Bearer ${authToken}` }
-      })
-        .then(res => {
-          if (res.ok) {
-            return res.json()
-          } else {
-            throw res
-          }
-        })
-        .then(json => {
-          if (json.length === 0) {
-            return fetch(
-              `${api}/v1/applicants/${applicantId}/new_club_applications`,
-              {
-                method: 'POST',
-                headers: { Authorization: `Bearer ${authToken}` }
-              }
-            ).then(res => {
-              if (res.ok) {
-                return res.json()
-              } else {
-                throw res
-              }
-            })
-          }
-          return json.sort((a, b) => {
-            return new Date(b.created_at) - new Date(a.created_at)
-          })[0]
-        })
-        .then(app => {
-          this.setState({
-            status: 'finished',
-            app: app
-          })
-        })
-        .catch(e => {
-          console.error(e)
-          if (e.status === 401) {
-            this.setState({ status: 'needsToAuth' })
-          }
-        })
+      this.populateApplications(authToken, applicantId)
     }
   }
 
@@ -268,7 +284,12 @@ class ApplicationIndex extends Component {
             >
               Apply to Hack Club
             </Heading.h1>
-            <ApplicationCard app={app} applicantId={applicantId} />
+            <ApplicationCard
+              app={app}
+              applicantId={applicantId}
+              authToken={authToken}
+              callback={this.populateApplications}
+            />
           </Fragment>
         )
       default:

@@ -8,10 +8,26 @@ import {
   Fieldset,
   Field,
   Submit,
-  Form
+  Form,
+  AutoSaver
 } from '../components/Forms'
 import { withFormik } from 'formik'
+import yup from 'yup'
 import { Link, Prompt } from 'react-static'
+
+export const leaderApplicationSchema = yup.object().shape({
+  leader_name: yup.string().required(),
+  leader_email: yup.string().email().required(),
+  leader_birthday: yup.string().required(),
+  leader_year_in_school: yup.string().notOneOf(['select']).required(),
+  leader_gender: yup.string().notOneOf(['select']).required(),
+  leader_ethnicity: yup.string().notOneOf(['select']).required(),
+  leader_phone_number: yup.string().required(),
+  leader_address: yup.string().required(),
+  skills_system_hacked: yup.string().required(),
+  skills_impressive_achievement: yup.string().required(),
+  skills_is_technical: yup.string().notOneOf(['select']).required()
+})
 
 const InnerForm = props => {
   const {
@@ -26,7 +42,6 @@ const InnerForm = props => {
   } = props
   return (
     <FormWrapper>
-      {values != params ? <ConfirmClose /> : null}
       <Form onSubmit={handleSubmit}>
         <Fieldset section="leader">
           <Field
@@ -65,7 +80,9 @@ const InnerForm = props => {
             }
             type="select"
           >
-            <option value="select">Select One</option>
+            <option value="select" disabled>
+              Select One
+            </option>
             <option value="freshman">Freshman</option>
             <option value="sophomore">Sophomore</option>
             <option value="junior">Junior</option>
@@ -82,7 +99,9 @@ const InnerForm = props => {
             error={touched.leader_gender && errors.leader_gender}
             type="select"
           >
-            <option value="select">Select One</option>
+            <option value="select" disabled>
+              Select One
+            </option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="genderqueer">Genderqueer</option>
@@ -99,7 +118,9 @@ const InnerForm = props => {
             error={touched.leader_ethnicity && errors.leader_ethnicity}
             type="select"
           >
-            <option value="select">Select One</option>
+            <option value="select" disabled>
+              Select One
+            </option>
             <option value="hispanic_or_latino">Hispanic or Latino</option>
             <option value="white">White</option>
             <option value="black">Black</option>
@@ -242,9 +263,11 @@ const InnerForm = props => {
             <option value="false">No</option>
           </Field>
         </Fieldset>
-        <Container maxWidth={24}>
-          <Submit value="Save Draft" disabled={isSubmitting} w={1} my={2} lg />
-        </Container>
+        <AutoSaver
+          handleSubmit={handleSubmit}
+          isSubmitting={isSubmitting}
+          values={values}
+        />
       </Form>
     </FormWrapper>
   )
@@ -252,8 +275,7 @@ const InnerForm = props => {
 
 const LeaderApplicationForm = withFormik({
   mapPropsToValues: props => props.params,
-  enableReinitialize: true,
-  handleSubmit: (data, { setSubmitting, setStatus, props, resetForm }) => {
+  handleSubmit: (data, { setSubmitting, props }) => {
     fetch(`${api}/v1/applicant_profiles/${props.id}`, {
       method: 'PATCH',
       headers: {
@@ -270,9 +292,7 @@ const LeaderApplicationForm = withFormik({
         }
       })
       .then(json => {
-        alert('Saved!')
         setSubmitting(false)
-        resetForm()
       })
       .catch(e => {
         console.error(e)

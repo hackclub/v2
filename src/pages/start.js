@@ -25,26 +25,26 @@ const One = Section.extend`
   background-color: ${cx('red.5')};
   background-image: linear-gradient(
     16deg,
-    ${cx('orange.4')} 0%,
-    ${cx('red.5')} 50%,
-    ${cx('red.6')} 100%
+    ${props => props.theme.colors.red[4]} 0%,
+    ${props => props.theme.colors.pink[5]} 50%,
+    ${props => props.theme.colors.pink[6]} 100%
   );
 `
 const Two = Section.extend`
   background-color: ${cx('violet.6')};
   background-image: linear-gradient(
-    48deg,
+    -16deg,
     ${cx('violet.5')} 0%,
-    ${cx('violet.6')} 50%,
+    ${cx('violet.6')} 32%,
     ${cx('indigo.4')} 100%
   );
 `
 const Three = Section.extend`
   background-color: ${cx('blue.6')};
   background-image: linear-gradient(
-    -48deg,
+    48deg,
     ${cx('blue.7')} 0%,
-    ${cx('blue.6')} 50%,
+    ${cx('blue.6')} 32%,
     ${cx('indigo.4')} 100%
   );
 `

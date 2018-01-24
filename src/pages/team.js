@@ -13,14 +13,14 @@ import Nav from '../components/Nav'
 import Bio from '../components/Bio'
 import Footer from '../components/Footer'
 
-const Header = Box.extend`
+const Header = Section.extend`
   padding-top: 0 !important;
-  background-color: ${props => props.theme.colors.indigo[5]};
+  background-color: ${props => props.theme.colors.red[5]};
   background-image: linear-gradient(
     -2deg,
-    ${props => props.theme.colors.violet[4]} 0%,
-    ${props => props.theme.colors.indigo[5]} 50%,
-    ${props => props.theme.colors.indigo[6]} 100%
+    ${props => props.theme.colors.orange[4]} 0%,
+    ${props => props.theme.colors.red[5]} 50%,
+    ${props => props.theme.colors.red[6]} 100%
   );
 `
 
@@ -37,7 +37,7 @@ const Base = Container.extend`
 export default () => (
   <ThemeProvider>
     <Helmet title="Team – Hack Club" />
-    <Header pb={[3, 4]}>
+    <Header>
       <Nav />
       <Heading.h2 color="white" align="center" caps mt={3}>
         <Box f={4}>Hack Club</Box>

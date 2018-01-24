@@ -18,14 +18,26 @@ import { Link, Prompt } from 'react-static'
 export const leaderApplicationSchema = yup.object().shape({
   leader_name: yup.string().required(),
   leader_birthday: yup.string().required(),
-  leader_year_in_school: yup.string().notOneOf(['select']).required(),
-  leader_gender: yup.string().notOneOf(['select']).required(),
-  leader_ethnicity: yup.string().notOneOf(['select']).required(),
+  leader_year_in_school: yup
+    .string()
+    .notOneOf(['select'])
+    .required(),
+  leader_gender: yup
+    .string()
+    .notOneOf(['select'])
+    .required(),
+  leader_ethnicity: yup
+    .string()
+    .notOneOf(['select'])
+    .required(),
   leader_phone_number: yup.string().required(),
   leader_address: yup.string().required(),
   skills_system_hacked: yup.string().required(),
   skills_impressive_achievement: yup.string().required(),
-  skills_is_technical: yup.string().notOneOf(['select']).required()
+  skills_is_technical: yup
+    .string()
+    .notOneOf(['select'])
+    .required()
 })
 
 const InnerForm = props => {

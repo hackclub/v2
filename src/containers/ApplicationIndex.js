@@ -30,17 +30,6 @@ const A = DSLink.extend`
   }
 `
 
-const CustomHeading = props => (
-  <Heading.h2
-    m={0}
-    align={['center', 'left']}
-    f={3}
-    color="primary"
-    caps
-    {...props}
-  />
-)
-
 const timeSince = time => {
   const seconds = Math.floor((new Date() - new Date(time)) / 1000)
   const intervals = [
@@ -84,20 +73,13 @@ const ApplicationCard = props => {
   return (
     <Container maxWidth={36} mt={3} p={3}>
       <CustomCard>
-        <Text>
-          You only need{' '}
-          <A
-            href="https://github.com/hackclub/hackclub/blob/master/clubs/leadership_preface.md"
-            target="_blank"
-          >
-            a team
-          </A>{' '}
-          to apply. After you submit your application:
-        </Text>
+        <Text>You only need a team to apply. Invite them here:</Text>
+        <LeaderInviteForm id={id} authToken={authToken} callback={callback} />
+        <Text>After you submit your application:</Text>
         <ul>
           <li>We’ll get back to you with our decision in 3 days</li>
           <li>
-            If you’re accepted we’ll schedule a call to train you to lead your
+            If you’re accepted, we’ll schedule a call to train you to lead your
             club
           </li>
           <li>
@@ -105,7 +87,7 @@ const ApplicationCard = props => {
             meetings, and our online community of club leaders
           </li>
           <li>
-            Once you start holding meetings we’ll check in with you each week to
+            Once you start holding meetings, we’ll check in with you each week to
             make sure everything is going well
           </li>
         </ul>
@@ -113,6 +95,30 @@ const ApplicationCard = props => {
           Contact us at <A href="mailto:team@hackclub.com">team@hackclub.com</A>{' '}
           if you have any questions while applying.
         </p>
+        <ul>
+          <li>
+            This application was{' '}
+            {submitted_at !== null
+              ? 'submitted'
+              : updated_at === created_at ? 'created' : 'updated'}{' '}
+            {timeSince(updated_at)} ago
+          </li>
+          <li>
+            You have {leaderProfile.completed_at ? null : <Neg />} finished your
+            leader profile
+          </li>
+          {coLeaderProfiles.map((profile, index) => (
+            <li key={index}>
+              <strong>{profile.applicant.email} </strong>
+              {profile.completed_at ? null : (
+                <span>
+                  has <Neg />{' '}
+                </span>
+              )}
+              finished their leader profile
+            </li>
+          ))}
+        </ul>
         <Text color="slate" f={1}>
           <em>
             * We also accept applications from clubs that have already held
@@ -130,12 +136,14 @@ const ApplicationCard = props => {
         <LargeButton.link
           w={1}
           m={2}
+          inverted
           to={`/apply/club?id=${id}`}
           children="Edit Application"
         />
         <LargeButton.link
           w={1}
           m={2}
+          inverted
           to={`/apply/leader?id=${leaderProfile.id}`}
           children="Edit Leader Profile"
         />
@@ -143,45 +151,6 @@ const ApplicationCard = props => {
       <Flex mb={3}>
         <SubmitButton authToken={authToken} application={app} />
       </Flex>
-      <CustomCard>
-        <CustomHeading>Leader Profiles</CustomHeading>
-        <LeaderInviteForm id={id} authToken={authToken} callback={callback} />
-        <ul>
-          <li>
-            You have {leaderProfile.completed_at ? null : <Neg />} finished your
-            leader profile
-          </li>
-          {coLeaderProfiles.map((profile, index) => (
-            <li key={index}>
-              <strong>{profile.applicant.email} </strong>
-              {profile.completed_at ? null : (
-                <span>
-                  has <Neg />{' '}
-                </span>
-              )}
-              finished their leader profile
-            </li>
-          ))}
-        </ul>
-        <CustomHeading>Application</CustomHeading>
-        <ul>
-          <li>
-            This application was{' '}
-            {updated_at === created_at ? 'created' : 'updated'}{' '}
-            <strong>{timeSince(updated_at)}</strong> ago
-          </li>
-          {submitted_at ? (
-            <li>
-              You submitted this application{' '}
-              <strong>{timeSince(submitted_at)}</strong> ago
-            </li>
-          ) : (
-            <li>
-              You have <Neg /> submitted your application
-            </li>
-          )}
-        </ul>
-      </CustomCard>
     </Container>
   )
 }

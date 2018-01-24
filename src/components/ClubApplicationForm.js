@@ -12,7 +12,7 @@ import {
   AutoSaver
 } from '../components/Forms'
 import Button from '../components/Button'
-import { Container, Flex, Box, Link as A } from '@hackclub/design-system'
+import { Container, LargeButton } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import yup from 'yup'
 
@@ -272,6 +272,9 @@ const InnerForm = props => {
           isSubmitting={isSubmitting}
           values={values}
         />
+        <Container>
+          <LargeButton.link to="/apply">« Back</LargeButton.link>
+        </Container>
       </Form>
     </FormWrapper>
   )

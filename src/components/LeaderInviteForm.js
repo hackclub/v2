@@ -79,7 +79,6 @@ export default class extends Component {
         <Field
           id="leader_invite"
           onKeyDown={handleChange}
-          label="Please add your co-leader’s email"
           placeholder="Co-leader's email"
           error={error}
           hint={

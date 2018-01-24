@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { api } from '../../data'
-import { Container } from '@hackclub/design-system'
+import { Container, LargeButton } from '@hackclub/design-system'
 import {
   FormWrapper,
   Aside,
@@ -17,10 +17,6 @@ import { Link, Prompt } from 'react-static'
 
 export const leaderApplicationSchema = yup.object().shape({
   leader_name: yup.string().required(),
-  leader_email: yup
-    .string()
-    .email()
-    .required(),
   leader_birthday: yup.string().required(),
   leader_year_in_school: yup
     .string()
@@ -66,14 +62,6 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.leader_name}
             error={touched.leader_name && errors.leader_name}
-          />
-          <Field
-            name="leader_email"
-            label="Email"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.leader_email}
-            error={touched.leader_email && errors.leader_email}
           />
           <Field
             name="leader_birthday"
@@ -283,6 +271,9 @@ const InnerForm = props => {
           isSubmitting={isSubmitting}
           values={values}
         />
+        <Container>
+          <LargeButton.link to="/apply">« Back</LargeButton.link>
+        </Container>
       </Form>
     </FormWrapper>
   )

@@ -15,14 +15,14 @@
     "map-render": "node src/map/render.js"
   },
   "dependencies": {
-    "@hackclub/design-system": "0.0.1-5",
+    "@hackclub/design-system": "0.0.1-6",
     "axios": "^0.17.1",
     "formik": "^0.10.5",
-    "gatsby": "^1.9.159",
+    "gatsby": "^1.9.166",
     "gatsby-link": "^1.6.34",
     "gatsby-plugin-netlify": "^1.0.15",
-    "gatsby-plugin-react-helmet": "^2.0.3",
-    "gatsby-plugin-styled-components": "^2.0.4",
+    "gatsby-plugin-react-helmet": "^2.0.4",
+    "gatsby-plugin-styled-components": "^2.0.5",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -30,7 +30,7 @@
     "react-router": "^4.2.0",
     "react-simple-maps": "^0.10.1",
     "rebass": "^1.0.4",
-    "serve": "^6.4.8",
+    "serve": "^6.4.9",
     "uglifyjs-webpack-plugin": "^1.1.6",
     "unfetch": "^3.0.0",
     "yup": "^0.24.0"

@@ -40,7 +40,7 @@ class Login extends Component {
   }
 
   render() {
-    const { emailSent, applicantId } = this.state
+    const { emailSent, applicantId, email } = this.state
 
     return (
       <ThemeProvider>
@@ -50,7 +50,7 @@ class Login extends Component {
         <FixedFlag />
         <Base>
           {emailSent ? (
-            <LoginCodeForm id={applicantId} />
+            <LoginCodeForm id={applicantId} email={email} />
           ) : (
             <EmailLoginForm submitCallback={this.submitCallback} />
           )}

@@ -47,6 +47,7 @@ export default () => (
       </Heading.h2>
       <Heading.h3 f={[3, 4]} m={0}>
         <mark>
+          {stats.state_count} states. {stats.country_count} countries.{' '}
           Join the largest community of students building the class they wish
           they could take.
         </mark>

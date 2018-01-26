@@ -14,12 +14,12 @@ import Nav from '../components/Nav'
 
 const Header = Box.extend`
   padding-top: 0 !important;
-  background-color: ${props => props.theme.colors.blue[5]};
+  background-color: ${props => props.theme.colors.indigo[5]};
   background-image: linear-gradient(
-    -8deg,
-    ${props => props.theme.colors.indigo[4]} 0%,
-    ${props => props.theme.colors.blue[6]} 50%,
-    ${props => props.theme.colors.blue[7]} 100%
+    -2deg,
+    ${props => props.theme.colors.violet[4]} 0%,
+    ${props => props.theme.colors.indigo[5]} 50%,
+    ${props => props.theme.colors.indigo[6]} 100%
   );
 `
 
@@ -99,13 +99,21 @@ export default () => (
         img="/people/tom.jpg"
         name="Tom Preston-Werner"
         role="Mentor"
+        text="Tom is currently on Hack Club’s board and provides mentorship and connections. He is most prominently known for founding GitHub back in 2008."
         bg="gray"
       />
-      <Bio img="/people/quinn.jpg" name="Quinn Slack" role="Mentor" bg="gray" />
+      <Bio
+        img="/people/quinn.jpg"
+        name="Quinn Slack"
+        role="Mentor"
+        text="Quinn is the founder and CEO of Sourcegraph. For the past four years, he has supported Hack Club through mentorship and by providing vital connections."
+        bg="gray"
+      />
       <Bio
         img="/people/pierre.jpg"
         name="Pierre Arys"
-        role="Adviser"
+        role="Advisor"
+        text="Pierre is the current CEO of Diamond Inc, and has also provided strategic support and connections to Hack Club."
         bg="gray"
       />
     </Base>
@@ -126,20 +134,25 @@ export default () => (
         img="/people/victor.jpg"
         name="Victor Truong"
         role="Finder"
-        bg="violet"
+        bg="blue"
       />
-      <Bio img="/people/sean.jpg" name="Sean Kim" role="Shipit" bg="fuschia" />
+      <Bio
+        img="/people/sean.jpg"
+        name="Sean Kim"
+        role="Shipit"
+        bg="blue"
+      />
       <Bio
         img="/people/jessica.jpg"
         name="Jessica Kwok"
         role="Finances & Curriculum"
-        bg="green"
+        bg="blue"
       />
       <Bio
         img="/people/matt.jpg"
         name="Matt Hesby"
         role="Community Support"
-        bg="cyan"
+        bg="blue"
       />
     </Base>
     <Container align="center" px={3}>
@@ -153,37 +166,37 @@ export default () => (
         img="/people/jonathan.jpg"
         name="Jonathan Leung"
         role="Co-founder"
-        bg="yellow"
+        bg="red"
       />
       <Bio
         img="/people/gemma.jpg"
         name="Gemma Busoni"
         role="Community"
-        bg="pink"
+        bg="red"
       />
       <Bio
         img="/people/selynna.jpg"
         name="Selynna Sun"
         role="Hack Camp"
-        bg="indigo"
+        bg="red"
       />
       <Bio
         img="/people/harrison.jpg"
         name="Harrison Shoebridge"
         role="Software Engineer"
-        bg="teal"
+        bg="red"
       />
       <Bio
         img="/people/kyle.jpg"
         name="Kyle Emile"
         role="Operations"
-        bg="orange"
+        bg="red"
       />
       <Bio
         img="/people/matthew.jpg"
         name="Matthew Kwong"
         role="Growth"
-        bg="lime"
+        bg="red"
       />
     </Base>
     <Footer />

@@ -12,13 +12,16 @@ import {
   AutoSaver
 } from '../components/Forms'
 import Button from '../components/Button'
-import { Container, Flex, Box, Link as A } from '@hackclub/design-system'
+import { Container, LargeButton } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import yup from 'yup'
 
 export const clubApplicationSchema = yup.object().shape({
   high_school_name: yup.string().required(),
-  high_school_type: yup.string().notOneOf(['select']).required(),
+  high_school_type: yup
+    .string()
+    .notOneOf(['select'])
+    .required(),
   high_school_address: yup.string().required(),
   leaders_team_origin_story: yup.string().required(),
   progress_general: yup.string().required(),
@@ -29,7 +32,10 @@ export const clubApplicationSchema = yup.object().shape({
   idea_other_general_clubs: yup.string().required(),
   formation_registered: yup.string().required(),
   other_surprising_or_amusing_discovery: yup.string().required(),
-  point_of_contact_id: yup.string().notOneOf(['select']).required()
+  point_of_contact_id: yup
+    .string()
+    .notOneOf(['select'])
+    .required()
 })
 
 const InnerForm = props => {
@@ -86,8 +92,8 @@ const InnerForm = props => {
           </Field>
           <Field
             name="high_school_address"
-            label="High school’s full address (include city, state/province, country)"
-            hint="We use this address in a map of our clubs so it needs to be in the same format you’d write on an envelope."
+            label="High school’s full address"
+            hint="Please include city, state / province, country, and postal code (if available)."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.high_school_address}
@@ -272,6 +278,9 @@ const InnerForm = props => {
           isSubmitting={isSubmitting}
           values={values}
         />
+        <Container>
+          <LargeButton.link to="/apply">« Back</LargeButton.link>
+        </Container>
       </Form>
     </FormWrapper>
   )

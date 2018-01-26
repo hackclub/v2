@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { api } from '../../data'
-import { Container } from '@hackclub/design-system'
+import { Container, LargeButton } from '@hackclub/design-system'
 import {
   FormWrapper,
   Aside,
@@ -17,16 +17,27 @@ import { Link, Prompt } from 'react-static'
 
 export const leaderApplicationSchema = yup.object().shape({
   leader_name: yup.string().required(),
-  leader_email: yup.string().email().required(),
   leader_birthday: yup.string().required(),
-  leader_year_in_school: yup.string().notOneOf(['select']).required(),
-  leader_gender: yup.string().notOneOf(['select']).required(),
-  leader_ethnicity: yup.string().notOneOf(['select']).required(),
+  leader_year_in_school: yup
+    .string()
+    .notOneOf(['select'])
+    .required(),
+  leader_gender: yup
+    .string()
+    .notOneOf(['select'])
+    .required(),
+  leader_ethnicity: yup
+    .string()
+    .notOneOf(['select'])
+    .required(),
   leader_phone_number: yup.string().required(),
   leader_address: yup.string().required(),
   skills_system_hacked: yup.string().required(),
   skills_impressive_achievement: yup.string().required(),
-  skills_is_technical: yup.string().notOneOf(['select']).required()
+  skills_is_technical: yup
+    .string()
+    .notOneOf(['select'])
+    .required()
 })
 
 const InnerForm = props => {
@@ -51,14 +62,6 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.leader_name}
             error={touched.leader_name && errors.leader_name}
-          />
-          <Field
-            name="leader_email"
-            label="Email"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.leader_email}
-            error={touched.leader_email && errors.leader_email}
           />
           <Field
             name="leader_birthday"
@@ -92,7 +95,6 @@ const InnerForm = props => {
           <Field
             name="leader_gender"
             label="Gender"
-            hint="We collect this info for foundations who donate to us. This doesn't affect our decision to accept you."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.leader_gender || 'select'}
@@ -111,7 +113,7 @@ const InnerForm = props => {
           <Field
             name="leader_ethnicity"
             label="Ethnicity"
-            hint="We collect this info for foundations who donate to us. This doesn't affect our decision to accept you."
+            hint="Demographic information is collected to share in aggregate with donors and will not be used as part of application review."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.leader_ethnicity || 'select'}
@@ -144,7 +146,7 @@ const InnerForm = props => {
           <Field
             name="leader_address"
             label="Your full address (include city, state/province, country)"
-            hint="We may send you a letter, so you should write it the same you would an envelope"
+            hint="Please enter your address exactly as we should write it on an envelope."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.leader_address}
@@ -268,6 +270,9 @@ const InnerForm = props => {
           isSubmitting={isSubmitting}
           values={values}
         />
+        <Container>
+          <LargeButton.link to="/apply">« Back</LargeButton.link>
+        </Container>
       </Form>
     </FormWrapper>
   )

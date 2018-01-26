@@ -62,7 +62,6 @@ export default class extends Component {
         disabled={submitted || !readyToSubmit}
         w={1}
         mb={2}
-        inverted={!readyToSubmit}
       >
         {submitted
           ? 'We’ve recieved your application'

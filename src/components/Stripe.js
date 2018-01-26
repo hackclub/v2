@@ -39,14 +39,15 @@ export default () => (
   <Stripe id="more" align="center" justify="center" direction="column" py={3}>
     <StripeContainer maxWidth={36} p={2} align="center">
       <Heading.h2 f={[5, 6]} mt={0} mb={3}>
-        <mark>{stats.percentage_of_us_high_schools} of US high schools.</mark>
+        <mark>The sun never</mark>
         <br />
         <mark>
-          {stats.state_count} states. {stats.country_count} countries.
+          sets on Hack Club.
         </mark>
       </Heading.h2>
       <Heading.h3 f={[3, 4]} m={0}>
         <mark>
+          {stats.state_count} states. {stats.country_count} countries.{' '}
           Join the largest community of students building the class they wish
           they could take.
         </mark>

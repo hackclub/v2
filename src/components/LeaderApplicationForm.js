@@ -95,7 +95,6 @@ const InnerForm = props => {
           <Field
             name="leader_gender"
             label="Gender"
-            hint="We collect this info for foundations who donate to us. This doesn't affect our decision to accept you."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.leader_gender || 'select'}
@@ -114,7 +113,7 @@ const InnerForm = props => {
           <Field
             name="leader_ethnicity"
             label="Ethnicity"
-            hint="We collect this info for foundations who donate to us. This doesn't affect our decision to accept you."
+            hint="Demographic information is collected to share in aggregate with donors and will not be used as part of application review."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.leader_ethnicity || 'select'}

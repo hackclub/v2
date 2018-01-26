@@ -16,12 +16,12 @@ import Footer from '../components/Footer'
 
 const Header = Section.extend`
   padding-top: 0 !important;
-  background-color: ${props => props.theme.colors.red[5]};
+  background-color: ${props => props.theme.colors.indigo[5]};
   background-image: linear-gradient(
     -2deg,
-    ${props => props.theme.colors.orange[4]} 0%,
-    ${props => props.theme.colors.red[5]} 50%,
-    ${props => props.theme.colors.red[6]} 100%
+    ${props => props.theme.colors.violet[4]} 0%,
+    ${props => props.theme.colors.indigo[5]} 50%,
+    ${props => props.theme.colors.indigo[6]} 100%
   );
 `
 
@@ -82,33 +82,25 @@ export default () => (
         bg="violet"
       />
       <Bio
-        img="/people/gemma.jpg"
-        name="Gemma Busoni"
-        role="Community"
-        text="Text here"
-        bg="pink"
+        img="/people/tom.jpg"
+        name="Tom Preston-Werner"
+        role="Mentor"
+        text="Tom is currently on Hack Club’s board and provides mentorship and connections. He is most prominently known for founding GitHub back in 2008."
+        bg="gray"
       />
       <Bio
-        img="/people/selynna.jpg"
-        name="Selynna Sun"
-        role="Hack Camp"
-        text="Selynna is a Hack Club alumnus and was on the founding team of Los Altos High School's Hack Club in Los Altos, CA. She also helped run Hack Camp in the summer of 2016 as an intern, and organized most community-facing events. Right now, she's a sophomore in college and aims to increase access to computer science education through organizing hackathons."
-        bg="red"
+        img="/people/quinn.jpg"
+        name="Quinn Slack"
+        role="Mentor"
+        text="Quinn is the founder and CEO of Sourcegraph. For the past four years, he has supported Hack Club through mentorship and by providing vital connections."
+        bg="gray"
       />
       <Bio
-        img="/people/harrison.jpg"
-        name="Harrison Shoebridge"
-        role="Software Engineer"
-        text="Text here"
-        bg="yellow"
-      />
-      <Bio img="/people/quinn.jpg" name="Quinn Slack" role="Mentor" bg="gray" />
-      <Bio
-        img="/people/kyle.jpg"
-        name="Kyle Emile"
-        role="Operations"
-        text="Text here"
-        bg="orange"
+        img="/people/pierre.jpg"
+        name="Pierre Arys"
+        role="Advisor"
+        text="Pierre is the current CEO of Diamond Inc, and has also provided strategic support and connections to Hack Club."
+        bg="gray"
       />
     </Base>
     <Container align="center" px={3}>
@@ -129,57 +121,56 @@ export default () => (
         img="/people/victor.jpg"
         name="Victor Truong"
         role="Finder"
-        text="Victor believes that communities are a very powerful thing. That's why he built Hack Club Finder, a tool which simplifies the process of discovering and communicating with Hack Clubs near users. Since December 2017, it has helped thousands of people locate clubs."
-        bg="violet"
+        bg="blue"
       />
-      <Bio img="/people/sean.jpg" name="Sean Kim" role="Shipit" bg="fuschia" />
+      <Bio img="/people/sean.jpg" name="Sean Kim" role="Shipit" bg="blue" />
       <Bio
         img="/people/jessica.jpg"
         name="Jessica Kwok"
         role="Finances & Curriculum"
-        text="Text here"
-        bg="green"
+        bg="blue"
       />
       <Bio
         img="/people/matt.jpg"
         name="Matt Hesby"
         role="Community Support"
-        text="Text here"
-        bg="cyan"
+        bg="blue"
       />
       <Bio
         img="/people/jonathan.jpg"
         name="Jonathan Leung"
-        role="Role here"
-        text="Text here"
+        role="Co-founder"
         bg="red"
       />
       <Bio
-        img="/people/tom.jpg"
-        name="Tom Preston-Werner"
-        role="Mentor"
-        text="Text here"
-        bg="gray"
+        img="/people/gemma.jpg"
+        name="Gemma Busoni"
+        role="Community"
+        bg="red"
       />
       <Bio
-        img="/people/quinn.jpg"
-        name="Quinn Slack"
-        role="Mentor"
-        text="Text here"
-        bg="gray"
+        img="/people/selynna.jpg"
+        name="Selynna Sun"
+        role="Hack Camp"
+        bg="red"
       />
       <Bio
-        img="/people/pierre.jpg"
-        name="Pierre Arys"
-        role="Adviser"
-        text="Text here"
-        bg="gray"
+        img="/people/harrison.jpg"
+        name="Harrison Shoebridge"
+        role="Software Engineer"
+        bg="red"
+      />
+      <Bio
+        img="/people/kyle.jpg"
+        name="Kyle Emile"
+        role="Operations"
+        bg="red"
       />
       <Bio
         img="/people/matthew.jpg"
         name="Matthew Kwong"
         role="Growth"
-        bg="lime"
+        bg="red"
       />
     </Base>
     <Footer />

@@ -48,6 +48,10 @@ export default {
       component: 'src/containers/Meetings'
     },
     {
+      path: '/people',
+      component: 'src/containers/People'
+    },
+    {
       path: '/redeem_tech_domain',
       component: 'src/containers/RedeemTechDomain'
     },
@@ -62,10 +66,6 @@ export default {
     {
       path: '/start',
       component: 'src/containers/Start'
-    },
-    {
-      path: '/team',
-      component: 'src/containers/Team'
     },
     {
       is404: true,

@@ -147,7 +147,7 @@ const InnerForm = props => {
           <Field
             name="leader_address"
             label="Your full address (include city, state/province, country)"
-            hint="We may send you a letter, so you should write it the same you would an envelope"
+            hint="Please enter your address exactly as we should enter it on an envelope. As part of Hack Club, we'll occasionally send you physical materials (like stickers) to help market your club."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.leader_address}

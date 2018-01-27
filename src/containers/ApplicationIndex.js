@@ -87,8 +87,8 @@ const ApplicationCard = props => {
             meetings, and our online community of club leaders
           </li>
           <li>
-            Once you start holding meetings, we’ll check in with you each week to
-            make sure everything is going well
+            Once you start holding meetings, we’ll check in with you each week
+            to make sure everything is going well
           </li>
         </ul>
         <p>

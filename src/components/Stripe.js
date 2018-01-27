@@ -41,15 +41,13 @@ export default () => (
       <Heading.h2 f={[5, 6]} mt={0} mb={3}>
         <mark>The sun never</mark>
         <br />
-        <mark>
-          sets on Hack Club.
-        </mark>
+        <mark>sets on Hack Club.</mark>
       </Heading.h2>
       <Heading.h3 f={[3, 4]} m={0}>
         <mark>
-          {stats.state_count} states. {stats.country_count} countries.{' '}
-          Join the largest community of students building the class they wish
-          they could take.
+          {stats.state_count} states. {stats.country_count} countries. Join the
+          largest community of students building the class they wish they could
+          take.
         </mark>
       </Heading.h3>
     </StripeContainer>

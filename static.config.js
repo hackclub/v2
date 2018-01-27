@@ -44,6 +44,10 @@ export default {
       component: 'src/containers/Camp'
     },
     {
+      path: '/dashboard',
+      component: 'src/containers/Dashboard'
+    },
+    {
       path: '/meetings',
       component: 'src/containers/Meetings'
     },

@@ -10,15 +10,27 @@ const Dashboard = props => {
   const { clubs } = props
 
   return (
-    <ul style={{ listStyleType: 'none' }}>
-      {clubs.map((club, index) => (
-        <li key={index}>
-          <Link href={`/dashboard/club?id=${club.id}`} title={club.id}>
-            {club.id} | {club.high_school_name || 'unset'}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <table>
+      <tbody>
+        {clubs.map((club, index) => (
+          <tr key={index}>
+            <td>
+              <Link href={`/dashboard/club?id=${club.id}`} title={club.id}>
+                {club.id}
+              </Link>
+            </td>
+            <td>
+              {club.high_school_name ? (
+                 <Text>{club.high_school_name}</Text>
+              ) : (
+                 <Text color="silver">Unset</Text>
+              )}
+            </td>
+            <td title={club.high_school_url}>{club.high_school_url}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   )
 }
 

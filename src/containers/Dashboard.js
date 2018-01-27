@@ -11,6 +11,13 @@ const Dashboard = props => {
 
   return (
     <table>
+      <thead>
+        <tr>
+          <th align="left">ID</th>
+          <th align="left">Name</th>
+          <th align="left">URL</th>
+        </tr>
+      </thead>
       <tbody>
         {clubs.map((club, index) => (
           <tr key={index}>

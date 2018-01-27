@@ -78,7 +78,7 @@ export default () => (
         img="/team/athul.jpg"
         name="Athul Blesson"
         role="Indian Region"
-        text="Athul leads some of our largest clubs in India. After graduating from high school, he joined as our Regional Manager in India. He is passionate about bringing more students into the world of coding."
+        text="Athul leads some of the largest Hack Clubs in India. After graduating from high school, he joined as the Regional Manager in India. He is passionate about bringing more students into the world of coding."
         bg="violet"
       />
     </Base>

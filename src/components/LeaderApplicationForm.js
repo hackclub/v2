@@ -1,17 +1,46 @@
 import React, { Fragment } from 'react'
 import { api } from '../data.json'
-import { Container } from '@hackclub/design-system'
+import { Container, LargeButton } from '@hackclub/design-system'
 import {
-  FormWrapper,
   Aside,
+  AutoSaver,
   ConfirmClose,
-  Fieldset,
   Field,
-  Submit,
-  Form
+  Fieldset,
+  Form,
+  FormWrapper,
+  Submit
 } from '../components/Forms'
 import { withFormik } from 'formik'
 import Link from 'gatsby-link'
+import yup from 'yup'
+
+export const leaderApplicationSchema = yup.object().shape({
+  leader_name: yup.string().required(),
+  leader_birthday: yup.string().required(),
+  leader_year_in_school: yup
+    .string()
+    .notOneOf(['select'])
+    .required(),
+  leader_gender: yup
+    .string()
+    .notOneOf(['select'])
+    .required(),
+  leader_ethnicity: yup
+    .string()
+    .notOneOf(['select'])
+    .required(),
+  leader_phone_number: yup.string().required(),
+  leader_address: yup.string().required(),
+  skills_system_hacked: yup.string().required(),
+  skills_impressive_achievement: yup.string().required(),
+  skills_is_technical: yup
+    .string()
+    .notOneOf(['select'])
+    .required()
+})
+
+LargeButton.link = LargeButton.withComponent(Link)
 
 const InnerForm = props => {
   const {
@@ -26,7 +55,6 @@ const InnerForm = props => {
   } = props
   return (
     <FormWrapper>
-      {values != params ? <ConfirmClose /> : null}
       <Form onSubmit={handleSubmit}>
         <Fieldset section="leader">
           <Field
@@ -36,14 +64,6 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.leader_name}
             error={touched.leader_name && errors.leader_name}
-          />
-          <Field
-            name="leader_email"
-            label="Email"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.leader_email}
-            error={touched.leader_email && errors.leader_email}
           />
           <Field
             name="leader_birthday"
@@ -65,7 +85,9 @@ const InnerForm = props => {
             }
             type="select"
           >
-            <option value="select">Select One</option>
+            <option value="select" disabled>
+              Select One
+            </option>
             <option value="freshman">Freshman</option>
             <option value="sophomore">Sophomore</option>
             <option value="junior">Junior</option>
@@ -75,14 +97,15 @@ const InnerForm = props => {
           <Field
             name="leader_gender"
             label="Gender"
-            hint="We collect this info for foundations who donate to us. This doesn’t have an effect on your application."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.leader_gender || 'select'}
             error={touched.leader_gender && errors.leader_gender}
             type="select"
           >
-            <option value="select">Select One</option>
+            <option value="select" disabled>
+              Select One
+            </option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="genderqueer">Genderqueer</option>
@@ -92,14 +115,16 @@ const InnerForm = props => {
           <Field
             name="leader_ethnicity"
             label="Ethnicity"
-            hint="We collect this info for foundations who donate to us. This doesn’t have an effect on your application."
+            hint="Demographic information is collected to share in aggregate with donors and will not be used as part of application review."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.leader_ethnicity || 'select'}
             error={touched.leader_ethnicity && errors.leader_ethnicity}
             type="select"
           >
-            <option value="select">Select One</option>
+            <option value="select" disabled>
+              Select One
+            </option>
             <option value="hispanic_or_latino">Hispanic or Latino</option>
             <option value="white">White</option>
             <option value="black">Black</option>
@@ -123,7 +148,7 @@ const InnerForm = props => {
           <Field
             name="leader_address"
             label="Your full address (include city, state/province, country)"
-            hint="We may send you a letter, so you should write it the same you would an envelope"
+            hint="Please enter your address exactly as we should write it on an envelope."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.leader_address}
@@ -242,8 +267,13 @@ const InnerForm = props => {
             <option value="false">No</option>
           </Field>
         </Fieldset>
-        <Container maxWidth={24}>
-          <Submit value="Save Draft" disabled={isSubmitting} w={1} my={2} lg />
+        <AutoSaver
+          handleSubmit={handleSubmit}
+          isSubmitting={isSubmitting}
+          values={values}
+        />
+        <Container>
+          <LargeButton.link to="/apply">« Back</LargeButton.link>
         </Container>
       </Form>
     </FormWrapper>
@@ -252,8 +282,7 @@ const InnerForm = props => {
 
 const LeaderApplicationForm = withFormik({
   mapPropsToValues: props => props.params,
-  enableReinitialize: true,
-  handleSubmit: (data, { setSubmitting, setStatus, props, resetForm }) => {
+  handleSubmit: (data, { setSubmitting, props }) => {
     fetch(`${api}/v1/applicant_profiles/${props.id}`, {
       method: 'PATCH',
       headers: {
@@ -270,9 +299,7 @@ const LeaderApplicationForm = withFormik({
         }
       })
       .then(json => {
-        alert('Saved!')
         setSubmitting(false)
-        resetForm()
       })
       .catch(e => {
         console.error(e)

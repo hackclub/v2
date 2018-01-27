@@ -40,15 +40,17 @@ class Login extends Component {
   }
 
   render() {
-    const { emailSent, applicantId } = this.state
+    const { emailSent, applicantId, email } = this.state
 
     return (
       <ThemeProvider>
-        <Helmet title="Log in – Hack Club" />
+        <Head>
+          <title>Log in – Hack Club</title>
+        </Head>
         <FixedFlag />
         <Base>
           {emailSent ? (
-            <LoginCodeForm id={applicantId} />
+            <LoginCodeForm id={applicantId} email={email} />
           ) : (
             <EmailLoginForm submitCallback={this.submitCallback} />
           )}

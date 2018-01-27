@@ -59,13 +59,14 @@ class InnerForm extends Component {
       handleBlur,
       handleSubmit,
       isSubmitting,
-      status
+      status,
+      email
     } = this.props
     return (
       <form onSubmit={handleSubmit}>
         <Label className="loginCode" id="loginCode" align="center">
           <Text color="white" mb={3} align="center" f={4}>
-            Cool! We just sent a login code to your email.
+            Cool! We just sent a login code to {email}.
           </Text>
           <StyledInput
             name="loginCode"
@@ -79,6 +80,7 @@ class InnerForm extends Component {
             disabled={isSubmitting}
             autoComplete="off"
             autoFocus
+            data-lpignore
           />
         </Label>
         <Text

@@ -122,8 +122,7 @@ const Bubbles = ({ children }) => (
       </Heading.h1>
       <Text f={[3, 4]} color="gray.9" mx="auto" m={0}>
         Hack Club is a nonprofit network of coding clubs where members learn to
-        code like hackers – through tinkering, building projects, and taking
-        things apart.
+        code through tinkering and building projects.
       </Text>
       <Flex justify="center" align="center" wrap mx={-2} mt={[3, 4]}>
         <LargeButton href="https://finder.hackclub.com" inverted m={2}>

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { Text, Link } from '@hackclub/design-system'
+import { Flex, Text, Link, ThemeProvider } from '@hackclub/design-system'
 import Login from '../components/Login'
+import LogoutButton from '../components/LogoutButton'
 import LoadingAnimation from '../components/LoadingAnimation'
+import Flag from '../components/Flag'
 import api from '../api'
 
 const Dashboard = props => {
@@ -57,7 +59,21 @@ export default class extends Component {
       case 'needsToAuth':
         return <Login />
       case 'success':
-        return <Dashboard clubs={clubs} />
+        return (
+          <ThemeProvider>
+            <Flex
+              px={[2, 4]}
+              pb={2}
+              justify="space-between"
+              align="center"
+              style={{ position: 'relative' }}
+            >
+              <Flag />
+              <LogoutButton mt={2} inverted={false} />
+            </Flex>
+            <Dashboard clubs={clubs} />
+          </ThemeProvider>
+        )
       case 'error':
         return <Text>Something terrible has happened.</Text>
     }

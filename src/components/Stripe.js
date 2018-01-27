@@ -1,5 +1,11 @@
 import React from 'react'
-import { Flex, Container, Heading, mediaQueries } from '@hackclub/design-system'
+import {
+  Container,
+  Flex,
+  Heading,
+  Text,
+  mediaQueries
+} from '@hackclub/design-system'
 import { wk } from '../theme'
 import { stats } from '../data.json'
 
@@ -22,7 +28,7 @@ const Stripe = Flex.extend`
 const StripeContainer = Container.extend`
   z-index: 1;
 
-  h3 mark {
+  h3 {
     font-weight: normal;
   }
   mark {
@@ -39,12 +45,15 @@ export default () => (
   <Stripe id="more" align="center" justify="center" direction="column" py={3}>
     <StripeContainer maxWidth={36} p={2} align="center">
       <Heading.h2 f={[5, 6]} mt={0} mb={3}>
-        <mark>{stats.percentage_of_us_high_schools} of US high schools.</mark>
+        <mark>The sun never</mark>
         <br />
+        <mark>sets on Hack Club.</mark>
+      </Heading.h2>
+      <Text f={[3, 4]} m={0} bold>
         <mark>
           {stats.state_count} states. {stats.country_count} countries.
         </mark>
-      </Heading.h2>
+      </Text>
       <Heading.h3 f={[3, 4]} m={0}>
         <mark>
           Join the largest community of students building the class they wish

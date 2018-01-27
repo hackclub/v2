@@ -49,8 +49,8 @@ Item.link = Item.withComponent(Link)
 const Nav = ({ mode, color, ...props }) => (
   <Base {...props}>
     <Flag />
-    <NavBar mode={mode} color={color}>
-      <Item.link to="/team" children="Our Team" />
+    <NavBar mode={mode} color={color} align="center">
+      <Item.link to="/team" children="People" />
       <Item href="/donate" children="Donate" />
       <Item.link to="/start" children="Start" />
       <Item href="/workshops" children="In a club? Get workshops »" />

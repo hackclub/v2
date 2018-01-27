@@ -22,38 +22,38 @@ import Footer from '../components/Footer'
 
 const One = Section.extend`
   padding-top: 0 !important;
-  background-color: ${cx('red.5')};
+  position: relative;
+  background-color: ${props => props.theme.colors.green[6]};
   background-image: linear-gradient(
     16deg,
-    ${props => props.theme.colors.red[4]} 0%,
-    ${props => props.theme.colors.pink[5]} 50%,
-    ${props => props.theme.colors.pink[6]} 100%
+    ${props => props.theme.colors.teal[7]} 0%,
+    ${props => props.theme.colors.lime[6]} 100%
   );
 `
 const Two = Section.extend`
-  background-color: ${cx('violet.6')};
+  background-color: ${props => props.theme.colors.orange[5]};
   background-image: linear-gradient(
-    -16deg,
-    ${cx('violet.5')} 0%,
-    ${cx('violet.6')} 32%,
-    ${cx('indigo.4')} 100%
+    -32deg,
+    ${props => props.theme.colors.yellow[5]} 0%,
+    ${props => props.theme.colors.orange[5]} 100%
   );
 `
 const Three = Section.extend`
-  background-color: ${cx('blue.6')};
+  background-color: ${props => props.theme.colors.red[5]};
   background-image: linear-gradient(
-    48deg,
-    ${cx('blue.7')} 0%,
-    ${cx('blue.6')} 32%,
-    ${cx('indigo.4')} 100%
+    -128deg,
+    ${props => props.theme.colors.red[6]} 0%,
+    ${props => props.theme.colors.red[5]} 50%,
+    ${props => props.theme.colors.pink[5]} 100%
   );
 `
 const Four = Section.extend`
-  background-color: ${cx('green.6')};
+  background-color: ${props => props.theme.colors.violet[6]};
   background-image: linear-gradient(
-    -32deg,
-    ${cx('teal.7')} 0%,
-    ${cx('lime.6')} 100%
+    16deg,
+    ${props => props.theme.colors.violet[5]} 0%,
+    ${props => props.theme.colors.violet[6]} 32%,
+    ${props => props.theme.colors.indigo[4]} 100%
   );
 `
 
@@ -74,14 +74,19 @@ const OthersCard = Card.extend`
 
   p {
     color: ${props => props.theme.colors.slate};
-    font-size: 1rem;
+    font-size: ${props => props.theme.fontSizes[2]};
     line-height: 1.375;
-    margin-top: 0.5rem;
+    margin-top: ${props => props.theme.space[3]};
   }
 `
 
 Button.link = Button.withComponent(Link)
 LargeButton.link = LargeButton.withComponent(Link)
+
+const CTA = LargeButton.link.extend`
+  position: absolute;
+  bottom: -28px;
+`
 
 export default () => (
   <ThemeProvider>
@@ -94,6 +99,9 @@ export default () => (
       <Heading.h2 f={[3, 4]} my={2} style={{ fontWeight: 'normal' }}>
         The awesome coding club at your high school is coming soon.
       </Heading.h2>
+      <CTA to="/apply" inverted f={[3, 4]}>
+        Apply to Hack Club
+      </CTA>
     </One>
     <Two>
       <Heading.h2 f={[4, 5]}>Students: apply and start your club!</Heading.h2>
@@ -114,11 +122,6 @@ export default () => (
           body="Schedule your first meeting, start marketing, and get ready!"
         />
       </Modules>
-      <Box p={3} pb={0} align="center">
-        <LargeButton.link to="/apply" inverted>
-          Apply to Hack Club
-        </LargeButton.link>
-      </Box>
     </Two>
     <Three>
       <Flex flexDirection={['column', 'row']} align="center">
@@ -127,19 +130,19 @@ export default () => (
           <Text f={[3, 4]} my={1}>
             Each club meets weekly after school at their high school.
           </Text>
-          <Button.link bg="info" my={3} inverted to="/meetings" mt={4}>
-            See what clubs look like »
+          <Button.link my={3} inverted to="/meetings" mt={4}>
+            What’s a club meeting like?
           </Button.link>
         </Container>
         <OthersCard
-          bg="blue.0"
+          bg="red.0"
           p={3}
           mt={3}
           mx="auto"
           boxShadowSize="md"
           align="left"
         >
-          <Heading.h3 color="blue.6" m={0} f={3}>
+          <Heading.h3 color="primary" mt={0} mb={2} f={3}>
             Are you a teacher or parent?
           </Heading.h3>
           <Text m={0}>

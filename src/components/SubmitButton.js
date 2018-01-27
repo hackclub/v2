@@ -14,7 +14,7 @@ export default class extends Component {
 
   componentWillMount() {
     const { application } = this.props
-    const allProfilesFinished = !application.applicant_profiles.some(
+    const allProfilesFinished = !application.leader_profiles.some(
       p => p.completed_at === null
     )
     const validApp = clubApplicationSchema.isValidSync(application)

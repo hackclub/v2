@@ -56,18 +56,18 @@ const CustomCard = props => (
 const ApplicationCard = props => {
   const {
     id,
-    applicant_profiles,
+    leader_profiles,
     updated_at,
     created_at,
     submitted_at
   } = props.app
   const { authToken, callback, app } = props
 
-  const leaderProfile = applicant_profiles.find(
-    profile => profile.applicant.id == props.applicantId
+  const leaderProfile = leader_profiles.find(
+    profile => profile.user.id == props.userId
   )
-  const coLeaderProfiles = applicant_profiles.filter(
-    profile => profile.applicant.id != props.applicantId
+  const coLeaderProfiles = leader_profiles.filter(
+    profile => profile.user.id != props.userId
   )
 
   return (
@@ -109,7 +109,7 @@ const ApplicationCard = props => {
           </li>
           {coLeaderProfiles.map((profile, index) => (
             <li key={index}>
-              <strong>{profile.applicant.email} </strong>
+              <strong>{profile.user.email} </strong>
               {profile.completed_at ? null : (
                 <span>
                   has <Neg />{' '}
@@ -163,7 +163,7 @@ class ApplicationIndex extends Component {
       status: 'loading',
       app: undefined,
       authToken: undefined,
-      applicantId: undefined
+      userId: undefined
     }
 
     this.populateApplications = this.populateApplications.bind(this)
@@ -171,9 +171,9 @@ class ApplicationIndex extends Component {
 
   populateApplications(
     authToken = this.state.authToken,
-    applicantId = this.state.applicantId
+    userId = this.state.userId
   ) {
-    fetch(`${api}/v1/applicants/${applicantId}/new_club_applications`, {
+    fetch(`${api}/v1/users/${userId}/new_club_applications`, {
       headers: { Authorization: `Bearer ${authToken}` }
     })
       .then(res => {
@@ -185,13 +185,10 @@ class ApplicationIndex extends Component {
       })
       .then(json => {
         if (json.length === 0) {
-          return fetch(
-            `${api}/v1/applicants/${applicantId}/new_club_applications`,
-            {
-              method: 'POST',
-              headers: { Authorization: `Bearer ${authToken}` }
-            }
-          ).then(res => {
+          return fetch(`${api}/v1/users/${userId}/new_club_applications`, {
+            method: 'POST',
+            headers: { Authorization: `Bearer ${authToken}` }
+          }).then(res => {
             if (res.ok) {
               return res.json()
             } else {
@@ -219,19 +216,19 @@ class ApplicationIndex extends Component {
 
   componentDidMount() {
     const authToken = window.localStorage.getItem('authToken')
-    const applicantId = window.localStorage.getItem('applicantId')
-    this.setState({ authToken, applicantId })
-    const needsToAuth = authToken === null || applicantId === null
+    const userId = window.localStorage.getItem('userId')
+    this.setState({ authToken, userId })
+    const needsToAuth = authToken === null || userId === null
 
     if (needsToAuth) {
       this.setState({ status: 'needsToAuth' })
     } else {
-      this.populateApplications(authToken, applicantId)
+      this.populateApplications(authToken, userId)
     }
   }
 
   content() {
-    const { app, status, authToken, applicantId } = this.state
+    const { app, status, authToken, userId } = this.state
 
     switch (status) {
       case 'needsToAuth':
@@ -255,7 +252,7 @@ class ApplicationIndex extends Component {
             </Heading.h1>
             <ApplicationCard
               app={app}
-              applicantId={applicantId}
+              userId={userId}
               authToken={authToken}
               callback={this.populateApplications}
             />

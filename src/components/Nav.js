@@ -53,7 +53,7 @@ const Nav = ({ mode, color, ...props }) => (
       <Item.link to="/team" children="People" />
       <Item href="/donate" children="Donate" />
       <Item.link to="/start" children="Start" />
-      <Item href="/workshops" children="In a club? Get workshops »" />
+      <Item.link to="/workshops" children="Workshops" />
     </NavBar>
   </Base>
 )

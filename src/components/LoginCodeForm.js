@@ -107,7 +107,7 @@ const LoginCodeForm = withFormik({
       return null
     }
     const strippedLoginCode = data.loginCode.replace(/\D/g, '')
-    fetch(`${api}/v1/applicants/${props.id}/exchange_login_code`, {
+    fetch(`${api}/v1/users/${props.userId}/exchange_login_code`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ login_code: strippedLoginCode })

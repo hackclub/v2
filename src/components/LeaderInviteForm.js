@@ -34,7 +34,7 @@ class LeaderInviteForm extends Component {
         .validate({ email: leaderInvite.value })
         .then(data => {
           this.setState({ error: undefined })
-          fetch(`${api}/v1/new_club_applications/${id}/add_applicant`, {
+          fetch(`${api}/v1/new_club_applications/${id}/add_user`, {
             method: 'POST',
             headers: {
               Authorization: `Bearer ${authToken}`,

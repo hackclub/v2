@@ -36,7 +36,7 @@ export default class extends Component {
       const status = 'needsToAuth'
       this.setState({ status })
     } else {
-      fetch(`${api}/v1/applicant_profiles/${id}`, {
+      fetch(`${api}/v1/leader_profiles/${id}`, {
         method: 'GET',
         headers: { Authorization: `Bearer ${authToken}` }
       })

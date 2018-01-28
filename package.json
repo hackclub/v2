@@ -15,7 +15,7 @@
     "map-render": "node src/map/render.js"
   },
   "dependencies": {
-    "@hackclub/design-system": "0.0.1-7",
+    "@hackclub/design-system": "0.0.1-8",
     "axios": "^0.17.1",
     "formik": "^0.10.5",
     "gatsby": "^1.9.172",
@@ -31,7 +31,6 @@
     "react-router": "^4.2.0",
     "react-simple-maps": "^0.10.1",
     "serve": "^6.4.9",
-    "uglifyjs-webpack-plugin": "^1.1.6",
     "unfetch": "^3.0.0",
     "yup": "^0.24.0"
   },

@@ -10,7 +10,7 @@ import {
   Form,
   FormWrapper,
   Submit
-} from '../components/Forms'
+} from 'components/Forms'
 import { withFormik } from 'formik'
 import Link from 'gatsby-link'
 import yup from 'yup'

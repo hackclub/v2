@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { api } from '../data.json'
+import { api } from 'data.json'
 import {
   Aside,
   AutoSaver,
@@ -10,7 +10,7 @@ import {
   FormAndTableRow,
   FormWrapper,
   Submit
-} from '../components/Forms'
+} from 'components/Forms'
 import { Button, Container, Flex, LargeButton } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import Link from 'gatsby-link'

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { Heading, ThemeProvider, Link as A } from '@hackclub/design-system'
-import apiClient from '../api'
+import apiClient from 'api'
 
 function flatten(text, child) {
   return typeof child === 'string'

@@ -7,7 +7,7 @@ import {
   mediaQueries,
   cx
 } from '@hackclub/design-system'
-import { wk } from '../theme'
+import { wk } from 'theme'
 
 const Base = Box.extend`
   position: relative;

@@ -7,8 +7,8 @@ import {
   Section
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Nav from '../components/Nav'
-import RedeemTechDomainForm from '../components/RedeemTechDomainForm'
+import Nav from 'components/Nav'
+import RedeemTechDomainForm from 'components/RedeemTechDomainForm'
 
 const Header = Section.withComponent('header').extend`
   padding-top: 0 !important;

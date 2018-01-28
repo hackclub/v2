@@ -6,8 +6,8 @@ import {
   Text,
   mediaQueries
 } from '@hackclub/design-system'
-import { wk } from '../theme'
-import { stats } from '../data.json'
+import { wk } from 'theme'
+import { stats } from 'data.json'
 
 const tilt = n =>
   wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`)

@@ -9,9 +9,9 @@ import {
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
-import Nav from '../components/Nav'
-import Bio from '../components/Bio'
-import Footer from '../components/Footer'
+import Nav from 'components/Nav'
+import Bio from 'components/Bio'
+import Footer from 'components/Footer'
 
 const Header = Section.extend`
   padding-top: 0 !important;

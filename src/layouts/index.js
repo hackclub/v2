@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
-import data from '../data.json'
+import data from 'data.json'
 import { colors } from '@hackclub/design-system'
 
 export default props => (

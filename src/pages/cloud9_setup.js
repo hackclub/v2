@@ -1,8 +1,8 @@
 import React from 'react'
 import { ThemeProvider, Box, Heading, Section } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Nav from '../components/Nav'
-import Cloud9Form from '../components/Cloud9Form'
+import Nav from 'components/Nav'
+import Cloud9Form from 'components/Cloud9Form'
 
 const Header = Section.withComponent('header').extend`
   padding-top: 0 !important;

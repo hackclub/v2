@@ -10,8 +10,8 @@ import {
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
-import Nav from '../components/Nav'
-import Footer from '../components/Footer'
+import Nav from 'components/Nav'
+import Footer from 'components/Footer'
 
 // These 2 colors are from the gradient used on the original Hack Camp website
 const campTheme = ['rgb(255, 75, 85)', 'rgb(212, 78, 116)']

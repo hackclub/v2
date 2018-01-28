@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
 import { api } from '../../data.json'
 import { ThemeProvider } from '@hackclub/design-system'
@@ -74,7 +74,7 @@ export default class extends Component {
       return <LoadingAnimation />
     } else {
       return (
-        <React.Fragment>
+        <Fragment>
           <ApplyNav />
           <ClubApplicationForm
             params={formFields}
@@ -82,7 +82,7 @@ export default class extends Component {
             authToken={authToken}
           />
           <Footer />
-        </React.Fragment>
+        </Fragment>
       )
     }
   }

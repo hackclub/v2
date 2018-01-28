@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
 import { api } from '../../data.json'
 import { ThemeProvider, Heading, Container } from '@hackclub/design-system'
-import theme from '../../theme'
 import LeaderApplicationForm from '../../components/LeaderApplicationForm'
 import LoadingAnimation from '../../components/LoadingAnimation'
 import Login from '../../components/Login'
@@ -73,7 +72,7 @@ export default class extends Component {
       return <LoadingAnimation />
     } else {
       return (
-        <React.Fragment>
+        <Fragment>
           <ApplyNav />
           <LeaderApplicationForm
             params={formFields}
@@ -81,7 +80,7 @@ export default class extends Component {
             authToken={authToken}
           />
           <Footer />
-        </React.Fragment>
+        </Fragment>
       )
     }
   }

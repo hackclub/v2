@@ -32,3 +32,8 @@ all UI primitives (Text, Buttons, etc).
 Use `styled-components`’s
 [`.extend`](https://www.styled-components.com/docs/basics#extending-styles)
 method for adding custom styling to a DS component.
+
+# Images
+
+Before adding images (in `static/`), resize them to a logical size and run
+[Guetzli](https://github.com/google/guetzli/) on them for optimization.

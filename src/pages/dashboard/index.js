@@ -36,7 +36,7 @@ const Td = props => {
 }
 
 const Inspector = props => {
-  const { authToken, application } = props
+  const { authToken, application, updateApplicationList } = props
   const transformedApplication = {
     ...application,
     interview_duration: application.interview_duration ? application.interview_duration / 60 : null,
@@ -47,7 +47,7 @@ const Inspector = props => {
     <Formik
       initialValues={transformedApplication}
       enableReinitialize={true}
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={(values, { props, setSubmitting }) => {
         let transformedValues = {...values}
         if (values.interview_duration) {
           transformedValues.interview_duration = values.interview_duration * 60
@@ -58,6 +58,7 @@ const Inspector = props => {
           })
           .then(json => {
             setSubmitting(false)
+            updateApplicationList(json)
           })
           .catch(e => {
             setSubmitting(false)
@@ -116,6 +117,7 @@ export default class extends Component {
   constructor(props) {
     super(props)
     this.state = { status: 'loading' }
+    this.updateApplicationList = this.updateApplicationList.bind(this)
   }
 
   componentDidMount() {
@@ -125,9 +127,13 @@ export default class extends Component {
     api
       .get('v1/new_club_applications', { authToken })
       .then(json => {
+        let clubApplications = {}
+        json.forEach(app => {
+          clubApplications[app.id] = app
+        })
         this.setState({
           status: 'success',
-          clubApplications: json
+          clubApplications
         })
       })
       .catch(e => {
@@ -137,6 +143,13 @@ export default class extends Component {
           this.setState({ status: 'error' })
         }
       })
+  }
+
+  updateApplicationList(updatedApplication) {
+    let { clubApplications } = this.state
+    clubApplications[updatedApplication.id] = updatedApplication
+
+    this.setState({clubApplications})
   }
 
   render() {
@@ -164,7 +177,7 @@ export default class extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {clubApplications.map((application, index) => (
+                    {Object.values(clubApplications).map((application, index) => (
                       <Tr>
                         <Td content={application.id} />
                         <Td content={application.high_school_name} />
@@ -188,7 +201,10 @@ export default class extends Component {
               {
                 selection &&
                 <Box>
-                  <Inspector authToken={authToken} application={selection} />
+                  <Inspector authToken={authToken}
+                             application={selection}
+                             updateApplicationList={this.updateApplicationList}
+                  />
                 </Box>
               }
             </Flex>

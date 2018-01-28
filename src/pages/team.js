@@ -39,10 +39,10 @@ export default () => (
     <Helmet title="Team – Hack Club" />
     <Header>
       <Nav />
-      <Heading.h2 color="white" align="center" caps mt={3}>
-        <Box f={4}>Hack Club</Box>
-        <Box f={6}>Team</Box>
-      </Heading.h2>
+      <Heading.h1 caps mt={3}>
+        <Text f={4}>Hack Club</Text>
+        <Text f={6}>Team</Text>
+      </Heading.h1>
     </Header>
     <Base py={[4, 5]} px={3}>
       <Bio

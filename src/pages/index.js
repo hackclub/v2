@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from '@hackclub/design-system'
-import { Head } from 'react-static'
+import Helmet from 'react-helmet'
 import Nav from '../components/Nav'
 import Bubbles from '../components/Bubbles'
 import Stripe from '../components/Stripe'
@@ -10,15 +10,10 @@ import Collage from '../components/Collage'
 import Mosaic from '../components/Mosaic'
 import Start from '../components/Start'
 import Footer from '../components/Footer'
-import theme from '../theme'
-import data from '../../data'
+import data from '../data.json'
 
 export default () => (
   <ThemeProvider>
-    <Head>
-      <title children={data.title} />
-      <meta name="description" content={data.description} />
-    </Head>
     <Nav style={{ position: 'absolute', top: 0 }} mode="cloud" />
     <Bubbles />
     <Stripe />

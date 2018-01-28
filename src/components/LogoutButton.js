@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '@hackclub/design-system'
-import { Link } from 'react-static'
+import Link from 'gatsby-link'
 
 export const destroySession = () => {
   window.localStorage.removeItem('authToken')

@@ -1,12 +1,15 @@
 import React from 'react'
-import { Flex, Heading, mediaQueries } from '@hackclub/design-system'
+import { Flex, Card, Heading, mediaQueries } from '@hackclub/design-system'
 import Stat from './Stat'
-import { stats } from '../../data'
+import { stats } from '../data.json'
 
 const Base = Flex.extend`
   max-width: 48rem;
   margin-bottom: -4rem;
   > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 3rem;
     flex: 1 1 auto;
     padding: 1rem;
@@ -41,18 +44,18 @@ export default () => (
     align="center"
     justify="center"
     mx="auto"
-    px={4}
+    px={3}
   >
-    <Flex align="center" justify="center" bg="primary">
+    <Card boxShadowSize="lg" bg="primary">
       <Heading.h2 color="white" f={6}>
         United as one. Divided by zero.
       </Heading.h2>
-    </Flex>
-    <Flex align="center" justify="center" bg="accent">
+    </Card>
+    <Card boxShadowSize="lg" bg="accent" color="white">
       <Stat value={stats.school_count} label="schools" />
       <Stat value={stats.country_count} label="countries" />
       <Stat value={stats.state_count} label="states" />
       <Stat value={stats.approximate_members} label="members" />
-    </Flex>
+    </Card>
   </Base>
 )

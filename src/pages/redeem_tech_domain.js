@@ -6,12 +6,11 @@ import {
   Text,
   Section
 } from '@hackclub/design-system'
-import { Head } from 'react-static'
+import Helmet from 'react-helmet'
 import Nav from '../components/Nav'
 import RedeemTechDomainForm from '../components/RedeemTechDomainForm'
 
 const Header = Section.withComponent('header').extend`
-  flex-direction: column;
   padding-top: 0 !important;
   background-color: ${props => props.theme.colors.red[5]};
   background-image: linear-gradient(
@@ -24,9 +23,7 @@ const Header = Section.withComponent('header').extend`
 
 export default () => (
   <ThemeProvider>
-    <Head>
-      <title>Get a Free .TECH Domain</title>
-    </Head>
+    <Helmet title="Free .TECH Domain – Hack Club" />
     <Header pb={3} align="center">
       <Nav />
       <Container maxWidth={32} p={0}>

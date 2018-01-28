@@ -1,40 +1,46 @@
 {
   "name": "@hackclub/site",
-  "version": "0.0.2",
-  "description": "hackclub.com website",
+  "description": "hackclub.com",
+  "version": "0.1.0",
+  "author": "Lachlan Campbell <lachlan@hackclub.com>",
+  "license": "MIT",
+  "private": true,
   "scripts": {
-    "dev": "react-static start",
-    "build": "react-static build",
-    "start": "serve dist -p 3000",
+    "build": "gatsby build",
+    "dev": "gatsby develop",
+    "start": "serve public -p 3000",
     "postinstall": "npm run build",
     "fmt": "prettier src/**/*.js --single-quote --no-semi --write",
     "social": "repng src/components/Social.js -w 512 -h 512 -o public -f social",
     "map-render": "node src/map/render.js"
   },
-  "author": "Lachlan Campbell",
   "dependencies": {
-    "@hackclub/design-system": "0.0.1-4",
+    "@hackclub/design-system": "0.0.1-8",
     "axios": "^0.17.1",
-    "dot-prop": "^4.2.0",
     "formik": "^0.10.5",
-    "palx": "^1.0.2",
+    "gatsby": "^1.9.172",
+    "gatsby-link": "^1.6.35",
+    "gatsby-plugin-netlify": "^1.0.16",
+    "gatsby-plugin-react-helmet": "^2.0.4",
+    "gatsby-plugin-segment-js": "^1.1.0",
+    "gatsby-plugin-styled-components": "^2.0.5",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-markdown": "^3.1.4",
+    "react-helmet": "^5.2.0",
     "react-router": "^4.2.0",
     "react-simple-maps": "^0.10.1",
-    "react-static": "4.x.x",
-    "rebass": "^1.0.4",
-    "serve": "^6.4.4",
-    "uglifyjs-webpack-plugin": "^1.1.6",
+    "serve": "^6.4.9",
     "unfetch": "^3.0.0",
-    "yup": "^0.23.0"
+    "yup": "^0.24.0"
   },
   "devDependencies": {
     "cheerio": "^1.0.0-rc.2",
     "minimist": "^1.2.0",
-    "prettier": "^1.9.2",
+    "prettier": "^1.10.2",
     "svgo": "^1.0.3"
-  }
+  },
+  "keywords": [
+    "gatsby"
+  ]
 }

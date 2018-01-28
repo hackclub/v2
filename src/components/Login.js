@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Head } from 'react-static'
+import Helmet from 'react-helmet'
 import { ThemeProvider, Flex } from '@hackclub/design-system'
 import Flag from '../components/Flag'
 import EmailLoginForm from '../components/EmailLoginForm'
@@ -44,9 +44,7 @@ class Login extends Component {
 
     return (
       <ThemeProvider>
-        <Head>
-          <title>Log in – Hack Club</title>
-        </Head>
+        <Helmet title="Log in – Hack Club" />
         <FixedFlag />
         <Base>
           {emailSent ? (

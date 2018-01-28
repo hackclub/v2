@@ -11,7 +11,8 @@ import {
   mediaQueries,
   cx
 } from '@hackclub/design-system'
-import { Head, Link } from 'react-static'
+import Helmet from 'react-helmet'
+import Link from 'gatsby-link'
 import Nav from '../components/Nav'
 import Start from '../components/Start'
 import Footer from '../components/Footer'
@@ -107,9 +108,7 @@ LargeButton.link = LargeButton.withComponent(Link)
 
 export default () => (
   <ThemeProvider>
-    <Head>
-      <title>Meetings – Hack Club</title>
-    </Head>
+    <Helmet title="Meetings – Hack Club" />
     <Header color="white" pb={4}>
       <Nav />
       <Heading.h1 align="center" f={[5, 6]} mx="auto" mt={4} mb={3}>

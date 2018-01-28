@@ -1,26 +1,26 @@
 import React, { Component, Fragment } from 'react'
-import { Head } from 'react-static'
-import { api } from '../../data'
+import Helmet from 'react-helmet'
+import { api } from '../../data.json'
 import {
   ThemeProvider,
+  Box,
+  Button,
   Card,
   Container,
-  Box,
   Flex,
-  Text,
   Heading,
-  Button,
   LargeButton,
   Link as DSLink,
+  Text,
   cx
 } from '@hackclub/design-system'
-import LeaderInviteForm from '../components/LeaderInviteForm'
-import LoadingAnimation from '../components/LoadingAnimation'
-import SubmitButton from '../components/SubmitButton'
-import Login from '../components/Login'
-import ApplyNav from '../components/ApplyNav'
+import ApplyNav from '../../components/ApplyNav'
+import LeaderInviteForm from '../../components/LeaderInviteForm'
+import LoadingAnimation from '../../components/LoadingAnimation'
+import Login from '../../components/Login'
+import SubmitButton from '../../components/SubmitButton'
 import fetch from 'unfetch'
-import { Link } from 'react-static'
+import Link from 'gatsby-link'
 
 LargeButton.link = LargeButton.withComponent(Link)
 
@@ -49,9 +49,11 @@ const timeSince = time => {
 
 const Neg = () => <Text.span color="error" bold children="NOT" />
 
-const CustomCard = props => (
-  <Card boxShadowSize="md" p={[3, 4]} color="black" bg="snow" {...props} />
-)
+const CustomCard = Card.extend`
+  ul {
+    padding-left: 0;
+  }
+`
 
 const ApplicationCard = props => {
   const {
@@ -72,8 +74,32 @@ const ApplicationCard = props => {
 
   return (
     <Container maxWidth={36} mt={3} p={3}>
-      <CustomCard>
-        <Text>You only need a team to apply. Invite them here:</Text>
+      <Flex
+        align="center"
+        justify="center"
+        flexDirection={['column', 'row']}
+        mx={[null, -2]}
+      >
+        <LargeButton.link
+          w={1}
+          m={2}
+          inverted
+          to={`/apply/club?id=${id}`}
+          children="Edit Application"
+        />
+        <LargeButton.link
+          w={1}
+          m={2}
+          inverted
+          to={`/apply/leader?id=${leaderProfile.id}`}
+          children="Edit Leader Profile"
+        />
+      </Flex>
+      <Flex mt={2} mb={4}>
+        <SubmitButton authToken={authToken} application={app} />
+      </Flex>
+      <CustomCard boxShadowSize="md" p={[3, 4]} color="black" bg="snow">
+        <Text>You only need a team to apply. Invite them:</Text>
         <LeaderInviteForm id={id} authToken={authToken} callback={callback} />
         <Text>After you submit your application:</Text>
         <ul>
@@ -87,8 +113,8 @@ const ApplicationCard = props => {
             meetings, and our online community of club leaders
           </li>
           <li>
-            Once you start holding meetings, we’ll check in with you each week to
-            make sure everything is going well
+            Once you start holding meetings, we’ll check in with you each week
+            to make sure everything is going well
           </li>
         </ul>
         <p>
@@ -126,36 +152,11 @@ const ApplicationCard = props => {
           </em>
         </Text>
       </CustomCard>
-      <Flex
-        align="center"
-        justify="center"
-        flexDirection={['column', 'row']}
-        my={3}
-        mx={[null, -2]}
-      >
-        <LargeButton.link
-          w={1}
-          m={2}
-          inverted
-          to={`/apply/club?id=${id}`}
-          children="Edit Application"
-        />
-        <LargeButton.link
-          w={1}
-          m={2}
-          inverted
-          to={`/apply/leader?id=${leaderProfile.id}`}
-          children="Edit Leader Profile"
-        />
-      </Flex>
-      <Flex mb={3}>
-        <SubmitButton authToken={authToken} application={app} />
-      </Flex>
     </Container>
   )
 }
 
-class ApplicationIndex extends Component {
+export default class extends Component {
   constructor(props) {
     super(props)
 
@@ -269,13 +270,9 @@ class ApplicationIndex extends Component {
   render() {
     return (
       <ThemeProvider>
-        <Head>
-          <title>Apply – Hack Club</title>
-        </Head>
+        <Helmet title="Apply – Hack Club" />
         {this.content()}
       </ThemeProvider>
     )
   }
 }
-
-export default ApplicationIndex

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Box, Flex } from '@hackclub/design-system'
-import { Link } from 'react-static'
+import Link from 'gatsby-link'
 import { colors, mediaQueries } from '@hackclub/design-system'
 import Flag from './Flag'
 
@@ -49,9 +49,10 @@ Item.link = Item.withComponent(Link)
 const Nav = ({ mode, color, ...props }) => (
   <Base {...props}>
     <Flag />
-    <NavBar mode={mode} color={color}>
-      <Item.link to="/team" children="Our Team" />
+    <NavBar mode={mode} color={color} align="center">
+      <Item.link to="/team" children="People" />
       <Item href="/donate" children="Donate" />
+      <Item.link to="/start" children="Start" />
       <Item href="/workshops" children="In a club? Get workshops »" />
     </NavBar>
   </Base>

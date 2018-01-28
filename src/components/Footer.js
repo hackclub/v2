@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flex, Box, Heading, Text, Link as A } from '@hackclub/design-system'
-import { Link } from 'react-static'
+import Link from 'gatsby-link'
 import Icon from './Icon'
 import { mx, geo } from '../theme'
 

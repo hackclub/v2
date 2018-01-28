@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-static'
+import Link from 'gatsby-link'
 import {
   Avatar,
   Flex,
@@ -122,15 +122,14 @@ const Bubbles = ({ children }) => (
       </Heading.h1>
       <Text f={[3, 4]} color="gray.9" mx="auto" m={0}>
         Hack Club is a nonprofit network of coding clubs where members learn to
-        code like hackers – through tinkering, building projects, and taking
-        things apart.
+        code through tinkering and building projects.
       </Text>
-      <Flex justify="center" wrap mx={-2} mt={4}>
+      <Flex justify="center" align="center" wrap mx={-2} mt={[3, 4]}>
         <LargeButton href="https://finder.hackclub.com" inverted m={2}>
           Find a Club
         </LargeButton>
-        <LargeButton.link to="/start" m={2}>
-          Apply »
+        <LargeButton.link to="/start" m={2} f={[3, 4]}>
+          Start »
         </LargeButton.link>
       </Flex>
     </Cloud>

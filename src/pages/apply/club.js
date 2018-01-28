@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import { Head } from 'react-static'
-import { api } from '../../data'
+import React, { Component, Fragment } from 'react'
+import Helmet from 'react-helmet'
+import { api } from '../../data.json'
 import { ThemeProvider } from '@hackclub/design-system'
-import LoadingAnimation from '../components/LoadingAnimation'
-import ClubApplicationForm from '../components/ClubApplicationForm'
-import ApplyNav from '../components/ApplyNav'
-import Footer from '../components/Footer'
-import Login from '../components/Login'
+import LoadingAnimation from '../../components/LoadingAnimation'
+import ClubApplicationForm from '../../components/ClubApplicationForm'
+import ApplyNav from '../../components/ApplyNav'
+import Footer from '../../components/Footer'
+import Login from '../../components/Login'
 import yup from 'yup'
 import fetch from 'unfetch'
 
@@ -74,7 +74,7 @@ export default class extends Component {
       return <LoadingAnimation />
     } else {
       return (
-        <React.Fragment>
+        <Fragment>
           <ApplyNav />
           <ClubApplicationForm
             params={formFields}
@@ -82,7 +82,7 @@ export default class extends Component {
             authToken={authToken}
           />
           <Footer />
-        </React.Fragment>
+        </Fragment>
       )
     }
   }
@@ -90,9 +90,7 @@ export default class extends Component {
   render() {
     return (
       <ThemeProvider>
-        <Head>
-          <title children="Edit Club Application" />
-        </Head>
+        <Helmet title="Edit Club Application – Hack Club" />
         {this.content()}
       </ThemeProvider>
     )

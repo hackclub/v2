@@ -3,12 +3,10 @@ import api from '../api'
 import { LargeButton } from '@hackclub/design-system'
 import { clubApplicationSchema } from './ClubApplicationForm'
 
-export default class extends Component {
+class SubmitButton extends Component {
   constructor(props) {
     super(props)
-
     this.state = { readyToSubmit: false, submitted: false }
-
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -70,3 +68,5 @@ export default class extends Component {
     )
   }
 }
+
+export default SubmitButton

@@ -1,17 +1,10 @@
-import React, { Fragment, Component } from 'react'
-import { api } from '../../data'
-import { Field, Input } from '../components/Forms'
-import {
-  Box,
-  Flex,
-  Text,
-  IconButton,
-  cx,
-  Link as A
-} from '@hackclub/design-system'
+import React, { Component, Fragment } from 'react'
+import { api } from '../data.json'
+import { Field } from '../components/Forms'
+import { Box, Flex, Text, IconButton, Link as A } from '@hackclub/design-system'
 import yup from 'yup'
 
-export default class extends Component {
+class LeaderInviteForm extends Component {
   constructor(props) {
     super(props)
     this.state = { errors: undefined }
@@ -75,7 +68,7 @@ export default class extends Component {
     }
 
     return (
-      <Flex align="flex-end">
+      <Flex align="flex-end" mb={3}>
         <Field
           id="leader_invite"
           onKeyDown={handleChange}
@@ -109,3 +102,5 @@ export default class extends Component {
     )
   }
 }
+
+export default LeaderInviteForm

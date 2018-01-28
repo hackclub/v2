@@ -9,10 +9,10 @@ const Base = Box.extend`
   }
 `
 
-const Stat = ({ label, value, children, ...props }) => (
-  <Base my={1} w={128} color="white" align="center" {...props}>
+const Stat = ({ label, value, children, f = 7, ...props }) => (
+  <Base my={1} w={128} align="center" {...props}>
     {children}
-    <Text.span f={7} m={0} bold children={value} />
+    <Text.span f={f} m={0} bold children={value} />
     {label && <Text f={2} m={0} caps children={label} />}
   </Base>
 )

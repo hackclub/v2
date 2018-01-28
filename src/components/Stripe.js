@@ -1,7 +1,13 @@
 import React from 'react'
-import { Flex, Container, Heading, mediaQueries } from '@hackclub/design-system'
+import {
+  Container,
+  Flex,
+  Heading,
+  Text,
+  mediaQueries
+} from '@hackclub/design-system'
 import { wk } from '../theme'
-import { stats } from '../../data'
+import { stats } from '../data.json'
 
 const tilt = n =>
   wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`)
@@ -22,7 +28,7 @@ const Stripe = Flex.extend`
 const StripeContainer = Container.extend`
   z-index: 1;
 
-  h3 mark {
+  h3 {
     font-weight: normal;
   }
   mark {
@@ -41,13 +47,15 @@ export default () => (
       <Heading.h2 f={[5, 6]} mt={0} mb={3}>
         <mark>The sun never</mark>
         <br />
-        <mark>
-          sets on Hack Club.
-        </mark>
+        <mark>sets on Hack Club.</mark>
       </Heading.h2>
+      <Text f={[3, 4]} m={0} bold>
+        <mark>
+          {stats.state_count} states. {stats.country_count} countries.
+        </mark>
+      </Text>
       <Heading.h3 f={[3, 4]} m={0}>
         <mark>
-          {stats.state_count} states. {stats.country_count} countries.{' '}
           Join the largest community of students building the class they wish
           they could take.
         </mark>

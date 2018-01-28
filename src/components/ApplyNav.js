@@ -1,12 +1,10 @@
-import React, { Component } from 'react'
-import { Link } from 'react-static'
+import React, { Component, Fragment } from 'react'
+import Link from 'gatsby-link'
 import { Text, Flex, Box, Link as A } from '@hackclub/design-system'
-import { cx, mx } from '../theme'
 import { Item } from './Nav'
 import LogoutButton from './LogoutButton'
 import Flag from './Flag'
-import styled from 'styled-components'
-import { withRouter } from 'react-static'
+import { withRouter } from 'react-router-dom'
 
 const Crumb = A.withComponent(Link).extend`
   opacity: ${props => (props.active === 'true' ? 0.8 : 1)};
@@ -25,14 +23,14 @@ class BreadcrumbClass extends Component {
 
   render() {
     const { path } = this.state
-    let runningPath = ['']
+    const runningPath = ['']
     return (
-      <React.Fragment>
+      <Fragment>
         {path.map((section, index) => {
           runningPath.push(section)
           const isLast = path.length - index > 1
           return (
-            <React.Fragment>
+            <Fragment>
               <Crumb
                 color="white"
                 to={runningPath.join('/')}
@@ -43,10 +41,10 @@ class BreadcrumbClass extends Component {
               {isLast ? (
                 <Text.span mx={2} color="white" regular children="›" />
               ) : null}
-            </React.Fragment>
+            </Fragment>
           )
         })}
-      </React.Fragment>
+      </Fragment>
     )
   }
 }

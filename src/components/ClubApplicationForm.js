@@ -1,19 +1,19 @@
 import React, { Fragment } from 'react'
-import { api } from '../../data'
+import { api } from '../data.json'
 import {
   Aside,
+  AutoSaver,
   ConfirmClose,
-  FormWrapper,
-  Fieldset,
-  FormAndTableRow,
   Field,
-  Submit,
+  Fieldset,
   Form,
-  AutoSaver
+  FormAndTableRow,
+  FormWrapper,
+  Submit
 } from '../components/Forms'
-import Button from '../components/Button'
-import { Container, LargeButton } from '@hackclub/design-system'
+import { Button, Container, Flex, LargeButton } from '@hackclub/design-system'
 import { withFormik } from 'formik'
+import Link from 'gatsby-link'
 import yup from 'yup'
 
 export const clubApplicationSchema = yup.object().shape({
@@ -37,6 +37,8 @@ export const clubApplicationSchema = yup.object().shape({
     .notOneOf(['select'])
     .required()
 })
+
+LargeButton.link = LargeButton.withComponent(Link)
 
 const InnerForm = props => {
   const {
@@ -315,4 +317,5 @@ const ClubApplicationForm = withFormik({
   },
   displayName: 'ClubApplicationForm'
 })(InnerForm)
+
 export default ClubApplicationForm

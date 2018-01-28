@@ -2,7 +2,7 @@ import React from 'react'
 import {
   Box,
   Container,
-  Image,
+  Card,
   Text,
   mediaQueries,
   cx
@@ -24,17 +24,22 @@ const Base = Box.extend`
   }
 
   img {
-    border-radius: 8px;
-    max-width: 96%;
-    transform: translate(0, 64px);
+    border-radius: ${props => props.theme.radius}px;
+    max-width: calc(100vw - 2rem);
+    width: 32rem;
+    ${mediaQueries[1]} {
+      transform: translate(0, 2rem);
+    }
   }
 `
 
+Card.img = Card.withComponent('img')
+
 export default props => (
-  <Base mt={64 * -3} pt={256} pb={160} id="about" {...props}>
+  <Base mt={64 * -3} pt={256} pb={4} id="about" {...props}>
     <Box mx="auto" align="center">
-      <Container maxWidth={48} align="left" px={3} id="section">
-        <Text f={[2, 4]} my={2}>
+      <Container maxWidth={48} align="left" px={3} mb={[4, 0]} id="section">
+        <Text f={[2, 4]}>
           <strong>What it looks like.</strong> Every week, you and around 20
           other students come together to build. Meetings are like
           mini-hackathons. People are working on projects, you lead workshops to
@@ -47,14 +52,14 @@ export default props => (
           use the community’s open source materials and remote office hours with
           the staff to get your club started.
         </Text>
-        <Text f={[2, 4]} my={2}>
+        <Text f={[2, 4]}>
           <strong>Our philosophy.</strong> We think people learn best when they
           take control of their own education. At Hack Club, there are no
           teachers. No lectures. Your job is to facilitate and provide guidance
           through mentoring. Hack Club is heavily inspired by unschooling.
         </Text>
       </Container>
-      <Image w={512} mx="auto" src="/about_hacking.jpg" />
+      <Card.img boxShadowSize="lg" mx="auto" src="/about_hacking.jpg" />
     </Box>
   </Base>
 )

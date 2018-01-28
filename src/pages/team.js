@@ -7,19 +7,20 @@ import {
   Container,
   mediaQueries
 } from '@hackclub/design-system'
-import { Head, Link } from 'react-static'
+import Helmet from 'react-helmet'
+import Link from 'gatsby-link'
 import Nav from '../components/Nav'
 import Bio from '../components/Bio'
 import Footer from '../components/Footer'
 
-const Header = Box.extend`
+const Header = Section.extend`
   padding-top: 0 !important;
-  background-color: ${props => props.theme.colors.blue[5]};
+  background-color: ${props => props.theme.colors.red[5]};
   background-image: linear-gradient(
-    -8deg,
-    ${props => props.theme.colors.indigo[4]} 0%,
-    ${props => props.theme.colors.blue[6]} 50%,
-    ${props => props.theme.colors.blue[7]} 100%
+    -2deg,
+    ${props => props.theme.colors.orange[4]} 0%,
+    ${props => props.theme.colors.red[5]} 50%,
+    ${props => props.theme.colors.red[6]} 100%
   );
 `
 
@@ -35,10 +36,8 @@ const Base = Container.extend`
 
 export default () => (
   <ThemeProvider>
-    <Head>
-      <title>Team – Hack Club</title>
-    </Head>
-    <Header pb={[3, 4]}>
+    <Helmet title="Team – Hack Club" />
+    <Header>
       <Nav />
       <Heading.h2 color="white" align="center" caps mt={3}>
         <Box f={4}>Hack Club</Box>

@@ -8,7 +8,8 @@ import {
   Link as A,
   ThemeProvider
 } from '@hackclub/design-system'
-import { Head, Link } from 'react-static'
+import Helmet from 'react-helmet'
+import Link from 'gatsby-link'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 
@@ -16,7 +17,6 @@ import Footer from '../components/Footer'
 const campTheme = ['rgb(255, 75, 85)', 'rgb(212, 78, 116)']
 
 const Header = Section.withComponent('header').extend`
-  flex-direction: column;
   padding-top: 0 !important;
   background-color: ${campTheme[0]};
   background-image: linear-gradient(
@@ -30,9 +30,7 @@ Button.link = Button.withComponent(Link)
 
 export default () => (
   <ThemeProvider>
-    <Head>
-      <title>Hack Camp</title>
-    </Head>
+    <Helmet title="Hack Camp – Hack Club" />
     <Header pb={3}>
       <Nav />
       <Heading.h1 f={[5, 6]} mt={4}>

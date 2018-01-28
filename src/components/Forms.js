@@ -1,18 +1,18 @@
 import React, { Component, Fragment } from 'react'
 import {
   Box,
+  Button,
   Container,
   Flex,
   Heading,
-  Text,
-  Label,
   Input,
-  Button,
+  Label,
   LargeButton,
+  Text,
   mediaQueries,
   colors
 } from '@hackclub/design-system'
-import { Prompt } from 'react-static'
+import { Prompt } from 'react-router'
 
 const SaveStatusText = Text.extend.attrs({
   f: [1, 3],
@@ -22,33 +22,31 @@ const SaveStatusText = Text.extend.attrs({
   children: props => (props.saved ? 'Saved' : 'Saving...'),
   color: props => (props.saved ? 'slate' : 'primary')
 })`
-position: fixed;
-bottom: 0;
-left: 0;
-border-style: solid;
-border-width: 1px;
-border-color: ${props => (props.saved ? colors.slate : colors.primary)};
-border-radius: 4px;
-opacity: ${props => (props.saved ? 0 : 1)};
-transition-duration: ${props => (props.saved ? 2 : 1)}s;
-transition-delay: ${props => (props.saved ? 4 : 0)}s;
-transition-property: opacity;
-transition-timing-function: ease-in-out;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-style: solid;
+  border-width: 1px;
+  border-color: ${props => (props.saved ? colors.slate : colors.primary)};
+  border-radius: 4px;
+  opacity: ${props => (props.saved ? 0 : 1)};
+  transition-duration: ${props => (props.saved ? 2 : 1)}s;
+  transition-delay: ${props => (props.saved ? 4 : 0)}s;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
 `
 
-const SaveStatusLine = Box.extend.attrs({
-  w: 1
-})`
-position: fixed;
-bottom: 0;
-left: 0;
-border-style: solid;
-border-width: 0;
-border-top-width: 1px;
-opacity: ${props => (props.saved ? 2 / 3 : 1)};
-transition-duration: 1s;
-color: ${props => (props.saved ? colors.slate : colors.primary)};
-box-shadow: 0 0 4px ${props => (props.saved ? '0px' : '2px')};
+const SaveStatusLine = Box.extend.attrs({ w: 1 })`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-style: solid;
+  border-width: 0;
+  border-top-width: 1px;
+  opacity: ${props => (props.saved ? 2 / 3 : 1)};
+  transition-duration: 1s;
+  color: ${props => (props.saved ? colors.slate : colors.primary)};
+  box-shadow: 0 0 4px ${props => (props.saved ? '0px' : '2px')};
 `
 
 const SaveStatus = props => (

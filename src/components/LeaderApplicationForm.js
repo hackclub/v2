@@ -1,19 +1,19 @@
 import React, { Fragment } from 'react'
-import { api } from '../../data'
+import { api } from '../data.json'
 import { Container, LargeButton } from '@hackclub/design-system'
 import {
-  FormWrapper,
   Aside,
+  AutoSaver,
   ConfirmClose,
-  Fieldset,
   Field,
-  Submit,
+  Fieldset,
   Form,
-  AutoSaver
+  FormWrapper,
+  Submit
 } from '../components/Forms'
 import { withFormik } from 'formik'
+import Link from 'gatsby-link'
 import yup from 'yup'
-import { Link, Prompt } from 'react-static'
 
 export const leaderApplicationSchema = yup.object().shape({
   leader_name: yup.string().required(),
@@ -39,6 +39,8 @@ export const leaderApplicationSchema = yup.object().shape({
     .notOneOf(['select'])
     .required()
 })
+
+LargeButton.link = LargeButton.withComponent(Link)
 
 const InnerForm = props => {
   const {
@@ -146,7 +148,7 @@ const InnerForm = props => {
           <Field
             name="leader_address"
             label="Your full address (include city, state/province, country)"
-            hint="Please enter your address exactly as we should write it on an envelope."
+            hint="As part of Hack Club, we’ll occasionally send you physical materials (like stickers) to help market your club. Please enter your address exactly as we should write it on an envelope."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.leader_address}

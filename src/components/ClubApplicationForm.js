@@ -4,21 +4,14 @@ import {
   Aside,
   AutoSaver,
   ConfirmClose,
-  FormWrapper,
-  Fieldset,
-  FormAndTableRow,
   Field,
-  Submit,
+  Fieldset,
   Form,
-  AutoSaver
+  FormAndTableRow,
+  FormWrapper,
+  Submit
 } from '../components/Forms'
-import {
-  Box,
-  Button,
-  Container,
-  Flex,
-  LargeButton
-} from '@hackclub/design-system'
+import { Button, Container, Flex, LargeButton } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import Link from 'gatsby-link'
 import yup from 'yup'

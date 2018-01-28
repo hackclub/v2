@@ -9,19 +9,13 @@ const generateMethod = method => (path, options) => {
   for (let [key, value] of Object.entries(options)) {
     switch (key) {
       case 'authToken':
-        filteredOptions = {
-          ...filteredOptions,
-          ...{ headers: { Authorization: `Bearer ${value}` } }
-        }
+        filteredOptions.headers = filteredOptions.headers || {}
+        filteredOptions.headers['Authorization'] = `Bearer ${value}`
         break
       case 'data':
-        filteredOptions = {
-          ...filteredOptions,
-          ...{
-            body: JSON.stringify(value),
-            headers: { 'Content-Type': 'application/json' }
-          }
-        }
+        filteredOptions.body = JSON.stringify(value)
+        filteredOptions.headers = filteredOptions.headers || {}
+        filteredOptions.headers['Content-Type'] = 'application/json'
         break
       default:
         filteredOptions[key] = value

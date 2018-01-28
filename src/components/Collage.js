@@ -51,7 +51,7 @@ export default () => (
         United as one. Divided by zero.
       </Heading.h2>
     </Card>
-    <Card boxShadowSize="lg" bg="accent">
+    <Card boxShadowSize="lg" bg="accent" color="white">
       <Stat value={stats.school_count} label="schools" />
       <Stat value={stats.country_count} label="countries" />
       <Stat value={stats.state_count} label="states" />

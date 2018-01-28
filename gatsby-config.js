@@ -11,6 +11,13 @@ module.exports = {
         prodKey: '35oTlU4UqlhIN8VGYmBxAzyDdfzhcscw'
       }
     },
-    'gatsby-plugin-netlify'
+    {
+      resolve: 'gatsby-plugin-netlify',
+      options: {
+        headers: {
+          '/fonts/**': ['Access-Control-Allow-Origin: *']
+        }
+      }
+    }
   ]
 }

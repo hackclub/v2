@@ -210,14 +210,22 @@ export default class extends Component {
             <Flex
               px={[2, 4]}
               pb={2}
-              justify="space-between"
+              justify="flex-end"
               align="center"
               style={{ position: 'relative' }}
             >
-              <Flag />
               <LogoutButton mt={2} inverted={false} />
             </Flex>
-            <Dashboard clubs={clubs} />
+            <Flex>
+              <Dashboard clubs={clubs} setSelection={this.setSelection} />
+              {selection && (
+                <Inspector
+                  club={selection}
+                  authToken={authToken}
+                  updateClub={this.updateClub}
+                />
+              )}
+            </Flex>
           </ThemeProvider>
         )
       case 'error':

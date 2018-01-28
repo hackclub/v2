@@ -6,5 +6,4 @@
 /slack_invite      https://legacy.hackclub.com/slack_invite  200
 /workshops         https://legacy.hackclub.com/workshops  200
 /workshops/*       https://legacy.hackclub.com/workshops/:splat  200
-/static/js/*       https://legacy.hackclub.com/static/js/:splat  200
-/static/css/*      https://legacy.hackclub.com/static/css/:splat  200
+/static/*          https://legacy.hackclub.com/static/:splat  200

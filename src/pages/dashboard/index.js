@@ -46,6 +46,7 @@ const Inspector = props => {
   return (
     <Formik
       initialValues={transformedApplication}
+      enableReinitialize={true}
       onSubmit={(values, { setSubmitting }) => {
         let transformedValues = {...values}
         if (values.interview_duration) {

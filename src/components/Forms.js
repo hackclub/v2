@@ -169,7 +169,8 @@ export class Field extends Component {
       children,
       error,
       hint,
-      optional
+      optional,
+      value
     } = this.props
 
     const { Tag } = this.state
@@ -189,6 +190,7 @@ export class Field extends Component {
           placeholder={p}
           children={children}
           {...this.props}
+          value={value || ''}
         />
       </Label>
     )

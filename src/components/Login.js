@@ -44,9 +44,7 @@ class Login extends Component {
 
     return (
       <ThemeProvider>
-        <Head>
-          <title>Log in – Hack Club</title>
-        </Head>
+        <Helmet title="Log in – Hack Club" />
         <FixedFlag />
         <Base>
           {emailSent ? (

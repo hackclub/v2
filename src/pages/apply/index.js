@@ -3,21 +3,21 @@ import Helmet from 'react-helmet'
 import { api } from '../../data.json'
 import {
   ThemeProvider,
+  Box,
+  Button,
   Card,
   Container,
-  Box,
   Flex,
-  Text,
   Heading,
-  Button,
   LargeButton,
   Link as DSLink,
+  Text,
   cx
 } from '@hackclub/design-system'
-import LoadingAnimation from '../../components/LoadingAnimation'
-import Login from '../../components/Login'
 import ApplyNav from '../../components/ApplyNav'
 import LeaderInviteForm from '../../components/LeaderInviteForm'
+import LoadingAnimation from '../../components/LoadingAnimation'
+import Login from '../../components/Login'
 import SubmitButton from '../../components/SubmitButton'
 import fetch from 'unfetch'
 import Link from 'gatsby-link'

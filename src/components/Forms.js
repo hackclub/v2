@@ -106,6 +106,55 @@ export class AutoSaver extends Component {
   }
 }
 
+export class AutoSaver extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      previousValues: props.values
+    }
+    this.autoSave = this.autoSave.bind(this)
+  }
+
+  componentWillMount() {
+    const intervalId = setInterval(this.autoSave, 1000)
+    this.setState({ intervalId })
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.intervalId)
+  }
+
+  autoSave() {
+    const { handleSubmit, isSubmitting, values } = this.props
+    const { previousValues } = this.state
+    const unsavedChanges = previousValues !== values
+
+    this.setState({ unsavedChanges })
+
+    if (unsavedChanges && !isSubmitting) {
+      // We have to call handleSubmit this way because formik:
+      // https://github.com/jaredpalmer/formik/issues/347
+      handleSubmit({ preventDefault: () => null })
+      this.setState({
+        previousValues: values
+      })
+    }
+  }
+
+  render() {
+    if (this.state.unsavedChanges) {
+      return (
+        <Fragment>
+          <SaveStatus saved={false} />
+          <ConfirmClose />
+        </Fragment>
+      )
+    } else {
+      return <SaveStatus saved={true} />
+    }
+  }
+}
+
 export const Error = Text.span.extend.attrs({
   className: 'error',
   color: 'error',

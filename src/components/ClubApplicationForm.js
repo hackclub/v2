@@ -10,15 +10,14 @@ import {
   Field,
   Submit,
   Form,
-  TableOfContents
+  AutoSaver
 } from '../components/Forms'
 import {
   Box,
   Button,
   Container,
   Flex,
-  LargeButton,
-  Link as A
+  LargeButton
 } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import Link from 'gatsby-link'

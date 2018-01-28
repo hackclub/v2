@@ -10,7 +10,7 @@
     "dev": "gatsby develop",
     "start": "serve public -p 3000",
     "postinstall": "npm run build",
-    "fmt": "prettier src/**/*.js --single-quote --no-semi --write",
+    "fmt": "prettier *.js src/**/**/*.js --single-quote --no-semi --write",
     "social": "repng src/components/Social.js -w 512 -h 512 -o public -f social",
     "map-render": "node src/map/render.js"
   },

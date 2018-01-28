@@ -1,3 +1,8 @@
+/c9                /cloud9_setup
+/repl              /replit/start
 /find              https://finder.hackclub.com
 /finder            https://finder.hackclub.com
-/*                 https://legacy.hackclub.com/:splat
+/donate            https://legacy.hackclub.com/donate  200
+/slack_invite      https://legacy.hackclub.com/slack_invite  200
+/workshops         https://legacy.hackclub.com/workshops  200
+/workshops/*       https://legacy.hackclub.com/workshops/:splat  200

@@ -10,7 +10,6 @@ import Collage from '../components/Collage'
 import Mosaic from '../components/Mosaic'
 import Start from '../components/Start'
 import Footer from '../components/Footer'
-import theme from '../theme'
 import data from '../data.json'
 
 export default () => (

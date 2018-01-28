@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
-import { api } from '../../data.json'
+import { api } from 'data.json'
 import { ThemeProvider, Heading, Container } from '@hackclub/design-system'
-import LeaderApplicationForm from '../../components/LeaderApplicationForm'
-import LoadingAnimation from '../../components/LoadingAnimation'
-import Login from '../../components/Login'
-import ApplyNav from '../../components/ApplyNav'
-import Footer from '../../components/Footer'
+import LeaderApplicationForm from 'components/LeaderApplicationForm'
+import LoadingAnimation from 'components/LoadingAnimation'
+import Login from 'components/Login'
+import ApplyNav from 'components/ApplyNav'
+import Footer from 'components/Footer'
 
 export default class extends Component {
   constructor(props) {

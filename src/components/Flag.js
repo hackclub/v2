@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from 'gatsby-link'
-import { mx } from '../theme'
+import { mx } from 'theme'
 
 const Flag = styled(Link).attrs({ to: '/' })`
   background: url(/orpheus_flag.svg) no-repeat;

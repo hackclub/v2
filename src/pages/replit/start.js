@@ -17,11 +17,11 @@ import {
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
-import About from '../../components/About'
-import Flag from '../../components/Flag'
-import Stat from '../../components/Stat'
-import Footer from '../../components/Footer'
-import { stats } from '../../data.json'
+import About from 'components/About'
+import Flag from 'components/Flag'
+import Stat from 'components/Stat'
+import Footer from 'components/Footer'
+import { stats } from 'data.json'
 
 const Header = Section.extend.attrs({
   px: [3, 0],

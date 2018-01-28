@@ -17,8 +17,8 @@ import {
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
-import Nav from '../components/Nav'
-import Footer from '../components/Footer'
+import Nav from 'components/Nav'
+import Footer from 'components/Footer'
 
 const One = Section.extend`
   padding-top: 0 !important;

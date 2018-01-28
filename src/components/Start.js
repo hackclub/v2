@@ -7,7 +7,7 @@ import {
   mediaQueries
 } from '@hackclub/design-system'
 import Link from 'gatsby-link'
-import { wk } from '../theme'
+import { wk } from 'theme'
 
 const tilt = n =>
   wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`)

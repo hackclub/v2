@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
-import { api } from '../data.json'
-import { Field } from '../components/Forms'
+import { api } from 'data.json'
+import { Field } from 'components/Forms'
 import { Box, Flex, Text, IconButton, Link as A } from '@hackclub/design-system'
 import yup from 'yup'
 

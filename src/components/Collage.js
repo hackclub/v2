@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Card, Heading, mediaQueries } from '@hackclub/design-system'
-import Stat from './Stat'
-import { stats } from '../data.json'
+import Stat from 'components/Stat'
+import { stats } from 'data.json'
 
 const Base = Flex.extend`
   max-width: 48rem;

@@ -7,8 +7,8 @@ import {
   Text
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Nav from '../components/Nav'
-import Footer from '../components/Footer'
+import Nav from 'components/Nav'
+import Footer from 'components/Footer'
 
 export default () => (
   <ThemeProvider>

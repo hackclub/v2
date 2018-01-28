@@ -47,10 +47,10 @@ const generateMethod = method => (path, options) => {
     })
 }
 
-let apiClient = {}
+let api = {}
 
 methods.forEach(method => {
-  apiClient[method] = generateMethod(method)
+  api[method] = generateMethod(method)
 })
 
-export default apiClient
+export default api

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Box, Flex } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 import { colors, mediaQueries } from '@hackclub/design-system'
-import Flag from './Flag'
+import Flag from 'components/Flag'
 
 const Base = Flex.extend.attrs({
   pt: 0,

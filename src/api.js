@@ -1,7 +1,7 @@
 import fetch from 'unfetch'
 
 const apiBase = 'https://api.hackclub.com/'
-const methods = ['get', 'put', 'post', 'patch']
+const methods = ['GET', 'PUT', 'POST', 'PATCH']
 
 const generateMethod = method => (path, options) => {
   // authToken is shorthand for Authorization: Bearer `authtoken`
@@ -44,7 +44,7 @@ const generateMethod = method => (path, options) => {
 let api = {}
 
 methods.forEach(method => {
-  api[method] = generateMethod(method)
+  api[method.toLowerCase()] = generateMethod(method)
 })
 
 export default api

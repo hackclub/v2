@@ -27,9 +27,7 @@ Before committing, run `yarn run fmt` and you’re good to go.
 ## Design System
 
 This site uses the [Hack Club Design System](https://design.hackclub.com) for
-all UI primitives (Text, Buttons, etc). [Rebass](https://jxnblk.com/rebass)
-(and its [theme](./src/theme.js) is still in use on some older pages, but
-should not be used going forward.
+all UI primitives (Text, Buttons, etc).
 
 Use `styled-components`’s
 [`.extend`](https://www.styled-components.com/docs/basics#extending-styles)

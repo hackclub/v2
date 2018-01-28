@@ -74,7 +74,7 @@ const EmailLoginForm = withFormik({
       setSubmitting(false)
       return null
     }
-    fetch(`${api}/v1/applicants/auth`, {
+    fetch(`${api}/v1/users/auth`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
@@ -87,9 +87,9 @@ const EmailLoginForm = withFormik({
         }
       })
       .then(json => {
-        window.localStorage.setItem('applicantId', json.id)
+        window.localStorage.setItem('userId', json.id)
         setSubmitting(false)
-        props.submitCallback({ applicantId: json.id, email: data.email })
+        props.submitCallback({ userId: json.id, email: data.email })
       })
       .catch(e => {
         console.error(e)

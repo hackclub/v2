@@ -4,7 +4,7 @@ import Link from 'gatsby-link'
 
 export const destroySession = () => {
   window.localStorage.removeItem('authToken')
-  window.localStorage.removeItem('applicantId')
+  window.localStorage.removeItem('userId')
 }
 
 Button.link = Button.withComponent(Link)

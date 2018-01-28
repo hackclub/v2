@@ -83,9 +83,18 @@ export class AutoSaver extends Component {
     this.setState({ unsavedChanges })
 
     if (unsavedChanges && !isSubmitting) {
-      // We have to call handleSubmit this way because formik:
-      // https://github.com/jaredpalmer/formik/issues/347
-      handleSubmit({ preventDefault: () => null })
+      /* This is super hacky and should be changed -- basically if we have a new
+       * ID it's because the parent form is now holding a new record. We don't
+       * want to save the new record though because it's just loaded, so we'll
+       * set the previousValues to the new record's values */
+      const changedRecord = previousValues.id !== values.id
+
+      if (!changedRecord) {
+        // We have to call handleSubmit this way because formik:
+        // https://github.com/jaredpalmer/formik/issues/347
+        handleSubmit({ preventDefault: () => null })
+      }
+
       this.setState({
         previousValues: values
       })
@@ -169,7 +178,8 @@ export class Field extends Component {
       children,
       error,
       hint,
-      optional
+      optional,
+      value
     } = this.props
 
     const { Tag } = this.state
@@ -189,6 +199,7 @@ export class Field extends Component {
           placeholder={p}
           children={children}
           {...this.props}
+          value={value || ''}
         />
       </Label>
     )

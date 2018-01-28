@@ -283,7 +283,7 @@ const InnerForm = props => {
 const LeaderApplicationForm = withFormik({
   mapPropsToValues: props => props.params,
   handleSubmit: (data, { setSubmitting, props }) => {
-    fetch(`${api}/v1/applicant_profiles/${props.id}`, {
+    fetch(`${api}/v1/leader_profiles/${props.id}`, {
       method: 'PATCH',
       headers: {
         Authorization: `Bearer ${props.authToken}`,

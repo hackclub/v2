@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
-import { Flex } from '@hackclub/design-system'
 import Flag from 'components/Flag'
 import EmailLoginForm from 'components/EmailLoginForm'
 import LoginCodeForm from 'components/LoginCodeForm'
@@ -44,7 +43,7 @@ class Login extends Component {
     const { userType = 'applicant' } = this.props
 
     return (
-      <React.Fragment>
+      <Fragment>
         <Helmet title="Log in – Hack Club" />
         <FixedFlag />
         <Base>
@@ -57,7 +56,7 @@ class Login extends Component {
             />
           )}
         </Base>
-      </React.Fragment>
+      </Fragment>
     )
   }
 }

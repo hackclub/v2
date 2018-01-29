@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Helmet from 'react-helmet'
-import { ThemeProvider, Flex } from '@hackclub/design-system'
+import { Flex } from '@hackclub/design-system'
 import Flag from 'components/Flag'
 import EmailLoginForm from 'components/EmailLoginForm'
 import LoginCodeForm from 'components/LoginCodeForm'
@@ -41,19 +41,23 @@ class Login extends Component {
 
   render() {
     const { emailSent, userId, email } = this.state
+    const { userType = 'applicant' } = this.props
 
     return (
-      <ThemeProvider>
+      <React.Fragment>
         <Helmet title="Log in – Hack Club" />
         <FixedFlag />
         <Base>
           {emailSent ? (
             <LoginCodeForm userId={userId} email={email} />
           ) : (
-            <EmailLoginForm submitCallback={this.submitCallback} />
+            <EmailLoginForm
+              submitCallback={this.submitCallback}
+              userType={userType}
+            />
           )}
         </Base>
-      </ThemeProvider>
+      </React.Fragment>
     )
   }
 }

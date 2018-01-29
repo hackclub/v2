@@ -158,7 +158,7 @@ export default class extends Component {
       case 'loading':
         return <LoadingAnimation />
       case 'needsToAuth':
-        return <Login />
+        return <Login userType="admin" />
       case 'success':
         return (
           <React.Fragment>

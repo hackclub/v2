@@ -28,11 +28,12 @@ const InnerForm = ({
   handleBlur,
   handleSubmit,
   isSubmitting,
+  userType,
   status
 }) => (
   <form onSubmit={handleSubmit}>
     <Heading.h1 f={2} mb={3} caps>
-      Start your application
+      {userType === 'admin' ? 'Admin login' : 'Start your application'}
     </Heading.h1>
     <Label className="email" id="email">
       <Text mb={2} align="center" f={4} color="white" normal>

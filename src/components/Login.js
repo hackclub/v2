@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
+import { Flex } from '@hackclub/design-system'
 import Flag from 'components/Flag'
 import EmailLoginForm from 'components/EmailLoginForm'
 import LoginCodeForm from 'components/LoginCodeForm'

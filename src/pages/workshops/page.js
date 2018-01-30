@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import {
   ThemeProvider,
   Box,
-  Button,
+  OutlineButton,
   Container,
   Flex,
   Heading,
@@ -136,7 +136,7 @@ const Body = Box.extend`
     )};
 `
 
-Button.home = Button.withComponent(Link)
+OutlineButton.home = OutlineButton.withComponent(Link)
 
 export default ({
   data: { markdownRemark: { frontmatter: { name, description, group }, html } }
@@ -148,9 +148,9 @@ export default ({
         <Nav />
         <Heading.h1 f={[5, 6]} mt={[3, 4]} mb={2} children={name} />
         <Heading.h2 f={[3, 4]} regular children={description} />
-        <Button.home to="/workshops" mt={[3, 4]} mb={2} inverted>
+        <OutlineButton.home to="/workshops" mt={[3, 4]} mb={2} color="white">
           Get More Workshops
-        </Button.home>
+        </OutlineButton.home>
       </Header>
       <Container maxWidth={42} p={3}>
         <Body dangerouslySetInnerHTML={{ __html: html }} />

@@ -29,8 +29,8 @@ const Td = props => {
   const { content, children, title } = props
 
   return (
-    <td title={title || content}>
-      <Text color={content ? 'black' : 'silver'}>{content || children || 'Unset'}</Text>
+    <td title={title || content} style={{maxWidth: '15rem'}}>
+      <Text color={content ? 'black' : 'silver'} style={{overflow: 'auto'}}>{content || children || 'Unset'}</Text>
     </td>
   )
 }
@@ -152,6 +152,12 @@ export default class extends Component {
     this.setState({clubApplications})
   }
 
+  pointOfContact(application) {
+    const profile = application.leader_profiles.find(profile => profile.id === application.point_of_contact_id)
+
+    return profile && profile.user.email
+  }
+
   render() {
     const { authToken, status, clubApplications, selection } = this.state
     switch (status) {
@@ -173,6 +179,7 @@ export default class extends Component {
                       <th align="left">ID</th>
                       <th align="left">Name</th>
                       <th align="left">URL</th>
+                      <th align="left">POC</th>
                       <th align="left">Interview</th>
                     </tr>
                   </thead>
@@ -182,6 +189,7 @@ export default class extends Component {
                         <Td content={application.id} />
                         <Td content={application.high_school_name} />
                         <Td content={application.high_school_url} />
+                        <Td content={this.pointOfContact(application)} />
                         <Td>
                           <Button
                             bg="info"

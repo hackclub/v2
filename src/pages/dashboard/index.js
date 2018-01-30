@@ -129,7 +129,9 @@ export default class extends Component {
       .then(json => {
         let clubApplications = {}
         json.forEach(app => {
-          clubApplications[app.id] = app
+          if (app.submitted_at) {
+            clubApplications[app.id] = app
+          }
         })
         this.setState({
           status: 'success',
@@ -153,7 +155,9 @@ export default class extends Component {
   }
 
   pointOfContact(application) {
-    const profile = application.leader_profiles.find(profile => profile.id === application.point_of_contact_id)
+    const profile = application.leader_profiles.find(profile => (
+      profile.user && profile.user.id === application.point_of_contact_id
+    ))
 
     return profile && profile.user.email
   }

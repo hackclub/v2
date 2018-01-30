@@ -1,6 +1,6 @@
 import React from 'react'
 import { api } from 'data.json'
-import { Heading, Label, Input, Text } from '@hackclub/design-system'
+import { Heading, Label, Input, Text, cx } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import yup from 'yup'
 import fetch from 'unfetch'
@@ -8,14 +8,18 @@ import fetch from 'unfetch'
 const StyledInput = Input.extend.attrs({
   mx: 'auto',
   mb: 5,
-  w: 24 * 16,
-  bg: 'white'
+  w: 24 * 16
 })`
-  border: none;
   text-align: center;
+  background: ${props => props.color};
+  color: ${props => cx(props.bg)};
+  border: none;
+  :focus {
+    box-shadow: none !important;
+  }
   ::placeholder {
     text-align: center;
-    color: ${props => props.theme.colors.primary};
+    color: ${props => cx(props.bg)};
     opacity: 0.5;
   }
 `
@@ -29,19 +33,23 @@ const InnerForm = ({
   handleSubmit,
   isSubmitting,
   userType,
+  color,
+  bg,
   status
 }) => (
   <form onSubmit={handleSubmit}>
-    <Heading.h1 f={2} mb={3} caps>
+    <Heading.h1 f={2} mb={3} caps color={color}>
       {userType === 'admin' ? 'Admin login' : 'Start your application'}
     </Heading.h1>
     <Label className="email" id="email">
-      <Text mb={2} align="center" f={4} color="white" normal>
+      <Text mb={2} align="center" f={4} color={color} normal>
         Enter your email
       </Text>
       <StyledInput
         name="email"
         placeholder="Email address"
+        color={color}
+        bg={bg}
         value={values.email}
         onChange={e => {
           e.target.value = e.target.value.trim()

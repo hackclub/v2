@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
-import { Flex } from '@hackclub/design-system'
+import { Flex, colors } from '@hackclub/design-system'
 import Flag from 'components/Flag'
 import EmailLoginForm from 'components/EmailLoginForm'
 import LoginCodeForm from 'components/LoginCodeForm'
@@ -9,9 +9,7 @@ import Footer from 'components/Footer'
 const Base = Flex.extend.attrs({
   flexDirection: 'column',
   justify: 'center',
-  align: 'center',
-  bg: 'primary',
-  color: 'white'
+  align: 'center'
 })`
   width: 100vw;
   height: 100vh;
@@ -42,18 +40,27 @@ class Login extends Component {
   render() {
     const { emailSent, userId, email } = this.state
     const { userType = 'applicant' } = this.props
+    const color = userType === 'admin' ? colors.green[5] : 'white'
+    const bg = userType === 'admin' ? '#000' : 'primary'
 
     return (
       <Fragment>
         <Helmet title="Log in – Hack Club" />
         <FixedFlag />
-        <Base>
+        <Base color={color} bg={bg}>
           {emailSent ? (
-            <LoginCodeForm userId={userId} email={email} />
+            <LoginCodeForm
+              userId={userId}
+              email={email}
+              color={color}
+              bg={bg}
+            />
           ) : (
             <EmailLoginForm
               submitCallback={this.submitCallback}
               userType={userType}
+              color={color}
+              bg={bg}
             />
           )}
         </Base>

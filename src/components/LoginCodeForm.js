@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { api } from 'data.json'
-import { Label, Input, Text } from '@hackclub/design-system'
+import { Label, Input, Text, cx } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import yup from 'yup'
 import fetch from 'unfetch'
@@ -9,14 +9,18 @@ const StyledInput = Input.extend.attrs({
   f: 4,
   mx: 'auto',
   mb: 5,
-  w: 24 * 16,
-  bg: 'white'
+  w: 24 * 16
 })`
-  border: none;
   text-align: center;
+  background: ${props => props.color};
+  color: ${props => cx(props.bg)};
+  border: none;
+  :focus {
+    box-shadow: none !important;
+  }
   ::placeholder {
     text-align: center;
-    color: ${props => props.theme.colors.primary};
+    color: ${props => cx(props.bg)};
     opacity: 0.5;
   }
 `
@@ -60,16 +64,20 @@ class InnerForm extends Component {
       handleSubmit,
       isSubmitting,
       status,
+      color,
+      bg,
       email
     } = this.props
     return (
       <form onSubmit={handleSubmit}>
         <Label className="loginCode" id="loginCode" align="center">
-          <Text color="white" mb={3} align="center" f={4}>
+          <Text color={color} mb={3} align="center" f={4}>
             Cool! We just sent a login code to {email}.
           </Text>
           <StyledInput
             name="loginCode"
+            color={color}
+            bg={bg}
             placeholder="Login Code"
             value={values.loginCode}
             onChange={e => {

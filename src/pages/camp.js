@@ -31,7 +31,7 @@ Button.link = Button.withComponent(Link)
 export default () => (
   <ThemeProvider>
     <Helmet title="Hack Camp – Hack Club" />
-    <Header pb={3}>
+    <Header p={3}>
       <Nav />
       <Heading.h1 f={[5, 6]} mt={4}>
         Hack Camp has been discontinued.
@@ -58,5 +58,6 @@ export default () => (
         />?
       </Text>
     </Container>
+    <Footer />
   </ThemeProvider>
 )

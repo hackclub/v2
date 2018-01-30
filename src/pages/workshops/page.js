@@ -138,26 +138,29 @@ const Body = Box.extend`
 
 OutlineButton.home = OutlineButton.withComponent(Link)
 
-export default ({
-  data: { markdownRemark: { frontmatter: { name, description, group }, html } }
-}) => {
-  return (
-    <ThemeProvider>
-      <Helmet title={`${name} – Hack Club`} />
-      <Header name={name}>
-        <Nav />
-        <Heading.h1 f={[5, 6]} mt={[3, 4]} mb={2} children={name} />
-        <Heading.h2 f={[3, 4]} regular children={description} />
-        <OutlineButton.home to="/workshops" mt={[3, 4]} mb={2} color="white">
-          Get More Workshops
-        </OutlineButton.home>
-      </Header>
-      <Container maxWidth={42} p={3}>
-        <Body dangerouslySetInnerHTML={{ __html: html }} />
-      </Container>
-      <Footer />
-    </ThemeProvider>
-  )
+export default ({ data: { markdownRemark } }) => {
+  if (markdownRemark) {
+    const { frontmatter: { name, description, group }, html } = markdownRemark
+    return (
+      <ThemeProvider>
+        <Helmet title={`${name} – Hack Club`} />
+        <Header name={name}>
+          <Nav />
+          <Heading.h1 f={[5, 6]} mt={[3, 4]} mb={2} children={name} />
+          <Heading.h2 f={[3, 4]} regular children={description} />
+          <OutlineButton.home to="/workshops" mt={[3, 4]} mb={2} color="white">
+            Get More Workshops
+          </OutlineButton.home>
+        </Header>
+        <Container maxWidth={42} p={3}>
+          <Body dangerouslySetInnerHTML={{ __html: html }} />
+        </Container>
+        <Footer />
+      </ThemeProvider>
+    )
+  } else {
+    return null
+  }
 }
 
 export const pageQuery = graphql`

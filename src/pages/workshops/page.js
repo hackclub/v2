@@ -21,8 +21,8 @@ const Header = Section.extend`
 
   h1 {
     mix-blend-mode: screen;
-    background-color: ${props => props.theme.colors.white};
-    color: ${props => props.theme.colors.black};
+    background-color: white;
+    color: black;
     padding-left: ${props => props.theme.space[4]}px;
     padding-right: ${props => props.theme.space[4]}px;
     clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);

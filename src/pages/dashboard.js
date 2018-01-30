@@ -1,25 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import { Box, Button, Flex, Heading, Text } from '@hackclub/design-system'
 import { AutoSaver, Field, Form } from 'components/Forms'
+import Table from 'components/Table'
 import LoadingAnimation from 'components/LoadingAnimation'
 import Login from 'components/apply/Login'
 import LogoutButton from 'components/apply/LogoutButton'
 import { Formik } from 'formik'
 import api from 'api'
-
-const Tr = Box.withComponent('tr').extend`
-  &:nth-child(even) {
-    background: ${props => props.theme.colors.snow};
-  }
-`
-
-const Td = ({ content, children, title }) => (
-  <td title={title || content} style={{ maxWidth: '15rem' }}>
-    <Text color={content ? 'black' : 'silver'} style={{ overflow: 'auto' }}>
-      {content || children || 'Unset'}
-    </Text>
-  </td>
-)
 
 const Inspector = props => {
   const { authToken, application, updateApplicationList } = props
@@ -169,42 +156,29 @@ export default class extends Component {
             </Flex>
             <Flex>
               <Box>
-                <table>
-                  <thead>
-                    <tr>
-                      <th align="left">ID</th>
-                      <th align="left">Name</th>
-                      <th align="left">URL</th>
-                      <th align="left">POC</th>
-                      <th align="left">Interview</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {Object.values(clubApplications).map(
-                      (application, index) => (
-                        <Tr key={index}>
-                          <Td content={application.id} />
-                          <Td content={application.high_school_name} />
-                          <Td content={application.high_school_url} />
-                          <Td content={this.pointOfContact(application)} />
-                          <Td>
-                            <Button
-                              bg="info"
-                              inverted={
-                                !selection || selection.id !== application.id
-                              }
-                              disabled={!application.submitted_at}
-                              onClick={() => {
-                                this.setState({ selection: application })
-                              }}
-                              children="✍"
-                            />
-                          </Td>
-                        </Tr>
-                      )
-                    )}
-                  </tbody>
-                </table>
+                <Table
+                  headers={['ID', 'Name', 'URL', 'POC', 'Interview']}
+                  rows={Object.values(clubApplications).map(application => (
+                    {
+                      'ID': application.id,
+                      'Name': application.high_school_name,
+                      'URL': application.high_school_url,
+                      'POC': this.pointOfContact(application),
+                      'Interview':
+                        (<Button
+                          bg="info"
+                          inverted={
+                            !selection || selection.id !== application.id
+                          }
+                          disabled={!application.submitted_at}
+                          onClick={() => {
+                            this.setState({ selection: application })
+                          }}
+                          children="✍"
+                        />)
+                    }
+                  ))}
+                />
               </Box>
               {selection && (
                 <Box>

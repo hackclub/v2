@@ -178,7 +178,7 @@ export default class extends Component {
                   </thead>
                   <tbody>
                     {Object.values(clubApplications).map((application, index) => (
-                      <Tr>
+                      <Tr key={index}>
                         <Td content={application.id} />
                         <Td content={application.high_school_name} />
                         <Td content={application.high_school_url} />

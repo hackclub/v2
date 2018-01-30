@@ -8,10 +8,11 @@ import {
   BackgroundImage,
   Flex,
   Heading,
-  LargeButton,
+  OutlineButton,
   Link as A,
   Section,
-  Text
+  Text,
+  mediaQueries
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
@@ -28,9 +29,16 @@ import {
   toPairs
 } from 'lodash'
 
-const Header = Section.extend`
-  padding-top: 0 !important;
+const Base = Box.withComponent('main').extend`
+  display: grid;
   position: relative;
+  ${mediaQueries[1]} {
+    grid-template-columns: 24rem 1fr;
+  }
+`
+
+const Background = Section.extend`
+  justify-content: flex-start;
   background-color: ${props => props.theme.colors.red[5]};
   background-image: linear-gradient(
     -16deg,
@@ -40,30 +48,78 @@ const Header = Section.extend`
   );
 `
 
-const Group = Box.withComponent('section')
+const Name = Heading.h1.extend`
+  mix-blend-mode: screen;
+  background-color: white;
+  color: black;
+  padding-left: ${props => props.theme.space[2]}px;
+  padding-right: ${props => props.theme.space[2]}px;
+  clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+`
+
+Box.header = Box.withComponent('header')
+Box.section = Box.withComponent('section')
+Box.article = Box.withComponent('article')
 
 Button.link = Button.withComponent(Link)
 A.link = A.withComponent(Link)
-Card.img = Card.withComponent(BackgroundImage).extend`
-  text-shadow: 0 1px 2px rgba(0,0,0,.16);
-`
 
-const Grid = Box.withComponent('article').extend`
+const Grid = Box.withComponent('ol').extend`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  grid-auto-rows: 1fr;
   grid-gap: ${props => props.theme.space[3]}px;
+  counter-reset: li;
+  list-style: none;
+  padding: 0;
 `
 
-const WorkshopCard = ({ data, ...props }) => (
+const WorkshopCard = Card.withComponent('li').extend`
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(${props => props.image});
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);
+  position: relative;
+  height: 100%;
+  &:before {
+    content: counter(li);
+    counter-increment: li;
+    box-sizing: border-box;
+    position: absolute;
+    right: ${props => props.theme.space[3]}px;
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 1rem;
+    background-color: ${props => props.theme.colors.white};
+    color: ${props => props.theme.colors.black};
+    font-size: ${props => props.theme.fontSizes[0]}px;
+    line-height: 1.5;
+    text-align: center;
+    text-shadow: none;
+    font-weight: bold;
+  }
+  h3 {
+    line-height: 1.125;
+    margin-bottom: 0.125rem;
+    max-width: 12rem; /* 14rem - padding, leave room for badge */
+  }
+  p {
+    line-height: 1.375;
+  }
+`
+
+const Workshop = ({ data, ...props }) => (
   <A.link to={data.fields.slug} {...props}>
-    <Card.img
+    <WorkshopCard
       p={3}
       boxShadowSize="md"
       image={`https://splattered.now.sh/${camelCase(data.frontmatter.name)}`}
     >
       <Heading.h3 color="white" f={3} children={data.frontmatter.name} />
       <Text color="snow" f={2} children={data.frontmatter.description} />
-    </Card.img>
+    </WorkshopCard>
   </A.link>
 )
 
@@ -74,32 +130,54 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
   return (
     <ThemeProvider>
       <Helmet title="Workshops – Hack Club" />
-      <Header>
-        <Nav />
-        <Heading.h1 align="center" mt={3} mb={2}>
-          <Text f={4} caps>
-            Hack Club
-          </Text>
-          <Text f={6}>Workshops</Text>
-        </Heading.h1>
-        <Heading.h2 f={3} regular>
-          Learn to code through building projects.
-        </Heading.h2>
-      </Header>
-      <Container maxWidth={56} px={3} pb={5}>
-        {map(groups, (edges, name) => (
-          <Group>
-            <Heading.h2 f={4} mt={4} mb={2} caps>
-              {capitalize(name)}
+      <Nav
+        style={{ position: 'absolute', top: 0 }}
+        color={['white', null, 'primary']}
+      />
+      <Base>
+        <Background px={4}>
+          <Box.header align="center" pt={[4, null, 6]} pb={3}>
+            <Text f={4} bold caps>
+              Hack Club
+            </Text>
+            <Name mt={2} mb={3} f={6}>
+              Workshops
+            </Name>
+            <Heading.h2 f={4} mb={4} regular>
+              Learn to code through building projects.
             </Heading.h2>
-            <Grid>
-              {map(edges, (edge, i) => (
-                <WorkshopCard data={edge.node} key={`workshops-${name}-${i}`} />
-              ))}
-            </Grid>
-          </Group>
-        ))}
-      </Container>
+            <Button
+              href="https://github.com/hackclub/hackclub/blob/master/workshops/CONTRIBUTING.md"
+              target="_blank"
+              inverted
+            >
+              Contribute
+            </Button>
+          </Box.header>
+        </Background>
+        <Box.article bg="white" py={[4, null, 5]} px={3}>
+          <Container maxWidth={48}>
+            <Text f={4} color="slate" mb={[3, 4]}>
+              We believe this is the best way to learn to code.
+            </Text>
+            {map(groups, (edges, name) => (
+              <Box.section mb={4} key={`workshops-${name}`}>
+                <Heading.h2 f={4} mb={2}>
+                  {capitalize(name)}
+                </Heading.h2>
+                <Grid>
+                  {map(edges, (edge, ii) => (
+                    <Workshop
+                      data={edge.node}
+                      key={`workshops-${name}-${ii}`}
+                    />
+                  ))}
+                </Grid>
+              </Box.section>
+            ))}
+          </Container>
+        </Box.article>
+      </Base>
     </ThemeProvider>
   )
 }

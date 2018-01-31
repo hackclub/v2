@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import {
   Box,
   Button,
+  Card,
   Container,
   Flex,
   Heading,
@@ -212,13 +213,16 @@ export class Field extends Component {
           {hint && <Hint children={hint} />}
         </Flex>
         {renderMarkdown ? (
-          <MarkdownRenderer
-            content={value || ' '}
-            onClick={this.onFocus}
+          <Card
             hidden={isEditing ? true : false}
-          />
+            boxShadowSize="md"
+            m={1}
+            p={4}
+          >
+            <MarkdownRenderer content={value || ' '} onClick={this.onFocus} />
+          </Card>
         ) : null}
-        <div hidden={isEditing ? false : true}>
+        <div hidden={renderMarkdown && !isEditing ? true : false}>
           <Tag
             name={name}
             type={type}

@@ -158,11 +158,29 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
         </Background>
         <Box.article bg="white" py={[4, null, 5]} px={3}>
           <Container maxWidth={48}>
-            <Container maxWidth={36} mx={0} mb={4}>
-              <Text f={5} color="slate" style={{ lineHeight: '1.25' }}>
-                Coding is a superpower. The best way to learn it is by using it.
-              </Text>
-            </Container>
+            <Flex
+              flexDirection={['column', null, null, 'row']}
+              alignItems="center"
+              justify="space-between"
+              mb={[2, null, 4]}
+            >
+              <Container mx={0} maxWidth={32}>
+                <Text f={5} color="slate" style={{ lineHeight: '1.25' }}>
+                  Coding is a superpower. The best way to learn it is by using
+                  it.
+                </Text>
+              </Container>
+              <Box py={3}>
+                <Button
+                  bg="info"
+                  inverted
+                  href="https://github.com/hackclub/hackclub/blob/master/workshops/README.md"
+                  target="_blank"
+                >
+                  Read more →
+                </Button>
+              </Box>
+            </Flex>
             {map(groups, (edges, name) => (
               <Box.section mb={4} key={`workshops-${name}`}>
                 <Heading.h2 color="black" f={4} mb={1} caps>

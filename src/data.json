@@ -4,7 +4,7 @@
   "description":
     "By the students, for the students. Join the movement of high school coding clubs around the world.",
   "url": "https://hackclub.com",
-  "api": "https://api.hackclub.com",
+  "api": "http://charmander.zachlatta.com:3000",
   "twitter": "@starthackclub",
   "img": "https://hackclub.com/social.png",
   "stats": {

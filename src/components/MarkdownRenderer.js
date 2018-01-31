@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { Heading, ThemeProvider, Link as A } from '@hackclub/design-system'
+import { Heading, Link as A } from '@hackclub/design-system'
 import api from 'api'
 
 function flatten(text, child) {
@@ -27,7 +27,7 @@ export default class extends Component {
     const { content, path } = props
 
     this.state = {
-      status: content ? 'success' : path ? 'loading' : 'error',
+      status: content !== undefined ? 'success' : path ? 'loading' : 'error',
       content: content
     }
   }
@@ -57,16 +57,22 @@ export default class extends Component {
       })
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.state.content !== nextProps.content) {
+      this.setState({ content: nextProps.content })
+    }
+  }
+
   render() {
     const { content, renderers } = this.state
 
     return (
-      <ThemeProvider>
+      <div {...this.props}>
         <ReactMarkdown
           source={content}
           renderers={{ heading: CustomHeading, link: A, ...renderers }}
         />
-      </ThemeProvider>
+      </div>
     )
   }
 }

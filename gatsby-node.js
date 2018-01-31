@@ -1,4 +1,15 @@
 const path = require('path')
+const fs = require('fs')
+const GeoPattern = require('geopattern')
+const { colors } = require('@hackclub/design-system')
+const _ = require('lodash')
+
+const pattern = (text = 'Hack Club', color = colors.primary) =>
+  GeoPattern.generate(text, { baseColor: color }).toString()
+const writePattern = (path, name) =>
+  fs.writeFile(path, pattern(_.camelCase(name), '#D500F9'), (err, data) => {
+    if (err) console.error(err)
+  })
 
 exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
   const { createNodeField } = boundActionCreators
@@ -8,6 +19,9 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
     if (!!parsedFilePath.dir) {
       const value = `/workshops/${parsedFilePath.dir}`
       createNodeField({ node, name: 'slug', value })
+      createNodeField({ node, name: 'bg', value: `${value}.svg` })
+      const path = `./static${_.replace(value, '/lib', '')}.svg`
+      writePattern(path, node.frontmatter.name)
     }
   }
 }

@@ -79,7 +79,7 @@ const MarkdownBody = Box.extend`
     word-wrap: normal;
   }
 
-	/* Syntax highlighting */
+  /* Syntax highlighting */
   .namespace {
     opacity: 0.75;
   }

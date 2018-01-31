@@ -18,7 +18,7 @@ import { camelCase } from 'lodash'
 
 const Header = Section.extend`
   padding-top: 0 !important;
-  background-image: url(//splattered.now.sh/${props => camelCase(props.name)});
+  background-image: url('${props => props.img}');
 
   h1 {
     mix-blend-mode: screen;
@@ -27,11 +27,11 @@ const Header = Section.extend`
     padding-left: ${props => props.theme.space[4]}px;
     padding-right: ${props => props.theme.space[4]}px;
     clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.32);
   }
 
   h2 {
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
   }
 `
 
@@ -41,11 +41,15 @@ OutlineButton.home = OutlineButton.withComponent(Link)
 
 export default ({ data: { markdownRemark } }) => {
   if (markdownRemark) {
-    const { frontmatter: { name, description, group }, html } = markdownRemark
+    const {
+      fields: { bg },
+      frontmatter: { name, description, group },
+      html
+    } = markdownRemark
     return (
       <ThemeProvider>
         <Helmet title={`${name} – Hack Club`} />
-        <Header name={name}>
+        <Header name={name} img={bg}>
           <Nav />
           <Heading.h1 f={[5, 6]} mt={[3, 4]} mb={2} children={name} />
           <Heading.h2 f={[3, 4]} regular children={description} />
@@ -66,6 +70,9 @@ export const pageQuery = graphql`
   query WorkshopBySlug($path: String!) {
     markdownRemark(fields: { slug: { eq: $path } }) {
       html
+      fields {
+        bg
+      }
       frontmatter {
         name
         description

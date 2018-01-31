@@ -78,9 +78,10 @@ const Grid = Box.withComponent('ol').extend`
 
 const WorkshopCard = Card.withComponent('li').extend`
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  background-image: url(${props => props.image});
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);
+  background-image: url('${props => props.img}');
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
   position: relative;
   height: 100%;
   &:before {
@@ -104,22 +105,20 @@ const WorkshopCard = Card.withComponent('li').extend`
   h3 {
     line-height: 1.125;
     margin-bottom: 0.125rem;
-    max-width: 12rem; /* 14rem - padding, leave room for badge */
   }
   p {
     line-height: 1.375;
   }
 `
 
-const Workshop = ({ data, ...props }) => (
-  <A.link to={data.fields.slug} {...props}>
-    <WorkshopCard
-      p={3}
-      boxShadowSize="md"
-      image={`https://splattered.now.sh/${camelCase(data.frontmatter.name)}`}
-    >
-      <Heading.h3 color="white" f={3} children={data.frontmatter.name} />
-      <Text color="snow" f={2} children={data.frontmatter.description} />
+const Workshop = ({
+  data: { fields: { slug, bg }, frontmatter: { name, description } },
+  ...props
+}) => (
+  <A.link to={slug} {...props}>
+    <WorkshopCard p={3} boxShadowSize="md" bg="accent" img={bg}>
+      <Heading.h3 color="white" f={3} children={name} />
+      <Text color="snow" f={2} children={description} />
     </WorkshopCard>
   </A.link>
 )
@@ -214,6 +213,7 @@ export const pageQuery = graphql`
         node {
           fields {
             slug
+            bg
           }
           frontmatter {
             name

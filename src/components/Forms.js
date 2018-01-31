@@ -13,6 +13,7 @@ import {
   colors
 } from '@hackclub/design-system'
 import { Prompt } from 'react-router'
+import MarkdownRenderer from 'components/MarkdownRenderer'
 
 const SaveStatusText = Text.extend.attrs({
   f: [1, 3],
@@ -160,13 +161,30 @@ export const Optional = () => (
 )
 
 export class Field extends Component {
+  constructor(props) {
+    super(props)
+    this.onFocus = this.onFocus.bind(this)
+    this.onBlur = this.onBlur.bind(this)
+  }
+
   componentWillMount() {
-    const { type } = this.props
+    const { type, renderMarkdown } = this.props
     const Tag = Input.withComponent(
       ['textarea', 'select'].indexOf(type) === -1 ? 'input' : type
     )
 
-    this.setState({ Tag })
+    this.setState({ Tag, isEditing: false })
+  }
+
+  onBlur() {
+    if (this.props.renderMarkdown) {
+      this.setState({ isEditing: false })
+    }
+    return this.props.onBlur
+  }
+
+  onFocus() {
+    this.setState({ isEditing: true })
   }
 
   render() {
@@ -179,10 +197,11 @@ export class Field extends Component {
       error,
       hint,
       optional,
-      value
+      value,
+      renderMarkdown
     } = this.props
 
-    const { Tag } = this.state
+    const { Tag, isEditing } = this.state
 
     return (
       <Label className={type} mb={2} id={name}>
@@ -192,15 +211,25 @@ export class Field extends Component {
           {error && <Error children={error} />}
           {hint && <Hint children={hint} />}
         </Flex>
-        <Tag
-          name={name}
-          type={type}
-          height={type === 'textarea' ? '10rem' : 'inherit'}
-          placeholder={p}
-          children={children}
-          {...this.props}
-          value={value || ''}
-        />
+        {renderMarkdown ? (
+          <MarkdownRenderer
+            content={value || ' '}
+            onClick={this.onFocus}
+            hidden={isEditing ? true : false}
+          />
+        ) : null}
+        <div hidden={isEditing ? false : true}>
+          <Tag
+            name={name}
+            type={type}
+            height={type === 'textarea' ? '10rem' : 'inherit'}
+            placeholder={p}
+            children={children}
+            {...this.props}
+            onBlur={this.onBlur}
+            value={value || ''}
+          />
+        </div>
       </Label>
     )
   }

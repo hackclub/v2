@@ -62,6 +62,7 @@ const Inspector = props => {
               onChange={handleChange}
               value={values.interview_notes}
               type="textarea"
+              renderMarkdown
             />
             <Field
               name="interviewed_at"
@@ -157,12 +158,11 @@ export default class extends Component {
             <Flex>
               <Box>
                 <Table
-                  headers={['ID', 'Name', 'URL', 'POC', 'Interview']}
+                  headers={['ID', 'Name', 'POC', 'Interview', 'Notes']}
                   rows={Object.values(clubApplications).map(application => (
                     {
                       'ID': application.id,
                       'Name': application.high_school_name,
-                      'URL': application.high_school_url,
                       'POC': this.pointOfContact(application),
                       'Interview':
                         (<Button

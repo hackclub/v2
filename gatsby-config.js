@@ -11,7 +11,18 @@ module.exports = {
         name: 'workshops'
       }
     },
-    'gatsby-transformer-remark',
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          'gatsby-remark-autolink-headers',
+          'gatsby-remark-copy-linked-files',
+          'gatsby-remark-images',
+          'gatsby-remark-prismjs',
+          'gatsby-remark-smartypants'
+        ]
+      }
+    },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     {

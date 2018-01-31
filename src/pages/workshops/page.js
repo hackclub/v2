@@ -35,6 +35,8 @@ const Header = Section.extend`
   }
 `
 
+const Body = Container.withComponent(MarkdownBody)
+
 OutlineButton.home = OutlineButton.withComponent(Link)
 
 export default ({ data: { markdownRemark } }) => {
@@ -51,9 +53,7 @@ export default ({ data: { markdownRemark } }) => {
             Get More Workshops
           </OutlineButton.home>
         </Header>
-        <Container maxWidth={42} p={3}>
-          <MarkdownBody dangerouslySetInnerHTML={{ __html: html }} />
-        </Container>
+        <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
         <Footer />
       </ThemeProvider>
     )

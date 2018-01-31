@@ -55,7 +55,6 @@ const SaveStatus = props => (
   <Fragment>
     <SaveStatusText saved={props.saved} />
     <SaveStatusLine saved={props.saved} />
-    <Heading.h4 align="center">Your form is automatically saved ✨</Heading.h4>
   </Fragment>
 )
 

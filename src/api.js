@@ -1,6 +1,6 @@
 import fetch from 'unfetch'
 
-const apiBase = 'https://api.hackclub.com/'
+const apiBase = 'http://charmander.zachlatta.com:3000/'
 const methods = ['GET', 'PUT', 'POST', 'PATCH']
 
 const generateMethod = method => (path, options) => {

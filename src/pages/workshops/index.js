@@ -52,8 +52,9 @@ const Name = Heading.h1.extend`
   mix-blend-mode: screen;
   background-color: white;
   color: black;
-  padding-left: ${props => props.theme.space[2]}px;
-  padding-right: ${props => props.theme.space[2]}px;
+  display: inline-block;
+  padding-left: ${props => props.theme.space[3]}px;
+  padding-right: ${props => props.theme.space[3]}px;
   clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
 `

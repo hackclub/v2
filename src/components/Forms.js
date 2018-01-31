@@ -214,12 +214,17 @@ export class Field extends Component {
         </Flex>
         {renderMarkdown ? (
           <Card
+            onClick={this.onFocus}
             hidden={isEditing ? true : false}
             boxShadowSize="md"
             m={1}
             p={4}
+            style={{cursor: 'pointer'}}
           >
-            <MarkdownRenderer content={value || ' '} onClick={this.onFocus} />
+            <Text f="0.75rem" color="slate">
+              <em>Click to edit field</em>
+            </Text>
+            <MarkdownRenderer content={value || ' '} />
           </Card>
         ) : null}
         <div hidden={renderMarkdown && !isEditing ? true : false}>

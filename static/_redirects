@@ -10,3 +10,4 @@
 /static/css/*      https://legacy.hackclub.com/static/css/:splat  200
 /static/media/*    https://legacy.hackclub.com/static/media/:splat  200
 /emoji/*           https://legacy.hackclub.com/emoji/:splat  200
+/athul_form.html   https://legacy.hackclub.com/athul_form.html  200

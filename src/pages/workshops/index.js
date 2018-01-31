@@ -157,12 +157,14 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
         </Background>
         <Box.article bg="white" py={[4, null, 5]} px={3}>
           <Container maxWidth={48}>
-            <Text f={4} color="slate" mb={[3, 4]}>
-              We believe this is the best way to learn to code.
-            </Text>
+            <Container maxWidth={36} mx={0} mb={4}>
+              <Text f={5} color="slate" style={{ lineHeight: '1.25' }}>
+                Coding is a superpower. The best way to learn it is by using it.
+              </Text>
+            </Container>
             {map(groups, (edges, name) => (
               <Box.section mb={4} key={`workshops-${name}`}>
-                <Heading.h2 f={4} mb={2}>
+                <Heading.h2 color="black" f={4} mb={1} caps>
                   {capitalize(name)}
                 </Heading.h2>
                 <Grid>

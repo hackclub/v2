@@ -69,11 +69,14 @@ const MarkdownBody = Box.extend`
   }
 
   pre {
-    word-wrap: normal;
-    padding: ${props => props.theme.space[3]}px;
     border-radius: ${props => props.theme.radius};
     line-height: 1.375;
+    max-width: 100%;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding: ${props => props.theme.space[3]}px;
     position: relative;
+    word-wrap: normal;
   }
 
 	/* Syntax highlighting */

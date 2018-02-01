@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { Formik } from 'formik'
 import api from 'api'
 import { AutoSaver, Field } from 'components/Forms'
+import { Button } from '@hackclub/design-system'
 
-export default class extends Component {
+class SingleNote extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -109,3 +110,61 @@ export default class extends Component {
     }
   }
 }
+
+export default class NotesForm extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      notes: [],
+      status: 'loading'
+    }
+
+    this.loadNotes = this.loadNotes.bind(this)
+    this.addNote = this.addNote.bind(this)
+  }
+  componentDidMount() {
+    this.loadNotes(this.props.application.id)
+  }
+  componentWillReceiveProps(nextProps) {
+    if (this.props.application.id !== nextProps.application.id) {
+      this.loadNotes(nextProps.application.id)
+    }
+  }
+  loadNotes(id) {
+    const { authToken } = this.props
+    api
+      .get(`v1/new_club_applications/${id}/notes`, { authToken })
+      .then(json => {
+        this.setState({
+          notes: json
+        })
+      })
+  }
+  addNote() {
+    this.setState({ notes: [...this.state.notes, {}] })
+  }
+  render() {
+    const { authToken, application, updateApplicationList } = this.props
+    const { status, notes } = this.state
+    return (
+      <React.Fragment>
+        <p>
+          We have #{notes.length} notes on application #{application.id}
+        </p>
+        {notes.map((note, index) => (
+          <SingleNote
+            key={index}
+            note={note}
+            applicationId={application.id}
+            authToken={authToken}
+          />
+        ))}
+        <Button onClick={this.addNote} bg="info">
+          Create Note
+        </Button>
+      </React.Fragment>
+    )
+  }
+}
+

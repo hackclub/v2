@@ -6,6 +6,7 @@ import Table from 'components/Table'
 import LogoutButton from 'components/apply/LogoutButton'
 import LoadingAnimation from 'components/LoadingAnimation'
 import InterviewForm from 'components/admin/InterviewForm'
+import RejectionForm from 'components/admin/RejectionForm'
 import NotesForm from 'components/admin/NotesForm'
 import { Formik } from 'formik'
 import api from 'api'
@@ -82,7 +83,14 @@ export default class extends Component {
             <Flex>
               <Box>
                 <Table
-                  headers={['ID', 'Name', 'POC', 'Interview', 'Notes']}
+                  headers={[
+                    'ID',
+                    'Name',
+                    'POC',
+                    'Interview',
+                    'Notes',
+                    'Rejected'
+                  ]}
                   rows={Object.values(clubApplications).map(application => ({
                     ID: application.id,
                     Name: application.high_school_name,
@@ -122,6 +130,26 @@ export default class extends Component {
                           this.setState({
                             selection: application,
                             selectType: 'notes'
+                          })
+                        }}
+                        children="✍"
+                      />
+                    ),
+                    Rejected: (
+                      <Button
+                        bg="info"
+                        inverted={
+                          !(
+                            selection &&
+                            selection.id === application.id &&
+                            selectType === 'rejected'
+                          )
+                        }
+                        disabled={!application.submitted_at}
+                        onClick={() => {
+                          this.setState({
+                            selection: application,
+                            selectType: 'rejected'
                           })
                         }}
                         children="✍"

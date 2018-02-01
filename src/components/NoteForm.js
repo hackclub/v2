@@ -15,7 +15,6 @@ export default class extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.state.id != nextProps.note.id) {
-      console.log(this.state.id, nextProps.note.id)
       this.setState({
         id: nextProps.note.id,
         note: nextProps.note

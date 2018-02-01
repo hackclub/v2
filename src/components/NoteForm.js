@@ -22,6 +22,15 @@ export default class extends Component {
     }
   }
 
+  deleteNote(id) {
+    const { authToken } = this.props
+    console.log('making delete request')
+    api.delete(`v1/notes/${id}`, { authToken }).then(json => {
+      console.log('finished delete request')
+      this.setState({ deleted: true })
+    })
+  }
+
   handleSubmit(values, { setSubmitting }) {
     const { authToken, applicationId } = this.props
     const { note, id } = this.state
@@ -51,42 +60,52 @@ export default class extends Component {
   }
 
   render() {
-    const { note } = this.state
+    const { id, note, deleted } = this.state
 
-    return (
-      <Formik
-        initialValues={note}
-        enableReinitialize={true}
-        onSubmit={this.handleSubmit}
-      >
-        {props => {
-          const {
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isSubmitting,
-            values
-          } = props
+    if (deleted) {
+      return null
+    } else {
+      return (
+        <Formik
+          initialValues={note}
+          enableReinitialize={true}
+          onSubmit={this.handleSubmit}
+        >
+          {props => {
+            const {
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              isSubmitting,
+              deleted,
+              values
+            } = props
 
-          return (
-            <form onSubmit={handleSubmit}>
-              <Field
-                name="body"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.body}
-                type="textarea"
-                renderMarkdown
-              />
-              <AutoSaver
-                handleSubmit={handleSubmit}
-                isSubmitting={isSubmitting}
-                values={values}
-              />
-            </form>
-          )
-        }}
-      </Formik>
-    )
+            return (
+              <form onSubmit={handleSubmit}>
+                <Field
+                  name="body"
+                  onBlur={e => {
+                    if (id && values.body === '') {
+                      this.deleteNote(id)
+                    }
+                    handleBlur(e)
+                  }}
+                  onChange={handleChange}
+                  value={values.body}
+                  type="textarea"
+                  renderMarkdown
+                />
+                <AutoSaver
+                  handleSubmit={handleSubmit}
+                  isSubmitting={isSubmitting}
+                  values={values}
+                />
+              </form>
+            )
+          }}
+        </Formik>
+      )
+    }
   }
 }

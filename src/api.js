@@ -1,9 +1,9 @@
 import fetch from 'unfetch'
 
 const apiBase = 'https://api.hackclub.com/'
-const methods = ['GET', 'PUT', 'POST', 'PATCH']
+const methods = ['GET', 'PUT', 'POST', 'PATCH', 'DELETE']
 
-const generateMethod = method => (path, options) => {
+const generateMethod = method => (path, options = {}) => {
   // authToken is shorthand for Authorization: Bearer `authtoken`
   let filteredOptions = {}
   for (let [key, value] of Object.entries(options)) {

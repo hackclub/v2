@@ -36,7 +36,6 @@ const generateMethod = method => (path, options = {}) => {
       }
     })
     .catch(e => {
-      console.error(e)
       throw e
     })
 }

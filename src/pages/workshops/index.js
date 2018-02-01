@@ -3,7 +3,6 @@ import {
   ThemeProvider,
   Box,
   Button,
-  Card,
   Container,
   BackgroundImage,
   Flex,
@@ -18,10 +17,10 @@ import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
+import Workshops from 'components/Workshops'
 import {
   groupBy,
   orderBy,
-  capitalize,
   camelCase,
   map,
   fromPairs,
@@ -29,7 +28,15 @@ import {
   toPairs
 } from 'lodash'
 
-const Base = Box.withComponent('main').extend`
+Box.main = Box.withComponent('main')
+Box.header = Box.withComponent('header')
+Box.section = Box.withComponent('section')
+Box.article = Box.withComponent('article')
+
+Button.link = Button.withComponent(Link)
+A.link = A.withComponent(Link)
+
+const Base = Box.main.extend`
   display: grid;
   position: relative;
   ${mediaQueries[1]} {
@@ -46,7 +53,9 @@ const Background = Section.extend`
     ${props => props.theme.colors.red[5]} 50%,
     ${props => props.theme.colors.red[6]} 100%
   );
-  min-height: 100vh;
+  ${mediaQueries[1]} {
+    min-height: 100vh;
+  }
 `
 
 const Name = Heading.h1.extend`
@@ -59,70 +68,6 @@ const Name = Heading.h1.extend`
   clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
 `
-
-Box.header = Box.withComponent('header')
-Box.section = Box.withComponent('section')
-Box.article = Box.withComponent('article')
-
-Button.link = Button.withComponent(Link)
-A.link = A.withComponent(Link)
-
-const Grid = Box.withComponent('ol').extend`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-  grid-auto-rows: 1fr;
-  grid-gap: ${props => props.theme.space[3]}px;
-  counter-reset: li;
-  list-style: none;
-  padding: 0;
-`
-
-const WorkshopCard = Card.withComponent('li').extend`
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url('${props => props.img}');
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
-  position: relative;
-  height: 100%;
-  &:before {
-    content: counter(li);
-    counter-increment: li;
-    box-sizing: border-box;
-    position: absolute;
-    right: ${props => props.theme.space[3]}px;
-    display: inline-block;
-    width: 1.25rem;
-    height: 1.25rem;
-    border-radius: 1rem;
-    background-color: ${props => props.theme.colors.white};
-    color: ${props => props.theme.colors.black};
-    font-size: ${props => props.theme.fontSizes[0]}px;
-    line-height: 1.5;
-    text-align: center;
-    text-shadow: none;
-    font-weight: bold;
-  }
-  h3 {
-    line-height: 1.125;
-    margin-bottom: 0.125rem;
-  }
-  p {
-    line-height: 1.375;
-  }
-`
-
-const Workshop = ({
-  data: { fields: { slug, bg }, frontmatter: { name, description } },
-  ...props
-}) => (
-  <A.link to={slug} {...props}>
-    <WorkshopCard p={3} boxShadowSize="md" bg="accent" img={bg}>
-      <Heading.h3 color="white" f={3} children={name} />
-      <Text color="snow" f={2} children={description} />
-    </WorkshopCard>
-  </A.link>
-)
 
 export default ({ data: { allMarkdownRemark: { edges } } }) => {
   let groups = groupBy(edges, 'node.frontmatter.group')
@@ -156,8 +101,8 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
             </Button>
           </Box.header>
         </Background>
-        <Box.article bg="white" py={[4, null, 5]} px={3}>
-          <Container maxWidth={48}>
+        <Box.article bg="white">
+          <Container maxWidth={48} py={[4, null, 5]} px={3}>
             <Flex
               flexDirection={['column', null, null, 'row']}
               alignItems="center"
@@ -182,21 +127,10 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
               </Box>
             </Flex>
             {map(groups, (edges, name) => (
-              <Box.section mb={4} key={`workshops-${name}`}>
-                <Heading.h2 color="black" f={4} mb={1} caps>
-                  {capitalize(name)}
-                </Heading.h2>
-                <Grid>
-                  {map(edges, (edge, ii) => (
-                    <Workshop
-                      data={edge.node}
-                      key={`workshops-${name}-${ii}`}
-                    />
-                  ))}
-                </Grid>
-              </Box.section>
+              <Workshops key={`workshops-${name}`} name={name} data={edges} />
             ))}
           </Container>
+          <Footer />
         </Box.article>
       </Base>
     </ThemeProvider>

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { api } from '../data.json'
+import { api } from 'data.json'
 import { Container, LargeButton } from '@hackclub/design-system'
 import {
   Aside,

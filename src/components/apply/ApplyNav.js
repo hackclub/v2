@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react'
 import Link from 'gatsby-link'
 import { Text, Flex, Box, Link as A } from '@hackclub/design-system'
 import { Item } from 'components/Nav'
-import LogoutButton from 'components/LogoutButton'
 import Flag from 'components/Flag'
+import LogoutButton from 'components/apply/LogoutButton'
 import { withRouter } from 'react-router-dom'
 
 const Crumb = A.withComponent(Link).extend`

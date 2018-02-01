@@ -14,11 +14,11 @@ import {
   Text,
   cx
 } from '@hackclub/design-system'
-import ApplyNav from 'components/ApplyNav'
-import LeaderInviteForm from 'components/LeaderInviteForm'
+import ApplyNav from 'components/apply/ApplyNav'
+import LeaderInviteForm from 'components/apply/LeaderInviteForm'
+import Login from 'components/apply/Login'
+import SubmitButton from 'components/apply/SubmitButton'
 import LoadingAnimation from 'components/LoadingAnimation'
-import Login from 'components/Login'
-import SubmitButton from 'components/SubmitButton'
 import fetch from 'unfetch'
 import Link from 'gatsby-link'
 

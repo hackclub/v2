@@ -58,9 +58,6 @@ export default ({ data: { markdownRemark } }) => {
           </OutlineButton.home>
         </Header>
         <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
-        <Container maxWidth={48} px={3} pb={4}>
-        	<Heading.h2 f={[3,4]} caps>Enjoyed this workshop? Share it</Heading.h2>
-        </Container>
         <Footer />
       </ThemeProvider>
     )

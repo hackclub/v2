@@ -18,7 +18,13 @@ const Td = ({ children }) => (
 export default props => (
   <table>
     <thead>
-      <Tr>{props.headers.map(header => <th align="left">{header}</th>)}</Tr>
+      <Tr>
+        {props.headers.map((header, index) => (
+          <th align="left" key={index}>
+            {header}
+          </th>
+        ))}
+      </Tr>
     </thead>
     <tbody>
       {props.rows.map((row, rIndex) => (

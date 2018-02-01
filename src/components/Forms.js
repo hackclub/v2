@@ -106,12 +106,12 @@ export class AutoSaver extends Component {
     if (this.state.unsavedChanges) {
       return (
         <Fragment>
-          <SaveStatus saved={false} />
+          <SaveStatus />
           <ConfirmClose />
         </Fragment>
       )
     } else {
-      return <SaveStatus saved={true} />
+      return <SaveStatus saved="true" />
     }
   }
 }
@@ -176,11 +176,11 @@ export class Field extends Component {
     this.setState({ Tag, isEditing: false })
   }
 
-  onBlur() {
+  onBlur(e) {
     if (this.props.renderMarkdown) {
       this.setState({ isEditing: false })
     }
-    return this.props.onBlur
+    return this.props.onBlur(e)
   }
 
   onFocus() {

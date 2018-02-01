@@ -55,7 +55,6 @@ const SaveStatus = props => (
   <Fragment>
     <SaveStatusText saved={props.saved} />
     <SaveStatusLine saved={props.saved} />
-    <Heading.h4 align="center">Your form is automatically saved ✨</Heading.h4>
   </Fragment>
 )
 
@@ -219,7 +218,7 @@ export class Field extends Component {
             boxShadowSize="md"
             m={1}
             p={4}
-            style={{cursor: 'pointer'}}
+            style={{ cursor: 'pointer' }}
           >
             <Text f="0.75rem" color="slate">
               <em>Click to edit field</em>

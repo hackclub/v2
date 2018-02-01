@@ -280,6 +280,9 @@ const InnerForm = props => {
           isSubmitting={isSubmitting}
           values={values}
         />
+        <Heading.h4 align="center">
+          Your form is automatically saved ✨
+        </Heading.h4>
         <Container>
           <LargeButton.link to="/apply">« Back</LargeButton.link>
         </Container>

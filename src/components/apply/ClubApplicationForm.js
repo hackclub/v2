@@ -11,7 +11,7 @@ import {
   FormWrapper,
   Submit
 } from 'components/Forms'
-import { Button, Container, Flex, LargeButton } from '@hackclub/design-system'
+import { Button, Container, Heading, Flex, LargeButton } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import Link from 'gatsby-link'
 import yup from 'yup'

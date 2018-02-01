@@ -106,12 +106,12 @@ export class AutoSaver extends Component {
     if (this.state.unsavedChanges) {
       return (
         <Fragment>
-          <SaveStatus saved={false} />
+          <SaveStatus />
           <ConfirmClose />
         </Fragment>
       )
     } else {
-      return <SaveStatus saved={true} />
+      return <SaveStatus saved="true" />
     }
   }
 }

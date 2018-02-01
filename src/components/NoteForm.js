@@ -28,7 +28,7 @@ export default class extends Component {
     const { note, id } = this.state
     if (id) {
       api
-        .patch(`v1/notes/${note.id}`, { authToken, data: values })
+        .patch(`v1/notes/${id}`, { authToken, data: values })
         .then(json => {
           setSubmitting(false)
         })

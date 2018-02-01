@@ -46,6 +46,7 @@ const Background = Section.extend`
     ${props => props.theme.colors.red[5]} 50%,
     ${props => props.theme.colors.red[6]} 100%
   );
+  min-height: 100vh;
 `
 
 const Name = Heading.h1.extend`

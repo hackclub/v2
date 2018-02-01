@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
 import { Flex, colors } from '@hackclub/design-system'
+import EmailLoginForm from 'components/apply/EmailLoginForm'
+import LoginCodeForm from 'components/apply/LoginCodeForm'
 import Flag from 'components/Flag'
-import EmailLoginForm from 'components/EmailLoginForm'
-import LoginCodeForm from 'components/LoginCodeForm'
-import Footer from 'components/Footer'
 
 const Base = Flex.extend.attrs({
   flexDirection: 'column',

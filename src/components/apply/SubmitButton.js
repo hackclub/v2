@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import api from 'api'
 import { LargeButton } from '@hackclub/design-system'
-import { clubApplicationSchema } from 'components/ClubApplicationForm'
+import { clubApplicationSchema } from 'components/apply/ClubApplicationForm'
 
 class SubmitButton extends Component {
   constructor(props) {

@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react'
 import { Box, Button, Flex, Heading, Text } from '@hackclub/design-system'
 import { AutoSaver, Field, Form } from 'components/Forms'
+import Login from 'components/apply/Login'
 import Table from 'components/Table'
 import NoteForm from 'components/NoteForm'
-import LoadingAnimation from 'components/LoadingAnimation'
-import Login from 'components/apply/Login'
 import LogoutButton from 'components/apply/LogoutButton'
+import LoadingAnimation from 'components/LoadingAnimation'
 import { Formik } from 'formik'
 import api from 'api'
 

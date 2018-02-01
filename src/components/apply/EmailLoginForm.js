@@ -42,7 +42,7 @@ const InnerForm = ({
       {userType === 'admin' ? 'Admin login' : 'Start your application'}
     </Heading.h1>
     <Label className="email" id="email">
-      <Text mb={2} align="center" f={4} color={color} normal>
+      <Text mb={2} align="center" f={4} color={color}>
         Enter your email
       </Text>
       <StyledInput

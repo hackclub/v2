@@ -217,7 +217,7 @@ export default class extends Component {
         return (
           <Fragment>
             <Flex justify="flex-end">
-              <LogoutButton m={2} inverted={false} />
+              <LogoutButton m={2} inverted={null} bg="info" />
             </Flex>
             <Flex>
               <Box>

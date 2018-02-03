@@ -64,7 +64,7 @@ const WorkshopItem = ({
 )
 
 const Workshops = ({ name, data, ...props }) => (
-  <Box.section mb={4} {...props}>
+  <Box.section id={name} mb={4} {...props}>
     {name && <Heading.h2 color="black" f={4} mb={1} caps children={name} />}
     <WorkshopGrid>
       {map(data, (edge, ii) => (

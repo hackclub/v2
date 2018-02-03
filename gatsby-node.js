@@ -1,8 +1,8 @@
 const path = require('path')
 const fs = require('fs')
+const _ = require('lodash')
 const GeoPattern = require('geopattern')
 const { colors } = require('@hackclub/design-system')
-const _ = require('lodash')
 
 const pattern = (text = 'Hack Club', color = colors.primary) =>
   GeoPattern.generate(text, { baseColor: color }).toString()
@@ -16,7 +16,7 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
   if (node.internal.type === 'MarkdownRemark') {
     const fileNode = getNode(node.parent)
     const parsedFilePath = path.parse(fileNode.relativePath)
-    if (!!parsedFilePath.dir) {
+    if (!!parsedFilePath.dir && _.includes(fileNode.relativePath, "README")) {
       const value = `/workshops/${parsedFilePath.dir}`
       createNodeField({ node, name: 'slug', value })
       createNodeField({ node, name: 'bg', value: `${value}.svg` })
@@ -37,7 +37,9 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       graphql(
         `
           {
-            allMarkdownRemark(filter: { frontmatter: { name: { ne: null } } }) {
+            allMarkdownRemark(
+              filter: { frontmatter: { name: { ne: null } } }
+            ) {
               edges {
                 node {
                   frontmatter {
@@ -60,12 +62,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           reject(result.errors)
         }
 
-        const groupSet = new Set()
-        result.data.allMarkdownRemark.edges.forEach(edge => {
-          if (edge.node.frontmatter.category) {
-            groupSet.add(edge.node.frontmatter.group)
-          }
-
+        _.forEach(result.data.allMarkdownRemark.edges, edge => {
           createPage({
             path: edge.node.fields.slug,
             component,

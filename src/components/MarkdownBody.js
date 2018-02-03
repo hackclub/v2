@@ -30,10 +30,14 @@ const MarkdownBody = Box.extend`
   ol,
   ul {
     padding-left: ${props => props.theme.space[3] * 1.5}px;
-    ${mediaQueries[1]} {
-      padding-left: 0;
-    }
   }
+
+  p,
+  li {
+    margin-top: ${props => props.theme.space[2]}px;
+    margin-bottom: ${props => props.theme.space[2]}px;
+  }
+
 
   hr {
     border: 0;

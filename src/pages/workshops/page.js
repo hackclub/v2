@@ -45,7 +45,19 @@ export default ({ data: { markdownRemark } }) => {
     } = markdownRemark
     return (
       <ThemeProvider>
-        <Helmet title={`${name} – Hack Club`} />
+        <Helmet
+          title={title}
+          meta={[
+            { name: 'description', content: desc },
+            { property: 'og:title', content: title },
+            { name: 'twitter:title', content: title },
+            { property: 'og:description', content: desc },
+            { name: 'twitter:description', content: desc },
+            { property: 'og:site_name', content: 'Hack Club Workshops' },
+            { property: 'og:url', content: `https://hackclub.com${slug}` },
+            { name: 'twitter:card', content: 'summary' }
+          ]}
+        />
         <Section.h
           bg="accent"
           p={0}
@@ -76,6 +88,7 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $path } }) {
       html
       fields {
+        slug
         bg
       }
       frontmatter {

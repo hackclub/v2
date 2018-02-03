@@ -73,9 +73,24 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
   let groups = groupBy(edges, 'node.frontmatter.group')
   // hack to reverse sorting order of groups
   groups = fromPairs(reverse(toPairs(groups)))
+  const title = 'Hack Club Workshops'
+  const desc =
+    'Get coding tutorials, project ideas, and programming club activities.'
   return (
     <ThemeProvider>
-      <Helmet title="Workshops – Hack Club" />
+      <Helmet
+        title={title}
+        meta={[
+          { name: 'description', content: desc },
+          { property: 'og:title', content: title },
+          { name: 'twitter:title', content: title },
+          { property: 'og:description', content: desc },
+          { name: 'twitter:description', content: desc },
+          { property: 'og:site_name', content: 'Hack Club Workshops' },
+          { property: 'og:url', content: 'https://hackclub.com/workshops' },
+          { name: 'twitter:site', content: '@starthackclub' }
+        ]}
+      />
       <Nav
         style={{ position: 'absolute', top: 0 }}
         color={['white', null, 'primary']}

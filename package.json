@@ -8,8 +8,7 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
-    "start": "serve public -p 3000",
-    "postinstall": "npm run build",
+    "start": "yarn run dev",
     "fmt": "prettier \"{src/**,}/*.js\" --single-quote --no-semi --write",
     "social": "repng src/components/Social.js -w 512 -h 512 -o public -f social",
     "map-render": "node src/map/render.js"
@@ -42,7 +41,6 @@
     "react-markdown": "^3.1.5",
     "react-router": "^4.2.0",
     "react-simple-maps": "^0.10.3",
-    "serve": "^6.4.9",
     "unfetch": "^3.0.0",
     "yup": "^0.24.0"
   },

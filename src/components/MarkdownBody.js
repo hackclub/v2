@@ -1,4 +1,4 @@
-import { Box } from '@hackclub/design-system'
+import { Box, mediaQueries } from '@hackclub/design-system'
 import { range } from 'lodash'
 
 const MarkdownBody = Box.extend`
@@ -27,6 +27,14 @@ const MarkdownBody = Box.extend`
     max-width: 100%;
   }
 
+  ol,
+  ul {
+    padding-left: ${props => props.theme.space[3] * 1.5}px;
+    ${mediaQueries[1]} {
+      padding-left: 0;
+    }
+  }
+
   hr {
     border: 0;
     height: 4px;
@@ -41,6 +49,7 @@ const MarkdownBody = Box.extend`
   kbd {
     font-family: ${props => props.theme.mono};
     font-size: ${props => props.theme.fontSizes[2]}px;
+    word-break: break-word;
   }
 
   pre,
@@ -55,6 +64,9 @@ const MarkdownBody = Box.extend`
   }
   del code {
     text-decoration: inherit;
+  }
+  pre code {
+    padding: 0;
   }
 
   code,

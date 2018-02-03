@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link as A, mediaQueries} from '@hackclub/design-system'
+import { Link as A, mediaQueries } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 
 const Flag = A.withComponent(Link).extend.attrs({ to: '/' })`

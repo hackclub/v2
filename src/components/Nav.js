@@ -1,13 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Box, Flex, Link as A } from '@hackclub/design-system'
-import Link from 'gatsby-link'
-import { colors, mediaQueries } from '@hackclub/design-system'
+import {
+  Box,
+  Flex,
+  Link as A,
+  cx,
+  mediaQueries
+} from '@hackclub/design-system'
 import Flag from 'components/Flag'
+import Link from 'gatsby-link'
 
 const Base = Flex.extend.attrs({
   pt: 0,
-  px: [2, 3, 4],
+  px: [null, 3, 4],
   pb: 2,
   justify: 'space-between',
   align: 'center',
@@ -17,22 +22,28 @@ const Base = Flex.extend.attrs({
   z-index: 4;
 `
 
-const NavBar = Flex.withComponent('nav').extend(
-  [],
-  props =>
-    props.mode === 'cloud'
-      ? {
-          backgroundColor: 'rgba(255,255,255,.98)',
-          boxShadow: '0 0 1rem 1rem rgba(255,255,255,.98)',
-          borderRadius: '2rem',
-          color: colors.slate
-        }
-      : { color: colors[props.color] || props.color }
-)
+const cloud = props =>
+  props.mode === 'cloud'
+    ? {
+        backgroundColor: 'rgba(255,255,255,.98)',
+        boxShadow: '0 0 1rem 1rem rgba(255,255,255,.98)',
+        borderRadius: '2rem',
+        color: props.theme.colors.slate
+      }
+    : { color: cx(props.color) }
+
+const NavBar = Flex.withComponent('nav').extend.attrs({ mx: -2, py: 1, pr: 2 })`
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  ${cloud};
+`
 
 export const Item = A.extend.attrs({
-	align: 'center', bold: true, my: 1, mx: [2, 3]
-	})`color: inherit;`
+  align: 'center',
+  bold: true,
+  my: 1,
+  mx: [2, 3]
+})`color: inherit;`
 
 Item.link = Item.withComponent(Link)
 

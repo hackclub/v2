@@ -107,6 +107,9 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
             <Heading.h2 f={4} mb={4} regular>
               Learn to code through building projects.
             </Heading.h2>
+            <Text color="snow" f={2} mb={2} caps>
+              Add your own<br />coding tutorial
+            </Text>
             <Button
               href="https://github.com/hackclub/hackclub/blob/master/workshops/CONTRIBUTING.md"
               target="_blank"
@@ -120,8 +123,8 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
           <Container maxWidth={48} py={[4, 5]} px={3}>
             <Flex
               flexDirection={['column', null, null, 'row']}
-              align="center"
               justify="space-between"
+              align="flex-start"
               mb={[3, 4]}
             >
               <Container mx={0} maxWidth={32}>
@@ -135,16 +138,12 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
                   it.
                 </Text>
               </Container>
-              <Box py={3}>
-                <Button
-                  bg="info"
-                  inverted
-                  href="https://github.com/hackclub/hackclub/blob/master/workshops/PREFACE.md"
-                  target="_blank"
-                >
-                  Read more →
-                </Button>
-              </Box>
+              <Button.link
+                my={2}
+                bg="info"
+                to="/workshops"
+                children="Our philosophy »"
+              />
             </Flex>
             {map(groups, (edges, name) => (
               <Workshops key={`workshops-${name}`} name={name} data={edges} />

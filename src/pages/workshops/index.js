@@ -125,7 +125,12 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
               mb={[3, 4]}
             >
               <Container mx={0} maxWidth={32}>
-                <Text f={[4, 5]} align="left" color="slate" style={{ lineHeight: '1.25' }}>
+                <Text
+                  f={[4, 5]}
+                  align="left"
+                  color="slate"
+                  style={{ lineHeight: '1.25' }}
+                >
                   Coding is a superpower. The best way to learn it is by using
                   it.
                 </Text>

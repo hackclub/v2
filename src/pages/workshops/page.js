@@ -39,10 +39,12 @@ Section.h = Section.withComponent('header')
 export default ({ data: { markdownRemark } }) => {
   if (markdownRemark) {
     const {
-      fields: { bg },
+      fields: { slug, bg },
       frontmatter: { name, description, group },
       html
     } = markdownRemark
+    const title = `${name} – Hack Club Workshops`
+    const desc = `${description}. Read the tutorial on Hack Club Workshops.`
     return (
       <ThemeProvider>
         <Helmet
@@ -66,9 +68,22 @@ export default ({ data: { markdownRemark } }) => {
           <Nav style={{ position: 'absolute', top: 0 }} />
           <Container mt={4} mb={3} px={3}>
             <Flex align="center" justify="center" my={3}>
-              <A.link to="/workshops" color="white" f={3} bold caps children="Workshops" />
+              <A.link
+                to="/workshops"
+                color="white"
+                f={3}
+                bold
+                caps
+                children="Workshops"
+              />
               <Text.span mx={2} color="snow" f={3} children="›" />
-              <A.link to={`/workshops#${group}`} color="white" f={3} caps children={group} />
+              <A.link
+                to={`/workshops#${group}`}
+                color="white"
+                f={3}
+                caps
+                children={group}
+              />
             </Flex>
             <Name f={[5, 6]} mb={2} children={name} />
             <Desc f={[3, 4]} regular children={description} />

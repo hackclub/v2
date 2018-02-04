@@ -38,7 +38,6 @@ const MarkdownBody = Box.extend`
     margin-bottom: ${props => props.theme.space[2]}px;
   }
 
-
   hr {
     border: 0;
     height: 4px;

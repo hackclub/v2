@@ -1,12 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {
-  Box,
-  Flex,
-  Link as A,
-  cx,
-  mediaQueries
-} from '@hackclub/design-system'
+import { Box, Flex, Link as A, cx, mediaQueries } from '@hackclub/design-system'
 import Flag from 'components/Flag'
 import Link from 'gatsby-link'
 

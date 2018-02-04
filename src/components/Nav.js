@@ -26,7 +26,7 @@ const cloud = props =>
       }
     : { color: cx(props.color) }
 
-const NavBar = Flex.withComponent('nav').extend.attrs({ mx: -2, py: 1, pr: 2 })`
+const NavBar = Flex.withComponent('nav').extend.attrs({ ml: -2, py: 1 })`
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
   ${cloud};
@@ -36,7 +36,7 @@ export const Item = A.extend.attrs({
   align: 'center',
   bold: true,
   my: 1,
-  mx: [2, 3]
+  px: [2, 3]
 })`color: inherit;`
 
 Item.link = Item.withComponent(Link)

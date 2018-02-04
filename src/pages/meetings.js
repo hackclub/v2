@@ -8,6 +8,7 @@ import {
   Text,
   LargeButton,
   Icon,
+  Section,
   mediaQueries,
   cx
 } from '@hackclub/design-system'
@@ -17,15 +18,16 @@ import Nav from 'components/Nav'
 import Start from 'components/Start'
 import Footer from 'components/Footer'
 
-const Header = Box.extend`
+const Header = Section.withComponent('header').extend`
   padding-top: 0 !important;
   background-color: ${props => props.theme.colors.teal[6]};
   background-image: linear-gradient(
     -32deg,
-    ${props => props.theme.colors.lime[6]} 0%,
+    ${props => props.theme.colors.green[7]} 0%,
     ${props => props.theme.colors.teal[6]} 50%,
     ${props => props.theme.colors.teal[7]} 100%
   );
+  clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 90%);
 
   h1 {
     line-height: 1.125;
@@ -152,9 +154,9 @@ export default () => (
         <Icon name="flash_on" color="yellow.4" />
       </Module>
       <Module>
-        <Icon name="gesture" color="teal.4" />
+        <Icon name="gesture" color="teal.5" />
         <Box>
-          <ModuleHeading color="teal.5">
+          <ModuleHeading color="teal.6">
             No experience required.
             <br />
             Maybe even encouraged.
@@ -166,9 +168,9 @@ export default () => (
         </Box>
       </Module>
       <Module>
-        <Icon name="screen_share" color="violet.4" />
+        <Icon name="screen_share" color="indigo.4" />
         <Box>
-          <ModuleHeading color="violet.5">Demo time!</ModuleHeading>
+          <ModuleHeading color="indigo.5">Demo time!</ModuleHeading>
           <ModuleBody>
             At the end of a meeting, everyone presents what they’ve made in
             front of the group.

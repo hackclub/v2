@@ -65,16 +65,15 @@ const HeadLine = Heading.h1.extend.attrs({ f: [5, 7, 8] })`
     &:before {
       content: '';
       position: absolute;
-      clip-path: polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%);
+      clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
       background-color: rgba(252,252,252,.6);
       mix-blend-mode: overlay;
-      right: 2.25rem;
-      width: 6rem;
-      height: 2.25rem;
+      right: -0.5rem;
+      width: 9.5rem;
+      height: 2.5rem;
       ${mediaQueries.sm} {
-        right: 6rem;
-        width: 14rem;
-        height: 6rem;
+        width: 20rem;
+        height: 5.5rem;
       }
     }
   }

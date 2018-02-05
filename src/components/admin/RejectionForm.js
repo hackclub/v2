@@ -21,9 +21,6 @@ export default props => {
       enableReinitialize={true}
       onSubmit={(values, { props, setSubmitting }) => {
         const transformedValues = { ...values }
-        if (values.reject_duration) {
-          transformedValues.reject_duration = values.reject_duration * 60
-        }
         api
           .patch(`v1/new_club_applications/${values.id}`, {
             authToken,

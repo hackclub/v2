@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
 import { api } from 'data.json'
-import { ThemeProvider } from '@hackclub/design-system'
+import { Heading, Container, LargeButton } from '@hackclub/design-system'
 import LoadingAnimation from 'components/LoadingAnimation'
 import Footer from 'components/Footer'
 import ClubApplicationForm from 'components/apply/ClubApplicationForm'
@@ -81,6 +81,12 @@ export default class extends Component {
             id={id}
             authToken={authToken}
           />
+          <Heading.h4 align="center">
+            Your form is automatically saved ✨
+          </Heading.h4>
+          <Container align="center" my={4}>
+            <LargeButton.link to="/apply">« Back</LargeButton.link>
+          </Container>
           <Footer />
         </Fragment>
       )
@@ -89,10 +95,10 @@ export default class extends Component {
 
   render() {
     return (
-      <ThemeProvider>
+      <Fragment>
         <Helmet title="Edit Club Application – Hack Club" />
         {this.content()}
-      </ThemeProvider>
+      </Fragment>
     )
   }
 }

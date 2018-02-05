@@ -10,15 +10,16 @@ export default props => {
   const { application, authToken, updateApplicationList } = props
 
   const rejected_timestamp = application.rejected_at || (new Date).toISOString()
-  const transformedApplication = {
+  const initialValues = {
     ...application,
+    rejected_notes: application.rejected_notes || '',
     rejected_at: rejected_timestamp.substr(0, 10),
     rejected_reason: application.rejected_reason || 'other'
   }
 
   return (
     <Formik
-      initialValues={transformedApplication}
+      initialValues={initialValues}
       enableReinitialize={true}
       onSubmit={(values, { props, setSubmitting }) => {
         const transformedValues = { ...values }

@@ -104,16 +104,9 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
             <Name mt={2} mb={3} f={6}>
               Workshops
             </Name>
-            <Heading.h2 f={4} mb={4} regular>
+            <Heading.h2 f={4} regular>
               Learn to code through building projects.
             </Heading.h2>
-            <Button
-              href="https://github.com/hackclub/hackclub/blob/master/workshops/CONTRIBUTING.md"
-              target="_blank"
-              inverted
-            >
-              Contribute
-            </Button>
           </Box.header>
         </Background>
         <Box.article bg="white">

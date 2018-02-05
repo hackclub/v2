@@ -177,14 +177,19 @@ export class Field extends Component {
   }
 
   onBlur(e) {
-    if (this.props.renderMarkdown) {
+    const { renderMarkdown, onBlur } = this.props
+    if (renderMarkdown) {
       this.setState({ isEditing: false })
     }
-    return this.props.onBlur(e)
+    if (onBlur) {
+      return onBlur(e)
+    }
   }
 
   onFocus() {
-    this.setState({ isEditing: true })
+    if (this.props.renderMarkdown) {
+      this.setState({ isEditing: true })
+    }
   }
 
   render() {
@@ -235,7 +240,7 @@ export class Field extends Component {
             children={children}
             {...this.props}
             onBlur={this.onBlur}
-            value={value || ''}
+            value={value}
           />
         </div>
       </Label>

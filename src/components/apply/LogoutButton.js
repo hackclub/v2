@@ -11,7 +11,6 @@ Button.link = Button.withComponent(Link)
 
 export default props => (
   <Button.link
-    inverted
     to="/"
     onClick={destroySession}
     children="Logout"

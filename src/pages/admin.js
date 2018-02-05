@@ -99,7 +99,7 @@ class Dashboard extends Component {
               wrap
             >
               <Heading.h1 f={[5, 6]}>Dashboard</Heading.h1>
-              <LogoutButton inverted={false} />
+              <LogoutButton />
             </Flex>
             <Heading.h2 color="muted" f={4} mt={2} regular>
               Hello, it’s{' '}

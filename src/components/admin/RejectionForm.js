@@ -12,7 +12,8 @@ export default props => {
   const rejected_timestamp = application.rejected_at || (new Date).toISOString()
   const transformedApplication = {
     ...application,
-    rejected_at: rejected_timestamp.substr(0, 10)
+    rejected_at: rejected_timestamp.substr(0, 10),
+    rejected_reason: application.rejected_reason || 'other'
   }
 
   return (

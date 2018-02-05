@@ -21,7 +21,7 @@ const Base = Section.extend`
     ${props => props.theme.colors.red[6]} 100%
   );
   padding: 4rem 0 !important;
-  ${mediaQueries[2]} {
+  ${mediaQueries.lg} {
     padding-top: 5rem 0 !important;
     ${tilt(85)};
   }
@@ -35,8 +35,13 @@ const Base = Section.extend`
 LargeButton.link = LargeButton.withComponent(Link)
 
 const Start = ({ mt = '-4rem', ...props }) => (
-  <Base justify="center" flexDirection={['column', 'row']} mt={mt} {...props}>
-    <Box p={[2, 3]} align={['center', 'right']}>
+  <Base
+    justify="center"
+    flexDirection={['column', null, 'row']}
+    mt={mt}
+    {...props}
+  >
+    <Box p={[2, 3]} align={['center', null, 'right']}>
       <Heading.h2 f={[5, 6]} m={0}>
         Start a Hack Club.
       </Heading.h2>

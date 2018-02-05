@@ -107,9 +107,6 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
             <Heading.h2 f={4} mb={4} regular>
               Learn to code through building projects.
             </Heading.h2>
-            <Text color="snow" f={2} mb={2} caps>
-              Add your own<br />coding tutorial
-            </Text>
             <Button
               href="https://github.com/hackclub/hackclub/blob/master/workshops/CONTRIBUTING.md"
               target="_blank"
@@ -134,14 +131,14 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
                   color="slate"
                   style={{ lineHeight: '1.25' }}
                 >
-                  Coding is a superpower. The best way to learn it is by using
-                  it.
+                  Coding is a superpower.<br />
+                  So start building.
                 </Text>
               </Container>
               <Button.link
                 my={2}
-                bg="info"
-                to="/workshops"
+                bg="accent"
+                to="/philosophy"
                 children="Our philosophy »"
               />
             </Flex>

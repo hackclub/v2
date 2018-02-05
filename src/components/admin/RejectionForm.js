@@ -9,11 +9,10 @@ const Form = Box.withComponent('form')
 export default props => {
   const { application, authToken, updateApplicationList } = props
 
+  const rejected_timestamp = application.rejected_at || (new Date).toISOString()
   const transformedApplication = {
     ...application,
-    rejected_at: application.rejected_at
-      ? application.rejected_at.substr(0, 10)
-      : null
+    rejected_at: rejected_timestamp.substr(0, 10)
   }
 
   return (

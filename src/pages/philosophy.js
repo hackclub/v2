@@ -25,13 +25,31 @@ const Header = Section.withComponent('header').extend`
     ${props => props.theme.colors.red[6]} 100%
   );
   clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 90%);
+  > div { position: relative; }
+`
+
+const Seal = Box.extend`
+  border-radius: 9999px;
+  background-color: white;
+  color: black;
+  mix-blend-mode: screen;
+  text-align: center;
+  width: 12rem;
+  height: 12rem;
+  position: absolute;
+  margin-top: -1rem;
+  transform: rotate(3deg);
+  ${mediaQueries.md} {
+    margin-top: -3rem;
+  }
 `
 
 const HeadLine = Heading.h1.extend.attrs({ f: [5, 7, 8] })`
   line-height: 1.125 !important;
   text-transform: uppercase;
-  ${mediaQueries[1]} {
-    &:nth-of-type(2) {
+  &:nth-of-type(2) {
+    padding-left: 1.5rem;
+    ${mediaQueries.md} {
       padding-left: 6rem;
     }
   }
@@ -44,13 +62,13 @@ const HeadLine = Heading.h1.extend.attrs({ f: [5, 7, 8] })`
     &:before {
       content: '';
       position: absolute;
-      border-radius: 9999px;
+      clip-path: polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%);
       background-color: rgba(252,252,252,.6);
       mix-blend-mode: overlay;
-      right: 4rem;
-      width: 5rem;
+      right: 2.25rem;
+      width: 6rem;
       height: 2.25rem;
-      ${mediaQueries[0]} {
+      ${mediaQueries.sm} {
         right: 6rem;
         width: 14rem;
         height: 6rem;
@@ -91,18 +109,20 @@ export default () => (
   <ThemeProvider>
     <Helmet title="Philosophy – Hack Club" />
     <Nav style={{ position: 'absolute', top: 0 }} />
-    <Header p={0} mb={3}>
-      <Heading.h1 my={4} caps>
-        <Text f={[2, 3]} regular>
-          The Hack Club
-        </Text>
-        <Text f={[3, 4]}>Philosophy</Text>
-      </Heading.h1>
-      <Container w={1} maxWidth={56} mb={3} px={3} align="left">
+    <Header pt={0}>
+      <Container w={1} maxWidth={56} pt={4} pb={[4, 3]} px={3} align="left">
         <HeadLine children="We’re" />
-        <HeadLine children="best" />
+        <HeadLine children="at our best" />
         <HeadLine children="when we’re" />
         <HeadLine children="making." />
+        <Seal pt={[3, 4]}>
+          <Text f={[1, 2]} caps>
+            The Hack Club
+          </Text>
+          <Text f={[3, 4]} bold caps>
+            Philosophy
+          </Text>
+        </Seal>
       </Container>
     </Header>
     <Row py={4}>

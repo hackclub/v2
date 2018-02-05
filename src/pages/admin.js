@@ -16,6 +16,7 @@ import LogoutButton from 'components/apply/LogoutButton'
 import LoadingAnimation from 'components/LoadingAnimation'
 import InterviewForm from 'components/admin/InterviewForm'
 import RejectionForm from 'components/admin/RejectionForm'
+import Information from 'components/admin/Information'
 import NotesForm from 'components/admin/NotesForm'
 import { Formik } from 'formik'
 import api from 'api'
@@ -113,7 +114,8 @@ class Dashboard extends Component {
                   'POC',
                   'Interview',
                   'Notes',
-                  'Rejected'
+                  'Rejected',
+                  'Info'
                 ]}
                 rows={Object.values(clubApplications).map(application => ({
                   ID: <Badge bg="info" children={application.id} />,

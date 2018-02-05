@@ -290,6 +290,7 @@ const InnerForm = props => {
 
 const ClubApplicationForm = withFormik({
   mapPropsToValues: props => props.params,
+  enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, props, resetForm }) => {
     fetch(`${api}/v1/new_club_applications/${props.id}`, {
       method: 'PATCH',

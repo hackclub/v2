@@ -12,9 +12,12 @@ import {
   mediaQueries
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
+import Link from 'gatsby-link'
 import Nav from 'components/Nav'
 import Start from 'components/Start'
 import Footer from 'components/Footer'
+
+A.link = A.withComponent(Link)
 
 const Header = Section.withComponent('header').extend`
   background-color: ${props => props.theme.colors.fuschia[6]};
@@ -126,12 +129,13 @@ export default () => (
       </Container>
     </Header>
     <Row py={4}>
-      <Heading.h2 f={[5, 6]} color="primary">
+      <Heading.h2 f={[5, 6]} color="red.5">
         Coding is a <Super>superpower.</Super>
       </Heading.h2>
       <Text f={3}>
-        Coding is a uniquely empowering skill. We want what was “computer
-        science” to be an accessible tool for everyone to make.
+        Learning to code is uniquely like gaining a superpower: it converts you
+        from a consumer to a creator. Suddenly, computers become a tool for
+        making.
       </Text>
     </Row>
     <Row py={4}>
@@ -139,29 +143,59 @@ export default () => (
         Make, from anywhere.
       </Heading.h2>
       <Text f={3}>
-        There’s never been a better time for making: anywhere in the world,
-        anyone with a laptop and an internet connection can learn to make an
-        app. Building things has never been so globally democratized.
+        In the 1960s, something special happened around MIT. Hacker culture
+        started and grew to create almost all of computers as we know them
+        today. There’s never been a better time for making: anywhere in the
+        world, anyone with a laptop and an internet connection can learn to make
+        an app. Building things has never been so globally democratized.
       </Text>
     </Row>
     <Row py={4}>
-      <Heading.h2 f={[5, 6]} color="accent">
+      <Heading.h2 f={[5, 6]} color="violet.5">
+        Hack, hack, hack.
+      </Heading.h2>
+      <Text f={3}>
+        <strong>The goal of Hack Club is to help you become a hacker.</strong>{' '}
+        We want to create a space at every school where people are building
+        interesting things with code, every week. Schools aren’t making that, so
+        we’re bringing it to every school so building things becomes accessible
+        to everyone.
+      </Text>
+    </Row>
+    <Row py={4}>
+      <Heading.h2 f={[5, 6]} color="indigo.5">
+        Start building.
+      </Heading.h2>
+      <Text f={3}>
+        Most coding classes teach you programming concepts instead of how to
+        write real code—it’s like trying to learn carpentry without any wood. So
+        at Hack Club, you learn to code entirely through building things. You
+        start with no experience and build and ship a project every meeting.
+      </Text>
+    </Row>
+    <Row py={4}>
+      <Heading.h2 f={[5, 6]} color="blue.5">
         Learn as you build.
       </Heading.h2>
       <Text f={3}>
-        Traditional computer science classes focus on programming concepts
-        instead of shipping real projects. At Hack Clubs, members make projects
-        make projects every day, learning new things as they build.
+        Through our <A.link to="/workshops">workshops</A.link>, you’ll be walked
+        through building projects. Starting out, you won’t understand how the
+        code works, but as you keep building, your understanding will grow.
+        You’ll get stuck along the way. Fail at a project. Just as the best
+        carpenters didn’t learn in the classroom, neither did the best
+        programmers. The difference between the builders and the followers is
+        perseverance.
       </Text>
     </Row>
     <Row py={4}>
-      <Heading.h2 f={[5, 6]} color="info">
+      <Heading.h2 f={[5, 6]} color="cyan.6">
         Be part of a community.
       </Heading.h2>
       <Text f={3}>
         Hack Club gives you a worldwide community of thousands of other young
-        makers. We’re artists, engineers, tinkerers, writers, runners, campers,
-        filmmakers, volunteers. We make things. We have fun. Join us.
+        makers to talk to. We’re artists, writers, engineers, tinkerers,
+        campers, filmmakers, volunteers. We make things. We help one another. We
+        have fun. Join us.
       </Text>
     </Row>
     <Start mt={3} />

@@ -33,7 +33,6 @@ Box.header = Box.withComponent('header')
 Box.section = Box.withComponent('section')
 Box.article = Box.withComponent('article')
 
-Button.link = Button.withComponent(Link)
 A.link = A.withComponent(Link)
 
 const Base = Box.main.extend`
@@ -67,6 +66,21 @@ const Name = Heading.h1.extend`
   padding-right: ${props => props.theme.space[3]}px;
   clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+`
+
+const Super = Text.withComponent('mark').extend`
+  background: transparent url(/underline.svg) bottom left no-repeat;
+  background-size: 100% 0.5rem;
+  padding-bottom: 0.125rem;
+`
+const SuperButton = Button.withComponent(Link).extend`
+  background-color: ${props => props.theme.colors.fuschia[6]};
+  background-image: linear-gradient(
+    -32deg,
+    ${props => props.theme.colors.fuschia[5]},
+    ${props => props.theme.colors.red[5]},
+    ${props => props.theme.colors.red[6]}
+  );
 `
 
 export default ({ data: { allMarkdownRemark: { edges } } }) => {
@@ -124,13 +138,12 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
                   color="slate"
                   style={{ lineHeight: '1.25' }}
                 >
-                  Coding is a superpower.<br />
+                  Coding is a <Super color="warning">superpower</Super>.<br />
                   So start building.
                 </Text>
               </Container>
-              <Button.link
+              <SuperButton
                 my={2}
-                bg="accent"
                 to="/philosophy"
                 children="Our philosophy »"
               />

@@ -53,7 +53,8 @@ const InnerForm = props => {
     handleSubmit,
     isSubmitting,
     id,
-    authToken
+    authToken,
+    disableAutosave
   } = props
   return (
     <FormWrapper>
@@ -278,11 +279,13 @@ const InnerForm = props => {
             optional
           />
         </Fieldset>
-        <AutoSaver
-          handleSubmit={handleSubmit}
-          isSubmitting={isSubmitting}
-          values={values}
-        />
+        {!disableAutosave &&
+         <AutoSaver
+           handleSubmit={handleSubmit}
+           isSubmitting={isSubmitting}
+           values={values}
+         />
+        }
       </Form>
     </FormWrapper>
   )

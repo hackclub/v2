@@ -107,9 +107,21 @@ const Super = Text.withComponent('mark').extend`
   padding-right: ${props => props.theme.space[3]}px;
 `
 
+const desc =
+  'Read about Hack Club, a network of high school computer science clubs. ' +
+  'We want to make building apps and websites accessible to everyone through programming clubs at every high school.'
+
 export default () => (
   <ThemeProvider>
-    <Helmet title="Philosophy – Hack Club" />
+    <Helmet
+      title="Hack Club Philosophy"
+      meta={[
+        { name: 'description', content: desc },
+        { name: 'twitter:description', content: desc },
+        { property: 'og:description', content: desc },
+        { property: 'og:url', content: 'https://hackclub.com/philosophy' }
+      ]}
+    />
     <Nav style={{ position: 'absolute', top: 0 }} />
     <Header pt={0}>
       <Container w={1} maxWidth={56} pt={4} pb={[4, 3]} px={3} align="left">

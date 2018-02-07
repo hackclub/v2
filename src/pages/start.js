@@ -83,9 +83,13 @@ const OthersCard = Card.extend`
 Button.link = Button.withComponent(Link)
 LargeButton.link = LargeButton.withComponent(Link)
 
-const CTA = LargeButton.link.extend`
-  position: absolute;
-  bottom: -28px;
+const CTAContainer = Box.extend`
+  height: 0;
+  text-align: center;
+  a {
+    position: relative;
+    top: -28px;
+  }
 `
 
 export default () => (
@@ -96,13 +100,15 @@ export default () => (
       <Heading.h1 f={[5, 6]} mt={[4, 5]}>
         Let’s get your Hack Club started.
       </Heading.h1>
-      <Heading.h2 f={[3, 4]} my={2} style={{ fontWeight: 'normal' }}>
+      <Heading.h2 f={[3, 4]} my={2} normal>
         The awesome coding club at your high school is coming soon.
       </Heading.h2>
-      <CTA to="/apply" inverted mx="auto" f={[3, 4]}>
-        Apply to Hack Club
-      </CTA>
     </One>
+    <CTAContainer>
+      <LargeButton.link to="/apply" inverted f={[3, 4]}>
+        Apply to Hack Club
+      </LargeButton.link>
+    </CTAContainer>
     <Two>
       <Heading.h2 f={[4, 5]}>Students: apply and start your club!</Heading.h2>
       <Modules>

@@ -34,16 +34,19 @@ const Base = Container.extend`
   }
 `
 
+const title = 'Hack Club Team'
 const description =
   'Meet the team that runs Hack Club, a global nonprofit network of high school computer science clubs.'
 
 export default () => (
   <ThemeProvider>
     <Helmet
-      title="Team – Hack Club"
+      title={title}
       meta={[
+        { name: 'twitter:title', content: title },
         { name: 'description', content: description },
         { name: 'twitter:description', content: description },
+        { property: 'og:title', content: title },
         { property: 'og:description', content: description },
         { property: 'og:url', content: 'https://hackclub.com/team' }
       ]}

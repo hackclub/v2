@@ -108,9 +108,24 @@ const ModuleFigure = Box.withComponent('figure').extend.attrs({
 
 LargeButton.link = LargeButton.withComponent(Link)
 
+const title = 'Hack Club Meetings'
+const description =
+  'Learn about meetings at Hack Clubs, high school programming clubs at schools around the world. ' +
+  'Get coding club activities and programming curriculum to start a high school computer science club.'
+
 export default () => (
   <ThemeProvider>
-    <Helmet title="Meetings – Hack Club" />
+    <Helmet
+      title={title}
+      meta={[
+        { name: 'twitter:title', content: title },
+        { name: 'description', content: description },
+        { name: 'twitter:description', content: description },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        { property: 'og:url', content: 'https://hackclub.com/meetings' }
+      ]}
+    />
     <Header color="white" pb={4}>
       <Nav />
       <Heading.h1 align="center" f={[5, 6]} mx="auto" mt={4} mb={3}>

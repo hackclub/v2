@@ -186,13 +186,10 @@ export default class extends Component {
       })
       .then(json => {
         if (json.length === 0) {
-          return fetch(
-            `${api}/v1/users/${userId}/new_club_applications`,
-            {
-              method: 'POST',
-              headers: { Authorization: `Bearer ${authToken}` }
-            }
-          ).then(res => {
+          return fetch(`${api}/v1/users/${userId}/new_club_applications`, {
+            method: 'POST',
+            headers: { Authorization: `Bearer ${authToken}` }
+          }).then(res => {
             if (res.ok) {
               return res.json()
             } else {

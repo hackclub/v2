@@ -167,4 +167,3 @@ export default class NotesForm extends Component {
     )
   }
 }
-

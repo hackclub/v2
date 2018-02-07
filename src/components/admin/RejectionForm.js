@@ -56,7 +56,9 @@ export default props => {
               value={values.rejected_reason || 'select'}
               type="select"
             >
-              <option value="select" disabled>Select One</option>
+              <option value="select" disabled>
+                Select One
+              </option>
               <option value="other">Other</option>
             </Field>
             <Field

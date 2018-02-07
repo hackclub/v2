@@ -21,7 +21,7 @@ const RightCol = Box.withComponent('article').extend.attrs({
 })``
 
 const Service = ({ href, icon, ...props }) => (
-  <A target="_blank" href={href} mx={2} title={icon} {...props}>
+  <A target="_blank" rel="noopener" href={href} mx={2} title={icon} {...props}>
     <Icon name={icon} size={32} fill="muted" alt={icon} />
   </A>
 )

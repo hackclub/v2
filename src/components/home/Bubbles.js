@@ -82,7 +82,7 @@ const Cloud = Box.extend`
     box-sizing: content-box;
     border-radius: 8rem;
     box-shadow: 0 0 4rem 4rem rgba(252, 252, 252, 0.95);
-    padding: 0 1rem;
+    padding: 0 ${props => props.theme.space[2]}px;
     top: -2rem;
   }
   p:first-child {
@@ -93,6 +93,11 @@ const Cloud = Box.extend`
   }
   h2 {
     line-height: 1.25;
+  }
+  @media screen and (max-width: 22em) {
+    a span {
+      display: none;
+    }
   }
 `
 
@@ -124,12 +129,12 @@ const Bubbles = ({ children }) => (
         Hack Club is a nonprofit network of coding clubs where members learn to
         code through tinkering and building projects.
       </Text>
-      <Flex justify="center" align="center" wrap mx={-2} mt={[3, 4]}>
-        <LargeButton href="https://finder.hackclub.com" inverted m={2}>
-          Find a Club
+      <Flex justify="center" align="center" mx={[-1, -2]} mt={[3, 4]}>
+        <LargeButton href="https://finder.hackclub.com" inverted m={[1, 2]}>
+          Find <span>Nearby</span>
         </LargeButton>
-        <LargeButton.link to="/start" m={2} f={[3, 4]}>
-          Start »
+        <LargeButton.link to="/start" m={[1, 2]} f={[3, 4]}>
+          Start a Club »
         </LargeButton.link>
       </Flex>
     </Cloud>

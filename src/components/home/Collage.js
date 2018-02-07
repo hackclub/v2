@@ -5,7 +5,7 @@ import { stats } from 'data.json'
 
 const Base = Flex.extend`
   max-width: 48rem;
-  margin-bottom: -4rem;
+  margin-bottom: -2rem;
   > div {
     display: flex;
     justify-content: center;
@@ -28,7 +28,8 @@ const Base = Flex.extend`
     max-width: 36rem;
     z-index: 1;
   }
-  ${mediaQueries[1]} {
+  ${mediaQueries.sm} {
+    margin-bottom: -4rem;
     > div {
       padding: 2rem;
     }
@@ -47,7 +48,7 @@ export default () => (
     px={3}
   >
     <Card boxShadowSize="lg" bg="primary">
-      <Heading.h2 color="white" f={6}>
+      <Heading.h2 color="white" f={[5, 6]}>
         United as one. Divided by zero.
       </Heading.h2>
     </Card>

@@ -2,7 +2,7 @@ import React from 'react'
 import { Heading, Box, Link as A, mediaQueries } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 
-const Base = Box.extend`
+const Base = Box.withComponent('section').extend`
   background: url(/diagonal.svg) top center repeat-x;
   background-size: auto 100%;
   text-align: center;
@@ -19,7 +19,7 @@ const Base = Box.extend`
     background: url(/diagonal.svg) top right repeat-x;
     background-size: auto 100%;
     background-position-x: 1rem;
-    ${mediaQueries[1]} {
+    ${mediaQueries.md} {
       background-position-x: 6rem;
     }
   }
@@ -36,11 +36,11 @@ const Base = Box.extend`
 A.link = A.withComponent(Link)
 
 export default () => (
-  <Base px={3} py={5} my={[4, 5]}>
-    <Heading.h2 f={6} mb={3}>
+  <Base px={2} py={5} my={[4, 5]}>
+    <Heading.h2 f={[5, 6]} mb={3}>
       Coding is a <mark>superpower</mark>.
     </Heading.h2>
-    <Heading.h3 color="slate" f={4} bold={false} regular>
+    <Heading.h3 color="slate" f={[3, 4]} bold={false} regular>
       So let’s teach it like that at every high school.{' '}
       <A.link color="primary" to="/meetings" underline>
         Explore meetings →

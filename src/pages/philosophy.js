@@ -107,6 +107,7 @@ const Super = Text.withComponent('mark').extend`
   padding-right: ${props => props.theme.space[3]}px;
 `
 
+const title = 'Hack Club Philosophy'
 const desc =
   'Read about Hack Club, a network of high school computer science clubs. ' +
   'We want to make building apps and websites accessible to everyone through programming clubs at every high school.'
@@ -114,10 +115,12 @@ const desc =
 export default () => (
   <ThemeProvider>
     <Helmet
-      title="Hack Club Philosophy"
+      title={title}
       meta={[
+        { name: 'twitter:title', content: title },
         { name: 'description', content: desc },
         { name: 'twitter:description', content: desc },
+        { property: 'og:title', content: title },
         { property: 'og:description', content: desc },
         { property: 'og:url', content: 'https://hackclub.com/philosophy' }
       ]}

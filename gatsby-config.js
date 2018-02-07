@@ -4,6 +4,25 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-resolve-src',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/workshops`,
+        name: 'workshops'
+      }
+    },
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          'gatsby-remark-autolink-headers',
+          'gatsby-remark-copy-linked-files',
+          'gatsby-remark-images',
+          'gatsby-remark-prismjs',
+          'gatsby-remark-smartypants'
+        ]
+      }
+    },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     {

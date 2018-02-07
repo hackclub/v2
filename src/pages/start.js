@@ -92,16 +92,20 @@ const CTAContainer = Box.extend`
   }
 `
 
+const title = 'Start Your Hack Club'
 const description =
-  'Learn how to start a coding club at your high school through Hack Club. Get programming club ideas, curriculum, activities, and more.'
+  'Learn how to start a coding club at your high school through Hack Club. ' +
+  'Get programming club ideas, curriculum, activities, and more.'
 
 export default () => (
   <ThemeProvider>
     <Helmet
-      title="Start Your Hack Club"
+      title={title}
       meta={[
+        { name: 'twitter:title', content: title },
         { name: 'description', content: description },
         { name: 'twitter:description', content: description },
+        { property: 'og:title', content: title },
         { property: 'og:description', content: description },
         { property: 'og:url', content: 'https://hackclub.com/start' }
       ]}

@@ -35,7 +35,7 @@ const Footer = () => (
         </Heading.h3>
       </LeftCol>
       <RightCol>
-        <Flex align="center" mx={-2}>
+        <Flex align="center" mx={-2} wrap>
           <Service href="/slack_invite" icon="slack" />
           <Service href="https://twitter.com/starthackclub" icon="twitter" />
           <Service href="https://github.com/hackclub" icon="github" />

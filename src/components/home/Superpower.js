@@ -40,10 +40,10 @@ export default () => (
     <Heading.h2 f={[5, 6]} mb={3}>
       Coding is a <mark>superpower</mark>.
     </Heading.h2>
-    <Heading.h3 color="slate" f={[3, 4]} bold={false} regular>
-      So let’s teach it like that at every high school.{' '}
-      <A.link color="primary" to="/meetings" underline>
-        Explore meetings →
+    <Heading.h3 color="slate" f={4} regular>
+      So let’s teach it like that at every high school, everywhere.{' '}
+      <A.link color="primary" to="/philosophy" underline>
+        Our philosophy →
       </A.link>
     </Heading.h3>
   </Base>

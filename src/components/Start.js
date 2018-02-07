@@ -7,10 +7,9 @@ import {
   mediaQueries
 } from '@hackclub/design-system'
 import Link from 'gatsby-link'
-import { wk } from 'theme'
 
 const tilt = n =>
-  wk(`clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`)
+  `clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`
 
 const Base = Section.extend`
   ${tilt(90)};
@@ -22,8 +21,7 @@ const Base = Section.extend`
     ${props => props.theme.colors.red[6]} 100%
   );
   padding: 4rem 0 !important;
-  margin-top: -4rem;
-  ${mediaQueries[2]} {
+  ${mediaQueries.lg} {
     padding-top: 5rem 0 !important;
     ${tilt(85)};
   }
@@ -36,9 +34,14 @@ const Base = Section.extend`
 
 LargeButton.link = LargeButton.withComponent(Link)
 
-const Start = props => (
-  <Base justify="center" flexDirection={['column', 'row']} {...props}>
-    <Box p={[2, 3]} align={['center', 'right']}>
+const Start = ({ mt = '-4rem', ...props }) => (
+  <Base
+    justify="center"
+    flexDirection={['column', null, 'row']}
+    mt={mt}
+    {...props}
+  >
+    <Box p={[2, 3]} align={['center', null, 'right']}>
       <Heading.h2 f={[5, 6]} m={0}>
         Start a Hack Club.
       </Heading.h2>

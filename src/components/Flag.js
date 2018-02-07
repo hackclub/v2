@@ -1,15 +1,15 @@
 import React from 'react'
-import styled from 'styled-components'
+import { Link as A, mediaQueries } from '@hackclub/design-system'
 import Link from 'gatsby-link'
-import { mx } from 'theme'
 
-const Flag = styled(Link).attrs({ to: '/' })`
+const Flag = A.withComponent(Link).extend.attrs({ to: '/' })`
   background: url(/orpheus_flag.svg) no-repeat;
   background-position: top center;
+  flex-shrink: 0;
   width: 8rem;
   height: 3rem;
   z-index: 0;
-  ${mx[0]} {
+  ${mediaQueries.md} {
     width: 10rem;
     height: 4rem;
   }

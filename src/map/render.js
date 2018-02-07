@@ -1,5 +1,5 @@
 require('babel-register')
-const axios = require('axios')
+const fetch = require('unfetch')
 const _ = require('lodash')
 const { forEach, toNumber, join, first, keys } = _
 const fs = require('fs')
@@ -27,8 +27,7 @@ const css = `.rsm-svg{width:100vw;height:100vh;object-fit:cover}
 const API = 'https://api.hackclub.com/v1/clubs'
 const GEO = 'https://unpkg.com/world-atlas@1.1.4/world/50m.json'
 const locations = []
-axios
-  .get(API)
+fetch(API)
   .then(res => {
     forEach(res.data, club => {
       const { name, latitude, longitude } = club

@@ -1,8 +1,7 @@
 {
   "name": "Hack Club",
   "title": "Hack Club: High school coding clubs",
-  "description":
-    "By the students, for the students. Join the movement of high school coding clubs around the world.",
+  "description": "Join the movement of high school coding clubs around the world: by the students, for the students.",
   "url": "https://hackclub.com",
   "api": "https://api.hackclub.com",
   "twitter": "@starthackclub",

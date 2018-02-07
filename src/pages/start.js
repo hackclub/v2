@@ -25,17 +25,17 @@ const One = Section.extend`
   position: relative;
   background-color: ${props => props.theme.colors.green[6]};
   background-image: linear-gradient(
-    16deg,
-    ${props => props.theme.colors.teal[7]} 0%,
+    24deg,
+    ${props => props.theme.colors.green[6]} 0%,
     ${props => props.theme.colors.lime[6]} 100%
   );
 `
 const Two = Section.extend`
-  background-color: ${props => props.theme.colors.orange[5]};
+  background-color: ${props => props.theme.colors.blue[6]};
   background-image: linear-gradient(
-    -32deg,
-    ${props => props.theme.colors.yellow[5]} 0%,
-    ${props => props.theme.colors.orange[5]} 100%
+    32deg,
+    ${props => props.theme.colors.indigo[5]} 0%,
+    ${props => props.theme.colors.cyan[6]} 100%
   );
 `
 const Three = Section.extend`
@@ -99,7 +99,7 @@ export default () => (
       <Heading.h2 f={[3, 4]} my={2} style={{ fontWeight: 'normal' }}>
         The awesome coding club at your high school is coming soon.
       </Heading.h2>
-      <CTA to="/apply" inverted f={[3, 4]}>
+      <CTA to="/apply" inverted mx="auto" f={[3, 4]}>
         Apply to Hack Club
       </CTA>
     </One>
@@ -202,7 +202,7 @@ export default () => (
       </Modules>
       <Box align="center" mt={4}>
         <LargeButton.link to="/apply" inverted f={[3, 4]}>
-          Apply to Hack Club
+          Apply + Start Your Club
         </LargeButton.link>
       </Box>
     </Four>

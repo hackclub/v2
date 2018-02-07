@@ -67,9 +67,19 @@ const WorkshopItem = ({
   </A.link>
 )
 
-const Workshops = ({ name, data, ...props }) => (
+const descriptions = {
+  start: 'Set out on your journey. Start out by building your own website, then tack on new features to make multiplayer games and collaborative web apps.',
+  experimental: 'As Is – No Warranty. These workshops haven’t been fully tested yet, so we don’t know just will happen if you try building things with them.'
+}
+
+const Workshops = ({
+  name,
+  data,
+  ...props
+}) => (
   <Box.section id={name} mb={4} {...props}>
     {name && <Heading.h2 color="black" f={4} mb={1} caps children={name} />}
+    {descriptions[name] && <Text color="slate" f={2} children={descriptions[name]} />}
     <WorkshopGrid>
       {map(data, (edge, ii) => (
         <WorkshopItem data={edge.node} key={`workshops-${name}-${ii}`} />

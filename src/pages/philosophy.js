@@ -98,7 +98,7 @@ const Row = Container.extend.attrs({ px: 3, maxWidth: 56 })`
 `
 
 const Super = Text.withComponent('mark').extend`
-  background-color: ${props => props.theme.colors.violet[5]};
+  background-color: ${props => props.theme.colors.warning};
   clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
   color: ${props => props.theme.colors.white};
   display: inline-block;
@@ -134,7 +134,7 @@ export default () => (
       <Text f={3}>
         Learning to code is uniquely like gaining a superpower: it converts you
         from a consumer to a creator. Suddenly, computers become a tool for
-        making.
+        creating.
       </Text>
     </Row>
     <Row py={4}>
@@ -142,11 +142,9 @@ export default () => (
         Make, from anywhere.
       </Heading.h2>
       <Text f={3}>
-        In the 1960s, something special happened around MIT. Hacker culture
-        started and grew to create almost all of computers as we know them
-        today. There’s never been a better time for making: anywhere in the
-        world, anyone with a laptop and an internet connection can learn to make
-        an app. Building things has never been so globally democratized.
+        There’s never been a better time for making: anywhere in the world,
+        anyone with a laptop and an internet connection can learn to make an
+        app. Building things has never been so globally democratized.
       </Text>
     </Row>
     <Row py={4}>
@@ -155,10 +153,10 @@ export default () => (
       </Heading.h2>
       <Text f={3}>
         <strong>The goal of Hack Club is to help you become a hacker.</strong>{' '}
-        We want to create a space at every school where people are building
-        interesting things with code, every week. Schools aren’t making that, so
-        we’re bringing it to every school so building things becomes accessible
-        to everyone.
+        We want a space at every school where people are making interesting
+        things with code, every week. Schools don’t provide that, so we’re
+        creating it in every school to make building things accessible to
+        everyone.
       </Text>
     </Row>
     <Row py={4}>
@@ -173,21 +171,20 @@ export default () => (
       </Text>
     </Row>
     <Row py={4}>
-      <Heading.h2 f={[5, 6]} color="blue.5">
+      <Heading.h2 f={[5, 6]} color="blue.6">
         Learn as you build.
       </Heading.h2>
       <Text f={3}>
-        Through our <A.link to="/workshops">workshops</A.link>, you’ll be walked
-        through building projects. Starting out, you won’t understand how the
-        code works, but as you keep building, your understanding will grow.
-        You’ll get stuck along the way. Fail at a project. Just as the best
-        carpenters didn’t learn in the classroom, neither did the best
-        programmers. The difference between the builders and the followers is
-        perseverance.
+        Just as the best carpenters didn’t learn in the classroom, neither did
+        the best programmers. Through our{' '}
+        <A.link to="/workshops">workshops</A.link>, you’ll be walked through
+        building projects. Starting out, you won’t understand how the code
+        works, but you’ll build understanding as you go. You’ll get stuck along
+        the way, but we’re here to help.
       </Text>
     </Row>
     <Row py={4}>
-      <Heading.h2 f={[5, 6]} color="cyan.6">
+      <Heading.h2 f={[5, 6]} color="cyan.7">
         Be part of a community.
       </Heading.h2>
       <Text f={3}>

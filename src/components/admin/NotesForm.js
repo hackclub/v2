@@ -1,8 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Formik } from 'formik'
 import api from 'api'
 import { AutoSaver, Field } from 'components/Forms'
-import { Button } from '@hackclub/design-system'
+import {
+  Box,
+  Flex,
+  Heading,
+  Badge,
+  IconButton,
+  Text
+} from '@hackclub/design-system'
+
+Box.form = Box.withComponent('form')
 
 class SingleNote extends Component {
   constructor(props) {
@@ -83,9 +92,10 @@ class SingleNote extends Component {
             } = props
 
             return (
-              <form onSubmit={handleSubmit}>
+              <Box.form w={1} onSubmit={handleSubmit}>
                 <Field
                   name="body"
+                  label="Note"
                   onBlur={e => {
                     if (id && values.body === '') {
                       this.deleteNote(id)
@@ -95,6 +105,7 @@ class SingleNote extends Component {
                   onChange={handleChange}
                   value={values.body}
                   type="textarea"
+                  bg="rgba(250,247,133,0.5)"
                   renderMarkdown
                 />
                 <AutoSaver
@@ -102,7 +113,7 @@ class SingleNote extends Component {
                   isSubmitting={isSubmitting}
                   values={values}
                 />
-              </form>
+              </Box.form>
             )
           }}
         </Formik>
@@ -148,10 +159,16 @@ export default class NotesForm extends Component {
     const { authToken, application, updateApplicationList } = this.props
     const { status, notes } = this.state
     return (
-      <React.Fragment>
-        <p>
-          We have #{notes.length} notes on application #{application.id}
-        </p>
+      <Fragment>
+        <Flex align="center">
+          <Heading.h2 mr={2}>Notes</Heading.h2>
+          <Badge bg="info" children={notes.length} />
+          <Flex flex="1 1 auto" />
+          <IconButton name="add" bg="success" circle onClick={this.addNote} />
+        </Flex>
+        <Text color="muted" f={1} caps mb={3}>
+          Application #{application.id}
+        </Text>
         {notes.map((note, index) => (
           <SingleNote
             key={index}
@@ -160,10 +177,7 @@ export default class NotesForm extends Component {
             authToken={authToken}
           />
         ))}
-        <Button onClick={this.addNote} bg="info">
-          Create Note
-        </Button>
-      </React.Fragment>
+      </Fragment>
     )
   }
 }

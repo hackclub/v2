@@ -1,8 +1,10 @@
 import React from 'react'
 import { Formik } from 'formik'
-import { AutoSaver, Field, Form } from 'components/Forms'
-import { Heading } from '@hackclub/design-system'
+import { AutoSaver, Field } from 'components/Forms'
+import { Box, Heading } from '@hackclub/design-system'
 import api from 'api'
+
+const Form = Box.withComponent('form')
 
 export default props => {
   const { application, authToken, updateApplicationList } = props
@@ -37,55 +39,53 @@ export default props => {
           })
       }}
     >
-      {props => {
-        const {
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-          values
-        } = props
-
-        return (
-          <Form onSubmit={handleSubmit}>
-            <Heading>App #{values.id}</Heading>
-            <Field
-              name="rejected_reason"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.rejected_reason || 'select'}
-              type="select"
-            >
-              <option value="select" disabled>
-                Select One
-              </option>
-              <option value="other">Other</option>
-            </Field>
-            <Field
-              name="rejected_notes"
-              label="Rejection notes"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.rejected_notes}
-              type="textarea"
-              renderMarkdown
-            />
-            <Field
-              name="rejected_at"
-              label="Reject date"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.rejected_at}
-              type="date"
-            />
-            <AutoSaver
-              handleSubmit={handleSubmit}
-              isSubmitting={isSubmitting}
-              values={values}
-            />
-          </Form>
-        )
-      }}
+      {({
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        isSubmitting,
+        values,
+        ...props
+      }) => (
+        <Form onSubmit={handleSubmit}>
+          <Heading.h2 mb={2}>Application #{values.id}</Heading.h2>
+          <Field
+            name="rejected_reason"
+            onBlur={handleBlur}
+            onChange={handleChange}
+            value={values.rejected_reason || 'select'}
+            type="select"
+          >
+            <option value="select" disabled>
+              Select One
+            </option>
+            <option value="other">Other</option>
+          </Field>
+          <Field
+            name="rejected_notes"
+            label="Rejection notes"
+            onBlur={handleBlur}
+            onChange={handleChange}
+            value={values.rejected_notes}
+            type="textarea"
+            bg="rgba(250,247,133,0.5)"
+            renderMarkdown
+          />
+          <Field
+            name="rejected_at"
+            label="Reject date"
+            onBlur={handleBlur}
+            onChange={handleChange}
+            value={values.rejected_at}
+            type="date"
+          />
+          <AutoSaver
+            handleSubmit={handleSubmit}
+            isSubmitting={isSubmitting}
+            values={values}
+          />
+        </Form>
+      )}
     </Formik>
   )
 }

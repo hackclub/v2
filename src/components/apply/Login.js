@@ -39,7 +39,7 @@ class Login extends Component {
   render() {
     const { emailSent, userId, email } = this.state
     const { userType = 'applicant' } = this.props
-    const color = userType === 'admin' ? colors.green[5] : 'white'
+    const color = userType === 'admin' ? colors.red[5] : 'white'
     const bg = userType === 'admin' ? '#000' : 'primary'
 
     return (

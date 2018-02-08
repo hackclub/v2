@@ -126,12 +126,11 @@ export const Error = Text.span.extend.attrs({
   &:before { content: '— '; }
 `
 
-export const Hint = Text.extend.attrs({
+export const Hint = Text.span.extend.attrs({
   color: 'slate',
   f: 1,
-  mb: 1,
   align: 'left'
-})``
+})`&:before { content: ' — '; }`
 
 export class ConfirmClose extends Component {
   componentWillMount() {
@@ -203,7 +202,9 @@ export class Field extends Component {
       hint,
       optional,
       value,
-      renderMarkdown
+      renderMarkdown,
+      bg,
+      ...props
     } = this.props
 
     const { Tag, isEditing } = this.state
@@ -211,26 +212,26 @@ export class Field extends Component {
     return (
       <Label className={type} mb={2} id={name}>
         <Flex style={{ display: 'inline' }} wrap>
-          {label}
+          <span>{label}</span>
           {optional ? <Optional /> : null}
           {error && <Error children={error} />}
           {hint && <Hint children={hint} />}
+          {renderMarkdown && <Hint children="click to edit" />}
         </Flex>
-        {renderMarkdown ? (
+        {renderMarkdown && (
           <Card
             onClick={this.onFocus}
-            hidden={isEditing ? true : false}
-            boxShadowSize="md"
-            m={1}
-            p={4}
+            hidden={isEditing}
+            boxShadowSize="sm"
+            mt={1}
+            p={[2, 3]}
+            w={1}
+            bg={bg}
             style={{ cursor: 'pointer' }}
           >
-            <Text f="0.75rem" color="slate">
-              <em>Click to edit field</em>
-            </Text>
             <MarkdownRenderer content={value || ' '} />
           </Card>
-        ) : null}
+        )}
         <div hidden={renderMarkdown && !isEditing ? true : false}>
           <Tag
             name={name}
@@ -241,6 +242,7 @@ export class Field extends Component {
             {...this.props}
             onBlur={this.onBlur}
             value={value}
+            bg={bg}
           />
         </div>
       </Label>

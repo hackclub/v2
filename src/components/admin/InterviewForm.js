@@ -1,8 +1,10 @@
 import React from 'react'
+import { Box, Heading } from '@hackclub/design-system'
 import { Formik } from 'formik'
-import { AutoSaver, Field, Form } from 'components/Forms'
-import { Heading } from '@hackclub/design-system'
+import { AutoSaver, Field } from 'components/Forms'
 import api from 'api'
+
+const Form = Box.withComponent('form')
 
 export default props => {
   const { application, authToken, updateApplicationList } = props
@@ -40,51 +42,45 @@ export default props => {
           })
       }}
     >
-      {props => {
-        const {
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-          values
-        } = props
-
-        return (
-          <Form onSubmit={handleSubmit}>
-            <Heading>App #{values.id}</Heading>
-            <Field
-              name="interview_notes"
-              label="Interview notes"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.interview_notes}
-              type="textarea"
-              renderMarkdown
-            />
-            <Field
-              name="interviewed_at"
-              label="Interview date"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.interviewed_at}
-              type="date"
-            />
-            <Field
-              name="interview_duration"
-              label="Interview duration (minutes)"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.interview_duration}
-              type="number"
-            />
-            <AutoSaver
-              handleSubmit={handleSubmit}
-              isSubmitting={isSubmitting}
-              values={values}
-            />
-          </Form>
-        )
-      }}
+      {(
+        { handleChange, handleBlur, handleSubmit, isSubmitting, values },
+        ...props
+      ) => (
+        <Form onSubmit={handleSubmit}>
+          <Heading.h2 mb={2}>Application #{values.id}</Heading.h2>
+          <Field
+            name="interview_notes"
+            label="Interview notes"
+            onBlur={handleBlur}
+            onChange={handleChange}
+            value={values.interview_notes}
+            type="textarea"
+            bg="rgba(250,247,133,0.5)"
+            renderMarkdown
+          />
+          <Field
+            name="interviewed_at"
+            label="Interview date"
+            onBlur={handleBlur}
+            onChange={handleChange}
+            value={values.interviewed_at}
+            type="date"
+          />
+          <Field
+            name="interview_duration"
+            label="Interview duration (minutes)"
+            onBlur={handleBlur}
+            onChange={handleChange}
+            value={values.interview_duration}
+            type="number"
+          />
+          <AutoSaver
+            handleSubmit={handleSubmit}
+            isSubmitting={isSubmitting}
+            values={values}
+          />
+        </Form>
+      )}
     </Formik>
   )
 }

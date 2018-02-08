@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { Heading, Link as A } from '@hackclub/design-system'
+import { Box, Heading, Link as A } from '@hackclub/design-system'
 import api from 'api'
 
 function flatten(text, child) {
@@ -19,6 +19,41 @@ const CustomHeading = props => {
 
   return React.createElement(`h${props.level}`, { id: slug }, props.children)
 }
+
+const Body = Box.extend`
+  div > :first-child {
+    margin-top: 0 !important;
+  }
+  div > :last-child {
+    margin-bottom: 0 !important;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin-top: 0;
+    margin-bottom: ${props => props.theme.space[2]}px;
+  }
+
+  ol,
+  ul {
+    padding-left: ${props => props.theme.space[3]}px;
+  }
+
+  p,
+  li {
+    margin-top: ${props => props.theme.space[2]}px;
+    margin-bottom: ${props => props.theme.space[2]}px;
+  }
+
+  hr {
+    border: 0;
+    height: 2px;
+    background-color: ${props => props.theme.colors.muted};
+    margin: ${props => props.theme.space[3]}px;
+    border-radius: 2px;
+  }
+`
 
 export default class extends Component {
   constructor(props) {
@@ -67,12 +102,12 @@ export default class extends Component {
     const { content, renderers } = this.state
 
     return (
-      <div {...this.props}>
+      <Body {...this.props}>
         <ReactMarkdown
           source={content}
           renderers={{ heading: CustomHeading, link: A, ...renderers }}
         />
-      </div>
+      </Body>
     )
   }
 }

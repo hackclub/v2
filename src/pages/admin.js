@@ -130,7 +130,7 @@ class Dashboard extends Component {
                           selectType: 'interview'
                         })
                       }}
-                      children="✍"
+                      children="✍️"
                     />
                   ),
                   Notes: (
@@ -144,7 +144,7 @@ class Dashboard extends Component {
                           selectType: 'notes'
                         })
                       }}
-                      children="✍"
+                      children="✍️"
                     />
                   ),
                   Rejected: (
@@ -158,7 +158,7 @@ class Dashboard extends Component {
                           selectType: 'rejected'
                         })
                       }}
-                      children="✍"
+                      children="✍️"
                     />
                   )
                 }))}

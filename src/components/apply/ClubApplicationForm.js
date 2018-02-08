@@ -26,7 +26,7 @@ export const clubApplicationSchema = yup.object().shape({
   high_school_name: yup.string().required(),
   high_school_type: yup
     .string()
-    .notOneOf(['select'])
+    .matches(/(public_school|private_school|charter_school)/)
     .required(),
   high_school_address: yup.string().required(),
   leaders_team_origin_story: yup.string().required(),
@@ -38,10 +38,7 @@ export const clubApplicationSchema = yup.object().shape({
   idea_other_general_clubs: yup.string().required(),
   formation_registered: yup.string().required(),
   other_surprising_or_amusing_discovery: yup.string().required(),
-  point_of_contact_id: yup
-    .string()
-    .notOneOf(['select'])
-    .required()
+  point_of_contact_id: yup.number().required()
 })
 
 LargeButton.link = LargeButton.withComponent(Link)

@@ -9,7 +9,7 @@ const Form = Box.withComponent('form')
 export default props => {
   const { application, authToken, updateApplicationList } = props
 
-  const rejected_timestamp = application.rejected_at || (new Date).toISOString()
+  const rejected_timestamp = application.rejected_at || new Date().toISOString()
   const initialValues = {
     ...application,
     rejected_notes: application.rejected_notes || '',

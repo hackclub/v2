@@ -197,10 +197,10 @@ class Dashboard extends Component {
                       }
                       disabled={!application.submitted_at}
                       onClick={() => {
-                          this.setState({
-                            selection: application,
-                            selectType: 'accepted'
-                          })
+                        this.setState({
+                          selection: application,
+                          selectType: 'accepted'
+                        })
                       }}
                       children="✍"
                     />

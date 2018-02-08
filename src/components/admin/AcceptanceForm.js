@@ -16,13 +16,16 @@ export default props => {
         if (!confirm('Are you sure you want to accept this club?')) {
           return
         }
-        api.post(`v1/new_club_applications/${application.id}/accept`, { authToken })
-           .then(json => {
-             updateApplicationList(json)
-           })
-           .catch(e => {
-             alert(e.statusText)
-           })
+        api
+          .post(`v1/new_club_applications/${application.id}/accept`, {
+            authToken
+          })
+          .then(json => {
+            updateApplicationList(json)
+          })
+          .catch(e => {
+            alert(e.statusText)
+          })
       }}
     />
   )

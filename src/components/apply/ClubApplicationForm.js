@@ -279,13 +279,13 @@ const InnerForm = props => {
             optional
           />
         </Fieldset>
-        {!disableAutosave &&
-         <AutoSaver
-           handleSubmit={handleSubmit}
-           isSubmitting={isSubmitting}
-           values={values}
-         />
-        }
+        {!disableAutosave && (
+          <AutoSaver
+            handleSubmit={handleSubmit}
+            isSubmitting={isSubmitting}
+            values={values}
+          />
+        )}
       </Form>
     </FormWrapper>
   )

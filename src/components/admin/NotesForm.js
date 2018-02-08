@@ -153,7 +153,7 @@ export default class NotesForm extends Component {
       })
   }
   addNote() {
-    this.setState({ notes: [...this.state.notes, {}] })
+    this.setState({ notes: [...this.state.notes, { created_at: new Date() }] })
   }
   render() {
     const { authToken, application, updateApplicationList } = this.props
@@ -169,14 +169,16 @@ export default class NotesForm extends Component {
         <Text color="muted" f={1} caps mb={3}>
           Application #{application.id}
         </Text>
-        {notes.map((note, index) => (
-          <SingleNote
-            key={index}
-            note={note}
-            applicationId={application.id}
-            authToken={authToken}
-          />
-        ))}
+        {notes
+          .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+          .map((note, index) => (
+            <SingleNote
+              key={index}
+              note={note}
+              applicationId={application.id}
+              authToken={authToken}
+            />
+          ))}
       </Fragment>
     )
   }

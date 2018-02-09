@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
 import { api } from 'data.json'
-import { ThemeProvider, Heading, Container } from '@hackclub/design-system'
+import { Heading, Container, LargeButton } from '@hackclub/design-system'
 import LeaderApplicationForm from 'components/apply/LeaderApplicationForm'
 import Login from 'components/apply/Login'
 import ApplyNav from 'components/apply/ApplyNav'
@@ -79,6 +79,12 @@ export default class extends Component {
             id={id}
             authToken={authToken}
           />
+          <Heading.h4 align="center">
+            Your form is automatically saved ✨
+          </Heading.h4>
+          <Container align="center" my={4}>
+            <LargeButton.link to="/apply">« Back</LargeButton.link>
+          </Container>
           <Footer />
         </Fragment>
       )
@@ -87,10 +93,10 @@ export default class extends Component {
 
   render() {
     return (
-      <ThemeProvider>
+      <Fragment>
         <Helmet title="Edit Leader Application – Hack Club" />
         {this.content()}
-      </ThemeProvider>
+      </Fragment>
     )
   }
 }

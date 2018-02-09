@@ -16,6 +16,8 @@ import LogoutButton from 'components/apply/LogoutButton'
 import LoadingAnimation from 'components/LoadingAnimation'
 import InterviewForm from 'components/admin/InterviewForm'
 import RejectionForm from 'components/admin/RejectionForm'
+import AcceptanceForm from 'components/admin/AcceptanceForm'
+import Information from 'components/admin/Information'
 import NotesForm from 'components/admin/NotesForm'
 import { Formik } from 'formik'
 import api from 'api'
@@ -98,7 +100,7 @@ class Dashboard extends Component {
               wrap
             >
               <Heading.h1 f={[5, 6]}>Dashboard</Heading.h1>
-              <LogoutButton inverted={false} />
+              <LogoutButton />
             </Flex>
             <Heading.h2 color="muted" f={4} mt={2} regular>
               Hello, it’s{' '}
@@ -113,7 +115,9 @@ class Dashboard extends Component {
                   'POC',
                   'Interview',
                   'Notes',
-                  'Rejected'
+                  'Rejected',
+                  'Info',
+                  'Accepted'
                 ]}
                 rows={Object.values(clubApplications).map(application => ({
                   ID: <Badge bg="info" children={application.id} />,
@@ -160,6 +164,46 @@ class Dashboard extends Component {
                       }}
                       children="✍️"
                     />
+                  ),
+                  Info: (
+                    <Button
+                      bg="info"
+                      inverted={
+                        !(
+                          selection &&
+                          selection.id === application.id &&
+                          selectType === 'info'
+                        )
+                      }
+                      disabled={!application.submitted_at}
+                      onClick={() => {
+                        this.setState({
+                          selection: application,
+                          selectType: 'info'
+                        })
+                      }}
+                      children="✍"
+                    />
+                  ),
+                  Accepted: (
+                    <Button
+                      bg="info"
+                      inverted={
+                        !(
+                          selection &&
+                          selection.id === application.id &&
+                          selectType === 'accepted'
+                        )
+                      }
+                      disabled={!application.submitted_at}
+                      onClick={() => {
+                        this.setState({
+                          selection: application,
+                          selectType: 'accepted'
+                        })
+                      }}
+                      children="✍"
+                    />
                   )
                 }))}
               />
@@ -182,6 +226,16 @@ class Dashboard extends Component {
                   ) : null}
                   {selectType === 'interview' ? (
                     <InterviewForm
+                      authToken={authToken}
+                      application={selection}
+                      updateApplicationList={this.updateApplicationList}
+                    />
+                  ) : null}
+                  {selectType === 'info' ? (
+                    <Information application={selection} />
+                  ) : null}
+                  {selectType === 'accepted' ? (
+                    <AcceptanceForm
                       authToken={authToken}
                       application={selection}
                       updateApplicationList={this.updateApplicationList}

@@ -53,7 +53,8 @@ const InnerForm = props => {
     handleSubmit,
     isSubmitting,
     id,
-    authToken
+    authToken,
+    disableAutosave
   } = props
   return (
     <FormWrapper>
@@ -278,17 +279,13 @@ const InnerForm = props => {
             optional
           />
         </Fieldset>
-        <AutoSaver
-          handleSubmit={handleSubmit}
-          isSubmitting={isSubmitting}
-          values={values}
-        />
-        <Heading.h4 align="center">
-          Your form is automatically saved ✨
-        </Heading.h4>
-        <Container>
-          <LargeButton.link to="/apply">« Back</LargeButton.link>
-        </Container>
+        {!disableAutosave && (
+          <AutoSaver
+            handleSubmit={handleSubmit}
+            isSubmitting={isSubmitting}
+            values={values}
+          />
+        )}
       </Form>
     </FormWrapper>
   )
@@ -296,6 +293,7 @@ const InnerForm = props => {
 
 const ClubApplicationForm = withFormik({
   mapPropsToValues: props => props.params,
+  enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, props, resetForm }) => {
     fetch(`${api}/v1/new_club_applications/${props.id}`, {
       method: 'PATCH',

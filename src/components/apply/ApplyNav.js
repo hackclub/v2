@@ -71,7 +71,7 @@ const ApplyNav = ({ breadcrumb = true, ...props }) => (
         <Breadcrumb />
       </Item.box>
     ) : null}
-    <LogoutButton mt={2} />
+    <LogoutButton mt={2} inverted />
   </Flex>
 )
 

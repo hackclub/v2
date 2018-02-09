@@ -9,22 +9,20 @@ const Form = Box.withComponent('form')
 export default props => {
   const { application, authToken, updateApplicationList } = props
 
-  const transformedApplication = {
+  const rejected_timestamp = application.rejected_at || new Date().toISOString()
+  const initialValues = {
     ...application,
-    rejected_at: application.rejected_at
-      ? application.rejected_at.substr(0, 10)
-      : null
+    rejected_notes: application.rejected_notes || '',
+    rejected_at: rejected_timestamp.substr(0, 10),
+    rejected_reason: application.rejected_reason || 'other'
   }
 
   return (
     <Formik
-      initialValues={transformedApplication}
+      initialValues={initialValues}
       enableReinitialize={true}
       onSubmit={(values, { props, setSubmitting }) => {
         const transformedValues = { ...values }
-        if (values.reject_duration) {
-          transformedValues.reject_duration = values.reject_duration * 60
-        }
         api
           .patch(`v1/new_club_applications/${values.id}`, {
             authToken,

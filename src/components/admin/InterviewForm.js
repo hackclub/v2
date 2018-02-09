@@ -9,19 +9,20 @@ const Form = Box.withComponent('form')
 export default props => {
   const { application, authToken, updateApplicationList } = props
 
-  const transformedApplication = {
+  const intialValues = {
     ...application,
+    interview_notes: application.interview_notes || '',
     interview_duration: application.interview_duration
       ? application.interview_duration / 60
-      : null,
+      : '',
     interviewed_at: application.interviewed_at
       ? application.interviewed_at.substr(0, 10)
-      : null
+      : ''
   }
 
   return (
     <Formik
-      initialValues={transformedApplication}
+      initialValues={intialValues}
       enableReinitialize={true}
       onSubmit={(values, { props, setSubmitting }) => {
         const transformedValues = { ...values }

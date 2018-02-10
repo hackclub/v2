@@ -45,7 +45,7 @@ const Nav = ({ mode, color, ...props }) => (
   <Base {...props}>
     <Flag />
     <NavBar mode={mode} color={color} align="center">
-      <Item.link to="/team" children="People" />
+      <Item.link to="/team" children="Team" />
       <Item href="/donate" children="Donate" />
       <Item.link to="/start" children="Start" />
       <Item.link to="/workshops" children="Workshops" />

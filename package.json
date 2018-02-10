@@ -30,7 +30,6 @@
     "gatsby-remark-images": "^1.5.42",
     "gatsby-remark-prismjs": "^1.2.13",
     "gatsby-remark-smartypants": "^1.4.10",
-    "gatsby-source-filesystem": "^1.5.18",
     "gatsby-transformer-remark": "^1.7.30",
     "geopattern": "^1.2.3",
     "lodash": "^4.17.5",

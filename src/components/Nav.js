@@ -27,7 +27,7 @@ const cloud = props =>
     : { color: cx(props.color) }
 
 const NavBar = Flex.withComponent('nav').extend.attrs({ ml: -2, py: 1 })`
-  overflow-x: scroll;
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   ${cloud};
 `

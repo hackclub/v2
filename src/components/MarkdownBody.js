@@ -87,7 +87,7 @@ const MarkdownBody = Box.extend`
     border-radius: ${props => props.theme.radius};
     line-height: 1.375;
     max-width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     padding: ${props => props.theme.space[3]}px;
     position: relative;

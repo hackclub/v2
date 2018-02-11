@@ -139,7 +139,7 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
                   style={{ lineHeight: '1.25' }}
                 >
                   Coding is a <Super color="warning">superpower</Super>.<br />
-                  So start building.
+                  So let’s start building.
                 </Text>
               </Container>
               <SuperButton

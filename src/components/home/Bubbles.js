@@ -111,6 +111,7 @@ const Bubbles = ({ children }) => (
           src={`/avatars/${i + 1}.jpg`}
           size={sample([48, 56, 64, 72, 84, 96]) + 'px'}
           key={`a-${n}`}
+          alt=""
         />
       ))}
     </Flex>

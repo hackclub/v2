@@ -200,7 +200,7 @@ class Dashboard extends Component {
                           selectType: 'info'
                         })
                       }}
-                      children="✍"
+                      children="✍️"
                     />
                   ),
                   Accepted: (
@@ -220,7 +220,7 @@ class Dashboard extends Component {
                           selectType: 'accepted'
                         })
                       }}
-                      children="✍"
+                      children="✍️"
                     />
                   )
                 }))}

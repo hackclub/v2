@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: 'Hack Club'
+    title: 'Hack Club',
+    siteUrl: 'https://hackclub.com'
   },
   plugins: [
     'gatsby-plugin-resolve-src',
@@ -38,6 +39,7 @@ module.exports = {
           '/fonts/**': ['Access-Control-Allow-Origin: *']
         }
       }
-    }
+    },
+    'gatsby-plugin-sitemap'
   ]
 }

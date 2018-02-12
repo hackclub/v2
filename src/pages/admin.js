@@ -77,6 +77,18 @@ class Dashboard extends Component {
     return selection && selection.id === application.id && selectType === prop
   }
 
+  badgeColor(application) {
+    if (application.accepted_at) {
+      return 'success'
+    } else if (application.rejected_at) {
+      return 'primary'
+    } else if (application.interviewed_at) {
+      return 'accent'
+    } else {
+      return 'info'
+    }
+  }
+
   render() {
     const {
       authToken,
@@ -107,6 +119,12 @@ class Dashboard extends Component {
               {new Date().toLocaleDateString('en-us', { weekday: 'long' })}
               {'. '}You’re doing great.
             </Heading.h2>
+            <Flex mt={[3, 4]}>
+              <Badge mr={3} bg="primary">Rejected</Badge>
+              <Badge mr={3} bg="accent">Awaiting Interview</Badge>
+              <Badge mr={3} bg="info">Awaiting Decision</Badge>
+              <Badge mr={3} bg="success">Accepted</Badge>
+            </Flex>
             <Flex justify="center" mt={[3, 4]}>
               <Table
                 headers={[
@@ -120,7 +138,7 @@ class Dashboard extends Component {
                   'Accepted'
                 ]}
                 rows={Object.values(clubApplications).map(application => ({
-                  ID: <Badge bg="info" children={application.id} />,
+                  ID: <Badge bg={this.badgeColor(application)} children={application.id} />,
                   Name: application.high_school_name,
                   POC: this.pointOfContact(application),
                   Interview: (

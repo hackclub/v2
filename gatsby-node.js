@@ -20,10 +20,9 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
       const value = `/workshops/${parsedFilePath.dir}`
       createNodeField({ node, name: 'slug', value })
       createNodeField({ node, name: 'bg', value: `${value}.svg` })
-      if (process.argv.indexOf('PATTERNS=true') != -1) {
-        const path = `./static${_.replace(value, '/lib', '')}.svg`
-        writePattern(path, node.frontmatter.name)
-      }
+
+      const path = `./static${_.replace(value, '/lib', '')}.svg`
+      writePattern(path, node.frontmatter.name)
     }
   }
 }

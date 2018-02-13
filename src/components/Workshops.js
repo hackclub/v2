@@ -24,6 +24,10 @@ const WorkshopCard = Card.withComponent('li').extend`
   height: 100%;
   position: relative;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+  transition: transform .125s ease-in;
+  &:hover {
+    transform: scale(1.03125);
+  }
   &:before {
     content: counter(li);
     counter-increment: li;
@@ -41,10 +45,6 @@ const WorkshopCard = Card.withComponent('li').extend`
     text-align: center;
     text-shadow: none;
     font-weight: bold;
-  }
-  &:hover {
-    transition: all .125s ease-in;
-    transform: scale(1.03125);
   }
   h3 {
     line-height: 1.125;

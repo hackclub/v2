@@ -13,9 +13,11 @@ const writePattern = (path, name) =>
 
 exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
   const { createNodeField } = boundActionCreators
+
   if (node.internal.type === 'MarkdownRemark') {
     const fileNode = getNode(node.parent)
     const parsedFilePath = path.parse(fileNode.relativePath)
+
     if (!!parsedFilePath.dir && _.includes(fileNode.relativePath, "README")) {
       const value = `/workshops/${parsedFilePath.dir}`
       createNodeField({ node, name: 'slug', value })

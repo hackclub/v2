@@ -83,13 +83,33 @@ const SuperButton = Button.withComponent(Link).extend`
   );
 `
 
+const groupOrder = [
+  'start',
+  'experimental',
+  'misc',
+  'retired'
+]
+
 export default ({ data: { allMarkdownRemark: { edges } } }) => {
-  let groups = groupBy(edges, 'node.frontmatter.group')
-  // hack to reverse sorting order of groups
-  groups = fromPairs(reverse(toPairs(groups)))
+  const groups = groupBy(edges, 'node.frontmatter.group')
+
+  // sort groups based on groupOrder
+  const sortedGroups = toPairs(groups).sort((a, b) => {
+    // if a group isn't found in groupOrder, ensure it appears last in the
+    // sorted list
+    if (groupOrder.indexOf(a[0]) === -1) {
+      return 1
+    } else if (groupOrder.indexOf(b[0]) === -1) {
+      return -1
+    }
+
+    return groupOrder.indexOf(a[0]) - groupOrder.indexOf(b[0])
+  })
+
   const title = 'Hack Club Workshops'
   const desc =
     'Get coding tutorials, project ideas, and programming club activities.'
+
   return (
     <ThemeProvider>
       <Helmet
@@ -148,9 +168,14 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
                 children="Our philosophy »"
               />
             </Flex>
-            {map(groups, (edges, name) => (
-              <Workshops key={`workshops-${name}`} name={name} data={edges} />
-            ))}
+            {sortedGroups.map(group => {
+              const name = group[0]
+              const edges = group[1]
+
+              return (
+                <Workshops key={`workshops-${name}`} name={name} data={edges} />
+              )
+            })}
           </Container>
           <Footer />
         </Box.article>

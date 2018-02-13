@@ -7,7 +7,9 @@ import {
   Heading,
   Link as A,
   Text,
-  Section
+  Section,
+  Icon,
+  mediaQueries
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
@@ -30,6 +32,21 @@ const Name = Heading.h1.extend`
 
 const Desc = Heading.h2.extend`
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+`
+
+const EditLink = A.extend.attrs({
+  color: "white",
+  f: 3,
+})`
+  display: none;
+
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+
+  ${mediaQueries.md} {
+    display: inline-block;
+  }
 `
 
 const Body = Container.withComponent(MarkdownBody)
@@ -82,6 +99,10 @@ function generateSubtitle(description, authorText) {
   )
 }
 
+function githubEditUrl(slug) {
+  return `https://github.com/hackclub/hackclub/edit/master${slug}/README.md`
+}
+
 export default ({ data: { markdownRemark } }) => {
   if (markdownRemark) {
     const {
@@ -112,7 +133,7 @@ export default ({ data: { markdownRemark } }) => {
         <Section.h
           bg="accent"
           p={0}
-          style={{ backgroundImage: `url('${bg}')` }}
+          style={{ backgroundImage: `url('${bg}')`, position: 'relative' }}
         >
           <Nav style={{ position: 'absolute', top: 0 }} />
           <Container mt={4} mb={3} px={3}>
@@ -137,6 +158,9 @@ export default ({ data: { markdownRemark } }) => {
             <Name f={[5, 6]} mb={2} children={name} />
             <Desc f={[3, 4]} regular children={subtitle} />
           </Container>
+          <EditLink href={githubEditUrl(slug)} target="_blank">
+            <Icon color="white" name="edit" mb={-1} /> Edit on GitHub
+          </EditLink>
         </Section.h>
         <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
         <Footer />

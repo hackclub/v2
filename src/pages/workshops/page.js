@@ -16,6 +16,26 @@ import Footer from 'components/Footer'
 import MarkdownBody from 'components/MarkdownBody'
 import { camelCase } from 'lodash'
 
+const Name = Heading.h1.extend`
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.32);
+  clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
+  color: black;
+  display: inline-block;
+  mix-blend-mode: screen;
+  padding-left: ${props => props.theme.space[4]}px;
+  padding-right: ${props => props.theme.space[4]}px;
+  width: max-content;
+`
+
+const Desc = Heading.h2.extend`
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+`
+
+const Body = Container.withComponent(MarkdownBody)
+A.link = A.withComponent(Link)
+Section.h = Section.withComponent('header')
+
 function generateSubtitle(description, authorText) {
   if (!authorText) {
     return description
@@ -61,26 +81,6 @@ function generateSubtitle(description, authorText) {
     </React.Fragment>
   )
 }
-
-const Name = Heading.h1.extend`
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.32);
-  clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
-  color: black;
-  display: inline-block;
-  mix-blend-mode: screen;
-  padding-left: ${props => props.theme.space[4]}px;
-  padding-right: ${props => props.theme.space[4]}px;
-  width: max-content;
-`
-
-const Desc = Heading.h2.extend`
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
-`
-
-const Body = Container.withComponent(MarkdownBody)
-A.link = A.withComponent(Link)
-Section.h = Section.withComponent('header')
 
 export default ({ data: { markdownRemark } }) => {
   if (markdownRemark) {

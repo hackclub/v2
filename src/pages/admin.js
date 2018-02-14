@@ -206,6 +206,9 @@ class Dashboard extends Component {
                   ml={[null, 4]}
                   style={{ minWidth: '18rem' }}
                 >
+                  <Text color="muted" f={1} caps mb={3}>
+                    Application #{selection.id}
+                  </Text>
                   <Collapsable heading="Reject">
                     <RejectionForm
                       authToken={authToken}

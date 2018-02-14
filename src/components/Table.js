@@ -3,7 +3,6 @@ import { Box, Text, colors } from '@hackclub/design-system'
 
 const trClickable = `
   box-shadow: 2px 0px 16px ${colors.gray[1]}, 0px 0px 1px 1px ${colors.gray[4]};
-  z-index: 999;
 `
 
 export const Tr = Box.withComponent('tr').extend`

@@ -2,14 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Formik } from 'formik'
 import api from 'api'
 import { AutoSaver, Field } from 'components/Forms'
-import {
-  Box,
-  Flex,
-  Heading,
-  Badge,
-  IconButton,
-  Text
-} from '@hackclub/design-system'
+import { Box, Flex, IconButton } from '@hackclub/design-system'
 
 Box.form = Box.withComponent('form')
 
@@ -160,15 +153,7 @@ export default class NotesForm extends Component {
     const { status, notes } = this.state
     return (
       <Fragment>
-        <Flex align="center">
-          <Heading.h2 mr={2}>Notes</Heading.h2>
-          <Badge bg="info" children={notes.length} />
-          <Flex flex="1 1 auto" />
-          <IconButton name="add" bg="success" circle onClick={this.addNote} />
-        </Flex>
-        <Text color="muted" f={1} caps mb={3}>
-          Application #{application.id}
-        </Text>
+        <IconButton name="add" bg="success" circle onClick={this.addNote} />
         {notes
           .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
           .map((note, index) => (

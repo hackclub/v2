@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Heading } from '@hackclub/design-system'
+import { Box } from '@hackclub/design-system'
 import { Formik } from 'formik'
 import { AutoSaver, Field } from 'components/Forms'
 import api from 'api'
@@ -48,7 +48,6 @@ export default props => {
         ...props
       ) => (
         <Form onSubmit={handleSubmit}>
-          <Heading.h2 mb={2}>Application #{values.id}</Heading.h2>
           <Field
             name="interview_notes"
             label="Interview notes"

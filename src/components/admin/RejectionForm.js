@@ -1,7 +1,7 @@
 import React from 'react'
 import { Formik } from 'formik'
 import { AutoSaver, Field } from 'components/Forms'
-import { Box, Heading } from '@hackclub/design-system'
+import { Box } from '@hackclub/design-system'
 import api from 'api'
 
 const Form = Box.withComponent('form')
@@ -46,19 +46,6 @@ export default props => {
         ...props
       }) => (
         <Form onSubmit={handleSubmit}>
-          <Heading.h2 mb={2}>Application #{values.id}</Heading.h2>
-          <Field
-            name="rejected_reason"
-            onBlur={handleBlur}
-            onChange={handleChange}
-            value={values.rejected_reason || 'select'}
-            type="select"
-          >
-            <option value="select" disabled>
-              Select One
-            </option>
-            <option value="other">Other</option>
-          </Field>
           <Field
             name="rejected_notes"
             label="Rejection notes"
@@ -69,6 +56,17 @@ export default props => {
             bg="rgba(250,247,133,0.5)"
             renderMarkdown
           />
+          <Field
+            name="rejected_reason"
+            label="Rejection reason"
+            onBlur={handleBlur}
+            onChange={handleChange}
+            value={values.rejected_reason || ''}
+            type="select"
+          >
+            <option value="">Select One</option>
+            <option value="other">Other</option>
+          </Field>
           <Field
             name="rejected_at"
             label="Reject date"

@@ -11,7 +11,7 @@ import {
 } from '@hackclub/design-system'
 import { AutoSaver, Field, Form } from 'components/Forms'
 import Login from 'components/apply/Login'
-import Table from 'components/Table'
+import { Tr, Td, Th } from 'components/Table'
 import LogoutButton from 'components/apply/LogoutButton'
 import LoadingAnimation from 'components/LoadingAnimation'
 import InterviewForm from 'components/admin/InterviewForm'
@@ -126,105 +126,39 @@ class Dashboard extends Component {
               <Badge mr={3} bg="success">Accepted</Badge>
             </Flex>
             <Flex justify="center" mt={[3, 4]}>
-              <Table
-                headers={[
-                  'ID',
-                  'Name',
-                  'POC',
-                  'Interview',
-                  'Notes',
-                  'Rejected',
-                  'Info',
-                  'Accepted'
-                ]}
-                rows={Object.values(clubApplications).map(application => ({
-                  ID: <Badge bg={this.badgeColor(application)} children={application.id} />,
-                  Name: application.high_school_name,
-                  POC: this.pointOfContact(application),
-                  Interview: (
-                    <Button
-                      bg="info"
-                      inverted={!this.active(application, 'interview')}
-                      disabled={!application.submitted_at}
+              <table>
+                <thead>
+                  <Tr>
+                    <Th>ID</Th>
+                    <Th>Name</Th>
+                    <Th>POC</Th>
+                  </Tr>
+                </thead>
+                <tbody>
+                  {Object.values(clubApplications).map((application, index) => (
+                    <Tr
+                      key={index}
                       onClick={() => {
-                        this.setState({
-                          selection: application,
-                          selectType: 'interview'
-                        })
-                      }}
-                      children="✍️"
-                    />
-                  ),
-                  Notes: (
-                    <Button
-                      bg="info"
-                      inverted={!this.active(application, 'notes')}
-                      disabled={!application.submitted_at}
-                      onClick={() => {
-                        this.setState({
-                          selection: application,
-                          selectType: 'notes'
-                        })
-                      }}
-                      children="✍️"
-                    />
-                  ),
-                  Rejected: (
-                    <Button
-                      bg="info"
-                      inverted={!this.active(application, 'rejected')}
-                      disabled={!application.submitted_at}
-                      onClick={() => {
-                        this.setState({
-                          selection: application,
-                          selectType: 'rejected'
-                        })
-                      }}
-                      children="✍️"
-                    />
-                  ),
-                  Info: (
-                    <Button
-                      bg="info"
-                      inverted={
-                        !(
-                          selection &&
-                          selection.id === application.id &&
-                          selectType === 'info'
-                        )
-                      }
-                      disabled={!application.submitted_at}
-                      onClick={() => {
-                        this.setState({
-                          selection: application,
-                          selectType: 'info'
-                        })
-                      }}
-                      children="✍️"
-                    />
-                  ),
-                  Accepted: (
-                    <Button
-                      bg="info"
-                      inverted={
-                        !(
-                          selection &&
-                          selection.id === application.id &&
-                          selectType === 'accepted'
-                        )
-                      }
-                      disabled={!application.submitted_at}
-                      onClick={() => {
-                        this.setState({
-                          selection: application,
-                          selectType: 'accepted'
-                        })
-                      }}
-                      children="✍️"
-                    />
-                  )
-                }))}
-              />
+                      const alreadySelected = this.state.selection === application
+
+                      this.setState({
+                        selection: alreadySelected ? undefined : application,
+                        selectType: 'notes'
+                      })
+                    }}>
+                      <Td>
+                        <Badge bg={this.badgeColor(application)} children={application.id} />
+                      </Td>
+                      <Td>
+                        {application.high_school_name}
+                      </Td>
+                      <Td>
+                        {this.pointOfContact(application)}
+                      </Td>
+                    </Tr>
+                  ))}
+                </tbody>
+              </table>
               {selection && (
                 <Flex
                   flexDirection="column"
@@ -232,33 +166,23 @@ class Dashboard extends Component {
                   ml={[null, 4]}
                   style={{ minWidth: '18rem' }}
                 >
-                  {selectType === 'rejected' ? (
-                    <RejectionForm
-                      authToken={authToken}
-                      application={selection}
-                      updateApplicationList={this.updateApplicationList}
-                    />
-                  ) : null}
-                  {selectType === 'notes' ? (
-                    <NotesForm authToken={authToken} application={selection} />
-                  ) : null}
-                  {selectType === 'interview' ? (
-                    <InterviewForm
-                      authToken={authToken}
-                      application={selection}
-                      updateApplicationList={this.updateApplicationList}
-                    />
-                  ) : null}
-                  {selectType === 'info' ? (
-                    <Information application={selection} />
-                  ) : null}
-                  {selectType === 'accepted' ? (
-                    <AcceptanceForm
-                      authToken={authToken}
-                      application={selection}
-                      updateApplicationList={this.updateApplicationList}
-                    />
-                  ) : null}
+                  <RejectionForm
+                    authToken={authToken}
+                    application={selection}
+                    updateApplicationList={this.updateApplicationList}
+                  />
+                  <NotesForm authToken={authToken} application={selection} />
+                  <InterviewForm
+                    authToken={authToken}
+                    application={selection}
+                    updateApplicationList={this.updateApplicationList}
+                  />
+                  <Information application={selection} />
+                  <AcceptanceForm
+                    authToken={authToken}
+                    application={selection}
+                    updateApplicationList={this.updateApplicationList}
+                  />
                 </Flex>
               )}
             </Flex>

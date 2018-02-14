@@ -1,13 +1,23 @@
 import React from 'react'
-import { Box, Text } from '@hackclub/design-system'
+import { Box, Text, colors } from '@hackclub/design-system'
+
+const trClickable = `
+  box-shadow: 2px 0px 16px ${colors.gray[1]}, 0px 0px 1px 1px ${colors.gray[4]};
+  z-index: 999;
+`
+
 
 export const Tr = Box.withComponent('tr').extend`
+  cursor: ${props => props.onClick ? 'pointer' : 'inherit'};
   &:nth-child(odd) {
     background-color: ${props => props.theme.colors.gray[0]};
   }
+  &:hover {
+    ${props => props.onClick && trClickable}
+  }
 `
 
-const TD = Text.withComponent('td').extend`
+export const TD = Text.withComponent('td').extend`
   overflow: auto;
   max-width: 16rem;
   a, span {
@@ -17,36 +27,14 @@ const TD = Text.withComponent('td').extend`
   }
 `
 
-const Td = ({ children }) => (
+export const Td = ({ children }) => (
   <TD px={[1, 2]} title={children}>
     {children || <Text color="muted" children="Unset" />}
   </TD>
 )
 
-const Th = Text.withComponent('th').extend.attrs({
+export const Th = Text.withComponent('th').extend.attrs({
   bg: 'white',
-  color: 'slate'
+  color: 'slate',
+  align: 'left'
 })`&:first-child { text-align: center; }`
-
-export default props => (
-  <table>
-    <thead>
-      <Tr>
-        {props.headers.map((header, index) => (
-          <Th align="left" key={index}>
-            {header}
-          </Th>
-        ))}
-      </Tr>
-    </thead>
-    <tbody>
-      {props.rows.map((row, rIndex) => (
-        <Tr key={rIndex}>
-          {props.headers.map((header, hIndex) => (
-            <Td key={hIndex}>{row[header]}</Td>
-          ))}
-        </Tr>
-      ))}
-    </tbody>
-  </table>
-)

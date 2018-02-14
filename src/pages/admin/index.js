@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import {
   ThemeProvider,
   Container,
@@ -7,59 +7,15 @@ import {
   Flex,
   Heading,
   Text,
-  Badge
+  Badge,
+  Link
 } from '@hackclub/design-system'
 import { AutoSaver, Field, Form } from 'components/Forms'
 import Login from 'components/apply/Login'
 import { Tr, Td, Th } from 'components/Table'
 import LogoutButton from 'components/apply/LogoutButton'
 import LoadingAnimation from 'components/LoadingAnimation'
-import InterviewForm from 'components/admin/InterviewForm'
-import RejectionForm from 'components/admin/RejectionForm'
-import AcceptanceForm from 'components/admin/AcceptanceForm'
-import Information from 'components/admin/Information'
-import NotesForm from 'components/admin/NotesForm'
-import { Formik } from 'formik'
 import api from 'api'
-
-const Arrow = Text.span.extend.attrs({
-  children: '❯'
-})`
-  transform: rotate(${props => (props.active ? 90 : 0)}deg);
-  display: inline-block;
-  transition: 0.5s ease-in;
-`
-
-const Revealer = Box.extend`
-  transform: scaleY(${props => (props.active ? 1 : 0)});
-  height: ${props => (props.active ? 'auto' : '0%')};
-  opacity: ${props => (props.active ? 1 : 0)};
-  transition: 0.5s ease-in;
-`
-
-class Collapsable extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { status: false }
-  }
-  render() {
-    const { status } = this.state
-    return (
-      <Fragment>
-        <Heading.h2
-          my={2}
-          style={{ cursor: 'pointer' }}
-          onClick={() => {
-            this.setState({ status: !status })
-          }}
-        >
-          {this.props.heading} <Arrow ml={2} active={status} />
-        </Heading.h2>
-        <Revealer active={status}>{this.props.children}</Revealer>
-      </Fragment>
-    )
-  }
-}
 
 class Dashboard extends Component {
   constructor(props) {
@@ -111,9 +67,9 @@ class Dashboard extends Component {
     return profile && profile.user.email
   }
 
-  active(application, prop) {
-    const { selection, selectType } = this.state
-    return selection && selection.id === application.id && selectType === prop
+  active(application) {
+    const { selection } = this.state
+    return selection && selection.id === application.id
   }
 
   badgeColor(application) {
@@ -129,13 +85,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const {
-      authToken,
-      status,
-      clubApplications,
-      selection,
-      selectType
-    } = this.state
+    const { authToken, status, clubApplications } = this.state
     switch (status) {
       case 'loading':
         return <LoadingAnimation />
@@ -183,23 +133,14 @@ class Dashboard extends Component {
                 </thead>
                 <tbody>
                   {Object.values(clubApplications).map((application, index) => (
-                    <Tr
-                      key={index}
-                      onClick={() => {
-                        const alreadySelected =
-                          this.state.selection === application
-
-                        this.setState({
-                          selection: alreadySelected ? undefined : application,
-                          selectType: 'notes'
-                        })
-                      }}
-                    >
+                    <Tr key={index} as={Link}>
                       <Td>
-                        <Badge
-                          bg={this.badgeColor(application)}
-                          children={application.id}
-                        />
+                        <Link href={`/admin/application?id=${application.id}`}>
+                          <Badge
+                            bg={this.badgeColor(application)}
+                            children={application.id}
+                          />
+                        </Link>
                       </Td>
                       <Td>{application.high_school_name}</Td>
                       <Td>{this.pointOfContact(application)}</Td>
@@ -207,45 +148,6 @@ class Dashboard extends Component {
                   ))}
                 </tbody>
               </table>
-              {selection && (
-                <Flex
-                  flexDirection="column"
-                  flex="1 1 auto"
-                  ml={[null, 4]}
-                  style={{ minWidth: '18rem' }}
-                >
-                  <Text color="muted" f={1} caps mb={3}>
-                    Application #{selection.id}
-                  </Text>
-                  <Collapsable heading="Reject">
-                    <RejectionForm
-                      authToken={authToken}
-                      application={selection}
-                      updateApplicationList={this.updateApplicationList}
-                    />
-                  </Collapsable>
-                  <Collapsable heading="Notes">
-                    <NotesForm authToken={authToken} application={selection} />
-                  </Collapsable>
-                  <Collapsable heading="Interview">
-                    <InterviewForm
-                      authToken={authToken}
-                      application={selection}
-                      updateApplicationList={this.updateApplicationList}
-                    />
-                  </Collapsable>
-                  <Collapsable heading="Application">
-                    <Information application={selection} />
-                  </Collapsable>
-                  <Collapsable heading="Accept">
-                    <AcceptanceForm
-                      authToken={authToken}
-                      application={selection}
-                      updateApplicationList={this.updateApplicationList}
-                    />
-                  </Collapsable>
-                </Flex>
-              )}
             </Flex>
           </Container>
         )

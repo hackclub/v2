@@ -25,38 +25,37 @@ import api from 'api'
 const Arrow = Text.span.extend.attrs({
   children: '❯'
 })`
-  transform: rotate(${props => props.active ? 90 : 0}deg);
+  transform: rotate(${props => (props.active ? 90 : 0)}deg);
   display: inline-block;
   transition: 0.5s ease-in;
 `
 
 const Revealer = Box.extend`
-  transform: scaleY(${props => props.active ? 1 : 0});
-  height: ${props => props.active ? 'auto' : '0%'};
-  opacity: ${props => props.active ? 1 : 0};
+  transform: scaleY(${props => (props.active ? 1 : 0)});
+  height: ${props => (props.active ? 'auto' : '0%')};
+  opacity: ${props => (props.active ? 1 : 0)};
   transition: 0.5s ease-in;
 `
 
 class Collapsable extends Component {
   constructor(props) {
     super(props)
-    this.state = {status: false}
+    this.state = { status: false }
   }
   render() {
     const { status } = this.state
     return (
       <Fragment>
-        <Heading.h2 my={2}
-                    style={{cursor: 'pointer'}}
-                    onClick={() => { this.setState({status: !status}) }}
+        <Heading.h2
+          my={2}
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            this.setState({ status: !status })
+          }}
         >
-          {this.props.heading}{' '}
-          <Arrow ml={2} active={status}
-          />
+          {this.props.heading} <Arrow ml={2} active={status} />
         </Heading.h2>
-        <Revealer active={status}>
-          {this.props.children}
-        </Revealer>
+        <Revealer active={status}>{this.props.children}</Revealer>
       </Fragment>
     )
   }
@@ -160,10 +159,18 @@ class Dashboard extends Component {
               {'. '}You’re doing great.
             </Heading.h2>
             <Flex mt={[3, 4]}>
-              <Badge mr={3} bg="primary">Rejected</Badge>
-              <Badge mr={3} bg="accent">Awaiting Interview</Badge>
-              <Badge mr={3} bg="info">Awaiting Decision</Badge>
-              <Badge mr={3} bg="success">Accepted</Badge>
+              <Badge mr={3} bg="primary">
+                Rejected
+              </Badge>
+              <Badge mr={3} bg="accent">
+                Awaiting Interview
+              </Badge>
+              <Badge mr={3} bg="info">
+                Awaiting Decision
+              </Badge>
+              <Badge mr={3} bg="success">
+                Accepted
+              </Badge>
             </Flex>
             <Flex justify="center" mt={[3, 4]}>
               <table>
@@ -179,22 +186,23 @@ class Dashboard extends Component {
                     <Tr
                       key={index}
                       onClick={() => {
-                      const alreadySelected = this.state.selection === application
+                        const alreadySelected =
+                          this.state.selection === application
 
-                      this.setState({
-                        selection: alreadySelected ? undefined : application,
-                        selectType: 'notes'
-                      })
-                    }}>
+                        this.setState({
+                          selection: alreadySelected ? undefined : application,
+                          selectType: 'notes'
+                        })
+                      }}
+                    >
                       <Td>
-                        <Badge bg={this.badgeColor(application)} children={application.id} />
+                        <Badge
+                          bg={this.badgeColor(application)}
+                          children={application.id}
+                        />
                       </Td>
-                      <Td>
-                        {application.high_school_name}
-                      </Td>
-                      <Td>
-                        {this.pointOfContact(application)}
-                      </Td>
+                      <Td>{application.high_school_name}</Td>
+                      <Td>{this.pointOfContact(application)}</Td>
                     </Tr>
                   ))}
                 </tbody>

@@ -6,9 +6,8 @@ const trClickable = `
   z-index: 999;
 `
 
-
 export const Tr = Box.withComponent('tr').extend`
-  cursor: ${props => props.onClick ? 'pointer' : 'inherit'};
+  cursor: ${props => (props.onClick ? 'pointer' : 'inherit')};
   &:nth-child(odd) {
     background-color: ${props => props.theme.colors.gray[0]};
   }

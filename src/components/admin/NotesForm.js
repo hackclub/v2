@@ -2,11 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Formik } from 'formik'
 import api from 'api'
 import { AutoSaver, Field } from 'components/Forms'
-import {
-  Box,
-  Flex,
-  IconButton
-} from '@hackclub/design-system'
+import { Box, Flex, IconButton } from '@hackclub/design-system'
 
 Box.form = Box.withComponent('form')
 

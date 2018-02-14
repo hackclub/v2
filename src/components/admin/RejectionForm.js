@@ -48,7 +48,18 @@ export default props => {
         <Form onSubmit={handleSubmit}>
           <Heading.h2 mb={2}>Application #{values.id}</Heading.h2>
           <Field
+            name="rejected_notes"
+            label="Rejection notes"
+            onBlur={handleBlur}
+            onChange={handleChange}
+            value={values.rejected_notes}
+            type="textarea"
+            bg="rgba(250,247,133,0.5)"
+            renderMarkdown
+          />
+          <Field
             name="rejected_reason"
+            label="Rejection reason"
             onBlur={handleBlur}
             onChange={handleChange}
             value={values.rejected_reason || ''}
@@ -59,16 +70,6 @@ export default props => {
             </option>
             <option value="other">Other</option>
           </Field>
-          <Field
-            name="rejected_notes"
-            label="Rejection notes"
-            onBlur={handleBlur}
-            onChange={handleChange}
-            value={values.rejected_notes}
-            type="textarea"
-            bg="rgba(250,247,133,0.5)"
-            renderMarkdown
-          />
           <Field
             name="rejected_at"
             label="Reject date"

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Formik } from 'formik'
 import { AutoSaver, Field } from 'components/Forms'
-import { Box, Heading } from '@hackclub/design-system'
+import { Box } from '@hackclub/design-system'
 import api from 'api'
 
 const Form = Box.withComponent('form')
@@ -46,7 +46,6 @@ export default props => {
         ...props
       }) => (
         <Form onSubmit={handleSubmit}>
-          <Heading.h2 mb={2}>Application #{values.id}</Heading.h2>
           <Field
             name="rejected_notes"
             label="Rejection notes"

@@ -22,6 +22,46 @@ import NotesForm from 'components/admin/NotesForm'
 import { Formik } from 'formik'
 import api from 'api'
 
+const Arrow = Text.span.extend.attrs({
+  children: '❯'
+})`
+  transform: rotate(${props => props.active ? 90 : 0}deg);
+  display: inline-block;
+  transition: 0.5s ease-in;
+`
+
+const Revealer = Box.extend`
+  transform: scaleY(${props => props.active ? 1 : 0});
+  height: ${props => props.active ? 'auto' : '0%'};
+  opacity: ${props => props.active ? 1 : 0};
+  transition: 0.5s ease-in;
+`
+
+class Collapsable extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {status: false}
+  }
+  render() {
+    const { status } = this.state
+    return (
+      <Fragment>
+        <Heading.h2 my={2}
+                    style={{cursor: 'pointer'}}
+                    onClick={() => { this.setState({status: !status}) }}
+        >
+          {this.props.heading}{' '}
+          <Arrow ml={2} active={status}
+          />
+        </Heading.h2>
+        <Revealer active={status}>
+          {this.props.children}
+        </Revealer>
+      </Fragment>
+    )
+  }
+}
+
 class Dashboard extends Component {
   constructor(props) {
     super(props)
@@ -166,23 +206,33 @@ class Dashboard extends Component {
                   ml={[null, 4]}
                   style={{ minWidth: '18rem' }}
                 >
-                  <RejectionForm
-                    authToken={authToken}
-                    application={selection}
-                    updateApplicationList={this.updateApplicationList}
-                  />
-                  <NotesForm authToken={authToken} application={selection} />
-                  <InterviewForm
-                    authToken={authToken}
-                    application={selection}
-                    updateApplicationList={this.updateApplicationList}
-                  />
-                  <Information application={selection} />
-                  <AcceptanceForm
-                    authToken={authToken}
-                    application={selection}
-                    updateApplicationList={this.updateApplicationList}
-                  />
+                  <Collapsable heading="Reject">
+                    <RejectionForm
+                      authToken={authToken}
+                      application={selection}
+                      updateApplicationList={this.updateApplicationList}
+                    />
+                  </Collapsable>
+                  <Collapsable heading="Notes">
+                    <NotesForm authToken={authToken} application={selection} />
+                  </Collapsable>
+                  <Collapsable heading="Interview">
+                    <InterviewForm
+                      authToken={authToken}
+                      application={selection}
+                      updateApplicationList={this.updateApplicationList}
+                    />
+                  </Collapsable>
+                  <Collapsable heading="Application">
+                    <Information application={selection} />
+                  </Collapsable>
+                  <Collapsable heading="Accept">
+                    <AcceptanceForm
+                      authToken={authToken}
+                      application={selection}
+                      updateApplicationList={this.updateApplicationList}
+                    />
+                  </Collapsable>
                 </Flex>
               )}
             </Flex>

@@ -51,10 +51,10 @@ export default props => {
             name="rejected_reason"
             onBlur={handleBlur}
             onChange={handleChange}
-            value={values.rejected_reason || 'select'}
+            value={values.rejected_reason || ''}
             type="select"
           >
-            <option value="select" disabled>
+            <option value="">
               Select One
             </option>
             <option value="other">Other</option>

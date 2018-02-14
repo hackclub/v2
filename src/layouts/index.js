@@ -33,6 +33,7 @@ export default props => (
       <meta name="format-detection" content="telephone=no" />
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       <meta name="theme-color" content={colors.primary} />
+      <html lang="en" />
     </Helmet>
     {props.children()}
   </Fragment>

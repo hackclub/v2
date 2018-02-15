@@ -162,10 +162,10 @@ class Dashboard extends Component {
               <Badge mr={3} bg="primary">
                 Rejected
               </Badge>
-              <Badge mr={3} bg="accent">
+              <Badge mr={3} bg="info">
                 Awaiting Interview
               </Badge>
-              <Badge mr={3} bg="info">
+              <Badge mr={3} bg="accent">
                 Awaiting Decision
               </Badge>
               <Badge mr={3} bg="success">

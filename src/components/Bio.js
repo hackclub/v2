@@ -18,7 +18,7 @@ const Base = Flex.extend`
 
 const Bio = ({ bg, img, name, role, text, ...props }) => (
   <Base p={3} bg={`${bg}.0`} {...props}>
-    <Avatar size="64px" src={img} mr={2} />
+    <Avatar size="64px" src={img} mr={2} alt={name} />
     <Box>
       <Flex align="center" wrap style={{ lineHeight: '1.25' }}>
         <Heading.h3 f={3} m={0} mr={2} regular={false} children={name} />

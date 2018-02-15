@@ -106,7 +106,7 @@ LargeButton.link = LargeButton.withComponent(Link)
 const Bubbles = ({ children }) => (
   <Root justify="center" align="center" pt={3} px={[0, 3]}>
     <Flex justify="space-around" wrap pt={2}>
-      {shuffle([...range(92), ...range(92)]).map((i, n) => (
+      {shuffle([...range(92), ...range(92), ...range(92)]).map((i, n) => (
         <Avatar
           src={`/avatars/${i + 1}.jpg`}
           size={sample([48, 56, 64, 72, 84, 96]) + 'px'}

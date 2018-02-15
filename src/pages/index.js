@@ -10,10 +10,15 @@ import Collage from 'components/home/Collage'
 import Mosaic from 'components/home/Mosaic'
 import Start from 'components/Start'
 import Footer from 'components/Footer'
-import data from 'data.json'
 
 export default () => (
   <ThemeProvider>
+    <Helmet>
+      <meta
+        name="google-site-verification"
+        content="f7cxVyFnrTxN9Q-HnpP-ueNWuWF5VgIEKF0C3tSnsnc"
+      />
+    </Helmet>
     <Nav style={{ position: 'absolute', top: 0 }} mode="cloud" />
     <Bubbles />
     <Stripe />

@@ -15,6 +15,28 @@
     styled-components "^3.0.2"
     styled-system "^1.1.1"
 
+"@ndhoule/each@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@ndhoule/each/-/each-2.0.1.tgz#bbed372a603e0713a3193c706a73ddebc5b426a9"
+  dependencies:
+    "@ndhoule/keys" "^2.0.0"
+
+"@ndhoule/keys@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@ndhoule/keys/-/keys-2.0.0.tgz#3d64ae677c65a261747bf3a457c62eb292a4e0ce"
+
+"@ndhoule/map@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@ndhoule/map/-/map-2.0.1.tgz#f5ca0a47424ea67f46e2a6d499b9e9bc886aefa8"
+  dependencies:
+    "@ndhoule/each" "^2.0.1"
+
+"@segment/snippet@^4.0.1":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@segment/snippet/-/snippet-4.1.0.tgz#6b41a275c2a305e862c42a60d73a7d5c4f21e784"
+  dependencies:
+    "@ndhoule/map" "^2.0.1"
+
 "@types/history@*", "@types/history@^4.6.2":
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.6.2.tgz#12cfaba693ba20f114ed5765467ff25fdf67ddb0"
@@ -3776,9 +3798,11 @@ gatsby-plugin-resolve-src@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-resolve-src/-/gatsby-plugin-resolve-src-1.0.0.tgz#5606de11cb3e0983461e26ebdc3daba59e7099be"
 
-gatsby-plugin-segment-js@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-segment-js/-/gatsby-plugin-segment-js-1.1.0.tgz#492caab6a1cee80beffc33d8c6a733ee16a7d0aa"
+gatsby-plugin-segment@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-segment/-/gatsby-plugin-segment-1.0.2.tgz#6b014ed477b675486a445155384afe168f3e4bbe"
+  dependencies:
+    "@segment/snippet" "^4.0.1"
 
 gatsby-plugin-sharp@^1.6.27:
   version "1.6.27"

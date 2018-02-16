@@ -27,9 +27,9 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     {
-      resolve: 'gatsby-plugin-segment-js',
+      resolve: 'gatsby-plugin-segment',
       options: {
-        prodKey: '35oTlU4UqlhIN8VGYmBxAzyDdfzhcscw'
+        writeKey: '35oTlU4UqlhIN8VGYmBxAzyDdfzhcscw'
       }
     },
     {

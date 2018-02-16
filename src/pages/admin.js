@@ -7,7 +7,8 @@ import {
   Flex,
   Heading,
   Text,
-  Badge
+  Badge,
+  theme
 } from '@hackclub/design-system'
 import { AutoSaver, Field, Form } from 'components/Forms'
 import Login from 'components/apply/Login'
@@ -120,7 +121,7 @@ class Dashboard extends Component {
     if (application.accepted_at) {
       return 'success'
     } else if (application.rejected_at) {
-      return 'primary'
+      return 'red.5'
     } else if (application.interviewed_at) {
       return 'accent'
     } else {
@@ -159,7 +160,7 @@ class Dashboard extends Component {
               {'. '}You’re doing great.
             </Heading.h2>
             <Flex mt={[3, 4]}>
-              <Badge mr={3} bg="primary">
+              <Badge mr={3} bg="red.5">
                 Rejected
               </Badge>
               <Badge mr={3} bg="info">

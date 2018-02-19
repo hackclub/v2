@@ -74,7 +74,7 @@ const Cloud = Box.extend`
   border-radius: 4rem;
   box-shadow: 0 0 2rem 4rem rgba(252, 252, 252, 0.95);
   background-color: rgba(252, 252, 252, 0.95);
-  max-width: 30rem;
+  max-width: 35rem;
   text-align: center;
   position: relative;
   z-index: 2;
@@ -127,8 +127,8 @@ const Bubbles = ({ children }) => (
         coding clubs.
       </Heading.h1>
       <Text f={[3, 4]} color="gray.9" mx="auto" m={0}>
-        Hack Club is a nonprofit network of coding clubs where members learn to
-        code through tinkering and building projects.
+        Hack Club is a nonprofit network of computer science clubs where members
+        learn to code through tinkering and building projects.
       </Text>
       <Flex justify="center" align="center" mx={[-1, -2]} mt={[3, 4]}>
         <LargeButton href="https://finder.hackclub.com" inverted m={[1, 2]}>

@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import {
-  ThemeProvider,
   Heading,
   Box,
   Flex,
@@ -113,7 +112,7 @@ class StartRepl extends Component {
     const { paramString } = this.state
 
     return (
-      <ThemeProvider>
+      <Fragment>
         <Helmet title="Start Your Hack Club" />
         <ReplAnalytics paramString={paramString} />
         <Header>
@@ -215,7 +214,7 @@ class StartRepl extends Component {
           </Flex.s>
         </Grid>
         <Footer />
-      </ThemeProvider>
+      </Fragment>
     )
   }
 }

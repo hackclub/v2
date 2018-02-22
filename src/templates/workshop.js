@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import {
-  ThemeProvider,
   Box,
   Container,
   Flex,
@@ -158,7 +157,7 @@ export default ({ data }) => {
     const desc = `${description}. Read the tutorial on Hack Club Workshops.`
     const url = `https://hackclub.com${slug}`
     return (
-      <ThemeProvider>
+      <Fragment>
         <Helmet
           title={title}
           meta={[
@@ -233,7 +232,7 @@ export default ({ data }) => {
           </Card>
         </Container>
         <Footer />
-      </ThemeProvider>
+      </Fragment>
     )
   } else {
     return null

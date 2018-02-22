@@ -1,5 +1,4 @@
-import React from 'react'
-import { ThemeProvider } from '@hackclub/design-system'
+import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Bubbles from 'components/home/Bubbles'
@@ -12,7 +11,7 @@ import Start from 'components/Start'
 import Footer from 'components/Footer'
 
 export default () => (
-  <ThemeProvider>
+  <Fragment>
     <Helmet>
       <meta
         name="google-site-verification"
@@ -28,5 +27,5 @@ export default () => (
     <Mosaic />
     <Start />
     <Footer />
-  </ThemeProvider>
+  </Fragment>
 )

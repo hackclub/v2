@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import {
-  ThemeProvider,
   Box,
   Button,
   Container,
@@ -106,7 +105,7 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
     'Get coding tutorials, project ideas, and programming club activities.'
 
   return (
-    <ThemeProvider>
+    <Fragment>
       <Helmet
         title={title}
         meta={[
@@ -175,7 +174,7 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
           <Footer />
         </Box.article>
       </Base>
-    </ThemeProvider>
+    </Fragment>
   )
 }
 

@@ -1,11 +1,5 @@
-import React from 'react'
-import {
-  ThemeProvider,
-  Container,
-  Heading,
-  Text,
-  Section
-} from '@hackclub/design-system'
+import React, { Fragment } from 'react'
+import { Container, Heading, Text, Section } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import RedeemTechDomainForm from 'components/RedeemTechDomainForm'
@@ -22,7 +16,7 @@ const Header = Section.withComponent('header').extend`
 `
 
 export default () => (
-  <ThemeProvider>
+  <Fragment>
     <Helmet title="Free .TECH Domain – Hack Club" />
     <Header pb={3} align="center">
       <Nav />
@@ -41,5 +35,5 @@ export default () => (
       </Container>
     </Header>
     <RedeemTechDomainForm />
-  </ThemeProvider>
+  </Fragment>
 )

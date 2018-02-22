@@ -5,6 +5,7 @@ const MarkdownBody = Box.extend`
   color: ${props => props.theme.colors.black};
   font-size: 112.5%;
   line-height: 1.625;
+  word-wrap: break-word;
 
   a {
     color: ${props => props.theme.colors.info};

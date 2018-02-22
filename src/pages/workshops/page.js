@@ -107,15 +107,8 @@ function githubEditUrl(slug) {
   return `https://github.com/hackclub/hackclub/edit/master${slug}/README.md`
 }
 
-const twitterURL = (text, url) => {
-  const baseUrl = 'https://twitter.com/intent/tweet'
-  const params = [
-    `text=${text.split(' ').join('%20')}`,
-    `url=${url}`,
-    `via=starthackclub`
-  ].join('&')
-  return `${baseUrl}?${params}`
-}
+const twitterURL = (text, url) =>
+  `https://twitter.com/intent/tweet?text=${text.split(' ').join('%20')}&url=${url}`
 const facebookURL = (text, url) =>
   `https://www.facebook.com/sharer/sharer.php?u=${url}`
 
@@ -211,7 +204,7 @@ export default ({ data: { markdownRemark } }) => {
             </Text>
             <ShareButton
               service="Twitter"
-              href={twitterURL(`I just built ${name}`, url)}
+              href={twitterURL(`I just built ${name} with a @starthackclub workshop. Make yours:`, url)}
               bg="#1da1f2"
               mr={3}
             />

@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import {
-  ThemeProvider,
   Section,
   Heading,
   Box,
@@ -39,7 +38,7 @@ const description =
   'Meet the team that runs Hack Club, a global nonprofit network of high school computer science clubs.'
 
 export default () => (
-  <ThemeProvider>
+  <Fragment>
     <Helmet
       title={title}
       meta={[
@@ -96,5 +95,5 @@ export default () => (
       />
     </Base>
     <Footer />
-  </ThemeProvider>
+  </Fragment>
 )

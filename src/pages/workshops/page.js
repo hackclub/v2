@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import {
-  ThemeProvider,
   Box,
   Container,
   Flex,
@@ -107,7 +106,7 @@ export default ({ data: { markdownRemark } }) => {
     const title = `${name} – Hack Club Workshops`
     const desc = `${description}. Read the tutorial on Hack Club Workshops.`
     return (
-      <ThemeProvider>
+      <Fragment>
         <Helmet
           title={title}
           meta={[
@@ -155,7 +154,7 @@ export default ({ data: { markdownRemark } }) => {
         </Section.h>
         <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
         <Footer />
-      </ThemeProvider>
+      </Fragment>
     )
   } else {
     return null

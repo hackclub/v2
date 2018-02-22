@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
 import { api } from 'data.json'
 import {
-  ThemeProvider,
   Box,
   Button,
   Card,
@@ -266,10 +265,10 @@ export default class extends Component {
 
   render() {
     return (
-      <ThemeProvider>
+      <Fragment>
         <Helmet title="Apply – Hack Club" />
         {this.content()}
-      </ThemeProvider>
+      </Fragment>
     )
   }
 }

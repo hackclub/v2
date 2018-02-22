@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import {
-  ThemeProvider,
   Box,
   Button,
   Container,
@@ -83,12 +82,7 @@ const SuperButton = Button.withComponent(Link).extend`
   );
 `
 
-const groupOrder = [
-  'start',
-  'experimental',
-  'misc',
-  'retired'
-]
+const groupOrder = ['start', 'experimental', 'misc', 'retired']
 
 export default ({ data: { allMarkdownRemark: { edges } } }) => {
   const groups = groupBy(edges, 'node.frontmatter.group')
@@ -111,7 +105,7 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
     'Get coding tutorials, project ideas, and programming club activities.'
 
   return (
-    <ThemeProvider>
+    <Fragment>
       <Helmet
         title={title}
         meta={[
@@ -180,7 +174,7 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
           <Footer />
         </Box.article>
       </Base>
-    </ThemeProvider>
+    </Fragment>
   )
 }
 

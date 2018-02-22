@@ -36,15 +36,13 @@ const Desc = Heading.h2.extend`
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
 `
 
-const EditLink = A.extend.attrs({
-  color: 'white',
-  f: 3
-})`
+const EditLink = A.extend.attrs({ color: 'white', f: 3 })`
+>>>>>>> Clean up aux workshop header code:src/pages/workshops/page.js
   display: none;
 
   position: absolute;
-  bottom: 20px;
-  right: 30px;
+  bottom: ${props => props.theme.space[3]}px;
+  right: ${props => props.theme.space[4]}px;
 
   ${mediaQueries.md} {
     display: inline-block;
@@ -55,7 +53,7 @@ const Body = Container.withComponent(MarkdownBody)
 A.link = A.withComponent(Link)
 Section.h = Section.withComponent('header')
 
-function generateSubtitle(description, authorText) {
+const generateSubtitle = (description, authorText) => {
   if (!authorText) {
     return description
   }
@@ -63,6 +61,7 @@ function generateSubtitle(description, authorText) {
   // This iterates over each word in authorText, finds GitHub usernames (any
   // text that looks like "@orpheus", and turns them into links.
   const parsedAuthorText = authorText.split(' ').map((word, index, arr) => {
+<<<<<<< HEAD:src/templates/workshop.js
     let processedWord
 
     const matches = word.match(/@(\w+)/)
@@ -82,6 +81,20 @@ function generateSubtitle(description, authorText) {
     } else {
       processedWord = word
     }
+=======
+    const matches = word.match(/@(\w+)/)
+
+    const processedWord = matches ? (
+      <A
+        href={`https://github.com/${matches[1]}`}
+        target="_blank"
+        color="white"
+        children={word}
+      />
+    ) : (
+      word
+    )
+>>>>>>> Clean up aux workshop header code:src/pages/workshops/page.js
 
     // This pads returned results with spaces, making our final array look the
     // following:
@@ -97,15 +110,14 @@ function generateSubtitle(description, authorText) {
   })
 
   return (
-    <React.Fragment>
+    <Fragment>
       {description}. Created by {parsedAuthorText}.
-    </React.Fragment>
+    </Fragment>
   )
 }
 
-function githubEditUrl(slug) {
-  return `https://github.com/hackclub/hackclub/edit/master${slug}/README.md`
-}
+const githubEditUrl = slug =>
+  `https://github.com/hackclub/hackclub/edit/master${slug}/README.md`
 
 const twitterURL = (text, url) =>
   `https://twitter.com/intent/tweet?text=${text

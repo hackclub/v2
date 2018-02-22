@@ -18,7 +18,7 @@ import Link from 'gatsby-link'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import MarkdownBody from 'components/MarkdownBody'
-import { lowerCase, camelCase } from 'lodash'
+import { lowerCase, camelCase, isEmpty } from 'lodash'
 
 const Name = Heading.h1.extend`
   background-color: white;
@@ -132,13 +132,13 @@ const ShareButton = props => (
   </InlineButton>
 )
 
-export default ({ data: { markdownRemark } }) => {
-  if (markdownRemark) {
+export default ({ data }) => {
+  if ('markdownRemark' in data) {
     const {
       fields: { slug, bg },
       frontmatter: { name, description, author, group },
       html
-    } = markdownRemark
+    } = data.markdownRemark
 
     const subtitle = generateSubtitle(description, author)
 

@@ -33,7 +33,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
 
   return new Promise((resolve, reject) => {
-    const component = path.resolve('src/pages/workshops/page.js')
+    const component = path.resolve('src/templates/workshop.js')
     resolve(
       graphql(
         `

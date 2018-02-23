@@ -35,8 +35,8 @@ const Desc = Heading.h2.extend`
 `
 
 const EditLink = A.extend.attrs({
-  color: "white",
-  f: 3,
+  color: 'white',
+  f: 3
 })`
   display: none;
 
@@ -61,7 +61,7 @@ function generateSubtitle(description, authorText) {
   // This iterates over each word in authorText, finds GitHub usernames (any
   // text that looks like "@orpheus", and turns them into links.
   const parsedAuthorText = authorText.split(' ').map((word, index, arr) => {
-    let processedWord;
+    let processedWord
 
     const matches = word.match(/@(\w+)/)
 
@@ -69,10 +69,12 @@ function generateSubtitle(description, authorText) {
       const username = matches[1]
 
       processedWord = (
-        <A href={`https://github.com/${username}`}
-           target="_blank"
-           color="white">
-           {word}
+        <A
+          href={`https://github.com/${username}`}
+          target="_blank"
+          color="white"
+        >
+          {word}
         </A>
       )
     } else {
@@ -84,7 +86,7 @@ function generateSubtitle(description, authorText) {
     //
     //   [ 'Hack', ' ', 'Club', ' ', 'staff' ]
     //
-    if (index === arr.length - 1) { 
+    if (index === arr.length - 1) {
       // if last item in array, don't give an extra space
       return processedWord
     } else {

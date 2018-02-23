@@ -197,7 +197,7 @@ export default ({ data: { markdownRemark } }) => {
               Made something rad?
             </Heading.h2>
             <Heading.h2 color="primary" f={5}>
-              Share it 🌟
+              Share it! 🌟
             </Heading.h2>
             <Text f={1} color="muted" mb={3}>
               (posts are editable)

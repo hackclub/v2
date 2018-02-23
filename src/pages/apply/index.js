@@ -49,12 +49,6 @@ const timeSince = time => {
 
 const Neg = () => <Text.span color="error" bold children="NOT" />
 
-const CustomCard = Card.extend`
-  ul {
-    padding-left: 0;
-  }
-`
-
 const ApplicationCard = props => {
   const {
     id,
@@ -73,33 +67,15 @@ const ApplicationCard = props => {
   )
 
   return (
-    <Container maxWidth={36} mt={3} p={3}>
-      <Flex
-        align="center"
-        justify="center"
-        flexDirection={['column', 'row']}
-        mx={[null, -2]}
-      >
-        <LargeButton.link
-          w={1}
-          m={2}
-          inverted
-          to={`/apply/club?id=${id}`}
-          children="Edit Application"
-        />
-        <LargeButton.link
-          w={1}
-          m={2}
-          inverted
-          to={`/apply/leader?id=${leaderProfile.id}`}
-          children="Edit Leader Profile"
-        />
-      </Flex>
-      <Flex mt={2} mb={4}>
-        <SubmitButton authToken={authToken} application={app} />
-      </Flex>
-      <CustomCard boxShadowSize="md" p={[3, 4]} color="black" bg="snow">
-        <Text>You only need a team to apply. Invite them:</Text>
+    <Container maxWidth={36} my={3} p={3}>
+      <Card boxShadowSize="md" p={[3, 4]} color="black" bg="snow">
+        <Heading.h3>How to get into Hack Club</Heading.h3>
+        <Text>
+          When reviewing applications, we look for a strong leadership team that has obtained a teacher sponsor to host their club and the support of their school administration.
+          Teams should have 2 to 3 co-leads -- we rarely accept solo leaders. 
+        </Text>
+        <br />
+        <Text>Invite your co-leads:</Text>
         <LeaderInviteForm id={id} authToken={authToken} callback={callback} />
         <Text>After you submit your application:</Text>
         <ul>
@@ -151,7 +127,32 @@ const ApplicationCard = props => {
             meetings.
           </em>
         </Text>
-      </CustomCard>
+      </Card>
+      <Flex
+        align="center"
+        justify="center"
+        flexDirection={['column', 'row']}
+        mt={4}
+        mx={[null, -2]}
+      >
+        <LargeButton.link
+          w={1}
+          m={2}
+          inverted
+          to={`/apply/club?id=${id}`}
+          children="Edit Application"
+        />
+        <LargeButton.link
+          w={1}
+          m={2}
+          inverted
+          to={`/apply/leader?id=${leaderProfile.id}`}
+          children="Edit Leader Profile"
+        />
+      </Flex>
+      <Flex mt={2} mb={4}>
+        <SubmitButton authToken={authToken} application={app} />
+      </Flex>
     </Container>
   )
 }

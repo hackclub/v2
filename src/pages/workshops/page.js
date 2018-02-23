@@ -17,7 +17,7 @@ import Link from 'gatsby-link'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import MarkdownBody from 'components/MarkdownBody'
-import { lowerCase, camelCase } from 'lodash'
+import { lowerCase, camelCase, isEmpty } from 'lodash'
 
 const Name = Heading.h1.extend`
   background-color: white;
@@ -95,7 +95,9 @@ const githubEditUrl = slug =>
   `https://github.com/hackclub/hackclub/edit/master${slug}/README.md`
 
 const twitterURL = (text, url) =>
-  `https://twitter.com/intent/tweet?text=${text.split(' ').join('%20')}&url=${url}`
+  `https://twitter.com/intent/tweet?text=${text
+    .split(' ')
+    .join('%20')}&url=${url}`
 const facebookURL = (text, url) =>
   `https://www.facebook.com/sharer/sharer.php?u=${url}`
 
@@ -117,13 +119,13 @@ const ShareButton = props => (
   </InlineButton>
 )
 
-export default ({ data: { markdownRemark } }) => {
-  if (markdownRemark) {
+export default ({ data }) => {
+  if ('markdownRemark' in data && !isEmpty(data.markdownRemark)) {
     const {
       fields: { slug, bg },
       frontmatter: { name, description, author, group },
       html
-    } = markdownRemark
+    } = data.markdownRemark
 
     const subtitle = generateSubtitle(description, author)
 
@@ -191,7 +193,10 @@ export default ({ data: { markdownRemark } }) => {
             </Text>
             <ShareButton
               service="Twitter"
-              href={twitterURL(`I just built ${name} with a @starthackclub workshop. Make yours:`, url)}
+              href={twitterURL(
+                `I just built ${name} with a @starthackclub workshop. Make yours:`,
+                url
+              )}
               bg="#1da1f2"
               mr={3}
             />
@@ -205,11 +210,8 @@ export default ({ data: { markdownRemark } }) => {
         <Footer />
       </Fragment>
     )
-  } else {
-    return null
   }
 }
-
 export const pageQuery = graphql`
   query WorkshopBySlug($path: String!) {
     markdownRemark(fields: { slug: { eq: $path } }) {

@@ -144,7 +144,7 @@ const ShareButton = props => (
 )
 
 export default ({ data }) => {
-  if ('markdownRemark' in data) {
+  if ('markdownRemark' in data && !isEmpty(data.markdownRemark)) {
     const {
       fields: { slug, bg },
       frontmatter: { name, description, author, group },
@@ -234,11 +234,8 @@ export default ({ data }) => {
         <Footer />
       </Fragment>
     )
-  } else {
-    return null
   }
 }
-
 export const pageQuery = graphql`
   query WorkshopBySlug($path: String!) {
     markdownRemark(fields: { slug: { eq: $path } }) {

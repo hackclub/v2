@@ -74,6 +74,13 @@ export default () => (
         bg="yellow"
       />
       <Bio
+        img="/team/orpheus.jpg"
+        name="Prophet Orpheus"
+        role="Mascot"
+        text="Prophet Orpheus is Hack Club's mascot who takes the form of a nondescript dinosaur. Prophet Orpheus is always working to help more students to learn to code. "
+        bg="green"
+      />
+      <Bio
         img="/team/lachlan.jpg"
         name="Lachlan Campbell"
         role="Web Designer"

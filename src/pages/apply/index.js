@@ -73,7 +73,7 @@ const ApplicationCard = props => {
         <Text>
           When reviewing applications, we look for a strong leadership team that
           has obtained a teacher sponsor to host their club and the support of
-          their school administration. Teams should have 2 to 3 co-leads -- we
+          their school administration. Teams should have 2 to 3 co-leads — we
           rarely accept solo leaders.
         </Text>
         <br />

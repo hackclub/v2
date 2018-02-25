@@ -77,7 +77,7 @@ export default () => (
         img="/team/orpheus.jpg"
         name="Prophet Orpheus"
         role="Mascot"
-        text="Prophet Orpheus is Hack Club's mascot who takes the form of a nondescript dinosaur. Prophet Orpheus is always working to help more students to learn to code. "
+        text="Prophet Orpheus is Hack Club’s mascot who takes the form of a nondescript dinosaur. Prophet Orpheus is always working to help more students to learn to code."
         bg="green"
       />
       <Bio

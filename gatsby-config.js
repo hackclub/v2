@@ -36,7 +36,6 @@ module.exports = {
       }
     },
     'gatsby-plugin-sitemap',
-    'gatsby-plugin-offline',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     {
@@ -52,6 +51,7 @@ module.exports = {
           '/fonts/**': ['Access-Control-Allow-Origin: *']
         }
       }
-    }
+    },
+    'gatsby-plugin-offline'
   ]
 }

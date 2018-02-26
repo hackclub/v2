@@ -19,6 +19,7 @@
     "formik": "^0.11.11",
     "gatsby": "^1.9.215",
     "gatsby-link": "^1.6.37",
+    "gatsby-plugin-manifest": "^1.0.14",
     "gatsby-plugin-netlify": "^1.0.18",
     "gatsby-plugin-offline": "^1.0.14",
     "gatsby-plugin-react-helmet": "^2.0.5",

@@ -24,6 +24,19 @@ module.exports = {
         ]
       }
     },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Hack Club',
+        short_name: 'Hack Club',
+        start_url: '/',
+        background_color: '#fff',
+        theme_color: '#e42d42',
+        display: 'minimal-ui'
+      }
+    },
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-offline',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     {
@@ -39,8 +52,6 @@ module.exports = {
           '/fonts/**': ['Access-Control-Allow-Origin: *']
         }
       }
-    },
-    'gatsby-plugin-offline',
-    'gatsby-plugin-sitemap'
+    }
   ]
 }

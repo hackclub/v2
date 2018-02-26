@@ -234,6 +234,8 @@ export default ({ data }) => {
         <Footer />
       </Fragment>
     )
+  } else {		
+    return null
   }
 }
 export const pageQuery = graphql`

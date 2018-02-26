@@ -20,6 +20,7 @@
     "gatsby": "^1.9.193",
     "gatsby-link": "^1.6.36",
     "gatsby-plugin-netlify": "^1.0.17",
+    "gatsby-plugin-offline": "^1.0.14",
     "gatsby-plugin-react-helmet": "^2.0.4",
     "gatsby-plugin-resolve-src": "^1.0.0",
     "gatsby-plugin-segment": "^1.0.2",

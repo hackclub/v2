@@ -1,49 +1,28 @@
 import React, { Component } from 'react'
 import api from 'api'
+import storage from 'storage'
 import { LargeButton } from '@hackclub/design-system'
-import { clubApplicationSchema } from 'components/apply/ClubApplicationForm'
 
 class SubmitButton extends Component {
   constructor(props) {
     super(props)
-    this.state = { readyToSubmit: false, submitted: false }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentWillMount() {
-    const { application } = this.props
-    const allProfilesFinished = !application.leader_profiles.some(
-      p => p.completed_at === null
-    )
-    const validApp = clubApplicationSchema.isValidSync(application)
-    const unsubmittedApp = application.submitted_at === null
-
-    if (allProfilesFinished && validApp && unsubmittedApp) {
-      this.setState({
-        readyToSubmit: true
-      })
-    }
-
-    if (application.submitted_at) {
-      this.setState({
-        submitted: true
-      })
-    }
-  }
-
   handleSubmit() {
-    const { authToken, application } = this.props
-    const { readyToSubmit, submitted } = this.state
+    const { status, applicationId, callback } = this.props
 
-    if (submitted || !readyToSubmit) {
+    if (status !== 'complete') {
       return null
     }
 
     api
-      .post(`v1/new_club_applications/${application.id}/submit`, { authToken })
-      .then(() => {
+      .post(`v1/new_club_applications/${applicationId}/submit`, {
+        authToken: storage.get('authToken')
+      })
+      .then(json => {
+        callback(json)
         alert('Your application has been submitted!')
-        this.setState({ submitted: true })
       })
       .catch(e => {
         alert(e.statusText)
@@ -51,17 +30,19 @@ class SubmitButton extends Component {
   }
 
   render() {
-    const { readyToSubmit, submitted } = this.state
+    // this.updateState() // I'm trying to update the update button state when an application is reset
+    const { status } = this.props
 
+    // incomplete, complete, submitted
     return (
       <LargeButton
         onClick={this.handleSubmit}
-        bg={readyToSubmit ? 'success' : 'primary'}
-        disabled={submitted || !readyToSubmit}
+        bg={status === 'submitted' ? 'accent' : 'primary'}
+        disabled={status !== 'complete'}
         w={1}
         mb={2}
       >
-        {submitted
+        {status === 'submitted'
           ? 'We’ve recieved your application'
           : 'Submit your application'}
       </LargeButton>

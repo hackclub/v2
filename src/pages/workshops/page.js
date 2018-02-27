@@ -37,8 +37,8 @@ const Desc = Heading.h2.extend`
 `
 
 const EditLink = A.extend.attrs({
-  color: "white",
-  f: 3,
+  color: 'white',
+  f: 3
 })`
   display: none;
 
@@ -63,7 +63,7 @@ function generateSubtitle(description, authorText) {
   // This iterates over each word in authorText, finds GitHub usernames (any
   // text that looks like "@orpheus", and turns them into links.
   const parsedAuthorText = authorText.split(' ').map((word, index, arr) => {
-    let processedWord;
+    let processedWord
 
     const matches = word.match(/@(\w+)/)
 
@@ -88,7 +88,7 @@ function generateSubtitle(description, authorText) {
     //
     //   [ 'Hack', ' ', 'Club', ' ', 'staff' ]
     //
-    if (index === arr.length - 1) { 
+    if (index === arr.length - 1) {
       // if last item in array, don't give an extra space
       return processedWord
     } else {
@@ -108,7 +108,9 @@ function githubEditUrl(slug) {
 }
 
 const twitterURL = (text, url) =>
-  `https://twitter.com/intent/tweet?text=${text.split(' ').join('%20')}&url=${url}`
+  `https://twitter.com/intent/tweet?text=${text
+    .split(' ')
+    .join('%20')}&url=${url}`
 const facebookURL = (text, url) =>
   `https://www.facebook.com/sharer/sharer.php?u=${url}`
 
@@ -204,7 +206,10 @@ export default ({ data: { markdownRemark } }) => {
             </Text>
             <ShareButton
               service="Twitter"
-              href={twitterURL(`I just built ${name} with a @starthackclub workshop. Make yours:`, url)}
+              href={twitterURL(
+                `I just built ${name} with a @starthackclub workshop. Make yours:`,
+                url
+              )}
               bg="#1da1f2"
               mr={3}
             />

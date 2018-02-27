@@ -131,7 +131,11 @@ const ApplicationCard = props => {
         />
       </Flex>
       <Flex mt={2} mb={4}>
-        <SubmitButton status={submitButtonStatus} applicationId={app.id} callback={callback} />
+        <SubmitButton
+          status={submitButtonStatus}
+          applicationId={app.id}
+          callback={callback}
+        />
       </Flex>
       <CustomCard>
         <Text>You only need a team to apply. Invite them:</Text>
@@ -207,18 +211,21 @@ export default class extends Component {
   }
 
   createNewApplication(userId) {
-    const msg = "If you start a new application you won’t be able to access this one. Continue?"
+    const msg =
+      'If you start a new application you won’t be able to access this one. Continue?'
     if (!confirm(msg)) {
       return null
     }
-    return api.post(`v1/users/${userId}/new_club_applications`, {
-      authToken: storage.get('authToken')
-    }).then(app => {
-      this.setState({
-        status: 'finished',
-        app: app
+    return api
+      .post(`v1/users/${userId}/new_club_applications`, {
+        authToken: storage.get('authToken')
       })
-    })
+      .then(app => {
+        this.setState({
+          status: 'finished',
+          app: app
+        })
+      })
   }
 
   populateApplications(

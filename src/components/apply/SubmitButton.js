@@ -17,8 +17,10 @@ class SubmitButton extends Component {
     }
 
     api
-      .post(`v1/new_club_applications/${applicationId}/submit`, { authToken: storage.get('authToken') })
-      .then((json) => {
+      .post(`v1/new_club_applications/${applicationId}/submit`, {
+        authToken: storage.get('authToken')
+      })
+      .then(json => {
         callback(json)
         alert('Your application has been submitted!')
       })
@@ -40,8 +42,9 @@ class SubmitButton extends Component {
         w={1}
         mb={2}
       >
-        {status === 'submitted' ? 'We’ve recieved your application' :
-                                  'Submit your application'}
+        {status === 'submitted'
+          ? 'We’ve recieved your application'
+          : 'Submit your application'}
       </LargeButton>
     )
   }

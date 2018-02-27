@@ -1,5 +1,3 @@
-const localStorage = localStorage || window.localStorage
-
 export default {
   get: key => {
     return localStorage.getItem(key)

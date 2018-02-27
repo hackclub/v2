@@ -1,12 +1,14 @@
 import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
-import { api } from 'data.json'
+import api from 'api'
+import storage from 'storage'
 import {
   ThemeProvider,
   Box,
   Button,
   Card,
   Container,
+  Section,
   Flex,
   Heading,
   LargeButton,
@@ -14,6 +16,7 @@ import {
   Text,
   cx
 } from '@hackclub/design-system'
+import { clubApplicationSchema } from 'components/apply/ClubApplicationForm'
 import ApplyNav from 'components/apply/ApplyNav'
 import LeaderInviteForm from 'components/apply/LeaderInviteForm'
 import Login from 'components/apply/Login'
@@ -25,6 +28,7 @@ import Link from 'gatsby-link'
 LargeButton.link = LargeButton.withComponent(Link)
 
 const A = DSLink.extend`
+  cursor: pointer;
   :hover {
     text-decoration: underline;
   }
@@ -49,7 +53,13 @@ const timeSince = time => {
 
 const Neg = () => <Text.span color="error" bold children="NOT" />
 
-const CustomCard = Card.extend`
+const CustomCard = Card.extend.attrs({
+  p: [3, 4],
+  color: 'black',
+  bg: 'snow',
+  w: 1,
+  boxShadowSize: 'md'
+})`
   ul {
     padding-left: 0;
   }
@@ -63,7 +73,7 @@ const ApplicationCard = props => {
     created_at,
     submitted_at
   } = props.app
-  const { authToken, callback, app } = props
+  const { authToken, callback, app, resetCallback } = props
 
   const leaderProfile = leader_profiles.find(
     profile => profile.user.id == props.userId
@@ -72,8 +82,33 @@ const ApplicationCard = props => {
     profile => profile.user.id != props.userId
   )
 
+  const completeProfiles = leader_profiles.every(
+    profile => profile.completed_at
+  )
+  const completeApplication = clubApplicationSchema.isValidSync(app)
+  let submitButtonStatus
+  if (app.submitted_at) {
+    submitButtonStatus = 'submitted'
+  } else if (completeApplication && completeProfiles) {
+    submitButtonStatus = 'complete'
+  } else {
+    submitButtonStatus = 'incomplete'
+  }
+
   return (
     <Container maxWidth={36} mt={3} p={3}>
+      {app.rejected_at ? (
+        <Flex mb={4}>
+          <CustomCard>
+            <Heading.h3>Unfortunatly, you’ve been rejected</Heading.h3>
+            <br />
+            <Text>
+              You can start a new application by clicking{' '}
+              <A onClick={resetCallback}>here</A>.
+            </Text>
+          </CustomCard>
+        </Flex>
+      ) : null}
       <Flex
         align="center"
         justify="center"
@@ -96,9 +131,9 @@ const ApplicationCard = props => {
         />
       </Flex>
       <Flex mt={2} mb={4}>
-        <SubmitButton authToken={authToken} application={app} />
+        <SubmitButton status={submitButtonStatus} applicationId={app.id} callback={callback} />
       </Flex>
-      <CustomCard boxShadowSize="md" p={[3, 4]} color="black" bg="snow">
+      <CustomCard>
         <Text>You only need a team to apply. Invite them:</Text>
         <LeaderInviteForm id={id} authToken={authToken} callback={callback} />
         <Text>After you submit your application:</Text>
@@ -168,63 +203,69 @@ export default class extends Component {
     }
 
     this.populateApplications = this.populateApplications.bind(this)
+    this.createNewApplication = this.createNewApplication.bind(this)
+  }
+
+  createNewApplication(userId) {
+    const msg = "If you start a new application you won’t be able to access this one. Continue?"
+    if (!confirm(msg)) {
+      return null
+    }
+    return api.post(`v1/users/${userId}/new_club_applications`, {
+      authToken: storage.get('authToken')
+    }).then(app => {
+      this.setState({
+        status: 'finished',
+        app: app
+      })
+    })
   }
 
   populateApplications(
-    authToken = this.state.authToken,
-    userId = this.state.userId
+    application,
+    userId = storage.get('userId'),
+    authToken = storage.get('authToken')
   ) {
-    fetch(`${api}/v1/users/${userId}/new_club_applications`, {
-      headers: { Authorization: `Bearer ${authToken}` }
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          throw res
-        }
+    if (application) {
+      this.setState({
+        status: 'finished',
+        app: application
       })
-      .then(json => {
-        if (json.length === 0) {
-          return fetch(`${api}/v1/users/${userId}/new_club_applications`, {
-            method: 'POST',
-            headers: { Authorization: `Bearer ${authToken}` }
-          }).then(res => {
-            if (res.ok) {
-              return res.json()
-            } else {
-              throw res
-            }
-          })
-        }
-        return json.sort((a, b) => {
-          return new Date(b.created_at) - new Date(a.created_at)
-        })[0]
-      })
-      .then(app => {
-        this.setState({
-          status: 'finished',
-          app: app
+    } else {
+      api
+        .get(`v1/users/${userId}/new_club_applications`, { authToken })
+        .then(json => {
+          if (json.length === 0) {
+            return this.createNewApplication(userId)
+          }
+          return json.sort((a, b) => {
+            return new Date(b.created_at) - new Date(a.created_at)
+          })[0]
         })
-      })
-      .catch(e => {
-        console.error(e)
-        if (e.status === 401) {
-          this.setState({ status: 'needsToAuth' })
-        }
-      })
+        .then(app => {
+          this.setState({
+            status: 'finished',
+            app: app
+          })
+        })
+        .catch(e => {
+          if (e.status === 401) {
+            this.setState({ status: 'needsToAuth' })
+          }
+        })
+    }
   }
 
   componentDidMount() {
-    const authToken = window.localStorage.getItem('authToken')
-    const userId = window.localStorage.getItem('userId')
+    const authToken = storage.get('authToken')
+    const userId = storage.get('userId')
     this.setState({ authToken, userId })
     const needsToAuth = authToken === null || userId === null
 
     if (needsToAuth) {
       this.setState({ status: 'needsToAuth' })
     } else {
-      this.populateApplications(authToken, userId)
+      this.populateApplications()
     }
   }
 
@@ -256,6 +297,7 @@ export default class extends Component {
               userId={userId}
               authToken={authToken}
               callback={this.populateApplications}
+              resetCallback={this.createNewApplication}
             />
           </Fragment>
         )

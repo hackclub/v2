@@ -103,7 +103,7 @@ const ApplicationCard = props => {
         <LeaderInviteForm id={id} authToken={authToken} callback={callback} />
         <Text>After you submit your application:</Text>
         <ul>
-          <li>We’ll get back to you with our decision in 3 days</li>
+          <li>We’ll get back to you with our decision in 7 days</li>
           <li>
             If you’re accepted, we’ll schedule a call to train you to lead your
             club

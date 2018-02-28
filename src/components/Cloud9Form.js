@@ -67,6 +67,15 @@ const Cloud9Form = withFormik({
         console.log(res)
         resetForm()
         setStatus('success')
+
+        // associate submitted email with analytics if there isn't already an
+        // email set - this will let us track workshop users that go through the
+        // cloud9 setup
+        analytics.ready(() => {
+          if (!analytics.user().traits().email) {
+            analytics.identify({ email: data.email })
+          }
+        })
       })
       .catch(e => {
         console.error(e)

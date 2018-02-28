@@ -130,6 +130,11 @@ const LoginCodeForm = withFormik({
       .then(json => {
         window.localStorage.setItem('authToken', json.auth_token)
         setSubmitting(false)
+
+        // associate current session with authenticated user and update email
+        // stored in analytics
+        analytics.identify(props.userId, { email: props.email })
+
         window.location.reload()
       })
       .catch(e => {

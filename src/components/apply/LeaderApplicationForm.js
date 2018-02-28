@@ -272,6 +272,11 @@ const LeaderApplicationForm = withFormik({
       })
       .then(json => {
         setSubmitting(false)
+
+        // update name stored in analytics w/ latest value
+        analytics.identify({
+          name: json.leader_name
+        })
       })
       .catch(e => {
         console.error(e)

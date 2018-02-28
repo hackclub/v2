@@ -102,7 +102,7 @@ const ApplicationCard = props => {
       {app.rejected_at ? (
         <Flex mb={4}>
           <CustomCard>
-            <Heading.h3>Unfortunatly, you’ve been rejected</Heading.h3>
+            <Heading.h3>Unfortunately, you’ve been rejected</Heading.h3>
             <br />
             <Text>
               You can start a new application by clicking{' '}

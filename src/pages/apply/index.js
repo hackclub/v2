@@ -13,7 +13,7 @@ import {
   Heading,
   LargeButton,
   Link as DSLink,
-  Text,
+  Text as T,
   cx
 } from '@hackclub/design-system'
 import { clubApplicationSchema } from 'components/apply/ClubApplicationForm'
@@ -34,6 +34,10 @@ const A = DSLink.extend`
   }
 `
 
+const Text = props => <T mt={3} mb={3} {...props} />
+
+const Span = T.span
+
 const timeSince = time => {
   const seconds = Math.floor((new Date() - new Date(time)) / 1000)
   const intervals = [
@@ -51,7 +55,7 @@ const timeSince = time => {
   return 'less than a minute'
 }
 
-const Neg = () => <Text.span color="error" bold children="NOT" />
+const Neg = () => <Span color="error" bold children="NOT" />
 
 const CustomCard = Card.extend.attrs({
   p: [3, 4],
@@ -59,11 +63,7 @@ const CustomCard = Card.extend.attrs({
   bg: 'snow',
   w: 1,
   boxShadowSize: 'md'
-})`
-  ul {
-    padding-left: 0;
-  }
-`
+})``
 
 const ApplicationCard = props => {
   const {
@@ -113,16 +113,36 @@ const ApplicationCard = props => {
       ) : null}
       <CustomCard>
         <Heading.h3 mb={2}>How to get into Hack Club</Heading.h3>
+
         <Text>
-          When reviewing applications, we look for a strong leadership team that
-          has obtained a teacher sponsor to host their club and the support of
-          their school administration. Teams should have 2 to 3 co-leads — we
-          rarely accept solo leaders.
+          Our admissions process is very competitive, accepting less than 5% of
+          applicants. Here’s what we look for in applicants:
         </Text>
-        <br />
-        <Text>Invite your co-leads:</Text>
-        <LeaderInviteForm id={id} authToken={authToken} callback={callback} />
-        <Text>After you submit your application:</Text>
+        <ul>
+          <li>
+            Strong founding teams with 2-3 members. You probably can't do it
+            alone and we rarely accept solo founders.
+          </li>
+          <li>
+            Diverse skillsets on leadership team – the best Hack Clubs are led
+            by both CEO and CTO types.
+          </li>
+          <li>
+            Traction. Indicators of progress to date, especially formal shows of
+            support from your school (like securing a teacher sponsor), are very
+            meaningful.
+          </li>
+        </ul>
+        <Text>
+          At the end of the day, to start a successful Hack Club all you have to
+          do are two things: make a club that people want to attend and get it
+          in front of the right people in the right way.
+        </Text>
+        <Text>
+          Though we wish we could work with more clubs, our low acceptance rate
+          is simply a result of too much interest and not enough time.
+        </Text>
+        <Heading.h3>After you apply</Heading.h3>
         <ul>
           <li>We’ll get back to you with our decision in 7 days</li>
           <li>
@@ -138,6 +158,9 @@ const ApplicationCard = props => {
             to make sure everything is going well
           </li>
         </ul>
+        <Heading.h3>
+          {submitted_at ? 'Your' : 'Edit your'} application
+        </Heading.h3>
         <p>
           Contact us at <A href="mailto:team@hackclub.com">team@hackclub.com</A>{' '}
           if you have any questions while applying.
@@ -203,6 +226,8 @@ const ApplicationCard = props => {
             </li>
           ))}
         </ul>
+        <Text mb={0}>Invite your co-leads:</Text>
+        <LeaderInviteForm id={id} authToken={authToken} callback={callback} />
         <Text color="slate" f={1}>
           <em>
             * We also accept applications from clubs that have already held

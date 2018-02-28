@@ -71,7 +71,8 @@ const ApplicationCard = props => {
     leader_profiles,
     updated_at,
     created_at,
-    submitted_at
+    submitted_at,
+    point_of_contact_id
   } = props.app
   const { authToken, callback, app, resetCallback } = props
 
@@ -81,6 +82,7 @@ const ApplicationCard = props => {
   const coLeaderProfiles = leader_profiles.filter(
     profile => profile.user.id != props.userId
   )
+  const isPoc = leaderProfile.user.id === point_of_contact_id
 
   const completeProfiles = leader_profiles.every(
     profile => profile.completed_at
@@ -160,7 +162,44 @@ const ApplicationCard = props => {
                   has <Neg />{' '}
                 </span>
               )}
-              finished their leader profile
+              finished their leader profile{' '}
+              {isPoc ? (
+                <Fragment>
+                  (
+                  <A
+                    onClick={e => {
+                      if (
+                        confirm(
+                          `Are you sure you want to remove ${
+                            profile.user.email
+                          } as a team member?`
+                        )
+                      ) {
+                        api
+                          .delete(
+                            `v1/new_club_applications/${id}/remove_user`,
+                            {
+                              authToken,
+                              data: { user_id: profile.user.id }
+                            }
+                          )
+                          .then(json => {
+                            callback()
+                            alert(
+                              `${
+                                profile.user.email
+                              } has been removed from the application`
+                            )
+                          })
+                      }
+                    }}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    remove
+                  </A>
+                  )
+                </Fragment>
+              ) : null}
             </li>
           ))}
         </ul>

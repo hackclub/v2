@@ -216,7 +216,7 @@ const InnerForm = props => {
           />
           <Field
             name="skills_impressive_achievement"
-            label="Please tell us in one or two sentences about the most impressive thing you have built or achieved."
+            label="Please tell us in one or two sentences about the most impressive thing you have built or achieved. Include links and user counts if possible."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.skills_impressive_achievement}

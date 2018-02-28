@@ -9,6 +9,8 @@ import {
   Text,
   Section,
   Icon,
+  Button,
+  Card,
   mediaQueries
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
@@ -16,7 +18,7 @@ import Link from 'gatsby-link'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import MarkdownBody from 'components/MarkdownBody'
-import { camelCase } from 'lodash'
+import { lowerCase, camelCase } from 'lodash'
 
 const Name = Heading.h1.extend`
   background-color: white;
@@ -105,6 +107,31 @@ function githubEditUrl(slug) {
   return `https://github.com/hackclub/hackclub/edit/master${slug}/README.md`
 }
 
+const twitterURL = (text, url) =>
+  `https://twitter.com/intent/tweet?text=${text
+    .split(' ')
+    .join('%20')}&url=${url}`
+const facebookURL = (text, url) =>
+  `https://www.facebook.com/sharer/sharer.php?u=${url}`
+
+const InlineButton = Button.extend`
+  display: inline-flex;
+  align-items: center;
+  div {
+    background-image: url(/social/${props => lowerCase(props.service)}-white.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 18px;
+    height: 18px;
+  }
+`
+const ShareButton = props => (
+  <InlineButton target="_blank" title={`Share on ${props.service}`} {...props}>
+    <Box mr={2} />
+    {props.service}
+  </InlineButton>
+)
+
 export default ({ data: { markdownRemark } }) => {
   if (markdownRemark) {
     const {
@@ -117,6 +144,7 @@ export default ({ data: { markdownRemark } }) => {
 
     const title = `${name} – Hack Club Workshops`
     const desc = `${description}. Read the tutorial on Hack Club Workshops.`
+    const url = `https://hackclub.com${slug}`
     return (
       <ThemeProvider>
         <Helmet
@@ -165,6 +193,33 @@ export default ({ data: { markdownRemark } }) => {
           </EditLink>
         </Section.h>
         <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
+        <Container maxWidth={32} p={3} mb={4}>
+          <Card bg="blue.0" p={4} align="center">
+            <Heading.h2 f={3} color="accent" caps>
+              Made something rad?
+            </Heading.h2>
+            <Heading.h2 color="primary" f={5}>
+              Share it! 🌟
+            </Heading.h2>
+            <Text f={1} color="muted" mb={3}>
+              (posts are editable)
+            </Text>
+            <ShareButton
+              service="Twitter"
+              href={twitterURL(
+                `I just built ${name} with a @starthackclub workshop. Make yours:`,
+                url
+              )}
+              bg="#1da1f2"
+              mr={3}
+            />
+            <ShareButton
+              service="Facebook"
+              href={facebookURL(url)}
+              bg="#3b5998"
+            />
+          </Card>
+        </Container>
         <Footer />
       </ThemeProvider>
     )

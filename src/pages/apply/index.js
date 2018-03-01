@@ -208,11 +208,6 @@ const ApplicationCard = props => {
                           )
                           .then(json => {
                             callback()
-                            alert(
-                              `${
-                                profile.user.email
-                              } has been removed from the application`
-                            )
                           })
                       }
                     }}

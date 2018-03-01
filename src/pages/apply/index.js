@@ -120,7 +120,7 @@ const ApplicationCard = props => {
         </Text>
         <ul>
           <li>
-            Strong founding teams with 2-3 members. You probably can't do it
+            Strong founding teams with 2-3 members. You probably can’t do it
             alone and we rarely accept solo founders.
           </li>
           <li>

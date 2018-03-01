@@ -258,7 +258,12 @@ const ApplicationCard = props => {
         />
       </Flex>
       <Flex mt={2} mb={4}>
-        <SubmitButton authToken={authToken} application={app} />
+        <SubmitButton
+          authToken={authToken}
+          applicationId={app.id}
+          status={submitButtonStatus}
+          callback={callback}
+        />
       </Flex>
     </Container>
   )
@@ -279,29 +284,22 @@ export default class extends Component {
     this.createNewApplication = this.createNewApplication.bind(this)
   }
 
-  createNewApplication(userId) {
+  createNewApplication(firstTime = false) {
     const msg =
       'If you start a new application you won’t be able to access this one. Continue?'
-    if (!confirm(msg)) {
+    if (!firstTime && !confirm(msg)) {
       return null
     }
     return api
-      .post(`v1/users/${userId}/new_club_applications`, {
+      .post(`v1/users/${storage.get('userId')}/new_club_applications`, {
         authToken: storage.get('authToken')
       })
       .then(app => {
-        this.setState({
-          status: 'finished',
-          app: app
-        })
+        return app
       })
   }
 
-  populateApplications(
-    application,
-    userId = storage.get('userId'),
-    authToken = storage.get('authToken')
-  ) {
+  populateApplications(application = null) {
     if (application) {
       this.setState({
         status: 'finished',
@@ -309,10 +307,12 @@ export default class extends Component {
       })
     } else {
       api
-        .get(`v1/users/${userId}/new_club_applications`, { authToken })
+        .get(`v1/users/${storage.get('userId')}/new_club_applications`, {
+          authToken: storage.get('authToken')
+        })
         .then(json => {
           if (json.length === 0) {
-            return this.createNewApplication(userId)
+            return this.createNewApplication(true)
           }
           return json.sort((a, b) => {
             return new Date(b.created_at) - new Date(a.created_at)
@@ -347,7 +347,6 @@ export default class extends Component {
 
   content() {
     const { app, status, authToken, userId } = this.state
-
     switch (status) {
       case 'needsToAuth':
         return <Login />
@@ -373,7 +372,14 @@ export default class extends Component {
               userId={userId}
               authToken={authToken}
               callback={this.populateApplications}
-              resetCallback={this.createNewApplication}
+              resetCallback={() => {
+                this.createNewApplication.then(app => {
+                  this.setState({
+                    status: 'finished',
+                    app: app
+                  })
+                })
+              }}
             />
           </Fragment>
         )

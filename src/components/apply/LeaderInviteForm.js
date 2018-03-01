@@ -78,7 +78,7 @@ class LeaderInviteForm extends Component {
             <Fragment>
               Still deciding who will be on your team?{' '}
               <A
-                href="https://github.com/hackclub/hackclub/blob/master/clubs/leadership_preface.md"
+                href="/workshops/leadership_team"
                 target="_blank"
               >
                 Consider this

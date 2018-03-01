@@ -216,7 +216,7 @@ const InnerForm = props => {
           />
           <Field
             name="skills_impressive_achievement"
-            label="Please tell us in one or two sentences about the most impressive thing you have built or achieved."
+            label="Please tell us in one or two sentences about the most impressive thing you have built or achieved. Include links and user counts if possible."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.skills_impressive_achievement}
@@ -272,6 +272,13 @@ const LeaderApplicationForm = withFormik({
       })
       .then(json => {
         setSubmitting(false)
+
+        // update name stored in analytics w/ latest value if it's changed
+        analytics.ready(() => {
+          if (analytics.user().traits().email != json.leader_name) {
+            analytics.identify({ name: json.leader_name })
+          }
+        })
       })
       .catch(e => {
         console.error(e)

@@ -7,7 +7,7 @@ const { colors } = require('@hackclub/design-system')
 const pattern = (text = 'Hack Club', color = colors.primary) =>
   GeoPattern.generate(text, { baseColor: color }).toString()
 const writePattern = (path, name) =>
-  fs.writeFile(path, pattern(_.camelCase(name), '#D500F9'), (err, data) => {
+  fs.writeFile(path, pattern(_.camelCase(name), colors.blue[6]), (err, a) => {
     if (err) console.error(err)
   })
 
@@ -18,7 +18,7 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
     const fileNode = getNode(node.parent)
     const parsedFilePath = path.parse(fileNode.relativePath)
 
-    if (!!parsedFilePath.dir && _.includes(fileNode.relativePath, "README")) {
+    if (!!parsedFilePath.dir && _.includes(fileNode.relativePath, 'README')) {
       const value = `/workshops/${parsedFilePath.dir}`
       createNodeField({ node, name: 'slug', value })
       createNodeField({ node, name: 'bg', value: `${value}.svg` })
@@ -38,9 +38,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       graphql(
         `
           {
-            allMarkdownRemark(
-              filter: { frontmatter: { name: { ne: null } } }
-            ) {
+            allMarkdownRemark(filter: { frontmatter: { name: { ne: null } } }) {
               edges {
                 node {
                   frontmatter {

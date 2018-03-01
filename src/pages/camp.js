@@ -45,7 +45,7 @@ export default () => (
         club at your school. It’s like summer camp, except that it runs all year
         long!
       </Text>
-      <Button.link bg={campTheme[0]} color="white" to="/start" my={4}>
+      <Button.link bg={campTheme[0]} color="white" to="/" my={4}>
         Learn More + Apply »
       </Button.link>
       <Text color="slate">

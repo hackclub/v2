@@ -247,14 +247,14 @@ const ApplicationCard = props => {
           m={2}
           inverted
           to={`/apply/club?id=${id}`}
-          children="Edit Application"
+          children={`${submitted_at ? 'View' : 'Edit'} Application`}
         />
         <LargeButton.link
           w={1}
           m={2}
           inverted
           to={`/apply/leader?id=${leaderProfile.id}`}
-          children="Edit Leader Profile"
+          children={`${submitted_at ? 'View' : 'Edit'} Leader Profile`}
         />
       </Flex>
       <Flex mt={2} mb={4}>

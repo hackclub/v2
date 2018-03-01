@@ -116,7 +116,7 @@ const ApplicationCard = props => {
 
         <Text>
           Our admissions process is very competitive, accepting less than 5% of
-          applicants. Here’s what we look for in applicants:
+          applicants. Here’s what we look for:
         </Text>
         <ul>
           <li>

@@ -47,7 +47,6 @@ class LeaderInviteForm extends Component {
               return res.json()
             })
             .then(json => {
-              alert(`Invite sent to ${data.email}!`)
               leaderInvite.value = ''
               callback()
             })

@@ -22,7 +22,6 @@ class SubmitButton extends Component {
       })
       .then(json => {
         callback(json)
-        alert('Your application has been submitted!')
       })
       .catch(e => {
         alert(e.statusText)

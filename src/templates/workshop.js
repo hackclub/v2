@@ -60,27 +60,6 @@ const generateSubtitle = (description, authorText) => {
   // This iterates over each word in authorText, finds GitHub usernames (any
   // text that looks like "@orpheus", and turns them into links.
   const parsedAuthorText = authorText.split(' ').map((word, index, arr) => {
-<<<<<<< HEAD:src/templates/workshop.js
-    let processedWord
-
-    const matches = word.match(/@(\w+)/)
-
-    if (matches) {
-      const username = matches[1]
-
-      processedWord = (
-        <A
-          href={`https://github.com/${username}`}
-          target="_blank"
-          color="white"
-        >
-          {word}
-        </A>
-      )
-    } else {
-      processedWord = word
-    }
-=======
     const matches = word.match(/@(\w+)/)
 
     const processedWord = matches ? (
@@ -93,7 +72,6 @@ const generateSubtitle = (description, authorText) => {
     ) : (
       word
     )
->>>>>>> Clean up aux workshop header code:src/pages/workshops/page.js
 
     // This pads returned results with spaces, making our final array look the
     // following:
@@ -144,7 +122,8 @@ const ShareButton = props => (
 )
 
 export default ({ data }) => {
-  if ('markdownRemark' in data && !isEmpty(data.markdownRemark)) {
+	if (isEmpty(data)) return null
+
     const {
       fields: { slug, bg },
       frontmatter: { name, description, author, group },
@@ -234,10 +213,8 @@ export default ({ data }) => {
         <Footer />
       </Fragment>
     )
-  } else {		
-    return null
-  }
 }
+
 export const pageQuery = graphql`
   query WorkshopBySlug($path: String!) {
     markdownRemark(fields: { slug: { eq: $path } }) {

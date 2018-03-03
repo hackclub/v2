@@ -36,7 +36,6 @@ const Desc = Heading.h2.extend`
 `
 
 const EditLink = A.extend.attrs({ color: 'white', f: 3 })`
->>>>>>> Clean up aux workshop header code:src/pages/workshops/page.js
   display: none;
 
   position: absolute;
@@ -61,7 +60,6 @@ const generateSubtitle = (description, authorText) => {
   // text that looks like "@orpheus", and turns them into links.
   const parsedAuthorText = authorText.split(' ').map((word, index, arr) => {
     const matches = word.match(/@(\w+)/)
-
     const processedWord = matches ? (
       <A
         href={`https://github.com/${matches[1]}`}
@@ -122,97 +120,97 @@ const ShareButton = props => (
 )
 
 export default ({ data }) => {
-	if (isEmpty(data)) return null
+  if (isEmpty(data)) return null
 
-    const {
-      fields: { slug, bg },
-      frontmatter: { name, description, author, group },
-      html
-    } = data.markdownRemark
+  const {
+    fields: { slug, bg },
+    frontmatter: { name, description, author, group },
+    html
+  } = data.markdownRemark
 
-    const subtitle = generateSubtitle(description, author)
+  const subtitle = generateSubtitle(description, author)
 
-    const title = `${name} – Hack Club Workshops`
-    const desc = `${description}. Read the tutorial on Hack Club Workshops.`
-    const url = `https://hackclub.com${slug}`
-    return (
-      <Fragment>
-        <Helmet
-          title={title}
-          meta={[
-            { name: 'description', content: desc },
-            { property: 'og:title', content: title },
-            { name: 'twitter:title', content: title },
-            { property: 'og:description', content: desc },
-            { name: 'twitter:description', content: desc },
-            { property: 'og:site_name', content: 'Hack Club Workshops' },
-            { property: 'og:url', content: `https://hackclub.com${slug}` },
-            { name: 'twitter:card', content: 'summary' }
-          ]}
-        />
-        <Section.h
-          bg="accent"
-          p={0}
-          style={{ backgroundImage: `url('${bg}')`, position: 'relative' }}
-        >
-          <Nav style={{ position: 'absolute', top: 0 }} />
-          <Container mt={4} mb={3} px={3}>
-            <Flex align="center" justify="center" my={3}>
-              <A.link
-                to="/workshops"
-                color="white"
-                f={3}
-                bold
-                caps
-                children="Workshops"
-              />
-              <Text.span mx={2} color="snow" f={3} children="›" />
-              <A.link
-                to={`/workshops#${group}`}
-                color="white"
-                f={3}
-                caps
-                children={group}
-              />
-            </Flex>
-            <Name f={[5, 6]} mb={2} children={name} />
-            <Desc f={[3, 4]} regular children={subtitle} />
-          </Container>
-          <EditLink href={githubEditUrl(slug)} target="_blank">
-            <Icon color="white" name="edit" mb={-1} /> Edit on GitHub
-          </EditLink>
-        </Section.h>
-        <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
-        <Container maxWidth={32} p={3} mb={4}>
-          <Card bg="blue.0" p={4} align="center">
-            <Heading.h2 f={3} color="accent" caps>
-              Made something rad?
-            </Heading.h2>
-            <Heading.h2 color="primary" f={5}>
-              Share it! 🌟
-            </Heading.h2>
-            <Text f={1} color="muted" mb={3}>
-              (posts are editable)
-            </Text>
-            <ShareButton
-              service="Twitter"
-              href={twitterURL(
-                `I just built ${name} with a @starthackclub workshop. Make yours:`,
-                url
-              )}
-              bg="#1da1f2"
-              mr={3}
+  const title = `${name} – Hack Club Workshops`
+  const desc = `${description}. Read the tutorial on Hack Club Workshops.`
+  const url = `https://hackclub.com${slug}`
+  return (
+    <Fragment>
+      <Helmet
+        title={title}
+        meta={[
+          { name: 'description', content: desc },
+          { property: 'og:title', content: title },
+          { name: 'twitter:title', content: title },
+          { property: 'og:description', content: desc },
+          { name: 'twitter:description', content: desc },
+          { property: 'og:site_name', content: 'Hack Club Workshops' },
+          { property: 'og:url', content: `https://hackclub.com${slug}` },
+          { name: 'twitter:card', content: 'summary' }
+        ]}
+      />
+      <Section.h
+        bg="accent"
+        p={0}
+        style={{ backgroundImage: `url('${bg}')`, position: 'relative' }}
+      >
+        <Nav style={{ position: 'absolute', top: 0 }} />
+        <Container mt={4} mb={3} px={3}>
+          <Flex align="center" justify="center" my={3}>
+            <A.link
+              to="/workshops"
+              color="white"
+              f={3}
+              bold
+              caps
+              children="Workshops"
             />
-            <ShareButton
-              service="Facebook"
-              href={facebookURL(url)}
-              bg="#3b5998"
+            <Text.span mx={2} color="snow" f={3} children="›" />
+            <A.link
+              to={`/workshops#${group}`}
+              color="white"
+              f={3}
+              caps
+              children={group}
             />
-          </Card>
+          </Flex>
+          <Name f={[5, 6]} mb={2} children={name} />
+          <Desc f={[3, 4]} regular children={subtitle} />
         </Container>
-        <Footer />
-      </Fragment>
-    )
+        <EditLink href={githubEditUrl(slug)} target="_blank">
+          <Icon color="white" name="edit" mb={-1} /> Edit on GitHub
+        </EditLink>
+      </Section.h>
+      <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
+      <Container maxWidth={32} p={3} mb={4}>
+        <Card bg="blue.0" p={4} align="center">
+          <Heading.h2 f={3} color="accent" caps>
+            Made something rad?
+          </Heading.h2>
+          <Heading.h2 color="primary" f={5}>
+            Share it! 🌟
+          </Heading.h2>
+          <Text f={1} color="muted" mb={3}>
+            (posts are editable)
+          </Text>
+          <ShareButton
+            service="Twitter"
+            href={twitterURL(
+              `I just built ${name} with a @starthackclub workshop. Make yours:`,
+              url
+            )}
+            bg="#1da1f2"
+            mr={3}
+          />
+          <ShareButton
+            service="Facebook"
+            href={facebookURL(url)}
+            bg="#3b5998"
+          />
+        </Card>
+      </Container>
+      <Footer />
+    </Fragment>
+  )
 }
 
 export const pageQuery = graphql`

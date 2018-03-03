@@ -1,14 +1,11 @@
 import React, { Component, Fragment } from 'react'
 import {
-  ThemeProvider,
   Container,
   Box,
-  Button,
   Flex,
   Heading,
   Text,
-  Badge,
-  theme
+  Badge
 } from '@hackclub/design-system'
 import { AutoSaver, Field, Form } from 'components/Forms'
 import Login from 'components/apply/Login'
@@ -43,6 +40,7 @@ class Collapsable extends Component {
     super(props)
     this.state = { status: false }
   }
+
   render() {
     const { status } = this.state
     return (
@@ -62,7 +60,7 @@ class Collapsable extends Component {
   }
 }
 
-class Dashboard extends Component {
+export default class extends Component {
   constructor(props) {
     super(props)
     this.state = { status: 'loading' }
@@ -259,8 +257,3 @@ class Dashboard extends Component {
     }
   }
 }
-export default () => (
-  <ThemeProvider>
-    <Dashboard />
-  </ThemeProvider>
-)

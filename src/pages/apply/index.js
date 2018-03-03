@@ -3,7 +3,6 @@ import Helmet from 'react-helmet'
 import api from 'api'
 import storage from 'storage'
 import {
-  ThemeProvider,
   Box,
   Button,
   Card,
@@ -385,10 +384,10 @@ export default class extends Component {
 
   render() {
     return (
-      <ThemeProvider>
+      <Fragment>
         <Helmet title="Apply – Hack Club" />
         {this.content()}
-      </ThemeProvider>
+      </Fragment>
     )
   }
 }

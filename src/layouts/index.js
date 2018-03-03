@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Helmet from 'react-helmet'
 import data from 'data.json'
-import { colors } from '@hackclub/design-system'
+import { ThemeProvider, colors } from '@hackclub/design-system'
 
 const { name, title, description, img, url } = data
 
 export default props => (
-  <Fragment>
+  <ThemeProvider>
     <Helmet
       defaultTitle={title}
       title={title}
@@ -36,5 +36,5 @@ export default props => (
       <html lang="en" />
     </Helmet>
     {props.children()}
-  </Fragment>
+  </ThemeProvider>
 )

@@ -1,33 +1,69 @@
 require('babel-register')
-const fetch = require('unfetch')
+const axios = require('axios')
 const _ = require('lodash')
 const { forEach, toNumber, join, first, keys } = _
-const fs = require('fs')
+const { createElement: h } = require('react')
+const {
+  ComposableMap,
+  ZoomableGroup,
+  Geographies,
+  Geography,
+  Markers,
+  Marker
+} = require('react-simple-maps')
 const { renderToStaticMarkup } = require('react-dom/server')
-const h = require('react').createElement
-const Map = require('./Map').default
 const cheerio = require('cheerio')
 const SVGO = require('svgo/lib/svgo')
-const colors = require('../theme').colors
+const colors = require('@hackclub/design-system').theme.colors
 const feature = require('topojson-client').feature
+const fs = require('fs')
+
+const Map = props =>
+  h(
+    ComposableMap,
+    { width: 768 },
+    h(
+      ZoomableGroup,
+      { disablePanning: true },
+      h(Geographies, { geography: props.paths }, (geographies, projection) =>
+        geographies.map(geography =>
+          h(Geography, { key: geography.id, geography, projection })
+        )
+      ),
+      h(
+        Markers,
+        {},
+        props.locations.map((marker, i) =>
+          h(
+            Marker,
+            {
+              key: i,
+              marker
+            },
+            h('circle', { cx: 0, cy: 0, r: 6 })
+          )
+        )
+      )
+    )
+  )
 
 const args = require('minimist')(process.argv.slice(2), {
   default: {
     fill: colors.blue[0],
     stroke: colors.gray[0],
     pin: colors.primary,
-    path: './public/map.svg'
+    path: './static/map.svg'
   }
 })
 const { fill, stroke, pin, path } = args
 const css = `.rsm-svg{width:100vw;height:100vh;object-fit:cover}
 .rsm-geographies path{fill:${fill};stroke:${stroke};stroke-width:1;outline:none}
-.rsm-marker{fill:${pin};stroke-width:0;opacity:.667}`
+.rsm-markers circle{fill:${pin};stroke-width:0;opacity:.667}`
 
 const API = 'https://api.hackclub.com/v1/clubs'
 const GEO = 'https://unpkg.com/world-atlas@1.1.4/world/50m.json'
 const locations = []
-fetch(API)
+axios(API)
   .then(res => {
     forEach(res.data, club => {
       const { name, latitude, longitude } = club
@@ -37,8 +73,7 @@ fetch(API)
     return locations
   })
   .then(locations =>
-    axios
-      .get(GEO)
+    axios(GEO)
       .then(res => res.data)
       .then(
         paths =>
@@ -47,22 +82,36 @@ fetch(API)
       .then(paths => ({ paths, locations }))
   )
   .then(props => {
+    console.log('Downloaded data')
     const body = renderToStaticMarkup(h(Map, props))
     const $ = cheerio.load(body)
     $('svg').attr('xmlns', 'http://www.w3.org/2000/svg')
     $('.rsm-zoomable-group').removeAttr('transform')
+    $('.rsm-markers circle').removeAttr('tabindex')
     $('svg > g').prepend(`<style>${css.split(/\n/).join('')}</style>`)
     return $('body').html()
   })
   .then(svg => {
-    const svgo = new SVGO({})
-    svgo.optimize(svg, result => {
-      if (result.error) {
-        console.error(result.error)
-      } else {
-        fs.writeFile(path, result.data, err => {
-          console.log(err || `✅ Saved ${path}`)
-        })
-      }
+    console.log('Rendered SVG')
+    const svgo = new SVGO({
+      plugins: [
+        {
+          convertPathData: {
+            floatPrecision: 1,
+            transformPrecision: 1,
+            leadingZero: false
+          }
+        }
+      ]
     })
+    svgo
+      .optimize(svg)
+      .then(result => {
+        console.log('Optimized SVG')
+        fs.writeFile(path, result.data, err => {
+          const size = fs.statSync(path)['size'] / 1000
+          console.log(err || `✅  Saved ${path} (${size} KB)`)
+        })
+      })
+      .catch(error => console.error(result.error))
   })

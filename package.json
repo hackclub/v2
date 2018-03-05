@@ -11,7 +11,7 @@
     "start": "yarn run dev",
     "fmt": "prettier \"{src/**,}/*.js\" --single-quote --no-semi --write",
     "social": "repng src/components/Social.js -w 512 -h 512 -o public -f social",
-    "map-render": "node src/map/render.js"
+    "map": "npx babel-node src/map/render.js"
   },
   "dependencies": {
     "@hackclub/design-system": "^0.0.1-9",

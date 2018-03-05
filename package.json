@@ -14,7 +14,7 @@
     "map-render": "node src/map/render.js"
   },
   "dependencies": {
-    "@hackclub/design-system": "0.0.1-8",
+    "@hackclub/design-system": "^0.0.1-9",
     "axios": "^0.18.0",
     "formik": "^0.11.11",
     "gatsby": "^1.9.222",

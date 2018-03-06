@@ -48,7 +48,7 @@ const colorMap = {
 const FilterButton = ({ toggled, status, toggleFilter }) => (
   <Button.button
     mr={2}
-    bg={colorMap(status)}
+    bg={colorMap[status]}
     children={status}
     onClick={() => toggleFilter(status)}
     style={toggled ? null : { opacity: 0.25 }}

@@ -49,9 +49,9 @@ const Map = props =>
 
 const args = require('minimist')(process.argv.slice(2), {
   default: {
-    fill: colors.blue[0],
-    stroke: colors.gray[0],
-    pin: colors.primary,
+    fill: colors.cyan[8],
+    stroke: colors.cyan[7],
+    pin: colors.cyan[4],
     path: './static/map.svg'
   }
 })

@@ -50,18 +50,15 @@ const badgeColors = status => {
   return colors[status] || 'black'
 }
 
-const FilterButton = props => {
-  const { toggled, status, toggleFilter } = props
-  return (
-    <Button.button
-      mr={2}
-      bg={badgeColors(status)}
-      children={status}
-      onClick={() => toggleFilter(status)}
-      style={toggled ? null : { opacity: 0.25 }}
-    />
-  )
-}
+const FilterButton = ({ toggled, status, toggleFilter }) => (
+  <Button.button
+    mr={2}
+    bg={badgeColors(status)}
+    children={status}
+    onClick={() => toggleFilter(status)}
+    style={toggled ? null : { opacity: 0.25 }}
+  />
+)
 
 class Collapsable extends Component {
   constructor(props) {

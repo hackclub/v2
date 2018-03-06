@@ -76,9 +76,7 @@ export default class extends Component {
       .then(json => {
         let clubApplications = {}
         json.forEach(app => {
-          if (app.submitted_at) {
-            clubApplications[app.id] = app
-          }
+          clubApplications[app.id] = app
         })
         this.setState({
           status: 'success',
@@ -122,8 +120,10 @@ export default class extends Component {
       return 'red.5'
     } else if (application.interviewed_at) {
       return 'accent'
-    } else {
+    } else if (application.submitted_at){
       return 'info'
+    } else {
+      return 'gray.3'
     }
   }
 
@@ -158,6 +158,9 @@ export default class extends Component {
               {'. '}You’re doing great.
             </Heading.h2>
             <Flex mt={[3, 4]}>
+              <Badge mr={3} bg="gray.3">
+                Unsubmitted
+              </Badge>
               <Badge mr={3} bg="red.5">
                 Rejected
               </Badge>

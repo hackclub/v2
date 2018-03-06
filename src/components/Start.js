@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-  Section,
-  Box,
-  Heading,
-  LargeButton,
-  mediaQueries
-} from '@hackclub/design-system'
+import { Section, Box, Heading, LargeButton } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 
 const tilt = n =>
@@ -21,7 +15,7 @@ const Base = Section.extend`
     ${props => props.theme.colors.red[6]} 100%
   );
   padding: 4rem 0 !important;
-  ${mediaQueries.lg} {
+  ${props => props.theme.mediaQueries.lg} {
     padding-top: 5rem 0 !important;
     ${tilt(85)};
   }

@@ -14,7 +14,7 @@ export default () => (
         content="f7cxVyFnrTxN9Q-HnpP-ueNWuWF5VgIEKF0C3tSnsnc"
       />
     </Helmet>
-    <Nav style={{ position: 'absolute', top: 0 }} color="primary" />
+    <Nav style={{ position: 'absolute', top: 0 }} />
     <Bubbles />
     <About />
     <Mosaic />

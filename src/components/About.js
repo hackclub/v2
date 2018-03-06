@@ -17,6 +17,8 @@ import Stat from 'components/Stat'
 import { stats } from 'data.json'
 
 const Grid = Box.extend`
+  display: grid;
+  grid-gap: ${props => props.theme.space[3]}px;
   width: 100%;
 
   > div,
@@ -25,19 +27,11 @@ const Grid = Box.extend`
     box-shadow: ${props => props.theme.boxShadows[3]};
     border-radius: ${props => props.theme.radius};
     max-width: 100%;
-    margin-top: ${props => props.theme.space[2]}px;
-    margin-bottom: ${props => props.theme.space[2]}px;
   }
 
   ${props => props.theme.mediaQueries.md} {
-    column-count: 2;
-    column-gap: ${props => props.theme.space[4]}px;
-    max-height: 56rem;
-    > div,
-    > img {
-      margin-top: ${props => props.theme.space[3]}px;
-      margin-bottom: ${props => props.theme.space[3]}px;
-    }
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: ${props => props.theme.space[4]}px;
   }
 `
 
@@ -104,7 +98,7 @@ export default () => (
         constantly mentoring. Your members start with no experience.
       </Text>
     </Container>
-    <Grid mt={3} color="white">
+    <Grid mt={4} mb={[4, 6]} color="white">
       <Box bg="primary" p={[3, 4]}>
         <Heading.h2 f={4} my={0} caps>
           Ready to get started?
@@ -160,7 +154,7 @@ export default () => (
         constantly mentoring. Your members start with no experience.
       </Text>
     </Container>
-    <Grid pb={[5, 2]} color="white">
+    <Grid mt={4} mb={[4, 6]} color="white">
       <Super p={[3, 4]}>
         <Heading.h2 f={4} my={0} caps>
           Coding is a superpower.
@@ -168,8 +162,7 @@ export default () => (
         <Text f={3} my={3}>
           Learning to code is uniquely empowering: you go from a consumer to a
           creator. The goal of Hack Club is to help you become that hacker. We
-          want a space at every high school where people are making interesting
-          things with code, every week.
+          want a space for hacking at every high school, every week.
         </Text>
         <Button.link to="/philosophy" bg="warning" inverted>
           Our philosophy

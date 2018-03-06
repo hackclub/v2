@@ -139,7 +139,7 @@ export default class extends Component {
 
   toggleFilter(filter) {
     const { selection, filters } = this.state
-    const updatedFilters = _.xor(filters, [filter])
+    const updatedFilters = xor(filters, [filter])
     this.setState({ filters: updatedFilters })
 
     // Deselect applications that get filtered out

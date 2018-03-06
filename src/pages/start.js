@@ -10,9 +10,7 @@ import {
   LargeButton,
   Section,
   Link as A,
-  Module,
-  mediaQueries,
-  cx
+  Module
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
@@ -20,7 +18,7 @@ import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 
 const One = Section.extend`
-  padding-top: 0 !important;
+  padding: 0 !important;
   position: relative;
   background-color: ${props => props.theme.colors.green[6]};
   background-image: linear-gradient(
@@ -67,7 +65,7 @@ const Modules = Flex.extend.attrs({
 const OthersCard = Card.extend`
   max-width: 28rem;
 
-  ${mediaQueries[1]} {
+  ${props => props.theme.mediaQueries.md} {
     transform: rotate(2deg);
   }
 
@@ -111,12 +109,14 @@ export default () => (
     />
     <One>
       <Nav />
-      <Heading.h1 f={[5, 6]} mt={[4, 5]}>
-        Let’s get your Hack Club started.
-      </Heading.h1>
-      <Heading.h2 f={[3, 4]} my={2} normal>
-        The awesome coding club at your high school is coming soon.
-      </Heading.h2>
+      <Box px={3} pb={[4, 5]}>
+        <Heading.h1 f={[5, 6]} mt={[4, 5]}>
+          Let’s get your Hack Club started.
+        </Heading.h1>
+        <Heading.h2 f={[3, 4]} my={2} regular>
+          The awesome coding club at your high school is coming soon.
+        </Heading.h2>
+      </Box>
     </One>
     <CTAContainer>
       <LargeButton.link to="/apply" inverted f={[3, 4]}>

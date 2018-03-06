@@ -20,7 +20,7 @@ import Information from 'components/admin/Information'
 import NotesForm from 'components/admin/NotesForm'
 import { Formik } from 'formik'
 import api from 'api'
-import _ from 'lodash'
+import { xor } from 'lodash'
 
 const Arrow = Text.span.extend.attrs({
   children: '❯'

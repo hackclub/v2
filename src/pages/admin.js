@@ -38,11 +38,11 @@ const Revealer = Box.extend`
 `
 const badgeColors = status => {
   const colors = {
-    'accepted': 'success',
-    'rejected': 'red.5',
-    'interviewed': 'accent',
-    'submitted': 'info',
-    'unsubmitted': 'gray.3'
+    accepted: 'success',
+    rejected: 'red.5',
+    interviewed: 'accent',
+    submitted: 'info',
+    unsubmitted: 'gray.3'
   }
   if (!status) {
     return Object.keys(colors)
@@ -53,11 +53,12 @@ const badgeColors = status => {
 const FilterButton = props => {
   const { toggled, status, toggleFilter } = props
   return (
-    <Button.button mr={2}
+    <Button.button
+      mr={2}
       bg={badgeColors(status)}
       children={status}
       onClick={() => toggleFilter(status)}
-      style={toggled ? null : {opacity: 0.25}}
+      style={toggled ? null : { opacity: 0.25 }}
     />
   )
 }
@@ -93,7 +94,7 @@ export default class extends Component {
     this.state = {
       status: 'loading',
       filters: []
-     }
+    }
     this.updateApplicationList = this.updateApplicationList.bind(this)
     this.toggleFilter = this.toggleFilter.bind(this)
   }
@@ -150,8 +151,11 @@ export default class extends Component {
     this.setState({ filters: updatedFilters })
 
     // Deselect applications that get filtered out
-    if (selection && !this.filterApplication(selection, updatedFilters).visible) {
-      this.setState({selection: null})
+    if (
+      selection &&
+      !this.filterApplication(selection, updatedFilters).visible
+    ) {
+      this.setState({ selection: null })
     }
   }
 
@@ -213,7 +217,7 @@ export default class extends Component {
                   toggleFilter={this.toggleFilter}
                   status={status}
                   toggled={this.state.filters.indexOf(status) === -1}
-                  />
+                />
               ))}
             </Flex>
             <Flex justify="center" mt={[3, 4]}>
@@ -226,32 +230,34 @@ export default class extends Component {
                   </Tr>
                 </thead>
                 <tbody>
-                  {Object.values(clubApplications).map((application, index) => (
-                    (this.filterApplication(application).visible ?
-                      <Tr
-                        key={index}
-                        onClick={() => {
-                          const alreadySelected =
-                            this.state.selection === application
+                  {Object.values(clubApplications).map(
+                    (application, index) =>
+                      this.filterApplication(application).visible ? (
+                        <Tr
+                          key={index}
+                          onClick={() => {
+                            const alreadySelected =
+                              this.state.selection === application
 
-                          this.setState({
-                            selection: alreadySelected ? undefined : application,
-                            selectType: 'notes'
-                          })
-                        }}
-                      >
-                        <Td>
-                          <Badge
-                            bg={this.filterApplication(application).color}
-                            children={application.id}
-                          />
-                        </Td>
-                        <Td>{application.high_school_name}</Td>
-                        <Td>{this.pointOfContact(application)}</Td>
-                      </Tr> :
-                      null
-                    )
-                  ))}
+                            this.setState({
+                              selection: alreadySelected
+                                ? undefined
+                                : application,
+                              selectType: 'notes'
+                            })
+                          }}
+                        >
+                          <Td>
+                            <Badge
+                              bg={this.filterApplication(application).color}
+                              children={application.id}
+                            />
+                          </Td>
+                          <Td>{application.high_school_name}</Td>
+                          <Td>{this.pointOfContact(application)}</Td>
+                        </Tr>
+                      ) : null
+                  )}
                 </tbody>
               </table>
               {selection && (

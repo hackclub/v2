@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import {
   Container,
+  Button,
   Box,
   Flex,
   Heading,
@@ -19,6 +20,7 @@ import Information from 'components/admin/Information'
 import NotesForm from 'components/admin/NotesForm'
 import { Formik } from 'formik'
 import api from 'api'
+import { xor } from 'lodash'
 
 const Arrow = Text.span.extend.attrs({
   children: '❯'
@@ -34,6 +36,24 @@ const Revealer = Box.extend`
   opacity: ${props => (props.active ? 1 : 0)};
   transition: 0.5s ease-in;
 `
+
+const colorMap = {
+  accepted: 'success',
+  rejected: 'red.5',
+  interviewed: 'accent',
+  submitted: 'info',
+  unsubmitted: 'gray.3'
+}
+
+const FilterButton = ({ toggled, status, toggleFilter }) => (
+  <Button.button
+    mr={2}
+    bg={colorMap[status]}
+    children={status}
+    onClick={() => toggleFilter(status)}
+    style={toggled ? null : { opacity: 0.25 }}
+  />
+)
 
 class Collapsable extends Component {
   constructor(props) {
@@ -63,8 +83,12 @@ class Collapsable extends Component {
 export default class extends Component {
   constructor(props) {
     super(props)
-    this.state = { status: 'loading' }
+    this.state = {
+      status: 'loading',
+      filters: ['unsubmitted']
+    }
     this.updateApplicationList = this.updateApplicationList.bind(this)
+    this.toggleFilter = this.toggleFilter.bind(this)
   }
 
   componentDidMount() {
@@ -76,9 +100,7 @@ export default class extends Component {
       .then(json => {
         let clubApplications = {}
         json.forEach(app => {
-          if (app.submitted_at) {
-            clubApplications[app.id] = app
-          }
+          clubApplications[app.id] = app
         })
         this.setState({
           status: 'success',
@@ -115,15 +137,38 @@ export default class extends Component {
     return selection && selection.id === application.id && selectType === prop
   }
 
-  badgeColor(application) {
+  toggleFilter(filter) {
+    const { selection, filters } = this.state
+    const updatedFilters = xor(filters, [filter])
+    this.setState({ filters: updatedFilters })
+
+    // Deselect applications that get filtered out
+    if (
+      selection &&
+      !this.filterApplication(selection, updatedFilters).visible
+    ) {
+      this.setState({ selection: null })
+    }
+  }
+
+  filterApplication(application, filters = this.state.filters) {
+    let status
     if (application.accepted_at) {
-      return 'success'
+      status = 'accepted'
     } else if (application.rejected_at) {
-      return 'red.5'
+      status = 'rejected'
     } else if (application.interviewed_at) {
-      return 'accent'
+      status = 'interviewed'
+    } else if (application.submitted_at) {
+      status = 'submitted'
     } else {
-      return 'info'
+      status = 'unsubmitted'
+    }
+
+    return {
+      visible: filters.indexOf(status) === -1,
+      selected: this.state.selection === application,
+      color: colorMap[status]
     }
   }
 
@@ -133,7 +178,8 @@ export default class extends Component {
       status,
       clubApplications,
       selection,
-      selectType
+      selectType,
+      filters
     } = this.state
     switch (status) {
       case 'loading':
@@ -158,18 +204,14 @@ export default class extends Component {
               {'. '}You’re doing great.
             </Heading.h2>
             <Flex mt={[3, 4]}>
-              <Badge mr={3} bg="red.5">
-                Rejected
-              </Badge>
-              <Badge mr={3} bg="info">
-                Awaiting Interview
-              </Badge>
-              <Badge mr={3} bg="accent">
-                Awaiting Decision
-              </Badge>
-              <Badge mr={3} bg="success">
-                Accepted
-              </Badge>
+              {Object.keys(colorMap).map((status, index) => (
+                <FilterButton
+                  key={index}
+                  toggleFilter={this.toggleFilter}
+                  status={status}
+                  toggled={this.state.filters.indexOf(status) === -1}
+                />
+              ))}
             </Flex>
             <Flex justify="center" mt={[3, 4]}>
               <table>
@@ -181,29 +223,34 @@ export default class extends Component {
                   </Tr>
                 </thead>
                 <tbody>
-                  {Object.values(clubApplications).map((application, index) => (
-                    <Tr
-                      key={index}
-                      onClick={() => {
-                        const alreadySelected =
-                          this.state.selection === application
+                  {Object.values(clubApplications).map(
+                    (application, index) =>
+                      this.filterApplication(application).visible ? (
+                        <Tr
+                          key={index}
+                          onClick={() => {
+                            const alreadySelected =
+                              this.state.selection === application
 
-                        this.setState({
-                          selection: alreadySelected ? undefined : application,
-                          selectType: 'notes'
-                        })
-                      }}
-                    >
-                      <Td>
-                        <Badge
-                          bg={this.badgeColor(application)}
-                          children={application.id}
-                        />
-                      </Td>
-                      <Td>{application.high_school_name}</Td>
-                      <Td>{this.pointOfContact(application)}</Td>
-                    </Tr>
-                  ))}
+                            this.setState({
+                              selection: alreadySelected
+                                ? undefined
+                                : application,
+                              selectType: 'notes'
+                            })
+                          }}
+                        >
+                          <Td>
+                            <Badge
+                              bg={this.filterApplication(application).color}
+                              children={application.id}
+                            />
+                          </Td>
+                          <Td>{application.high_school_name}</Td>
+                          <Td>{this.pointOfContact(application)}</Td>
+                        </Tr>
+                      ) : null
+                  )}
                 </tbody>
               </table>
               {selection && (

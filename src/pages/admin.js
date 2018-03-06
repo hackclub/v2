@@ -36,24 +36,19 @@ const Revealer = Box.extend`
   opacity: ${props => (props.active ? 1 : 0)};
   transition: 0.5s ease-in;
 `
-const badgeColors = status => {
-  const colors = {
-    accepted: 'success',
-    rejected: 'red.5',
-    interviewed: 'accent',
-    submitted: 'info',
-    unsubmitted: 'gray.3'
-  }
-  if (!status) {
-    return Object.keys(colors)
-  }
-  return colors[status] || 'black'
+
+const colorMap = {
+  accepted: 'success',
+  rejected: 'red.5',
+  interviewed: 'accent',
+  submitted: 'info',
+  unsubmitted: 'gray.3'
 }
 
 const FilterButton = ({ toggled, status, toggleFilter }) => (
   <Button.button
     mr={2}
-    bg={badgeColors(status)}
+    bg={colorMap(status)}
     children={status}
     onClick={() => toggleFilter(status)}
     style={toggled ? null : { opacity: 0.25 }}
@@ -169,11 +164,12 @@ export default class extends Component {
     } else {
       status = 'unsubmitted'
     }
-    const color = badgeColors(status)
-    const visible = filters.indexOf(status) === -1
-    const selected = this.state.selection === application
 
-    return { visible, selected, color }
+    return {
+      visible: filters.indexOf(status) === -1,
+      selected: this.state.selection === application,
+      color: colorMap[status]
+    }
   }
 
   render() {
@@ -208,7 +204,7 @@ export default class extends Component {
               {'. '}You’re doing great.
             </Heading.h2>
             <Flex mt={[3, 4]}>
-              {badgeColors().map((status, index) => (
+              {Object.keys(colorMap).map((status, index) => (
                 <FilterButton
                   key={index}
                   toggleFilter={this.toggleFilter}

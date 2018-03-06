@@ -181,7 +181,7 @@ const InnerForm = props => {
         <Fieldset section="idea">
           <Field
             name="idea_why"
-            label="Why did you decide to start a Hack Club? Have you ran anything like a Hack Club before? Why do you think the club is going to work?"
+            label="Why did you decide to start a Hack Club? Have you run anything like a Hack Club before? Why do you think the club is going to work?"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.idea_why}

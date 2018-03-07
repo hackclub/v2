@@ -85,7 +85,7 @@ export default class extends Component {
     super(props)
     this.state = {
       status: 'loading',
-      filters: ['unsubmitted']
+      filters: ['unsubmitted', 'rejected']
     }
     this.updateApplicationList = this.updateApplicationList.bind(this)
     this.toggleFilter = this.toggleFilter.bind(this)

@@ -38,11 +38,11 @@ const Revealer = Box.extend`
 `
 
 const colorMap = {
-  accepted: 'success',
-  rejected: 'red.5',
-  interviewed: 'accent',
+  unsubmitted: 'gray.3',
   submitted: 'info',
-  unsubmitted: 'gray.3'
+  interviewed: 'accent',
+  rejected: 'red.5',
+  accepted: 'success'
 }
 
 const FilterButton = ({ toggled, status, toggleFilter }) => (

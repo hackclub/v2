@@ -93,7 +93,7 @@ export default class extends Component {
   }
 
   addAppToList(apps) {
-    let { clubApplications } = this.state
+    const { clubApplications } = this.state
     apps.forEach(app => {
       clubApplications[app.id] = app
     })

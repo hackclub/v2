@@ -10,9 +10,13 @@ const MarkdownBody = Box.extend`
   a {
     color: ${props => props.theme.colors.info};
     em {
-    	font-style: normal;
-    	&:before { content: '_'; }
-    	&:after { content: '_'; }
+      font-style: normal;
+      &:before {
+        content: '_';
+      }
+      &:after {
+        content: '_';
+      }
     }
   }
 

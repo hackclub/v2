@@ -76,10 +76,7 @@ class LeaderInviteForm extends Component {
           hint={
             <Fragment>
               Still deciding who will be on your team?{' '}
-              <A
-                href="/workshops/leadership_team"
-                target="_blank"
-              >
+              <A href="/workshops/leadership_team" target="_blank">
                 Consider this
               </A>.
             </Fragment>

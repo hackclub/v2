@@ -261,7 +261,10 @@ export default class extends Component {
                   style={{ minWidth: '18rem' }}
                 >
                   <Text color="muted" f={1} caps mb={3}>
-                    Application #{selection.id}
+                    Application{' '}
+                    <Badge bg={this.filterApplication(selection).color}>
+                      {selection.id}
+                    </Badge>
                   </Text>
                   <Collapsable heading="Reject">
                     <RejectionForm

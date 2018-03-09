@@ -100,15 +100,15 @@ const Start = Box.extend`
 const Promo = () => (
   <Start p={[4, 5]} color="white">
     <Heading.h2 f={[5, 6]} m={0}>
-      Start a Hack Club.
+      Get started.
     </Heading.h2>
-    <Text f={[3, 4]} my={1}>
-      Bring the movement to your school.
-    </Text>
-    <Text f={[3, 4]} mb={3}>
+    <Text f={[3, 4]} my={2}>
       Build the class you wish you could take.
     </Text>
-    <LargeButton.link to="/start" inverted children="Get started »" />
+    <Text f={[3, 4]} mb={3}>
+      Bring the movement to your school.
+    </Text>
+    <LargeButton.link to="/start" inverted children="Start a Club »" />
   </Start>
 )
 

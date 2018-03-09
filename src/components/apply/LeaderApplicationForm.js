@@ -83,7 +83,7 @@ const InnerForm = props => {
             </option>
             <option value="male">Male</option>
             <option value="female">Female</option>
-            <option value="genderqueer">Genderqueer</option>
+            <option value="genderqueer">Non-binary/genderqueer</option>
             <option value="agender">Agender</option>
             <option value="other_gender">Other</option>
           </Field>

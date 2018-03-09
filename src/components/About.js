@@ -3,14 +3,12 @@ import {
   Box,
   Heading,
   Container,
-  Card,
   Text,
   Flex,
   Module,
   Button,
-  LargeButton,
-  mediaQueries,
-  cx
+  BackgroundImage,
+  Link as A
 } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 import Stat from 'components/Stat'
@@ -58,6 +56,12 @@ const Super = Box.extend`
   }
 `
 
+const Graph = Box.extend`
+  background: ${props => props.theme.colors.accent} url(/graph.svg) top center
+    repeat-x;
+  background-size: auto 100%;
+`
+
 const Modules = Box.extend`
   display: grid;
   grid-gap: ${props => props.theme.space[3]}px;
@@ -79,10 +83,9 @@ const Stats = Box.extend`
   }
 `
 
-const Image = Box.withComponent('img')
+const Like = A.extend.attrs({ color: 'red.1', target: '_blank' })``
 
 Button.link = Button.withComponent(Link)
-LargeButton.link = LargeButton.withComponent(Link)
 
 export default () => (
   <Container w={1} px={[3]} mt={[4, 5]}>
@@ -92,31 +95,37 @@ export default () => (
         could take.
       </Heading.h2>
       <Text f={[3, 4]}>
-        A Hack Club is a high school club. Every week, you and around 20 other
-        students come together to build. Meetings are buzzing: people working on
-        projects, learning is self-guided through workshops, leaders are
-        constantly mentoring. Your members start with no experience.
+        Every week, you and 20 other students come together to build. Meetings
+        are like mini-hackathons. People are working on projects, you lead
+        workshops to introduce new technologies, you and your co-leads are
+        constantly mentoring. Your members typically start with no experience.
       </Text>
     </Container>
     <Grid mt={4} mb={[4, 6]} color="white">
       <Box bg="primary" p={[3, 4]}>
         <Heading.h2 f={4} my={0} caps>
-          Ready to get started?
+          So much more than a club
         </Heading.h2>
         <Text f={3} my={3}>
-          You, a student who knows how to code, get 1-2 others to start a Hack
-          Club. You apply, we accept you, you use our resouces to start your
-          club at your high school.
+          Hack Clubs attend and run hackathons{' '}
+          <Like href="https://www.sfchronicle.com/bayarea/article/Hack-the-Fog-makes-history-as-San-12729895.php">
+            like Hack the Fog
+          </Like>. They run summer programs{' '}
+          <Like href="http://thecspn.com/?p=43434">like Hack Camp</Like>. They
+          compete in competitions{' '}
+          <Like href="http://www.congressionalappchallenge.us">
+            like the Congressional App Challenge
+          </Like>. This is no ordinary club.
         </Text>
-        <LargeButton.link to="/start" inverted>
-          Start your Club
-        </LargeButton.link>
+        <Button.link to="/meetings" inverted>
+          Learn more »
+        </Button.link>
       </Box>
-      <Image src="/about_talking.jpg" />
-      <Image src="/about_hacking.jpg" />
+      <BackgroundImage image="/about_working.jpg" />
+      <BackgroundImage image="/about_group.jpg" />
       <Box bg="info" p={[3, 4]}>
         <Heading.h2 f={4} my={0} caps>
-          Start with a club in a box.
+          The power of a network
         </Heading.h2>
         <Modules my={3} w={1}>
           <Module
@@ -142,48 +151,51 @@ export default () => (
         </Modules>
       </Box>
     </Grid>
-    <Container maxWidth={48} mx={0} mt={[5, null, -5]} mb={4}>
+    <Container maxWidth={48} mx={0} mt={[4, 5]} mb={4}>
       <Heading.h2 f={[4, 5]} mb={3} bold>
         We think people learn best when they take control of their own
         education.
       </Heading.h2>
       <Text f={[3, 4]}>
-        A Hack Club is a high school club. Every week, you and around 20 other
-        students come together to build. Meetings are buzzing: people working on
-        projects, learning is self-guided through workshops, leaders are
-        constantly mentoring. Your members start with no experience.
+        We believe in a world where every young person is empowered to be the
+        change they want to see in the world. By offering free computer science
+        clubs in high schools, we’re bringing this vision to students around the
+        world.
+        <br />At Hack Club, there are no teachers or lectures. Your job as a
+        club leader is to facilitate and provide guidance through mentoring and
+        the power of community. Hack Club is heavily inspired by unschooling.
       </Text>
     </Container>
     <Grid mt={4} mb={[4, 6]} color="white">
       <Super p={[3, 4]}>
         <Heading.h2 f={4} my={0} caps>
-          Coding is a superpower.
+          Coding is a superpower
         </Heading.h2>
         <Text f={3} my={3}>
           Learning to code is uniquely empowering: you go from a consumer to a
-          creator. The goal of Hack Club is to help you become that hacker. We
+          creator. The goal of Hack Club is to help you become that creator. We
           want a space for hacking at every high school, every week.
         </Text>
         <Button.link to="/philosophy" bg="warning" inverted>
-          Our philosophy
+          Our philosophy »
         </Button.link>
       </Super>
-      <Image src="/about_working.jpg" />
-      <Image src="/about_group.jpg" />
-      <Box bg="accent" p={[3, 4]}>
+      <BackgroundImage image="/about_talking.jpg" />
+      <BackgroundImage image="/about_hacking.jpg" />
+      <Graph p={[3, 4]}>
         <Heading.h2 f={4} my={0} caps>
-          Be part of a movement.
+          Be part of the movement
         </Heading.h2>
-        <Stats mt={2} mb={3}>
+        <Stats mb={2}>
           <Stat f={7} value={stats.school_count} label="schools" />
           <Stat f={7} value={stats.country_count} label="countries" />
           <Stat f={7} value={stats.state_count} label="states" />
           <Stat f={7} value={stats.approximate_members} label="members" />
         </Stats>
-        <Button href="/donate" bg="accent" inverted>
-          Donate
-        </Button>
-      </Box>
+        <Button.link to="/team" bg="accent" inverted>
+          Our team »
+        </Button.link>
+      </Graph>
     </Grid>
   </Container>
 )

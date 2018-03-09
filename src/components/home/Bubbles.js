@@ -10,7 +10,7 @@ import {
 } from '@hackclub/design-system'
 
 const Root = Flex.extend`
-  background: ${props => props.theme.colors.blue[6]} url('/map.svg') no-repeat;
+  background: ${props => props.theme.colors.blue[8]} url('/map.svg') no-repeat;
   background-size: cover;
   background-position: center top;
   clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 95%);
@@ -23,7 +23,7 @@ const Cloud = Container.extend`
   > p,
   > h1,
   > h2 {
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
   }
   p:first-child {
     line-height: 1.125;

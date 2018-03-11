@@ -85,6 +85,15 @@ const Stats = Box.extend`
 
 const Like = A.extend.attrs({ color: 'red.1', target: '_blank' })``
 
+const Photo = BackgroundImage.extend.attrs({ role: 'img' })`
+  transition: all 0.125s ease-out;
+  background-size: auto 100%;
+  object-fit: cover;
+  &:hover {
+    background-size: auto 108%;
+  }
+`
+
 Button.link = Button.withComponent(Link)
 
 export default () => (
@@ -121,8 +130,8 @@ export default () => (
           Learn more »
         </Button.link>
       </Box>
-      <BackgroundImage image="/about_working.jpg" />
-      <BackgroundImage image="/about_group.jpg" />
+      <Photo image="/about_working.jpg" />
+      <Photo image="/about_group.jpg" />
       <Box bg="info" p={[3, 4]}>
         <Heading.h2 f={4} my={0} caps>
           The power of a network
@@ -180,8 +189,8 @@ export default () => (
           Our philosophy »
         </Button.link>
       </Super>
-      <BackgroundImage image="/about_talking.jpg" />
-      <BackgroundImage image="/about_hacking.jpg" />
+      <Photo image="/about_talking.jpg" />
+      <Photo image="/about_hacking.jpg" />
       <Graph p={[3, 4]}>
         <Heading.h2 f={4} my={0} caps>
           Be part of the movement

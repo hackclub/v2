@@ -40,10 +40,10 @@ const Start = ({ mt = '-4rem', ...props }) => (
         Start a Hack Club.
       </Heading.h2>
       <Heading.h3 f={[3, 4]} my={1}>
-        Bring the movement to your school.
+        Build the class you wish you could take.
       </Heading.h3>
       <Heading.h3 f={[3, 4]} m={0}>
-        Build the class you wish you could take.
+        Bring the movement to your school.
       </Heading.h3>
     </Box>
     <Box p={3}>

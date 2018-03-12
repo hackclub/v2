@@ -13,6 +13,8 @@ const Root = Flex.extend`
   background: ${props => props.theme.colors.blue[8]} url('/map.svg') no-repeat;
   background-size: cover;
   background-position: center top;
+  max-width: 100%;
+  overflow: hidden;
   clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 95%);
   ${props => props.theme.mediaQueries.md} {
     clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 90%);

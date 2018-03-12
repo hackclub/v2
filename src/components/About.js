@@ -83,7 +83,11 @@ const Stats = Box.extend`
   }
 `
 
-const Like = A.extend.attrs({ color: 'red.1', target: '_blank' })``
+const Like = A.extend.attrs({
+  underline: true,
+  color: 'white',
+  target: '_blank'
+})``
 
 const Photo = BackgroundImage.extend.attrs({ role: 'img' })`
   transition: all 0.125s ease-out;
@@ -116,14 +120,14 @@ export default () => (
           So much more than a club
         </Heading.h2>
         <Text f={3} my={3}>
-          Hack Clubs attend and run hackathons{' '}
+          Hack Clubs attend and run hackathons like{' '}
           <Like href="https://www.sfchronicle.com/bayarea/article/Hack-the-Fog-makes-history-as-San-12729895.php">
-            like Hack the Fog
-          </Like>. They run summer programs{' '}
-          <Like href="http://thecspn.com/?p=43434">like Hack Camp</Like>. They
-          compete in competitions{' '}
+            Hack the Fog
+          </Like>. They run summer programs like{' '}
+          <Like href="http://thecspn.com/?p=43434">Hack Camp</Like>. They
+          compete in competitions like the{' '}
           <Like href="http://www.congressionalappchallenge.us">
-            like the Congressional App Challenge
+            Congressional App Challenge
           </Like>. This is no ordinary club.
         </Text>
         <Button.link to="/meetings" inverted>

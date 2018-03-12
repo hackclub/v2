@@ -195,7 +195,7 @@ export default () => (
       <Photo image="/about_hacking.jpg" />
       <Graph p={[3, 4]}>
         <Heading.h2 f={4} my={0} caps>
-          Be part of the movement
+          Grassroots and growing
         </Heading.h2>
         <Stats mb={2}>
           <Stat f={7} value={stats.school_count} label="schools" />

@@ -19,8 +19,7 @@ const Grid = Box.extend`
   grid-gap: ${props => props.theme.space[3]}px;
   width: 100%;
 
-  > div,
-  > img {
+  > div {
     width: 100%;
     box-shadow: ${props => props.theme.boxShadows[3]};
     border-radius: ${props => props.theme.radius};
@@ -89,9 +88,9 @@ const Like = A.extend.attrs({
 })``
 
 const Photo = BackgroundImage.extend.attrs({ role: 'img' })`
+  overflow: hidden;
   transition: all 0.125s ease-out;
   background-size: auto 100%;
-  object-fit: cover;
   &:hover {
     background-size: auto 108%;
   }
@@ -133,8 +132,8 @@ export default () => (
           Learn more »
         </Button.link>
       </Box>
-      <Photo image="/about_working.jpg" />
-      <Photo image="/about_group.jpg" />
+      <Photo image="/about_all.jpg" />
+      <Photo image="/about_talking.jpg" />
       <Box bg="info" p={[3, 4]}>
         <Heading.h2 f={4} my={0} caps>
           The power of a network
@@ -192,7 +191,7 @@ export default () => (
           Our philosophy »
         </Button.link>
       </Super>
-      <Photo image="/about_talking.jpg" />
+      <Photo image="/about_working.jpg" />
       <Photo image="/about_hacking.jpg" />
       <Graph p={[3, 4]}>
         <Heading.h2 f={4} my={0} caps>

@@ -57,9 +57,8 @@ const Super = Box.extend`
 `
 
 const Graph = Box.extend`
-  background: ${props => props.theme.colors.accent} url(/graph.svg) top center
-    repeat-x;
-  background-size: auto 100%;
+  background: ${props => props.theme.colors.accent} url(/graph.svg) no-repeat;
+  background-size: 100% 100%;
 `
 
 const Modules = Box.extend`

@@ -168,7 +168,7 @@ export default () => (
         education.
       </Heading.h2>
       <Text f={[3, 4]}>
-        Hack Club is heavily inspired by unschooling At Hack Club, there are no
+        Hack Club is heavily inspired by unschooling. At Hack Club, there are no
         teachers or lectures. Your job as a club leader is to facilitate and
         provide guidance through mentoring and the power of community.
       </Text>

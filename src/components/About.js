@@ -100,7 +100,7 @@ const Photo = BackgroundImage.extend.attrs({ role: 'img' })`
 Button.link = Button.withComponent(Link)
 
 export default () => (
-  <Container w={1} px={[3]} mt={[4, 5]}>
+  <Container w={1} px={[3, 4]} mt={[4, 5]}>
     <Container maxWidth={48} mx={0}>
       <Heading.h2 f={[4, 5]} mb={3} bold>
         Join the largest community of students building the class they wish they

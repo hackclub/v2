@@ -19,12 +19,10 @@ const Root = Flex.extend`
   ${props => props.theme.mediaQueries.md} {
     clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 90%);
   }
-`
 
-const Cloud = Container.extend`
-  > p,
-  > h1,
-  > h2 {
+  p,
+  h1,
+  h2 {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
   }
   p:first-child {
@@ -45,9 +43,9 @@ const Cloud = Container.extend`
 
 LargeButton.link = LargeButton.withComponent(Link)
 
-const Bubbles = ({ children }) => (
+const Bubbles = () => (
   <Root justify="center" align="center" py={[5, 6]} px={[0, 3]}>
-    <Cloud maxWidth={48} color="white">
+    <Container maxWidth={48} color="white">
       <Text f={[3, 4]} px={2} mx="auto" my={0} caps>
         By the students, for the students.
       </Text>
@@ -66,7 +64,7 @@ const Bubbles = ({ children }) => (
           Start a Club »
         </LargeButton.link>
       </Flex>
-    </Cloud>
+    </Container>
   </Root>
 )
 

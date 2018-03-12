@@ -168,13 +168,9 @@ export default () => (
         education.
       </Heading.h2>
       <Text f={[3, 4]}>
-        We believe in a world where every young person is empowered to be the
-        change they want to see in the world. By offering free computer science
-        clubs in high schools, we’re bringing this vision to students around the
-        world.
-        <br />At Hack Club, there are no teachers or lectures. Your job as a
-        club leader is to facilitate and provide guidance through mentoring and
-        the power of community. Hack Club is heavily inspired by unschooling.
+        Hack Club is heavily inspired by unschooling At Hack Club, there are no
+        teachers or lectures. Your job as a club leader is to facilitate and
+        provide guidance through mentoring and the power of community.
       </Text>
     </Container>
     <Grid mt={4} mb={[4, 6]} color="white">

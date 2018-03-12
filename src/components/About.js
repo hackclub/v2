@@ -96,7 +96,13 @@ const Photo = BackgroundImage.extend.attrs({ role: 'img' })`
   }
 `
 
-Button.link = Button.withComponent(Link)
+Button.link = Button.withComponent(Link).extend`
+  transition: transform 0.125s ease-out;
+  transform: scale(1);
+  &:hover {
+    transform: scale(1.06);
+  }
+`
 
 export default () => (
   <Container w={1} px={[3, 4]} mt={[4, 5]}>

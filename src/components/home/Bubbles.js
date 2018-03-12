@@ -34,6 +34,14 @@ const Root = Flex.extend`
   h2 {
     line-height: 1.25;
   }
+
+  a {
+    transition: transform 0.125s ease-out;
+    transform: scale(1);
+    &:hover {
+      transform: scale(1.06);
+    }
+  }
   @media screen and (max-width: 22em) {
     a span {
       display: none;

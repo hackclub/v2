@@ -105,7 +105,7 @@ Button.link = Button.withComponent(Link).extend`
 `
 
 export default () => (
-  <Container w={1} px={[3, 4]} mt={[4, 5]}>
+  <Container w={1} px={[3, 4, null, 2]} mt={[4, 5]}>
     <Container maxWidth={48} mx={0}>
       <Heading.h2 f={[4, 5]} mb={3} bold>
         Join the largest community of students building the class they wish they

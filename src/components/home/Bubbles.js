@@ -8,8 +8,13 @@ import {
   Text,
   LargeButton
 } from '@hackclub/design-system'
+import Animator from 'components/Animator'
 
-const Root = Flex.extend`
+const Root = Box.withComponent('header').extend`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
   background: ${props => props.theme.colors.blue[8]} url('/map.svg') no-repeat;
   background-size: cover;
   background-position: center top;
@@ -52,8 +57,15 @@ const Root = Flex.extend`
 LargeButton.link = LargeButton.withComponent(Link)
 
 const Bubbles = () => (
-  <Root justify="center" align="center" py={[5, 6]} px={[0, 3]}>
-    <Container maxWidth={48} color="white">
+  <Animator
+    is={Root}
+    data={{
+      opacity: [1, 0.75],
+      transform: [{ translateY: '0px' }, { translateY: '-64px' }]
+    }}
+    px={[0, 3]}
+  >
+    <Container maxWidth={48} color="white" my={[5, 6]}>
       <Text f={[3, 4]} px={2} mx="auto" my={0} caps>
         By the students, for the students.
       </Text>
@@ -73,7 +85,7 @@ const Bubbles = () => (
         </LargeButton.link>
       </Flex>
     </Container>
-  </Root>
+  </Animator>
 )
 
 export default Bubbles

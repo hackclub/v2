@@ -49,6 +49,7 @@ const Nav = ({ mode, color, ...props }) => (
       <Item href="/donate" children="Donate" />
       <Item.link to="/start" children="Start" />
       <Item.link to="/workshops" children="Workshops" />
+      <Item.link to="https://hackathons.hackclub.com" children="Hackathons" />
     </NavBar>
   </Base>
 )

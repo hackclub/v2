@@ -7,14 +7,14 @@ import Bio from 'components/Bio'
 import Footer from 'components/Footer'
 
 const Header = Section.extend`
-  padding-top: 0 !important;
-  background-color: ${props => props.theme.colors.red[5]};
-  background-image: linear-gradient(
-    -2deg,
-    ${props => props.theme.colors.orange[4]} 0%,
-    ${props => props.theme.colors.red[5]} 50%,
-    ${props => props.theme.colors.red[6]} 100%
-  );
+  background: url('/pattern.svg'),
+    linear-gradient(
+        -64deg,
+        ${props => props.theme.colors.orange[5]},
+        ${props => props.theme.colors.red[5]}
+      )
+      repeat;
+  clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 95%);
 `
 
 const Base = Container.extend`
@@ -45,13 +45,20 @@ export default () => (
       ]}
     />
     <Header>
-      <Nav />
-      <Heading.h2 color="white" align="center" caps mt={3}>
-        <Box f={4}>Hack Club</Box>
-        <Box f={6}>Team</Box>
-      </Heading.h2>
+      <Nav style={{ position: 'absolute', top: 0 }} />
+      <Container maxWidth={35} align="center">
+        <Heading.h1 f={4} regular caps mt={4}>
+          Hack Club Team
+        </Heading.h1>
+        <Heading.h2 f={6}>We the students.</Heading.h2>
+        <Text f={3} my={3}>
+          We believe in a world where every young person is empowered to be the
+          change they want to see in the world. Through Hack Club, we’re working
+          hard to make it reality.
+        </Text>
+      </Container>
     </Header>
-    <Base py={[4, 5]} px={3}>
+    <Base px={3} py={[4, 5]}>
       <Bio
         img="/team/zach.png"
         name="Zach Latta"

@@ -141,6 +141,8 @@ const Animator = () => {
       setTimeout(() => {
         i.updateDimensions(!0)
       }, 128)
+      const props = Object.keys(this.data)
+      e.style.willChange = h.filter(hp => props.indexOf(hp) !== -1).join(', ')
       this.checkInView()
       this.data.range = this.data.range || [0, 1]
       this.data.recalcOnResize =
@@ -255,25 +257,6 @@ const Animator = () => {
     })
   const chrome = navigator.userAgent.includes('Chrome')
   const m = new d(document.querySelectorAll('[data-animator]'), scrollY)
-  const p = (t = 'object-fit', e = 'cover') => {
-    if ('CSS' in window && 'supports' in window.CSS) return CSS.supports(t, e)
-    let n = !1
-    try {
-      i.style.width = 'invalid'
-    } catch (t) {
-      n = !0
-    }
-    var i = document.createElement('_')
-    if (n)
-      try {
-        i.style[t] = e
-      } catch (t) {
-        return !1
-      }
-    else i.style[t] = e
-    return i.style[t] && i.style[t] !== before
-  }
-  p()
   chrome &&
     (document.documentElement.classList.add('chrome'),
     m.animated.forEach(t => {

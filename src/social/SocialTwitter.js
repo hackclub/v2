@@ -1,5 +1,5 @@
 const { createElement: h } = require('react')
-const theme = require('../theme').default
+const theme = require('@hackclub/design-system').theme
 
 const width = 1024
 const widthIcon = 2 * width / 3

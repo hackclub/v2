@@ -8,10 +8,9 @@ import {
   cx
 } from '@hackclub/design-system'
 import Link from 'gatsby-link'
-import { geo } from 'theme'
 
 const Base = Box.footer.extend`
-  ${props => geo(props.theme.colors.snow)};
+  background: ${props => props.theme.colors.snow} url('/pattern.svg') repeat;
   display: grid;
   grid-gap: ${props => props.theme.space[3]}px;
   ${props => props.theme.mediaQueries.md} {

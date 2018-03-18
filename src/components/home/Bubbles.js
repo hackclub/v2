@@ -61,7 +61,7 @@ const Bubbles = () => (
     is={Root}
     data={{
       opacity: [1, 0.75],
-      transform: [{ translateY: '0px' }, { translateY: '-64px' }]
+      transform: [{ translateY: '0px' }, { translateY: '-96px' }]
     }}
     px={[0, 3]}
   >

@@ -94,6 +94,10 @@ const Photo = BackgroundImage.extend.attrs({ role: 'img' })`
   &:hover {
     background-size: auto 108%;
   }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    background-size: cover !important;
+  }
 `
 
 Button.link = Button.withComponent(Link).extend`

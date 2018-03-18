@@ -50,12 +50,12 @@ const Service = ({ href, icon, ...props }) => (
       width={32}
       height={32}
       fill="currentColor"
-      fill-rule="evenodd"
-      clip-rule="evenodd"
-      stroke-linejoin="round"
-      stroke-miterlimit="1.414"
+      fillRule="evenodd"
+      clipRule="evenodd"
+      strokeLinejoin="round"
+      strokeMiterlimit="1.414"
     >
-      <path fill-rule="nonzero" d={icons[icon]} />
+      <path fillRule="nonzero" d={icons[icon]} />
     </svg>
   </A>
 )

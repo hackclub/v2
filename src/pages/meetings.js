@@ -8,7 +8,6 @@ import {
   LargeButton,
   Icon,
   Section,
-  mediaQueries,
   cx
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
@@ -47,7 +46,7 @@ const Module = Flex.extend.attrs({
   max-width: 32rem;
   text-align: left;
 
-  ${mediaQueries[1]} {
+  ${props => props.theme.mediaQueries[1]} {
     &:nth-of-type(1), &:nth-of-type(3) {
       transform: translateY(4rem);
     }
@@ -57,7 +56,7 @@ const Module = Flex.extend.attrs({
     width: 4rem !important;
     height: 4rem !important;
     flex-shrink: 0;
-    ${mediaQueries[1]} {
+    ${props => props.theme.mediaQueries[1]} {
       &:first-child { margin-right: 3rem; }
       &:last-child { margin-left: 2rem; }
     }
@@ -78,7 +77,7 @@ const ModuleHeading = Heading.h3.extend.attrs({
 })`
   color: ${props => props.theme.colors.black};
   position: relative;
-  ${mediaQueries[1]} {
+  ${props => props.theme.mediaQueries[1]} {
     &:before {
       content: "";
       width: 8px;

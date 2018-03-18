@@ -3,14 +3,11 @@ import {
   Box,
   Button,
   Container,
-  BackgroundImage,
   Flex,
   Heading,
-  OutlineButton,
   Link as A,
   Section,
-  Text,
-  mediaQueries
+  Text
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
@@ -37,7 +34,7 @@ A.link = A.withComponent(Link)
 const Base = Box.main.extend`
   display: grid;
   position: relative;
-  ${mediaQueries[1]} {
+  ${props => props.theme.mediaQueries[1]} {
     grid-template-columns: 24rem 1fr;
   }
 `
@@ -51,7 +48,7 @@ const Background = Section.extend`
     ${props => props.theme.colors.red[5]} 50%,
     ${props => props.theme.colors.red[6]} 100%
   );
-  ${mediaQueries[1]} {
+  ${props => props.theme.mediaQueries[1]} {
     min-height: 100vh;
   }
 `

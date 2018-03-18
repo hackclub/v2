@@ -1,11 +1,5 @@
 import React, { Fragment } from 'react'
-import {
-  Section,
-  Heading,
-  Box,
-  Container,
-  mediaQueries
-} from '@hackclub/design-system'
+import { Section, Heading, Text, Container } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
@@ -27,7 +21,7 @@ const Base = Container.extend`
   display: grid;
   grid-gap: 1rem;
   justify-content: center;
-  ${mediaQueries[1]} {
+  ${props => props.theme.mediaQueries.md} {
     grid-gap: 2rem;
     grid-template-columns: repeat(2, 1fr);
   }

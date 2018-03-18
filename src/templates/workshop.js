@@ -9,8 +9,7 @@ import {
   Section,
   Icon,
   Button,
-  Card,
-  mediaQueries
+  Card
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
@@ -42,7 +41,7 @@ const EditLink = A.extend.attrs({ color: 'white', f: 3 })`
   bottom: ${props => props.theme.space[3]}px;
   right: ${props => props.theme.space[4]}px;
 
-  ${mediaQueries.md} {
+  ${props => props.theme.mediaQueries.md} {
     display: inline-block;
   }
 `
@@ -212,7 +211,6 @@ export default ({ data }) => {
     </Fragment>
   )
 }
-
 export const pageQuery = graphql`
   query WorkshopBySlug($path: String!) {
     markdownRemark(fields: { slug: { eq: $path } }) {

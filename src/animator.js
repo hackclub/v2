@@ -35,13 +35,13 @@ const Animator = () => {
 
   const r = (() => {
     function n(e, i) {
-      t(this, n),
-        (this.originalValue = e),
-        (this.wrapper = i || !1),
-        (this.type = this.parseType(this.originalValue)),
-        (this.value = this.type.str
-          ? parseFloat(this.originalValue.replace(this.type.str, ''), 10)
-          : this.originalValue)
+      t(this, n)
+      this.originalValue = e
+      this.wrapper = i || !1
+      this.type = this.parseType(this.originalValue)
+      this.value = this.type.str
+        ? parseFloat(this.originalValue.replace(this.type.str, ''), 10)
+        : this.originalValue
     }
     return (
       e(n, [
@@ -133,48 +133,46 @@ const Animator = () => {
   const l = (() => {
     function n(e) {
       const i = this
-      t(this, n),
-        (this.data = JSON.parse(e.dataset.animator)),
-        (this.el = e),
-        (this.rectEl = document.querySelector(this.data.relative) || e),
-        this.updateDimensions(!0),
-        setTimeout(() => {
-          i.updateDimensions(!0)
-        }, 256),
-        this.checkInView(),
-        (this.data.range = this.data.range || [0, 1]),
-        (this.data.recalcOnResize =
-          void 0 === this.data.recalcOnResize || this.data.recalcOnResize),
-        (this.data.styles = Object.entries(this.data)
-          .filter(t => h.includes(t[0]))
-          .map(t => new c(t[0], t[1]))),
-        (this.progress = this.current = 0),
-        this.lastCurrent
+      t(this, n)
+      this.data = JSON.parse(e.dataset.animator)
+      this.el = e
+      this.rectEl = document.querySelector(this.data.relative) || e
+      this.updateDimensions(!0)
+      setTimeout(() => {
+        i.updateDimensions(!0)
+      }, 128)
+      this.checkInView()
+      this.data.range = this.data.range || [0, 1]
+      this.data.recalcOnResize =
+        void 0 === this.data.recalcOnResize || this.data.recalcOnResize
+      this.data.styles = Object.entries(this.data)
+        .filter(t => h.includes(t[0]))
+        .map(t => new c(t[0], t[1]))
+      this.progress = this.current = 0
+      this.lastCurrent
     }
     return (
       e(n, [
         {
           key: 'updateDimensions',
           value(t) {
-            ;(this.data.recalcOnResize || t) &&
-              ((this.rect = this.rectEl.getBoundingClientRect()),
-              (this.top = this.rect.top + window.scrollY),
-              (this.rtop = this.top - window.innerHeight),
-              (this.bottom = this.rect.bottom + window.scrollY),
-              this.data.scrollOffset &&
-                ((this.rtop -= window.scrollY - window.innerHeight),
-                (this.bottom -= window.scrollY - window.innerHeight)))
+            if (this.data.recalcOnResize || t)
+              this.rect = this.rectEl.getBoundingClientRect()
+            this.top = this.rect.top + window.scrollY
+            this.rtop = this.top - window.innerHeight
+            this.bottom = this.rect.bottom + window.scrollY
+            this.data.scrollOffset &&
+              ((this.rtop -= window.scrollY - window.innerHeight),
+              (this.bottom -= window.scrollY - window.innerHeight))
           }
         },
         {
           key: 'checkInView',
           value() {
-            return (
-              (this.isInView =
-                this.top < window.innerHeight + window.scrollY &&
-                this.bottom > window.scrollY),
-              this.isInView
-            )
+            this.isInView =
+              this.top < window.innerHeight + window.scrollY &&
+              this.bottom > window.scrollY
+            return this.isInView
           }
         },
         {
@@ -202,12 +200,11 @@ const Animator = () => {
         {
           key: 'draw',
           value() {
-            const t = this
-            this.current !== this.lastCurrent &&
-              ((this.lastCurrent = this.current),
-              this.data.styles.forEach(e => {
-                t.el.style[e.property] = e.toString()
-              }))
+            if (this.current !== this.lastCurrent)
+              this.lastCurrent = this.current
+            this.data.styles.forEach(e => {
+              this.el.style[e.property] = e.toString()
+            })
           }
         }
       ]),
@@ -217,13 +214,12 @@ const Animator = () => {
 
   const d = (() => {
     function i(e, r) {
-      t(this, i),
-        (this.animated = [].concat(n(e)).map(t => new l(t))),
-        (this.target = r),
-        (this.startTime =
-          performance.now() + performance.timing.navigationStart),
-        (this.shouldUpdate = !0),
-        requestAnimationFrame(this.update.bind(this))
+      t(this, i)
+      this.animated = [].concat(n(e)).map(t => new l(t))
+      this.target = r
+      this.startTime = performance.now() + performance.timing.navigationStart
+      this.shouldUpdate = !0
+      requestAnimationFrame(this.update.bind(this))
     }
     return (
       e(i, [
@@ -287,13 +283,13 @@ const Animator = () => {
   const v = () => {
     document.documentElement.classList.add('trigger'), (w = !0)
   }
-  setTimeout(v, 256),
-    addEventListener('scroll', t => {
-      ;(m.target = scrollY), scrollY > 8 && !w && v()
-    }),
-    addEventListener('resize', t => {
-      m.updateDimensions()
-    })
+  setTimeout(v, 256)
+  addEventListener('scroll', t => {
+    ;(m.target = scrollY), scrollY > 8 && !w && v()
+  })
+  addEventListener('resize', t => {
+    m.updateDimensions()
+  })
   const y = document.querySelector('[data-animator]')
   function S() {
     return !(

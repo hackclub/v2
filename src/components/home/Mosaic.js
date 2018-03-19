@@ -1,9 +1,21 @@
 import React from 'react'
 import { Box, Flex, Heading, Text, LargeButton } from '@hackclub/design-system'
 import Link from 'gatsby-link'
-import { times } from 'lodash'
+import { random, times } from 'lodash'
+import { keyframes } from 'styled-components'
 
 const Base = Box.extend`
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+`
+
+const pan = keyframes`
+  from { transform: translateX(-100vw) }
+  to { transform: translateX(100vw) }
+`
+
+const Grid = Box.extend`
   display: grid;
   grid-template-columns: repeat(5, 20vw);
   grid-template-rows: repeat(5, 20vw);
@@ -14,6 +26,7 @@ const Base = Box.extend`
     ${props => props.theme.colors.snow}
   );
   position: relative;
+  overflow: hidden;
 
   ${props => props.theme.mediaQueries.md} {
     grid-template-rows: repeat(5, 10vw);
@@ -62,8 +75,19 @@ const Base = Box.extend`
   }
 `
 
+const reduceMotion =
+  window.matchMedia('prefers-reduced-motion: reduce').matches || true
+
 const Img = ({ i, style }) => (
-  <span style={{ backgroundImage: `url(/mosaic/${i + 1}.jpg)`, ...style }} />
+  <span
+    style={{
+      backgroundImage: `url(/mosaic/${i + 1}.jpg)`,
+      animation: reduceMotion
+        ? `${pan} ${random(32, 48)}s linear infinite`
+        : 'none',
+      ...style
+    }}
+  />
 )
 
 LargeButton.link = LargeButton.withComponent(Link)
@@ -72,7 +96,6 @@ const Start = Box.extend`
   position: absolute;
   left: 0;
   top: 0;
-  margin: 4vw;
   z-index: 2;
   border-radius: ${props => props.theme.radii[2]};
   box-shadow: ${props => props.theme.boxShadows[3]};
@@ -83,14 +106,8 @@ const Start = Box.extend`
     ${props => props.theme.colors.red[5]} 50%,
     ${props => props.theme.colors.red[6]} 100%
   );
-  p {
-    line-height: 1.5;
-    opacity: 0.9;
-  }
-  ${props => props.theme.mediaQueries.md} {
-    margin-left: 12.5vw;
-    width: 75vw;
-  }
+  margin: 12.5vw;
+  width: 75vw;
   ${props => props.theme.mediaQueries.lg} {
     margin-left: 25vw;
     width: 50vw;
@@ -102,10 +119,10 @@ const Promo = () => (
     <Heading.h2 f={[5, 6]} m={0}>
       Get started.
     </Heading.h2>
-    <Text f={[3, 4]} my={2}>
+    <Text color="red.0" f={[3, 4]} my={2}>
       Build the class you wish you could take.
     </Text>
-    <Text f={[3, 4]} mb={3}>
+    <Text color="red.0" f={[3, 4]} mb={[3, 4]}>
       Bring the movement to your school.
     </Text>
     <LargeButton.link to="/start" inverted children="Start a Club »" />
@@ -113,8 +130,8 @@ const Promo = () => (
 )
 
 export default () => (
-  <Base w={1} pb={4}>
-    <Promo key="promo" />
-    {times(7, i => <Img i={i} />)}
+  <Base w={1} mt={3}>
+    <Promo />
+    <Grid py={4}>{times(12, i => <Img i={i} />)}</Grid>
   </Base>
 )

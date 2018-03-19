@@ -85,10 +85,19 @@ export default class extends Component {
     super(props)
     this.state = {
       status: 'loading',
-      filters: ['unsubmitted', 'rejected']
+      filters: ['unsubmitted', 'rejected'],
+      clubApplications: {}
     }
     this.updateApplicationList = this.updateApplicationList.bind(this)
     this.toggleFilter = this.toggleFilter.bind(this)
+  }
+
+  addAppToList(apps) {
+    const { clubApplications } = this.state
+    apps.forEach(app => {
+      clubApplications[app.id] = app
+    })
+    this.setState({ clubApplications })
   }
 
   componentDidMount() {
@@ -96,17 +105,18 @@ export default class extends Component {
     this.setState({ authToken })
 
     api
-      .get('v1/new_club_applications', { authToken })
-      .then(json => {
-        let clubApplications = {}
-        json.forEach(app => {
-          clubApplications[app.id] = app
-        })
-        this.setState({
-          status: 'success',
-          clubApplications
-        })
+      .get('v1/new_club_applications?submitted=true', { authToken })
+      .then(apps => {
+        this.addAppToList(apps)
+        this.setState({ status: 'success' })
       })
+      .then(() =>
+        api
+          .get('v1/new_club_applications?submitted=false', { authToken })
+          .then(apps => {
+            this.addAppToList(apps)
+          })
+      )
       .catch(e => {
         if (e.status === 401) {
           this.setState({ status: 'needsToAuth' })

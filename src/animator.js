@@ -7,9 +7,9 @@ const Animator = () => {
   const e = (() => {
     function t(t, e) {
       for (const i of e) {
-        ;(i.enumerable = i.enumerable || !1),
-          (i.configurable = !0),
-          'value' in i && (i.writable = !0),
+        ;(i.enumerable = i.enumerable || false),
+          (i.configurable = true),
+          'value' in i && (i.writable = true),
           Object.defineProperty(t, i.key, i)
       }
     }
@@ -25,7 +25,7 @@ const Animator = () => {
   }
 
   const i = [
-    { name: 'Float', str: !1 },
+    { name: 'Float', str: false },
     { name: 'Percent', str: '%' },
     { name: 'Pixel', str: 'px' },
     { name: 'Deg', str: 'deg' },
@@ -37,7 +37,7 @@ const Animator = () => {
     function n(e, i) {
       t(this, n)
       this.originalValue = e
-      this.wrapper = i || !1
+      this.wrapper = i || false
       this.type = this.parseType(this.originalValue)
       this.value = this.type.str
         ? parseFloat(this.originalValue.replace(this.type.str, ''), 10)
@@ -137,9 +137,9 @@ const Animator = () => {
       this.data = JSON.parse(e.dataset.animator)
       this.el = e
       this.rectEl = document.querySelector(this.data.relative) || e
-      this.updateDimensions(!0)
+      this.updateDimensions(true)
       setTimeout(() => {
-        i.updateDimensions(!0)
+        i.updateDimensions(true)
       }, 128)
       const props = Object.keys(this.data)
       e.style.willChange = h.filter(hp => props.indexOf(hp) !== -1).join(', ')
@@ -202,8 +202,9 @@ const Animator = () => {
         {
           key: 'draw',
           value() {
-            if (this.current !== this.lastCurrent)
+            if (this.current !== this.lastCurrent) {
               this.lastCurrent = this.current
+            }
             this.data.styles.forEach(e => {
               this.el.style[e.property] = e.toString()
             })
@@ -220,7 +221,7 @@ const Animator = () => {
       this.animated = [].concat(n(e)).map(t => new l(t))
       this.target = r
       this.startTime = performance.now() + performance.timing.navigationStart
-      this.shouldUpdate = !0
+      this.shouldUpdate = true
       requestAnimationFrame(this.update.bind(this))
     }
     return (
@@ -257,14 +258,15 @@ const Animator = () => {
     })
   const chrome = navigator.userAgent.includes('Chrome')
   const m = new d(document.querySelectorAll('[data-animator]'), scrollY)
-  chrome &&
-    (document.documentElement.classList.add('chrome'),
+  if (chrome) {
+    document.documentElement.classList.add('chrome')
     m.animated.forEach(t => {
       t.data.styles = t.data.styles.filter(t => 'filter' !== t.property)
-    }))
-  let w = !1
+    })
+  }
+  let w = false
   const v = () => {
-    document.documentElement.classList.add('trigger'), (w = !0)
+    document.documentElement.classList.add('trigger'), (w = true)
   }
   setTimeout(v, 256)
   addEventListener('scroll', t => {

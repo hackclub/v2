@@ -198,7 +198,7 @@ export default class extends Component {
         return <Login userType="admin" />
       case 'success':
         return (
-          <Container maxWidth={80} p={[3, 4]}>
+          <Container maxwidth={80} p={[3, 4]}>
             <Flex
               flexDirection={['column', 'row']}
               justify="space-between"

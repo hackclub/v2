@@ -129,6 +129,9 @@ const Animator = () => {
   })()
 
   const h = ['opacity', 'filter', 'transform']
+  const reduceMotion = window.matchMedia(
+    'screen and (prefers-reduced-motion: reduce)'
+  ).matches
 
   const l = (() => {
     function n(e) {
@@ -250,6 +253,7 @@ const Animator = () => {
     )
   })()
 
+  if (reduceMotion) return
   Object.entries ||
     (Object.entries = t => {
       for (var e = Object.keys(t), n = e.length, i = new Array(n); n--; )

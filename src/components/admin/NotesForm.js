@@ -27,9 +27,7 @@ class SingleNote extends Component {
 
   deleteNote(id) {
     const { authToken } = this.props
-    console.log('making delete request')
     api.delete(`v1/notes/${id}`, { authToken }).then(json => {
-      console.log('finished delete request')
       this.setState({ deleted: true })
     })
   }
@@ -125,7 +123,6 @@ export default class NotesForm extends Component {
     }
 
     this.loadNotes = this.loadNotes.bind(this)
-    this.addNote = this.addNote.bind(this)
   }
   componentDidMount() {
     this.loadNotes(this.props.application.id)
@@ -139,10 +136,8 @@ export default class NotesForm extends Component {
     const { authToken } = this.props
     api
       .get(`v1/new_club_applications/${id}/notes`, { authToken })
-      .then(json => {
-        this.setState({
-          notes: json
-        })
+      .then(notes => {
+        this.setState({ notes })
       })
   }
   addNote() {

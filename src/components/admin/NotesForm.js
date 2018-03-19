@@ -88,7 +88,7 @@ class SingleNote extends Component {
               <Box.form w={1} onSubmit={handleSubmit}>
                 <Field
                   name="body"
-                  label="Note"
+                  label={`Note from user #${values.user_id}`}
                   onBlur={e => {
                     if (id && values.body === '') {
                       this.deleteNote(id)

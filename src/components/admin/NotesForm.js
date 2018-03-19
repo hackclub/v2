@@ -27,9 +27,7 @@ class SingleNote extends Component {
 
   deleteNote(id) {
     const { authToken } = this.props
-    console.log('making delete request')
     api.delete(`v1/notes/${id}`, { authToken }).then(json => {
-      console.log('finished delete request')
       this.setState({ deleted: true })
     })
   }
@@ -88,7 +86,7 @@ class SingleNote extends Component {
               <Box.form w={1} onSubmit={handleSubmit}>
                 <Field
                   name="body"
-                  label="Note"
+                  label={`Note from ${values.author}`}
                   onBlur={e => {
                     if (id && values.body === '') {
                       this.deleteNote(id)
@@ -121,11 +119,11 @@ export default class NotesForm extends Component {
 
     this.state = {
       notes: [],
-      status: 'loading'
+      status: 'loading',
+      authors: {}
     }
 
     this.loadNotes = this.loadNotes.bind(this)
-    this.addNote = this.addNote.bind(this)
   }
   componentDidMount() {
     this.loadNotes(this.props.application.id)
@@ -137,11 +135,28 @@ export default class NotesForm extends Component {
   }
   loadNotes(id) {
     const { authToken } = this.props
+    const { authors } = this.state
+
+    this.setState({ notes: [] })
+
     api
       .get(`v1/new_club_applications/${id}/notes`, { authToken })
-      .then(json => {
-        this.setState({
-          notes: json
+      .then(notes => {
+        notes.forEach(note => {
+          const userId = note.user_id
+          if (authors[userId]) {
+            this.setState({
+              notes: [...this.state.notes, { ...note, author: authors[userId] }]
+            })
+          } else {
+            api.get(`v1/users/${userId}`, { authToken }).then(user => {
+              authors[userId] = user.email
+              this.setState({
+                notes: [...this.state.notes, { ...note, author: user.email }],
+                authors
+              })
+            })
+          }
         })
       })
   }

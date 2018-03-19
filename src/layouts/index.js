@@ -5,7 +5,10 @@ import { ThemeProvider, colors } from '@hackclub/design-system'
 
 const { name, title, description, img, url } = data
 
-const meta = tags => tags.map(props => React.createElement('meta', props))
+const meta = tags =>
+  tags.map((props, index) =>
+    React.createElement('meta', { ...props, key: index })
+  )
 
 export default props => (
   <ThemeProvider>

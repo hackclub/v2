@@ -60,8 +60,11 @@ const Service = ({ href, icon, ...props }) => (
   </A>
 )
 
-const Footer = () => (
+const Exception = Box.extend`grid-column: span 2;`
+
+const Footer = ({ children }) => (
   <Base p={[4, 5]}>
+  	{children && <Exception children={children} />}
     <Heading.h3 bold m={0} align={['left', 'right']}>
       Join the Club
     </Heading.h3>

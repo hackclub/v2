@@ -19,7 +19,8 @@ export default () => (
     <Bubbles />
     <About />
     <Mosaic />
-    <Description />
-    <Footer />
+    <Footer>
+      <Description />
+    </Footer>
   </Fragment>
 )

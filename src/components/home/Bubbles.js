@@ -43,8 +43,12 @@ const Root = Box.withComponent('header').extend`
   a {
     transition: transform 0.125s ease-out;
     transform: scale(1);
-    &:hover {
+    &:hover,
+    &:focus {
       transform: scale(1.06);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      transform: none !important;
     }
   }
   @media screen and (max-width: 22em) {

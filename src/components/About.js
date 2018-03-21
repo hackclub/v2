@@ -100,11 +100,15 @@ const Photo = BackgroundImage.extend.attrs({ role: 'img' })`
   }
 `
 
-Button.link = Button.withComponent(Link).extend`
+const Action = Button.withComponent(Link).extend`
   transition: transform 0.125s ease-out;
   transform: scale(1);
-  &:hover {
+  &:hover,
+  &:focus {
     transform: scale(1.06);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transform: none !important;
   }
 `
 
@@ -138,9 +142,9 @@ export default () => (
             Congressional App Challenge
           </Like>. This is no ordinary club.
         </Text>
-        <Button.link to="/meetings" inverted>
+        <Action to="/meetings" inverted>
           Learn more »
-        </Button.link>
+        </Action>
       </Box>
       <Photo image="/about_1.jpg" />
       <Photo image="/about_2.jpg" />
@@ -193,9 +197,9 @@ export default () => (
           creator. The goal of Hack Club is to help you become that creator. We
           want a space for hacking at every high school, every week.
         </Text>
-        <Button.link to="/philosophy" bg="warning" inverted>
+        <Action to="/philosophy" bg="warning" inverted>
           Our philosophy »
-        </Button.link>
+        </Action>
       </Super>
       <Photo image="/about_3.jpg" />
       <Photo image="/about_4.jpg" />
@@ -209,9 +213,9 @@ export default () => (
           <Stat f={7} value={stats.state_count} label="states" />
           <Stat f={7} value={stats.approximate_members} label="members" />
         </Stats>
-        <Button.link to="/team" bg="accent" inverted>
+        <Action to="/team" bg="accent" inverted>
           Our team »
-        </Button.link>
+        </Action>
       </Graph>
     </Grid>
   </Container>

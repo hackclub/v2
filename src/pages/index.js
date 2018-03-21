@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
-import Bubbles from 'components/home/Bubbles'
+import Header from 'components/home/Header'
 import About from 'components/About'
-import Mosaic from 'components/home/Mosaic'
+import Action from 'components/home/Action'
 import Description from 'components/home/Description'
 import Footer from 'components/Footer'
 
@@ -16,9 +16,9 @@ export default () => (
       />
     </Helmet>
     <Nav style={{ position: 'absolute', top: 0 }} />
-    <Bubbles />
+    <Header />
     <About />
-    <Mosaic />
+    <Action />
     <Footer>
       <Description />
     </Footer>

@@ -60,7 +60,7 @@ const Root = Box.withComponent('header').extend`
 
 LargeButton.link = LargeButton.withComponent(Link)
 
-const Bubbles = () => (
+export default () => (
   <Animator
     is={Root}
     data={{
@@ -91,5 +91,3 @@ const Bubbles = () => (
     </Container>
   </Animator>
 )
-
-export default Bubbles

@@ -35,7 +35,7 @@ const Start = Card.extend`
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  width: calc(100% - 24vw);
+  width: calc(100% - 12vw);
   max-width: 40rem;
   text-align: center;
   z-index: 2;
@@ -81,14 +81,12 @@ const Promo = () => (
       Get your club started.
     </Heading.h2>
     <Text f={[2, 4]} my={2}>
-      Build the class you <br />
-      wish you could take.
+      Build the class you wish you could take.
     </Text>
     <Text f={[2, 4]} mb={4}>
-      Bring the movement <br />
-      to your school.
+      Bring the movement to your school.
     </Text>
-    <Action to="/start" f={[3, 4]} children="Start Your Club »" />
+    <Action to="/start" children="Start Your Club »" />
   </Start>
 )
 

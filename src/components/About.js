@@ -187,7 +187,7 @@ export default () => (
         provide guidance through mentoring and the power of community.
       </Text>
     </Container>
-    <Grid my={[4, 5]} color="white">
+    <Grid my={[4, 5]} color="white" pb={3}>
       <Super p={[3, 4]}>
         <Heading.h2 f={4} my={0} caps>
           Coding is a superpower

@@ -1,5 +1,11 @@
 import React, { Fragment } from 'react'
-import { Section, Heading, Text, Container } from '@hackclub/design-system'
+import {
+  Flex,
+  Section,
+  Heading,
+  Text,
+  Container
+} from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
@@ -20,11 +26,15 @@ const Header = Section.extend`
 const Base = Container.extend`
   display: grid;
   grid-gap: 1rem;
-  justify-content: center;
   ${props => props.theme.mediaQueries.md} {
     grid-gap: 2rem;
     grid-template-columns: repeat(2, 1fr);
   }
+`
+
+const NextBio = Flex.extend`
+  border-radius: ${props => props.theme.radii[2]};
+  max-width: 36rem;
 `
 
 const title = 'Hack Club Team'
@@ -70,15 +80,8 @@ export default () => (
         img="/team/max.jpg"
         name="Max Wofford"
         role="Operations"
-        text="Tapping into the hacking community, Max has found a common goal with Hack Club and his passion for amplifying people’s ideas. He loves helping students scale their ideas into even more awesome products."
+        text="After teaching himself to code in junior year of high school, Max joined a group of nomadic hackers in Costa Rica to experience coding in a real-world setting. He has been with Hack Club since day one and is now working full-time in San Francisco to grow the movement."
         bg="yellow"
-      />
-      <Bio
-        img="/team/orpheus.jpg"
-        name="Prophet Orpheus"
-        role="Mascot"
-        text="Prophet Orpheus is Hack Club’s mascot who takes the form of a nondescript dinosaur. Prophet Orpheus is always working to help more students to learn to code."
-        bg="green"
       />
       <Bio
         img="/team/lachlan.jpg"
@@ -95,12 +98,31 @@ export default () => (
         bg="orange"
       />
       <Bio
+        img="/team/nikolas.jpg"
+        name="Nikolas Huebecker"
+        role="Finances"
+        text="Nikolas joined the team to make Hack Club’s finances transparent and accessible. He is passionate about giving everyone an opportunity to make coding their superpower."
+        bg="green"
+      />
+      <Bio
         img="/team/athul.jpg"
         name="Athul Blesson"
         role="Indian Region"
-        text="Athul leads some of the largest Hack Clubs in India. After graduating from high school, he joined as the Regional Manager in India. He is passionate about bringing more students into the world of coding."
+        text="Athul leads some of the largest Hack Clubs in India. After graduating from high school, he joined as the Regional Manager in India, where he actively leads over a dozen clubs."
         bg="violet"
       />
+      <Bio
+        img="/team/orpheus.jpg"
+        name="Prophet Orpheus"
+        role="Mascot"
+        text="Prophet Orpheus is Hack Club’s mascot who takes the form of a nondescript dinosaur. Prophet Orpheus is always working to help more students to learn to code."
+        bg="gray"
+      />
+      <NextBio bg="gray.0" align="center" justify="center">
+        <Text caps bold f={4} color="muted">
+          You?
+        </Text>
+      </NextBio>
     </Base>
     <Footer />
   </Fragment>

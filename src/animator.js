@@ -186,11 +186,16 @@ const Animator = () => {
           value(t) {
             let e, n, i, r
             const a = this
+            const y =
+              (window.scrollY || 0) / (window.innerHeight || 512) < 0.75
+                ? 2
+                : 16
+            console.log(y)
             this.isInView,
               (this.progress = ((e = 0),
               (n = 1),
               (i = o(t, this.rtop, this.bottom, 0, 1)),
-              (r = u(s(i, e, n), 0, 1)) * r * (3 - 1.5 * r)))
+              (r = u(s(i, e, n), 0, 1)) * r * (y - r)))
             this.progress = o(
               this.progress,
               this.data.range[0],

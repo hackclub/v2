@@ -16,7 +16,7 @@ import { stats } from 'data.json'
 
 const Grid = Box.extend`
   display: grid;
-  grid-gap: ${props => props.theme.space[3]}px;
+  grid-gap: ${props => props.theme.space[2]}px;
   width: 100%;
 
   > div {
@@ -176,7 +176,7 @@ export default () => (
         </Modules>
       </Box>
     </Grid>
-    <Container maxWidth={48} mx={0} mt={[4, 5]} mb={4}>
+    <Container maxWidth={48} mx={0} mt={5}>
       <Heading.h2 f={[4, 5]} mb={3} bold>
         We think people learn best when they take control of their own
         education.
@@ -187,7 +187,7 @@ export default () => (
         provide guidance through mentoring and the power of community.
       </Text>
     </Container>
-    <Grid mt={4} mb={[4, 6]} color="white">
+    <Grid my={[4, 5]} color="white">
       <Super p={[3, 4]}>
         <Heading.h2 f={4} my={0} caps>
           Coding is a superpower

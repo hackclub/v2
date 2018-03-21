@@ -166,8 +166,9 @@ const Animator = () => {
             this.top = this.rect.top + window.scrollY
             this.rtop = this.top - window.innerHeight
             this.bottom = this.rect.bottom + window.scrollY
+            const padding = this.top === 0 ? 0 : (window.innerHeight || 0) / 2
             this.data.scrollOffset &&
-              ((this.rtop -= window.scrollY - window.innerHeight),
+              ((this.rtop -= window.scrollY - window.innerHeight + padding),
               (this.bottom -= window.scrollY - window.innerHeight))
           }
         },

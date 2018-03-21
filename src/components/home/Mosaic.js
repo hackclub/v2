@@ -1,137 +1,106 @@
 import React from 'react'
-import { Box, Flex, Heading, Text, LargeButton } from '@hackclub/design-system'
+import {
+  Container,
+  Box,
+  Card,
+  Flex,
+  Heading,
+  Text,
+  LargeButton
+} from '@hackclub/design-system'
 import Link from 'gatsby-link'
-import { random, times } from 'lodash'
-import { keyframes } from 'styled-components'
+import Animator from 'components/Animator'
+import { times } from 'lodash'
 
-const Base = Box.extend`
-  width: 100vw;
-  overflow: hidden;
-  position: relative;
-`
-
-const pan = keyframes`
-  from { transform: translateX(-100vw) }
-  to { transform: translateX(100vw) }
-`
-
-const Grid = Box.extend`
-  display: grid;
-  grid-template-columns: repeat(5, 20vw);
-  grid-template-rows: repeat(5, 20vw);
-  grid-gap: 0;
+const Base = Flex.withComponent(Container).extend`
   background-image: linear-gradient(
     to bottom,
     ${props => props.theme.colors.white},
     ${props => props.theme.colors.snow}
   );
   position: relative;
-  overflow: hidden;
-
-  ${props => props.theme.mediaQueries.md} {
-    grid-template-rows: repeat(5, 10vw);
-    span {
-      filter: saturate(125%) blur(21px);
-    }
-  }
-
-  span {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: inline-block;
-    filter: saturate(125%) blur(14px);
-    z-index: 1;
-    margin: 0;
-
-    &:nth-of-type(1) {
-      grid-column: 1;
-      grid-row: 1 / span 2;
-    }
-    &:nth-of-type(2) {
-      grid-column: 2;
-      grid-row: 2 / span 2;
-    }
-    &:nth-of-type(3) {
-      grid-column: 3;
-      grid-row: 3 / span 2;
-    }
-    &:nth-of-type(4) {
-      grid-column: 4;
-      grid-row: 1 / span 2;
-    }
-    &:nth-of-type(5) {
-      grid-column: 5;
-      grid-row: 2 / span 4;
-    }
-    &:nth-of-type(6) {
-      grid-column: 4;
-      grid-row: 4 / span 2;
-    }
-    &:nth-of-type(7) {
-      grid-column: 1;
-      grid-row: 4 / span 2;
-    }
-  }
 `
 
-const reduceMotion =
-  window.matchMedia('prefers-reduced-motion: reduce').matches || true
-
-const Img = ({ i, style }) => (
-  <span
-    style={{
-      backgroundImage: `url(/mosaic/${i + 1}.jpg)`,
-      animation: reduceMotion
-        ? `${pan} ${random(32, 48)}s linear infinite`
-        : 'none',
-      ...style
+const PhotoBase = Card.withComponent('img').extend`
+  height: min-intrinsic;
+`
+const Photo = props => (
+  <Animator
+    is={PhotoBase}
+    m={[2, 3]}
+    w={[1 / 2, 1 / 5]}
+    boxShadowSize="md"
+    data={{
+      range: [0.75, 0.8],
+      opacity: [0.5, 1],
+      transform: [{ translateX: '-96px' }, { translateX: '0px' }]
     }}
+    {...props}
   />
 )
 
 LargeButton.link = LargeButton.withComponent(Link)
 
-const Start = Box.extend`
+const Start = Card.extend`
   position: absolute;
-  left: 0;
   top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 2rem auto;
+  max-width: 36rem;
+  text-align: center;
   z-index: 2;
   border-radius: ${props => props.theme.radii[2]};
   box-shadow: ${props => props.theme.boxShadows[3]};
-  background-color: ${props => props.theme.colors.red[5]};
-  background-image: linear-gradient(
+  background-color: rgba(255,255,255,.75);
+  /* background-color: ${props => props.theme.colors.red[5]}; */
+  /* background-image: linear-gradient(
     -48deg,
-    ${props => props.theme.colors.orange[4]} 0%,
-    ${props => props.theme.colors.red[5]} 50%,
-    ${props => props.theme.colors.red[6]} 100%
-  );
-  margin: 12.5vw;
-  width: 75vw;
+    ${props => props.theme.colors.orange[4]},
+    ${props => props.theme.colors.red[5]},
+    ${props => props.theme.colors.red[6]}
+  );*/
+  -webkit-backdrop-filter: blur(${props => props.theme.space[2]}px);
+
+
+    line-height: 1.5;
+    /*
+  ${props => props.theme.mediaQueries.md} {
+    margin-left: 12.5vw;
+    width: 75vw;
+  }
   ${props => props.theme.mediaQueries.lg} {
     margin-left: 25vw;
     width: 50vw;
   }
+  */
 `
 
 const Promo = () => (
-  <Start p={[4, 5]} color="white">
+  <Start p={[4, 5]} color="primary">
     <Heading.h2 f={[5, 6]} m={0}>
       Get started.
     </Heading.h2>
-    <Text color="red.0" f={[3, 4]} my={2}>
+    <Text f={[3, 4]} my={2}>
       Build the class you wish you could take.
     </Text>
-    <Text color="red.0" f={[3, 4]} mb={[3, 4]}>
+    <Text color="warning" f={[3, 4]} mb={4}>
       Bring the movement to your school.
     </Text>
-    <LargeButton.link to="/start" inverted children="Start a Club »" />
+    <LargeButton.link to="/start" children="Start a Club »" />
   </Start>
 )
 
 export default () => (
-  <Base w={1} mt={3}>
+  <Box.section my={[4, 5]} py={4} style={{ position: 'relative' }}>
     <Promo />
-    <Grid py={4}>{times(12, i => <Img i={i} />)}</Grid>
-  </Base>
+    <Base wrap justify="center" w={1}>
+      <Photo src="/about_hacking.jpg" />
+      <Photo src="/about_talking.jpg" />
+      <Photo src="/about_group.jpg" />
+      <Photo src="/about_all.jpg" />
+      <Photo src="/about_all.jpg" />
+      <Photo src="/about_all.jpg" />
+    </Base>
+  </Box.section>
 )

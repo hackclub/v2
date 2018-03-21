@@ -14,11 +14,14 @@ class Animator extends React.Component {
   render() {
     const { is = 'div', data, ...props } = this.props
     const Tag = is
-    const settings = merge(data, {
-      recalcOnResize: false,
-      scrollOffset: true,
-      range: [0, 0.25]
-    })
+    const settings = merge(
+      {
+        recalcOnResize: true,
+        scrollOffset: true,
+        range: [0, 0.25]
+      },
+      data
+    )
     return <Tag data-animator={JSON.stringify(settings)} {...props} />
   }
 }

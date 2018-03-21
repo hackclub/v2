@@ -93,14 +93,9 @@ const Promo = () => (
 
 export default () => (
   <Box.section my={[4, 5]} py={4} style={{ position: 'relative' }}>
+    <Photo src="/action.jpg" alt="Large group of students coding together" />
     <Promo />
     <Base wrap justify="center" w={1}>
-      <Photo src="/about_hacking.jpg" />
-      <Photo src="/about_talking.jpg" />
-      <Photo src="/about_group.jpg" />
-      <Photo src="/about_all.jpg" />
-      <Photo src="/about_all.jpg" />
-      <Photo src="/about_all.jpg" />
     </Base>
   </Box.section>
 )

@@ -1,7 +1,8 @@
 {
   "name": "Hack Club",
   "title": "Hack Club: High school computer science clubs",
-  "description": "Join the movement of high school coding clubs around the world: by the students, for the students.",
+  "description":
+    "Join the movement of high school coding clubs around the world: by the students, for the students.",
   "url": "https://hackclub.com",
   "api": "https://api.hackclub.com",
   "twitter": "@starthackclub",
@@ -12,5 +13,26 @@
     "state_count": 30,
     "country_count": 13,
     "approximate_members": "3K+"
+  },
+  "org": {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": "Hack Club",
+    "url": "https://hackclub.com",
+    "logo": "https://hackclub.com/social.png",
+    "sameAs": [
+      "https://twitter.com/starthackclub",
+      "https://github.com/hackclub",
+      "https://www.instagram.com/starthackclub",
+      "https://www.facebook.com/Hack-Club-741805665870458"
+    ],
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "email": "team@hackclub.com",
+        "contactType": "customer support",
+        "url": "https://hackclub.com"
+      }
+    ]
   }
 }

@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import data from 'data.json'
 import { ThemeProvider, colors } from '@hackclub/design-system'
 
-const { name, title, description, img, url } = data
+const { name, title, description, img, url, org } = data
 
 const meta = tags => tags.map(props => React.createElement('meta', props))
 
@@ -33,6 +33,7 @@ export default props => (
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: url }
       ])}
+      <script type="application/ld+json" children={JSON.stringify(org)} />
     </Helmet>
     {props.children()}
   </ThemeProvider>

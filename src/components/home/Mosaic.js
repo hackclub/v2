@@ -2,11 +2,9 @@ import React from 'react'
 import {
   Container,
   Box,
-  Card,
   Flex,
   Heading,
   Text,
-  BackgroundImage,
   LargeButton
 } from '@hackclub/design-system'
 import Link from 'gatsby-link'
@@ -30,7 +28,7 @@ const Photo = Box.withComponent('img').extend`
 	object-fit: cover;
 `
 
-const Start = Card.extend`
+const Start = Box.extend`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -42,8 +40,13 @@ const Start = Card.extend`
   border-radius: ${props => props.theme.radii[2]};
   box-shadow: ${props => props.theme.boxShadows[3]};
   background-color: rgba(255, 255, 255, 0.75);
+  background-color: ${props => props.theme.colors.snow};
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    backdrop-filter: saturate(180%) blur(16px);
+  	background-color: rgba(255, 255, 255, 0.75);
+    -webkit-backdrop-filter: saturate(180%) blur(16px);
+  }
+  @media screen and (prefers-reduced-transparency: reduce) {
+    -webkit-backdrop-filter: auto !important;
   }
   h2 {
     background-image: linear-gradient(
@@ -130,9 +133,6 @@ const BorderBottom = BorderBase.extend`
   width: 100%;
   height: 5vw;
   transform-origin: center bottom;
-  ${props => props.theme.mediaQueries.md} {
-    height: calc(2.5vh);
-  }
 `
 
 const BorderLeft = BorderBase.extend`

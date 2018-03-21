@@ -161,14 +161,14 @@ const Animator = () => {
         {
           key: 'updateDimensions',
           value(t) {
-            if (this.data.recalcOnResize || t)
+            if (this.data.recalcOnResize || t) {
               this.rect = this.rectEl.getBoundingClientRect()
+            }
             this.top = this.rect.top + window.scrollY
             this.rtop = this.top - window.innerHeight
             this.bottom = this.rect.bottom + window.scrollY
-            const padding = this.top === 0 ? 0 : (window.innerHeight || 0) / 2
             this.data.scrollOffset &&
-              ((this.rtop -= window.scrollY - window.innerHeight + padding),
+              ((this.rtop -= window.scrollY - window.innerHeight),
               (this.bottom -= window.scrollY - window.innerHeight))
           }
         },
@@ -190,17 +190,17 @@ const Animator = () => {
               (this.progress = ((e = 0),
               (n = 1),
               (i = o(t, this.rtop, this.bottom, 0, 1)),
-              (r = u(s(i, e, n), 0, 1)) * r * (3 - 2 * r))),
-              (this.progress = o(
-                this.progress,
-                this.data.range[0],
-                this.data.range[1],
-                0,
-                1
-              )),
-              (this.progress = u(this.progress, 0, 1)),
-              (this.current += 0.7 * (this.progress - this.current)),
-              this.data.styles.forEach(t => t.interpolate(a.current.toFixed(3)))
+              (r = u(s(i, e, n), 0, 1)) * r * (3 - 1.5 * r)))
+            this.progress = o(
+              this.progress,
+              this.data.range[0],
+              this.data.range[1],
+              0,
+              1
+            )
+            this.progress = u(this.progress, 0, 1)
+            this.current += 1.125 * (this.progress - this.current)
+            this.data.styles.forEach(t => t.interpolate(a.current.toFixed(3)))
           }
         },
         {
@@ -271,29 +271,17 @@ const Animator = () => {
   }
   let w = false
   const v = () => {
-    document.documentElement.classList.add('trigger'), (w = true)
+    document.documentElement.classList.add('trigger')
+    w = true
   }
   setTimeout(v, 256)
   addEventListener('scroll', t => {
-    ;(m.target = scrollY), scrollY > 8 && !w && v()
+    m.target = scrollY
+    scrollY > 8 && !w && v()
   })
   addEventListener('resize', t => {
     m.updateDimensions()
   })
-  const y = document.querySelector('[data-animator]')
-  function S() {
-    return !(
-      'ontouchstart' in window ||
-      (window.DocumentTouch && document instanceof window.DocumentTouch) ||
-      navigator.maxTouchPoints > 0 ||
-      navigator.msMaxTouchPoints > 0 ||
-      window.orientation
-    )
-  }
-  const O = () => {
-    const { orientation, screen: { width, height } } = window
-    return orientation && height < width, !S() && height >= 768
-  }
 }
 
 export default Animator

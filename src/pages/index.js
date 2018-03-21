@@ -4,6 +4,7 @@ import Nav from 'components/Nav'
 import Bubbles from 'components/home/Bubbles'
 import About from 'components/About'
 import Mosaic from 'components/home/Mosaic'
+import Description from 'components/home/Description'
 import Footer from 'components/Footer'
 
 export default () => (
@@ -18,6 +19,7 @@ export default () => (
     <Bubbles />
     <About />
     <Mosaic />
+    <Description />
     <Footer />
   </Fragment>
 )

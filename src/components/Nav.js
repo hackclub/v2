@@ -16,26 +16,15 @@ const Base = Flex.extend.attrs({
   z-index: 4;
 `
 
-const cloud = props =>
-  props.mode === 'cloud'
-    ? {
-        backgroundColor: 'rgba(255,255,255,.98)',
-        boxShadow: '0 0 1rem 1rem rgba(255,255,255,.98)',
-        borderRadius: '2rem',
-        color: props.theme.colors.slate
-      }
-    : { color: cx(props.color) }
-
-const NavBar = Flex.withComponent('nav').extend.attrs({ ml: -2, py: 1 })`
+const NavBar = Flex.withComponent('nav').extend.attrs({ ml: -2, py: [1, 0] })`
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  ${cloud};
 `
 
 export const Item = A.extend.attrs({
   align: 'center',
   bold: true,
-  my: 1,
+  my: [1, 0],
   px: [2, 3]
 })`color: inherit;`
 
@@ -55,13 +44,11 @@ const Nav = ({ mode, color, ...props }) => (
 )
 
 Nav.propTypes = {
-  mode: PropTypes.oneOf(['default', 'cloud']),
   color: PropTypes.string,
   authenticated: PropTypes.bool
 }
 
 Nav.defaultProps = {
-  mode: 'default',
   color: 'white'
 }
 

@@ -1,13 +1,10 @@
 import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
-import Bubbles from 'components/home/Bubbles'
-import Stripe from 'components/home/Stripe'
+import Header from 'components/home/Header'
 import About from 'components/About'
-import Superpower from 'components/home/Superpower'
-import Collage from 'components/home/Collage'
-import Mosaic from 'components/home/Mosaic'
-import Start from 'components/Start'
+import Action from 'components/home/Action'
+import Description from 'components/home/Description'
 import Footer from 'components/Footer'
 
 export default () => (
@@ -18,14 +15,12 @@ export default () => (
         content="f7cxVyFnrTxN9Q-HnpP-ueNWuWF5VgIEKF0C3tSnsnc"
       />
     </Helmet>
-    <Nav style={{ position: 'absolute', top: 0 }} mode="cloud" />
-    <Bubbles />
-    <Stripe />
+    <Nav style={{ position: 'absolute', top: 0 }} />
+    <Header />
     <About />
-    <Superpower />
-    <Collage />
-    <Mosaic />
-    <Start />
-    <Footer />
+    <Action />
+    <Footer>
+      <Description />
+    </Footer>
   </Fragment>
 )

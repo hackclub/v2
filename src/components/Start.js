@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-  Section,
-  Box,
-  Heading,
-  LargeButton,
-  mediaQueries
-} from '@hackclub/design-system'
+import { Section, Box, Heading, LargeButton } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 
 const tilt = n =>
@@ -21,7 +15,7 @@ const Base = Section.extend`
     ${props => props.theme.colors.red[6]} 100%
   );
   padding: 4rem 0 !important;
-  ${mediaQueries.lg} {
+  ${props => props.theme.mediaQueries.lg} {
     padding-top: 5rem 0 !important;
     ${tilt(85)};
   }
@@ -46,10 +40,10 @@ const Start = ({ mt = '-4rem', ...props }) => (
         Start a Hack Club.
       </Heading.h2>
       <Heading.h3 f={[3, 4]} my={1}>
-        Bring the movement to your school.
+        Build the class you wish you could take.
       </Heading.h3>
       <Heading.h3 f={[3, 4]} m={0}>
-        Build the class you wish you could take.
+        Bring the movement to your school.
       </Heading.h3>
     </Box>
     <Box p={3}>

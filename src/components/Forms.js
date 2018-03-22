@@ -10,7 +10,6 @@ import {
   Label,
   LargeButton,
   Text,
-  mediaQueries,
   colors
 } from '@hackclub/design-system'
 import { Prompt } from 'react-router'
@@ -29,7 +28,8 @@ const SaveStatusText = Text.extend.attrs({
   left: 0;
   border-style: solid;
   border-width: 1px;
-  border-color: ${props => (props.saved ? colors.slate : colors.primary)};
+  border-color: ${props =>
+    props.theme.colors[props.saved ? 'slate' : 'primary']};
   border-radius: 4px;
   opacity: ${props => (props.saved ? 0 : 1)};
   transition-duration: ${props => (props.saved ? 2 : 1)}s;
@@ -38,7 +38,8 @@ const SaveStatusText = Text.extend.attrs({
   transition-timing-function: ease-in-out;
 `
 
-const SaveStatusLine = Box.extend.attrs({ w: 1 })`
+const SaveStatusLine = Box.extend`
+  width: 100%;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -47,7 +48,7 @@ const SaveStatusLine = Box.extend.attrs({ w: 1 })`
   border-top-width: 1px;
   opacity: ${props => (props.saved ? 2 / 3 : 1)};
   transition-duration: 1s;
-  color: ${props => (props.saved ? colors.slate : colors.primary)};
+  color: ${props => props.theme.colors[props.saved ? 'slate' : 'primary']};
   box-shadow: 0 0 4px ${props => (props.saved ? '0px' : '2px')};
 `
 
@@ -268,7 +269,7 @@ export const Form = Container.withComponent('form').extend.attrs({
 })`
   display: grid;
   grid-gap: 1rem;
-  ${mediaQueries[1]} {
+  ${props => props.theme.mediaQueries[1]} {
     grid-template-columns: repeat(1, 1fr);
     h2, .textarea { grid-column: 1 / -1; }
   }
@@ -289,7 +290,7 @@ const HeadingBox = Box.extend.attrs({
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: auto;
-  ${mediaQueries[1]} {
+  ${props => props.theme.mediaQueries[1]} {
     flex-basis: 7rem;
     text-align: right;
   }

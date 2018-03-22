@@ -9,10 +9,7 @@ import {
   Link as A,
   Card,
   Container,
-  Module as DSModule,
-  colors,
-  theme,
-  mediaQueries
+  Module as DSModule
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
@@ -31,7 +28,7 @@ const Header = Section.extend.attrs({
   background-position: 33% top;
   text-align: center;
   position: relative;
-  ${mediaQueries[1]} {
+  ${props => props.theme.mediaQueries[1]} {
     background-position: center top;
     min-height: 75vh !important;
   }
@@ -57,7 +54,7 @@ const Tagline = Text.extend.attrs({ f: 3, mb: 2 })`
 const Grid = Container.extend`
   display: grid;
   grid-gap: ${props => props.theme.space[3]}px;
-  ${mediaQueries[1]} {
+  ${props => props.theme.mediaQueries[1]} {
     grid-gap: ${props => props.theme.space[4]}px;
     grid-template-columns: repeat(5, 1fr);
     section:nth-of-type(1) {

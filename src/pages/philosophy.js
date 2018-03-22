@@ -2,13 +2,10 @@ import React, { Fragment } from 'react'
 import {
   Heading,
   Container,
-  Flex,
   Box,
   Text,
   Section,
-  Card,
-  Link as A,
-  mediaQueries
+  Link as A
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
@@ -41,7 +38,7 @@ const Seal = Box.extend`
   position: absolute;
   margin-top: -1rem;
   transform: rotate(3deg);
-  ${mediaQueries.md} {
+  ${props => props.theme.mediaQueries.md} {
     margin-top: -3rem;
   }
 `
@@ -51,7 +48,7 @@ const HeadLine = Heading.h1.extend.attrs({ f: [5, 7, 8] })`
   text-transform: uppercase;
   &:nth-of-type(2) {
     padding-left: 1.5rem;
-    ${mediaQueries.md} {
+    ${props => props.theme.mediaQueries.md} {
       padding-left: 6rem;
     }
   }
@@ -70,7 +67,7 @@ const HeadLine = Heading.h1.extend.attrs({ f: [5, 7, 8] })`
       right: -0.5rem;
       width: 9.5rem;
       height: 2.5rem;
-      ${mediaQueries.sm} {
+      ${props => props.theme.mediaQueries.sm} {
         width: 20rem;
         height: 5.5rem;
       }
@@ -85,7 +82,7 @@ const Row = Container.extend.attrs({ px: 3, maxWidth: 56 })`
   h2 {
     line-height: 1;
   }
-  ${mediaQueries.md} {
+  ${props => props.theme.mediaQueries.md} {
     grid-template-columns: repeat(5, 1fr);
     > :first-child {
       grid-column: span 2;

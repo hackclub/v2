@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link as A, mediaQueries } from '@hackclub/design-system'
+import { Link as A } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 
 const Flag = A.withComponent(Link).extend.attrs({ to: '/' })`
@@ -9,7 +9,7 @@ const Flag = A.withComponent(Link).extend.attrs({ to: '/' })`
   width: 8rem;
   height: 3rem;
   z-index: 0;
-  ${mediaQueries.md} {
+  ${props => props.theme.mediaQueries.md} {
     width: 10rem;
     height: 4rem;
   }

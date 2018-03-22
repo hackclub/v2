@@ -56,7 +56,6 @@ export default class extends Component {
                   }}
                 >
                   <Td>{event.name}</Td>
-                  <Td />
                 </Tr>
               ))}
             </tbody>

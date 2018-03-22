@@ -204,7 +204,7 @@ const Animator = () => {
               1
             )
             this.progress = u(this.progress, 0, 1)
-            this.current += 1.125 * (this.progress - this.current)
+            this.current += this.progress - this.current
             this.data.styles.forEach(t => t.interpolate(a.current.toFixed(3)))
           }
         },

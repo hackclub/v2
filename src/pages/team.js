@@ -32,11 +32,6 @@ const Base = Container.extend`
   }
 `
 
-const NextBio = Flex.extend`
-  border-radius: ${props => props.theme.radii[2]};
-  max-width: 36rem;
-`
-
 const title = 'Hack Club Team'
 const description =
   'Meet the team that runs Hack Club, a global nonprofit network of high school computer science clubs.'
@@ -98,13 +93,6 @@ export default () => (
         bg="orange"
       />
       <Bio
-        img="/team/nikolas.jpg"
-        name="Nikolas Huebecker"
-        role="Finances"
-        text="Nikolas joined the team to make Hack Club’s finances transparent and accessible. He is passionate about giving everyone an opportunity to make coding their superpower."
-        bg="green"
-      />
-      <Bio
         img="/team/athul.jpg"
         name="Athul Blesson"
         role="Indian Region"
@@ -118,11 +106,6 @@ export default () => (
         text="Prophet Orpheus is Hack Club’s mascot who takes the form of a nondescript dinosaur. Prophet Orpheus is always working to help more students to learn to code."
         bg="gray"
       />
-      <NextBio bg="gray.0" align="center" justify="center">
-        <Text caps bold f={4} color="muted">
-          You?
-        </Text>
-      </NextBio>
     </Base>
     <Footer />
   </Fragment>

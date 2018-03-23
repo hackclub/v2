@@ -153,7 +153,7 @@ export default ({ data }) => {
 
   const {
     fields: { slug, bg },
-    frontmatter: { name, description, author, group, order },
+    frontmatter: { name, description, author = '', order = 1 },
     html
   } = data.markdownRemark
 

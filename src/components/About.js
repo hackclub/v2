@@ -116,7 +116,7 @@ const Action = Button.withComponent(Link).extend`
 export default () => (
   <Container w={1} px={[3, 4, null, 2]} mt={[4, 5]}>
     <Container maxWidth={48} mx={0}>
-      <Heading.h2 f={[4, 5]} mb={3} bold>
+      <Heading.h2 f={[4, 5]} mb={3}>
         Join the largest community of students building the class they wish they
         could take.
       </Heading.h2>
@@ -129,9 +129,9 @@ export default () => (
     </Container>
     <Grid mt={4} mb={[4, 6]} color="white">
       <Box bg="primary" p={[3, 4]}>
-        <Heading.h2 f={4} my={0} caps>
+        <Heading.h3 f={4} my={0} caps>
           So much more than a club
-        </Heading.h2>
+        </Heading.h3>
         <Text f={3} my={3}>
           Hack Clubs attend and run hackathons like{' '}
           <Like href="https://www.sfchronicle.com/bayarea/article/Hack-the-Fog-makes-history-as-San-12729895.php">
@@ -150,9 +150,9 @@ export default () => (
       <Photo image="/about_1.jpg" />
       <Photo image="/about_2.jpg" />
       <Box bg="info" p={[3, 4]}>
-        <Heading.h2 f={4} my={0} caps>
+        <Heading.h3 f={4} my={0} caps>
           The power of a network
-        </Heading.h2>
+        </Heading.h3>
         <Modules my={3} w={1}>
           <Module
             icon="forum"
@@ -178,7 +178,7 @@ export default () => (
       </Box>
     </Grid>
     <Container maxWidth={48} mx={0} mt={5}>
-      <Heading.h2 f={[4, 5]} mb={3} bold>
+      <Heading.h2 f={[4, 5]} mb={3}>
         We think people learn best when they take control of their own
         education.
       </Heading.h2>
@@ -190,9 +190,9 @@ export default () => (
     </Container>
     <Grid my={[4, 5]} color="white" pb={3}>
       <Super p={[3, 4]}>
-        <Heading.h2 f={4} my={0} caps>
+        <Heading.h3 f={4} my={0} caps>
           Coding is a superpower
-        </Heading.h2>
+        </Heading.h3>
         <Text f={3} my={3}>
           Learning to code is uniquely empowering: you go from a consumer to a
           creator. The goal of Hack Club is to help you become that creator. We
@@ -205,9 +205,9 @@ export default () => (
       <Photo image="/about_3.jpg" />
       <Photo image="/about_4.jpg" />
       <Graph p={[3, 4]}>
-        <Heading.h2 f={4} my={0} caps>
+        <Heading.h3 f={4} my={0} caps>
           Grassroots and growing
-        </Heading.h2>
+        </Heading.h3>
         <Stats mb={2}>
           <Stat f={7} value={stats.school_count} label="schools" />
           <Stat f={7} value={stats.country_count} label="countries" />

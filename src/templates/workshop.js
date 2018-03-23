@@ -17,6 +17,7 @@ import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import MarkdownBody from 'components/MarkdownBody'
 import { lowerCase, camelCase, isEmpty } from 'lodash'
+import { org } from 'data.json'
 
 const Name = Heading.h1.extend`
   background-color: white;
@@ -72,15 +73,9 @@ const generateSubtitle = (description, authorText) => {
 
     // This pads returned results with spaces, making our final array look the
     // following:
-    //
     //   [ 'Hack', ' ', 'Club', ' ', 'staff' ]
-    //
-    if (index === arr.length - 1) {
-      // if last item in array, don't give an extra space
-      return processedWord
-    } else {
-      return [processedWord, ' ']
-    }
+    // if last item in array, don't give an extra space
+    return index === arr.length - 1 ? processedWord : [processedWord, ' ']
   })
 
   return (
@@ -128,7 +123,6 @@ const BreadcrumbDivider = () => (
 
 const githubEditUrl = slug =>
   `https://github.com/hackclub/hackclub/edit/master${slug}/README.md`
-
 const twitterURL = (text, url) =>
   `https://twitter.com/intent/tweet?text=${text
     .split(' ')
@@ -159,7 +153,7 @@ export default ({ data }) => {
 
   const {
     fields: { slug, bg },
-    frontmatter: { name, description, author, group },
+    frontmatter: { name, description, author, group, order },
     html
   } = data.markdownRemark
 
@@ -168,6 +162,35 @@ export default ({ data }) => {
   const title = `${name} – Hack Club Workshops`
   const desc = `${description}. Read the tutorial on Hack Club Workshops.`
   const url = `https://hackclub.com${slug}`
+
+  const schema = {
+    '@context': 'http://schema.org',
+    '@type': 'HowTo',
+    headline: name,
+    image: [`https://hackclub.com${bg}`],
+    author: {
+      '@type': 'Person',
+      name: author,
+      url: `https://github.com/${
+        author.match(/@(\S+)/) ? author.replace('@', '') : 'hackclub'
+      }`
+    },
+    publisher: org,
+    url,
+    description,
+    genre: group,
+    position: order,
+    educationalUse: 'assignment',
+    isAccessibleForFree: true,
+    potentialAction: {
+      '@type': 'CreateAction',
+      result: {
+        '@type': 'CreativeWork',
+        name
+      }
+    }
+  }
+
   return (
     <Fragment>
       <Helmet
@@ -179,9 +202,14 @@ export default ({ data }) => {
           { property: 'og:description', content: desc },
           { name: 'twitter:description', content: desc },
           { property: 'og:site_name', content: 'Hack Club Workshops' },
-          { property: 'og:url', content: `https://hackclub.com${slug}` },
-          { name: 'twitter:card', content: 'summary' }
+          { property: 'og:url', content: url }
         ]}
+        children={
+          <script
+            type="application/ld+json"
+            children={JSON.stringify(schema)}
+          />
+        }
       />
       <Section.h
         bg="accent"
@@ -249,6 +277,7 @@ export const pageQuery = graphql`
         description
         author
         group
+        order
       }
     }
   }

@@ -16,29 +16,26 @@ const Base = Flex.extend.attrs({
   z-index: 4;
 `
 
-const NavBar = Flex.withComponent('nav').extend.attrs({ ml: -2, py: [1, 0] })`
+const NavBar = Flex.withComponent('nav').extend`
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 `
 
-export const Item = A.extend.attrs({
-  align: 'center',
+export const Item = A.withComponent(Link).extend.attrs({
   bold: true,
   my: [1, 0],
   px: [2, 3]
 })`color: inherit;`
 
-Item.link = Item.withComponent(Link)
-
-const Nav = ({ mode, color, ...props }) => (
-  <Base {...props}>
+const Nav = ({ color = 'white', ...props }) => (
+  <Base role="banner" {...props}>
     <Flag />
-    <NavBar mode={mode} color={color} align="center">
-      <Item.link to="/team" children="Team" />
-      <Item href="/donate" children="Donate" />
-      <Item.link to="/start" children="Start" />
-      <Item.link to="/workshops" children="Workshops" />
-      <Item href="https://hackathons.hackclub.com" children="Hackathons" />
+    <NavBar role="navigation" ml={-2} py={[1, 0]} color={color} align="center">
+      <Item to="/team" children="Team" />
+      <Item to="/donate" children="Donate" />
+      <Item to="/start" children="Start" />
+      <Item to="/workshops" children="Workshops" />
+      <Item to="https://hackathons.hackclub.com" children="Hackathons" />
     </NavBar>
   </Base>
 )
@@ -46,10 +43,6 @@ const Nav = ({ mode, color, ...props }) => (
 Nav.propTypes = {
   color: PropTypes.string,
   authenticated: PropTypes.bool
-}
-
-Nav.defaultProps = {
-  color: 'white'
 }
 
 export default Nav

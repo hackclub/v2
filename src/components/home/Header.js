@@ -41,18 +41,6 @@ const Root = Box.withComponent('header').extend`
     line-height: 1.25;
   }
 
-  a {
-    transition: transform 0.125s ease-out;
-    will-change: transform;
-    transform: scale(1);
-    &:hover,
-    &:focus {
-      transform: scale(1.06);
-    }
-    @media (prefers-reduced-motion: reduce) {
-      transform: none !important;
-    }
-  }
   @media screen and (max-width: 22em) {
     a span {
       display: none;
@@ -60,7 +48,20 @@ const Root = Box.withComponent('header').extend`
   }
 `
 
-LargeButton.link = LargeButton.withComponent(Link)
+const Action = LargeButton.extend`
+  transition: transform 0.125s ease-out;
+  will-change: transform;
+  transform: scale(1);
+  &:hover,
+  &:focus {
+    transform: scale(1.06);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transform: none !important;
+  }
+`
+
+Action.link = Action.withComponent(Link)
 
 export default () => (
   <Animator
@@ -71,7 +72,7 @@ export default () => (
     }}
     px={[0, 3]}
   >
-  	<Nav style={{ position: 'absolute', top: 0 }} />
+    <Nav style={{ position: 'absolute', top: 0 }} />
     <Container maxWidth={48} color="white" my={[5, 6]}>
       <Text f={[3, 4]} px={2} mx="auto" my={0} caps>
         By the students, for the students.
@@ -84,12 +85,12 @@ export default () => (
         learn to code through tinkering and building projects.
       </Text>
       <Flex justify="center" align="center" mx={[-1, -2]} mt={[3, 4]}>
-        <LargeButton href="https://finder.hackclub.com" inverted m={[1, 2]}>
+        <Action href="https://finder.hackclub.com" inverted m={[1, 2]}>
           Find <span>Nearby</span>
-        </LargeButton>
-        <LargeButton.link to="/start" m={[1, 2]} f={[3, 4]}>
+        </Action>
+        <Action.link to="/start" m={[1, 2]} f={[3, 4]}>
           Start a Club »
-        </LargeButton.link>
+        </Action.link>
       </Flex>
     </Container>
   </Animator>

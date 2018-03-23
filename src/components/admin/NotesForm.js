@@ -123,6 +123,7 @@ export default class NotesForm extends Component {
       authors: {}
     }
 
+    this.addNote = this.addNote.bind(this)
     this.loadNotes = this.loadNotes.bind(this)
   }
   componentDidMount() {

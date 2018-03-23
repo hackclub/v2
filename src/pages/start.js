@@ -86,6 +86,16 @@ const CTAContainer = Box.extend`
   a {
     position: relative;
     top: -28px;
+    transition: transform 0.125s ease-out;
+    will-change: transform;
+    transform: scale(1);
+    &:hover,
+    &:focus {
+      transform: scale(1.06);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      transform: none !important;
+    }
   }
 `
 

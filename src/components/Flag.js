@@ -2,7 +2,10 @@ import React from 'react'
 import { Link as A } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 
-const Flag = A.withComponent(Link).extend.attrs({ to: '/' })`
+const Flag = A.withComponent(Link).extend.attrs({
+  to: '/',
+  'aria-label': 'Homepage'
+})`
   background: url(/orpheus_flag.svg) no-repeat;
   background-position: top center;
   flex-shrink: 0;

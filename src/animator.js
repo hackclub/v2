@@ -186,11 +186,7 @@ const Animator = () => {
           value(t) {
             let e, n, i, r
             const a = this
-            const y =
-              (window.scrollY || 0) / (window.innerHeight || 512) < 0.75
-                ? 2
-                : 16
-            console.log(y)
+            const y = this.el.previousElementSibling === null ? 2 : 16
             this.isInView,
               (this.progress = ((e = 0),
               (n = 1),

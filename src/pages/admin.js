@@ -111,11 +111,9 @@ export default class extends Component {
         this.setState({ status: 'success' })
       })
       .then(() =>
-        api
-          .get('v1/new_club_applications', { authToken })
-          .then(apps => {
-            this.addAppToList(apps)
-          })
+        api.get('v1/new_club_applications', { authToken }).then(apps => {
+          this.addAppToList(apps)
+        })
       )
       .catch(e => {
         if (e.status === 401) {

@@ -121,10 +121,11 @@ export default () => (
         could take.
       </Heading.h2>
       <Text f={[3, 4]}>
-        At Hack Club, every week you and 20 other students come together to build. Meetings
-        are like mini-hackathons. People are working on projects, you lead
-        workshops to introduce new technologies, you and your co-leads are
-        constantly mentoring. Your members typically start with no experience.
+        At Hack Club, every week you and 20 other students come together to
+        build. Meetings are like mini-hackathons. People are working on
+        projects, you lead workshops to introduce new technologies, you and your
+        co-leads are constantly mentoring. Your members typically start with no
+        experience.
       </Text>
     </Container>
     <Grid mt={4} mb={[4, 6]} color="white">

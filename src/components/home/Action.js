@@ -42,7 +42,7 @@ const Start = Box.extend`
   background-color: rgba(255, 255, 255, 0.75);
   background-color: ${props => props.theme.colors.snow};
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-  	background-color: rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.75);
     -webkit-backdrop-filter: saturate(180%) blur(16px);
   }
   @media screen and (prefers-reduced-transparency: reduce) {
@@ -170,7 +170,10 @@ export default () => (
       <BorderY is={BorderBottom} />
       <BorderX is={BorderLeft} />
     </Frame>
-    <Photo src="/action.jpg" alt="Group of high school students coding together" />
+    <Photo
+      src="/action.jpg"
+      alt="Group of high school students coding together"
+    />
     <Promo />
   </Base>
 )

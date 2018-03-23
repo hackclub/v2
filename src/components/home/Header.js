@@ -54,10 +54,10 @@ const Action = LargeButton.extend`
   transform: scale(1);
   &:hover,
   &:focus {
-	transform: scale(1.06);
+    transform: scale(1.06);
   }
   @media (prefers-reduced-motion: reduce) {
-	transform: none !important;
+    transform: none !important;
   }
 `
 
@@ -72,7 +72,7 @@ export default () => (
     }}
     px={[0, 3]}
   >
-  	<Nav style={{ position: 'absolute', top: 0 }} />
+    <Nav style={{ position: 'absolute', top: 0 }} />
     <Container maxWidth={48} color="white" my={[5, 6]}>
       <Text f={[3, 4]} px={2} mx="auto" my={0} caps>
         By the students, for the students.

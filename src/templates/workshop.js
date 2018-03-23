@@ -90,6 +90,42 @@ const generateSubtitle = (description, authorText) => {
   )
 }
 
+const BreadcrumbList = Flex.withComponent('ol').extend`
+  list-style: none;
+  padding-left: 0;
+`
+const Breadcrumbs = props => (
+  <BreadcrumbList
+    itemScope
+    itemType="http://schema.org/BreadcrumbList"
+    {...props}
+  />
+)
+const Breadcrumb = ({ type = 'Thing', position, name, ...props }) => (
+  <li
+    itemProp="itemListElement"
+    itemScope
+    itemType="http://schema.org/ListItem"
+  >
+    <A.link
+      itemScope
+      itemType={`http://schema.org/${type}`}
+      itemProp="item"
+      color="white"
+      f={3}
+      bold
+      caps
+      {...props}
+    >
+      <span itemProp="name" children={name} />
+    </A.link>
+    <meta itemProp="position" content={position} />
+  </li>
+)
+const BreadcrumbDivider = () => (
+  <Text.span mx={2} color="snow" f={3} children="›" />
+)
+
 const githubEditUrl = slug =>
   `https://github.com/hackclub/hackclub/edit/master${slug}/README.md`
 
@@ -154,24 +190,13 @@ export default ({ data }) => {
       >
         <Nav style={{ position: 'absolute', top: 0 }} />
         <Container mt={4} mb={3} px={3}>
-          <Flex align="center" justify="center" my={3}>
-            <A.link
-              to="/workshops"
-              color="white"
-              f={3}
-              bold
-              caps
-              children="Workshops"
-            />
-            <Text.span mx={2} color="snow" f={3} children="›" />
-            <A.link
-              to={`/workshops#${group}`}
-              color="white"
-              f={3}
-              caps
-              children={group}
-            />
-          </Flex>
+          <Breadcrumbs align="center" justify="center" my={3}>
+            <Breadcrumb to="/workshops" name="Workshops" position={1} />
+            <BreadcrumbDivider />
+            <Breadcrumb to={`/workshops#${group}`} name={group} position={2} />
+            <BreadcrumbDivider />
+            <Breadcrumb to={url} name={name} position={3} bold={false} />
+          </Breadcrumbs>
           <Name f={[5, 6]} mb={2} children={name} />
           <Desc f={[3, 4]} regular children={subtitle} />
         </Container>

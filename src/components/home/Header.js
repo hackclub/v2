@@ -42,6 +42,7 @@ const Root = Box.withComponent('header').extend`
 
   a {
     transition: transform 0.125s ease-out;
+    will-change: transform;
     transform: scale(1);
     &:hover,
     &:focus {

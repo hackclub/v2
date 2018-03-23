@@ -68,6 +68,7 @@ const Start = Box.extend`
 
 const Action = LargeButton.withComponent(Link).extend`
 	transition: transform 0.125s ease-out;
+	will-change: transform;
   transform: scale(1);
   &:hover,
   &:focus {

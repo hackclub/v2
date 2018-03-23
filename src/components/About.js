@@ -102,6 +102,7 @@ const Photo = BackgroundImage.extend.attrs({ role: 'img' })`
 
 const Action = Button.withComponent(Link).extend`
   transition: transform 0.125s ease-out;
+  will-change: transform;
   transform: scale(1);
   &:hover,
   &:focus {

@@ -21,11 +21,12 @@ const One = Section.extend`
   padding: 0 !important;
   position: relative;
   background-color: ${props => props.theme.colors.green[6]};
-  background-image: linear-gradient(
-    24deg,
-    ${props => props.theme.colors.green[6]} 0%,
-    ${props => props.theme.colors.lime[6]} 100%
-  );
+  background: url('/pattern.svg'),
+    linear-gradient(
+      24deg,
+      ${props => props.theme.colors.green[6]} 0%,
+      ${props => props.theme.colors.lime[6]} 100%
+    );
 `
 const Two = Section.extend`
   background-color: ${props => props.theme.colors.blue[6]};
@@ -86,6 +87,16 @@ const CTAContainer = Box.extend`
   a {
     position: relative;
     top: -28px;
+    transition: transform 0.125s ease-out;
+    will-change: transform;
+    transform: scale(1);
+    &:hover,
+    &:focus {
+      transform: scale(1.06);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      transform: none !important;
+    }
   }
 `
 

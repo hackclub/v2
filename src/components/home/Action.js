@@ -14,7 +14,7 @@ const Base = Box.extend`
   position: relative;
   width: 100%;
   height: 100vh;
-  min-height: 32rem;
+  min-height: 36rem;
 `
 
 const Photo = Box.withComponent('img').extend`
@@ -68,6 +68,7 @@ const Start = Box.extend`
 
 const Action = LargeButton.withComponent(Link).extend`
 	transition: transform 0.125s ease-out;
+	will-change: transform;
   transform: scale(1);
   &:hover,
   &:focus {
@@ -169,7 +170,7 @@ export default () => (
       <BorderY is={BorderBottom} />
       <BorderX is={BorderLeft} />
     </Frame>
-    <Photo src="/action.jpg" alt="Large group of students coding together" />
+    <Photo src="/action.jpg" alt="Group of high school students coding together" />
     <Promo />
   </Base>
 )

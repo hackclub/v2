@@ -131,7 +131,7 @@ export default () => (
     </One>
     <CTAContainer>
       <LargeButton.link to="/apply" inverted f={[3, 4]}>
-        Apply to Hack Club
+        Begin Your Application
       </LargeButton.link>
     </CTAContainer>
     <Two>
@@ -233,7 +233,7 @@ export default () => (
       </Modules>
       <Box align="center" mt={4}>
         <LargeButton.link to="/apply" inverted f={[3, 4]}>
-          Apply + Start Your Club
+          Begin Your Application
         </LargeButton.link>
       </Box>
     </Four>

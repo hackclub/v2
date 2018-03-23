@@ -6,7 +6,7 @@ import ImageForm from 'components/admin/events/ImageForm'
 import api from 'api'
 import storage from 'storage'
 import search from 'search'
-import { Text } from '@hackclub/design-system'
+import { Text, Image, BackgroundImage } from '@hackclub/design-system'
 
 export default class extends Component {
   constructor(props) {
@@ -76,17 +76,23 @@ export default class extends Component {
           <Fragment>
             <ImageForm
               name="logo"
-              height="60px !important"
-              width="60px"
               updateEvent={this.updateEvent}
               image={event && event.logo}
+              previewTag={({ imageUrl }) => (
+                <Image src={imageUrl} height='60px !important' />
+              )}
             />
             <ImageForm
               name="banner"
-              width="350px"
-              height="150px"
               updateEvent={this.updateEvent}
               image={event && event.banner}
+              previewTag={({ imageUrl }) => (
+                <BackgroundImage
+                  /* BackgroundImage doesn’t support height yet */
+                  height="150px"
+                  w={350}
+                  image={imageUrl} />
+              )}
             />
             <EventForm event={event} updateEvent={this.updateEvent} />
           </Fragment>

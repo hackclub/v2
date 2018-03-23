@@ -1,16 +1,10 @@
 import React, { Component, Fragment } from 'react'
-import { Box as B, Button } from '@hackclub/design-system'
+import { Button } from '@hackclub/design-system'
 import PropTypes from 'prop-types'
 import api from 'api'
 import storage from 'storage'
 
 const Label = Button.withComponent('label')
-
-const Box = B.extend`
-  height: ${props => props.height};
-  background-size: cover;
-  background-image: url(${props => props.imageurl});
-`
 
 class ImageForm extends Component {
   constructor(props) {
@@ -35,7 +29,7 @@ class ImageForm extends Component {
   }
 
   render() {
-    const { name, width, height } = this.props
+    const { name, width, height, previewTag: PreviewTag } = this.props
     const { image } = this.state
     return (
       <form>
@@ -50,17 +44,13 @@ class ImageForm extends Component {
           {image ? 'Reupload' : 'Upload'} {name}
         </Label>
         {image && (
-          <Fragment>
-            <Box
-              imageurl={
-                this.props.image
-                  ? `https://api.hackclub.com/${image.file_path}`
-                  : URL.createObjectURL(image)
-              }
-              width={width}
-              height={height}
-            />
-          </Fragment>
+          <PreviewTag
+            imageUrl={
+              this.props.image
+                ? `https://api.hackclub.com/${image.file_path}`
+                : URL.createObjectURL(image)
+            }
+          />
         )}
       </form>
     )
@@ -69,9 +59,8 @@ class ImageForm extends Component {
 
 ImageForm.propTypes = {
   name: PropTypes.string.isRequired,
-  width: PropTypes.string.isRequired,
-  height: PropTypes.string.isRequired,
-  updateEvent: PropTypes.func.isRequired
+  updateEvent: PropTypes.func.isRequired,
+  previewTag: PropTypes.func.isRequired,
 }
 
 export default ImageForm

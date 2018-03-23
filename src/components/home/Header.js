@@ -8,6 +8,7 @@ import {
   Text,
   LargeButton
 } from '@hackclub/design-system'
+import Nav from 'components/Nav'
 import Animator from 'components/Animator'
 
 const Root = Box.withComponent('header').extend`
@@ -70,6 +71,7 @@ export default () => (
     }}
     px={[0, 3]}
   >
+  	<Nav style={{ position: 'absolute', top: 0 }} />
     <Container maxWidth={48} color="white" my={[5, 6]}>
       <Text f={[3, 4]} px={2} mx="auto" my={0} caps>
         By the students, for the students.

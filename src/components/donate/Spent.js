@@ -39,10 +39,12 @@ const Item = ({ label, value, ...props }) => (
   </Row>
 )
 
-export default () => (
+const Spent = () => (
   <Box w={1}>
     {map(segments, (value, segment) => (
       <Item label={segment} key={segment} value={value} />
     ))}
   </Box>
 )
+
+export default Spent

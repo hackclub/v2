@@ -276,6 +276,7 @@ export default class extends Component {
 
     this.populateApplications = this.populateApplications.bind(this)
     this.createNewApplication = this.createNewApplication.bind(this)
+    this.resetApplication = this.resetApplication.bind(this)
   }
 
   createNewApplication(firstTime = false) {
@@ -291,6 +292,15 @@ export default class extends Component {
       .then(app => {
         return app
       })
+  }
+
+  resetApplication() {
+    this.createNewApplication().then(app => {
+      this.setState({
+        status: 'finished',
+        app: app
+      })
+    })
   }
 
   populateApplications(application = null) {
@@ -366,14 +376,7 @@ export default class extends Component {
               userId={userId}
               authToken={authToken}
               callback={this.populateApplications}
-              resetCallback={() => {
-                this.createNewApplication.then(app => {
-                  this.setState({
-                    status: 'finished',
-                    app: app
-                  })
-                })
-              }}
+              resetCallback={this.resetApplication}
             />
           </Fragment>
         )

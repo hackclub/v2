@@ -24,7 +24,7 @@ class ImageForm extends Component {
     data.append('file', updatedImage)
     data.append('type', `event_${this.props.name}`)
     api.post('v1/attachments', { authToken, data }).then(resp => {
-      this.props.updateEvent({ [`${this.props.name}`]: resp.id })
+      this.props.updateEvent({ [`${this.props.name}`]: resp })
     })
   }
 
@@ -46,9 +46,9 @@ class ImageForm extends Component {
         {image && (
           <PreviewTag
             imageUrl={
-              this.props.image
-                ? `https://api.hackclub.com/${image.file_path}`
-                : URL.createObjectURL(image)
+              image instanceof File ?
+                URL.createObjectURL(image) :
+                `https://api.hackclub.com${image.file_path}`
             }
           />
         )}

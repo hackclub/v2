@@ -104,7 +104,15 @@ export default withFormik({
     const authToken = storage.get('authToken')
     const apiFunction = values.id ? api.patch : api.post
     const apiEndpoint = values.id ? `v1/events/${values.id}` : `v1/events`
-    apiFunction(apiEndpoint, { authToken, data: values }).then(event => {
+    const filteredEvents = {}
+    Object.keys(values).forEach(key => {
+      if (['banner', 'logo'].indexOf(key) !== -1 && values[key]) {
+        filteredEvents[`${key}_id`] = values[key].id
+      } else {
+        filteredEvents[key] = values[key]
+      }
+    })
+    apiFunction(apiEndpoint, { authToken, data: filteredEvents }).then(event => {
       props.updateEvent(event)
     })
   }

@@ -7,12 +7,16 @@ import {
   Text,
   LargeButton,
   Icon,
-  Section
+  Section,
+  Link as A
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
+import Stat from 'components/Stat'
+import Spent from 'components/donate/Spent'
 import Footer from 'components/Footer'
+import commaNumber from 'comma-number'
 
 const Header = Section.withComponent('header').extend`
   padding-top: 0 !important;
@@ -27,9 +31,50 @@ const Header = Section.withComponent('header').extend`
   clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 90%);
 `
 
+const Grid = Box.extend`
+  display: grid;
+  grid-gap: ${props => props.theme.space[2]}px;
+  width: 100%;
+
+  > div {
+    width: 100%;
+    box-shadow: ${props => props.theme.boxShadows[3]};
+    border-radius: ${props => props.theme.radius};
+    max-width: 100%;
+  }
+
+  ${props => props.theme.mediaQueries.md} {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: ${props => props.theme.space[4]}px;
+  }
+`
+
+const Stats = Box.extend`
+  span {
+    &:before {
+      content: '$';
+      font-size: ${props => props.theme.fontSizes[4]}px;
+      margin-left: -12px;
+      vertical-align: super;
+    }
+  }
+  div {
+    text-align: left;
+    line-height: 1.25;
+  }
+`
+
+A.link = A.withComponent(Link)
+
 const title = 'Donate to Hack Club'
 const description =
   'Contribute today to empower the next generation and help start a coding club at every high school.'
+
+const stats = {
+  monthly: 6742.71,
+  student: 5,
+  club: 100
+}
 
 export default () => (
   <Fragment>
@@ -50,15 +95,70 @@ export default () => (
         <Heading.h1 f={[3, 4]} caps>
           Donate
         </Heading.h1>
-        <Heading.h2 f={[4, 5,6]} mt={2} mb={3}>
+        <Heading.h2 f={[4, 5, 6]} mt={2} mb={3}>
           We’re building the organization we want to see in the world.
         </Heading.h2>
-        <Text f={[3,4]}>
+        <Text f={[3, 4]}>
           Contribute today to empower the next generation and help start a
           coding club at every high school—we need your help.
         </Text>
       </Container>
     </Header>
+    <Container w={1} px={[3, 4, null, 2]} mt={[4, 5]}>
+      <Container maxWidth={48} mx={0}>
+        <Text f={[3, 4]}>
+          At Hack Club, we value <strong>total transparency</strong>. It‘s the
+          reason we open source all{' '}
+          <A href="https://github.com/hackclub/hackclub">our content</A>
+          {', '}
+          <A href="https://github.com/hackclub/monolith">our code</A>
+          {', '}
+          <A href="https://github.com/hackclub/site">our website</A>, and our
+          leaders and members are freely accessible on{' '}
+          <A href="https://slack.hackclub.com">our Slack</A>. But we think if
+          you’re making a contribution, you deserve to know exactly where it
+          will go, so{' '}
+          <strong>
+            we make public{' '}
+            <A href="https://github.com/hackclub/ledger">
+              all of our financials
+            </A>
+          </strong>.
+        </Text>
+        <Heading.h2 f={[4, 5]} mt={4} mb={3}>
+          Where your contribution will go
+        </Heading.h2>
+        <Text f={[3, 4]}>
+          We spend our entire budget on paying{' '}
+          <A.link to="/team">our team</A.link> and directly improving our clubs.
+          There‘s no advertising spend, bonusses, or wasted contributions. To
+          show you, here‘s a month of our financials.
+        </Text>
+      </Container>
+      <Grid mt={4} mb={[4, 6]} color="white">
+        <Box bg="accent" p={[3, 4]}>
+          <Heading.h3 f={4} my={0} caps>
+            Overall stats
+          </Heading.h3>
+          <Stats my={2}>
+            <Stat
+              f={6}
+              w={1}
+              value={commaNumber(stats.monthly)}
+              label="monthly spend"
+            />
+            <Stat f={6} w={1 / 2} value={stats.student} label="per student" />
+            <Stat f={6} w={1 / 2} value={stats.club} label="per club" />
+          </Stats>
+        </Box>
+        <Box bg="primary" p={[3, 4]}>
+          <Heading.h3 f={4} my={0} caps>
+            Category breakdown
+          </Heading.h3>
+          <Spent />
+        </Box>
+      </Grid>
+    </Container>
     <Footer />
   </Fragment>
 )

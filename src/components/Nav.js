@@ -35,7 +35,7 @@ const Nav = ({ color = 'white', ...props }) => (
       <Item to="/donate" children="Donate" />
       <Item to="/start" children="Start" />
       <Item to="/workshops" children="Workshops" />
-      <Item to="https://hackathons.hackclub.com" children="Hackathons" />
+      <Item to="/hackathons" children="Hackathons" />
     </NavBar>
   </Base>
 )

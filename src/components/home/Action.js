@@ -28,7 +28,7 @@ const Photo = Box.withComponent('img').extend`
 	object-fit: cover;
 `
 
-const Start = Box.extend`
+const PromoBox = Box.extend`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -48,17 +48,6 @@ const Start = Box.extend`
   @media screen and (prefers-reduced-transparency: reduce) {
     -webkit-backdrop-filter: auto !important;
   }
-  h2 {
-    background-image: linear-gradient(
-      48deg,
-      ${props => props.theme.colors.orange[4]},
-      ${props => props.theme.colors.red[5]},
-      ${props => props.theme.colors.red[6]}
-    );
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
   ${props => props.theme.mediaQueries.sm} {
     br {
       display: none;
@@ -66,9 +55,22 @@ const Start = Box.extend`
   }
 `
 
+const PromoHeading = Heading.h2.extend`
+  background: linear-gradient(
+    48deg,
+    ${props => props.theme.colors.orange[4]},
+    ${props => props.theme.colors.red[5]},
+    ${props => props.theme.colors.red[6]}
+  );
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: ${props => props.theme.colors.primary};
+`
+
 const Action = LargeButton.withComponent(Link).extend`
-	transition: transform 0.125s ease-out;
-	will-change: transform;
+  transition: transform 0.125s ease-out;
+  will-change: transform;
   transform: scale(1);
   &:hover,
   &:focus {
@@ -80,10 +82,10 @@ const Action = LargeButton.withComponent(Link).extend`
 `
 
 const Promo = () => (
-  <Start p={[3, 4, 5]}>
-    <Heading.h2 f={[4, 5, 6]} m={0}>
+  <PromoBox p={[3, 4, 5]}>
+    <PromoHeading f={[4, 5, 6]} m={0}>
       Get your club started.
-    </Heading.h2>
+    </PromoHeading>
     <Text f={[2, 4]} my={2}>
       Build the class you wish you could take.
     </Text>
@@ -91,7 +93,7 @@ const Promo = () => (
       Bring the movement to your school.
     </Text>
     <Action to="/start" children="Start Your Club »" />
-  </Start>
+  </PromoBox>
 )
 
 const Frame = Box.extend`

@@ -16,6 +16,7 @@
   "dependencies": {
     "@hackclub/design-system": "^0.0.1-9",
     "axios": "^0.18.0",
+    "comma-number": "^2.0.0",
     "formik": "^0.11.11",
     "gatsby": "^1.9.239",
     "gatsby-link": "^1.6.39",

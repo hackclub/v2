@@ -2122,6 +2122,10 @@ combined-stream@1.0.6, combined-stream@^1.0.5, combined-stream@~1.0.5:
   dependencies:
     delayed-stream "~1.0.0"
 
+comma-number@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/comma-number/-/comma-number-2.0.0.tgz#24dfa83ce958d68a9d21af48e20e52dc072704bd"
+
 comma-separated-tokens@^1.0.0, comma-separated-tokens@^1.0.1:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/comma-separated-tokens/-/comma-separated-tokens-1.0.4.tgz#72083e58d4a462f01866f6617f4d98a3cd3b8a46"

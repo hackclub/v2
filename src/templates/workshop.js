@@ -148,6 +148,8 @@ const ShareButton = props => (
   </InlineButton>
 )
 
+const makeUrl = (domain, slug) => `https://${domain}${slug}`
+
 export default ({ data }) => {
   if (isEmpty(data)) return null
 
@@ -161,19 +163,22 @@ export default ({ data }) => {
 
   const title = `${name} – Hack Club Workshops`
   const desc = `${description}. Read the tutorial on Hack Club Workshops.`
-  const url = `https://hackclub.com${slug}`
+  const url = makeUrl('hackclub.com', slug)
+
+  const authorUsername = author.toString().match(/@(\S+)/)
+    ? author.replace('@', '')
+    : 'hackclub'
+  const authorUrl = makeUrl('github.com', authorUsername)
 
   const schema = {
     '@context': 'http://schema.org',
     '@type': 'HowTo',
     headline: name,
-    image: [`https://hackclub.com${bg}`],
+    image: [makeUrl('hackclub.com', bg)],
     author: {
       '@type': 'Person',
       name: author,
-      url: `https://github.com/${
-        author.match(/@(\S+)/) ? author.replace('@', '') : 'hackclub'
-      }`
+      url: authorUrl
     },
     publisher: org,
     url,

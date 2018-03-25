@@ -23,7 +23,10 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
       createNodeField({ node, name: 'slug', value })
       createNodeField({ node, name: 'bg', value: `${value}.svg` })
 
-      const path = `./public{_.replace(value, '/lib', '')}.svg`
+      if (!fs.existsSync('./public/workshops')) {
+ 	      fs.mkdirSync(dir)
+      }
+      const path = `./public${_.replace(value, '/lib', '')}.svg`
       writePattern(path, node.frontmatter.name)
     }
   }

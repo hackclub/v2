@@ -17,6 +17,7 @@ import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import MarkdownBody from 'components/MarkdownBody'
 import { lowerCase, camelCase, isEmpty } from 'lodash'
+import { org } from 'data.json'
 
 const Name = Heading.h1.extend`
   background-color: white;
@@ -72,15 +73,9 @@ const generateSubtitle = (description, authorText) => {
 
     // This pads returned results with spaces, making our final array look the
     // following:
-    //
     //   [ 'Hack', ' ', 'Club', ' ', 'staff' ]
-    //
-    if (index === arr.length - 1) {
-      // if last item in array, don't give an extra space
-      return processedWord
-    } else {
-      return [processedWord, ' ']
-    }
+    // if last item in array, don't give an extra space
+    return index === arr.length - 1 ? processedWord : [processedWord, ' ']
   })
 
   return (
@@ -90,9 +85,44 @@ const generateSubtitle = (description, authorText) => {
   )
 }
 
+const BreadcrumbList = Flex.withComponent('ol').extend`
+  list-style: none;
+  padding-left: 0;
+`
+const Breadcrumbs = props => (
+  <BreadcrumbList
+    itemScope
+    itemType="http://schema.org/BreadcrumbList"
+    {...props}
+  />
+)
+const Breadcrumb = ({ type = 'Thing', position, name, ...props }) => (
+  <li
+    itemProp="itemListElement"
+    itemScope
+    itemType="http://schema.org/ListItem"
+  >
+    <A.link
+      itemScope
+      itemType={`http://schema.org/${type}`}
+      itemProp="item"
+      color="white"
+      f={3}
+      bold
+      caps
+      {...props}
+    >
+      <span itemProp="name" children={name} />
+    </A.link>
+    <meta itemProp="position" content={position} />
+  </li>
+)
+const BreadcrumbDivider = () => (
+  <Text.span mx={2} color="snow" f={3} children="›" />
+)
+
 const githubEditUrl = slug =>
   `https://github.com/hackclub/hackclub/edit/master${slug}/README.md`
-
 const twitterURL = (text, url) =>
   `https://twitter.com/intent/tweet?text=${text
     .split(' ')
@@ -118,12 +148,14 @@ const ShareButton = props => (
   </InlineButton>
 )
 
+const makeUrl = (domain, slug) => `https://${domain}${slug}`
+
 export default ({ data }) => {
   if (isEmpty(data)) return null
 
   const {
     fields: { slug, bg },
-    frontmatter: { name, description, author, group },
+    frontmatter: { name, description, author = '', group = 'start', order = 1 },
     html
   } = data.markdownRemark
 
@@ -131,7 +163,39 @@ export default ({ data }) => {
 
   const title = `${name} – Hack Club Workshops`
   const desc = `${description}. Read the tutorial on Hack Club Workshops.`
-  const url = `https://hackclub.com${slug}`
+  const url = makeUrl('hackclub.com', slug)
+
+  const authorUsername = (author || '').match(/@(\S+)/)
+    ? author.replace('@', '')
+    : 'hackclub'
+  const authorUrl = makeUrl('github.com', authorUsername)
+
+  const schema = {
+    '@context': 'http://schema.org',
+    '@type': 'HowTo',
+    headline: name,
+    image: [makeUrl('hackclub.com', bg)],
+    author: {
+      '@type': 'Person',
+      name: author,
+      url: authorUrl
+    },
+    publisher: org,
+    url,
+    description,
+    genre: group,
+    position: order,
+    educationalUse: 'assignment',
+    isAccessibleForFree: true,
+    potentialAction: {
+      '@type': 'CreateAction',
+      result: {
+        '@type': 'CreativeWork',
+        name
+      }
+    }
+  }
+
   return (
     <Fragment>
       <Helmet
@@ -143,9 +207,14 @@ export default ({ data }) => {
           { property: 'og:description', content: desc },
           { name: 'twitter:description', content: desc },
           { property: 'og:site_name', content: 'Hack Club Workshops' },
-          { property: 'og:url', content: `https://hackclub.com${slug}` },
-          { name: 'twitter:card', content: 'summary' }
+          { property: 'og:url', content: url }
         ]}
+        children={
+          <script
+            type="application/ld+json"
+            children={JSON.stringify(schema)}
+          />
+        }
       />
       <Section.h
         bg="accent"
@@ -154,24 +223,13 @@ export default ({ data }) => {
       >
         <Nav style={{ position: 'absolute', top: 0 }} />
         <Container mt={4} mb={3} px={3}>
-          <Flex align="center" justify="center" my={3}>
-            <A.link
-              to="/workshops"
-              color="white"
-              f={3}
-              bold
-              caps
-              children="Workshops"
-            />
-            <Text.span mx={2} color="snow" f={3} children="›" />
-            <A.link
-              to={`/workshops#${group}`}
-              color="white"
-              f={3}
-              caps
-              children={group}
-            />
-          </Flex>
+          <Breadcrumbs align="center" justify="center" my={3}>
+            <Breadcrumb to="/workshops" name="Workshops" position={1} />
+            <BreadcrumbDivider />
+            <Breadcrumb to={`/workshops#${group}`} name={group} position={2} />
+            <BreadcrumbDivider />
+            <Breadcrumb to={url} name={name} position={3} bold={false} />
+          </Breadcrumbs>
           <Name f={[5, 6]} mb={2} children={name} />
           <Desc f={[3, 4]} regular children={subtitle} />
         </Container>
@@ -224,6 +282,7 @@ export const pageQuery = graphql`
         description
         author
         group
+        order
       }
     }
   }

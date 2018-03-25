@@ -91,13 +91,10 @@ export default () => (
     />
     <Header>
       <Nav />
-      <Container maxWidth={48} px={3} py={4}>
-        <Heading.h1 f={[3, 4]} caps>
-          Donate
+      <Container maxWidth={48} py={4}>
+        <Heading.h1 f={[4, 5, 6]} mb={3}>
+          Donate to Hack Club
         </Heading.h1>
-        <Heading.h2 f={[4, 5, 6]} mt={2} mb={3}>
-          We’re building the organization we want to see in the world.
-        </Heading.h2>
         <Text f={[3, 4]}>
           Contribute today to empower the next generation and help start a
           coding club at every high school—we need your help.
@@ -107,8 +104,15 @@ export default () => (
     <Container w={1} px={[3, 4, null, 2]} mt={[4, 5]}>
       <Container maxWidth={48} mx={0}>
         <Text f={[3, 4]}>
-          At Hack Club, we value <strong>total transparency</strong>. It‘s the
-          reason we open source all{' '}
+          From day one, Hack Club has been a labor of love. We built this to
+          create{' '}
+          <strong>the organization we wished existed in the world</strong>. We
+          wanted to build an organization we’d be proud to be a member of, to be
+          a donor of, and to be an employee of.
+        </Text>
+        <Text f={[3, 4]} mt={3}>
+          A core component of that is <strong>total transparency</strong>. It‘s
+          the reason we open source all{' '}
           <A href="https://github.com/hackclub/hackclub">our content</A>
           {', '}
           <A href="https://github.com/hackclub/monolith">our code</A>
@@ -126,7 +130,7 @@ export default () => (
           </strong>.
         </Text>
         <Heading.h2 f={[4, 5]} mt={4} mb={3}>
-          Where your contribution will go
+          Your contribution is for our clubs.
         </Heading.h2>
         <Text f={[3, 4]}>
           We spend our entire budget on paying{' '}
@@ -135,7 +139,7 @@ export default () => (
           show you, here‘s a month of our financials.
         </Text>
       </Container>
-      <Grid mt={4} mb={[4, 6]} color="white">
+      <Grid mt={4} mb={[4, 5]} color="white">
         <Box bg="accent" p={[3, 4]}>
           <Heading.h3 f={4} my={0} caps>
             Overall stats
@@ -158,6 +162,11 @@ export default () => (
           <Spent />
         </Box>
       </Grid>
+      <Container maxWidth={48} mx={0}>
+        <Heading.h2 f={[4, 5]} mt={4} mb={3}>
+          You’re making a real impact.
+        </Heading.h2>
+      </Container>
     </Container>
     <Footer />
   </Fragment>

@@ -165,7 +165,7 @@ export default ({ data }) => {
   const desc = `${description}. Read the tutorial on Hack Club Workshops.`
   const url = makeUrl('hackclub.com', slug)
 
-  const authorUsername = author.toString().match(/@(\S+)/)
+  const authorUsername = (author || '').match(/@(\S+)/)
     ? author.replace('@', '')
     : 'hackclub'
   const authorUrl = makeUrl('github.com', authorUsername)

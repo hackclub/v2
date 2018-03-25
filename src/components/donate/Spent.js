@@ -31,8 +31,12 @@ const Bar = Box.extend`
 `
 
 const Item = ({ label, value, ...props }) => (
-  <Row mt={3} aria-label={`${label}: ${round(100 * (value / total))}%`}>
-    <Bar py={3} style={{ width: 256 * (value / total) }} />
+  <Row mt={3}>
+    <Bar
+      py={3}
+      aria-label={`${round(100 * (value / total))}%`}
+      style={{ width: 256 * (value / total) }}
+    />
     <Text.span f={1} bold color="white" ml={3}>
       {capitalize(label)}: {`$${commaNumber(round(value))}`}
     </Text.span>

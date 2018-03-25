@@ -23,7 +23,7 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
       createNodeField({ node, name: 'slug', value })
       createNodeField({ node, name: 'bg', value: `${value}.svg` })
 
-      const path = `./static${_.replace(value, '/lib', '')}.svg`
+      const path = `./public{_.replace(value, '/lib', '')}.svg`
       writePattern(path, node.frontmatter.name)
     }
   }

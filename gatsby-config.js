@@ -13,6 +13,14 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/public/challenge.json`,
+        name: 'challenge'
+      }
+    },
+    'gatsby-transformer-json',
+    {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [

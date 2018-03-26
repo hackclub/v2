@@ -27,7 +27,7 @@ const InnerForm = ({
     <Field
       label="Name"
       name="name"
-      placeholder="Shake It Off by Taylor Swift"
+      placeholder="My Project"
       value={values.name}
       onChange={handleChange}
       onBlur={handleBlur}

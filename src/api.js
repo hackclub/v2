@@ -13,9 +13,13 @@ const generateMethod = method => (path, options = {}) => {
         filteredOptions.headers['Authorization'] = `Bearer ${value}`
         break
       case 'data':
-        filteredOptions.body = JSON.stringify(value)
-        filteredOptions.headers = filteredOptions.headers || {}
-        filteredOptions.headers['Content-Type'] = 'application/json'
+        if (value instanceof FormData) {
+          filteredOptions.body = value
+        } else {
+          filteredOptions.body = JSON.stringify(value)
+          filteredOptions.headers = filteredOptions.headers || {}
+          filteredOptions.headers['Content-Type'] = 'application/json'
+        }
         break
       default:
         filteredOptions[key] = value

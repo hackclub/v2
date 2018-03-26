@@ -27,7 +27,7 @@ const InnerForm = ({
     <Field
       label="Name"
       name="name"
-      p="Shake It Off by Taylor Swift"
+      placeholder="Shake It Off by Taylor Swift"
       value={values.name}
       onChange={handleChange}
       onBlur={handleBlur}
@@ -38,7 +38,7 @@ const InnerForm = ({
     <Field
       label="Description"
       name="description"
-      p="Write something about your project…"
+      placeholder="Write something about your project…"
       value={values.description}
       onChange={handleChange}
       onBlur={handleBlur}
@@ -49,7 +49,7 @@ const InnerForm = ({
     <Field
       label="URL"
       name="url"
-      p="my-project.glitch.me"
+      placeholder="my-project.glitch.me"
       value={values.url}
       onChange={handleChange}
       onBlur={handleBlur}

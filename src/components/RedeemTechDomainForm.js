@@ -21,7 +21,7 @@ const InnerForm = ({
     <Field
       label="Your Name"
       name="name"
-      p="Prof Orpheus"
+      placeholder="Prof Orpheus"
       value={values.name}
       onChange={handleChange}
       onBlur={handleBlur}
@@ -32,7 +32,7 @@ const InnerForm = ({
       label="Your Email"
       name="email"
       type="email"
-      p="orpheus@hackclub.com"
+      placeholder="orpheus@hackclub.com"
       value={values.email}
       onChange={handleChange}
       onBlur={handleBlur}
@@ -42,7 +42,7 @@ const InnerForm = ({
     <Field
       label="Domain"
       name="requested_domain"
-      p="proforpheus.tech"
+      placeholder="proforpheus.tech"
       value={values.requested_domain}
       onChange={handleChange}
       onBlur={handleBlur}
@@ -52,7 +52,7 @@ const InnerForm = ({
     <Field
       label="Secret code"
       name="secret_code"
-      p="Get from your club leader"
+      placeholder="Get from your club leader"
       value={values.secret_code}
       onChange={handleChange}
       onBlur={handleBlur}

@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
-import { Flex, colors } from '@hackclub/design-system'
-import EmailLoginForm from 'components/apply/EmailLoginForm'
-import LoginCodeForm from 'components/apply/LoginCodeForm'
+import { Flex, Heading, colors } from '@hackclub/design-system'
+import LoginForm from 'components/apply/LoginForm'
 import Flag from 'components/Flag'
 
 const Base = Flex.extend.attrs({
@@ -21,51 +20,27 @@ const FixedFlag = Flag.extend`
   z-index: 1;
 `
 
-class Login extends Component {
-  constructor(props) {
-    super(props)
+const Login = ({ userType = 'applicant' }) => {
+  const color = userType === 'admin' ? colors.green[5] : 'white'
+  const bg = userType === 'admin' ? '#000' : 'primary'
 
-    this.state = { emailSent: false }
-    this.submitCallback = this.submitCallback.bind(this)
-  }
-
-  submitCallback(data) {
-    this.setState({
-      ...data,
-      emailSent: true
-    })
-  }
-
-  render() {
-    const { emailSent, userId, email } = this.state
-    const { userType = 'applicant' } = this.props
-    const color = userType === 'admin' ? colors.green[5] : 'white'
-    const bg = userType === 'admin' ? '#000' : 'primary'
-
-    return (
-      <Fragment>
-        <Helmet title="Log in – Hack Club" />
-        <FixedFlag />
-        <Base color={color} bg={bg}>
-          {emailSent ? (
-            <LoginCodeForm
-              userId={userId}
-              email={email}
-              color={color}
-              bg={bg}
-            />
-          ) : (
-            <EmailLoginForm
-              submitCallback={this.submitCallback}
-              userType={userType}
-              color={color}
-              bg={bg}
-            />
-          )}
-        </Base>
-      </Fragment>
-    )
-  }
+  return (
+    <Fragment>
+      <Helmet title="Log in – Hack Club" />
+      <FixedFlag />
+      <Base color={color} bg={bg}>
+        <Heading.h1 f={2} mb={3} caps color={color}>
+          {userType === 'admin' ? 'Admin login' : 'Start your application'}
+        </Heading.h1>
+        <LoginForm
+          color={color}
+          bg={bg}
+          inputProps={{ mx: 'auto', w: 24 * 16 }}
+          textProps={{ align: 'center', f: 4 }}
+        />
+      </Base>
+    </Fragment>
+  )
 }
 
 export default Login

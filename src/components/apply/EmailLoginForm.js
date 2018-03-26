@@ -5,12 +5,8 @@ import { withFormik } from 'formik'
 import yup from 'yup'
 import fetch from 'unfetch'
 
-const StyledInput = Input.extend.attrs({
-  mx: 'auto',
-  mb: 5,
-  w: 24 * 16
-})`
-  text-align: center;
+const StyledInput = Input.extend`
+  text-align: inherit;
   background: ${props => props.color};
   color: ${props => cx(props.bg)};
   border: none;
@@ -18,7 +14,7 @@ const StyledInput = Input.extend.attrs({
     box-shadow: none !important;
   }
   ::placeholder {
-    text-align: center;
+    text-align: inherit;
     color: ${props => cx(props.bg)};
     opacity: 0.5;
   }
@@ -35,14 +31,13 @@ const InnerForm = ({
   userType,
   color,
   bg,
-  status
+  status,
+  inputProps = {},
+  textProps = {}
 }) => (
   <form onSubmit={handleSubmit}>
-    <Heading.h1 f={2} mb={3} caps color={color}>
-      {userType === 'admin' ? 'Admin login' : 'Start your application'}
-    </Heading.h1>
-    <Label className="email" id="email">
-      <Text mb={2} align="center" f={4} color={color}>
+    <Label className="email" id="email" mb={0} {...textProps}>
+      <Text mb={2} color={color}>
         Enter your email
       </Text>
       <StyledInput
@@ -59,16 +54,17 @@ const InnerForm = ({
         disabled={isSubmitting}
         autoComplete="off"
         autoFocus
+        {...inputProps}
       />
     </Label>
-    <Text
-      f={1}
-      mt="-2.5rem"
-      align="center"
-      style={errors.email ? null : { visibility: 'hidden' }}
-    >
-      {errors.email || 'placeholder'}
-    </Text>
+    {errors.email && (
+      <Text
+        f={1}
+        mt={2}
+        align={textProps.align || 'center'}
+        children={errors.email || ''}
+      />
+    )}
   </form>
 )
 

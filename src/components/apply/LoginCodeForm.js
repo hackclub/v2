@@ -5,13 +5,8 @@ import { withFormik } from 'formik'
 import yup from 'yup'
 import fetch from 'unfetch'
 
-const StyledInput = Input.extend.attrs({
-  f: 4,
-  mx: 'auto',
-  mb: 5,
-  w: 24 * 16
-})`
-  text-align: center;
+const StyledInput = Input.extend`
+  text-align: inherit;
   background: ${props => props.color};
   color: ${props => cx(props.bg)};
   border: none;
@@ -19,7 +14,7 @@ const StyledInput = Input.extend.attrs({
     box-shadow: none !important;
   }
   ::placeholder {
-    text-align: center;
+    text-align: inherit;
     color: ${props => cx(props.bg)};
     opacity: 0.5;
   }
@@ -66,13 +61,15 @@ class InnerForm extends Component {
       status,
       color,
       bg,
-      email
+      email,
+      inputProps = {},
+      textProps = {}
     } = this.props
     return (
       <form onSubmit={handleSubmit}>
-        <Label className="loginCode" id="loginCode" align="center">
-          <Text color={color} mb={3} align="center" f={4}>
-            Cool! We just sent a login code to {email}.
+        <Label className="loginCode" id="loginCode" {...textProps}>
+          <Text color={color} mb={3}>
+            Rad! We just sent a login code to {email}. 📬
           </Text>
           <StyledInput
             name="loginCode"
@@ -89,21 +86,21 @@ class InnerForm extends Component {
             autoComplete="off"
             autoFocus
             data-lpignore
+            {...inputProps}
           />
         </Label>
-        <Text
-          f={1}
-          mt="-2.5rem"
-          align="center"
-          style={errors.loginCode ? null : { visibility: 'hidden' }}
-        >
-          {errors.loginCode || 'placeholder'}
-        </Text>
+        {errors.loginCode && (
+          <Text
+            f={1}
+            mt={2}
+            align={textProps.align || 'center'}
+            children={errors.loginCode || ''}
+          />
+        )}
       </form>
     )
   }
 }
-
 const LoginCodeForm = withFormik({
   mapPropsToValues: ({ params }) => ({ ...params }),
   validationSchema: yup.object().shape({
@@ -130,11 +127,9 @@ const LoginCodeForm = withFormik({
       .then(json => {
         window.localStorage.setItem('authToken', json.auth_token)
         setSubmitting(false)
-
         // associate current session with authenticated user and update email
         // stored in analytics
         analytics.identify(props.userId, { email: props.email })
-
         window.location.reload()
       })
       .catch(e => {
@@ -145,5 +140,4 @@ const LoginCodeForm = withFormik({
   },
   displayName: 'LoginCodeForm'
 })(InnerForm)
-
 export default LoginCodeForm

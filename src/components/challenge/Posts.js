@@ -11,7 +11,7 @@ class Posts extends Component {
 
   componentWillMount() {
     api
-      .get(`/v1/challenges/${this.props.challengeId}`)
+      .get(`v1/challenges/${this.props.challengeId}`)
       .then(posts => this.setState({ posts }))
       .then(posts => 'FIND_MY_UPVOTES')
   }
@@ -19,9 +19,9 @@ class Posts extends Component {
   onUpvote(e, id) {
     const { authUser } = this.props
     if (includes(this.state.upvotes, id)) {
-      api.delete(`/v1/posts/${id}/upvotes`, { authUser })
+      api.delete(`v1/posts/${id}/upvotes`, { authUser })
     } else {
-      api.post(`/v1/posts/${id}/upvotes`, { authUser })
+      api.post(`v1/posts/${id}/upvotes`, { authUser })
     }
   }
 

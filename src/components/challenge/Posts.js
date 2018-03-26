@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import api from 'api'
+import axios from 'axios'
 import Post from 'components/challenge/Post'
 import storage from 'storage'
 import { map, includes, isEmpty, filter } from 'lodash'
@@ -14,8 +14,13 @@ class Posts extends Component {
     const userId = storage.get('userId')
     const userEmail = storage.get('userEmail')
     this.setState({ userId, userEmail })
-    api.get(`v1/challenges/${this.props.challengeId}/posts`).then(res => {
-      const posts = res || []
+    this.api = axios.create({
+      baseURL: 'https://api.hackclub.com/',
+      timeout: 1000,
+      headers: { authUser: userId }
+    })
+    this.api.get(`v1/challenges/${this.props.challengeId}/posts`).then(res => {
+      const posts = res.data || []
       const upvotes = map(
         filter(
           posts,
@@ -60,6 +65,7 @@ class Posts extends Component {
             description={post.description}
             upvotes={post.upvotes.length}
             upvoted={includes(upvotes, post.id)}
+            onUpvote={e => this.onUpvote(e, post.id)}
           />
         ))}
       </Fragment>

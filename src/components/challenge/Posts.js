@@ -13,14 +13,15 @@ class Posts extends Component {
   componentDidMount() {
     const userId = storage.get('userId')
     const userEmail = storage.get('userEmail')
+    const authToken = storage.get('auth')
     this.setState({ userId, userEmail })
     this.api = axios.create({
       baseURL: 'https://api.hackclub.com/',
-      timeout: 1000,
-      headers: { authUser: userId }
+      headers: { Authorization: `Bearer ${authToken}` }
     })
     this.api.get(`v1/challenges/${this.props.challengeId}/posts`).then(res => {
       const posts = res.data || []
+      // not sure if this works yet, sorry. getting an array of ids where upvoted
       const upvotes = map(
         filter(
           posts,
@@ -33,7 +34,7 @@ class Posts extends Component {
         post.upvotesCount = post.upvotes.length
         return post
       })
-      // TODO: remove upvotes array for better performace
+      // TODO (later): remove upvotes array for better performace
       this.setState({ upvotes, posts })
     })
   }
@@ -42,13 +43,11 @@ class Posts extends Component {
     const { userId: authUser } = this.state
     if (isEmpty(authUser)) return
     if (includes(this.state.upvotes, id)) {
-      api
-        .delete(`v1/posts/${id}/upvotes`, { headers: { authUser } })
-        .then(res => {
-          const post = this.setState({})
-        })
+      this.api.delete(`v1/posts/${id}/upvotes`).then(res => {
+        const post = this.setState({})
+      })
     } else {
-      api.post(`v1/posts/${id}/upvotes`, { authUser })
+      this.api.post(`v1/posts/${id}/upvotes`)
     }
     // TODO: add/remove ID from upvotes array in state
     // TODO: increment/decrement state's post data upvotesCount

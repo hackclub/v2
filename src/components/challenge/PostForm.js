@@ -3,7 +3,7 @@ import { Field, Submit } from 'components/Forms'
 import { withFormik } from 'formik'
 import storage from 'storage'
 import yup from 'yup'
-import api from 'api'
+import axios from 'axios'
 
 const statusMessage = status =>
   status
@@ -81,17 +81,20 @@ const PostForm = withFormik({
   enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, setStatus, resetForm }) => {
     console.log(data)
-    const authUser = storage.get('authToken')
-    console.log('user', authUser)
-    api // TODO: embed real challenge ID here
-      .post(`v1/challenges/1/posts`, {
-        data: JSON.stringify(data),
-        headers: { authUser }
-      })
+    const authToken = storage.get('authToken')
+    const headers = { Authorization: `Bearer ${authToken}` }
+    console.log('headers', headers)
+    axios // TODO: embed real challenge ID here
+      .post(`https://api.hackclub.com/v1/challenges/1/posts`, data, { headers })
       .then(res => {
         console.log(res)
         resetForm()
         setStatus('success')
+        setTimeout(() => {
+          if (typeof location !== 'undefined') {
+            location.reload()
+          }
+        }, 1024)
       })
       .catch(e => {
         console.error(e)

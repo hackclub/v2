@@ -9,6 +9,7 @@ import {
   Text
 } from '@hackclub/design-system'
 import PropTypes from 'prop-types'
+import { kebabCase } from 'lodash'
 
 const Row = Flex.extend`
   align-items: center;
@@ -31,7 +32,7 @@ const Post = ({
   upvoted = false,
   onUpvote
 }) => (
-  <Row py={[2, 3]}>
+  <Row py={[2, 3]} id={kebabCase(name)}>
     <UpvoteButton
       bg={upvoted ? 'primary' : 'smoke'}
       color={upvoted ? 'white' : 'slate'}

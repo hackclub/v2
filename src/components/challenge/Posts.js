@@ -128,6 +128,7 @@ class Posts extends Component {
             upvotes={post.upvotesCount}
             upvoted={includes(upvotes, post.id)}
             onUpvote={e => this.onUpvote(e, post.id)}
+            key={post.url}
           />
         ))}
       </Fragment>

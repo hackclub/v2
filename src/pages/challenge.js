@@ -88,7 +88,7 @@ export default ({ data }) => {
             {dt(challenge.start)} – {dt(challenge.end)}
           </Text.span>
         </Flex>
-        <Posts challengeId={challenge.id} authUser={{}} />
+        <Posts challengeId={challenge.id} />
       </Container>
     </Fragment>
   )

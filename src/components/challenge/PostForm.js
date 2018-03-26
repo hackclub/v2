@@ -1,6 +1,7 @@
 import React from 'react'
 import { Field, Submit } from 'components/Forms'
 import { withFormik } from 'formik'
+import storage from 'storage'
 import yup from 'yup'
 import api from 'api'
 
@@ -80,9 +81,12 @@ const PostForm = withFormik({
   enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, setStatus, resetForm }) => {
     console.log(data)
+    const authUser = storage.get('authToken')
+    console.log('user', authUser)
     api // TODO: embed real challenge ID here
       .post(`v1/challenges/1/posts`, {
-        body: JSON.stringify(data)
+        data: JSON.stringify(data),
+        headers: { authUser }
       })
       .then(res => {
         console.log(res)

@@ -33,11 +33,10 @@ const HeaderContainer = Container.extend`
   }
 `
 
-const LoginCard = Card.extend`
+const HeaderCard = Card.extend`
+  max-width: 24rem;
   p {
     color: ${props => props.theme.colors.black} !important;
-    text-align: left;
-    margin-bottom: ${props => props.theme.space[1]}px !important;
   }
 `
 
@@ -60,21 +59,21 @@ export default ({ data }) => {
             <Heading.h1 align={['center', 'right']} f={[6, 7]} mt={0} mb={3}>
               Challenge
             </Heading.h1>
-            <Card boxShadowSize="md" p={3} bg="red.0" color="black">
+            <HeaderCard boxShadowSize="md" p={3} bg="red.0" color="black">
               <Text f={2}>
-                🎉 Share for fun and education—welcome, all!
+                🌟 Challenge of the month is <strong>{challenge.name}</strong>
                 <br />
-                📈 Upvote your favorites
+                🎁 {challenge.description}
                 <br />
-                ⚡️ Challange of the month is <strong>{challenge.name}</strong>
+                📈 Upvote your favorites!
                 <br />
-                🏅 Top-voted 3 websites by {dt(challenge.end)} will win!
+                🏅 Top-voted 3 websites by {dt(challenge.end)} win!
               </Text>
-            </Card>
+            </HeaderCard>
           </Box>
-          <LoginCard boxShadowSize="md" p={3} bg="red.0" color="black">
+          <HeaderCard boxShadowSize="md" p={3} bg="pink.0" color="black">
             <Form />
-          </LoginCard>
+          </HeaderCard>
         </HeaderContainer>
       </Header>
       <Container maxWidth={48} py={4} px={3}>

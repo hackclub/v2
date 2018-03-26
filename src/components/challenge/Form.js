@@ -23,7 +23,7 @@ class Form extends Component {
 
     return (
       <Fragment>
-        <Heading.h2 mt={0} mb={2} f={[3, 4]}>
+        <Heading.h2 mt={0} mb={3} f={[3, 4]}>
           {authed ? 'Post your project' : 'Sign in to post + upvote'}
         </Heading.h2>
         {authed ? (
@@ -32,6 +32,7 @@ class Form extends Component {
           <LoginForm
             bg="black"
             color="white"
+            inputProps={{ w: 18 * 16 }}
             textProps={{ color: 'black', align: 'left' }}
           />
         )}

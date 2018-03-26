@@ -1,4 +1,4 @@
-import fetch from 'unfetch'
+import axios from 'axios'
 
 const apiBase = 'https://api.hackclub.com/'
 const methods = ['GET', 'PUT', 'POST', 'PATCH', 'DELETE']
@@ -22,18 +22,10 @@ const generateMethod = method => (path, options = {}) => {
         break
     }
   }
-  return fetch(apiBase + path, { method: method, ...filteredOptions })
+  return axios(apiBase + path, { method: method, ...filteredOptions })
     .then(res => {
-      if (res.ok) {
-        const contentType = res.headers.get('content-type')
-        if (contentType && contentType.indexOf('application/json') !== -1) {
-          return res.json()
-        } else {
-          return res.text()
-        }
-      } else {
-        throw res
-      }
+      const contentType = res.headers['content-type']
+      return res.data
     })
     .catch(e => {
       throw e

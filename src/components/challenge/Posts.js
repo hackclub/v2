@@ -13,44 +13,107 @@ class Posts extends Component {
   componentDidMount() {
     const userId = storage.get('userId')
     const userEmail = storage.get('userEmail')
-    const authToken = storage.get('auth')
+    const authToken = storage.get('authToken')
     this.setState({ userId, userEmail })
     this.api = axios.create({
       baseURL: 'https://api.hackclub.com/',
-      headers: { Authorization: `Bearer ${authToken}` }
+      headers: { 'Authorization': `Bearer ${authToken}` }
     })
+
+    this.refreshPosts()
+  }
+
+  refreshPosts() {
+    const userId = storage.get('userId')
+
     this.api.get(`v1/challenges/${this.props.challengeId}/posts`).then(res => {
-      const posts = res.data || []
-      // not sure if this works yet, sorry. getting an array of ids where upvoted
-      const upvotes = map(
-        filter(
-          posts,
-          post => filter(post.upvotes, vote => ['user.email', userEmail]),
-          'id'
-        )
-      )
+      let posts = res.data || []
+
+      // array of post ids that user has upvoted
+      let upvotes = []
+      posts.forEach(post => {
+        post.upvotes.forEach(upvote => {
+          if (upvote.user.id == userId) {
+            upvotes.push(post.id)
+          }
+        })
+      })
+
       console.log(upvotes)
       posts.map(post => {
         post.upvotesCount = post.upvotes.length
         return post
       })
+
+      // sort by upvote count
+      posts = posts.sort((p1, p2) => {
+        return p2.upvotesCount - p1.upvotesCount
+      })
+
       // TODO (later): remove upvotes array for better performace
       this.setState({ upvotes, posts })
     })
   }
 
-  onUpvote(e, id) {
+  onUpvote(e, postId) {
     const { userId: authUser } = this.state
     if (isEmpty(authUser)) return
-    if (includes(this.state.upvotes, id)) {
-      this.api.delete(`v1/posts/${id}/upvotes`).then(res => {
-        const post = this.setState({})
+    if (includes(this.state.upvotes, postId)) {
+      // if this is nil, this means we've ran into a race where this.state.posts
+      // hasn't finished updating (probably from a this.refreshPosts call) -
+      // just ignore the user action for the time being and let them retry once
+      // it actually updates
+      const upvote = this.state.posts
+        .find(post => post.id == postId).upvotes
+        .find(upvote => upvote.user.id == authUser)
+
+      if (!upvote) {
+        return
+      }
+
+      // immediately increment values so it feels responsive, later refresh
+      // posts completely so we have the correct values in state
+
+      // remove post from upvotes array //
+      let upvotes = this.state.upvotes
+      // w/ removed postId
+      let truncatedUpvotes = upvotes.splice(upvotes.indexOf(postId), 1)
+      this.setState(upvotes: truncatedUpvotes)
+
+      // increment upvotesCount //
+      let posts = this.state.posts
+      let post = posts.find(post => post.id == postId)
+      let postIndex = posts.indexOf(post)
+      post.upvotesCount--
+      posts[postIndex] = post
+      this.setState(posts: posts)
+
+      // actually make requests & refresh
+      this.api.delete(`v1/upvotes/${upvote.id}`).then(res => {
+        this.refreshPosts()
       })
     } else {
-      this.api.post(`v1/posts/${id}/upvotes`)
+      // same deal here, immediately update state so it displays correctly then
+      // do a complete refresh to ensure we have good values
+ 
+      // add post to upvotes array //
+      let upvotes = this.state.upvotes
+      upvotes.push(postId)
+      this.setState(upvotes: upvotes)
+
+      // increment upvotesCount //
+      let posts = this.state.posts
+      let post = posts.find(post => post.id == postId)
+      let postIndex = posts.indexOf(post)
+      post.upvotesCount++
+      posts[postIndex] = post
+      this.setState(posts: posts)
+
+      // actually make requests & refresh
+      this.api.post(`v1/posts/${postId}/upvotes`).then(res => {
+        this.refreshPosts()
+      })
     }
-    // TODO: add/remove ID from upvotes array in state
-    // TODO: increment/decrement state's post data upvotesCount
   }
 
   render() {
@@ -62,7 +125,7 @@ class Posts extends Component {
             name={post.name}
             url={post.url}
             description={post.description}
-            upvotes={post.upvotes.length}
+            upvotes={post.upvotesCount}
             upvoted={includes(upvotes, post.id)}
             onUpvote={e => this.onUpvote(e, post.id)}
           />

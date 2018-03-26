@@ -3,6 +3,7 @@ import { api } from 'data.json'
 import { Heading, Label, Input, Text, cx } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import yup from 'yup'
+import storage from 'storage'
 import fetch from 'unfetch'
 
 const StyledInput = Input.extend`
@@ -92,7 +93,8 @@ const EmailLoginForm = withFormik({
         }
       })
       .then(json => {
-        window.localStorage.setItem('userId', json.id)
+        storage.set('userId', json.id)
+        storage.set('userEmail', data.email)
         setSubmitting(false)
         props.submitCallback({ userId: json.id, email: data.email })
       })

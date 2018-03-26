@@ -17,8 +17,6 @@ export default class extends Component {
       status: 'loading'
     }
 
-    this.eventId = search.get('id')
-
     this.updateEvent = this.updateEvent.bind(this)
   }
 
@@ -35,14 +33,15 @@ export default class extends Component {
   }
 
   componentDidMount() {
+    eventId = search.get('id')
     const authToken = storage.get('authToken')
     api.get('v1/users/current', { authToken }).then(() => {
-      if (this.eventId) {
+      if (eventId) {
         return api
           .get('v1/events')
           .then(events => {
             const event = events.find(
-              event => event.id.toString() === this.eventId
+              event => event.id.toString() === eventId
             )
             if (event) {
               this.setState({

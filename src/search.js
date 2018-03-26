@@ -1,5 +1,4 @@
-const searchObject = () => {
-  const { search } = location
+const searchToObject = search => {
   const result = {}
   const kvPairs = search.substr(1).split('&')
   for (let i = 0; i < kvPairs.length; i++) {
@@ -15,7 +14,7 @@ export default {
   set: (key, value) => {
     const { search, protocol, host, pathname } = location
     if (history.pushState) {
-      const modifiedObject = { ...searchObject(), [key]: value }
+      const modifiedObject = { ...searchToObject(search), [key]: value }
       const modifiedArray = Object.keys(modifiedObject).map(
         key => `${key}=${modifiedObject[key]}`
       )
@@ -26,5 +25,5 @@ export default {
       throw 'history.pushState not supported the current in browser'
     }
   },
-  get: key => searchObject()[key]
+  get: key => searchToObject(location.search)[key]
 }

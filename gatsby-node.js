@@ -6,19 +6,28 @@ const { colors } = require('@hackclub/design-system')
 const writeFile = require('fs').writeFile
 const axios = require('axios')
 
-exports.onPreBootstrap = () =>
-  axios
-    .get('https://api.hackclub.com/v1/challenges')
-    .then(res => {
-      const data = res.data[0]
-      data.id = data.id.toString() // for Gatsby
-      writeFile('./public/challenge.json', JSON.stringify(data), err => {
-        if (err) throw err
-      })
-    })
-    .catch(e => {
-      console.error(e)
-    })
+// exports.onPreBootstrap = () =>
+//   axios
+//     .get('https://api.hackclub.com/v1/challenges')
+//     .then(res => {
+//       const data = res.data[0]
+//       data.id = data.id.toString() // for Gatsby
+const data = {
+  id: '1',
+  created_at: '...',
+  updated_at: '...',
+  name: '90s Website',
+  description: 'Build the most ridiculous 90s website.',
+  start: '2018-03-31',
+  end: '2018-04-12'
+}
+writeFile('./public/challenge.json', JSON.stringify(data), err => {
+  if (err) throw err
+})
+// })
+// .catch(e => {
+//   console.error(e)
+// })
 
 const pattern = (text = 'Hack Club', color = colors.primary) =>
   GeoPattern.generate(text, { baseColor: color }).toString()

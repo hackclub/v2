@@ -26,7 +26,7 @@ const generateMethod = method => (path, options = {}) => {
         break
     }
   }
-  return fetch(apiBase + path, { method: method, ...filteredOptions })
+  return fetch(apiBase + path, { method, ...filteredOptions })
     .then(res => {
       if (res.ok) {
         const contentType = res.headers.get('content-type')

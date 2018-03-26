@@ -3,6 +3,22 @@ const fs = require('fs')
 const _ = require('lodash')
 const GeoPattern = require('geopattern')
 const { colors } = require('@hackclub/design-system')
+const writeFile = require('fs').writeFile
+const axios = require('axios')
+
+exports.onPreBootstrap = () =>
+  axios
+    .get('https://api.hackclub.com/v1/challenges')
+    .then(res => {
+      const data = res.data[0]
+      data.id = data.id.toString() // for Gatsby
+      writeFile('./public/challenge.json', JSON.stringify(data), err => {
+        if (err) throw err
+      })
+    })
+    .catch(e => {
+      console.error(e)
+    })
 
 const pattern = (text = 'Hack Club', color = colors.primary) =>
   GeoPattern.generate(text, { baseColor: color }).toString()

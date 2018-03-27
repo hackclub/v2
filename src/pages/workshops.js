@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Container,
+  Card,
   Flex,
   Heading,
   Link as A,
@@ -118,44 +119,39 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
         color={['white', null, 'primary']}
       />
       <Base>
-        <Background px={4}>
-          <Box.header align="center" pt={[4, null, 6]} pb={3}>
-            <Text f={4} bold caps>
-              Hack Club
+        <Background p={[3, 4]}>
+          <Box.header align="center" mt={[4, 5]}>
+            <Name f={6}>Workshops</Name>
+            <Text f={[3, 4]} mt={2} mb={3} bold caps>
+              By Hack Club
             </Text>
-            <Name mt={2} mb={3} f={6}>
-              Workshops
-            </Name>
-            <Heading.h2 f={4} regular>
-              Learn to code through building projects.
+            <Heading.h2 color="red.0" f={4} px={2} regular mb={[4, 5]}>
+              Making leads to learning.
             </Heading.h2>
+            <Card bg="red.0" p={3} boxShadowSize="md">
+              <Text f={4} color="red.6" style={{ lineHeight: '1.25' }}>
+                Coding is a <Super color="warning">superpower</Super>.<br />
+                So let’s start building.
+              </Text>
+              <SuperButton
+                mt={3}
+                to="/philosophy"
+                children="Our philosophy »"
+              />
+            </Card>
           </Box.header>
         </Background>
         <Box.article bg="white">
           <Container maxWidth={48} py={[4, 5]} px={3}>
-            <Flex
-              flexDirection={['column', null, null, 'row']}
-              justify="space-between"
-              align="flex-start"
-              mb={[3, 4]}
+            <Text
+              color="slate"
+              f={4}
+              mb={4}
+              style={{ lineHeight: '1.25', maxWidth: '42rem' }}
             >
-              <Container mx={0} maxWidth={32}>
-                <Text
-                  f={[4, 5]}
-                  align="left"
-                  color="slate"
-                  style={{ lineHeight: '1.25' }}
-                >
-                  Coding is a <Super color="warning">superpower</Super>.<br />
-                  So let’s start building.
-                </Text>
-              </Container>
-              <SuperButton
-                my={2}
-                to="/philosophy"
-                children="Our philosophy »"
-              />
-            </Flex>
+              Learn to code with this collection of community-contributed,
+              self-guided coding tutorials and project ideas.
+            </Text>
             {sortedGroups.map(group => (
               <Track
                 key={`workshops-${name}`}

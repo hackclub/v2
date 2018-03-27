@@ -111,6 +111,7 @@ class Posts extends Component {
             name={post.name}
             url={post.url}
             description={post.description}
+            createdAt={post.createdAt}
             upvotes={post.upvotesCount}
             upvoted={includes(upvotes, post.id)}
             onUpvote={e => this.onUpvote(e, post.id)}

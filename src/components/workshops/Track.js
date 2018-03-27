@@ -25,6 +25,7 @@ const Item = Card.withComponent('li').extend`
   position: relative;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
   transition: transform .125s ease-in;
+  will-change: transform;
   &:hover {
     transform: scale(1.03125);
   }

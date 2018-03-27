@@ -125,17 +125,29 @@ const BreadcrumbDivider = () => (
 const Cards = Container.extend`
   display: grid;
   grid-gap: ${props => props.theme.space[4]}px;
+  grid-template-areas: 'feedback' 'share' 'contribute';
   width: 100%;
 
   > div {
-    width: 100%;
     box-shadow: ${props => props.theme.boxShadows[1]};
     border-radius: ${props => props.theme.radius};
     max-width: 100%;
+
+    &:nth-child(1) {
+      grid-area: feedback;
+    }
+    &:nth-child(2) {
+      grid-area: share;
+    }
+    &:nth-child(3) {
+      grid-area: contribute;
+    }
   }
 
   ${props => props.theme.mediaQueries.md} {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      'feedback share'
+      'feedback contribute';
   }
 `
 
@@ -152,14 +164,17 @@ const InlineButton = Button.extend`
   display: inline-flex;
   align-items: center;
   div {
-    background-image: url(/social/${props => lowerCase(props.service)}-white.svg);
+    background-image: url(/social/${props =>
+        lowerCase(props.service)
+          .split(' ')
+          .join('')}-white.svg);
     background-repeat: no-repeat;
     background-size: 100%;
     width: 18px;
     height: 18px;
   }
 `
-const ShareButton = props => (
+const ShareButton = ({ children, ...props }) => (
   <InlineButton
     target="_blank"
     aria-label={`Share on ${props.service}`}
@@ -167,7 +182,7 @@ const ShareButton = props => (
     {...props}
   >
     <Box mr={2} />
-    {props.service}
+    {children || props.service}
   </InlineButton>
 )
 
@@ -261,7 +276,7 @@ export default ({ data }) => {
         </EditLink>
       </Section.h>
       <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
-      <Cards maxWidth={52} p={3} mb={4}>
+      <Cards maxWidth={52} p={3} mb={5}>
         <Box bg="teal.0" p={[3, 4]}>
           <Heading.h2 f={3} color="cyan.7" caps mb={2}>
             How was this workshop?
@@ -293,6 +308,20 @@ export default ({ data }) => {
             service="Facebook"
             href={facebookURL(url)}
             bg="#3b5998"
+          />
+        </Box>
+        <Box bg="yellow.0" p={[3, 4]}>
+          <Heading.h2 f={3} color="orange.5" caps mb={3}>
+            Want to edit this workshop?
+          </Heading.h2>
+          <ShareButton
+            service="GitHub"
+            bg="warning"
+            f={2}
+            href={githubEditUrl(slug)}
+            target="_blank"
+            aria-label={null}
+            children="Edit on GitHub"
           />
         </Box>
       </Cards>

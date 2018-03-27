@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import LoadingAnimation from 'components/LoadingAnimation'
 import Login from 'components/apply/Login'
+import Nav from 'components/apply/ApplyNav'
 import { Tr, Td, Th } from 'components/Table'
 import api from 'api'
 import storage from 'storage'
@@ -41,25 +42,33 @@ export default class extends Component {
         return <Login userType="admin" />
       case 'success':
         return (
-          <table>
-            <thead>
-              <Tr>
-                <Th>Name</Th>
-              </Tr>
-            </thead>
-            <tbody>
-              {events.map((event, index) => (
-                <Tr
-                  key={index}
-                  onClick={e => {
-                    window.location = `/admin/event?id=${event.id}`
-                  }}
-                >
-                  <Td>{event.name}</Td>
+          <Fragment>
+            <Nav />
+            <table>
+              <thead>
+                <Tr>
+                  <Th>Name</Th>
                 </Tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <Tr>
+                  <Link href="/admin/events/edit">
+                    <Td>Create new event</Td>
+                  </Link>
+                </Tr>
+                {events.map((event, index) => (
+                  <Tr
+                    key={index}
+                    onClick={e => {
+                      window.location = `/admin/events/edit?id=${event.id}`
+                    }}
+                  >
+                    <Td>{event.name}</Td>
+                  </Tr>
+                ))}
+              </tbody>
+            </table>
+          </Fragment>
         )
       default:
         return (

@@ -112,8 +112,10 @@ export default withFormik({
         filteredEvents[key] = values[key]
       }
     })
-    apiFunction(apiEndpoint, { authToken, data: filteredEvents }).then(event => {
-      props.updateEvent(event)
-    })
+    apiFunction(apiEndpoint, { authToken, data: filteredEvents }).then(
+      event => {
+        props.updateEvent(event)
+      }
+    )
   }
 })(InnerForm)

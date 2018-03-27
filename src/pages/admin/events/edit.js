@@ -3,6 +3,7 @@ import LoadingAnimation from 'components/LoadingAnimation'
 import Login from 'components/apply/Login'
 import EventForm from 'components/admin/events/EventForm'
 import ImageForm from 'components/admin/events/ImageForm'
+import Nav from 'components/apply/ApplyNav'
 import api from 'api'
 import storage from 'storage'
 import search from 'search'
@@ -33,7 +34,7 @@ export default class extends Component {
   }
 
   componentDidMount() {
-    eventId = search.get('id')
+    const eventId = search.get('id')
     const authToken = storage.get('authToken')
     api.get('v1/users/current', { authToken }).then(() => {
       if (eventId) {
@@ -71,8 +72,9 @@ export default class extends Component {
       case 'success':
         return (
           <Fragment>
+            <Nav />
             <ImageForm
-              name="logo"
+              type="logo"
               updateEvent={this.updateEvent}
               image={event && event.logo}
               previewTag={({ imageUrl }) => (
@@ -80,7 +82,7 @@ export default class extends Component {
               )}
             />
             <ImageForm
-              name="banner"
+              type="banner"
               updateEvent={this.updateEvent}
               image={event && event.banner}
               previewTag={({ imageUrl }) => (

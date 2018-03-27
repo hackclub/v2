@@ -23,6 +23,7 @@ import SubmitButton from 'components/apply/SubmitButton'
 import LoadingAnimation from 'components/LoadingAnimation'
 import fetch from 'unfetch'
 import Link from 'gatsby-link'
+import { timeSince } from 'util'
 
 LargeButton.link = LargeButton.withComponent(Link)
 
@@ -36,23 +37,6 @@ const A = DSLink.extend`
 const Text = props => <T mt={3} mb={3} {...props} />
 
 const Span = T.span
-
-const timeSince = time => {
-  const seconds = Math.floor((new Date() - new Date(time)) / 1000)
-  const intervals = [
-    [Math.floor(seconds / (60 * 60 * 24 * 7)), 'weeks'],
-    [Math.floor(seconds / (60 * 60 * 24)), 'days'],
-    [Math.floor(seconds / (60 * 60)), 'hours'],
-    [Math.floor(seconds / 60), 'minutes']
-  ]
-  for (var i = 0; i < intervals.length; i++) {
-    let interval = intervals[i]
-    if (interval[0] > 1) {
-      return interval.join(' ')
-    }
-  }
-  return 'less than a minute'
-}
 
 const Neg = () => <Span color="error" bold children="NOT" />
 

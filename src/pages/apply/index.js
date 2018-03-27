@@ -23,7 +23,7 @@ import SubmitButton from 'components/apply/SubmitButton'
 import LoadingAnimation from 'components/LoadingAnimation'
 import fetch from 'unfetch'
 import Link from 'gatsby-link'
-import { timeSince } from 'util'
+import { timeSince } from 'helpers'
 
 LargeButton.link = LargeButton.withComponent(Link)
 

@@ -14,8 +14,9 @@ import {
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
-import Footer from 'components/Footer'
 import MarkdownBody from 'components/MarkdownBody'
+import FeedbackForm from 'components/workshops/FeedbackForm'
+import Footer from 'components/Footer'
 import { lowerCase, camelCase, isEmpty } from 'lodash'
 import { org } from 'data.json'
 
@@ -121,6 +122,23 @@ const BreadcrumbDivider = () => (
   <Text.span mx={2} color="snow" f={3} children="›" />
 )
 
+const Cards = Container.extend`
+  display: grid;
+  grid-gap: ${props => props.theme.space[4]}px;
+  width: 100%;
+
+  > div {
+    width: 100%;
+    box-shadow: ${props => props.theme.boxShadows[1]};
+    border-radius: ${props => props.theme.radius};
+    max-width: 100%;
+  }
+
+  ${props => props.theme.mediaQueries.md} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`
+
 const githubEditUrl = slug =>
   `https://github.com/hackclub/hackclub/edit/master${slug}/README.md`
 const twitterURL = (text, url) =>
@@ -142,7 +160,12 @@ const InlineButton = Button.extend`
   }
 `
 const ShareButton = props => (
-  <InlineButton target="_blank" title={`Share on ${props.service}`} {...props}>
+  <InlineButton
+    target="_blank"
+    aria-label={`Share on ${props.service}`}
+    f={2}
+    {...props}
+  >
     <Box mr={2} />
     {props.service}
   </InlineButton>
@@ -238,17 +261,25 @@ export default ({ data }) => {
         </EditLink>
       </Section.h>
       <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
-      <Container maxWidth={32} p={3} mb={4}>
-        <Card bg="blue.0" p={4} align="center">
+      <Cards maxWidth={52} p={3} mb={4}>
+        <Box bg="teal.0" p={[3, 4]}>
+          <Heading.h2 f={3} color="cyan.7" caps mb={2}>
+            How was this workshop?
+          </Heading.h2>
+          <FeedbackForm slug={slug} />
+        </Box>
+        <Box bg="blue.0" p={[3, 4]}>
           <Heading.h2 f={3} color="accent" caps>
             Made something rad?
           </Heading.h2>
-          <Heading.h2 color="primary" f={5}>
-            Share it! 🌟
-          </Heading.h2>
-          <Text f={1} color="muted" mb={3}>
-            (posts are editable)
-          </Text>
+          <Flex align="center" mt={1} mb={3}>
+            <Heading.h2 color="indigo.5" f={5}>
+              Share it! 🌟
+            </Heading.h2>
+            <Text ml={2} f={1} color="muted">
+              (posts are editable)
+            </Text>
+          </Flex>
           <ShareButton
             service="Twitter"
             href={twitterURL(
@@ -263,8 +294,8 @@ export default ({ data }) => {
             href={facebookURL(url)}
             bg="#3b5998"
           />
-        </Card>
-      </Container>
+        </Box>
+      </Cards>
       <Footer />
     </Fragment>
   )

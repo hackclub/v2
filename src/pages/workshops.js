@@ -13,7 +13,7 @@ import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
-import Workshops from 'components/Workshops'
+import Track from 'components/workshops/Track'
 import {
   groupBy,
   orderBy,
@@ -159,14 +159,13 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
                 children="Our philosophy »"
               />
             </Flex>
-            {sortedGroups.map(group => {
-              const name = group[0]
-              const edges = group[1]
-
-              return (
-                <Workshops key={`workshops-${name}`} name={name} data={edges} />
-              )
-            })}
+            {sortedGroups.map(group => (
+              <Track
+                key={`workshops-${name}`}
+                name={group[0]}
+                data={group[1]}
+              />
+            ))}
           </Container>
           <Footer />
         </Box.article>

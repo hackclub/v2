@@ -6,7 +6,7 @@ import { map } from 'lodash'
 A.link = A.withComponent(Link)
 Box.section = Box.withComponent('section')
 
-const WorkshopGrid = Box.withComponent('ol').extend`
+const Grid = Box.withComponent('ol').extend`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   grid-auto-rows: 1fr;
@@ -16,7 +16,7 @@ const WorkshopGrid = Box.withComponent('ol').extend`
   padding: 0;
 `
 
-const WorkshopCard = Card.withComponent('li').extend`
+const Item = Card.withComponent('li').extend`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -60,10 +60,10 @@ const WorkshopItem = ({
   ...props
 }) => (
   <A.link to={slug} {...props}>
-    <WorkshopCard p={3} boxShadowSize="md" bg="accent" img={bg}>
+    <Item p={3} boxShadowSize="md" bg="accent" img={bg}>
       <Heading.h3 color="white" f={3} children={name} />
       <Text color="snow" f={2} children={description} />
-    </WorkshopCard>
+    </Item>
   </A.link>
 )
 
@@ -79,18 +79,18 @@ const descriptions = {
     'These workshops are no longer maintained. They may contain errors and are not recommended for club use. Here be dragons.'
 }
 
-const Workshops = ({ name, data, ...props }) => (
+const Track = ({ name, data, ...props }) => (
   <Box.section id={name} mb={4} {...props}>
     {name && <Heading.h2 color="black" f={4} mb={1} caps children={name} />}
     {descriptions[name] && (
       <Text color="slate" f={2} children={descriptions[name]} />
     )}
-    <WorkshopGrid>
+    <Grid>
       {map(data, (edge, ii) => (
         <WorkshopItem data={edge.node} key={`workshops-${name}-${ii}`} />
       ))}
-    </WorkshopGrid>
+    </Grid>
   </Box.section>
 )
 
-export default Workshops
+export default Track

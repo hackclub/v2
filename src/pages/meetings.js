@@ -21,9 +21,9 @@ const Header = Section.withComponent('header').extend`
   background-color: ${props => props.theme.colors.teal[6]};
   background-image: linear-gradient(
     -32deg,
-    ${props => props.theme.colors.green[7]} 0%,
-    ${props => props.theme.colors.teal[6]} 50%,
-    ${props => props.theme.colors.teal[7]} 100%
+    ${props => props.theme.colors.green[7]},
+    ${props => props.theme.colors.teal[6]},
+    ${props => props.theme.colors.teal[7]}
   );
   clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 90%);
 

@@ -24,11 +24,6 @@ import {
   toPairs
 } from 'lodash'
 
-Box.main = Box.withComponent('main')
-Box.header = Box.withComponent('header')
-Box.section = Box.withComponent('section')
-Box.article = Box.withComponent('article')
-
 A.link = A.withComponent(Link)
 
 const Base = Box.main.extend`
@@ -42,13 +37,15 @@ const Base = Box.main.extend`
 const Background = Section.extend`
   justify-content: flex-start;
   background-color: ${props => props.theme.colors.red[5]};
-  background-image: linear-gradient(
-    -16deg,
-    ${props => props.theme.colors.orange[4]} 0%,
-    ${props => props.theme.colors.red[5]} 50%,
-    ${props => props.theme.colors.red[6]} 100%
-  );
-  ${props => props.theme.mediaQueries[1]} {
+  background-image: url('/pattern.svg'),
+    linear-gradient(
+      -84deg,
+      ${props => props.theme.colors.orange[4]},
+      ${props => props.theme.colors.orange[5]},
+      ${props => props.theme.colors.red[5]},
+      ${props => props.theme.colors.red[6]}
+    );
+  ${props => props.theme.mediaQueries.md} {
     min-height: 100vh;
   }
 `

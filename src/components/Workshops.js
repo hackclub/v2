@@ -74,6 +74,7 @@ const descriptions = {
     'As Is – No Warranty. These workshops haven’t been fully tested yet, so we don’t know just will happen if you try building things with them.',
   misc: 'The odd ones out. Workshops not yet properly categorized.',
   pi: 'Start building projects on the coolest credit card sized mini computer.',
+  arduino: 'Bring projects from cyberspace to the real world with this small hardware platform',
   retired:
     'These workshops are no longer maintained. They may contain errors and are not recommended for club use. Here be dragons.'
 }

@@ -48,7 +48,6 @@ const HeaderCard = Card.extend`
 const dt = d => new Date(d).toLocaleDateString()
 
 export default ({ data }) => {
-  console.log(data)
   if (isEmpty(data)) return null
   const challenge = data.publicJson
   return (

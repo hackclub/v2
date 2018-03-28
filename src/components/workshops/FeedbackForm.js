@@ -73,9 +73,7 @@ const FeedbackForm = withFormik({
     })
     api
       .post(`v1/workshop_feedbacks`, {
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body
       })
       .then(res => {

@@ -3,7 +3,7 @@ import { Container, Box } from '@hackclub/design-system'
 import { Field, Submit } from 'components/Forms'
 import { withFormik } from 'formik'
 import yup from 'yup'
-import fetch from 'unfetch'
+import api from 'api'
 
 const Form = Container.withComponent('form')
 
@@ -91,14 +91,12 @@ const RedeemTechDomainForm = withFormik({
   }),
   enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, setStatus, resetForm }) => {
-    console.log(data)
-    fetch('https://api.hackclub.com/v1/tech_domain_redemptions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    })
+    api
+      .post('v1/tech_domain_redemptions', {
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
       .then(res => {
-        console.log(res)
         resetForm()
         setStatus('success')
       })

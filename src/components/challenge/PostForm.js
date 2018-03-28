@@ -80,14 +80,12 @@ const PostForm = withFormik({
   }),
   enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, setStatus, resetForm }) => {
-    console.log(data)
     const authToken = storage.get('authToken')
     const headers = { Authorization: `Bearer ${authToken}` }
     console.log('headers', headers)
     axios // TODO: embed real challenge ID here
       .post(`https://api.hackclub.com/v1/challenges/1/posts`, data, { headers })
       .then(res => {
-        console.log(res)
         resetForm()
         setStatus('success')
         setTimeout(() => {

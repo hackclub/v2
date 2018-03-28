@@ -153,7 +153,7 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
             </Text>
             {sortedGroups.map(group => (
               <Track
-                key={`workshops-${name}`}
+                key={`workshops-${group[0]}`}
                 name={group[0]}
                 data={group[1]}
               />

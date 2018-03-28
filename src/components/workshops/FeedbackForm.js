@@ -55,7 +55,7 @@ const InnerForm = ({
       value={statusMessage(status)}
       bg={statusColor(status)}
       f={2}
-      mt={3}
+      mt={2}
     />
   </form>
 )

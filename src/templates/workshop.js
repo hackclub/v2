@@ -251,9 +251,12 @@ export default ({ data }) => {
       <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
       <Cards maxWidth={52} p={3} mb={5}>
         <Box bg="teal.0" p={[3, 4]}>
-          <Heading.h2 f={3} color="cyan.8" caps mb={3}>
+          <Heading.h2 f={3} color="cyan.8" caps>
             How was this workshop?
           </Heading.h2>
+          <Text color="muted" f={1} mt={1} mb={3}>
+            (your feedback is anonymous + appreciated 💚)
+          </Text>
           <FeedbackForm slug={slug} />
         </Box>
         <Box bg="blue.0" p={[3, 4]}>

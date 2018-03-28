@@ -40,8 +40,7 @@ const Background = Section.extend`
   background-color: ${props => props.theme.colors.red[5]};
   background-image: url('/pattern.svg'),
     linear-gradient(
-      -84deg,
-      ${props => props.theme.colors.orange[4]},
+      -86deg,
       ${props => props.theme.colors.orange[5]},
       ${props => props.theme.colors.red[5]},
       ${props => props.theme.colors.red[6]}
@@ -142,9 +141,9 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
           </Box.header>
         </Background>
         <Box.article bg="white">
-          <Container maxWidth={48} py={[4, 5]} px={3}>
+          <Container maxWidth={48} py={[4, 5]} px={2}>
             <Text
-              color="slate"
+              color="black"
               f={4}
               mb={4}
               style={{ lineHeight: '1.25', maxWidth: '42rem' }}

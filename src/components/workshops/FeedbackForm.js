@@ -1,18 +1,29 @@
 import React from 'react'
 import { Field, Submit } from 'components/Forms'
 import { withFormik } from 'formik'
+import { map, last, keys, omit } from 'lodash'
 import yup from 'yup'
 import api from 'api'
+
+const questions = {
+  thoughts: 'Overall thoughts?',
+  improve: 'How would you improve this workshop?'
+}
+
+const schema = {}
+map(keys(questions), key => {
+  schema[key] = yup.string()
+})
 
 const statusMessage = status =>
   status
     ? {
-        success: 'Thanks!',
+        success: 'Sent, thank you!',
         error: 'Something went wrong 🚨'
       }[status]
     : 'Submit your feedback'
 const statusColor = status =>
-  status === 'success' || status === 'error' ? status.toString() : 'cyan.7'
+  status === 'success' || status === 'error' ? status.toString() : 'cyan.8'
 const InnerForm = ({
   values,
   errors,
@@ -24,57 +35,49 @@ const InnerForm = ({
   status
 }) => (
   <form onSubmit={handleSubmit}>
-    <Field
-      label="Did you have fun?"
-      name="fun"
-      value={values.fun}
-      onChange={handleChange}
-      onBlur={handleBlur}
-      error={touched.fun && errors.fun}
-      bg="white"
-      mb={2}
-    />
-    <Field
-      label="Did you learn something new?"
-      name="learning"
-      value={values.learning}
-      onChange={handleChange}
-      onBlur={handleBlur}
-      error={touched.learning && errors.learning}
-      bg="white"
-      mb={2}
-    />
-    <Field
-      label="Any other feedback?"
-      name="notes"
-      // type="textarea"
-      value={values.fun}
-      onChange={handleChange}
-      onBlur={handleBlur}
-      error={touched.notes && errors.notes}
-      bg="white"
-      mb={3}
-    />
+    {map(questions, (question, key) => (
+      <Field
+        label={question}
+        name={key}
+        type="textarea"
+        rows={2}
+        value={values[key]}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        error={touched[key] && errors[key]}
+        bg="white"
+        key={key}
+      />
+    ))}
     <Submit
       disabled={isSubmitting}
       onClick={handleSubmit}
       value={statusMessage(status)}
       bg={statusColor(status)}
       f={2}
+      mt={3}
     />
   </form>
 )
 const FeedbackForm = withFormik({
-  mapPropsToValues: ({ params }) => ({ ...params }),
-  validationSchema: yup.object().shape({
-    fun: yup.string(),
-    learning: yup.string(),
-    notes: yup.string()
-  }),
+  validationSchema: yup.object().shape(schema),
   enableReinitialize: true,
-  handleSubmit: (data, { props, setSubmitting, setStatus, resetForm }) => {
+  handleSubmit: (data, { props, setStatus, setSubmitting, resetForm }) => {
+    const feedback = {}
+    map(omit(data, 'slug'), (res, id) => {
+      feedback[questions[id]] = res
+    })
+    const body = JSON.stringify({
+      workshop_slug: last(props.slug.split('/')),
+      feedback
+    })
     api
-      .post(`v1/workshop_feedback/${props.slug}`, data)
+      .post(`v1/workshop_feedbacks`, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body
+      })
       .then(res => {
         resetForm()
         setStatus('success')

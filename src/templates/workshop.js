@@ -118,6 +118,10 @@ const Cards = Container.extend`
       'feedback share'
       'feedback contribute';
   }
+
+  textarea {
+    resize: vertical;
+  }
 `
 
 const githubEditUrl = slug =>
@@ -247,7 +251,7 @@ export default ({ data }) => {
       <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
       <Cards maxWidth={52} p={3} mb={5}>
         <Box bg="teal.0" p={[3, 4]}>
-          <Heading.h2 f={3} color="cyan.7" caps mb={2}>
+          <Heading.h2 f={3} color="cyan.8" caps mb={3}>
             How was this workshop?
           </Heading.h2>
           <FeedbackForm slug={slug} />
@@ -256,8 +260,8 @@ export default ({ data }) => {
           <Heading.h2 f={3} color="accent" caps>
             Made something rad?
           </Heading.h2>
-          <Flex align="center" mt={1} mb={3}>
-            <Heading.h2 color="indigo.5" f={5}>
+          <Flex align="center" mb={3}>
+            <Heading.h2 color="indigo.6" f={5}>
               Share it! 🌟
             </Heading.h2>
             <Text ml={2} f={1} color="muted">

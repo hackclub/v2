@@ -14,6 +14,11 @@ import {
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
+import {
+  Breadcrumbs,
+  Breadcrumb,
+  BreadcrumbDivider
+} from 'components/Breadcrumbs'
 import MarkdownBody from 'components/MarkdownBody'
 import FeedbackForm from 'components/workshops/FeedbackForm'
 import Footer from 'components/Footer'
@@ -85,42 +90,6 @@ const generateSubtitle = (description, authorText) => {
     </Fragment>
   )
 }
-
-const BreadcrumbList = Flex.withComponent('ol').extend`
-  list-style: none;
-  padding-left: 0;
-`
-const Breadcrumbs = props => (
-  <BreadcrumbList
-    itemScope
-    itemType="http://schema.org/BreadcrumbList"
-    {...props}
-  />
-)
-const Breadcrumb = ({ type = 'Thing', position, name, ...props }) => (
-  <li
-    itemProp="itemListElement"
-    itemScope
-    itemType="http://schema.org/ListItem"
-  >
-    <A.link
-      itemScope
-      itemType={`http://schema.org/${type}`}
-      itemProp="item"
-      color="white"
-      f={3}
-      bold
-      caps
-      {...props}
-    >
-      <span itemProp="name" children={name} />
-    </A.link>
-    <meta itemProp="position" content={position} />
-  </li>
-)
-const BreadcrumbDivider = () => (
-  <Text.span mx={2} color="snow" f={3} children="›" />
-)
 
 const Cards = Container.extend`
   display: grid;

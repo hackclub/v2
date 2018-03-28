@@ -14,8 +14,14 @@ import {
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
-import Footer from 'components/Footer'
+import {
+  Breadcrumbs,
+  Breadcrumb,
+  BreadcrumbDivider
+} from 'components/Breadcrumbs'
 import MarkdownBody from 'components/MarkdownBody'
+import FeedbackForm from 'components/workshops/FeedbackForm'
+import Footer from 'components/Footer'
 import { lowerCase, camelCase, isEmpty } from 'lodash'
 import { org } from 'data.json'
 
@@ -85,41 +91,38 @@ const generateSubtitle = (description, authorText) => {
   )
 }
 
-const BreadcrumbList = Flex.withComponent('ol').extend`
-  list-style: none;
-  padding-left: 0;
+const Cards = Container.extend`
+  display: grid;
+  grid-gap: ${props => props.theme.space[4]}px;
+  grid-template-areas: 'feedback' 'share' 'contribute';
+  width: 100%;
+
+  > div {
+    box-shadow: ${props => props.theme.boxShadows[1]};
+    border-radius: ${props => props.theme.radius};
+    max-width: 100%;
+
+    &:nth-child(1) {
+      grid-area: feedback;
+    }
+    &:nth-child(2) {
+      grid-area: share;
+    }
+    &:nth-child(3) {
+      grid-area: contribute;
+    }
+  }
+
+  ${props => props.theme.mediaQueries.md} {
+    grid-template-areas:
+      'feedback share'
+      'feedback contribute';
+  }
+
+  textarea {
+    resize: vertical;
+  }
 `
-const Breadcrumbs = props => (
-  <BreadcrumbList
-    itemScope
-    itemType="http://schema.org/BreadcrumbList"
-    {...props}
-  />
-)
-const Breadcrumb = ({ type = 'Thing', position, name, ...props }) => (
-  <li
-    itemProp="itemListElement"
-    itemScope
-    itemType="http://schema.org/ListItem"
-  >
-    <A.link
-      itemScope
-      itemType={`http://schema.org/${type}`}
-      itemProp="item"
-      color="white"
-      f={3}
-      bold
-      caps
-      {...props}
-    >
-      <span itemProp="name" children={name} />
-    </A.link>
-    <meta itemProp="position" content={position} />
-  </li>
-)
-const BreadcrumbDivider = () => (
-  <Text.span mx={2} color="snow" f={3} children="›" />
-)
 
 const githubEditUrl = slug =>
   `https://github.com/hackclub/hackclub/edit/master${slug}/README.md`
@@ -134,17 +137,25 @@ const InlineButton = Button.extend`
   display: inline-flex;
   align-items: center;
   div {
-    background-image: url(/social/${props => lowerCase(props.service)}-white.svg);
+    background-image: url(/social/${props =>
+        lowerCase(props.service)
+          .split(' ')
+          .join('')}-white.svg);
     background-repeat: no-repeat;
     background-size: 100%;
     width: 18px;
     height: 18px;
   }
 `
-const ShareButton = props => (
-  <InlineButton target="_blank" title={`Share on ${props.service}`} {...props}>
+const ShareButton = ({ children, ...props }) => (
+  <InlineButton
+    target="_blank"
+    aria-label={`Share on ${props.service}`}
+    f={2}
+    {...props}
+  >
     <Box mr={2} />
-    {props.service}
+    {children || props.service}
   </InlineButton>
 )
 
@@ -238,17 +249,28 @@ export default ({ data }) => {
         </EditLink>
       </Section.h>
       <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
-      <Container maxWidth={32} p={3} mb={4}>
-        <Card bg="blue.0" p={4} align="center">
+      <Cards maxWidth={52} p={3} mb={5}>
+        <Box bg="teal.0" p={[3, 4]}>
+          <Heading.h2 f={3} color="cyan.8" caps>
+            How was this workshop?
+          </Heading.h2>
+          <Text color="muted" f={1} mt={1} mb={3}>
+            (your feedback is anonymous + appreciated 💚)
+          </Text>
+          <FeedbackForm slug={slug} />
+        </Box>
+        <Box bg="blue.0" p={[3, 4]}>
           <Heading.h2 f={3} color="accent" caps>
             Made something rad?
           </Heading.h2>
-          <Heading.h2 color="primary" f={5}>
-            Share it! 🌟
-          </Heading.h2>
-          <Text f={1} color="muted" mb={3}>
-            (posts are editable)
-          </Text>
+          <Flex align="center" mb={3}>
+            <Heading.h2 color="indigo.6" f={5}>
+              Share it! 🌟
+            </Heading.h2>
+            <Text ml={2} f={1} color="muted">
+              (posts are editable)
+            </Text>
+          </Flex>
           <ShareButton
             service="Twitter"
             href={twitterURL(
@@ -263,8 +285,22 @@ export default ({ data }) => {
             href={facebookURL(url)}
             bg="#3b5998"
           />
-        </Card>
-      </Container>
+        </Box>
+        <Box bg="yellow.0" p={[3, 4]}>
+          <Heading.h2 f={3} color="orange.5" caps mb={3}>
+            Want to edit this workshop?
+          </Heading.h2>
+          <ShareButton
+            service="GitHub"
+            bg="warning"
+            f={2}
+            href={githubEditUrl(slug)}
+            target="_blank"
+            aria-label={null}
+            children="Edit on GitHub"
+          />
+        </Box>
+      </Cards>
       <Footer />
     </Fragment>
   )

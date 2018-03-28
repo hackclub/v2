@@ -251,12 +251,12 @@ export class Field extends Component {
   }
 }
 
-export const Submit = ({ lg, ...props }) => {
-  const Tag = props.lg
-    ? LargeButton.withComponent('input')
-    : Button.withComponent('input')
-  return <Tag type="submit" {...props} />
-}
+export const Submit = Button.withComponent('input').extend.attrs({
+  type: 'submit'
+})``
+Submit.lg = LargeButton.withComponent('input').extend.attrs({
+  type: 'submit'
+})``
 
 export const FormWrapper = Flex.withComponent(Container).extend`
   flex-direction: column;

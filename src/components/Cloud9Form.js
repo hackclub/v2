@@ -3,7 +3,7 @@ import { Container, Box } from '@hackclub/design-system'
 import { Field, Submit } from 'components/Forms'
 import { withFormik } from 'formik'
 import yup from 'yup'
-import fetch from 'unfetch'
+import api from 'api'
 
 const Form = Container.withComponent('form')
 
@@ -57,17 +57,14 @@ const Cloud9Form = withFormik({
   }),
   enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, setStatus, resetForm }) => {
-    console.log(data)
-    fetch('https://api.hackclub.com/v1/cloud9/send_invite', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    })
+    api
+      .post('v1/cloud9/send_invite', {
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
       .then(res => {
-        console.log(res)
         resetForm()
         setStatus('success')
-
         // associate submitted email with analytics if there isn't already an
         // email set - this will let us track workshop users that go through the
         // cloud9 setup

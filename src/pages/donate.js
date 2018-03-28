@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import {
   Heading,
   Container,
+  Card,
   Flex,
   Box,
   Text,
@@ -14,55 +15,116 @@ import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
 import Stat from 'components/Stat'
+import {
+  Triangle,
+  Hexagon,
+  Pentagon,
+  Square,
+  Circle,
+  Line
+} from 'components/Shapes'
+import DonateForm from 'components/donate/DonateForm'
 import Spent from 'components/donate/Spent'
 import Footer from 'components/Footer'
 import commaNumber from 'comma-number'
 
 const Header = Section.withComponent('header').extend`
-  padding-top: 0 !important;
-  background-color: ${props => props.theme.colors.teal[6]};
-  background: url('/pattern.svg'),
-    linear-gradient(
-      -32deg,
-      ${props => props.theme.colors.green[7]} 0%,
-      ${props => props.theme.colors.teal[6]} 50%,
-      ${props => props.theme.colors.teal[7]} 100%
-    );
-  clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 90%);
+  background: url('/pattern.svg');
+  > div {
+    display: grid;
+    grid-gap: ${props => props.theme.space[4]}px;
+    ${props => props.theme.mediaQueries.md} {
+      grid-template-columns: 3fr 2fr;
+    }
+  }
+  + div {
+    position: relative;
+  }
 `
 
-const Grid = Box.extend`
+const Row = Box.extend`
   display: grid;
-  grid-gap: ${props => props.theme.space[2]}px;
-  width: 100%;
-
-  > div {
-    width: 100%;
-    box-shadow: ${props => props.theme.boxShadows[3]};
-    border-radius: ${props => props.theme.radius};
-    max-width: 100%;
+  grid-gap: ${props => props.theme.space[3]}px;
+  text-align: left;
+  ${props => props.theme.mediaQueries.md} {
+    grid-template-columns: 2fr 3fr;
   }
+`
+
+const Financials = Box.extend`
+  display: grid;
+  border-radius: ${props => props.theme.radius};
+  overflow: hidden;
 
   ${props => props.theme.mediaQueries.md} {
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: ${props => props.theme.space[4]}px;
+    grid-template-columns: 2fr 3fr;
   }
 `
 
 const Stats = Box.extend`
-  span {
-    &:before {
-      content: '$';
-      font-size: ${props => props.theme.fontSizes[4]}px;
-      margin-left: -12px;
-      vertical-align: super;
-    }
-  }
   div {
-    text-align: left;
-    line-height: 1.25;
+    width: 100%;
+    display: block;
+    text-align: left !important;
+  }
+  span:before {
+    content: '$';
+    font-size: ${props => props.theme.fontSizes[4]}px;
+    margin-left: -12px;
+    vertical-align: super;
+  }
+  p {
+    color: ${props => props.theme.colors.red[1]};
   }
 `
+
+const Shapes = Box.extend`
+  display: none;
+  ${props => props.theme.mediaQueries.md} {
+    display: block;
+    float: right;
+    position: relative;
+    svg {
+      position: absolute;
+    }
+  }
+`
+
+const WishShapes = Shapes.extend`
+  svg {
+    &:first-child {
+      top: 0;
+      right: 0;
+      color: rgba(115, 45, 228, 0.75);
+      z-index: 1;
+    }
+    &:last-child {
+      top: 0;
+      right: 4rem;
+      color: rgba(45, 228, 207, 0.75);
+    }
+  }
+`
+
+const ContributionShapes = Shapes.extend`
+  svg {
+    right: 2rem;
+    top: 6rem;
+    color: rgba(45, 228, 115, 0.75);
+  }
+`
+
+const headline = { f: [5, 6], color: 'black', style: { lineHeight: '1.125' } }
+const subhline = { f: [3, 4], color: 'black', style: { lineHeight: '1.375' } }
+const subtext = { f: [3, 4], color: 'black', style: { lineHeight: '1.5' } }
+
+const contentContainer = {
+  maxWidth: 64,
+  w: 1,
+  p: [3, 2],
+  style: { position: 'relative' }
+}
+const content = { maxWidth: 48, mx: 0 }
 
 A.link = A.withComponent(Link)
 
@@ -89,28 +151,41 @@ export default () => (
         { property: 'og:url', content: 'https://hackclub.com/donate' }
       ]}
     />
-    <Header>
-      <Nav />
-      <Container maxWidth={48} py={4}>
-        <Heading.h1 f={[4, 5, 6]} mb={3}>
-          Donate to Hack Club
-        </Heading.h1>
-        <Text f={[3, 4]}>
-          Contribute today to empower the next generation and help start a
-          coding club at every high school—we need your help.
-        </Text>
+    <Nav color="muted" />
+    <Header py={[3, 4]}>
+      <Container w={1} align="left" pt={4} pb={[4, 6]} px={[3, 2]}>
+        <Container maxWidth={36} mx={0}>
+          <Heading.h1 color="primary" f={[3, 4]} caps>
+            Donate to Hack Club
+          </Heading.h1>
+          <Heading.h2 my={3} {...headline}>
+            We rely on patrons like you to bring coding around the world.
+          </Heading.h2>
+          <Text {...subhline}>
+            Contribute today to empower the next generation by helping start a
+            coding club at every high school—we need your help.
+          </Text>
+        </Container>
+        <Card bg="snow" p={[3, 4]} style={{ overflow: 'hidden' }}>
+          <DonateForm />
+        </Card>
       </Container>
     </Header>
-    <Container w={1} px={[3, 4, null, 2]} mt={[4, 5]}>
-      <Container maxWidth={48} mx={0}>
-        <Text f={[3, 4]}>
-          From day one, Hack Club has been a labor of love. We built this to
-          create{' '}
-          <strong>the organization we wished existed in the world</strong>. We
-          wanted to build an organization we’d be proud to be a member of, to be
-          a donor of, and to be an employee of.
+    <Container {...contentContainer}>
+      <WishShapes mt={3}>
+        <Triangle size={128} rotate={64} />
+        <Circle size={128} />
+      </WishShapes>
+      <Container {...content}>
+        <Heading.h2 {...headline}>
+          We’re building the organization we wished existed in the world.
+        </Heading.h2>
+        <Text my={3} {...subtext}>
+          From day one, Hack Club has been a labor of love. We wanted to build
+          an organization we’d be proud to be a member of, to be a donor of, and
+          to be an employee of.
         </Text>
-        <Text f={[3, 4]} mt={3}>
+        <Text {...subtext}>
           A core component of that is <strong>total transparency</strong>. It‘s
           the reason we open source all{' '}
           <A href="https://github.com/hackclub/hackclub">our content</A>
@@ -118,55 +193,56 @@ export default () => (
           <A href="https://github.com/hackclub/monolith">our code</A>
           {', '}
           <A href="https://github.com/hackclub/site">our website</A>, and our
-          leaders and members are freely accessible on{' '}
-          <A href="https://slack.hackclub.com">our Slack</A>. But we think if
-          you’re making a contribution, you deserve to know exactly where it
-          will go, so{' '}
-          <strong>
-            we make public{' '}
-            <A href="https://github.com/hackclub/ledger">
-              all of our financials
-            </A>
-          </strong>.
-        </Text>
-        <Heading.h2 f={[4, 5]} mt={4} mb={3}>
-          Your contribution is for our clubs.
-        </Heading.h2>
-        <Text f={[3, 4]}>
-          We spend our entire budget on paying{' '}
-          <A.link to="/team">our team</A.link> and directly improving our clubs.
-          There‘s no advertising spend, bonusses, or wasted contributions. To
-          show you, here‘s a month of our financials.
+          leaders and members are available on{' '}
+          <A href="https://slack.hackclub.com">our Slack</A>. You deserve to
+          know right where your contribution will go—so{' '}
+          <A href="https://github.com/hackclub/ledger" bold>
+            all of our financials are public
+          </A>.
         </Text>
       </Container>
-      <Grid mt={4} mb={[4, 5]} color="white">
-        <Box bg="accent" p={[3, 4]}>
-          <Heading.h3 f={4} my={0} caps>
-            Overall stats
-          </Heading.h3>
-          <Stats my={2}>
-            <Stat
-              f={6}
-              w={1}
-              value={commaNumber(stats.monthly)}
-              label="monthly spend"
-            />
-            <Stat f={6} w={1 / 2} value={stats.student} label="per student" />
-            <Stat f={6} w={1 / 2} value={stats.club} label="per club" />
-          </Stats>
+      <Row my={5} {...content}>
+        <Box>
+          <Heading.h2 {...headline}>
+            Your contribution is for our clubs.
+          </Heading.h2>
+          <ContributionShapes>
+            <Pentagon size={128} rotate={16} />
+          </ContributionShapes>
         </Box>
-        <Box bg="primary" p={[3, 4]}>
-          <Heading.h3 f={4} my={0} caps>
-            Category breakdown
-          </Heading.h3>
-          <Spent />
+        <Box>
+          <Text {...subtext}>
+            We spend our entire budget on paying{' '}
+            <A.link to="/team">our team</A.link> and directly improving our
+            clubs. There‘s no advertising waste, bonusses, or unused
+            contributions.
+          </Text>
+          <Financials mt={4}>
+            <Box bg="primary" color="white" p={[3, 4]} pr={2}>
+              <Heading.h3 f={4} mb={2} caps>
+                Financials
+              </Heading.h3>
+              <Stats>
+                <Stat
+                  f={6}
+                  value={commaNumber(stats.monthly)}
+                  label="monthly spend"
+                  mb={3}
+                  w={1}
+                />
+                <Stat f={6} mb={2} value={stats.club} label="per club" />
+                <Stat f={6} value={stats.student} label="per student" />
+              </Stats>
+            </Box>
+            <Box bg="snow" p={[3, 4]}>
+              <Heading.h3 f={4} my={0} caps>
+                Category breakdown
+              </Heading.h3>
+              <Spent />
+            </Box>
+          </Financials>
         </Box>
-      </Grid>
-      <Container maxWidth={48} mx={0}>
-        <Heading.h2 f={[4, 5]} mt={4} mb={3}>
-          You’re making a real impact.
-        </Heading.h2>
-      </Container>
+      </Row>
     </Container>
     <Footer />
   </Fragment>

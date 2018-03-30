@@ -165,6 +165,10 @@ export default () => (
             Contribute today to empower the next generation by helping start a
             coding club at every high school—we need your help.
           </Text>
+          <Text mt={3} f={2} color="muted">
+            Your contribution is tax-deductible.<br />
+            Hack Club‘s nonprofit EIN is 81-2908499.
+          </Text>
         </Container>
         <Card bg="snow" p={[3, 4]} style={{ overflow: 'hidden' }}>
           <DonateForm />

@@ -152,8 +152,8 @@ export default () => (
       ]}
     />
     <Nav color="muted" />
-    <Header py={[3, 4]}>
-      <Container w={1} align="left" pt={4} pb={[4, 6]} px={[3, 2]}>
+    <Header px={0} pt={[3, 4]} pb={[4, 5, 6]}>
+      <Container {...contentContainer} align="left" py={[4]}>
         <Container maxWidth={36} mx={0}>
           <Heading.h1 color="primary" f={[3, 4]} caps>
             Donate to Hack Club

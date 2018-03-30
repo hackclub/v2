@@ -120,7 +120,7 @@ class DonateForm extends Component {
             monthly?
           </Label>
         </Flex>
-        <AmountsGrid w={1} my={3}>
+        <AmountsGrid w={1} mt={3} mb={4}>
           {amounts.map(amount => (
             <Option
               amount={amount}

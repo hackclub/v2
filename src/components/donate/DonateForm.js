@@ -160,8 +160,8 @@ class DonateForm extends Component {
   startStripe(e) {
     this.loadStripe(() => {
       this.stripeHandler = window.StripeCheckout.configure({
-        key: process.env.STRIPE_PUBLISHABLE_KEY || 'XXX',
-        image: 'https://hackclub.com/social.png',
+        key: process.env.STRIPE_PUBLISHABLE_KEY,
+        image: 'https://hackclub.com/twitter-avatar.png',
         locale: 'auto',
         amount: this.amountInCents(),
         token: this.handleToken

@@ -133,7 +133,6 @@ class DonateForm extends Component {
             placeholder="Other"
             onChange={e => this.handleAmountChange(e.target.value)}
             color="black"
-            value={amount}
           />
         </AmountsGrid>
         <Button

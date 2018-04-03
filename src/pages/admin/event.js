@@ -5,7 +5,6 @@ import EventForm from 'components/admin/events/EventForm'
 import ImageForm from 'components/admin/events/ImageForm'
 import ErrorPage from 'components/admin/ErrorPage'
 import api from 'api'
-import storage from 'storage'
 import search from 'search'
 import { Text, Image, BackgroundImage } from '@hackclub/design-system'
 
@@ -35,8 +34,7 @@ export default class extends Component {
 
   componentDidMount() {
     eventId = search.get('id')
-    const authToken = storage.get('authToken')
-    api.get('v1/users/current', { authToken }).then(() => {
+    api.get('v1/users/current').then(() => {
       if (eventId) {
         return api
           .get('v1/events')

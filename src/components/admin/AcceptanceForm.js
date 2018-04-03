@@ -3,7 +3,7 @@ import { LargeButton } from '@hackclub/design-system'
 import api from 'api'
 
 export default props => {
-  const { application, authToken, updateApplicationList } = props
+  const { application, updateApplicationList } = props
 
   return (
     <LargeButton
@@ -17,9 +17,7 @@ export default props => {
           return
         }
         api
-          .post(`v1/new_club_applications/${application.id}/accept`, {
-            authToken
-          })
+          .post(`v1/new_club_applications/${application.id}/accept`)
           .then(json => {
             updateApplicationList(json)
           })

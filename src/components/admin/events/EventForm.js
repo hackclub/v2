@@ -1,7 +1,6 @@
 import React from 'react'
 import { withFormik } from 'formik'
 import yup from 'yup'
-import storage from 'storage'
 import api from 'api'
 import { AutoSaver, Field, Submit } from 'components/Forms'
 import { Button, Text } from '@hackclub/design-system'
@@ -101,7 +100,6 @@ export default withFormik({
   mapPropsToValues: props => props.event,
   enableReinitialize: true,
   handleSubmit: (values, { props }) => {
-    const authToken = storage.get('authToken')
     const apiFunction = values.id ? api.patch : api.post
     const apiEndpoint = values.id ? `v1/events/${values.id}` : `v1/events`
     const filteredEvents = {}
@@ -112,10 +110,8 @@ export default withFormik({
         filteredEvents[key] = values[key]
       }
     })
-    apiFunction(apiEndpoint, { authToken, data: filteredEvents }).then(
-      event => {
-        props.updateEvent(event)
-      }
-    )
+    apiFunction(apiEndpoint, { data: filteredEvents }).then(event => {
+      props.updateEvent(event)
+    })
   }
 })(InnerForm)

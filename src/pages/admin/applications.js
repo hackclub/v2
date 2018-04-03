@@ -102,17 +102,14 @@ export default class extends Component {
   }
 
   componentDidMount() {
-    const authToken = window.localStorage.getItem('authToken')
-    this.setState({ authToken })
-
     api
-      .get('v1/new_club_applications?submitted=true', { authToken })
+      .get('v1/new_club_applications?submitted=true')
       .then(apps => {
         this.addAppToList(apps)
         this.setState({ status: 'success' })
       })
       .then(() =>
-        api.get('v1/new_club_applications', { authToken }).then(apps => {
+        api.get('v1/new_club_applications').then(apps => {
           this.addAppToList(apps)
         })
       )
@@ -183,7 +180,6 @@ export default class extends Component {
 
   render() {
     const {
-      authToken,
       status,
       clubApplications,
       selection,
@@ -277,17 +273,15 @@ export default class extends Component {
                   </Text>
                   <Collapsable heading="Reject">
                     <RejectionForm
-                      authToken={authToken}
                       application={selection}
                       updateApplicationList={this.updateApplicationList}
                     />
                   </Collapsable>
                   <Collapsable heading="Notes">
-                    <NotesForm authToken={authToken} application={selection} />
+                    <NotesForm application={selection} />
                   </Collapsable>
                   <Collapsable heading="Interview">
                     <InterviewForm
-                      authToken={authToken}
                       application={selection}
                       updateApplicationList={this.updateApplicationList}
                     />
@@ -297,7 +291,6 @@ export default class extends Component {
                   </Collapsable>
                   <Collapsable heading="Accept">
                     <AcceptanceForm
-                      authToken={authToken}
                       application={selection}
                       updateApplicationList={this.updateApplicationList}
                     />

@@ -26,18 +26,17 @@ class SingleNote extends Component {
   }
 
   deleteNote(id) {
-    const { authToken } = this.props
-    api.delete(`v1/notes/${id}`, { authToken }).then(json => {
+    api.delete(`v1/notes/${id}`).then(json => {
       this.setState({ deleted: true })
     })
   }
 
   handleSubmit(values, { setSubmitting }) {
-    const { authToken, applicationId } = this.props
+    const { applicationId } = this.props
     const { note, id } = this.state
     if (id) {
       api
-        .patch(`v1/notes/${id}`, { authToken, data: values })
+        .patch(`v1/notes/${id}`, { data: values })
         .then(json => {
           setSubmitting(false)
         })
@@ -47,7 +46,6 @@ class SingleNote extends Component {
     } else {
       api
         .post(`v1/new_club_applications/${applicationId}/notes`, {
-          authToken,
           data: values
         })
         .then(json => {
@@ -135,37 +133,34 @@ export default class NotesForm extends Component {
     }
   }
   loadNotes(id) {
-    const { authToken } = this.props
     const { authors } = this.state
 
     this.setState({ notes: [] })
 
-    api
-      .get(`v1/new_club_applications/${id}/notes`, { authToken })
-      .then(notes => {
-        notes.forEach(note => {
-          const userId = note.user_id
-          if (authors[userId]) {
+    api.get(`v1/new_club_applications/${id}/notes`).then(notes => {
+      notes.forEach(note => {
+        const userId = note.user_id
+        if (authors[userId]) {
+          this.setState({
+            notes: [...this.state.notes, { ...note, author: authors[userId] }]
+          })
+        } else {
+          api.get(`v1/users/${userId}`).then(user => {
+            authors[userId] = user.email
             this.setState({
-              notes: [...this.state.notes, { ...note, author: authors[userId] }]
+              notes: [...this.state.notes, { ...note, author: user.email }],
+              authors
             })
-          } else {
-            api.get(`v1/users/${userId}`, { authToken }).then(user => {
-              authors[userId] = user.email
-              this.setState({
-                notes: [...this.state.notes, { ...note, author: user.email }],
-                authors
-              })
-            })
-          }
-        })
+          })
+        }
       })
+    })
   }
   addNote() {
     this.setState({ notes: [...this.state.notes, { created_at: new Date() }] })
   }
   render() {
-    const { authToken, application, updateApplicationList } = this.props
+    const { application, updateApplicationList } = this.props
     const { status, notes } = this.state
     return (
       <Fragment>
@@ -177,7 +172,6 @@ export default class NotesForm extends Component {
               key={index}
               note={note}
               applicationId={application.id}
-              authToken={authToken}
             />
           ))}
       </Fragment>

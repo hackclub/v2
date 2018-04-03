@@ -84,7 +84,7 @@ export default class extends Component {
                       <Tr
                         key={index}
                         onClick={e => {
-                          window.location = `/admin/clubs/show?id=${club.id}`
+                          window.location = `/admin/clubs/edit?id=${club.id}`
                         }}
                       >
                         <Td>

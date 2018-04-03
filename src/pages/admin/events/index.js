@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import LoadingAnimation from 'components/LoadingAnimation'
+import ErrorPage from 'components/admin/ErrorPage'
 import Login from 'components/apply/Login'
 import Nav from 'components/apply/ApplyNav'
 import { Tr, Td, Th } from 'components/Table'
@@ -71,11 +72,7 @@ export default class extends Component {
           </Fragment>
         )
       default:
-        return (
-          <Text color="error" py={3} align="center">
-            🚨 Something terrible has happened 🚨
-          </Text>
-        )
+        return <ErrorPage />
     }
   }
 }

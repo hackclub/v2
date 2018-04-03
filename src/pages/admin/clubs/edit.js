@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import search from 'search'
 import api from 'api'
+import ClubForm from 'components/admin/clubs/ClubForm'
 import ErrorPage from 'components/admin/ErrorPage'
 import LoadingAnimation from 'components/LoadingAnimation'
 import Nav from 'components/apply/ApplyNav'
@@ -47,6 +48,7 @@ export default class extends Component {
               This will show information as soon as the backend has a route for
               getting new_club information
             </Text>
+            <ClubForm club={this.state.club} />
           </React.Fragment>
         )
       default:

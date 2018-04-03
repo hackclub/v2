@@ -5,7 +5,6 @@ import Login from 'components/apply/Login'
 import Nav from 'components/apply/ApplyNav'
 import { Tr, Td, Th } from 'components/Table'
 import api from 'api'
-import storage from 'storage'
 import { Text, Link } from '@hackclub/design-system'
 
 export default class extends Component {
@@ -19,9 +18,8 @@ export default class extends Component {
   }
 
   componentDidMount() {
-    const authToken = storage.get('authToken')
     api
-      .get('v1/users/current', { authToken })
+      .get('v1/users/current')
       .then(() => {
         return api.get('v1/events').then(events => {
           this.setState({ events, status: 'success' })

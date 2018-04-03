@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import { Button } from '@hackclub/design-system'
 import PropTypes from 'prop-types'
 import api from 'api'
-import storage from 'storage'
 
 const Label = Button.withComponent('label')
 
@@ -16,14 +15,13 @@ class ImageForm extends Component {
   }
 
   handleChange(e) {
-    const authToken = storage.get('authToken')
     const data = new FormData()
     const updatedImage = e.target.files[0]
     this.setState({ image: updatedImage })
 
     data.append('file', updatedImage)
     data.append('type', `event_${this.props.type}`)
-    api.post('v1/attachments', { authToken, data }).then(resp => {
+    api.post('v1/attachments', { data }).then(resp => {
       this.props.updateEvent({ [`${this.props.type}`]: resp })
     })
   }

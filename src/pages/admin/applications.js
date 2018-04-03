@@ -18,6 +18,7 @@ import RejectionForm from 'components/admin/RejectionForm'
 import AcceptanceForm from 'components/admin/AcceptanceForm'
 import Information from 'components/admin/Information'
 import NotesForm from 'components/admin/NotesForm'
+import ErrorPage from 'components/admin/ErrorPage'
 import { Formik } from 'formik'
 import api from 'api'
 import { xor } from 'lodash'
@@ -307,11 +308,7 @@ export default class extends Component {
           </Container>
         )
       default:
-        return (
-          <Text color="error" py={3} align="center">
-            🚨 Something terrible has happened 🚨
-          </Text>
-        )
+        return <ErrorPage />
     }
   }
 }

@@ -3,6 +3,7 @@ import LoadingAnimation from 'components/LoadingAnimation'
 import Login from 'components/apply/Login'
 import EventForm from 'components/admin/events/EventForm'
 import ImageForm from 'components/admin/events/ImageForm'
+import ErrorPage from 'components/admin/ErrorPage'
 import api from 'api'
 import storage from 'storage'
 import search from 'search'
@@ -96,11 +97,7 @@ export default class extends Component {
           </Fragment>
         )
       default:
-        return (
-          <Text color="error" py={3} align="center">
-            🚨 Something terrible has happened 🚨
-          </Text>
-        )
+        return <ErrorPage />
     }
   }
 }

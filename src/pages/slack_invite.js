@@ -7,8 +7,7 @@ import SlackForm from 'components/SlackForm'
 const Fill = Box.withComponent('main').extend`
   padding: 0 !important;
   background: url('/pattern.svg'), linear-gradient(-32deg, #3f46ad, #1c299d);
-  height: 100%;
-  max-height: 100vh;
+  height: 100vh;
   overflow: auto;
 `
 

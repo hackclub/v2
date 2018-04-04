@@ -78,11 +78,11 @@ const OthersCard = Box.extend`
   width: 100vw;
   left: 0;
   position: absolute;
-  max-width: 28rem;
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     -webkit-backdrop-filter: blur(8px);
   }
   ${props => props.theme.mediaQueries.md} {
+    max-width: 28rem;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -90,8 +90,8 @@ const OthersCard = Box.extend`
   }
   p {
     color: ${props => props.theme.colors.black};
-    font-size: ${props => props.theme.fontSizes[2]};
-    line-height: 1.375;
+    font-size: ${props => props.theme.fontSizes[2]}px;
+    line-height: 1.25;
     text-shadow: none;
   }
 `
@@ -178,14 +178,14 @@ export default () => (
         </LargeButton.link>
       </Container>
     </Animator>
-    <Row cols="2fr 3fr" my={[4, 5]}>
+    <Row my={[4, 5]}>
       <Box color="black" mt={-4}>
         <Text color="accent" f={4} bold caps>
           Students!
         </Text>
         <Heading.h2 {...styles.headline}>Apply and start your club.</Heading.h2>
       </Box>
-      <Modules align="left">
+      <Modules w={1}>
         <Module
           icon="assignment"
           heading="Apply"
@@ -209,6 +209,10 @@ export default () => (
       py={[4, 5]}
       imageStyle={{
         filter: 'brightness(0.75)'
+      }}
+      style={{
+        minHeight: '48rem',
+        maxHeight: '48rem'
       }}
     >
       <FramedContent maxWidth={36} my={[4, 5]} align="center">

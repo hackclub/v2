@@ -7,7 +7,9 @@ import SlackForm from 'components/SlackForm'
 const Fill = Box.withComponent('main').extend`
   padding: 0 !important;
   background: url('/pattern.svg'), linear-gradient(-32deg, #3f46ad, #1c299d);
-  min-height: 100vh;
+  height: 100%;
+  max-height: 100vh;
+  overflow: auto;
 `
 
 const SlackCard = Card.extend`
@@ -32,12 +34,14 @@ export default () => (
   <Fill color="white" align="center">
     <Helmet title="Join Our Slack – Hack Club" />
     <Nav color="white" />
-    <Heading.h1 f={[5, 6]} mt={4} mb={2}>
-      Join the Hack Club Slack
-    </Heading.h1>
-    <Heading.h2 f={[3, 4]} mb={4} regular>
-      Talk to our community, get coding help, have fun.
-    </Heading.h2>
+    <Container px={3}>
+      <Heading.h1 f={[5, 6]} mt={4} mb={2}>
+        Join the Hack Club Slack
+      </Heading.h1>
+      <Heading.h2 f={[3, 4]} mb={4} regular>
+        Talk to our community, get coding help, have fun.
+      </Heading.h2>
+    </Container>
     <SlackCard
       w={1}
       p={[3, 4]}

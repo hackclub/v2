@@ -62,7 +62,7 @@ const HeadLine = Heading.h1.extend.attrs({ f: [5, 7, 8] })`
       content: '';
       position: absolute;
       clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
-      background-color: rgba(252,252,252,.6);
+      background-color: rgba(252, 252, 252, 0.625);
       mix-blend-mode: overlay;
       right: -0.5rem;
       width: 9.5rem;
@@ -83,13 +83,7 @@ const Row = Container.extend.attrs({ px: 3, maxWidth: 56 })`
     line-height: 1;
   }
   ${props => props.theme.mediaQueries.md} {
-    grid-template-columns: repeat(5, 1fr);
-    > :first-child {
-      grid-column: span 2;
-    }
-    > :last-child {
-      grid-column: 3 / span 3;
-    }
+    grid-template-columns: 2fr 3fr;
   }
 `
 

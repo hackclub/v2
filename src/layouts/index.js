@@ -24,7 +24,7 @@ export default props => (
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:description', content: description },
         { name: 'twitter:domain', content: url },
-        { name: 'twitter:image:src', content: img },
+        { name: 'twitter:image', content: img },
         { name: 'twitter:title', content: title },
         { property: 'og:description', content: description },
         { property: 'og:image', content: img },

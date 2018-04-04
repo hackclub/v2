@@ -41,7 +41,7 @@ const Service = ({ href, icon, ...props }) => (
     href={href}
     mx={2}
     color="muted"
-    title={icon}
+    aria-label={`Hack Club on ${icon}`}
     {...props}
   >
     <svg

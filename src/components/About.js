@@ -115,19 +115,20 @@ const Action = Button.withComponent(Link).extend`
 
 export default () => (
   <Container w={1} px={[3, 4, null, 2]} mt={[4, 5]}>
-    <Container maxWidth={48} mx={0}>
-      <Heading.h2 f={[4, 5]} mb={3}>
+    <Box mx={0} mt={5} color="black">
+      <Heading.h2 f={[5, 6]} mb={3}>
         Join the largest community of students building the class they wish they
-        could take.
+        had.
       </Heading.h2>
-      <Text f={[3, 4]}>
-        At Hack Club, every week you and 20 other students come together to
-        build. Meetings are like mini-hackathons. People are working on
-        projects, you lead workshops to introduce new technologies, you and your
-        co-leads are constantly mentoring. Your members typically start with no
-        experience.
-      </Text>
-    </Container>
+      <Container maxWidth={48} mx={0}>
+        <Text f={[3, 4]}>
+          At Hack Club, every week you and 20 other students come together to
+          make. Meetings are like mini-hackathons. People are working on
+          projects, you lead workshops introducing new technologies, you and
+          your co-leads mentor. Members typically start with no experience.
+        </Text>
+      </Container>
+    </Box>
     <Grid mt={4} mb={[4, 6]} color="white">
       <Box bg="primary" p={[3, 4]}>
         <Heading.h3 f={4} my={0} caps>
@@ -178,17 +179,20 @@ export default () => (
         </Modules>
       </Box>
     </Grid>
-    <Container maxWidth={48} mx={0} mt={5}>
-      <Heading.h2 f={[4, 5]} mb={3}>
+    <Box mx={0} mt={5} color="black">
+      <Heading.h2 f={[5, 6]} mb={3}>
         We think people learn best when they take control of their own
         education.
       </Heading.h2>
-      <Text f={[3, 4]}>
-        Hack Club is heavily inspired by unschooling. At Hack Club, there are no
-        teachers or lectures. Your job as a club leader is to facilitate and
-        provide guidance through mentoring and the power of community.
-      </Text>
-    </Container>
+      <Container maxWidth={48} mx={0}>
+        <Text f={[3, 4]}>
+          Hack Club is heavily inspired by unschooling. At Hack Club, there are
+          no teachers or lectures—members work at their own pace on their own
+          projects. Your job as a club leader is to facilitate and provide
+          guidance through mentoring and the power of community.
+        </Text>
+      </Container>
+    </Box>
     <Grid my={[4, 5]} color="white" pb={3}>
       <Super p={[3, 4]}>
         <Heading.h3 f={4} my={0} caps>

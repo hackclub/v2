@@ -83,14 +83,14 @@ const Action = LargeButton.withComponent(Link).extend`
 
 const Promo = () => (
   <PromoBox p={[3, 4, 5]}>
-    <PromoHeading f={[4, 5, 6]} m={0}>
+    <PromoHeading f={[4, 5, 6]} my={0}>
       Get your club started.
     </PromoHeading>
-    <Text f={[2, 4]} my={2}>
-      Build the class you wish you could take.
+    <Text f={[2, 4]} mt={3} mb={2}>
+      Your high school is waiting for your club.
     </Text>
     <Text f={[2, 4]} mb={4}>
-      Bring the movement to your school.
+      We’ll help you through every step.
     </Text>
     <Action to="/start" children="Start Your Club »" />
   </PromoBox>
@@ -146,23 +146,11 @@ const BorderLeft = BorderBase.extend`
   transform-origin: left center;
 `
 
-const BorderX = props => (
-  <Animator
-    data={{
-      transform: [{ scaleX: 1 }, { scaleX: 0 }]
-    }}
-    {...props}
-  />
-)
+const x = { transform: [{ scaleX: 1 }, { scaleX: 0 }] }
+const y = { transform: [{ scaleY: 1 }, { scaleY: 0 }] }
 
-const BorderY = props => (
-  <Animator
-    data={{
-      transform: [{ scaleY: 1 }, { scaleY: 0 }]
-    }}
-    {...props}
-  />
-)
+const BorderX = props => <Animator data={x} {...props} />
+const BorderY = props => <Animator data={y} {...props} />
 
 export default () => (
   <Base>

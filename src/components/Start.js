@@ -38,7 +38,7 @@ const Base = Section.extend`
 
 LargeButton.link = LargeButton.withComponent(Link)
 
-const Start = ({ mt = '-4rem', ...props }) => (
+const Start = ({ mt = '-4rem', buttonProps = {}, ...props }) => (
   <Base mt={mt} {...props}>
     <Box p={[2, 3]} align={['center', null, 'right']}>
       <Heading.h2 f={[5, 6]} m={0}>
@@ -52,7 +52,12 @@ const Start = ({ mt = '-4rem', ...props }) => (
       </Text>
     </Box>
     <Box align={['center', null, 'left']} p={3}>
-      <LargeButton.link to="/start" inverted children="Get started »" />
+      <LargeButton.link
+        to="/start"
+        inverted
+        children="Get started »"
+        {...buttonProps}
+      />
     </Box>
     <style children="footer{margin-top:-5rem;padding-top:8rem !important}" />
   </Base>

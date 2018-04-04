@@ -8,6 +8,7 @@ const Base = Box.section.extend`
   width: 100%;
   height: 100vh;
   min-height: 36rem;
+  max-height: 64rem;
   padding: ${props => props.theme.space[4]}px;
   padding-top: ${props => props.theme.space[5]}px;
 `

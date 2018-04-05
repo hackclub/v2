@@ -5,12 +5,12 @@ import {
   Container,
   Text,
   Flex,
-  Module,
   Button,
   BackgroundImage,
   Link as A
 } from '@hackclub/design-system'
 import Link from 'gatsby-link'
+import Module from 'components/Module'
 import Stat from 'components/Stat'
 import { stats } from 'data.json'
 
@@ -65,12 +65,6 @@ const Modules = Box.extend`
   grid-gap: ${props => props.theme.space[3]}px;
   ${props => props.theme.mediaQueries.md} {
     grid-template-columns: repeat(2, 1fr);
-  }
-  div {
-    align-items: flex-start;
-    padding: 0;
-    text-align: left;
-    width: 100% !important;
   }
 `
 

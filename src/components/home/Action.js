@@ -8,25 +8,7 @@ import {
   LargeButton
 } from '@hackclub/design-system'
 import Link from 'gatsby-link'
-import Animator from 'components/Animator'
-
-const Base = Box.extend`
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  min-height: 36rem;
-`
-
-const Photo = Box.withComponent('img').extend`
-	position: absolute;
-	z-index: 1;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	object-fit: cover;
-`
+import Framed from 'components/Framed'
 
 const PromoBox = Box.extend`
   position: absolute;
@@ -96,74 +78,11 @@ const Promo = () => (
   </PromoBox>
 )
 
-const Frame = Box.extend`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 8;
-  pointer-events: none;
-`
-
-const BorderBase = Box.extend`
-  position: absolute;
-  z-index: 4;
-  background: white;
-`
-
-const BorderTop = BorderBase.extend`
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 5vw;
-  min-height: ${props => props.theme.space[4]}px;
-  transform-origin: center top;
-`
-
-const BorderRight = BorderBase.extend`
-  top: 0;
-  right: 0;
-  width: 5vw;
-  height: 100%;
-  min-width: ${props => props.theme.space[4]}px;
-  transform-origin: right center;
-`
-
-const BorderBottom = BorderBase.extend`
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 5vw;
-  transform-origin: center bottom;
-`
-
-const BorderLeft = BorderBase.extend`
-  top: 0;
-  left: 0;
-  width: 5vw;
-  height: 100%;
-  transform-origin: left center;
-`
-
-const x = { transform: [{ scaleX: 1 }, { scaleX: 0 }] }
-const y = { transform: [{ scaleY: 1 }, { scaleY: 0 }] }
-
-const BorderX = props => <Animator data={x} {...props} />
-const BorderY = props => <Animator data={y} {...props} />
-
 export default () => (
-  <Base>
-    <Frame>
-      <BorderY is={BorderTop} />
-      <BorderX is={BorderRight} />
-      <BorderY is={BorderBottom} />
-      <BorderX is={BorderLeft} />
-    </Frame>
-    <Photo
-      src="/action.jpg"
-      alt="Group of high school students coding together"
-    />
+  <Framed
+    imageSrc="/action.jpg"
+    imageAlt="Group of high school students coding together"
+  >
     <Promo />
-  </Base>
+  </Framed>
 )

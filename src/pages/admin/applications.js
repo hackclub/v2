@@ -11,7 +11,6 @@ import {
 import { AutoSaver, Field, Form } from 'components/Forms'
 import Login from 'components/apply/Login'
 import { Tr, Td, Th } from 'components/Table'
-import LogoutButton from 'components/apply/LogoutButton'
 import LoadingAnimation from 'components/LoadingAnimation'
 import InterviewForm from 'components/admin/InterviewForm'
 import RejectionForm from 'components/admin/RejectionForm'
@@ -19,6 +18,7 @@ import AcceptanceForm from 'components/admin/AcceptanceForm'
 import Information from 'components/admin/Information'
 import NotesForm from 'components/admin/NotesForm'
 import ErrorPage from 'components/admin/ErrorPage'
+import Nav from 'components/apply/ApplyNav'
 import { Formik } from 'formik'
 import api from 'api'
 import { xor } from 'lodash'
@@ -193,112 +193,114 @@ export default class extends Component {
         return <Login userType="admin" />
       case 'success':
         return (
-          <Container maxwidth={80} p={[3, 4]}>
-            <Flex
-              flexDirection={['column', 'row']}
-              justify="space-between"
-              align="center"
-              wrap
-            >
-              <Heading.h1 f={[5, 6]}>Dashboard</Heading.h1>
-              <LogoutButton />
-            </Flex>
-            <Heading.h2 color="muted" f={4} mt={2} regular>
-              Hello, it’s{' '}
-              {new Date().toLocaleDateString('en-us', { weekday: 'long' })}
-              {'. '}You’re doing great.
-            </Heading.h2>
-            <Flex mt={[3, 4]}>
-              {Object.keys(colorMap).map((status, index) => (
-                <FilterButton
-                  key={index}
-                  toggleFilter={this.toggleFilter}
-                  status={status}
-                  toggled={this.state.filters.indexOf(status) === -1}
-                />
-              ))}
-            </Flex>
-            <Flex justify="center" mt={[3, 4]}>
-              <table>
-                <thead>
-                  <Tr>
-                    <Th>ID</Th>
-                    <Th>Name</Th>
-                    <Th>POC</Th>
-                  </Tr>
-                </thead>
-                <tbody>
-                  {Object.values(clubApplications).map(
-                    (application, index) =>
-                      this.filterApplication(application).visible ? (
-                        <Tr
-                          key={index}
-                          onClick={() => {
-                            const alreadySelected =
-                              this.state.selection === application
+          <Fragment>
+            <Nav />
+            <Container maxwidth={80} p={[3, 4]}>
+              <Flex
+                flexDirection={['column', 'row']}
+                justify="space-between"
+                align="center"
+                wrap
+              >
+                <Heading.h1 f={[5, 6]}>Dashboard</Heading.h1>
+              </Flex>
+              <Heading.h2 color="muted" f={4} mt={2} regular>
+                Hello, it’s{' '}
+                {new Date().toLocaleDateString('en-us', { weekday: 'long' })}
+                {'. '}You’re doing great.
+              </Heading.h2>
+              <Flex mt={[3, 4]}>
+                {Object.keys(colorMap).map((status, index) => (
+                  <FilterButton
+                    key={index}
+                    toggleFilter={this.toggleFilter}
+                    status={status}
+                    toggled={this.state.filters.indexOf(status) === -1}
+                  />
+                ))}
+              </Flex>
+              <Flex justify="center" mt={[3, 4]}>
+                <table>
+                  <thead>
+                    <Tr>
+                      <Th>ID</Th>
+                      <Th>Name</Th>
+                      <Th>POC</Th>
+                    </Tr>
+                  </thead>
+                  <tbody>
+                    {Object.values(clubApplications).map(
+                      (application, index) =>
+                        this.filterApplication(application).visible ? (
+                          <Tr
+                            key={index}
+                            onClick={() => {
+                              const alreadySelected =
+                                this.state.selection === application
 
-                            this.setState({
-                              selection: alreadySelected
-                                ? undefined
-                                : application,
-                              selectType: 'notes'
-                            })
-                          }}
-                        >
-                          <Td>
-                            <Badge
-                              bg={this.filterApplication(application).color}
-                              children={application.id}
-                            />
-                          </Td>
-                          <Td>{application.high_school_name}</Td>
-                          <Td>{this.pointOfContact(application)}</Td>
-                        </Tr>
-                      ) : null
-                  )}
-                </tbody>
-              </table>
-              {selection && (
-                <Flex
-                  flexDirection="column"
-                  flex="1 1 auto"
-                  ml={[null, 4]}
-                  style={{ minWidth: '18rem' }}
-                >
-                  <Text color="muted" f={1} caps mb={3}>
-                    Application{' '}
-                    <Badge bg={this.filterApplication(selection).color}>
-                      {selection.id}
-                    </Badge>
-                  </Text>
-                  <Collapsable heading="Reject">
-                    <RejectionForm
-                      application={selection}
-                      updateApplicationList={this.updateApplicationList}
-                    />
-                  </Collapsable>
-                  <Collapsable heading="Notes">
-                    <NotesForm application={selection} />
-                  </Collapsable>
-                  <Collapsable heading="Interview">
-                    <InterviewForm
-                      application={selection}
-                      updateApplicationList={this.updateApplicationList}
-                    />
-                  </Collapsable>
-                  <Collapsable heading="Application">
-                    <Information application={selection} />
-                  </Collapsable>
-                  <Collapsable heading="Accept">
-                    <AcceptanceForm
-                      application={selection}
-                      updateApplicationList={this.updateApplicationList}
-                    />
-                  </Collapsable>
-                </Flex>
-              )}
-            </Flex>
-          </Container>
+                              this.setState({
+                                selection: alreadySelected
+                                  ? undefined
+                                  : application,
+                                selectType: 'notes'
+                              })
+                            }}
+                          >
+                            <Td>
+                              <Badge
+                                bg={this.filterApplication(application).color}
+                                children={application.id}
+                              />
+                            </Td>
+                            <Td>{application.high_school_name}</Td>
+                            <Td>{this.pointOfContact(application)}</Td>
+                          </Tr>
+                        ) : null
+                    )}
+                  </tbody>
+                </table>
+                {selection && (
+                  <Flex
+                    flexDirection="column"
+                    flex="1 1 auto"
+                    ml={[null, 4]}
+                    style={{ minWidth: '18rem' }}
+                  >
+                    <Text color="muted" f={1} caps mb={3}>
+                      Application{' '}
+                      <Badge bg={this.filterApplication(selection).color}>
+                        {selection.id}
+                      </Badge>
+                    </Text>
+                    <Collapsable heading="Reject">
+                      <RejectionForm
+                        application={selection}
+                        updateApplicationList={this.updateApplicationList}
+                      />
+                    </Collapsable>
+                    <Collapsable heading="Notes">
+                      <NotesForm application={selection} />
+                    </Collapsable>
+                    <Collapsable heading="Interview">
+                      <InterviewForm
+                        application={selection}
+                        updateApplicationList={this.updateApplicationList}
+                      />
+                    </Collapsable>
+                    <Collapsable heading="Application">
+                      <Information application={selection} />
+                    </Collapsable>
+                    <Collapsable heading="Accept">
+                      <AcceptanceForm
+                        application={selection}
+                        updateApplicationList={this.updateApplicationList}
+                      />
+                    </Collapsable>
+                  </Flex>
+                )}
+              </Flex>
+            </Container>
+          </Fragment>
         )
       default:
         return <ErrorPage />

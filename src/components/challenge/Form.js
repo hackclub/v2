@@ -6,10 +6,7 @@ import LoginForm from 'components/apply/LoginForm'
 import PostForm from 'components/challenge/PostForm'
 
 class Form extends Component {
-  constructor() {
-    super()
-    this.state = { authToken: '', userId: '' }
-  }
+  state = { authToken: '', userId: '' }
 
   componentDidMount() {
     const authToken = storage.get('authToken')

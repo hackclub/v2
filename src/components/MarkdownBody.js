@@ -21,7 +21,7 @@ const MarkdownBody = Box.extend`
   }
 
   /* hides title, assumes rendering separately */
-  h1:first-child {
+  > h1:first-child {
     display: none;
   }
 

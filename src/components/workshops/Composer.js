@@ -128,6 +128,7 @@ class Composer extends Component {
           autoComplete="on"
           autoCorrect="on"
           stripPastedStyles={true}
+          placeholder="Write in Markdown…"
         />
       </MarkdownBody>
     )

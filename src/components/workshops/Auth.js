@@ -36,17 +36,17 @@ class Auth extends Component {
     const authed = !isEmpty(email)
 
     return authed ? (
-      <Flex justify="center" align="center" pt={4} wrap>
+      <Flex justify="center" align="baseline" mb={3} px={2}>
         <Text f={2} color="slate" mb={1}>
-          Submitting from <strong>{email}</strong> (won’t be public).
+          You’re <strong>{email}</strong> (private).
         </Text>
         <Button.button f={2} ml={3} onClick={this.signOut} bg="info" inverted>
           Change
         </Button.button>
       </Flex>
     ) : (
-      <Sheet maxWidth={20} p={3} bg="primary" boxShadowSize="md" mt={4}>
-        <Heading.h2 color="white" mt={0} mb={3} f={[3, 4]}>
+      <Sheet maxWidth={20} p={3} bg="primary" boxShadowSize="md" mb={4}>
+        <Heading.h2 color="white" mt={0} mb={2} f={[3, 4]}>
           Before you submit…
         </Heading.h2>
         <LoginForm

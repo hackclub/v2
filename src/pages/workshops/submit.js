@@ -1,23 +1,11 @@
 import React, { Fragment } from 'react'
-import {
-  Box,
-  Button,
-  Container,
-  Card,
-  Flex,
-  Heading,
-  Section,
-  Text,
-  cx
-} from '@hackclub/design-system'
+import { Container, Heading, Text, Section, cx } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Auth from 'components/workshops/Auth'
-import Composer from 'components/workshops/Composer'
-import { Submit } from 'components/Forms'
+import SubmitForm from 'components/workshops/SubmitForm'
 
 const Header = Section.withComponent('header').extend([])
-const Sheet = Container.withComponent(Card).extend([])
 
 export default () => (
   <Fragment>
@@ -35,12 +23,7 @@ export default () => (
         </Text>
       </Container>
     </Header>
-    <Sheet maxWidth={48} p={[3, 4]} bg="white" boxShadowSize="md">
-      <Composer />
-    </Sheet>
     <Auth />
-    <Box align="center" pt={4} pb={5}>
-      <Submit.lg bg="info" value="Submit for Review" />
-    </Box>
+    <SubmitForm />
   </Fragment>
 )

@@ -38,7 +38,6 @@ const HeaderContainer = Container.extend`
 `
 
 const HeaderCard = Card.extend`
-  max-width: 24rem;
   h2,
   p {
     color: ${props => props.theme.colors.black} !important;
@@ -47,25 +46,42 @@ const HeaderCard = Card.extend`
 
 const dt = d => new Date(d).toLocaleDateString()
 
+const title = 'Hack Club Challenge'
+const desc =
+  'Join Hack Club’s high school coding challenge. Submit your entry to compete in our monthly programming contest and win prizes.'
+
 export default ({ data }) => {
   if (isEmpty(data)) return null
   const challenge = data.publicJson
   return (
     <Fragment>
-      <Helmet title="Challenge – Hack Club" />
+      <Helmet
+        title={title}
+        meta={[
+          { name: 'twitter:title', content: title },
+          { name: 'description', content: desc },
+          { name: 'twitter:description', content: desc },
+          { property: 'og:title', content: title },
+          { property: 'og:description', content: desc },
+          { property: 'og:url', content: 'https://hackclub.com/challenge' }
+        ]}
+      />
       <Header p={3}>
         <Nav />
-        <HeaderContainer p={0} mt={3} align="left">
+        <HeaderContainer maxWidth={56} p={0} mt={3} align="left">
           <Box align={['center', null, 'right']}>
             <Text mb={-2} f={3} bold caps>
               Hack Club
             </Text>
-            <Heading.h1 f={[6, 7]} mt={0} mb={3}>
+            <Heading.h1 f={[6, 7]} my={0}>
               Challenge
             </Heading.h1>
+            <Heading.h2 f={3} mt={2} mb={3} regular>
+              Join Hack Club’s high school coding contest
+            </Heading.h2>
             <HeaderCard boxShadowSize="md" p={3} bg="pink.0" align="left">
               <Text f={2}>
-                🌟 Challenge of the month is <strong>{challenge.name}</strong>
+                🌟 Challenge of the month: <strong>{challenge.name}</strong>
                 <br />
                 🎁 {challenge.description}
                 <br />

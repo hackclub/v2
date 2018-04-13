@@ -101,6 +101,7 @@ class SingleNote extends Component {
                   handleSubmit={handleSubmit}
                   isSubmitting={isSubmitting}
                   values={values}
+                  saveNotification="underline"
                 />
               </Box.form>
             )

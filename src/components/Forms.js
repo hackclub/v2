@@ -52,10 +52,12 @@ const SaveStatusLine = Box.extend`
   box-shadow: 0 0 4px ${props => (props.saved ? '0px' : '2px')};
 `
 
-const SaveStatus = props => (
+const SaveStatus = ({ saved, type = 'all' }) => (
   <Fragment>
-    <SaveStatusText saved={props.saved} />
-    <SaveStatusLine saved={props.saved} />
+    {['all', 'text'].indexOf(type) !== -1 && <SaveStatusText saved={saved} />}
+    {['all', 'underline'].indexOf(type) !== -1 && (
+      <SaveStatusLine saved={saved} />
+    )}
   </Fragment>
 )
 
@@ -104,16 +106,14 @@ export class AutoSaver extends Component {
   }
 
   render() {
-    if (this.state.unsavedChanges) {
-      return (
-        <Fragment>
-          <SaveStatus />
-          <ConfirmClose />
-        </Fragment>
-      )
-    } else {
-      return <SaveStatus saved="true" />
-    }
+    const { unsavedChanges } = this.state
+    const { saveNotification } = this.props
+    return (
+      <Fragment>
+        <SaveStatus type={saveNotification} saved={!unsavedChanges} />
+        {unsavedChanges && <ConfirmClose />}
+      </Fragment>
+    )
   }
 }
 

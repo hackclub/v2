@@ -35,30 +35,37 @@ export default class extends Component {
 
   componentDidMount() {
     const eventId = search.get('id')
-    api.get('v1/users/current').then(() => {
-      if (eventId) {
-        return api
-          .get('v1/events')
-          .then(events => {
-            const event = events.find(event => event.id.toString() === eventId)
-            if (event) {
-              this.setState({
-                event,
-                status: 'success'
-              })
-            } else {
-              throw 'Event not found'
-            }
-          })
-          .catch(err => {
-            this.setState({
-              status: err.status === 401 ? 'needsToAuth' : 'failure'
+    api
+      .get('v1/users/current')
+      .then(() => {
+        if (eventId) {
+          return api
+            .get('v1/events')
+            .then(events => {
+              const event = events.find(
+                event => event.id.toString() === eventId
+              )
+              if (event) {
+                this.setState({
+                  event,
+                  status: 'success'
+                })
+              } else {
+                throw 'Event not found'
+              }
             })
-          })
-      } else {
-        this.setState({ event: {}, status: 'success' })
-      }
-    })
+            .catch(err => {
+              throw err
+            })
+        } else {
+          this.setState({ event: {}, status: 'success' })
+        }
+      })
+      .catch(err => {
+        this.setState({
+          status: err.status === 401 ? 'needsToAuth' : 'failure'
+        })
+      })
   }
 
   render() {

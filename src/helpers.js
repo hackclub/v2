@@ -1,3 +1,5 @@
+export const dt = d => new Date(d).toLocaleDateString()
+
 export const timeSince = time => {
   const seconds = Math.floor((new Date() - new Date(time)) / 1000)
   const intervals = [

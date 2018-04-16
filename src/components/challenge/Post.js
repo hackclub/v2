@@ -9,11 +9,12 @@ import {
   Text
 } from '@hackclub/design-system'
 import PropTypes from 'prop-types'
+import { dt } from 'helpers'
 import { kebabCase } from 'lodash'
 
 const Row = Flex.extend`
   align-items: center;
-  border-top: 1px solid ${props => props.theme.colors.smoke};
+  border-bottom: 1px solid ${props => props.theme.colors.smoke};
   a {
     display: inline-flex;
     align-items: center;
@@ -29,6 +30,12 @@ const UpvoteButton = Button.button.extend`
   max-width: 5rem;
   box-shadow: none !important;
 `
+
+const year = new Date().getFullYear()
+const shortDt = d =>
+  dt(d)
+    .replace(`/${year}`, '')
+    .replace(`${year}-`, '')
 
 const Post = ({
   name,
@@ -51,9 +58,16 @@ const Post = ({
     <Link href={url} target="_blank" color="black">
       <Box w={1} px={3}>
         <Heading.h3 f={3} m={0} children={name} />
-        <Text color="muted" f={2} children={description} />
+        <Text color="muted" f={2}>
+          {description}
+        </Text>
       </Box>
-      <Icon name="open_in_new" color="gray.4" size={20} />
+      <Flex flexDirection="column" align="center">
+        <Icon name="open_in_new" color="info" size={24} />
+        <Text.span f={0} mt={1} color="muted">
+          {shortDt(createdAt)}
+        </Text.span>
+      </Flex>
     </Link>
   </Row>
 )

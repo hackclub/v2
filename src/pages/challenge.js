@@ -12,6 +12,7 @@ import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Form from 'components/challenge/Form'
 import Posts from 'components/challenge/Posts'
+import { dt } from 'helpers'
 import { isEmpty } from 'lodash'
 
 const Header = Section.withComponent('header').extend`
@@ -44,7 +45,6 @@ const HeaderCard = Card.extend`
   }
 `
 
-const dt = d => new Date(d).toLocaleDateString()
 const Title = Flex.extend`
   border-bottom: 1px solid ${props => props.theme.colors.smoke};
 `

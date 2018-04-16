@@ -45,6 +45,9 @@ const HeaderCard = Card.extend`
 `
 
 const dt = d => new Date(d).toLocaleDateString()
+const Title = Flex.extend`
+  border-bottom: 1px solid ${props => props.theme.colors.smoke};
+`
 
 const title = 'Hack Club Challenge'
 const desc =
@@ -97,12 +100,12 @@ export default ({ data }) => {
         </HeaderContainer>
       </Header>
       <Container maxWidth={48} py={4} px={3}>
-        <Flex align="center" mb={3}>
+        <Title align="center" mb={3}>
           <Heading.h2 f={[4, 5]}>Submissions</Heading.h2>
           <Text.span f={2} color="muted" ml={3}>
             {dt(challenge.start)} – {dt(challenge.end)}
           </Text.span>
-        </Flex>
+        </Title>
         <Posts challengeId={challenge.id} />
       </Container>
     </Fragment>

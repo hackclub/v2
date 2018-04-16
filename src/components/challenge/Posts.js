@@ -5,10 +5,7 @@ import storage from 'storage'
 import { map, includes, isEmpty, remove, filter } from 'lodash'
 
 class Posts extends Component {
-  constructor() {
-    super()
-    this.state = { posts: [], upvotes: [], userId: null, userEmail: null }
-  }
+  state = { posts: [], upvotes: [], userId: null, userEmail: null }
 
   componentDidMount() {
     const userId = storage.get('userId')

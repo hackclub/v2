@@ -92,7 +92,7 @@ export default ({ data }) => {
             </HeaderCard>
           </Box>
           <HeaderCard boxShadowSize="md" p={3} bg="pink.0">
-            <Form />
+            <Form challengeId={challenge.id} />
           </HeaderCard>
         </HeaderContainer>
       </Header>

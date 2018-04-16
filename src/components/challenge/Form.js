@@ -6,10 +6,7 @@ import LoginForm from 'components/apply/LoginForm'
 import PostForm from 'components/challenge/PostForm'
 
 class Form extends Component {
-  constructor() {
-    super()
-    this.state = { authToken: '', userId: '' }
-  }
+  state = { authToken: '', userId: '' }
 
   componentDidMount() {
     const authToken = storage.get('authToken')
@@ -27,7 +24,7 @@ class Form extends Component {
           {authed ? 'Post your project' : 'Sign in to post + upvote'}
         </Heading.h2>
         {authed ? (
-          <PostForm />
+          <PostForm challengeId={this.props.challengeId} />
         ) : (
           <LoginForm
             bg="black"

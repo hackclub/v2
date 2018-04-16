@@ -10,7 +10,7 @@ exports.onPreBootstrap = () =>
   axios
     .get('https://api.hackclub.com/v1/challenges')
     .then(res => {
-      const data = res.data[0]
+      const data = res.data[res.data.length - 1]
       data.id = data.id.toString() // for Gatsby
       writeFile('./public/challenge.json', JSON.stringify(data), err => {
         if (err) throw err

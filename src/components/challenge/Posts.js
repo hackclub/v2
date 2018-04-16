@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
-import axios from 'axios'
+import { Text } from '@hackclub/design-system'
 import Post from 'components/challenge/Post'
+import axios from 'axios'
 import storage from 'storage'
 import { map, includes, isEmpty, remove, filter } from 'lodash'
 
@@ -103,6 +104,11 @@ class Posts extends Component {
     const { posts, upvotes } = this.state
     return (
       <Fragment>
+        {isEmpty(posts) && (
+          <Text f={3} color="muted" py={4} align="center">
+            No submissions yet!
+          </Text>
+        )}
         {posts.map(post => (
           <Post
             name={post.name}

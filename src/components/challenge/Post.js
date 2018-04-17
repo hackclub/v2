@@ -9,11 +9,12 @@ import {
   Text
 } from '@hackclub/design-system'
 import PropTypes from 'prop-types'
+import { dt } from 'helpers'
 import { kebabCase } from 'lodash'
 
 const Row = Flex.extend`
   align-items: center;
-  border-top: 1px solid ${props => props.theme.colors.smoke};
+  border-bottom: 1px solid ${props => props.theme.colors.smoke};
   a {
     display: inline-flex;
     align-items: center;
@@ -30,16 +31,23 @@ const UpvoteButton = Button.button.extend`
   box-shadow: none !important;
 `
 
+const year = new Date().getFullYear()
+const shortDt = d =>
+  dt(d)
+    .replace(`/${year}`, '')
+    .replace(`${year}-`, '')
+
 const Post = ({
   name,
   url,
   description,
   createdAt,
+  mine,
   upvotes,
   upvoted = false,
   onUpvote
 }) => (
-  <Row py={[2, 3]} id={kebabCase(name)}>
+  <Row bg={mine && 'yellow.1'} py={[2, 3]} id={kebabCase(name)}>
     <UpvoteButton
       bg={upvoted ? 'primary' : 'smoke'}
       color={upvoted ? 'white' : 'slate'}
@@ -51,9 +59,25 @@ const Post = ({
     <Link href={url} target="_blank" color="black">
       <Box w={1} px={3}>
         <Heading.h3 f={3} m={0} children={name} />
-        <Text color="muted" f={2} children={description} />
+        <Text color="muted" f={2}>
+          {description}
+        </Text>
       </Box>
-      <Icon name="open_in_new" color="gray.4" size={20} />
+      {mine && (
+        <Icon
+          name="fingerprint"
+          color="yellow.7"
+          size={32}
+          mr={3}
+          title="My submission"
+        />
+      )}
+      <Flex flexDirection="column" align="center">
+        <Icon name="open_in_new" color="info" size={24} />
+        <Text.span f={0} mt={1} color="muted">
+          {shortDt(createdAt)}
+        </Text.span>
+      </Flex>
     </Link>
   </Row>
 )
@@ -63,6 +87,7 @@ Post.propTypes = {
   url: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   createdAt: PropTypes.string,
+  mine: PropTypes.bool,
   upvotes: PropTypes.number.isRequired,
   upvoted: PropTypes.bool,
   onUpvote: PropTypes.func.isRequired

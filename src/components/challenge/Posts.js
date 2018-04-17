@@ -1,14 +1,12 @@
 import React, { Component, Fragment } from 'react'
-import axios from 'axios'
+import { Text } from '@hackclub/design-system'
 import Post from 'components/challenge/Post'
+import axios from 'axios'
 import storage from 'storage'
-import { map, includes, isEmpty, remove, filter } from 'lodash'
+import { map, includes, isEmpty, remove, filter, isEqual, get } from 'lodash'
 
 class Posts extends Component {
-  constructor() {
-    super()
-    this.state = { posts: [], upvotes: [], userId: null, userEmail: null }
-  }
+  state = { posts: [], upvotes: [], userId: null, userEmail: null }
 
   componentDidMount() {
     const userId = storage.get('userId')
@@ -103,15 +101,21 @@ class Posts extends Component {
   }
 
   render() {
-    const { posts, upvotes } = this.state
+    const { posts, upvotes, userEmail } = this.state
     return (
       <Fragment>
+        {isEmpty(posts) && (
+          <Text f={3} color="muted" py={4} align="center">
+            No submissions yet!
+          </Text>
+        )}
         {posts.map(post => (
           <Post
             name={post.name}
             url={post.url}
             description={post.description}
-            createdAt={post.createdAt}
+            createdAt={post.created_at}
+            mine={isEqual(get(post, 'user.email'), userEmail)}
             upvotes={post.upvotesCount}
             upvoted={includes(upvotes, post.id)}
             onUpvote={e => this.onUpvote(e, post.id)}

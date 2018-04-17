@@ -3,7 +3,7 @@ import { Text } from '@hackclub/design-system'
 import Post from 'components/challenge/Post'
 import axios from 'axios'
 import storage from 'storage'
-import { map, includes, isEmpty, remove, filter } from 'lodash'
+import { map, includes, isEmpty, remove, filter, isEqual, get } from 'lodash'
 
 class Posts extends Component {
   state = { posts: [], upvotes: [], userId: null, userEmail: null }
@@ -101,7 +101,7 @@ class Posts extends Component {
   }
 
   render() {
-    const { posts, upvotes } = this.state
+    const { posts, upvotes, userEmail } = this.state
     return (
       <Fragment>
         {isEmpty(posts) && (
@@ -115,6 +115,7 @@ class Posts extends Component {
             url={post.url}
             description={post.description}
             createdAt={post.created_at}
+            mine={isEqual(get(post, 'user.email'), userEmail)}
             upvotes={post.upvotesCount}
             upvoted={includes(upvotes, post.id)}
             onUpvote={e => this.onUpvote(e, post.id)}

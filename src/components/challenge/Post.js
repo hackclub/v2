@@ -42,11 +42,12 @@ const Post = ({
   url,
   description,
   createdAt,
+  mine,
   upvotes,
   upvoted = false,
   onUpvote
 }) => (
-  <Row py={[2, 3]} id={kebabCase(name)}>
+  <Row bg={mine && 'yellow.1'} py={[2, 3]} id={kebabCase(name)}>
     <UpvoteButton
       bg={upvoted ? 'primary' : 'smoke'}
       color={upvoted ? 'white' : 'slate'}
@@ -62,6 +63,15 @@ const Post = ({
           {description}
         </Text>
       </Box>
+      {mine && (
+        <Icon
+          name="fingerprint"
+          color="yellow.7"
+          size={32}
+          mr={3}
+          title="My submission"
+        />
+      )}
       <Flex flexDirection="column" align="center">
         <Icon name="open_in_new" color="info" size={24} />
         <Text.span f={0} mt={1} color="muted">
@@ -77,6 +87,7 @@ Post.propTypes = {
   url: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   createdAt: PropTypes.string,
+  mine: PropTypes.bool,
   upvotes: PropTypes.number.isRequired,
   upvoted: PropTypes.bool,
   onUpvote: PropTypes.func.isRequired

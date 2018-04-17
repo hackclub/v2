@@ -39,7 +39,7 @@ const InnerForm = ({
     <Field
       label="Description"
       name="description"
-      placeholder="Write something about your project…"
+      placeholder="Your name, or write something…"
       value={values.description}
       onChange={handleChange}
       onBlur={handleBlur}

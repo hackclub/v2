@@ -99,11 +99,11 @@ export default ({ data }) => {
           </HeaderCard>
         </HeaderContainer>
       </Header>
-      <Container maxWidth={48} py={4} px={3}>
-        <Title align="center" mb={3}>
-          <Heading.h2 f={[4, 5]}>Submissions</Heading.h2>
+      <Container maxWidth={48} pt={4} pb={5} px={3}>
+        <Title align="center" pb={2}>
+          <Heading.h2 f={5}>Submissions</Heading.h2>
           <Text.span f={2} color="muted" ml={3}>
-            {dt(challenge.start)} – {dt(challenge.end)}
+            {dt(challenge.start)}–{dt(challenge.end)}
           </Text.span>
         </Title>
         <Posts challengeId={challenge.id} />

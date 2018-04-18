@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Heading } from '@hackclub/design-system'
 import { isEmpty } from 'lodash'
 import api from 'api'
+import storage from 'storage'
 import LoginForm from 'components/apply/LoginForm'
 import PostForm from 'components/challenge/PostForm'
 import LoadingAnimation from 'components/LoadingAnimation'
@@ -11,18 +12,22 @@ class Form extends Component {
   state = { status: 'loading' }
 
   componentDidMount() {
-    api
-      .get(`v1/users/current`)
-      .then(res => {
-        this.setState({ status: 'success' })
-      })
-      .catch(err => {
-        if (err.status === 401) {
-          this.setState({ status: 'needsToAuth' })
-        } else {
-          this.setState({ status: 'error' })
-        }
-      })
+    if (storage.get('authToken')) {
+      api
+        .get(`v1/users/current`)
+        .then(res => {
+          this.setState({ status: 'success' })
+        })
+        .catch(err => {
+          if (err.status === 401) {
+            this.setState({ status: 'needsToAuth' })
+          } else {
+            this.setState({ status: 'error' })
+          }
+        })
+    } else {
+      this.setState({ status: 'needsToAuth' })
+    }
   }
 
   render() {

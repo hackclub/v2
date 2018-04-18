@@ -279,7 +279,10 @@ export default class extends Component {
                       />
                     </Collapsable>
                     <Collapsable heading="Notes">
-                      <NotesForm application={selection} />
+                      <NotesForm
+                        modelId={selection.id}
+                        modelType="new_club_applications"
+                      />
                     </Collapsable>
                     <Collapsable heading="Interview">
                       <InterviewForm

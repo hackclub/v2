@@ -84,6 +84,7 @@ const Shapes = Box.extend`
     display: block;
     float: right;
     position: relative;
+    z-index: -1;
     svg {
       position: absolute;
     }
@@ -121,7 +122,7 @@ const subtext = { f: [3, 4], color: 'black', style: { lineHeight: '1.5' } }
 const contentContainer = {
   maxWidth: 64,
   w: 1,
-  p: [3, 2],
+  p: 3,
   style: { position: 'relative' }
 }
 const content = { maxWidth: 48, mx: 0 }

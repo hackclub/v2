@@ -26,7 +26,7 @@ export default class extends Component {
 
   componentDidMount() {
     api
-      .get('v1/clubs')
+      .get('v1/new_clubs')
       .then(clubs => {
         const clubsObject = clubs.reduce((accumulator, value, index) => {
           accumulator[index] = value
@@ -90,7 +90,7 @@ export default class extends Component {
                         <Td>
                           <Badge bg="slate" children={club.id} />
                         </Td>
-                        <Td>{club.name}</Td>
+                        <Td>{club.high_school_name}</Td>
                       </Tr>
                     ))}
                   </tbody>

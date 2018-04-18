@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Heading } from '@hackclub/design-system'
 import { isEmpty } from 'lodash'
-import storage from 'storage'
 import api from 'api'
 import LoginForm from 'components/apply/LoginForm'
 import PostForm from 'components/challenge/PostForm'

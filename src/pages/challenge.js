@@ -43,6 +43,7 @@ const HeaderCard = Card.extend`
   p {
     color: ${props => props.theme.colors.black} !important;
   }
+  position: relative;
 `
 
 const Title = Flex.extend`

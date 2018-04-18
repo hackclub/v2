@@ -144,35 +144,41 @@ export default class NotesForm extends Component {
     api
       .get(`v1/${modelType}/${modelId}/notes`)
       .then(notes => {
-        const notesPromises = notes.map(note => (
-          new Promise((resolve, reject) => {
-          const userId = note.user_id
-          if (authors[userId]) {
-            this.setState({
-              notes: [...this.state.notes, { ...note, author: authors[userId] }]
-            })
-            resolve()
-          } else {
-            api
-              .get(`v1/users/${userId}`)
-              .then(user => {
-                authors[userId] = user.email
+        const notesPromises = notes.map(
+          note =>
+            new Promise((resolve, reject) => {
+              const userId = note.user_id
+              if (authors[userId]) {
                 this.setState({
-                  notes: [...this.state.notes, { ...note, author: user.email }],
-                  authors
+                  notes: [
+                    ...this.state.notes,
+                    { ...note, author: authors[userId] }
+                  ]
                 })
                 resolve()
-              })
-              .catch(err => {
-                reject(err)
-              })
-            }
-          })
-        ))
-        Promise.all(notesPromises)
-          .then(() => {
-            this.setState({status: 'success'})
-          })
+              } else {
+                api
+                  .get(`v1/users/${userId}`)
+                  .then(user => {
+                    authors[userId] = user.email
+                    this.setState({
+                      notes: [
+                        ...this.state.notes,
+                        { ...note, author: user.email }
+                      ],
+                      authors
+                    })
+                    resolve()
+                  })
+                  .catch(err => {
+                    reject(err)
+                  })
+              }
+            })
+        )
+        Promise.all(notesPromises).then(() => {
+          this.setState({ status: 'success' })
+        })
       })
       .catch(err => {
         this.setState({ status: 'error' })

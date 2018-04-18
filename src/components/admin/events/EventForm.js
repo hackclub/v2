@@ -3,7 +3,7 @@ import { withFormik } from 'formik'
 import yup from 'yup'
 import api from 'api'
 import { AutoSaver, Field, Submit } from 'components/Forms'
-import { Button, Text } from '@hackclub/design-system'
+import { Button, Text, Label } from '@hackclub/design-system'
 
 const InnerForm = ({
   values,
@@ -15,6 +15,28 @@ const InnerForm = ({
   isSubmitting
 }) => (
   <form onSubmit={handleSubmit}>
+    <Field
+      label="Affiliated with Hack Club"
+      name="hack_club_associated"
+      value={values.hack_club_associated}
+      error={touched.hack_club_associated && errors.hack_club_associated}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      type="select"
+    >
+      <option value="true">Yes</option>
+      <option value="false">No</option>
+    </Field>
+    <Field
+      label="How is it associated"
+      name="hack_club_associated_notes"
+      value={values.hack_club_associated_notes || ''}
+      error={
+        touched.hack_club_associated_notes && errors.hack_club_associated_notes
+      }
+      onChange={handleChange}
+      onBlur={handleBlur}
+    />
     <Field
       label="Start date"
       name="start"
@@ -88,6 +110,8 @@ const InnerForm = ({
 
 export default withFormik({
   validationSchema: yup.object().shape({
+    hack_club_associated: yup.string().required(),
+    hack_club_associated_notes: yup.string().nullable(),
     start: yup.date().required(),
     end: yup.date().required(),
     name: yup.string().required(),
@@ -106,6 +130,8 @@ export default withFormik({
     Object.keys(values).forEach(key => {
       if (['banner', 'logo'].indexOf(key) !== -1 && values[key]) {
         filteredEvents[`${key}_id`] = values[key].id
+      } else if (key === 'hack_club_associated') {
+        filteredEvents[key] = values[key] === 'true'
       } else {
         filteredEvents[key] = values[key]
       }

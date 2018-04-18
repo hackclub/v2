@@ -21,21 +21,23 @@ const NavBar = Flex.withComponent('nav').extend`
   -webkit-overflow-scrolling: touch;
 `
 
-export const Item = A.withComponent(Link).extend.attrs({
+export const Item = A.extend.attrs({
   bold: true,
   my: [1, 0],
   px: [2, 3]
 })`color: inherit;`
 
+export const GatsbyItem = Item.withComponent(Link)
+
 const Nav = ({ color = 'white', ...props }) => (
   <Base role="banner" {...props}>
     <Flag />
     <NavBar role="navigation" ml={-2} py={[1, 0]} color={color} align="center">
-      <Item to="/team" children="Team" />
-      <Item to="/donate" children="Donate" />
-      <Item to="/start" children="Start" />
-      <Item to="/workshops" children="Workshops" />
-      <Item to="/hackathons" children="Hackathons" />
+      <GatsbyItem to="/team" children="Team" />
+      <GatsbyItem to="/donate" children="Donate" />
+      <GatsbyItem to="/start" children="Start" />
+      <GatsbyItem to="/workshops" children="Workshops" />
+      <Item href="https://hackathons.hackclub.com" children="Hackathons" />
     </NavBar>
   </Base>
 )

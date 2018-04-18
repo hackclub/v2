@@ -1,14 +1,14 @@
-import React from 'react'
-import { Button, Card, Heading, Text } from '@hackclub/design-system'
+import React, { Fragment } from 'react'
+import { Button, Heading, Text, Link as A } from '@hackclub/design-system'
 
-const Link = Card.withComponent(Button.link)
+const Link = Button.withComponent(A)
 
 export default () => (
-  <React.Fragment>
+  <Fragment>
     <Heading>Grand admin station</Heading>
     <Text>What is your destination?</Text>
-    <Link to="/admin/clubs">Clubs</Link>
-    <Link to="/admin/applications">Club Applications</Link>
-    <Link to="/admin/events">Events</Link>
-  </React.Fragment>
+    <Link href="/admin/clubs">Clubs</Link>
+    <Link href="/admin/applications">Club Applications</Link>
+    <Link href="/admin/events">Events</Link>
+  </Fragment>
 )

@@ -220,45 +220,47 @@ export default class extends Component {
                 ))}
               </Flex>
               <Flex justify="center" mt={[3, 4]}>
-                <table>
-                  <thead>
-                    <Tr>
-                      <Th>ID</Th>
-                      <Th>Name</Th>
-                      <Th>POC</Th>
-                    </Tr>
-                  </thead>
-                  <tbody>
-                    {Object.values(clubApplications).map(
-                      (application, index) =>
-                        this.filterApplication(application).visible ? (
-                          <Tr
-                            key={index}
-                            onClick={() => {
-                              const alreadySelected =
-                                this.state.selection === application
+                <Box w={1} style={{ overflowY: 'scroll', height: '100vh' }}>
+                  <table>
+                    <thead>
+                      <Tr>
+                        <Th>ID</Th>
+                        <Th>Name</Th>
+                        <Th>POC</Th>
+                      </Tr>
+                    </thead>
+                    <tbody>
+                      {Object.values(clubApplications).map(
+                        (application, index) =>
+                          this.filterApplication(application).visible ? (
+                            <Tr
+                              key={index}
+                              onClick={() => {
+                                const alreadySelected =
+                                  this.state.selection === application
 
-                              this.setState({
-                                selection: alreadySelected
-                                  ? undefined
-                                  : application,
-                                selectType: 'notes'
-                              })
-                            }}
-                          >
-                            <Td>
-                              <Badge
-                                bg={this.filterApplication(application).color}
-                                children={application.id}
-                              />
-                            </Td>
-                            <Td>{application.high_school_name}</Td>
-                            <Td>{this.pointOfContact(application)}</Td>
-                          </Tr>
-                        ) : null
-                    )}
-                  </tbody>
-                </table>
+                                this.setState({
+                                  selection: alreadySelected
+                                    ? undefined
+                                    : application,
+                                  selectType: 'notes'
+                                })
+                              }}
+                            >
+                              <Td>
+                                <Badge
+                                  bg={this.filterApplication(application).color}
+                                  children={application.id}
+                                />
+                              </Td>
+                              <Td>{application.high_school_name}</Td>
+                              <Td>{this.pointOfContact(application)}</Td>
+                            </Tr>
+                          ) : null
+                      )}
+                    </tbody>
+                  </table>
+                </Box>
                 {selection && (
                   <Flex
                     flexDirection="column"

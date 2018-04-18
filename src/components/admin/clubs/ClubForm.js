@@ -16,25 +16,25 @@ const InnerForm = ({
   <form onSubmit={handleSubmit}>
     <Field
       label="Name"
-      name="high_school_name"
-      value={values.high_school_name || ''}
-      error={touched.high_school_name && errors.high_school_name}
+      name="name"
+      value={values.name || ''}
+      error={touched.name && errors.name}
       onChange={handleChange}
       onBlur={handleBlur}
     />
     <Field
       label="URL"
-      name="high_school_url"
-      value={values.high_school_url || ''}
-      error={touched.high_school_url && errors.high_school_url}
+      name="url"
+      value={values.url || ''}
+      error={touched.url && errors.url}
       onChange={handleChange}
       onBlur={handleBlur}
     />
     <Field
       label="Address"
-      name="high_school_address"
-      value={values.high_school_address || ''}
-      error={touched.high_school_address && errors.high_school_address}
+      name="address"
+      value={values.address || ''}
+      error={touched.address && errors.address}
       onChange={handleChange}
       onBlur={handleBlur}
     />
@@ -45,14 +45,10 @@ const InnerForm = ({
 )
 
 export default withFormik({
-  mapPropsToValues: props => ({
-    high_school_name: 'test',
-    high_school_url: 'test',
-    high_school_address: 'test'
-  }),
+  mapPropsToValues: props => ({ ...props }),
   validationSchema: yup.object().shape({
-    high_school_name: yup.string().required(),
-    high_school_url: yup.string().url(),
-    high_school_address: yup.string().required()
+    name: yup.string().required(),
+    url: yup.string().url(),
+    address: yup.string().required()
   })
 })(InnerForm)

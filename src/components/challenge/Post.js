@@ -29,6 +29,7 @@ const UpvoteButton = Button.button.extend`
   width: 100%;
   max-width: 5rem;
   box-shadow: none !important;
+  cursor: ${props => props.cursor};
 `
 
 const year = new Date().getFullYear()
@@ -45,13 +46,15 @@ const Post = ({
   mine,
   upvotes,
   upvoted = false,
-  onUpvote
+  onUpvote,
+  disabled
 }) => (
   <Row py={[2, 3]} id={kebabCase(name)}>
     <UpvoteButton
       bg={upvoted ? 'primary' : 'smoke'}
       color={upvoted ? 'white' : 'slate'}
       onClick={onUpvote}
+      cursor={disabled ? 'not-allowed' : 'pointer'}
     >
       <Icon name="arrow_upward" />
       <Text.span ml={1} f={2} children={upvotes} />
@@ -79,6 +82,7 @@ Post.propTypes = {
   description: PropTypes.string.isRequired,
   createdAt: PropTypes.string,
   mine: PropTypes.bool,
+  disabled: PropTypes.book,
   upvotes: PropTypes.number.isRequired,
   upvoted: PropTypes.bool,
   onUpvote: PropTypes.func.isRequired

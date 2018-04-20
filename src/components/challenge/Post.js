@@ -82,7 +82,7 @@ Post.propTypes = {
   description: PropTypes.string.isRequired,
   createdAt: PropTypes.string,
   mine: PropTypes.bool,
-  disabled: PropTypes.book,
+  disabled: PropTypes.bool,
   upvotes: PropTypes.number.isRequired,
   upvoted: PropTypes.bool,
   onUpvote: PropTypes.func.isRequired

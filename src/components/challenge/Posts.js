@@ -120,7 +120,7 @@ class Posts extends Component {
               return (
                 <Post
                   name={post.name}
-                  url={post.url}
+                  url={post.url_redirect}
                   description={post.description}
                   createdAt={post.created_at}
                   mine={mine}

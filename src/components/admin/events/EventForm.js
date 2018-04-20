@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { withFormik } from 'formik'
 import yup from 'yup'
 import api from 'api'
@@ -15,6 +15,25 @@ const InnerForm = ({
   isSubmitting
 }) => (
   <form onSubmit={handleSubmit}>
+    <Field
+      label={
+        <Fragment>
+          Should this event be listed on{' '}
+          <a href="https://hackathons.hackclub.com" target="_blank">
+            hackathons.hackclub.com
+          </a>?
+        </Fragment>
+      }
+      name="public"
+      value={values.public}
+      error={touched.public && errors.public}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      type="select"
+    >
+      <option value="true">Yes</option>
+      <option value="false">No</option>
+    </Field>
     <Field
       label="Affiliated with Hack Club"
       name="hack_club_associated"
@@ -110,6 +129,7 @@ const InnerForm = ({
 
 export default withFormik({
   validationSchema: yup.object().shape({
+    public: yup.string().required(),
     hack_club_associated: yup.string().required(),
     hack_club_associated_notes: yup.string().nullable(),
     start: yup.date().required(),

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, Component } from 'react'
 import {
   Box,
   Flex,
@@ -14,6 +14,8 @@ import Form from 'components/challenge/Form'
 import Posts from 'components/challenge/Posts'
 import { dt } from 'helpers'
 import { isEmpty } from 'lodash'
+import api from 'api'
+import storage from 'storage'
 
 const Header = Section.withComponent('header').extend`
   padding-top: 0 !important;
@@ -54,63 +56,88 @@ const title = 'Hack Club Challenge'
 const desc =
   'Join Hack Club’s high school coding challenge. Submit your entry to compete in our monthly programming contest and win prizes.'
 
-export default ({ data }) => {
-  if (isEmpty(data)) return null
-  const challenge = data.publicJson
-  return (
-    <Fragment>
-      <Helmet
-        title={title}
-        meta={[
-          { name: 'twitter:title', content: title },
-          { name: 'description', content: desc },
-          { name: 'twitter:description', content: desc },
-          { property: 'og:title', content: title },
-          { property: 'og:description', content: desc },
-          { property: 'og:url', content: 'https://hackclub.com/challenge' }
-        ]}
-      />
-      <Header p={3}>
-        <Nav />
-        <HeaderContainer maxWidth={56} p={0} mt={3} align="left">
-          <Box align={['center', null, 'right']}>
-            <Text mb={-2} f={3} bold caps>
-              Hack Club
-            </Text>
-            <Heading.h1 f={[6, 7]} my={0}>
-              Challenge
-            </Heading.h1>
-            <Heading.h2 f={3} mt={2} mb={3} regular>
-              Join Hack Club’s high school coding contest
-            </Heading.h2>
-            <HeaderCard boxShadowSize="md" p={3} bg="pink.0" align="left">
-              <Text f={2}>
-                🌟 Challenge of the month: <strong>{challenge.name}</strong>
-                <br />
-                🎁 {challenge.description}
-                <br />
-                📈 Upvote your favorites!
-                <br />
-                🏅 Top-voted 3 websites by {dt(challenge.end)} win!
+export default class extends Component {
+  state = { status: 'loading' }
+
+  componentDidMount() {
+    if (storage.get('authToken')) {
+      api
+        .get(`v1/users/current`)
+        .then(user => {
+          this.setState({ status: 'success', userId: user.id })
+        })
+        .catch(err => {
+          if (err.status === 401) {
+            this.setState({ status: 'needsToAuth' })
+          } else {
+            this.setState({ status: 'error' })
+          }
+        })
+    } else {
+      this.setState({ status: 'needsToAuth' })
+    }
+  }
+
+  render() {
+    const { data } = this.props
+    const { userId, status } = this.state
+    if (isEmpty(data)) return null
+    const challenge = data.publicJson
+    return (
+      <Fragment>
+        <Helmet
+          title={title}
+          meta={[
+            { name: 'twitter:title', content: title },
+            { name: 'description', content: desc },
+            { name: 'twitter:description', content: desc },
+            { property: 'og:title', content: title },
+            { property: 'og:description', content: desc },
+            { property: 'og:url', content: 'https://hackclub.com/challenge' }
+          ]}
+        />
+        <Header p={3}>
+          <Nav />
+          <HeaderContainer maxWidth={56} p={0} mt={3} align="left">
+            <Box align={['center', null, 'right']}>
+              <Text mb={-2} f={3} bold caps>
+                Hack Club
               </Text>
+              <Heading.h1 f={[6, 7]} my={0}>
+                Challenge
+              </Heading.h1>
+              <Heading.h2 f={3} mt={2} mb={3} regular>
+                Join Hack Club’s high school coding contest
+              </Heading.h2>
+              <HeaderCard boxShadowSize="md" p={3} bg="pink.0" align="left">
+                <Text f={2}>
+                  🌟 Challenge of the month: <strong>{challenge.name}</strong>
+                  <br />
+                  🎁 {challenge.description}
+                  <br />
+                  📈 Upvote your favorites!
+                  <br />
+                  🏅 Top-voted 3 websites by {dt(challenge.end)} win!
+                </Text>
+              </HeaderCard>
+            </Box>
+            <HeaderCard boxShadowSize="md" p={3} bg="pink.0">
+              <Form challengeId={challenge.id} status={status} />
             </HeaderCard>
-          </Box>
-          <HeaderCard boxShadowSize="md" p={3} bg="pink.0">
-            <Form challengeId={challenge.id} />
-          </HeaderCard>
-        </HeaderContainer>
-      </Header>
-      <Container maxWidth={48} pt={4} pb={5} px={3}>
-        <Title align="center" pb={2}>
-          <Heading.h2 f={5}>Submissions</Heading.h2>
-          <Text.span f={2} color="muted" ml={3}>
-            {dt(challenge.start)}–{dt(challenge.end)}
-          </Text.span>
-        </Title>
-        <Posts challengeId={challenge.id} />
-      </Container>
-    </Fragment>
-  )
+          </HeaderContainer>
+        </Header>
+        <Container maxWidth={48} pt={4} pb={5} px={3}>
+          <Title align="center" pb={2}>
+            <Heading.h2 f={5}>Submissions</Heading.h2>
+            <Text.span f={2} color="muted" ml={3}>
+              {dt(challenge.start)}–{dt(challenge.end)}
+            </Text.span>
+          </Title>
+          <Posts challengeId={challenge.id} userId={userId} status={status} />
+        </Container>
+      </Fragment>
+    )
+  }
 }
 export const pageQuery = graphql`
   query ChallengeQuery {

@@ -19,11 +19,14 @@ import {
   Breadcrumb,
   BreadcrumbDivider
 } from 'components/Breadcrumbs'
+import Invert from 'components/Invert'
 import MarkdownBody from 'components/MarkdownBody'
 import FeedbackForm from 'components/workshops/FeedbackForm'
 import Footer from 'components/Footer'
 import { lowerCase, camelCase, isEmpty } from 'lodash'
 import { org } from 'data.json'
+
+const Header = Box.withComponent('header').extend``
 
 const Name = Heading.h1.extend`
   background-color: white;
@@ -41,17 +44,7 @@ const Desc = Heading.h2.extend`
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
 `
 
-const EditLink = A.extend.attrs({ color: 'white', f: 3 })`
-  display: none;
-
-  position: absolute;
-  bottom: ${props => props.theme.space[3]}px;
-  right: ${props => props.theme.space[4]}px;
-
-  ${props => props.theme.mediaQueries.md} {
-    display: inline-block;
-  }
-`
+const EditLink = A.extend.attrs({ color: 'white', f: 3 })``
 
 const Body = Container.withComponent(MarkdownBody)
 A.link = A.withComponent(Link)
@@ -227,13 +220,16 @@ export default ({ data }) => {
           />
         }
       />
-      <Section.h
+      <Header
         bg="accent"
+        color="white"
         p={0}
+        align="center"
+        className="invert"
         style={{ backgroundImage: `url('${bg}')`, position: 'relative' }}
       >
         <Nav style={{ position: 'absolute', top: 0 }} />
-        <Container mt={4} mb={3} px={3}>
+        <Container pt={5} pb={3} px={3}>
           <Breadcrumbs align="center" justify="center" my={3}>
             <Breadcrumb to="/workshops" name="Workshops" position={1} />
             <BreadcrumbDivider />
@@ -244,10 +240,13 @@ export default ({ data }) => {
           <Name f={[5, 6]} mb={2} children={name} />
           <Desc f={[3, 4]} regular children={subtitle} />
         </Container>
-        <EditLink href={githubEditUrl(slug)} target="_blank">
-          <Icon color="white" name="edit" mb={-1} /> Edit on GitHub
-        </EditLink>
-      </Section.h>
+        <Flex w={1} p={3} justify={['center', 'space-between']} align="center">
+          <Invert my={1} />
+          <EditLink href={githubEditUrl(slug)} target="_blank" my={1}>
+            <Icon color="white" name="edit" mb={-1} /> Edit on GitHub
+          </EditLink>
+        </Flex>
+      </Header>
       <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
       <Cards maxWidth={52} p={3} mb={5}>
         <Box bg="teal.0" p={[3, 4]}>

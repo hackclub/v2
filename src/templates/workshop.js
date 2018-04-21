@@ -19,11 +19,21 @@ import {
   Breadcrumb,
   BreadcrumbDivider
 } from 'components/Breadcrumbs'
+import Invert from 'components/Invert'
+import IconButton from 'components/IconButton'
 import MarkdownBody from 'components/MarkdownBody'
 import FeedbackForm from 'components/workshops/FeedbackForm'
 import Footer from 'components/Footer'
 import { lowerCase, camelCase, isEmpty } from 'lodash'
 import { org } from 'data.json'
+
+const Header = Box.withComponent('header').extend`
+  li a,
+  h2,
+  p {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+  }
+`
 
 const Name = Heading.h1.extend`
   background-color: white;
@@ -37,31 +47,12 @@ const Name = Heading.h1.extend`
   width: max-content;
 `
 
-const Desc = Heading.h2.extend`
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
-`
-
-const EditLink = A.extend.attrs({ color: 'white', f: 3 })`
-  display: none;
-
-  position: absolute;
-  bottom: ${props => props.theme.space[3]}px;
-  right: ${props => props.theme.space[4]}px;
-
-  ${props => props.theme.mediaQueries.md} {
-    display: inline-block;
-  }
-`
-
 const Body = Container.withComponent(MarkdownBody)
 A.link = A.withComponent(Link)
 Section.h = Section.withComponent('header')
 
-const generateSubtitle = (description, authorText) => {
-  if (!authorText) {
-    return description
-  }
-
+const linkAuthor = authorText => {
+  if (isEmpty(authorText)) return null
   // This iterates over each word in authorText, finds GitHub usernames (any
   // text that looks like "@orpheus", and turns them into links.
   const parsedAuthorText = authorText.split(' ').map((word, index, arr) => {
@@ -70,7 +61,7 @@ const generateSubtitle = (description, authorText) => {
       <A
         href={`https://github.com/${matches[1]}`}
         target="_blank"
-        color="white"
+        color="inherit"
         children={word}
       />
     ) : (
@@ -84,11 +75,7 @@ const generateSubtitle = (description, authorText) => {
     return index === arr.length - 1 ? processedWord : [processedWord, ' ']
   })
 
-  return (
-    <Fragment>
-      {description}. Created by {parsedAuthorText}.
-    </Fragment>
-  )
+  return <Fragment>Created by {parsedAuthorText}</Fragment>
 }
 
 const Cards = Container.extend`
@@ -170,8 +157,6 @@ export default ({ data }) => {
     html
   } = data.markdownRemark
 
-  const subtitle = generateSubtitle(description, author)
-
   const title = `${name} – Hack Club Workshops`
   const desc = `${description}. Read the tutorial on Hack Club Workshops.`
   const url = makeUrl('hackclub.com', slug)
@@ -227,27 +212,41 @@ export default ({ data }) => {
           />
         }
       />
-      <Section.h
+      <Header
         bg="accent"
+        color="white"
         p={0}
+        align="center"
+        className="invert"
         style={{ backgroundImage: `url('${bg}')`, position: 'relative' }}
       >
         <Nav style={{ position: 'absolute', top: 0 }} />
-        <Container mt={4} mb={3} px={3}>
-          <Breadcrumbs align="center" justify="center" my={3}>
+        <Container pt={5} pb={3} px={2}>
+          <Breadcrumbs align="center" justify="center" my={3} wrap>
             <Breadcrumb to="/workshops" name="Workshops" position={1} />
             <BreadcrumbDivider />
             <Breadcrumb to={`/workshops#${group}`} name={group} position={2} />
             <BreadcrumbDivider />
             <Breadcrumb to={url} name={name} position={3} bold={false} />
           </Breadcrumbs>
-          <Name f={[5, 6]} mb={2} children={name} />
-          <Desc f={[3, 4]} regular children={subtitle} />
+          <Name f={6} mb={2} children={name} />
+          <Heading.h2 f={4} children={description} />
+          <Text f={2} caps mt={3} children={linkAuthor(author)} />
         </Container>
-        <EditLink href={githubEditUrl(slug)} target="_blank">
-          <Icon color="white" name="edit" mb={-1} /> Edit on GitHub
-        </EditLink>
-      </Section.h>
+        <Flex w={1} p={3} justify="space-between">
+          <Invert f={2} my={1} />
+          <IconButton
+            bg="slate"
+            name="edit"
+            children="Edit"
+            inverted
+            href={githubEditUrl(slug)}
+            target="_blank"
+            f={2}
+            my={1}
+          />
+        </Flex>
+      </Header>
       <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
       <Cards maxWidth={52} p={3} mb={5}>
         <Box bg="teal.0" p={[3, 4]}>

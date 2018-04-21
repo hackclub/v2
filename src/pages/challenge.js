@@ -73,7 +73,7 @@ class Help extends Button {
                     <IconButton name="close" color="error" onClick={this.toggleRules.bind(this)} style={{position: "fixed", right:10, top: 10, zIndex: 100}} />
                   </Container>
             </Modal> 
-            <Overlay />
+            <Overlay onClick={this.toggleRules.bind(this)} />
           </div>
         )}
       </div>

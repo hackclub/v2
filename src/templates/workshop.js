@@ -20,6 +20,7 @@ import {
   BreadcrumbDivider
 } from 'components/Breadcrumbs'
 import Invert from 'components/Invert'
+import IconButton from 'components/IconButton'
 import MarkdownBody from 'components/MarkdownBody'
 import FeedbackForm from 'components/workshops/FeedbackForm'
 import Footer from 'components/Footer'
@@ -43,8 +44,6 @@ const Name = Heading.h1.extend`
 const Desc = Heading.h2.extend`
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
 `
-
-const EditLink = A.extend.attrs({ color: 'white', f: 3 })``
 
 const Body = Container.withComponent(MarkdownBody)
 A.link = A.withComponent(Link)
@@ -240,11 +239,18 @@ export default ({ data }) => {
           <Name f={[5, 6]} mb={2} children={name} />
           <Desc f={[3, 4]} regular children={subtitle} />
         </Container>
-        <Flex w={1} p={3} justify={['center', 'space-between']} align="center">
-          <Invert my={1} />
-          <EditLink href={githubEditUrl(slug)} target="_blank" my={1}>
-            <Icon color="white" name="edit" mb={-1} /> Edit on GitHub
-          </EditLink>
+        <Flex w={1} p={3} justify="space-between">
+          <Invert f={2} my={1} />
+          <IconButton
+            bg="slate"
+            name="edit"
+            children="Edit"
+            inverted
+            href={githubEditUrl(slug)}
+            target="_blank"
+            f={2}
+            my={1}
+          />
         </Flex>
       </Header>
       <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />

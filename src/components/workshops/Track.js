@@ -1,10 +1,7 @@
 import React from 'react'
-import { Box, Card, Link as A, Heading, Text } from '@hackclub/design-system'
+import { Box, Card, Heading, Text } from '@hackclub/design-system'
 import Link from 'gatsby-link'
-import { map } from 'lodash'
-
-A.link = A.withComponent(Link)
-Box.section = Box.withComponent('section')
+import { capitalize, map } from 'lodash'
 
 const Grid = Box.withComponent('ol').extend`
   display: grid;
@@ -14,16 +11,18 @@ const Grid = Box.withComponent('ol').extend`
   counter-reset: li;
   list-style: none;
   padding: 0;
+  a {
+    text-decoration: none;
+  }
 `
 
 const Item = Card.withComponent('li').extend`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url('${props => props.img}');
   height: 100%;
   position: relative;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   transition: transform .125s ease-in;
   will-change: transform;
   &:hover {
@@ -32,17 +31,15 @@ const Item = Card.withComponent('li').extend`
   &:before {
     content: counter(li);
     counter-increment: li;
-    box-sizing: border-box;
     position: absolute;
     right: ${props => props.theme.space[3]}px;
-    display: inline-block;
     width: 1.25rem;
     height: 1.25rem;
-    border-radius: 1rem;
+    border-radius: .75rem;
     background-color: ${props => props.theme.colors.white};
     color: ${props => props.theme.colors.black};
     font-size: ${props => props.theme.fontSizes[0]}px;
-    line-height: 1.5;
+    letter-spacing: -.02em;
     text-align: center;
     text-shadow: none;
     font-weight: bold;
@@ -52,7 +49,7 @@ const Item = Card.withComponent('li').extend`
     margin-bottom: 0.125rem;
   }
   p {
-    line-height: 1.375;
+    line-height: 1.25;
   }
 `
 
@@ -60,30 +57,35 @@ const WorkshopItem = ({
   data: { fields: { slug, bg }, frontmatter: { name, description } },
   ...props
 }) => (
-  <A.link to={slug} {...props}>
-    <Item p={3} boxShadowSize="md" bg="accent" img={bg}>
+  <Link to={slug} {...props}>
+    <Item
+      p={3}
+      boxShadowSize="md"
+      bg="accent"
+      style={{ backgroundImage: `url('${bg}')` }}
+    >
       <Heading.h3 color="white" f={3} children={name} />
       <Text color="snow" f={2} children={description} />
     </Item>
-  </A.link>
+  </Link>
 )
 
 const descriptions = {
   start:
     'Set out on your journey. Start out by building your own website, then tack on new features to make multiplayer games and collaborative web apps.',
   experimental:
-    'As Is – No Warranty. These workshops haven’t been fully tested yet, so we don’t know just will happen if you try building things with them.',
+    'As is/no warranty. These workshops haven’t been fully tested yet, so we don’t know just will happen if you try building things with them.',
   misc: 'The odd ones out. Workshops not yet properly categorized.',
   pi: 'Start building projects on the coolest credit card sized mini computer.',
   arduino:
-    'Bring projects from cyberspace to the real world with this small hardware platform',
+    'Bring projects from cyberspace to the real world with this small hardware platform.',
   retired:
     'These workshops are no longer maintained. They may contain errors and are not recommended for club use. Here be dragons.'
 }
 
 const Track = ({ name, data, ...props }) => (
   <Box.section id={name} mb={4} {...props}>
-    {name && <Heading.h2 color="black" f={4} mb={1} caps children={name} />}
+    {name && <Heading.h2 color="black" f={4} children={capitalize(name)} />}
     {descriptions[name] && (
       <Text color="slate" f={2} children={descriptions[name]} />
     )}

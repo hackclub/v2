@@ -96,7 +96,8 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
 
   const title = 'Hack Club Workshops'
   const desc =
-    'Get coding tutorials, project ideas, and programming club activities.'
+    'Get free coding tutorials, project ideas, and programming club activities ' +
+    'from Hack Club, a community of high school developers.'
 
   return (
     <Fragment>
@@ -141,7 +142,7 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
           </Box.header>
         </Background>
         <Box.article bg="white">
-          <Container maxWidth={48} py={[4, 5]} px={2}>
+          <Container maxWidth={48} py={[4, 5]} px={3}>
             <Text
               color="black"
               f={4}

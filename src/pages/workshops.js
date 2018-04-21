@@ -141,7 +141,7 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
           </Box.header>
         </Background>
         <Box.article bg="white">
-          <Container maxWidth={48} py={[4, 5]} px={2}>
+          <Container maxWidth={48} py={[4, 5]} px={3}>
             <Text
               color="black"
               f={4}

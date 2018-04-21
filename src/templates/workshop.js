@@ -52,10 +52,6 @@ A.link = A.withComponent(Link)
 Section.h = Section.withComponent('header')
 
 const linkAuthor = authorText => {
-  if (!authorText) {
-    return description
-  }
-
   // This iterates over each word in authorText, finds GitHub usernames (any
   // text that looks like "@orpheus", and turns them into links.
   const parsedAuthorText = authorText.split(' ').map((word, index, arr) => {

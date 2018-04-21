@@ -27,7 +27,13 @@ import Footer from 'components/Footer'
 import { lowerCase, camelCase, isEmpty } from 'lodash'
 import { org } from 'data.json'
 
-const Header = Box.withComponent('header').extend``
+const Header = Box.withComponent('header').extend`
+  li a,
+  h2,
+  p {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+  }
+`
 
 const Name = Heading.h1.extend`
   background-color: white;
@@ -41,15 +47,11 @@ const Name = Heading.h1.extend`
   width: max-content;
 `
 
-const Desc = Heading.h2.extend`
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
-`
-
 const Body = Container.withComponent(MarkdownBody)
 A.link = A.withComponent(Link)
 Section.h = Section.withComponent('header')
 
-const generateSubtitle = (description, authorText) => {
+const linkAuthor = authorText => {
   if (!authorText) {
     return description
   }
@@ -62,7 +64,7 @@ const generateSubtitle = (description, authorText) => {
       <A
         href={`https://github.com/${matches[1]}`}
         target="_blank"
-        color="white"
+        color="inherit"
         children={word}
       />
     ) : (
@@ -76,11 +78,7 @@ const generateSubtitle = (description, authorText) => {
     return index === arr.length - 1 ? processedWord : [processedWord, ' ']
   })
 
-  return (
-    <Fragment>
-      {description}. Created by {parsedAuthorText}.
-    </Fragment>
-  )
+  return <Fragment>Created by {parsedAuthorText}</Fragment>
 }
 
 const Cards = Container.extend`
@@ -162,8 +160,6 @@ export default ({ data }) => {
     html
   } = data.markdownRemark
 
-  const subtitle = generateSubtitle(description, author)
-
   const title = `${name} – Hack Club Workshops`
   const desc = `${description}. Read the tutorial on Hack Club Workshops.`
   const url = makeUrl('hackclub.com', slug)
@@ -228,16 +224,17 @@ export default ({ data }) => {
         style={{ backgroundImage: `url('${bg}')`, position: 'relative' }}
       >
         <Nav style={{ position: 'absolute', top: 0 }} />
-        <Container pt={5} pb={3} px={3}>
-          <Breadcrumbs align="center" justify="center" my={3}>
+        <Container pt={5} pb={3} px={2}>
+          <Breadcrumbs align="center" justify="center" my={3} wrap>
             <Breadcrumb to="/workshops" name="Workshops" position={1} />
             <BreadcrumbDivider />
             <Breadcrumb to={`/workshops#${group}`} name={group} position={2} />
             <BreadcrumbDivider />
             <Breadcrumb to={url} name={name} position={3} bold={false} />
           </Breadcrumbs>
-          <Name f={[5, 6]} mb={2} children={name} />
-          <Desc f={[3, 4]} regular children={subtitle} />
+          <Name f={6} mb={2} children={name} />
+          <Heading.h2 f={4} children={description} />
+          <Text f={2} caps mt={3} children={linkAuthor(author)} />
         </Container>
         <Flex w={1} p={3} justify="space-between">
           <Invert f={2} my={1} />

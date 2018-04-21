@@ -3,6 +3,7 @@ import { Flex, Link as A, Text } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 
 export const BreadcrumbList = Flex.withComponent('ol').extend`
+  line-height: 1.25;
   list-style: none;
   padding-left: 0;
 `
@@ -23,7 +24,7 @@ export const Breadcrumb = ({ type = 'Thing', position, name, ...props }) => (
       itemScope
       itemType={`http://schema.org/${type}`}
       itemProp="item"
-      color="white"
+      color="inherit"
       f={3}
       bold
       caps

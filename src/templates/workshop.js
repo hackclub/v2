@@ -157,14 +157,15 @@ export default ({ data }) => {
     html
   } = data.markdownRemark
 
-  const title = `${name} – Hack Club Workshops`
-  const desc = `${description}. Read the tutorial on Hack Club Workshops.`
-  const url = makeUrl('hackclub.com', slug)
-
   const authorUsername = (author || '').match(/@(\S+)/)
     ? author.replace('@', '')
     : 'hackclub'
   const authorUrl = makeUrl('github.com', authorUsername)
+
+  const title = `${name} – Hack Club Workshops`
+  const l = description.charAt(0).toUpperCase() + description.slice(1)
+  const desc = `Free coding tutorial for ${l}, published on Hack Club Workshops.`
+  const url = makeUrl('hackclub.com', slug)
 
   const schema = {
     '@context': 'http://schema.org',
@@ -205,13 +206,10 @@ export default ({ data }) => {
           { property: 'og:site_name', content: 'Hack Club Workshops' },
           { property: 'og:url', content: url }
         ]}
-        children={
-          <script
-            type="application/ld+json"
-            children={JSON.stringify(schema)}
-          />
+      >
+        <script type="application/ld+json" children={JSON.stringify(schema)} />
         }
-      />
+      </Helmet>
       <Header
         bg="accent"
         color="white"

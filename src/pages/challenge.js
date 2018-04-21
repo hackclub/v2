@@ -6,7 +6,11 @@ import {
   Heading,
   Text,
   Section,
-  Card
+  Link,
+  Card,
+  Button,
+  Icon,
+  IconButton
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
@@ -17,6 +21,80 @@ import { isEmpty } from 'lodash'
 import api from 'api'
 import storage from 'storage'
 
+const Modal = Card.extend`
+  background-color: #fff;
+  z-index: 1100;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 700px;
+  max-width: 95%;
+  max-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+`
+
+const Overlay = Card.extend`
+  z-index: 1000;
+  background-color: rgba(0,0,0,.3);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`
+
+class Help extends Button {
+
+  constructor(props) {
+    super(props);
+    this.state = { active: false} 
+  }
+
+  toggleRules = () => {
+      this.setState({
+        active: !this.state.active
+      });
+  }
+
+  //Render a modal for challenge rules on button press
+  render() {
+    return (
+      <div style={{width: 100 + "%"}}>
+        <Button f={2} onClick={this.toggleRules.bind(this)} style={{marginLeft: 75+"%", width: 100 + "px"}}>
+          <Icon name="flag" size="20" m={-1} /> Rules
+        </Button>
+        {this.state.active && (
+          <div>
+            <Modal boxShadowSize="lg" my={4} p={3} >
+                  <Container>
+                    <Heading.h2 align="left" pb={3}>
+                      Challenge Rules
+                    </Heading.h2>
+                    <Text align="left" f={2} pb={2}>
+                      Challenge follows Hack Club's <Link href="https://conduct.hackclub.com" target="_blank">Code of Conduct</Link>. 
+                      We have a strict policy about anything breaking our 
+                      Code of Conduct (ex. voter fraud) and contestants 
+                      found cheating can be temporarily or permanently banned.
+                    </Text>
+                    <Text align="left" f={2}>
+                      If you think anyone has violated our Conduct or cheating policy, 
+                      please reach out to us confidentially at <Link href="mailto:challenge@hackclub.com">challenge@hackclub.com</Link>.
+                    </Text>
+                    <IconButton name="close" color="error" onClick={this.toggleRules.bind(this)} style={{position: "fixed", right:10, top: 10, zIndex: 100}} />
+                  </Container>
+            </Modal> 
+            <Overlay />
+          </div>
+        )}
+      </div>
+    )
+  }
+}
 const Header = Section.withComponent('header').extend`
   padding-top: 0 !important;
   background-color: ${props => props.theme.colors.red[5]};
@@ -132,6 +210,9 @@ export default class extends Component {
             <Text.span f={2} color="muted" ml={3}>
               {dt(challenge.start)}–{dt(challenge.end)}
             </Text.span>
+
+            <Help f={2} bg="info" style={{marginLeft: 47+"%"}} />
+
           </Title>
           <Posts challengeId={challenge.id} userId={userId} status={status} />
         </Container>

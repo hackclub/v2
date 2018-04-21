@@ -1,9 +1,7 @@
 import React from 'react'
 import { Box, Card, Heading, Text } from '@hackclub/design-system'
 import Link from 'gatsby-link'
-import { map } from 'lodash'
-
-Box.section = Box.withComponent('section')
+import { capitalize, map } from 'lodash'
 
 const Grid = Box.withComponent('ol').extend`
   display: grid;
@@ -24,7 +22,7 @@ const Item = Card.withComponent('li').extend`
   background-repeat: no-repeat;
   height: 100%;
   position: relative;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   transition: transform .125s ease-in;
   will-change: transform;
   &:hover {
@@ -33,17 +31,15 @@ const Item = Card.withComponent('li').extend`
   &:before {
     content: counter(li);
     counter-increment: li;
-    box-sizing: border-box;
     position: absolute;
     right: ${props => props.theme.space[3]}px;
-    display: inline-block;
     width: 1.25rem;
     height: 1.25rem;
-    border-radius: 1rem;
+    border-radius: .75rem;
     background-color: ${props => props.theme.colors.white};
     color: ${props => props.theme.colors.black};
     font-size: ${props => props.theme.fontSizes[0]}px;
-    line-height: 1.5;
+    letter-spacing: -.02em;
     text-align: center;
     text-shadow: none;
     font-weight: bold;
@@ -53,7 +49,7 @@ const Item = Card.withComponent('li').extend`
     margin-bottom: 0.125rem;
   }
   p {
-    line-height: 1.375;
+    line-height: 1.25;
   }
 `
 
@@ -89,7 +85,7 @@ const descriptions = {
 
 const Track = ({ name, data, ...props }) => (
   <Box.section id={name} mb={4} {...props}>
-    {name && <Heading.h2 color="black" f={4} mb={1} caps children={name} />}
+    {name && <Heading.h2 color="black" f={4} children={capitalize(name)} />}
     {descriptions[name] && (
       <Text color="slate" f={2} children={descriptions[name]} />
     )}

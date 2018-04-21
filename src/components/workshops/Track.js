@@ -1,9 +1,8 @@
 import React from 'react'
-import { Box, Card, Link as A, Heading, Text } from '@hackclub/design-system'
+import { Box, Card, Heading, Text } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 import { map } from 'lodash'
 
-A.link = A.withComponent(Link)
 Box.section = Box.withComponent('section')
 
 const Grid = Box.withComponent('ol').extend`
@@ -14,13 +13,15 @@ const Grid = Box.withComponent('ol').extend`
   counter-reset: li;
   list-style: none;
   padding: 0;
+  a {
+    text-decoration: none;
+  }
 `
 
 const Item = Card.withComponent('li').extend`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url('${props => props.img}');
   height: 100%;
   position: relative;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
@@ -60,12 +61,17 @@ const WorkshopItem = ({
   data: { fields: { slug, bg }, frontmatter: { name, description } },
   ...props
 }) => (
-  <A.link to={slug} {...props}>
-    <Item p={3} boxShadowSize="md" bg="accent" img={bg}>
+  <Link to={slug} {...props}>
+    <Item
+      p={3}
+      boxShadowSize="md"
+      bg="accent"
+      style={{ backgroundImage: `url('${bg}')` }}
+    >
       <Heading.h3 color="white" f={3} children={name} />
       <Text color="snow" f={2} children={description} />
     </Item>
-  </A.link>
+  </Link>
 )
 
 const descriptions = {

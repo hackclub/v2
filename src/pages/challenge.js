@@ -16,26 +16,11 @@ import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Form from 'components/challenge/Form'
 import Posts from 'components/challenge/Posts'
+import Modal from 'components/Modal'
 import { dt } from 'helpers'
 import { isEmpty } from 'lodash'
 import api from 'api'
 import storage from 'storage'
-
-const Modal = Card.extend`
-  background-color: #fff;
-  z-index: 1100;
-
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  width: 700px;
-  max-width: 95%;
-  max-height: 100%;
-  margin-left: auto;
-  margin-right: auto;
-`
 
 const Overlay = Card.extend`
   z-index: 1000;

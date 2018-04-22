@@ -21,7 +21,7 @@ const Modal = Card.extend`
 
 const Overlay = Card.extend`
   z-index: 1000;
-  background-color: rgba(0,0,0,.3);
+  background-color: rgba(0, 0, 0, 0.3);
 
   position: fixed;
   top: 0;
@@ -30,4 +30,4 @@ const Overlay = Card.extend`
   height: 100%;
 `
 
-export default { Modal,Overlay }
+export default { Modal, Overlay }

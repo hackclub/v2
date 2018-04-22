@@ -29,12 +29,9 @@ const HelpButton = Button.extend`
   }
 `
 
-class Help extends Button {
+class Help extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { active: false} 
-  }
+  state = { active: false }
 
   toggleRules = () => {
       this.setState({

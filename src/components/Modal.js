@@ -12,7 +12,7 @@ const Modal = Card.extend`
   transform: translate(-50%, -50%);
 
   /* Responsive Size Control */
-  width: 700px;
+  width: 36rem;
   max-width: 95%;
   max-height: 100%;
   margin-left: auto;

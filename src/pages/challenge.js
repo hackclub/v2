@@ -22,6 +22,13 @@ import { isEmpty } from 'lodash'
 import api from 'api'
 import storage from 'storage'
 
+const HelpButton = Button.extend`
+  opacity: .5;
+  &:hover {
+    opacity: 1;
+  }
+`
+
 class Help extends Button {
 
   constructor(props) {
@@ -38,12 +45,12 @@ class Help extends Button {
   //Render a modal for challenge rules on button press
   render() {
     return (
-      <Box w={1}>
-        <Button f={2} onClick={this.toggleRules} style={{marginLeft: 75+"%", width: 100 + "px"}}>
-          <Icon name="flag" size="20" m={-1} /> Rules
-        </Button>
+      <Fragment>
+        <HelpButton color="primary" bg="white" f={2} onClick={this.toggleRules}>
+          <Icon name="flag" m={0} size={14} /> Rules
+        </HelpButton>
         {this.state.active && (
-          <div>
+          <Fragment>
             <Modal boxShadowSize="lg" my={4} p={3} >
                   <Container align="left">
                     <Heading.h2 pb={3}>
@@ -63,9 +70,9 @@ class Help extends Button {
                   </Container>
             </Modal> 
             <Overlay onClick={this.toggleRules} />
-          </div>
+          </Fragment>
         )}
-      </Box>
+      </Fragment>
     )
   }
 }
@@ -179,14 +186,15 @@ export default class extends Component {
           </HeaderContainer>
         </Header>
         <Container maxWidth={48} pt={4} pb={5} px={3}>
+
+          <Box style={{position: "fixed", right: "auto", bottom: 10, right: 10}}>
+            <Help />  
+          </Box>
           <Title align="center" pb={2}>
             <Heading.h2 f={5}>Submissions</Heading.h2>
             <Text.span f={2} color="muted" ml={3}>
               {dt(challenge.start)}–{dt(challenge.end)}
             </Text.span>
-
-            <Help f={2} bg="info" style={{marginLeft: 47+"%"}} />
-
           </Title>
           <Posts challengeId={challenge.id} userId={userId} status={status} />
         </Container>

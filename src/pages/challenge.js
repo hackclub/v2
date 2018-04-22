@@ -33,29 +33,10 @@ const Overlay = Card.extend`
   height: 100%;
 `
 
-const mobileMeida = window.matchMedia('(min-width: 800px)');
-class HelpButton extends Button {
-  
-  constructor() {
-    super();
-  }
-
-  render() {
-    var ButtonStyle;
-    if (mobileMeida.matches) {
-      ButtonStyle = {width: '100px', marginLeft: '76%'};
-    }
-    else {
-      ButtonStyle = {position: 'fixed', right: 10, bottom: 10 };
-    }
-    return (<Button style={ButtonStyle} f={2}><Icon name="flag" size="20" m={-1} />&ensp;Rules</Button>) 
-  }
-}
-
-class Help extends Component {
+class Help extends Button {
 
   constructor(props) {
-    super()
+    super(props);
     this.state = { active: false} 
   }
 
@@ -69,7 +50,9 @@ class Help extends Component {
   render() {
     return (
       <div style={{width: 100 + "%"}}>
-        <HelpButton f={2} onClick={this.toggleRules.bind(this)} />
+        <Button f={2} onClick={this.toggleRules.bind(this)} style={{marginLeft: 75+"%", width: 100 + "px"}}>
+          <Icon name="flag" size="20" m={-1} /> Rules
+        </Button>
         {this.state.active && (
           <div>
             <Modal boxShadowSize="lg" my={4} p={3} >

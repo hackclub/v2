@@ -38,34 +38,34 @@ class Help extends Button {
   //Render a modal for challenge rules on button press
   render() {
     return (
-      <div style={{width: 100 + "%"}}>
-        <Button f={2} onClick={this.toggleRules.bind(this)} style={{marginLeft: 75+"%", width: 100 + "px"}}>
+      <Box w={1}>
+        <Button f={2} onClick={this.toggleRules} style={{marginLeft: 75+"%", width: 100 + "px"}}>
           <Icon name="flag" size="20" m={-1} /> Rules
         </Button>
         {this.state.active && (
           <div>
             <Modal boxShadowSize="lg" my={4} p={3} >
-                  <Container>
-                    <Heading.h2 align="left" pb={3}>
+                  <Container align="left">
+                    <Heading.h2 pb={3}>
                       Challenge Rules
                     </Heading.h2>
-                    <Text align="left" f={2} pb={2}>
+                    <Text f={2} pb={2}>
                       Challenge follows Hack Club’s <Link href="https://conduct.hackclub.com" target="_blank">Code of Conduct</Link>. 
                       We have a strict policy about anything breaking our 
                       Code of Conduct (ex. voter fraud) and contestants 
                       found cheating can be temporarily or permanently banned.
                     </Text>
-                    <Text align="left" f={2}>
+                    <Text f={2}>
                       If you think anyone has violated our Conduct or cheating policy, 
                       please reach out to us confidentially at <Link href="mailto:challenge@hackclub.com">challenge@hackclub.com</Link>.
                     </Text>
-                    <IconButton name="close" color="error" onClick={this.toggleRules.bind(this)} style={{position: "fixed", right:10, top: 10, zIndex: 100}} />
+                    <IconButton name="close" color="error" onClick={this.toggleRules} style={{position: "fixed", right:10, top: 10, zIndex: 100}} />
                   </Container>
             </Modal> 
-            <Overlay onClick={this.toggleRules.bind(this)} />
+            <Overlay onClick={this.toggleRules} />
           </div>
         )}
-      </div>
+      </Box>
     )
   }
 }

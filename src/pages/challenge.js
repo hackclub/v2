@@ -23,7 +23,7 @@ import api from 'api'
 import storage from 'storage'
 
 const HelpButton = Button.extend`
-  opacity: 0.5;
+  opacity: 0.7;
   &:hover {
     opacity: 1;
   }
@@ -42,7 +42,7 @@ class Help extends Component {
   render() {
     return (
       <Fragment>
-        <HelpButton color="primary" bg="white" f={2} onClick={this.toggleRules}>
+        <HelpButton f={2} onClick={this.toggleRules}>
           <Icon name="flag" m={0} mr={1} size={14} />Rules
         </HelpButton>
         {this.state.active && (

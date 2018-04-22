@@ -50,7 +50,7 @@ class Help extends Button {
                       Challenge Rules
                     </Heading.h2>
                     <Text align="left" f={2} pb={2}>
-                      Challenge follows Hack Club's <Link href="https://conduct.hackclub.com" target="_blank">Code of Conduct</Link>. 
+                      Challenge follows Hack Club’s <Link href="https://conduct.hackclub.com" target="_blank">Code of Conduct</Link>. 
                       We have a strict policy about anything breaking our 
                       Code of Conduct (ex. voter fraud) and contestants 
                       found cheating can be temporarily or permanently banned.

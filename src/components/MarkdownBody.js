@@ -39,7 +39,13 @@ const MarkdownBody = Box.extend`
     border-bottom: 1px solid ${props => props.theme.colors.smoke};
   }
 
-  ${headings};
+  ${range(1, 6)
+    .map(
+      level =>
+        `h${level} { font-size: ${props =>
+          props.theme.fontSizes[6 - level]}px; }`
+    )
+    .join('')};
 
   img {
     max-width: 100%;
@@ -192,12 +198,5 @@ const MarkdownBody = Box.extend`
     white-space: pre;
   }
 `
-
-const headings = props =>
-  range(1, 6)
-    .map(
-      level => `h${level} { font-size: ${props.theme.fontSizes[6 - level]}px; }`
-    )
-    .join('')
 
 export default MarkdownBody

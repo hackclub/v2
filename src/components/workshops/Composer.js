@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { Input } from '@hackclub/design-system'
 import MarkdownBody from 'components/MarkdownBody'
 import Editor from 'draft-js-plugins-editor'
 import Prism from 'prismjs'
@@ -14,8 +15,25 @@ import createPrismPlugin from 'draft-js-prism-plugin'
 import { mdToDraftjs, draftjsToMd } from 'draftjs-md-converter'
 import { isEmpty, debounce } from 'lodash'
 
+const LangField = Input.withComponent('select').extend`
+  line-height: 1;
+  font-size: ${props => props.theme.fontSizes[1]}px;
+  padding: 0 ${props => props.theme.space[2]}px;
+  margin-top: ${props => props.theme.space[2]}px;
+  margin-bottom: -${props => props.theme.space[1]}px;
+  max-width: 10rem;
+`
+
+const renderLanguageSelect = ({ options, onChange, selectedValue }) => (
+  <LangField type="select" value={selectedValue} onChange={onChange}>
+    {options.map(({ label, value }) => (
+      <option key={value} value={value} children={label} />
+    ))}
+  </LangField>
+)
+
 const plugins = [
-  createMarkdownPlugin(),
+  createMarkdownPlugin({ renderLanguageSelect }),
   createPrismPlugin({ prism: Prism }),
   createCodeEditorPlugin()
 ]

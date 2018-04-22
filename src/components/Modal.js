@@ -19,4 +19,15 @@ const Modal = Card.extend`
   margin-right: auto;
 `
 
-export default Modal
+const Overlay = Card.extend`
+  z-index: 1000;
+  background-color: rgba(0,0,0,.3);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`
+
+export default { Modal,Overlay }

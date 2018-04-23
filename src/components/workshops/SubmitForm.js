@@ -83,6 +83,7 @@ class NameField extends Component {
     return (
       <Input
         {...this.props}
+        color="black"
         value={this.state.value}
         onChange={this.onChange}
       />

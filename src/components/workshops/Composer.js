@@ -86,7 +86,7 @@ class Composer extends Component {
   render() {
     const { saved, body } = this.state
     return (
-      <MarkdownBody>
+      <MarkdownBody mt={2}>
         <Editor
           editorState={body}
           plugins={this.state.plugins}
@@ -95,7 +95,7 @@ class Composer extends Component {
           autoComplete="on"
           autoCorrect="on"
           stripPastedStyles={true}
-          id="body"
+          name="body"
           placeholder="Write in Markdown…"
           {...this.props}
           onChange={this.onChange}

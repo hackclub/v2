@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Auth from 'components/workshops/Auth'
 import SubmitForm from 'components/workshops/SubmitForm'
+import Footer from 'components/Footer'
 
 const Header = Section.withComponent('header').extend([])
 
@@ -25,5 +26,6 @@ export default () => (
     </Header>
     <Auth />
     <SubmitForm />
+    <Footer />
   </Fragment>
 )

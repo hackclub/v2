@@ -10,7 +10,7 @@ const Header = Section.withComponent('header').extend([])
 export default () => (
   <Fragment>
     <Helmet title="Submit a Workshop – Hack Club" />
-    <Nav color="slate" style={{ position: 'absolute', top: 0 }} />
+    <Nav invertFlag color="slate" style={{ position: 'absolute', top: 0 }} />
     <style children={`body{background:${cx('snow')};}`} />
     <Header py={4} mt={5} align="center">
       <Container maxWidth={32}>

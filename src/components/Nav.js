@@ -29,9 +29,9 @@ export const Item = A.extend.attrs({
 
 export const GatsbyItem = Item.withComponent(Link)
 
-const Nav = ({ color = 'white', ...props }) => (
+const Nav = ({ color = 'white', invertFlag = false, ...props }) => (
   <Base role="banner" {...props}>
-    <Flag />
+    <Flag className={invertFlag && 'invert'} />
     <NavBar role="navigation" ml={-2} py={[1, 0]} color={color} align="center">
       <GatsbyItem to="/team" children="Team" />
       <GatsbyItem to="/donate" children="Donate" />
@@ -44,7 +44,8 @@ const Nav = ({ color = 'white', ...props }) => (
 
 Nav.propTypes = {
   color: PropTypes.string,
-  authenticated: PropTypes.bool
+  authenticated: PropTypes.bool,
+  invertFlag: PropTypes.bool
 }
 
 export default Nav

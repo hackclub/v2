@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
-import { Box, Container, Card, Input } from '@hackclub/design-system'
+import {
+  Box,
+  Container,
+  Card,
+  Flex,
+  Input,
+  colors
+} from '@hackclub/design-system'
 import { Submit } from 'components/Forms'
 import { withFormik } from 'formik'
 import { isEmpty } from 'lodash'
 import Composer, { LS_NAME_KEY, LS_BODY_KEY } from './Composer'
+import Invert from 'components/Invert'
 import yup from 'yup'
 import api from 'api'
 
@@ -13,7 +21,20 @@ const Sheet = Container.withComponent(Card).extend`
     box-shadow: ${props => props.theme.boxShadows[2]};
   }
 
-  input:first-child {
+  .DraftEditor-editorContainer > div {
+    min-height: 4rem;
+  }
+
+  .public-DraftEditorPlaceholder-inner {
+    color: ${props => props.theme.colors.muted};
+    font-size: ${props => props.theme.fontSizes[2]}px;
+  }
+`
+
+const Header = Flex.extend`
+  border-bottom: 1px solid ${props => props.theme.colors.smoke};
+
+  input {
     border: 0;
     padding-left: 0;
     font-weight: bold;
@@ -23,13 +44,8 @@ const Sheet = Container.withComponent(Card).extend`
     }
   }
 
-  .DraftEditor-editorContainer > div {
-    min-height: 4rem;
-  }
-
-  .public-DraftEditorPlaceholder-inner {
-    color: ${props => props.theme.colors.muted};
-    font-size: ${props => props.theme.fontSizes[2]}px;
+  button {
+    padding: ${props => props.theme.space[2]}px;
   }
 `
 
@@ -96,16 +112,19 @@ const InnerForm = ({
 }) => (
   <form onSubmit={handleSubmit}>
     <Sheet maxWidth={48} p={[3, 4]} bg="white" boxShadowSize="md">
-      <NameField
-        onChange={handleChange}
-        onBlur={handleBlur}
-        error={touched.name && errors.name}
-        name="name"
-        autoFocus
-        aria-label="Title your workshop"
-        placeholder="Getting Started with React.js"
-        fontSize={5}
-      />
+      <Header align="baseline">
+        <NameField
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={touched.name && errors.name}
+          name="name"
+          autoFocus
+          aria-label="Title your workshop"
+          placeholder="Getting Started with React.js"
+          fontSize={5}
+        />
+        <Invert muted children={null} />
+      </Header>
       <Composer onChange={setFieldValue} onBlur={handleBlur} />
     </Sheet>
     <Box align="center" pt={4} pb={5}>

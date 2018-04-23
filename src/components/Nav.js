@@ -34,7 +34,7 @@ const Nav = ({ color = 'white', invertFlag = false, ...props }) => (
     <Flag className={invertFlag && 'invert'} />
     <NavBar role="navigation" ml={-2} py={[1, 0]} color={color} align="center">
       <GatsbyItem to="/team" children="Team" />
-      <GatsbyItem to="/donate" children="Donate" />
+      <Item href="/donate" children="Donate" />
       <GatsbyItem to="/start" children="Start" />
       <GatsbyItem to="/workshops" children="Workshops" />
       <Item href="https://hackathons.hackclub.com" children="Hackathons" />

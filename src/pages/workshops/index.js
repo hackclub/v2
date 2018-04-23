@@ -150,7 +150,8 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
               style={{ lineHeight: '1.25', maxWidth: '42rem' }}
             >
               Learn to code with this collection of community-contributed,
-              self-guided coding tutorials and project ideas.
+              self-guided coding tutorials and project ideas.{' '}
+              <A.link to="/workshops/submit">Write one »</A.link>
             </Text>
             {sortedGroups.map(group => (
               <Track

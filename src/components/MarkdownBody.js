@@ -7,6 +7,14 @@ const MarkdownBody = Box.extend`
   line-height: 1.625;
   word-wrap: break-word;
 
+  .DraftEditor-editorContainer > div {
+    min-height: 4rem;
+  }
+  .public-DraftEditorPlaceholder-inner {
+    color: ${props => props.theme.colors.muted};
+    font-size: ${props => props.theme.fontSizes[2]}px;
+  }
+
   a {
     color: ${props => props.theme.colors.info};
     em {
@@ -21,7 +29,7 @@ const MarkdownBody = Box.extend`
   }
 
   /* hides title, assumes rendering separately */
-  h1:first-child {
+  > h1:first-child {
     display: none;
   }
 
@@ -31,7 +39,13 @@ const MarkdownBody = Box.extend`
     border-bottom: 1px solid ${props => props.theme.colors.smoke};
   }
 
-  ${headings};
+  ${range(1, 6)
+    .map(
+      level =>
+        `h${level} { font-size: ${props =>
+          props.theme.fontSizes[6 - level]}px; }`
+    )
+    .join('')};
 
   img {
     max-width: 100%;
@@ -184,12 +198,5 @@ const MarkdownBody = Box.extend`
     white-space: pre;
   }
 `
-
-const headings = props =>
-  range(1, 6)
-    .map(
-      level => `h${level} { font-size: ${props.theme.fontSizes[6 - level]}px; }`
-    )
-    .join('')
 
 export default MarkdownBody

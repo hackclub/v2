@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { Button } from '@hackclub/design-system'
 import IconButton from 'components/IconButton'
 
 const css = `
-:root {
+html {
   filter: invert(100%);
 }
 
@@ -24,27 +25,30 @@ class Invert extends Component {
   render() {
     const { active } = this.state
     const props = {
-      ...this.props,
+      name: 'filter_b_and_w',
+      className: 'invert',
       bg: active ? 'black' : 'slate',
-      onClick: this.onClick,
       'aria-pressed': active,
-      inverted: true
+      inverted: this.props.muted ? !active : true,
+      ...this.props
     }
     return (
       <Fragment>
         {active && <style dangerouslySetInnerHTML={{ __html: css }} />}
-        <IconButton
-          is={Button.button}
-          bg={props.bg}
-          name="filter_b_and_w"
-          className="invert"
-          children="Switch theme"
-          inverted
-          {...props}
-        />
+        <IconButton is={Button.button} onClick={this.onClick} {...props} />
       </Fragment>
     )
   }
 }
 
 export default Invert
+
+Invert.propTypes = {
+  muted: PropTypes.bool,
+  children: PropTypes.element
+}
+
+Invert.defaultProps = {
+  muted: false,
+  children: 'Switch theme'
+}

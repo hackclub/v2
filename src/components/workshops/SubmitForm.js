@@ -147,10 +147,12 @@ const SubmitForm = withFormik({
   handleSubmit: (data, { props, setStatus, setSubmitting, resetForm }) => {
     const { name, body: text } = data
     const body = JSON.stringify({
-      feedback: { key: 'WORKSHOP_SUBMISSION', name, body: text }
+      workshop_slug: 'WORKSHOP_SUBMISSION',
+      feedback: { name, body: text }
     })
     api
       .post(`v1/workshop_feedbacks`, {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body
       })

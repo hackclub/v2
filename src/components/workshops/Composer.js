@@ -67,7 +67,7 @@ class Composer extends Component {
     const raw = convertToRaw(body.getCurrentContent())
     const md = draftjsToMd(raw)
     if (this.props.onChange) this.props.onChange('body', md)
-    if (localStorage) this.persistData(md)
+    if (typeof localStorage !== 'undefined') this.persistData(md)
     this.setState({ body })
   }
 

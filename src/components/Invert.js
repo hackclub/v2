@@ -4,8 +4,13 @@ import { Button } from '@hackclub/design-system'
 import IconButton from 'components/IconButton'
 
 const css = `
-html {
+:root {
+  background-color: #fff;
   filter: invert(100%);
+}
+
+body {
+  background-color: inherit;
 }
 
 img:not([src*=".svg"]),

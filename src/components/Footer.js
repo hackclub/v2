@@ -67,7 +67,7 @@ const Exception = Box.extend`
 `
 
 const Footer = ({ children }) => (
-  <Base p={[4, 5]}>
+  <Base color="black" p={[4, 5]}>
     {children && <Exception children={children} />}
     <Heading.h3 bold m={0} align={['left', 'right']}>
       Join the Club

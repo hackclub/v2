@@ -3,6 +3,7 @@ import { Card } from '@hackclub/design-system'
 
 const Modal = Card.extend`
   background-color: ${props => props.theme.colors.white};
+  box-shadow: ${props => props.theme.boxShadows[2]};
   z-index: 1100;
 
   position: fixed;

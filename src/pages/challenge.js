@@ -34,7 +34,7 @@ class Help extends Component {
     if (this.state.active) {
       return (
         <Fragment>
-          <Modal boxShadowSize="lg" my={4} p={[3, 4]}>
+          <Modal my={4} p={[3, 4]}>
             <Container align="left">
               <Heading.h2 mb={3}>Challenge Rules</Heading.h2>
               <Text f={2} mb={2}>

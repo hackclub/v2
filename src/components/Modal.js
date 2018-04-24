@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from '@hackclub/design-system'
+import { Card, IconButton } from '@hackclub/design-system'
 
 const Modal = Card.extend`
   background-color: ${props => props.theme.colors.white};
@@ -18,6 +18,12 @@ const Modal = Card.extend`
   max-height: 100%;
   margin-left: auto;
   margin-right: auto;
+
+  button:first-child {
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
 `
 
 const Overlay = Card.extend`
@@ -32,4 +38,8 @@ const Overlay = Card.extend`
   height: 100%;
 `
 
-export default { Modal, Overlay }
+const CloseButton = props => (
+  <IconButton name="close" color="muted" circle p={3} />
+)
+
+export default { Modal, Overlay, CloseButton }

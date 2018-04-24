@@ -39,7 +39,7 @@ const Overlay = Card.extend`
 `
 
 const CloseButton = props => (
-  <IconButton name="close" color="muted" circle p={3} />
+  <IconButton name="close" color="muted" circle p={3} {...props} />
 )
 
 export default { Modal, Overlay, CloseButton }

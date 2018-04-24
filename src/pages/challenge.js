@@ -9,77 +9,68 @@ import {
   Link,
   Card,
   Button,
-  Icon,
-  IconButton
+  Icon
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
+import IconButton from 'components/IconButton'
 import Form from 'components/challenge/Form'
 import Posts from 'components/challenge/Posts'
-import { Modal, Overlay } from 'components/Modal'
-import { dt } from 'helpers'
+import { Modal, Overlay, CloseButton } from 'components/Modal'
+import { dt, tinyDt } from 'helpers'
 import { isEmpty } from 'lodash'
 import api from 'api'
 import storage from 'storage'
-
-const HelpButton = Button.extend`
-  opacity: 0.7;
-  &:hover {
-    opacity: 1;
-  }
-`
 
 class Help extends Component {
   state = { active: false }
 
   toggleRules = () => {
-    this.setState({
-      active: !this.state.active
-    })
+    this.setState(state => ({ active: !state.active }))
   }
 
-  //Render a modal for challenge rules on button press
+  // Render a modal for challenge rules on button press
   render() {
+    if (this.state.active) {
+      return (
+        <Fragment>
+          <Modal align="left" my={4} p={[3, 4]}>
+            <CloseButton onClick={this.toggleRules} />
+            <Heading.h2>Challenge Rules</Heading.h2>
+            <Text f={2} my={3}>
+              Challenge strictly follows Hack Club’s{' '}
+              <Link href="https://conduct.hackclub.com" target="_blank">
+                Code of Conduct
+              </Link>. Anything breaking our Code of Conduct (ex. voter fraud)
+              and contestants found cheating can be temporarily or permanently
+              banned.
+            </Text>
+            <Text f={2}>
+              If you think anyone has violated our Conduct or cheating policy,
+              please reach out to us confidentially at{' '}
+              <Link href="mailto:challenge@hackclub.com">
+                challenge@hackclub.com
+              </Link>.
+            </Text>
+          </Modal>
+          <Overlay onClick={this.toggleRules} />
+        </Fragment>
+      )
+    }
     return (
-      <Fragment>
-        <HelpButton f={2} onClick={this.toggleRules}>
-          <Icon name="flag" m={0} mr={1} size={14} />Rules
-        </HelpButton>
-        {this.state.active && (
-          <Fragment>
-            <Modal boxShadowSize="lg" my={4} p={3}>
-              <Container align="left">
-                <Heading.h2 pb={3}>Challenge Rules</Heading.h2>
-                <Text f={2} pb={2}>
-                  Challenge follows Hack Club’s{' '}
-                  <Link href="https://conduct.hackclub.com" target="_blank">
-                    Code of Conduct
-                  </Link>. We have a strict policy about anything breaking our
-                  Code of Conduct (ex. voter fraud) and contestants found
-                  cheating can be temporarily or permanently banned.
-                </Text>
-                <Text f={2}>
-                  If you think anyone has violated our Conduct or cheating
-                  policy, please reach out to us confidentially at{' '}
-                  <Link href="mailto:challenge@hackclub.com">
-                    challenge@hackclub.com
-                  </Link>.
-                </Text>
-                <IconButton
-                  name="close"
-                  color="error"
-                  onClick={this.toggleRules}
-                  style={{ position: 'fixed', right: 10, top: 10, zIndex: 100 }}
-                />
-              </Container>
-            </Modal>
-            <Overlay onClick={this.toggleRules} />
-          </Fragment>
-        )}
-      </Fragment>
+      <IconButton
+        name="flag"
+        size={16}
+        children="Rules"
+        inverted
+        f={2}
+        onClick={this.toggleRules}
+        {...this.props}
+      />
     )
   }
 }
+
 const Header = Section.withComponent('header').extend`
   padding-top: 0 !important;
   background-color: ${props => props.theme.colors.red[5]};
@@ -190,16 +181,12 @@ export default class extends Component {
           </HeaderContainer>
         </Header>
         <Container maxWidth={48} pt={4} pb={5} px={3}>
-          <Box
-            style={{ position: 'fixed', right: 'auto', bottom: 10, right: 10 }}
-          >
-            <Help />
-          </Box>
           <Title align="center" pb={2}>
-            <Heading.h2 f={5}>Submissions</Heading.h2>
+            <Heading.h2 f={[4, 5]}>Submissions</Heading.h2>
             <Text.span f={2} color="muted" ml={3}>
-              {dt(challenge.start)}–{dt(challenge.end)}
+              {tinyDt(challenge.start)}–{tinyDt(challenge.end)}
             </Text.span>
+            <Help ml="auto" />
           </Title>
           <Posts challengeId={challenge.id} userId={userId} status={status} />
         </Container>

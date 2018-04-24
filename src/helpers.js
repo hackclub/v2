@@ -1,5 +1,11 @@
 export const dt = d => new Date(d).toLocaleDateString()
 
+const year = new Date().getFullYear()
+export const tinyDt = d =>
+  dt(d)
+    .replace(`/${year}`, '')
+    .replace(`${year}-`, '')
+
 export const timeSince = time => {
   const seconds = Math.floor((new Date() - new Date(time)) / 1000)
   const intervals = [

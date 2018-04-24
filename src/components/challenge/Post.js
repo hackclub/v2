@@ -9,7 +9,7 @@ import {
   Text
 } from '@hackclub/design-system'
 import PropTypes from 'prop-types'
-import { dt } from 'helpers'
+import { dt, tinyDt } from 'helpers'
 import { kebabCase } from 'lodash'
 
 const Row = Flex.extend`
@@ -32,12 +32,6 @@ const UpvoteButton = Button.button.extend`
   cursor: ${props => props.cursor};
 `
 
-const year = new Date().getFullYear()
-const shortDt = d =>
-  dt(d)
-    .replace(`/${year}`, '')
-    .replace(`${year}-`, '')
-
 const Post = ({
   name,
   url,
@@ -49,7 +43,12 @@ const Post = ({
   onUpvote,
   disabled
 }) => (
-  <Row py={[2, 3]} id={kebabCase(name)}>
+  <Row
+    bg={mine ? 'yellow.0' : 'white'}
+    title={mine ? '👑 Your post!' : `${name} posted on ${dt(createdAt)}`}
+    py={[2, 3]}
+    id={kebabCase(name)}
+  >
     <UpvoteButton
       bg={upvoted ? 'primary' : 'smoke'}
       color={upvoted ? 'white' : 'slate'}
@@ -69,7 +68,7 @@ const Post = ({
       <Flex flexDirection="column" align="center">
         <Icon name="open_in_new" color="info" size={24} />
         <Text.span f={0} mt={1} color="muted">
-          {shortDt(createdAt)}
+          {tinyDt(createdAt)}
         </Text.span>
       </Flex>
     </Link>

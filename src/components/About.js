@@ -75,11 +75,14 @@ const Stats = Box.extend`
   }
 `
 
-const Like = A.extend.attrs({
+const like = {
   underline: true,
-  color: 'white',
+  color: 'inherit',
   target: '_blank'
-})``
+}
+A.link = A.withComponent(Link)
+const Like = props => <A {...like} {...props} />
+const LikeLink = props => <A.link {...like} {...props} />
 
 const Photo = BackgroundImage.extend.attrs({ role: 'img' })`
   overflow: hidden;
@@ -137,7 +140,9 @@ export default () => (
           compete in competitions like the{' '}
           <Like href="http://www.congressionalappchallenge.us">
             Congressional App Challenge
-          </Like>. This is no ordinary club.
+          </Like>{' '}
+          (and <LikeLink to="/challenge">our Challenge</LikeLink>!). This is no
+          ordinary club.
         </Text>
         <Action to="/meetings" inverted>
           Learn more »

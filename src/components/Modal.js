@@ -1,18 +1,32 @@
 import React from 'react'
 import { Card, IconButton } from '@hackclub/design-system'
+import { keyframes } from 'styled-components'
+
+const modalKeyframes = keyframes`
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  85% {
+    transform: translate(-50%, -50%) scale(1.025);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+`
 
 const Modal = Card.extend`
   background-color: ${props => props.theme.colors.white};
   box-shadow: ${props => props.theme.boxShadows[2]};
-  z-index: 1100;
-
   position: fixed;
   top: 50%;
   left: 50%;
-  /* Center */
   transform: translate(-50%, -50%);
+  animation: ${modalKeyframes} ease-in 0.25s;
+  z-index: 1100;
 
-  /* Responsive Size Control */
+  // Responsive size control
   width: 36rem;
   max-width: 95%;
   max-height: 100%;

@@ -2,7 +2,7 @@ import React from 'react'
 import { Card } from '@hackclub/design-system'
 
 const Modal = Card.extend`
-  background-color: #fff;
+  background-color: ${props => props.theme.colors.white};
   z-index: 1100;
 
   position: fixed;
@@ -21,7 +21,8 @@ const Modal = Card.extend`
 
 const Overlay = Card.extend`
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.375);
+  backdrop-filter: blur(6px);
 
   position: fixed;
   top: 0;

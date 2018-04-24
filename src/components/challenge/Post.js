@@ -9,7 +9,7 @@ import {
   Text
 } from '@hackclub/design-system'
 import PropTypes from 'prop-types'
-import { tinyDt } from 'helpers'
+import { dt, tinyDt } from 'helpers'
 import { kebabCase } from 'lodash'
 
 const Row = Flex.extend`
@@ -43,7 +43,12 @@ const Post = ({
   onUpvote,
   disabled
 }) => (
-  <Row py={[2, 3]} id={kebabCase(name)}>
+  <Row
+    bg={mine ? 'yellow.0' : 'white'}
+    title={mine ? '👑 Your post!' : `${name} posted on ${dt(createdAt)}`}
+    py={[2, 3]}
+    id={kebabCase(name)}
+  >
     <UpvoteButton
       bg={upvoted ? 'primary' : 'smoke'}
       color={upvoted ? 'white' : 'slate'}

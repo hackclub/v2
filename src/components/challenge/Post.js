@@ -38,6 +38,7 @@ const Post = ({
   description,
   createdAt,
   mine,
+  comments,
   upvotes,
   upvoted = false,
   onUpvote,
@@ -65,6 +66,10 @@ const Post = ({
           {description}
         </Text>
       </Box>
+      <Flex flexDirection="column" align="center" mr={3}>
+        <Icon name="comment" color="muted" size={24} />
+        <Text.span f={0} mt={1} color="muted" children={comments} />
+      </Flex>
       <Flex flexDirection="column" align="center">
         <Icon name="open_in_new" color="info" size={24} />
         <Text.span f={0} mt={1} color="muted">
@@ -82,6 +87,7 @@ Post.propTypes = {
   createdAt: PropTypes.string,
   mine: PropTypes.bool,
   disabled: PropTypes.bool,
+  comments: PropTypes.number.isRequired,
   upvotes: PropTypes.number.isRequired,
   upvoted: PropTypes.bool,
   onUpvote: PropTypes.func.isRequired

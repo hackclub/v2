@@ -119,23 +119,21 @@ class Posts extends Component {
                 No submissions yet!
               </Text>
             )}
-            {posts.map(post => {
-              const mine = get(post, 'creator.id') === userId
-              return (
-                <Post
-                  name={post.name}
-                  url={post.url_redirect}
-                  description={post.description}
-                  createdAt={post.created_at}
-                  mine={mine}
-                  upvotes={post.upvotesCount}
-                  upvoted={includes(upvotes, post.id)}
-                  onUpvote={e => this.onUpvote(e, post.id)}
-                  disabled={userId === undefined}
-                  key={post.url}
-                />
-              )
-            })}
+            {posts.map(post => (
+              <Post
+                name={post.name}
+                url={post.url_redirect}
+                description={post.description}
+                createdAt={post.created_at}
+                mine={get(post, 'creator.id') === userId}
+                comments={post.comment_count}
+                upvotes={post.upvotesCount}
+                upvoted={includes(upvotes, post.id)}
+                onUpvote={e => this.onUpvote(e, post.id)}
+                disabled={userId === undefined}
+                key={post.url}
+              />
+            ))}
           </Fragment>
         )
       default:

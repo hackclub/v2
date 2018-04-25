@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Text } from '@hackclub/design-system'
+import { Box, Text } from '@hackclub/design-system'
 import Post from 'components/challenge/Post'
 import LoadingAnimation from 'components/LoadingAnimation'
 import ErrorPage from 'components/admin/ErrorPage'
@@ -106,7 +106,11 @@ class Posts extends Component {
     const { userId } = this.props
     switch (status) {
       case 'loading':
-        return <LoadingAnimation />
+        return (
+          <Box py={5} style={{ position: 'relative' }}>
+            <LoadingAnimation />
+          </Box>
+        )
       case 'success':
         return (
           <Fragment>

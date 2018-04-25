@@ -95,11 +95,12 @@ const HeaderContainer = Container.extend`
 `
 
 const HeaderCard = Card.extend`
+  min-height: 128px;
+  position: relative;
   h2,
   p {
     color: ${props => props.theme.colors.black} !important;
   }
-  position: relative;
 `
 
 const Title = Flex.extend`
@@ -157,7 +158,7 @@ export default class extends Component {
           <Nav />
           <HeaderContainer maxWidth={56} p={0} mt={3} align="left">
             <Box align={['center', null, 'right']}>
-              <Text mb={-2} f={3} bold caps>
+              <Text mb={-24} f={3} bold caps>
                 Hack Club
               </Text>
               <Heading.h1 f={[6, 7]} my={0}>

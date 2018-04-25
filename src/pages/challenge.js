@@ -109,6 +109,7 @@ const Title = Flex.extend`
 const title = 'Hack Club Challenge'
 const desc =
   'Join Hack Club’s high school coding challenge. Submit your entry to compete in our monthly programming contest and win prizes.'
+const img = 'https://hackclub.com/challenge.png'
 
 export default class extends Component {
   state = { status: 'loading' }
@@ -142,11 +143,13 @@ export default class extends Component {
         <Helmet
           title={title}
           meta={[
-            { name: 'twitter:title', content: title },
             { name: 'description', content: desc },
+            { name: 'twitter:title', content: title },
             { name: 'twitter:description', content: desc },
+            { name: 'twitter:image', content: img },
             { property: 'og:title', content: title },
             { property: 'og:description', content: desc },
+            { property: 'og:image', content: img },
             { property: 'og:url', content: 'https://hackclub.com/challenge' }
           ]}
         />

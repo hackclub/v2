@@ -98,6 +98,7 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
   const desc =
     'Get free coding tutorials, project ideas, and programming club activities ' +
     'from Hack Club, a community of high school developers.'
+  const img = 'https://hackclub.com/workshops.png'
 
   return (
     <Fragment>
@@ -105,13 +106,14 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
         title={title}
         meta={[
           { name: 'description', content: desc },
-          { property: 'og:title', content: title },
           { name: 'twitter:title', content: title },
-          { property: 'og:description', content: desc },
           { name: 'twitter:description', content: desc },
+          { name: 'twitter:image', content: img },
+          { property: 'og:title', content: title },
+          { property: 'og:description', content: desc },
+          { property: 'og:image', content: img },
           { property: 'og:site_name', content: 'Hack Club Workshops' },
-          { property: 'og:url', content: 'https://hackclub.com/workshops' },
-          { name: 'twitter:site', content: '@starthackclub' }
+          { property: 'og:url', content: 'https://hackclub.com/workshops' }
         ]}
       />
       <Nav

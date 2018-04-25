@@ -165,6 +165,7 @@ export default ({ data }) => {
   const title = `${name} – Hack Club Workshops`
   const l = description.charAt(0).toUpperCase() + description.slice(1)
   const desc = `Free coding tutorial for ${l}, published on Hack Club Workshops.`
+  const img = 'https://hackclub.com/workshops.png'
   const url = makeUrl('hackclub.com', slug)
 
   const schema = {
@@ -199,10 +200,12 @@ export default ({ data }) => {
         title={title}
         meta={[
           { name: 'description', content: desc },
-          { property: 'og:title', content: title },
           { name: 'twitter:title', content: title },
-          { property: 'og:description', content: desc },
           { name: 'twitter:description', content: desc },
+          { name: 'twitter:image', content: img },
+          { property: 'og:title', content: title },
+          { property: 'og:description', content: desc },
+          { property: 'og:image', content: img },
           { property: 'og:site_name', content: 'Hack Club Workshops' },
           { property: 'og:url', content: url }
         ]}

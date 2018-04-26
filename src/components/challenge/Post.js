@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, Component } from 'react'
 import {
   Box,
   Flex,
@@ -9,8 +9,11 @@ import {
   Text
 } from '@hackclub/design-system'
 import PropTypes from 'prop-types'
+import { Modal, Overlay, CloseButton } from 'components/Modal'
+import Comments from 'components/challenge/Comments'
 import { dt, tinyDt } from 'helpers'
 import { kebabCase } from 'lodash'
+import api from 'api'
 
 const Row = Flex.extend`
   align-items: center;
@@ -47,16 +50,17 @@ const CommentButton = Box.withComponent('button').extend`
   }
 `
 
-const Post = ({
+const PostRow = ({
   name,
   url,
   description,
   createdAt,
   mine,
-  comments,
-  upvotes,
+  commentsCount,
+  upvotesCount,
   upvoted = false,
   onUpvote,
+  onComment,
   disabled
 }) => (
   <Row
@@ -72,7 +76,7 @@ const Post = ({
       cursor={disabled ? 'not-allowed' : 'pointer'}
     >
       <Icon name="arrow_upward" />
-      <Text.span ml={1} f={2} children={upvotes} />
+      <Text.span ml={1} f={2} children={upvotesCount} />
     </UpvoteButton>
     <Link w={1} href={url} target="_blank" color="black" px={3}>
       <Heading.h3 f={3} m={0}>
@@ -85,26 +89,78 @@ const Post = ({
         {description}
       </Text>
     </Link>
-    <CommentButton>
+    <CommentButton onClick={onComment}>
       <Icon
         name="chat_bubble"
-        color={comments === 0 ? 'gray.5' : 'info'}
+        color={commentsCount === 0 ? 'gray.5' : 'info'}
         size={32}
       />
-      <Text.span bold color="white" children={comments} />
+      <Text.span bold color="white" children={commentsCount} />
     </CommentButton>
   </Row>
 )
-Post.propTypes = {
+PostRow.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   createdAt: PropTypes.string,
   mine: PropTypes.bool,
   disabled: PropTypes.bool,
-  comments: PropTypes.number.isRequired,
-  upvotes: PropTypes.number.isRequired,
+  commentsCount: PropTypes.number.isRequired,
+  upvotesCount: PropTypes.number.isRequired,
   upvoted: PropTypes.bool,
-  onUpvote: PropTypes.func.isRequired
+  onUpvote: PropTypes.func.isRequired,
+  onComment: PropTypes.func.isRequired
+}
+class Post extends Component {
+  state = {
+    status: 'loading',
+    commentsOpen: false,
+    comments: []
+  }
+  onOpen = e => {
+    this.setState({ commentsOpen: true })
+    api
+      .get(`/v1/posts/${this.props.id}/comments`)
+      .then(data => {
+        this.setState({ comments: data, status: 'success' })
+      })
+      .catch(err => {
+        this.setState({ status: 'error' })
+      })
+  }
+  onClose = e => {
+    this.setState({ commentsOpen: false })
+  }
+  render() {
+    const {
+      name,
+      url,
+      description,
+      createdAt,
+      mine,
+      commentsCount,
+      upvotesCount,
+      upvoted = false,
+      onUpvote,
+      disabled
+    } = this.props
+    const { status, commentsOpen, comments } = this.state
+    let Bar
+    return (
+      <Fragment>
+        <PostRow onComment={this.onOpen} {...this.props} />
+        {commentsOpen && (
+          <Fragment>
+            <Modal align="left" my={4} p={[3, 4]}>
+              <CloseButton onClick={this.onClose} />
+              <Comments name={name} url={url} status={status} />
+            </Modal>
+            <Overlay onClick={this.onClose} />
+          </Fragment>
+        )}
+      </Fragment>
+    )
+  }
 }
 export default Post

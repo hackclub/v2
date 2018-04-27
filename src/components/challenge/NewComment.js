@@ -7,8 +7,6 @@ import yup from 'yup'
 import api from 'api'
 
 const Form = Flex.withComponent('form').extend`
-  align-items: flex-start;
-
   > div:first-child {
     flex: 1 1 auto;
   }
@@ -54,12 +52,17 @@ const InnerForm = ({
   status,
   ...props
 }) => (
-  <Form w={1} mt={3} onSubmit={handleSubmit}>
+  <Form
+    align={isEmpty(values.body) ? 'flex-end' : 'flex-start'}
+    w={1}
+    mt={3}
+    onSubmit={handleSubmit}
+  >
     <Composer onChange={setFieldValue} onBlur={handleBlur} />
     <IconButton
       type="submit"
       onClick={handleSubmit}
-      disabled={isSubmitting || isEmpty(props.email)}
+      disabled={isSubmitting || isEmpty(values.body) || isEmpty(props.email)}
       name={statusIcon(status)}
       bg={statusColor(status)}
       color="white"

@@ -37,7 +37,7 @@ const Form = Flex.withComponent('form').extend`
 `
 
 const statusIcon = status =>
-  status ? { success: 'check', error: 'error' }[status] : 'send'
+  isEmpty(status) ? 'send' : { success: 'check', error: 'error' }[status]
 const statusColor = status =>
   status === 'success' || status === 'error' ? status.toString() : 'info'
 const InnerForm = ({
@@ -76,17 +76,24 @@ const CommentForm = withFormik({
     body: yup.string()
   }),
   enableReinitialize: true,
-  handleSubmit: (data, { props, setStatus, setSubmitting, resetForm }) => {
+  handleSubmit: (data, { props, setStatus, setSubmitting, setValues }) => {
+    const authToken = localStorage ? localStorage.getItem('authToken') : null
     const body = JSON.stringify({ body: data.body })
     console.log(body)
     api
-      .post(`v1/posts/${props.id}/comments`, { method: 'POST', body })
+      .post(`v1/posts/${props.id}/comments`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        authToken,
+        body
+      })
       .then(res => {
-        resetForm()
-        if (localStorage) {
-          localStorage.removeItem(LS_BODY_KEY)
-        }
+        setSubmitting(false)
+        setValues({ body: '' })
+        props.onSubmit(res)
+        if (localStorage) localStorage.removeItem(LS_BODY_KEY)
         setStatus('success')
+        setTimeout(() => setStatus(null), 1024)
       })
       .catch(e => {
         setSubmitting(false)

@@ -13,8 +13,8 @@ const Avi = Avatar.withComponent(Gravatar).extend`
   margin-top: 18px; // 14px (byline size) + 4px (margin)
 `
 const BlankAvi = Box.extend`
-  width: 28px;
-  height: 28px;
+  width: 27px;
+  height: 27px;
 `
 
 const Group = Flex.extend`
@@ -113,7 +113,7 @@ const Comment = ({
   ...props
 }) => (
   <Flex mt={following ? 0 : 3} flexDirection={mine ? 'row-reverse' : 'row'}>
-    {following ? <BlankAvi /> : <Avi email={user.email} size={28} />}
+    {following ? <BlankAvi /> : <Avi email={user.email} size={27} />}
     <Group mine={mine}>
       {!following && (
         <Byline mine={mine}>

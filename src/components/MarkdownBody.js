@@ -7,9 +7,6 @@ const MarkdownBody = Box.extend`
   line-height: 1.625;
   word-wrap: break-word;
 
-  .DraftEditor-editorContainer > div {
-    min-height: 4rem;
-  }
   .public-DraftEditorPlaceholder-inner {
     color: ${props => props.theme.colors.muted};
     font-size: ${props => props.theme.fontSizes[2]}px;

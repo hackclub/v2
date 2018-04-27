@@ -32,6 +32,12 @@ const renderLanguageSelect = ({ options, onChange, selectedValue }) => (
   </LangField>
 )
 
+const Body = MarkdownBody.extend`
+  .DraftEditor-editorContainer > div {
+    min-height: 4rem;
+  }
+`
+
 const plugins = [
   createMarkdownPlugin({ renderLanguageSelect }),
   createPrismPlugin({ prism: Prism }),
@@ -86,7 +92,7 @@ class Composer extends Component {
   render() {
     const { saved, body } = this.state
     return (
-      <MarkdownBody mt={2}>
+      <Body mt={2}>
         <Editor
           editorState={body}
           plugins={this.state.plugins}
@@ -100,7 +106,7 @@ class Composer extends Component {
           {...this.props}
           onChange={this.onChange}
         />
-      </MarkdownBody>
+      </Body>
     )
   }
 }

@@ -8,8 +8,10 @@ import {
   Button,
   Icon
 } from '@hackclub/design-system'
-import ErrorPage from 'components/admin/ErrorPage'
+import Auth from 'components/Auth'
 import LoadingBar from 'components/LoadingBar'
+import ErrorPage from 'components/admin/ErrorPage'
+import NewComment from 'components/challenge/NewComment'
 import PropTypes from 'prop-types'
 
 const Header = Flex.extend`
@@ -25,8 +27,14 @@ class Comments extends Component {
     }
   }
 
+  onSubmit = data => {
+    this.setState(state => {
+      data: state.data.push(data)
+    })
+  }
+
   render() {
-    const { status, name, url } = this.props
+    const { status, name, url, id, email } = this.props
     return (
       <Fragment>
         <Header pb={1}>
@@ -35,11 +43,22 @@ class Comments extends Component {
             <Icon name="open_in_new" color="info" size={24} />
           </Link>
         </Header>
+        <Auth
+          headline="Sign in to comment"
+          type="public"
+          cardProps={{
+            p: 3,
+            my: 3,
+            bg: 'info',
+            boxShadowSize: 'md'
+          }}
+          textProps={{ my: 3, color: 'muted' }}
+        />
         {status === 'loading' && <LoadingBar />}
         {status === 'error' && <ErrorPage />}
         {status === 'success' && (
           <Fragment>
-            <Text>Success!</Text>
+            <NewComment id={id} email={email} />
           </Fragment>
         )}
       </Fragment>

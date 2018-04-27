@@ -51,6 +51,7 @@ const CommentButton = Box.withComponent('button').extend`
 `
 
 const PostRow = ({
+  id,
   name,
   url,
   description,
@@ -100,6 +101,7 @@ const PostRow = ({
   </Row>
 )
 PostRow.propTypes = {
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
@@ -115,13 +117,20 @@ PostRow.propTypes = {
 class Post extends Component {
   state = {
     status: 'loading',
+    email: null,
     commentsOpen: false,
     comments: []
   }
   onOpen = e => {
     this.setState({ commentsOpen: true })
+    let { email } = this.state
+    if (typeof localStorage !== 'undefined') {
+      email = localStorage.getItem('userEmail')
+      this.setState({ email })
+    }
+    window.api = api
     api
-      .get(`/v1/posts/${this.props.id}/comments`)
+      .get(`v1/posts/${this.props.id}/comments`)
       .then(data => {
         this.setState({ comments: data, status: 'success' })
       })
@@ -134,6 +143,7 @@ class Post extends Component {
   }
   render() {
     const {
+      id,
       name,
       url,
       description,
@@ -145,16 +155,27 @@ class Post extends Component {
       onUpvote,
       disabled
     } = this.props
-    const { status, commentsOpen, comments } = this.state
+    const { status, commentsOpen, comments, email } = this.state
     let Bar
     return (
       <Fragment>
         <PostRow onComment={this.onOpen} {...this.props} />
         {commentsOpen && (
           <Fragment>
-            <Modal align="left" my={4} p={[3, 4]}>
+            <Modal
+              align="left"
+              my={4}
+              p={[3, 4]}
+              style={{ minHeight: '16rem' }}
+            >
               <CloseButton onClick={this.onClose} />
-              <Comments name={name} url={url} status={status} />
+              <Comments
+                name={name}
+                url={url}
+                status={status}
+                id={id}
+                email={email}
+              />
             </Modal>
             <Overlay onClick={this.onClose} />
           </Fragment>

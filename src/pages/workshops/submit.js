@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Container, Heading, Text, Section, cx } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
-import Auth from 'components/workshops/Auth'
+import Auth from 'components/Auth'
 import SubmitForm from 'components/workshops/SubmitForm'
 import Footer from 'components/Footer'
 

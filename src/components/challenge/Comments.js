@@ -11,6 +11,7 @@ import {
 import Auth from 'components/Auth'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
+import Comment from 'components/challenge/Comment'
 import NewComment from 'components/challenge/NewComment'
 import PropTypes from 'prop-types'
 
@@ -20,12 +21,11 @@ const Header = Flex.extend`
 `
 
 class Comments extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      data: props.data
-    }
-  }
+  state = { data: [] }
+
+  static getDerivedStateFromProps = (nextProps, prevState) => ({
+    data: nextProps.data
+  })
 
   onSubmit = data => {
     this.setState(state => {
@@ -35,6 +35,7 @@ class Comments extends Component {
 
   render() {
     const { status, name, url, id, email } = this.props
+    const { data } = this.state
     return (
       <Fragment>
         <Header pb={1}>
@@ -56,6 +57,16 @@ class Comments extends Component {
         />
         {status === 'loading' && <LoadingBar />}
         {status === 'error' && <ErrorPage />}
+        {data.map(comment => (
+          <Comment
+            key={comment.id}
+            createdAt={comment.created_at}
+            mine={comment.user.email === email}
+            user={comment.user}
+            body={comment.body}
+            onDelete={this.onDelete}
+          />
+        ))}
         {status === 'success' && (
           <Fragment>
             <NewComment id={id} email={email} />

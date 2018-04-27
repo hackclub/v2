@@ -68,7 +68,7 @@ class Comments extends Component {
             bg: 'info',
             boxShadowSize: 'md'
           }}
-          textProps={{ my: 3, color: 'muted' }}
+          textProps={{ justify: 'center', my: 3, color: 'muted' }}
         />
         {status === 'loading' && <LoadingBar />}
         {status === 'error' && <ErrorPage />}

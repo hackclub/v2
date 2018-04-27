@@ -13,9 +13,10 @@ import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 import Comment from 'components/challenge/Comment'
 import NewComment from 'components/challenge/NewComment'
+import NoComments from 'components/challenge/NoComments'
 import PropTypes from 'prop-types'
 import api from 'api'
-import { remove } from 'lodash'
+import { isEmpty, remove } from 'lodash'
 
 const Header = Flex.extend`
   align-items: baseline;
@@ -70,7 +71,11 @@ class Comments extends Component {
           }}
           textProps={{ justify: 'center', my: 3, color: 'muted' }}
         />
-        {status === 'loading' && <LoadingBar />}
+        {status === 'loading' ? (
+          <LoadingBar />
+        ) : (
+          isEmpty(data) && <NoComments />
+        )}
         {status === 'error' && <ErrorPage />}
         {data.map((c, i) => (
           <Comment

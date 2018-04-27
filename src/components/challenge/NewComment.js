@@ -13,18 +13,28 @@ const Form = Flex.withComponent('form').extend`
     flex: 1 1 auto;
   }
 
+  .public-DraftEditorPlaceholder-inner {
+    color: ${props => props.theme.colors.muted};
+    font-size: ${props => props.theme.fontSizes[2]}px;
+  }
+
   .DraftEditor-editorContainer > div {
     border: 1px solid ${props => props.theme.colors.smoke};
     border-radius: 16px;
     padding: ${props => props.theme.space[2]}px ${props =>
   props.theme.space[3]}px;
-    font-size: ${props => props.theme.fontSizes[2]}px !important;
-    line-height: 1.375;
-  }
+    font-size: 14px !important;
+    line-height: 1.375 !important;
 
-  .public-DraftEditorPlaceholder-inner {
-    color: ${props => props.theme.colors.muted};
-    font-size: ${props => props.theme.fontSizes[2]}px;
+    a {
+      text-decoration: underline;
+    }
+
+    p,
+    li {
+      margin-top: ${props => props.theme.space[1]}px !important;
+      margin-bottom: ${props => props.theme.space[1]}px !important;
+    }
   }
 `
 

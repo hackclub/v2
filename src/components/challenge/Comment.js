@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { Avatar, Box, Flex, Text, cx } from '@hackclub/design-system'
 import Gravatar from 'react-gravatar'
+import ReactMarkdown from 'react-markdown'
 import MarkdownBody from 'components/MarkdownBody'
 import PropTypes from 'prop-types'
 import { timeSince } from 'helpers'
@@ -49,7 +50,7 @@ const Time = Text.withComponent('time').extend`
   }
 `
 
-const Bubble = MarkdownBody.extend`
+const Bubble = Box.withComponent(ReactMarkdown).extend`
   background-color: ${props =>
     props.mine ? props.theme.colors.primary : props.theme.colors.snow};
   background-image: ${props =>
@@ -57,12 +58,48 @@ const Bubble = MarkdownBody.extend`
   color: ${props =>
     props.mine ? props.theme.colors.white : props.theme.colors.black};
   border-radius: ${props => props.theme.space[3]}px;
+  font-size: 14px;
+  line-height: 1.375;
   vertical-align: middle;
   white-space: pre-line;
   word-wrap: break-word;
   word-break: break-word;
-  padding: ${props => props.theme.space[2]}px ${props => props.theme.space[3]}px;
+  padding: ${props => props.theme.space[2]}px ${props =>
+  props.theme.space[3]}px;
   margin-top: ${props => props.theme.space[1]}px;
+
+  > :first-child {
+    margin-top: 0 !important;
+  }
+  > :last-child {
+    margin-bottom: 0 !important;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-size: inherit;
+    margin-top: 0;
+    margin-bottom: ${props => props.theme.space[2]}px;
+  }
+
+  ol,
+  ul,
+  blockquote {
+    padding-left: ${props => props.theme.space[3]}px;
+  }
+
+  blockquote {
+    border-left: 2px solid currentColor;
+    padding-left: ${props => props.theme.space[2]}px;
+    margin-left: 0;
+  }
+
+  p,
+  li {
+    margin-top: ${props => props.theme.space[1]}px;
+    margin-bottom: ${props => props.theme.space[1]}px;
+  }
 `
 
 const Comment = ({
@@ -83,7 +120,7 @@ const Comment = ({
           <Time title={createdAt} children={timeSince(createdAt)} />
         </Byline>
       )}
-      <Bubble mine={mine} fontSize="14px" lineHeight="1.375" children={body} />
+      <Bubble mine={mine} source={body} />
     </Group>
   </Flex>
 )

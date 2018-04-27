@@ -53,6 +53,12 @@ const MarkdownBody = Box.extend`
     padding-left: ${props => props.theme.space[3] * 1.5}px;
   }
 
+  blockquote {
+    border-left: 2px solid currentColor;
+    padding-left: ${props => props.theme.space[2]}px;
+    margin-left: 0;
+  }
+
   p,
   li {
     margin-top: ${props => props.theme.space[2]}px;

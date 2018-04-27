@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, IconButton } from '@hackclub/design-system'
+import { Box, Card, IconButton } from '@hackclub/design-system'
 import { keyframes } from 'styled-components'
 
 const modalKeyframes = keyframes`
@@ -42,7 +42,7 @@ const Modal = Card.extend`
   }
 `
 
-const Overlay = Card.extend`
+const Overlay = Box.extend`
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.375);
   backdrop-filter: blur(6px);

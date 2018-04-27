@@ -18,7 +18,7 @@ const Form = Flex.withComponent('form').extend`
 
   .DraftEditor-editorContainer > div {
     border: 1px solid ${props => props.theme.colors.smoke};
-    border-radius: 16px;
+    border-radius: 18px;
     padding: ${props => props.theme.space[2]}px ${props =>
   props.theme.space[3]}px;
     font-size: 14px !important;

@@ -52,14 +52,15 @@ const Time = Text.withComponent('time').extend`
 
 const Bubble = Box.withComponent(ReactMarkdown).extend`
   background-color: ${props =>
-    props.mine ? props.theme.colors.primary : props.theme.colors.snow};
+    props.mine ? props.theme.colors.info : props.theme.colors.snow};
   background-image: ${props =>
     props.mine ? gradient('blue.5', 'blue.6') : gradient('gray.0', 'gray.1')};
   color: ${props =>
     props.mine ? props.theme.colors.white : props.theme.colors.black};
-  border-radius: ${props => props.theme.space[3]}px;
+  border-radius: 18px;
   font-size: 14px;
   line-height: 1.375;
+  min-height: 36px;
   vertical-align: middle;
   white-space: pre-line;
   word-wrap: break-word;

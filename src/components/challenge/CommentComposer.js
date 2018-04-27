@@ -12,7 +12,12 @@ import createCodeEditorPlugin from 'draft-js-code-editor-plugin'
 import { mdToDraftjs, draftjsToMd } from 'draftjs-md-converter'
 import { isEmpty } from 'lodash'
 
-const plugins = [createMarkdownPlugin(), createCodeEditorPlugin()]
+const features = {
+  inline: ['BOLD', 'ITALIC', 'CODE', 'STRIKETHROUGH', 'LINK', 'IMAGE'],
+  block: ['CODE', 'ordered-list-item', 'unordered-list-item', 'blockquote']
+}
+
+const plugins = [createMarkdownPlugin({ features }), createCodeEditorPlugin()]
 
 export const LS_BODY_KEY = 'new-comment'
 

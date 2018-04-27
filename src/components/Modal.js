@@ -28,10 +28,12 @@ const Modal = Card.extend`
 
   // Responsive size control
   width: 36rem;
-  max-width: 95%;
-  max-height: 100%;
+  max-width: 95vw;
+  max-height: 95vh;
   margin-left: auto;
   margin-right: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 
   button:first-child {
     position: fixed;

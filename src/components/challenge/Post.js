@@ -160,12 +160,7 @@ class Post extends Component {
         <PostRow onComment={this.onOpen} {...this.props} />
         {commentsOpen && (
           <Fragment>
-            <Modal
-              align="left"
-              my={4}
-              p={[3, 4]}
-              style={{ minHeight: '16rem' }}
-            >
+            <Modal align="left" p={[3, 4]} style={{ minHeight: '16rem' }}>
               <CloseButton onClick={this.onClose} />
               <Comments
                 name={name}

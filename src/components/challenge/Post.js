@@ -128,7 +128,6 @@ class Post extends Component {
       email = localStorage.getItem('userEmail')
       this.setState({ email })
     }
-    window.api = api
     api
       .get(`v1/posts/${this.props.id}/comments`)
       .then(data => {
@@ -156,7 +155,6 @@ class Post extends Component {
       disabled
     } = this.props
     const { status, commentsOpen, comments, email } = this.state
-    let Bar
     return (
       <Fragment>
         <PostRow onComment={this.onOpen} {...this.props} />
@@ -175,6 +173,7 @@ class Post extends Component {
                 status={status}
                 id={id}
                 email={email}
+                data={comments}
               />
             </Modal>
             <Overlay onClick={this.onClose} />

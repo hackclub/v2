@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Flex, Input } from '@hackclub/design-system'
-import { Submit } from 'components/Forms'
+import { Flex, Input, IconButton } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import { isEmpty } from 'lodash'
 import Composer, { LS_BODY_KEY } from './CommentComposer'
@@ -8,18 +7,19 @@ import yup from 'yup'
 import api from 'api'
 
 const Form = Flex.withComponent('form').extend`
-  align-items: flex-end;
+  align-items: flex-start;
 
   > div:first-child {
     flex: 1 1 auto;
   }
 
   .DraftEditor-editorContainer > div {
-    background-color: ${props => props.theme.colors.blue[0]};
-    border-radius: ${props => props.theme.radii[2]};
+    border: 1px solid ${props => props.theme.colors.smoke};
+    border-radius: 16px;
     padding: ${props => props.theme.space[2]}px ${props =>
   props.theme.space[3]}px;
-    min-height: 2rem;
+    font-size: ${props => props.theme.fontSizes[2]}px !important;
+    line-height: 1.375;
   }
 
   .public-DraftEditorPlaceholder-inner {
@@ -28,8 +28,8 @@ const Form = Flex.withComponent('form').extend`
   }
 `
 
-const statusMessage = status =>
-  status ? { success: 'Posted!', error: 'Error' }[status] : 'Post'
+const statusIcon = status =>
+  status ? { success: 'check', error: 'error' }[status] : 'send'
 const statusColor = status =>
   status === 'success' || status === 'error' ? status.toString() : 'info'
 const InnerForm = ({
@@ -46,11 +46,14 @@ const InnerForm = ({
 }) => (
   <Form w={1} mt={3} onSubmit={handleSubmit}>
     <Composer onChange={setFieldValue} onBlur={handleBlur} />
-    <Submit
+    <IconButton
+      type="submit"
       onClick={handleSubmit}
       disabled={isSubmitting || isEmpty(props.email)}
-      value={statusMessage(status)}
+      name={statusIcon(status)}
       bg={statusColor(status)}
+      color="white"
+      style={{ borderRadius: 9999 }}
       ml={3}
     />
   </Form>

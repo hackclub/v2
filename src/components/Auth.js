@@ -47,14 +47,7 @@ class Auth extends Component {
       </Flex>
     ) : (
       <Sheet {...cardProps}>
-        <Heading.h2
-          color="white"
-          mt={0}
-          mb={2}
-          f={3}
-          caps
-          children={headline}
-        />
+        <Heading.h2 color="white" mt={0} mb={2} f={3} children={headline} />
         <LoginForm
           bg="black"
           color="white"

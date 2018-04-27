@@ -82,7 +82,13 @@ class Comments extends Component {
             key={c.id}
             createdAt={c.created_at}
             mine={c.user.email === email}
-            following={i > 0 ? data[i - 1].user.email === c.user.email : false}
+            following={
+              i > 0
+                ? data[i - 1].user.email === c.user.email &&
+                  new Date(c.created_at).getDate() ===
+                    new Date(data[i - 1].created_at).getDate()
+                : false
+            }
             user={c.user}
             body={c.body}
             onDelete={this.onDelete}

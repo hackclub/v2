@@ -14,6 +14,8 @@ import ErrorPage from 'components/admin/ErrorPage'
 import Comment from 'components/challenge/Comment'
 import NewComment from 'components/challenge/NewComment'
 import PropTypes from 'prop-types'
+import api from 'api'
+import { remove } from 'lodash'
 
 const Header = Flex.extend`
   align-items: baseline;
@@ -33,9 +35,22 @@ class Comments extends Component {
     })
   }
 
+  onDelete = id => {
+    const { data } = this.state
+    api
+      .delete(`v1/post_comments/${id}`)
+      .then(() => {
+        this.setState(state => ({
+          data: remove(state.data, comment => comment.id === id)
+        }))
+      })
+      .catch(e => {})
+  }
+
   render() {
     const { status, name, url, id, email } = this.props
     const { data } = this.state
+    console.log(this.props, this.state)
     return (
       <Fragment>
         <Header pb={1}>
@@ -57,13 +72,14 @@ class Comments extends Component {
         />
         {status === 'loading' && <LoadingBar />}
         {status === 'error' && <ErrorPage />}
-        {data.map(comment => (
+        {data.map((c, i) => (
           <Comment
-            key={comment.id}
-            createdAt={comment.created_at}
-            mine={comment.user.email === email}
-            user={comment.user}
-            body={comment.body}
+            key={c.id}
+            createdAt={c.created_at}
+            mine={c.user.email === email}
+            following={i > 0 ? data[i - 1].user.email === c.user.email : false}
+            user={c.user}
+            body={c.body}
             onDelete={this.onDelete}
           />
         ))}

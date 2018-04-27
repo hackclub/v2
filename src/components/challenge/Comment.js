@@ -1,11 +1,5 @@
 import React, { Fragment } from 'react'
-import {
-  Avatar,
-  Box,
-  Flex,
-  Text,
-  cx
-} from '@hackclub/design-system'
+import { Avatar, Box, Flex, Text, cx } from '@hackclub/design-system'
 import Gravatar from 'react-gravatar'
 import MarkdownBody from 'components/MarkdownBody'
 import PropTypes from 'prop-types'
@@ -16,6 +10,10 @@ const gradient = (a, b) =>
 
 const Avi = Avatar.withComponent(Gravatar).extend`
   margin-top: 18px; // 14px (byline size) + 4px (margin)
+`
+const BlankAvi = Box.extend`
+  width: 28px;
+  height: 28px;
 `
 
 const Group = Flex.extend`
@@ -67,14 +65,24 @@ const Bubble = MarkdownBody.extend`
   margin-top: ${props => props.theme.space[1]}px;
 `
 
-const Comment = ({ createdAt, mine, user, body, onDelete, ...props }) => (
-  <Flex mt={3} flexDirection={mine ? 'row-reverse' : 'row'}>
-    <Avi email={user.email} size={28} />
+const Comment = ({
+  following,
+  createdAt,
+  mine,
+  user,
+  body,
+  onDelete,
+  ...props
+}) => (
+  <Flex mt={following ? 0 : 3} flexDirection={mine ? 'row-reverse' : 'row'}>
+    {following ? <BlankAvi /> : <Avi email={user.email} size={28} />}
     <Group mine={mine}>
-      <Byline mine={mine}>
-        <Text.span bold>{user.email}</Text.span>
-        <Time title={createdAt} children={timeSince(createdAt)} />
-      </Byline>
+      {!following && (
+        <Byline mine={mine}>
+          <Text.span bold>{user.email}</Text.span>
+          <Time title={createdAt} children={timeSince(createdAt)} />
+        </Byline>
+      )}
       <Bubble mine={mine} fontSize="14px" lineHeight="1.375" children={body} />
     </Group>
   </Flex>
@@ -83,9 +91,10 @@ const Comment = ({ createdAt, mine, user, body, onDelete, ...props }) => (
 export default Comment
 
 Comment.propTypes = {
-  createdAt: PropTypes.string.isRequired,
+  following: PropTypes.bool.isRequired,
   mine: PropTypes.bool.isRequired,
   user: PropTypes.object.isRequired,
   body: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
   onDelete: PropTypes.func.isRequired
 }

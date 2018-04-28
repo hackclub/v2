@@ -13,10 +13,10 @@ const Form = Flex.withComponent('form').extend`
 
   .public-DraftEditorPlaceholder-inner {
     color: ${props => props.theme.colors.muted};
-    font-size: ${props => props.theme.fontSizes[2]}px;
+    font-size: ${props => props.theme.fontSizes[1]}px;
   }
 
-  .DraftEditor-editorContainer > div {
+  .DraftEditor-root {
     border: 1px solid ${props => props.theme.colors.smoke};
     border-radius: 18px;
     padding: ${props => props.theme.space[2]}px ${props =>

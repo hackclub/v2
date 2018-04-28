@@ -75,7 +75,7 @@ class Composer extends Component {
           autoCorrect="on"
           stripPastedStyles={true}
           name="body"
-          placeholder="Add a comment (Markdown). Be nice."
+          placeholder="Add your comment here…"
           {...this.props}
           onChange={this.onChange}
         />

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Box, Card, IconButton } from '@hackclub/design-system'
 import { keyframes } from 'styled-components'
+import ScrollLock from 'react-scrolllock'
 
 const modalKeyframes = keyframes`
   0% {
@@ -42,7 +43,7 @@ const Modal = Card.extend`
   }
 `
 
-const Overlay = Box.extend`
+const Overlayer = Box.extend`
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.375);
   backdrop-filter: blur(6px);
@@ -54,8 +55,15 @@ const Overlay = Box.extend`
   height: 100%;
 `
 
+const Overlay = props => (
+  <Fragment>
+    <Overlayer {...props} />
+    <ScrollLock />
+  </Fragment>
+)
+
 const CloseButton = props => (
   <IconButton name="close" color="muted" circle p={3} {...props} />
 )
 
-export default { Modal, Overlay, CloseButton }
+export default { Modal, Overlay, Overlayer, CloseButton }

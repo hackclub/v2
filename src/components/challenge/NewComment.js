@@ -36,10 +36,8 @@ const Form = Flex.withComponent('form').extend`
   }
 `
 
-const statusIcon = status =>
-  isEmpty(status) ? 'send' : { success: 'check', error: 'error' }[status]
-const statusColor = status =>
-  status === 'success' || status === 'error' ? status.toString() : 'info'
+const statusIcon = status => (status === 'error' ? 'error' : 'send')
+const statusColor = status => (status === 'error' ? 'error' : 'info')
 const InnerForm = ({
   values,
   errors,
@@ -93,8 +91,6 @@ const CommentForm = withFormik({
         setValues({ body: '' })
         props.onSubmit(res)
         if (localStorage) localStorage.removeItem(LS_BODY_KEY)
-        setStatus('success')
-        setTimeout(() => setStatus(null), 1024)
       })
       .catch(e => {
         setSubmitting(false)

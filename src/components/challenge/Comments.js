@@ -72,7 +72,7 @@ class Comments extends Component {
           textProps={{ justify: 'center', my: 3, color: 'muted' }}
         />
         {status === 'loading' ? (
-          <LoadingBar />
+          <LoadingBar py={6} />
         ) : (
           isEmpty(data) && <NoComments />
         )}
@@ -95,9 +95,7 @@ class Comments extends Component {
           />
         ))}
         {status === 'success' && (
-          <Fragment>
-            <NewComment id={id} email={email} />
-          </Fragment>
+          <NewComment id={id} email={email} onSubmit={this.onSubmit} />
         )}
       </Fragment>
     )

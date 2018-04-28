@@ -6,19 +6,30 @@ export const tinyDt = d =>
     .replace(`/${year}`, '')
     .replace(`${year}-`, '')
 
-export const timeSince = time => {
-  const seconds = Math.floor((new Date() - new Date(time)) / 1000)
-  const intervals = [
-    [Math.floor(seconds / (60 * 60 * 24 * 7)), 'weeks'],
-    [Math.floor(seconds / (60 * 60 * 24)), 'days'],
-    [Math.floor(seconds / (60 * 60)), 'hours'],
-    [Math.floor(seconds / 60), 'minutes']
-  ]
-  for (var i = 0; i < intervals.length; i++) {
-    let interval = intervals[i]
-    if (interval[0] > 1) {
-      return interval.join(' ')
-    }
+// based on https://github.com/withspectrum/spectrum/blob/alpha/src/helpers/utils.js#L146
+export const timeSince = (previous, current) => {
+  const msPerSecond = 1000
+  const msPerMinute = 60 * 1000
+  const msPerHour = msPerMinute * 60
+  const msPerDay = msPerHour * 24
+  const msPerYear = msPerDay * 365
+
+  const elapsed =
+    (current ? new Date(current) : new Date()) - new Date(previous)
+
+  if (elapsed < msPerMinute) {
+    return '< 1m'
+  } else if (elapsed < msPerHour) {
+    const now = Math.round(elapsed / msPerMinute)
+    return `${now}m`
+  } else if (elapsed < msPerDay) {
+    const now = Math.round(elapsed / msPerHour)
+    return `${now}h`
+  } else if (elapsed < msPerYear) {
+    const now = Math.round(elapsed / msPerDay)
+    return `${now}d`
+  } else {
+    const now = Math.round(elapsed / msPerYear)
+    return `${now}y`
   }
-  return 'less than a minute'
 }

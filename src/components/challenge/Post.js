@@ -43,10 +43,15 @@ const CommentButton = Box.withComponent('button').extend`
   box-shadow: none !important;
   cursor: pointer;
   position: relative;
+  padding-right: 0;
+  margin: 0;
   span {
     position: absolute;
     width: 100%;
     top: ${props => props.theme.space[2]}px;
+  }
+  ${props => props.theme.mediaQueries.md} {
+    padding-right: ${props => props.theme.space[3]}px;
   }
 `
 

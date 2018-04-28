@@ -28,7 +28,7 @@ const UpvoteButton = Button.button.extend`
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 5rem;
+  max-width: 72px;
   box-shadow: none !important;
   cursor: ${props => props.cursor};
 `
@@ -76,7 +76,7 @@ const PostRow = ({
       onClick={onUpvote}
       cursor={disabled ? 'not-allowed' : 'pointer'}
     >
-      <Icon name="arrow_upward" />
+      <Icon size={20} name="arrow_upward" />
       <Text.span ml={1} f={2} children={upvotesCount} />
     </UpvoteButton>
     <Link w={1} href={url} target="_blank" color="black" px={3}>

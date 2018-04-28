@@ -43,6 +43,15 @@ class Composer extends Component {
     }
   }
 
+  static getDerivedStateFromProps = (nextProps, prevState) => {
+    // after submit, reset value
+    if (nextProps.clear && prevState.body !== EditorState.createEmpty()) {
+      return { body: EditorState.createEmpty() }
+    } else {
+      return {}
+    }
+  }
+
   onChange = body => {
     const raw = convertToRaw(body.getCurrentContent())
     const md = draftjsToMd(raw)
@@ -75,7 +84,7 @@ class Composer extends Component {
           autoCorrect="on"
           stripPastedStyles={true}
           name="body"
-          placeholder="Add your comment here…"
+          placeholder="Add your comment…"
           {...this.props}
           onChange={this.onChange}
         />

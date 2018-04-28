@@ -50,13 +50,13 @@ const InnerForm = ({
   status,
   ...props
 }) => (
-  <Form
-    align={isEmpty(values.body) ? 'flex-end' : 'flex-start'}
-    w={1}
-    mt={3}
-    onSubmit={handleSubmit}
-  >
-    <Composer onChange={setFieldValue} onBlur={handleBlur} />
+  <Form align="flex-end" w={1} mt={3} onSubmit={handleSubmit}>
+    <Composer
+      value={values.body}
+      clear={isEmpty(values.body) && touched.body}
+      onChange={setFieldValue}
+      onBlur={handleBlur}
+    />
     <IconButton
       type="submit"
       onClick={handleSubmit}

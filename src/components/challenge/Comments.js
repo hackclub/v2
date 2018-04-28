@@ -19,8 +19,17 @@ import api from 'api'
 import { isEmpty, remove } from 'lodash'
 
 const Header = Flex.extend`
+  flex-shrink: 0;
   align-items: baseline;
   border-bottom: 1px solid ${props => props.theme.colors.smoke};
+`
+
+const Container = Box.extend`
+  flex-shrink: 0;
+  flex: 1 1 auto;
+  max-height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 `
 
 class Comments extends Component {
@@ -61,40 +70,42 @@ class Comments extends Component {
             <Icon name="open_in_new" color="info" size={24} />
           </Link>
         </Header>
-        <Auth
-          headline="Sign in to comment"
-          type="public"
-          cardProps={{
-            p: 3,
-            my: 3,
-            bg: 'info',
-            boxShadowSize: 'md'
-          }}
-          textProps={{ justify: 'center', my: 3, color: 'muted' }}
-        />
-        {status === 'loading' ? (
-          <LoadingBar py={6} />
-        ) : (
-          isEmpty(data) && <NoComments />
-        )}
-        {status === 'error' && <ErrorPage />}
-        {data.map((c, i) => (
-          <Comment
-            key={c.id}
-            createdAt={c.created_at}
-            mine={c.user.email === email}
-            following={
-              i > 0
-                ? data[i - 1].user.email === c.user.email &&
-                  new Date(c.created_at).getDate() ===
-                    new Date(data[i - 1].created_at).getDate()
-                : false
-            }
-            user={c.user}
-            body={c.body}
-            onDelete={this.onDelete}
+        <Container>
+          <Auth
+            headline="Sign in to comment"
+            type="public"
+            cardProps={{
+              p: 3,
+              my: 3,
+              bg: 'info',
+              boxShadowSize: 'md'
+            }}
+            textProps={{ justify: 'center', py: 3, color: 'muted' }}
           />
-        ))}
+          {status === 'loading' ? (
+            <LoadingBar py={6} />
+          ) : (
+            isEmpty(data) && <NoComments />
+          )}
+          {status === 'error' && <ErrorPage />}
+          {data.map((c, i) => (
+            <Comment
+              key={c.id}
+              createdAt={c.created_at}
+              mine={c.user.email === email}
+              following={
+                i > 0
+                  ? data[i - 1].user.email === c.user.email &&
+                    new Date(c.created_at).getDate() ===
+                      new Date(data[i - 1].created_at).getDate()
+                  : false
+              }
+              user={c.user}
+              body={c.body}
+              onDelete={this.onDelete}
+            />
+          ))}
+        </Container>
         {status === 'success' && (
           <NewComment id={id} email={email} onSubmit={this.onSubmit} />
         )}

@@ -55,6 +55,12 @@ const CommentButton = Box.withComponent('button').extend`
   }
 `
 
+const CommentsModal = Modal.extend`
+  display: flex;
+  flex-direction: column;
+  min-height: 16rem;
+`
+
 const PostRow = ({
   id,
   name,
@@ -165,7 +171,7 @@ class Post extends Component {
         <PostRow onComment={this.onOpen} {...this.props} />
         {commentsOpen && (
           <Fragment>
-            <Modal align="left" p={[3, 4]} style={{ minHeight: '16rem' }}>
+            <CommentsModal align="left" p={[3, 4]}>
               <CloseButton onClick={this.onClose} />
               <Comments
                 name={name}
@@ -175,7 +181,7 @@ class Post extends Component {
                 email={email}
                 data={comments}
               />
-            </Modal>
+            </CommentsModal>
             <Overlay onClick={this.onClose} />
           </Fragment>
         )}

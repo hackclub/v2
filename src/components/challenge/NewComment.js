@@ -7,6 +7,9 @@ import yup from 'yup'
 import api from 'api'
 
 const Form = Flex.withComponent('form').extend`
+  min-height: 3rem;
+  z-index: 4;
+
   > div:first-child {
     flex: 1 1 auto;
   }
@@ -22,6 +25,7 @@ const Form = Flex.withComponent('form').extend`
   }
 
   .DraftEditor-root {
+    background-color: ${props => props.theme.colors.white};
     border: 1px solid ${props => props.theme.colors.smoke};
     border-radius: 18px;
     padding: ${props => props.theme.space[2]}px ${props =>

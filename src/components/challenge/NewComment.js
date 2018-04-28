@@ -21,7 +21,7 @@ const Form = Flex.withComponent('form').extend`
     border-radius: 18px;
     padding: ${props => props.theme.space[2]}px ${props =>
   props.theme.space[3]}px;
-    font-size: 14px !important;
+    font-size: ${props => props.theme.fontSizes[1]}px !important;
     line-height: 1.375 !important;
 
     a {
@@ -66,7 +66,8 @@ const InnerForm = ({
       name={statusIcon(status)}
       bg={statusColor(status)}
       color="white"
-      style={{ borderRadius: 9999 }}
+      size={20}
+      style={{ borderRadius: 9999 /* next DS release */ }}
       ml={3}
     />
   </Form>

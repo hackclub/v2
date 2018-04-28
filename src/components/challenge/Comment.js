@@ -58,7 +58,7 @@ const Bubble = Box.withComponent(ReactMarkdown).extend`
   color: ${props =>
     props.mine ? props.theme.colors.white : props.theme.colors.black};
   border-radius: 18px;
-  font-size: 14px;
+  font-size: ${props => props.theme.fontSizes[1]}px;
   line-height: 1.375;
   min-height: 36px;
   vertical-align: middle;

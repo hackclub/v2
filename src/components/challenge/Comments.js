@@ -34,6 +34,7 @@ class Comments extends Component {
     this.setState(state => {
       data: state.data.push(data)
     })
+    this.forceUpdate()
   }
 
   onDelete = id => {

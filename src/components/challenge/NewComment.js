@@ -11,6 +11,11 @@ const Form = Flex.withComponent('form').extend`
     flex: 1 1 auto;
   }
 
+  // remove with next DS
+  > button:last-child {
+    border-radius: ${props => props.theme.pill};
+  }
+
   .public-DraftEditorPlaceholder-inner {
     color: ${props => props.theme.colors.muted};
     font-size: ${props => props.theme.fontSizes[1]}px;
@@ -36,7 +41,8 @@ const Form = Flex.withComponent('form').extend`
   }
 `
 
-const statusIcon = status => (status === 'error' ? 'error' : 'send')
+const statusIcon = status =>
+  ({ success: 'check', error: 'error' }[status] || 'send')
 const statusColor = status => (status === 'error' ? 'error' : 'info')
 const InnerForm = ({
   values,
@@ -60,12 +66,11 @@ const InnerForm = ({
     <IconButton
       type="submit"
       onClick={handleSubmit}
-      disabled={isSubmitting || isEmpty(values.body) || isEmpty(props.email)}
+      disabled={isEmpty(props.email)}
       name={statusIcon(status)}
       bg={statusColor(status)}
       color="white"
       size={20}
-      style={{ borderRadius: 9999 /* next DS release */ }}
       ml={3}
     />
   </Form>
@@ -78,7 +83,6 @@ const CommentForm = withFormik({
   handleSubmit: (data, { props, setStatus, setSubmitting, setValues }) => {
     const authToken = localStorage ? localStorage.getItem('authToken') : null
     const body = JSON.stringify({ body: data.body })
-    console.log(body)
     api
       .post(`v1/posts/${props.id}/comments`, {
         method: 'POST',
@@ -91,6 +95,8 @@ const CommentForm = withFormik({
         setValues({ body: '' })
         props.onSubmit(res)
         if (localStorage) localStorage.removeItem(LS_BODY_KEY)
+        setStatus('success')
+        setTimeout(() => setStatus(null), 1536)
       })
       .catch(e => {
         setSubmitting(false)

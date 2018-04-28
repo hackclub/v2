@@ -52,7 +52,7 @@ class Comments extends Component {
       .delete(`v1/post_comments/${id}`)
       .then(() => {
         this.setState(state => ({
-          data: remove(state.data, comment => comment.id === id)
+          data: remove(state.data, comment => comment.id !== id)
         }))
       })
       .catch(e => {})
@@ -91,6 +91,7 @@ class Comments extends Component {
           {data.map((c, i) => (
             <Comment
               key={c.id}
+              id={c.id}
               createdAt={c.created_at}
               mine={c.user.email === email}
               following={

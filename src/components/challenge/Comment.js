@@ -1,5 +1,12 @@
 import React, { Fragment } from 'react'
-import { Avatar, Box, Flex, Text, cx } from '@hackclub/design-system'
+import {
+  Avatar,
+  Box,
+  Flex,
+  Text,
+  IconButton,
+  cx
+} from '@hackclub/design-system'
 import Gravatar from 'react-gravatar'
 import ReactMarkdown from 'react-markdown'
 import MarkdownBody from 'components/MarkdownBody'
@@ -9,12 +16,36 @@ import { timeSince } from 'helpers'
 const gradient = (a, b) =>
   `linear-gradient(to bottom, ${cx(a)} 0%, ${cx(b)} 100%)`
 
+const Root = Flex.extend`
+  button {
+    transform: scale(0);
+    will-change: transform;
+    transition: 0.25s ease-out all;
+  }
+  &:hover button {
+    transform: scale(1);
+  }
+`
+
 const Avi = Avatar.withComponent(Gravatar).extend`
   margin-top: 18px; // 14px (byline size) + 4px (margin)
 `
 const BlankAvi = Box.extend`
-  width: 27px;
-  height: 27px;
+  margin-top: 18px; // 14px (byline size) + 4px (margin)
+  width: 28px;
+  height: 28px;
+`
+const NestedAvi = BlankAvi.extend`
+  position: relative;
+  > button {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.75);
+    top: 2px;
+    left: 2px;
+  }
+  img {
+    margin-top: 0;
+  }
 `
 
 const Group = Flex.extend`
@@ -103,7 +134,12 @@ const Bubble = Box.withComponent(ReactMarkdown).extend`
   }
 `
 
+const DeleteButton = props => (
+  <IconButton name="close" color="error" size={16} p={1} circle {...props} />
+)
+
 const Comment = ({
+  id,
   following,
   createdAt,
   mine,
@@ -112,8 +148,25 @@ const Comment = ({
   onDelete,
   ...props
 }) => (
-  <Flex mt={following ? 0 : 3} flexDirection={mine ? 'row-reverse' : 'row'}>
-    {following ? <BlankAvi /> : <Avi email={user.email} size={27} />}
+  <Root
+    mt={following ? 0 : 3}
+    flexDirection={mine ? 'row-reverse' : 'row'}
+    align="center"
+  >
+    {following ? (
+      mine ? (
+        <DeleteButton bg="red.0" onClick={e => onDelete(id)} />
+      ) : (
+        <BlankAvi />
+      )
+    ) : mine ? (
+      <NestedAvi>
+        <DeleteButton onClick={e => onDelete(id)} />
+        <Avi email={user.email} size={28} />
+      </NestedAvi>
+    ) : (
+      <Avi email={user.email} size={28} />
+    )}
     <Group mine={mine}>
       {!following && (
         <Byline mine={mine}>
@@ -123,12 +176,13 @@ const Comment = ({
       )}
       <Bubble mine={mine} source={body} />
     </Group>
-  </Flex>
+  </Root>
 )
 
 export default Comment
 
 Comment.propTypes = {
+  id: PropTypes.number.isRequired,
   following: PropTypes.bool.isRequired,
   mine: PropTypes.bool.isRequired,
   user: PropTypes.object.isRequired,

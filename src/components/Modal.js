@@ -36,7 +36,7 @@ const Modal = Card.extend`
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
-  button:first-child {
+  > button:first-child {
     position: fixed;
     top: 0;
     right: 0;

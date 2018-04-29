@@ -31,8 +31,8 @@ const InnerForm = ({
       onBlur={handleBlur}
       type="select"
     >
-      <option value="true">Yes</option>
       <option value="false">No</option>
+      <option value="true">Yes</option>
     </Field>
     <Field
       label="Affiliated with Hack Club"
@@ -43,8 +43,8 @@ const InnerForm = ({
       onBlur={handleBlur}
       type="select"
     >
-      <option value="true">Yes</option>
       <option value="false">No</option>
+      <option value="true">Yes</option>
     </Field>
     <Field
       label="How is it associated"
@@ -65,8 +65,8 @@ const InnerForm = ({
       onBlur={handleBlur}
       type="select"
     >
-      <option value="true">Yes</option>
       <option value="false">No</option>
+      <option value="true">Yes</option>
     </Field>
     <Field
       label="Collegiate event"
@@ -77,8 +77,8 @@ const InnerForm = ({
       onBlur={handleBlur}
       type="select"
     >
-      <option value="true">Yes</option>
       <option value="false">No</option>
+      <option value="true">Yes</option>
     </Field>
     <Field
       label="Start date"

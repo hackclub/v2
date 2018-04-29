@@ -84,6 +84,7 @@ const PostRow = ({
     <UpvoteButton
       bg={upvoted ? 'primary' : 'smoke'}
       color={upvoted ? 'white' : 'slate'}
+      aria-label={upvoted ? 'Remove your upvote' : 'Upvote this post'}
       onClick={onUpvote}
       cursor={disabled ? 'not-allowed' : 'pointer'}
     >
@@ -101,7 +102,10 @@ const PostRow = ({
         {description}
       </Text>
     </Link>
-    <CommentButton onClick={onComment}>
+    <CommentButton
+      aria-label={`Open comments: ${commentsCount}`}
+      onClick={onComment}
+    >
       <Icon
         name="chat_bubble"
         color={commentsCount === 0 ? 'gray.5' : 'info'}

@@ -136,7 +136,15 @@ const Bubble = Box.withComponent(ReactMarkdown).extend`
 `
 
 const DeleteButton = props => (
-  <IconButton name="close" color="error" size={16} p={1} circle {...props} />
+  <IconButton
+    name="close"
+    color="error"
+    size={16}
+    p={1}
+    circle
+    aria-label="Delete this comment"
+    {...props}
+  />
 )
 
 const Comment = ({

@@ -69,6 +69,7 @@ const InnerForm = ({
     />
     <IconButton
       type="submit"
+      aria-label="Post your comment"
       onClick={handleSubmit}
       disabled={isEmpty(props.email)}
       name={statusIcon(status)}

@@ -22,7 +22,12 @@ export default class extends Component {
       .get('v1/users/current')
       .then(() => {
         return api.get('v1/events').then(events => {
-          this.setState({ events, status: 'success' })
+          this.setState({
+            events: events.sort(
+              (a, b) => new Date(b.start) - new Date(a.start)
+            ),
+            status: 'success'
+          })
         })
       })
       .catch(err => {
@@ -47,6 +52,8 @@ export default class extends Component {
               <thead>
                 <Tr>
                   <Th>Name</Th>
+                  <Th>Start Date</Th>
+                  <Th>End Date</Th>
                 </Tr>
               </thead>
               <tbody>
@@ -63,6 +70,8 @@ export default class extends Component {
                     }}
                   >
                     <Td>{event.name}</Td>
+                    <Td>{event.start}</Td>
+                    <Td>{event.end}</Td>
                   </Tr>
                 ))}
               </tbody>

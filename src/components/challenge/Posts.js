@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Box, Text } from '@hackclub/design-system'
 import Post from 'components/challenge/Post'
-import LoadingAnimation from 'components/LoadingAnimation'
+import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 import api from 'api'
 import { includes, isEmpty, get } from 'lodash'
@@ -106,11 +106,7 @@ class Posts extends Component {
     const { userId } = this.props
     switch (status) {
       case 'loading':
-        return (
-          <Box py={5} style={{ position: 'relative' }}>
-            <LoadingAnimation />
-          </Box>
-        )
+        return <LoadingBar />
       case 'success':
         return (
           <Fragment>
@@ -119,23 +115,22 @@ class Posts extends Component {
                 No submissions yet!
               </Text>
             )}
-            {posts.map(post => {
-              const mine = get(post, 'creator.id') === userId
-              return (
-                <Post
-                  name={post.name}
-                  url={post.url_redirect}
-                  description={post.description}
-                  createdAt={post.created_at}
-                  mine={mine}
-                  upvotes={post.upvotesCount}
-                  upvoted={includes(upvotes, post.id)}
-                  onUpvote={e => this.onUpvote(e, post.id)}
-                  disabled={userId === undefined}
-                  key={post.url}
-                />
-              )
-            })}
+            {posts.map(post => (
+              <Post
+                id={post.id}
+                name={post.name}
+                url={post.url_redirect}
+                description={post.description}
+                createdAt={post.created_at}
+                mine={get(post, 'creator.id') === userId}
+                commentsCount={post.comment_count}
+                upvotesCount={post.upvotesCount}
+                upvoted={includes(upvotes, post.id)}
+                onUpvote={e => this.onUpvote(e, post.id)}
+                disabled={userId === undefined}
+                key={post.id}
+              />
+            ))}
           </Fragment>
         )
       default:

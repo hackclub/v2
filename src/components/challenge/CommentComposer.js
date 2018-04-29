@@ -1,8 +1,6 @@
-import React, { Component, Fragment } from 'react'
-import { Input } from '@hackclub/design-system'
+import React, { Component } from 'react'
 import MarkdownBody from 'components/MarkdownBody'
 import Editor from 'draft-js-plugins-editor'
-import Prism from 'prismjs'
 import {
   EditorState,
   ContentState,
@@ -11,41 +9,17 @@ import {
 } from 'draft-js'
 import createMarkdownPlugin from 'draft-js-markdown-plugin'
 import createCodeEditorPlugin from 'draft-js-code-editor-plugin'
-import createPrismPlugin from 'draft-js-prism-plugin'
 import { mdToDraftjs, draftjsToMd } from 'draftjs-md-converter'
-import { isEmpty, debounce } from 'lodash'
+import { isEmpty } from 'lodash'
 
-const LangField = Input.withComponent('select').extend`
-  line-height: 1;
-  font-size: ${props => props.theme.fontSizes[1]}px;
-  padding: 0 ${props => props.theme.space[2]}px;
-  margin-top: ${props => props.theme.space[2]}px;
-  margin-bottom: -${props => props.theme.space[1]}px;
-  max-width: 10rem;
-`
+const features = {
+  inline: ['BOLD', 'ITALIC', 'CODE', 'STRIKETHROUGH', 'LINK', 'IMAGE'],
+  block: ['CODE', 'ordered-list-item', 'unordered-list-item', 'blockquote']
+}
 
-const renderLanguageSelect = ({ options, onChange, selectedValue }) => (
-  <LangField type="select" value={selectedValue} onChange={onChange}>
-    {options.map(({ label, value }) => (
-      <option key={value} value={value} children={label} />
-    ))}
-  </LangField>
-)
+const plugins = [createMarkdownPlugin({ features }), createCodeEditorPlugin()]
 
-const Body = MarkdownBody.extend`
-  .DraftEditor-editorContainer > div {
-    min-height: 4rem;
-  }
-`
-
-const plugins = [
-  createMarkdownPlugin({ renderLanguageSelect }),
-  createPrismPlugin({ prism: Prism }),
-  createCodeEditorPlugin()
-]
-
-export const LS_BODY_KEY = 'new-workshop-body'
-export const LS_NAME_KEY = 'new-workshop-name'
+export const LS_BODY_KEY = 'new-comment'
 
 class Composer extends Component {
   state = {
@@ -69,12 +43,28 @@ class Composer extends Component {
     }
   }
 
+  static getDerivedStateFromProps = (nextProps, prevState) => {
+    // after submit, reset value
+    if (nextProps.clear) {
+      return { body: EditorState.createEmpty() }
+    } else {
+      return {}
+    }
+  }
+
   onChange = body => {
     const raw = convertToRaw(body.getCurrentContent())
     const md = draftjsToMd(raw)
-    if (this.props.onChange) this.props.onChange('body', md)
+    this.props.onChange('body', md)
     if (typeof localStorage !== 'undefined') this.persistData(md)
     this.setState({ body })
+    if (this.props.clear && this.editor) this.triggerFocus()
+  }
+
+  triggerFocus = () => {
+    setTimeout(() => {
+      this.editor && this.editor.focus()
+    }, 0)
   }
 
   persistData = next => {
@@ -90,11 +80,10 @@ class Composer extends Component {
   }
 
   render() {
-    const { saved, body } = this.state
     return (
-      <Body mt={2}>
+      <MarkdownBody>
         <Editor
-          editorState={body}
+          editorState={this.state.body}
           plugins={this.state.plugins}
           spellCheck={true}
           autoCapitalize="sentences"
@@ -102,11 +91,12 @@ class Composer extends Component {
           autoCorrect="on"
           stripPastedStyles={true}
           name="body"
-          placeholder="Write in Markdown…"
+          placeholder="Add your comment…"
+          editorRef={editor => (this.editor = editor)}
           {...this.props}
           onChange={this.onChange}
         />
-      </Body>
+      </MarkdownBody>
     )
   }
 }

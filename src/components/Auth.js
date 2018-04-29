@@ -32,23 +32,22 @@ class Auth extends Component {
   }
 
   render() {
+    const { textProps, type, cardProps, headline } = this.props
     const { email } = this.state
     const authed = !isEmpty(email)
 
     return authed ? (
-      <Flex justify="center" align="baseline" mb={3} px={2}>
-        <Text f={2} color="slate" mb={1}>
-          You’re <strong>{email}</strong> (private).
+      <Flex align="baseline" {...textProps}>
+        <Text f={2} color="inherit" mb={1}>
+          You’re <strong>{email}</strong> ({type}).
         </Text>
         <Button.button f={2} ml={3} onClick={this.signOut} bg="info" inverted>
           Change
         </Button.button>
       </Flex>
     ) : (
-      <Sheet maxWidth={20} p={3} bg="primary" boxShadowSize="md" mb={4}>
-        <Heading.h2 color="white" mt={0} mb={2} f={[3, 4]}>
-          Before you submit…
-        </Heading.h2>
+      <Sheet {...cardProps}>
+        <Heading.h2 color="white" mt={0} mb={2} f={3} children={headline} />
         <LoginForm
           bg="black"
           color="white"
@@ -57,6 +56,19 @@ class Auth extends Component {
         />
       </Sheet>
     )
+  }
+}
+
+Auth.defaultProps = {
+  headline: 'Before you submit…',
+  type: 'private',
+  textProps: { justify: 'center', mb: 3, px: 2, color: 'slate' },
+  cardProps: {
+    maxWidth: 20,
+    p: 3,
+    mb: 4,
+    bg: 'primary',
+    boxShadowSize: 'md'
   }
 }
 

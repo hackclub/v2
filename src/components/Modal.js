@@ -24,8 +24,11 @@ const Modal = Card.extend`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: ${modalKeyframes} ease-in 0.25s;
   z-index: 1100;
+
+  ${props => props.theme.mediaQueries.md} {
+    animation: ${modalKeyframes} ease-in 0.25s;
+  }
 
   // Responsive size control
   width: 36rem;

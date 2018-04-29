@@ -8,6 +8,7 @@ import api from 'api'
 
 const Form = Flex.withComponent('form').extend`
   min-height: 3rem;
+  position: relative;
   z-index: 4;
 
   > div:first-child {
@@ -20,11 +21,14 @@ const Form = Flex.withComponent('form').extend`
   }
 
   .public-DraftEditorPlaceholder-inner {
+    position: absolute;
+    top: -${props => props.theme.space[2] * 1.5}px;
+    padding-left: ${props => props.theme.space[3]}px;
     color: ${props => props.theme.colors.muted};
     font-size: ${props => props.theme.fontSizes[1]}px;
   }
 
-  .DraftEditor-root {
+  .DraftEditor-editorContainer > div {
     background-color: ${props => props.theme.colors.white};
     border: 1px solid ${props => props.theme.colors.smoke};
     border-radius: 18px;

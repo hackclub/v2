@@ -30,6 +30,7 @@ const Container = Box.extend`
   max-height: 100%;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  margin-bottom: ${props => props.theme.space[3]}px;
 `
 
 class Comments extends Component {
@@ -65,7 +66,7 @@ class Comments extends Component {
     return (
       <Fragment>
         <Header pb={1}>
-          <Heading.h2 f={5} children={name} />
+          <Heading.h2 f={[4, 5]} children={name} />
           <Link href={url} target="_blank" ml={2}>
             <Icon name="open_in_new" color="info" size={24} />
           </Link>
@@ -80,7 +81,12 @@ class Comments extends Component {
               bg: 'info',
               boxShadowSize: 'md'
             }}
-            textProps={{ justify: 'center', py: 3, color: 'muted' }}
+            textProps={{
+              justify: 'center',
+              py: [2, 3],
+              f: [1, 2],
+              color: 'muted'
+            }}
           />
           {status === 'loading' ? (
             <LoadingBar py={6} />

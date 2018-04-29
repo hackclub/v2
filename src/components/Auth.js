@@ -38,8 +38,10 @@ class Auth extends Component {
 
     return authed ? (
       <Flex align="baseline" {...textProps}>
-        <Text f={2} color="inherit" mb={1}>
-          You’re <strong>{email}</strong> ({type}).
+        <Text color="inherit" mb={1}>
+          You’re <strong style={{ wordBreak: 'break-all' }}>{email}</strong> ({
+            type
+          }).
         </Text>
         <Button.button f={2} ml={3} onClick={this.signOut} bg="info" inverted>
           Change

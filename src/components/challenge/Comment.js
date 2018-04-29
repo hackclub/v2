@@ -56,6 +56,7 @@ const Group = Flex.extend`
   align-items: ${props => (props.mine ? 'flex-end' : 'flex-start')};
   margin-right: ${props => (props.mine ? props.theme.space[2] : 0)}px;
   margin-left: ${props => (props.mine ? 0 : props.theme.space[2])}px;
+  text-align: left;
   &:hover time {
     opacity: 1;
   }
@@ -100,6 +101,7 @@ const Bubble = Box.withComponent(ReactMarkdown).extend`
   padding: ${props => props.theme.space[2]}px ${props =>
   props.theme.space[3]}px;
   margin-top: ${props => props.theme.space[1]}px;
+  max-width: 24rem;
 
   > :first-child {
     margin-top: 0 !important;

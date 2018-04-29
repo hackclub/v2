@@ -152,6 +152,27 @@ class Post extends Component {
         this.setState({ status: 'error' })
       })
   }
+  componentDidMount() {
+    this.poll()
+  }
+  componentWillUnmount() {
+    clearTimeout(this.timeout)
+  }
+  schedule = () => {
+    this.timeout = setTimeout(this.poll, 2048)
+  }
+  poll = () => {
+    api
+      .get(`v1/posts/${this.props.id}/comments`)
+      .then(comments => {
+        this.setState({ comments }, () => {
+          this.schedule()
+        })
+      })
+      .catch(err => {
+        this.schedule()
+      })
+  }
   onClose = e => {
     this.setState({ commentsOpen: false })
   }

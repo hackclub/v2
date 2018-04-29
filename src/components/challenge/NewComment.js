@@ -43,6 +43,10 @@ const Form = Flex.withComponent('form').extend`
       margin-bottom: ${props => props.theme.space[1]}px !important;
     }
   }
+
+  select {
+    display: none;
+  }
 `
 
 const statusIcon = status =>

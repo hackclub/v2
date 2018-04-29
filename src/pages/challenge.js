@@ -156,9 +156,9 @@ export default class extends Component {
         />
         <Header p={3}>
           <Nav />
-          <HeaderContainer maxWidth={56} p={0} mt={3} align="left">
+          <HeaderContainer maxWidth={56} p={0} mt={[0, 3]} align="left">
             <Box align={['center', null, 'right']}>
-              <Text mb={-24} f={3} bold caps>
+              <Text mb={[-2, -24]} f={3} bold caps>
                 Hack Club
               </Text>
               <Heading.h1 f={[6, 7]} my={0}>

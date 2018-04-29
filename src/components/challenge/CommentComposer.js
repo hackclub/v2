@@ -45,7 +45,7 @@ class Composer extends Component {
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
     // after submit, reset value
-    if (nextProps.clear && prevState.body !== EditorState.createEmpty()) {
+    if (nextProps.clear) {
       return { body: EditorState.createEmpty() }
     } else {
       return {}
@@ -58,6 +58,13 @@ class Composer extends Component {
     this.props.onChange('body', md)
     if (typeof localStorage !== 'undefined') this.persistData(md)
     this.setState({ body })
+    if (this.props.clear && this.editor) this.triggerFocus()
+  }
+
+  triggerFocus = () => {
+    setTimeout(() => {
+      this.editor && this.editor.focus()
+    }, 0)
   }
 
   persistData = next => {
@@ -85,6 +92,7 @@ class Composer extends Component {
           stripPastedStyles={true}
           name="body"
           placeholder="Add your comment…"
+          editorRef={editor => (this.editor = editor)}
           {...this.props}
           onChange={this.onChange}
         />

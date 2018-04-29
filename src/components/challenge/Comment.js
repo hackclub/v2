@@ -27,15 +27,16 @@ const Root = Flex.extend`
   }
 `
 
+const aviMargin = 'margin-top: 18px' // 14px (byline size) + 4px (margin)
 const Avi = Avatar.withComponent(Gravatar).extend`
-  margin-top: 18px; // 14px (byline size) + 4px (margin)
+  ${aviMargin};
 `
 const BlankAvi = Box.extend`
-  margin-top: 18px; // 14px (byline size) + 4px (margin)
   width: 28px;
   height: 28px;
 `
-const NestedAvi = BlankAvi.extend`
+const NestedAvi = BlankAvi.withComponent('aside').extend`
+  ${aviMargin};
   position: relative;
   > button {
     position: absolute;

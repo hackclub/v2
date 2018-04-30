@@ -12,6 +12,7 @@ import PropTypes from 'prop-types'
 import { Modal, Overlay, CloseButton } from 'components/Modal'
 import Comments from 'components/challenge/Comments'
 import { dt, tinyDt } from 'helpers'
+import { sortBy } from 'lodash'
 import api from 'api'
 
 const Row = Flex.extend`
@@ -145,35 +146,38 @@ class Post extends Component {
     api
       .get(`v1/posts/${this.props.id}/comments`)
       .then(data => {
-        this.setState({ comments: data, status: 'success' })
+        const comments = sortBy(data, ['created_at'])
+        this.setState({ comments, status: 'success' })
+        this.poll()
       })
       .catch(err => {
         this.setState({ status: 'error' })
       })
   }
-  componentDidMount() {
-    this.poll()
-  }
   componentWillUnmount() {
-    clearTimeout(this.timeout)
+    this.unSchedule()
+  }
+  unSchedule = () => {
+    clearTimeout(this.poller)
   }
   schedule = () => {
-    this.timeout = setTimeout(this.poll, 2048)
+    this.poller = setTimeout(this.poll, 2048)
   }
   poll = () => {
     api
       .get(`v1/posts/${this.props.id}/comments`)
-      .then(comments => {
-        this.setState({ comments }, () => {
-          this.schedule()
-        })
+      .then(data => {
+        const comments = sortBy(data, ['created_at'])
+        this.setState({ comments })
+        this.schedule()
       })
       .catch(err => {
-        this.schedule()
+        console.error(err)
       })
   }
   onClose = e => {
     this.setState({ commentsOpen: false })
+    this.unSchedule()
   }
   render() {
     const {

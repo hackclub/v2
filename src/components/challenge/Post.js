@@ -12,7 +12,6 @@ import PropTypes from 'prop-types'
 import { Modal, Overlay, CloseButton } from 'components/Modal'
 import Comments from 'components/challenge/Comments'
 import { dt, tinyDt } from 'helpers'
-import { kebabCase } from 'lodash'
 import api from 'api'
 
 const Row = Flex.extend`
@@ -79,7 +78,7 @@ const PostRow = ({
     bg={mine ? 'yellow.0' : 'white'}
     title={mine ? '👑 Your post!' : `${name} posted on ${dt(createdAt)}`}
     py={[2, 3]}
-    id={kebabCase(name)}
+    id={`post-${id}`}
   >
     <UpvoteButton
       bg={upvoted ? 'primary' : 'smoke'}

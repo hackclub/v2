@@ -9,17 +9,19 @@ import { includes, isEmpty, get } from 'lodash'
 class Posts extends Component {
   state = { posts: [], upvotes: [], status: 'loading', prevUserId: null }
 
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps = (nextProps, prevState) => {
     const { userId } = nextProps
-    const { prevUserId } = this.state
+    const { prevUserId } = prevState
 
-    if (userId === prevUserId) return
+    if (userId === prevUserId) {
+      return {}
+    } else {
+      return { prevUserId: userId }
+    }
+  }
 
-    this.refreshPosts(userId)
-
-    this.setState({
-      prevUserId: userId
-    })
+  componentDidMount() {
+    this.refreshPosts(this.props.userId)
   }
 
   refreshPosts(newUserId) {

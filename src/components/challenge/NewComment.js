@@ -17,7 +17,7 @@ const Form = Flex.withComponent('form').extend`
 
   .public-DraftEditorPlaceholder-inner {
     position: absolute;
-    top: -${props => props.theme.space[2] * 1.5}px;
+    top: ${props => props.theme.space[2]}px;
     padding-left: ${props => props.theme.space[3]}px;
     color: ${props => props.theme.colors.muted};
     font-size: ${props => props.theme.fontSizes[1]}px;
@@ -61,6 +61,8 @@ const InnerForm = ({
   isSubmitting,
   setFieldValue,
   status,
+  parent,
+  onUnparent,
   ...props
 }) => (
   <Form align="flex-end" w={1} mt={3} onSubmit={handleSubmit}>
@@ -69,6 +71,8 @@ const InnerForm = ({
       clear={isEmpty(values.body) && touched.body}
       onChange={setFieldValue}
       onBlur={handleBlur}
+      parent={parent}
+      onUnparent={onUnparent}
     />
     <IconButton
       type="submit"
@@ -85,12 +89,20 @@ const InnerForm = ({
 )
 const CommentForm = withFormik({
   validationSchema: yup.object().shape({
-    body: yup.string()
+    body: yup.string(),
+    parent_id: yup.number()
+  }),
+  mapPropsToValues: props => ({
+    parent: props.parent ? props.parent.id : null
   }),
   enableReinitialize: true,
   handleSubmit: (data, { props, setStatus, setSubmitting, setValues }) => {
     const authToken = localStorage ? localStorage.getItem('authToken') : null
-    const body = JSON.stringify({ body: data.body })
+    const { parent_id } = data
+    let body = { body: data.body }
+    if (!isEmpty(parent_id)) body.parent_id = parent_id
+    console.log('BODY', body)
+    body = JSON.stringify(body)
     api
       .post(`v1/posts/${props.id}/comments`, {
         method: 'POST',
@@ -100,7 +112,8 @@ const CommentForm = withFormik({
       })
       .then(res => {
         setSubmitting(false)
-        setValues({ body: '' })
+        setValues({ body: '', parent_id: null })
+        props.onUnreply()
         props.onSubmit(res)
         if (localStorage) localStorage.removeItem(LS_BODY_KEY)
         setStatus('success')

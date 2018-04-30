@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import MarkdownBody from 'components/MarkdownBody'
+import QuotedComment from 'components/challenge/QuotedComment'
 import Editor from 'draft-js-plugins-editor'
 import {
   EditorState,
@@ -11,6 +12,7 @@ import createMarkdownPlugin from 'draft-js-markdown-plugin'
 import createCodeEditorPlugin from 'draft-js-code-editor-plugin'
 import { mdToDraftjs, draftjsToMd } from 'draftjs-md-converter'
 import { isEmpty } from 'lodash'
+import styled from 'styled-components'
 
 const features = {
   inline: ['BOLD', 'ITALIC', 'CODE', 'STRIKETHROUGH', 'LINK', 'IMAGE'],
@@ -20,6 +22,12 @@ const features = {
 const plugins = [createMarkdownPlugin({ features }), createCodeEditorPlugin()]
 
 export const LS_BODY_KEY = 'new-comment'
+
+const Root = MarkdownBody.extend`
+  .DraftEditor-root {
+    position: relative;
+  }
+`
 
 class Composer extends Component {
   state = {
@@ -80,8 +88,10 @@ class Composer extends Component {
   }
 
   render() {
+    const { parent, onUnparent } = this.props
     return (
-      <MarkdownBody>
+      <Root>
+        {parent && <QuotedComment data={parent} onDelete={onUnparent} />}
         <Editor
           editorState={this.state.body}
           plugins={this.state.plugins}
@@ -96,7 +106,7 @@ class Composer extends Component {
           {...this.props}
           onChange={this.onChange}
         />
-      </MarkdownBody>
+      </Root>
     )
   }
 }

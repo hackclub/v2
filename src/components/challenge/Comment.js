@@ -10,8 +10,10 @@ import {
 import Gravatar from 'react-gravatar'
 import ReactMarkdown from 'react-markdown'
 import MarkdownBody from 'components/MarkdownBody'
+import QuotedComment from 'components/challenge/QuotedComment'
 import PropTypes from 'prop-types'
 import { timeSince } from 'helpers'
+import { css } from 'styled-components'
 
 const gradient = (a, b) =>
   `linear-gradient(to bottom, ${cx(a)} 0%, ${cx(b)} 100%)`
@@ -27,7 +29,9 @@ const Root = Flex.extend`
   }
 `
 
-const aviMargin = 'margin-top: 18px' // 14px (byline size) + 4px (margin)
+const aviMargin = css`
+  margin-top: 18px;
+` // 14px (byline size) + 4px (margin)
 const Avi = Avatar.withComponent(Gravatar).extend`
   ${aviMargin};
 `
@@ -83,25 +87,13 @@ const Time = Text.withComponent('time').extend`
   }
 `
 
-const Bubble = Box.withComponent(ReactMarkdown).extend`
-  background-color: ${props =>
-    props.mine ? props.theme.colors.info : props.theme.colors.snow};
-  background-image: ${props =>
-    props.mine ? gradient('blue.5', 'blue.6') : gradient('gray.0', 'gray.1')};
-  color: ${props =>
-    props.mine ? props.theme.colors.white : props.theme.colors.black};
-  border-radius: 18px;
+export const commentStyle = css`
   font-size: ${props => props.theme.fontSizes[1]}px;
   line-height: 1.375;
-  min-height: 36px;
   vertical-align: middle;
   white-space: pre-line;
   word-wrap: break-word;
   word-break: break-word;
-  padding: ${props => props.theme.space[2]}px ${props =>
-  props.theme.space[3]}px;
-  margin-top: ${props => props.theme.space[1]}px;
-  max-width: 24rem;
 
   > :first-child {
     margin-top: 0 !important;
@@ -119,8 +111,7 @@ const Bubble = Box.withComponent(ReactMarkdown).extend`
   }
 
   ol,
-  ul,
-  blockquote {
+  ul {
     padding-left: ${props => props.theme.space[3]}px;
   }
 
@@ -130,13 +121,40 @@ const Bubble = Box.withComponent(ReactMarkdown).extend`
     margin-left: 0;
   }
 
-  p,
+  > p,
   li {
     margin-top: ${props => props.theme.space[1]}px;
     margin-bottom: ${props => props.theme.space[1]}px;
   }
 `
 
+const Bubble = Box.withComponent(ReactMarkdown).extend`
+  background-color: ${props =>
+    props.mine ? props.theme.colors.info : props.theme.colors.snow};
+  background-image: ${props =>
+    props.mine ? gradient('blue.5', 'blue.6') : gradient('gray.0', 'gray.1')};
+  color: ${props =>
+    props.mine ? props.theme.colors.white : props.theme.colors.black};
+  border-radius: 18px;
+  min-height: 36px;
+  padding: ${props => props.theme.space[2]}px ${props =>
+  props.theme.space[3]}px;
+  margin-top: ${props => props.theme.space[1]}px;
+  max-width: 24rem;
+  ${commentStyle};
+`
+
+const ReplyButton = props => (
+  <IconButton
+    name="reply"
+    color="info"
+    size={16}
+    p={1}
+    circle
+    aria-label="Reply to this comment"
+    {...props}
+  />
+)
 const DeleteButton = props => (
   <IconButton
     name="close"
@@ -173,7 +191,7 @@ class Comment extends Component {
           mine ? (
             <DeleteButton bg="red.0" onClick={e => onDelete(id)} />
           ) : (
-            <BlankAvi />
+            <ReplyButton bg="blue.0" onClick={e => onReply(id)} />
           )
         ) : mine ? (
           <NestedAvi>
@@ -181,7 +199,10 @@ class Comment extends Component {
             <Avi email={user.email} size={28} />
           </NestedAvi>
         ) : (
-          <Avi email={user.email} size={28} />
+          <NestedAvi>
+            <ReplyButton onClick={e => onReply(id)} />
+            <Avi email={user.email} size={28} />
+          </NestedAvi>
         )}
         <Group mine={mine}>
           {!following && (

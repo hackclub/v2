@@ -69,7 +69,7 @@ const Exception = Box.extend`
 const Footer = ({ children }) => (
   <Base color="black" p={[4, 5]}>
     {children && <Exception children={children} />}
-    <Heading.h3 bold m={0} align={['left', 'right']}>
+    <Heading.h3 bold m={0} align={['left', null, 'right']}>
       Join the Club
     </Heading.h3>
     <Flex align="center" mx={-2} wrap>
@@ -90,7 +90,7 @@ const Footer = ({ children }) => (
       />
       <Service href="mailto:team@hackclub.com" icon="mail_outline" />
     </Flex>
-    <Heading.h3 bold m={0} align={['left', 'right']}>
+    <Heading.h3 bold m={0} align={['left', null, 'right']}>
       Hack Club HQ
     </Heading.h3>
     <Box>

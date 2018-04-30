@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const IconButton = ({ is = Button, name, size = 24, children, ...props }) => {
   const Component = styled(is)`
-    display: flex;
+    display: inline-flex;
     align-items: center;
   `
   return (

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Component } from 'react'
 import {
   Avatar,
   Box,
@@ -149,46 +149,53 @@ const DeleteButton = props => (
   />
 )
 
-const Comment = ({
-  id,
-  following,
-  createdAt,
-  mine,
-  user,
-  body,
-  onDelete,
-  ...props
-}) => (
-  <Root
-    mt={following ? 0 : 3}
-    flexDirection={mine ? 'row-reverse' : 'row'}
-    align="center"
-  >
-    {following ? (
-      mine ? (
-        <DeleteButton bg="red.0" onClick={e => onDelete(id)} />
-      ) : (
-        <BlankAvi />
-      )
-    ) : mine ? (
-      <NestedAvi>
-        <DeleteButton onClick={e => onDelete(id)} />
-        <Avi email={user.email} size={28} />
-      </NestedAvi>
-    ) : (
-      <Avi email={user.email} size={28} />
-    )}
-    <Group mine={mine}>
-      {!following && (
-        <Byline mine={mine}>
-          <Text.span bold>{user.email}</Text.span>
-          <Time title={createdAt} children={timeSince(createdAt)} />
-        </Byline>
-      )}
-      <Bubble mine={mine} source={body} />
-    </Group>
-  </Root>
-)
+// NOTE(@lachlanjc): this would be nicer as stateless, but react-flip-move needs
+// refs, so it has to be a class.
+class Comment extends Component {
+  render() {
+    const {
+      id,
+      following,
+      createdAt,
+      mine,
+      user,
+      body,
+      onDelete,
+      ...props
+    } = this.props
+    return (
+      <Root
+        mt={following ? 0 : 3}
+        flexDirection={mine ? 'row-reverse' : 'row'}
+        align="center"
+      >
+        {following ? (
+          mine ? (
+            <DeleteButton bg="red.0" onClick={e => onDelete(id)} />
+          ) : (
+            <BlankAvi />
+          )
+        ) : mine ? (
+          <NestedAvi>
+            <DeleteButton onClick={e => onDelete(id)} />
+            <Avi email={user.email} size={28} />
+          </NestedAvi>
+        ) : (
+          <Avi email={user.email} size={28} />
+        )}
+        <Group mine={mine}>
+          {!following && (
+            <Byline mine={mine}>
+              <Text.span bold>{user.email}</Text.span>
+              <Time title={createdAt} children={timeSince(createdAt)} />
+            </Byline>
+          )}
+          <Bubble mine={mine} source={body} />
+        </Group>
+      </Root>
+    )
+  }
+}
 
 export default Comment
 

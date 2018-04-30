@@ -57,6 +57,30 @@ const InnerForm = ({
       onBlur={handleBlur}
     />
     <Field
+      label="Affiliated with MLH"
+      name="mlh_associated"
+      value={values.mlh_associated}
+      error={touched.mlh_associated && errors.mlh_associated}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      type="select"
+    >
+      <option value="false">No</option>
+      <option value="true">Yes</option>
+    </Field>
+    <Field
+      label="Collegiate event"
+      name="collegiate"
+      value={values.collegiate}
+      error={touched.collegiate && errors.collegiate}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      type="select"
+    >
+      <option value="false">No</option>
+      <option value="true">Yes</option>
+    </Field>
+    <Field
       label="Start date"
       name="start"
       value={values.start || ''}
@@ -132,6 +156,8 @@ export default withFormik({
     public: yup.string().required(),
     hack_club_associated: yup.string().required(),
     hack_club_associated_notes: yup.string().nullable(),
+    mlh_associated: yup.string().required(),
+    collegiate: yup.string().required(),
     start: yup.date().required(),
     end: yup.date().required(),
     name: yup.string().required(),

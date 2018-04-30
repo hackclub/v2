@@ -58,7 +58,7 @@ const SlackForm = withFormik({
   enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, setStatus, resetForm }) => {
     api
-      .post('v1/slack_invitations', {
+      .post('v1/slack_invites', {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       })

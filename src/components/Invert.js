@@ -9,8 +9,9 @@ const css = `
   filter: invert(100%);
 }
 
-body {
-  background-color: inherit;
+body,
+#___gatsby > * {
+  background-color: #fff;
 }
 
 img:not([src*=".svg"]),

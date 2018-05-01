@@ -4,7 +4,10 @@ import {
   Section,
   Heading,
   Text,
-  Container
+  Container,
+  Card,
+  Button,
+  cx
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
@@ -12,7 +15,7 @@ import Nav from 'components/Nav'
 import Bio from 'components/Bio'
 import Footer from 'components/Footer'
 
-const Header = Section.extend`
+const Header = Section.withComponent('header').extend`
   background: url('/pattern.svg'),
     linear-gradient(
         -64deg,
@@ -32,6 +35,13 @@ const Base = Container.extend`
   }
 `
 
+const Updates = Section.withComponent(Container).extend`
+  background: url('/pattern.svg') ${props => props.theme.colors.white};
+  box-shadow: ${props => props.theme.boxShadows[1]};
+  border-radius: ${props => props.theme.radius};
+`
+const UpdateLink = Button.withComponent(Link)
+
 const title = 'Hack Club Team'
 const description =
   'Meet the team that runs Hack Club, a global nonprofit network of high school computer science clubs.'
@@ -48,6 +58,12 @@ export default () => (
         { property: 'og:description', content: description },
         { property: 'og:url', content: 'https://hackclub.com/team' }
       ]}
+    />
+    <style
+      children={`body {
+        background-image:
+          linear-gradient(to bottom,${cx('white')},${cx('snow')});
+      }`}
     />
     <Header>
       <Nav style={{ position: 'absolute', top: 0 }} />
@@ -107,6 +123,14 @@ export default () => (
         bg="gray"
       />
     </Base>
+    <Updates p={[3, 4]} maxWidth={36} mb={5}>
+      <Heading.h2 color="black" f={[4, 5]}>
+        What’ve we been doing recently?
+      </Heading.h2>
+      <UpdateLink to="/updates" bg="info" mt={3}>
+        Watch our new monthly update
+      </UpdateLink>
+    </Updates>
     <Footer />
   </Fragment>
 )

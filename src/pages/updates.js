@@ -73,7 +73,7 @@ const Player = Box.withComponent(YouTubePlayer).extend`
 `
 
 const Update = ({ month, year, color = 'primary', url, ...props }) => (
-  <Updater className="invert">
+  <Updater mb={5} className="invert">
     <Calendar color={color} mb={[3, 0]} mr={[null, 3, 4]}>
       <Year bg={color} children={year} />
       <Month color={color} children={month} />

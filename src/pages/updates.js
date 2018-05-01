@@ -14,6 +14,7 @@ import YouTubePlayer from 'react-player/lib/players/YouTube'
 import Nav from 'components/Nav'
 import Invert from 'components/Invert'
 import Footer from 'components/Footer'
+import { kebabCase } from 'lodash'
 
 const Header = Section.withComponent('header')
 
@@ -73,7 +74,11 @@ const Player = Box.withComponent(YouTubePlayer).extend`
 `
 
 const Update = ({ month, year, color = 'primary', url, ...props }) => (
-  <Updater mb={5} className="invert">
+  <Updater
+    mb={5}
+    className="invert"
+    id={kebabCase(`${month.replace('.', '')}-${year}`)}
+  >
     <Calendar color={color} mb={[3, 0]} mr={[null, 3, 4]}>
       <Year bg={color} children={year} />
       <Month color={color} children={month} />

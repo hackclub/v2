@@ -76,10 +76,11 @@ const Player = Box.withComponent(YouTubePlayer).extend`
 const Update = ({ month, year, color = 'primary', url, ...props }) => (
   <Updater
     mb={5}
+    px={3}
     className="invert"
     id={kebabCase(`${month.replace('.', '')}-${year}`)}
   >
-    <Calendar color={color} mb={[3, 0]} mr={[null, 3, 4]}>
+    <Calendar color={color} mb={3} mr={[null, 3, 4]}>
       <Year bg={color} children={year} />
       <Month color={color} children={month} />
     </Calendar>
@@ -123,13 +124,13 @@ export default () => (
           Updates
         </Heading.h1>
         <Text f={4} color="muted" style={{ lineHeight: '1.25' }}>
-          Every month we send out an update with what’s new at Hack Club. Here
-          they all are!
+          Every month we produce a video update with what’s new at Hack Club.
+          Here they all are!
         </Text>
       </Container>
-      <Invert children="Theater mode" muted mt={3} />
+      <Invert children="Theater mode" muted my={3} />
     </Header>
-    <Container py={4}>
+    <Container pb={4}>
       <Update
         color="teal.6"
         month="March"

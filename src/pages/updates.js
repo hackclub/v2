@@ -12,6 +12,7 @@ import {
 import Helmet from 'react-helmet'
 import YouTubePlayer from 'react-player/lib/players/YouTube'
 import Nav from 'components/Nav'
+import Invert from 'components/Invert'
 import Footer from 'components/Footer'
 
 const Header = Section.withComponent('header')
@@ -72,7 +73,7 @@ const Player = Box.withComponent(YouTubePlayer).extend`
 `
 
 const Update = ({ month, year, color = 'primary', url, ...props }) => (
-  <Updater>
+  <Updater className="invert">
     <Calendar color={color} mb={[3, 0]} mr={[null, 3, 4]}>
       <Year bg={color} children={year} />
       <Month color={color} children={month} />
@@ -109,9 +110,9 @@ export default () => (
         { property: 'og:url', content: 'https://hackclub.com/updates' }
       ]}
     />
-    <Nav color="slate" style={{ position: 'absolute', top: 0 }} />
+    <Nav invertFlag color="slate" style={{ position: 'absolute', top: 0 }} />
     <style children={`body{background:${cx('snow')};}`} />
-    <Header py={4} mt={5} align="center">
+    <Header py={4} mt={5} align="center" justify="center">
       <Container maxWidth={32}>
         <Heading.h1 color="black" f={6}>
           Updates
@@ -121,6 +122,7 @@ export default () => (
           they all are!
         </Text>
       </Container>
+      <Invert children="Theater mode" muted mt={3} />
     </Header>
     <Container py={4}>
       <Update

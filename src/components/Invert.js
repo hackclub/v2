@@ -30,7 +30,7 @@ class Invert extends Component {
   render() {
     const { active } = this.state
     const props = {
-      name: 'filter_b_and_w',
+      name: this.props.icon || (active ? 'invert_colors_off' : 'invert_colors'),
       className: 'invert',
       bg: active ? 'black' : 'slate',
       'aria-pressed': active,

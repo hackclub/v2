@@ -1,20 +1,17 @@
 import React, { Component, Fragment } from 'react'
 import LoadingAnimation from 'components/LoadingAnimation'
 import ErrorPage from 'components/admin/ErrorPage'
+import IconButton from 'components/IconButton'
 import Login from 'components/apply/Login'
 import Nav from 'components/apply/ApplyNav'
 import { Tr, Td, Th } from 'components/Table'
+import { Box, Container, Text, Link } from '@hackclub/design-system'
 import api from 'api'
-import { Text, Link } from '@hackclub/design-system'
 
 export default class extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      events: [],
-      status: 'loading'
-    }
+  state = {
+    events: [],
+    status: 'loading'
   }
 
   componentDidMount() {
@@ -48,34 +45,36 @@ export default class extends Component {
         return (
           <Fragment>
             <Nav />
-            <table>
-              <thead>
-                <Tr>
-                  <Th>Name</Th>
-                  <Th>Start Date</Th>
-                  <Th>End Date</Th>
-                </Tr>
-              </thead>
-              <tbody>
-                <Tr>
-                  <Link href="/admin/events/edit">
-                    <Td>Create new event</Td>
-                  </Link>
-                </Tr>
-                {events.map((event, index) => (
-                  <Tr
-                    key={index}
-                    onClick={e => {
-                      window.location = `/admin/events/edit?id=${event.id}`
-                    }}
-                  >
-                    <Td>{event.name}</Td>
-                    <Td>{event.start}</Td>
-                    <Td>{event.end}</Td>
+            <Container maxWidth={36}>
+              <Box align="center" py={[3, 4]}>
+                <IconButton name="add" bg="success" href="/admin/events/edit">
+                  Create new event
+                </IconButton>
+              </Box>
+              <table style={{ margin: 'auto' }}>
+                <thead>
+                  <Tr>
+                    <Th>Name</Th>
+                    <Th>Start Date</Th>
+                    <Th>End Date</Th>
                   </Tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {events.map((event, index) => (
+                    <Tr
+                      key={index}
+                      onClick={e => {
+                        window.location = `/admin/events/edit?id=${event.id}`
+                      }}
+                    >
+                      <Td>{event.name}</Td>
+                      <Td>{event.start}</Td>
+                      <Td>{event.end}</Td>
+                    </Tr>
+                  ))}
+                </tbody>
+              </table>
+            </Container>
           </Fragment>
         )
       default:

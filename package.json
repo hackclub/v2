@@ -51,6 +51,7 @@
     "react-gravatar": "^2.6.3",
     "react-helmet": "^5.2.0",
     "react-markdown": "^3.3.0",
+    "react-player": "^1.5.0",
     "react-router": "^4.2.0",
     "react-scrolllock": "^2.0.7",
     "react-simple-maps": "^0.12.0",

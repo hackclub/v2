@@ -89,9 +89,26 @@ const Update = ({ month, year, color = 'primary', url, ...props }) => (
   </Updater>
 )
 
+const title = 'Monthly Updates – Hack Club'
+const desc =
+  'Watch all of Hack Club’s monthly update videos on what’s new in our community of high school coding clubs.'
+const img = 'https://hackclub.com/updates.png'
+
 export default () => (
   <Fragment>
-    <Helmet title="Updates – Hack Club" />
+    <Helmet
+      title={title}
+      meta={[
+        { name: 'description', content: desc },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: desc },
+        { name: 'twitter:image', content: img },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: desc },
+        { property: 'og:image', content: img },
+        { property: 'og:url', content: 'https://hackclub.com/updates' }
+      ]}
+    />
     <Nav color="slate" style={{ position: 'absolute', top: 0 }} />
     <style children={`body{background:${cx('snow')};}`} />
     <Header py={4} mt={5} align="center">

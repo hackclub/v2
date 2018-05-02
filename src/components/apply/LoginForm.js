@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import EmailLoginForm from 'components/apply/EmailLoginForm'
 import LoginCodeForm from 'components/apply/LoginCodeForm'
+import search from 'search'
 
 class Login extends Component {
   constructor(props) {
@@ -8,6 +9,10 @@ class Login extends Component {
 
     this.state = { emailSent: false }
     this.submitCallback = this.submitCallback.bind(this)
+  }
+
+  componentDidMount() {
+    this.setState({ email: search.get('email') })
   }
 
   submitCallback(data) {
@@ -44,6 +49,7 @@ class Login extends Component {
         bg={bg}
         inputProps={inputProps}
         textProps={textProps}
+        email={email}
       />
     )
   }

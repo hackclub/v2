@@ -70,7 +70,8 @@ const InnerForm = ({
 )
 
 const EmailLoginForm = withFormik({
-  mapPropsToValues: ({ params }) => ({ ...params }),
+  mapPropsToValues: ({email}) => ({email: email || ''}),
+  enableReinitialize: true,
   validateOnChange: false,
   validationSchema: yup.object().shape({
     email: yup.string().email('That doesn’t look like a valid email.')

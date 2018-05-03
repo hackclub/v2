@@ -137,7 +137,12 @@ export default () => (
         year={2018}
         url="https://youtu.be/Xj32LuE44bU"
       />
-      {/* NOTE(@lachlanjc): use lime.6 for april */}
+      <Update
+        color="lime.6"
+        month="April"
+        year={2018}
+        url="https://youtu.be/q1BOuOhPvbg"
+      />
     </Container>
     <Footer />
   </Fragment>

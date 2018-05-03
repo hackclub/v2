@@ -132,12 +132,17 @@ export default () => (
     </Header>
     <Container pb={4}>
       <Update
+        color="lime.6"
+        month="April"
+        year={2018}
+        url="https://youtu.be/q1BOuOhPvbg"
+      />
+      <Update
         color="teal.6"
         month="March"
         year={2018}
         url="https://youtu.be/Xj32LuE44bU"
       />
-      {/* NOTE(@lachlanjc): use lime.6 for april */}
     </Container>
     <Footer />
   </Fragment>

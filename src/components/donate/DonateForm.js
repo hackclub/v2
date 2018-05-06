@@ -58,23 +58,11 @@ const Option = ({ amount, ...props }) => [
 ]
 
 class DonateForm extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      loading: true,
-      stripeLoading: true,
-      amount: 10,
-      recurring: true
-    }
-
-    // Have to bind our handlers to this because of how JavaScript's scope works.
-    this.onStripeUpdate = this.onStripeUpdate.bind(this)
-    this.startStripe = this.startStripe.bind(this)
-    this.loadStripe = this.loadStripe.bind(this)
-    this.handleToken = this.handleToken.bind(this)
-    this.handleAmountChange = this.handleAmountChange.bind(this)
-    this.handleRecurringChange = this.handleRecurringChange.bind(this)
+  state = {
+    loading: true,
+    stripeLoading: true,
+    amount: 10,
+    recurring: true
   }
 
   componentWillUnmount() {
@@ -147,7 +135,7 @@ class DonateForm extends Component {
     )
   }
 
-  loadStripe(onload) {
+  loadStripe = onload => {
     if (!window.StripeCheckout) {
       const script = document.createElement('script')
       script.onload = () => {
@@ -160,7 +148,7 @@ class DonateForm extends Component {
     }
   }
 
-  startStripe(e) {
+  startStripe = e => {
     this.loadStripe(() => {
       this.stripeHandler = window.StripeCheckout.configure({
         key: process.env.STRIPE_PUBLISHABLE_KEY,
@@ -180,10 +168,12 @@ class DonateForm extends Component {
     })
   }
 
-  onStripeUpdate(e) {
+  onStripeUpdate = e => {
     this.stripeHandler.open({
       name: 'Hack Club',
-      description: 'Hack Club contribution.',
+      description: this.state.recurring
+        ? 'Monthly contribution to Hack Club'
+        : 'One-time contribution to Hack Club',
       panelLabel: 'Donate',
       allowRememberMe: false
     })
@@ -191,10 +181,10 @@ class DonateForm extends Component {
     e.preventDefault()
   }
 
-  handleToken(token) {
+  handleToken = token => {
     this.setState({ loading: true })
 
-    var data = new FormData()
+    const data = new FormData()
 
     data.append('stripe_email', token.email)
     data.append('stripe_token', token.id)
@@ -204,7 +194,7 @@ class DonateForm extends Component {
     this.setState({ status: 'loading' })
 
     api
-      .post('/v1/donations', { data })
+      .post('v1/donations', { data })
       .then(data => {
         if (data.donation_successful) {
           this.setState({ status: 'done' })
@@ -217,12 +207,12 @@ class DonateForm extends Component {
       })
   }
 
-  handleAmountChange(a) {
+  handleAmountChange = a => {
     const amount = toNumber(a || 1)
     this.setState({ amount })
   }
 
-  handleRecurringChange(v) {
+  handleRecurringChange = v => {
     this.setState({ recurring: v.target.checked })
   }
 
@@ -240,15 +230,11 @@ class DonateForm extends Component {
     }
   }
 
-  setAmount(amount) {
-    return v => {
-      this.setState({ amount, custom: false })
-    }
+  setAmount = amount => v => {
+    this.setState({ amount, custom: false })
   }
 
-  amountInCents() {
-    return this.state.amount * 100
-  }
+  amountInCents = () => this.state.amount * 100
 }
 
 export default DonateForm

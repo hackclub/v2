@@ -111,14 +111,16 @@ class DonateForm extends Component {
             Select an amount
           </Text>
           <Text.span mx={2} children="—" />
-          <input
-            name="recurring"
-            type="checkbox"
-            checked={recurring}
-            onChange={this.handleRecurringChange}
-          />
-          <Label htmlFor="recurring" f={2} ml={1}>
-            monthly?
+          <Label>
+            <input
+              name="recurring"
+              type="checkbox"
+              checked={recurring}
+              onChange={this.handleRecurringChange}
+            />
+            <Text.span f={2} ml={1}>
+              monthly?
+            </Text.span>
           </Label>
         </Flex>
         <AmountsGrid w={1} mt={3} mb={4}>

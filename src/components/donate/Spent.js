@@ -24,6 +24,7 @@ const Row = Flex.extend`
 
   span {
     flex: 1 1 auto;
+    line-height: 1.25;
   }
 `
 
@@ -39,7 +40,7 @@ const Item = ({ label, value, ...props }) => (
       py={3}
       aria-label={`${round(100 * (value / total))}%`}
       style={{
-        backgroundImage: `linear-gradient(90deg,
+        backgroundImage: `radial-gradient(ellipse farthest-corner at top left,
           ${cx(`${colors[label]}.4`)},
           ${cx(`${colors[label]}.5`)}
         )`,

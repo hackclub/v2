@@ -153,7 +153,7 @@ export default () => (
       ]}
     />
     <Nav color="muted" />
-    <Header px={0} pt={[3, 4]} pb={[4, 5, 6]}>
+    <Header px={0} pt={[3, 4]} pb={[4, 5]}>
       <Container {...contentContainer} align="left" py={[4]}>
         <Container maxWidth={36} mx={0}>
           <Heading.h1 color="primary" f={[3, 4]} caps>
@@ -209,7 +209,7 @@ export default () => (
       <Row my={5} {...content}>
         <Box>
           <Heading.h2 {...headline}>
-            Your contribution is for our clubs.
+            Every last contribution is for our clubs.
           </Heading.h2>
           <ContributionShapes>
             <Pentagon size={128} rotate={16} />

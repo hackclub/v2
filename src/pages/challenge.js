@@ -15,6 +15,7 @@ import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import IconButton from 'components/IconButton'
 import Form from 'components/challenge/Form'
+import Ended from 'components/challenge/Ended'
 import Posts from 'components/challenge/Posts'
 import { Modal, Overlay, CloseButton } from 'components/Modal'
 import { dt, tinyDt } from 'helpers'
@@ -139,6 +140,7 @@ export default class extends Component {
     const { userId, status } = this.state
     if (isEmpty(data)) return null
     const challenge = data.publicJson
+    const ended = Date.parse(new Date()) > Date.parse(challenge.end)
     return (
       <Fragment>
         <Helmet
@@ -185,8 +187,11 @@ export default class extends Component {
           </HeaderContainer>
         </Header>
         <Container maxWidth={48} pt={4} pb={5} px={3}>
+          {ended && <Ended />}
           <Title align="center" pb={2}>
-            <Heading.h2 f={[4, 5]}>Submissions</Heading.h2>
+            <Heading.h2 color="black" f={[4, 5]}>
+              Submissions
+            </Heading.h2>
             <Text.span f={2} color="muted" ml={3}>
               {tinyDt(challenge.start)}–{tinyDt(challenge.end)}
             </Text.span>

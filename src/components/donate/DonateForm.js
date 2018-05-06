@@ -9,7 +9,9 @@ import {
   Label,
   Text
 } from '@hackclub/design-system'
+import { CLIENT_URL, PUBLIC_STRIPE_KEY } from 'constants'
 import { toNumber } from 'lodash'
+import api from 'api'
 
 const Secure = Flex.extend`
   position: absolute;
@@ -151,8 +153,8 @@ class DonateForm extends Component {
   startStripe = e => {
     this.loadStripe(() => {
       this.stripeHandler = window.StripeCheckout.configure({
-        key: process.env.STRIPE_PUBLISHABLE_KEY,
-        image: 'https://hackclub.com/twitter-avatar.png',
+        key: PUBLIC_STRIPE_KEY,
+        image: `${CLIENT_URL}/twitter-avatar.png`,
         locale: 'auto',
         amount: this.amountInCents(),
         token: this.handleToken

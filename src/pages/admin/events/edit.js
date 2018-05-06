@@ -3,8 +3,9 @@ import LoadingAnimation from 'components/LoadingAnimation'
 import Login from 'components/apply/Login'
 import EventForm from 'components/admin/events/EventForm'
 import ImageForm from 'components/admin/events/ImageForm'
+import ErrorPage from 'components/admin/ErrorPage'
+import Nav from 'components/apply/ApplyNav'
 import api from 'api'
-import storage from 'storage'
 import search from 'search'
 import { Text, Image, BackgroundImage } from '@hackclub/design-system'
 
@@ -33,34 +34,38 @@ export default class extends Component {
   }
 
   componentDidMount() {
-    eventId = search.get('id')
-    const authToken = storage.get('authToken')
-    api.get('v1/users/current', { authToken }).then(() => {
-      if (eventId) {
-        return api
-          .get('v1/events')
-          .then(events => {
-            const event = events.find(
-              event => event.id.toString() === eventId
-            )
-            if (event) {
-              this.setState({
-                event,
-                status: 'success'
-              })
-            } else {
-              throw 'Event not found'
-            }
-          })
-          .catch(err => {
-            this.setState({
-              status: err.status === 401 ? 'needsToAuth' : 'failure'
+    const eventId = search.get('id')
+    api
+      .get('v1/users/current')
+      .then(() => {
+        if (eventId) {
+          return api
+            .get('v1/events')
+            .then(events => {
+              const event = events.find(
+                event => event.id.toString() === eventId
+              )
+              if (event) {
+                this.setState({
+                  event,
+                  status: 'success'
+                })
+              } else {
+                throw 'Event not found'
+              }
             })
-          })
-      } else {
-        this.setState({ event: {}, status: 'success' })
-      }
-    })
+            .catch(err => {
+              throw err
+            })
+        } else {
+          this.setState({ event: {}, status: 'success' })
+        }
+      })
+      .catch(err => {
+        this.setState({
+          status: err.status === 401 ? 'needsToAuth' : 'failure'
+        })
+      })
   }
 
   render() {
@@ -73,16 +78,17 @@ export default class extends Component {
       case 'success':
         return (
           <Fragment>
+            <Nav />
             <ImageForm
-              name="logo"
+              type="logo"
               updateEvent={this.updateEvent}
               image={event && event.logo}
               previewTag={({ imageUrl }) => (
-                <Image src={imageUrl} height='60px !important' />
+                <Image src={imageUrl} height="60px !important" />
               )}
             />
             <ImageForm
-              name="banner"
+              type="banner"
               updateEvent={this.updateEvent}
               image={event && event.banner}
               previewTag={({ imageUrl }) => (
@@ -90,18 +96,15 @@ export default class extends Component {
                   /* BackgroundImage doesn’t support height yet */
                   height="150px"
                   w={350}
-                  image={imageUrl} />
+                  image={imageUrl}
+                />
               )}
             />
             <EventForm event={event} updateEvent={this.updateEvent} />
           </Fragment>
         )
       default:
-        return (
-          <Text color="error" py={3} align="center">
-            🚨 Something terrible has happened 🚨
-          </Text>
-        )
+        return <ErrorPage />
     }
   }
 }

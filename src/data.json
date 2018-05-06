@@ -2,7 +2,7 @@
   "name": "Hack Club",
   "title": "Hack Club: High school computer science clubs",
   "description":
-    "Hack Club is a global nonprofit network of high school coding clubs where members learn to code through tinkering. Join the movement: by the students, for the students.",
+    "Hack Club is a global nonprofit network of high school programming clubs. Start a coding club with our guidance, activities, ideas, curriculum, and community.",
   "url": "https://hackclub.com",
   "api": "https://api.hackclub.com",
   "twitter": "@starthackclub",
@@ -24,7 +24,8 @@
       "https://twitter.com/starthackclub",
       "https://github.com/hackclub",
       "https://www.instagram.com/starthackclub",
-      "https://www.facebook.com/Hack-Club-741805665870458"
+      "https://www.facebook.com/Hack-Club-741805665870458",
+      "https://www.youtube.com/channel/UCQzO0jpcRkP-9eWKMpJyB0w"
     ],
     "contactPoint": [
       {

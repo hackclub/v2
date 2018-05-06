@@ -30,7 +30,7 @@ class BreadcrumbClass extends Component {
           runningPath.push(section)
           const isLast = path.length - index > 1
           return (
-            <Fragment>
+            <Fragment key={index}>
               <Crumb
                 color="white"
                 to={runningPath.join('/')}

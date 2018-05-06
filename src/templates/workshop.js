@@ -14,10 +14,26 @@ import {
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
-import Footer from 'components/Footer'
+import {
+  Breadcrumbs,
+  Breadcrumb,
+  BreadcrumbDivider
+} from 'components/Breadcrumbs'
+import Invert from 'components/Invert'
+import IconButton from 'components/IconButton'
 import MarkdownBody from 'components/MarkdownBody'
+import FeedbackForm from 'components/workshops/FeedbackForm'
+import Footer from 'components/Footer'
 import { lowerCase, camelCase, isEmpty } from 'lodash'
 import { org } from 'data.json'
+
+const Header = Box.withComponent('header').extend`
+  li a,
+  h2,
+  p {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+  }
+`
 
 const Name = Heading.h1.extend`
   background-color: white;
@@ -31,31 +47,12 @@ const Name = Heading.h1.extend`
   width: max-content;
 `
 
-const Desc = Heading.h2.extend`
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
-`
-
-const EditLink = A.extend.attrs({ color: 'white', f: 3 })`
-  display: none;
-
-  position: absolute;
-  bottom: ${props => props.theme.space[3]}px;
-  right: ${props => props.theme.space[4]}px;
-
-  ${props => props.theme.mediaQueries.md} {
-    display: inline-block;
-  }
-`
-
 const Body = Container.withComponent(MarkdownBody)
 A.link = A.withComponent(Link)
 Section.h = Section.withComponent('header')
 
-const generateSubtitle = (description, authorText) => {
-  if (!authorText) {
-    return description
-  }
-
+const linkAuthor = authorText => {
+  if (isEmpty(authorText)) return null
   // This iterates over each word in authorText, finds GitHub usernames (any
   // text that looks like "@orpheus", and turns them into links.
   const parsedAuthorText = authorText.split(' ').map((word, index, arr) => {
@@ -64,7 +61,7 @@ const generateSubtitle = (description, authorText) => {
       <A
         href={`https://github.com/${matches[1]}`}
         target="_blank"
-        color="white"
+        color="inherit"
         children={word}
       />
     ) : (
@@ -78,48 +75,41 @@ const generateSubtitle = (description, authorText) => {
     return index === arr.length - 1 ? processedWord : [processedWord, ' ']
   })
 
-  return (
-    <Fragment>
-      {description}. Created by {parsedAuthorText}.
-    </Fragment>
-  )
+  return <Fragment>Created by {parsedAuthorText}</Fragment>
 }
 
-const BreadcrumbList = Flex.withComponent('ol').extend`
-  list-style: none;
-  padding-left: 0;
+const Cards = Container.extend`
+  display: grid;
+  grid-gap: ${props => props.theme.space[4]}px;
+  grid-template-areas: 'feedback' 'share' 'contribute';
+  width: 100%;
+
+  > div {
+    box-shadow: ${props => props.theme.boxShadows[1]};
+    border-radius: ${props => props.theme.radius};
+    max-width: 100%;
+
+    &:nth-child(1) {
+      grid-area: feedback;
+    }
+    &:nth-child(2) {
+      grid-area: share;
+    }
+    &:nth-child(3) {
+      grid-area: contribute;
+    }
+  }
+
+  ${props => props.theme.mediaQueries.md} {
+    grid-template-areas:
+      'feedback share'
+      'feedback contribute';
+  }
+
+  textarea {
+    resize: vertical;
+  }
 `
-const Breadcrumbs = props => (
-  <BreadcrumbList
-    itemScope
-    itemType="http://schema.org/BreadcrumbList"
-    {...props}
-  />
-)
-const Breadcrumb = ({ type = 'Thing', position, name, ...props }) => (
-  <li
-    itemProp="itemListElement"
-    itemScope
-    itemType="http://schema.org/ListItem"
-  >
-    <A.link
-      itemScope
-      itemType={`http://schema.org/${type}`}
-      itemProp="item"
-      color="white"
-      f={3}
-      bold
-      caps
-      {...props}
-    >
-      <span itemProp="name" children={name} />
-    </A.link>
-    <meta itemProp="position" content={position} />
-  </li>
-)
-const BreadcrumbDivider = () => (
-  <Text.span mx={2} color="snow" f={3} children="›" />
-)
 
 const githubEditUrl = slug =>
   `https://github.com/hackclub/hackclub/edit/master${slug}/README.md`
@@ -134,17 +124,25 @@ const InlineButton = Button.extend`
   display: inline-flex;
   align-items: center;
   div {
-    background-image: url(/social/${props => lowerCase(props.service)}-white.svg);
+    background-image: url(/social/${props =>
+        lowerCase(props.service)
+          .split(' ')
+          .join('')}-white.svg);
     background-repeat: no-repeat;
     background-size: 100%;
     width: 18px;
     height: 18px;
   }
 `
-const ShareButton = props => (
-  <InlineButton target="_blank" title={`Share on ${props.service}`} {...props}>
+const ShareButton = ({ children, ...props }) => (
+  <InlineButton
+    target="_blank"
+    aria-label={`Share on ${props.service}`}
+    f={2}
+    {...props}
+  >
     <Box mr={2} />
-    {props.service}
+    {children || props.service}
   </InlineButton>
 )
 
@@ -159,16 +157,16 @@ export default ({ data }) => {
     html
   } = data.markdownRemark
 
-  const subtitle = generateSubtitle(description, author)
-
-  const title = `${name} – Hack Club Workshops`
-  const desc = `${description}. Read the tutorial on Hack Club Workshops.`
-  const url = makeUrl('hackclub.com', slug)
-
   const authorUsername = (author || '').match(/@(\S+)/)
     ? author.replace('@', '')
     : 'hackclub'
   const authorUrl = makeUrl('github.com', authorUsername)
+
+  const title = `${name} – Hack Club Workshops`
+  const l = description.charAt(0).toUpperCase() + description.slice(1)
+  const desc = `Free coding tutorial for ${l}, published on Hack Club Workshops.`
+  const img = 'https://hackclub.com/workshops.png'
+  const url = makeUrl('hackclub.com', slug)
 
   const schema = {
     '@context': 'http://schema.org',
@@ -202,53 +200,77 @@ export default ({ data }) => {
         title={title}
         meta={[
           { name: 'description', content: desc },
-          { property: 'og:title', content: title },
           { name: 'twitter:title', content: title },
-          { property: 'og:description', content: desc },
           { name: 'twitter:description', content: desc },
+          { name: 'twitter:image', content: img },
+          { property: 'og:title', content: title },
+          { property: 'og:description', content: desc },
+          { property: 'og:image', content: img },
           { property: 'og:site_name', content: 'Hack Club Workshops' },
           { property: 'og:url', content: url }
         ]}
-        children={
-          <script
-            type="application/ld+json"
-            children={JSON.stringify(schema)}
-          />
+      >
+        <script type="application/ld+json" children={JSON.stringify(schema)} />
         }
-      />
-      <Section.h
+      </Helmet>
+      <Header
         bg="accent"
+        color="white"
         p={0}
+        align="center"
+        className="invert"
         style={{ backgroundImage: `url('${bg}')`, position: 'relative' }}
       >
         <Nav style={{ position: 'absolute', top: 0 }} />
-        <Container mt={4} mb={3} px={3}>
-          <Breadcrumbs align="center" justify="center" my={3}>
+        <Container pt={5} pb={3} px={2}>
+          <Breadcrumbs align="center" justify="center" my={3} wrap>
             <Breadcrumb to="/workshops" name="Workshops" position={1} />
             <BreadcrumbDivider />
             <Breadcrumb to={`/workshops#${group}`} name={group} position={2} />
             <BreadcrumbDivider />
             <Breadcrumb to={url} name={name} position={3} bold={false} />
           </Breadcrumbs>
-          <Name f={[5, 6]} mb={2} children={name} />
-          <Desc f={[3, 4]} regular children={subtitle} />
+          <Name f={6} mb={2} children={name} />
+          <Heading.h2 f={4} children={description} />
+          <Text f={2} caps mt={3} children={linkAuthor(author)} />
         </Container>
-        <EditLink href={githubEditUrl(slug)} target="_blank">
-          <Icon color="white" name="edit" mb={-1} /> Edit on GitHub
-        </EditLink>
-      </Section.h>
+        <Flex w={1} p={3} justify="space-between">
+          <Invert f={2} my={1} />
+          <IconButton
+            bg="slate"
+            name="edit"
+            children="Edit"
+            inverted
+            href={githubEditUrl(slug)}
+            target="_blank"
+            f={2}
+            my={1}
+          />
+        </Flex>
+      </Header>
       <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
-      <Container maxWidth={32} p={3} mb={4}>
-        <Card bg="blue.0" p={4} align="center">
+      <Cards maxWidth={52} p={3} mb={5}>
+        <Box bg="teal.0" p={[3, 4]}>
+          <Heading.h2 f={3} color="cyan.8" caps>
+            How was this workshop?
+          </Heading.h2>
+          <Text color="muted" f={1} mt={1} mb={3}>
+            (your feedback is anonymous + appreciated 💚)
+          </Text>
+          <FeedbackForm slug={slug} />
+        </Box>
+        <Box bg="blue.0" p={[3, 4]}>
           <Heading.h2 f={3} color="accent" caps>
             Made something rad?
           </Heading.h2>
-          <Heading.h2 color="primary" f={5}>
-            Share it! 🌟
-          </Heading.h2>
-          <Text f={1} color="muted" mb={3}>
-            (posts are editable)
-          </Text>
+          <Flex align="center" mb={3}>
+            <Heading.h2 color="indigo.6" f={5}>
+              Share it! 🌟
+            </Heading.h2>
+            <Text ml={2} f={1} color="muted">
+              (posts are editable)
+            </Text>
+          </Flex>
           <ShareButton
             service="Twitter"
             href={twitterURL(
@@ -263,8 +285,22 @@ export default ({ data }) => {
             href={facebookURL(url)}
             bg="#3b5998"
           />
-        </Card>
-      </Container>
+        </Box>
+        <Box bg="yellow.0" p={[3, 4]}>
+          <Heading.h2 f={3} color="orange.5" caps mb={3}>
+            Want to edit this workshop?
+          </Heading.h2>
+          <ShareButton
+            service="GitHub"
+            bg="warning"
+            f={2}
+            href={githubEditUrl(slug)}
+            target="_blank"
+            aria-label={null}
+            children="Edit on GitHub"
+          />
+        </Box>
+      </Cards>
       <Footer />
     </Fragment>
   )

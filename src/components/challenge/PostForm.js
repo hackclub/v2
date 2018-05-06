@@ -39,7 +39,7 @@ const InnerForm = ({
     <Field
       label="Description"
       name="description"
-      placeholder="Write something about your project…"
+      placeholder="Your name, or write something…"
       value={values.description}
       onChange={handleChange}
       onBlur={handleBlur}
@@ -79,15 +79,16 @@ const PostForm = withFormik({
       .required('required')
   }),
   enableReinitialize: true,
-  handleSubmit: (data, { setSubmitting, setStatus, resetForm }) => {
-    console.log(data)
+  handleSubmit: (data, { setSubmitting, setStatus, resetForm, props }) => {
     const authToken = storage.get('authToken')
     const headers = { Authorization: `Bearer ${authToken}` }
     console.log('headers', headers)
-    axios // TODO: embed real challenge ID here
-      .post(`https://api.hackclub.com/v1/challenges/1/posts`, data, { headers })
+    const id = props.challengeId
+    axios
+      .post(`https://api.hackclub.com/v1/challenges/${id}/posts`, data, {
+        headers
+      })
       .then(res => {
-        console.log(res)
         resetForm()
         setStatus('success')
         setTimeout(() => {

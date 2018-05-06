@@ -1,11 +1,18 @@
 import fetch from 'unfetch'
+import storage from 'storage'
 
 const apiBase = 'https://api.hackclub.com/'
 const methods = ['GET', 'PUT', 'POST', 'PATCH', 'DELETE']
 
 const generateMethod = method => (path, options = {}) => {
-  // authToken is shorthand for Authorization: Bearer `authtoken`
-  let filteredOptions = {}
+  const authToken = storage.get('authToken')
+  let filteredOptions = {
+    headers: {
+      // If they have an authToken, automatically attach it
+      Authorization: `Bearer ${authToken}`
+    }
+  }
+
   for (let [key, value] of Object.entries(options)) {
     switch (key) {
       case 'authToken':

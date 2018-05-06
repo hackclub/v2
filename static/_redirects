@@ -4,7 +4,6 @@
 /hackathons        https://hackathons.hackclub.com
 /find              https://finder.hackclub.com
 /finder            https://finder.hackclub.com
-/slack_invite      https://legacy.hackclub.com/slack_invite  200
 /static/js/*       https://legacy.hackclub.com/static/js/:splat  200
 /static/css/*      https://legacy.hackclub.com/static/css/:splat  200
 /static/media/*    https://legacy.hackclub.com/static/media/:splat  200

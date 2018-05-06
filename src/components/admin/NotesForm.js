@@ -3,6 +3,8 @@ import { Formik } from 'formik'
 import api from 'api'
 import { AutoSaver, Field } from 'components/Forms'
 import { Box, Flex, IconButton } from '@hackclub/design-system'
+import LoadingAnimation from 'components/LoadingAnimation'
+import ErrorPage from 'components/admin/ErrorPage'
 
 Box.form = Box.withComponent('form')
 
@@ -26,18 +28,17 @@ class SingleNote extends Component {
   }
 
   deleteNote(id) {
-    const { authToken } = this.props
-    api.delete(`v1/notes/${id}`, { authToken }).then(json => {
+    api.delete(`v1/notes/${id}`).then(json => {
       this.setState({ deleted: true })
     })
   }
 
   handleSubmit(values, { setSubmitting }) {
-    const { authToken, applicationId } = this.props
+    const { modelType, modelId } = this.props
     const { note, id } = this.state
     if (id) {
       api
-        .patch(`v1/notes/${id}`, { authToken, data: values })
+        .patch(`v1/notes/${id}`, { data: values })
         .then(json => {
           setSubmitting(false)
         })
@@ -46,8 +47,7 @@ class SingleNote extends Component {
         })
     } else {
       api
-        .post(`v1/new_club_applications/${applicationId}/notes`, {
-          authToken,
+        .post(`v1/${modelType}/${modelId}/notes`, {
           data: values
         })
         .then(json => {
@@ -103,6 +103,7 @@ class SingleNote extends Component {
                   handleSubmit={handleSubmit}
                   isSubmitting={isSubmitting}
                   values={values}
+                  saveNotification="underline"
                 />
               </Box.form>
             )
@@ -127,60 +128,89 @@ export default class NotesForm extends Component {
     this.loadNotes = this.loadNotes.bind(this)
   }
   componentDidMount() {
-    this.loadNotes(this.props.application.id)
+    this.loadNotes(this.props.modelId)
   }
   componentWillReceiveProps(nextProps) {
-    if (this.props.application.id !== nextProps.application.id) {
-      this.loadNotes(nextProps.application.id)
+    if (this.props.modelId !== nextProps.modelId) {
+      this.loadNotes(nextProps.modelId)
     }
   }
   loadNotes(id) {
-    const { authToken } = this.props
     const { authors } = this.state
+    const { modelType, modelId } = this.props
 
-    this.setState({ notes: [] })
+    this.setState({ notes: [], status: 'loading' })
 
     api
-      .get(`v1/new_club_applications/${id}/notes`, { authToken })
+      .get(`v1/${modelType}/${modelId}/notes`)
       .then(notes => {
-        notes.forEach(note => {
-          const userId = note.user_id
-          if (authors[userId]) {
-            this.setState({
-              notes: [...this.state.notes, { ...note, author: authors[userId] }]
+        const notesPromises = notes.map(
+          note =>
+            new Promise((resolve, reject) => {
+              const userId = note.user_id
+              if (authors[userId]) {
+                this.setState({
+                  notes: [
+                    ...this.state.notes,
+                    { ...note, author: authors[userId] }
+                  ]
+                })
+                resolve()
+              } else {
+                api
+                  .get(`v1/users/${userId}`)
+                  .then(user => {
+                    authors[userId] = user.email
+                    this.setState({
+                      notes: [
+                        ...this.state.notes,
+                        { ...note, author: user.email }
+                      ],
+                      authors
+                    })
+                    resolve()
+                  })
+                  .catch(err => {
+                    reject(err)
+                  })
+              }
             })
-          } else {
-            api.get(`v1/users/${userId}`, { authToken }).then(user => {
-              authors[userId] = user.email
-              this.setState({
-                notes: [...this.state.notes, { ...note, author: user.email }],
-                authors
-              })
-            })
-          }
+        )
+        Promise.all(notesPromises).then(() => {
+          this.setState({ status: 'success' })
         })
+      })
+      .catch(err => {
+        this.setState({ status: 'error' })
       })
   }
   addNote() {
     this.setState({ notes: [...this.state.notes, { created_at: new Date() }] })
   }
   render() {
-    const { authToken, application, updateApplicationList } = this.props
+    const { modelType, modelId, updateCallback } = this.props
     const { status, notes } = this.state
-    return (
-      <Fragment>
-        <IconButton name="add" bg="success" circle onClick={this.addNote} />
-        {notes
-          .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
-          .map((note, index) => (
-            <SingleNote
-              key={index}
-              note={note}
-              applicationId={application.id}
-              authToken={authToken}
-            />
-          ))}
-      </Fragment>
-    )
+    switch (status) {
+      case 'loading':
+        return <LoadingAnimation />
+      case 'success':
+        return (
+          <Fragment>
+            <IconButton name="add" bg="success" circle onClick={this.addNote} />
+            {notes
+              .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+              .map((note, index) => (
+                <SingleNote
+                  key={index}
+                  note={note}
+                  modelId={modelId}
+                  modelType={modelType}
+                />
+              ))}
+          </Fragment>
+        )
+      default:
+        return <ErrorPage />
+    }
   }
 }

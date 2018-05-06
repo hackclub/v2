@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Container,
+  Card,
   Flex,
   Heading,
   Link as A,
@@ -13,7 +14,7 @@ import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
-import Workshops from 'components/Workshops'
+import Track from 'components/workshops/Track'
 import {
   groupBy,
   orderBy,
@@ -23,11 +24,6 @@ import {
   reverse,
   toPairs
 } from 'lodash'
-
-Box.main = Box.withComponent('main')
-Box.header = Box.withComponent('header')
-Box.section = Box.withComponent('section')
-Box.article = Box.withComponent('article')
 
 A.link = A.withComponent(Link)
 
@@ -42,13 +38,14 @@ const Base = Box.main.extend`
 const Background = Section.extend`
   justify-content: flex-start;
   background-color: ${props => props.theme.colors.red[5]};
-  background-image: linear-gradient(
-    -16deg,
-    ${props => props.theme.colors.orange[4]} 0%,
-    ${props => props.theme.colors.red[5]} 50%,
-    ${props => props.theme.colors.red[6]} 100%
-  );
-  ${props => props.theme.mediaQueries[1]} {
+  background-image: url('/pattern.svg'),
+    linear-gradient(
+      -86deg,
+      ${props => props.theme.colors.orange[5]},
+      ${props => props.theme.colors.red[5]},
+      ${props => props.theme.colors.red[6]}
+    );
+  ${props => props.theme.mediaQueries.md} {
     min-height: 100vh;
   }
 `
@@ -99,7 +96,9 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
 
   const title = 'Hack Club Workshops'
   const desc =
-    'Get coding tutorials, project ideas, and programming club activities.'
+    'Get free coding tutorials, project ideas, and programming club activities ' +
+    'from Hack Club, a community of high school developers.'
+  const img = 'https://hackclub.com/workshops.png'
 
   return (
     <Fragment>
@@ -107,13 +106,14 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
         title={title}
         meta={[
           { name: 'description', content: desc },
-          { property: 'og:title', content: title },
           { name: 'twitter:title', content: title },
-          { property: 'og:description', content: desc },
           { name: 'twitter:description', content: desc },
+          { name: 'twitter:image', content: img },
+          { property: 'og:title', content: title },
+          { property: 'og:description', content: desc },
+          { property: 'og:image', content: img },
           { property: 'og:site_name', content: 'Hack Club Workshops' },
-          { property: 'og:url', content: 'https://hackclub.com/workshops' },
-          { name: 'twitter:site', content: '@starthackclub' }
+          { property: 'og:url', content: 'https://hackclub.com/workshops' }
         ]}
       />
       <Nav
@@ -121,52 +121,47 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
         color={['white', null, 'primary']}
       />
       <Base>
-        <Background px={4}>
-          <Box.header align="center" pt={[4, null, 6]} pb={3}>
-            <Text f={4} bold caps>
-              Hack Club
+        <Background p={[3, 4]}>
+          <Box.header align="center" mt={[4, 5]}>
+            <Name f={6}>Workshops</Name>
+            <Text f={[3, 4]} mt={2} mb={3} bold caps>
+              By Hack Club
             </Text>
-            <Name mt={2} mb={3} f={6}>
-              Workshops
-            </Name>
-            <Heading.h2 f={4} regular>
-              Learn to code through building projects.
+            <Heading.h2 color="red.0" f={4} px={2} regular mb={[4, 5]}>
+              Making leads to learning.
             </Heading.h2>
+            <Card bg="red.0" p={3} boxShadowSize="md">
+              <Text f={4} color="red.6" style={{ lineHeight: '1.25' }}>
+                Coding is a <Super color="warning">superpower</Super>.<br />
+                So let’s start building.
+              </Text>
+              <SuperButton
+                mt={3}
+                to="/philosophy"
+                children="Our philosophy »"
+              />
+            </Card>
           </Box.header>
         </Background>
         <Box.article bg="white">
           <Container maxWidth={48} py={[4, 5]} px={3}>
-            <Flex
-              flexDirection={['column', null, null, 'row']}
-              justify="space-between"
-              align="flex-start"
-              mb={[3, 4]}
+            <Text
+              color="black"
+              f={4}
+              mb={4}
+              style={{ lineHeight: '1.25', maxWidth: '42rem' }}
             >
-              <Container mx={0} maxWidth={32}>
-                <Text
-                  f={[4, 5]}
-                  align="left"
-                  color="slate"
-                  style={{ lineHeight: '1.25' }}
-                >
-                  Coding is a <Super color="warning">superpower</Super>.<br />
-                  So let’s start building.
-                </Text>
-              </Container>
-              <SuperButton
-                my={2}
-                to="/philosophy"
-                children="Our philosophy »"
+              Learn to code with this collection of community-contributed,
+              self-guided coding tutorials and project ideas.{' '}
+              <A.link to="/workshops/submit">Write one »</A.link>
+            </Text>
+            {sortedGroups.map(group => (
+              <Track
+                key={`workshops-${group[0]}`}
+                name={group[0]}
+                data={group[1]}
               />
-            </Flex>
-            {sortedGroups.map(group => {
-              const name = group[0]
-              const edges = group[1]
-
-              return (
-                <Workshops key={`workshops-${name}`} name={name} data={edges} />
-              )
-            })}
+            ))}
           </Container>
           <Footer />
         </Box.article>

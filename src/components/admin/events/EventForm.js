@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { withFormik } from 'formik'
 import yup from 'yup'
-import storage from 'storage'
 import api from 'api'
 import { AutoSaver, Field, Submit } from 'components/Forms'
-import { Button, Text } from '@hackclub/design-system'
+import { Button, Text, Label } from '@hackclub/design-system'
 
 const InnerForm = ({
   values,
@@ -16,6 +15,71 @@ const InnerForm = ({
   isSubmitting
 }) => (
   <form onSubmit={handleSubmit}>
+    <Field
+      label={
+        <Fragment>
+          Should this event be listed on{' '}
+          <a href="https://hackathons.hackclub.com" target="_blank">
+            hackathons.hackclub.com
+          </a>?
+        </Fragment>
+      }
+      name="public"
+      value={values.public}
+      error={touched.public && errors.public}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      type="select"
+    >
+      <option value="false">No</option>
+      <option value="true">Yes</option>
+    </Field>
+    <Field
+      label="Affiliated with Hack Club"
+      name="hack_club_associated"
+      value={values.hack_club_associated}
+      error={touched.hack_club_associated && errors.hack_club_associated}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      type="select"
+    >
+      <option value="false">No</option>
+      <option value="true">Yes</option>
+    </Field>
+    <Field
+      label="How is it associated"
+      name="hack_club_associated_notes"
+      value={values.hack_club_associated_notes || ''}
+      error={
+        touched.hack_club_associated_notes && errors.hack_club_associated_notes
+      }
+      onChange={handleChange}
+      onBlur={handleBlur}
+    />
+    <Field
+      label="Affiliated with MLH"
+      name="mlh_associated"
+      value={values.mlh_associated}
+      error={touched.mlh_associated && errors.mlh_associated}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      type="select"
+    >
+      <option value="false">No</option>
+      <option value="true">Yes</option>
+    </Field>
+    <Field
+      label="Collegiate event"
+      name="collegiate"
+      value={values.collegiate}
+      error={touched.collegiate && errors.collegiate}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      type="select"
+    >
+      <option value="false">No</option>
+      <option value="true">Yes</option>
+    </Field>
     <Field
       label="Start date"
       name="start"
@@ -89,6 +153,11 @@ const InnerForm = ({
 
 export default withFormik({
   validationSchema: yup.object().shape({
+    public: yup.string().required(),
+    hack_club_associated: yup.string().required(),
+    hack_club_associated_notes: yup.string().nullable(),
+    mlh_associated: yup.string().required(),
+    collegiate: yup.string().required(),
     start: yup.date().required(),
     end: yup.date().required(),
     name: yup.string().required(),
@@ -101,18 +170,19 @@ export default withFormik({
   mapPropsToValues: props => props.event,
   enableReinitialize: true,
   handleSubmit: (values, { props }) => {
-    const authToken = storage.get('authToken')
     const apiFunction = values.id ? api.patch : api.post
     const apiEndpoint = values.id ? `v1/events/${values.id}` : `v1/events`
     const filteredEvents = {}
     Object.keys(values).forEach(key => {
       if (['banner', 'logo'].indexOf(key) !== -1 && values[key]) {
         filteredEvents[`${key}_id`] = values[key].id
+      } else if (key === 'hack_club_associated') {
+        filteredEvents[key] = values[key] === 'true'
       } else {
         filteredEvents[key] = values[key]
       }
     })
-    apiFunction(apiEndpoint, { authToken, data: filteredEvents }).then(event => {
+    apiFunction(apiEndpoint, { data: filteredEvents }).then(event => {
       props.updateEvent(event)
     })
   }

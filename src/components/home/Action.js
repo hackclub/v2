@@ -8,25 +8,7 @@ import {
   LargeButton
 } from '@hackclub/design-system'
 import Link from 'gatsby-link'
-import Animator from 'components/Animator'
-
-const Base = Box.extend`
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  min-height: 36rem;
-`
-
-const Photo = Box.withComponent('img').extend`
-	position: absolute;
-	z-index: 1;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	object-fit: cover;
-`
+import Framed from 'components/Framed'
 
 const PromoBox = Box.extend`
   position: absolute;
@@ -83,99 +65,24 @@ const Action = LargeButton.withComponent(Link).extend`
 
 const Promo = () => (
   <PromoBox p={[3, 4, 5]}>
-    <PromoHeading f={[4, 5, 6]} m={0}>
+    <PromoHeading f={[4, 5, 6]} my={0}>
       Get your club started.
     </PromoHeading>
-    <Text f={[2, 4]} my={2}>
-      Build the class you wish you could take.
+    <Text f={[2, 4]} mt={3} mb={2}>
+      Your high school is waiting for your club.
     </Text>
     <Text f={[2, 4]} mb={4}>
-      Bring the movement to your school.
+      We’ll help you through every step.
     </Text>
     <Action to="/start" children="Start Your Club »" />
   </PromoBox>
 )
 
-const Frame = Box.extend`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 8;
-  pointer-events: none;
-`
-
-const BorderBase = Box.extend`
-  position: absolute;
-  z-index: 4;
-  background: white;
-`
-
-const BorderTop = BorderBase.extend`
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 5vw;
-  min-height: ${props => props.theme.space[4]}px;
-  transform-origin: center top;
-`
-
-const BorderRight = BorderBase.extend`
-  top: 0;
-  right: 0;
-  width: 5vw;
-  height: 100%;
-  min-width: ${props => props.theme.space[4]}px;
-  transform-origin: right center;
-`
-
-const BorderBottom = BorderBase.extend`
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 5vw;
-  transform-origin: center bottom;
-`
-
-const BorderLeft = BorderBase.extend`
-  top: 0;
-  left: 0;
-  width: 5vw;
-  height: 100%;
-  transform-origin: left center;
-`
-
-const BorderX = props => (
-  <Animator
-    data={{
-      transform: [{ scaleX: 1 }, { scaleX: 0 }]
-    }}
-    {...props}
-  />
-)
-
-const BorderY = props => (
-  <Animator
-    data={{
-      transform: [{ scaleY: 1 }, { scaleY: 0 }]
-    }}
-    {...props}
-  />
-)
-
 export default () => (
-  <Base>
-    <Frame>
-      <BorderY is={BorderTop} />
-      <BorderX is={BorderRight} />
-      <BorderY is={BorderBottom} />
-      <BorderX is={BorderLeft} />
-    </Frame>
-    <Photo
-      src="/action.jpg"
-      alt="Group of high school students coding together"
-    />
+  <Framed
+    imageSrc="/action.jpg"
+    imageAlt="Group of high school students coding together"
+  >
     <Promo />
-  </Base>
+  </Framed>
 )

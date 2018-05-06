@@ -56,6 +56,14 @@ export default () => (
           children="old Hack Camp website"
         />?
       </Text>
+      <Text color="slate">
+        Still interested in a camp? Try{' '}
+        <A
+          color={campTheme[0]}
+          href="https://camp.masonhackclub.com/"
+          children="🚀 Mason Hack Camp"
+        />.
+      </Text>
     </Container>
     <Footer />
   </Fragment>

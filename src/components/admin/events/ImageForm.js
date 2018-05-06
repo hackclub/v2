@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import { Button } from '@hackclub/design-system'
 import PropTypes from 'prop-types'
 import api from 'api'
-import storage from 'storage'
 
 const Label = Button.withComponent('label')
 
@@ -16,39 +15,38 @@ class ImageForm extends Component {
   }
 
   handleChange(e) {
-    const authToken = storage.get('authToken')
     const data = new FormData()
     const updatedImage = e.target.files[0]
     this.setState({ image: updatedImage })
 
     data.append('file', updatedImage)
-    data.append('type', `event_${this.props.name}`)
-    api.post('v1/attachments', { authToken, data }).then(resp => {
-      this.props.updateEvent({ [`${this.props.name}`]: resp })
+    data.append('type', `event_${this.props.type}`)
+    api.post('v1/attachments', { data }).then(resp => {
+      this.props.updateEvent({ [`${this.props.type}`]: resp })
     })
   }
 
   render() {
-    const { name, width, height, previewTag: PreviewTag } = this.props
+    const { type, width, height, previewTag: PreviewTag } = this.props
     const { image } = this.state
     return (
       <form>
         <input
           onChange={this.handleChange}
-          id={name}
+          id={type}
           type="file"
           accept=".jpg, .jpeg, .png"
           style={{ display: 'none' }}
         />
-        <Label htmlFor={name}>
-          {image ? 'Reupload' : 'Upload'} {name}
+        <Label htmlFor={type}>
+          {image ? 'Reupload' : 'Upload'} {type}
         </Label>
         {image && (
           <PreviewTag
             imageUrl={
-              image instanceof File ?
-                URL.createObjectURL(image) :
-                `https://api.hackclub.com${image.file_path}`
+              image instanceof File
+                ? URL.createObjectURL(image)
+                : `https://api.hackclub.com${image.file_path}`
             }
           />
         )}
@@ -58,9 +56,9 @@ class ImageForm extends Component {
 }
 
 ImageForm.propTypes = {
-  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   updateEvent: PropTypes.func.isRequired,
-  previewTag: PropTypes.func.isRequired,
+  previewTag: PropTypes.func.isRequired
 }
 
 export default ImageForm

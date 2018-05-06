@@ -7,7 +7,7 @@ import api from 'api'
 const Form = Box.withComponent('form')
 
 export default props => {
-  const { application, authToken, updateApplicationList } = props
+  const { application, updateApplicationList } = props
 
   const intialValues = {
     ...application,
@@ -31,7 +31,6 @@ export default props => {
         }
         api
           .patch(`v1/new_club_applications/${values.id}`, {
-            authToken,
             data: transformedValues
           })
           .then(json => {

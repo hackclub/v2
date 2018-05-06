@@ -52,10 +52,12 @@ const SaveStatusLine = Box.extend`
   box-shadow: 0 0 4px ${props => (props.saved ? '0px' : '2px')};
 `
 
-const SaveStatus = props => (
+const SaveStatus = ({ saved, type = 'all' }) => (
   <Fragment>
-    <SaveStatusText saved={props.saved} />
-    <SaveStatusLine saved={props.saved} />
+    {['all', 'text'].indexOf(type) !== -1 && <SaveStatusText saved={saved} />}
+    {['all', 'underline'].indexOf(type) !== -1 && (
+      <SaveStatusLine saved={saved} />
+    )}
   </Fragment>
 )
 
@@ -104,16 +106,14 @@ export class AutoSaver extends Component {
   }
 
   render() {
-    if (this.state.unsavedChanges) {
-      return (
-        <Fragment>
-          <SaveStatus />
-          <ConfirmClose />
-        </Fragment>
-      )
-    } else {
-      return <SaveStatus saved="true" />
-    }
+    const { unsavedChanges } = this.state
+    const { saveNotification } = this.props
+    return (
+      <Fragment>
+        <SaveStatus type={saveNotification} saved={!unsavedChanges} />
+        {unsavedChanges && <ConfirmClose />}
+      </Fragment>
+    )
   }
 }
 
@@ -251,12 +251,12 @@ export class Field extends Component {
   }
 }
 
-export const Submit = ({ lg, ...props }) => {
-  const Tag = props.lg
-    ? LargeButton.withComponent('input')
-    : Button.withComponent('input')
-  return <Tag type="submit" {...props} />
-}
+export const Submit = Button.withComponent('input').extend.attrs({
+  type: 'submit'
+})``
+Submit.lg = LargeButton.withComponent('input').extend.attrs({
+  type: 'submit'
+})``
 
 export const FormWrapper = Flex.withComponent(Container).extend`
   flex-direction: column;

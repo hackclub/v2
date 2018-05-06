@@ -34,12 +34,13 @@ const AmountsGrid = Box.extend`
   }
   input[type='number'] {
     text-align: center;
+    border-radius: ${props => props.theme.pill};
     grid-column: 2 / span 2;
   }
 `
 
 const Amount = Button.withComponent('label').extend`
-  border-radius: ${props => props.theme.radius};
+  border-radius: ${props => props.theme.pill};
 `
 
 const Option = ({ amount, ...props }) => [

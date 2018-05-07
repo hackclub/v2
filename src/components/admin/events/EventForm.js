@@ -167,7 +167,13 @@ export default withFormik({
       .required(),
     address: yup.string().required()
   }),
-  mapPropsToValues: props => props.event,
+  mapPropsToValues: props => ({
+    ...props.event,
+    public: 'false',
+    hack_club_associated: 'false',
+    mlh_associated: 'false',
+    collegiate: 'false',
+  }),
   enableReinitialize: true,
   handleSubmit: (values, { props }) => {
     const apiFunction = values.id ? api.patch : api.post

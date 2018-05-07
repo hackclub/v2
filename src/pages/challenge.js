@@ -38,6 +38,20 @@ class Help extends Component {
           <Modal align="left" my={4} p={[3, 4]}>
             <CloseButton onClick={this.toggleRules} />
             <Heading.h2>Challenge Rules</Heading.h2>
+            <Text
+              f={2}
+              mt={3}
+              color="info"
+              py={2}
+              px={3}
+              bg="blue.0"
+              style={{ borderRadius: 4 }}
+            >
+              For this challenge, your entry must be hosted on{' '}
+              <Link href="https://repl.it" target="_blank" bold>
+                repl.it
+              </Link>.
+            </Text>
             <Text f={2} my={3}>
               Challenge strictly follows Hack Club’s{' '}
               <Link href="https://conduct.hackclub.com" target="_blank">

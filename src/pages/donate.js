@@ -111,7 +111,7 @@ const ContributionShapes = Shapes.extend`
   svg {
     right: 2rem;
     top: 6rem;
-    color: rgba(45, 228, 115, 0.75);
+    color: ${props => props.theme.colors.pink[4]};
   }
 `
 

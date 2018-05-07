@@ -172,7 +172,7 @@ export default withFormik({
     hack_club_associated: 'false',
     mlh_associated: 'false',
     collegiate: 'false',
-    ...props.event,
+    ...props.event
   }),
   enableReinitialize: true,
   handleSubmit: (values, { props }) => {

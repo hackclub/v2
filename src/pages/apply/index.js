@@ -153,7 +153,9 @@ const ApplicationCard = props => {
             This application was{' '}
             {submitted_at !== null
               ? 'submitted'
-              : updated_at === created_at ? 'created' : 'updated'}{' '}
+              : updated_at === created_at
+                ? 'created'
+                : 'updated'}{' '}
             {timeSince(updated_at)} ago
           </li>
           <li>

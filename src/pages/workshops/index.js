@@ -78,7 +78,11 @@ const SuperButton = Button.withComponent(Link).extend`
 
 const groupOrder = ['start', 'pi', 'arduino', 'experimental', 'misc', 'retired']
 
-export default ({ data: { allMarkdownRemark: { edges } } }) => {
+export default ({
+  data: {
+    allMarkdownRemark: { edges }
+  }
+}) => {
   const groups = groupBy(edges, 'node.frontmatter.group')
 
   // sort groups based on groupOrder

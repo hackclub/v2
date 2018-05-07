@@ -54,7 +54,10 @@ const Item = Card.withComponent('li').extend`
 `
 
 const WorkshopItem = ({
-  data: { fields: { slug, bg }, frontmatter: { name, description } },
+  data: {
+    fields: { slug, bg },
+    frontmatter: { name, description }
+  },
   ...props
 }) => (
   <Link to={slug} {...props}>

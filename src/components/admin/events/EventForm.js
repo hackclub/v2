@@ -168,11 +168,11 @@ export default withFormik({
     address: yup.string().required()
   }),
   mapPropsToValues: props => ({
-    ...props.event,
     public: 'false',
     hack_club_associated: 'false',
     mlh_associated: 'false',
     collegiate: 'false',
+    ...props.event,
   }),
   enableReinitialize: true,
   handleSubmit: (values, { props }) => {

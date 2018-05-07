@@ -50,7 +50,7 @@ const InnerForm = ({
     <Field
       label="URL"
       name="url"
-      placeholder="https://my-project.glitch.me"
+      placeholder="https://my-project.repl.co"
       value={values.url}
       onChange={handleChange}
       onBlur={handleBlur}

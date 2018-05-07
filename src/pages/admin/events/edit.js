@@ -28,7 +28,7 @@ export default class extends Component {
         ...updatedEvent
       }
     })
-    if (!search.get('id')) {
+    if (!search.get('id') && this.state.event.id) {
       search.set('id', this.state.event.id)
     }
   }

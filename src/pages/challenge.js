@@ -185,7 +185,7 @@ export default class extends Component {
               </Heading.h2>
               <HeaderCard boxShadowSize="md" p={3} bg="pink.0" align="left">
                 <Text f={2}>
-                  🌟 Challenge of the month: <strong>{challenge.name}</strong>
+                  🌟 Current challenge: <strong>{challenge.name}</strong>
                   <br />
                   🎁 {challenge.description}
                   <br />

@@ -50,7 +50,7 @@ const InnerForm = ({
     <Field
       label="URL"
       name="url"
-      placeholder="https://my-project.glitch.me"
+      placeholder="https://my-project.repl.co"
       value={values.url}
       onChange={handleChange}
       onBlur={handleBlur}
@@ -77,6 +77,7 @@ const PostForm = withFormik({
       .string()
       .url()
       .required('required')
+      .matches(/repl\.co/, 'must be a repl.co link (see rules)')
   }),
   enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, setStatus, resetForm, props }) => {

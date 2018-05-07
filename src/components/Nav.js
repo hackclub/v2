@@ -36,6 +36,7 @@ const Nav = ({ color = 'white', invertFlag = false, ...props }) => (
       <GatsbyItem to="/team" children="Team" />
       <Item href="/donate" children="Donate" />
       <GatsbyItem to="/start" children="Start" />
+      <GatsbyItem to="/challenge" children="Challenge" />
       <GatsbyItem to="/workshops" children="Workshops" />
       <Item href="https://hackathons.hackclub.com" children="Hackathons" />
     </NavBar>

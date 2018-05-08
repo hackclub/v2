@@ -9,7 +9,9 @@ import {
   Section,
   Icon,
   Button,
-  Card
+  Card,
+  Image,
+  theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
@@ -26,6 +28,23 @@ import FeedbackForm from 'components/workshops/FeedbackForm'
 import Footer from 'components/Footer'
 import { lowerCase, camelCase, isEmpty } from 'lodash'
 import { org } from 'data.json'
+
+const NotOnPrint = Box.extend`
+  @media print {
+     {
+      display: none !important;
+    }
+  }
+`
+
+const OnlyOnPrint = Box.extend`
+  display: none !important;
+  @media print {
+     {
+      display: initial !important;
+    }
+  }
+`
 
 const Header = Box.withComponent('header').extend`
   li a,
@@ -213,41 +232,64 @@ export default ({ data }) => {
         <script type="application/ld+json" children={JSON.stringify(schema)} />
         }
       </Helmet>
-      <Header
-        bg="accent"
-        color="white"
-        p={0}
-        align="center"
-        className="invert"
-        style={{ backgroundImage: `url('${bg}')`, position: 'relative' }}
-      >
-        <Nav style={{ position: 'absolute', top: 0 }} />
-        <Container pt={5} pb={3} px={2}>
-          <Breadcrumbs align="center" justify="center" my={3} wrap>
-            <Breadcrumb to="/workshops" name="Workshops" position={1} />
-            <BreadcrumbDivider />
-            <Breadcrumb to={`/workshops#${group}`} name={group} position={2} />
-            <BreadcrumbDivider />
-            <Breadcrumb to={url} name={name} position={3} bold={false} />
-          </Breadcrumbs>
-          <Name f={6} mb={2} children={name} />
-          <Heading.h2 f={4} children={description} />
-          <Text f={2} caps mt={3} children={linkAuthor(author)} />
-        </Container>
-        <Flex w={1} p={3} justify="space-between">
-          <Invert f={2} my={1} />
-          <IconButton
-            bg="slate"
-            name="edit"
-            children="Edit"
-            inverted
-            href={githubEditUrl(slug)}
-            target="_blank"
-            f={2}
-            my={1}
-          />
-        </Flex>
-      </Header>
+      <NotOnPrint>
+        <Header
+          bg="accent"
+          color="white"
+          p={0}
+          align="center"
+          className="invert"
+          style={{ backgroundImage: `url('${bg}')`, position: 'relative' }}
+        >
+          <Nav style={{ position: 'absolute', top: 0 }} />
+          <Container pt={5} pb={3} px={2}>
+            <Breadcrumbs align="center" justify="center" my={3} wrap>
+              <Breadcrumb to="/workshops" name="Workshops" position={1} />
+              <BreadcrumbDivider />
+              <Breadcrumb
+                to={`/workshops#${group}`}
+                name={group}
+                position={2}
+              />
+              <BreadcrumbDivider />
+              <Breadcrumb to={url} name={name} position={3} bold={false} />
+            </Breadcrumbs>
+            <Name f={6} mb={2} children={name} />
+            <Heading.h2 f={4} children={description} />
+            <Text f={2} caps mt={3} children={linkAuthor(author)} />
+          </Container>
+          <Flex w={1} p={3} justify="space-between">
+            <Invert f={2} my={1} />
+            <IconButton
+              bg="slate"
+              name="edit"
+              children="Edit"
+              inverted
+              href={githubEditUrl(slug)}
+              target="_blank"
+              f={2}
+              my={1}
+            />
+          </Flex>
+        </Header>
+      </NotOnPrint>
+      <OnlyOnPrint>
+        <Text align="right">
+          <Image
+            src="/logo-red.svg"
+            w={`${theme.space[6]}px`}
+            style={{ display: 'inline' }}
+          />{' '}
+          <strong>Computer Science Tutorials</strong>
+        </Text>
+        <Heading.h1 pt={4}>{name}</Heading.h1>
+        <Heading.h4 color="gray.7">{description}</Heading.h4>
+        <Text color="gray.5">{linkAuthor(author)}</Text>
+        <Text color="gray.9" py={2}>
+          You can find this tutorial online at <em>{url}</em>
+        </Text>
+        <hr />
+      </OnlyOnPrint>
       <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
       <Cards maxWidth={52} p={3} mb={5}>
         <Box bg="teal.0" p={[3, 4]}>

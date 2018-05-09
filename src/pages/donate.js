@@ -219,7 +219,7 @@ export default () => (
           <Text {...subtext}>
             We spend our entire budget on paying{' '}
             <A.link to="/team">our team</A.link> and directly improving our
-            clubs. There‘s no advertising waste, bonusses, or unused
+            clubs. There‘s no advertising waste, bonuses, or unused
             contributions.
           </Text>
           <Financials mt={4}>

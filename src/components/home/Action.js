@@ -27,7 +27,7 @@ const PromoBox = Box.extend`
     background-color: rgba(255, 255, 255, 0.75);
     -webkit-backdrop-filter: saturate(180%) blur(16px);
   }
-  @media screen and (prefers-reduced-transparency: reduce) {
+  ${props => props.theme.mediaQueries.reduceTransparency} {
     -webkit-backdrop-filter: auto !important;
   }
   ${props => props.theme.mediaQueries.sm} {
@@ -50,18 +50,7 @@ const PromoHeading = Heading.h2.extend`
   color: ${props => props.theme.colors.primary};
 `
 
-const Action = LargeButton.withComponent(Link).extend`
-  transition: transform 0.125s ease-out;
-  will-change: transform;
-  transform: scale(1);
-  &:hover,
-  &:focus {
-    transform: scale(1.06);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    transform: none !important;
-  }
-`
+const Action = LargeButton.withComponent(Link)
 
 const Promo = () => (
   <PromoBox p={[3, 4, 5]}>
@@ -74,7 +63,7 @@ const Promo = () => (
     <Text f={[2, 4]} mb={4}>
       We’ll help you through every step.
     </Text>
-    <Action to="/start" children="Start Your Club »" />
+    <Action to="/start" chevronRight scale children="Start Your Club" />
   </PromoBox>
 )
 

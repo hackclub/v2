@@ -48,20 +48,7 @@ const Root = Box.withComponent('header').extend`
   }
 `
 
-const Action = LargeButton.extend`
-  transition: transform 0.125s ease-out;
-  will-change: transform;
-  transform: scale(1);
-  &:hover,
-  &:focus {
-    transform: scale(1.06);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    transform: none !important;
-  }
-`
-
-Action.link = Action.withComponent(Link)
+LargeButton.link = LargeButton.withComponent(Link)
 
 export default () => (
   <Animator
@@ -85,12 +72,17 @@ export default () => (
         learn to code through tinkering and building projects.
       </Text>
       <Flex justify="center" align="center" mx={[-1, -2]} mt={[3, 4]}>
-        <Action href="https://finder.hackclub.com" inverted m={[1, 2]}>
+        <LargeButton
+          href="https://finder.hackclub.com"
+          inverted
+          scale
+          m={[1, 2]}
+        >
           Find <span>Nearby</span>
-        </Action>
-        <Action.link to="/start" m={[1, 2]} f={[3, 4]}>
-          Start a Club »
-        </Action.link>
+        </LargeButton>
+        <LargeButton.link to="/start" m={[1, 2]} f={[3, 4]} scale chevronRight>
+          Start a Club
+        </LargeButton.link>
       </Flex>
     </Container>
   </Animator>

@@ -14,7 +14,7 @@
     "map": "npx babel-node src/map.js"
   },
   "dependencies": {
-    "@hackclub/design-system": "^0.0.1-9",
+    "@hackclub/design-system": "^0.0.1-10",
     "axios": "^0.18.0",
     "comma-number": "^2.0.0",
     "draft-js": "^0.10.5",

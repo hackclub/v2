@@ -15,11 +15,6 @@ const Form = Flex.withComponent('form').extend`
     flex: 1 1 auto;
   }
 
-  // remove with next DS
-  > button:last-child {
-    border-radius: ${props => props.theme.pill};
-  }
-
   .public-DraftEditorPlaceholder-inner {
     position: absolute;
     top: -${props => props.theme.space[2] * 1.5}px;

@@ -6,7 +6,6 @@ import {
   Flex,
   Box,
   Text,
-  Button,
   LargeButton,
   Section,
   Link as A
@@ -96,21 +95,7 @@ const OthersCard = Box.extend`
   }
 `
 
-Button.link = Button.withComponent(Link)
 LargeButton.link = LargeButton.withComponent(Link)
-
-const CTA = LargeButton.withComponent(Link).extend`
-  transition: transform 0.125s ease-out;
-  will-change: transform;
-  transform: scale(1);
-  &:hover,
-  &:focus {
-    transform: scale(1.06);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    transform: none !important;
-  }
-`
 
 const Row = Container.extend.attrs({ px: 3, py: [3, 4] })`
   display: grid;
@@ -173,7 +158,7 @@ export default () => (
         <Heading.h2 {...styles.subhline} color="white" f={[4, 5]} mt={3} mb={4}>
           We’ll help every step of the way.
         </Heading.h2>
-        <LargeButton.link to="/apply" f={[3, 4]}>
+        <LargeButton.link to="/apply" f={[3, 4]} scale>
           Begin Your Application
         </LargeButton.link>
       </Container>

@@ -52,10 +52,16 @@ class Help extends Component {
               For this challenge, your entry must be hosted on{' '}
               <Link href="https://repl.it" target="_blank" bold>
                 repl.it
-              </Link>.
+              </Link>{' '}
+              and use{' '}
+              <Link href="https://p5js.org" target="_blank" bold>
+                p5.js
+              </Link>{' '}
+              in its code.
             </Text>
             <Text f={2} my={3}>
-              Challenge strictly follows Hack Club’s{' '}
+              Challenge is open to Hack Club members and repl.it users. It
+              strictly follows Hack Club’s{' '}
               <Link href="https://conduct.hackclub.com" target="_blank">
                 Code of Conduct
               </Link>. Anything breaking our Code of Conduct (ex. voter fraud)
@@ -176,27 +182,50 @@ export default class extends Component {
           <Nav />
           <HeaderContainer maxWidth={56} p={0} mt={[0, 3]} align="left">
             <Box align={['center', null, 'right']}>
-              <Text mb={[-2, -24]} f={3} bold caps>
-                Hack Club
+              <Text mb={[-2, -3]} f={3} bold caps>
+                Hack Club + repl.it
               </Text>
               <Heading.h1 f={[6, 7]} my={0}>
                 Challenge
               </Heading.h1>
-              <Heading.h2 f={3} mt={2} mb={3} regular>
-                Join Hack Club’s high school coding contest
-              </Heading.h2>
-              <HeaderCard boxShadowSize="md" p={3} bg="pink.0" align="left">
-                <Text f={2}>
-                  🌟 Current challenge: <strong>{challenge.name}</strong>
-                  <br />
-                  🎁 {challenge.description}
-                  <br />
-                  📈 Upvote your favorites!
-                  <br />
-                  🏅 Top-voted 3 websites by {dt(challenge.end)} win!
-                </Text>
-              </HeaderCard>
             </Box>
+            <Heading.h2 f={3} regular style={{ alignSelf: 'center' }}>
+              Join Hack Club’s high school coding contest—this week, partnering
+              with{' '}
+              <Link href="https://repl.it" target="_blank" color="white" bold>
+                repl.it
+              </Link>{' '}
+              for the largest challenge yet!
+            </Heading.h2>
+            <HeaderCard boxShadowSize="md" p={3} bg="pink.0" align="left">
+              <Text f={2}>
+                🌟 Current challenge: <strong>{challenge.name}</strong>
+                <br />
+                🎁 {challenge.description}
+                <br />
+                🛠 Build on{' '}
+                <Link href="https://repl.it" target="_blank">
+                  repl.it
+                </Link>{' '}
+                using{' '}
+                <Link href="https://p5js.org" target="_blank">
+                  p5.js
+                </Link>
+                <br />
+                📖 Here’s{' '}
+                <Link
+                  href="https://hackclub.com/workshops/geometric_pattern/"
+                  target="_blank"
+                >
+                  a tutorial
+                </Link>{' '}
+                to get started
+                <br />
+                📈 Submit yours + upvote your favorites!
+                <br />
+                🏅 Top-voted 3 websites by {dt(challenge.end)} win!
+              </Text>
+            </HeaderCard>
             <HeaderCard boxShadowSize="md" p={3} bg="pink.0">
               <Form challengeId={challenge.id} status={status} />
             </HeaderCard>

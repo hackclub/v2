@@ -37,6 +37,9 @@ const CommentButton = Box.withComponent('button').extend`
   background: none;
   border: 0;
   appearance: none;
+  font-family: inherit;
+  font-size: ${props => props.theme.fontSizes[0]}px;
+  line-height: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;

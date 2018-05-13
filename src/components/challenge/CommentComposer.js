@@ -108,7 +108,7 @@ class Composer extends Component {
   }
 
   render() {
-    const { parent, onUnparent } = this.props
+    const { parent, onUnparent, ...props } = this.props
     return (
       <Root>
         {parent && (
@@ -131,7 +131,7 @@ class Composer extends Component {
           name="body"
           placeholder="Add your comment…"
           editorRef={editor => (this.editor = editor)}
-          {...this.props}
+          {...props}
           onChange={this.onChange}
         />
       </Root>

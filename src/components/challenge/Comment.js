@@ -47,6 +47,12 @@ const NestedAvi = BlankAvi.withComponent('aside').extend`
     background: rgba(255, 255, 255, 0.75);
     top: 2px;
     left: 2px;
+    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+      -webkit-backdrop-filter: saturate(180%) blur(2px);
+    }
+    ${props => props.theme.mediaQueries.reduceTransparency} {
+      background: ${props => props.theme.colors.white} !important;
+    }
   }
   img {
     margin-top: 0;

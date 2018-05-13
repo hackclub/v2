@@ -3,6 +3,7 @@ import { Flex, Input, IconButton } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import { isEmpty } from 'lodash'
 import Composer, { LS_BODY_KEY } from './CommentComposer'
+import styled from 'styled-components'
 import yup from 'yup'
 import api from 'api'
 

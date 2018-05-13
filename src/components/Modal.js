@@ -31,7 +31,7 @@ const Modal = Card.extend`
   }
 
   // Responsive size control
-  width: 36rem;
+  width: ${props => props.w || props.width || '36rem'};
   max-width: 95vw;
   max-height: 95vh;
   margin-left: auto;

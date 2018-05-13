@@ -23,7 +23,7 @@ const statusMessage = status =>
       }[status]
     : 'Submit your feedback'
 const statusColor = status =>
-  status === 'success' || status === 'error' ? status.toString() : 'cyan.8'
+  status === 'success' || status === 'error' ? status.toString() : 'blue.7'
 const InnerForm = ({
   values,
   errors,

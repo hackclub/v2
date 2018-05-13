@@ -344,6 +344,7 @@ export default ({ data }) => {
             src="/logo-red.svg"
             w={`${theme.space[6]}px`}
             style={{ display: 'inline' }}
+            alt="Hack Club logo"
           />{' '}
           <strong>Computer Science Tutorials</strong>
         </Text>

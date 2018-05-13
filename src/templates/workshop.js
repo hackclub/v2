@@ -25,7 +25,8 @@ import Invert from 'components/Invert'
 import IconButton from 'components/IconButton'
 import MarkdownBody from 'components/MarkdownBody'
 import FeedbackForm from 'components/workshops/FeedbackForm'
-import SlackForm from 'components/SlackForm'
+import DiscussOnSlack from 'components/DiscussOnSlack'
+import ShareButton from 'components/ShareButton'
 import { Modal, Overlay, CloseButton } from 'components/Modal'
 import Footer from 'components/Footer'
 import { lowerCase, camelCase, isEmpty } from 'lodash'
@@ -149,87 +150,6 @@ const twitterURL = (text, url) =>
 const facebookURL = (text, url) =>
   `https://www.facebook.com/sharer/sharer.php?u=${url}`
 
-const InlineButton = Button.extend`
-  display: inline-flex;
-  align-items: center;
-  div {
-    background-image: url(/social/${props =>
-        lowerCase(props.service)
-          .split(' ')
-          .join('')}-white.svg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    width: 18px;
-    height: 18px;
-  }
-`
-InlineButton.button = InlineButton.withComponent('button')
-const ShareButton = ({ children, ...props }) => (
-  <InlineButton
-    target="_blank"
-    aria-label={`Share on ${props.service}`}
-    f={2}
-    {...props}
-  >
-    <Box mr={2} />
-    {children || props.service}
-  </InlineButton>
-)
-
-class Slack extends Component {
-  state = { active: false }
-
-  toggle = () => {
-    this.setState(state => ({ active: !state.active }))
-  }
-
-  render() {
-    if (this.state.active) {
-      return (
-        <Fragment>
-          <Modal w="28rem" align="left" my={4} p={[3, 4]}>
-            <CloseButton onClick={this.toggle} />
-            <Heading.h2>Join our Slack</Heading.h2>
-            <Flex
-              align="center"
-              my={3}
-              py={2}
-              px={3}
-              bg="red.0"
-              style={{ borderRadius: 4 }}
-            >
-              <Text color="primary" f={2}>
-                Already a member?
-              </Text>
-              <Button
-                ml="auto"
-                f={2}
-                href="https://hackclub.slack.com"
-                target="_blank"
-                chevronRight
-                children="Sign in"
-              />
-            </Flex>
-            <SlackForm />
-          </Modal>
-          <Overlay onClick={this.toggle} />
-        </Fragment>
-      )
-    }
-    return (
-      <InlineButton.button
-        f={2}
-        service="Slack"
-        bg="primary"
-        onClick={this.toggle}
-        {...this.props}
-      >
-        <Box mr={2} />
-        Discuss on Slack
-      </InlineButton.button>
-    )
-  }
-}
 const makeUrl = (domain, slug) => `https://${domain}${slug}`
 
 export default ({ data }) => {
@@ -395,7 +315,7 @@ export default ({ data }) => {
           <Heading.h2 f={3} color="primary" caps mb={3}>
             Questions?
           </Heading.h2>
-          <Slack />
+          <DiscussOnSlack bg="primary" f={2} />
         </Box>
         <Box>
           <Heading.h2 f={3} color="slate" caps mb={3}>

@@ -9,7 +9,7 @@ const DeleteButton = props => (
   <IconButton
     name="close"
     color="white"
-    bg="primary"
+    bg="muted"
     size={16}
     p={1}
     circle
@@ -38,6 +38,7 @@ const Body = Box.withComponent(ReactMarkdown).extend`
   color: ${props => props.theme.colors.slate};
   border-left: 4px solid ${props => props.theme.colors.smoke};
   padding-left: ${props => props.theme.space[3]}px;
+  margin-top: ${props => props.theme.space[1]}px;
   ${commentStyle};
 `
 

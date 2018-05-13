@@ -2,7 +2,7 @@ import { Flex } from '@hackclub/design-system'
 import styled, { css } from 'styled-components'
 
 export const Byline = Flex.withComponent('p').extend`
-  margin: 0;
+  margin: 0 !important;
   line-height: 1;
   color: ${props => props.theme.colors.muted};
   font-size: ${props => props.theme.fontSizes[1]}px;
@@ -22,7 +22,7 @@ export const QuotedCommentByline = Byline.extend`
     margin-right: ${props => props.theme.space[1]}px;
   }
 
-  p {
+  > p {
     margin: 0 !important;
   }
 `

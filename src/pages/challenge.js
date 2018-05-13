@@ -183,7 +183,10 @@ export default class extends Component {
           <HeaderContainer maxWidth={56} p={0} mt={[0, 3]} align="left">
             <Box align={['center', null, 'right']}>
               <Text mb={[-2, -3]} f={3} bold caps>
-                Hack Club + repl.it
+                <Link href="https://repl.it" target="_blank" color="white">
+                  repl.it
+                </Link>{' '}
+                + Hack Club
               </Text>
               <Heading.h1 f={[6, 7]} my={0}>
                 Challenge
@@ -192,7 +195,13 @@ export default class extends Component {
             <Heading.h2 f={3} regular style={{ alignSelf: 'center' }}>
               Join Hack Club’s high school coding contest—this week, partnering
               with{' '}
-              <Link href="https://repl.it" target="_blank" color="white" bold>
+              <Link
+                href="https://repl.it"
+                target="_blank"
+                color="white"
+                bold
+                underline
+              >
                 repl.it
               </Link>{' '}
               for the largest challenge yet!
@@ -204,22 +213,24 @@ export default class extends Component {
                 🎁 {challenge.description}
                 <br />
                 🛠 Build on{' '}
-                <Link href="https://repl.it" target="_blank">
+                <Link href="https://repl.it" target="_blank" underline>
                   repl.it
                 </Link>{' '}
                 using{' '}
-                <Link href="https://p5js.org" target="_blank">
+                <Link href="https://p5js.org" target="_blank" underline>
                   p5.js
-                </Link>
+                </Link>{' '}
+                (required)
                 <br />
-                📖 Here’s{' '}
+                📖 We’ve got{' '}
                 <Link
                   href="https://hackclub.com/workshops/geometric_pattern/"
                   target="_blank"
+                  underline
                 >
                   a tutorial
                 </Link>{' '}
-                to get started
+                to get you started
                 <br />
                 📈 Submit yours + upvote your favorites!
                 <br />

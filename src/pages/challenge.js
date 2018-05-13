@@ -13,6 +13,7 @@ import {
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
+import Footer from 'components/Footer'
 import IconButton from 'components/IconButton'
 import Form from 'components/challenge/Form'
 import Ended from 'components/challenge/Ended'
@@ -213,6 +214,7 @@ export default class extends Component {
           </Title>
           <Posts challengeId={challenge.id} userId={userId} status={status} />
         </Container>
+        <Footer />
       </Fragment>
     )
   }

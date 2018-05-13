@@ -3,7 +3,6 @@ import { Flex, Input, IconButton } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import { isEmpty } from 'lodash'
 import Composer, { LS_BODY_KEY } from './CommentComposer'
-import styled from 'styled-components'
 import yup from 'yup'
 import api from 'api'
 
@@ -77,7 +76,6 @@ const CommentForm = withFormik({
     const authToken = localStorage ? localStorage.getItem('authToken') : null
     let body = { body: data.body }
     if (!isEmpty(props.parent)) body.parent_id = props.parent.id
-    console.log('BODY', body)
     body = JSON.stringify(body)
     api
       .post(`v1/posts/${props.id}/comments`, {

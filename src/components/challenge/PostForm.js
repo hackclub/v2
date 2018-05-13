@@ -83,7 +83,6 @@ const PostForm = withFormik({
   handleSubmit: (data, { setSubmitting, setStatus, resetForm, props }) => {
     const authToken = storage.get('authToken')
     const headers = { Authorization: `Bearer ${authToken}` }
-    console.log('headers', headers)
     const id = props.challengeId
     axios
       .post(`https://api.hackclub.com/v1/challenges/${id}/posts`, data, {

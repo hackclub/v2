@@ -12,8 +12,10 @@ import ReactMarkdown from 'react-markdown'
 import MarkdownBody from 'components/MarkdownBody'
 import QuotedComment from 'components/challenge/QuotedComment'
 import PropTypes from 'prop-types'
+import { CommentByline, commentStyle } from 'components/challenge/style'
 import { timeSince } from 'helpers'
-import { css } from 'styled-components'
+import { isEmpty } from 'lodash'
+import styled, { css } from 'styled-components'
 
 const gradient = (a, b) =>
   `linear-gradient(to bottom, ${cx(a)} 0%, ${cx(b)} 100%)`
@@ -72,17 +74,7 @@ const Group = Flex.extend`
   }
 `
 
-const Byline = Flex.withComponent('p').extend`
-  margin: 0;
-  line-height: 1;
-  flex-direction: ${props => (props.mine ? 'row-reverse' : 'row')};
-  color: ${props => props.theme.colors.muted};
-  font-size: ${props => props.theme.fontSizes[1]}px;
-  -webkit-user-select: none; /* Chrome/Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+ */
-  max-width: 100%;
-`
+const Byline = CommentByline
 
 const Time = Text.withComponent('time').extend`
   margin: 0 ${props => props.theme.space[2]}px;
@@ -93,48 +85,7 @@ const Time = Text.withComponent('time').extend`
   }
 `
 
-export const commentStyle = css`
-  font-size: ${props => props.theme.fontSizes[1]}px;
-  line-height: 1.375;
-  vertical-align: middle;
-  white-space: pre-line;
-  word-wrap: break-word;
-  word-break: break-word;
-
-  > :first-child {
-    margin-top: 0 !important;
-  }
-  > :last-child {
-    margin-bottom: 0 !important;
-  }
-
-  h1,
-  h2,
-  h3 {
-    font-size: inherit;
-    margin-top: 0;
-    margin-bottom: ${props => props.theme.space[2]}px;
-  }
-
-  ol,
-  ul {
-    padding-left: ${props => props.theme.space[3]}px;
-  }
-
-  blockquote {
-    border-left: 2px solid currentColor;
-    padding-left: ${props => props.theme.space[2]}px;
-    margin-left: 0;
-  }
-
-  > p,
-  li {
-    margin-top: ${props => props.theme.space[1]}px;
-    margin-bottom: ${props => props.theme.space[1]}px;
-  }
-`
-
-const Bubble = Box.withComponent(ReactMarkdown).extend`
+const Bubble = Box.extend`
   background-color: ${props =>
     props.mine ? props.theme.colors.info : props.theme.colors.snow};
   background-image: ${props =>
@@ -143,10 +94,13 @@ const Bubble = Box.withComponent(ReactMarkdown).extend`
     props.mine ? props.theme.colors.white : props.theme.colors.black};
   border-radius: 18px;
   min-height: 36px;
-  padding: ${props => props.theme.space[2]}px ${props =>
-  props.theme.space[3]}px;
+  padding: ${props => props.theme.space[1]}px;
   margin-top: ${props => props.theme.space[1]}px;
   max-width: 24rem;
+`
+const Body = Box.withComponent(ReactMarkdown).extend`
+  padding: ${props => props.theme.space[1]}px ${props =>
+  props.theme.space[3] - props.theme.space[1]}px;
   ${commentStyle};
 `
 
@@ -185,6 +139,7 @@ class Comment extends Component {
       parent,
       user,
       body,
+      onReply,
       onDelete,
       ...props
     } = this.props
@@ -218,7 +173,12 @@ class Comment extends Component {
               <Time title={createdAt} children={timeSince(createdAt)} />
             </Byline>
           )}
-          <Bubble mine={mine} source={body} />
+          <Bubble mine={mine}>
+            {!isEmpty(parent) && (
+              <QuotedComment bg="white" px={3} py={2} data={parent} />
+            )}
+            <Body source={body} />
+          </Bubble>
         </Group>
       </Root>
     )
@@ -235,5 +195,6 @@ Comment.propTypes = {
   parent: PropTypes.object,
   body: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
+  onReply: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired
 }

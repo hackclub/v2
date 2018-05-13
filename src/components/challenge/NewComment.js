@@ -3,6 +3,7 @@ import { Flex, Input, IconButton } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import { isEmpty } from 'lodash'
 import Composer, { LS_BODY_KEY } from './CommentComposer'
+import styled from 'styled-components'
 import yup from 'yup'
 import api from 'api'
 
@@ -15,36 +16,16 @@ const Form = Flex.withComponent('form').extend`
     flex: 1 1 auto;
   }
 
-  .public-DraftEditorPlaceholder-inner {
-    position: absolute;
-    top: ${props => props.theme.space[2]}px;
-    padding-left: ${props => props.theme.space[3]}px;
-    color: ${props => props.theme.colors.muted};
-    font-size: ${props => props.theme.fontSizes[1]}px;
-  }
-
-  .DraftEditor-editorContainer > div {
-    background-color: ${props => props.theme.colors.white};
-    border: 1px solid ${props => props.theme.colors.smoke};
-    border-radius: 18px;
-    padding: ${props => props.theme.space[2]}px ${props =>
-  props.theme.space[3]}px;
-    font-size: ${props => props.theme.fontSizes[1]}px !important;
-    line-height: 1.375 !important;
-
-    a {
-      text-decoration: underline;
-    }
-
-    p,
-    li {
-      margin-top: ${props => props.theme.space[1]}px !important;
-      margin-bottom: ${props => props.theme.space[1]}px !important;
-    }
-  }
-
   select {
     display: none;
+  }
+`
+const SubmitButton = styled(IconButton)`
+  box-shadow: ${props => props.theme.boxShadows[0]} !important;
+  transition: ${props => props.theme.transition} box-shadow;
+  &:hover,
+  &:focus {
+    box-shadow: ${props => props.theme.boxShadows[1]} !important;
   }
 `
 
@@ -74,7 +55,7 @@ const InnerForm = ({
       parent={parent}
       onUnparent={onUnparent}
     />
-    <IconButton
+    <SubmitButton
       type="submit"
       aria-label="Post your comment"
       onClick={handleSubmit}
@@ -89,18 +70,13 @@ const InnerForm = ({
 )
 const CommentForm = withFormik({
   validationSchema: yup.object().shape({
-    body: yup.string(),
-    parent_id: yup.number()
-  }),
-  mapPropsToValues: props => ({
-    parent: props.parent ? props.parent.id : null
+    body: yup.string()
   }),
   enableReinitialize: true,
   handleSubmit: (data, { props, setStatus, setSubmitting, setValues }) => {
     const authToken = localStorage ? localStorage.getItem('authToken') : null
-    const { parent_id } = data
     let body = { body: data.body }
-    if (!isEmpty(parent_id)) body.parent_id = parent_id
+    if (!isEmpty(props.parent)) body.parent_id = props.parent.id
     console.log('BODY', body)
     body = JSON.stringify(body)
     api

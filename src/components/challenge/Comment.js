@@ -176,6 +176,7 @@ class Comment extends Component {
       following,
       createdAt,
       mine,
+      parent,
       user,
       body,
       onDelete,
@@ -225,6 +226,7 @@ Comment.propTypes = {
   following: PropTypes.bool.isRequired,
   mine: PropTypes.bool.isRequired,
   user: PropTypes.object.isRequired,
+  parent: PropTypes.object,
   body: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
   onDelete: PropTypes.func.isRequired

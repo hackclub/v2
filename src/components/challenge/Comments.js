@@ -49,14 +49,14 @@ class Comments extends Component {
     this.forceUpdate()
   }
 
-  getParent = id => find(this.state.data, ['id', id])
+  getParent = id => find(this.state.data, ['id', id]) || {}
 
   onReply = id => {
     const parent = this.getParent(id)
     this.setState({ parent })
   }
 
-  onUnreply = e => {
+  onUnparent = e => {
     this.setState({ parent: null })
   }
 
@@ -125,6 +125,7 @@ class Comments extends Component {
                         new Date(data[i - 1].created_at).getDate()
                     : false
                 }
+                parent={this.getParent(c.parent_id)}
                 user={c.user}
                 body={c.body}
                 onReply={e => this.onReply(c.id)}
@@ -138,7 +139,7 @@ class Comments extends Component {
             id={id}
             email={email}
             parent={parent}
-            onUnreply={this.onUnreply}
+            onUnparent={this.onUnparent}
             onSubmit={this.onSubmit}
           />
         )}

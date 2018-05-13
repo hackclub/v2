@@ -54,8 +54,9 @@ const MarkdownBody = Box.extend`
   }
 
   blockquote {
-    border-left: 2px solid currentColor;
-    padding-left: ${props => props.theme.space[2]}px;
+    border-left: 4px solid ${props => props.theme.colors.smoke};
+    color: ${props => props.theme.colors.slate};
+    padding-left: ${props => props.theme.space[3]}px;
     margin-left: 0;
   }
 

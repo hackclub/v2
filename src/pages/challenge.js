@@ -13,10 +13,12 @@ import {
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
+import Footer from 'components/Footer'
 import IconButton from 'components/IconButton'
 import Form from 'components/challenge/Form'
 import Ended from 'components/challenge/Ended'
 import Posts from 'components/challenge/Posts'
+import DiscussChallenge from 'components/challenge/DiscussChallenge'
 import { Modal, Overlay, CloseButton } from 'components/Modal'
 import { dt, tinyDt } from 'helpers'
 import { isEmpty } from 'lodash'
@@ -212,7 +214,9 @@ export default class extends Component {
             <Help ml="auto" />
           </Title>
           <Posts challengeId={challenge.id} userId={userId} status={status} />
+          <DiscussChallenge />
         </Container>
+        <Footer />
       </Fragment>
     )
   }

@@ -122,8 +122,8 @@ export default () => (
           Learn more
         </Button.link>
       </Box>
-      <BackgroundImage scale src="/about_1.jpg" />
-      <BackgroundImage scale src="/about_2.jpg" />
+      <BackgroundImage aria-label="Students coding" scale src="/about_1.jpg" />
+      <BackgroundImage aria-label="Students coding" scale src="/about_2.jpg" />
       <Box bg="info" p={[3, 4]}>
         <Heading.h3 f={4} my={0} caps>
           The power of a network
@@ -180,8 +180,8 @@ export default () => (
           Our philosophy
         </Button.link>
       </Super>
-      <BackgroundImage scale src="/about_3.jpg" />
-      <BackgroundImage scale src="/about_4.jpg" />
+      <BackgroundImage aria-label="Students coding" scale src="/about_3.jpg" />
+      <BackgroundImage aria-label="Students coding" scale src="/about_4.jpg" />
       <Graph p={[3, 4]}>
         <Heading.h3 f={4} my={0} caps>
           Grassroots and growing

@@ -262,7 +262,9 @@ export default class extends Component {
           </Title>
           <Posts challengeId={challenge.id} userId={userId} status={status} />
           <Flex mt={4} mb={[4, 0]} align="center" justify="center">
-            <Image alt="repl.it logo" src="/replit.svg" w={128} />
+            <Link href="https://repl.it" target="_blank">
+              <Image alt="repl.it logo" src="/replit.svg" w={128} />
+            </Link>
             <Text.span color="muted" f={4} mx={3} children="+" />
             <Text.span color="primary" f={[4, 5]} bold children="Hack Club" />
           </Flex>

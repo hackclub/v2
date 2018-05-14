@@ -245,7 +245,7 @@ export default class extends Component {
                   repl.it
                 </Link> and Hack Club users
                 <br />
-                🏅 Submissions due 5/20. Top 3 voted by 5/23 win!
+                🏅 Submissions due {dt('2018-05-20')}. Top 3 voted by {dt('2018-05-23')} win!
               </Text>
             </HeaderCard>
             <HeaderCard boxShadowSize="md" p={3} bg="pink.0">

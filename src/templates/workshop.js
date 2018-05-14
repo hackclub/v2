@@ -283,7 +283,7 @@ export default ({ data }) => {
             How was this workshop?
           </Heading.h2>
           <Text color="muted" f={1} mt={1} mb={3}>
-            (your feedback is anonymous + appreciated 💙)
+            (your feedback is anonymous + appreciated 💚)
           </Text>
           <FeedbackForm slug={slug} />
         </Card>

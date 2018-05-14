@@ -131,8 +131,7 @@ const Title = Flex.extend`
 `
 
 const title = 'Hack Club Challenge'
-const desc =
-  'Join Hack Club’s high school coding challenge. Submit your entry to compete in our monthly programming contest and win prizes.'
+const desc = 'Join Hack Club’s high school coding challenge. Submit your entry to compete in our monthly programming contest and win prizes.'
 const img = 'https://hackclub.com/challenge.png'
 
 export default class extends Component {
@@ -193,8 +192,7 @@ export default class extends Component {
               </Heading.h1>
             </Box>
             <Heading.h2 f={3} regular style={{ alignSelf: 'center' }}>
-              Join Hack Club’s high school coding contest—this week, partnering
-              with{' '}
+              Hack Club and{' '}
               <Link
                 href="https://repl.it"
                 target="_blank"
@@ -204,13 +202,17 @@ export default class extends Component {
               >
                 repl.it
               </Link>{' '}
-              for the largest challenge yet!
+              are partnering to run the largest challenge yet!
             </Heading.h2>
             <HeaderCard boxShadowSize="md" p={3} bg="pink.0" align="left">
               <Text f={2}>
-                🌟 Current challenge: <strong>{challenge.name}</strong>
-                <br />
-                🎁 {challenge.description}
+                🌟 Challenge:{' '}
+                build the coolest website w/ {' '}
+                <Link
+                  href="https://p5js.org/"
+                  target="_blank"
+                  underline
+                >{challenge.name}</Link>
                 <br />
                 🛠 Build on{' '}
                 <Link href="https://repl.it" target="_blank" underline>
@@ -222,19 +224,28 @@ export default class extends Component {
                 </Link>{' '}
                 (required)
                 <br />
+                🎁 {challenge.description}
+                <br />
                 📖 We’ve got{' '}
                 <Link
-                  href="https://hackclub.com/workshops/geometric_pattern/"
+                  href="https://gist.github.com/zachlatta/abe14c8e1c7ab32c8d8297bdf986dbbb"
                   target="_blank"
                   underline
                 >
-                  a tutorial
+                  a helper doc
                 </Link>{' '}
                 to get you started
                 <br />
-                📈 Submit yours + upvote your favorites!
+                ℹ️ Submissions open to{' '}
+                <Link
+                  href="https://repl.it"
+                  target="_blank"
+                  underline
+                >
+                  repl.it
+                </Link> and Hack Club users
                 <br />
-                🏅 Top-voted 3 websites by {dt(challenge.end)} win!
+                🏅 Submissions due 5/20. Top 3 voted by 5/23 win!
               </Text>
             </HeaderCard>
             <HeaderCard boxShadowSize="md" p={3} bg="pink.0">

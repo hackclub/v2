@@ -220,7 +220,7 @@ export default class extends Component {
                 </Link>{' '}
                 using{' '}
                 <Link href="https://p5js.org" target="_blank" underline>
-                  p5.jshttps://deploy-preview-306--hackclub.netlify.com/challenge
+                  p5.js
                 </Link>{' '}
                 (required)
                 <br />

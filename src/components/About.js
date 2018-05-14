@@ -148,8 +148,8 @@ export default () => (
           Learn more »
         </Action>
       </Box>
-      <Photo image="/about_1.jpg" />
-      <Photo image="/about_2.jpg" />
+      <Photo src="/about_1.jpg" scale />
+      <Photo src="/about_2.jpg" scale />
       <Box bg="info" p={[3, 4]}>
         <Heading.h3 f={4} my={0} caps>
           The power of a network
@@ -206,8 +206,8 @@ export default () => (
           Our philosophy »
         </Action>
       </Super>
-      <Photo image="/about_3.jpg" />
-      <Photo image="/about_4.jpg" />
+      <Photo src="/about_3.jpg" scale />
+      <Photo src="/about_4.jpg" scale />
       <Graph p={[3, 4]}>
         <Heading.h3 f={4} my={0} caps>
           Grassroots and growing

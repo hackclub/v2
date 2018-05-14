@@ -9,7 +9,8 @@ import {
   Link,
   Card,
   Button,
-  Icon
+  Icon,
+  Image
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
@@ -131,7 +132,8 @@ const Title = Flex.extend`
 `
 
 const title = 'Hack Club Challenge'
-const desc = 'Join Hack Club’s high school coding challenge. Submit your entry to compete in our monthly programming contest and win prizes.'
+const desc =
+  'Join Hack Club’s high school coding challenge. Submit your entry to compete in our monthly programming contest and win prizes.'
 const img = 'https://hackclub.com/challenge.png'
 
 export default class extends Component {
@@ -206,13 +208,10 @@ export default class extends Component {
             </Heading.h2>
             <HeaderCard boxShadowSize="md" p={3} bg="pink.0" align="left">
               <Text f={2}>
-                🌟 Challenge:{' '}
-                build the coolest website w/ {' '}
-                <Link
-                  href="https://p5js.org/"
-                  target="_blank"
-                  underline
-                >{challenge.name}</Link>
+                🌟 Challenge: build the coolest website w/{' '}
+                <Link href="https://p5js.org/" target="_blank" underline>
+                  {challenge.name}
+                </Link>
                 <br />
                 🛠 Build on{' '}
                 <Link href="https://repl.it" target="_blank" underline>
@@ -237,13 +236,10 @@ export default class extends Component {
                 to get you started
                 <br />
                 ℹ️ Submissions open to{' '}
-                <Link
-                  href="https://repl.it"
-                  target="_blank"
-                  underline
-                >
+                <Link href="https://repl.it" target="_blank" underline>
                   repl.it
-                </Link> and Hack Club users
+                </Link>{' '}
+                and Hack Club users
                 <br />
                 🏅 Submissions due 5/20. Top 3 voted by 5/23 win!
               </Text>
@@ -265,6 +261,11 @@ export default class extends Component {
             <Help ml="auto" />
           </Title>
           <Posts challengeId={challenge.id} userId={userId} status={status} />
+          <Flex mt={4} mb={[4, 0]} align="center" justify="center">
+            <Image alt="repl.it logo" src="/replit.svg" w={128} />
+            <Text.span color="muted" f={4} mx={3} children="+" />
+            <Text.span color="primary" f={[4, 5]} bold children="Hack Club" />
+          </Flex>
           <DiscussChallenge />
         </Container>
         <Footer />

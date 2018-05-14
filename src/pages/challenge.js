@@ -220,7 +220,7 @@ export default class extends Component {
                 </Link>{' '}
                 using{' '}
                 <Link href="https://p5js.org" target="_blank" underline>
-                  p5.js
+                  p5.jshttps://deploy-preview-306--hackclub.netlify.com/challenge
                 </Link>{' '}
                 (required)
                 <br />
@@ -245,7 +245,7 @@ export default class extends Component {
                   repl.it
                 </Link> and Hack Club users
                 <br />
-                🏅 Submissions due {dt('2018-05-20')}. Top 3 voted by {dt('2018-05-23')} win!
+                🏅 Submissions due 5/20. Top 3 voted by 5/23 win!
               </Text>
             </HeaderCard>
             <HeaderCard boxShadowSize="md" p={3} bg="pink.0">

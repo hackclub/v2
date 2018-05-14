@@ -9,7 +9,8 @@ import {
   Link,
   Card,
   Button,
-  Icon
+  Icon,
+  Image
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
@@ -52,10 +53,16 @@ class Help extends Component {
               For this challenge, your entry must be hosted on{' '}
               <Link href="https://repl.it" target="_blank" bold>
                 repl.it
-              </Link>.
+              </Link>{' '}
+              and use{' '}
+              <Link href="https://p5js.org" target="_blank" bold>
+                p5.js
+              </Link>{' '}
+              in its code.
             </Text>
             <Text f={2} my={3}>
-              Challenge strictly follows Hack Club’s{' '}
+              Challenge is open to Hack Club members and repl.it users. It
+              strictly follows Hack Club’s{' '}
               <Link href="https://conduct.hackclub.com" target="_blank">
                 Code of Conduct
               </Link>. Anything breaking our Code of Conduct (ex. voter fraud)
@@ -176,27 +183,67 @@ export default class extends Component {
           <Nav />
           <HeaderContainer maxWidth={56} p={0} mt={[0, 3]} align="left">
             <Box align={['center', null, 'right']}>
-              <Text mb={[-2, -24]} f={3} bold caps>
-                Hack Club
+              <Text mb={[-2, -3]} f={3} bold caps>
+                <Link href="https://repl.it" target="_blank" color="white">
+                  repl.it
+                </Link>{' '}
+                + Hack Club
               </Text>
               <Heading.h1 f={[6, 7]} my={0}>
                 Challenge
               </Heading.h1>
-              <Heading.h2 f={3} mt={2} mb={3} regular>
-                Join Hack Club’s high school coding contest
-              </Heading.h2>
-              <HeaderCard boxShadowSize="md" p={3} bg="pink.0" align="left">
-                <Text f={2}>
-                  🌟 Current challenge: <strong>{challenge.name}</strong>
-                  <br />
-                  🎁 {challenge.description}
-                  <br />
-                  📈 Upvote your favorites!
-                  <br />
-                  🏅 Top-voted 3 websites by {dt(challenge.end)} win!
-                </Text>
-              </HeaderCard>
             </Box>
+            <Heading.h2 f={3} regular style={{ alignSelf: 'center' }}>
+              Hack Club and{' '}
+              <Link
+                href="https://repl.it"
+                target="_blank"
+                color="white"
+                bold
+                underline
+              >
+                repl.it
+              </Link>{' '}
+              are partnering to run the largest challenge yet!
+            </Heading.h2>
+            <HeaderCard boxShadowSize="md" p={3} bg="pink.0" align="left">
+              <Text f={2}>
+                🌟 Challenge: Create the coolest website w/{' '}
+                <Link href="https://p5js.org/" target="_blank" underline>
+                  {challenge.name}
+                </Link>
+                <br />
+                🛠 Build on{' '}
+                <Link href="https://repl.it" target="_blank" underline>
+                  repl.it
+                </Link>{' '}
+                using{' '}
+                <Link href="https://p5js.org" target="_blank" underline>
+                  p5.js
+                </Link>{' '}
+                (required)
+                <br />
+                🎁 {challenge.description}
+                <br />
+                ℹ️ Submissions open to{' '}
+                <Link href="https://repl.it" target="_blank" underline>
+                  repl.it
+                </Link>{' '}
+                and Hack Club users
+                <br />
+                📖{' '}
+                <Link
+                  href="https://gist.github.com/zachlatta/abe14c8e1c7ab32c8d8297bdf986dbbb"
+                  target="_blank"
+                  underline
+                >
+                  Click here
+                </Link>{' '}
+                for help getting started
+                <br />
+                🏅 Submissions due 5/20. Top 3 voted by 5/23 win!
+              </Text>
+            </HeaderCard>
             <HeaderCard boxShadowSize="md" p={3} bg="pink.0">
               <Form challengeId={challenge.id} status={status} />
             </HeaderCard>
@@ -214,6 +261,11 @@ export default class extends Component {
             <Help ml="auto" />
           </Title>
           <Posts challengeId={challenge.id} userId={userId} status={status} />
+          <Flex mt={4} mb={[4, 0]} align="center" justify="center">
+            <Image alt="repl.it logo" src="/replit.svg" w={128} />
+            <Text.span color="muted" f={4} mx={3} children="+" />
+            <Text.span color="primary" f={[4, 5]} bold children="Hack Club" />
+          </Flex>
           <DiscussChallenge />
         </Container>
         <Footer />

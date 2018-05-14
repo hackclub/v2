@@ -28,7 +28,14 @@ module.exports = {
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-images',
           'gatsby-remark-prismjs',
-          'gatsby-remark-smartypants'
+          'gatsby-remark-smartypants',
+          {
+            resolve: 'gatsby-remark-external-links',
+            options: {
+              target: '_blank',
+              rel: 'noreferrer noopener'
+            }
+          }
         ]
       }
     },

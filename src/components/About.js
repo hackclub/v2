@@ -84,6 +84,32 @@ A.link = A.withComponent(Link)
 const Like = props => <A {...like} {...props} />
 const LikeLink = props => <A.link {...like} {...props} />
 
+const Photo = BackgroundImage.extend.attrs({ role: 'img' })`
+  overflow: hidden;
+  transition: all 0.125s ease-out;
+  background-size: auto 100%;
+  &:hover {
+    background-size: auto 108%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    background-size: cover !important;
+  }
+`
+
+const Action = Button.withComponent(Link).extend`
+  transition: transform 0.125s ease-out;
+  will-change: transform;
+  transform: scale(1);
+  &:hover,
+  &:focus {
+    transform: scale(1.06);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transform: none !important;
+  }
+`
+
 export default () => (
   <Container w={1} px={[3, 4, null, 2]} mt={[4, 5]}>
     <Box mx={0} mt={5} color="black">
@@ -118,12 +144,12 @@ export default () => (
           (and <LikeLink to="/challenge">our Challenge</LikeLink>!). This is no
           ordinary club.
         </Text>
-        <Button.link to="/meetings" inverted scale chevronRight>
-          Learn more
-        </Button.link>
+        <Action to="/meetings" inverted>
+          Learn more »
+        </Action>
       </Box>
-      <BackgroundImage aria-label="Students coding" scale src="/about_1.jpg" />
-      <BackgroundImage aria-label="Students coding" scale src="/about_2.jpg" />
+      <Photo image="/about_1.jpg" />
+      <Photo image="/about_2.jpg" />
       <Box bg="info" p={[3, 4]}>
         <Heading.h3 f={4} my={0} caps>
           The power of a network
@@ -176,12 +202,12 @@ export default () => (
           creator. The goal of Hack Club is to help you become that creator. We
           want a space for hacking at every high school, every week.
         </Text>
-        <Button.link to="/philosophy" bg="warning" inverted scale chevronRight>
-          Our philosophy
-        </Button.link>
+        <Action to="/philosophy" bg="warning" inverted>
+          Our philosophy »
+        </Action>
       </Super>
-      <BackgroundImage aria-label="Students coding" scale src="/about_3.jpg" />
-      <BackgroundImage aria-label="Students coding" scale src="/about_4.jpg" />
+      <Photo image="/about_3.jpg" />
+      <Photo image="/about_4.jpg" />
       <Graph p={[3, 4]}>
         <Heading.h3 f={4} my={0} caps>
           Grassroots and growing
@@ -192,9 +218,9 @@ export default () => (
           <Stat f={7} value={stats.state_count} label="states" />
           <Stat f={7} value={stats.approximate_members} label="members" />
         </Stats>
-        <Button.link to="/team" bg="accent" inverted scale chevronRight>
-          Our team
-        </Button.link>
+        <Action to="/team" bg="accent" inverted>
+          Our team »
+        </Action>
       </Graph>
     </Grid>
   </Container>

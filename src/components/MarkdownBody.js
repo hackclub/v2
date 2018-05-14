@@ -36,11 +36,17 @@ const MarkdownBody = Box.extend`
     border-bottom: 1px solid ${props => props.theme.colors.smoke};
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  strong {
+    font-weight: ${props => props.theme.bold};
+  }
+
   ${range(1, 6)
     .map(
-      level =>
-        `h${level} { font-size: ${props =>
-          props.theme.fontSizes[6 - level]}px; }`
+      n => `h${n} { font-size: ${props => props.theme.fontSizes[6 - n]}px; }`
     )
     .join('')};
 

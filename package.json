@@ -37,6 +37,7 @@
     "gatsby-plugin-styled-components": "^2.0.11",
     "gatsby-remark-autolink-headers": "^1.4.18",
     "gatsby-remark-copy-linked-files": "^1.5.32",
+    "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-images": "^1.5.63",
     "gatsby-remark-prismjs": "^2.0.2",
     "gatsby-remark-smartypants": "^1.4.12",

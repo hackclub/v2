@@ -43,6 +43,24 @@ module.exports = {
         display: 'minimal-ui'
       }
     },
+    {
+      resolve: 'gatsby-plugin-favicon',
+      options: {
+        logo: './static/favicon.png',
+        injectHTML: true,
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+          coast: false,
+          favicons: true,
+          firefox: true,
+          twitter: false,
+          yandex: false,
+          windows: false
+        }
+      }
+    },
     'gatsby-plugin-sitemap',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',

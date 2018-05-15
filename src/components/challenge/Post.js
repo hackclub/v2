@@ -17,6 +17,13 @@ import api from 'api'
 
 const Row = Flex.extend`
   align-items: center;
+  border-bottom: 1px solid ${props => props.theme.colors.smoke};
+  a {
+    flex: 1 1 auto;
+  }
+`
+
+const Description = Text.extend`
   word-wrap: break-word;
   /*
   word-break is duplicated here because it has a different use in WebKit:
@@ -24,10 +31,6 @@ const Row = Flex.extend`
   */
   word-break: break-all;
   word-break: break-word;
-  border-bottom: 1px solid ${props => props.theme.colors.smoke};
-  a {
-    flex: 1 1 auto;
-  }
 `
 
 const UpvoteButton = Button.button.extend`
@@ -108,9 +111,9 @@ const PostRow = ({
           {tinyDt(createdAt)}
         </Text.span>
       </Heading.h3>
-      <Text color="muted" f={2}>
+      <Description color="muted" f={2}>
         {description}
-      </Text>
+      </Description>
     </Link>
     <CommentButton
       aria-label={`Open comments: ${commentsCount}`}

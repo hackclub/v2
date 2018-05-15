@@ -22,9 +22,16 @@ class Posts extends Component {
 
   componentDidMount() {
     this.refreshPosts(this.props.userId)
+    this.refreshIntervalId = setInterval(() => {
+      this.refreshPosts(this.props.userId, true)
+    }, 3000)
   }
 
-  refreshPosts(newUserId) {
+  componentWillUnmount() {
+    clearInterval(this.refreshIntervalId)
+  }
+
+  refreshPosts(newUserId, intervalUpdate = false) {
     const { challengeId, userId: oldUserId } = this.props
     const userId = newUserId || oldUserId
     console.log('refreshing!')
@@ -54,7 +61,11 @@ class Posts extends Component {
         this.setState({ upvotes, posts, status: 'success' })
       })
       .catch(err => {
-        this.setState({ status: 'error' })
+        // A user shouldn't see an update if they lose connection for 3 seconds
+        // They'll only see an error for a user-triggered action
+        if (!intervalUpdate) {
+          this.setState({ status: 'error' })
+        }
       })
   }
 

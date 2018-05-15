@@ -67,6 +67,7 @@ const InnerForm = ({
     <Composer
       value={values.body}
       clear={isEmpty(values.body) && touched.body}
+      handleReturn={handleSubmit}
       onChange={setFieldValue}
       onBlur={handleBlur}
     />

@@ -10,7 +10,8 @@ import {
   Card,
   Button,
   Icon,
-  Image
+  Image,
+  Hide
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
@@ -181,6 +182,15 @@ export default class extends Component {
         />
         <Header p={3}>
           <Nav />
+          <Hide sm>
+            <Flex mt={4} mb={4} align="center" justify="center">
+              <Link href="https://repl.it" target="_blank">
+                <Image alt="repl.it logo" src="/replit-white.svg" w={224} />
+              </Link>
+              <Text.span color="white" f={5} mx={3} children="+" />
+              <Text.span color="white" f={6} bold children="Hack Club" />
+            </Flex>
+          </Hide>
           <HeaderContainer maxWidth={56} p={0} mt={[0, 3]} align="left">
             <Box align={['center', null, 'right']}>
               <Text mb={[-2, -3]} f={3} bold caps>

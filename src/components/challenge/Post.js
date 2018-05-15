@@ -17,6 +17,13 @@ import api from 'api'
 
 const Row = Flex.extend`
   align-items: center;
+  word-wrap: break-word;
+  /*
+  word-break is duplicated here because it has a different use in WebKit:
+  https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container
+  */
+  word-break: break-all;
+  word-break: break-word;
   border-bottom: 1px solid ${props => props.theme.colors.smoke};
   a {
     flex: 1 1 auto;

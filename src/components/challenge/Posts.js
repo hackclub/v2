@@ -4,7 +4,7 @@ import Post from 'components/challenge/Post'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 import api from 'api'
-import { includes, isEmpty, get } from 'lodash'
+import { includes, isEmpty, get, orderBy } from 'lodash'
 
 class Posts extends Component {
   state = { posts: [], upvotes: [], status: 'loading', prevUserId: null }
@@ -128,7 +128,7 @@ class Posts extends Component {
                 No submissions yet!
               </Text>
             )}
-            {posts.map(post => (
+            {orderBy(posts, 'rank_score', 'desc').map(post => (
               <Post
                 id={post.id}
                 name={post.name}

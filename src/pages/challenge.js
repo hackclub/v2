@@ -185,10 +185,16 @@ export default class extends Component {
           <HeaderContainer maxWidth={56} p={0} mt={[0, 3]} align="left">
             <Box align={['center', null, 'right']}>
               <Text mb={[-2, -3]} f={3} bold caps>
-                <Link href="https://repl.it" target="_blank" color="white">
-                  repl.it
-                </Link>{' '}
-                + Hack Club
+                {status === 'success' ? (
+                  <Fragment>
+                    <Link href="https://repl.it" target="_blank" color="white">
+                      repl.it
+                    </Link>{' '}
+                    + Hack Club
+                  </Fragment>
+                ) : (
+                  'p5.js website'
+                )}
               </Text>
               <Heading.h1 f={[6, 7]} my={0}>
                 Challenge

@@ -207,49 +207,51 @@ export default class extends Component {
               </Link>{' '}
               are partnering to run the largest challenge yet!
             </Heading.h2>
-            <HeaderCard boxShadowSize="md" p={3} bg="pink.0" align="left">
-              <Text f={2}>
-                🌟 Challenge: Create the coolest website w/{' '}
-                <Link href="https://p5js.org/" target="_blank" underline>
-                  {challenge.name}
-                </Link>
-                <br />
-                🛠 Build on{' '}
-                <Link href="https://repl.it" target="_blank" underline>
-                  repl.it
-                </Link>{' '}
-                using{' '}
-                <Link href="https://p5js.org" target="_blank" underline>
-                  p5.js
-                </Link>{' '}
-                (required)
-                <br />
-                🎁 {challenge.description}
-                <br />
-                ℹ️ Submissions open to{' '}
-                <Link href="https://repl.it" target="_blank" underline>
-                  repl.it
-                </Link>{' '}
-                and Hack Club users
-                <br />
-                📖{' '}
-                <Link
-                  href="https://gist.github.com/zachlatta/abe14c8e1c7ab32c8d8297bdf986dbbb"
-                  target="_blank"
-                  underline
-                >
-                  Click here
-                </Link>{' '}
-                for help getting started
-                <br />
-                🏅 Submissions due 5/20. Top 3 voted by 5/23 win!
-              </Text>
-            </HeaderCard>
+            <div>
+              <HeaderCard boxShadowSize="md" p={3} bg="pink.0" align="left">
+                <Text f={2}>
+                  🌟 Challenge: Create the coolest website w/{' '}
+                  <Link href="https://p5js.org/" target="_blank" underline>
+                    {challenge.name}
+                  </Link>
+                  <br />
+                  🛠 Build on{' '}
+                  <Link href="https://repl.it" target="_blank" underline>
+                    repl.it
+                  </Link>{' '}
+                  using{' '}
+                  <Link href="https://p5js.org" target="_blank" underline>
+                    p5.js
+                  </Link>{' '}
+                  (required)
+                  <br />
+                  🎁 {challenge.description}
+                  <br />
+                  ℹ️ Submissions open to{' '}
+                  <Link href="https://repl.it" target="_blank" underline>
+                    repl.it
+                  </Link>{' '}
+                  and Hack Club users
+                  <br />
+                  📖{' '}
+                  <Link
+                    href="https://gist.github.com/zachlatta/abe14c8e1c7ab32c8d8297bdf986dbbb"
+                    target="_blank"
+                    underline
+                  >
+                    Click here
+                  </Link>{' '}
+                  for help getting started
+                  <br />
+                  🏅 Submissions due 5/20. Top 3 voted by 5/23 win!
+                </Text>
+              </HeaderCard>
+            </div>
             <HeaderCard boxShadowSize="md" p={3} bg="pink.0">
               <Form challengeId={challenge.id} status={status} />
             </HeaderCard>
           </HeaderContainer>
-          <Hide sm>
+          <Hide sm style={{ display: status === 'success' ? 'none' : null }}>
             <Flex mt={4} align="center" justify="center">
               <Link href="https://repl.it" target="_blank">
                 <Image alt="repl.it logo" src="/replit-white.svg" w={224} />

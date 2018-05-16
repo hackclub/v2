@@ -83,7 +83,9 @@ const descriptions = {
   arduino:
     'Bring projects from cyberspace to the real world with this small hardware platform.',
   retired:
-    'These workshops are no longer maintained. They may contain errors and are not recommended for club use. Here be dragons.'
+    'These workshops are no longer maintained. They may contain errors and are not recommended for club use. Here be dragons.',
+  challenges:
+    'Supplemental material for Hack Club Challenges'
 }
 
 const Track = ({ name, data, ...props }) => (

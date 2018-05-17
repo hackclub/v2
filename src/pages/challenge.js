@@ -273,9 +273,12 @@ export default class extends Component {
             <Heading.h2 color="black" f={[4, 5]}>
               Submissions
             </Heading.h2>
-            <Text.span f={2} color="muted" ml={3}>
-              {tinyDt(challenge.start)}–{tinyDt(challenge.end)}
-            </Text.span>
+            <Box align="left" ml={3}>
+              <Text f={2} color="muted">
+                {tinyDt(challenge.start)}–{tinyDt(challenge.end)}
+              </Text>
+              <Text f={2}>Sorted by trending</Text>
+            </Box>
             <Help ml="auto" />
           </Title>
           <Posts challengeId={challenge.id} userId={userId} status={status} />

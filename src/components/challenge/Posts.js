@@ -33,18 +33,7 @@ class Posts extends Component {
 
   refreshPosts(newUserId, intervalUpdate = false) {
     const { challengeId, userId: oldUserId } = this.props
-
-    // super hacky, but right now there's a dumb issue where userId is not
-    // properly passed & it's set to undefined when we actually have its value
-    // stored in localStorage.
-    //
-    // the real solution is to do proper state management so we don't have to do
-    // a full http request to get the current user's info & we can retrieve
-    // cached values with confidence, but for the time being i'm going to fall
-    // back to the last remembered userId in localStorage. i think this is set
-    // by the login component, but not 100% sure.
-    const userId = newUserId || oldUserId || localStorage.getItem('userId')
-
+    const userId = newUserId || oldUserId
     console.log('refreshing!')
 
     api

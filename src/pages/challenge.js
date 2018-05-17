@@ -149,8 +149,6 @@ export default class extends Component {
         })
         .catch(err => {
           if (err.status === 401) {
-            // reset stored userId value used in posts.js
-            localStorage.removeItem('userId')
             this.setState({ status: 'needsToAuth' })
           } else {
             this.setState({ status: 'error' })

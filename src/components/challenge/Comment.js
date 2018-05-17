@@ -186,7 +186,7 @@ class Comment extends Component {
         <Group mine={mine}>
           {!following && (
             <Byline mine={mine}>
-              <Text.span bold>{user.email}</Text.span>
+              <Text.span bold>{user.username}</Text.span>
               <Time title={createdAt} children={timeSince(createdAt)} />
             </Byline>
           )}

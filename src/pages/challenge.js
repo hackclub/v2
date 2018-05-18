@@ -260,10 +260,19 @@ export default class extends Component {
           <Hide sm style={{ display: status === 'success' ? 'none' : null }}>
             <Flex mt={4} align="center" justify="center">
               <Link href="https://repl.it" target="_blank">
-                <Image alt="repl.it logo" src="/replit-white.svg" w={224} />
+                <Image
+                  alt="repl.it logo"
+                  src="/replit-white.svg"
+                  w={[144, 224]}
+                />
               </Link>
-              <Text.span color="white" f={5} mx={3} children="+" />
-              <Text.span color="white" f={6} bold children="Hack Club" />
+              <Text.span color="pink.1" f={[4, 5]} mx={[2, 3]} children="+" />
+              <Text.span
+                color="white"
+                f={[4, 5, 6]}
+                bold
+                children="Hack Club"
+              />
             </Flex>
           </Hide>
         </Header>

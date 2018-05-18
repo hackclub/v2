@@ -88,7 +88,7 @@ const CommentForm = withFormik({
       .then(res => {
         setSubmitting(false)
         setValues({ body: '', parent_id: null })
-        props.onUnreply()
+        props.onUnparent()
         props.onSubmit(res)
         if (localStorage) localStorage.removeItem(LS_BODY_KEY)
         setStatus('success')
@@ -97,6 +97,7 @@ const CommentForm = withFormik({
       .catch(e => {
         setSubmitting(false)
         setStatus('error')
+        console.error(e)
       })
   },
   displayName: 'CommentForm'

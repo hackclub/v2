@@ -21,6 +21,11 @@ import Ended from 'components/challenge/Ended'
 import Posts from 'components/challenge/Posts'
 import DiscussChallenge from 'components/challenge/DiscussChallenge'
 import { Modal, Overlay, CloseButton } from 'components/Modal'
+import {
+  DropdownContainer,
+  DropdownMenu,
+  DropdownMenuOption
+} from 'components/Dropdown'
 import { dt, tinyDt } from 'helpers'
 import { isEmpty } from 'lodash'
 import api from 'api'
@@ -283,12 +288,24 @@ export default class extends Component {
             <Heading.h2 color="black" f={[4, 5]}>
               Submissions
             </Heading.h2>
-            <Box align="left" ml={3}>
-              <Text f={2} color="muted">
-                {tinyDt(challenge.start)}–{tinyDt(challenge.end)}
-              </Text>
-              <Text f={2}>Sorted by trending</Text>
-            </Box>
+            <Text f={2} color="muted" align="left" ml={3}>
+              {tinyDt(challenge.start)}–{tinyDt(challenge.end)}
+            </Text>
+            <DropdownContainer ml="auto">
+              <IconButton
+                name="sort"
+                size={16}
+                bg="info"
+                inverted
+                f={2}
+                children="Sort…"
+              />
+              <DropdownMenu>
+                <DropdownMenuOption active>Trending</DropdownMenuOption>
+                <DropdownMenuOption>Top-voted</DropdownMenuOption>
+                <DropdownMenuOption>Newest</DropdownMenuOption>
+              </DropdownMenu>
+            </DropdownContainer>
           </Title>
           <Posts challengeId={challenge.id} userId={userId} status={status} />
           <Flex mt={4} mb={[4, 0]} align="center" justify="center">

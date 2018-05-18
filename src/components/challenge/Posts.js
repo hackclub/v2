@@ -6,6 +6,12 @@ import ErrorPage from 'components/admin/ErrorPage'
 import api from 'api'
 import { includes, isEmpty, get, orderBy } from 'lodash'
 
+const sortFunctions = {
+  trending: posts => orderBy(posts, 'rank_score', 'desc'),
+  newest: posts => orderBy(posts, 'created_at', 'desc'),
+  top: posts => orderBy(posts, 'upvotesCount', 'desc')
+}
+
 class Posts extends Component {
   state = { posts: [], upvotes: [], status: 'loading', prevUserId: null }
 
@@ -50,11 +56,6 @@ class Posts extends Component {
               upvotes.push(post.id)
             }
           })
-        })
-
-        // sort by upvote count
-        posts = posts.sort((p1, p2) => {
-          return p2.upvotesCount - p1.upvotesCount
         })
 
         // TODO (later): remove upvotes array for better performace
@@ -116,7 +117,7 @@ class Posts extends Component {
 
   render() {
     const { posts, upvotes, status } = this.state
-    const { userId } = this.props
+    const { userId, sortBy } = this.props
     switch (status) {
       case 'loading':
         return <LoadingBar />
@@ -128,7 +129,7 @@ class Posts extends Component {
                 No submissions yet!
               </Text>
             )}
-            {orderBy(posts, 'rank_score', 'desc').map(post => (
+            {sortFunctions[sortBy](posts).map(post => (
               <Post
                 id={post.id}
                 name={post.name}

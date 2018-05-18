@@ -139,7 +139,7 @@ const desc =
 const img = 'https://hackclub.com/challenge.png'
 
 export default class extends Component {
-  state = { status: 'loading' }
+  state = { status: 'loading', sortBy: 'trending' }
 
   componentDidMount() {
     if (storage.get('authToken')) {
@@ -162,7 +162,7 @@ export default class extends Component {
 
   render() {
     const { data } = this.props
-    const { userId, status } = this.state
+    const { userId, status, sortBy } = this.state
     if (isEmpty(data)) return null
     const challenge = data.publicJson
     const ended = Date.parse(new Date()) > Date.parse(challenge.end)
@@ -301,13 +301,33 @@ export default class extends Component {
                 children="Sort…"
               />
               <DropdownMenu>
-                <DropdownMenuOption active>Trending</DropdownMenuOption>
-                <DropdownMenuOption>Top-voted</DropdownMenuOption>
-                <DropdownMenuOption>Newest</DropdownMenuOption>
+                <DropdownMenuOption
+                  active={sortBy === 'trending'}
+                  onClick={() => this.setState({ sortBy: 'trending' })}
+                >
+                  Trending
+                </DropdownMenuOption>
+                <DropdownMenuOption
+                  active={sortBy === 'top'}
+                  onClick={() => this.setState({ sortBy: 'top' })}
+                >
+                  Top-voted
+                </DropdownMenuOption>
+                <DropdownMenuOption
+                  active={sortBy === 'newest'}
+                  onClick={() => this.setState({ sortBy: 'newest' })}
+                >
+                  Newest
+                </DropdownMenuOption>
               </DropdownMenu>
             </DropdownContainer>
           </Title>
-          <Posts challengeId={challenge.id} userId={userId} status={status} />
+          <Posts
+            challengeId={challenge.id}
+            userId={userId}
+            status={status}
+            sortBy={sortBy}
+          />
           <Flex mt={4} mb={[4, 0]} align="center" justify="center">
             <Link href="https://repl.it" target="_blank">
               <Image alt="repl.it logo" src="/replit.svg" w={128} />

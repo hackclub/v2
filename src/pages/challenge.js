@@ -10,8 +10,7 @@ import {
   Card,
   Button,
   Icon,
-  Image,
-  Hide
+  Image
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
@@ -22,6 +21,11 @@ import Ended from 'components/challenge/Ended'
 import Posts from 'components/challenge/Posts'
 import DiscussChallenge from 'components/challenge/DiscussChallenge'
 import { Modal, Overlay, CloseButton } from 'components/Modal'
+import {
+  DropdownContainer,
+  DropdownMenu,
+  DropdownMenuOption
+} from 'components/Dropdown'
 import { dt, tinyDt } from 'helpers'
 import { isEmpty } from 'lodash'
 import api from 'api'
@@ -90,6 +94,7 @@ class Help extends Component {
         inverted
         f={2}
         onClick={this.toggleRules}
+        style={{ float: 'right' }}
         {...this.props}
       />
     )
@@ -97,39 +102,35 @@ class Help extends Component {
 }
 
 const Header = Section.withComponent('header').extend`
-  padding-top: 0 !important;
-  background-color: ${props => props.theme.colors.red[5]};
+  padding: 0 !important;
+  background-color: ${({ theme }) => theme.colors.red[5]};
   background-image: linear-gradient(
     32deg,
-    ${props => props.theme.colors.pink[5]},
-    ${props => props.theme.colors.red[5]}
+    ${({ theme }) => theme.colors.pink[5]},
+    ${({ theme }) => theme.colors.red[5]}
   );
-  clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 98%);
-  ${props => props.theme.mediaQueries.md} {
-    clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 92%);
-  }
 `
 
-const HeaderContainer = Container.extend`
+const HeaderContainer = Box.extend`
   display: grid;
-  grid-gap: ${props => props.theme.space[3]}px;
-  ${props => props.theme.mediaQueries.md} {
+  grid-gap: ${({ theme }) => theme.space[3]}px;
+  max-width: 100%;
+  ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: ${props => props.theme.space[4]}px;
+    grid-gap: ${({ theme }) => theme.space[4]}px;
+    max-width: 56rem;
   }
 `
 
 const HeaderCard = Card.extend`
-  min-height: 128px;
-  position: relative;
   h2,
   p {
-    color: ${props => props.theme.colors.black} !important;
+    color: ${({ theme }) => theme.colors.black} !important;
   }
 `
 
 const Title = Flex.extend`
-  border-bottom: 1px solid ${props => props.theme.colors.smoke};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
 `
 
 const title = 'Hack Club Challenge'
@@ -138,7 +139,7 @@ const desc =
 const img = 'https://hackclub.com/challenge.png'
 
 export default class extends Component {
-  state = { status: 'loading' }
+  state = { status: 'loading', sortBy: 'trending' }
 
   componentDidMount() {
     if (storage.get('authToken')) {
@@ -161,7 +162,7 @@ export default class extends Component {
 
   render() {
     const { data } = this.props
-    const { userId, status } = this.state
+    const { userId, status, sortBy } = this.state
     if (isEmpty(data)) return null
     const challenge = data.publicJson
     const ended = Date.parse(new Date()) > Date.parse(challenge.end)
@@ -180,9 +181,9 @@ export default class extends Component {
             { property: 'og:url', content: 'https://hackclub.com/challenge' }
           ]}
         />
-        <Header p={3}>
+        <Header>
           <Nav />
-          <HeaderContainer maxWidth={56} p={0} mt={[0, 3]} align="left">
+          <HeaderContainer px={3} py={0} mb={[3, 4]} align="left" mx="auto">
             <Box align={['center', null, 'right']}>
               <Text mb={[-2, -3]} f={3} bold caps>
                 {status === 'success' ? (
@@ -213,59 +214,73 @@ export default class extends Component {
               </Link>{' '}
               are partnering to run the largest challenge yet!
             </Heading.h2>
-            <div>
-              <HeaderCard boxShadowSize="md" p={3} bg="pink.0" align="left">
-                <Text f={2}>
-                  🌟 Challenge: Create the coolest website w/{' '}
-                  <Link href="https://p5js.org/" target="_blank" underline>
-                    {challenge.name}
-                  </Link>
-                  <br />
-                  🛠 Build on{' '}
-                  <Link href="https://repl.it" target="_blank" underline>
-                    repl.it
-                  </Link>{' '}
-                  using{' '}
-                  <Link href="https://p5js.org" target="_blank" underline>
-                    p5.js
-                  </Link>{' '}
-                  (required)
-                  <br />
-                  🎁 {challenge.description}
-                  <br />
-                  ℹ️ Submissions open to{' '}
-                  <Link href="https://repl.it" target="_blank" underline>
-                    repl.it
-                  </Link>{' '}
-                  and Hack Club users
-                  <br />
-                  📖{' '}
-                  <Link
-                    href="https://gist.github.com/zachlatta/abe14c8e1c7ab32c8d8297bdf986dbbb"
-                    target="_blank"
-                    underline
-                  >
-                    Click here
-                  </Link>{' '}
-                  for help getting started
-                  <br />
-                  🏅 Submissions due 5/20. Top 3 voted by 5/23 win!
-                </Text>
-              </HeaderCard>
-            </div>
+            <HeaderCard
+              boxShadowSize="md"
+              p={3}
+              bg="pink.0"
+              align="left"
+              style={{
+                alignSelf: status === 'success' ? 'flex-start' : 'auto'
+              }}
+            >
+              <Text f={2}>
+                🌟 Challenge: Create the coolest website w/{' '}
+                <Link href="https://p5js.org/" target="_blank" underline>
+                  {challenge.name}
+                </Link>
+                <br />
+                🛠 Build on{' '}
+                <Link href="https://repl.it" target="_blank" underline>
+                  repl.it
+                </Link>{' '}
+                using{' '}
+                <Link href="https://p5js.org" target="_blank" underline>
+                  p5.js
+                </Link>{' '}
+                (required)
+                <br />
+                🎁 {challenge.description}
+                <br />
+                ℹ️ Submissions open to{' '}
+                <Link href="https://repl.it" target="_blank" underline>
+                  repl.it
+                </Link>{' '}
+                and Hack Club users
+                <br />
+                📖{' '}
+                <Link
+                  href="https://gist.github.com/zachlatta/abe14c8e1c7ab32c8d8297bdf986dbbb"
+                  target="_blank"
+                  underline
+                >
+                  Click here
+                </Link>{' '}
+                for help getting started
+                <br />
+                🏅 Submissions due 5/20. Top 3 voted by 5/23 win!
+              </Text>
+            </HeaderCard>
             <HeaderCard boxShadowSize="md" p={3} bg="pink.0">
+              <Help />
               <Form challengeId={challenge.id} status={status} />
             </HeaderCard>
           </HeaderContainer>
-          <Hide sm style={{ display: status === 'success' ? 'none' : null }}>
-            <Flex mt={4} align="center" justify="center">
-              <Link href="https://repl.it" target="_blank">
-                <Image alt="repl.it logo" src="/replit-white.svg" w={224} />
-              </Link>
-              <Text.span color="white" f={5} mx={3} children="+" />
-              <Text.span color="white" f={6} bold children="Hack Club" />
-            </Flex>
-          </Hide>
+          <Flex
+            mb={[3, 4]}
+            align="center"
+            justify="center"
+            style={{ display: status === 'success' ? 'none' : null }}
+          >
+            <Link href="https://repl.it" target="_blank">
+              <Image
+                alt="repl.it logo"
+                src="/replit-white.svg"
+                w={[144, 224]}
+              />
+            </Link>
+            <Text.span color="pink.1" f={[4, 5]} mx={[2, 3]} children="+" />
+            <Text.span color="white" f={[4, 5, 6]} bold children="Hack Club" />
+          </Flex>
         </Header>
         <Container maxWidth={48} pt={4} pb={5} px={3}>
           {ended && <Ended />}
@@ -273,15 +288,46 @@ export default class extends Component {
             <Heading.h2 color="black" f={[4, 5]}>
               Submissions
             </Heading.h2>
-            <Box align="left" ml={3}>
-              <Text f={2} color="muted">
-                {tinyDt(challenge.start)}–{tinyDt(challenge.end)}
-              </Text>
-              <Text f={2}>Sorted by trending</Text>
-            </Box>
-            <Help ml="auto" />
+            <Text f={2} color="muted" align="left" ml={3}>
+              {tinyDt(challenge.start)}–{tinyDt(challenge.end)}
+            </Text>
+            <DropdownContainer ml="auto">
+              <IconButton
+                name="sort"
+                size={16}
+                bg="info"
+                inverted
+                f={2}
+                children="Sort…"
+              />
+              <DropdownMenu>
+                <DropdownMenuOption
+                  active={sortBy === 'trending'}
+                  onClick={() => this.setState({ sortBy: 'trending' })}
+                >
+                  Trending
+                </DropdownMenuOption>
+                <DropdownMenuOption
+                  active={sortBy === 'top'}
+                  onClick={() => this.setState({ sortBy: 'top' })}
+                >
+                  Top-voted
+                </DropdownMenuOption>
+                <DropdownMenuOption
+                  active={sortBy === 'newest'}
+                  onClick={() => this.setState({ sortBy: 'newest' })}
+                >
+                  Newest
+                </DropdownMenuOption>
+              </DropdownMenu>
+            </DropdownContainer>
           </Title>
-          <Posts challengeId={challenge.id} userId={userId} status={status} />
+          <Posts
+            challengeId={challenge.id}
+            userId={userId}
+            status={status}
+            sortBy={sortBy}
+          />
           <Flex mt={4} mb={[4, 0]} align="center" justify="center">
             <Link href="https://repl.it" target="_blank">
               <Image alt="repl.it logo" src="/replit.svg" w={128} />

@@ -12,7 +12,7 @@ export default ({ status, challengeId }) => {
     case 'success':
       return (
         <Fragment>
-          <Heading.h2 mt={0} mb={3} f={[3, 4]}>
+          <Heading.h2 mt={0} mb={2} f={[3, 4]}>
             Post your project
           </Heading.h2>
           <PostForm challengeId={challengeId} />

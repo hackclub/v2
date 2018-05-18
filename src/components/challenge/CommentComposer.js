@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import MarkdownBody from 'components/MarkdownBody'
+import QuotedComment from 'components/challenge/QuotedComment'
+import { commentStyle } from 'components/challenge/style'
 import Editor from 'draft-js-plugins-editor'
 import {
   EditorState,
@@ -11,6 +13,7 @@ import createMarkdownPlugin from 'draft-js-markdown-plugin'
 import createCodeEditorPlugin from 'draft-js-code-editor-plugin'
 import { mdToDraftjs, draftjsToMd } from 'draftjs-md-converter'
 import { isEmpty } from 'lodash'
+import styled from 'styled-components'
 
 const features = {
   inline: ['BOLD', 'ITALIC', 'CODE', 'STRIKETHROUGH', 'LINK', 'IMAGE'],
@@ -20,6 +23,31 @@ const features = {
 const plugins = [createMarkdownPlugin({ features }), createCodeEditorPlugin()]
 
 export const LS_BODY_KEY = 'new-comment'
+
+const Root = MarkdownBody.extend`
+  background-color: ${props => props.theme.colors.white};
+  border: 1px solid ${props => props.theme.colors.smoke};
+  border-radius: 18px;
+  padding: ${props => props.theme.space[1]}px;
+
+  .DraftEditor-root {
+    position: relative;
+  }
+
+  .public-DraftEditorPlaceholder-inner {
+    position: absolute;
+    top: 3px;
+    padding-left: 12px;
+    color: ${props => props.theme.colors.muted};
+    font-size: ${props => props.theme.fontSizes[1]}px;
+  }
+
+  .DraftEditor-editorContainer > div {
+    padding: ${props => props.theme.space[1]}px
+      ${props => props.theme.space[3] - props.theme.space[1]}px;
+    ${commentStyle};
+  }
+`
 
 class Composer extends Component {
   state = {
@@ -80,8 +108,18 @@ class Composer extends Component {
   }
 
   render() {
+    const { parent, onUnparent, ...props } = this.props
     return (
-      <MarkdownBody>
+      <Root>
+        {parent && (
+          <QuotedComment
+            data={parent}
+            onDelete={onUnparent}
+            bg="snow"
+            pb={3}
+            p={2}
+          />
+        )}
         <Editor
           editorState={this.state.body}
           plugins={this.state.plugins}
@@ -93,10 +131,10 @@ class Composer extends Component {
           name="body"
           placeholder="Add your comment…"
           editorRef={editor => (this.editor = editor)}
-          {...this.props}
+          {...props}
           onChange={this.onChange}
         />
-      </MarkdownBody>
+      </Root>
     )
   }
 }

@@ -34,7 +34,6 @@ class Posts extends Component {
   refreshPosts(newUserId, intervalUpdate = false) {
     const { challengeId, userId: oldUserId } = this.props
     const userId = newUserId || oldUserId
-    console.log('refreshing!')
 
     api
       .get(`v1/challenges/${challengeId}/posts`)

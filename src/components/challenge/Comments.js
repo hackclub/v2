@@ -17,7 +17,7 @@ import NewComment from 'components/challenge/NewComment'
 import NoComments from 'components/challenge/NoComments'
 import PropTypes from 'prop-types'
 import api from 'api'
-import { isEmpty, remove } from 'lodash'
+import { isEmpty, remove, find } from 'lodash'
 
 const Header = Flex.extend`
   flex-shrink: 0;
@@ -36,7 +36,7 @@ const Container = Box.extend`
 `
 
 class Comments extends Component {
-  state = { data: [] }
+  state = { data: [], parent: null }
 
   static getDerivedStateFromProps = (nextProps, prevState) => ({
     data: nextProps.data
@@ -47,6 +47,17 @@ class Comments extends Component {
       data: state.data.push(data)
     })
     this.forceUpdate()
+  }
+
+  getParent = id => find(this.state.data, ['id', id]) || {}
+
+  onReply = id => {
+    const parent = this.getParent(id)
+    this.setState({ parent })
+  }
+
+  onUnparent = e => {
+    this.setState({ parent: null })
   }
 
   onDelete = id => {
@@ -63,8 +74,7 @@ class Comments extends Component {
 
   render() {
     const { status, name, url, id, email } = this.props
-    const { data } = this.state
-    console.log(this.props, this.state)
+    const { data, parent } = this.state
     return (
       <Fragment>
         <Header pb={1}>
@@ -115,15 +125,23 @@ class Comments extends Component {
                         new Date(data[i - 1].created_at).getDate()
                     : false
                 }
+                parent={this.getParent(c.parent_id)}
                 user={c.user}
                 body={c.body}
+                onReply={e => this.onReply(c.id)}
                 onDelete={this.onDelete}
               />
             ))}
           </FlipMove>
         </Container>
         {status === 'success' && (
-          <NewComment id={id} email={email} onSubmit={this.onSubmit} />
+          <NewComment
+            id={id}
+            email={email}
+            parent={parent}
+            onUnparent={this.onUnparent}
+            onSubmit={this.onSubmit}
+          />
         )}
       </Fragment>
     )

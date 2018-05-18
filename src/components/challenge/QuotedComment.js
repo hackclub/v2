@@ -47,7 +47,7 @@ const QuotedComment = ({ data, onDelete, ...props }) => (
     <Group mr={onDelete && 3}>
       <Byline>
         <Icon name="reply" size={16} color="gray.5" />
-        <Text color="muted" f={1} mb={0} children={data.user.email} />
+        <Text.span color="muted" f={1} mb={0} children={data.user.email} />
       </Byline>
       <Body source={data.body} />
     </Group>

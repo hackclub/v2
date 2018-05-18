@@ -30,7 +30,7 @@ const SubmitButton = styled(IconButton)`
 `
 
 const statusIcon = status =>
-  ({ success: 'check', error: 'error' }[status] || 'send')
+  ({ success: 'check_circle', error: 'error' }[status] || 'send')
 const statusColor = status => (status === 'error' ? 'error' : 'info')
 const InnerForm = ({
   values,

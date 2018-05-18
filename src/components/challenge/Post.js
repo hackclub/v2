@@ -6,7 +6,8 @@ import {
   Button,
   Heading,
   Link,
-  Text
+  Text,
+  Hide
 } from '@hackclub/design-system'
 import PropTypes from 'prop-types'
 import { Modal, Overlay, CloseButton } from 'components/Modal'
@@ -86,7 +87,8 @@ const PostRow = ({
   upvoted = false,
   onUpvote,
   onComment,
-  disabled
+  disabled,
+  index
 }) => (
   <Row
     bg={mine ? 'yellow.0' : 'white'}
@@ -94,6 +96,11 @@ const PostRow = ({
     py={[2, 3]}
     id={`post-${id}`}
   >
+    <Hide sm={true} xs={true}>
+      <Text pr={3} color={mine ? 'yellow.3' : 'slate'} bold>
+        {index}
+      </Text>
+    </Hide>
     <UpvoteButton
       bg={upvoted ? 'primary' : 'smoke'}
       color={upvoted ? 'white' : 'slate'}

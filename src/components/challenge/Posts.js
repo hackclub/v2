@@ -128,7 +128,7 @@ class Posts extends Component {
                 No submissions yet!
               </Text>
             )}
-            {sortFunctions[sortBy](posts).map(post => (
+            {sortFunctions[sortBy](posts).map((post, index) => (
               <Post
                 id={post.id}
                 name={post.name}
@@ -141,7 +141,8 @@ class Posts extends Component {
                 upvoted={includes(upvotes, post.id)}
                 onUpvote={e => this.onUpvote(e, post.id)}
                 disabled={userId === undefined}
-                key={post.id}
+                index={index + 1}
+                key={index}
               />
             ))}
           </Fragment>

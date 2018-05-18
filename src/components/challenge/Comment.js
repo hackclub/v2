@@ -25,6 +25,7 @@ const Root = Flex.extend`
     transform: scale(0);
     will-change: transform;
     transition: 0.25s ease-out all;
+    margin: 2px;
   }
   &:hover button {
     transform: scale(1);
@@ -47,8 +48,6 @@ const NestedAvi = BlankAvi.withComponent('aside').extend`
   > button {
     position: absolute;
     background: rgba(255, 255, 255, 0.75);
-    top: 2px;
-    left: 2px;
     @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
       -webkit-backdrop-filter: saturate(180%) blur(2px);
     }

@@ -19,12 +19,14 @@ const zoom = keyframes`
 const DropdownContainer = Box.extend`
   position: relative;
   &:hover > div {
+    display: block;
     animation: ${({ theme }) => theme.transition} ${zoom};
     opacity: 1;
   }
 `
 
 const DropdownMenu = Card.withComponent(Flex).extend`
+  display: none;
   opacity: 0;
   flex-direction: column;
   align-items: stretch;

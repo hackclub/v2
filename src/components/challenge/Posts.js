@@ -30,7 +30,7 @@ class Posts extends Component {
     this.refreshPosts(this.props.userId)
     this.refreshIntervalId = setInterval(() => {
       this.refreshPosts(this.props.userId, true)
-    }, 3000)
+    }, 4096)
   }
 
   componentWillUnmount() {

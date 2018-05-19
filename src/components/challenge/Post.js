@@ -18,10 +18,17 @@ import api from 'api'
 
 const Row = Flex.extend`
   align-items: center;
-  border-bottom: 1px solid ${props => props.theme.colors.smoke};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
+  position: relative;
   a {
     flex: 1 1 auto;
   }
+`
+
+const Index = Hide.extend`
+  width: ${({ theme }) => theme.space[3]}px;
+  position: absolute;
+  left: -${({ theme }) => theme.space[4]}px;
 `
 
 const Description = Text.extend`
@@ -49,7 +56,7 @@ const CommentButton = Box.withComponent('button').extend`
   border: 0;
   appearance: none;
   font-family: inherit;
-  font-size: ${props => props.theme.fontSizes[0]}px;
+  font-size: ${({ theme }) => theme.fontSizes[0]}px;
   line-height: 1;
   display: inline-flex;
   align-items: center;
@@ -62,10 +69,10 @@ const CommentButton = Box.withComponent('button').extend`
   span {
     position: absolute;
     width: 100%;
-    top: ${props => props.theme.space[2]}px;
+    top: ${({ theme }) => theme.space[2]}px;
   }
-  ${props => props.theme.mediaQueries.md} {
-    padding-right: ${props => props.theme.space[3]}px;
+  ${({ theme }) => theme.mediaQueries.md} {
+    padding-right: ${({ theme }) => theme.space[3]}px;
   }
 `
 
@@ -97,11 +104,14 @@ const PostRow = ({
     px={[2, 0]}
     id={`post-${id}`}
   >
-    <Hide sm={true} xs={true}>
-      <Text pr={3} color={mine ? 'yellow.3' : 'slate'} bold>
-        {index}
-      </Text>
-    </Hide>
+    <Index sm xs>
+      <Text
+        align="right"
+        color={mine ? 'warning' : 'muted'}
+        bold
+        children={index}
+      />
+    </Index>
     <UpvoteButton
       bg={upvoted ? 'primary' : 'smoke'}
       color={upvoted ? 'white' : 'slate'}

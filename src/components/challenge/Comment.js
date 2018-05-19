@@ -189,7 +189,12 @@ class Comment extends Component {
           )}
           <Bubble emoji={emoji} mine={mine}>
             {!isEmpty(parent) && (
-              <QuotedComment bg="white" px={3} py={2} data={parent} />
+              <QuotedComment
+                bg={emoji ? 'snow' : 'white'}
+                px={3}
+                py={2}
+                data={parent}
+              />
             )}
             {emoji ? <Megamoji children={body} /> : <Body source={body} />}
           </Bubble>

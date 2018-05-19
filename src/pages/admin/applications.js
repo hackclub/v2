@@ -231,10 +231,10 @@ export default class extends Component {
                     </thead>
                     <tbody>
                       {Object.values(clubApplications).map(
-                        (application, index) =>
+                        application =>
                           this.filterApplication(application).visible ? (
                             <Tr
-                              key={index}
+                              key={application.id}
                               onClick={() => {
                                 const alreadySelected =
                                   this.state.selection === application

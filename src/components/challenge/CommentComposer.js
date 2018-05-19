@@ -25,10 +25,10 @@ const plugins = [createMarkdownPlugin({ features }), createCodeEditorPlugin()]
 export const LS_BODY_KEY = 'new-comment'
 
 const Root = MarkdownBody.extend`
-  background-color: ${props => props.theme.colors.white};
-  border: 1px solid ${props => props.theme.colors.smoke};
+  background-color: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${({ theme }) => theme.colors.smoke};
   border-radius: 18px;
-  padding: ${props => props.theme.space[1]}px;
+  padding: ${({ theme }) => theme.space[1]}px;
 
   .DraftEditor-root {
     position: relative;
@@ -38,13 +38,13 @@ const Root = MarkdownBody.extend`
     position: absolute;
     top: 3px;
     padding-left: 12px;
-    color: ${props => props.theme.colors.muted};
-    font-size: ${props => props.theme.fontSizes[1]}px;
+    color: ${({ theme }) => theme.colors.muted};
+    font-size: ${({ theme }) => theme.fontSizes[1]}px;
   }
 
   .DraftEditor-editorContainer > div {
-    padding: ${props => props.theme.space[1]}px
-      ${props => props.theme.space[3] - props.theme.space[1]}px;
+    padding: ${({ theme }) => theme.space[1]}px
+      ${({ theme }) => theme.space[3] - theme.space[1]}px;
     ${commentStyle};
   }
 `

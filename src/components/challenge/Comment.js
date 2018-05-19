@@ -13,7 +13,7 @@ import MarkdownBody from 'components/MarkdownBody'
 import QuotedComment from 'components/challenge/QuotedComment'
 import PropTypes from 'prop-types'
 import { CommentByline, commentStyle } from 'components/challenge/style'
-import { timeSince } from 'helpers'
+import { onlyContainsEmoji, timeSince } from 'helpers'
 import { isEmpty } from 'lodash'
 import styled, { css } from 'styled-components'
 
@@ -51,8 +51,8 @@ const NestedAvi = BlankAvi.withComponent('aside').extend`
     @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
       -webkit-backdrop-filter: saturate(180%) blur(2px);
     }
-    ${props => props.theme.mediaQueries.reduceTransparency} {
-      background: ${props => props.theme.colors.white} !important;
+    ${({ theme }) => theme.mediaQueries.reduceTransparency} {
+      background: ${({ theme }) => theme.colors.white} !important;
     }
   }
   img {
@@ -76,7 +76,7 @@ const Group = Flex.extend`
 const Byline = CommentByline
 
 const Time = Text.withComponent('time').extend`
-  margin: 0 ${props => props.theme.space[2]}px;
+  margin: 0 ${({ theme }) => theme.space[2]}px;
   opacity: 0;
   transition: opacity 0.25s ease-out;
   &:hover {
@@ -85,22 +85,36 @@ const Time = Text.withComponent('time').extend`
 `
 
 const Bubble = Box.extend`
-  background-color: ${props =>
-    props.mine ? props.theme.colors.info : props.theme.colors.snow};
-  background-image: ${props =>
-    props.mine ? gradient('blue.5', 'blue.6') : gradient('gray.0', 'gray.1')};
+  ${props =>
+    !props.emoji &&
+    css`
+      background-color: ${props =>
+        props.mine ? props.theme.colors.info : props.theme.colors.snow};
+      background-image: ${props =>
+        props.mine
+          ? gradient('blue.5', 'blue.6')
+          : gradient('gray.0', 'gray.1')};
+      border-radius: 18px;
+      padding: ${({ theme }) => theme.space[1]}px;
+      min-height: 36px;
+    `};
   color: ${props =>
     props.mine ? props.theme.colors.white : props.theme.colors.black};
-  border-radius: 18px;
-  min-height: 36px;
-  padding: ${props => props.theme.space[1]}px;
-  margin-top: ${props => props.theme.space[1]}px;
+  margin-top: ${({ theme }) => theme.space[1]}px;
   max-width: 24rem;
 `
+
 const Body = Box.withComponent(ReactMarkdown).extend`
-  padding: ${props => props.theme.space[1]}px ${props =>
-  props.theme.space[3] - props.theme.space[1]}px;
+  padding: ${({ theme }) => theme.space[1]}px ${({ theme }) =>
+  theme.space[3] - theme.space[1]}px;
   ${commentStyle};
+`
+
+const Megamoji = Text.extend`
+  font-size: ${({ theme }) => theme.fontSizes[5]}px;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
 `
 
 const ReplyButton = props => (
@@ -142,6 +156,7 @@ class Comment extends Component {
       onDelete,
       ...props
     } = this.props
+    const emoji = onlyContainsEmoji(body)
     return (
       <Root
         mt={following ? 0 : 3}
@@ -172,11 +187,11 @@ class Comment extends Component {
               <Time title={createdAt} children={timeSince(createdAt)} />
             </Byline>
           )}
-          <Bubble mine={mine}>
+          <Bubble emoji={emoji} mine={mine}>
             {!isEmpty(parent) && (
               <QuotedComment bg="white" px={3} py={2} data={parent} />
             )}
-            <Body source={body} />
+            {emoji ? <Megamoji children={body} /> : <Body source={body} />}
           </Bubble>
         </Group>
       </Root>

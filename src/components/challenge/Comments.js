@@ -90,8 +90,7 @@ class Comments extends Component {
             cardProps={{
               p: 3,
               my: 3,
-              bg: 'info',
-              boxShadowSize: 'md'
+              bg: 'info'
             }}
             textProps={{
               justify: 'center',

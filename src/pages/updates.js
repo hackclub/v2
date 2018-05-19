@@ -118,8 +118,8 @@ export default () => (
     />
     <Nav invertFlag color="slate" style={{ position: 'absolute', top: 0 }} />
     <style children={`body{background:${cx('snow')};}`} />
-    <Header py={4} mt={5} align="center" justify="center">
-      <Container maxWidth={32}>
+    <Header py={4} align="center" justify="center">
+      <Container mt={5} maxWidth={32}>
         <Heading.h1 color="black" f={6}>
           Updates
         </Heading.h1>

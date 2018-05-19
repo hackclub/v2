@@ -14,6 +14,10 @@
     "country_count": 13,
     "approximate_members": "3K+"
   },
+  "workshopFeedback": {
+    "thoughts": "Overall thoughts?",
+    "improve": "How would you improve this workshop?"
+  },
   "org": {
     "@context": "http://schema.org",
     "@type": "Organization",

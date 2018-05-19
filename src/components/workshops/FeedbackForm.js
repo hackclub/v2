@@ -4,16 +4,7 @@ import { withFormik } from 'formik'
 import { map, last, keys, omit } from 'lodash'
 import yup from 'yup'
 import api from 'api'
-
-const questions = {
-  thoughts: 'Overall thoughts?',
-  improve: 'How would you improve this workshop?'
-}
-
-const schema = {}
-map(keys(questions), key => {
-  schema[key] = yup.string()
-})
+import { workshopFeedback } from 'data.json'
 
 const statusMessage = status =>
   status
@@ -35,7 +26,7 @@ const InnerForm = ({
   status
 }) => (
   <form onSubmit={handleSubmit}>
-    {map(questions, (question, key) => (
+    {map(workshopFeedback, (question, key) => (
       <Field
         label={question}
         name={key}
@@ -59,6 +50,9 @@ const InnerForm = ({
     />
   </form>
 )
+const schema = map(keys(workshopFeedback), key => ({
+  [key]: yup.string()
+}))
 const FeedbackForm = withFormik({
   validationSchema: yup.object().shape(schema),
   enableReinitialize: true,

@@ -180,7 +180,7 @@ export default () => (
     </Grid>
     <Box mx={0} mt={5} color="black">
       <Heading.h2 f={[5, 6]} mb={3}>
-        We think people learn best when they take control of their own
+        We believe people learn best when they take control of their own
         education.
       </Heading.h2>
       <Container maxWidth={48} mx={0}>

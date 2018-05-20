@@ -8,7 +8,6 @@ import yup from 'yup'
 import api from 'api'
 
 const Form = Flex.withComponent('form').extend`
-  min-height: 3rem;
   position: relative;
   z-index: 4;
 
@@ -21,11 +20,11 @@ const Form = Flex.withComponent('form').extend`
   }
 `
 const SubmitButton = styled(IconButton)`
-  box-shadow: ${props => props.theme.boxShadows[0]} !important;
-  transition: ${props => props.theme.transition} box-shadow;
+  box-shadow: ${({ theme }) => theme.boxShadows[0]} !important;
+  transition: ${({ theme }) => theme.transition} box-shadow;
   &:hover,
   &:focus {
-    box-shadow: ${props => props.theme.boxShadows[1]} !important;
+    box-shadow: ${({ theme }) => theme.boxShadows[1]} !important;
   }
 `
 

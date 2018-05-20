@@ -4,8 +4,8 @@ import styled, { css } from 'styled-components'
 export const Byline = Flex.withComponent('p').extend`
   margin: 0 !important;
   line-height: 1;
-  color: ${props => props.theme.colors.muted};
-  font-size: ${props => props.theme.fontSizes[1]}px;
+  color: ${({ theme }) => theme.colors.muted};
+  font-size: ${({ theme }) => theme.fontSizes[1]}px;
   -webkit-user-select: none; /* Chrome/Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+ */
@@ -16,10 +16,10 @@ export const CommentByline = Byline.extend`
 `
 export const QuotedCommentByline = Byline.extend`
   align-items: center;
-  margin-bottom: ${props => props.theme.space[1] / 2}px;
+  margin-bottom: ${({ theme }) => theme.space[1] / 2}px;
 
   svg {
-    margin-right: ${props => props.theme.space[1]}px;
+    margin-right: ${({ theme }) => theme.space[1]}px;
   }
 
   > p {
@@ -28,7 +28,7 @@ export const QuotedCommentByline = Byline.extend`
 `
 
 export const commentStyle = css`
-  font-size: ${props => props.theme.fontSizes[1]}px;
+  font-size: ${({ theme }) => theme.fontSizes[1]}px;
   line-height: 1.375;
   vertical-align: middle;
   white-space: pre-line;
@@ -47,34 +47,38 @@ export const commentStyle = css`
   }
 
   > p {
-    margin-top: ${props => props.theme.space[1]}px;
-    margin-bottom: ${props => props.theme.space[1]}px;
+    margin-top: ${({ theme }) => theme.space[1]}px;
+    margin-bottom: ${({ theme }) => theme.space[1]}px;
+  }
+
+  a {
+    text-decoration: underline;
   }
 
   h1,
   h2,
   h3 {
     margin-top: 0;
-    margin-bottom: ${props => props.theme.space[2]}px;
+    margin-bottom: ${({ theme }) => theme.space[2]}px;
   }
 
   ol,
   ul {
-    padding-left: ${props => props.theme.space[3]}px;
+    padding-left: ${({ theme }) => theme.space[3]}px;
   }
 
   blockquote {
     border-left: 2px solid currentColor;
-    padding-left: ${props => props.theme.space[2]}px;
+    padding-left: ${({ theme }) => theme.space[2]}px;
     margin-left: 0;
   }
 
   li {
-    margin-top: ${props => props.theme.space[1]}px;
-    margin-bottom: ${props => props.theme.space[1]}px;
+    margin-top: ${({ theme }) => theme.space[1]}px;
+    margin-bottom: ${({ theme }) => theme.space[1]}px;
   }
 
   strong {
-    font-weight: ${props => props.theme.bold};
+    font-weight: ${({ theme }) => theme.bold};
   }
 `

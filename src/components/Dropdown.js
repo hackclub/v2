@@ -4,6 +4,7 @@ import { css, keyframes } from 'styled-components'
 
 const zoom = keyframes`
   0% {
+    box-shadow: ${({ theme }) => theme.boxShadows[1]};
     transform: scale(0);
   }
 
@@ -12,6 +13,7 @@ const zoom = keyframes`
   }
 
   100% {
+    box-shadow: ${({ theme }) => theme.boxShadows[2]};
     transform: scale(1);
   }
 `
@@ -20,7 +22,7 @@ const DropdownContainer = Box.extend`
   position: relative;
   &:hover > div {
     display: block;
-    animation: ${({ theme }) => theme.transition} ${zoom};
+    animation: 0.1875s ease-out ${zoom};
     opacity: 1;
   }
 `

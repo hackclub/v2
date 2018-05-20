@@ -12,7 +12,7 @@ import {
 import createMarkdownPlugin from 'draft-js-markdown-plugin'
 import createCodeEditorPlugin from 'draft-js-code-editor-plugin'
 import { mdToDraftjs, draftjsToMd } from 'draftjs-md-converter'
-import { isEmpty } from 'lodash'
+import { debounce, isEmpty } from 'lodash'
 import styled from 'styled-components'
 
 const features = {
@@ -25,10 +25,10 @@ const plugins = [createMarkdownPlugin({ features }), createCodeEditorPlugin()]
 export const LS_BODY_KEY = 'new-comment'
 
 const Root = MarkdownBody.extend`
-  background-color: ${props => props.theme.colors.white};
-  border: 1px solid ${props => props.theme.colors.smoke};
+  background-color: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${({ theme }) => theme.colors.smoke};
   border-radius: 18px;
-  padding: ${props => props.theme.space[1]}px;
+  padding: ${({ theme }) => theme.space[1]}px;
 
   .DraftEditor-root {
     position: relative;
@@ -38,13 +38,13 @@ const Root = MarkdownBody.extend`
     position: absolute;
     top: 3px;
     padding-left: 12px;
-    color: ${props => props.theme.colors.muted};
-    font-size: ${props => props.theme.fontSizes[1]}px;
+    color: ${({ theme }) => theme.colors.muted};
+    font-size: ${({ theme }) => theme.fontSizes[1]}px;
   }
 
   .DraftEditor-editorContainer > div {
-    padding: ${props => props.theme.space[1]}px
-      ${props => props.theme.space[3] - props.theme.space[1]}px;
+    padding: ${({ theme }) => theme.space[1]}px
+      ${({ theme }) => theme.space[3] - theme.space[1]}px;
     ${commentStyle};
   }
 `
@@ -53,6 +53,11 @@ class Composer extends Component {
   state = {
     body: EditorState.createEmpty(),
     plugins
+  }
+
+  constructor() {
+    super()
+    this.syncChanges = debounce(this.syncChanges, 256)
   }
 
   componentDidMount() {
@@ -81,18 +86,21 @@ class Composer extends Component {
   }
 
   onChange = body => {
+    this.setState({ body })
+    if (this.props.clear && this.editor) this.triggerFocus()
+    this.syncChanges()
+  }
+
+  syncChanges = e => {
+    const { body } = this.state
     const raw = convertToRaw(body.getCurrentContent())
     const md = draftjsToMd(raw)
     this.props.onChange('body', md)
     if (typeof localStorage !== 'undefined') this.persistData(md)
-    this.setState({ body })
-    if (this.props.clear && this.editor) this.triggerFocus()
   }
 
   triggerFocus = () => {
-    setTimeout(() => {
-      this.editor && this.editor.focus()
-    }, 0)
+    this.editor.focus()
   }
 
   persistData = next => {
@@ -110,7 +118,7 @@ class Composer extends Component {
   render() {
     const { parent, onUnparent, ...props } = this.props
     return (
-      <Root>
+      <Root onClick={this.triggerFocus}>
         {parent && (
           <QuotedComment
             data={parent}
@@ -130,7 +138,9 @@ class Composer extends Component {
           stripPastedStyles={true}
           name="body"
           placeholder="Add your comment…"
-          editorRef={editor => (this.editor = editor)}
+          ref={editor => {
+            this.editor = editor
+          }}
           {...props}
           onChange={this.onChange}
         />

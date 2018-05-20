@@ -282,21 +282,22 @@ export default class extends Component {
             <Text.span color="white" f={[4, 5, 6]} bold children="Hack Club" />
           </Flex>
         </Header>
-        <Container maxWidth={48} pt={4} pb={5} px={3}>
+        <Container maxWidth={48} pt={4} pb={5} px={[0, 3]}>
           {ended && <Ended />}
-          <Title align="center" pb={2}>
-            <Heading.h2 color="black" f={[4, 5]}>
-              Submissions
-            </Heading.h2>
-            <Text f={2} color="muted" align="left" ml={3}>
-              {tinyDt(challenge.start)}–{tinyDt(challenge.end)}
-            </Text>
+          <Title align="center" pb={2} px={[2, 0]}>
+            <Flex align="center" wrap>
+              <Heading.h2 color="black" f={5} mr={3}>
+                Submissions
+              </Heading.h2>
+              <Text f={2} color="muted" align="left">
+                {tinyDt(challenge.start)}–{tinyDt(challenge.end)}
+              </Text>
+            </Flex>
             <DropdownContainer ml="auto">
               <IconButton
                 name="sort"
                 size={16}
                 bg="info"
-                inverted
                 f={2}
                 children="Sort…"
               />

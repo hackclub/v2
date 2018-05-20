@@ -12,7 +12,7 @@ import {
 import createMarkdownPlugin from 'draft-js-markdown-plugin'
 import createCodeEditorPlugin from 'draft-js-code-editor-plugin'
 import { mdToDraftjs, draftjsToMd } from 'draftjs-md-converter'
-import { isEmpty } from 'lodash'
+import { debounce, isEmpty } from 'lodash'
 import styled from 'styled-components'
 
 const features = {
@@ -55,6 +55,11 @@ class Composer extends Component {
     plugins
   }
 
+  constructor() {
+    super()
+    this.syncChanges = debounce(this.syncChanges, 256)
+  }
+
   componentDidMount() {
     let value = ''
     if (localStorage) {
@@ -81,12 +86,17 @@ class Composer extends Component {
   }
 
   onChange = body => {
+    this.setState({ body })
+    if (this.props.clear && this.editor) this.triggerFocus()
+    this.syncChanges()
+  }
+
+  syncChanges = e => {
+    const { body } = this.state
     const raw = convertToRaw(body.getCurrentContent())
     const md = draftjsToMd(raw)
     this.props.onChange('body', md)
     if (typeof localStorage !== 'undefined') this.persistData(md)
-    this.setState({ body })
-    if (this.props.clear && this.editor) this.triggerFocus()
   }
 
   triggerFocus = () => {

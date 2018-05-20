@@ -99,7 +99,14 @@ const Footer = ({ children }) => (
       </Text>
       <Text my={2}>Nonprofit EIN: 81-2908499</Text>
       <Text my={2}>
-        <A href="https://conduct.hackclub.com" color="info" underline>
+        Call us:{' '}
+        <A href="tel:1-855-625-HACK" underline>
+          1-855-625-HACK
+        </A>{' '}
+        <Text.span color="muted">(toll-free)</Text.span>
+      </Text>
+      <Text my={2}>
+        <A href="https://conduct.hackclub.com" underline>
           Read our Code of Conduct
         </A>
       </Text>

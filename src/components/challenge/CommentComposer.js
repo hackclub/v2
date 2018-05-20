@@ -90,9 +90,7 @@ class Composer extends Component {
   }
 
   triggerFocus = () => {
-    setTimeout(() => {
-      this.editor && this.editor.focus()
-    }, 0)
+    this.editor.focus()
   }
 
   persistData = next => {
@@ -110,7 +108,7 @@ class Composer extends Component {
   render() {
     const { parent, onUnparent, ...props } = this.props
     return (
-      <Root>
+      <Root onClick={this.triggerFocus}>
         {parent && (
           <QuotedComment
             data={parent}
@@ -130,7 +128,9 @@ class Composer extends Component {
           stripPastedStyles={true}
           name="body"
           placeholder="Add your comment…"
-          editorRef={editor => (this.editor = editor)}
+          ref={editor => {
+            this.editor = editor
+          }}
           {...props}
           onChange={this.onChange}
         />

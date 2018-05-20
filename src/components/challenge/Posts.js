@@ -142,7 +142,7 @@ class Posts extends Component {
                 onUpvote={e => this.onUpvote(e, post.id)}
                 disabled={userId === undefined}
                 index={index + 1}
-                key={index}
+                key={post.id}
               />
             ))}
           </Fragment>

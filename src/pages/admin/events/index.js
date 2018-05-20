@@ -60,9 +60,9 @@ export default class extends Component {
                   </Tr>
                 </thead>
                 <tbody>
-                  {events.map((event, index) => (
+                  {events.map(event => (
                     <Tr
-                      key={index}
+                      key={event.id}
                       onClick={e => {
                         window.location = `/admin/events/edit?id=${event.id}`
                       }}

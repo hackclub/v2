@@ -123,8 +123,8 @@ const InnerForm = props => {
             <option disabled value="select">
               Select One
             </option>
-            {values.leader_profiles.map((profile, index) => (
-              <option value={profile.user.id} key={index}>
+            {values.leader_profiles.map(profile => (
+              <option value={profile.user.id} key={profile.user.id}>
                 {profile.user.email}
               </option>
             ))}

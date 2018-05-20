@@ -80,9 +80,9 @@ export default class extends Component {
                     </Tr>
                   </thead>
                   <tbody>
-                    {Object.values(clubs).map((club, index) => (
+                    {Object.values(clubs).map(club => (
                       <Tr
-                        key={index}
+                        key={club.id}
                         onClick={e => {
                           window.location = `/admin/clubs/edit?id=${club.id}`
                         }}

@@ -20,19 +20,19 @@ import api from 'api'
 import { isEmpty, remove, find } from 'lodash'
 
 const Header = Flex.extend`
-  flex-shrink: 0;
   align-items: baseline;
-  border-bottom: 1px solid ${props => props.theme.colors.smoke};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
+  h2 {
+    line-height: 1.125;
+  }
 `
 
 const Container = Box.extend`
-  flex-shrink: 0;
-  flex: 1 1 auto;
   position: relative;
   max-height: 100%;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  margin-bottom: ${props => props.theme.space[3]}px;
+  margin-bottom: ${({ theme }) => theme.space[3]}px;
 `
 
 class Comments extends Component {

@@ -8,7 +8,6 @@ import yup from 'yup'
 import api from 'api'
 
 const Form = Flex.withComponent('form').extend`
-  min-height: 3rem;
   position: relative;
   z-index: 4;
 

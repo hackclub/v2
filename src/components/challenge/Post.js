@@ -77,8 +77,8 @@ const CommentButton = Box.withComponent('button').extend`
 `
 
 const CommentsModal = Modal.extend`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr 2rem;
   min-height: 16rem;
 `
 

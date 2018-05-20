@@ -76,7 +76,7 @@ const SuperButton = Button.withComponent(Link).extend`
   );
 `
 
-const groupOrder = ['start', 'pi', 'arduino', 'experimental', 'misc', 'retired']
+const groupOrder = ['start', 'challenges', 'pi', 'arduino', 'experimental', 'misc', 'retired']
 
 export default ({
   data: {

@@ -13,8 +13,8 @@ export default () => (
     <Helmet title="Submit a Workshop – Hack Club" />
     <Nav invertFlag color="slate" style={{ position: 'absolute', top: 0 }} />
     <style children={`body{background:${cx('snow')};}`} />
-    <Header py={4} mt={5} align="center">
-      <Container maxWidth={32}>
+    <Header py={4} align="center">
+      <Container maxWidth={32} mt={5}>
         <Heading.h1 color="black" f={[5, 6]}>
           Submit a Workshop
         </Heading.h1>

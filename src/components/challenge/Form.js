@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Heading } from '@hackclub/design-system'
+import { Heading, Text } from '@hackclub/design-system'
 import LoginForm from 'components/apply/LoginForm'
 import PostForm from 'components/challenge/PostForm'
 import LoadingAnimation from 'components/LoadingAnimation'
@@ -12,10 +12,19 @@ export default ({ status, challengeId }) => {
     case 'success':
       return (
         <Fragment>
+          {/*
           <Heading.h2 mt={0} mb={2} f={[3, 4]}>
             Post your project
           </Heading.h2>
           <PostForm challengeId={challengeId} />
+          */}
+          <Heading.h2 mt={0} mb={2} f={4}>
+            Submissions closed!
+          </Heading.h2>
+          <Text>
+            You can still vote on your favorite submissions until Wednesday
+            (5/23).
+          </Text>
         </Fragment>
       )
     case 'needsToAuth':

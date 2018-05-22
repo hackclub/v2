@@ -16,8 +16,12 @@ import {
 
 const Invite = ({ invite }) => (
   <Card p={2} m={3} boxShadowSize="md" align="center">
-    <Heading.h2>{invite.high_school_name}</Heading.h2>
-    <Text>{invite.high_school_adress}</Text>
+    <Heading.h2>{invite.new_club.high_school_name}</Heading.h2>
+    <Text>{invite.new_club.high_school_adress}</Text>
+    <Text>
+      invited by {invite.sender.username && `${invite.sender.username} `}
+      ({invite.sender.email})
+    </Text>
     <Box my={3}>
       <Button color="white" bg="primary" mx={2}>
         Accept
@@ -31,39 +35,32 @@ const Invite = ({ invite }) => (
 
 export default class extends Component {
   state = {
-    status: 'success',
-    user: {
-      leadership_position_invites: [
-        {
-          high_school_name: 'El Segundo High School',
-          high_school_adress: '640 Main St, El Segundo, CA 90245'
-        },
-        {
-          high_school_name: 'Hacking High School',
-          high_school_adress:
-            'Infinite Loop 1, 1 Infinite Loop, Cupertino, CA 95014'
-        }
-      ]
-    }
+    status: 'loading'
   }
-  // state = {
-  //   status: 'loading'
-  // }
-  //
-  // componentDidMount() {
-  //   api.get(`v1/users/current`).then(user => {
-  //     this.setState({ status: 'success', user })
-  //   }).catch(err => {
-  //     if (err.status === 403) {
-  //       this.setState({ status: 'needsToAuth' })
-  //     } else {
-  //       this.setState({ status: 'error' })
-  //     }
-  //   })
-  // }
+
+  componentDidMount() {
+    api
+      .get(`v1/users/current`)
+      .then(user => {
+        const promiseArray = user.leadership_position_invites.map(invite =>
+          api.get(`v1/leadership_position_invites/${invite.id}`)
+        )
+        return Promise.all(promiseArray)
+      })
+      .then(invites => {
+        this.setState({ invites, status: 'success' })
+      })
+      .catch(err => {
+        if (err.status === 403) {
+          this.setState({ status: 'needsToAuth' })
+        } else {
+          this.setState({ status: 'error' })
+        }
+      })
+  }
 
   render() {
-    const { status, user } = this.state
+    const { status, invites } = this.state
     switch (status) {
       case 'loading':
         return <LoadingPage />
@@ -73,7 +70,7 @@ export default class extends Component {
             <Helmet title="Confirm Invitation – Hack Club" />
             <Nav />
             <Container maxWidth={32}>
-              {user.leadership_position_invites.map(invite => (
+              {invites.map(invite => (
                 <Invite key={invite.id} invite={invite} />
               ))}
             </Container>

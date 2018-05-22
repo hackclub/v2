@@ -1,5 +1,5 @@
 import React from 'react'
-import { api } from 'data.json'
+import api from 'api'
 import { Heading, Label, Input, Text, cx } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import yup from 'yup'
@@ -81,28 +81,17 @@ const EmailLoginForm = withFormik({
       setSubmitting(false)
       return null
     }
-    fetch(`${api}/v1/users/auth`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          throw res.statusText
-        }
-      })
-      .then(json => {
-        storage.set('userId', json.id)
-        storage.set('userEmail', data.email)
-        setSubmitting(false)
-        props.submitCallback({ userId: json.id, email: data.email })
-      })
-      .catch(e => {
-        console.error(e)
-        setSubmitting(false)
-      })
+    api.post('v1/users/auth', { data })
+       .then(user => {
+         storage.set('userId', user.id)
+         storage.set('userEmail', user.email)
+         setSubmitting(false)
+         props.submitCallback({ userId: user.id, email: user.email })
+       })
+       .catch(e => {
+         console.error(e)
+         setSubmitting(false)
+       })
   },
   displayName: 'EmailLoginForm'
 })(InnerForm)

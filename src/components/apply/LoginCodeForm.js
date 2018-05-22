@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { api } from 'data.json'
+import api from 'api'
 import { Label, Input, Text, cx } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import yup from 'yup'
@@ -112,18 +112,8 @@ const LoginCodeForm = withFormik({
       return null
     }
     const strippedLoginCode = data.loginCode.replace(/\D/g, '')
-    fetch(`${api}/v1/users/${props.userId}/exchange_login_code`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ login_code: strippedLoginCode })
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          throw res.statusText
-        }
-      })
+    const formattedData = { login_code: strippedLoginCode }
+    api.post(`v1/users/${props.userId}/exchange_login_code`, { data: formattedData })
       .then(json => {
         window.localStorage.setItem('authToken', json.auth_token)
         setSubmitting(false)

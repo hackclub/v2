@@ -27,7 +27,7 @@ class Posts extends Component {
   }
 
   componentDidMount() {
-    // this.refreshPosts(this.props.userId)
+    this.refreshPosts(this.props.userId)
     this.refreshIntervalId = setInterval(() => {
       this.refreshPosts(this.props.userId, true)
     }, 4096)
@@ -42,7 +42,11 @@ class Posts extends Component {
     const userId = newUserId || oldUserId
 
     api
-      .get(`v1/challenges/${challengeId}/posts`)
+      .get(
+        `v1/challenges/${challengeId}/posts`,
+        {},
+        { noAuth: newUserId === undefined }
+      )
       .then(data => {
         let posts = data || []
 

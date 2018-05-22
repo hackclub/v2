@@ -4,10 +4,10 @@ import storage from 'storage'
 const apiBase = 'https://api.hackclub.com/'
 const methods = ['GET', 'PUT', 'POST', 'PATCH', 'DELETE']
 
-const generateMethod = method => (path, options = {}) => {
+const generateMethod = method => (path, options = {}, fetchOptions = {}) => {
   let filteredOptions = {}
   const authToken = storage.get('authToken')
-  if (authToken && !options.authToken) {
+  if (authToken) {
     options.authToken = authToken
   }
 
@@ -31,6 +31,13 @@ const generateMethod = method => (path, options = {}) => {
         break
     }
   }
+
+  if (fetchOptions.noAuth) {
+    if (filteredOptions.headers && filteredOptions.headers['Authorization']) {
+      delete filteredOptions.headers['Authorization']
+    }
+  }
+
   return fetch(apiBase + path, { method, ...filteredOptions })
     .then(res => {
       if (res.ok) {

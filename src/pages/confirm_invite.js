@@ -14,24 +14,96 @@ import {
   Box
 } from '@hackclub/design-system'
 
-const Invite = ({ invite }) => (
-  <Card p={2} m={3} boxShadowSize="md" align="center">
-    <Heading.h2>{invite.new_club.high_school_name}</Heading.h2>
-    <Text>{invite.new_club.high_school_adress}</Text>
-    <Text>
-      invited by {invite.sender.username && `${invite.sender.username} `}
-      ({invite.sender.email})
-    </Text>
-    <Box my={3}>
-      <Button color="white" bg="primary" mx={2}>
-        Accept
-      </Button>
-      <Button color="white" bg="primary" mx={2} inverted>
-        Reject
-      </Button>
-    </Box>
-  </Card>
-)
+class Invite extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { status: 'undecided' }
+    this.rejectInvite = this.rejectInvite.bind(this)
+    this.acceptInvite = this.acceptInvite.bind(this)
+  }
+
+  rejectInvite() {
+    const { invite } = this.props
+    this.setState({ status: 'loading' })
+    api
+      .post(`v1/leadership_position_invites/${invite.id}/reject`)
+      .then(res => {
+        this.setState({ status: 'rejected' })
+      })
+      .catch(err => {
+        console.error(err)
+        this.setState({ status: 'error' })
+      })
+  }
+
+  acceptInvite() {
+    const { invite } = this.props
+    this.setState({ status: 'loading' })
+    api
+      .post(`v1/users/${invite.user_id}/new_leader`)
+      .then(_leader =>
+        api
+          .post(`v1/leadership_position_invites/${invite.id}/accept`)
+          .then(res => {
+            this.setState({ status: 'accepted' })
+          })
+      )
+      .catch(err => {
+        console.error(err)
+        this.setState({ status: 'error' })
+      })
+  }
+
+  renderSwitch() {
+    switch (this.state.status) {
+      case 'loading':
+        return <Button bg="warning">Loading...</Button>
+      case 'accepted':
+        return <Button bg="success">Invite accepted</Button>
+      case 'rejected':
+        return <Button bg="error">Invite rejected</Button>
+      case 'undecided':
+        return (
+          <Fragment>
+            <Button
+              color="white"
+              bg="primary"
+              mx={2}
+              onClick={this.acceptInvite}
+            >
+              Accept
+            </Button>
+            <Button
+              color="white"
+              bg="primary"
+              mx={2}
+              onClick={this.rejectInvite}
+              inverted
+            >
+              Reject
+            </Button>
+          </Fragment>
+        )
+      default:
+        return <ErrorPage />
+    }
+  }
+
+  render() {
+    const { invite } = this.props
+    return (
+      <Card p={2} m={3} boxShadowSize="md" align="center">
+        <Heading.h2>{invite.new_club.high_school_name}</Heading.h2>
+        <Text>{invite.new_club.high_school_adress}</Text>
+        <Text>
+          invited by {invite.sender.username && `${invite.sender.username} `}
+          ({invite.sender.email})
+        </Text>
+        <Box my={3}>{this.renderSwitch()}</Box>
+      </Card>
+    )
+  }
+}
 
 export default class extends Component {
   state = {

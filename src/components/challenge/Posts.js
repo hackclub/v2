@@ -27,7 +27,7 @@ class Posts extends Component {
   }
 
   componentDidMount() {
-    this.refreshPosts(this.props.userId)
+    // this.refreshPosts(this.props.userId)
     this.refreshIntervalId = setInterval(() => {
       this.refreshPosts(this.props.userId, true)
     }, 4096)

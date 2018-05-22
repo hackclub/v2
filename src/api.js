@@ -5,12 +5,10 @@ const apiBase = 'https://api.hackclub.com/'
 const methods = ['GET', 'PUT', 'POST', 'PATCH', 'DELETE']
 
 const generateMethod = method => (path, options = {}) => {
+  let filteredOptions = {}
   const authToken = storage.get('authToken')
-  let filteredOptions = {
-    headers: {
-      // If they have an authToken, automatically attach it
-      Authorization: `Bearer ${authToken}`
-    }
+  if (authToken && !options.authToken) {
+    options.authToken = authToken
   }
 
   for (let [key, value] of Object.entries(options)) {

@@ -52,13 +52,25 @@ class Posts extends Component {
 
         // array of post ids that user has upvoted
         const upvotes = []
+        const submitterIds = posts.map(post => post.creator.id)
         posts.forEach(post => {
-          post.upvotesCount = post.upvotes.length
+          let sum = 0
           post.upvotes.forEach(upvote => {
             if (upvote.user.id == userId) {
               upvotes.push(post.id)
             }
+            if (submitterIds.indexOf(upvote.user.id) == -1) {
+              // votes by non-submitters count as 1
+              sum++
+            } else if (upvote.user.id == post.creator.id) {
+              // votes by subitters to their own work count as 1
+              sum++
+            } else {
+              // by creators to other people's projects count as 10
+              sum += 10
+            }
           })
+          post.upvotesCount = sum
         })
 
         // TODO (later): remove upvotes array for better performace

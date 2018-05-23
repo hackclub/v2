@@ -34,7 +34,8 @@ import storage from 'storage'
 const sortByHumanized = {
   trending: 'Trending',
   top: 'Top-voted',
-  newest: 'Newest'
+  newest: 'Newest',
+  random: 'Random'
 }
 
 class Help extends Component {
@@ -145,7 +146,7 @@ const desc =
 const img = 'https://hackclub.com/challenge.png'
 
 export default class extends Component {
-  state = { status: 'loading', sortBy: 'trending' }
+  state = { status: 'loading', sortBy: 'random' }
 
   componentDidMount() {
     if (storage.get('authToken')) {
@@ -308,6 +309,12 @@ export default class extends Component {
                 children={sortByHumanized[sortBy]}
               />
               <DropdownMenu>
+                <DropdownMenuOption
+                  active={sortBy === 'random'}
+                  onClick={() => this.setState({ sortBy: 'random' })}
+                >
+                  Random
+                </DropdownMenuOption>
                 <DropdownMenuOption
                   active={sortBy === 'trending'}
                   onClick={() => this.setState({ sortBy: 'trending' })}

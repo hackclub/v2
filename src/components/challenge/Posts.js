@@ -27,6 +27,7 @@ class Posts extends Component {
     trending: posts => orderBy(posts, 'rank_score', 'desc'),
     newest: posts => orderBy(posts, 'created_at', 'desc'),
     top: posts => orderBy(posts, 'upvotesCount', 'desc'),
+    viewed: posts => orderBy(posts, 'click_count', 'desc'),
     random: posts => {
       const randGenerator = new SeededRandom(this.seed)
       return posts

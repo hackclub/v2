@@ -35,6 +35,7 @@ const sortByHumanized = {
   trending: 'Trending',
   top: 'Top-voted',
   newest: 'Newest',
+  viewed: 'Most Viewed',
   random: 'Random'
 }
 
@@ -320,6 +321,12 @@ export default class extends Component {
                   onClick={() => this.setState({ sortBy: 'trending' })}
                 >
                   Trending
+                </DropdownMenuOption>
+                <DropdownMenuOption
+                  active={sortBy === 'viewed'}
+                  onClick={() => this.setState({ sortBy: 'viewed' })}
+                >
+                  Most Viewed
                 </DropdownMenuOption>
                 <DropdownMenuOption
                   active={sortBy === 'top'}

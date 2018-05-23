@@ -31,6 +31,12 @@ import { isEmpty } from 'lodash'
 import api from 'api'
 import storage from 'storage'
 
+const sortByHumanized = {
+  trending: 'Trending',
+  top: 'Top-voted',
+  newest: 'Newest'
+}
+
 class Help extends Component {
   state = { active: false }
 
@@ -299,7 +305,7 @@ export default class extends Component {
                 size={16}
                 bg="info"
                 f={2}
-                children="Sort…"
+                children={sortByHumanized[sortBy]}
               />
               <DropdownMenu>
                 <DropdownMenuOption

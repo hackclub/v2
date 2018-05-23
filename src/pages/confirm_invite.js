@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import ErrorPage from 'components/admin/ErrorPage'
 import LoadingPage from 'components/LoadingAnimation'
 import LoginPage from 'components/apply/Login'
+import LeaderForm from 'components/confirm_invite/LeaderForm'
 import Nav from 'components/apply/ApplyNav'
 import api from 'api'
 import Helmet from 'react-helmet'
@@ -13,13 +14,15 @@ import {
   Text,
   Box
 } from '@hackclub/design-system'
+import { Modal, Overlay, CloseButton } from 'components/Modal'
 
 class Invite extends Component {
   constructor(props) {
     super(props)
-    this.state = { status: 'undecided' }
+    this.state = { status: 'undecided', formActive: false }
     this.rejectInvite = this.rejectInvite.bind(this)
     this.acceptInvite = this.acceptInvite.bind(this)
+    this.submitAcceptance = this.submitAcceptance.bind(this)
   }
 
   rejectInvite() {
@@ -37,27 +40,60 @@ class Invite extends Component {
   }
 
   acceptInvite() {
-    const { invite } = this.props
-    this.setState({ status: 'loading' })
-    api
-      .post(`v1/users/${invite.user_id}/new_leader`)
-      .then(_leader =>
-        api
-          .post(`v1/leadership_position_invites/${invite.id}/accept`)
-          .then(res => {
-            this.setState({ status: 'accepted' })
-          })
-      )
-      .catch(err => {
-        console.error(err)
-        this.setState({ status: 'error' })
+    const { invite, user } = this.props
+    if (user.new_leader) {
+      this.setState({ status: 'loading' })
+      this.submitAcceptance()
+    } else {
+      this.setState({ status: 'loading', showForm: true })
+    }
+  }
+
+  submitAcceptance(newLeader) {
+    const { invite, updateLeader } = this.props
+    if (newLeader) {
+      updateLeader(newLeader)
+    }
+    this.setState({ showForm: false })
+    return api
+      .post(`v1/leadership_position_invites/${invite.id}/accept`)
+      .then(res => {
+        this.setState({ status: 'accepted' })
       })
   }
 
   renderSwitch() {
-    switch (this.state.status) {
+    const { status, showForm } = this.state
+    const { invite, user } = this.props
+    switch (status) {
       case 'loading':
-        return <Button bg="warning">Loading...</Button>
+        return (
+          <Fragment>
+            <Button bg="warning">Loading...</Button>
+            {showForm && (
+              <Fragment>
+                <Modal align="left" my={4} p={[3, 4]}>
+                  <CloseButton
+                    onClick={() =>
+                      this.setState({ status: 'undecided', showForm: false })
+                    }
+                  />
+                  <LeaderForm
+                    email={user.email}
+                    userId={invite.user_id}
+                    clubId={invite.new_club.id}
+                    callback={this.submitAcceptance}
+                  />
+                </Modal>
+                <Overlay
+                  onClick={() =>
+                    this.setState({ status: 'undecided', showForm: false })
+                  }
+                />
+              </Fragment>
+            )}
+          </Fragment>
+        )
       case 'accepted':
         return <Button bg="success">Invite accepted</Button>
       case 'rejected':
@@ -106,14 +142,17 @@ class Invite extends Component {
 }
 
 export default class extends Component {
-  state = {
-    status: 'loading'
+  constructor(props) {
+    super(props)
+    this.state = { status: 'loading' }
+    this.updateLeader = this.updateLeader.bind(this)
   }
 
   componentDidMount() {
     api
       .get(`v1/users/current`)
       .then(user => {
+        this.setState({ user })
         const promiseArray = user.leadership_position_invites.map(invite =>
           api.get(`v1/leadership_position_invites/${invite.id}`)
         )
@@ -123,7 +162,7 @@ export default class extends Component {
         this.setState({ invites, status: 'success' })
       })
       .catch(err => {
-        if (err.status === 403) {
+        if (err.status === 403 || err.status === 401) {
           this.setState({ status: 'needsToAuth' })
         } else {
           this.setState({ status: 'error' })
@@ -131,8 +170,17 @@ export default class extends Component {
       })
   }
 
+  updateLeader(newLeader) {
+    this.setState({
+      user: {
+        ...this.state.user,
+        new_leader: newLeader
+      }
+    })
+  }
+
   render() {
-    const { status, invites } = this.state
+    const { status, invites, leader, user } = this.state
     switch (status) {
       case 'loading':
         return <LoadingPage />
@@ -143,7 +191,12 @@ export default class extends Component {
             <Nav />
             <Container maxWidth={32}>
               {invites.map(invite => (
-                <Invite key={invite.id} invite={invite} />
+                <Invite
+                  key={invite.id}
+                  invite={invite}
+                  user={user}
+                  updateLeader={this.updateLeader}
+                />
               ))}
             </Container>
           </Fragment>

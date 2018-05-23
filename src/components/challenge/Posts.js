@@ -6,14 +6,34 @@ import ErrorPage from 'components/admin/ErrorPage'
 import api from 'api'
 import { includes, isEmpty, get, orderBy } from 'lodash'
 
-const sortFunctions = {
-  trending: posts => orderBy(posts, 'rank_score', 'desc'),
-  newest: posts => orderBy(posts, 'created_at', 'desc'),
-  top: posts => orderBy(posts, 'upvotesCount', 'desc')
+function SeededRandom(seed) {
+  this.seed = seed
+  this.get = () => {
+    const x = Math.sin(seed++) * 10000
+    return x - Math.floor(x)
+  }
 }
 
 class Posts extends Component {
-  state = { posts: [], upvotes: [], status: 'loading', requestIds: [], prevUserId: null }
+  state = {
+    posts: [],
+    upvotes: [],
+    status: 'loading',
+    requestIds: [],
+    prevUserId: null
+  }
+
+  sortFunctions = {
+    trending: posts => orderBy(posts, 'rank_score', 'desc'),
+    newest: posts => orderBy(posts, 'created_at', 'desc'),
+    top: posts => orderBy(posts, 'upvotesCount', 'desc'),
+    random: posts => {
+      const randGenerator = new SeededRandom(this.seed)
+      return posts
+        .sort((a, b) => a.id - b.id)
+        .sort((a, b) => randGenerator.get() - 0.5)
+    }
+  }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
     const { userId } = nextProps
@@ -27,6 +47,7 @@ class Posts extends Component {
   }
 
   componentDidMount() {
+    this.seed = Math.random()
     this.refreshPosts(this.props.userId)
     this.refreshIntervalId = setInterval(() => {
       this.refreshPosts(this.props.userId, true)
@@ -201,7 +222,7 @@ class Posts extends Component {
                 No submissions yet!
               </Text>
             )}
-            {sortFunctions[sortBy](posts).map((post, index) => (
+            {this.sortFunctions[sortBy](posts).map((post, index) => (
               <Post
                 id={post.id}
                 name={post.name}

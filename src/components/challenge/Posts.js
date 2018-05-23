@@ -234,6 +234,7 @@ class Posts extends Component {
                 upvotesCount={post.upvotesCount}
                 upvoted={includes(upvotes, post.id)}
                 onUpvote={e => this.onUpvote(e, post.id)}
+                clickCount={post.click_count}
                 disabled={userId === undefined}
                 loading={post.loading}
                 index={index + 1}

@@ -64,7 +64,7 @@ const InnerForm = ({
     />
     <Field
       name="new_leader_gender"
-      value={values.new_leader_gender}
+      value={values.new_leader_gender || 'select'}
       label="Gender"
       onChange={handleChange}
       onBlur={handleBlur}
@@ -72,6 +72,7 @@ const InnerForm = ({
       mb={2}
       type="select"
     >
+      <option value="select" disabled>Select One</option>
       <option value="male">Male</option>
       <option value="female">Female</option>
       <option value="genderqueer">Genderqueer</option>
@@ -89,7 +90,7 @@ const InnerForm = ({
     />
     <Field
       name="new_leader_ethnicity"
-      value={values.new_leader_ethnicity}
+      value={values.new_leader_ethnicity || 'select'}
       label="Ethnicity"
       onChange={handleChange}
       onBlur={handleBlur}
@@ -97,6 +98,7 @@ const InnerForm = ({
       mb={2}
       type="select"
     >
+      <option value="select" disabled>Select One</option>
       <option value="hispanic_or_latino">Hispanic or Latino</option>
       <option value="white">White</option>
       <option value="black">Black</option>

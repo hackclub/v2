@@ -264,7 +264,7 @@ export default class extends Component {
                 </Link>{' '}
                 for help getting started
                 <br />
-                🏅 Submissions due 5/20. Top 3 voted by 5/23 win!
+                🏅 Submissions due 5/20. Top 3 voted by 5/25 win!
               </Text>
             </HeaderCard>
             <HeaderCard boxShadowSize="md" p={3} bg="pink.0">

@@ -13,7 +13,7 @@ const sortFunctions = {
 }
 
 class Posts extends Component {
-  state = { posts: [], upvotes: [], status: 'loading', prevUserId: null }
+  state = { posts: [], upvotes: [], status: 'loading', requestIds: [], prevUserId: null }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
     const { userId } = nextProps
@@ -37,32 +37,58 @@ class Posts extends Component {
     clearInterval(this.refreshIntervalId)
   }
 
-  refreshPosts(newUserId, intervalUpdate = false) {
-    const { challengeId, userId: oldUserId } = this.props
-    const userId = newUserId || oldUserId
+  processPosts(posts) {
+    const userId = this.props.userId
+    // array of post ids that user has upvoted
+    const upvotes = []
+    const submitterIds = posts.map(post => post.creator.id)
+    posts.forEach(post => {
+      let sum = 0
+      post.upvotes.forEach(upvote => {
+        if (upvote.user.id == userId) {
+          upvotes.push(post.id)
+        }
+        if (submitterIds.indexOf(upvote.user.id) == -1) {
+          // votes by non-submitters count as 1
+          sum++
+        } else if (upvote.user.id == post.creator.id) {
+          // votes by subitters to their own work count as 1
+          sum++
+        } else {
+          // by creators to other people's projects count as 10
+          sum += 10
+        }
+      })
+      post.upvotesCount = sum
+    })
+
+    // TODO (later): remove upvotes array for better performace
+    this.setState({ upvotes, posts, submitterIds })
+  }
+
+  refreshPosts(intervalUpdate = false) {
+    const { challengeId, userId } = this.props
+    const requestId = Math.random().toString()
+
+    this.setState({
+      requestIds: this.state.requestIds.concat(requestId)
+    })
 
     api
       .get(
         `v1/challenges/${challengeId}/posts`,
         {},
-        { noAuth: newUserId === undefined }
+        { noAuth: userId === undefined }
       )
       .then(data => {
+        if (intervalUpdate && this.state.requestIds.length > 0) {
+          return
+        }
         let posts = data || []
-
-        // array of post ids that user has upvoted
-        const upvotes = []
-        posts.forEach(post => {
-          post.upvotesCount = post.upvotes.length
-          post.upvotes.forEach(upvote => {
-            if (upvote.user.id == userId) {
-              upvotes.push(post.id)
-            }
-          })
-        })
+        this.processPosts(posts)
 
         // TODO (later): remove upvotes array for better performace
-        this.setState({ upvotes, posts, status: 'success' })
+        this.setState({ status: 'success' })
       })
       .catch(err => {
         // A user shouldn't see an update if they lose connection for 3 seconds
@@ -71,13 +97,33 @@ class Posts extends Component {
           this.setState({ status: 'error' })
         }
       })
+      .finally(() => {
+        const index = this.state.requestIds.indexOf(requestId)
+        if (index !== -1) {
+          const newRequestIds = this.state.requestIds.splice(1, index)
+          this.setState({
+            requestIds: newRequestIds
+          })
+        }
+      })
   }
 
   onUpvote(e, postId) {
     const { userId: authUser } = this.props
+    const { submitterIds } = this.state
+    // Ignore the click if we're not authed
     if (authUser === undefined) return
+    // You can only vote if you submitted a project
+    if (submitterIds.indexOf(authUser) == -1) {
+      alert('You can only vote if you’ve submitted a project')
+      return
+    }
     let { upvotes, posts } = this.state
     let post = posts.find(post => post.id == postId)
+    // You can't click on posts that are still loading
+    if (post.loading) {
+      return
+    }
     let postIndex = posts.indexOf(post)
     if (includes(upvotes, postId)) {
       // if this is nil, this means we've ran into a race where this.state.posts
@@ -93,25 +139,48 @@ class Posts extends Component {
       // immediately increment values so it feels responsive, later refresh
       // posts completely so we have the correct values in state
       // remove post from upvotes array w/ removed postId
-      let truncatedUpvotes = upvotes.filter(upvote => upvote !== postId)
-      this.setState({ upvotes: truncatedUpvotes })
-
-      // decrement upvotesCount //
-      post.upvotesCount--
-      posts[postIndex] = post
-      this.setState({ posts })
+      // let truncatedUpvotes = upvotes.filter(upvote => upvote !== postId)
+      // this.setState({ upvotes: truncatedUpvotes })
+      //
+      // // decrement upvotesCount //
+      // post.upvotesCount--
+      // posts[postIndex] = post
+      // this.setState({ posts })
+      const updatedPosts = posts.map(post => {
+        if (post.id === postId) {
+          const modifiedUpvotes = post.upvotes.filter(upvote => upvote.user.id != authUser)
+          return {...post, loading: true, upvotes: modifiedUpvotes}
+        } else {
+          return post
+        }
+      })
+      this.processPosts(updatedPosts)
 
       // actually make requests & refresh
       api.delete(`v1/upvotes/${upvote.id}`).then(() => this.refreshPosts())
     } else {
       // add post to upvotes array //
-      upvotes.push(postId)
-      this.setState({ upvotes })
-
-      // increment upvotesCount //
-      post.upvotesCount++
-      posts[postIndex] = post
-      this.setState({ posts })
+      // upvotes.push(postId)
+      // this.setState({ upvotes })
+      //
+      // // increment upvotesCount //
+      // post.upvotesCount++
+      // posts[postIndex] = post
+      // this.setState({ posts })
+      const updatedPosts = posts.map(post => {
+        if (post.id === postId) {
+          const newUpvote = {
+            // Generate a random ID for the upvote so we can refer to it in future presses -- it will be overwritten when the page updates with an ID from the backend
+            id: Math.round(Math.random() * -10000),
+            user: { id: authUser }
+          }
+          const modifiedUpvotes = [...post.upvotes, newUpvote]
+          return {...post, loading: true, upvotes: modifiedUpvotes}
+        } else {
+          return post
+        }
+      })
+      this.processPosts(updatedPosts)
 
       // actually make requests & refresh
       api.post(`v1/posts/${postId}/upvotes`).then(() => this.refreshPosts())
@@ -145,6 +214,7 @@ class Posts extends Component {
                 upvoted={includes(upvotes, post.id)}
                 onUpvote={e => this.onUpvote(e, post.id)}
                 disabled={userId === undefined}
+                loading={post.loading}
                 index={index + 1}
                 key={post.id}
               />

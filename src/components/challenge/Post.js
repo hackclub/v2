@@ -95,6 +95,7 @@ const PostRow = ({
   onUpvote,
   onComment,
   disabled,
+  loading,
   index
 }) => (
   <Row
@@ -117,7 +118,8 @@ const PostRow = ({
       color={upvoted ? 'white' : 'slate'}
       aria-label={upvoted ? 'Remove your upvote' : 'Upvote this post'}
       onClick={onUpvote}
-      cursor={disabled ? 'not-allowed' : 'pointer'}
+      disabled={loading}
+      cursor={disabled ? 'not-allowed' : loading ? 'wait' : 'pointer'}
     >
       <Icon size={20} name="arrow_upward" />
       <Text.span ml={1} f={2} children={upvotesCount} />
@@ -157,6 +159,7 @@ PostRow.propTypes = {
   commentsCount: PropTypes.number.isRequired,
   upvotesCount: PropTypes.number.isRequired,
   upvoted: PropTypes.bool,
+  loading: PropTypes.bool,
   onUpvote: PropTypes.func.isRequired,
   onComment: PropTypes.func.isRequired
 }

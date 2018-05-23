@@ -94,6 +94,7 @@ const PostRow = ({
   upvoted = false,
   onUpvote,
   onComment,
+  clickCount,
   disabled,
   loading,
   index
@@ -113,17 +114,28 @@ const PostRow = ({
         children={index}
       />
     </Index>
-    <UpvoteButton
-      bg={upvoted ? 'primary' : 'smoke'}
-      color={upvoted ? 'white' : 'slate'}
-      aria-label={upvoted ? 'Remove your upvote' : 'Upvote this post'}
-      onClick={onUpvote}
-      disabled={loading}
-      cursor={disabled ? 'not-allowed' : loading ? 'wait' : 'pointer'}
-    >
-      <Icon size={20} name="arrow_upward" />
-      <Text.span ml={1} f={2} children={upvotesCount} />
-    </UpvoteButton>
+    <Box>
+      <UpvoteButton
+        bg={upvoted ? 'primary' : 'smoke'}
+        color={upvoted ? 'white' : 'slate'}
+        aria-label={upvoted ? 'Remove your upvote' : 'Upvote this post'}
+        onClick={onUpvote}
+        disabled={loading}
+        cursor={disabled ? 'not-allowed' : loading ? 'wait' : 'pointer'}
+      >
+        <Icon size={20} name="arrow_upward" />
+        <Text.span ml={1} f={2} children={upvotesCount} />
+      </UpvoteButton>
+      <Flex w={1} align="center" justify="center" color="gray.7" mt={1}>
+        <Icon size={20} name="remove_red_eye" />
+        <Text.span
+          ml={1}
+          f={2}
+          style={{ lineHeight: 1 }}
+          children={clickCount}
+        />
+      </Flex>
+    </Box>
     <Link w={1} href={url} target="_blank" color="black" px={3}>
       <Heading.h3 f={3} m={0}>
         {name}

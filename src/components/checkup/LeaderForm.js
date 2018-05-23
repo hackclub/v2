@@ -219,7 +219,7 @@ export default withFormik({
       .string()
       .required('required')
       .matches(/(male|female|genderqueer|agender|other_gender)/),
-    new_leader_birthday: yup.date().required('required'),
+    new_leader_birthday: yup.date().nullable(),
     new_leader_ethnicity: yup
       .string()
       .required('required')

@@ -73,10 +73,7 @@ export default withFormik({
   validationSchema: yup.object().shape({
     high_school_name: yup.string().required('required'),
     high_school_address: yup.string().required('required'),
-    high_school_url: yup
-      .string()
-      .url()
-      .nullable(),
+    high_school_url: yup.string().nullable(),
     high_school_type: yup
       .string()
       .required('required')

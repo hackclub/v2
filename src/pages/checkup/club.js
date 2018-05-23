@@ -21,7 +21,7 @@ export default class extends Component {
       .get(`v1/new_clubs/${id}`)
       .then(club => {
         const positions = club.leadership_positions.concat(
-          club.leadership_position_invites || []
+          club.leadership_position_invites
         )
         this.setState({ club, positions, status: 'success' })
       })

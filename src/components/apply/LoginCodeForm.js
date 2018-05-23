@@ -106,14 +106,15 @@ const LoginCodeForm = withFormik({
   validationSchema: yup.object().shape({
     loginCode: yup.string()
   }),
-  handleSubmit: (data, { props, setSubmitting, setErrors }) => {
-    if (!data.loginCode) {
+  handleSubmit: (unformattedData, { props, setSubmitting, setErrors }) => {
+    if (!unformattedData.loginCode) {
       setSubmitting(false)
       return null
     }
-    const strippedLoginCode = data.loginCode.replace(/\D/g, '')
-    const formattedData = { login_code: strippedLoginCode }
-    api.post(`v1/users/${props.userId}/exchange_login_code`, { data: formattedData })
+    const strippedLoginCode = unformattedData.loginCode.replace(/\D/g, '')
+    const data = { login_code: strippedLoginCode }
+    api
+      .post(`v1/users/${props.userId}/exchange_login_code`, { data })
       .then(json => {
         window.localStorage.setItem('authToken', json.auth_token)
         setSubmitting(false)

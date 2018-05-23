@@ -239,7 +239,7 @@ export default withFormik({
       .matches(/(male|female|genderqueer|agender|other_gender)/, 'required'),
     birthday: yup
       .date()
-      .typeError('YYYY-MM or YYYY-MM-DD')
+      .typeError('YYYY-MM-DD')
       .nullable(),
     ethnicity: yup
       .string()

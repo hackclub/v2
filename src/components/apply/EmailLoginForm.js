@@ -81,17 +81,18 @@ const EmailLoginForm = withFormik({
       setSubmitting(false)
       return null
     }
-    api.post('v1/users/auth', { data })
-       .then(user => {
-         storage.set('userId', user.id)
-         storage.set('userEmail', user.email)
-         setSubmitting(false)
-         props.submitCallback({ userId: user.id, email: user.email })
-       })
-       .catch(e => {
-         console.error(e)
-         setSubmitting(false)
-       })
+    api
+      .post('v1/users/auth', { data })
+      .then(user => {
+        storage.set('userId', user.id)
+        storage.set('userEmail', user.email)
+        setSubmitting(false)
+        props.submitCallback({ userId: user.id, email: user.email })
+      })
+      .catch(e => {
+        console.error(e)
+        setSubmitting(false)
+      })
   },
   displayName: 'EmailLoginForm'
 })(InnerForm)

@@ -18,12 +18,13 @@ export default class extends Component {
   componentDidMount() {
     const id = search.get('id')
     api
-      .get(`v1/users/current`)
-      .then(user =>
-        api.get(`v1/new_clubs/${id}`).then(club => {
-          this.setState({ user, club, status: 'success' })
-        })
-      )
+      .get(`v1/new_clubs/${id}`)
+      .then(club => {
+        const positions = club.leadership_positions.concat(
+          club.leadership_position_invites
+        )
+        this.setState({ club, positions, status: 'success' })
+      })
       .catch(err => {
         console.error(err)
         if (err.status === 401) {

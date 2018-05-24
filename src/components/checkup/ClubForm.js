@@ -45,7 +45,7 @@ const InnerForm = ({
     />
     <Field
       name="high_school_type"
-      value={values.high_school_type || select}
+      value={values.high_school_type || 'select'}
       label="School type"
       onChange={handleChange}
       onBlur={handleBlur}

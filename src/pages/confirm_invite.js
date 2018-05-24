@@ -19,7 +19,10 @@ import { Modal, Overlay, CloseButton } from 'components/Modal'
 class Invite extends Component {
   constructor(props) {
     super(props)
-    this.state = { status: 'undecided', formActive: false }
+    this.state = {
+      status: props.accepted ? 'accepted' : props.rejected ? 'rejected' : 'undecided',
+      formActive: false
+    }
     this.rejectInvite = this.rejectInvite.bind(this)
     this.acceptInvite = this.acceptInvite.bind(this)
     this.submitAcceptance = this.submitAcceptance.bind(this)
@@ -196,6 +199,8 @@ export default class extends Component {
                   invite={invite}
                   user={user}
                   updateLeader={this.updateLeader}
+                  rejected={invite.rejected_at !== null}
+                  accepted={invite.accepted_at !== null}
                 />
               ))}
             </Container>

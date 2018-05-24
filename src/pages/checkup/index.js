@@ -14,15 +14,6 @@ import {
   Section
 } from '@hackclub/design-system'
 
-const ClubCard = ({ club }) => (
-  <Link href={`/checkup/club?id=${club.id}`}>
-    <Card p={3} boxShadowSize="sm">
-      <Heading.h2>{club.high_school_name}</Heading.h2>
-      <Text>{club.high_school_address}</Text>
-    </Card>
-  </Link>
-)
-
 export default class extends Component {
   state = {
     status: 'loading'
@@ -36,7 +27,13 @@ export default class extends Component {
         return api
           .get(`v1/new_leaders/${user.new_leader.id}/new_clubs`)
           .then(clubs => {
-            this.setState({ clubs, status: 'success' })
+            const clubUrl = `${location.href}/club?id=${clubs[0].id}`
+            const clubsUrl = `${location.href}/clubs`
+            this.setState({
+              clubs,
+              status: 'success',
+              redirectUrl: clubs.length === 1 ? clubUrl : clubsUrl
+            })
           })
       })
       .catch(err => {
@@ -49,7 +46,8 @@ export default class extends Component {
   }
 
   render() {
-    switch (this.state.status) {
+    const { status, redirectUrl } = this.state
+    switch (status) {
       case 'loading':
         return <LoadingAnimation />
       case 'success':
@@ -57,13 +55,14 @@ export default class extends Component {
           <Fragment>
             <Nav />
             <Section bg="primary" color="white">
-              <Heading.h1 my={3}>Please verify your information</Heading.h1>
+              <Heading.h1 my={3}>It's the end of the school year!</Heading.h1>
+              <Text>
+                This form will let you update your club's info and update
+                leadership positions.
+              </Text>
             </Section>
             <Container my={3} maxWidth={32}>
-              <LeaderForm {...this.state.user} />
-              {this.state.clubs.map((club, index) => (
-                <ClubCard club={club} key={index} />
-              ))}
+              <LeaderForm {...this.state.user} redirectUrl={redirectUrl} />
             </Container>
           </Fragment>
         )

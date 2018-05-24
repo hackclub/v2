@@ -2,10 +2,28 @@ import React from 'react'
 import api from 'api'
 import { withFormik } from 'formik'
 import yup from 'yup'
-
+import { Text, Link } from '@hackclub/design-system'
 import { Field, Submit } from 'components/Forms'
 
+const submitStatus = status =>
+  ({
+    success: 'Success',
+    redirect: 'Success',
+    loading: 'Loading...',
+    clean: 'Verify'
+  }[status] || 'Update')
+const submitColor = status =>
+  ({
+    success: 'success',
+    redirect: 'success',
+    loading: 'warning',
+    clean: 'info'
+  }[status] || 'primary')
+
 const InnerForm = ({
+  dirty,
+  redirectUrl,
+  status,
   values,
   errors,
   touched,
@@ -183,10 +201,15 @@ const InnerForm = ({
     <Submit
       disabled={isSubmitting}
       onClick={handleSubmit}
-      value="Submit"
-      bg="primary"
+      value={submitStatus(!dirty ? 'clean' : isSubmitting ? 'loading' : status)}
+      bg={submitColor(!dirty ? 'clean' : isSubmitting ? 'loading' : status)}
       f={4}
     />
+    {status === 'redirecting' && (
+      <Text>
+        Redirecting you to <Link href={redirectUrl}>the next step</Link>.
+      </Text>
+    )}
   </form>
 )
 
@@ -279,13 +302,19 @@ export default withFormik({
       phone_number: values.new_leader_phone_number,
       twitter_url: values.new_leader_twitter_url
     }
-    Promise.all([
+    return Promise.all([
       api.patch(`v1/new_leaders/${props.new_leader.id}`, { data: leaderData }),
       api.patch(`v1/users/${props.id}`, { data: userData })
     ])
       .then(() => {
         setSubmitting(false)
         setStatus('success')
+        setTimeout(() => {
+          location.href = props.redirectUrl
+        }, 1000)
+        setTimeout(() => {
+          setStatus('redirecting')
+        }, 3000)
       })
       .catch(err => {
         console.error(err)

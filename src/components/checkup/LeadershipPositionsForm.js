@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import ErrorPage from 'components/admin/ErrorPage'
 import LoadingAnimation from 'components/LoadingAnimation'
 import api from 'api'
-import { Card, Text, Badge, Box, Heading } from '@hackclub/design-system'
+import { Card, Text, Badge, Box, Heading, Link } from '@hackclub/design-system'
 
 const StatusBadge = ({status}) => {
   switch(status) {
@@ -28,25 +28,31 @@ const LeaderStatus = ({status}) => (
 )
 
 class LeaderInvite extends Component {
-  state = {
-    status: 'success'
-  }
-
   render() {
     const { position } = this.props
-    switch (this.state.status) {
-      case 'success':
+    const status = position.rejected_at ? 'rejected' : 'invited'
+    switch (status) {
+      case 'invited':
         return (
           <Fragment>
-            <LeaderStatus status={position.rejected_at ? 'rejected' : 'invited'} />
-            <Text>{ position.user.email }</Text>
+            <LeaderStatus status='invited' />
+            <Text>An invite was sent to{' '}
+              <Text.span bold>{ position.user.email }</Text.span>
+              .{' '}
+              <Link onClick={() => {
+                  // TODO: Add invite revoke logic here once endpoints are up
+                  alert('Let me know which invite you want revoked at max@hackclub.com')
+                }}>
+                Revote it
+              </Link>.
+            </Text>
           </Fragment>
         )
-      default:
+      case 'rejected':
         return (
           <Fragment>
-            <LeaderStatus status="error"/>
-            <ErrorPage />
+            <LeaderStatus status='rejected' />
+            <Text><Text.span bold>{ position.user.email }</Text.span> rejected the invitation.</Text>
           </Fragment>
         )
     }

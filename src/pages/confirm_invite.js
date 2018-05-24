@@ -83,7 +83,7 @@ class Invite extends Component {
                   />
                   <LeaderForm
                     email={user.email}
-                    userId={invite.user_id}
+                    userId={user.id}
                     clubId={invite.new_club.id}
                     callback={this.submitAcceptance}
                   />

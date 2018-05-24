@@ -125,11 +125,18 @@ const PostRow = ({
         <Icon size={20} name="arrow_upward" />
         <Text.span ml={1} f={2} children={upvotesCount} />
       </UpvoteButton>
-      <Flex w={1} align="center" justify="center" color="gray.7" mt={1}>
-        <Icon size={20} name="remove_red_eye" />
+      <Flex
+        w={1}
+        align="center"
+        justify="center"
+        mt={1}
+        title={`${clickCount} views`}
+      >
+        <Icon size={16} name="remove_red_eye" color="gray.5" />
         <Text.span
           ml={1}
-          f={2}
+          f={1}
+          color="muted"
           style={{ lineHeight: 1 }}
           children={clickCount}
         />

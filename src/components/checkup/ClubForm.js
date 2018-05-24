@@ -5,6 +5,19 @@ import yup from 'yup'
 
 import { Field, Submit } from 'components/Forms'
 
+const submitStatus = status =>
+  ({
+    success: 'Success',
+    loading: 'Loading...',
+    clean: 'Verify'
+  }[status] || 'Update')
+const submitColor = status =>
+  ({
+    success: 'success',
+    loading: 'warning',
+    clean: 'info'
+  }[status] || 'primary')
+
 const InnerForm = ({
   values,
   errors,

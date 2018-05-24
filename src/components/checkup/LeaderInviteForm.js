@@ -58,6 +58,7 @@ export default withFormik({
     api
       .post(`v1/new_clubs/${props.clubId}/invite_leader`, { data: values })
       .then(_res => {
+        props.callback()
         resetForm()
         setStatus('success')
       })

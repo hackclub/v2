@@ -93,12 +93,11 @@ const PositionCard = Card.extend.attrs({
 
 export default class extends Component {
   state = {
-    status: 'loading',
-    positions: this.props.positions
+    status: 'loading'
   }
 
   render() {
-    const { positions } = this.state
+    const { positions } = this.props
     return (
       <Fragment>
         {positions.invites

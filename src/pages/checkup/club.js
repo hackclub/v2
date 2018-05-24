@@ -16,6 +16,11 @@ export default class extends Component {
   }
 
   componentDidMount() {
+    this.refresh = this.refresh.bind(this)
+    this.refresh()
+  }
+
+  refresh() {
     const id = search.get('id')
     api
       .get(`v1/new_clubs/${id}`)
@@ -51,7 +56,7 @@ export default class extends Component {
             <Nav />
             <Container my={3} maxWidth={32}>
               <ClubForm {...club} />
-              <LeaderInviteForm clubId={club.id} />
+              <LeaderInviteForm clubId={club.id} callback={this.refresh}/>
               <LeadershipPositionsForm positions={positions} />
             </Container>
           </Fragment>

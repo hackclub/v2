@@ -8,7 +8,7 @@ import LeadershipPositionsForm from 'components/checkup/LeadershipPositionsForm'
 import LeaderInviteForm from 'components/checkup/LeaderInviteForm'
 import api from 'api'
 import search from 'search'
-import {} from '@hackclub/design-system'
+import { Container, Link, Card, Heading, Text } from '@hackclub/design-system'
 
 export default class extends Component {
   state = {
@@ -20,12 +20,18 @@ export default class extends Component {
     api
       .get(`v1/new_clubs/${id}`)
       .then(club => {
-        const positions = club.leadership_positions.concat(
-          club.leadership_position_invites
-        )
+        const positions = {
+          leaders: club.leadership_positions.map(position => {
+            const leader_profile = club.new_leaders.find(leader => leader.id === position.new_leader_id)
+            return {...position, leader_profile}
+          }),
+          invites: club.leadership_position_invites
+        }
+
         this.setState({ club, positions, status: 'success' })
       })
       .catch(err => {
+        console.error(err)
         if (err.status === 401) {
           this.setState({ status: 'needsToAuth' })
         } else {
@@ -43,9 +49,11 @@ export default class extends Component {
         return (
           <Fragment>
             <Nav />
-            <ClubForm {...club} />
-            <LeaderInviteForm clubId={club.id} />
-            <LeadershipPositionsForm positions={positions} />
+            <Container my={3} maxWidth={32}>
+              <ClubForm {...club} />
+              <LeaderInviteForm clubId={club.id} />
+              <LeadershipPositionsForm positions={positions} />
+            </Container>
           </Fragment>
         )
       case 'needsToAuth':

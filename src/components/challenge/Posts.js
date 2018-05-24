@@ -134,10 +134,6 @@ class Posts extends Component {
     // Ignore the click if we're not authed
     if (authUser === undefined) return
     // You can only vote if you submitted a project
-    if (submitterIds.indexOf(authUser) == -1) {
-      alert('You can only vote if you’ve submitted a project')
-      return
-    }
     let { upvotes, posts } = this.state
     let post = posts.find(post => post.id == postId)
     // You can't click on posts that are still loading

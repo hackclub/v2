@@ -84,7 +84,6 @@ class Posts extends Component {
       post.upvotesCount = sum
     })
 
-    // TODO (later): remove upvotes array for better performace
     this.setState({ upvotes, posts, submitterIds })
   }
 
@@ -92,9 +91,9 @@ class Posts extends Component {
     const { challengeId, userId } = this.props
     const requestId = Math.random().toString()
 
-    this.setState({
-      requestIds: this.state.requestIds.concat(requestId)
-    })
+    this.setState(state => ({
+      requestIds: state.requestIds.concat(requestId)
+    }))
 
     api
       .get(
@@ -109,7 +108,6 @@ class Posts extends Component {
         let posts = data || []
         this.processPosts(posts)
 
-        // TODO (later): remove upvotes array for better performace
         this.setState({ status: 'success' })
       })
       .catch(err => {
@@ -170,8 +168,10 @@ class Posts extends Component {
       // this.setState({ posts })
       const updatedPosts = posts.map(post => {
         if (post.id === postId) {
-          const modifiedUpvotes = post.upvotes.filter(upvote => upvote.user.id != authUser)
-          return {...post, loading: true, upvotes: modifiedUpvotes}
+          const modifiedUpvotes = post.upvotes.filter(
+            upvote => upvote.user.id != authUser
+          )
+          return { ...post, loading: true, upvotes: modifiedUpvotes }
         } else {
           return post
         }
@@ -197,7 +197,7 @@ class Posts extends Component {
             user: { id: authUser }
           }
           const modifiedUpvotes = [...post.upvotes, newUpvote]
-          return {...post, loading: true, upvotes: modifiedUpvotes}
+          return { ...post, loading: true, upvotes: modifiedUpvotes }
         } else {
           return post
         }

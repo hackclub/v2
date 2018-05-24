@@ -1,7 +1,7 @@
 import fetch from 'unfetch'
 import storage from 'storage'
 
-const apiBase = 'https://221c216b.ngrok.io/'
+const apiBase = 'https://api.hackclub.com/'
 const methods = ['GET', 'PUT', 'POST', 'PATCH', 'DELETE']
 
 const generateMethod = method => (path, options = {}, fetchOptions = {}) => {

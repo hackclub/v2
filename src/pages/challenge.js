@@ -27,7 +27,7 @@ import {
   DropdownMenuOption
 } from 'components/Dropdown'
 import { dt, tinyDt } from 'helpers'
-import { isEmpty } from 'lodash'
+import { isEmpty, keys } from 'lodash'
 import api from 'api'
 import storage from 'storage'
 
@@ -35,7 +35,7 @@ const sortByHumanized = {
   trending: 'Trending',
   top: 'Top-voted',
   newest: 'Newest',
-  viewed: 'Most Viewed',
+  viewed: 'Top-viewed',
   random: 'Random'
 }
 
@@ -310,36 +310,14 @@ export default class extends Component {
                 children={sortByHumanized[sortBy]}
               />
               <DropdownMenu>
-                <DropdownMenuOption
-                  active={sortBy === 'random'}
-                  onClick={() => this.setState({ sortBy: 'random' })}
-                >
-                  Random
-                </DropdownMenuOption>
-                <DropdownMenuOption
-                  active={sortBy === 'trending'}
-                  onClick={() => this.setState({ sortBy: 'trending' })}
-                >
-                  Trending
-                </DropdownMenuOption>
-                <DropdownMenuOption
-                  active={sortBy === 'viewed'}
-                  onClick={() => this.setState({ sortBy: 'viewed' })}
-                >
-                  Most Viewed
-                </DropdownMenuOption>
-                <DropdownMenuOption
-                  active={sortBy === 'top'}
-                  onClick={() => this.setState({ sortBy: 'top' })}
-                >
-                  Top-voted
-                </DropdownMenuOption>
-                <DropdownMenuOption
-                  active={sortBy === 'newest'}
-                  onClick={() => this.setState({ sortBy: 'newest' })}
-                >
-                  Newest
-                </DropdownMenuOption>
+                {keys(sortByHumanized).map(key => (
+                  <DropdownMenuOption
+                    active={sortBy === key}
+                    onClick={() => this.setState({ sortBy: key })}
+                    children={sortByHumanized[key]}
+                    key={key}
+                  />
+                ))}
               </DropdownMenu>
             </DropdownContainer>
           </Title>

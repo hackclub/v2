@@ -8,7 +8,7 @@ import { Field, Submit } from 'components/Forms'
 const submitStatus = status =>
   ({
     success: 'Success',
-    loading: 'Loading...',
+    loading: 'Loading…',
     clean: 'Verify'
   }[status] || 'Update')
 const submitColor = status =>
@@ -31,7 +31,7 @@ const InnerForm = ({
     <Field
       name="high_school_name"
       value={values.high_school_name}
-      label="School Name"
+      label="School name"
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.high_school_name && errors.high_school_name}

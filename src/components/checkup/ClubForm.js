@@ -45,7 +45,7 @@ const InnerForm = ({
     />
     <Field
       name="high_school_type"
-      value={values.high_school_type}
+      value={values.high_school_type || select}
       label="School type"
       onChange={handleChange}
       onBlur={handleBlur}
@@ -53,7 +53,9 @@ const InnerForm = ({
       mb={2}
       type="select"
     >
-      <option value="">Select One</option>
+      <option value="select" disabled>
+        Select One
+      </option>
       <option value="public_school">Public</option>
       <option value="private_school">Private</option>
       <option value="charter_school">Charter</option>

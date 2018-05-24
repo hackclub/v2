@@ -72,7 +72,9 @@ const InnerForm = ({
       mb={2}
       type="select"
     >
-      <option value="select" disabled>Select One</option>
+      <option value="select" disabled>
+        Select One
+      </option>
       <option value="male">Male</option>
       <option value="female">Female</option>
       <option value="genderqueer">Genderqueer</option>
@@ -98,7 +100,9 @@ const InnerForm = ({
       mb={2}
       type="select"
     >
-      <option value="select" disabled>Select One</option>
+      <option value="select" disabled>
+        Select One
+      </option>
       <option value="hispanic_or_latino">Hispanic or Latino</option>
       <option value="white">White</option>
       <option value="black">Black</option>

@@ -20,6 +20,8 @@ const submitColor = status =>
 
 const InnerForm = ({
   values,
+  dirty,
+  status,
   errors,
   touched,
   handleChange,
@@ -76,8 +78,8 @@ const InnerForm = ({
     <Submit
       disabled={isSubmitting}
       onClick={handleSubmit}
-      value="Submit"
-      bg="primary"
+      value={submitStatus(!dirty ? 'clean' : isSubmitting ? 'loading' : status)}
+      bg={submitColor(!dirty ? 'clean' : isSubmitting ? 'loading' : status)}
       f={4}
     />
   </form>
@@ -85,6 +87,20 @@ const InnerForm = ({
 
 export default withFormik({
   mapPropsToValues: props => props,
+  handleSubmit: (values, { props, setSubmitting, setStatus }) => {
+    setStatus('loading')
+    api
+      .patch(`v1/new_clubs/${props.id}`, { data: values })
+      .then(_res => {
+        setStatus('success')
+        setSubmitting(false)
+      })
+      .catch(err => {
+        console.error(err)
+        setSubmitting(false)
+        setStatus('error')
+      })
+  },
   validationSchema: yup.object().shape({
     high_school_name: yup.string().required('required'),
     high_school_address: yup.string().required('required'),

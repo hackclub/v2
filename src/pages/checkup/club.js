@@ -23,17 +23,22 @@ export default class extends Component {
   refresh() {
     const id = search.get('id')
     api
-      .get(`v1/new_clubs/${id}`)
-      .then(club => {
-        const positions = {
-          leaders: club.leadership_positions.map(position => {
-            const leader_profile = club.new_leaders.find(leader => leader.id === position.new_leader_id)
-            return {...position, leader_profile}
-          }),
-          invites: club.leadership_position_invites
-        }
+      .get(`v1/users/current`)
+      .then(user => {
+        this.setState({ user })
+        return api.get(`v1/new_clubs/${id}`).then(club => {
+          const positions = {
+            leaders: club.leadership_positions.map(position => {
+              const leader_profile = club.new_leaders.find(
+                leader => leader.id === position.new_leader_id
+              )
+              return { ...position, leader_profile }
+            }),
+            invites: club.leadership_position_invites
+          }
 
-        this.setState({ club, positions, status: 'success' })
+          this.setState({ club, positions, status: 'success' })
+        })
       })
       .catch(err => {
         console.error(err)
@@ -46,7 +51,7 @@ export default class extends Component {
   }
 
   render() {
-    const { status, club, positions } = this.state
+    const { status, club, positions, user } = this.state
     switch (status) {
       case 'loading':
         return <LoadingAnimation />
@@ -55,9 +60,30 @@ export default class extends Component {
           <Fragment>
             <Nav />
             <Container my={3} maxWidth={32}>
-              <ClubForm {...club} />
-              <LeaderInviteForm clubId={club.id} callback={this.refresh}/>
-              <LeadershipPositionsForm positions={positions} />
+              <Heading.h2>Confirm your club info</Heading.h2>
+              <Text my={3}>
+                If anything is out of date, please fix it and press submit
+              </Text>
+              <Card boxShadowSize="sm" p={3} my={3}>
+                <ClubForm {...club} />
+              </Card>
+              <Heading.h2>Club leadership</Heading.h2>
+              <Text my={3}>
+                This is a list of your current leadership team. You can use this
+                page to:
+              </Text>
+              <ul>
+                <li>
+                  Remove club leaders who won’t be leading the club next year
+                </li>
+                <li>Invite new leaders</li>
+              </ul>
+              <LeadershipPositionsForm
+                positions={positions}
+                leaderId={user.new_leader.id}
+                callback={this.refresh}
+              />
+              <LeaderInviteForm clubId={club.id} callback={this.refresh} />
             </Container>
           </Fragment>
         )

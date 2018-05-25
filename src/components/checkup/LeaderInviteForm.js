@@ -25,7 +25,8 @@ const InnerForm = ({
   handleChange,
   handleBlur,
   handleSubmit,
-  isSubmitting
+  isSubmitting,
+  isValid
 }) => (
   <form onSubmit={handleSubmit}>
     <Field
@@ -37,7 +38,7 @@ const InnerForm = ({
       error={touched.email && errors.email}
     />
     <Submit
-      disabled={isSubmitting}
+      disabled={isSubmitting || !(status === 'success' || isValid)}
       onClick={handleSubmit}
       value={getStatus.value[status] || 'Invite leader'}
       bg={getStatus.bg[status] || 'primary'}
@@ -49,6 +50,12 @@ const InnerForm = ({
 export default withFormik({
   mapPropsToValues: props => ({
     email: props.email || ''
+  }),
+  validationSchema: yup.object().shape({
+    email: yup
+      .string()
+      .required('required')
+      .email('invalid email')
   }),
   handleSubmit: (
     values,

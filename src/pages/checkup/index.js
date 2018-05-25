@@ -55,10 +55,10 @@ export default class extends Component {
           <Fragment>
             <Nav />
             <Section bg="primary" color="white">
-              <Heading.h1 my={3}>It's the end of the school year!</Heading.h1>
+              <Heading.h1 my={3}>It’s the end of the school year!</Heading.h1>
               <Text>
-                This form will let you update your club's info and update
-                leadership positions.
+                This form will let you update your club’s info and add/remove
+                leaders from your team.
               </Text>
             </Section>
             <Container my={3} maxWidth={32}>

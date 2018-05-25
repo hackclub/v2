@@ -27,8 +27,9 @@ export default class extends Component {
         return api
           .get(`v1/new_leaders/${user.new_leader.id}/new_clubs`)
           .then(clubs => {
-            const clubUrl = `${location.href}/club?id=${clubs[0].id}`
-            const clubsUrl = `${location.href}/clubs`
+            const urlBase = location.origin + location.pathname
+            const clubUrl = `${urlBase}/club?id=${clubs[0].id}`
+            const clubsUrl = `${urlBase}/clubs`
             this.setState({
               clubs,
               status: 'success',
@@ -62,7 +63,9 @@ export default class extends Component {
               </Text>
             </Section>
             <Container my={3} maxWidth={32}>
-              <LeaderForm {...this.state.user} redirectUrl={redirectUrl} />
+              <Card boxShadowSize="sm" p={3}>
+                <LeaderForm {...this.state.user} redirectUrl={redirectUrl} />
+              </Card>
             </Container>
           </Fragment>
         )

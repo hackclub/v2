@@ -92,8 +92,14 @@ export default withFormik({
     api
       .patch(`v1/new_clubs/${props.id}`, { data: values })
       .then(_res => {
-        setStatus('success')
         setSubmitting(false)
+        setStatus('success')
+        setTimeout(() => {
+          location.href = props.redirectUrl
+        }, 1000)
+        setTimeout(() => {
+          setStatus('redirecting')
+        }, 3000)
       })
       .catch(err => {
         console.error(err)

@@ -20,7 +20,11 @@ class Invite extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      status: props.accepted ? 'accepted' : props.rejected ? 'rejected' : 'undecided',
+      status: props.accepted
+        ? 'accepted'
+        : props.rejected
+          ? 'rejected'
+          : 'undecided',
       formActive: false
     }
     this.rejectInvite = this.rejectInvite.bind(this)

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { api } from 'data.json'
+import { url as apiUrl } from 'api'
 import { Field } from 'components/Forms'
 import { Box, Flex, Text, IconButton, Link as A } from '@hackclub/design-system'
 import yup from 'yup'
@@ -34,7 +34,7 @@ class LeaderInviteForm extends Component {
         .validate({ email: leaderInvite.value })
         .then(data => {
           this.setState({ error: undefined })
-          fetch(`${api}/v1/new_club_applications/${id}/add_user`, {
+          fetch(`${apiUrl}/v1/new_club_applications/${id}/add_user`, {
             method: 'POST',
             headers: {
               Authorization: `Bearer ${authToken}`,

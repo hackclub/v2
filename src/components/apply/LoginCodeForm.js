@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { api } from 'data.json'
+import { url as apiUrl } from 'api'
 import { Label, Input, Text, cx } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import yup from 'yup'
@@ -112,7 +112,7 @@ const LoginCodeForm = withFormik({
       return null
     }
     const strippedLoginCode = data.loginCode.replace(/\D/g, '')
-    fetch(`${api}/v1/users/${props.userId}/exchange_login_code`, {
+    fetch(`${apiUrl}/v1/users/${props.userId}/exchange_login_code`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ login_code: strippedLoginCode })

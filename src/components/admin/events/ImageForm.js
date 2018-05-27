@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Button } from '@hackclub/design-system'
 import PropTypes from 'prop-types'
-import api from 'api'
+import api, { url as apiUrl } from 'api'
 
 const Label = Button.withComponent('label')
 
@@ -46,7 +46,7 @@ class ImageForm extends Component {
             imageUrl={
               image instanceof File
                 ? URL.createObjectURL(image)
-                : `https://api.hackclub.com${image.file_path}`
+                : apiUrl + image.file_path
             }
           />
         )}

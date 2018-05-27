@@ -190,21 +190,7 @@ class Post extends Component {
   }
   onOpen = e => {
     this.setState({ commentsOpen: true })
-    let { email } = this.state
-    if (typeof localStorage !== 'undefined') {
-      email = localStorage.getItem('userEmail')
-      this.setState({ email })
-    }
-    api
-      .get(`v1/posts/${this.props.id}/comments`)
-      .then(data => {
-        const comments = sortBy(data, ['created_at'])
-        this.setState({ comments, status: 'success' })
-        this.poll()
-      })
-      .catch(err => {
-        this.setState({ status: 'error' })
-      })
+    this.schedule()
   }
   componentWillUnmount() {
     this.unSchedule()
@@ -213,23 +199,44 @@ class Post extends Component {
     clearTimeout(this.poller)
   }
   schedule = () => {
-    this.poller = setTimeout(this.poll, 2048)
+    // run the update immediately
+    this.updateRequest()
+    // schedule future requests
+    this.poller = setInterval(this.poll, 2048)
   }
   poll = () => {
+    if (this.state.commentsOpen) {
+      //update the page
+      this.updateRequest()
+    } else {
+      //cancel the updates
+      this.unSchedule()
+    }
+  }
+  updateRequest = () => {
     api
-      .get(`v1/posts/${this.props.id}/comments`)
-      .then(data => {
-        const comments = sortBy(data, ['created_at'])
-        this.setState({ comments })
-        this.schedule()
-      })
+      .get(`v1/users/current`)
       .catch(err => {
-        console.error(err)
+        if (err.status !== 401) {
+          this.setState({ status: 'error' })
+          console.log(error)
+        }
       })
+      .then(user =>
+        api
+          .get(`v1/posts/${this.props.id}/comments`, {}, { noAuth: !user })
+          .then(data => {
+            const comments = sortBy(data, ['created_at'])
+            this.setState({
+              comments,
+              email: user && user.email,
+              status: 'success'
+            })
+          })
+      )
   }
   onClose = e => {
     this.setState({ commentsOpen: false })
-    this.unSchedule()
   }
   render() {
     const {

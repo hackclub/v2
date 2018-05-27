@@ -96,7 +96,7 @@ export default class extends Component {
                   /* BackgroundImage doesn’t support height yet */
                   height="150px"
                   w={350}
-                  image={imageUrl}
+                  src={imageUrl}
                 />
               )}
             />

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { api } from 'data.json'
+import { url as apiUrl } from 'api'
 import { Container, LargeButton, Heading } from '@hackclub/design-system'
 import {
   Aside,
@@ -255,7 +255,7 @@ const InnerForm = props => {
 const LeaderApplicationForm = withFormik({
   mapPropsToValues: props => props.params,
   handleSubmit: (data, { setSubmitting, props }) => {
-    fetch(`${api}/v1/leader_profiles/${props.id}`, {
+    fetch(`${apiUrl}/v1/leader_profiles/${props.id}`, {
       method: 'PATCH',
       headers: {
         Authorization: `Bearer ${props.authToken}`,

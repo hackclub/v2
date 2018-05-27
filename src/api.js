@@ -1,7 +1,7 @@
 import fetch from 'unfetch'
 import storage from 'storage'
 
-const apiBase = 'https://api.hackclub.com/'
+export const url = 'https://api.hackclub.com/'
 const methods = ['GET', 'PUT', 'POST', 'PATCH', 'DELETE']
 
 const generateMethod = method => (path, options = {}, fetchOptions = {}) => {
@@ -38,7 +38,7 @@ const generateMethod = method => (path, options = {}, fetchOptions = {}) => {
     }
   }
 
-  return fetch(apiBase + path, { method, ...filteredOptions })
+  return fetch(url + path, { method, ...filteredOptions })
     .then(res => {
       if (res.ok) {
         const contentType = res.headers.get('content-type')

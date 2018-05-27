@@ -4,7 +4,6 @@
   "description":
     "Hack Club is a global nonprofit network of high school programming clubs. Start a coding club with our guidance, activities, ideas, curriculum, and community.",
   "url": "https://hackclub.com",
-  "api": "https://api.hackclub.com",
   "twitter": "@starthackclub",
   "img": "https://hackclub.com/social.png",
   "stats": {

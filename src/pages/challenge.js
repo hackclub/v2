@@ -147,7 +147,7 @@ const desc =
 const img = 'https://hackclub.com/challenge.png'
 
 export default class extends Component {
-  state = { status: 'loading', sortBy: 'random' }
+  state = { status: 'loading', sortBy: 'top' }
 
   componentDidMount() {
     if (storage.get('authToken')) {

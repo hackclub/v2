@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
-import { api } from 'data.json'
+import { url as apiUrl } from 'api'
 import { Heading, Container, LargeButton } from '@hackclub/design-system'
 import LoadingAnimation from 'components/LoadingAnimation'
 import Footer from 'components/Footer'
@@ -38,7 +38,7 @@ export default class extends Component {
       const status = 'needsToAuth'
       this.setState({ status })
     } else {
-      fetch(`${api}/v1/new_club_applications/${id}`, {
+      fetch(`${apiUrl}/v1/new_club_applications/${id}`, {
         method: 'GET',
         headers: { Authorization: `Bearer ${authToken}` }
       })

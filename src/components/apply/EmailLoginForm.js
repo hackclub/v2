@@ -1,5 +1,5 @@
 import React from 'react'
-import { api } from 'data.json'
+import { url as apiUrl } from 'api'
 import { Heading, Label, Input, Text, cx } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import yup from 'yup'
@@ -80,7 +80,7 @@ const EmailLoginForm = withFormik({
       setSubmitting(false)
       return null
     }
-    fetch(`${api}/v1/users/auth`, {
+    fetch(`${apiUrl}/v1/users/auth`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)

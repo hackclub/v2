@@ -69,7 +69,7 @@ class InnerForm extends Component {
       <form onSubmit={handleSubmit}>
         <Label className="loginCode" id="loginCode" {...textProps}>
           <Text color={color} mb={3}>
-            Rad! We just sent a login code to {email}. 📬
+            📬 We just sent a login code to {email}.
           </Text>
           <StyledInput
             name="loginCode"

@@ -11,7 +11,7 @@ const getStatus = {
     error: 'warning'
   },
   value: {
-    submitting: 'Inviting...',
+    submitting: 'Inviting…',
     success: 'Invited!',
     error: 'Something went wrong'
   }

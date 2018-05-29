@@ -20,7 +20,7 @@ const SaveStatusText = Text.extend.attrs({
   p: 1,
   m: 2,
   bg: 'white',
-  children: props => (props.saved ? 'Saved' : 'Saving...'),
+  children: props => (props.saved ? 'Saved' : 'Saving…'),
   color: props => (props.saved ? 'slate' : 'primary')
 })`
   position: fixed;

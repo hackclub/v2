@@ -9,7 +9,7 @@ const submitStatus = status =>
   ({
     success: 'Success',
     redirect: 'Success',
-    loading: 'Loading...',
+    loading: 'Loading…',
     clean: 'Verify',
     invalid: 'Invalid'
   }[status] || 'Update')

@@ -39,7 +39,7 @@ const InnerForm = ({
       onBlur={handleBlur}
     />
     <Button onClick={handleSubmit}>
-      {isSubmitting ? 'Submitting...' : 'Update'}
+      {isSubmitting ? 'Submitting…' : 'Update'}
     </Button>
   </form>
 )

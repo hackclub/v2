@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import Login from 'components/apply/Login'
-import LoadingAnimation from 'components/LoadingAnimation'
+import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 import Nav from 'components/apply/ApplyNav'
 import LeaderForm from 'components/checkup/LeaderForm'
@@ -50,7 +50,7 @@ export default class extends Component {
     const { status, redirectUrl } = this.state
     switch (status) {
       case 'loading':
-        return <LoadingAnimation />
+        return <LoadingBar fill />
       case 'success':
         return (
           <Fragment>

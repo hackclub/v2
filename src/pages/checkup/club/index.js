@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import Login from 'components/apply/Login'
-import LoadingAnimation from 'components/LoadingAnimation'
+import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 import Nav from 'components/apply/ApplyNav'
 import ClubForm from 'components/checkup/ClubForm'
@@ -38,7 +38,7 @@ export default class extends Component {
     const { status, club, user } = this.state
     switch (status) {
       case 'loading':
-        return <LoadingAnimation />
+        return <LoadingBar fill />
       case 'success':
         return (
           <Fragment>
@@ -60,7 +60,7 @@ export default class extends Component {
           </Fragment>
         )
       case 'needsToAuth':
-        return <Login heading="Login to view" />
+        return <Login heading="Sign in to view" />
       default:
         return <ErrorPage />
     }

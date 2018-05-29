@@ -36,33 +36,33 @@ const InnerForm = ({
   isSubmitting
 }) => {
   let buttonState = ''
-  if (dirty) {
-    buttonState = isSubmitting ? 'loading' : status
-  } else {
-    var interacted = Object.keys(touched).length > 0
-    buttonState = isValid || !interacted ? 'clean' : 'invalid'
+  const interacted = Object.keys(touched).length > 0
+  if (isSubmitting) {
+    buttonState = 'loading'
+  } else if (dirty || status === 'success') {
+    buttonState = status
+  } else if (!interacted) {
+    buttonState = 'clean'
   }
   return (
     <form onSubmit={handleSubmit}>
       <Field
-        name="new_leader_name"
-        value={values.new_leader_name}
+        name="name"
+        value={values.name}
         label="Full Name"
         onChange={handleChange}
         onBlur={handleBlur}
-        error={touched.new_leader_name && errors.new_leader_name}
+        error={touched.name && errors.name}
         mb={2}
       />
       <Field
-        name="new_leader_phone_number"
-        value={values.new_leader_phone_number}
+        name="phone_number"
+        value={values.phone_number}
         label="Phone Number (including country code if outside the US)"
         placeholder="(415)-555-555"
         onChange={handleChange}
         onBlur={handleBlur}
-        error={
-          touched.new_leader_phone_number && errors.new_leader_phone_number
-        }
+        error={touched.phone_number && errors.phone_number}
         mb={2}
       />
       <Field
@@ -76,30 +76,21 @@ const InnerForm = ({
         mb={2}
       />
       <Field
-        name="username"
-        value={values.username}
-        label="Hack Club Username (public)"
-        onChange={handleChange}
-        onBlur={handleBlur}
-        error={touched.username && errors.username}
-        mb={2}
-      />
-      <Field
-        name="new_leader_address"
-        value={values.new_leader_address}
+        name="address"
+        value={values.address}
         label="Full Address"
         onChange={handleChange}
         onBlur={handleBlur}
-        error={touched.new_leader_address && errors.new_leader_address}
+        error={touched.address && errors.address}
         mb={2}
       />
       <Field
-        name="new_leader_gender"
-        value={values.new_leader_gender || 'select'}
+        name="gender"
+        value={values.gender || 'select'}
         label="Gender"
         onChange={handleChange}
         onBlur={handleBlur}
-        error={touched.new_leader_gender && errors.new_leader_gender}
+        error={touched.gender && errors.gender}
         mb={2}
         type="select"
       >
@@ -111,21 +102,22 @@ const InnerForm = ({
         <option value="other_gender">Other gender</option>
       </Field>
       <Field
-        name="new_leader_birthday"
-        value={values.new_leader_birthday}
+        name="birthday"
+        value={values.birthday}
         label="Birthday"
         onChange={handleChange}
         onBlur={handleBlur}
-        error={touched.new_leader_birthday && errors.new_leader_birthday}
+        error={touched.birthday && errors.birthday}
+        type="date"
         mb={2}
       />
       <Field
-        name="new_leader_ethnicity"
-        value={values.new_leader_ethnicity || 'select'}
+        name="ethnicity"
+        value={values.ethnicity || 'select'}
         label="Ethnicity"
         onChange={handleChange}
         onBlur={handleBlur}
-        error={touched.new_leader_ethnicity && errors.new_leader_ethnicity}
+        error={touched.ethnicity && errors.ethnicity}
         mb={2}
         type="select"
       >
@@ -142,72 +134,63 @@ const InnerForm = ({
         <option value="other_ethnicity">Other ethnicity</option>
       </Field>
       <Field
-        name="new_leader_expected_graduation"
-        value={values.new_leader_expected_graduation}
+        name="expected_graduation"
+        value={values.expected_graduation}
         label="Expected Graduation Date"
         onChange={handleChange}
         onBlur={handleBlur}
-        error={
-          touched.new_leader_expected_graduation &&
-          errors.new_leader_expected_graduation
-        }
+        error={touched.expected_graduation && errors.expected_graduation}
+        type="date"
         mb={2}
       />
       <Field
-        name="new_leader_personal_website"
-        value={values.new_leader_personal_website}
+        name="personal_website"
+        value={values.personal_website}
         label="Personal Website"
         placeholder="https://"
         onChange={handleChange}
         onBlur={handleBlur}
-        error={
-          touched.new_leader_personal_website &&
-          errors.new_leader_personal_website
-        }
+        error={touched.personal_website && errors.personal_website}
         mb={2}
       />
       <Field
-        name="new_leader_github_url"
-        value={values.new_leader_github_url}
+        name="github_url"
+        value={values.github_url}
         label="GitHub profile"
         placeholder="https://"
         onChange={handleChange}
         onBlur={handleBlur}
-        error={touched.new_leader_github_url && errors.new_leader_github_url}
+        error={touched.github_url && errors.github_url}
         mb={2}
       />
       <Field
-        name="new_leader_linkedin_url"
-        value={values.new_leader_linkedin_url}
+        name="linkedin_url"
+        value={values.linkedin_url}
         label="LinkedIn Profile"
         placeholder="https://"
         onChange={handleChange}
         onBlur={handleBlur}
-        error={
-          touched.new_leader_linkedin_url && errors.new_leader_linkedin_url
-        }
+        error={touched.linkedin_url && errors.linkedin_url}
         mb={2}
       />
       <Field
-        name="new_leader_twitter_url"
-        value={values.new_leader_twitter_url}
+        name="twitter_url"
+        value={values.twitter_url}
         label="Twitter Profile"
         placeholder="https://"
         onChange={handleChange}
         onBlur={handleBlur}
-        error={touched.new_leader_twitter_url && errors.new_leader_twitter_url}
+        error={touched.twitter_url && errors.twitter_url}
         mb={2}
       />
       <Field
-        name="new_leader_facebook_url"
-        value={values.new_leader_facebook_url}
+        name="facebook_url"
+        value={values.facebook_url}
         label="Facebook Profile"
         placeholder="https://"
         onChange={handleChange}
         onBlur={handleBlur}
-        error={
-          touched.new_leader_facebook_url && errors.new_leader_facebook_url
-        }
+        error={touched.facebook_url && errors.facebook_url}
         mb={2}
       />
       {/* TODO: Update submit button */}
@@ -230,92 +213,84 @@ const InnerForm = ({
 }
 
 export default withFormik({
-  mapPropsToValues: props => ({
-    email: props.email || '',
-    email_on_new_challenge_post_comments:
-      props.email_on_new_challenge_post_comments || true,
-    email_on_new_challenge_posts: props.email_on_new_challenge_posts,
-    email_on_new_challenges: props.email_on_new_challenges,
-    new_leader_username: props.new_leader.username || '',
-    new_leader_address: props.new_leader.address || '',
-    new_leader_gender: props.new_leader.gender || 'select',
-    new_leader_birthday: props.new_leader.birthday || '',
-    new_leader_ethnicity: props.new_leader.ethnicity || 'select',
-    new_leader_expected_graduation: props.new_leader.expected_graduation || '',
-    new_leader_facebook_url: props.new_leader.facebook_url || '',
-    new_leader_github_url: props.new_leader.github_url || '',
-    new_leader_linkedin_url: props.new_leader.linkedin_url || '',
-    new_leader_name: props.new_leader.name || '',
-    new_leader_personal_website: props.new_leader.personal_website || '',
-    new_leader_phone_number: props.new_leader.phone_number || '',
-    new_leader_twitter_url: props.new_leader.twitter_url || ''
-  }),
+  mapPropsToValues: props => {
+    const values = {}
+    const combinedProps = {
+      ...props.new_leader,
+      email: props.email
+    }
+    Object.keys(combinedProps).forEach(key => {
+      values[key] = props[key] || props.new_leader[key] || ''
+      if (values[key] === '1900-01-01') {
+        values[key] = ''
+      }
+    })
+
+    return values
+  },
   validationSchema: yup.object().shape({
     email: yup
       .string()
       .required('required')
       .email('email'),
-    email_on_new_challenge_post_comments: yup.boolean(),
-    email_on_new_challenge_posts: yup.boolean(),
-    email_on_new_challenges: yup.boolean(),
-    new_leader_username: yup.string().nullable(),
-    new_leader_address: yup.string().required('required'),
-    new_leader_gender: yup
+    address: yup.string().required('required'),
+    gender: yup
       .string()
       .matches(/(male|female|genderqueer|agender|other_gender)/, 'required'),
-    new_leader_birthday: yup.date().nullable(),
-    new_leader_ethnicity: yup
+    birthday: yup
+      .date()
+      .typeError('YYYY-MM or YYYY-MM-DD')
+      .nullable(),
+    ethnicity: yup
       .string()
       .matches(
         /(hispanic_or_latino|white|black|native_american_or_indian|asian_or_pacific_islander|other_ethnicity)/,
         'required'
       ),
-    new_leader_expected_graduation: yup.date().required('required'),
-    new_leader_facebook_url: yup
+    expected_graduation: yup
+      .date()
+      .typeError('YYYY-MM or YYYY-MM-DD')
+      .required('required'),
+    facebook_url: yup
       .string()
       .url()
       .nullable(),
-    new_leader_github_url: yup
+    github_url: yup
       .string()
       .url()
       .nullable(),
-    new_leader_linkedin_url: yup
+    linkedin_url: yup
       .string()
       .url()
       .nullable(),
-    new_leader_twitter_url: yup
+    twitter_url: yup
       .string()
       .url()
       .nullable(),
-    new_leader_personal_website: yup
+    personal_website: yup
       .string()
       .url()
       .nullable(),
-    new_leader_name: yup.string().required('required'),
-    new_leader_phone_number: yup.string().nullable()
+    name: yup.string().required('required'),
+    phone_number: yup.string().nullable()
   }),
   handleSubmit: (values, { props, setSubmitting, setStatus }) => {
     const userData = {
-      email: values.email,
-      email_on_new_challenge_post_comments:
-        values.email_on_new_challenge_post_comments,
-      email_on_new_challenge_posts: values.email_on_new_challenge_posts,
-      email_on_new_challenges: values.email_on_new_challenges
+      email: values.email
     }
     const leaderData = {
-      username: values.new_leader_username,
-      address: values.new_leader_address,
-      gender: values.new_leader_gender,
-      birthday: values.new_leader_birthday,
-      ethnicity: values.new_leader_ethnicity,
-      expected_graduation: values.new_leader_expected_graduation,
-      facebook_url: values.new_leader_facebook_url,
-      github_url: values.new_leader_github_url,
-      linkedin_url: values.new_leader_linkedin_url,
-      name: values.new_leader_name,
-      personal_website: values.new_leader_personal_website,
-      phone_number: values.new_leader_phone_number,
-      twitter_url: values.new_leader_twitter_url
+      address: values.address,
+      gender: values.gender,
+      birthday: values.birthday,
+      ethnicity: values.ethnicity,
+      expected_graduation: values.expected_graduation,
+      facebook_url: values.facebook_url,
+      github_url: values.github_url,
+      linkedin_url: values.linkedin_url,
+      name: values.name,
+      personal_website: values.personal_website,
+      phone_number: values.phone_number,
+      twitter_url: values.twitter_url
     }
     return Promise.all([
       api.patch(`v1/new_leaders/${props.new_leader.id}`, { data: leaderData }),

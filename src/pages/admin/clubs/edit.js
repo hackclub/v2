@@ -19,7 +19,7 @@ export default class extends Component {
   componentDidMount() {
     const clubId = search.get('id')
     api
-      .get(`v1/clubs/${clubId}`)
+      .get(`v1/new_clubs/${clubId}`)
       .then(club => {
         this.setState({
           status: 'success',

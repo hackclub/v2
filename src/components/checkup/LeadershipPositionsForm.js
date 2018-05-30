@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import ErrorPage from 'components/admin/ErrorPage'
-import LoadingAnimation from 'components/LoadingAnimation'
+import LoadingBar from 'components/LoadingBar'
 import api from 'api'
 import {
   Card,
@@ -74,13 +74,17 @@ const LeaderInvite = ({ position }) => {
     case 'invited':
       return (
         <Fragment>
-          <LeaderStatus status="invited" />
-          <Text>
-            <Text.span bold>{position.user.email}</Text.span> needs to accept
-            their invitation.
-          </Text>
-          <Text>
-            <Link
+          <Flex justify="space-between" align="center">
+            <Box align="left">
+              <LeaderStatus status="invited" />
+              <Text>
+                <Text.span bold>{position.user.email}</Text.span> needs to
+                accept their invitation.
+              </Text>
+            </Box>
+            <Button
+              f={2}
+              inverted
               onClick={() => {
                 // TODO: Add invite revoke logic here once endpoints are up
                 alert(
@@ -88,9 +92,9 @@ const LeaderInvite = ({ position }) => {
                 )
               }}
             >
-              Revote it
-            </Link>
-          </Text>
+              Revoke
+            </Button>
+          </Flex>
         </Fragment>
       )
     case 'rejected':
@@ -166,8 +170,8 @@ class LeaderPosition extends Component {
             </Modal>
             <Overlay onClick={() => this.setState({ status: 'success' })} />
             <LeaderStatus status="loading" />
-            <Text color="gray.4">Loading...</Text>
-            <LoadingAnimation />
+            <Text color="gray.4">Loading…</Text>
+            <LoadingBar />
           </Fragment>
         )
       case 'success':
@@ -177,9 +181,13 @@ class LeaderPosition extends Component {
             <Flex justify="space-between" align="center">
               <Box align="left">
                 <Heading.h3>{leader_profile.name}</Heading.h3>
-                <Text>{leader_profile.email}</Text>
+                <Text color="muted">{leader_profile.email}</Text>
               </Box>
-              <Button onClick={() => this.setState({ status: 'confirming' })}>
+              <Button
+                f={2}
+                inverted
+                onClick={() => this.setState({ status: 'confirming' })}
+              >
                 Remove
               </Button>
             </Flex>
@@ -192,7 +200,7 @@ class LeaderPosition extends Component {
             <Flex justify="space-between" align="center">
               <Box align="left">
                 <Heading.h3>{leader_profile.name}</Heading.h3>
-                <Text>{leader_profile.email}</Text>
+                <Text color="muted">{leader_profile.email}</Text>
               </Box>
             </Flex>
           </Fragment>

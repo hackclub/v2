@@ -1,32 +1,11 @@
 import React, { Component } from 'react'
-import { Flex, Input, IconButton } from '@hackclub/design-system'
+import { Input, IconButton } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import { isEmpty } from 'lodash'
 import Composer, { LS_BODY_KEY } from './CommentComposer'
-import styled from 'styled-components'
+import { SendForm, SendButton } from '../SendForm'
 import yup from 'yup'
 import api from 'api'
-
-const Form = Flex.withComponent('form').extend`
-  position: relative;
-  z-index: 4;
-
-  > div:first-child {
-    flex: 1 1 auto;
-  }
-
-  select {
-    display: none;
-  }
-`
-const SubmitButton = styled(IconButton)`
-  box-shadow: ${({ theme }) => theme.boxShadows[0]} !important;
-  transition: ${({ theme }) => theme.transition} box-shadow;
-  &:hover,
-  &:focus {
-    box-shadow: ${({ theme }) => theme.boxShadows[1]} !important;
-  }
-`
 
 const statusIcon = status =>
   ({ success: 'check_circle', error: 'error' }[status] || 'send')
@@ -45,7 +24,7 @@ const InnerForm = ({
   onUnparent,
   ...props
 }) => (
-  <Form align="flex-end" w={1} mt={3} onSubmit={handleSubmit}>
+  <SendForm mt={3} onSubmit={handleSubmit}>
     <Composer
       value={values.body}
       clear={isEmpty(values.body) && touched.body}
@@ -57,18 +36,14 @@ const InnerForm = ({
       parent={parent}
       onUnparent={onUnparent}
     />
-    <SubmitButton
-      type="submit"
+    <SendButton
       aria-label="Post your comment"
       onClick={handleSubmit}
       disabled={isEmpty(props.email)}
       name={statusIcon(status)}
       bg={statusColor(status)}
-      color="white"
-      size={20}
-      ml={3}
     />
-  </Form>
+  </SendForm>
 )
 const CommentForm = withFormik({
   validationSchema: yup.object().shape({

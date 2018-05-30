@@ -3,17 +3,18 @@ import { withFormik } from 'formik'
 import api from 'api'
 import yup from 'yup'
 import { Field, Submit } from 'components/Forms'
+import { SendForm, SendButton } from '../SendForm'
+import { isEmpty } from 'lodash'
 
 const getStatus = {
   bg: {
-    submitting: 'gray.2',
+    submitting: 'smoke',
     success: 'success',
     error: 'warning'
   },
-  value: {
-    submitting: 'Inviting…',
-    success: 'Invited!',
-    error: 'Something went wrong'
+  icon: {
+    success: 'check_circle',
+    error: 'error'
   }
 }
 
@@ -28,23 +29,24 @@ const InnerForm = ({
   isSubmitting,
   isValid
 }) => (
-  <form onSubmit={handleSubmit}>
+  <SendForm onSubmit={handleSubmit}>
     <Field
       name="email"
       value={values.email}
-      label="Co-lead’s Email"
+      label="Co-lead’s email"
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.email && errors.email}
     />
-    <Submit
+    <SendButton
       disabled={isSubmitting || !(status === 'success' || isValid)}
       onClick={handleSubmit}
-      value={getStatus.value[status] || 'Invite leader'}
-      bg={getStatus.bg[status] || 'primary'}
-      f={4}
+      aria-label="Send this invitation"
+      disabled={isEmpty(values.email)}
+      bg={getStatus.bg[status] || 'info'}
+      name={getStatus.icon[status] || 'send'}
     />
-  </form>
+  </SendForm>
 )
 
 export default withFormik({

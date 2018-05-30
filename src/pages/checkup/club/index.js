@@ -43,12 +43,11 @@ export default class extends Component {
         return (
           <Fragment>
             <Nav />
-            <Container my={3} maxWidth={32}>
-              <Heading.h2>Confirm your club info</Heading.h2>
-              <Text my={3}>
-                If anything is out of date, please fix it and press submit
-              </Text>
-              <Card boxShadowSize="sm" p={3} my={3}>
+            <Container color="black" p={3} maxWidth={36}>
+              <Heading.h2 f={[4, 5]} mt={4}>
+                Confirm your club info
+              </Heading.h2>
+              <Card boxShadowSize="md" p={3} my={3}>
                 <ClubForm
                   {...club}
                   redirectUrl={`${location.origin}${

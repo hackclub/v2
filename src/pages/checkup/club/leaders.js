@@ -59,23 +59,21 @@ export default class extends Component {
         return (
           <Fragment>
             <Nav />
-            <Container my={3} maxWidth={32}>
-              <Heading.h2>Club leadership</Heading.h2>
-              <Text my={3}>
-                This is a list of your current leadership team. You can use this
-                page to:
-              </Text>
-              <ul>
-                <li>
-                  Remove club leaders who won’t be leading the club next year
-                </li>
-                <li>Invite new leaders</li>
-              </ul>
+            <Container color="black" p={3} maxWidth={36}>
+              <Heading.h2 f={5} mt={4}>
+                Update your club leadership team
+              </Heading.h2>
+              <Heading.h3 f={4} mt={4} mb={2}>
+                Your current team
+              </Heading.h3>
               <LeadershipPositionsForm
                 positions={positions}
                 leaderId={user.new_leader.id}
                 callback={this.refresh}
               />
+              <Heading.h3 f={4} mt={4} mb={2}>
+                Add a new leader
+              </Heading.h3>
               <LeaderInviteForm clubId={club.id} callback={this.refresh} />
             </Container>
           </Fragment>

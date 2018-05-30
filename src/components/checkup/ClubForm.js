@@ -93,7 +93,7 @@ const InnerForm = ({
         onClick={handleSubmit}
         value={submitStatus(buttonState)}
         bg={submitColor(buttonState)}
-        my={3}
+        mt={3}
         w={1}
         f={4}
       />

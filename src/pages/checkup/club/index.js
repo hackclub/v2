@@ -49,9 +49,6 @@ export default class extends Component {
                 If anything is out of date, please fix it and press submit
               </Text>
               <Card boxShadowSize="sm" p={3} my={3}>
-                <p>{`${location.origin}${location.pathname}/leaders?id=${
-                  club.id
-                }`}</p>
                 <ClubForm
                   {...club}
                   redirectUrl={`${location.origin}${

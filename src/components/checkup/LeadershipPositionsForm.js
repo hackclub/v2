@@ -222,6 +222,7 @@ export default class extends Component {
           .concat(positions.leaders)
           // invites with accepted_at should already have leader positions
           .filter(position => !position.accepted_at)
+          .sort((a, b) => a.created_at > b.created_at)
           .map(position => (
             <PositionCard key={position.id}>
               {position.sender ? (

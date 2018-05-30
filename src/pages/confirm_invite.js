@@ -166,7 +166,10 @@ export default class extends Component {
         return Promise.all(promiseArray)
       })
       .then(invites => {
-        this.setState({ invites, status: 'success' })
+        const sortedInvites = invites.sort(
+          (a, b) => a.created_at < b.created_at
+        )
+        this.setState({ invites: sortedInvites, status: 'success' })
       })
       .catch(err => {
         if (err.status === 403 || err.status === 401) {

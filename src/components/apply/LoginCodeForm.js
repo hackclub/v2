@@ -88,6 +88,9 @@ class InnerForm extends Component {
             data-lpignore
             {...inputProps}
           />
+          <Text color={color} mt={3} f={2}>
+            Make sure to check your spam folder
+          </Text>
         </Label>
         {errors.loginCode && (
           <Text

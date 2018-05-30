@@ -210,6 +210,15 @@ export default class extends Component {
                   accepted={invite.accepted_at !== null}
                 />
               ))}
+              {invites.length === 0 && (
+                <Box align="center">
+                  <Heading.h2 my={3}>No invites here!</Heading.h2>
+                  <Text>
+                    We couldn’t find any invites for{' '}
+                    <Text.span bold>{user.email}</Text.span>.
+                  </Text>
+                </Box>
+              )}
             </Container>
           </Fragment>
         )

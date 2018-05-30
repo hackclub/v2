@@ -64,10 +64,10 @@ export default class extends Component {
               </Text>
             </Section>
             <Container color="black" p={3} maxWidth={36}>
-              <Heading.h3 f={4} mt={3} mb={2}>
+              <Heading.h2 f={[4, 5]} mt={3} mb={3}>
                 Update your profile
-              </Heading.h3>
-              <Card boxShadowSize="sm" p={3}>
+              </Heading.h2>
+              <Card boxShadowSize="md" p={3} mb={4}>
                 <LeaderForm {...this.state.user} redirectUrl={redirectUrl} />
               </Card>
             </Container>

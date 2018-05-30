@@ -44,7 +44,7 @@ export default class extends Component {
           <Fragment>
             <Nav breadcrumb={false} />
             <Container color="black" p={3} maxWidth={36}>
-              <Heading.h2 f={[4, 5]} mt={4}>
+              <Heading.h2 f={5} mt={4}>
                 Confirm your club info
               </Heading.h2>
               <Card boxShadowSize="md" p={3} my={3}>

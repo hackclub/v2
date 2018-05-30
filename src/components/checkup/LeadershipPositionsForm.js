@@ -75,22 +75,26 @@ const LeaderInvite = ({ position }) => {
       return (
         <Fragment>
           <LeaderStatus status="invited" />
-          <Text>
-            <Text.span bold>{position.user.email}</Text.span> needs to accept
-            their invitation.
-          </Text>
-          <Text>
-            <Link
-              onClick={() => {
-                // TODO: Add invite revoke logic here once endpoints are up
+          <Flex justify="space-between" align="center">
+            <Box align="left">
+              <Text>
+                <Text.span bold>{position.user.email}</Text.span> needs to
+                accept their invitation.
+              </Text>
+            </Box>
+            <Button
+              inverted
+              onClick={() =>
                 alert(
-                  'Let me know which invite you want revoked at max@hackclub.com'
+                  `Let me know at max@hackclub.com you want invite #${
+                    position.id
+                  } revoked`
                 )
-              }}
+              }
             >
-              Revote it
-            </Link>
-          </Text>
+              Revoke
+            </Button>
+          </Flex>
         </Fragment>
       )
     case 'rejected':
@@ -179,7 +183,10 @@ class LeaderPosition extends Component {
                 <Heading.h3>{leader_profile.name}</Heading.h3>
                 <Text>{leader_profile.email}</Text>
               </Box>
-              <Button onClick={() => this.setState({ status: 'confirming' })}>
+              <Button
+                inverted
+                onClick={() => this.setState({ status: 'confirming' })}
+              >
                 Remove
               </Button>
             </Flex>

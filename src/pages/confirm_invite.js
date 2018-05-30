@@ -223,7 +223,7 @@ export default class extends Component {
           </Fragment>
         )
       case 'needsToAuth':
-        return <LoginPage />
+        return <LoginPage heading="Confirm your invite" />
       default:
         return <ErrorPage />
     }

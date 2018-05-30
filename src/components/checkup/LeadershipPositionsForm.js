@@ -184,13 +184,15 @@ class LeaderPosition extends Component {
                 <Heading.h3>{leader_profile.name}</Heading.h3>
                 <Text color="muted">{leader_profile.email}</Text>
               </Box>
-              <Button
-                f={2}
-                inverted
-                onClick={() => this.setState({ status: 'confirming' })}
-              >
-                Remove
-              </Button>
+              {!mine && (
+                <Button
+                  f={2}
+                  inverted
+                  onClick={() => this.setState({ status: 'confirming' })}
+                >
+                  Remove
+                </Button>
+              )}
             </Flex>
           </Fragment>
         )

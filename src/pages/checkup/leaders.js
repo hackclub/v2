@@ -8,7 +8,14 @@ import LeadershipPositionsForm from 'components/checkup/LeadershipPositionsForm'
 import LeaderInviteForm from 'components/checkup/LeaderInviteForm'
 import api from 'api'
 import search from 'search'
-import { Container, Link, Card, Heading, Text } from '@hackclub/design-system'
+import {
+  Container,
+  Link,
+  Card,
+  Heading,
+  Text,
+  Button
+} from '@hackclub/design-system'
 
 export default class extends Component {
   state = {
@@ -75,6 +82,13 @@ export default class extends Component {
                 Add a new leader
               </Heading.h3>
               <LeaderInviteForm clubId={club.id} callback={this.refresh} />
+              <Heading.h2 mt={4}>Finish</Heading.h2>
+              <Text my={3}>
+                Once this list is up-to-date you can continue to the final page
+              </Text>
+              <Button w={1} bg="info" href={`/checkup/finish?id=${club.id}`}>
+                Continue
+              </Button>
             </Container>
           </Fragment>
         )

@@ -51,9 +51,9 @@ export default class extends Component {
               <Card boxShadowSize="md" p={3} my={3}>
                 <ClubForm
                   {...club}
-                  redirectUrl={`${location.origin}${
-                    location.pathname
-                  }/leaders?id=${club.id}`}
+                  redirectUrl={`${location.origin}/checkup/leaders?id=${
+                    club.id
+                  }`}
                 />
               </Card>
             </Container>

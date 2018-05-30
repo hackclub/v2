@@ -42,6 +42,7 @@ const InnerForm = ({
       onClick={handleSubmit}
       value={getStatus.value[status] || 'Invite leader'}
       bg={getStatus.bg[status] || 'primary'}
+      w={1}
       f={4}
     />
   </form>

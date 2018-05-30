@@ -83,14 +83,15 @@ const LeaderInvite = ({ position }) => {
               </Text>
             </Box>
             <Button
-              f={2}
               inverted
-              onClick={() => {
-                // TODO: Add invite revoke logic here once endpoints are up
+              f={2}
+              onClick={() =>
                 alert(
-                  'Let me know which invite you want revoked at max@hackclub.com'
+                  `Let me know at max@hackclub.com you want invite #${
+                    position.id
+                  } revoked`
                 )
-              }}
+              }
             >
               Revoke
             </Button>
@@ -230,6 +231,7 @@ export default class extends Component {
           .concat(positions.leaders)
           // invites with accepted_at should already have leader positions
           .filter(position => !position.accepted_at)
+          .sort((a, b) => a.created_at > b.created_at)
           .map(position => (
             <PositionCard key={position.id}>
               {position.sender ? (

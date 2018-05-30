@@ -166,7 +166,10 @@ export default class extends Component {
         return Promise.all(promiseArray)
       })
       .then(invites => {
-        this.setState({ invites, status: 'success' })
+        const sortedInvites = invites.sort(
+          (a, b) => a.created_at < b.created_at
+        )
+        this.setState({ invites: sortedInvites, status: 'success' })
       })
       .catch(err => {
         if (err.status === 403 || err.status === 401) {
@@ -207,11 +210,20 @@ export default class extends Component {
                   accepted={invite.accepted_at !== null}
                 />
               ))}
+              {invites.length === 0 && (
+                <Box align="center">
+                  <Heading.h2 my={3}>No invites here!</Heading.h2>
+                  <Text>
+                    We couldn’t find any invites for{' '}
+                    <Text.span bold>{user.email}</Text.span>.
+                  </Text>
+                </Box>
+              )}
             </Container>
           </Fragment>
         )
       case 'needsToAuth':
-        return <LoginPage />
+        return <LoginPage heading="Confirm your invite" />
       default:
         return <ErrorPage />
     }

@@ -58,7 +58,7 @@ export default class extends Component {
       case 'success':
         return (
           <Fragment>
-            <Nav />
+            <Nav breadcrumb={false} />
             <Container color="black" p={3} maxWidth={36}>
               <Heading.h2 f={5} mt={4}>
                 Update your club leadership team

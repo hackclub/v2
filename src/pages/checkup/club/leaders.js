@@ -58,7 +58,7 @@ export default class extends Component {
       case 'success':
         return (
           <Fragment>
-            <Nav />
+            <Nav breadcrumb={false} />
             <Container my={3} maxWidth={32}>
               <Heading.h2>Club leadership</Heading.h2>
               <Text my={3}>

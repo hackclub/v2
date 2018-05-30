@@ -54,7 +54,7 @@ export default class extends Component {
       case 'success':
         return (
           <Fragment>
-            <Nav />
+            <Nav breadcrumb={false} />
             <Section bg="primary" color="white">
               <Heading.h1 my={3}>It’s the end of the school year!</Heading.h1>
               <Text>

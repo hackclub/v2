@@ -15,6 +15,7 @@ import Link from 'gatsby-link'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import Track from 'components/workshops/Track'
+import WorkshopSearch from 'components/workshops/WorkshopSearch'
 import {
   groupBy,
   orderBy,
@@ -76,7 +77,15 @@ const SuperButton = Button.withComponent(Link).extend`
   );
 `
 
-const groupOrder = ['start', 'challenges', 'pi', 'arduino', 'experimental', 'misc', 'retired']
+const groupOrder = [
+  'start',
+  'challenges',
+  'pi',
+  'arduino',
+  'experimental',
+  'misc',
+  'retired'
+]
 
 export default ({
   data: {
@@ -159,13 +168,7 @@ export default ({
               self-guided coding tutorials and project ideas.{' '}
               <A.link to="/workshops/submit">Write one »</A.link>
             </Text>
-            {sortedGroups.map(group => (
-              <Track
-                key={`workshops-${group[0]}`}
-                name={group[0]}
-                data={group[1]}
-              />
-            ))}
+            <WorkshopSearch workshops={edges} />
           </Container>
           <Footer />
         </Box.article>

@@ -21,6 +21,7 @@ import ErrorPage from 'components/admin/ErrorPage'
 import Nav from 'components/apply/ApplyNav'
 import { Formik } from 'formik'
 import api from 'api'
+import { timeSince } from 'helpers'
 import { xor } from 'lodash'
 
 const Arrow = Text.span.extend.attrs({
@@ -158,23 +159,29 @@ export default class extends Component {
   }
 
   filterApplication(application, filters = this.state.filters) {
-    let status
+    let status, updatedAt
     if (application.accepted_at) {
       status = 'accepted'
+      updatedAt = timeSince(application.accepted_at)
     } else if (application.rejected_at) {
       status = 'rejected'
+      updatedAt = timeSince(application.rejected_at)
     } else if (application.interviewed_at) {
       status = 'interviewed'
+      updatedAt = timeSince(application.interviewed_at)
     } else if (application.submitted_at) {
       status = 'submitted'
+      updatedAt = timeSince(application.submitted_at)
     } else {
       status = 'unsubmitted'
+      updatedAt = timeSince(application.created_at)
     }
 
     return {
       visible: filters.indexOf(status) === -1,
       selected: this.state.selection === application,
-      color: colorMap[status]
+      color: colorMap[status],
+      timeInStage: updatedAt
     }
   }
 
@@ -227,6 +234,7 @@ export default class extends Component {
                         <Th>ID</Th>
                         <Th>Name</Th>
                         <Th>POC</Th>
+                        <Th>Time in Stage</Th>
                       </Tr>
                     </thead>
                     <tbody>
@@ -255,6 +263,12 @@ export default class extends Component {
                               </Td>
                               <Td>{application.high_school_name}</Td>
                               <Td>{this.pointOfContact(application)}</Td>
+                              <Td>
+                                {
+                                  this.filterApplication(application)
+                                    .timeInStage
+                                }
+                              </Td>
                             </Tr>
                           ) : null
                       )}

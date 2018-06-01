@@ -1,7 +1,9 @@
 import React from 'react'
 import { Box, Flex, Input, Icon } from '@hackclub/design-system'
 
-const Relative = Box.extend`
+const Relative = Box.extend.attrs({
+  mb: 4
+})`
   position: relative;
 `
 
@@ -27,7 +29,7 @@ const Search = Input.extend.attrs({
 `
 
 export default ({ value, placeholder, label, onChange, ...props }) => (
-  <Relative mb={3} {...props}>
+  <Relative {...props}>
     <Absolute>
       <Fill align="center" px={3}>
         <Icon name="search" color="muted" />

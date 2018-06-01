@@ -11423,10 +11423,6 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-wade@^0.3.3:
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/wade/-/wade-0.3.3.tgz#0b3099d67646336706224b4122dd286a4f4d2ce2"
-
 walker@~1.0.5:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/walker/-/walker-1.0.7.tgz#2f7f9b8fd10d677262b18a884e28d19618e028fb"

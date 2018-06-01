@@ -25,7 +25,10 @@ class WorkshopSearch extends Component {
 
   render() {
     const fuse = new Fuse(this.props.workshops, { threshold: 0.4, keys: keys })
-    const results = this.state.inputValue === '' ? this.props.workshops : fuse.search(this.state.inputValue)
+    const results =
+      this.state.inputValue === ''
+        ? this.props.workshops
+        : fuse.search(this.state.inputValue)
     const groups = groupBy(results, 'node.frontmatter.group')
 
     // sort groups based on groupOrder

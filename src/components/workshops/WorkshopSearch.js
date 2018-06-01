@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import SearchInput from './SearchInput'
 import Track from './Track'
 import NoResults from './NoResults'
@@ -54,7 +54,7 @@ class WorkshopSearch extends Component {
           mb={5}
         />
         {results.length !== 0 ? (
-          <div>
+          <Fragment>
             {sortedGroups.map(group => (
               <Track
                 key={`workshops-${group[0]}`}
@@ -62,7 +62,7 @@ class WorkshopSearch extends Component {
                 data={group[1]}
               />
             ))}
-          </div>
+          </Fragment>
         ) : (
           <NoResults value={this.state.inputValue} />
         )}

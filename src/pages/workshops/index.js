@@ -15,6 +15,7 @@ import Link from 'gatsby-link'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import Track from 'components/workshops/Track'
+import WorkshopSearch from 'components/workshops/WorkshopSearch'
 import {
   groupBy,
   orderBy,
@@ -76,28 +77,11 @@ const SuperButton = Button.withComponent(Link).extend`
   );
 `
 
-const groupOrder = ['start', 'challenges', 'pi', 'arduino', 'experimental', 'misc', 'retired']
-
 export default ({
   data: {
     allMarkdownRemark: { edges }
   }
 }) => {
-  const groups = groupBy(edges, 'node.frontmatter.group')
-
-  // sort groups based on groupOrder
-  const sortedGroups = toPairs(groups).sort((a, b) => {
-    // if a group isn't found in groupOrder, ensure it appears last in the
-    // sorted list
-    if (groupOrder.indexOf(a[0]) === -1) {
-      return 1
-    } else if (groupOrder.indexOf(b[0]) === -1) {
-      return -1
-    }
-
-    return groupOrder.indexOf(a[0]) - groupOrder.indexOf(b[0])
-  })
-
   const title = 'Hack Club Workshops'
   const desc =
     'Get free coding tutorials, project ideas, and programming club activities ' +
@@ -159,13 +143,7 @@ export default ({
               self-guided coding tutorials and project ideas.{' '}
               <A.link to="/workshops/submit">Write one »</A.link>
             </Text>
-            {sortedGroups.map(group => (
-              <Track
-                key={`workshops-${group[0]}`}
-                name={group[0]}
-                data={group[1]}
-              />
-            ))}
+            <WorkshopSearch workshops={edges} />
           </Container>
           <Footer />
         </Box.article>

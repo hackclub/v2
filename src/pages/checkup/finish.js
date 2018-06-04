@@ -12,39 +12,24 @@ import {
   Link,
   Text,
   Heading,
-  Section,
   Button,
-  Flex,
-  Field
+  Flex
 } from '@hackclub/design-system'
-import { Modal, Overlay, CloseButton } from 'components/Modal'
 
 class SelfForm extends Component {
   state = {
     status: 'ready'
   }
 
-  deletePosition() {
-    const { positionId, callback } = this.props
-    this.setState({ status: 'deleting' })
-    api
-      .delete(`v1/leadership_positions/${positionId}`)
-      .then(callback)
-      .catch(err => {
-        console.error(err)
-        this.setState({ status: 'error' })
-      })
-  }
-
   render() {
     const { status } = this.state
-    const { user, club, positionId } = this.props
+    const { user, club, position } = this.props
     switch (status) {
       case 'ready':
         return (
           <Fragment>
-            <Text>Will you be a leader next semester?</Text>
-            <Flex>
+            <Heading>Will you lead the club next semester?</Heading>
+            <Flex my={3}>
               <Button
                 onClick={() => this.setState({ status: 'staying' })}
                 bg="success"
@@ -54,7 +39,7 @@ class SelfForm extends Component {
                 Yes
               </Button>
               <Button
-                onClick={() => this.setState({ status: 'confirmDelete' })}
+                onClick={() => this.setState({ status: 'leaving' })}
                 m={2}
                 w={1}
                 inverted
@@ -64,54 +49,29 @@ class SelfForm extends Component {
             </Flex>
           </Fragment>
         )
+        debugger
+      case 'leaving':
+        return (
+          <Fragment>
+            <Heading>Leaving?</Heading>
+            <Text my={3}>
+              Sorry to hear you’re leaving. Before you go, we would like to have
+              an exit interview. It will be a short (~10 minutes) call to talk
+              about your time leading your club.
+            </Text>
+            <Button href="https://exit-interview.hackclub.com" w={1}>
+              Schedule the call
+            </Button>
+          </Fragment>
+        )
       case 'staying':
         return (
           <Fragment>
             <Heading>Complete!</Heading>
-            <Text>
-              You’re staying as a leader next semester. The checkup is over. You
+            <Text my={3}>
+              You’re leading your club next semester. The checkup is over. You
               can close this window.
             </Text>
-          </Fragment>
-        )
-      case 'confirmDelete':
-        return (
-          <Fragment>
-            <Modal align="left" my={4} p={[3, 4]}>
-              <CloseButton onClick={() => this.setState({ status: 'ready' })} />
-              <Heading.h2>Are you sure?</Heading.h2>
-              <Text my={3}>
-                This action <Text.span bold>cannot</Text.span> be undone. This
-                will permanently remove you (<Text.span bold>
-                  {user.email}
-                </Text.span>) from the club at {club.high_school_name}. Please
-                type in your email to confirm.
-              </Text>
-              <Field
-                my={3}
-                value={this.state.typed}
-                onChange={e => {
-                  this.setState({ typed: e.target.value })
-                }}
-              />
-              <Text my={3}>
-                You will be immediatly logged out and won’t be able to log back
-                in.
-              </Text>
-              <Button
-                inverted={user.email !== this.state.typed}
-                disabled={user.email !== this.state.typed}
-                w={1}
-                onClick={() => {
-                  if (user.email === this.state.typed) {
-                    this.deletePosition()
-                  }
-                }}
-              >
-                I understand the consequences, remove me
-              </Button>
-            </Modal>
-            <Overlay onClick={() => this.setState({ status: 'ready' })} />
           </Fragment>
         )
       case 'loading':
@@ -135,12 +95,7 @@ export default class extends Component {
             position => (position.new_leader_id = user.new_leader.id)
           )
           if (position) {
-            this.setState({
-              user,
-              club,
-              positionId: position.id,
-              status: 'success'
-            })
+            this.setState({ user, club, position, status: 'success' })
           } else {
             this.setState({ user, club, status: 'deleted' })
           }
@@ -159,7 +114,7 @@ export default class extends Component {
   }
 
   render() {
-    const { status, user, club, positionId } = this.state
+    const { status, user, club, position } = this.state
     switch (status) {
       case 'loading':
         return <LoadingAnimation />
@@ -172,7 +127,7 @@ export default class extends Component {
                 <SelfForm
                   user={user}
                   club={club}
-                  positionId={positionId}
+                  position={position}
                   callback={() => this.setState({ status: 'deleted' })}
                 />
               </Card>

@@ -86,7 +86,13 @@ export default class extends Component {
               <Text my={3}>
                 Once this list is up-to-date you can continue to the final page
               </Text>
-              <Button w={1} bg="info" href={`/checkup/finish?id=${club.id}`}>
+              <Button
+                bg="info"
+                href={`/checkup/finish?id=${club.id}`}
+                mt={3}
+                w={1}
+                f={4}
+              >
                 Continue
               </Button>
             </Container>

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { api } from 'data.json'
+import { url as apiUrl } from 'api'
 import {
   Aside,
   AutoSaver,
@@ -295,7 +295,7 @@ const ClubApplicationForm = withFormik({
   mapPropsToValues: props => props.params,
   enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, props, resetForm }) => {
-    fetch(`${api}/v1/new_club_applications/${props.id}`, {
+    fetch(`${apiUrl}/v1/new_club_applications/${props.id}`, {
       method: 'PATCH',
       headers: {
         Authorization: `Bearer ${props.authToken}`,

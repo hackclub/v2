@@ -280,7 +280,7 @@ export default () => (
         </Text>
         <Text my={3} {...subtext}>
           Please get in touch at{' '}
-          <A href="mailto:donate@hackclub.com">donate@hackclub.com</A> if you're
+          <A href="mailto:donate@hackclub.com">donate@hackclub.com</A> if you’re
           interested in making a contribution or have any questions.
         </Text>
       </Container>

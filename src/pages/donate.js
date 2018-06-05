@@ -9,7 +9,8 @@ import {
   LargeButton,
   Icon,
   Section,
-  Link as A
+  Link as A,
+  radius
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
@@ -27,36 +28,35 @@ import DonateForm from 'components/donate/DonateForm'
 import Spent from 'components/donate/Spent'
 import Footer from 'components/Footer'
 import commaNumber from 'comma-number'
+import donors from 'components/donate/donors.json'
 
 const Header = Section.withComponent('header').extend`
   background: url('/pattern.svg');
   > div {
     display: grid;
-    grid-gap: ${props => props.theme.space[4]}px;
-    ${props => props.theme.mediaQueries.md} {
+    grid-gap: ${({ theme }) => theme.space[4]}px;
+    ${({ theme }) => theme.mediaQueries.md} {
       grid-template-columns: 3fr 2fr;
     }
-  }
-  + div {
-    position: relative;
   }
 `
 
 const Row = Box.extend`
-  display: grid;
-  grid-gap: ${props => props.theme.space[3]}px;
   text-align: left;
-  ${props => props.theme.mediaQueries.md} {
-    grid-template-columns: 2fr 3fr;
+  ${({ theme }) => theme.mediaQueries.md} {
+    display: grid;
+    grid-gap: ${({ theme }) => theme.space[3]}px;
+    grid-template-columns: ${({ reverse }) =>
+      reverse ? '3fr 2fr' : '2fr 3fr'};
   }
 `
 
 const Financials = Box.extend`
   display: grid;
-  border-radius: ${props => props.theme.radius};
+  border-radius: ${({ theme }) => theme.radius};
   overflow: hidden;
 
-  ${props => props.theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: 2fr 3fr;
   }
 `
@@ -69,18 +69,18 @@ const Stats = Box.extend`
   }
   span:before {
     content: '$';
-    font-size: ${props => props.theme.fontSizes[4]}px;
+    font-size: ${({ theme }) => theme.fontSizes[4]}px;
     margin-left: -12px;
     vertical-align: super;
   }
   p {
-    color: ${props => props.theme.colors.red[1]};
+    color: ${({ theme }) => theme.colors.red[1]};
   }
 `
 
 const Shapes = Box.extend`
   display: none;
-  ${props => props.theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.md} {
     display: block;
     float: right;
     position: relative;
@@ -106,26 +106,38 @@ const WishShapes = Shapes.extend`
     }
   }
 `
-
 const ContributionShapes = Shapes.extend`
   svg {
-    right: 2rem;
-    top: 6rem;
-    color: ${props => props.theme.colors.pink[4]};
+    right: 12rem;
+    top: 1rem;
+    color: ${({ theme }) => theme.colors.pink[4]};
+  }
+`
+const DonorsShapes = Shapes.extend`
+  svg:first-child {
+    right: 8rem;
+    top: 2rem;
+    color: ${({ theme }) => theme.colors.orange[4]};
+  }
+  svg:last-child {
+    right: 4rem;
+    top: 4rem;
+    color: ${({ theme }) => theme.hexa('blue.4', 0.75)};
   }
 `
 
-const headline = { f: [5, 6], color: 'black', style: { lineHeight: '1.125' } }
-const subhline = { f: [3, 4], color: 'black', style: { lineHeight: '1.375' } }
-const subtext = { f: [3, 4], color: 'black', style: { lineHeight: '1.5' } }
+const headline = { f: [5, 6], mb: 3, style: { lineHeight: '1.125' } }
+const subhline = { f: [3, 4], style: { lineHeight: '1.375' } }
+const subtext = { f: [3, 4], style: { lineHeight: '1.5' } }
 
 const contentContainer = {
   maxWidth: 64,
   w: 1,
   p: 3,
+  color: 'black',
   style: { position: 'relative' }
 }
-const content = { maxWidth: 48, mx: 0 }
+const content = { maxWidth: 48, mx: 0, color: 'black' }
 
 A.link = A.withComponent(Link)
 
@@ -138,6 +150,21 @@ const stats = {
   student: 5,
   club: 100
 }
+
+const DonorCard = ({ name }) => (
+  <Card bg="snow" p={3} m={2}>
+    <Text {...subtext} color="inherit" children={name} />
+  </Card>
+)
+
+const DonorListing = ({ name, url }) =>
+  url ? (
+    <A target="_blank" href={url} color="primary">
+      <DonorCard name={name} />
+    </A>
+  ) : (
+    <DonorCard name={name} />
+  )
 
 export default () => (
   <Fragment>
@@ -163,8 +190,8 @@ export default () => (
             We rely on people like you to bring coding to the world.
           </Heading.h2>
           <Text {...subhline}>
-            Contribute today to empower the next generation. Help start a
-            Hack Club at every high school.
+            Contribute today to empower the next generation. Help start a Hack
+            Club at every high school.
           </Text>
           <Text mt={3} f={2} color="muted">
             Your contribution is tax-deductible.<br />
@@ -182,20 +209,18 @@ export default () => (
         <Circle size={128} />
       </WishShapes>
       <Container {...content}>
-        <Heading.h2 {...headline}>
-          Transparent, Free, and Open
-        </Heading.h2>
+        <Heading.h2 {...headline}>Transparent, free, and open.</Heading.h2>
         <Text my={3} {...subtext}>
-          Hack Club is a new kind of non-profit with <strong>total
-          transparency</strong>. We open source all of our {' '}
+          Hack Club is a new kind of non-profit with{' '}
+          <strong>total transparency</strong>. We open source all of our{' '}
           <A href="https://github.com/hackclub/hackclub">content</A>
           {' and '}
-          <A href="https://github.com/hackclub">code</A>. Many of our
-          leaders and members are also available on{' '}
+          <A href="https://github.com/hackclub">code</A>. Many of our leaders
+          and members are also available on{' '}
           <A href="https://slack.hackclub.com">our Slack</A>.
         </Text>
         <Text my={3} {...subtext}>
-           You deserve to know exactly where your contribution will go—so{' '}
+          You deserve to know exactly where your contribution will go—so{' '}
           <A href="https://github.com/hackclub/ledger" bold>
             all of our financials are public
           </A>.
@@ -212,12 +237,12 @@ export default () => (
         </Box>
         <Box>
           <Text {...subtext}>
-            We strive to build a maximally-efficient organization, spending
-            98% of funds given directly on our clubs.
+            We strive to build a maximally-efficient organization, spending 98%
+            of funds given directly on our clubs.
           </Text>
           <Text mt={3} {...subtext}>
-            When you give to Hack Club, your money goes where students need
-            it most.
+            When you give to Hack Club, your money goes where students need it
+            most.
           </Text>
           <Financials mt={4}>
             <Box bg="primary" color="white" p={[3, 4]} pr={2}>
@@ -247,19 +272,32 @@ export default () => (
       </Row>
       <Container {...content}>
         <Heading.h2 {...headline}>
-          Contribute More Than Just Dollars
+          Contribute more than just dollars.
         </Heading.h2>
         <Text my={3} {...subtext}>
-          We accept donations of time, technical or hard science fiction
-          books, stocks / other securities, and cryptocurrency.
+          We accept donations of time, technical or hard science fiction books,
+          stocks/other securities, and cryptocurrency.
         </Text>
         <Text my={3} {...subtext}>
           Please get in touch at{' '}
-          <A href="mailto:donate@hackclub.com">donate@hackclub.com</A>
-          {' '}if you're interested in making a contribution or have any
-          questions.
+          <A href="mailto:donate@hackclub.com">donate@hackclub.com</A> if you're
+          interested in making a contribution or have any questions.
         </Text>
       </Container>
+      <Row my={5} {...content}>
+        <Box>
+          <Heading.h2 {...headline}>Some of our amazing donors.</Heading.h2>
+          <DonorsShapes>
+            <Hexagon size={128} rotate={64} />
+            <Circle size={128} />
+          </DonorsShapes>
+        </Box>
+        <Flex m={-2} wrap>
+          {Object.keys(donors).map(name => (
+            <DonorListing key={name} name={name} url={donors[name]} />
+          ))}
+        </Flex>
+      </Row>
     </Container>
     <Footer />
   </Fragment>

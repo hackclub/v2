@@ -39,16 +39,13 @@ const Header = Section.withComponent('header').extend`
       grid-template-columns: 3fr 2fr;
     }
   }
-  + div {
-    position: relative;
-  }
 `
 
 const Row = Box.extend`
-  display: grid;
-  grid-gap: ${({ theme }) => theme.space[3]}px;
   text-align: left;
   ${({ theme }) => theme.mediaQueries.md} {
+    display: grid;
+    grid-gap: ${({ theme }) => theme.space[3]}px;
     grid-template-columns: ${({ reverse }) =>
       reverse ? '3fr 2fr' : '2fr 3fr'};
   }
@@ -129,17 +126,18 @@ const DonorsShapes = Shapes.extend`
   }
 `
 
-const headline = { f: [5, 6], color: 'black', style: { lineHeight: '1.125' } }
-const subhline = { f: [3, 4], color: 'black', style: { lineHeight: '1.375' } }
-const subtext = { f: [3, 4], color: 'black', style: { lineHeight: '1.5' } }
+const headline = { f: [5, 6], mb: 3, style: { lineHeight: '1.125' } }
+const subhline = { f: [3, 4], style: { lineHeight: '1.375' } }
+const subtext = { f: [3, 4], style: { lineHeight: '1.5' } }
 
 const contentContainer = {
   maxWidth: 64,
   w: 1,
   p: 3,
+  color: 'black',
   style: { position: 'relative' }
 }
-const content = { maxWidth: 48, mx: 0 }
+const content = { maxWidth: 48, mx: 0, color: 'black' }
 
 A.link = A.withComponent(Link)
 
@@ -237,7 +235,7 @@ export default () => (
             <Pentagon size={128} rotate={16} />
           </ContributionShapes>
         </Box>
-        <Container>
+        <Box>
           <Text {...subtext}>
             We strive to build a maximally-efficient organization, spending 98%
             of funds given directly on our clubs.
@@ -270,7 +268,7 @@ export default () => (
               <Spent />
             </Box>
           </Financials>
-        </Container>
+        </Box>
       </Row>
       <Container {...content}>
         <Heading.h2 {...headline}>

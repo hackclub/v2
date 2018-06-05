@@ -226,7 +226,7 @@ class DonateForm extends Component {
   buttonText() {
     switch (this.state.status) {
       case 'done':
-        return 'Sent! Thank you 😊'
+        return 'Thank you 😊'
       case 'loading':
         return 'One moment…'
       case 'error':

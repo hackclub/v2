@@ -105,6 +105,11 @@ class DonateForm extends Component {
             <input
               name="recurring"
               type="checkbox"
+              style={{
+                WebkitAppearance: 'checkbox',
+                MozAppearance: 'checkbox',
+                appearance: 'checkbox'
+              }}
               checked={recurring}
               onChange={this.handleRecurringChange}
             />

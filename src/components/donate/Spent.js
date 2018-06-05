@@ -4,18 +4,14 @@ import { map, sum, values, capitalize, round } from 'lodash'
 import commaNumber from 'comma-number'
 
 const segments = {
-  salaries: 6000,
-  hosting: 434.64,
-  tools: 286.95,
-  shipping: 16,
-  transportation: 5
+  marketing: 0,
+  administration: 134.85,
+  program: 6607.74,
 }
 const colors = {
-  salaries: 'red',
-  hosting: 'orange',
-  tools: 'teal',
-  shipping: 'blue',
-  transportation: 'violet'
+  marketing: 'green',
+  administration: 'red',
+  program: 'blue'
 }
 const total = sum(values(segments))
 

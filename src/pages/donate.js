@@ -160,15 +160,15 @@ export default () => (
             Donate to Hack Club
           </Heading.h1>
           <Heading.h2 my={3} {...headline}>
-            We rely on patrons like you to bring coding around the world.
+            We rely on people like you to bring coding to the world.
           </Heading.h2>
           <Text {...subhline}>
-            Contribute today to empower the next generation by helping start a
-            coding club at every high school—we need your help.
+            Contribute today to empower the next generation. Help start a
+            Hack Club at every high school.
           </Text>
           <Text mt={3} f={2} color="muted">
             Your contribution is tax-deductible.<br />
-            Hack Club‘s nonprofit EIN is 81-2908499.
+            Hack Club is a 501(c)(3) non-profit with the EIN 81-2908499.
           </Text>
         </Container>
         <Card bg="snow" p={[3, 4]} style={{ overflow: 'hidden' }}>
@@ -183,24 +183,19 @@ export default () => (
       </WishShapes>
       <Container {...content}>
         <Heading.h2 {...headline}>
-          We’re building the organization we wished existed in the world.
+          Transparent, Free, and Open
         </Heading.h2>
         <Text my={3} {...subtext}>
-          From day one, Hack Club has been a labor of love. We wanted to build
-          an organization we’d be proud to be a member of, to be a donor of, and
-          to be an employee of.
+          Hack Club is a new kind of non-profit with <strong>total
+          transparency</strong>. We open source all of our {' '}
+          <A href="https://github.com/hackclub/hackclub">content</A>
+          {' and '}
+          <A href="https://github.com/hackclub">code</A>. Many of our
+          leaders and members are also available on{' '}
+          <A href="https://slack.hackclub.com">our Slack</A>.
         </Text>
-        <Text {...subtext}>
-          A core component of that is <strong>total transparency</strong>. It‘s
-          the reason we open source all{' '}
-          <A href="https://github.com/hackclub/hackclub">our content</A>
-          {', '}
-          <A href="https://github.com/hackclub/monolith">our code</A>
-          {', '}
-          <A href="https://github.com/hackclub/site">our website</A>, and our
-          leaders and members are available on{' '}
-          <A href="https://slack.hackclub.com">our Slack</A>. You deserve to
-          know right where your contribution will go—so{' '}
+        <Text my={3} {...subtext}>
+           You deserve to know exactly where your contribution will go—so{' '}
           <A href="https://github.com/hackclub/ledger" bold>
             all of our financials are public
           </A>.
@@ -217,10 +212,12 @@ export default () => (
         </Box>
         <Box>
           <Text {...subtext}>
-            We spend our entire budget on paying{' '}
-            <A.link to="/team">our team</A.link> and directly improving our
-            clubs. There‘s no advertising waste, bonuses, or unused
-            contributions.
+            We strive to build a maximally-efficient organization, spending
+            98% of funds given directly on our clubs.
+          </Text>
+          <Text mt={3} {...subtext}>
+            When you give to Hack Club, your money goes where students need
+            it most.
           </Text>
           <Financials mt={4}>
             <Box bg="primary" color="white" p={[3, 4]} pr={2}>
@@ -241,13 +238,28 @@ export default () => (
             </Box>
             <Box bg="snow" p={[3, 4]}>
               <Heading.h3 f={4} my={0} caps>
-                Category breakdown
+                Spending breakdown
               </Heading.h3>
               <Spent />
             </Box>
           </Financials>
         </Box>
       </Row>
+      <Container {...content}>
+        <Heading.h2 {...headline}>
+          Contribute More Than Just Dollars
+        </Heading.h2>
+        <Text my={3} {...subtext}>
+          We accept donations of time, technical or hard science fiction
+          books, stocks / other securities, and cryptocurrency.
+        </Text>
+        <Text my={3} {...subtext}>
+          Please get in touch at{' '}
+          <A href="mailto:donate@hackclub.com">donate@hackclub.com</A>
+          {' '}if you're interested in making a contribution or have any
+          questions.
+        </Text>
+      </Container>
     </Container>
     <Footer />
   </Fragment>

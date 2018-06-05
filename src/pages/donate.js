@@ -9,7 +9,8 @@ import {
   LargeButton,
   Icon,
   Section,
-  Link as A
+  Link as A,
+  radius
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
@@ -27,6 +28,7 @@ import DonateForm from 'components/donate/DonateForm'
 import Spent from 'components/donate/Spent'
 import Footer from 'components/Footer'
 import commaNumber from 'comma-number'
+import donors from 'components/donate/donors.json'
 
 const Header = Section.withComponent('header').extend`
   background: url('/pattern.svg');
@@ -138,6 +140,23 @@ const stats = {
   student: 5,
   club: 100
 }
+
+const DonorCard = ({ name }) => (
+  <Card boxShadowSize="sm" radius={radius} p={[3, 4]} m={[2, 3]}>
+    <Text {...subtext} color="inherit">
+      {name}
+    </Text>
+  </Card>
+)
+
+const DonorListing = ({ name, url }) =>
+  url ? (
+    <A target="_blank" href={url} color="primary">
+      <DonorCard name={name} />
+    </A>
+  ) : (
+    <DonorCard name={name} />
+  )
 
 export default () => (
   <Fragment>
@@ -259,6 +278,16 @@ export default () => (
           {' '}if you're interested in making a contribution or have any
           questions.
         </Text>
+      </Container>
+      <Container {...content} mx="auto" align="center" my={5}>
+        <Heading.h2 {...headline} my={3} w={1}>
+          Our Donors
+        </Heading.h2>
+        <Flex wrap="wrap" justify="center">
+          {Object.keys(donors).map((name, index) => (
+            <DonorListing key={index} name={name} url={donors[name]} />
+          ))}
+        </Flex>
       </Container>
     </Container>
     <Footer />

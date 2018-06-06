@@ -6,7 +6,7 @@ import commaNumber from 'comma-number'
 const segments = {
   marketing: 0,
   administration: 134.85,
-  program: 6607.74,
+  program: 6607.74
 }
 const colors = {
   marketing: 'green',

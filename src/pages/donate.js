@@ -9,8 +9,7 @@ import {
   LargeButton,
   Icon,
   Section,
-  Link as A,
-  radius
+  Link as A
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
@@ -147,23 +146,25 @@ const description =
 
 const stats = {
   monthly: 6742.71,
-  student: 5,
-  club: 100
+  student: 3,
+  club: 60
 }
 
-const DonorCard = ({ name }) => (
-  <Card bg="snow" p={3} m={2}>
-    <Text {...subtext} color="inherit" children={name} />
+const DonorCard = ({ children }) => (
+  <Card bg="snow" p={3} m={2} color="black">
+    <Flex align="center">{children}</Flex>
   </Card>
 )
 
 const DonorListing = ({ name, url }) =>
   url ? (
-    <A target="_blank" href={url} color="primary">
-      <DonorCard name={name} />
+    <A target="_blank" href={url}>
+      <DonorCard>
+        {name} <Icon name="open_in_new" color="gray.4" ml={1} size={16} />
+      </DonorCard>
     </A>
   ) : (
-    <DonorCard name={name} />
+    <DonorCard children={name} />
   )
 
 export default () => (
@@ -198,7 +199,12 @@ export default () => (
             Hack Club is a 501(c)(3) non-profit with the EIN 81-2908499.
           </Text>
         </Container>
-        <Card bg="snow" p={[3, 4]} style={{ overflow: 'hidden' }}>
+        <Card
+          bg="snow"
+          p={[3, 4]}
+          mt={[0, -3, -4, -5]}
+          style={{ overflow: 'hidden' }}
+        >
           <DonateForm />
         </Card>
       </Container>

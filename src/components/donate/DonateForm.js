@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
   Box,
+  LargeButton,
   Button,
   Flex,
   Heading,
@@ -24,25 +25,27 @@ const Secure = Flex.extend`
 
 const amounts = [5, 10, 25, 50, 100, 200, 250]
 
+const monthlyExpenses = 6742.71
+
 const AmountsGrid = Box.extend`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: ${props => props.theme.space[3]}px;
+  grid-gap: ${({ theme }) => theme.space[3]}px;
   input[type='radio'] {
     display: none;
     &:checked + label {
-      background-color: ${props => props.theme.colors.blue[7]} !important;
+      background-color: ${({ theme }) => theme.colors.blue[7]} !important;
     }
   }
   input[type='number'] {
     text-align: center;
-    border-radius: ${props => props.theme.pill};
+    border-radius: ${({ theme }) => theme.pill};
     grid-column: 2 / span 2;
   }
 `
 
 const Amount = Button.withComponent('label').extend`
-  border-radius: ${props => props.theme.pill};
+  border-radius: ${({ theme }) => theme.pill};
 `
 
 const Option = ({ amount, ...props }) => [
@@ -59,11 +62,18 @@ const Option = ({ amount, ...props }) => [
   </Amount>
 ]
 
+const Other = Input.extend`
+  color: ${({ theme }) => theme.colors.black};
+  ::placeholder {
+    color: ${({ theme }) => theme.colors.muted};
+  }
+`
+
 class DonateForm extends Component {
   state = {
     loading: true,
     stripeLoading: true,
-    amount: 10,
+    amount: 25,
     recurring: true
   }
 
@@ -87,7 +97,7 @@ class DonateForm extends Component {
           mx={[-3, -4]}
           mt={[-3, -4]}
           mb={3}
-          pt={4}
+          pt={[4, 5]}
           pb={3}
           px={3}
           f={5}
@@ -118,6 +128,9 @@ class DonateForm extends Component {
             </Text.span>
           </Label>
         </Flex>
+        <Text color="slate" mb={3} f={1}>
+          Our recommended donation is $25/month
+        </Text>
         <AmountsGrid w={1} mt={3} mb={4}>
           {amounts.map(amount => (
             <Option
@@ -126,18 +139,18 @@ class DonateForm extends Component {
               key={amount}
             />
           ))}
-          <Input
+          <Other
             type="number"
             placeholder="Other"
             onChange={e => this.handleAmountChange(e.target.value)}
-            color="black"
           />
         </AmountsGrid>
-        <Button
+        <LargeButton
           onClick={e => this.startStripe(e)}
           children={this.buttonText()}
           w={1}
         />
+        <Text mt={3} mx={[0, 2]} f={3} children={this.studentsFundedText()} />
       </Box>
     )
   }
@@ -236,12 +249,26 @@ class DonateForm extends Component {
         return this.state.recurring ? `${msg} a month` : msg
     }
   }
-
+  studentsFundedText() {
+    const { amount, recurring } = this.state
+    const numberOfStudents = monthlyExpenses / 3
+    const costPerStudent = (amount + monthlyExpenses) / numberOfStudents
+    const studentsFunded = Math.floor(amount / costPerStudent)
+    if (studentsFunded > 1) {
+      return `Your donation will fund ${studentsFunded} students${
+        recurring ? ' each month' : ''
+      }.`
+    } else if (studentsFunded === 1) {
+      return `Your donation will fund a student${
+        recurring ? ' each month' : ''
+      }.`
+    } else {
+      return null
+    }
+  }
   setAmount = amount => v => {
     this.setState({ amount, custom: false })
   }
-
   amountInCents = () => this.state.amount * 100
 }
-
 export default DonateForm

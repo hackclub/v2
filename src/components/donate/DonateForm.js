@@ -23,7 +23,7 @@ const Secure = Flex.extend`
   text-align: right;
 `
 
-const amounts = [5, 10, 25, 50, 100, 200, 250]
+const amounts = [10, 20, 40, 100]
 
 const AmountsGrid = Box.extend`
   display: grid;
@@ -71,7 +71,7 @@ class DonateForm extends Component {
   state = {
     loading: true,
     stripeLoading: true,
-    amount: 25,
+    amount: 20,
     recurring: true
   }
 
@@ -85,7 +85,7 @@ class DonateForm extends Component {
     const { custom, recurring, amount } = this.state
     return (
       <Box align="center" style={{ position: 'relative' }}>
-        <Box bg="primary" color="white" mx={[-3, -4]} pb={3}>
+        <Box bg="primary" color="white" mx={[-3, -4]} pb={3} mb={3}>
           <Secure p={2} mr={[-3, -4]}>
             <Text f={0} color="red.1" caps bold>
               Secure
@@ -136,7 +136,7 @@ class DonateForm extends Component {
           />
         </AmountsGrid>
         <Text color="slate" mb={3} f={1}>
-          Our recommended donation is $25/month
+          Our recommended donation is $20/month
         </Text>
         <LargeButton
           onClick={e => this.startStripe(e)}

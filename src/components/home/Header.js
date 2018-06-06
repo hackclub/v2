@@ -80,10 +80,13 @@ export default () => (
       <Heading.h1 f={[6, 7]} mx="auto" mt={2} mb={3}>
         High school coding clubs.
       </Heading.h1>
-      <Text f={[3, 4]} mx="auto" m={0}>
-        Hack Club is a nonprofit network of computer science clubs where members
-        learn to code through tinkering and building projects.
-      </Text>
+      <Box w={0.75} mx="auto">
+        <Text f={[3, 4]} mx="auto" m={0}>
+          Hack Club is the world's largest nonprofit network of computer science
+          clubs where members learn to code through tinkering and building
+          projects.
+        </Text>
+      </Box>
       <Flex justify="center" align="center" mx={[-1, -2]} mt={[3, 4]}>
         <Action href="https://finder.hackclub.com" inverted m={[1, 2]}>
           Find <span>Nearby</span>

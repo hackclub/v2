@@ -88,7 +88,7 @@ export default () => (
         </Text>
       </Box>
       <Flex justify="center" align="center" mx={[-1, -2]} mt={[3, 4]}>
-        <Action to="/donate" bg="accent" m={[1, 2]}>
+        <Action to="/donate" bg="accent" m={[1, 2]} f={[3, 4]}>
           Donate
         </Action>
         <Action href="https://finder.hackclub.com" inverted m={[1, 2]}>

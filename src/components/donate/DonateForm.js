@@ -120,6 +120,9 @@ class DonateForm extends Component {
             </Text.span>
           </Label>
         </Flex>
+        <Text color="slate" mb={3} f={1}>
+          Our recommended donation is $25/month
+        </Text>
         <AmountsGrid w={1} mt={3} mb={4}>
           {amounts.map(amount => (
             <Option
@@ -135,9 +138,6 @@ class DonateForm extends Component {
             color="black"
           />
         </AmountsGrid>
-        <Text my={3} mx={[0, 2]} f={1}>
-          * Our recommended donation is $25 a month
-        </Text>
         <Button
           onClick={e => this.startStripe(e)}
           children={this.buttonText()}

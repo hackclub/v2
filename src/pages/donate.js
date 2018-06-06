@@ -147,8 +147,8 @@ const description =
 
 const stats = {
   monthly: 6742.71,
-  student: 5,
-  club: 100
+  student: 3,
+  club: 60
 }
 
 const DonorCard = ({ name }) => (

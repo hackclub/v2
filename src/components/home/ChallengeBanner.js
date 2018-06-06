@@ -10,17 +10,14 @@ import {
 } from '@hackclub/design-system'
 
 export default () => (
-  <Container maxWidth={38}>
+  <Container maxWidth={24} my={-3}>
     <Link href="challenge">
-      <Card bg="blue.1" p={[2, 3]} mt={-2} mb={4}>
-        <Flex justify="flex-start">
-          <Icon name="open_in_new" size={48} mr={[2, 3]} color="blue.6" />
+      <Card bg="blue.1" p={[2, 3]}>
+        <Flex justify="flex-start" align="center">
+          <Icon name="open_in_new" size={24} mr={[2, 3]} color="blue.6" />
           <Box color="blue.6">
             <Text f={3} bold>
-              Check out the winning challenge submissions
-            </Text>
-            <Text f={2}>
-              Our latest challenge just wrapped up. See the winning projects.
+              Check out student-built projects
             </Text>
           </Box>
         </Flex>

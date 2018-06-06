@@ -151,19 +151,23 @@ const stats = {
   club: 60
 }
 
-const DonorCard = ({ name }) => (
-  <Card bg="snow" p={3} m={2}>
-    <Text {...subtext} color="inherit" children={name} />
+const DonorCard = ({ children }) => (
+  <Card bg="snow" p={3} m={2} color="black">
+    <Text>
+      <Flex align="center">{children}</Flex>
+    </Text>
   </Card>
 )
 
 const DonorListing = ({ name, url }) =>
   url ? (
-    <A target="_blank" href={url} color="primary">
-      <DonorCard name={name} />
+    <A target="_blank" href={url}>
+      <DonorCard>
+        {name} <Icon name="open_in_new" color="gray.4" ml={1} size={16} />
+      </DonorCard>
     </A>
   ) : (
-    <DonorCard name={name} />
+    <DonorCard>{name}</DonorCard>
   )
 
 export default () => (

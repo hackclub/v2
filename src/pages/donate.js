@@ -152,9 +152,7 @@ const stats = {
 
 const DonorCard = ({ children }) => (
   <Card bg="snow" p={3} m={2} color="black">
-    <Text>
-      <Flex align="center">{children}</Flex>
-    </Text>
+    <Flex align="center">{children}</Flex>
   </Card>
 )
 

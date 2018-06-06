@@ -63,7 +63,7 @@ class DonateForm extends Component {
   state = {
     loading: true,
     stripeLoading: true,
-    amount: 10,
+    amount: 25,
     recurring: true
   }
 
@@ -139,7 +139,7 @@ class DonateForm extends Component {
           w={1}
         />
         <Text f={1} mt={4}>
-          * Our recommended donation is $20 a month
+          * Our recommended donation is $25 a month
         </Text>
       </Box>
     )

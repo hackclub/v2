@@ -138,6 +138,9 @@ class DonateForm extends Component {
           children={this.buttonText()}
           w={1}
         />
+        <Text f={1} mt={4}>
+          * Our recommended donation is $20 a month
+        </Text>
       </Box>
     )
   }

@@ -25,8 +25,6 @@ const Secure = Flex.extend`
 
 const amounts = [5, 10, 25, 50, 100, 200, 250]
 
-const monthlyExpenses = 6742.71
-
 const AmountsGrid = Box.extend`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -87,25 +85,20 @@ class DonateForm extends Component {
     const { custom, recurring, amount } = this.state
     return (
       <Box align="center" style={{ position: 'relative' }}>
-        <Secure p={2} mr={[-3, -4]}>
-          <Text f={0} color="red.1" caps bold>
-            Secure
+        <Box bg="primary" color="white" mx={[-3, -4]} pb={3}>
+          <Secure p={2} mr={[-3, -4]}>
+            <Text f={0} color="red.1" caps bold>
+              Secure
+            </Text>
+            <Icon size={16} name="lock" color="red.1" ml={2} />
+          </Secure>
+          <Heading.h2 mt={[-3, -4]} pt={3} px={3} f={5}>
+            Become a patron
+          </Heading.h2>
+          <Text color="snow" mt={1} f={1}>
+            Just $3 supports a student for a month
           </Text>
-          <Icon size={16} name="lock" color="red.1" ml={2} />
-        </Secure>
-        <Heading.h2
-          mx={[-3, -4]}
-          mt={[-3, -4]}
-          mb={3}
-          pt={[4, 5]}
-          pb={3}
-          px={3}
-          f={5}
-          bg="primary"
-          color="white"
-        >
-          Become a Patron
-        </Heading.h2>
+        </Box>
         <Flex align="center" justify="center" color="black">
           <Text f={3} bold>
             Select an amount
@@ -128,9 +121,6 @@ class DonateForm extends Component {
             </Text.span>
           </Label>
         </Flex>
-        <Text color="slate" mb={3} f={1}>
-          Our recommended donation is $25/month
-        </Text>
         <AmountsGrid w={1} mt={3} mb={4}>
           {amounts.map(amount => (
             <Option
@@ -145,12 +135,14 @@ class DonateForm extends Component {
             onChange={e => this.handleAmountChange(e.target.value)}
           />
         </AmountsGrid>
+        <Text color="slate" mb={3} f={1}>
+          Our recommended donation is $25/month
+        </Text>
         <LargeButton
           onClick={e => this.startStripe(e)}
           children={this.buttonText()}
           w={1}
         />
-        <Text mt={3} mx={[0, 2]} f={3} children={this.studentsFundedText()} />
       </Box>
     )
   }
@@ -247,23 +239,6 @@ class DonateForm extends Component {
       default:
         const msg = `Donate $${this.state.amount}`
         return this.state.recurring ? `${msg} a month` : msg
-    }
-  }
-  studentsFundedText() {
-    const { amount, recurring } = this.state
-    const numberOfStudents = monthlyExpenses / 3
-    const costPerStudent = (amount + monthlyExpenses) / numberOfStudents
-    const studentsFunded = Math.floor(amount / costPerStudent)
-    if (studentsFunded > 1) {
-      return `Your donation will fund ${studentsFunded} students${
-        recurring ? ' each month' : ''
-      }.`
-    } else if (studentsFunded === 1) {
-      return `Your donation will fund a student${
-        recurring ? ' each month' : ''
-      }.`
-    } else {
-      return null
     }
   }
   setAmount = amount => v => {

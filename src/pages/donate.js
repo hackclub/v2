@@ -9,8 +9,7 @@ import {
   LargeButton,
   Icon,
   Section,
-  Link as A,
-  radius
+  Link as A
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
@@ -167,7 +166,7 @@ const DonorListing = ({ name, url }) =>
       </DonorCard>
     </A>
   ) : (
-    <DonorCard>{name}</DonorCard>
+    <DonorCard children={name} />
   )
 
 export default () => (

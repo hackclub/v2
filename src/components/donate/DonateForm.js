@@ -24,6 +24,8 @@ const Secure = Flex.extend`
 
 const amounts = [5, 10, 25, 50, 100, 200, 250]
 
+const monthlyExpenses = 6742.71
+
 const AmountsGrid = Box.extend`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -133,14 +135,15 @@ class DonateForm extends Component {
             color="black"
           />
         </AmountsGrid>
+        <Text my={3} mx={[0, 2]} f={1}>
+          * Our recommended donation is $25 a month
+        </Text>
         <Button
           onClick={e => this.startStripe(e)}
           children={this.buttonText()}
           w={1}
         />
-        <Text f={1} mt={4}>
-          * Our recommended donation is $25 a month
-        </Text>
+        <Text mt={3} mx={[0, 2]} f={3} children={this.studentsFundedText()} />
       </Box>
     )
   }
@@ -237,6 +240,25 @@ class DonateForm extends Component {
       default:
         const msg = `Donate $${this.state.amount}`
         return this.state.recurring ? `${msg} a month` : msg
+    }
+  }
+
+  studentsFundedText() {
+    const { amount, recurring } = this.state
+
+    const numberOfStudents = monthlyExpenses / 3
+    const costPerStudent = (amount + monthlyExpenses) / numberOfStudents
+    const studentsFunded = Math.floor(amount / costPerStudent)
+    if (studentsFunded > 1) {
+      return `Your donation will fund ${studentsFunded} students${
+        recurring ? ' each month' : ''
+      }.`
+    } else if (studentsFunded === 1) {
+      return `Your donation will fund a student${
+        recurring ? ' each month' : ''
+      }.`
+    } else {
+      return null
     }
   }
 

@@ -85,14 +85,14 @@ class DonateForm extends Component {
     const { custom, recurring, amount } = this.state
     return (
       <Box align="center" style={{ position: 'relative' }}>
-        <Box bg="primary" color="white" mx={[-3, -4]} pb={3} mb={3}>
+        <Box bg="primary" color="white" mx={[-3, -4]} pb={4} mb={3}>
           <Secure p={2} mr={[-3, -4]}>
             <Text f={0} color="red.1" caps bold>
               Secure
             </Text>
             <Icon size={16} name="lock" color="red.1" ml={2} />
           </Secure>
-          <Heading.h2 mt={[-3, -4]} pt={3} px={3} f={5}>
+          <Heading.h2 mt={[-3, -4]} pt={4} px={3} f={5}>
             Become a patron
           </Heading.h2>
           <Text color="snow" mt={1} f={1}>

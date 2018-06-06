@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
   Box,
+  LargeButton,
   Button,
   Flex,
   Heading,
@@ -61,6 +62,13 @@ const Option = ({ amount, ...props }) => [
   </Amount>
 ]
 
+const Other = Input.extend`
+  color: ${({ theme }) => theme.colors.black};
+  ::placeholder {
+    color: ${({ theme }) => theme.colors.muted};
+  }
+`
+
 class DonateForm extends Component {
   state = {
     loading: true,
@@ -89,7 +97,7 @@ class DonateForm extends Component {
           mx={[-3, -4]}
           mt={[-3, -4]}
           mb={3}
-          pt={4}
+          pt={[4, 5]}
           pb={3}
           px={3}
           f={5}
@@ -131,14 +139,13 @@ class DonateForm extends Component {
               key={amount}
             />
           ))}
-          <Input
+          <Other
             type="number"
             placeholder="Other"
             onChange={e => this.handleAmountChange(e.target.value)}
-            color="black"
           />
         </AmountsGrid>
-        <Button
+        <LargeButton
           onClick={e => this.startStripe(e)}
           children={this.buttonText()}
           w={1}

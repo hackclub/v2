@@ -201,7 +201,12 @@ export default () => (
             Hack Club is a 501(c)(3) non-profit with the EIN 81-2908499.
           </Text>
         </Container>
-        <Card bg="snow" p={[3, 4]} style={{ overflow: 'hidden' }}>
+        <Card
+          bg="snow"
+          p={[3, 4]}
+          mt={[0, -3, -4, -5]}
+          style={{ overflow: 'hidden' }}
+        >
           <DonateForm />
         </Card>
       </Container>

@@ -150,11 +150,15 @@ const stats = {
   club: 60
 }
 
-const DonorCard = ({ children }) => (
+const DonorCard = ({ name, link = false }) => (
   <Card p={3} m={2} color="black">
-    <Flex align="center" justify="center">
-      {children}
-    </Flex>
+    <Text
+      align="center"
+      justify="center"
+      style={{ textDecoration: link ? 'underline' : 'none' }}
+    >
+      {name}
+    </Text>
   </Card>
 )
 
@@ -162,12 +166,10 @@ const DonorListing = ({ name, url }) => (
   <Box w={[1 / 2, 1 / 3]}>
     {url ? (
       <A target="_blank" href={url}>
-        <DonorCard>
-          {name} <Icon name="open_in_new" color="gray.4" ml={1} size={16} />
-        </DonorCard>
+        <DonorCard name={name} link={true} />
       </A>
     ) : (
-      <DonorCard>{name}</DonorCard>
+      <DonorCard name={name} />
     )}
   </Box>
 )

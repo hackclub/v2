@@ -151,21 +151,26 @@ const stats = {
 }
 
 const DonorCard = ({ children }) => (
-  <Card bg="snow" p={3} m={2} color="black">
-    <Flex align="center">{children}</Flex>
+  <Card p={3} m={2} color="black">
+    <Flex align="center" justify="center">
+      {children}
+    </Flex>
   </Card>
 )
 
-const DonorListing = ({ name, url }) =>
-  url ? (
-    <A target="_blank" href={url}>
-      <DonorCard>
-        {name} <Icon name="open_in_new" color="gray.4" ml={1} size={16} />
-      </DonorCard>
-    </A>
-  ) : (
-    <DonorCard children={name} />
-  )
+const DonorListing = ({ name, url }) => (
+  <Box w={[1 / 2, 1 / 3]}>
+    {url ? (
+      <A target="_blank" href={url}>
+        <DonorCard>
+          {name} <Icon name="open_in_new" color="gray.4" ml={1} size={16} />
+        </DonorCard>
+      </A>
+    ) : (
+      <DonorCard>{name}</DonorCard>
+    )}
+  </Box>
+)
 
 export default () => (
   <Fragment>
@@ -290,20 +295,19 @@ export default () => (
           interested in making a contribution or have any questions.
         </Text>
       </Container>
-      <Row my={5} {...content}>
-        <Box>
-          <Heading.h2 {...headline}>Some of our amazing donors.</Heading.h2>
-          <DonorsShapes>
-            <Hexagon size={128} rotate={64} />
-            <Circle size={128} />
-          </DonorsShapes>
-        </Box>
+      <Container {...content} align="center" mx="auto">
+        <Heading.h2 {...headline} mt={5} mb={4}>
+          A few of our amazing donors.
+        </Heading.h2>
         <Flex m={-2} wrap>
           {Object.keys(donors).map(name => (
             <DonorListing key={name} name={name} url={donors[name]} />
           ))}
         </Flex>
-      </Row>
+        <Heading.h3 {...subhline} mt={4} mb={5}>
+          and many more...
+        </Heading.h3>
+      </Container>
     </Container>
     <Footer />
   </Fragment>

@@ -196,6 +196,7 @@ class LeaderPosition extends Component {
             </Flex>
           </Fragment>
         )
+      case 'deleting':
       case 'deleted':
         return (
           <Fragment>

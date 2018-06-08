@@ -75,7 +75,7 @@ const InnerForm = ({
       />
       <Field
         name="high_school_type"
-        value={values.high_school_type || 'select'}
+        value={values.high_school_type}
         label="School type"
         onChange={handleChange}
         onBlur={handleBlur}
@@ -102,7 +102,11 @@ const InnerForm = ({
 }
 
 export default withFormik({
-  mapPropsToValues: props => props,
+  mapPropsToValues: props => {
+    const values = { ...props }
+    values.high_school_type = props.high_school_type || 'select'
+    return values
+  },
   handleSubmit: (values, { props, setSubmitting, setStatus }) => {
     setStatus('loading')
     api
@@ -131,5 +135,6 @@ export default withFormik({
       .string()
       .typeError('required')
       .matches(/(public_school|private_school|charter_school)/, 'required')
+      .required('required')
   })
 })(InnerForm)

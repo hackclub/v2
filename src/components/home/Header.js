@@ -82,7 +82,7 @@ export default () => (
       </Heading.h1>
       <Box w={0.75} mx="auto">
         <Text f={[3, 4]} mx="auto" m={0}>
-          Hack Club is the world's largest nonprofit network of computer science
+          Hack Club is the world’s largest nonprofit network of computer science
           clubs where members learn to code through tinkering and building
           projects.
         </Text>
@@ -92,22 +92,22 @@ export default () => (
         align="center"
         mx={[-1, -2]}
         mt={[3, 4]}
-        flexDirection={['column-reverse', 'column-reverse', 'row']}
+        flexDirection={['column-reverse', null, 'row']}
       >
         <Action.link
           to="/donate"
           bg="accent"
-          m={[1, 1, 2]}
-          f={[3, 3, 4]}
-          px={[5, 5, 4]}
+          m={[1, null, 2]}
+          f={[3, null, 4]}
+          px={[5, null, 4]}
         >
           Donate
         </Action.link>
         <Flex flexDirection="row" align="center">
-          <Action href="https://finder.hackclub.com" inverted m={[1, 1, 2]}>
+          <Action href="https://finder.hackclub.com" inverted m={[1, null, 2]}>
             Find <span>Nearby</span>
           </Action>
-          <Action.link to="/start" m={[1, 1, 2]} f={[3, 3, 4]}>
+          <Action.link to="/start" m={[1, null, 2]} f={[3, null, 4]}>
             Start a Club »
           </Action.link>
         </Flex>

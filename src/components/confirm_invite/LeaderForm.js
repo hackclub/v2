@@ -86,10 +86,12 @@ const InnerForm = ({
       name="birthday"
       value={values.birthday}
       label="Birthday"
+      placeholder="YYYY-MM-DD"
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.birthday && errors.birthday}
       mb={2}
+      type="date"
     />
     <Field
       name="ethnicity"
@@ -119,10 +121,12 @@ const InnerForm = ({
       name="expected_graduation"
       value={values.expected_graduation}
       label="Expected Graduation Date"
+      placeholder="YYYY-MM-DD"
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.expected_graduation && errors.expected_graduation}
       mb={2}
+      type="date"
     />
     <Field
       name="personal_website"

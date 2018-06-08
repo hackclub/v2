@@ -6,7 +6,8 @@ import {
   Box,
   Heading,
   Text,
-  LargeButton
+  LargeButton,
+  Hide
 } from '@hackclub/design-system'
 import Nav from 'components/Nav'
 import Animator from 'components/Animator'
@@ -88,9 +89,11 @@ export default () => (
         </Text>
       </Box>
       <Flex justify="center" align="center" mx={[-1, -2]} mt={[3, 4]}>
-        <Action.link to="/donate" bg="accent" m={[1, 2]} f={[3, 4]}>
-          Donate
-        </Action.link>
+        <Hide xs sm>
+          <Action.link to="/donate" bg="accent" m={[1, 2]} f={[3, 4]}>
+            Donate
+          </Action.link>
+        </Hide>
         <Action href="https://finder.hackclub.com" inverted m={[1, 2]}>
           Find <span>Nearby</span>
         </Action>
@@ -98,6 +101,13 @@ export default () => (
           Start a Club »
         </Action.link>
       </Flex>
+      <Hide md lg xl>
+        <Box w={1}>
+          <Action.link to="/donate" bg="accent" m={[1, 2]} f={[3, 4]}>
+            Donate
+          </Action.link>
+        </Box>
+      </Hide>
     </Container>
   </Animator>
 )

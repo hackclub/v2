@@ -87,16 +87,30 @@ export default () => (
           projects.
         </Text>
       </Box>
-      <Flex justify="center" align="center" mx={[-1, -2]} mt={[3, 4]}>
-        <Action.link to="/donate" bg="accent" m={[1, 1, 2]} f={[3, 3, 4]}>
+      <Flex
+        justify="center"
+        align="center"
+        mx={[-1, -2]}
+        mt={[3, 4]}
+        flexDirection={['column-reverse', 'column-reverse', 'row']}
+      >
+        <Action.link
+          to="/donate"
+          bg="accent"
+          m={[1, 1, 2]}
+          f={[3, 3, 4]}
+          px={[5, 5, 4]}
+        >
           Donate
         </Action.link>
-        <Action href="https://finder.hackclub.com" inverted m={[1, 1, 2]}>
-          Find <span>Nearby</span>
-        </Action>
-        <Action.link to="/start" m={[1, 1, 2]} f={[3, 3, 4]}>
-          Start a Club »
-        </Action.link>
+        <Flex flexDirection="row" align="center">
+          <Action href="https://finder.hackclub.com" inverted m={[1, 1, 2]}>
+            Find <span>Nearby</span>
+          </Action>
+          <Action.link to="/start" m={[1, 1, 2]} f={[3, 3, 4]}>
+            Start a Club »
+          </Action.link>
+        </Flex>
       </Flex>
     </Container>
   </Animator>

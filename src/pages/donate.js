@@ -151,15 +151,11 @@ const stats = {
 }
 
 const DonorCard = ({ name, link = false }) => (
-  <Card p={3} m={2} color="black">
-    <Text
-      align="center"
-      justify="center"
-      style={{ textDecoration: link ? 'underline' : 'none' }}
-    >
+  <Flex p={3} m={2} justify="center" align="center" style={{ height: '100%' }}>
+    <Text color="black" style={{ textDecoration: link ? 'underline' : 'none' }}>
       {name}
     </Text>
-  </Card>
+  </Flex>
 )
 
 const DonorListing = ({ name, url }) => (

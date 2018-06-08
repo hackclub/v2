@@ -1,15 +1,20 @@
 import React from 'react'
-import { Box } from '@hackclub/design-system'
-import LoadingAnimation from './LoadingAnimation'
+import { Box, Loading } from '@hackclub/design-system'
+import PropTypes from 'prop-types'
 
 const Base = Box.extend`
   position: relative;
+  ${props => props.fill && { height: '100vh' }};
 `
 
 const LoadingBar = props => (
   <Base py={5} {...props}>
-    <LoadingAnimation />
+    <Loading />
   </Base>
 )
+
+LoadingBar.propTypes = {
+  fill: PropTypes.boolean
+}
 
 export default LoadingBar

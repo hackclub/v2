@@ -48,11 +48,17 @@ const generateMethod = method => (path, options = {}, fetchOptions = {}) => {
           return res.text()
         }
       } else {
-        throw res
+        if (res.status === 422) {
+          return res.json().then(json => {
+            throw { ...res, errors: json.errors }
+          })
+        } else {
+          throw res
+        }
       }
     })
-    .catch(e => {
-      throw e
+    .catch(err => {
+      throw err
     })
 }
 

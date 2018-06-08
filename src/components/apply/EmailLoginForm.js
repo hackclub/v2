@@ -1,5 +1,5 @@
 import React from 'react'
-import { url as apiUrl } from 'api'
+import api from 'api'
 import { Heading, Label, Input, Text, cx } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import yup from 'yup'
@@ -70,7 +70,8 @@ const InnerForm = ({
 )
 
 const EmailLoginForm = withFormik({
-  mapPropsToValues: ({ params }) => ({ ...params }),
+  mapPropsToValues: ({ email }) => ({ email: email || '' }),
+  enableReinitialize: true,
   validateOnChange: false,
   validationSchema: yup.object().shape({
     email: yup.string().email('That doesn’t look like a valid email.')
@@ -80,23 +81,13 @@ const EmailLoginForm = withFormik({
       setSubmitting(false)
       return null
     }
-    fetch(`${apiUrl}/v1/users/auth`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          throw res.statusText
-        }
-      })
-      .then(json => {
-        storage.set('userId', json.id)
-        storage.set('userEmail', data.email)
+    api
+      .post('v1/users/auth', { data })
+      .then(user => {
+        storage.set('userId', user.id)
+        storage.set('userEmail', user.email)
         setSubmitting(false)
-        props.submitCallback({ userId: json.id, email: data.email })
+        props.submitCallback({ userId: user.id, email: user.email })
       })
       .catch(e => {
         console.error(e)

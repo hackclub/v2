@@ -5,10 +5,10 @@ import { Item } from 'components/Nav'
 import Flag from 'components/Flag'
 import LogoutButton from 'components/apply/LogoutButton'
 import { withRouter } from 'react-router-dom'
+import { startCase, toLower } from 'lodash'
 
 const Crumb = A.withComponent(Link).extend`
   opacity: ${props => (props.active === 'true' ? 0.8 : 1)};
-  text-transform: capitalize;
 `
 
 class BreadcrumbClass extends Component {
@@ -29,6 +29,7 @@ class BreadcrumbClass extends Component {
         {path.map((section, index) => {
           runningPath.push(section)
           const isLast = path.length - index > 1
+          const humanizedSection = startCase(toLower(section))
           return (
             <Fragment key={index}>
               <Crumb
@@ -36,7 +37,7 @@ class BreadcrumbClass extends Component {
                 to={runningPath.join('/')}
                 active={isLast.toString()}
               >
-                {section}
+                {humanizedSection}
               </Crumb>
               {isLast ? (
                 <Text.span mx={2} color="white" regular children="›" />

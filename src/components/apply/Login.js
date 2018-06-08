@@ -20,21 +20,37 @@ const FixedFlag = Flag.extend`
   z-index: 1;
 `
 
-const Login = ({ userType = 'applicant' }) => {
-  const color = userType === 'admin' ? colors.green[5] : 'white'
-  const bg = userType === 'admin' ? '#000' : 'primary'
+const Login = ({ userType = 'applicant', color, heading, bg }) => {
+  const resultColor =
+    color ||
+    {
+      admin: colors.green[5],
+      applicant: 'white'
+    }[userType]
+  const resultBg =
+    bg ||
+    {
+      admin: '#000',
+      applicant: 'primary'
+    }[userType]
+  const resultHeading =
+    heading ||
+    {
+      admin: 'Admin login',
+      applicant: 'Start your application'
+    }[userType]
 
   return (
     <Fragment>
       <Helmet title="Log in – Hack Club" />
       <FixedFlag />
-      <Base color={color} bg={bg}>
-        <Heading.h1 f={2} mb={3} caps color={color}>
-          {userType === 'admin' ? 'Admin login' : 'Start your application'}
+      <Base color={resultColor} bg={resultBg}>
+        <Heading.h1 f={2} mb={3} caps color={resultColor}>
+          {resultHeading}
         </Heading.h1>
         <LoginForm
-          color={color}
-          bg={bg}
+          color={resultColor}
+          bg={resultBg}
           inputProps={{ mx: 'auto', w: 24 * 16 }}
           textProps={{ align: 'center', f: 4 }}
         />

@@ -146,7 +146,7 @@ const InnerForm = ({
       type="textarea"
     />
     <Button onClick={handleSubmit}>
-      {isSubmitting ? 'Submitting...' : values.id ? 'Update' : 'Create'}
+      {isSubmitting ? 'Submitting…' : values.id ? 'Update' : 'Create'}
     </Button>
   </form>
 )

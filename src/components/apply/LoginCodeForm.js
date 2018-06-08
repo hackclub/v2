@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { url as apiUrl } from 'api'
+import api from 'api'
 import { Label, Input, Text, cx } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import yup from 'yup'
@@ -69,7 +69,7 @@ class InnerForm extends Component {
       <form onSubmit={handleSubmit}>
         <Label className="loginCode" id="loginCode" {...textProps}>
           <Text color={color} mb={3}>
-            Rad! We just sent a login code to {email}. 📬
+            📬 We just sent a login code to {email}.
           </Text>
           <StyledInput
             name="loginCode"
@@ -88,6 +88,9 @@ class InnerForm extends Component {
             data-lpignore
             {...inputProps}
           />
+          <Text color={color} mt={3} f={2}>
+            Make sure to check your spam folder
+          </Text>
         </Label>
         {errors.loginCode && (
           <Text
@@ -106,24 +109,15 @@ const LoginCodeForm = withFormik({
   validationSchema: yup.object().shape({
     loginCode: yup.string()
   }),
-  handleSubmit: (data, { props, setSubmitting, setErrors }) => {
-    if (!data.loginCode) {
+  handleSubmit: (unformattedData, { props, setSubmitting, setErrors }) => {
+    if (!unformattedData.loginCode) {
       setSubmitting(false)
       return null
     }
-    const strippedLoginCode = data.loginCode.replace(/\D/g, '')
-    fetch(`${apiUrl}/v1/users/${props.userId}/exchange_login_code`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ login_code: strippedLoginCode })
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          throw res.statusText
-        }
-      })
+    const strippedLoginCode = unformattedData.loginCode.replace(/\D/g, '')
+    const data = { login_code: strippedLoginCode }
+    api
+      .post(`v1/users/${props.userId}/exchange_login_code`, { data })
       .then(json => {
         window.localStorage.setItem('authToken', json.auth_token)
         setSubmitting(false)

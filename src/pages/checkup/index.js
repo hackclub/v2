@@ -81,12 +81,14 @@ export default class extends Component {
         return (
           <Fragment>
             <Nav breadcrumb={false} />
-              <Container color="black" p={3} maxWidth={36} align="center">
-                <Heading.h2 f={[4, 5]} mt={3} mb={3}>
-                  No Clubs Found
-                </Heading.h2>
-                <Text>We couldn’t find any clubs associated with your email.</Text>
-              </Container>
+            <Container color="black" p={3} maxWidth={36} align="center">
+              <Heading.h2 f={[4, 5]} mt={3} mb={3}>
+                No Clubs Found
+              </Heading.h2>
+              <Text>
+                We couldn’t find any clubs associated with your email.
+              </Text>
+            </Container>
           </Fragment>
         )
       case 'needsToAuth':

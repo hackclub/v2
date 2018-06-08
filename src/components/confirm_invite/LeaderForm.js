@@ -76,20 +76,22 @@ const InnerForm = ({
       <option value="select" disabled>
         Select One
       </option>
-      <option value="male">Male</option>
+      <option value="agender">Agender</option>
       <option value="female">Female</option>
       <option value="genderqueer">Genderqueer</option>
-      <option value="agender">Agender</option>
+      <option value="male">Male</option>
       <option value="other_gender">Other gender</option>
     </Field>
     <Field
       name="birthday"
       value={values.birthday}
       label="Birthday"
+      placeholder="YYYY-MM-DD"
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.birthday && errors.birthday}
       mb={2}
+      type="date"
     />
     <Field
       name="ethnicity"
@@ -104,25 +106,27 @@ const InnerForm = ({
       <option value="select" disabled>
         Select One
       </option>
-      <option value="hispanic_or_latino">Hispanic or Latino</option>
-      <option value="white">White</option>
-      <option value="black">Black</option>
-      <option value="native_american_or_indian">
-        Native American or Indian
-      </option>
       <option value="asian_or_pacific_islander">
         Asian or Pacific Islander
       </option>
+      <option value="black">Black</option>
+      <option value="hispanic_or_latino">Hispanic or Latino</option>
+      <option value="native_american_or_indian">
+        Native American or Indian
+      </option>
+      <option value="white">White</option>
       <option value="other_ethnicity">Other ethnicity</option>
     </Field>
     <Field
       name="expected_graduation"
       value={values.expected_graduation}
       label="Expected Graduation Date"
+      placeholder="YYYY-MM-DD"
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.expected_graduation && errors.expected_graduation}
       mb={2}
+      type="date"
     />
     <Field
       name="personal_website"

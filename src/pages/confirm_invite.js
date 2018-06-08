@@ -169,7 +169,14 @@ export default class extends Component {
         const sortedInvites = invites.sort(
           (a, b) => a.created_at < b.created_at
         )
-        this.setState({ invites: sortedInvites, status: 'success' })
+        const pendingInviteCount = invites.filter(
+          invite => !invite.rejected_at && !invite.accepted_at
+        ).length
+        this.setState({
+          invites: sortedInvites,
+          pendingInviteCount,
+          status: 'success'
+        })
       })
       .catch(err => {
         if (err.status === 403 || err.status === 401) {
@@ -190,7 +197,7 @@ export default class extends Component {
   }
 
   render() {
-    const { status, invites, leader, user } = this.state
+    const { status, invites, pendingInviteCount, leader, user } = this.state
     switch (status) {
       case 'loading':
         return <LoadingPage />
@@ -200,6 +207,16 @@ export default class extends Component {
             <Helmet title="Confirm Invitation – Hack Club" />
             <Nav />
             <Container maxWidth={32}>
+              {pendingInviteCount === 0 && (
+                <Box>
+                  <Heading.h2 my={3} align="center">
+                    All done!
+                  </Heading.h2>
+                  <Text align="center">
+                    You’ve responded to all your invites.
+                  </Text>
+                </Box>
+              )}
               {invites.map(invite => (
                 <Invite
                   key={invite.id}

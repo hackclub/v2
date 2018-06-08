@@ -27,14 +27,18 @@ export default class extends Component {
         return api
           .get(`v1/new_leaders/${user.new_leader.id}/new_clubs`)
           .then(clubs => {
-            const urlBase = location.origin + location.pathname
-            const clubUrl = `${urlBase}/club?id=${clubs[0].id}`
-            const clubsUrl = `${urlBase}/clubs`
-            this.setState({
-              clubs,
-              status: 'success',
-              redirectUrl: clubs.length === 1 ? clubUrl : clubsUrl
-            })
+            if (clubs.length > 0) {
+              const urlBase = location.origin + location.pathname
+              const clubUrl = `${urlBase}/club?id=${clubs[0].id}`
+              const clubsUrl = `${urlBase}/clubs`
+              this.setState({
+                clubs,
+                status: 'success',
+                redirectUrl: clubs.length === 1 ? clubUrl : clubsUrl
+              })
+            } else {
+              this.setState({ status: 'noClubs' })
+            }
           })
       })
       .catch(err => {
@@ -71,6 +75,18 @@ export default class extends Component {
                 <LeaderForm {...this.state.user} redirectUrl={redirectUrl} />
               </Card>
             </Container>
+          </Fragment>
+        )
+      case 'noClubs':
+        return (
+          <Fragment>
+            <Nav breadcrumb={false} />
+              <Container color="black" p={3} maxWidth={36} align="center">
+                <Heading.h2 f={[4, 5]} mt={3} mb={3}>
+                  No Clubs Found
+                </Heading.h2>
+                <Text>We couldn’t find any clubs associated with your email.</Text>
+              </Container>
           </Fragment>
         )
       case 'needsToAuth':

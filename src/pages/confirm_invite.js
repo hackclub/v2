@@ -11,6 +11,7 @@ import {
   Card,
   Heading,
   Button,
+  Badge,
   Text,
   Box
 } from '@hackclub/design-system'
@@ -102,9 +103,9 @@ class Invite extends Component {
           </Fragment>
         )
       case 'accepted':
-        return <Button bg="success">Invite accepted</Button>
+        return <Badge bg="success">Invite accepted</Badge>
       case 'rejected':
-        return <Button bg="error">Invite rejected</Button>
+        return <Badge bg="error">Invite rejected</Badge>
       case 'undecided':
         return (
           <Fragment>

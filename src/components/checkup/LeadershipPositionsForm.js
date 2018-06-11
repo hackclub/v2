@@ -79,7 +79,7 @@ const LeaderInvite = ({ position }) => {
               <LeaderStatus status="invited" />
               <Text>
                 <Text.span bold>{position.user.email}</Text.span> needs to
-                accept their invitation.
+                accept the invite we emailed to them.
               </Text>
             </Box>
             <Button

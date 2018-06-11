@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import Login from 'components/apply/Login'
-import LoadingAnimation from 'components/LoadingAnimation'
+import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 import Nav from 'components/apply/ApplyNav'
 import LeaderForm from 'components/checkup/LeaderForm'
@@ -57,7 +57,7 @@ class SelfForm extends Component {
             <Text my={3}>
               Sorry to hear you’re leaving. Before you go, we would like to have
               an exit interview. It will be a short (~10 minutes) call to talk
-              about your time leading your club.
+              about your time with your club.
             </Text>
             <Button href="https://exit-interview.hackclub.com" w={1}>
               Schedule the call
@@ -117,7 +117,7 @@ export default class extends Component {
     const { status, user, club, position } = this.state
     switch (status) {
       case 'loading':
-        return <LoadingAnimation />
+        return <LoadingBar fill />
       case 'success':
         return (
           <Fragment>

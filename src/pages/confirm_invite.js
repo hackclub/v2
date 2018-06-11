@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import ErrorPage from 'components/admin/ErrorPage'
-import LoadingPage from 'components/LoadingAnimation'
+import LoadingBar from 'components/LoadingBar'
 import LoginPage from 'components/apply/Login'
 import LeaderForm from 'components/confirm_invite/LeaderForm'
 import Nav from 'components/apply/ApplyNav'
@@ -201,7 +201,7 @@ export default class extends Component {
     const { status, invites, pendingInviteCount, leader, user } = this.state
     switch (status) {
       case 'loading':
-        return <LoadingPage />
+        return <LoadingBar fill />
       case 'success':
         return (
           <Fragment>

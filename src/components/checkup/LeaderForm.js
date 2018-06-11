@@ -78,11 +78,12 @@ const InnerForm = ({
       <Field
         name="address"
         value={values.address}
-        label="Full Address"
+        label="Mailing Address (including country if outside of US)"
         onChange={handleChange}
         onBlur={handleBlur}
         error={touched.address && errors.address}
         mb={2}
+        type="textarea"
       />
       <Field
         name="gender"
@@ -136,11 +137,12 @@ const InnerForm = ({
       <Field
         name="expected_graduation"
         value={values.expected_graduation}
-        label="Expected Graduation Date"
+        label="What month do you expect to graduate from high school?"
+        placeholder="YYYY-MM"
         onChange={handleChange}
         onBlur={handleBlur}
         error={touched.expected_graduation && errors.expected_graduation}
-        type="date"
+        type="month"
         mb={2}
       />
       <Field
@@ -233,7 +235,19 @@ export default withFormik({
       .string()
       .required('required')
       .email('email'),
-    address: yup.string().required('required'),
+    address: yup
+      .string()
+      .required('required')
+      .test({
+        message: '${path} should not be a single line',
+        test: value => {
+          try {
+            return value.trim().split(/\r\n|\r|\n/).length > 1
+          } catch (_e) {
+            return false
+          }
+        }
+      }),
     gender: yup
       .string()
       .matches(/(male|female|genderqueer|agender|other_gender)/, 'required'),

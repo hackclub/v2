@@ -105,6 +105,7 @@ const InnerForm = ({
       <Field
         name="birthday"
         value={values.birthday}
+        placeholder="YYYY-MM-DD"
         label="Birthday"
         onChange={handleChange}
         onBlur={handleBlur}

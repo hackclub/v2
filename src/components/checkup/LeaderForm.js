@@ -68,7 +68,7 @@ const InnerForm = ({
       <Field
         name="email"
         value={values.email}
-        label="Email Address"
+        label="Your Personal Email"
         placeholder="email"
         onChange={handleChange}
         onBlur={handleBlur}

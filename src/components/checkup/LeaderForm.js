@@ -74,6 +74,7 @@ const InnerForm = ({
         onBlur={handleBlur}
         error={touched.email && errors.email}
         mb={2}
+        disabled
       />
       <Field
         name="address"

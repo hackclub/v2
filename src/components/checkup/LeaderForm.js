@@ -68,12 +68,13 @@ const InnerForm = ({
       <Field
         name="email"
         value={values.email}
-        label="Email Address"
+        label="Your Personal Email"
         placeholder="email"
         onChange={handleChange}
         onBlur={handleBlur}
         error={touched.email && errors.email}
         mb={2}
+        disabled
       />
       <Field
         name="address"

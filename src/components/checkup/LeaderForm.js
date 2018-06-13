@@ -79,7 +79,7 @@ const InnerForm = ({
       <Field
         name="address"
         value={values.address}
-        label="Mailing Address (including country if outside of US)"
+        label="Mailing Address (as it would appear on an envelope)"
         onChange={handleChange}
         onBlur={handleBlur}
         error={touched.address && errors.address}

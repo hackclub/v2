@@ -68,9 +68,12 @@ export default class extends Component {
               </Text>
             </Section>
             <Container color="black" p={3} maxWidth={36}>
-              <Heading.h2 f={[4, 5]} mt={3} mb={3}>
+              <Heading.h2 f={[4, 5]} mt={3} mb={2}>
                 Update your profile
               </Heading.h2>
+              <Text mb={3}>
+                You’ll update your co-leaders’ info after the next page
+              </Text>
               <Card boxShadowSize="md" p={3} mb={4}>
                 <LeaderForm {...this.state.user} redirectUrl={redirectUrl} />
               </Card>

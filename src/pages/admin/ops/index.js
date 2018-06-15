@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import ErrorPage from 'components/admin/ErrorPage'
 import LoadingBar from 'components/LoadingBar'
-import Login from 'components/auth/login'
+import Login from 'components/auth/Login'
 import { Text } from '@hackclub/design-system'
 import api from 'api'
 

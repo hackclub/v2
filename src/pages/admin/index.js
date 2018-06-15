@@ -15,13 +15,13 @@ export default () => (
     <Flex align="center" justify="center" wrap>
       <Action to="/admin/clubs">🚄 Clubs</Action>
       <Action bg="info" to="/admin/applications">
-        🚅Club Applications
+        🚅 Club Applications
       </Action>
       <Action bg="accent" to="/admin/events">
-        🚝Events
+        🚝 Events
       </Action>
       <Action bg="warning" to="/admin/operations">
-        ⚠️Operations⚠️
+        ⚠️ Operations ⚠️
       </Action>
     </Flex>
   </Container>

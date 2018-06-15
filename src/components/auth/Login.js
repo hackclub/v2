@@ -40,7 +40,7 @@ const Login = ({ userType = 'applicant', color, heading, bg }) => {
     {
       admin: 'Admin login',
       applicant: 'Start your application',
-      owner: '⚙️Operations login🔧'
+      owner: '⚙️ Operations login 🔧'
     }[userType]
 
   return (

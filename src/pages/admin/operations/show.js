@@ -7,31 +7,28 @@ import search from 'search'
 import api from 'api'
 import { timeSince } from 'helpers'
 import {
-  Text,
+  Badge,
+  Box,
   Card,
   Container,
-  Heading,
   Flex,
-  Box
+  Heading,
+  Icon,
+  Link,
+  Text
 } from '@hackclub/design-system'
 
+const FlexCard = Card.withComponent(Flex)
+
 const EventCard = ({ meeting_date, attendance, notes }) => (
-  <Card boxShadowSize="sm" p={3} my={3}>
-    <Flex align="center">
-      <Box align="right" mr={3}>
-        <Text f={2}>Club meeting</Text>
-        <Text>{timeSince(Date.parse(meeting_date))} ago</Text>
-        <Text>{attendance} members</Text>
-      </Box>
-      {notes === null ? (
-        <Text color="gray.4" bold>
-          No notes on the meeting
-        </Text>
-      ) : (
-        <Text>{notes}</Text>
-      )}
-    </Flex>
-  </Card>
+  <FlexCard boxShadowSize="sm" align="flex-start" p={3} my={3}>
+    <Badge bg="muted" children={timeSince(Date.parse(meeting_date))} f={2} />
+    <Box ml={3}>
+      <Heading.h3 f={3} children={meeting_date} />
+      <Text color="slate">{attendance} members</Text>
+      <Text>{notes}</Text>
+    </Box>
+  </FlexCard>
 )
 
 export default class extends Component {
@@ -66,6 +63,7 @@ export default class extends Component {
 
   render() {
     const { status, club, checkIns } = this.state
+    console.log(club)
     switch (status) {
       case 'loading':
         return <LoadingBar fill />
@@ -74,17 +72,23 @@ export default class extends Component {
           <Fragment>
             <Helmet title={`Dumb club #${club.id}`} />
             <Nav />
-            <Container>
-              <Heading.h2
-                align={['center', 'left']}
-                mx={[1, 5]}
-                my={5}
-                w={[1, 0.75, 0.5]}
-              >
-                {club.high_school_name}
+            <Container color="black" maxWidth={36} py={4}>
+              <Heading.h1 f={[5, 6]} children={club.high_school_name} />
+              {club.club_website && (
+                <Flex align="center" f={2} bold mt={3} mb={2}>
+                  <Link
+                    color="info"
+                    target="_blank"
+                    href={club.club_website}
+                    children={club.club_website}
+                  />
+                  <Icon size={16} name="open_in_new" color="muted" ml={2} />
+                </Flex>
+              )}
+              <Text f={2} color="muted" children={club.high_school_address} />
+              <Heading.h2 f={4} mt={4}>
+                Meetings
               </Heading.h2>
-            </Container>
-            <Container maxWidth={48}>
               {checkIns.map(checkIn => (
                 <EventCard {...checkIn} key={checkIn.index} />
               ))}

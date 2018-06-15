@@ -18,15 +18,23 @@ import {
 } from '@hackclub/design-system'
 import api from 'api'
 
+const FlexCardLink = Card.withComponent('a').extend`
+  display: flex;
+  align-items: center;
+
+  div {
+    flex: 1 1 auto;
+  }
+`
+
 class ClubCard extends Component {
   state = {
     status: 'loading'
   }
 
   componentDidMount() {
-    const { id } = this.props
     api
-      .get(`v1/new_clubs/${id}/dumb_check_ins`)
+      .get(`v1/new_clubs/${this.props.id}/dumb_check_ins`)
       .then(checkIns => {
         this.setState({ status: 'success', checkIns })
       })
@@ -63,7 +71,7 @@ class ClubCard extends Component {
       )
     } else {
       return (
-        <Text f={1} color="gray.6">
+        <Text f={1} color="muted">
           Never checked in
         </Text>
       )
@@ -83,25 +91,24 @@ class ClubCard extends Component {
   }
 
   render() {
-    if (this.props.visible) {
-      return (
-        <Link href={`/admin/operations/show?id=${this.props.id}`}>
-          <Card boxShadowSize="sm" p={[2, 3]} m={3} f={3}>
-            <Flex justify="space-between">
-              <Box>
-                <Text bold color="slate">
-                  {this.props.high_school_name}
-                </Text>
-                {this.renderSwitch()}
-              </Box>
-              <Icon name="open_in_new" color="slate" />
-            </Flex>
-          </Card>
-        </Link>
-      )
-    } else {
-      return null
-    }
+    if (!this.props.visible) return null
+    return (
+      <FlexCardLink
+        boxShadowSize="sm"
+        p={[2, 3]}
+        m={3}
+        f={3}
+        href={`/admin/operations/show?id=${this.props.id}`}
+      >
+        <Box align="left" mr={3}>
+          <Text bold color="black">
+            {this.props.high_school_name}
+          </Text>
+          {this.renderSwitch()}
+        </Box>
+        <Icon name="chevron_right" color="info" />
+      </FlexCardLink>
+    )
   }
 }
 
@@ -164,7 +171,7 @@ export default class extends Component {
         const visibleClubIds = fuse.search(searchQuery).map(club => club.id)
         return (
           <Fragment>
-            <Helmet title="🛠 Dumb Operations dashboard – Hack Club" />
+            <Helmet title="🛠 Dumb Operations Dashboard – Hack Club" />
             <Nav />
             <Container maxWidth={32}>
               {clubs.length > 8 && (
@@ -172,18 +179,21 @@ export default class extends Component {
                   placeholder="Search by high school"
                   value={searchQuery}
                   onChange={e => this.handleChange(e)}
-                  my={5}
+                  mt={5}
                 />
               )}
-              {clubs.map(club => (
-                <ClubCard
-                  {...club}
-                  key={club.id}
-                  visible={
-                    searchQuery === '' || visibleClubIds.indexOf(club.id) !== -1
-                  }
-                />
-              ))}
+              <Box mx={-3}>
+                {clubs.map(club => (
+                  <ClubCard
+                    {...club}
+                    key={club.id}
+                    visible={
+                      searchQuery === '' ||
+                      visibleClubIds.indexOf(club.id) !== -1
+                    }
+                  />
+                ))}
+              </Box>
             </Container>
           </Fragment>
         )

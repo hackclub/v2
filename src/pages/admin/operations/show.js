@@ -6,15 +6,31 @@ import Helmet from 'react-helmet'
 import search from 'search'
 import api from 'api'
 import { timeSince } from 'helpers'
-import { Text, Card, Container } from '@hackclub/design-system'
+import {
+  Text,
+  Card,
+  Container,
+  Heading,
+  Flex,
+  Box
+} from '@hackclub/design-system'
 
 const EventCard = ({ meeting_date, attendance, notes }) => (
   <Card boxShadowSize="sm" p={3} my={3}>
-    <Text>
-      Meeting {timeSince(Date.parse(meeting_date))} ago ({meeting_date})
-    </Text>
-    <Text>{attendance} members</Text>
-    <Text>{notes}</Text>
+    <Flex align="center">
+      <Box align="right" mr={3}>
+        <Text f={2}>Club meeting</Text>
+        <Text>{timeSince(Date.parse(meeting_date))} ago</Text>
+        <Text>{attendance} members</Text>
+      </Box>
+      {notes === null ? (
+        <Text color="gray.4" bold>
+          No notes on the meeting
+        </Text>
+      ) : (
+        <Text>{notes}</Text>
+      )}
+    </Flex>
   </Card>
 )
 
@@ -56,8 +72,18 @@ export default class extends Component {
       case 'success':
         return (
           <Fragment>
-            <Nav />
             <Helmet title={`Dumb club #${club.id}`} />
+            <Nav />
+            <Container>
+              <Heading.h2
+                align={['center', 'left']}
+                mx={[1, 5]}
+                my={5}
+                w={[1, 0.75, 0.5]}
+              >
+                {club.high_school_name}
+              </Heading.h2>
+            </Container>
             <Container maxWidth={48}>
               {checkIns.map(checkIn => (
                 <EventCard {...checkIn} key={checkIn.index} />

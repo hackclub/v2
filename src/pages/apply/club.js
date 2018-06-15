@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
 import { url as apiUrl } from 'api'
 import { Heading, Container, LargeButton } from '@hackclub/design-system'
-import LoadingAnimation from 'components/LoadingAnimation'
+import LoadingBar from 'components/LoadingBar'
 import Footer from 'components/Footer'
 import ClubApplicationForm from 'components/apply/ClubApplicationForm'
 import ApplyNav from 'components/apply/ApplyNav'
@@ -68,28 +68,29 @@ export default class extends Component {
   content() {
     const { status, formFields, id, authToken } = this.state
 
-    if (status === 'needsToAuth') {
-      return <Login />
-    } else if (status === 'loading') {
-      return <LoadingAnimation />
-    } else {
-      return (
-        <Fragment>
-          <ApplyNav />
-          <ClubApplicationForm
-            params={formFields}
-            id={id}
-            authToken={authToken}
-          />
-          <Heading.h4 align="center">
-            Your form is automatically saved ✨
-          </Heading.h4>
-          <Container align="center" my={4}>
-            <LargeButton.link to="/apply">« Back</LargeButton.link>
-          </Container>
-          <Footer />
-        </Fragment>
-      )
+    switch (status) {
+      case 'needsToAuth':
+        return <Login />
+      case 'loading':
+        return <LoadingBar fill />
+      default:
+        return (
+          <Fragment>
+            <ApplyNav />
+            <ClubApplicationForm
+              params={formFields}
+              id={id}
+              authToken={authToken}
+            />
+            <Heading.h4 align="center">
+              Your form is automatically saved ✨
+            </Heading.h4>
+            <Container align="center" my={4}>
+              <LargeButton.link to="/apply">« Back</LargeButton.link>
+            </Container>
+            <Footer />
+          </Fragment>
+        )
     }
   }
 

@@ -4,7 +4,7 @@ import api from 'api'
 import ClubForm from 'components/admin/clubs/ClubForm'
 import NotesForm from 'components/admin/NotesForm'
 import ErrorPage from 'components/admin/ErrorPage'
-import LoadingAnimation from 'components/LoadingAnimation'
+import LoadingBar from 'components/LoadingBar'
 import Nav from 'components/apply/ApplyNav'
 import { Heading, Text } from '@hackclub/design-system'
 
@@ -36,7 +36,7 @@ export default class extends Component {
     const { status, club } = this.state
     switch (status) {
       case 'loading':
-        return <LoadingAnimation />
+        return <LoadingBar fill />
       case 'success':
         return (
           <React.Fragment>

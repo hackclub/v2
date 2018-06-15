@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import LoadingAnimation from 'components/LoadingAnimation'
+import LoadingBar from 'components/LoadingBar'
 import Login from 'components/auth/Login'
 import EventForm from 'components/admin/events/EventForm'
 import ImageForm from 'components/admin/events/ImageForm'
@@ -72,7 +72,7 @@ export default class extends Component {
     const { status, event } = this.state
     switch (status) {
       case 'loading':
-        return <LoadingAnimation />
+        return <LoadingBar fill />
       case 'needsToAuth':
         return <Login userType="admin" />
       case 'success':

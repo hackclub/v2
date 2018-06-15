@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import LoadingAnimation from 'components/LoadingAnimation'
+import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 import IconButton from 'components/IconButton'
 import Login from 'components/auth/Login'
@@ -38,7 +38,7 @@ export default class extends Component {
     const { status, events } = this.state
     switch (status) {
       case 'loading':
-        return <LoadingAnimation />
+        return <LoadingBar fill />
       case 'needsToAuth':
         return <Login userType="admin" />
       case 'success':

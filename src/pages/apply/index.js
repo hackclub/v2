@@ -20,7 +20,7 @@ import ApplyNav from 'components/apply/ApplyNav'
 import LeaderInviteForm from 'components/apply/LeaderInviteForm'
 import Login from 'components/auth/Login'
 import SubmitButton from 'components/apply/SubmitButton'
-import LoadingAnimation from 'components/LoadingAnimation'
+import LoadingBar from 'components/LoadingBar'
 import fetch from 'unfetch'
 import Link from 'gatsby-link'
 import { timeSince } from 'helpers'
@@ -341,7 +341,7 @@ export default class extends Component {
       case 'needsToAuth':
         return <Login />
       case 'loading':
-        return <LoadingAnimation />
+        return <LoadingBar fill />
       case 'finished':
         return (
           <Fragment>

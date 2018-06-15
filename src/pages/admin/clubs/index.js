@@ -9,7 +9,7 @@ import {
 } from '@hackclub/design-system'
 import Login from 'components/auth/Login'
 import { Tr, Td, Th } from 'components/Table'
-import LoadingAnimation from 'components/LoadingAnimation'
+import LoadingBar from 'components/LoadingBar'
 import NotesForm from 'components/admin/NotesForm'
 import Nav from 'components/apply/ApplyNav'
 import ErrorPage from 'components/admin/ErrorPage'
@@ -50,7 +50,7 @@ export default class extends Component {
     const { status, clubs } = this.state
     switch (status) {
       case 'loading':
-        return <LoadingAnimation />
+        return <LoadingBar fill />
       case 'needsToAuth':
         return <Login userType="admin" />
       case 'success':

@@ -3,7 +3,7 @@ import { Formik } from 'formik'
 import api from 'api'
 import { AutoSaver, Field } from 'components/Forms'
 import { Box, Flex, IconButton } from '@hackclub/design-system'
-import LoadingAnimation from 'components/LoadingAnimation'
+import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 
 Box.form = Box.withComponent('form')
@@ -192,7 +192,7 @@ export default class NotesForm extends Component {
     const { status, notes } = this.state
     switch (status) {
       case 'loading':
-        return <LoadingAnimation />
+        return <LoadingBar />
       case 'success':
         return (
           <Fragment>

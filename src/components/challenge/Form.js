@@ -2,13 +2,13 @@ import React, { Component, Fragment } from 'react'
 import { Heading, Text } from '@hackclub/design-system'
 import LoginForm from 'components/auth/LoginForm'
 import PostForm from 'components/challenge/PostForm'
-import LoadingAnimation from 'components/LoadingAnimation'
+import LoadingBar from 'components/LoadingBar'
 import ErrorMessage from 'components/admin/ErrorPage'
 
 const Form = ({ status, closed = true, challengeId }) => {
   switch (status) {
     case 'loading':
-      return <LoadingAnimation />
+      return <LoadingBar />
     case 'success':
       return closed ? (
         <Fragment>

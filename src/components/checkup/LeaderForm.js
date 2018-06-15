@@ -228,6 +228,11 @@ export default withFormik({
       if (values[key] === '1900-01-01') {
         values[key] = ''
       }
+      // Date.parse has inconsistent results with timezones. This is an issue b/c we're setting the date to the first of the month so some timezones would roll over into the previous month
+      if (key === 'expected_graduation' && values[key] != null) {
+        const dateArray = values[key].split('-')
+        values[key] = `${dateArray[0]}-${dateArray[1]}`
+      }
     })
 
     return values
@@ -294,12 +299,13 @@ export default withFormik({
     const userData = {
       email: values.email
     }
+    // Expected graduation is going to walk
     const leaderData = {
       address: values.address,
       gender: values.gender,
       birthday: values.birthday,
       ethnicity: values.ethnicity,
-      expected_graduation: values.expected_graduation,
+      expected_graduation: new Date(values.expected_graduation).toISOString(),
       facebook_url: values.facebook_url,
       github_url: values.github_url,
       linkedin_url: values.linkedin_url,

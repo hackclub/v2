@@ -20,8 +20,8 @@ export default () => (
       <Action bg="accent" to="/admin/events">
         🚝Events
       </Action>
-      <Action bg="warning" to="/admin/ops">
-        ⚠️Ops⚠️
+      <Action bg="warning" to="/admin/operations">
+        ⚠️Operations⚠️
       </Action>
     </Flex>
   </Container>

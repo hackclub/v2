@@ -21,6 +21,26 @@ class SelfForm extends Component {
     status: 'ready'
   }
 
+  handleClick(status) {
+    const requests = this.props.club.information_verification_requests
+    const request = requests[0]
+    if (request && !request.verified_at) {
+      this.setState({ status: 'loading' })
+      api
+        .post(
+          `v1/new_clubs/information_verification_requests/${request.id}/verify`
+        )
+        .then(_res => {
+          this.setState({ status })
+        })
+        .catch(err => {
+          this.setState({ status: 'error' })
+        })
+    } else {
+      this.setState({ status })
+    }
+  }
+
   render() {
     const { status } = this.state
     const { user, club, position } = this.props
@@ -31,7 +51,7 @@ class SelfForm extends Component {
             <Heading>Will you lead the club next semester?</Heading>
             <Flex my={3}>
               <Button
-                onClick={() => this.setState({ status: 'staying' })}
+                onClick={() => this.handleClick('staying')}
                 bg="success"
                 m={2}
                 w={1}
@@ -39,7 +59,7 @@ class SelfForm extends Component {
                 Yes
               </Button>
               <Button
-                onClick={() => this.setState({ status: 'leaving' })}
+                onClick={() => this.handleClick('leaving')}
                 m={2}
                 w={1}
                 inverted
@@ -49,7 +69,6 @@ class SelfForm extends Component {
             </Flex>
           </Fragment>
         )
-        debugger
       case 'leaving':
         return (
           <Fragment>
@@ -75,7 +94,9 @@ class SelfForm extends Component {
           </Fragment>
         )
       case 'loading':
-        return <LoadingAnimation />
+        return <LoadingBar />
+      default:
+        return <ErrorPage />
     }
   }
 }

@@ -3,7 +3,7 @@ import Link from 'gatsby-link'
 import { Text, Flex, Box, Link as A } from '@hackclub/design-system'
 import { Item } from 'components/Nav'
 import Flag from 'components/Flag'
-import LogoutButton from 'components/apply/LogoutButton'
+import LogoutButton from 'components/auth/LogoutButton'
 import { withRouter } from 'react-router-dom'
 import { startCase, toLower } from 'lodash'
 

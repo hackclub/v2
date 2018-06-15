@@ -1,10 +1,11 @@
 import React from 'react'
 import { Button } from '@hackclub/design-system'
 import Link from 'gatsby-link'
+import storage from 'storage'
 
 export const destroySession = () => {
-  window.localStorage.removeItem('authToken')
-  window.localStorage.removeItem('userId')
+  storage.remove('authToken')
+  storage.remove('userId')
 }
 
 Button.link = Button.withComponent(Link)

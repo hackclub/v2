@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Heading, Text } from '@hackclub/design-system'
-import LoginForm from 'components/apply/LoginForm'
+import LoginForm from 'components/auth/LoginForm'
 import PostForm from 'components/challenge/PostForm'
 import LoadingAnimation from 'components/LoadingAnimation'
 import ErrorMessage from 'components/admin/ErrorPage'

@@ -18,7 +18,7 @@ import {
 import { clubApplicationSchema } from 'components/apply/ClubApplicationForm'
 import ApplyNav from 'components/apply/ApplyNav'
 import LeaderInviteForm from 'components/apply/LeaderInviteForm'
-import Login from 'components/apply/Login'
+import Login from 'components/auth/Login'
 import SubmitButton from 'components/apply/SubmitButton'
 import LoadingAnimation from 'components/LoadingAnimation'
 import fetch from 'unfetch'

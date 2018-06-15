@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
-import EmailLoginForm from 'components/apply/EmailLoginForm'
-import LoginCodeForm from 'components/apply/LoginCodeForm'
+import EmailLoginForm from 'components/auth/EmailLoginForm'
+import LoginCodeForm from 'components/auth/LoginCodeForm'
 import search from 'search'
 
 class Login extends Component {

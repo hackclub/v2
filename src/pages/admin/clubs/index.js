@@ -7,7 +7,7 @@ import {
   Text,
   Badge
 } from '@hackclub/design-system'
-import Login from 'components/apply/Login'
+import Login from 'components/auth/Login'
 import { Tr, Td, Th } from 'components/Table'
 import LoadingAnimation from 'components/LoadingAnimation'
 import NotesForm from 'components/admin/NotesForm'

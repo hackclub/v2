@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
 import { Flex, Heading, colors } from '@hackclub/design-system'
-import LoginForm from 'components/apply/LoginForm'
+import LoginForm from 'components/auth/LoginForm'
 import Flag from 'components/Flag'
 
 const Base = Flex.extend.attrs({

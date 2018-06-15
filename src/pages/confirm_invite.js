@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import ErrorPage from 'components/admin/ErrorPage'
 import LoadingBar from 'components/LoadingBar'
-import LoginPage from 'components/apply/Login'
+import LoginPage from 'components/auth/Login'
 import LeaderForm from 'components/confirm_invite/LeaderForm'
 import Nav from 'components/apply/ApplyNav'
 import api from 'api'

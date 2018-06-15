@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import LoadingAnimation from 'components/LoadingAnimation'
-import Login from 'components/apply/Login'
+import Login from 'components/auth/Login'
 import EventForm from 'components/admin/events/EventForm'
 import ImageForm from 'components/admin/events/ImageForm'
 import ErrorPage from 'components/admin/ErrorPage'

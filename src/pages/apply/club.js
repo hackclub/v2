@@ -6,7 +6,7 @@ import LoadingAnimation from 'components/LoadingAnimation'
 import Footer from 'components/Footer'
 import ClubApplicationForm from 'components/apply/ClubApplicationForm'
 import ApplyNav from 'components/apply/ApplyNav'
-import Login from 'components/apply/Login'
+import Login from 'components/auth/Login'
 import * as yup from 'yup'
 import fetch from 'unfetch'
 

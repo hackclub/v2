@@ -1,8 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
+import Nav from 'components/apply/ApplyNav'
+import Helmet from 'react-helmet'
 import search from 'search'
 import api from 'api'
+import { Container, Heading, Text } from '@hackclub/design-system'
 
 export default class extends Component {
   state = {
@@ -11,7 +14,6 @@ export default class extends Component {
 
   componentDidMount() {
     const id = search.get('id')
-    // This endpoint isn't live yet, so this page will fail to load
     api
       .get(`v1/new_leaders/${id}`)
       .then(leader => {
@@ -31,7 +33,7 @@ export default class extends Component {
   }
 
   render() {
-    const { status, leaders } = this.state
+    const { status, leader } = this.state
     switch (status) {
       case 'loading':
         return <LoadingBar fill />
@@ -39,9 +41,11 @@ export default class extends Component {
         return (
           <Fragment>
             <Nav />
-            <Helmet title={`Dumb club #${club.id}`} />
+            <Helmet title={`Leader Profile ${leader.id} - ${leader.name}`} />
             <Container color="black" maxWidth={36} py={4}>
-              <Heading.h1 f={[5, 6]} children={club.high_school_name} />
+              <Heading.h1 f={[5, 6]}>{leader.name}</Heading.h1>
+              <Text f={2} color="muted" children={leader.address} />
+              <Text f={2} color="muted" children={leader.phone_number} />
             </Container>
           </Fragment>
         )

@@ -14,6 +14,7 @@ import {
   Flex,
   Heading,
   Icon,
+  IconButton,
   Link,
   Text
 } from '@hackclub/design-system'
@@ -29,6 +30,31 @@ const EventCard = ({ meeting_date, attendance, notes }) => (
       <Text>{notes}</Text>
     </Box>
   </FlexCard>
+)
+
+const removeLeader = (id, name) => {
+  const confirmation = confirm(
+    `Are you sure you want to remove ${name} from the club?`
+  )
+  if (confirmation) {
+    // TODO: waiting on API endpoints for leadership_position deletion
+    alert('deleting!')
+  }
+}
+
+const LinkSpan = Text.span.withComponent(Link)
+
+const LeaderCard = ({ name, id, email }) => (
+  <Fragment>
+    <LinkSpan href={`/admin/operations/leader?id=${id}`}>{name}</LinkSpan>
+    <IconButton
+      name="close"
+      color="error"
+      px={0}
+      size={20}
+      onClick={() => removeLeader(id, name)}
+    />
+  </Fragment>
 )
 
 export default class extends Component {
@@ -63,7 +89,6 @@ export default class extends Component {
 
   render() {
     const { status, club, checkIns } = this.state
-    console.log(club)
     switch (status) {
       case 'loading':
         return <LoadingBar fill />
@@ -86,11 +111,24 @@ export default class extends Component {
                 </Flex>
               )}
               <Text f={2} color="muted" children={club.high_school_address} />
-              <Heading.h2 f={4} mt={4}>
+              <Text my={2}>
+                Lead by{' '}
+                {club.new_leaders.map((leader, index) => (
+                  <Fragment>
+                    <LeaderCard {...leader} key={leader.id} />
+                    {index + 1 < club.new_leaders.length &&
+                    club.new_leaders.length > 2
+                      ? ', '
+                      : ' '}
+                    {index + 2 === club.new_leaders.length && 'and '}
+                  </Fragment>
+                ))}
+              </Text>
+              <Heading.h2 f={4} mt={2}>
                 Meetings
               </Heading.h2>
               {checkIns.map(checkIn => (
-                <EventCard {...checkIn} key={checkIn.index} />
+                <EventCard {...checkIn} key={checkIn.id} />
               ))}
             </Container>
           </Fragment>

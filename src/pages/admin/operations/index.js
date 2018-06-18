@@ -98,7 +98,7 @@ class ClubCard extends Component {
         p={[2, 3]}
         m={3}
         f={3}
-        href={`/admin/operations/show?id=${this.props.id}`}
+        href={`/admin/operations/club?id=${this.props.id}`}
       >
         <Box align="left" mr={3}>
           <Text bold color="black">

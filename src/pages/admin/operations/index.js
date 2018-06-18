@@ -104,6 +104,14 @@ class ClubCard extends Component {
           <Text bold color="black">
             {this.props.high_school_name}
           </Text>
+          <Text color="slate" f={1}>
+            {this.props.new_leaders.map((leader, index) => (
+              <Fragment>
+                <Text.span>{leader.name}</Text.span>
+                {this.props.new_leaders.length - 1 > index && ', '}
+              </Fragment>
+            ))}
+          </Text>
           {this.renderSwitch()}
         </Box>
         <Icon name="chevron_right" color="info" />
@@ -166,7 +174,7 @@ export default class extends Component {
       case 'success':
         const fuse = new Fuse(clubs, {
           threshold: 0.4,
-          keys: ['high_school_name']
+          keys: ['high_school_name', 'new_leaders.name', 'new_leaders.email']
         })
         const visibleClubIds = fuse.search(searchQuery).map(club => club.id)
         return (
@@ -176,7 +184,7 @@ export default class extends Component {
             <Container maxWidth={32}>
               {clubs.length > 8 && (
                 <Field
-                  placeholder="Search by high school"
+                  placeholder="Search by high school or leaders"
                   value={searchQuery}
                   onChange={e => this.handleChange(e)}
                   mt={5}

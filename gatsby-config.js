@@ -84,7 +84,6 @@ module.exports = {
           '/fonts/**': ['Access-Control-Allow-Origin: *']
         }
       }
-    },
-    'gatsby-plugin-offline'
+    }
   ]
 }

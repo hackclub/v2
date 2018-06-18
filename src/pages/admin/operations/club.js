@@ -32,19 +32,20 @@ const EventCard = ({ meeting_date, attendance, notes }) => (
   </FlexCard>
 )
 
-const removeLeader = (id, name) => {
+const removeLeadershipPosition = (positionId, name) => {
   const confirmation = confirm(
     `Are you sure you want to remove ${name} from the club?`
   )
   if (confirmation) {
-    // TODO: waiting on API endpoints for leadership_position deletion
-    alert('deleting!')
+    api.delete(`v1/leadership_positions/${positionId}`).then(() => {
+      window.location.reload()
+    })
   }
 }
 
 const LinkSpan = Text.span.withComponent(Link)
 
-const LeaderCard = ({ name, id, email }) => (
+const LeaderCard = ({ name, id, email, position }) => (
   <Fragment>
     <LinkSpan href={`/admin/operations/leader?id=${id}`}>{name}</LinkSpan>
     <IconButton
@@ -52,7 +53,7 @@ const LeaderCard = ({ name, id, email }) => (
       color="error"
       px={0}
       size={20}
-      onClick={() => removeLeader(id, name)}
+      onClick={() => removeLeadershipPosition(position.id, name)}
     />
   </Fragment>
 )
@@ -115,7 +116,13 @@ export default class extends Component {
                 Lead by{' '}
                 {club.new_leaders.map((leader, index) => (
                   <Fragment>
-                    <LeaderCard {...leader} key={leader.id} />
+                    <LeaderCard
+                      {...leader}
+                      position={club.leadership_positions.find(
+                        lp => lp.new_leader_id === leader.id
+                      )}
+                      key={leader.id}
+                    />
                     {index + 1 < club.new_leaders.length &&
                     club.new_leaders.length > 2
                       ? ', '

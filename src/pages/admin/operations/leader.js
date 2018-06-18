@@ -5,7 +5,7 @@ import Nav from 'components/apply/ApplyNav'
 import Helmet from 'react-helmet'
 import search from 'search'
 import api from 'api'
-import { Container, Heading, Text } from '@hackclub/design-system'
+import { Container, Heading, Text, Link } from '@hackclub/design-system'
 
 export default class extends Component {
   state = {
@@ -46,6 +46,7 @@ export default class extends Component {
               <Heading.h1 f={[5, 6]}>{leader.name}</Heading.h1>
               <Text f={2} color="muted" children={leader.address} />
               <Text f={2} color="muted" children={leader.phone_number} />
+              <Link href={`mailto:${leader.email}`}>{leader.email}</Link>
             </Container>
           </Fragment>
         )

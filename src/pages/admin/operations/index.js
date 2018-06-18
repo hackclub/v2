@@ -134,10 +134,6 @@ export default class extends Component {
         api.get(`v1/new_clubs`).then(originalClubs => {
           const clubs = originalClubs
           this.setState({ user, clubs, status: 'success' })
-          const promiseArray = clubs.map(club =>
-            api.get(`v1/new_clubs/${club.id}/dumb_check_ins`)
-          )
-          Promise.all(promiseArray)
         })
         // Normally I'd be using something like 'owner_position', but this isn't implemented yet
         // const clubs = user.leadership_position_invites.map(invite => ({...invite.new_club, check_ins: null}))

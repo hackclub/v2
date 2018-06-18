@@ -186,7 +186,9 @@ class DonateForm extends Component {
       description: this.state.recurring
         ? 'Monthly contribution to Hack Club'
         : 'One-time contribution to Hack Club',
-      panelLabel: 'Donate',
+      panelLabel: this.state.recurring
+        ? 'Donate {{amount}} monthly'
+        : 'Donate {{amount}}',
       allowRememberMe: false
     })
 

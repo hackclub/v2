@@ -74,9 +74,9 @@ class SelfForm extends Component {
           <Fragment>
             <Heading>Leaving?</Heading>
             <Text my={3}>
-              Sorry to hear you’re leaving. Before you go, we would like to have
-              an exit interview. It will be a short (~10 minutes) call to talk
-              about your time with your club.
+              Sorry to hear you’re leaving. The last step is to have an exit
+              interview. It will be a short (~10 minutes) call to talk about
+              your time with your club.
             </Text>
             <Button href="https://exit-interview.hackclub.com" w={1}>
               Schedule the call

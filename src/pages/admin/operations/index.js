@@ -132,7 +132,7 @@ export default class extends Component {
       .currentUser()
       .then(user => {
         api.get(`v1/new_clubs`).then(originalClubs => {
-          const clubs = originalClubs
+          const clubs = originalClubs.splice(-20)
           this.setState({ user, clubs, status: 'success' })
         })
         // Normally I'd be using something like 'owner_position', but this isn't implemented yet

@@ -1,6 +1,6 @@
 import React from 'react'
 import { withFormik } from 'formik'
-import yup from 'yup'
+import * as yup from 'yup'
 import { Button } from '@hackclub/design-system'
 import { AutoSaver, Field, Submit } from 'components/Forms'
 

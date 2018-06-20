@@ -2,7 +2,7 @@ import React from 'react'
 import { Field, Submit } from 'components/Forms'
 import { withFormik } from 'formik'
 import { map, last, keys, omit } from 'lodash'
-import yup from 'yup'
+import * as yup from 'yup'
 import api from 'api'
 import { workshopFeedback } from 'data.json'
 

@@ -13,7 +13,7 @@ import {
 } from 'components/Forms'
 import { withFormik } from 'formik'
 import Link from 'gatsby-link'
-import yup from 'yup'
+import * as yup from 'yup'
 
 LargeButton.link = LargeButton.withComponent(Link)
 

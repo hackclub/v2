@@ -2,7 +2,7 @@ import React from 'react'
 import { Field, Submit } from 'components/Forms'
 import { withFormik } from 'formik'
 import storage from 'storage'
-import yup from 'yup'
+import * as yup from 'yup'
 import api from 'api'
 
 const statusMessage = status =>

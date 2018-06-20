@@ -4,7 +4,7 @@ import { withFormik } from 'formik'
 import { isEmpty } from 'lodash'
 import Composer, { LS_BODY_KEY } from './CommentComposer'
 import { SendForm, SendButton } from '../SendForm'
-import yup from 'yup'
+import * as yup from 'yup'
 import api from 'api'
 
 const statusIcon = status =>

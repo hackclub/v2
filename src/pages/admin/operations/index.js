@@ -131,19 +131,9 @@ export default class extends Component {
     api
       .currentUser()
       .then(user => {
-        api.get(`v1/new_clubs`).then(originalClubs => {
-          const clubs = originalClubs.splice(-20)
+        api.get(`v1/new_clubs/owned`).then(clubs => {
           this.setState({ user, clubs, status: 'success' })
         })
-        // Normally I'd be using something like 'owner_position', but this isn't implemented yet
-        // const clubs = user.leadership_position_invites.map(invite => ({...invite.new_club, check_ins: null}))
-        // this.setState({ user, status: 'success', clubs })
-        // const clubIds = user.leadership_position_invites.map(invite => invite.new_club.id)
-        // const promiseArray = clubIds.map(clubId => api.get(`v1/new_clubs/${clubId}/dumb_check_ins`))
-
-        // Promise.all(promiseArray).then(res => {
-        //   console.log(res)
-        // })
       })
       .catch(err => {
         switch (err.status) {

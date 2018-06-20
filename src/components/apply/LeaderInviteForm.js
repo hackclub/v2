@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { url as apiUrl } from 'api'
 import { Field } from 'components/Forms'
 import { Box, Flex, Text, IconButton, Link as A } from '@hackclub/design-system'
-import yup from 'yup'
+import * as yup from 'yup'
 
 class LeaderInviteForm extends Component {
   constructor(props) {

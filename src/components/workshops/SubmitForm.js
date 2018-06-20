@@ -12,7 +12,7 @@ import { withFormik } from 'formik'
 import { isEmpty } from 'lodash'
 import Composer, { LS_NAME_KEY, LS_BODY_KEY } from './Composer'
 import Invert from 'components/Invert'
-import yup from 'yup'
+import * as yup from 'yup'
 import api from 'api'
 
 const Sheet = Container.withComponent(Card).extend`

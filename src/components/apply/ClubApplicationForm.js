@@ -20,7 +20,7 @@ import {
 } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import Link from 'gatsby-link'
-import yup from 'yup'
+import * as yup from 'yup'
 
 export const clubApplicationSchema = yup.object().shape({
   high_school_name: yup.string().required(),

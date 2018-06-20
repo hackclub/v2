@@ -7,7 +7,7 @@ import Footer from 'components/Footer'
 import ClubApplicationForm from 'components/apply/ClubApplicationForm'
 import ApplyNav from 'components/apply/ApplyNav'
 import Login from 'components/apply/Login'
-import yup from 'yup'
+import * as yup from 'yup'
 import fetch from 'unfetch'
 
 export default class extends Component {

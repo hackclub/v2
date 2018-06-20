@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import api from 'api'
 import { Label, Input, Text, cx } from '@hackclub/design-system'
 import { withFormik } from 'formik'
-import yup from 'yup'
+import * as yup from 'yup'
 import fetch from 'unfetch'
 
 const StyledInput = Input.extend`

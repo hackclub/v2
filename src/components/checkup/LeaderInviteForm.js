@@ -1,7 +1,7 @@
 import React from 'react'
 import { withFormik } from 'formik'
 import api from 'api'
-import yup from 'yup'
+import * as yup from 'yup'
 import { Field, Submit } from 'components/Forms'
 import { SendForm, SendButton } from '../SendForm'
 import { isEmpty } from 'lodash'

@@ -2,7 +2,7 @@ import React from 'react'
 import { Box } from '@hackclub/design-system'
 import { Field, Submit } from 'components/Forms'
 import { withFormik } from 'formik'
-import yup from 'yup'
+import * as yup from 'yup'
 import api from 'api'
 
 const Form = Box.withComponent('form')

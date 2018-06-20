@@ -31,22 +31,22 @@ A.link = A.withComponent(Link)
 const Base = Box.main.extend`
   display: grid;
   position: relative;
-  ${props => props.theme.mediaQueries[1]} {
+  ${({ theme }) => theme.mediaQueries[1]} {
     grid-template-columns: 24rem 1fr;
   }
 `
 
 const Background = Section.extend`
   justify-content: flex-start;
-  background-color: ${props => props.theme.colors.red[5]};
+  background-color: ${({ theme }) => theme.colors.red[5]};
   background-image: url('/pattern.svg'),
     linear-gradient(
       -86deg,
-      ${props => props.theme.colors.orange[5]},
-      ${props => props.theme.colors.red[5]},
-      ${props => props.theme.colors.red[6]}
+      ${({ theme }) => theme.colors.orange[5]},
+      ${({ theme }) => theme.colors.red[5]},
+      ${({ theme }) => theme.colors.red[6]}
     );
-  ${props => props.theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.md} {
     min-height: 100vh;
   }
 `
@@ -56,8 +56,8 @@ const Name = Heading.h1.extend`
   background-color: white;
   color: black;
   display: inline-block;
-  padding-left: ${props => props.theme.space[3]}px;
-  padding-right: ${props => props.theme.space[3]}px;
+  padding-left: ${({ theme }) => theme.space[3]}px;
+  padding-right: ${({ theme }) => theme.space[3]}px;
   clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
 `
@@ -68,20 +68,16 @@ const Super = Text.withComponent('mark').extend`
   padding-bottom: 0.125rem;
 `
 const SuperButton = Button.withComponent(Link).extend`
-  background-color: ${props => props.theme.colors.fuschia[6]};
+  background-color: ${({ theme }) => theme.colors.fuschia[6]};
   background-image: linear-gradient(
     -32deg,
-    ${props => props.theme.colors.fuschia[5]},
-    ${props => props.theme.colors.red[5]},
-    ${props => props.theme.colors.red[6]}
+    ${({ theme }) => theme.colors.fuschia[5]},
+    ${({ theme }) => theme.colors.red[5]},
+    ${({ theme }) => theme.colors.red[6]}
   );
 `
 
-export default ({
-  data: {
-    allMarkdownRemark: { edges }
-  }
-}) => {
+export default ({ data: { allMarkdownRemark: { edges } } }) => {
   const title = 'Hack Club Workshops'
   const desc =
     'Get free coding tutorials, project ideas, and programming club activities ' +

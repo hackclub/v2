@@ -132,13 +132,19 @@ export default () => (
     </Header>
     <Container pb={4}>
       <Update
-        color="lime.6"
+        color="green.6"
+        month="May"
+        year={2018}
+        url="https://youtu.be/_u8_U52ebao"
+      />
+      <Update
+        color="teal.7"
         month="April"
         year={2018}
         url="https://youtu.be/q1BOuOhPvbg"
       />
       <Update
-        color="teal.6"
+        color="cyan.8"
         month="March"
         year={2018}
         url="https://youtu.be/Xj32LuE44bU"

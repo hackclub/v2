@@ -54,7 +54,6 @@ class WorkshopSearch extends Component {
           label="Search"
           value={this.state.value}
           onChange={this.handleInputChange}
-          mb={5}
         />
         {results.length !== 0 ? (
           <Fragment>

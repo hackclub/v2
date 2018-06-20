@@ -17,18 +17,21 @@ const groupOrder = [
 const keys = ['node.frontmatter.name', 'node.frontmatter.description']
 
 class WorkshopSearch extends Component {
-  state = {
-    inputValue: ''
+  constructor(props) {
+    super(props)
+    this.state = {
+      value: ''
+    }
+    this.fuse = new Fuse(props.workshops, { threshold: 0.4, keys })
   }
 
-  handleInputChange = event => this.setState({ inputValue: event.target.value })
+  handleInputChange = e => this.setState({ value: e.target.value })
 
   render() {
-    const fuse = new Fuse(this.props.workshops, { threshold: 0.4, keys: keys })
     const results =
-      this.state.inputValue === ''
+      this.state.value === ''
         ? this.props.workshops
-        : fuse.search(this.state.inputValue)
+        : this.fuse.search(this.state.value)
     const groups = groupBy(results, 'node.frontmatter.group')
 
     // sort groups based on groupOrder
@@ -45,11 +48,11 @@ class WorkshopSearch extends Component {
     })
 
     return (
-      <div>
+      <Fragment>
         <SearchInput
           placeholder="Search workshops"
           label="Search"
-          value={this.state.inputValue}
+          value={this.state.value}
           onChange={this.handleInputChange}
           mb={5}
         />
@@ -64,9 +67,9 @@ class WorkshopSearch extends Component {
             ))}
           </Fragment>
         ) : (
-          <NoResults value={this.state.inputValue} />
+          <NoResults value={this.state.value} />
         )}
-      </div>
+      </Fragment>
     )
   }
 }

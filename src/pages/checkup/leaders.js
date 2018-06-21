@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import Login from 'components/apply/Login'
+import Login from 'components/auth/Login'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 import Nav from 'components/apply/ApplyNav'

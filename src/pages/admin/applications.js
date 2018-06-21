@@ -9,9 +9,9 @@ import {
   Badge
 } from '@hackclub/design-system'
 import { AutoSaver, Field, Form } from 'components/Forms'
-import Login from 'components/apply/Login'
+import Login from 'components/auth/Login'
 import { Tr, Td, Th } from 'components/Table'
-import LoadingAnimation from 'components/LoadingAnimation'
+import LoadingBar from 'components/LoadingBar'
 import InterviewForm from 'components/admin/InterviewForm'
 import RejectionForm from 'components/admin/RejectionForm'
 import AcceptanceForm from 'components/admin/AcceptanceForm'
@@ -195,7 +195,7 @@ export default class extends Component {
     } = this.state
     switch (status) {
       case 'loading':
-        return <LoadingAnimation />
+        return <LoadingBar fill />
       case 'needsToAuth':
         return <Login userType="admin" />
       case 'success':

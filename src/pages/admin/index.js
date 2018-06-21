@@ -7,18 +7,21 @@ const Action = Button.withComponent(Link).extend.attrs({ m: 2 })``
 
 export default () => (
   <Container maxWidth={48} align="center" px={3} py={[4, 5]}>
-    <Helmet title="Admin – Hack Club" />
+    <Helmet title="🚉 Admin Station – Hack Club" />
     <Heading.h1 f={[5, 6]}>Grand admin station</Heading.h1>
     <Heading f={4} mt={2} mb={4}>
       What is your destination?
     </Heading>
     <Flex align="center" justify="center" wrap>
-      <Action to="/admin/clubs">Clubs</Action>
+      <Action to="/admin/clubs">🚄 Clubs</Action>
       <Action bg="info" to="/admin/applications">
-        Club Applications
+        🚅 Club Applications
       </Action>
       <Action bg="accent" to="/admin/events">
-        Events
+        🚝 Events
+      </Action>
+      <Action bg="warning" to="/admin/operations">
+        ⚠️ Operations ⚠️
       </Action>
     </Flex>
   </Container>

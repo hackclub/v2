@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
 import { Flex, Heading, colors } from '@hackclub/design-system'
-import LoginForm from 'components/apply/LoginForm'
+import LoginForm from 'components/auth/LoginForm'
 import Flag from 'components/Flag'
 
 const Base = Flex.extend.attrs({
@@ -25,19 +25,22 @@ const Login = ({ userType = 'applicant', color, heading, bg }) => {
     color ||
     {
       admin: colors.green[5],
-      applicant: 'white'
+      applicant: 'white',
+      owner: 'white'
     }[userType]
   const resultBg =
     bg ||
     {
       admin: '#000',
-      applicant: 'primary'
+      applicant: 'primary',
+      owner: 'orange.5'
     }[userType]
   const resultHeading =
     heading ||
     {
       admin: 'Admin login',
-      applicant: 'Start your application'
+      applicant: 'Start your application',
+      owner: '⚙️ Operations login 🔧'
     }[userType]
 
   return (

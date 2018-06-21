@@ -5,7 +5,8 @@ import Login from 'components/auth/Login'
 import Helmet from 'react-helmet'
 import Nav from 'components/apply/ApplyNav'
 import Fuse from 'fuse.js'
-import { timeSince } from 'helpers'
+import Chart from 'components/admin/operations/CheckInChart'
+import { timeSince, formatDate } from 'helpers'
 import {
   Text,
   Card,
@@ -14,7 +15,8 @@ import {
   Icon,
   Flex,
   Box,
-  Field
+  Field,
+  Heading
 } from '@hackclub/design-system'
 import api from 'api'
 
@@ -64,10 +66,19 @@ class ClubCard extends Component {
       } else {
         textColor = 'error'
       }
+      const checkInData = checkIns.slice(0, 6).map(checkIn => ({
+        y: checkIn.attendance || 0,
+        x: formatDate('mmm dd', checkIn.meeting_date)
+      }))
       return (
-        <Text color={textColor} f={1}>
-          Last checked-in {timeSince(mostRecentUpdate)} ago
-        </Text>
+        <Fragment>
+          <Text color={textColor} f={1}>
+            Last checked-in {timeSince(mostRecentUpdate)} ago
+          </Text>
+          <Flex mt={3}>
+            {checkIns.length > 1 && <Chart data={checkInData} />}
+          </Flex>
+        </Fragment>
       )
     } else {
       return (

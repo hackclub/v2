@@ -2,10 +2,11 @@ import React, { Component, Fragment } from 'react'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 import Nav from 'components/apply/ApplyNav'
+import Chart from 'components/admin/operations/CheckInChart'
 import Helmet from 'react-helmet'
 import search from 'search'
 import api from 'api'
-import { timeSince } from 'helpers'
+import { timeSince, formatDate } from 'helpers'
 import {
   Badge,
   Box,
@@ -94,6 +95,10 @@ export default class extends Component {
       case 'loading':
         return <LoadingBar fill />
       case 'success':
+        const checkInData = checkIns.slice(0, 10).map(checkIn => ({
+          y: checkIn.attendance || 0,
+          x: formatDate('mmm dd', checkIn.meeting_date)
+        }))
         return (
           <Fragment>
             <Helmet title={`Dumb club #${club.id}`} />
@@ -131,12 +136,23 @@ export default class extends Component {
                   </Fragment>
                 ))}
               </Text>
-              <Heading.h2 f={4} mt={2}>
-                Meetings
-              </Heading.h2>
-              {checkIns.map(checkIn => (
-                <EventCard {...checkIn} key={checkIn.id} />
-              ))}
+              {checkIns.length > 0 ? (
+                <Fragment>
+                  <Flex justify="center">
+                    <Chart data={checkInData} />
+                  </Flex>
+                  <Heading.h2 f={4} mt={2}>
+                    Meetings
+                  </Heading.h2>
+                  {checkIns.map(checkIn => (
+                    <EventCard {...checkIn} key={checkIn.id} />
+                  ))}
+                </Fragment>
+              ) : (
+                <Heading.h3 bold mt={5} color="muted" align="center">
+                  No recorded meetings
+                </Heading.h3>
+              )}
             </Container>
           </Fragment>
         )

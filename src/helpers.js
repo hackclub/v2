@@ -42,3 +42,57 @@ const regex = new RegExp(
   `^(${originalEmojiRegex.toString().replace(/\/g$/, '')}|\\s)+$`
 )
 export const onlyContainsEmoji = text => regex.test(text)
+
+function formatChunk(type, date) {
+  const days = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ]
+  const months = [
+    'January',
+    'Febuary',
+    'March',
+    ' April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ]
+  switch (type) {
+    case 'dddd':
+      return days[date.getDay()]
+    case 'ddd':
+      return formatChunk('dddd', date).slice(0, 3)
+    case 'dd':
+      return ('00' + formatChunk('d', date)).slice(-2)
+    case 'd':
+      return date.getDate()
+    case 'mmmm':
+      return months[date.getMonth()]
+    case 'mmm':
+      return formatChunk('mmmm', date).slice(0, 3)
+    case 'mm':
+      return ('00' + formatChunk('m', date)).slice(-2)
+    case 'm':
+      return (date.getMonth() + 1).toString()
+    case 'yyyy':
+      return date.getFullYear().toString()
+    case 'yy':
+      return formatChunk('yyyy', date).slice(-2)
+  }
+}
+export const formatDate = (format, date, divider = ' ') => {
+  return format
+    .split(divider)
+    .map(chunk => formatChunk(chunk, new Date(date)))
+    .join(divider)
+}

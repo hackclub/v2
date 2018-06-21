@@ -3,6 +3,8 @@ import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 import Nav from 'components/apply/ApplyNav'
 import Chart from 'components/admin/operations/CheckInChart'
+import LeaderInviteForm from 'components/checkup/LeaderInviteForm'
+import { Modal, Overlay, CloseButton } from 'components/Modal'
 import Helmet from 'react-helmet'
 import search from 'search'
 import api from 'api'
@@ -59,9 +61,37 @@ const LeaderCard = ({ name, id, email, position }) => (
   </Fragment>
 )
 
+const removeInvite = (id, email) => {
+  const confirmation = confirm(
+    `Are you sure you want to remove ${email}’s invite?`
+  )
+  if (confirmation) {
+    api.delete(`v1/leadership_position_invites/${id}`).then(() => {
+      window.location.reload()
+    })
+  }
+}
+
+const InviteCard = ({ email, id }) => (
+  <li>
+    {email}
+    {/* The delete endpoint doesn’t exist yet */}
+    {/*
+      <IconButton
+        name="close"
+        color="error"
+        px={0}
+        size={20}
+        onClick={() => removeInvite(id, email)}
+      />
+    */}
+  </li>
+)
+
 export default class extends Component {
   state = {
-    status: 'loading'
+    status: 'loading',
+    showInviteModal: false
   }
 
   componentDidMount() {
@@ -90,7 +120,7 @@ export default class extends Component {
   }
 
   render() {
-    const { status, club, checkIns } = this.state
+    const { status, club, checkIns, showInviteModal } = this.state
     switch (status) {
       case 'loading':
         return <LoadingBar fill />
@@ -99,6 +129,9 @@ export default class extends Component {
           y: checkIn.attendance || 0,
           x: formatDate('mmm dd', checkIn.meeting_date)
         }))
+        const leaderInvites = club.leadership_position_invites.filter(
+          invite => !(invite.rejected_at || invite.accepted_at)
+        )
         return (
           <Fragment>
             <Helmet title={`Dumb club #${club.id}`} />
@@ -117,8 +150,27 @@ export default class extends Component {
                 </Flex>
               )}
               <Text f={2} color="muted" children={club.high_school_address} />
-              <Text my={2}>
-                Lead by{' '}
+              {showInviteModal && (
+                <Fragment>
+                  <Modal align="left" my={4} p={[3, 4]}>
+                    <CloseButton
+                      onClick={() => this.setState({ showInviteModal: false })}
+                    />
+                    <LeaderInviteForm
+                      clubId={club.id}
+                      callback={() => {
+                        this.setState({ showInviteModal: false })
+                        window.location.reload()
+                      }}
+                    />
+                  </Modal>
+                  <Overlay
+                    onClick={() => this.setState({ showInviteModal: false })}
+                  />
+                </Fragment>
+              )}
+              <Text>
+                Lead by:{' '}
                 {club.new_leaders.map((leader, index) => (
                   <Fragment>
                     <LeaderCard
@@ -135,6 +187,25 @@ export default class extends Component {
                     {index + 2 === club.new_leaders.length && 'and '}
                   </Fragment>
                 ))}
+              </Text>
+              <Text mb={2}>
+                {leaderInvites.length > 0 && (
+                  <Fragment>
+                    Pending invitations:{' '}
+                    <ul>
+                      {leaderInvites.map((invite, index) => (
+                        <InviteCard
+                          email={invite.user.email}
+                          key={invite.id}
+                          id={invite.id}
+                        />
+                      ))}
+                    </ul>
+                  </Fragment>
+                )}
+                <Link onClick={() => this.setState({ showInviteModal: true })}>
+                  Invite another leader
+                </Link>
               </Text>
               {checkIns.length > 0 ? (
                 <Fragment>

@@ -6,7 +6,14 @@ import NotesForm from 'components/admin/NotesForm'
 import ErrorPage from 'components/admin/ErrorPage'
 import LoadingBar from 'components/LoadingBar'
 import Nav from 'components/apply/ApplyNav'
-import { Heading, Text, Link, Input, Container } from '@hackclub/design-system'
+import {
+  Heading,
+  Text,
+  Link,
+  Input,
+  Container,
+  Box
+} from '@hackclub/design-system'
 import Autocomplete from 'react-autocomplete'
 import styled from 'styled-components'
 
@@ -103,11 +110,7 @@ class OwnerForm extends Component {
               items={cache[value] || []}
               renderInput={props => <input {...props} width="32px" />}
               renderItem={(item, isHighlighted) => (
-                <div
-                  style={{ background: isHighlighted ? 'lightgray' : 'white' }}
-                >
-                  {item.label}
-                </div>
+                <Box bg={isHighlighted ? 'smoke' : 'white'}>{item.label}</Box>
               )}
               value={value}
               onChange={this.handleChange}

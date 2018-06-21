@@ -51,6 +51,7 @@
     "prismjs": "^1.15.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
+    "react-autocomplete": "^1.8.1",
     "react-dom": "^16.4.1",
     "react-flip-move": "^3.0.2",
     "react-gravatar": "^2.6.3",

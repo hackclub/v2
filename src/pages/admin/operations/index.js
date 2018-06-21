@@ -117,7 +117,7 @@ class ClubCard extends Component {
           </Text>
           <Text color="slate" f={1}>
             {this.props.new_leaders.map((leader, index) => (
-              <Fragment>
+              <Fragment key={leader.id}>
                 <Text.span>{leader.name}</Text.span>
                 {this.props.new_leaders.length - 1 > index && ', '}
               </Fragment>

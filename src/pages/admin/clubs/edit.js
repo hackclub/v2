@@ -17,10 +17,10 @@ class OwnerForm extends Component {
     isLoading: false
   }
 
-  updateOwner() {
+  removeOwner() {
     const { club } = this.props
     api
-      .patch(`v1/new_clubs/${club.id}`, { data: { owner_id: newOwnerId } })
+      .patch(`v1/new_clubs/${club.id}`, { data: { owner_id: null } })
       .then(_res => {
         window.location.reload()
       })
@@ -29,7 +29,7 @@ class OwnerForm extends Component {
       })
   }
 
-  handleChange(e) {
+  handleChange = e => {
     const { cache } = this.state
     const value = e.target.value
     this.setState({ value })
@@ -53,9 +53,8 @@ class OwnerForm extends Component {
       })
     }
   }
-  handleChange = this.handleChange.bind(this)
 
-  handleSubmit(e) {
+  handleSubmit = e => {
     e.preventDefault()
     this.setState({ isLoading: true })
 
@@ -80,7 +79,6 @@ class OwnerForm extends Component {
       }
     })
   }
-  handleSubmit = this.handleSubmit.bind(this)
 
   renderSwitch() {
     const { club } = this.props
@@ -92,7 +90,7 @@ class OwnerForm extends Component {
       return (
         <Text>
           Owned by {club.owner.email}.{' '}
-          <Link onClick={() => this.updateOwner()}>Remove</Link>.
+          <Link onClick={() => this.removeOwner()}>Remove</Link>.
         </Text>
       )
     } else {

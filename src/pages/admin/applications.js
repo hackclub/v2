@@ -195,7 +195,7 @@ export default class extends Component {
     } = this.state
     switch (status) {
       case 'loading':
-        return <LoadingBar />
+        return <LoadingBar fill />
       case 'needsToAuth':
         return <Login userType="admin" />
       case 'success':

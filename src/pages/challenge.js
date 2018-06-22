@@ -63,11 +63,7 @@ class Help extends Component {
               bg="blue.0"
               style={{ borderRadius: 4 }}
             >
-              For this challenge, your entry must be hosted on{' '}
-              <Link href="https://repl.it" target="_blank" bold>
-                repl.it
-              </Link>{' '}
-              and use{' '}
+              For this challenge, your entry must use{' '}
               <Link href="https://p5js.org" target="_blank" bold>
                 p5.js
               </Link>{' '}
@@ -194,33 +190,14 @@ export default class extends Component {
           <HeaderContainer px={3} py={0} mb={[3, 4]} align="left" mx="auto">
             <Box align={['center', null, 'right']}>
               <Text mb={[-2, -3]} f={3} bold caps>
-                {status === 'success' ? (
-                  <Fragment>
-                    <Link href="https://repl.it" target="_blank" color="white">
-                      repl.it
-                    </Link>{' '}
-                    + Hack Club
-                  </Fragment>
-                ) : (
-                  'p5.js website'
-                )}
+                Hack Club
               </Text>
               <Heading.h1 f={[6, 7]} my={0}>
                 Challenge
               </Heading.h1>
             </Box>
             <Heading.h2 f={3} regular style={{ alignSelf: 'center' }}>
-              Hack Club and{' '}
-              <Link
-                href="https://repl.it"
-                target="_blank"
-                color="white"
-                bold
-                underline
-              >
-                repl.it
-              </Link>{' '}
-              are partnering to run the largest challenge yet!
+              Hack Club is doing a challenge
             </Heading.h2>
             <HeaderCard
               boxShadowSize="md"
@@ -237,11 +214,7 @@ export default class extends Component {
                   {challenge.name}
                 </Link>
                 <br />
-                🛠 Build on{' '}
-                <Link href="https://repl.it" target="_blank" underline>
-                  repl.it
-                </Link>{' '}
-                using{' '}
+                🛠 Build something using{' '}
                 <Link href="https://p5js.org" target="_blank" underline>
                   p5.js
                 </Link>{' '}
@@ -249,18 +222,10 @@ export default class extends Component {
                 <br />
                 🎁 {challenge.description}
                 <br />
-                ℹ️ Submissions open to{' '}
-                <Link href="https://repl.it" target="_blank" underline>
-                  repl.it
-                </Link>{' '}
-                and Hack Club users
+                ℹ️ Submissions open to Hack Club community members
                 <br />
                 📖{' '}
-                <Link
-                  href="https://gist.github.com/zachlatta/abe14c8e1c7ab32c8d8297bdf986dbbb"
-                  target="_blank"
-                  underline
-                >
+                <Link href="" target="_blank" underline>
                   Click here
                 </Link>{' '}
                 for help getting started
@@ -273,22 +238,6 @@ export default class extends Component {
               <Form challengeId={challenge.id} status={status} />
             </HeaderCard>
           </HeaderContainer>
-          <Flex
-            mb={[3, 4]}
-            align="center"
-            justify="center"
-            style={{ display: status === 'success' ? 'none' : null }}
-          >
-            <Link href="https://repl.it" target="_blank">
-              <Image
-                alt="repl.it logo"
-                src="/replit-white.svg"
-                w={[144, 224]}
-              />
-            </Link>
-            <Text.span color="pink.1" f={[4, 5]} mx={[2, 3]} children="+" />
-            <Text.span color="white" f={[4, 5, 6]} bold children="Hack Club" />
-          </Flex>
         </Header>
         <Container maxWidth={48} pt={4} pb={5} px={[0, 3]}>
           {ended && <Ended />}
@@ -327,13 +276,6 @@ export default class extends Component {
             status={status}
             sortBy={sortBy}
           />
-          <Flex mt={4} mb={[4, 0]} align="center" justify="center">
-            <Link href="https://repl.it" target="_blank">
-              <Image alt="repl.it logo" src="/replit.svg" w={128} />
-            </Link>
-            <Text.span color="muted" f={4} mx={3} children="+" />
-            <Text.span color="primary" f={[4, 5]} bold children="Hack Club" />
-          </Flex>
           <DiscussChallenge />
         </Container>
         <Footer />

@@ -25,6 +25,7 @@ import {
 } from 'components/Shapes'
 import DonateForm from 'components/donate/DonateForm'
 import Spent from 'components/donate/Spent'
+import Sponsors from 'components/donate/Sponsors'
 import Footer from 'components/Footer'
 import commaNumber from 'comma-number'
 import donors from 'components/donate/donors.json'
@@ -295,6 +296,7 @@ export default () => (
       </Container>
       <Container {...content} align="center" mx="auto">
         <Heading.h2 {...headline} mt={5} mb={4}>
+    </Container>
           A few of our amazing donors.
         </Heading.h2>
         <Flex m={-2} wrap>
@@ -306,6 +308,13 @@ export default () => (
           and many more...
         </Heading.h3>
       </Container>
+    <Container {...contentContainer}>
+      <Row my={5} {...content}>
+        <Heading.h2 {...headline} f={5} mb={4}>
+          Some fabulous companies donate their products to us.
+        </Heading.h2>
+        <Sponsors />
+      </Row>
     </Container>
     <Footer />
   </Fragment>

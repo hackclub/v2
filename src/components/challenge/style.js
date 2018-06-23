@@ -81,4 +81,8 @@ export const commentStyle = css`
   strong {
     font-weight: ${({ theme }) => theme.bold};
   }
+
+  img {
+    max-width: 100%;
+  }
 `

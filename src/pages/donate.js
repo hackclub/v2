@@ -151,25 +151,38 @@ const stats = {
   club: 60
 }
 
+const DonorGrid = Box.extend`
+  display: grid;
+  grid-gap: ${({ theme }) => theme.space[1]}px;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  align-items: center;
+  ${({ theme }) => theme.mediaQueries.md} {
+    grid-gap: ${({ theme }) => theme.space[3]}px;
+  }
+`
+
+const DonorCardBase = Flex.withComponent(Card).extend`
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`
 const DonorCard = ({ name, link = false }) => (
-  <Flex p={3} m={2} justify="center" align="center" style={{ height: '100%' }}>
-    <Text color="black" style={{ textDecoration: link ? 'underline' : 'none' }}>
-      {name}
-    </Text>
-  </Flex>
+  <DonorCardBase bg="white" p={3}>
+    <Text color="black">{name}</Text>
+  </DonorCardBase>
 )
 
-const DonorListing = ({ name, url }) => (
-  <Box w={[1 / 2, 1 / 3]}>
-    {url ? (
-      <A target="_blank" href={url}>
-        <DonorCard name={name} link={true} />
+const DonorListing = ({ name, url }) => {
+  if (url) {
+    return (
+      <A target="_blank" href={url} color="black" underline>
+        <DonorCard name={name} link />
       </A>
-    ) : (
-      <DonorCard name={name} />
-    )}
-  </Box>
-)
+    )
+  } else {
+    return <DonorCard name={name} />
+  }
+}
 
 export default () => (
   <Fragment>
@@ -280,7 +293,7 @@ export default () => (
           </Financials>
         </Box>
       </Row>
-      <Container {...content}>
+      <Container pb={4} {...content}>
         <Heading.h2 {...headline}>
           Contribute more than just dollars.
         </Heading.h2>
@@ -294,20 +307,22 @@ export default () => (
           interested in making a contribution or have any questions.
         </Text>
       </Container>
-      <Container {...content} align="center" mx="auto">
-        <Heading.h2 {...headline} mt={5} mb={4}>
     </Container>
+    <Flex justify="center" bg="snow">
+      <Container {...content} py={[4, 5]} align={['left', 'center']}>
+        <Heading.h2 {...headline} px={3}>
           A few of our amazing donors.
         </Heading.h2>
-        <Flex m={-2} wrap>
+        <DonorGrid mt={4} mb={3}>
           {Object.keys(donors).map(name => (
             <DonorListing key={name} name={name} url={donors[name]} />
           ))}
-        </Flex>
-        <Heading.h3 {...subhline} mt={4} mb={5}>
-          and many more...
-        </Heading.h3>
+        </DonorGrid>
+        <Text {...subhline} px={3}>
+          and many more…
+        </Text>
       </Container>
+    </Flex>
     <Container {...contentContainer}>
       <Row my={5} {...content}>
         <Heading.h2 {...headline} f={5} mb={4}>

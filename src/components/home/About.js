@@ -133,6 +133,9 @@ export default () => (
         </Heading.h3>
         <Text f={3} my={3}>
           Hack Clubs attend and run hackathons like{' '}
+          <Like href="https://hackchicago.io">
+            Hack Chicago
+          </Like> and{' '}
           <Like href="https://www.sfchronicle.com/bayarea/article/Hack-the-Fog-makes-history-as-San-12729895.php">
             Hack the Fog
           </Like>. They run summer programs like{' '}

@@ -110,15 +110,15 @@ const Cards = Container.extend`
 
     &:nth-child(1) {
       grid-area: feedback;
-      border-radius: ${props => props.theme.radius};
-      box-shadow: ${props => props.theme.boxShadows[1]};
+      border-radius: ${({ theme }) => theme.radius}px;
+      box-shadow: ${({ theme }) => theme.boxShadows[1]};
     }
     &:nth-child(2) {
       grid-area: share;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      border-bottom: 1px solid ${props => props.theme.colors.smoke};
+      border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
     }
     &:nth-child(3) {
       grid-area: questions;

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import {
   Button,
   Container,
@@ -8,7 +8,8 @@ import {
   Link as A
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 
@@ -28,7 +29,7 @@ const Header = Section.withComponent('header').extend`
 Button.link = Button.withComponent(Link)
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet title="Hack Camp – Hack Club" />
     <Header p={3}>
       <Nav />
@@ -66,5 +67,5 @@ export default () => (
       </Text>
     </Container>
     <Footer />
-  </Fragment>
+  </Layout>
 )

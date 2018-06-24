@@ -5,6 +5,7 @@ import { Heading, Container, LargeButton } from '@hackclub/design-system'
 import LoadingBar from 'components/LoadingBar'
 import Footer from 'components/Footer'
 import ClubApplicationForm from 'components/apply/ClubApplicationForm'
+import Layout from 'components/Layout'
 import ApplyNav from 'components/apply/ApplyNav'
 import Login from 'components/auth/Login'
 import * as yup from 'yup'
@@ -75,7 +76,7 @@ export default class extends Component {
         return <LoadingBar fill />
       default:
         return (
-          <Fragment>
+          <Layout>
             <ApplyNav />
             <ClubApplicationForm
               params={formFields}
@@ -89,7 +90,7 @@ export default class extends Component {
               <LargeButton.link to="/apply">« Back</LargeButton.link>
             </Container>
             <Footer />
-          </Fragment>
+          </Layout>
         )
     }
   }

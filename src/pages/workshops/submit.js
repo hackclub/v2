@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Container, Heading, Text, Section, cx } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Auth from 'components/Auth'
 import SubmitForm from 'components/workshops/SubmitForm'
@@ -9,7 +10,7 @@ import Footer from 'components/Footer'
 const Header = Section.withComponent('header').extend([])
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet title="Submit a Workshop – Hack Club" />
     <Nav invertFlag color="slate" style={{ position: 'absolute', top: 0 }} />
     <style children={`body{background:${cx('snow')};}`} />
@@ -27,5 +28,5 @@ export default () => (
     <Auth />
     <SubmitForm />
     <Footer />
-  </Fragment>
+  </Layout>
 )

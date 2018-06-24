@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import {
   Container,
   Heading,
@@ -11,6 +11,7 @@ import {
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import YouTubePlayer from 'react-player/lib/players/YouTube'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Invert from 'components/Invert'
 import Footer from 'components/Footer'
@@ -102,7 +103,7 @@ const desc =
 const img = 'https://hackclub.com/updates.png'
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet
       title={title}
       meta={[
@@ -151,5 +152,5 @@ export default () => (
       />
     </Container>
     <Footer />
-  </Fragment>
+  </Layout>
 )

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import {
   Heading,
   Container,
@@ -12,7 +12,8 @@ import {
   Link as A
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Stat from 'components/Stat'
 import {
@@ -185,7 +186,7 @@ const DonorListing = ({ name, url }) => {
 }
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet
       title={title}
       meta={[
@@ -332,5 +333,5 @@ export default () => (
       </Row>
     </Container>
     <Footer />
-  </Fragment>
+  </Layout>
 )

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flex, Link as A, Text } from '@hackclub/design-system'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 
 export const BreadcrumbList = Flex.withComponent('ol').extend`
   line-height: 1.25;

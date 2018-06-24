@@ -7,7 +7,7 @@ import {
   Text,
   LargeButton
 } from '@hackclub/design-system'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Framed from 'components/Framed'
 
 const PromoBox = Box.extend`

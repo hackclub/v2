@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import {
   Box,
   Button,
@@ -11,10 +11,10 @@ import {
   Text
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
-import Track from 'components/workshops/Track'
 import WorkshopSearch from 'components/workshops/WorkshopSearch'
 import {
   groupBy,
@@ -77,7 +77,11 @@ const SuperButton = Button.withComponent(Link).extend`
   );
 `
 
-export default ({ data: { allMarkdownRemark: { edges } } }) => {
+export default ({
+  data: {
+    allMarkdownRemark: { edges }
+  }
+}) => {
   const title = 'Hack Club Workshops'
   const desc =
     'Get free coding tutorials, project ideas, and programming club activities ' +
@@ -85,7 +89,7 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
   const img = 'https://hackclub.com/workshops.png'
 
   return (
-    <Fragment>
+    <Layout>
       <Helmet
         title={title}
         meta={[
@@ -144,7 +148,7 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
           <Footer />
         </Box.article>
       </Base>
-    </Fragment>
+    </Layout>
   )
 }
 

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import {
   Heading,
   Container,
@@ -11,7 +11,8 @@ import {
   cx
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Start from 'components/Start'
 import Footer from 'components/Footer'
@@ -47,7 +48,8 @@ const Module = Flex.extend.attrs({
   text-align: left;
 
   ${props => props.theme.mediaQueries[1]} {
-    &:nth-of-type(1), &:nth-of-type(3) {
+    &:nth-of-type(1),
+    &:nth-of-type(3) {
       transform: translateY(4rem);
     }
   }
@@ -57,11 +59,15 @@ const Module = Flex.extend.attrs({
     height: 4rem !important;
     flex-shrink: 0;
     ${props => props.theme.mediaQueries[1]} {
-      &:first-child { margin-right: 3rem; }
-      &:last-child { margin-left: 2rem; }
+      &:first-child {
+        margin-right: 3rem;
+      }
+      &:last-child {
+        margin-left: 2rem;
+      }
     }
     /* this is terrible */
-    @media screen and (max-width:32em) {
+    @media screen and (max-width: 32em) {
       order: -1 !important;
       margin-left: 0;
       margin-right: 1rem;
@@ -112,7 +118,7 @@ const description =
   'Get coding club activities and programming curriculum to start a high school computer science club.'
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet
       title={title}
       meta={[
@@ -193,5 +199,5 @@ export default () => (
     </Flex>
     <Start />
     <Footer />
-  </Fragment>
+  </Layout>
 )

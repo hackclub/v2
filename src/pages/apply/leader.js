@@ -4,6 +4,7 @@ import { url as apiUrl } from 'api'
 import { Heading, Container, LargeButton } from '@hackclub/design-system'
 import LeaderApplicationForm from 'components/apply/LeaderApplicationForm'
 import Login from 'components/auth/Login'
+import Layout from 'components/Layout'
 import ApplyNav from 'components/apply/ApplyNav'
 import LoadingBar from 'components/LoadingBar'
 import Footer from 'components/Footer'
@@ -73,7 +74,7 @@ export default class extends Component {
         return <LoadingBar fill />
       default:
         return (
-          <Fragment>
+          <Layout>
             <ApplyNav />
             <LeaderApplicationForm
               params={formFields}
@@ -87,7 +88,7 @@ export default class extends Component {
               <LargeButton.link to="/apply">« Back</LargeButton.link>
             </Container>
             <Footer />
-          </Fragment>
+          </Layout>
         )
     }
   }

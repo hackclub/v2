@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import {
   Heading,
   Card,
@@ -11,7 +11,8 @@ import {
   Link as A
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
+import Layout from 'layout'
 import Nav from 'components/Nav'
 import Animator from 'components/Animator'
 import Module from 'components/Module'
@@ -129,7 +130,7 @@ const description =
   'Get programming club ideas, curriculum, activities, and more.'
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet
       title={title}
       meta={[
@@ -284,5 +285,5 @@ export default () => (
       buttonProps={{ children: 'Begin Your Application', to: '/apply' }}
     />
     <Footer />
-  </Fragment>
+  </Layout>
 )

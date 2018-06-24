@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Card, Heading, Text } from '@hackclub/design-system'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import { capitalize, map } from 'lodash'
 
 const Grid = Box.withComponent('ol').extend`

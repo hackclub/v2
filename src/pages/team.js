@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import {
   Flex,
   Section,
@@ -10,7 +10,8 @@ import {
   cx
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Bio from 'components/Bio'
 import Footer from 'components/Footer'
@@ -47,7 +48,7 @@ const description =
   'Meet the team that runs Hack Club, a global nonprofit network of high school computer science clubs.'
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet
       title={title}
       meta={[
@@ -132,5 +133,5 @@ export default () => (
       </UpdateLink>
     </Updates>
     <Footer />
-  </Fragment>
+  </Layout>
 )

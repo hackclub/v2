@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Heading, Container, Card, Button } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import SlackForm from 'components/SlackForm'
 
@@ -30,29 +31,31 @@ const SlackCard = Card.extend`
 `
 
 export default () => (
-  <Fill color="white" align="center">
-    <Helmet title="Join Our Slack – Hack Club" />
-    <Nav color="white" />
-    <Container px={3}>
-      <Heading.h1 f={[5, 6]} mt={4} mb={2}>
-        Join the Hack Club Slack
-      </Heading.h1>
-      <Heading.h2 f={[3, 4]} mb={4} regular>
-        Talk to our community, get coding help, have fun.
-      </Heading.h2>
-    </Container>
-    <SlackCard
-      w={1}
-      p={[3, 4]}
-      boxShadowSize="md"
-      align="left"
-      my={4}
-      mx="auto"
-    >
-      <SlackForm />
-    </SlackCard>
-    <Button href="https://hackclub.slack.com" inverted>
-      Sign in to your account »
-    </Button>
-  </Fill>
+  <Layout>
+    <Fill color="white" align="center">
+      <Helmet title="Join Our Slack – Hack Club" />
+      <Nav color="white" />
+      <Container px={3}>
+        <Heading.h1 f={[5, 6]} mt={4} mb={2}>
+          Join the Hack Club Slack
+        </Heading.h1>
+        <Heading.h2 f={[3, 4]} mb={4} regular>
+          Talk to our community, get coding help, have fun.
+        </Heading.h2>
+      </Container>
+      <SlackCard
+        w={1}
+        p={[3, 4]}
+        boxShadowSize="md"
+        align="left"
+        my={4}
+        mx="auto"
+      >
+        <SlackForm />
+      </SlackCard>
+      <Button href="https://hackclub.slack.com" inverted>
+        Sign in to your account »
+      </Button>
+    </Fill>
+  </Layout>
 )

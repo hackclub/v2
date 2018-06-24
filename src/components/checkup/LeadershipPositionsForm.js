@@ -146,8 +146,8 @@ class LeaderPosition extends Component {
               <Text my={3}>
                 This action <Text.span bold>cannot</Text.span> be undone. This
                 will permanently remove{' '}
-                <Text.span bold>{leader_profile.email}</Text.span> from your
-                club’s leadership team. Please type in their email to confirm.
+                <Text.span bold>{leader_profile.name}</Text.span> from your
+                club’s leadership team. Please type in their name to confirm.
               </Text>
               <Field
                 my={3}

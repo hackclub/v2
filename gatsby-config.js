@@ -4,7 +4,6 @@ module.exports = {
     siteUrl: 'https://hackclub.com'
   },
   plugins: [
-    'gatsby-plugin-resolve-src',
     {
       resolve: 'gatsby-source-filesystem',
       options: {

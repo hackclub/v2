@@ -34,7 +34,6 @@
     "gatsby-plugin-netlify": "next",
     "gatsby-plugin-offline": "next",
     "gatsby-plugin-react-helmet": "next",
-    "gatsby-plugin-resolve-src": "next",
     "gatsby-plugin-segment": "next",
     "gatsby-plugin-sitemap": "next",
     "gatsby-plugin-styled-components": "next",

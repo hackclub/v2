@@ -1,9 +1,7 @@
 import React from 'react'
 import {
   Heading,
-  Card,
   Container,
-  Flex,
   Box,
   Text,
   LargeButton,

@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react'
+import { graphql } from 'gatsby'
 import {
   Box,
   Flex,

@@ -4,27 +4,17 @@ import {
   Button,
   Container,
   Card,
-  Flex,
   Heading,
   Link as A,
   Section,
   Text
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import { Link } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import WorkshopSearch from 'components/workshops/WorkshopSearch'
-import {
-  groupBy,
-  orderBy,
-  camelCase,
-  map,
-  fromPairs,
-  reverse,
-  toPairs
-} from 'lodash'
 
 A.link = A.withComponent(Link)
 

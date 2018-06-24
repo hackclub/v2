@@ -6,8 +6,6 @@ import {
   Flex,
   Box,
   Text,
-  LargeButton,
-  Icon,
   Section,
   Link as A
 } from '@hackclub/design-system'
@@ -18,11 +16,8 @@ import Nav from 'components/Nav'
 import Stat from 'components/Stat'
 import {
   Triangle,
-  Hexagon,
   Pentagon,
-  Square,
   Circle,
-  Line
 } from 'components/Shapes'
 import DonateForm from 'components/donate/DonateForm'
 import Spent from 'components/donate/Spent'
@@ -112,18 +107,6 @@ const ContributionShapes = Shapes.extend`
     right: 12rem;
     top: 1rem;
     color: ${({ theme }) => theme.colors.pink[4]};
-  }
-`
-const DonorsShapes = Shapes.extend`
-  svg:first-child {
-    right: 8rem;
-    top: 2rem;
-    color: ${({ theme }) => theme.colors.orange[4]};
-  }
-  svg:last-child {
-    right: 4rem;
-    top: 4rem;
-    color: ${({ theme }) => theme.hexa('blue.4', 0.75)};
   }
 `
 

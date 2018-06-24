@@ -62,4 +62,4 @@ const DropdownMenuOption = Box.extend`
   }
 `
 
-export default { DropdownContainer, DropdownMenu, DropdownMenuOption }
+export { DropdownContainer, DropdownMenu, DropdownMenuOption }

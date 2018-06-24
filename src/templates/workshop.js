@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
+import { graphql } from 'gatsby'
 import {
   Box,
   Container,
@@ -7,8 +8,6 @@ import {
   Link as A,
   Text,
   Section,
-  Icon,
-  Button,
   Card,
   Image,
   theme
@@ -27,9 +26,8 @@ import MarkdownBody from 'components/MarkdownBody'
 import FeedbackForm from 'components/workshops/FeedbackForm'
 import DiscussOnSlack from 'components/DiscussOnSlack'
 import ShareButton from 'components/ShareButton'
-import { Modal, Overlay, CloseButton } from 'components/Modal'
 import Footer from 'components/Footer'
-import { lowerCase, camelCase, isEmpty } from 'lodash'
+import { isEmpty } from 'lodash'
 import { org } from 'data.json'
 
 const NotOnPrint = Box.extend`

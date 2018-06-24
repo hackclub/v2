@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import Login from 'components/auth/Login'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
@@ -11,8 +11,6 @@ import api from 'api'
 import search from 'search'
 import {
   Container,
-  Link,
-  Card,
   Heading,
   Text,
   Button

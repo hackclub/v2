@@ -1,11 +1,9 @@
 import React from 'react'
 import {
-  Flex,
   Section,
   Heading,
   Text,
   Container,
-  Card,
   Button,
   cx
 } from '@hackclub/design-system'

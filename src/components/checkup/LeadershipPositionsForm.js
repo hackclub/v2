@@ -157,11 +157,11 @@ class LeaderPosition extends Component {
                 }}
               />
               <Button
-                inverted={leader_profile.email !== this.state.typed}
-                disabled={leader_profile.email !== this.state.typed}
+                inverted={leader_profile.name !== this.state.typed}
+                disabled={leader_profile.name !== this.state.typed}
                 w={1}
                 onClick={() => {
-                  if (leader_profile.email === this.state.typed) {
+                  if (leader_profile.name === this.state.typed) {
                     this.deletePosition()
                   }
                 }}

@@ -6,6 +6,15 @@ const { colors } = require('@hackclub/design-system')
 const writeFile = require('fs').writeFile
 const axios = require('axios')
 
+// Can be removed when gatsby-plugin-resolve-src gets updated for v2
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    },
+  })
+}
+
 exports.onPreBootstrap = () =>
   axios
     .get('https://api.hackclub.com/v1/challenges')

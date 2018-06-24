@@ -36,7 +36,7 @@ const EventCard = ({ meeting_date, attendance, notes }) => (
 )
 
 const removeLeadershipPosition = (positionId, name) => {
-  const confirmation = confirm(
+  const confirmation = window.confirm(
     `Are you sure you want to remove ${name} from the club?`
   )
   if (confirmation) {
@@ -62,7 +62,7 @@ const LeaderCard = ({ name, id, email, position }) => (
 )
 
 const removeInvite = (id, email) => {
-  const confirmation = confirm(
+  const confirmation = window.confirm(
     `Are you sure you want to remove ${email}’s invite?`
   )
   if (confirmation) {

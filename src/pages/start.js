@@ -12,7 +12,7 @@ import {
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import { Link } from 'gatsby'
-import Layout from 'layout'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Animator from 'components/Animator'
 import Module from 'components/Module'

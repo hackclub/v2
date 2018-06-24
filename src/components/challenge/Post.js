@@ -219,7 +219,7 @@ class Post extends Component {
       .catch(err => {
         if (err.status !== 401) {
           this.setState({ status: 'error' })
-          console.log(error)
+          console.log(err)
         }
       })
       .then(user =>

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Login from 'components/auth/Login'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
+import Layout from 'components/Layout'
 import Nav from 'components/apply/ApplyNav'
 import ClubForm from 'components/checkup/ClubForm'
 import LeadershipPositionsForm from 'components/checkup/LeadershipPositionsForm'
@@ -51,7 +52,7 @@ export default class extends Component {
               <Card boxShadowSize="md" p={3} my={3}>
                 <ClubForm
                   {...club}
-                  redirectUrl={`${location.origin}/checkup/leaders?id=${
+                  redirectUrl={`${window.location.origin}/checkup/leaders?id=${
                     club.id
                   }`}
                 />

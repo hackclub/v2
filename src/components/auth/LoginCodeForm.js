@@ -123,6 +123,7 @@ const LoginCodeForm = withFormik({
         setSubmitting(false)
         // associate current session with authenticated user and update email
         // stored in analytics
+        // eslint-disable-next-line
         analytics.identify(props.userId, { email: props.email })
         window.location.reload()
       })

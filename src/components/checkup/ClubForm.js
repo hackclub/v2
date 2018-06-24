@@ -179,7 +179,7 @@ export default withFormik({
         setSubmitting(false)
         setStatus('success')
         setTimeout(() => {
-          location.href = props.redirectUrl
+          window.location.href = props.redirectUrl
         }, 1000)
         setTimeout(() => {
           setStatus('redirecting')

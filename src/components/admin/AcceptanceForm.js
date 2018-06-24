@@ -13,7 +13,7 @@ export default props => {
         if (application.accepted_at) {
           return
         }
-        if (!confirm('Are you sure you want to accept this club?')) {
+        if (!window.confirm('Are you sure you want to accept this club?')) {
           return
         }
         api

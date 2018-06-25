@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import {
   Heading,
   Container,
@@ -6,22 +6,18 @@ import {
   Flex,
   Box,
   Text,
-  LargeButton,
-  Icon,
   Section,
   Link as A
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Stat from 'components/Stat'
 import {
   Triangle,
-  Hexagon,
   Pentagon,
-  Square,
   Circle,
-  Line
 } from 'components/Shapes'
 import DonateForm from 'components/donate/DonateForm'
 import Spent from 'components/donate/Spent'
@@ -113,18 +109,6 @@ const ContributionShapes = Shapes.extend`
     color: ${({ theme }) => theme.colors.pink[4]};
   }
 `
-const DonorsShapes = Shapes.extend`
-  svg:first-child {
-    right: 8rem;
-    top: 2rem;
-    color: ${({ theme }) => theme.colors.orange[4]};
-  }
-  svg:last-child {
-    right: 4rem;
-    top: 4rem;
-    color: ${({ theme }) => theme.hexa('blue.4', 0.75)};
-  }
-`
 
 const headline = { f: [5, 6], mb: 3, style: { lineHeight: '1.125' } }
 const subhline = { f: [3, 4], style: { lineHeight: '1.375' } }
@@ -185,7 +169,7 @@ const DonorListing = ({ name, url }) => {
 }
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet
       title={title}
       meta={[
@@ -332,5 +316,5 @@ export default () => (
       </Row>
     </Container>
     <Footer />
-  </Fragment>
+  </Layout>
 )

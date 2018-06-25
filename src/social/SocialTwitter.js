@@ -2,7 +2,7 @@ const { createElement: h } = require('react')
 const theme = require('@hackclub/design-system').theme
 
 const width = 1024
-const widthIcon = 2 * width / 3
+const widthIcon = (2 * width) / 3
 
 module.exports = props =>
   h(

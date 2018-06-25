@@ -1,11 +1,12 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Heading, Container, LargeButton, Text } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet title="404 – Hack Club" />
     <Nav color="primary" />
     <Container maxWidth={48} px={2} py={6} align="center">
@@ -18,5 +19,5 @@ export default () => (
       <LargeButton href="/">Go Home 🏡</LargeButton>
     </Container>
     <Footer />
-  </Fragment>
+  </Layout>
 )

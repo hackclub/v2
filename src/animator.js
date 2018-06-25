@@ -7,6 +7,7 @@ const Animator = () => {
   const e = (() => {
     function t(t, e) {
       for (const i of e) {
+        // eslint-disable-next-line
         ;(i.enumerable = i.enumerable || false),
           (i.configurable = true),
           'value' in i && (i.writable = true),
@@ -154,6 +155,7 @@ const Animator = () => {
         .filter(t => h.includes(t[0]))
         .map(t => new c(t[0], t[1]))
       this.progress = this.current = 0
+      // eslint-disable-next-line
       this.lastCurrent
     }
     return (
@@ -167,6 +169,7 @@ const Animator = () => {
             this.top = this.rect.top + window.scrollY
             this.rtop = this.top - window.innerHeight
             this.bottom = this.rect.bottom + window.scrollY
+            // eslint-disable-next-line
             this.data.scrollOffset &&
               ((this.rtop -= window.scrollY - window.innerHeight),
               (this.bottom -= window.scrollY - window.innerHeight))
@@ -186,7 +189,9 @@ const Animator = () => {
           value(t) {
             let e, n, i, r
             const a = this
+            // eslint-disable-next-line
             const y = this.el.previousElementSibling === null ? 2 : 16
+            // eslint-disable-next-line
             this.isInView,
               (this.progress = ((e = 0),
               (n = 1),
@@ -263,7 +268,7 @@ const Animator = () => {
       return i
     })
   const chrome = navigator.userAgent.includes('Chrome')
-  const m = new d(document.querySelectorAll('[data-animator]'), scrollY)
+  const m = new d(document.querySelectorAll('[data-animator]'), window.scrollY)
   if (chrome) {
     document.documentElement.classList.add('chrome')
     m.animated.forEach(t => {
@@ -276,11 +281,11 @@ const Animator = () => {
     w = true
   }
   setTimeout(v, 256)
-  addEventListener('scroll', t => {
-    m.target = scrollY
-    scrollY > 8 && !w && v()
+  window.addEventListener('scroll', t => {
+    m.target = window.scrollY
+    window.scrollY > 8 && !w && v()
   })
-  addEventListener('resize', t => {
+  window.addEventListener('resize', t => {
     m.updateDimensions()
   })
 }

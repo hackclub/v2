@@ -59,7 +59,7 @@ const FeedbackForm = withFormik({
   handleSubmit: (data, { props, setStatus, setSubmitting, resetForm }) => {
     const feedback = {}
     map(omit(data, 'slug'), (res, id) => {
-      feedback[questions[id]] = res
+      feedback.questions.id = res
     })
     const body = JSON.stringify({
       workshop_slug: last(props.slug.split('/')),

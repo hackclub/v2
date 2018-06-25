@@ -69,4 +69,4 @@ const CloseButton = props => (
   <IconButton name="close" color="muted" circle p={3} {...props} />
 )
 
-export default { Modal, Overlay, Overlayer, CloseButton }
+export { Modal, Overlay, Overlayer, CloseButton }

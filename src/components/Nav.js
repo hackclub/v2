@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Box, Flex, Link as A, cx, mediaQueries } from '@hackclub/design-system'
 import Flag from 'components/Flag'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 
 const Base = Flex.extend.attrs({
   pt: 0,
@@ -25,7 +25,9 @@ export const Item = A.extend.attrs({
   bold: true,
   my: [1, 0],
   px: [2, 3]
-})`color: inherit;`
+})`
+  color: inherit;
+`
 
 export const GatsbyItem = Item.withComponent(Link)
 

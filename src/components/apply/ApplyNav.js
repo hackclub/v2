@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import { Text, Flex, Box, Link as A } from '@hackclub/design-system'
 import { Item } from 'components/Nav'
 import Flag from 'components/Flag'
@@ -18,7 +18,7 @@ class BreadcrumbClass extends Component {
   }
 
   componentDidMount() {
-    this.setState({ path: location.pathname.split('/').slice(1) })
+    this.setState({ path: window.location.pathname.split('/').slice(1) })
   }
 
   render() {

@@ -22,7 +22,7 @@ import Login from 'components/auth/Login'
 import SubmitButton from 'components/apply/SubmitButton'
 import LoadingBar from 'components/LoadingBar'
 import fetch from 'unfetch'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import { timeSince } from 'helpers'
 
 LargeButton.link = LargeButton.withComponent(Link)
@@ -177,7 +177,7 @@ const ApplicationCard = props => {
                   <A
                     onClick={e => {
                       if (
-                        confirm(
+                        window.confirm(
                           `Are you sure you want to remove ${
                             profile.user.email
                           } as a team member?`
@@ -268,7 +268,7 @@ export default class extends Component {
   createNewApplication(firstTime = false) {
     const msg =
       'If you start a new application you won’t be able to access this one. Continue?'
-    if (!firstTime && !confirm(msg)) {
+    if (!firstTime && !window.confirm(msg)) {
       return null
     }
     return api

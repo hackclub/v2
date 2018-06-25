@@ -9,7 +9,7 @@ import {
   BackgroundImage,
   Link as A
 } from '@hackclub/design-system'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Module from 'components/Module'
 import Stat from 'components/Stat'
 import { stats } from 'data.json'

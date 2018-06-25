@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import Login from 'components/auth/Login'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
+import Layout from 'components/Layout'
 import Nav from 'components/apply/ApplyNav'
 import LeaderForm from 'components/checkup/LeaderForm'
 import api from 'api'
@@ -141,7 +142,7 @@ export default class extends Component {
         return <LoadingBar fill />
       case 'success':
         return (
-          <Fragment>
+          <Layout>
             <Nav breadcrumb={false} />
             <Container my={3} maxWidth={32}>
               <Card FlexShadowSize="sm" p={3}>
@@ -153,11 +154,11 @@ export default class extends Component {
                 />
               </Card>
             </Container>
-          </Fragment>
+          </Layout>
         )
       case 'deleted':
         return (
-          <Fragment>
+          <Layout>
             <Nav breadcrumb={false} />
             <Container my={3} maxWidth={32}>
               <Heading>Removed</Heading>
@@ -167,7 +168,7 @@ export default class extends Component {
                 <Link href="mailto:max@hackclub.com">max@hackclub.com</Link>.
               </Text>
             </Container>
-          </Fragment>
+          </Layout>
         )
       case 'needsToAuth':
         return <Login heading="Login to view" />

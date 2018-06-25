@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import Login from 'components/auth/Login'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
+import Layout from 'components/Layout'
 import Nav from 'components/apply/ApplyNav'
 import ClubForm from 'components/checkup/ClubForm'
 import LeadershipPositionsForm from 'components/checkup/LeadershipPositionsForm'
@@ -10,8 +11,6 @@ import api from 'api'
 import search from 'search'
 import {
   Container,
-  Link,
-  Card,
   Heading,
   Text,
   Button
@@ -64,7 +63,7 @@ export default class extends Component {
         return <LoadingBar fill />
       case 'success':
         return (
-          <Fragment>
+          <Layout>
             <Nav breadcrumb={false} />
             <Container color="black" p={3} maxWidth={36}>
               <Heading.h2 f={5} mt={4}>
@@ -96,7 +95,7 @@ export default class extends Component {
                 Continue
               </Button>
             </Container>
-          </Fragment>
+          </Layout>
         )
       case 'needsToAuth':
         return <Login heading="Sign in to view" />

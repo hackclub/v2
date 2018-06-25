@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react'
+import { graphql } from 'gatsby'
 import {
   Box,
   Flex,
@@ -13,6 +14,7 @@ import {
   Image
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import IconButton from 'components/IconButton'
@@ -175,7 +177,7 @@ export default class extends Component {
     const challenge = data.publicJson
     const ended = Date.parse(new Date()) > Date.parse(challenge.end)
     return (
-      <Fragment>
+      <Layout>
         <Helmet
           title={title}
           meta={[
@@ -337,7 +339,7 @@ export default class extends Component {
           <DiscussChallenge />
         </Container>
         <Footer />
-      </Fragment>
+      </Layout>
     )
   }
 }

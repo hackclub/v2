@@ -67,8 +67,11 @@ const SlackForm = withFormik({
         setStatus('success')
         // associate submitted email with analytics if there isn't already an
         // email set - this will let us track workshop users
+        // eslint-disable-next-line
         analytics.ready(() => {
+          // eslint-disable-next-line
           if (!analytics.user().traits().email) {
+            // eslint-disable-next-line
             analytics.identify({ email: data.email })
           }
         })

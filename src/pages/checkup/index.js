@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import Login from 'components/auth/Login'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
+import Layout from 'components/Layout'
 import Nav from 'components/apply/ApplyNav'
 import LeaderForm from 'components/checkup/LeaderForm'
 import api from 'api'
@@ -28,7 +29,7 @@ export default class extends Component {
           .get(`v1/new_leaders/${user.new_leader.id}/new_clubs`)
           .then(clubs => {
             if (clubs.length > 0) {
-              const urlBase = location.origin + location.pathname
+              const urlBase = window.location.origin + window.location.pathname
               const clubUrl = `${urlBase}/club?id=${clubs[0].id}`
               const clubsUrl = `${urlBase}/clubs`
               this.setState({
@@ -57,7 +58,7 @@ export default class extends Component {
         return <LoadingBar fill />
       case 'success':
         return (
-          <Fragment>
+          <Layout>
             <Nav breadcrumb={false} />
             <Section bg="primary" color="white">
               <Heading.h1 f={[5, 6]} mb={[2, 3]}>
@@ -78,11 +79,11 @@ export default class extends Component {
                 <LeaderForm {...this.state.user} redirectUrl={redirectUrl} />
               </Card>
             </Container>
-          </Fragment>
+          </Layout>
         )
       case 'noClubs':
         return (
-          <Fragment>
+          <Layout>
             <Nav breadcrumb={false} />
             <Container color="black" p={3} maxWidth={36} align="center">
               <Heading.h2 f={[4, 5]} mt={3} mb={3}>
@@ -92,7 +93,7 @@ export default class extends Component {
                 We couldn’t find any clubs associated with your email.
               </Text>
             </Container>
-          </Fragment>
+          </Layout>
         )
       case 'needsToAuth':
         return <Login heading="Sign in to view" />

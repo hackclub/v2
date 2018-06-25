@@ -3,6 +3,7 @@ import ErrorPage from 'components/admin/ErrorPage'
 import LoadingBar from 'components/LoadingBar'
 import LoginPage from 'components/auth/Login'
 import LeaderForm from 'components/confirm_invite/LeaderForm'
+import Layout from 'components/Layout'
 import Nav from 'components/apply/ApplyNav'
 import api from 'api'
 import Helmet from 'react-helmet'
@@ -204,7 +205,7 @@ export default class extends Component {
         return <LoadingBar fill />
       case 'success':
         return (
-          <Fragment>
+          <Layout>
             <Helmet title="Confirm Invitation – Hack Club" />
             <Nav />
             <Container maxWidth={32}>
@@ -242,7 +243,7 @@ export default class extends Component {
                 </Box>
               )}
             </Container>
-          </Fragment>
+          </Layout>
         )
       case 'needsToAuth':
         return <LoginPage heading="Confirm your invite" />

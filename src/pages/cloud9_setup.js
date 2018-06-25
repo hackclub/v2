@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react'
-import { Box, Heading, Section } from '@hackclub/design-system'
+import React from 'react'
+import { Heading, Section } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Cloud9Form from 'components/Cloud9Form'
 
@@ -16,7 +17,7 @@ const Header = Section.withComponent('header').extend`
 `
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet title="Cloud9 – Hack Club" />
     <Header pb={4} align="center">
       <Nav />
@@ -28,5 +29,5 @@ export default () => (
       </Heading>
     </Header>
     <Cloud9Form />
-  </Fragment>
+  </Layout>
 )

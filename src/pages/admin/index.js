@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Flex, Button, Heading } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 
 const Action = Button.withComponent(Link).extend.attrs({ m: 2 })``
 

@@ -19,7 +19,7 @@ import {
   LargeButton
 } from '@hackclub/design-system'
 import { withFormik } from 'formik'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import * as yup from 'yup'
 
 export const clubApplicationSchema = yup.object().shape({

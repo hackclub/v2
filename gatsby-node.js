@@ -6,6 +6,15 @@ const { colors } = require('@hackclub/design-system')
 const writeFile = require('fs').writeFile
 const axios = require('axios')
 
+// Can be removed when gatsby-plugin-resolve-src gets updated for v2
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    },
+  })
+}
+
 exports.onPreBootstrap = () =>
   axios
     .get('https://api.hackclub.com/v1/challenges')
@@ -27,8 +36,8 @@ const writePattern = (path, name) =>
     if (err) console.error(err)
   })
 
-exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
-  const { createNodeField } = boundActionCreators
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions
 
   if (node.internal.type === 'MarkdownRemark') {
     const fileNode = getNode(node.parent)
@@ -47,8 +56,8 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
   }
 }
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
 
   return new Promise((resolve, reject) => {
     const component = path.resolve('src/templates/workshop.js')

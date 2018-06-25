@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Box } from '@hackclub/design-system'
+import { Container } from '@hackclub/design-system'
 import { Field, Submit } from 'components/Forms'
 import { withFormik } from 'formik'
 import * as yup from 'yup'
@@ -68,8 +68,11 @@ const Cloud9Form = withFormik({
         // associate submitted email with analytics if there isn't already an
         // email set - this will let us track workshop users that go through the
         // cloud9 setup
+        // eslint-disable-next-line
         analytics.ready(() => {
+          // eslint-disable-next-line
           if (!analytics.user().traits().email) {
+            // eslint-disable-next-line
             analytics.identify({ email: data.email })
           }
         })

@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
+import { graphql } from 'gatsby'
 import {
   Box,
   Container,
@@ -7,14 +8,12 @@ import {
   Link as A,
   Text,
   Section,
-  Icon,
-  Button,
   Card,
   Image,
   theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Nav from 'components/Nav'
 import {
   Breadcrumbs,
@@ -27,9 +26,8 @@ import MarkdownBody from 'components/MarkdownBody'
 import FeedbackForm from 'components/workshops/FeedbackForm'
 import DiscussOnSlack from 'components/DiscussOnSlack'
 import ShareButton from 'components/ShareButton'
-import { Modal, Overlay, CloseButton } from 'components/Modal'
 import Footer from 'components/Footer'
-import { lowerCase, camelCase, isEmpty } from 'lodash'
+import { isEmpty } from 'lodash'
 import { org } from 'data.json'
 
 const NotOnPrint = Box.extend`
@@ -112,15 +110,15 @@ const Cards = Container.extend`
 
     &:nth-child(1) {
       grid-area: feedback;
-      border-radius: ${props => props.theme.radius};
-      box-shadow: ${props => props.theme.boxShadows[1]};
+      border-radius: ${({ theme }) => theme.radius}px;
+      box-shadow: ${({ theme }) => theme.boxShadows[1]};
     }
     &:nth-child(2) {
       grid-area: share;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      border-bottom: 1px solid ${props => props.theme.colors.smoke};
+      border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
     }
     &:nth-child(3) {
       grid-area: questions;

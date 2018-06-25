@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Helmet from 'react-helmet'
+import Layout from 'components/Layout'
 import Header from 'components/home/Header'
 import ChallengeBanner from 'components/home/ChallengeBanner'
 import About from 'components/home/About'
@@ -8,7 +9,7 @@ import Description from 'components/home/Description'
 import Footer from 'components/Footer'
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet>
       <meta
         name="google-site-verification"
@@ -22,5 +23,5 @@ export default () => (
     <Footer>
       <Description />
     </Footer>
-  </Fragment>
+  </Layout>
 )

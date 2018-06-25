@@ -6,7 +6,7 @@ import {
   Text,
   LargeButton
 } from '@hackclub/design-system'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 
 const tilt = n =>
   `clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`

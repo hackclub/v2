@@ -8,7 +8,7 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
-    "start": "yarn run dev",
+    "start": "serve public",
     "fmt": "prettier \"{src/**,}/*.js\" --single-quote --no-semi --write",
     "social": "repng src/components/Social.js -w 512 -h 512 -o public -f social",
     "map": "npx babel-node src/map.js"
@@ -63,6 +63,7 @@
     "react-simple-maps": "^0.12.1",
     "react-vis": "^1.9.4",
     "remark": "^9.0.0",
+    "serve": "^9.1.0",
     "styled-components": "^3.3.3",
     "unfetch": "^3.0.0",
     "yup": "^0.25.1"

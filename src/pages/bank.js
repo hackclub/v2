@@ -140,7 +140,7 @@ export default () => (
     </Lead>
     <Flex justify="center">
       <CTA
-        href="https://medium.com/@zrl/e5d894ea5375"
+        href="https://medium.com/hackclub/a-bank-for-student-hackers-e5d894ea5375"
         target="_blank"
         scale
         chevronRight

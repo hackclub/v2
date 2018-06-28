@@ -39,6 +39,7 @@ const Nav = ({ color = 'white', invertFlag = false, ...props }) => (
       <GatsbyItem to="/challenge" children="Challenge" />
       <GatsbyItem to="/workshops" children="Workshops" />
       <Item href="https://hackathons.hackclub.com" children="Hackathons" />
+      <GatsbyItem to="/bank" children="Bank" />
     </NavBar>
   </Base>
 )

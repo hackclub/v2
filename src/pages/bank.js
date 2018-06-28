@@ -1,0 +1,249 @@
+import React, { Fragment } from 'react'
+import {
+  Box,
+  Flex,
+  Container,
+  Text,
+  Heading,
+  Button,
+  LargeButton,
+  Link as A,
+  Card
+} from '@hackclub/design-system'
+import Link from 'gatsby-link'
+import Helmet from 'react-helmet'
+import Nav from 'components/Nav'
+import Module from 'components/Module'
+
+const Base = Box.extend`
+  background-color: #111;
+  width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+  color: ${({ theme }) => theme.colors.gray[2]};
+  background-image: radial-gradient(circle, #333, #333 1px, #111 1px, #111);
+  background-size: 2rem 2rem;
+`
+
+const CTA = Button.extend`
+  text-transform: uppercase;
+`
+CTA.defaultProps = {
+  bg: 'teal.6',
+  color: 'white',
+  py: 3,
+  px: 4,
+  f: 2
+}
+
+const Modules = Container.extend`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-gap: ${({ theme }) => theme.space[3]}px;
+  h3,
+  svg {
+    color: ${({ theme }) => theme.colors.white};
+  }
+  ${({ theme }) => theme.mediaQueries.md} {
+    grid-gap: ${({ theme }) => theme.space[4]}px;
+    > div {
+      align-items: center;
+    }
+  }
+`
+Modules.defaultProps = {
+  py: 0,
+  px: 3,
+  my: 3,
+  mx: 'auto',
+  maxWidth: 64,
+  align: ['left', 'center']
+}
+
+const Internal = A.withComponent(Link).extend.attrs({ color: 'inherit' })``
+
+const Alt = Container.withComponent(Flex).extend.attrs({
+  maxWidth: 64,
+  px: 3,
+  flexDirection: 'column'
+})`text-align: left;`
+const AltBox = Box.extend.attrs({ my: 4 })`max-width: 36rem;`
+const AltLeft = AltBox.extend``
+const AltRight = AltBox.extend.attrs({ ml: 'auto' })``
+
+const Headline = Heading.h2.extend.attrs({
+  f: [5, 6],
+  mb: 3,
+  color: 'snow',
+  bold: true
+})`line-height: 1.125;`
+const subhline = { f: [3, 4], style: { lineHeight: '1.375' } }
+const subtext = { f: [3, 4], style: { lineHeight: '1.5' } }
+
+const Lead = Container.withComponent(Text)
+Lead.defaultProps = { f: 3, mx: 'auto' }
+
+const Banner = Container.extend``
+Banner.defaultProps = {
+  maxWidth: 48,
+  mt: 5,
+  mb: [3, 4],
+  mx: 'auto',
+  px: 3,
+  align: ['left', 'center']
+}
+
+const Join = Card.withComponent(Container).extend`
+  display: grid;
+  grid-gap: ${({ theme }) => theme.space[3]}px;
+  align-items: flex-start;
+  ${({ theme }) => theme.mediaQueries.md} {
+    grid-template-columns: 32rem auto;
+  }
+`
+
+const Breakdown = Box.extend`
+  div {
+    width: 100%;
+    display: block;
+    text-align: left !important;
+  }
+  span:before {
+    content: '$';
+    font-size: ${({ theme }) => theme.fontSizes[4]}px;
+    margin-left: -12px;
+    vertical-align: super;
+  }
+  p {
+    color: ${({ theme }) => theme.colors.red[1]};
+  }
+`
+
+export default () => (
+  <Base align="center">
+    <Helmet title="Hack Club Bank – High school hackathon fiscal sponsorship" />
+    <Nav color="smoke" />
+    <Heading.h1 f={[6, 7]} pt={[4, 5]} color="white">
+      The bank for student hackers.
+    </Heading.h1>
+    <Lead px={3} maxWidth={48} my={[3, 4]}>
+      {/*High schoolers running hackathons can now store their money through Hack
+      Club with the full benefits of the backing of a 501(c)(3) non-profit.
+      Event organizers can check their real-time account balance and transaction
+      history, collect payments from sponsors, issue physical debit cards to
+      their team.*/}
+      Hack Club Bank is the best place for high school hackers to store money
+      for hackathons. Student organizers can invoice sponsors, issue physical
+      debit cards, and get access to their event's financials through a
+      real-time dashboard all with the benefits of the backing of a 501(c)(3)
+      nonprofit.
+    </Lead>
+    <Flex justify="center">
+      <CTA
+        href="https://medium.com/@zrl/e5d894ea5375"
+        target="_blank"
+        scale
+        chevronRight
+      >
+        Read the announcement
+      </CTA>
+    </Flex>
+    <Banner>
+      <Headline>Finances, done right.</Headline>
+      <Lead maxWidth={36}>
+        No waiting days for an email reply about your balance. Everything is
+        immediately available and easy to see.
+      </Lead>
+    </Banner>
+    <Modules>
+      <Module
+        icon="account_balance"
+        name="Bank account"
+        body="Get a 501(c)(3) non-profit bank account (contributions will be tax-deductible)."
+      />
+      <Module
+        icon="history"
+        name="Balance + history"
+        body="Check real-time account balance and transaction history any time."
+      />
+      <Module
+        icon="receipt"
+        name="Manage your finances"
+        body="Add notes to transactions, export data, issue reimbursements. Easy."
+      />
+    </Modules>
+    <Banner>
+      <Headline>A powerful toolbox for organizing your event.</Headline>
+      <Lead maxWidth={32}>
+        We’ve got all the tools to start getting your event ready, from domain
+        email to legal forms.
+      </Lead>
+    </Banner>
+    <Modules>
+      <Module
+        icon="description"
+        name="Pre-written forms"
+        body="Download free consent and photo release forms for your event. No lawyers needed."
+      />
+      <Module
+        icon="credit_card"
+        name="Debit cards"
+        body="Issue physical debit cards to all your team members—no need for reimbursements."
+      />
+      <Module
+        icon="cloud"
+        name="G Suite"
+        body="Get free G Suite + email addresses (like megan@hackchicago.io) for everyone."
+      />
+    </Modules>
+    <Banner>
+      <Headline>We’re here to help out.</Headline>
+      <Lead maxWidth={36}>
+        Planning your event is enough work. Let us answer questions and do the
+        background work.
+      </Lead>
+    </Banner>
+    <Modules>
+      <Module
+        icon="local_atm"
+        name="Taxes + accounting"
+        body="We’ll handle end-of-year taxes and accounting in the background."
+      />
+      <Module
+        icon="live_help"
+        name="Support anytime"
+        body="Questions? We’ll never leave you dark. Best-effort 12hr response time."
+      />
+      <Module
+        icon="forum"
+        name="Community"
+        body="Talk to our community of experienced event organizers anytime."
+      />
+    </Modules>
+    <Container maxWidth={48} pt={[4, 5]} pb={[5, 6]} px={3}>
+      <Join align="left" bg="black" p={[3, 4]}>
+        <Container maxWidth={32} mx={0}>
+          <Heading.h2 {...subhline} color="white">
+            Ready to join Hack Club Bank?
+          </Heading.h2>
+          <Text>
+            You can join immediately with an invitation from an existing Bank
+            user or a member of the Hack Club community. Otherwise, tell us
+            about your event and we’ll get back to you within two weeks.
+          </Text>
+        </Container>
+        <CTA
+          href="https://goo.gl/forms/1UzFR4zkljL7dHQ32"
+          target="_blank"
+          scale
+          chevronRight
+        >
+          Apply
+        </CTA>
+      </Join>
+      <Text color="slate" f={1} mt={3}>
+        *Hack Club is not a real bank.
+      </Text>
+    </Container>
+  </Base>
+)

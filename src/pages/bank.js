@@ -8,7 +8,8 @@ import {
   Button,
   LargeButton,
   Link as A,
-  Card
+  Card,
+  Image
 } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
@@ -225,7 +226,10 @@ export default () => (
         body="Talk to our community of experienced event organizers anytime."
       />
     </Modules>
-    <Container maxWidth={48} pt={[4, 5]} pb={[5, 6]} px={3}>
+    <Container maxWidth={70} mt={3}>
+      <Image w={1} src="/bank-screenshot.png" />
+    </Container>
+    <Container maxWidth={48} pt={4} pb={[5, 6]} px={3}>
       <Join align="left" bg="black" p={[3, 4]}>
         <Container maxWidth={32} mx={0}>
           <Heading.h2 {...subhline} color="white">

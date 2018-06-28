@@ -13,6 +13,7 @@ import {
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
+import Animator from 'components/Animator'
 import Module from 'components/Module'
 
 const Base = Box.extend`
@@ -126,14 +127,22 @@ export default () => (
   <Base align="center">
     <Helmet title="Hack Club Bank – High school hackathon fiscal sponsorship" />
     <Nav color="smoke" />
-    <Megaline pt={[4, 5]}>The bank for student hackers.</Megaline>
-    <Lead px={3} maxWidth={48} my={[3, 4]}>
-      Hack Club Bank is the best place for high school hackers to store money
-      for hackathons. Student organizers can invoice sponsors, issue physical
-      debit cards, and get access to their event’s financials through a
-      real-time dashboard all with the benefits of the backing of a 501(c)(3)
-      nonprofit.
-    </Lead>
+    <Animator
+      is={Box}
+      data={{
+        opacity: [1, 0.75],
+        transform: [{ translateY: '0px' }, { translateY: '-64px' }]
+      }}
+    >
+      <Megaline pt={[4, 5]}>The bank for student hackers.</Megaline>
+      <Lead px={3} maxWidth={48} my={[3, 4]}>
+        Hack Club Bank is the best place for high school hackers to store money
+        for hackathons. Student organizers can invoice sponsors, issue physical
+        debit cards, and get access to their event’s financials through a
+        real-time dashboard all with the benefits of the backing of a 501(c)(3)
+        nonprofit.
+      </Lead>
+    </Animator>
     <Flex justify="center" mb={[3, 4]}>
       <CTA
         href="https://medium.com/hackclub/a-bank-for-student-hackers-e5d894ea5375"

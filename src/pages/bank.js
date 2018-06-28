@@ -212,7 +212,7 @@ export default () => (
       <Module
         icon="live_help"
         name="Support anytime"
-        body="Questions? We’ll never leave you dark. Best-effort 12hr response time."
+        body="Questions? We’ll never leave you in the dark. Best-effort 12hr response time."
       />
       <Module
         icon="forum"

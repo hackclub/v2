@@ -126,19 +126,7 @@ export default () => (
     <Heading.h1 f={[6, 7]} pt={[4, 5]} color="white">
       The bank for student hackers.
     </Heading.h1>
-    <Lead px={3} maxWidth={48} my={[3, 4]}>
-      {/*High schoolers running hackathons can now store their money through Hack
-      Club with the full benefits of the backing of a 501(c)(3) non-profit.
-      Event organizers can check their real-time account balance and transaction
-      history, collect payments from sponsors, issue physical debit cards to
-      their team.*/}
-      Hack Club Bank is the best place for high school hackers to store money
-      for hackathons. Student organizers can invoice sponsors, issue physical
-      debit cards, and get access to their event's financials through a
-      real-time dashboard all with the benefits of the backing of a 501(c)(3)
-      nonprofit.
-    </Lead>
-    <Flex justify="center">
+    <Flex justify="center" mt={3} mb={[3, 4]}>
       <CTA
         href="https://medium.com/hackclub/a-bank-for-student-hackers-e5d894ea5375"
         target="_blank"
@@ -148,6 +136,13 @@ export default () => (
         Read the announcement
       </CTA>
     </Flex>
+    <Lead px={3} maxWidth={48}>
+      Hack Club Bank is the best place for high school hackers to store money
+      for hackathons. Student organizers can invoice sponsors, issue physical
+      debit cards, and get access to their event's financials through a
+      real-time dashboard all with the benefits of the backing of a 501(c)(3)
+      nonprofit.
+    </Lead>
     <Banner>
       <Headline>Finances, done right.</Headline>
       <Lead maxWidth={36}>

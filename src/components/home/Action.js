@@ -19,18 +19,18 @@ const PromoBox = Box.extend`
   max-width: 40rem;
   text-align: center;
   z-index: 2;
-  border-radius: ${props => props.theme.radii[2]};
-  box-shadow: ${props => props.theme.boxShadows[3]};
+  border-radius: ${({ theme }) => theme.radii[2]};
+  box-shadow: ${({ theme }) => theme.boxShadows[3]};
   background-color: rgba(255, 255, 255, 0.75);
-  background-color: ${props => props.theme.colors.snow};
+  background-color: ${({ theme }) => theme.colors.snow};
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     background-color: rgba(255, 255, 255, 0.75);
     -webkit-backdrop-filter: saturate(180%) blur(16px);
   }
-  ${props => props.theme.mediaQueries.reduceTransparency} {
+  ${({ theme }) => theme.mediaQueries.reduceTransparency} {
     -webkit-backdrop-filter: auto !important;
   }
-  ${props => props.theme.mediaQueries.sm} {
+  ${({ theme }) => theme.mediaQueries.sm} {
     br {
       display: none;
     }
@@ -40,14 +40,14 @@ const PromoBox = Box.extend`
 const PromoHeading = Heading.h2.extend`
   background: linear-gradient(
     48deg,
-    ${props => props.theme.colors.orange[4]},
-    ${props => props.theme.colors.red[5]},
-    ${props => props.theme.colors.red[6]}
+    ${({ theme }) => theme.colors.orange[4]},
+    ${({ theme }) => theme.colors.red[5]},
+    ${({ theme }) => theme.colors.red[6]}
   );
   background-repeat: no-repeat;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: ${props => props.theme.colors.primary};
+  color: ${({ theme }) => theme.colors.primary};
 `
 
 const Action = LargeButton.withComponent(Link)

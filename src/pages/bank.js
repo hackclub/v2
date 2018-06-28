@@ -20,8 +20,8 @@ const Base = Box.extend`
   width: 100%;
   max-width: 100vw;
   min-height: 100vh;
-  color: ${({ theme }) => theme.colors.gray[2]};
-  background-image: radial-gradient(circle, #333, #333 1px, #111 1px, #111);
+  color: ${({ theme }) => theme.colors.gray[3]};
+  background-image: radial-gradient(circle, #444, #444 1px, #111 1px, #111);
   background-size: 2rem 2rem;
 `
 
@@ -71,6 +71,10 @@ const AltBox = Box.extend.attrs({ my: 4 })`max-width: 36rem;`
 const AltLeft = AltBox.extend``
 const AltRight = AltBox.extend.attrs({ ml: 'auto' })``
 
+const Megaline = Heading.h1.extend.attrs({
+  f: [6, 7],
+  color: 'white'
+})`line-height: 1.125;`
 const Headline = Heading.h2.extend.attrs({
   f: [5, 6],
   mb: 3,
@@ -78,7 +82,6 @@ const Headline = Heading.h2.extend.attrs({
   bold: true
 })`line-height: 1.125;`
 const subhline = { f: [3, 4], style: { lineHeight: '1.375' } }
-const subtext = { f: [3, 4], style: { lineHeight: '1.5' } }
 
 const Lead = Container.withComponent(Text)
 Lead.defaultProps = { f: 3, mx: 'auto' }
@@ -123,10 +126,15 @@ export default () => (
   <Base align="center">
     <Helmet title="Hack Club Bank – High school hackathon fiscal sponsorship" />
     <Nav color="smoke" />
-    <Heading.h1 f={[6, 7]} pt={[4, 5]} color="white">
-      The bank for student hackers.
-    </Heading.h1>
-    <Flex justify="center" mt={3} mb={[3, 4]}>
+    <Megaline pt={[4, 5]}>The bank for student hackers.</Megaline>
+    <Lead px={3} maxWidth={48} my={[3, 4]}>
+      Hack Club Bank is the best place for high school hackers to store money
+      for hackathons. Student organizers can invoice sponsors, issue physical
+      debit cards, and get access to their event’s financials through a
+      real-time dashboard all with the benefits of the backing of a 501(c)(3)
+      nonprofit.
+    </Lead>
+    <Flex justify="center" mb={[3, 4]}>
       <CTA
         href="https://medium.com/hackclub/a-bank-for-student-hackers-e5d894ea5375"
         target="_blank"
@@ -136,13 +144,6 @@ export default () => (
         Read the announcement
       </CTA>
     </Flex>
-    <Lead px={3} maxWidth={48}>
-      Hack Club Bank is the best place for high school hackers to store money
-      for hackathons. Student organizers can invoice sponsors, issue physical
-      debit cards, and get access to their event's financials through a
-      real-time dashboard all with the benefits of the backing of a 501(c)(3)
-      nonprofit.
-    </Lead>
     <Banner>
       <Headline>Finances, done right.</Headline>
       <Lead maxWidth={36}>
@@ -236,9 +237,10 @@ export default () => (
           Apply
         </CTA>
       </Join>
-      <Text color="slate" f={1} mt={3}>
-        *Hack Club is not a real bank.
-      </Text>
+      <Lead maxWidth={32} color="slate" f={1} mt={3}>
+        Hack Club does not directly provide banking services. Banking services
+        provided by Silicon Valley Bank, an FDIC-certified institution.
+      </Lead>
     </Container>
   </Base>
 )

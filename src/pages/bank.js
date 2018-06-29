@@ -124,9 +124,26 @@ const Breakdown = Box.extend`
   }
 `
 
+const title = 'Hack Club Bank – The Bank For Student Hackers'
+const desc =
+  'Get a bank account for your high school coding event or hackathon with the backing of a 501(c)(3) non-profit. Student organizers can invoice sponsors, issue physical debit cards, and get access to their event’s financials through a real-time dashboard.'
+const img = 'https://hackclub.com/bank-banner.png'
+
 export default () => (
   <Base align="center">
-    <Helmet title="Hack Club Bank – High school hackathon fiscal sponsorship" />
+    <Helmet
+      title={title}
+      meta={[
+        { name: 'description', content: desc },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: desc },
+        { name: 'twitter:image', content: img },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: desc },
+        { property: 'og:image', content: img },
+        { property: 'og:url', content: 'https://hackclub.com/bank' }
+      ]}
+    />
     <Nav color="smoke" />
     <Animator
       is={Box}

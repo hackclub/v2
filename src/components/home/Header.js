@@ -16,7 +16,7 @@ import Animator from 'components/Animator'
 
 const Root = Flex.withComponent('header').extend`
   text-align: center;
-  background: ${({ theme }) => theme.colors.blue[8]} url('/map.svg') no-repeat;
+  background: #222 url('/map.svg') no-repeat;
   background-size: cover;
   background-position: center top;
   max-width: 100%;
@@ -37,6 +37,9 @@ const Root = Flex.withComponent('header').extend`
   }
   h1 {
     line-height: 1;
+  }
+  p {
+    max-width: 36rem;
   }
 
   @media screen and (max-width: 22em) {
@@ -118,7 +121,7 @@ export default () => (
       <Heading.h1 f={[6, 7]} mx="auto" mt={2} mb={3}>
         High school coding clubs.
       </Heading.h1>
-      <Text f={[3, 4]} mx="auto" m={0}>
+      <Text f={[3, 4]} mx="auto">
         Hack Club is the world’s largest nonprofit network of computer science
         clubs where members learn to code through tinkering and building
         projects.
@@ -128,11 +131,13 @@ export default () => (
         align="center"
         mx={[-1, -2]}
         mt={[3, 4]}
-        flexDirection={['column-reverse', null, 'row']}
+        flexDirection={[null, 'column-reverse', 'row']}
       >
-        <Action.link to="/donate" bg="info">
-          Donate
-        </Action.link>
+        <Hide xs>
+          <Action.link to="/donate" bg="info">
+            Donate
+          </Action.link>
+        </Hide>
         <Flex flexDirection="row" align="center">
           <Action href="https://finder.hackclub.com" inverted>
             Find <span>Nearby</span>

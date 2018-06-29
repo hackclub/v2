@@ -16,8 +16,8 @@ export default () => (
       />
     </Helmet>
     <Header />
-    <ChallengeBanner />
     <About />
+    <ChallengeBanner />
     <Action />
     <Footer>
       <Description />

@@ -1,27 +1,28 @@
 import React from 'react'
-import {
-  Card,
-  Box,
-  Text,
-  Icon,
-  Container,
-  Flex,
-  Link
-} from '@hackclub/design-system'
+import { Flex, Icon, Text } from '@hackclub/design-system'
+import Link from 'gatsby-link'
 
-export default () => (
-  <Container maxWidth={24} my={-3}>
-    <Link href="challenge">
-      <Card bg="blue.1" p={[2, 3]}>
-        <Flex justify="flex-start" align="center">
-          <Icon name="open_in_new" size={24} mr={[2, 3]} color="blue.6" />
-          <Box color="blue.6">
-            <Text f={3} bold>
-              Check out student-built projects
-            </Text>
-          </Box>
-        </Flex>
-      </Card>
-    </Link>
-  </Container>
+const Base = Flex.withComponent(Link).extend`
+  border-radius: ${({ theme }) => theme.radius};
+  max-width: 28rem;
+`
+Base.defaultProps = {
+  mt: -2,
+  mb: [4, 5],
+  mx: 'auto',
+  bg: 'blue.0',
+  p: [2, 3],
+  justify: 'flex-start',
+  align: 'center'
+}
+
+const ChallengeBanner = () => (
+  <Base to="/challenge">
+    <Text bold color="info" f={3} mr={2}>
+      Check out projects built by students
+    </Text>
+    <Icon name="open_in_new" size={28} ml="auto" color="info" />
+  </Base>
 )
+
+export default ChallengeBanner

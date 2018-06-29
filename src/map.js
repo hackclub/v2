@@ -49,15 +49,16 @@ const Map = props =>
 
 const args = require('minimist')(process.argv.slice(2), {
   default: {
-    fill: colors.cyan[9],
-    stroke: colors.cyan[8],
-    pin: colors.cyan[6],
+    fill: colors.black,
+    stroke: colors.gray[8],
+    pin: colors.info,
     path: './static/map.svg'
   }
 })
 const { fill, stroke, pin, path } = args
 const css = `.rsm-svg{width:100vw;height:100vh;object-fit:cover}
-.rsm-geographies path{fill:${fill};stroke:${stroke};stroke-width:1;outline:none}
+path{shape-rendering:crispEdges;}
+.rsm-geographies path{fill:${fill};stroke:${stroke};stroke-width:.25;outline:none}
 .rsm-markers circle{fill:${pin};stroke-width:0;opacity:.667}`
 
 const API = 'https://api.hackclub.com/v1/clubs'

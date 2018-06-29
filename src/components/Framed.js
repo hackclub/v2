@@ -9,8 +9,8 @@ const Base = Box.section.extend`
   height: 100vh;
   min-height: 36rem;
   max-height: 64rem;
-  padding: ${props => props.theme.space[4]}px;
-  padding-top: ${props => props.theme.space[5]}px;
+  padding: ${({ theme }) => theme.space[4]}px;
+  padding-top: ${({ theme }) => theme.space[5]}px;
 `
 
 const Photo = styled.img`
@@ -49,7 +49,7 @@ const BorderTop = BorderBase.extend`
   left: 0;
   width: 100%;
   height: 5vw;
-  min-height: ${props => props.theme.space[4]}px;
+  min-height: ${({ theme }) => theme.space[4]}px;
   transform-origin: center top;
 `
 
@@ -58,7 +58,7 @@ const BorderRight = BorderBase.extend`
   right: 0;
   width: 5vw;
   height: 100%;
-  min-width: ${props => props.theme.space[4]}px;
+  min-width: ${({ theme }) => theme.space[4]}px;
   transform-origin: right center;
 `
 
@@ -78,8 +78,8 @@ const BorderLeft = BorderBase.extend`
   transform-origin: left center;
 `
 
-const x = { transform: [{ scaleX: 1 }, { scaleX: 0 }] }
-const y = { transform: [{ scaleY: 1 }, { scaleY: 0 }] }
+const x = { transform: [{ scaleX: 0 }, { scaleX: 1 }] }
+const y = { transform: [{ scaleY: 0 }, { scaleY: 1 }] }
 
 const BorderX = props => <Animator data={x} {...props} />
 const BorderY = props => <Animator data={y} {...props} />

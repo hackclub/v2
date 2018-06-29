@@ -14,10 +14,7 @@ import {
 import Nav from 'components/Nav'
 import Animator from 'components/Animator'
 
-const Root = Box.withComponent('header').extend`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+const Root = Flex.withComponent('header').extend`
   text-align: center;
   background: ${({ theme }) => theme.colors.blue[8]} url('/map.svg') no-repeat;
   background-size: cover;
@@ -48,11 +45,24 @@ const Root = Box.withComponent('header').extend`
     }
   }
 `
+Root.defaultProps = {
+  py: [5, 6],
+  align: 'center',
+  justify: 'center',
+  flexDirection: 'column'
+}
+
+const Base = Container.withComponent(Flex)
+Base.defaultProps = {
+  color: 'white',
+  flexDirection: 'column',
+  maxWidth: 48,
+  px: [2, null, 0]
+}
 
 const Notification = Flex.withComponent(Link).extend`
   border-radius: ${({ theme }) => theme.radius};
-  max-width: 48rem;
-  margin: 0 ${({ theme }) => theme.space[3]}px;
+  max-width: 36rem;
   background-color: ${({ theme }) => theme.colors.snow};
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     background-color: rgba(255, 255, 255, 0.85);
@@ -64,15 +74,16 @@ const Notification = Flex.withComponent(Link).extend`
   strong {
     font-weight: bold;
   }
-  > div {
-    flex: 1 1 auto;
-  }
 `
 Notification.defaultProps = {
-  p: 2,
+  w: 1,
+  py: 2,
+  px: [3, 2],
+  mt: [null, -3, -4],
   mb: 3,
+  mx: 'auto',
   align: 'center',
-  justify: ['center', 'auto']
+  justify: 'center'
 }
 
 const Action = LargeButton.extend.attrs({ scale: true, m: [1, null, 2] })``
@@ -85,13 +96,12 @@ export default () => (
       opacity: [1, 0.75],
       transform: [{ translateY: '0px' }, { translateY: '-96px' }]
     }}
-    px={[0, 3]}
   >
     <Nav style={{ position: 'absolute', top: 0 }} />
-    <Container maxWidth={48} color="white" my={[5, 6]}>
-      <Notification to="/bank" mt={[null, -3, -4]}>
+    <Base>
+      <Notification to="/bank">
         <Icon size={24} color="slate" name="account_balance" mr={2} />
-        <Flex color="black" f={1} mr={2} align={['center', 'left']}>
+        <Flex color="black" f={1} mr={2}>
           <strong>Announcing Bank</strong>
           <Hide xs sm ml={1}>
             {'– '}
@@ -102,7 +112,7 @@ export default () => (
           Learn more
         </Text.span>
       </Notification>
-      <Text f={[3, 4]} px={2} mx="auto" mt={3} mb={0} caps>
+      <Text f={[3, 4]} mx="auto" mt={3} mb={0} caps>
         By the students, for the students.
       </Text>
       <Heading.h1 f={[6, 7]} mx="auto" mt={2} mb={3}>
@@ -120,12 +130,7 @@ export default () => (
         mt={[3, 4]}
         flexDirection={['column-reverse', null, 'row']}
       >
-        <Action.link
-          to="/donate"
-          bg="accent"
-          f={[3, null, 4]}
-          px={[5, null, 4]}
-        >
+        <Action.link to="/donate" bg="info">
           Donate
         </Action.link>
         <Flex flexDirection="row" align="center">
@@ -137,6 +142,6 @@ export default () => (
           </Action.link>
         </Flex>
       </Flex>
-    </Container>
+    </Base>
   </Animator>
 )

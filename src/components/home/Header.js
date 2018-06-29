@@ -6,6 +6,9 @@ import {
   Box,
   Heading,
   Text,
+  Hide,
+  Icon,
+  Button,
   LargeButton
 } from '@hackclub/design-system'
 import Nav from 'components/Nav'
@@ -16,29 +19,27 @@ const Root = Box.withComponent('header').extend`
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  background: ${props => props.theme.colors.blue[8]} url('/map.svg') no-repeat;
+  background: ${({ theme }) => theme.colors.blue[8]} url('/map.svg') no-repeat;
   background-size: cover;
   background-position: center top;
   max-width: 100%;
   overflow: hidden;
   clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 95%);
-  ${props => props.theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.md} {
     clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 90%);
   }
 
   p,
   h1,
   h2 {
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.375);
   }
-  p:first-child {
-    line-height: 1.125;
+  p,
+  h2 {
+    line-height: 1.25;
   }
   h1 {
     line-height: 1;
-  }
-  h2 {
-    line-height: 1.25;
   }
 
   @media screen and (max-width: 22em) {
@@ -48,19 +49,33 @@ const Root = Box.withComponent('header').extend`
   }
 `
 
-const Action = LargeButton.extend`
-  transition: transform 0.125s ease-out;
-  will-change: transform;
-  transform: scale(1);
-  &:hover,
-  &:focus {
-    transform: scale(1.06);
+const Notification = Flex.withComponent(Link).extend`
+  border-radius: ${({ theme }) => theme.radius};
+  max-width: 48rem;
+  margin: 0 ${({ theme }) => theme.space[3]}px;
+  background-color: ${({ theme }) => theme.colors.snow};
+  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    background-color: rgba(255, 255, 255, 0.85);
+    -webkit-backdrop-filter: saturate(200%) blur(12px);
   }
-  @media (prefers-reduced-motion: reduce) {
-    transform: none !important;
+  ${({ theme }) => theme.mediaQueries.reduceTransparency} {
+    -webkit-backdrop-filter: auto !important;
+  }
+  strong {
+    font-weight: bold;
+  }
+  > div {
+    flex: 1 1 auto;
   }
 `
+Notification.defaultProps = {
+  p: 2,
+  mb: 3,
+  align: 'center',
+  justify: ['center', 'auto']
+}
 
+const Action = LargeButton.extend.attrs({ scale: true, m: [1, null, 2] })``
 Action.link = Action.withComponent(Link)
 
 export default () => (
@@ -74,19 +89,30 @@ export default () => (
   >
     <Nav style={{ position: 'absolute', top: 0 }} />
     <Container maxWidth={48} color="white" my={[5, 6]}>
-      <Text f={[3, 4]} px={2} mx="auto" my={0} caps>
+      <Notification to="/bank" mt={[null, -3, -4]}>
+        <Icon size={24} color="slate" name="account_balance" mr={2} />
+        <Flex color="black" f={1} mr={2} align={['center', 'left']}>
+          <strong>Announcing Bank</strong>
+          <Hide xs sm ml={1}>
+            {'– '}
+            the place for student hackers to store money
+          </Hide>
+        </Flex>
+        <Text.span caps color="info" f={1} ml="auto">
+          Learn more
+        </Text.span>
+      </Notification>
+      <Text f={[3, 4]} px={2} mx="auto" mt={3} mb={0} caps>
         By the students, for the students.
       </Text>
       <Heading.h1 f={[6, 7]} mx="auto" mt={2} mb={3}>
         High school coding clubs.
       </Heading.h1>
-      <Box w={0.75} mx="auto">
-        <Text f={[3, 4]} mx="auto" m={0}>
-          Hack Club is the world’s largest nonprofit network of computer science
-          clubs where members learn to code through tinkering and building
-          projects.
-        </Text>
-      </Box>
+      <Text f={[3, 4]} mx="auto" m={0}>
+        Hack Club is the world’s largest nonprofit network of computer science
+        clubs where members learn to code through tinkering and building
+        projects.
+      </Text>
       <Flex
         justify="center"
         align="center"
@@ -97,17 +123,16 @@ export default () => (
         <Action.link
           to="/donate"
           bg="accent"
-          m={[1, null, 2]}
           f={[3, null, 4]}
           px={[5, null, 4]}
         >
           Donate
         </Action.link>
         <Flex flexDirection="row" align="center">
-          <Action href="https://finder.hackclub.com" inverted m={[1, null, 2]}>
+          <Action href="https://finder.hackclub.com" inverted>
             Find <span>Nearby</span>
           </Action>
-          <Action.link to="/start" m={[1, null, 2]} f={[3, null, 4]}>
+          <Action.link to="/start" f={[3, null, 4]}>
             Start a Club »
           </Action.link>
         </Flex>

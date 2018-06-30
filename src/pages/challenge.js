@@ -293,20 +293,21 @@ export default class extends Component {
         <Container maxWidth={48} pt={4} pb={5} px={[0, 3]}>
           {ended && <Ended />}
           <Title align="center" pb={2} px={[2, 0]}>
-            <Flex align="center" wrap>
-              <Heading.h2 color="black" f={5} mr={3}>
+            <Flex align="center" flex="1 1 auto" wrap>
+              <Heading.h2 color="black" f={5} mr={2}>
                 Submissions
               </Heading.h2>
               <Text f={2} color="muted" align="left">
                 {tinyDt(challenge.start)}–{tinyDt(challenge.end)}
               </Text>
             </Flex>
-            <DropdownContainer ml="auto">
+            <DropdownContainer>
               <IconButton
                 name="sort"
                 size={16}
                 bg="info"
                 f={2}
+                style={{ whiteSpace: 'nowrap' }}
                 children={sortByHumanized[sortBy]}
               />
               <DropdownMenu>

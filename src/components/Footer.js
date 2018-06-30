@@ -15,8 +15,24 @@ const Base = Box.withComponent('footer').extend`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: ${props => props.theme.space[4]}px;
+    svg {
+      width: 24px;
+      height: 24px;
+    }
   }
 `
+
+const Services = Flex.extend`
+  a {
+    line-height: 0;
+  }
+`
+Services.defaultProps = {
+  align: 'center',
+  mx: -2,
+  my: [3, null, 0],
+  wrap: true
+}
 
 const icons = {
   slack:
@@ -71,7 +87,7 @@ const Footer = ({ children }) => (
     <Heading.h3 bold m={0} align={['left', null, 'right']}>
       Join the Club
     </Heading.h3>
-    <Flex align="center" mx={-2} mt={[2, null, 0]} mb={[3, null, 0]} wrap>
+    <Services>
       <Service href="/slack_invite" icon="slack" />
       <Service href="https://twitter.com/hackclub" icon="twitter" />
       <Service href="https://github.com/hackclub" icon="github" />
@@ -88,11 +104,11 @@ const Footer = ({ children }) => (
         icon="youtube"
       />
       <Service href="mailto:team@hackclub.com" icon="mail" />
-    </Flex>
+    </Services>
     <Heading.h3 bold m={0} align={['left', null, 'right']}>
       Hack Club HQ
     </Heading.h3>
-    <Box>
+    <Box mt={[2, null, 0]}>
       <Text m={0}>
         576 Natoma St<br />San Francisco, CA 94103
       </Text>

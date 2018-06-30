@@ -9,11 +9,10 @@ import {
 } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 
-const Base = Box.footer.extend`
+const Base = Box.withComponent('footer').extend`
   background: ${props => props.theme.colors.snow} url('/pattern.svg') repeat;
-  display: grid;
-  grid-gap: ${props => props.theme.space[3]}px;
-  ${props => props.theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.md} {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: ${props => props.theme.space[4]}px;
   }
@@ -48,9 +47,9 @@ const Service = ({ href, icon, ...props }) => (
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 16 16"
-      width={32}
-      height={32}
+      viewBox={icon === 'mail' ? '0 0 24 24' : '0 0 16 16'}
+      width={36}
+      height={36}
       fill="currentColor"
       fillRule="evenodd"
       clipRule="evenodd"
@@ -72,7 +71,7 @@ const Footer = ({ children }) => (
     <Heading.h3 bold m={0} align={['left', null, 'right']}>
       Join the Club
     </Heading.h3>
-    <Flex align="center" mx={-2} wrap>
+    <Flex align="center" mx={-2} mt={[2, null, 0]} mb={[3, null, 0]} wrap>
       <Service href="/slack_invite" icon="slack" />
       <Service href="https://twitter.com/hackclub" icon="twitter" />
       <Service href="https://github.com/hackclub" icon="github" />
@@ -88,7 +87,7 @@ const Footer = ({ children }) => (
         href="https://www.youtube.com/channel/UCQzO0jpcRkP-9eWKMpJyB0w"
         icon="youtube"
       />
-      <Service href="mailto:team@hackclub.com" icon="mail_outline" />
+      <Service href="mailto:team@hackclub.com" icon="mail" />
     </Flex>
     <Heading.h3 bold m={0} align={['left', null, 'right']}>
       Hack Club HQ

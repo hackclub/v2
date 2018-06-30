@@ -68,7 +68,7 @@ export default () => (
     <Header>
       <Nav style={{ position: 'absolute', top: 0 }} />
       <Container maxWidth={35} align="center">
-        <Heading.h1 f={4} regular caps mt={4}>
+        <Heading.h1 f={[3, 4]} regular caps mt={4}>
           Hack Club Team
         </Heading.h1>
         <Heading.h2 f={6}>We the students.</Heading.h2>
@@ -127,8 +127,8 @@ export default () => (
       <Heading.h2 color="black" f={[4, 5]}>
         What’ve we been doing recently?
       </Heading.h2>
-      <UpdateLink to="/updates" bg="info" mt={3}>
-        Watch our new monthly update
+      <UpdateLink to="/updates" bg="info" mt={3} chevronRight>
+        Watch monthly updates
       </UpdateLink>
     </Updates>
     <Footer />

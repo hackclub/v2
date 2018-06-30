@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Card, Icon, Box, Flex, Text } from '@hackclub/design-system'
+import { Container, Card, Icon, Flex, Text } from '@hackclub/design-system'
 import DiscussOnSlack from 'components/DiscussOnSlack'
 
 const Sheet = Container.withComponent(Card).extend`

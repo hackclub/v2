@@ -1,4 +1,4 @@
-import { Box, mediaQueries } from '@hackclub/design-system'
+import { Box } from '@hackclub/design-system'
 import { range } from 'lodash'
 
 const MarkdownBody = Box.extend`

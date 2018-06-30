@@ -1,19 +1,9 @@
 import React, { Fragment } from 'react'
 import { url as apiUrl } from 'api'
-import { Container, LargeButton, Heading } from '@hackclub/design-system'
-import {
-  Aside,
-  AutoSaver,
-  ConfirmClose,
-  Field,
-  Fieldset,
-  Form,
-  FormWrapper,
-  Submit
-} from 'components/Forms'
+import { LargeButton } from '@hackclub/design-system'
+import { AutoSaver, Field, Fieldset, Form, FormWrapper } from 'components/Forms'
 import { withFormik } from 'formik'
 import { Link } from 'gatsby'
-import * as yup from 'yup'
 
 LargeButton.link = LargeButton.withComponent(Link)
 
@@ -25,8 +15,7 @@ const InnerForm = props => {
     handleChange,
     handleBlur,
     handleSubmit,
-    isSubmitting,
-    params
+    isSubmitting
   } = props
   return (
     <FormWrapper>

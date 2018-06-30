@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Formik } from 'formik'
 import api from 'api'
 import { AutoSaver, Field } from 'components/Forms'
-import { Box, Flex, IconButton } from '@hackclub/design-system'
+import { Box, IconButton } from '@hackclub/design-system'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 
@@ -18,8 +18,8 @@ class SingleNote extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.state.id != nextProps.note.id) {
+  componentDidUpdate(nextProps) {
+    if (this.state.id !== nextProps.note.id) {
       this.setState({
         id: nextProps.note.id,
         note: nextProps.note
@@ -35,7 +35,7 @@ class SingleNote extends Component {
 
   handleSubmit(values, { setSubmitting }) {
     const { modelType, modelId } = this.props
-    const { note, id } = this.state
+    const { id } = this.state
     if (id) {
       api
         .patch(`v1/notes/${id}`, { data: values })
@@ -78,7 +78,6 @@ class SingleNote extends Component {
               handleBlur,
               handleSubmit,
               isSubmitting,
-              deleted,
               values
             } = props
 
@@ -130,7 +129,7 @@ export default class NotesForm extends Component {
   componentDidMount() {
     this.loadNotes(this.props.modelId)
   }
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(nextProps) {
     if (this.props.modelId !== nextProps.modelId) {
       this.loadNotes(nextProps.modelId)
     }
@@ -188,7 +187,7 @@ export default class NotesForm extends Component {
     this.setState({ notes: [...this.state.notes, { created_at: new Date() }] })
   }
   render() {
-    const { modelType, modelId, updateCallback } = this.props
+    const { modelType, modelId } = this.props
     const { status, notes } = this.state
     switch (status) {
       case 'loading':

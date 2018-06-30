@@ -9,12 +9,7 @@ import LeadershipPositionsForm from 'components/checkup/LeadershipPositionsForm'
 import LeaderInviteForm from 'components/checkup/LeaderInviteForm'
 import api from 'api'
 import search from 'search'
-import {
-  Container,
-  Heading,
-  Text,
-  Button
-} from '@hackclub/design-system'
+import { Container, Heading, Text, Button } from '@hackclub/design-system'
 
 export default class extends Component {
   state = {

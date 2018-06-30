@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   Heading,
-  Container,
   Flex,
   Box,
   Text,
@@ -97,17 +96,6 @@ const ModuleHeading = Heading.h3.extend.attrs({
 `
 const ModuleBody = Text.extend.attrs({ my: 0, f: 3, color: 'slate' })`
   line-height: 1.5;
-`
-
-const ModuleFigure = Box.withComponent('figure').extend.attrs({
-  bg: 'fuschia.0',
-  mr: [4, 5],
-  ml: 3
-})`
-  width: 6rem;
-  height: 6rem;
-  border-radius: 2rem;
-  flex-shrink: 0;
 `
 
 LargeButton.link = LargeButton.withComponent(Link)

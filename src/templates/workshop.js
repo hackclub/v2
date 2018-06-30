@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { graphql } from 'gatsby'
+import { Link } from 'gatsby'
 import {
   Box,
   Container,
@@ -13,7 +13,6 @@ import {
   theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import { Link } from 'gatsby'
 import Nav from 'components/Nav'
 import {
   Breadcrumbs,
@@ -27,7 +26,7 @@ import FeedbackForm from 'components/workshops/FeedbackForm'
 import DiscussOnSlack from 'components/DiscussOnSlack'
 import ShareButton from 'components/ShareButton'
 import Footer from 'components/Footer'
-import { isEmpty } from 'lodash'
+import isEmpty from 'lodash/isEmpty'
 import { org } from 'data.json'
 
 const NotOnPrint = Box.extend`
@@ -62,8 +61,8 @@ const Name = Heading.h1.extend`
   color: black;
   display: inline-block;
   mix-blend-mode: screen;
-  padding-left: ${props => props.theme.space[4]}px;
-  padding-right: ${props => props.theme.space[4]}px;
+  padding-left: ${theme.space[4]}px;
+  padding-right: ${theme.space[4]}px;
   width: max-content;
 `
 
@@ -101,7 +100,7 @@ const linkAuthor = authorText => {
 const Cards = Container.extend`
   text-align: center;
   display: grid;
-  grid-gap: ${props => props.theme.space[4]}px;
+  grid-gap: ${theme.space[4]}px;
   grid-template-areas: 'feedback' 'share' 'questions' 'contribute';
   width: 100%;
 
@@ -110,15 +109,15 @@ const Cards = Container.extend`
 
     &:nth-child(1) {
       grid-area: feedback;
-      border-radius: ${({ theme }) => theme.radius}px;
-      box-shadow: ${({ theme }) => theme.boxShadows[1]};
+      border-radius: ${theme.radius};
+      box-shadow: ${theme.boxShadows[1]};
     }
     &:nth-child(2) {
       grid-area: share;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
+      border-bottom: 1px solid ${theme.colors.smoke};
     }
     &:nth-child(3) {
       grid-area: questions;
@@ -128,7 +127,7 @@ const Cards = Container.extend`
     }
   }
 
-  ${props => props.theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     grid-template-areas:
       'feedback feedback share share'
       'feedback feedback questions contribute';
@@ -281,7 +280,10 @@ export default ({ data }) => {
             How was this workshop?
           </Heading.h2>
           <Text color="muted" f={1} mt={1} mb={3}>
-            (your feedback is anonymous + appreciated 💙)
+            (your feedback is anonymous + appreciated{' '}
+            <Text.span role="img" aria-label="Blue heart">
+              💙
+            </Text.span>)
           </Text>
           <FeedbackForm slug={slug} />
         </Card>
@@ -290,7 +292,10 @@ export default ({ data }) => {
             Made something rad?
           </Heading.h2>
           <Heading.h2 color="info" f={5} mb={3}>
-            Share it! 🌟
+            Share it!{' '}
+            <Text.span role="img" aria-label="Star">
+              🌟
+            </Text.span>
           </Heading.h2>
           <Flex justify="center">
             <ShareButton

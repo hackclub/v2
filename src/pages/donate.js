@@ -14,11 +14,7 @@ import { Link } from 'gatsby'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Stat from 'components/Stat'
-import {
-  Triangle,
-  Pentagon,
-  Circle,
-} from 'components/Shapes'
+import { Triangle, Pentagon, Circle } from 'components/Shapes'
 import DonateForm from 'components/donate/DonateForm'
 import Spent from 'components/donate/Spent'
 import Sponsors from 'components/donate/Sponsors'

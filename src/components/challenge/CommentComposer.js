@@ -3,17 +3,11 @@ import MarkdownBody from 'components/MarkdownBody'
 import QuotedComment from 'components/challenge/QuotedComment'
 import { commentStyle } from 'components/challenge/style'
 import Editor from 'draft-js-plugins-editor'
-import {
-  EditorState,
-  ContentState,
-  convertToRaw,
-  convertFromRaw
-} from 'draft-js'
+import { EditorState, convertToRaw, convertFromRaw } from 'draft-js'
 import createMarkdownPlugin from 'draft-js-markdown-plugin'
 import createCodeEditorPlugin from 'draft-js-code-editor-plugin'
 import { mdToDraftjs, draftjsToMd } from 'draftjs-md-converter'
 import { debounce, isEmpty } from 'lodash'
-import styled from 'styled-components'
 
 const features = {
   inline: ['BOLD', 'ITALIC', 'CODE', 'STRIKETHROUGH', 'LINK', 'IMAGE'],

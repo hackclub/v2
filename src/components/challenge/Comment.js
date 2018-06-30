@@ -9,13 +9,12 @@ import {
 } from '@hackclub/design-system'
 import Gravatar from 'react-gravatar'
 import ReactMarkdown from 'react-markdown'
-import MarkdownBody from 'components/MarkdownBody'
 import QuotedComment from 'components/challenge/QuotedComment'
 import PropTypes from 'prop-types'
 import { CommentByline, commentStyle } from 'components/challenge/style'
 import { onlyContainsEmoji, timeSince } from 'helpers'
 import { isEmpty } from 'lodash'
-import styled, { css } from 'styled-components'
+import { css } from 'styled-components'
 
 const gradient = (a, b) =>
   `linear-gradient(to bottom, ${cx(a)} 0%, ${cx(b)} 100%)`
@@ -153,8 +152,7 @@ class Comment extends Component {
       user,
       body,
       onReply,
-      onDelete,
-      ...props
+      onDelete
     } = this.props
     const emoji = onlyContainsEmoji(body)
     return (

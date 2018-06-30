@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link as A } from '@hackclub/design-system'
 import { Link } from 'gatsby'
 

@@ -9,8 +9,7 @@ import {
   Input,
   Label,
   LargeButton,
-  Text,
-  colors
+  Text
 } from '@hackclub/design-system'
 import { Prompt } from 'react-router'
 import MarkdownRenderer from 'components/MarkdownRenderer'
@@ -68,9 +67,7 @@ export class AutoSaver extends Component {
       previousValues: props.values
     }
     this.autoSave = this.autoSave.bind(this)
-  }
 
-  componentWillMount() {
     const intervalId = setInterval(this.autoSave, 1000)
     this.setState({ intervalId })
   }
@@ -134,8 +131,8 @@ export const Hint = Text.span.extend.attrs({
 })`&:before { content: ' — '; }`
 
 export class ConfirmClose extends Component {
-  componentWillMount() {
-    // https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm
+  constructor(props) {
+    super(props)
     window.onbeforeunload = () => window.confirm()
   }
 
@@ -165,10 +162,8 @@ export class Field extends Component {
     super(props)
     this.onFocus = this.onFocus.bind(this)
     this.onBlur = this.onBlur.bind(this)
-  }
 
-  componentWillMount() {
-    const { type, renderMarkdown } = this.props
+    const { type } = this.props
     const Tag = Input.withComponent(
       ['textarea', 'select'].indexOf(type) === -1 ? 'input' : type
     )
@@ -204,8 +199,7 @@ export class Field extends Component {
       optional,
       value,
       renderMarkdown,
-      bg,
-      ...props
+      bg
     } = this.props
 
     const { Tag, isEditing } = this.state

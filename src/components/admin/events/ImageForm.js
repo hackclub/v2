@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Button } from '@hackclub/design-system'
 import PropTypes from 'prop-types'
 import api, { url as apiUrl } from 'api'
@@ -27,7 +27,7 @@ class ImageForm extends Component {
   }
 
   render() {
-    const { type, width, height, previewTag: PreviewTag } = this.props
+    const { type, previewTag: PreviewTag } = this.props
     const { image } = this.state
     return (
       <form>

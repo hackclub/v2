@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react'
 import { Box, Flex, Card } from '@hackclub/design-system'
 import { css, keyframes } from 'styled-components'
 

@@ -2,8 +2,8 @@ import React, { Fragment } from 'react'
 import { withFormik } from 'formik'
 import * as yup from 'yup'
 import api from 'api'
-import { AutoSaver, Field, Submit } from 'components/Forms'
-import { Button, Text, Label } from '@hackclub/design-system'
+import { Field } from 'components/Forms'
+import { Button } from '@hackclub/design-system'
 
 const InnerForm = ({
   values,
@@ -19,7 +19,11 @@ const InnerForm = ({
       label={
         <Fragment>
           Should this event be listed on{' '}
-          <a href="https://hackathons.hackclub.com" target="_blank">
+          <a
+            href="https://hackathons.hackclub.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             hackathons.hackclub.com
           </a>?
         </Fragment>

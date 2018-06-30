@@ -5,11 +5,9 @@ import ErrorPage from 'components/admin/ErrorPage'
 import Layout from 'components/Layout'
 import Nav from 'components/apply/ApplyNav'
 import ClubForm from 'components/checkup/ClubForm'
-import LeadershipPositionsForm from 'components/checkup/LeadershipPositionsForm'
-import LeaderInviteForm from 'components/checkup/LeaderInviteForm'
 import api from 'api'
 import search from 'search'
-import { Container, Link, Card, Heading, Text } from '@hackclub/design-system'
+import { Container, Card, Heading } from '@hackclub/design-system'
 
 export default class extends Component {
   state = {
@@ -37,7 +35,7 @@ export default class extends Component {
   }
 
   render() {
-    const { status, club, user } = this.state
+    const { status, club } = this.state
     switch (status) {
       case 'loading':
         return <LoadingBar fill />

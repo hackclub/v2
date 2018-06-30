@@ -1,10 +1,9 @@
 import React from 'react'
 import api from 'api'
-import { Heading, Label, Input, Text, cx } from '@hackclub/design-system'
+import { Label, Input, Text, cx } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import * as yup from 'yup'
 import storage from 'storage'
-import fetch from 'unfetch'
 
 const StyledInput = Input.extend`
   text-align: inherit;

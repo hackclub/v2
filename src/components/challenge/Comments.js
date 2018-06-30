@@ -1,13 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import {
-  Box,
-  Flex,
-  Text,
-  Heading,
-  Link,
-  Button,
-  Icon
-} from '@hackclub/design-system'
+import { Box, Flex, Heading, Link, Icon } from '@hackclub/design-system'
 import FlipMove from 'react-flip-move'
 import Auth from 'components/Auth'
 import LoadingBar from 'components/LoadingBar'
@@ -15,7 +7,6 @@ import ErrorPage from 'components/admin/ErrorPage'
 import Comment from 'components/challenge/Comment'
 import NewComment from 'components/challenge/NewComment'
 import NoComments from 'components/challenge/NoComments'
-import PropTypes from 'prop-types'
 import api from 'api'
 import { isEmpty, remove, find } from 'lodash'
 

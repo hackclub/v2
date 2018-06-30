@@ -1,23 +1,7 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { url as apiUrl } from 'api'
-import {
-  Aside,
-  AutoSaver,
-  ConfirmClose,
-  Field,
-  Fieldset,
-  Form,
-  FormAndTableRow,
-  FormWrapper,
-  Submit
-} from 'components/Forms'
-import {
-  Button,
-  Container,
-  Heading,
-  Flex,
-  LargeButton
-} from '@hackclub/design-system'
+import { AutoSaver, Field, Fieldset, Form, FormWrapper } from 'components/Forms'
+import { LargeButton } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import { Link } from 'gatsby'
 import * as yup from 'yup'
@@ -52,8 +36,6 @@ const InnerForm = props => {
     handleBlur,
     handleSubmit,
     isSubmitting,
-    id,
-    authToken,
     disableAutosave
   } = props
   return (

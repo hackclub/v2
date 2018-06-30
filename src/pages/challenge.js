@@ -9,8 +9,6 @@ import {
   Section,
   Link,
   Card,
-  Button,
-  Icon,
   Image
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
@@ -28,7 +26,7 @@ import {
   DropdownMenu,
   DropdownMenuOption
 } from 'components/Dropdown'
-import { dt, tinyDt } from 'helpers'
+import { tinyDt } from 'helpers'
 import { isEmpty, keys } from 'lodash'
 import api from 'api'
 import storage from 'storage'
@@ -234,6 +232,7 @@ export default class extends Component {
               }}
             >
               <Text f={2}>
+                // eslint-disable-next-line
                 🌟 Challenge: Create the coolest website w/{' '}
                 <Link href="https://p5js.org/" target="_blank" underline>
                   {challenge.name}

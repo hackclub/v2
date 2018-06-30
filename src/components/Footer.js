@@ -1,13 +1,5 @@
 import React from 'react'
-import {
-  Flex,
-  Box,
-  Heading,
-  Text,
-  Link as A,
-  cx
-} from '@hackclub/design-system'
-import { Link } from 'gatsby'
+import { Flex, Box, Heading, Text, Link as A } from '@hackclub/design-system'
 
 const Base = Box.footer.extend`
   background: ${props => props.theme.colors.snow} url('/pattern.svg') repeat;

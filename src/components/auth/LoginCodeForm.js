@@ -3,7 +3,6 @@ import api from 'api'
 import { Label, Input, Text, cx } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import * as yup from 'yup'
-import fetch from 'unfetch'
 
 const StyledInput = Input.extend`
   text-align: inherit;
@@ -27,7 +26,7 @@ class InnerForm extends Component {
   }
 
   formatAsLoginCode(event, rawInput) {
-    const typedDash = rawInput.slice(rawInput.length - 2) == '--'
+    const typedDash = rawInput.slice(rawInput.length - 2) === '--'
     let digits = rawInput.replace(/[^0-9]/g, '')
     const isRemovingDash =
       this.state.previousLength === 3 && digits.length === 3 && !typedDash
@@ -53,12 +52,10 @@ class InnerForm extends Component {
     const {
       values,
       errors,
-      touched,
       handleChange,
       handleBlur,
       handleSubmit,
       isSubmitting,
-      status,
       color,
       bg,
       email,
@@ -69,7 +66,8 @@ class InnerForm extends Component {
       <form onSubmit={handleSubmit}>
         <Label className="loginCode" id="loginCode" {...textProps}>
           <Text color={color} mb={3}>
-            📬 We just sent a login code to {email}.
+            /* eslint-disable-next-line */ 📬 We just sent a login code to{' '}
+            {email}.
           </Text>
           <StyledInput
             name="loginCode"

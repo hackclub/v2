@@ -89,14 +89,3 @@ export const Triangle = ({ size, ...props }) => (
     />
   </Svg>
 )
-
-const hi = (
-  <Box>
-    <Triangle color="primary" size={128} />
-    <Hexagon color="accent" size={128} />
-    <Pentagon color="success" size={128} />
-    <Circle color="warning" size={128} />
-    <Square color="primary" size={128} />
-    <Line color="info" size={128} />
-  </Box>
-)

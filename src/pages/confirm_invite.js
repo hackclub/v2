@@ -49,7 +49,7 @@ class Invite extends Component {
   }
 
   acceptInvite() {
-    const { invite, user } = this.props
+    const { user } = this.props
     if (user.new_leader) {
       this.setState({ status: 'loading' })
       this.submitAcceptance()
@@ -199,7 +199,7 @@ export default class extends Component {
   }
 
   render() {
-    const { status, invites, pendingInviteCount, leader, user } = this.state
+    const { status, invites, pendingInviteCount, user } = this.state
     switch (status) {
       case 'loading':
         return <LoadingBar fill />

@@ -3,7 +3,6 @@ import { cx } from '@hackclub/design-system'
 import {
   XYPlot,
   VerticalBarSeries,
-  BarSeries,
   VerticalGridLines,
   HorizontalGridLines,
   XAxis,

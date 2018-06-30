@@ -17,7 +17,7 @@ const Base = Card.withComponent(Flex).extend`
   }
 `
 
-const Bio = ({ bg, img, name, role, text, ...props }) => (
+const Bio = ({ bg, img, name, teamRole: role, text, ...props }) => (
   <Base p={3} bg={`${bg}.0`} {...props}>
     <Avatar size="64px" src={img} mr={2} alt={name} />
     <Box>

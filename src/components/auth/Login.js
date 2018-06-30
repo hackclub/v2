@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
 import { Flex, Heading, colors } from '@hackclub/design-system'
 import LoginForm from 'components/auth/LoginForm'

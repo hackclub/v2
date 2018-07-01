@@ -30,8 +30,6 @@ export default props => (
         { property: 'og:title', content: title },
         { property: 'og:description', content: description },
         { property: 'og:image', content: img },
-        { property: 'og:image:height', content: 512 },
-        { property: 'og:image:width', content: 512 },
         { property: 'og:locale', content: 'en_US' },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: url }

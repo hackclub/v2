@@ -36,10 +36,10 @@ const PhotoSection = Section.extend`
   ${shadows};
 `
 
-const Modules = Container.extend`
+const Modules = Box.extend`
   display: grid;
-  grid-gap: ${props => props.theme.space[3]}px;
-  ${props => props.theme.mediaQueries.md} {
+  grid-gap: ${({ theme }) => theme.space[3]}px;
+  ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: repeat(3, 1fr);
   }
   > div {
@@ -47,27 +47,18 @@ const Modules = Container.extend`
     padding: 0;
     text-align: left;
     width: 100% !important;
-    &:nth-child(1) {
-      color: ${props => props.theme.colors.indigo[6]};
+    &:nth-child(3n-2) {
+      color: ${({ theme }) => theme.colors.accent};
     }
-    &:nth-child(2) {
-      color: ${props => props.theme.colors.teal[7]};
+    &:nth-child(3n-1) {
+      color: ${({ theme }) => theme.colors.info};
     }
-    &:nth-child(3) {
-      color: ${props => props.theme.colors.red[6]};
+    &:nth-child(3n) {
+      color: ${({ theme }) => theme.colors.primary};
     }
-    &:nth-child(4) {
-      color: ${props => props.theme.colors.blue[7]};
-      svg {
-        margin-left: -6px;
-      }
-    }
-    &:nth-child(5) {
-      color: ${props => props.theme.colors.cyan[8]};
-    }
-    &:nth-child(6) {
-      color: ${props => props.theme.colors.orange[6]};
-    }
+  }
+  p {
+    color: ${({ theme }) => theme.colors.slate};
   }
 `
 
@@ -80,16 +71,16 @@ const OthersCard = Box.extend`
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     -webkit-backdrop-filter: blur(8px);
   }
-  ${props => props.theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.md} {
     max-width: 28rem;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    border-radius: ${props => props.theme.radius};
+    border-radius: ${({ theme }) => theme.radius};
   }
   p {
-    color: ${props => props.theme.colors.black};
-    font-size: ${props => props.theme.fontSizes[2]}px;
+    color: ${({ theme }) => theme.colors.black};
+    font-size: ${({ theme }) => theme.fontSizes[2]}px;
     line-height: 1.25;
     text-shadow: none;
   }
@@ -97,13 +88,13 @@ const OthersCard = Box.extend`
 
 LargeButton.link = LargeButton.withComponent(Link)
 
-const Row = Container.extend.attrs({ px: 3, py: [3, 4] })`
+const Row = Container.extend.attrs({ color: 'black', px: 3, py: [3, 4] })`
   display: grid;
-  grid-gap: ${props => props.theme.space[3]}px;
+  grid-gap: ${({ theme }) => theme.space[3]}px;
   text-align: left;
-  ${props => props.theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: ${props => props.cols || '2fr 3fr'};
-    grid-gap: ${props => props.theme.space[4]}px;
+    grid-gap: ${({ theme }) => theme.space[4]}px;
   }
 `
 
@@ -164,7 +155,7 @@ export default () => (
       </Container>
     </Animator>
     <Row my={[4, 5]}>
-      <Box color="black" mt={-4}>
+      <Box mt={-4}>
         <Text color="accent" f={4} bold caps>
           Students!
         </Text>
@@ -253,7 +244,7 @@ export default () => (
           body="Join our Slack and meet thousands of other club leaders and members around the world."
         />
         <Module
-          icon="chrome_reader_mode"
+          icon="pages"
           heading="Curriculum"
           body="Give your members dozens of free tutorials for making websites, apps, and games."
         />
@@ -263,7 +254,7 @@ export default () => (
           body="Talk to our team for guidance and assistance whenever you need help."
         />
         <Module
-          icon="description"
+          icon="chrome_reader_mode"
           heading="Guidelines"
           body="Learn from hundreds of other clubs—we’ve got information, advice, and experience."
         />

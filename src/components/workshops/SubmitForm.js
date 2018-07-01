@@ -11,7 +11,6 @@ import { Submit } from 'components/Forms'
 import { withFormik } from 'formik'
 import { isEmpty } from 'lodash'
 import Composer, { LS_NAME_KEY, LS_BODY_KEY } from './Composer'
-import Invert from 'components/Invert'
 import * as yup from 'yup'
 import api from 'api'
 
@@ -42,10 +41,6 @@ const Header = Flex.extend`
     &:focus {
       box-shadow: none;
     }
-  }
-
-  button {
-    padding: ${props => props.theme.space[2]}px;
   }
 `
 
@@ -124,7 +119,6 @@ const InnerForm = ({
           placeholder="Getting Started with React.js"
           fontSize={5}
         />
-        <Invert muted children={null} />
       </Header>
       <Composer onChange={setFieldValue} onBlur={handleBlur} />
     </Sheet>

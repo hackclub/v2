@@ -19,8 +19,8 @@ const Header = Section.withComponent('header').extend`
   background: url('/pattern.svg'),
     linear-gradient(
         -64deg,
-        ${props => props.theme.colors.orange[5]},
-        ${props => props.theme.colors.red[5]}
+        ${({ theme }) => theme.colors.orange[5]},
+        ${({ theme }) => theme.colors.red[5]}
       )
       repeat;
   clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 95%);
@@ -29,16 +29,16 @@ const Header = Section.withComponent('header').extend`
 const Base = Container.extend`
   display: grid;
   grid-gap: 1rem;
-  ${props => props.theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.md} {
     grid-gap: 2rem;
     grid-template-columns: repeat(2, 1fr);
   }
 `
 
 const Updates = Section.withComponent(Container).extend`
-  background: url('/pattern.svg') ${props => props.theme.colors.white};
-  box-shadow: ${props => props.theme.boxShadows[1]};
-  border-radius: ${props => props.theme.radius};
+  background: url('/pattern.svg') ${({ theme }) => theme.colors.white};
+  box-shadow: ${({ theme }) => theme.boxShadows[1]};
+  border-radius: ${({ theme }) => theme.radius};
 `
 const UpdateLink = Button.withComponent(Link)
 
@@ -65,8 +65,8 @@ export default () => (
           linear-gradient(to bottom,${cx('white')},${cx('snow')});
       }`}
     />
+    <Nav />
     <Header>
-      <Nav style={{ position: 'absolute', top: 0 }} />
       <Container maxWidth={35} align="center">
         <Heading.h1 f={[3, 4]} regular caps mt={4}>
           Hack Club Team

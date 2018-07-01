@@ -5,7 +5,6 @@ import Nav from 'components/Nav'
 import SlackForm from 'components/SlackForm'
 
 const Fill = Box.withComponent('main').extend`
-  padding: 0 !important;
   background: url('/pattern.svg'), linear-gradient(-32deg, #3f46ad, #1c299d);
   height: 100vh;
   overflow: auto;
@@ -34,7 +33,7 @@ export default () => (
     <Helmet title="Join Our Slack – Hack Club" />
     <Nav color="white" />
     <Container px={3}>
-      <Heading.h1 f={[5, 6]} mt={4} mb={2}>
+      <Heading.h1 f={[5, 6]} mt={[5, 6]} mb={2}>
         Join the Hack Club Slack
       </Heading.h1>
       <Heading.h2 f={[3, 4]} mb={4} regular>

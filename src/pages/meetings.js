@@ -17,13 +17,12 @@ import Start from 'components/Start'
 import Footer from 'components/Footer'
 
 const Header = Section.withComponent('header').extend`
-  padding-top: 0 !important;
-  background-color: ${props => props.theme.colors.teal[6]};
+  background-color: ${({ theme }) => theme.colors.teal[6]};
   background-image: linear-gradient(
     -32deg,
-    ${props => props.theme.colors.green[7]},
-    ${props => props.theme.colors.teal[6]},
-    ${props => props.theme.colors.teal[7]}
+    ${({ theme }) => theme.colors.green[7]},
+    ${({ theme }) => theme.colors.teal[6]},
+    ${({ theme }) => theme.colors.teal[7]}
   );
   clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 90%);
 
@@ -46,8 +45,9 @@ const Module = Flex.extend.attrs({
   max-width: 32rem;
   text-align: left;
 
-  ${props => props.theme.mediaQueries[1]} {
-    &:nth-of-type(1), &:nth-of-type(3) {
+  ${({ theme }) => theme.mediaQueries[1]} {
+    &:nth-of-type(1),
+    &:nth-of-type(3) {
       transform: translateY(4rem);
     }
   }
@@ -56,12 +56,16 @@ const Module = Flex.extend.attrs({
     width: 4rem !important;
     height: 4rem !important;
     flex-shrink: 0;
-    ${props => props.theme.mediaQueries[1]} {
-      &:first-child { margin-right: 3rem; }
-      &:last-child { margin-left: 2rem; }
+    ${({ theme }) => theme.mediaQueries[1]} {
+      &:first-child {
+        margin-right: 3rem;
+      }
+      &:last-child {
+        margin-left: 2rem;
+      }
     }
     /* this is terrible */
-    @media screen and (max-width:32em) {
+    @media screen and (max-width: 32em) {
       order: -1 !important;
       margin-left: 0;
       margin-right: 1rem;
@@ -75,9 +79,9 @@ const ModuleHeading = Heading.h3.extend.attrs({
   f: [3, 4],
   bold: true
 })`
-  color: ${props => props.theme.colors.black};
+  color: ${({ theme }) => theme.colors.black};
   position: relative;
-  ${props => props.theme.mediaQueries[1]} {
+  ${({ theme }) => theme.mediaQueries[1]} {
     &:before {
       content: "";
       width: 8px;
@@ -108,8 +112,7 @@ LargeButton.link = LargeButton.withComponent(Link)
 
 const title = 'Hack Club Meetings'
 const description =
-  'Learn about meetings at Hack Clubs, high school programming clubs at schools around the world. ' +
-  'Get coding club activities and programming curriculum to start a high school computer science club.'
+  'Learn about meetings at Hack Clubs, high school programming clubs at schools around the world. Get coding club activities and programming curriculum to start a high school computer science club.'
 
 export default () => (
   <Fragment>
@@ -124,8 +127,8 @@ export default () => (
         { property: 'og:url', content: 'https://hackclub.com/meetings' }
       ]}
     />
+    <Nav />
     <Header color="white" pb={4}>
-      <Nav />
       <Heading.h1 align="center" f={[5, 6]} mx="auto" mt={4} mb={3}>
         At Hack Club meetings,<br />
         everyone is making.

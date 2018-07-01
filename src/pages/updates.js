@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import styled, { injectGlobal } from 'styled-components'
 import {
   Container,
   Heading,
@@ -13,7 +14,6 @@ import Helmet from 'react-helmet'
 import YouTubePlayer from 'react-player/lib/players/YouTube'
 import Nav from 'components/Nav'
 import Invert from 'components/Invert'
-import Footer from 'components/Footer'
 import { kebabCase } from 'lodash'
 
 const Header = Section.withComponent('header')
@@ -28,7 +28,8 @@ const Calendar = Flex.extend`
   border-color: ${props => cx(props.color)};
   border-style: solid;
   border-radius: 12px;
-  font-weight: ${props => props.theme.bold};
+  font-weight: ${({ theme }) => theme.bold};
+  background-color: ${({ theme }) => theme.colors.snow};
 `
 const Year = Text.extend.attrs({
   f: 3,
@@ -44,7 +45,7 @@ const Month = Text.extend.attrs({ f: 4, mt: 1 })`
 const Updater = Container.withComponent(Flex).extend`
   flex-direction: column;
   align-items: center;
-  ${props => props.theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.md} {
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
@@ -58,12 +59,12 @@ const Sheet = Card.extend`
   position: relative;
   padding-top: 55%;
   overflow: hidden;
-  box-shadow: ${props => props.theme.boxShadows[1]};
+  box-shadow: ${({ theme }) => theme.boxShadows[1]};
   transition: 0.25s ease-out box-shadow;
   &:hover {
-    box-shadow: ${props => props.theme.boxShadows[2]};
+    box-shadow: ${({ theme }) => theme.boxShadows[2]};
   }
-  ${props => props.theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.md} {
     padding-top: 41.25%; // NOTE(@lachlanjc): i just guessed until i found this
   }
 `
@@ -116,19 +117,18 @@ export default () => (
         { property: 'og:url', content: 'https://hackclub.com/updates' }
       ]}
     />
-    <Nav invertFlag color="slate" style={{ position: 'absolute', top: 0 }} />
-    <style children={`body{background:${cx('snow')};}`} />
+    <style children="body{background:#111}" />
+    <Nav color="white" />
     <Header py={4} align="center" justify="center">
       <Container mt={5} maxWidth={32}>
-        <Heading.h1 color="black" f={6}>
+        <Heading.h1 color="white" f={6}>
           Updates
         </Heading.h1>
-        <Text f={4} color="muted" style={{ lineHeight: '1.25' }}>
+        <Text f={4} color="smoke" style={{ lineHeight: '1.25' }}>
           Every month we produce a video update with what’s new at Hack Club.
           Here they all are!
         </Text>
       </Container>
-      <Invert children="Theater mode" muted my={3} />
     </Header>
     <Container pb={4}>
       <Update
@@ -150,6 +150,5 @@ export default () => (
         url="https://youtu.be/Xj32LuE44bU"
       />
     </Container>
-    <Footer />
   </Fragment>
 )

@@ -69,7 +69,9 @@ const Alt = Container.withComponent(Flex).extend.attrs({
   px: 3,
   flexDirection: 'column'
 })`text-align: left;`
-const AltBox = Box.extend.attrs({ my: 4 })`max-width: 36rem;`
+const AltBox = Box.extend.attrs({ my: 4 })`
+  max-width: 36rem;
+`
 const AltLeft = AltBox.extend``
 const AltRight = AltBox.extend.attrs({ ml: 'auto' })``
 
@@ -152,7 +154,7 @@ export default () => (
         transform: [{ translateY: '0px' }, { translateY: '-64px' }]
       }}
     >
-      <Megaline pt={[4, 5]}>The bank for student hackers.</Megaline>
+      <Megaline pt={[5, 6]}>The bank for student hackers.</Megaline>
       <Lead px={3} maxWidth={48} my={[3, 4]}>
         Hack Club Bank is the best place for high school hackers to store money
         for hackathons. Student organizers can invoice sponsors, issue physical

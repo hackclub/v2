@@ -16,12 +16,12 @@ import Footer from 'components/Footer'
 A.link = A.withComponent(Link)
 
 const Header = Section.withComponent('header').extend`
-  background-color: ${props => props.theme.colors.fuschia[6]};
+  background-color: ${({ theme }) => theme.colors.fuschia[6]};
   background-image: linear-gradient(
     32deg,
-    ${props => props.theme.colors.fuschia[5]} 0%,
-    ${props => props.theme.colors.red[5]} 64%,
-    ${props => props.theme.colors.red[6]} 100%
+    ${({ theme }) => theme.colors.fuschia[5]} 0%,
+    ${({ theme }) => theme.colors.red[5]} 64%,
+    ${({ theme }) => theme.colors.red[6]} 100%
   );
   clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 90%);
   > div { position: relative; }
@@ -38,7 +38,7 @@ const Seal = Box.extend`
   position: absolute;
   margin-top: -1rem;
   transform: rotate(3deg);
-  ${props => props.theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.md} {
     margin-top: -3rem;
   }
 `
@@ -48,7 +48,7 @@ const HeadLine = Heading.h1.extend.attrs({ f: [5, 7, 8] })`
   text-transform: uppercase;
   &:nth-of-type(2) {
     padding-left: 1.5rem;
-    ${props => props.theme.mediaQueries.md} {
+    ${({ theme }) => theme.mediaQueries.md} {
       padding-left: 6rem;
     }
   }
@@ -67,7 +67,7 @@ const HeadLine = Heading.h1.extend.attrs({ f: [5, 7, 8] })`
       right: -0.5rem;
       width: 9.5rem;
       height: 2.5rem;
-      ${props => props.theme.mediaQueries.sm} {
+      ${({ theme }) => theme.mediaQueries.sm} {
         width: 20rem;
         height: 5.5rem;
       }
@@ -77,24 +77,24 @@ const HeadLine = Heading.h1.extend.attrs({ f: [5, 7, 8] })`
 
 const Row = Container.extend.attrs({ px: 3, maxWidth: 56 })`
   display: grid;
-  grid-gap: ${props => props.theme.space[3]}px;
+  grid-gap: ${({ theme }) => theme.space[3]}px;
   text-align: left;
   h2 {
     line-height: 1;
   }
-  ${props => props.theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: 2fr 3fr;
   }
 `
 
 const Super = Text.withComponent('mark').extend`
-  background-color: ${props => props.theme.colors.warning};
+  background-color: ${({ theme }) => theme.colors.warning};
   clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
-  color: ${props => props.theme.colors.white};
+  color: ${({ theme }) => theme.colors.white};
   display: inline-block;
-  padding-bottom: ${props => props.theme.space[2]}px;
-  padding-left: ${props => props.theme.space[3]}px;
-  padding-right: ${props => props.theme.space[3]}px;
+  padding-bottom: ${({ theme }) => theme.space[2]}px;
+  padding-left: ${({ theme }) => theme.space[3]}px;
+  padding-right: ${({ theme }) => theme.space[3]}px;
 `
 
 const title = 'Hack Club Philosophy'
@@ -115,7 +115,7 @@ export default () => (
         { property: 'og:url', content: 'https://hackclub.com/philosophy' }
       ]}
     />
-    <Nav style={{ position: 'absolute', top: 0 }} />
+    <Nav />
     <Header pt={0}>
       <Container w={1} maxWidth={56} pt={4} pb={[4, 3]} px={3} align="left">
         <HeadLine children="We’re" />

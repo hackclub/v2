@@ -198,8 +198,8 @@ export default () => (
       ]}
     />
     <Nav color="muted" />
-    <Header px={0} pt={[3, 4]} pb={[4, 5]}>
-      <Container {...contentContainer} align="left" py={[4]}>
+    <Header px={0} py={4}>
+      <Container {...contentContainer} align="left" pt={[5, 6]} pb={[4, 5]}>
         <Container maxWidth={36} mx={0}>
           <Heading.h1 color="primary" f={[3, 4]} caps>
             Donate to Hack Club
@@ -219,7 +219,7 @@ export default () => (
         <Card
           bg="snow"
           p={[3, 4]}
-          mt={[0, -3, -4, -5]}
+          mt={[0, -3, -4]}
           style={{ overflow: 'hidden' }}
         >
           <DonateForm />

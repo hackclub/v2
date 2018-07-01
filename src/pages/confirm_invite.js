@@ -77,7 +77,7 @@ class Invite extends Component {
       case 'loading':
         return (
           <Fragment>
-            <Button bg="warning">Loading...</Button>
+            <Button bg="warning">Loading…</Button>
             {showForm && (
               <Fragment>
                 <Modal align="left" my={4} p={[3, 4]}>

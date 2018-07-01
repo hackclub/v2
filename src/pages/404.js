@@ -9,10 +9,10 @@ export default () => (
     <Helmet title="404 – Hack Club" />
     <Nav color="primary" />
     <Container maxWidth={48} px={2} py={6} align="center">
-      <Heading.h1 color="primary" f={[5, 6]}>
+      <Heading.h1 color="primary" f={[6, 7]} mt={[null, 4]}>
         404!
       </Heading.h1>
-      <Text f={4} mt={2} mb={3} color="muted">
+      <Text f={4} mt={2} mb={4} color="muted">
         We couldn’t find that page.
       </Text>
       <LargeButton href="/">Go Home 🏡</LargeButton>

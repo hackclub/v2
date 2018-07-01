@@ -132,6 +132,7 @@ export default () => (
         { property: 'og:url', content: 'https://hackclub.com/start' }
       ]}
     />
+    <Nav />
     <Animator
       is={PhotoSection}
       data={{
@@ -141,8 +142,7 @@ export default () => (
       image="/lah_1.jpg"
       style={{ padding: 0 }}
     >
-      <Nav />
-      <Container maxWidth={56} p={[2, 3]} mt={3} mb={[4, 5]}>
+      <Container maxWidth={56} p={[2, 3]} mt={[5, 6]} mb={[4, 5]}>
         <Heading.h1 {...styles.ultraline} color="white">
           Learn how to start a coding club at your high school.
         </Heading.h1>

@@ -5,23 +5,22 @@ import Nav from 'components/Nav'
 import RedeemTechDomainForm from 'components/RedeemTechDomainForm'
 
 const Header = Section.withComponent('header').extend`
-  padding-top: 0 !important;
-  background-color: ${props => props.theme.colors.red[5]};
+  background-color: ${({ theme }) => theme.colors.red[5]};
   background-image: linear-gradient(
     -32deg,
-    ${props => props.theme.colors.orange[4]} 0%,
-    ${props => props.theme.colors.red[5]} 50%,
-    ${props => props.theme.colors.red[6]} 100%
+    ${({ theme }) => theme.colors.orange[4]},
+    ${({ theme }) => theme.colors.red[5]},
+    ${({ theme }) => theme.colors.red[6]}
   );
 `
 
 export default () => (
   <Fragment>
     <Helmet title="Free .TECH Domain – Hack Club" />
-    <Header pb={3} align="center">
-      <Nav />
-      <Container maxWidth={32} p={0}>
-        <Heading.h1 f={[5, 6]} mt={4} mb={2}>
+    <Nav />
+    <Header align="center">
+      <Container maxWidth={32} pt={4}>
+        <Heading.h1 f={[5, 6]} mt={0} mb={2}>
           Free .TECH Domain!
         </Heading.h1>
         <Heading f={[3, 4]}>

@@ -31,8 +31,8 @@ A.link = A.withComponent(Link)
 const Base = Box.main.extend`
   display: grid;
   position: relative;
-  ${({ theme }) => theme.mediaQueries[1]} {
-    grid-template-columns: 24rem 1fr;
+  ${({ theme }) => theme.mediaQueries.md} {
+    grid-template-columns: 20rem 1fr;
   }
 `
 
@@ -77,11 +77,14 @@ const SuperButton = Button.withComponent(Link).extend`
   );
 `
 
-export default ({ data: { allMarkdownRemark: { edges } } }) => {
+export default ({
+  data: {
+    allMarkdownRemark: { edges }
+  }
+}) => {
   const title = 'Hack Club Workshops'
   const desc =
-    'Get free coding tutorials, project ideas, and programming club activities ' +
-    'from Hack Club, a community of high school developers.'
+    'Get free coding tutorials, project ideas, and programming club activities from Hack Club, a community of high school developers.'
   const img = 'https://hackclub.com/workshops.png'
 
   return (
@@ -100,12 +103,9 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
           { property: 'og:url', content: 'https://hackclub.com/workshops' }
         ]}
       />
-      <Nav
-        style={{ position: 'absolute', top: 0 }}
-        color={['white', null, 'primary']}
-      />
+      <Nav color="muted" fixed />
       <Base>
-        <Background p={[3, 4]}>
+        <Background p={[3, 2]}>
           <Box.header align="center" mt={[4, 5]}>
             <Name f={6}>Workshops</Name>
             <Text f={[3, 4]} mt={2} mb={3} bold caps>
@@ -127,8 +127,8 @@ export default ({ data: { allMarkdownRemark: { edges } } }) => {
             </Card>
           </Box.header>
         </Background>
-        <Box.article bg="white">
-          <Container maxWidth={48} py={[4, 5]} px={3}>
+        <Box.article bg="white" pt={3}>
+          <Container maxWidth={48} pt={[3, 5]} pb={[4, 5]} px={3}>
             <Text
               color="black"
               f={4}

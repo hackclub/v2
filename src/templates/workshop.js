@@ -217,6 +217,7 @@ export default ({ data }) => {
         <script type="application/ld+json" children={JSON.stringify(schema)} />
         }
       </Helmet>
+      <Nav />
       <NotOnPrint>
         <Header
           bg="accent"
@@ -226,7 +227,6 @@ export default ({ data }) => {
           className="invert"
           style={{ backgroundImage: `url('${bg}')`, position: 'relative' }}
         >
-          <Nav style={{ position: 'absolute', top: 0 }} />
           <Container pt={5} pb={3} px={2}>
             <Breadcrumbs align="center" justify="center" my={3} wrap>
               <Breadcrumb to="/workshops" name="Workshops" position={1} />

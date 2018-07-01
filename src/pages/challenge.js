@@ -189,21 +189,12 @@ export default class extends Component {
             { property: 'og:url', content: 'https://hackclub.com/challenge' }
           ]}
         />
+        <Nav />
         <Header>
-          <Nav />
-          <HeaderContainer px={3} py={0} mb={[3, 4]} align="left" mx="auto">
-            <Box align={['center', null, 'right']}>
-              <Text mb={[-2, -3]} f={3} bold caps>
-                {status === 'success' ? (
-                  <Fragment>
-                    <Link href="https://repl.it" target="_blank" color="white">
-                      repl.it
-                    </Link>{' '}
-                    + Hack Club
-                  </Fragment>
-                ) : (
-                  'p5.js website'
-                )}
+          <HeaderContainer px={3} pt={[4, 5]} pb={[3, 4]} align="left">
+            <Box align={['center', null, 'right']} mt={3}>
+              <Text color="pink.0" mb={[-2, -3]} f={3} bold caps>
+                {status === 'success' ? 'Hack Club' : 'p5.js website'}
               </Text>
               <Heading.h1 f={[6, 7]} my={0}>
                 Challenge

@@ -216,7 +216,7 @@ export default class extends Component {
                 <br />
                 📖{' '}
                 <Link
-                  href="/workshops/challenge_dumbest_api"
+                  href="/workshops/challenge_dumb_api"
                   target="_blank"
                   underline
                 >

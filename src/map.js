@@ -57,7 +57,6 @@ const args = require('minimist')(process.argv.slice(2), {
 })
 const { fill, stroke, pin, path } = args
 const css = `.rsm-svg{width:100vw;height:100vh;object-fit:cover}
-path{shape-rendering:crispEdges;}
 .rsm-geographies path{fill:${fill};stroke:${stroke};stroke-width:.25;outline:none}
 .rsm-markers circle{fill:${pin};stroke-width:0;opacity:.667}`
 

@@ -21,7 +21,7 @@ export default props => (
       {meta([
         { name: 'description', content: description },
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:site', content: '@starthackclub' },
+        { name: 'twitter:site', content: '@hackclub' },
         { name: 'twitter:domain', content: url },
         { name: 'twitter:title', content: title },
         { name: 'twitter:description', content: description },

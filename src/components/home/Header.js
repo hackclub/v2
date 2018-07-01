@@ -11,7 +11,6 @@ import {
   Button,
   LargeButton
 } from '@hackclub/design-system'
-import Nav from 'components/Nav'
 import Animator from 'components/Animator'
 
 const Root = Flex.withComponent('header').extend`
@@ -55,8 +54,8 @@ Root.defaultProps = {
   flexDirection: 'column'
 }
 
-const Base = Container.withComponent(Flex)
-Base.defaultProps = {
+const Wrapper = Container.withComponent(Flex)
+Wrapper.defaultProps = {
   color: 'white',
   flexDirection: 'column',
   maxWidth: 48,
@@ -93,15 +92,8 @@ const Action = LargeButton.extend.attrs({ scale: true, m: [1, null, 2] })``
 Action.link = Action.withComponent(Link)
 
 export default () => (
-  <Animator
-    is={Root}
-    data={{
-      opacity: [1, 0.75],
-      transform: [{ translateY: '0px' }, { translateY: '-96px' }]
-    }}
-  >
-    <Nav style={{ position: 'absolute', top: 0 }} />
-    <Base>
+  <Root>
+    <Wrapper>
       <Notification to="/bank">
         <Icon size={24} color="slate" name="account_balance" mr={2} />
         <Flex color="black" f={1} mr={2}>
@@ -147,6 +139,6 @@ export default () => (
           </Action.link>
         </Flex>
       </Flex>
-    </Base>
-  </Animator>
+    </Wrapper>
+  </Root>
 )

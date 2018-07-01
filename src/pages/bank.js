@@ -197,7 +197,10 @@ export default () => (
         body="Add notes to transactions, export data, issue reimbursements. Easy."
       />
     </Modules>
-    <Banner>
+    <Container maxWidth={70} my={[4, 3]}>
+      <Image w={1} src="/bank-screenshot.png" />
+    </Container>
+    <Banner mt={0}>
       <Headline>A powerful toolbox for organizing your event.</Headline>
       <Lead maxWidth={32}>
         We’ve got all the tools to start getting your event ready, from domain
@@ -245,9 +248,6 @@ export default () => (
         body="Talk to our community of experienced event organizers anytime."
       />
     </Modules>
-    <Container maxWidth={70} mt={3}>
-      <Image w={1} src="/bank-screenshot.png" />
-    </Container>
     <Container maxWidth={48} pt={4} pb={[5, 6]} px={3}>
       <Join align="left" bg="black" p={[3, 4]}>
         <Container maxWidth={32} mx={0}>

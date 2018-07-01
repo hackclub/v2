@@ -32,25 +32,25 @@ const Body = Box.extend`
   h2,
   h3 {
     margin-top: 0;
-    margin-bottom: ${props => props.theme.space[2]}px;
+    margin-bottom: ${({ theme }) => theme.space[2]}px;
   }
 
   ol,
   ul {
-    padding-left: ${props => props.theme.space[3]}px;
+    padding-left: ${({ theme }) => theme.space[3]}px;
   }
 
   p,
   li {
-    margin-top: ${props => props.theme.space[2]}px;
-    margin-bottom: ${props => props.theme.space[2]}px;
+    margin-top: ${({ theme }) => theme.space[2]}px;
+    margin-bottom: ${({ theme }) => theme.space[2]}px;
   }
 
   hr {
     border: 0;
     height: 2px;
-    background-color: ${props => props.theme.colors.muted};
-    margin: ${props => props.theme.space[3]}px;
+    background-color: ${({ theme }) => theme.colors.muted};
+    margin: ${({ theme }) => theme.space[3]}px;
     border-radius: 2px;
   }
 `

@@ -16,24 +16,24 @@ import { stats } from 'data.json'
 
 const Grid = Box.extend`
   display: grid;
-  grid-gap: ${props => props.theme.space[2]}px;
+  grid-gap: ${({ theme }) => theme.space[2]}px;
   width: 100%;
 
   > div {
     width: 100%;
-    box-shadow: ${props => props.theme.boxShadows[3]};
-    border-radius: ${props => props.theme.radius};
+    box-shadow: ${({ theme }) => theme.boxShadows[3]};
+    border-radius: ${({ theme }) => theme.radius};
     max-width: 100%;
   }
 
-  ${props => props.theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: ${props => props.theme.space[4]}px;
+    grid-gap: ${({ theme }) => theme.space[4]}px;
   }
 `
 
 const Super = Box.extend`
-  background: ${props => props.theme.colors.warning} url(/diagonal.svg) top
+  background: ${({ theme }) => theme.colors.warning} url(/diagonal.svg) top
     center repeat-x;
   background-size: auto 100%;
   position: relative;
@@ -56,14 +56,14 @@ const Super = Box.extend`
 `
 
 const Graph = Box.extend`
-  background: ${props => props.theme.colors.accent} url(/graph.svg) no-repeat;
+  background: ${({ theme }) => theme.colors.accent} url(/graph.svg) no-repeat;
   background-size: 100% 100%;
 `
 
 const Modules = Box.extend`
   display: grid;
-  grid-gap: ${props => props.theme.space[3]}px;
-  ${props => props.theme.mediaQueries.md} {
+  grid-gap: ${({ theme }) => theme.space[3]}px;
+  ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: repeat(2, 1fr);
   }
 `

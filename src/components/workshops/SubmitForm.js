@@ -18,7 +18,7 @@ import api from 'api'
 const Sheet = Container.withComponent(Card).extend`
   transition: box-shadow 0.25s ease-out;
   &:hover {
-    box-shadow: ${props => props.theme.boxShadows[2]};
+    box-shadow: ${({ theme }) => theme.boxShadows[2]};
   }
 
   .DraftEditor-editorContainer > div {
@@ -26,13 +26,13 @@ const Sheet = Container.withComponent(Card).extend`
   }
 
   .public-DraftEditorPlaceholder-inner {
-    color: ${props => props.theme.colors.muted};
-    font-size: ${props => props.theme.fontSizes[2]}px;
+    color: ${({ theme }) => theme.colors.muted};
+    font-size: ${({ theme }) => theme.fontSizes[2]}px;
   }
 `
 
 const Header = Flex.extend`
-  border-bottom: 1px solid ${props => props.theme.colors.smoke};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
 
   input {
     border: 0;

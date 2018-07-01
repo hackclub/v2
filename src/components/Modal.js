@@ -18,15 +18,15 @@ const modalKeyframes = keyframes`
 `
 
 const Modal = Card.extend`
-  background-color: ${props => props.theme.colors.white};
-  box-shadow: ${props => props.theme.boxShadows[2]};
+  background-color: ${({ theme }) => theme.colors.white};
+  box-shadow: ${({ theme }) => theme.boxShadows[2]};
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1100;
 
-  ${props => props.theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.md} {
     animation: ${modalKeyframes} ease-in 0.25s;
   }
 

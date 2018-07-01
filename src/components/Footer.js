@@ -10,11 +10,11 @@ import {
 import Link from 'gatsby-link'
 
 const Base = Box.withComponent('footer').extend`
-  background: ${props => props.theme.colors.snow} url('/pattern.svg') repeat;
+  background: ${({ theme }) => theme.colors.snow} url('/pattern.svg') repeat;
   ${({ theme }) => theme.mediaQueries.md} {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: ${props => props.theme.space[4]}px;
+    grid-gap: ${({ theme }) => theme.space[4]}px;
     svg {
       width: 24px;
       height: 24px;

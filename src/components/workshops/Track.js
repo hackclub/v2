@@ -7,7 +7,7 @@ const Grid = Box.withComponent('ol').extend`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   grid-auto-rows: 1fr;
-  grid-gap: ${props => props.theme.space[3]}px;
+  grid-gap: ${({ theme }) => theme.space[3]}px;
   counter-reset: li;
   list-style: none;
   padding: 0;
@@ -32,13 +32,13 @@ const Item = Card.withComponent('li').extend`
     content: counter(li);
     counter-increment: li;
     position: absolute;
-    right: ${props => props.theme.space[3]}px;
+    right: ${({ theme }) => theme.space[3]}px;
     width: 1.25rem;
     height: 1.25rem;
     border-radius: .75rem;
-    background-color: ${props => props.theme.colors.white};
-    color: ${props => props.theme.colors.black};
-    font-size: ${props => props.theme.fontSizes[0]}px;
+    background-color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.black};
+    font-size: ${({ theme }) => theme.fontSizes[0]}px;
     letter-spacing: -.02em;
     text-align: center;
     text-shadow: none;

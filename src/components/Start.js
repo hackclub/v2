@@ -12,20 +12,20 @@ const tilt = n =>
   `clip-path: polygon(0% ${100 - n}%, 100% 0, 100% ${n}%, 0 100%)`
 
 const Base = Section.extend`
-  background-color: ${props => props.theme.colors.red[5]};
+  background-color: ${({ theme }) => theme.colors.red[5]};
   background-image: linear-gradient(
     -48deg,
-    ${props => props.theme.colors.orange[4]} 0%,
-    ${props => props.theme.colors.red[5]} 50%,
-    ${props => props.theme.colors.red[6]} 100%
+    ${({ theme }) => theme.colors.orange[4]} 0%,
+    ${({ theme }) => theme.colors.red[5]} 50%,
+    ${({ theme }) => theme.colors.red[6]} 100%
   );
   display: grid;
-  ${props => props.theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: 3fr 2fr;
   }
   padding: 4rem 0 !important;
   ${tilt(90)};
-  ${props => props.theme.mediaQueries.lg} {
+  ${({ theme }) => theme.mediaQueries.lg} {
     padding-top: 5rem 0 !important;
     ${tilt(85)};
   }

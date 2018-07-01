@@ -17,10 +17,10 @@ import { isEmpty, debounce } from 'lodash'
 
 const LangField = Input.withComponent('select').extend`
   line-height: 1;
-  font-size: ${props => props.theme.fontSizes[1]}px;
-  padding: 0 ${props => props.theme.space[2]}px;
-  margin-top: ${props => props.theme.space[2]}px;
-  margin-bottom: -${props => props.theme.space[1]}px;
+  font-size: ${({ theme }) => theme.fontSizes[1]}px;
+  padding: 0 ${({ theme }) => theme.space[2]}px;
+  margin-top: ${({ theme }) => theme.space[2]}px;
+  margin-bottom: -${({ theme }) => theme.space[1]}px;
   max-width: 10rem;
 `
 

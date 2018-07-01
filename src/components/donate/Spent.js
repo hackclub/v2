@@ -25,8 +25,8 @@ const Row = Flex.extend`
 `
 
 const Bar = Box.extend`
-  border-radius: ${props => props.theme.radius};
-  height: ${props => props.theme.space[4]}px;
+  border-radius: ${({ theme }) => theme.radius};
+  height: ${({ theme }) => theme.space[4]}px;
   min-width: 1px;
 `
 

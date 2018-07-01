@@ -10,7 +10,7 @@ import {
 } from '@hackclub/design-system'
 
 const Base = Card.withComponent(Flex).extend`
-  border-radius: ${props => props.theme.radii[2]};
+  border-radius: ${({ theme }) => theme.radii[2]};
   max-width: 36rem;
   img {
     flex-shrink: 0;

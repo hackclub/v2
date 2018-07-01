@@ -2,7 +2,7 @@ import React from 'react'
 import { Flex, Text } from '@hackclub/design-system'
 
 const Rounded = Flex.extend`
-  border-radius: ${props => props.theme.radii[1]};
+  border-radius: ${({ theme }) => theme.radii[1]};
 `
 
 const BreakWord = Text.extend``

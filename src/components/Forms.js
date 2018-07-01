@@ -269,7 +269,7 @@ export const Form = Container.withComponent('form').extend.attrs({
 })`
   display: grid;
   grid-gap: 1rem;
-  ${props => props.theme.mediaQueries[1]} {
+  ${({ theme }) => theme.mediaQueries[1]} {
     grid-template-columns: repeat(1, 1fr);
     h2, .textarea { grid-column: 1 / -1; }
   }
@@ -290,7 +290,7 @@ const HeadingBox = Box.extend.attrs({
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: auto;
-  ${props => props.theme.mediaQueries[1]} {
+  ${({ theme }) => theme.mediaQueries[1]} {
     flex-basis: 7rem;
     text-align: right;
   }

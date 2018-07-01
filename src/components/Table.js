@@ -8,7 +8,7 @@ const trClickable = `
 export const Tr = Box.withComponent('tr').extend`
   cursor: ${props => (props.onClick ? 'pointer' : 'inherit')};
   &:nth-child(odd) {
-    background-color: ${props => props.theme.colors.gray[0]};
+    background-color: ${({ theme }) => theme.colors.gray[0]};
   }
   &:hover {
     ${props => props.onClick && trClickable}

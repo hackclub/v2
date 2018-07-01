@@ -23,7 +23,7 @@ const Root = Flex.extend`
   align-items: flex-start;
 
   ~ .public-DraftEditorPlaceholder-inner {
-    top: ${props => props.theme.space[2]}px !important;
+    top: ${({ theme }) => theme.space[2]}px !important;
   }
 `
 
@@ -35,10 +35,10 @@ const Group = Flex.extend`
 const Byline = QuotedCommentByline
 
 const Body = Box.withComponent(ReactMarkdown).extend`
-  color: ${props => props.theme.colors.slate};
-  border-left: 4px solid ${props => props.theme.colors.smoke};
-  padding-left: ${props => props.theme.space[3]}px;
-  margin-top: ${props => props.theme.space[1]}px;
+  color: ${({ theme }) => theme.colors.slate};
+  border-left: 4px solid ${({ theme }) => theme.colors.smoke};
+  padding-left: ${({ theme }) => theme.space[3]}px;
+  margin-top: ${({ theme }) => theme.space[1]}px;
   ${commentStyle};
 `
 

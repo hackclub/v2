@@ -54,6 +54,7 @@ class Help extends Component {
           <Modal align="left" my={4} p={[3, 4]}>
             <CloseButton onClick={this.toggleRules} />
             <Heading.h2>Challenge Rules</Heading.h2>
+            {/*
             <Text
               f={2}
               mt={3}
@@ -69,6 +70,7 @@ class Help extends Component {
               </Link>{' '}
               in its code.
             </Text>
+            */}
             <Text f={2} my={3}>
               Challenge is open to Hack Club members and repl.it users. It
               strictly follows Hack Club’s{' '}

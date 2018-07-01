@@ -4,19 +4,13 @@ import { Button } from '@hackclub/design-system'
 import IconButton from 'components/IconButton'
 
 const css = `
-:root {
+.invert {
   background-color: #fff;
   filter: invert(100%);
 }
 
-body,
-#___gatsby > * {
-  background-color: #fff;
-}
-
 img:not([src*=".svg"]),
-video,
-.invert {
+video {
   filter: invert(100%);
 }
 `
@@ -32,10 +26,9 @@ class Invert extends Component {
     const { active } = this.state
     const props = {
       name: this.props.icon || (active ? 'invert_colors_off' : 'invert_colors'),
-      className: 'invert',
       bg: active ? 'black' : 'slate',
       'aria-pressed': active,
-      inverted: this.props.muted ? !active : true,
+      inverted: true,
       ...this.props
     }
     return (
@@ -50,11 +43,9 @@ class Invert extends Component {
 export default Invert
 
 Invert.propTypes = {
-  muted: PropTypes.bool,
   children: PropTypes.element
 }
 
 Invert.defaultProps = {
-  muted: false,
   children: 'Switch theme'
 }

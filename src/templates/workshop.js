@@ -64,8 +64,8 @@ const Name = Heading.h1.extend`
   color: black;
   display: inline-block;
   mix-blend-mode: screen;
-  padding-left: ${props => props.theme.space[4]}px;
-  padding-right: ${props => props.theme.space[4]}px;
+  padding-left: ${({ theme }) => theme.space[4]}px;
+  padding-right: ${({ theme }) => theme.space[4]}px;
   width: max-content;
 `
 
@@ -103,7 +103,7 @@ const linkAuthor = authorText => {
 const Cards = Container.extend`
   text-align: center;
   display: grid;
-  grid-gap: ${props => props.theme.space[4]}px;
+  grid-gap: ${({ theme }) => theme.space[4]}px;
   grid-template-areas: 'feedback' 'share' 'questions' 'contribute';
   width: 100%;
 
@@ -112,15 +112,15 @@ const Cards = Container.extend`
 
     &:nth-child(1) {
       grid-area: feedback;
-      border-radius: ${props => props.theme.radius};
-      box-shadow: ${props => props.theme.boxShadows[1]};
+      border-radius: ${({ theme }) => theme.radius};
+      box-shadow: ${({ theme }) => theme.boxShadows[1]};
     }
     &:nth-child(2) {
       grid-area: share;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      border-bottom: 1px solid ${props => props.theme.colors.smoke};
+      border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
     }
     &:nth-child(3) {
       grid-area: questions;
@@ -130,7 +130,7 @@ const Cards = Container.extend`
     }
   }
 
-  ${props => props.theme.mediaQueries.md} {
+  ${({ theme }) => theme.mediaQueries.md} {
     grid-template-areas:
       'feedback feedback share share'
       'feedback feedback questions contribute';
@@ -276,64 +276,66 @@ export default ({ data }) => {
         </Text>
         <hr />
       </OnlyOnPrint>
-      <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
-      <Cards maxWidth={56} p={3} mb={5}>
-        <Card bg="blue.0" p={[3, 4]} align="left">
-          <Heading.h2 f={3} color="blue.8" caps>
-            How was this workshop?
-          </Heading.h2>
-          <Text color="muted" f={1} mt={1} mb={3}>
-            (your feedback is anonymous + appreciated 💙)
-          </Text>
-          <FeedbackForm slug={slug} />
-        </Card>
-        <Box p={3}>
-          <Heading.h2 f={3} color="muted" caps>
-            Made something rad?
-          </Heading.h2>
-          <Heading.h2 color="info" f={5} mb={3}>
-            Share it! 🌟
-          </Heading.h2>
-          <Flex justify="center">
+      <Box w={1} className="invert">
+        <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
+        <Cards maxWidth={56} p={3} mb={5}>
+          <Card bg="blue.0" p={[3, 4]} align="left">
+            <Heading.h2 f={3} color="blue.8" caps>
+              How was this workshop?
+            </Heading.h2>
+            <Text color="muted" f={1} mt={1} mb={3}>
+              (your feedback is anonymous + appreciated 💙)
+            </Text>
+            <FeedbackForm slug={slug} />
+          </Card>
+          <Box p={3}>
+            <Heading.h2 f={3} color="muted" caps>
+              Made something rad?
+            </Heading.h2>
+            <Heading.h2 color="info" f={5} mb={3}>
+              Share it! 🌟
+            </Heading.h2>
+            <Flex justify="center">
+              <ShareButton
+                service="Twitter"
+                href={twitterURL(
+                  `I just built ${name} with a @starthackclub workshop. Make yours:`,
+                  url
+                )}
+                bg="#1da1f2"
+                mr={3}
+              />
+              <ShareButton
+                service="Facebook"
+                href={facebookURL(url)}
+                bg="#3b5998"
+              />
+            </Flex>
+          </Box>
+          <Box>
+            <Heading.h2 f={3} color="primary" caps mb={3}>
+              Questions?
+            </Heading.h2>
+            <DiscussOnSlack bg="primary" f={2} />
+          </Box>
+          <Box>
+            <Heading.h2 f={3} color="slate" caps mb={3}>
+              Spotted an issue?
+            </Heading.h2>
             <ShareButton
-              service="Twitter"
-              href={twitterURL(
-                `I just built ${name} with a @starthackclub workshop. Make yours:`,
-                url
-              )}
-              bg="#1da1f2"
-              mr={3}
+              service="GitHub"
+              bg="slate"
+              f={2}
+              href={githubEditUrl(slug)}
+              target="_blank"
+              aria-label={null}
+              children="Edit on GitHub"
+              title="If you see something, say something."
             />
-            <ShareButton
-              service="Facebook"
-              href={facebookURL(url)}
-              bg="#3b5998"
-            />
-          </Flex>
-        </Box>
-        <Box>
-          <Heading.h2 f={3} color="primary" caps mb={3}>
-            Questions?
-          </Heading.h2>
-          <DiscussOnSlack bg="primary" f={2} />
-        </Box>
-        <Box>
-          <Heading.h2 f={3} color="slate" caps mb={3}>
-            Spotted an issue?
-          </Heading.h2>
-          <ShareButton
-            service="GitHub"
-            bg="slate"
-            f={2}
-            href={githubEditUrl(slug)}
-            target="_blank"
-            aria-label={null}
-            children="Edit on GitHub"
-            title="If you see something, say something."
-          />
-        </Box>
-      </Cards>
-      <Footer />
+          </Box>
+        </Cards>
+        <Footer />
+      </Box>
     </Fragment>
   )
 }

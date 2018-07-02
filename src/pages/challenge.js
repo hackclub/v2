@@ -244,7 +244,7 @@ export default class extends Component {
                 <br />
                 📖{' '}
                 <Link
-                  href="/workshops/challenge_dumb_api"
+                  href="/workshops/challenge_ridiculous_api"
                   target="_blank"
                   underline
                 >

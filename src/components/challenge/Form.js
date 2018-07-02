@@ -5,7 +5,7 @@ import PostForm from 'components/challenge/PostForm'
 import LoadingBar from 'components/LoadingBar'
 import ErrorMessage from 'components/admin/ErrorPage'
 
-const Form = ({ status, closed = true, challengeId }) => {
+const Form = ({ status, closed = false, challengeId }) => {
   switch (status) {
     case 'loading':
       return <LoadingBar />
@@ -13,11 +13,10 @@ const Form = ({ status, closed = true, challengeId }) => {
       return closed ? (
         <Fragment>
           <Heading.h2 mt={0} mb={2} f={4}>
-            Submissions closed!
+            Submissions closed
           </Heading.h2>
           <Text>
-            You can still vote on your favorite submissions until Wednesday
-            (5/23).
+            We’ll be sending out prizes soon. Thanks for submitting, everyone!
           </Text>
         </Fragment>
       ) : (

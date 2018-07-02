@@ -252,7 +252,7 @@ export default class extends Component {
                 </Link>{' '}
                 for help getting started
                 <br />
-                🏅 Submission due {dt(challenge.end)}. Top 3 voted win!
+                🏅 Submissions due {dt(challenge.end)}. Top 3 voted win!
               </Text>
             </HeaderAreaInfo>
             <HeaderAreaForm>

@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react'
+import styled, { css } from 'styled-components'
 import {
   Box,
   Flex,
@@ -116,28 +117,56 @@ const Header = Section.withComponent('header').extend`
   );
 `
 
-const HeaderContainer = Box.extend`
+const HeaderContainer = Container.extend`
   display: grid;
   grid-gap: ${({ theme }) => theme.space[3]}px;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  max-width: 100%;
+  grid-template-areas: 'text' 'info' 'form';
   ${({ theme }) => theme.mediaQueries.md} {
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: ${({ theme }) => theme.space[4]}px;
-    max-width: 56rem;
-    > div:first-child {
-      grid-column: span 2;
+      ${props =>
+        props.success
+          ? css`
+              grid-template-areas:
+                'text form'
+                'info form';
+              ${HeaderAreaText} {
+                text-align: right;
+              }
+            `
+          : css`
+              grid-template-areas:
+                'text text'
+                'info form';
+            `};
     }
   }
 `
 
-const HeaderCard = Card.extend`
+const HeaderCard = styled(Card)`
   h2,
   p {
     color: ${({ theme }) => theme.colors.black} !important;
   }
 `
+HeaderCard.defaultProps = {
+  boxShadowSize: 'md',
+  p: 3,
+  bg: 'pink.0',
+  align: 'left'
+}
 
-const Title = Flex.extend`
+const HeaderAreaText = styled(Box)`
+  grid-area: text;
+`
+const HeaderAreaInfo = styled(HeaderCard)`
+  grid-area: info;
+`
+const HeaderAreaForm = styled(HeaderCard)`
+  grid-area: form;
+`
+
+const Title = styled(Flex)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
 `
 
@@ -191,24 +220,21 @@ export default class extends Component {
         />
         <Nav />
         <Header py={0} px={3}>
-          <HeaderContainer pt={[4, 5]} pb={[3, 4]} align="left">
-            <Box align="center" mt={3}>
+          <HeaderContainer
+            pt={[4, 5]}
+            pb={[3, 4]}
+            align="left"
+            success={status === 'success'}
+          >
+            <HeaderAreaText align="center" mt={3}>
               <Text color="pink.0" mb={[-2, -3]} f={3} bold caps>
                 Hack Club
               </Text>
               <Heading.h1 f={[6, 7]} my={0}>
                 Challenge
               </Heading.h1>
-            </Box>
-            <HeaderCard
-              boxShadowSize="md"
-              p={3}
-              bg="pink.0"
-              align="left"
-              style={{
-                alignSelf: status === 'success' ? 'flex-start' : 'auto'
-              }}
-            >
+            </HeaderAreaText>
+            <HeaderAreaInfo>
               <Text f={2}>
                 🌟 Challenge: <strong>{challenge.name}</strong>
                 <br />
@@ -226,13 +252,13 @@ export default class extends Component {
                 </Link>{' '}
                 for help getting started
                 <br />
-                🏅 Submissionsdue {dt(challenge.end)}. Top 3 voted win!
+                🏅 Submission due {dt(challenge.end)}. Top 3 voted win!
               </Text>
-            </HeaderCard>
-            <HeaderCard boxShadowSize="md" p={3} bg="pink.0">
+            </HeaderAreaInfo>
+            <HeaderAreaForm>
               <Help />
               <Form challengeId={challenge.id} status={status} />
-            </HeaderCard>
+            </HeaderAreaForm>
           </HeaderContainer>
         </Header>
         <Container maxWidth={48} pt={4} pb={5} px={[0, 3]}>

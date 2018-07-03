@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react'
+import styled, { css } from 'styled-components'
 import {
   Box,
   Flex,
@@ -54,6 +55,7 @@ class Help extends Component {
           <Modal align="left" my={4} p={[3, 4]}>
             <CloseButton onClick={this.toggleRules} />
             <Heading.h2>Challenge Rules</Heading.h2>
+            {/*
             <Text
               f={2}
               mt={3}
@@ -63,16 +65,13 @@ class Help extends Component {
               bg="blue.0"
               style={{ borderRadius: 4 }}
             >
-              For this challenge, your entry must be hosted on{' '}
-              <Link href="https://repl.it" target="_blank" bold>
-                repl.it
-              </Link>{' '}
-              and use{' '}
+              For this challenge, your entry must use{' '}
               <Link href="https://p5js.org" target="_blank" bold>
                 p5.js
               </Link>{' '}
               in its code.
             </Text>
+            */}
             <Text f={2} my={3}>
               Challenge is open to Hack Club members and repl.it users. It
               strictly follows Hack Club’s{' '}
@@ -110,7 +109,6 @@ class Help extends Component {
 }
 
 const Header = Section.withComponent('header').extend`
-  padding: 0 !important;
   background-color: ${({ theme }) => theme.colors.red[5]};
   background-image: linear-gradient(
     32deg,
@@ -119,25 +117,56 @@ const Header = Section.withComponent('header').extend`
   );
 `
 
-const HeaderContainer = Box.extend`
+const HeaderContainer = Container.extend`
   display: grid;
   grid-gap: ${({ theme }) => theme.space[3]}px;
-  max-width: 100%;
+  grid-template-areas: 'text' 'info' 'form';
   ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: ${({ theme }) => theme.space[4]}px;
-    max-width: 56rem;
+      ${props =>
+        props.success
+          ? css`
+              grid-template-areas:
+                'text form'
+                'info form';
+              ${HeaderAreaText} {
+                text-align: right;
+              }
+            `
+          : css`
+              grid-template-areas:
+                'text text'
+                'info form';
+            `};
+    }
   }
 `
 
-const HeaderCard = Card.extend`
+const HeaderCard = styled(Card)`
   h2,
   p {
     color: ${({ theme }) => theme.colors.black} !important;
   }
 `
+HeaderCard.defaultProps = {
+  boxShadowSize: 'md',
+  p: 3,
+  bg: 'pink.0',
+  align: 'left'
+}
 
-const Title = Flex.extend`
+const HeaderAreaText = styled(Box)`
+  grid-area: text;
+`
+const HeaderAreaInfo = styled(HeaderCard)`
+  grid-area: info;
+`
+const HeaderAreaForm = styled(HeaderCard)`
+  grid-area: form;
+`
+
+const Title = styled(Flex)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
 `
 
@@ -190,65 +219,32 @@ export default class extends Component {
           ]}
         />
         <Nav />
-        <Header>
-          <HeaderContainer px={3} pt={[4, 5]} pb={[3, 4]} align="left">
-            <Box align={['center', null, 'right']} mt={3}>
+        <Header py={0} px={3}>
+          <HeaderContainer
+            pt={[4, 5]}
+            pb={[3, 4]}
+            align="left"
+            success={status === 'success'}
+          >
+            <HeaderAreaText align="center" mt={3}>
               <Text color="pink.0" mb={[-2, -3]} f={3} bold caps>
-                {status === 'success' ? 'Hack Club' : 'p5.js website'}
+                Hack Club
               </Text>
               <Heading.h1 f={[6, 7]} my={0}>
                 Challenge
               </Heading.h1>
-            </Box>
-            <Heading.h2 f={3} regular style={{ alignSelf: 'center' }}>
-              Hack Club and{' '}
-              <Link
-                href="https://repl.it"
-                target="_blank"
-                color="white"
-                bold
-                underline
-              >
-                repl.it
-              </Link>{' '}
-              are partnering to run the largest challenge yet!
-            </Heading.h2>
-            <HeaderCard
-              boxShadowSize="md"
-              p={3}
-              bg="pink.0"
-              align="left"
-              style={{
-                alignSelf: status === 'success' ? 'flex-start' : 'auto'
-              }}
-            >
+            </HeaderAreaText>
+            <HeaderAreaInfo>
               <Text f={2}>
-                🌟 Challenge: Create the coolest website w/{' '}
-                <Link href="https://p5js.org/" target="_blank" underline>
-                  {challenge.name}
-                </Link>
-                <br />
-                🛠 Build on{' '}
-                <Link href="https://repl.it" target="_blank" underline>
-                  repl.it
-                </Link>{' '}
-                using{' '}
-                <Link href="https://p5js.org" target="_blank" underline>
-                  p5.js
-                </Link>{' '}
-                (required)
+                🌟 Challenge: <strong>{challenge.name}</strong>
                 <br />
                 🎁 {challenge.description}
                 <br />
-                ℹ️ Submissions open to{' '}
-                <Link href="https://repl.it" target="_blank" underline>
-                  repl.it
-                </Link>{' '}
-                and Hack Club users
+                ℹ️ Submissions open to Hack Club community members
                 <br />
                 📖{' '}
                 <Link
-                  href="https://gist.github.com/zachlatta/abe14c8e1c7ab32c8d8297bdf986dbbb"
+                  href="/workshops/challenge_ridiculous_api"
                   target="_blank"
                   underline
                 >
@@ -256,30 +252,14 @@ export default class extends Component {
                 </Link>{' '}
                 for help getting started
                 <br />
-                🏅 Submissions due 5/20. Top 3 voted by 5/25 win!
+                🏅 Submissions due {dt(challenge.end)}. Top 3 voted win!
               </Text>
-            </HeaderCard>
-            <HeaderCard boxShadowSize="md" p={3} bg="pink.0">
+            </HeaderAreaInfo>
+            <HeaderAreaForm>
               <Help />
               <Form challengeId={challenge.id} status={status} />
-            </HeaderCard>
+            </HeaderAreaForm>
           </HeaderContainer>
-          <Flex
-            mb={[3, 4]}
-            align="center"
-            justify="center"
-            style={{ display: status === 'success' ? 'none' : null }}
-          >
-            <Link href="https://repl.it" target="_blank">
-              <Image
-                alt="repl.it logo"
-                src="/replit-white.svg"
-                w={[144, 224]}
-              />
-            </Link>
-            <Text.span color="pink.1" f={[4, 5]} mx={[2, 3]} children="+" />
-            <Text.span color="white" f={[4, 5, 6]} bold children="Hack Club" />
-          </Flex>
         </Header>
         <Container maxWidth={48} pt={4} pb={5} px={[0, 3]}>
           {ended && <Ended />}
@@ -319,13 +299,6 @@ export default class extends Component {
             status={status}
             sortBy={sortBy}
           />
-          <Flex mt={4} mb={[4, 0]} align="center" justify="center">
-            <Link href="https://repl.it" target="_blank">
-              <Image alt="repl.it logo" src="/replit.svg" w={128} />
-            </Link>
-            <Text.span color="muted" f={4} mx={3} children="+" />
-            <Text.span color="primary" f={[4, 5]} bold children="Hack Club" />
-          </Flex>
           <DiscussChallenge />
         </Container>
         <Footer />

@@ -1,15 +1,16 @@
 import React, { Fragment } from 'react'
 import {
-  Heading,
-  Container,
-  Card,
-  Flex,
   Box,
-  Text,
-  LargeButton,
+  Button,
+  Card,
+  Container,
+  Flex,
+  Heading,
   Icon,
+  LargeButton,
+  Link as A,
   Section,
-  Link as A
+  Text
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
@@ -301,10 +302,20 @@ export default () => (
           We accept donations of time, technical or hard science fiction books,
           stocks/other securities, and cryptocurrency.
         </Text>
+        <Box>
+          <Button
+            href="https://commerce.coinbase.com/checkout/ae7ad42d-0dcd-4e9d-8dc7-ba78648a58cd"
+            target="_blank"
+            bg="info"
+          >
+            Donate with Crypto
+          </Button>
+        </Box>
         <Text my={3} {...subtext}>
           Please get in touch at{' '}
           <A href="mailto:donate@hackclub.com">donate@hackclub.com</A> if you’re
-          interested in making a contribution or have any questions.
+          interested in making a contribution with another token or have any
+          questions.
         </Text>
       </Container>
     </Container>

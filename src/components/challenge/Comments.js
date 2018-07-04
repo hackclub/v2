@@ -29,6 +29,7 @@ const Header = Flex.extend`
 
 const Container = Box.extend`
   position: relative;
+  min-height: 16rem;
   max-height: 100%;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;

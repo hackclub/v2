@@ -7,6 +7,7 @@ import { groupBy, toPairs } from 'lodash'
 
 const groupOrder = [
   'start',
+  'club',
   'challenges',
   'pi',
   'arduino',

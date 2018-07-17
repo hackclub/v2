@@ -31,7 +31,7 @@ const SlackCard = Card.extend`
 export default () => (
   <Fill color="white" align="center">
     <Helmet title="Join Our Slack – Hack Club" />
-    <Nav color="white" />
+    <Nav color="slate" fixed />
     <Container px={3}>
       <Heading.h1 f={[5, 6]} mt={[5, 6]} mb={2}>
         Join the Hack Club Slack

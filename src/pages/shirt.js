@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react'
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import {
   Box,
   Flex,
@@ -11,14 +11,13 @@ import {
   Card,
   Button,
   Icon,
-  Image
+  cx
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import IconButton from 'components/IconButton'
 import Form from 'components/challenge/Form'
-import Ended from 'components/challenge/Ended'
 import Posts from 'components/challenge/Posts'
 import DiscussChallenge from 'components/challenge/DiscussChallenge'
 import { Modal, Overlay, CloseButton } from 'components/Modal'
@@ -36,88 +35,23 @@ const sortByHumanized = {
   trending: 'Trending',
   top: 'Top-voted',
   newest: 'Newest',
-  viewed: 'Top-viewed',
   random: 'Random'
 }
 
-class Help extends Component {
-  state = { active: false }
-
-  toggleRules = () => {
-    this.setState(state => ({ active: !state.active }))
-  }
-
-  // Render a modal for challenge rules on button press
-  render() {
-    if (this.state.active) {
-      return (
-        <Fragment>
-          <Modal align="left" my={4} p={[3, 4]}>
-            <CloseButton onClick={this.toggleRules} />
-            <Heading.h2>Challenge Rules</Heading.h2>
-            {/*
-            <Text
-              f={2}
-              mt={3}
-              color="info"
-              py={2}
-              px={3}
-              bg="blue.0"
-              style={{ borderRadius: 4 }}
-            >
-              For this challenge, your entry must use{' '}
-              <Link href="https://p5js.org" target="_blank" bold>
-                p5.js
-              </Link>{' '}
-              in its code.
-            </Text>
-            */}
-            <Text f={2} my={3}>
-              Challenge is open to Hack Club members and repl.it users. It
-              strictly follows Hack Club’s{' '}
-              <Link href="https://conduct.hackclub.com" target="_blank">
-                Code of Conduct
-              </Link>. Anything breaking our Code of Conduct (ex. voter fraud)
-              and contestants found cheating can be temporarily or permanently
-              banned.
-            </Text>
-            <Text f={2}>
-              If you think anyone has violated our Conduct or cheating policy,
-              please reach out to us confidentially at{' '}
-              <Link href="mailto:challenge@hackclub.com">
-                challenge@hackclub.com
-              </Link>.
-            </Text>
-          </Modal>
-          <Overlay onClick={this.toggleRules} />
-        </Fragment>
-      )
-    }
-    return (
-      <IconButton
-        name="flag"
-        size={16}
-        children="Rules"
-        inverted
-        f={2}
-        onClick={this.toggleRules}
-        style={{ float: 'right' }}
-        {...this.props}
-      />
-    )
-  }
-}
-
+const pulse = keyframes`
+  0% { background-color: ${cx('blue.5')}; }
+  33% { background-color: ${cx('fuschia.5')}; }
+  66% { background-color: ${cx('violet.5')}; }
+  100% { background-color: ${cx('blue.5')}; }
+`
 const Header = Section.withComponent('header').extend`
-  background-color: ${({ theme }) => theme.colors.red[5]};
-  background-image: linear-gradient(
-    32deg,
-    ${({ theme }) => theme.colors.pink[5]},
-    ${({ theme }) => theme.colors.red[5]}
-  );
+  background-color: ${({ theme }) => theme.colors.blue[5]};
+  background-image: linear-gradient(90deg, rgba(255, 0, 0, 1), rgba(0, 255, 255, 1));
+  background-blend-mode: overlay;
+  animation: ${pulse} 16s linear infinite;
 `
 
-const HeaderContainer = Container.extend`
+const HeaderContainer = styled(Container)`
   display: grid;
   grid-gap: ${({ theme }) => theme.space[3]}px;
   grid-template-areas: 'text' 'info' 'form';
@@ -152,7 +86,7 @@ const HeaderCard = styled(Card)`
 HeaderCard.defaultProps = {
   boxShadowSize: 'md',
   p: 3,
-  bg: 'pink.0',
+  bg: 'rgba(255, 255, 255, .875)',
   align: 'left'
 }
 
@@ -170,10 +104,18 @@ const Title = styled(Flex)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
 `
 
-const title = 'Hack Club Challenge'
+const Grid = styled(Box)`
+  display: grid;
+  grid-gap: ${({ theme }) => theme.space[3]}px;
+  ${({ theme }) => theme.mediaQueries.md} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`
+
+const title = 'Hack Club Shirt'
 const desc =
-  'Join Hack Club’s high school coding challenge. Submit your entry to compete in our monthly programming contest and win prizes.'
-const img = 'https://hackclub.com/challenge.png'
+  'Submit a design to Hack Club’s T-Shirt design event. We’ll be printing the winner!'
+const img = 'https://hackclub.com/tshirt.png'
 
 export default class extends Component {
   state = { status: 'loading', sortBy: 'top' }
@@ -215,10 +157,16 @@ export default class extends Component {
             { property: 'og:title', content: title },
             { property: 'og:description', content: desc },
             { property: 'og:image', content: img },
-            { property: 'og:url', content: 'https://hackclub.com/challenge' }
+            { property: 'og:url', content: 'https://hackclub.com/shirt' }
           ]}
         />
         <Nav />
+        <style
+          children={`body {
+            background-image:
+              linear-gradient(to bottom,${cx('white')},${cx('snow')});
+          }`}
+        />
         <Header py={0} px={3}>
           <HeaderContainer
             pt={[4, 5]}
@@ -227,42 +175,24 @@ export default class extends Component {
             success={status === 'success'}
           >
             <HeaderAreaText align="center" mt={3}>
-              <Text color="pink.0" mb={[-2, -3]} f={3} bold caps>
+              <Text color="snow" mb={[-2, -3]} f={3} bold caps>
                 Hack Club
               </Text>
               <Heading.h1 f={[6, 7]} my={0}>
-                Challenge
+                T-Shirt
               </Heading.h1>
             </HeaderAreaText>
             <HeaderAreaInfo>
               <Text f={2}>
-                🌟 Challenge: <strong>{challenge.name}</strong>
-                <br />
-                🎁 {challenge.description}
-                <br />
-                ℹ️ Submissions open to Hack Club community members
-                <br />
-                📖{' '}
-                <Link
-                  href="/workshops/challenge_ridiculous_api"
-                  target="_blank"
-                  underline
-                >
-                  Click here
-                </Link>{' '}
-                for help getting started
-                <br />
-                🏅 Submissions due {dt(challenge.end)}. Top 3 voted win!
+                👕 We’re making a shirt for Hack Club and we want your input.
               </Text>
             </HeaderAreaInfo>
             <HeaderAreaForm>
-              <Help />
               <Form challengeId={challenge.id} status={status} />
             </HeaderAreaForm>
           </HeaderContainer>
         </Header>
         <Container maxWidth={48} pt={4} pb={5} px={[0, 3]}>
-          {ended && <Ended />}
           <Title align="center" pb={2} px={[2, 0]}>
             <Flex align="center" flex="1 1 auto" wrap>
               <Heading.h2 color="black" f={5} mr={2}>
@@ -293,13 +223,15 @@ export default class extends Component {
               </DropdownMenu>
             </DropdownContainer>
           </Title>
-          <Posts
-            challengeId={challenge.id}
-            userId={userId}
-            status={status}
-            sortBy={sortBy}
-          />
-          <DiscussChallenge />
+          <Grid mt={3}>
+            <Posts
+              challengeId={challenge.id}
+              userId={userId}
+              status={status}
+              sortBy={sortBy}
+              shirt
+            />
+          </Grid>
         </Container>
         <Footer />
       </Fragment>
@@ -307,12 +239,8 @@ export default class extends Component {
   }
 }
 export const pageQuery = graphql`
-  query ChallengeQuery {
-    allChallengesJson(
-      filter: { name: { ne: "T-Shirt" } }
-      sort: { fields: [start], order: DESC }
-      limit: 1
-    ) {
+  query ShirtQuery {
+    allChallengesJson(filter: { name: { eq: "T-Shirt" } }, limit: 1) {
       edges {
         node {
           id

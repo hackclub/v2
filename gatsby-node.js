@@ -9,10 +9,12 @@ const axios = require('axios')
 exports.onPreBootstrap = () =>
   axios
     .get('https://api.hackclub.com/v1/challenges')
-    .then(res => {
-      const data = res.data[res.data.length - 1]
-      data.id = data.id.toString() // for Gatsby
-      writeFile('./public/challenge.json', JSON.stringify(data), err => {
+    .then(res => res.data)
+    .then(challenges => {
+      challenges.forEach(data => {
+        data.id = data.id.toString() // for Gatsby
+      })
+      writeFile('./public/challenges.json', JSON.stringify(challenges), err => {
         if (err) throw err
       })
     })

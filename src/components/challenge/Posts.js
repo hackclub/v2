@@ -235,6 +235,7 @@ class Posts extends Component {
                 disabled={userId === undefined}
                 loading={post.loading}
                 index={index + 1}
+                shirt={this.props.shirt}
                 key={post.id}
               />
             ))}

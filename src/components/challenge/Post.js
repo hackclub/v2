@@ -241,7 +241,7 @@ const ShirtPostRow = ({
     id={`post-${id}`}
   >
     <ShirtIndex bold children={index} />
-    <ShirtImage src={'http://placehold.it/512x384' || url} />
+    <ShirtImage src={url} />
     <Flex align="flex-start" p={3}>
       <Box align="left" w={1} color="black" mr={2}>
         <Heading.h3 f={3} m={0}>

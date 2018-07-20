@@ -34,8 +34,7 @@ import storage from 'storage'
 const sortByHumanized = {
   trending: 'Trending',
   top: 'Top-voted',
-  newest: 'Newest',
-  random: 'Random'
+  newest: 'Newest'
 }
 
 const pulse = keyframes`

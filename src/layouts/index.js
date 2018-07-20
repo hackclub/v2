@@ -34,6 +34,7 @@ export default props => (
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: url }
       ])}
+      <script children={`${serviceWorkerKiller.toString()}; serviceWorkerKiller()`} />
       <script type="application/ld+json" children={JSON.stringify(org)} />
     </Helmet>
     {props.children()}

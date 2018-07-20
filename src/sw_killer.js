@@ -6,9 +6,9 @@ const serviceWorkerKiller = () => {
   const sw_supported = navigator && navigator.serviceWorker
 
   if (sw_supported) {
-    navigator.serviceWorker.getRegistrations().then(function(registrations) {
+    navigator.serviceWorker.getRegistrations().then(registrations => {
       if (registrations.length > 0) {
-        console.log("Unregistering service workers")
+        console.log('Unregistering service workers')
       }
       for (let registration of registrations) {
         registration.unregister()
@@ -17,4 +17,4 @@ const serviceWorkerKiller = () => {
   }
 }
 
-export default serviceWorkerKiller;
+export default serviceWorkerKiller

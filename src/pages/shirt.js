@@ -184,6 +184,12 @@ export default class extends Component {
             <HeaderAreaInfo>
               <Text f={2}>
                 👕 We’re making a shirt for Hack Club and we want your input.
+                <br />
+                📅 Submissions due {dt(challenge.end)}.
+                <br />
+                🏆 Top 2 voted shirts will be printed and mailed to the winners!
+                <br />
+                📖 <Link href="">Click here</Link> to get started
               </Text>
             </HeaderAreaInfo>
             <HeaderAreaForm>

@@ -2,6 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import data from 'data.json'
 import { ThemeProvider, colors } from '@hackclub/design-system'
+import serviceWorkerKiller from 'swkiller'
 
 const { name, title, description, img, url, org } = data
 

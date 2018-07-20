@@ -263,7 +263,7 @@ const ShirtPostRow = ({
             <Icon name="chat_bubble" color="info" size={32} />
             <Text.span bold color="white" children={commentsCount} />
           </CommentButton>
-          <Link ml={1} href={url}>
+          <Link ml={1} href={url} target="_blank">
             <Icon name="open_in_new" color="muted" size={24} />
           </Link>
         </Flex>

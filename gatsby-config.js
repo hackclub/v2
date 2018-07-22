@@ -15,8 +15,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/public/challenge.json`,
-        name: 'challenge'
+        path: `${__dirname}/public/challenges.json`,
+        name: 'challenges'
       }
     },
     'gatsby-transformer-json',

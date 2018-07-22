@@ -7,7 +7,8 @@ import {
   Heading,
   Link,
   Text,
-  Hide
+  Hide,
+  BackgroundImage
 } from '@hackclub/design-system'
 import PropTypes from 'prop-types'
 import { Modal, Overlay, CloseButton } from 'components/Modal'
@@ -181,6 +182,121 @@ PostRow.propTypes = {
   onUpvote: PropTypes.func.isRequired,
   onComment: PropTypes.func.isRequired
 }
+const ShirtPostBase = Box.extend`
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  ${({ theme }) => theme.mediaQueries.md} {
+    border-radius: ${({ theme }) => theme.radius};
+    box-shadow: ${({ theme }) => theme.boxShadows[0]};
+    transition: ${({ theme }) => theme.transition} all;
+    &:hover {
+      box-shadow: ${({ theme }) => theme.boxShadows[2]};
+    }
+  }
+  ${CommentButton} {
+    padding: 0 !important;
+  }
+`
+const ShirtIndex = Text.extend`
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: ${({ theme }) => theme.space[3]}px;
+  width: 1.25rem;
+  height: 1.25rem;
+  line-height: 1.25rem;
+  border-radius: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.875);
+  color: ${({ theme }) => theme.colors.black};
+  font-size: ${({ theme }) => theme.fontSizes[0]}px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  font-weight: bold;
+`
+const ShirtImage = BackgroundImage.extend`
+  width: 100%;
+  min-height: 12rem;
+  max-height: 16rem;
+`
+const ShirtPostRow = ({
+  id,
+  name,
+  url,
+  description,
+  createdAt,
+  mine,
+  commentsCount,
+  upvotesCount,
+  upvoted = false,
+  onUpvote,
+  onComment,
+  disabled,
+  loading,
+  index
+}) => (
+  <ShirtPostBase
+    bg={mine ? 'yellow.0' : 'white'}
+    title={mine ? '👑 Your post!' : `${name} posted on ${dt(createdAt)}`}
+    id={`post-${id}`}
+  >
+    <ShirtIndex bold children={index} />
+    <ShirtImage src={url} />
+    <Flex align="flex-start" p={3}>
+      <Box align="left" w={1} color="black" mr={2}>
+        <Heading.h3 f={3} m={0}>
+          {name}
+          <Text.span ml={2} f={0} mt={1} color="muted" regular>
+            {tinyDt(createdAt)}
+          </Text.span>
+        </Heading.h3>
+        <Description color="muted" f={2}>
+          {description}
+        </Description>
+      </Box>
+      <Box>
+        <Flex w={1} align="center" justify="space-between" px={1} mb={1}>
+          <CommentButton
+            aria-label={`Open comments: ${commentsCount}`}
+            onClick={onComment}
+          >
+            <Icon name="chat_bubble" color="info" size={32} />
+            <Text.span bold color="white" children={commentsCount} />
+          </CommentButton>
+          <Link ml={1} href={url} target="_blank">
+            <Icon name="open_in_new" color="muted" size={24} />
+          </Link>
+        </Flex>
+        <UpvoteButton
+          bg={upvoted ? 'fuschia.5' : 'smoke'}
+          color={upvoted ? 'white' : 'slate'}
+          aria-label={upvoted ? 'Remove your upvote' : 'Upvote this post'}
+          onClick={onUpvote}
+          disabled={loading}
+          cursor={disabled ? 'not-allowed' : loading ? 'wait' : 'pointer'}
+        >
+          <Icon size={20} name="arrow_upward" />
+          <Text.span ml={1} f={2} children={upvotesCount} />
+        </UpvoteButton>
+      </Box>
+    </Flex>
+  </ShirtPostBase>
+)
+ShirtPostRow.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  createdAt: PropTypes.string,
+  mine: PropTypes.bool,
+  disabled: PropTypes.bool,
+  commentsCount: PropTypes.number.isRequired,
+  upvotesCount: PropTypes.number.isRequired,
+  upvoted: PropTypes.bool,
+  loading: PropTypes.bool,
+  onUpvote: PropTypes.func.isRequired,
+  onComment: PropTypes.func.isRequired
+}
 class Post extends Component {
   state = {
     status: 'loading',
@@ -250,12 +366,14 @@ class Post extends Component {
       upvotesCount,
       upvoted = false,
       onUpvote,
-      disabled
+      disabled,
+      shirt = false
     } = this.props
     const { status, commentsOpen, comments, email } = this.state
+    const Element = shirt ? ShirtPostRow : PostRow
     return (
       <Fragment>
-        <PostRow onComment={this.onOpen} {...this.props} />
+        <Element onComment={this.onOpen} {...this.props} />
         {commentsOpen && (
           <Fragment>
             <CommentsModal align="left" p={[3, 4]}>

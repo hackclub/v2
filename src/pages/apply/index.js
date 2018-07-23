@@ -12,7 +12,7 @@ import {
   Heading,
   LargeButton,
   Link as DSLink,
-  Text as T,
+  Text,
   cx
 } from '@hackclub/design-system'
 import { clubApplicationSchema } from 'components/apply/ClubApplicationForm'
@@ -29,18 +29,16 @@ LargeButton.link = LargeButton.withComponent(Link)
 
 const A = DSLink.extend`
   cursor: pointer;
-  :hover {
+  &:hover {
     text-decoration: underline;
   }
 `
 
-const Text = props => <T mt={3} mb={3} {...props} />
+const P = props => <Text my={3} {...props} />
 
-const Span = T.span
+const Neg = () => <Text.span color="error" bold children="NOT" />
 
-const Neg = () => <Span color="error" bold children="NOT" />
-
-const CustomCard = Card.extend.attrs({
+const Sheet = Card.extend.attrs({
   p: [3, 4],
   color: 'black',
   bg: 'snow',
@@ -84,23 +82,23 @@ const ApplicationCard = props => {
     <Container maxWidth={36} my={3} p={3}>
       {app.rejected_at ? (
         <Flex mb={4}>
-          <CustomCard>
+          <Sheet>
             <Heading.h3>Unfortunately, you’ve been rejected</Heading.h3>
             <br />
-            <Text>
+            <P>
               You can start a new application by clicking{' '}
               <A onClick={resetCallback}>here</A>.
-            </Text>
-          </CustomCard>
+            </P>
+          </Sheet>
         </Flex>
       ) : null}
-      <CustomCard>
+      <Sheet>
         <Heading.h3 mb={2}>How to get into Hack Club</Heading.h3>
 
-        <Text>
+        <P>
           Our admissions process is very competitive, accepting less than 5% of
           applicants. Here’s what we look for:
-        </Text>
+        </P>
         <ul>
           <li>
             Strong founding teams with 2-3 members. You probably can’t do it
@@ -116,15 +114,15 @@ const ApplicationCard = props => {
             meaningful.
           </li>
         </ul>
-        <Text>
+        <P>
           At the end of the day, to start a successful Hack Club all you have to
           do are two things: make a club that people want to attend and get it
           in front of the right people in the right way.
-        </Text>
-        <Text>
+        </P>
+        <P>
           Though we wish we could work with more clubs, our low acceptance rate
           is simply a result of too much interest and not enough time.
-        </Text>
+        </P>
         <Heading.h3>After you apply</Heading.h3>
         <ul>
           <li>We’ll get back to you with our decision in 7 days</li>
@@ -153,9 +151,7 @@ const ApplicationCard = props => {
             This application was{' '}
             {submitted_at !== null
               ? 'submitted'
-              : updated_at === created_at
-                ? 'created'
-                : 'updated'}{' '}
+              : updated_at === created_at ? 'created' : 'updated'}{' '}
             {timeSince(updated_at)}
           </li>
           <li>
@@ -206,15 +202,15 @@ const ApplicationCard = props => {
             </li>
           ))}
         </ul>
-        <Text mb={0}>Invite your co-leads:</Text>
+        <P mb={0}>Invite your co-leads:</P>
         <LeaderInviteForm id={id} authToken={authToken} callback={callback} />
-        <Text color="slate" f={1}>
+        <P color="slate" f={1}>
           <em>
             * We also accept applications from clubs that have already held
             meetings.
           </em>
-        </Text>
-      </CustomCard>
+        </P>
+      </Sheet>
       <Flex
         align="center"
         justify="center"
@@ -250,22 +246,14 @@ const ApplicationCard = props => {
 }
 
 export default class extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      status: 'loading',
-      app: undefined,
-      authToken: undefined,
-      userId: undefined
-    }
-
-    this.populateApplications = this.populateApplications.bind(this)
-    this.createNewApplication = this.createNewApplication.bind(this)
-    this.resetApplication = this.resetApplication.bind(this)
+  state = {
+    status: 'loading',
+    app: undefined,
+    authToken: undefined,
+    userId: undefined
   }
 
-  createNewApplication(firstTime = false) {
+  createNewApplication = (firstTime = false) => {
     const msg =
       'If you start a new application you won’t be able to access this one. Continue?'
     if (!firstTime && !confirm(msg)) {
@@ -280,16 +268,16 @@ export default class extends Component {
       })
   }
 
-  resetApplication() {
+  resetApplication = () => {
     this.createNewApplication().then(app => {
       this.setState({
         status: 'finished',
-        app: app
+        app
       })
     })
   }
 
-  populateApplications(application = null) {
+  populateApplications = (application = null) => {
     if (application) {
       this.setState({
         status: 'finished',
@@ -367,7 +355,7 @@ export default class extends Component {
           </Fragment>
         )
       default:
-        return <Text>Something terrible has happened.</Text>
+        return <P>Something terrible has happened.</P>
     }
   }
 

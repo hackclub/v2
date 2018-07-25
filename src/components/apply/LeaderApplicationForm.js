@@ -220,7 +220,7 @@ const InnerForm = props => {
           />
           <Field
             name="skills_impressive_achievement"
-            label="Please tell us in one or two sentences about the most impressive thing you have built or achieved. Include links and user counts if possible."
+            label="Please tell us in one or two sentences about the most impressive thing you have built or achieved. Include links and images if possible."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.skills_impressive_achievement}
@@ -232,7 +232,7 @@ const InnerForm = props => {
           />
           <Field
             name="skills_is_technical"
-            label="Are you a technical leader? (You are a programmer who can teach without outside assistance)"
+            label="Are you technical? (You are a programmer who can teach without outside assistance)"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.skills_is_technical || 'select'}

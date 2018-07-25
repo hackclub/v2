@@ -167,38 +167,31 @@ const ApplicationCard = props => {
                 </span>
               )}
               finished their leader profile{' '}
-              {isPoc ? (
-                <Fragment>
-                  (
-                  <A
-                    onClick={e => {
-                      if (
-                        confirm(
-                          `Are you sure you want to remove ${
-                            profile.user.email
-                          } as a team member?`
-                        )
-                      ) {
-                        api
-                          .delete(
-                            `v1/new_club_applications/${id}/remove_user`,
-                            {
-                              authToken,
-                              data: { user_id: profile.user.id }
-                            }
-                          )
-                          .then(json => {
-                            callback()
-                          })
-                      }
-                    }}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    remove
-                  </A>
-                  )
-                </Fragment>
-              ) : null}
+              {isPoc && (
+                <A
+                  onClick={e => {
+                    if (
+                      confirm(
+                        `Are you sure you want to remove ${
+                          profile.user.email
+                        } as a team member?`
+                      )
+                    ) {
+                      api
+                        .delete(`v1/new_club_applications/${id}/remove_user`, {
+                          authToken,
+                          data: { user_id: profile.user.id }
+                        })
+                        .then(json => {
+                          callback()
+                        })
+                    }
+                  }}
+                  style={{ cursor: 'pointer' }}
+                >
+                  remove
+                </A>
+              )}
             </li>
           ))}
         </ul>

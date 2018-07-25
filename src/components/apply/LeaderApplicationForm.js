@@ -206,7 +206,7 @@ const InnerForm = props => {
               <Fragment>
                 Please tell us about the time you most successfully hacked some
                 (non-computer) system to your advantage.{' '}
-                <a href="https://www.quora.com/When-have-you-most-successfully-hacked-a-non-computer-system-to-your-advantage">
+                <a href="https://www.quora.com/When-have-you-most-successfully-hacked-a-non-computer-system-to-your-advantage" target="_blank">
                   Here are examples
                 </a>{' '}
                 of what we’re looking for.

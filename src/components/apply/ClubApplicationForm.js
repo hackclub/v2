@@ -111,8 +111,7 @@ const InnerForm = props => {
         <Fieldset section="leaders">
           <Field
             name="point_of_contact_id"
-            label="Point of contact"
-            hint="To reduce emails, we just send emails to this designated person on your team."
+            label="President / equivalent position"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.point_of_contact_id || 'select'}

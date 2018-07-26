@@ -59,14 +59,7 @@ Wrapper.defaultProps = {
 const Notification = Flex.withComponent(Link).extend`
   border-radius: ${({ theme }) => theme.radius};
   max-width: 36rem;
-  background-color: ${({ theme }) => theme.colors.snow};
-  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    background-color: rgba(255, 255, 255, 0.85);
-    -webkit-backdrop-filter: saturate(200%) blur(12px);
-  }
-  ${({ theme }) => theme.mediaQueries.reduceTransparency} {
-    -webkit-backdrop-filter: auto !important;
-  }
+  background-color: rgba(255, 255, 255, 0.96875);
   strong {
     font-weight: bold;
   }

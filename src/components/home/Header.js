@@ -40,12 +40,6 @@ const Root = Flex.withComponent('header').extend`
   p {
     max-width: 36rem;
   }
-
-  @media screen and (max-width: 22em) {
-    a span {
-      display: none;
-    }
-  }
 `
 Root.defaultProps = {
   py: [5, 6],
@@ -131,19 +125,12 @@ export default () => (
         mt={[3, 4]}
         flexDirection={[null, 'column-reverse', 'row']}
       >
-        <Hide xs>
-          <Action.link to="/donate" bg="info">
-            Donate
-          </Action.link>
-        </Hide>
-        <Flex flexDirection="row" align="center">
-          <Action href="https://finder.hackclub.com" inverted>
-            Find <span>Nearby</span>
-          </Action>
-          <Action.link to="/start" f={[3, null, 4]}>
-            Start a Club »
-          </Action.link>
-        </Flex>
+        <Action.link to="/donate" bg="info">
+          Donate
+        </Action.link>
+        <Action.link to="/start" f={[3, null, 4]}>
+          Start a Club »
+        </Action.link>
       </Flex>
     </Wrapper>
   </Animator>

@@ -114,7 +114,7 @@ const Grid = styled(Box)`
 const title = 'Hack Club Shirt'
 const desc =
   'Submit a design to Hack Club’s T-Shirt design event. We’ll be printing the winner!'
-const img = 'https://hackclub.com/tshirt.png'
+const img = 'https://hackclub.com/shirt.png'
 
 export default class extends Component {
   state = { status: 'loading', sortBy: 'top' }

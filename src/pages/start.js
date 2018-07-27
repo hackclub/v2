@@ -10,6 +10,7 @@ import {
   Section,
   Link as A
 } from '@hackclub/design-system'
+import styled, { css } from 'styled-components'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
@@ -27,10 +28,10 @@ const shadows = `
     text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
   }
 `
-const PhotoSection = Section.extend`
+const PhotoSection = styled(Section)`
   position: relative;
   background: linear-gradient(rgba(0, 0, 0, 0.325), rgba(0, 0, 0, 0.125)),
-    url(${props => props.image});
+    url(${props => props.src});
   background-position: center;
   background-size: cover;
   ${shadows};
@@ -179,55 +180,40 @@ export default () => (
         />
       </Modules>
     </Row>
-    <Framed
-      imageSrc="/lah_2.jpg"
-      imageAlt="Students stacking cups together"
+    <PhotoSection
+      src="/lah_2.jpg"
+      aria-label="Students stacking cups together"
       py={[4, 5]}
-      imageStyle={{
-        filter: 'brightness(0.75)'
-      }}
-      style={{
-        minHeight: '48rem',
-        maxHeight: '48rem'
-      }}
     >
-      <FramedContent maxWidth={36} my={[4, 5]} align="center">
-        <Heading.h2 {...styles.headline} mb={2}>
+      <Container maxWidth={36} my={[4, 5]} align="center">
+        <Heading.h2 {...styles.headline} color="white" mb={2}>
           Hack Clubs are entirely led by students.
         </Heading.h2>
-        <Text {...styles.subhline}>
+        <Text {...styles.subhline} color="white" mb={3}>
           As a club leader, you’ll find 2-3 (student) co-leads to help run your
-          club. You’ll hold meetings together.
+          club. You’ll host meetings together.
         </Text>
-      </FramedContent>
-      <OthersCard
-        maxWidth={28}
-        py={3}
-        px={[4, 3]}
-        align="left"
-        boxShadowSize="md"
-      >
-        <Heading.h3 f={4} color="primary" mt={0} mb={2}>
-          Are you a teacher or parent?
-        </Heading.h3>
-        <Text>
-          We hate to say it, but we’re currently only accepting applications
-          from students.
-        </Text>
-        <Text my={1}>
-          Teachers and parents can help by recruiting students, sharing Hack
-          Club with the local PTA, and expressing interest in Hack Club to
-          school administration.
-        </Text>
-        <Text>
-          That said, shoot us an email at{' '}
-          <A color="primary" href="mailto:contact@hackclub.com">
-            contact@hackclub.com
-          </A>{' '}
-          and we’d really love to help where we can.
-        </Text>
-      </OthersCard>
-    </Framed>
+        <OthersCard
+          maxWidth={28}
+          py={3}
+          px={[4, 3]}
+          align="left"
+          boxShadowSize="md"
+        >
+          <Heading.h3 f={4} color="primary" mt={0} mb={2}>
+            Are you a teacher or parent?
+          </Heading.h3>
+          <Text>
+            We hate to say it, but we’re currently only accepting applications
+            from students, but there are many ways teachers and parents can
+            help. Shoot us an email at{' '}
+            <A color="primary" href="mailto:contact@hackclub.com">
+              contact@hackclub.com
+            </A>—we’d love to chat.
+          </Text>
+        </OthersCard>
+      </Container>
+    </PhotoSection>
     <Row my={[3, 4]}>
       <Box color="black">
         <Heading.h2 {...styles.headline} mb={3}>

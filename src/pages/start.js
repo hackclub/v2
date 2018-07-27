@@ -1,14 +1,15 @@
 import React, { Fragment } from 'react'
 import {
-  Heading,
+  BackgroundImage,
+  Box,
   Card,
   Container,
   Flex,
-  Box,
-  Text,
+  Heading,
   LargeButton,
+  Link as A,
   Section,
-  Link as A
+  Text
 } from '@hackclub/design-system'
 import styled, { css } from 'styled-components'
 import Helmet from 'react-helmet'
@@ -37,7 +38,7 @@ const PhotoSection = styled(Section)`
   ${shadows};
 `
 
-const Modules = Box.extend`
+const Modules = styled(Box)`
   display: grid;
   grid-gap: ${({ theme }) => theme.space[3]}px;
   ${({ theme }) => theme.mediaQueries.md} {
@@ -48,23 +49,15 @@ const Modules = Box.extend`
     padding: 0;
     text-align: left;
     width: 100% !important;
-    &:nth-child(3n-2) {
-      color: ${({ theme }) => theme.colors.accent};
-    }
-    &:nth-child(3n-1) {
-      color: ${({ theme }) => theme.colors.info};
-    }
-    &:nth-child(3n) {
-      color: ${({ theme }) => theme.colors.primary};
-    }
   }
   p {
     color: ${({ theme }) => theme.colors.slate};
+    line-height: 1.375;
   }
 `
 
-const FramedContent = Container.extend([], shadows)
-const OthersCard = Box.extend`
+const FramedContent = styled(Container)([], shadows)
+const OthersCard = styled(Box)`
   background-color: rgba(255, 255, 255, 0.625);
   width: 100vw;
   left: 0;
@@ -89,7 +82,7 @@ const OthersCard = Box.extend`
 
 LargeButton.link = LargeButton.withComponent(Link)
 
-const Row = Container.extend.attrs({ color: 'black', px: 3, py: [3, 4] })`
+const Row = styled(Container).attrs({ color: 'black', px: 3, py: [3, 4] })`
   display: grid;
   grid-gap: ${({ theme }) => theme.space[3]}px;
   text-align: left;
@@ -117,8 +110,7 @@ const styles = {
 
 const title = 'Start Your Hack Club'
 const description =
-  'Learn how to start a coding club at your high school through Hack Club. ' +
-  'Get programming club ideas, curriculum, activities, and more.'
+  'Learn how to start a coding club at your high school through Hack Club. Get programming club ideas, curriculum, activities, and more.'
 
 export default () => (
   <Fragment>
@@ -167,16 +159,19 @@ export default () => (
           icon="assignment"
           heading="Apply"
           body="Submit your information to start—totally free."
+          color="primary"
         />
         <Module
           icon="ring_volume"
           heading="Training call"
           body="We’ll chat and begin a plan for your club."
+          color="teal.7"
         />
         <Module
           icon="event_available"
           heading="Lead your club!"
           body="Schedule your first meeting and get ready!"
+          color="info"
         />
       </Modules>
     </Row>
@@ -226,33 +221,39 @@ export default () => (
       <Modules>
         <Module
           icon="forum"
-          heading="Online community"
+          heading="Community"
           body="Join our Slack and meet thousands of other club leaders and members around the world."
+          color="red.5"
         />
         <Module
           icon="pages"
           heading="Curriculum"
           body="Give your members dozens of free tutorials for making websites, apps, and games."
+          color="orange.5"
         />
         <Module
           icon="voice_chat"
           heading="Mentorship"
           body="Talk to our team for guidance and assistance whenever you need help."
+          color="yellow.7"
         />
         <Module
           icon="chrome_reader_mode"
           heading="Guidelines"
           body="Learn from hundreds of other clubs—we’ve got information, advice, and experience."
+          color="teal.7"
         />
         <Module
           icon="local_activity"
           heading="Local events"
           body="Attend hackathons, workshops, and other events from Hack Clubs near yours."
+          color="blue.5"
         />
         <Module
           icon="wallpaper"
           heading="Marketing"
           body="Get stickers, posters, and ideas for spreading the word about your amazing club meetings."
+          color="indigo.5"
         />
       </Modules>
     </Row>

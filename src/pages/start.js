@@ -145,7 +145,7 @@ export default () => (
     >
       <Container maxWidth={56} p={[2, 3]} mt={[5, 6]} mb={[4, 5]}>
         <Heading.h1 {...styles.ultraline} color="white">
-          Learn how to start a coding club at your high school.
+          Start an incredible coding club at your high school.
         </Heading.h1>
         <Heading.h2 {...styles.subhline} color="white" f={[4, 5]} mt={3} mb={4}>
           We’ll help every step of the way.

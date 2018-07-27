@@ -3,7 +3,6 @@ import Helmet from 'react-helmet'
 import { url as apiUrl } from 'api'
 import { Heading, Container, LargeButton } from '@hackclub/design-system'
 import LoadingBar from 'components/LoadingBar'
-import Footer from 'components/Footer'
 import ClubApplicationForm from 'components/apply/ClubApplicationForm'
 import ApplyNav from 'components/apply/ApplyNav'
 import Login from 'components/auth/Login'
@@ -11,15 +10,11 @@ import * as yup from 'yup'
 import fetch from 'unfetch'
 
 export default class extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      status: 'loading',
-      formFields: undefined,
-      id: undefined,
-      authToken: undefined
-    }
+  state = {
+    status: 'loading',
+    formFields: undefined,
+    id: undefined,
+    authToken: undefined
   }
 
   componentDidMount() {
@@ -85,10 +80,9 @@ export default class extends Component {
             <Heading.h4 align="center">
               Your form is automatically saved ✨
             </Heading.h4>
-            <Container align="center" my={4}>
+            <Container align="center" mt={4} mb={5}>
               <LargeButton.link to="/apply">« Back</LargeButton.link>
             </Container>
-            <Footer />
           </Fragment>
         )
     }

@@ -6,18 +6,13 @@ import LeaderApplicationForm from 'components/apply/LeaderApplicationForm'
 import Login from 'components/auth/Login'
 import ApplyNav from 'components/apply/ApplyNav'
 import LoadingBar from 'components/LoadingBar'
-import Footer from 'components/Footer'
 
 export default class extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      status: 'loading',
-      formFields: undefined,
-      id: undefined,
-      authToken: undefined
-    }
+  state = {
+    status: 'loading',
+    formFields: undefined,
+    id: undefined,
+    authToken: undefined
   }
 
   componentDidMount() {
@@ -83,10 +78,9 @@ export default class extends Component {
             <Heading.h4 align="center">
               Your form is automatically saved ✨
             </Heading.h4>
-            <Container align="center" my={4}>
+            <Container align="center" mt={4} mb={5}>
               <LargeButton.link to="/apply">« Back</LargeButton.link>
             </Container>
-            <Footer />
           </Fragment>
         )
     }

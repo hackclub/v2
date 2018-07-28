@@ -7,7 +7,7 @@ import Auth from 'components/Auth'
 import SubmitForm from 'components/workshops/SubmitForm'
 import Footer from 'components/Footer'
 
-const Header = Section.withComponent('header').extend([])
+const Header = Section.withComponent('header')
 
 export default () => (
   <Fragment>

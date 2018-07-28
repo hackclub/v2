@@ -17,7 +17,7 @@ import {
 import styled from 'styled-components'
 import LeaderInvite from 'components/apply/LeaderInvite'
 import { clubApplicationSchema } from 'components/apply/ClubApplicationForm'
-import Sheet from 'components/apply/Sheet'
+import Sheet from 'components/Sheet'
 import SubmitButton from 'components/apply/SubmitButton'
 import Status from 'components/apply/Status'
 import fetch from 'unfetch'
@@ -44,23 +44,24 @@ const MDBreak = Hide.withComponent('br').extend.attrs({
   md: true
 })``
 
-const PrimaryButton = styled(IconButton).attrs({
-  name: 'edit',
-  bg: 'primary',
-  circle: true,
-  size: 36,
-  p: 3
-})`
-  position: absolute;
-  right: 0;
-  bottom: -64px;
-  box-shadow: ${({ theme }) => theme.boxShadows[1]} !important;
-  transition: ${({ theme }) => theme.transition} box-shadow;
-  &:hover,
-  &:focus {
-    box-shadow: ${({ theme }) => theme.boxShadows[2]} !important;
-  }
-`
+// NOTE(@lachlanjc): for use if/when we have a slideshow experience
+// const PrimaryButton = styled(IconButton).attrs({
+//   name: 'edit',
+//   bg: 'primary',
+//   circle: true,
+//   size: 36,
+//   p: 3
+// })`
+//   position: absolute;
+//   right: 0;
+//   bottom: -64px;
+//   box-shadow: ${({ theme }) => theme.boxShadows[1]} !important;
+//   transition: ${({ theme }) => theme.transition} box-shadow;
+//   &:hover,
+//   &:focus {
+//     box-shadow: ${({ theme }) => theme.boxShadows[2]} !important;
+//   }
+// `
 
 const Rejected = ({ resetCallback }) => (
   <Box mb={4}>

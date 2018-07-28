@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Heading, Container, Flex, Button, cx } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
-import Sheet from 'components/apply/Sheet'
+import Sheet from 'components/Sheet'
 import SlackForm from 'components/SlackForm'
 import LiveStat from 'components/LiveStat'
 

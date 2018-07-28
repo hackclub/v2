@@ -5,7 +5,7 @@ import { Heading, Container, Card, LargeButton } from '@hackclub/design-system'
 import styled from 'styled-components'
 
 import Login from 'components/auth/Login'
-import Sheet from 'components/apply/Sheet'
+import Sheet from 'components/Sheet'
 import ApplyNav from 'components/apply/ApplyNav'
 import LoadingBar from 'components/LoadingBar'
 import BG from 'components/BG'

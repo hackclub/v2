@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
-import {
-  Box,
-  Container,
-  Card,
-  Flex,
-  Input,
-  colors
-} from '@hackclub/design-system'
+import styled from 'styled-components'
+import { Box, Container, Flex, Input } from '@hackclub/design-system'
+import Sheet from 'components/Sheet'
 import { Submit } from 'components/Forms'
 import { withFormik } from 'formik'
 import { isEmpty } from 'lodash'
@@ -14,12 +9,7 @@ import Composer, { LS_NAME_KEY, LS_BODY_KEY } from './Composer'
 import * as yup from 'yup'
 import api from 'api'
 
-const Sheet = Container.withComponent(Card).extend`
-  transition: box-shadow 0.25s ease-out;
-  &:hover {
-    box-shadow: ${({ theme }) => theme.boxShadows[2]};
-  }
-
+const Root = styled(Sheet)`
   .DraftEditor-editorContainer > div {
     min-height: 4rem;
   }
@@ -30,7 +20,7 @@ const Sheet = Container.withComponent(Card).extend`
   }
 `
 
-const Header = Flex.extend`
+const Header = styled(Flex)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
 
   input {
@@ -107,7 +97,7 @@ const InnerForm = ({
   status
 }) => (
   <form onSubmit={handleSubmit}>
-    <Sheet maxWidth={48} p={[3, 4]} bg="white" boxShadowSize="md">
+    <Root maxWidth={48}>
       <Header align="baseline">
         <NameField
           onChange={handleChange}
@@ -121,7 +111,7 @@ const InnerForm = ({
         />
       </Header>
       <Composer onChange={setFieldValue} onBlur={handleBlur} />
-    </Sheet>
+    </Root>
     <Box align="center" pt={4} pb={5}>
       <Submit.lg
         onClick={handleSubmit}

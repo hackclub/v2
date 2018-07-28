@@ -31,14 +31,14 @@ class BreadcrumbClass extends Component {
             <Fragment key={index}>
               <Crumb
                 to={runningPath.join('/')}
-                color={isLast ? 'white' : 'red.1'}
+                color={isLast ? 'black' : 'slate'}
                 f={3}
                 isLast={isLast}
               >
                 {humanizedSection}
               </Crumb>
               {!isLast ? (
-                <Text.span mx={2} color="red.3" regular children="›" />
+                <Text.span mx={2} color="muted" regular children="›" />
               ) : null}
             </Fragment>
           )
@@ -52,7 +52,6 @@ const Breadcrumb = withRouter(BreadcrumbClass)
 
 const ApplyNav = ({ breadcrumb = true, ...props }) => (
   <Flex
-    bg="primary"
     px={[3, 4]}
     pb={2}
     justify="space-between"

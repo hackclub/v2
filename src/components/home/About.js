@@ -131,11 +131,9 @@ export default () => (
         <Heading.h3 f={4} my={0} caps>
           So much more than a club
         </Heading.h3>
-        <Text f={3} my={3}>
+        <Text f={3} mt={3}>
           Hack Clubs attend and run hackathons like{' '}
-          <Like href="https://hackchicago.io">
-            Hack Chicago
-          </Like> and{' '}
+          <Like href="https://hackchicago.io">Hack Chicago</Like> and{' '}
           <Like href="https://www.sfchronicle.com/bayarea/article/Hack-the-Fog-makes-history-as-San-12729895.php">
             Hack the Fog
           </Like>. They run summer programs like{' '}
@@ -147,9 +145,6 @@ export default () => (
           (and <LikeLink to="/challenge">our Challenge</LikeLink>!). This is no
           ordinary club.
         </Text>
-        <Action to="/meetings" inverted>
-          Learn more »
-        </Action>
       </Box>
       <Photo src="/about_1.jpg" scale />
       <Photo src="/about_2.jpg" scale />

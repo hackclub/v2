@@ -165,12 +165,6 @@ export const Optional = () => (
 )
 
 export class Field extends Component {
-  constructor(props) {
-    super(props)
-    this.onFocus = this.onFocus.bind(this)
-    this.onBlur = this.onBlur.bind(this)
-  }
-
   componentWillMount() {
     const { type, renderMarkdown } = this.props
     const Tag = Input.withComponent(
@@ -180,7 +174,7 @@ export class Field extends Component {
     this.setState({ Tag, isEditing: false })
   }
 
-  onBlur(e) {
+  onBlur = e => {
     const { renderMarkdown, onBlur } = this.props
     if (renderMarkdown) {
       this.setState({ isEditing: false })
@@ -190,7 +184,7 @@ export class Field extends Component {
     }
   }
 
-  onFocus() {
+  onFocus = () => {
     if (this.props.renderMarkdown) {
       this.setState({ isEditing: true })
     }
@@ -215,12 +209,11 @@ export class Field extends Component {
     const { Tag, isEditing } = this.state
 
     return (
-      <Label className={type} mb={2} id={name}>
+      <Label className={type} mb={3} id={name}>
         <Flex style={{ display: 'inline' }} wrap>
           <span>{label}</span>
           {optional ? <Optional /> : null}
           {error && <Error children={error} />}
-          {renderMarkdown && <Hint children="click to edit" />}
         </Flex>
         {renderMarkdown && (
           <Card
@@ -240,7 +233,7 @@ export class Field extends Component {
           <Tag
             name={name}
             type={type}
-            height={type === 'textarea' ? '10rem' : 'inherit'}
+            rows={type === 'textarea' ? 5 : null}
             placeholder={p}
             children={children}
             {...this.props}
@@ -250,6 +243,7 @@ export class Field extends Component {
           />
         </div>
         {hint && <Hint children={hint} />}
+        {renderMarkdown && <Hint children="click to edit" />}
       </Label>
     )
   }

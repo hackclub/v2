@@ -244,7 +244,7 @@ const Main = props => {
 
         {coLeaderProfiles.length === 0 && (
           <Text py={3} color="muted" align="center" f={3}>
-            <strong>No co-leaders yet!</strong>
+            <Text.span bold>No co-leaders yet!</Text.span>
             <br />Tap the green button to add them.
           </Text>
         )}

@@ -11,7 +11,6 @@ import {
   Button,
   LargeButton
 } from '@hackclub/design-system'
-import Animator from 'components/Animator'
 
 const Root = Flex.withComponent('header').extend`
   text-align: center;
@@ -79,13 +78,7 @@ const Action = LargeButton.extend.attrs({ scale: true, m: [1, null, 2] })``
 Action.link = Action.withComponent(Link)
 
 export default () => (
-  <Animator
-    is={Root}
-    data={{
-      opacity: [1, 0.75],
-      transform: [{ translateY: '0px' }, { translateY: '-72px' }]
-    }}
-  >
+  <Root>
     <Wrapper>
       <Notification to="/bank">
         <Icon size={24} color="slate" name="account_balance" mr={2} />
@@ -126,5 +119,5 @@ export default () => (
         </Action.link>
       </Flex>
     </Wrapper>
-  </Animator>
+  </Root>
 )

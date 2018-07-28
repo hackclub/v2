@@ -170,7 +170,7 @@ export default class extends Component {
           </Fragment>
         )
       case 'needsToAuth':
-        return <Login heading="Login to view" />
+        return <Login heading="Sign in to view" />
       default:
         return <ErrorPage />
     }

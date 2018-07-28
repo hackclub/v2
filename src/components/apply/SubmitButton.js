@@ -1,21 +1,19 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import api from 'api'
 import storage from 'storage'
 import { LargeButton } from '@hackclub/design-system'
 
 class SubmitButton extends Component {
-  constructor(props) {
-    super(props)
-    this.handleSubmit = this.handleSubmit.bind(this)
+  static propTypes = {
+    status: PropTypes.oneOf(['incomplete', 'complete', 'submitted']).isRequired,
+    applicationId: PropTypes.number.isRequired,
+    callback: PropTypes.func
   }
 
-  handleSubmit() {
+  handleSubmit = () => {
     const { status, applicationId, callback } = this.props
-
-    if (status !== 'complete') {
-      return null
-    }
-
+    if (status !== 'complete') return null
     api
       .post(`v1/new_club_applications/${applicationId}/submit`, {
         authToken: storage.get('authToken')
@@ -29,22 +27,23 @@ class SubmitButton extends Component {
   }
 
   render() {
-    // this.updateState() // I'm trying to update the update button state when an application is reset
+    // this.updateState() // NOTE(@maxwofford): I'm trying to update the update button state when an application is reset
     const { status } = this.props
-
-    // incomplete, complete, submitted
     return (
       <LargeButton
         onClick={this.handleSubmit}
-        bg={status === 'submitted' ? 'accent' : 'primary'}
+        bg={status === 'submitted' ? 'success' : 'primary'}
         disabled={status !== 'complete'}
         w={1}
-        mb={2}
-      >
-        {status === 'submitted'
-          ? 'We’ve recieved your application'
-          : 'Submit your application'}
-      </LargeButton>
+        mt={2}
+        mb={4}
+        f={3}
+        children={
+          status === 'submitted'
+            ? 'We’ve recieved your application'
+            : 'Submit your application'
+        }
+      />
     )
   }
 }

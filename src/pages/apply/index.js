@@ -156,7 +156,7 @@ const ApplicationCard = props => {
               : updated_at === created_at
                 ? 'created'
                 : 'updated'}{' '}
-            {timeSince(updated_at)} ago
+            {timeSince(updated_at)}
           </li>
           <li>
             You have {leaderProfile.completed_at ? null : <Neg />} finished your

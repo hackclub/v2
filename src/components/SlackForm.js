@@ -32,7 +32,7 @@ const InnerForm = ({
       disabled={isSubmitting}
       onClick={handleSubmit}
       value={statusMessage(status)}
-      bg="#eeb523"
+      bg="fuschia.6"
       w={1}
       mt={3}
     />

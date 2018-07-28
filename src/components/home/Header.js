@@ -115,7 +115,11 @@ export default () => (
           Donate
         </Action.link>
         <Action.link to="/start" f={[3, null, 4]}>
+<<<<<<< HEAD
           Start a Club »
+=======
+          Learn more »
+>>>>>>> Remove Finder link
         </Action.link>
       </Flex>
     </Wrapper>

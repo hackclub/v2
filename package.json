@@ -47,6 +47,7 @@
     "gatsby-transformer-remark": "^1.7.44",
     "geopattern": "^1.2.3",
     "lodash": "^4.17.10",
+    "polished": "^1.9.3",
     "prismjs": "^1.15.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",

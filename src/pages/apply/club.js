@@ -1,14 +1,15 @@
 import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
-import { url as apiUrl } from 'api'
-import { Heading, Container, LargeButton } from '@hackclub/design-system'
+import api from 'api'
+import { Heading, Container, Card, LargeButton } from '@hackclub/design-system'
+import styled from 'styled-components'
+
+import Login from 'components/auth/Login'
+import Sheet from 'components/apply/Sheet'
+import ApplyNav from 'components/apply/ApplyNav'
 import LoadingBar from 'components/LoadingBar'
 import BG from 'components/BG'
 import ClubApplicationForm from 'components/apply/ClubApplicationForm'
-import ApplyNav from 'components/apply/ApplyNav'
-import Login from 'components/auth/Login'
-import * as yup from 'yup'
-import fetch from 'unfetch'
 
 export default class extends Component {
   state = {
@@ -34,17 +35,8 @@ export default class extends Component {
       const status = 'needsToAuth'
       this.setState({ status })
     } else {
-      fetch(`${apiUrl}/v1/new_club_applications/${id}`, {
-        method: 'GET',
-        headers: { Authorization: `Bearer ${authToken}` }
-      })
-        .then(res => {
-          if (res.ok) {
-            return res.json()
-          } else {
-            throw res
-          }
-        })
+      api
+        .get(`v1/new_club_applications/${id}`)
         .then(json => {
           this.setState({
             status: 'loaded',
@@ -74,11 +66,13 @@ export default class extends Component {
           <Fragment>
             <BG color="snow" />
             <ApplyNav />
-            <ClubApplicationForm
-              params={formFields}
-              id={id}
-              authToken={authToken}
-            />
+            <Sheet mt={3} mb={5}>
+              <ClubApplicationForm
+                params={formFields}
+                id={id}
+                authToken={authToken}
+              />
+            </Sheet>
             <Heading.h4 align="center">
               Your form is automatically saved ✨
             </Heading.h4>

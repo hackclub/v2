@@ -5,9 +5,8 @@ import {
   Card,
   Container,
   Flex,
-  Heading,
-  LargeButton,
-  Link as A,
+  Box,
+  Text,
   Section,
   Text
 } from '@hackclub/design-system'
@@ -80,9 +79,7 @@ const OthersCard = styled(Box)`
   }
 `
 
-LargeButton.link = LargeButton.withComponent(Link)
-
-const Row = styled(Container).attrs({ color: 'black', px: 3, py: [3, 4] })`
+const Row = Container.extend.attrs({ color: 'black', px: 3, py: [3, 4] })`
   display: grid;
   grid-gap: ${({ theme }) => theme.space[3]}px;
   text-align: left;
@@ -142,9 +139,6 @@ export default () => (
         <Heading.h2 {...styles.subhline} color="white" f={[4, 5]} mt={3} mb={4}>
           We’ll help every step of the way.
         </Heading.h2>
-        <LargeButton.link to="/apply" f={[3, 4]} scale>
-          Begin Your Application
-        </LargeButton.link>
       </Container>
     </Animator>
     <Row my={[4, 5]}>

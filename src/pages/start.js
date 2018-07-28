@@ -5,8 +5,8 @@ import {
   Card,
   Container,
   Flex,
-  Box,
-  Text,
+  Heading,
+  Link as A,
   Section,
   Text
 } from '@hackclub/design-system'

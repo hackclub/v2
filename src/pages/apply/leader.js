@@ -6,6 +6,7 @@ import LeaderApplicationForm from 'components/apply/LeaderApplicationForm'
 import Login from 'components/auth/Login'
 import ApplyNav from 'components/apply/ApplyNav'
 import LoadingBar from 'components/LoadingBar'
+import BG from 'components/BG'
 
 export default class extends Component {
   state = {
@@ -75,6 +76,7 @@ export default class extends Component {
               id={id}
               authToken={authToken}
             />
+            <BG color="snow" />
             <Heading.h4 align="center">
               Your form is automatically saved ✨
             </Heading.h4>

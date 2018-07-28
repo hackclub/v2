@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 import { url as apiUrl } from 'api'
 import { Heading, Container, LargeButton } from '@hackclub/design-system'
 import LoadingBar from 'components/LoadingBar'
+import BG from 'components/BG'
 import ClubApplicationForm from 'components/apply/ClubApplicationForm'
 import ApplyNav from 'components/apply/ApplyNav'
 import Login from 'components/auth/Login'
@@ -71,6 +72,7 @@ export default class extends Component {
       default:
         return (
           <Fragment>
+            <BG color="snow" />
             <ApplyNav />
             <ClubApplicationForm
               params={formFields}

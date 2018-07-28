@@ -15,6 +15,7 @@ import {
   Text,
   cx
 } from '@hackclub/design-system'
+import Pulse from 'pulse'
 import { clubApplicationSchema } from 'components/apply/ClubApplicationForm'
 import ApplyNav from 'components/apply/ApplyNav'
 import LeaderInviteForm from 'components/apply/LeaderInviteForm'
@@ -339,6 +340,7 @@ export default class extends Component {
               Apply to Hack Club
             </Heading.h1>
             <ApplicationCard
+            <Pulse />
               app={app}
               userId={userId}
               authToken={authToken}

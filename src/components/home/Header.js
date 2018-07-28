@@ -80,13 +80,13 @@ Action.link = Action.withComponent(Link)
 export default () => (
   <Root>
     <Wrapper>
-      <Notification to="/bank">
-        <Icon size={24} color="slate" name="account_balance" mr={2} />
+      <Notification to="/start">
+        <Icon size={24} color="slate" name="announcement" mr={2} />
         <Flex color="black" f={1} mr={2}>
-          <strong>Announcing Bank</strong>
+          <strong>Fall applications are open!</strong>
           <Hide xs sm ml={1}>
             {'– '}
-            a place for student hackers to store money
+            apply now for fall 2018.
           </Hide>
         </Flex>
         <Text.span caps color="info" f={1} ml="auto">
@@ -115,11 +115,7 @@ export default () => (
           Donate
         </Action.link>
         <Action.link to="/start" f={[3, null, 4]}>
-<<<<<<< HEAD
-          Start a Club »
-=======
           Learn more »
->>>>>>> Remove Finder link
         </Action.link>
       </Flex>
     </Wrapper>

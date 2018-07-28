@@ -18,41 +18,37 @@ const InnerForm = ({
     <Field
       name="name"
       value={values.name}
-      label="Full Name"
+      label="Full name"
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.name && errors.name}
-      mb={2}
     />
     <Field
       name="phone_number"
       value={values.phone_number}
-      label="Phone Number (including country code if outside the US)"
+      label="Phone number (including country code if outside the US)"
       placeholder="(415)-555-555"
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.phone_number && errors.phone_number}
-      mb={2}
     />
     <Field
       name="email"
       value={values.email}
       disabled
-      label="Email Address"
+      label="Email address"
       placeholder="email"
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.email && errors.email}
-      mb={2}
     />
     <Field
       name="address"
       value={values.address}
-      label="Full Address"
+      label="Full address"
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.address && errors.address}
-      mb={2}
       type="textarea"
     />
     <Field
@@ -62,7 +58,6 @@ const InnerForm = ({
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.gender && errors.gender}
-      mb={2}
       type="select"
     >
       <option value="select" disabled>
@@ -82,7 +77,6 @@ const InnerForm = ({
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.birthday && errors.birthday}
-      mb={2}
       type="date"
     />
     <Field
@@ -92,7 +86,6 @@ const InnerForm = ({
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.ethnicity && errors.ethnicity}
-      mb={2}
       type="select"
     >
       <option value="select" disabled>
@@ -117,18 +110,16 @@ const InnerForm = ({
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.expected_graduation && errors.expected_graduation}
-      mb={2}
       type="month"
     />
     <Field
       name="personal_website"
       value={values.personal_website}
-      label="Personal Website"
+      label="Personal website"
       placeholder="https://"
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.personal_website && errors.personal_website}
-      mb={2}
     />
     <Field
       name="github_url"
@@ -138,44 +129,37 @@ const InnerForm = ({
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.github_url && errors.github_url}
-      mb={2}
     />
     <Field
       name="linkedin_url"
       value={values.linkedin_url}
-      label="LinkedIn Profile"
+      label="LinkedIn profile"
       placeholder="https://"
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.linkedin_url && errors.linkedin_url}
-      mb={2}
     />
     <Field
       name="twitter_url"
       value={values.twitter_url}
-      label="Twitter Profile"
+      label="Twitter profile"
       placeholder="https://"
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.twitter_url && errors.twitter_url}
-      mb={2}
     />
     <Field
       name="facebook_url"
       value={values.facebook_url}
-      label="Facebook Profile"
+      label="Facebook profile"
       placeholder="https://"
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.facebook_url && errors.facebook_url}
-      mb={2}
     />
-    {/* TODO: Update submit button */}
     <Submit
       disabled={isSubmitting}
-      onClick={e => {
-        return handleSubmit(e)
-      }}
+      onClick={handleSubmit}
       value="Submit"
       bg="primary"
       f={4}

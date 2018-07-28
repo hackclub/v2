@@ -208,7 +208,16 @@ const Main = props => {
           <SubmitStatus {...submitStatusProps} />
         </Title>
 
-        {app.rejected_at && <Rejected resetCallback={resetCallback} />}
+        {app.rejected_at ? (
+          <Rejected resetCallback={resetCallback} />
+        ) : (
+          <SubmitButton
+            authToken={authToken}
+            applicationId={app.id}
+            status={submitButtonStatus}
+            callback={callback}
+          />
+        )}
 
         <Section
           to={`/apply/club?id=${id}`}

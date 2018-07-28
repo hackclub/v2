@@ -130,8 +130,12 @@ export const Error = Text.span.extend.attrs({
 export const Hint = Text.span.extend.attrs({
   color: 'slate',
   f: 1,
+  mt: 1,
   align: 'left'
-})`&:before { content: ' — '; }`
+})`
+  display: block;
+  line-height: 1.375;
+`
 
 export class ConfirmClose extends Component {
   componentWillMount() {
@@ -216,7 +220,6 @@ export class Field extends Component {
           <span>{label}</span>
           {optional ? <Optional /> : null}
           {error && <Error children={error} />}
-          {hint && <Hint children={hint} />}
           {renderMarkdown && <Hint children="click to edit" />}
         </Flex>
         {renderMarkdown && (
@@ -246,6 +249,7 @@ export class Field extends Component {
             bg={bg}
           />
         </div>
+        {hint && <Hint children={hint} />}
       </Label>
     )
   }

@@ -119,10 +119,10 @@ export default () => (
       </Heading.h2>
       <Container maxWidth={48} mx={0}>
         <Text f={[3, 4]}>
-          At Hack Club, every week you and 20 other students come together to
-          make. Meetings are like mini-hackathons. People are working on
-          projects, you lead workshops introducing new technologies, you and
-          your co-leads mentor. Members typically start with no experience.
+          Hack Clubs are student-led groups dedicated to fostering the hacker
+          culture at high schools worldwide. In meetings, students learn to
+          code through building real-world projects like websites, apps, and
+          games.
         </Text>
       </Container>
     </Box>

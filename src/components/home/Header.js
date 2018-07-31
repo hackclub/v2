@@ -108,7 +108,7 @@ export default () => (
           <strong>Announcing Bank</strong>
           <Hide xs sm ml={1}>
             {'– '}
-            a place for student hackers to store money
+            a legal and finance backend for hackathons
           </Hide>
         </Flex>
         <Text.span caps color="info" f={1} ml="auto">

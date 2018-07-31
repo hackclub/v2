@@ -122,7 +122,7 @@ const Footer = ({ children }) => (
       </Text>
       <Text my={2}>
         <A href="https://conduct.hackclub.com" underline>
-          Read our Code of Conduct
+          Read our code of conduct
         </A>
       </Text>
       <Text f={1} color="muted" m={0}>

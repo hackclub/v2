@@ -138,8 +138,11 @@ export default () => (
         mt={[3, 4]}
         flexDirection={[null, 'column-reverse', 'row']}
       >
-        <Action.link to="/donate" bg="info">
+        <Action.link to="/donate" bg="accent">
           Donate
+        </Action.link>
+        <Action.link to="/slack_invite" bg="info">
+          Join the Slack
         </Action.link>
         <Action.link to="/start" f={[3, null, 4]}>
           Start a Club »

@@ -1,15 +1,24 @@
 import React from 'react'
-import { Container, Text, Button } from '@hackclub/design-system'
+import { Container, Text, Link } from '@hackclub/design-system'
 
 export default () => (
-  <Container maxWidth={42} mt={3} mb={4} align="center">
+  <Container maxWidth={46} mt={3} mb={4} align="center">
     <Text color="slate" f={3}>
-      Hack Club is a nonprofit network of student-led high school programming
-      clubs to teach beginners to code. We provide club activities, programming
-      curriculum, and a friendly hacker community.
+      Hack Club is a nonprofit network of high school programming clubs that
+      teach beginners to code. We provide{' '}
+      <Link href="https://guide.hackclub.com" target="_blank">
+        club activities
+      </Link>,{' '}
+      <Link href="/workshops" target="_blank">
+        programming club curriculum
+      </Link>,{' '}
+      <Link href="https://hackathons.hackclub.com" target="_blank">
+        access to high school hackathons
+      </Link>,{' '}
+      and{' '}
+      <Link href="/slack_invite" target="_blank">
+        a supportive hacker community.
+      </Link>
     </Text>
-    {/*<Button href="https://finder.hackclub.com" inverted mt={[3, 4]}>
-      Find a Club Near You »
-    </Button>*/}
   </Container>
 )

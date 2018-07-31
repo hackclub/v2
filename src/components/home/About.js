@@ -97,7 +97,7 @@ const Photo = BackgroundImage.extend.attrs({ role: 'img' })`
   }
 `
 
-const Action = Button.withComponent(Link).extend`
+const Action = Button.withComponent(Link).extend.attrs({mt: [2, 3]})`
   transition: transform 0.125s ease-out;
   will-change: transform;
   transform: scale(1);

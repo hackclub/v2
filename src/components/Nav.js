@@ -16,10 +16,10 @@ const Root = Box.withComponent('header').extend`
     (props.scrolled || props.toggled || props.fixed) &&
     css`
       position: fixed;
-      background-color: ${props.bgColor};
+      background-color: rgba(${props.bgColor[0]}, ${props.bgColor[1]}, ${props.bgColor[2]}, 0.96875);
       border-bottom: 1px solid rgba(51, 51, 51, 0.1);
       @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-        background-color: rgba(255, 255, 255, 0.75);
+        background-color: rgba(${props.bgColor[0]}, ${props.bgColor[1]}, ${props.bgColor[2]}, 0.75);
         -webkit-backdrop-filter: saturate(180%) blur(16px);
       }
       ${({ theme }) => theme.mediaQueries.reduceTransparency} {
@@ -182,7 +182,7 @@ class Header extends Component {
   render() {
     const {
       color = 'white',
-      bgColor = 'rgba(255, 255, 255, 0.96875)',
+      bgColor = [255, 255, 255],
       fixed,
       ...props
     } = this.props

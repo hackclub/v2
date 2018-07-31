@@ -144,7 +144,7 @@ export default () => (
         { property: 'og:url', content: 'https://hackclub.com/bank' }
       ]}
     />
-    <Nav color="smoke" bgColor="rgba(40, 40, 40, 0.96)" />
+    <Nav color="smoke" bgColor={[40, 40, 40]} />
     <Box>
       <Megaline pt={[5, 6]}>The bank for student hackers.</Megaline>
       <Lead px={3} maxWidth={48} my={[3, 4]}>

@@ -6,7 +6,6 @@ import {
   Text,
   Heading,
   Button,
-  LargeButton,
   Link as A,
   Card,
   Image

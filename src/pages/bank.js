@@ -146,7 +146,7 @@ export default () => (
         { property: 'og:url', content: 'https://hackclub.com/bank' }
       ]}
     />
-    <Nav color="smoke" />
+    <Nav color="smoke" bgColor="rgba(40, 40, 40, 0.96)" />
     <Animator
       is={Box}
       data={{

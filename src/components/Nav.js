@@ -16,7 +16,7 @@ const Root = Box.withComponent('header').extend`
     (props.scrolled || props.toggled || props.fixed) &&
     css`
       position: fixed;
-      background-color: rgba(255, 255, 255, 0.96875);
+      background-color: ${props.bgColor};
       border-bottom: 1px solid rgba(51, 51, 51, 0.1);
       @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
         background-color: rgba(255, 255, 255, 0.75);
@@ -180,13 +180,18 @@ class Header extends Component {
   }
 
   render() {
-    const { color = 'white', fixed, ...props } = this.props
+    const {
+      color = 'white',
+      bgColor = 'rgba(255, 255, 255, 0.96875)',
+      fixed,
+      ...props
+    } = this.props
     const { scrolled, toggled } = this.state
-    const baseColor = color === 'white' && scrolled ? 'black' : color
-    const toggleColor =
-      toggled || (color === 'white' && scrolled) ? 'slate' : color
+    const baseColor = (color === 'white' && scrolled) ? 'black' : color
+    const toggleColor = (toggled || (color === 'white' && scrolled)) ? 'slate' : color
+
     return (
-      <Root {...props} fixed={fixed} scrolled={scrolled} toggled={toggled}>
+      <Root {...props} fixed={fixed} scrolled={scrolled} toggled={toggled} bgColor={bgColor}>
         <Content>
           <Flag scrolled={scrolled || fixed} />
           <Navigation color={baseColor} />

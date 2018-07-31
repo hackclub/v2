@@ -14,7 +14,6 @@ import {
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
-import Animator from 'components/Animator'
 import Module from 'components/Module'
 
 const Base = Box.extend`
@@ -147,13 +146,7 @@ export default () => (
       ]}
     />
     <Nav color="smoke" bgColor="rgba(40, 40, 40, 0.96)" />
-    <Animator
-      is={Box}
-      data={{
-        opacity: [1, 0.75],
-        transform: [{ translateY: '0px' }, { translateY: '-64px' }]
-      }}
-    >
+    <Box>
       <Megaline pt={[5, 6]}>The bank for student hackers.</Megaline>
       <Lead px={3} maxWidth={48} my={[3, 4]}>
         Hack Club Bank is the best place for high school hackers to store money
@@ -162,7 +155,7 @@ export default () => (
         real-time dashboard all with the benefits of the backing of a 501(c)(3)
         nonprofit.
       </Lead>
-    </Animator>
+    </Box>
     <Flex justify="center" mb={[3, 4]}>
       <CTA
         href="https://medium.com/hackclub/a-bank-for-student-hackers-e5d894ea5375"

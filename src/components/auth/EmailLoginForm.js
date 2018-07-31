@@ -9,7 +9,7 @@ import fetch from 'unfetch'
 
 const StyledInput = Input.extend`
   text-align: inherit;
-  background: ${props => props.color};
+  background: ${props => cx(props.color)};
   color: ${props => cx(props.bg)};
   border: none;
   :focus {
@@ -67,7 +67,16 @@ const InnerForm = ({
         children={errors.email || ''}
       />
     )}
-    <Submit mt={3} value="Submit" color={color} bg={bg} inverted onClick={handleSubmit} />
+    <Submit
+      mt={3}
+      value="Submit"
+      color={color}
+      bg={bg}
+      mx={inputProps.mx || '0'}
+      style={{display: 'block'}}
+      onClick={handleSubmit}
+      inverted
+      />
   </form>
 )
 

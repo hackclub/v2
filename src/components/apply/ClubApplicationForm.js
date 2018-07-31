@@ -111,8 +111,7 @@ const InnerForm = props => {
         <Fieldset section="leaders">
           <Field
             name="point_of_contact_id"
-            label="Point of contact"
-            hint="To reduce emails, we just send emails to this designated person on your team."
+            label="President / equivalent position"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.point_of_contact_id || 'select'}
@@ -169,7 +168,7 @@ const InnerForm = props => {
           />
           <Field
             name="progress_meeting_yet"
-            label="Have you begun meeting yet? If not, we encourage you to not begin meeting until we accept you."
+            label="Have you begun meeting yet?"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.progress_meeting_yet}
@@ -203,7 +202,7 @@ const InnerForm = props => {
           />
           <Field
             name="idea_other_general_clubs"
-            label="What other clubs exist at your school? Why will you be just as successful, if not more, than them?"
+            label="What successful clubs exist at your school? What makes them successful? Why will you be just as successful, if not more, than them?"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.idea_other_general_clubs}
@@ -227,7 +226,7 @@ const InnerForm = props => {
           />
           <Field
             name="formation_misc"
-            label="Please provide any other relevant information about the structure or formation of the club."
+            label="Please provide any other relevant information about your relationship with the school. For example, do you already have a teacher sponsor?"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.formation_misc}
@@ -269,7 +268,7 @@ const InnerForm = props => {
           />
           <Field
             name="curious_how_did_hear"
-            label="How did you hear about Hack Club?"
+            label="How did you hear about Hack Club? If you heard about us at an event, mention it here."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.curious_how_did_hear}

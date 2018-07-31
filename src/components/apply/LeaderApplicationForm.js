@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { url as apiUrl } from 'api'
-import { Container, LargeButton, Heading } from '@hackclub/design-system'
+import { Container, LargeButton, Heading, Text } from '@hackclub/design-system'
 import {
   Aside,
   AutoSaver,
@@ -70,6 +70,30 @@ const InnerForm = props => {
             <option value="other_year">Other year</option>
           </Field>
           <Field
+            name="leader_phone_number"
+            label="Phone number (include country code if not in the United States)"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.leader_phone_number}
+            error={touched.leader_phone_number && errors.leader_phone_number}
+            type="tel"
+          />
+          <Field
+            name="leader_address"
+            label="Your full address (include city, state/province, country)"
+            hint="As part of Hack Club, we’ll occasionally send you physical materials (like stickers) to help market your club. Please enter your address exactly as we should write it on an envelope."
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.leader_address}
+            error={touched.leader_address && errors.leader_address}
+            type="textarea"
+          />
+        </Fieldset>
+        <Fieldset section="stats">
+          <Text color="gray.8" pb={3}>
+            Demographic stats are collected to share in aggregate with donors and will not be used as part of application review.
+          </Text>
+          <Field
             name="leader_gender"
             label="Gender"
             onChange={handleChange}
@@ -90,7 +114,6 @@ const InnerForm = props => {
           <Field
             name="leader_ethnicity"
             label="Ethnicity"
-            hint="Demographic information is collected to share in aggregate with donors and will not be used as part of application review."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.leader_ethnicity || 'select'}
@@ -111,25 +134,6 @@ const InnerForm = props => {
             </option>
             <option value="other_ethnicity">Other ethnicity</option>
           </Field>
-          <Field
-            name="leader_phone_number"
-            label="Phone number (include country code if not in the United States)"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.leader_phone_number}
-            error={touched.leader_phone_number && errors.leader_phone_number}
-            type="tel"
-          />
-          <Field
-            name="leader_address"
-            label="Your full address (include city, state/province, country)"
-            hint="As part of Hack Club, we’ll occasionally send you physical materials (like stickers) to help market your club. Please enter your address exactly as we should write it on an envelope."
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.leader_address}
-            error={touched.leader_address && errors.leader_address}
-            type="textarea"
-          />
         </Fieldset>
         <Fieldset section="presence">
           <Field
@@ -202,7 +206,7 @@ const InnerForm = props => {
               <Fragment>
                 Please tell us about the time you most successfully hacked some
                 (non-computer) system to your advantage.{' '}
-                <a href="https://www.quora.com/When-have-you-most-successfully-hacked-a-non-computer-system-to-your-advantage">
+                <a href="https://www.quora.com/When-have-you-most-successfully-hacked-a-non-computer-system-to-your-advantage" target="_blank">
                   Here are examples
                 </a>{' '}
                 of what we’re looking for.
@@ -216,7 +220,7 @@ const InnerForm = props => {
           />
           <Field
             name="skills_impressive_achievement"
-            label="Please tell us in one or two sentences about the most impressive thing you have built or achieved. Include links and user counts if possible."
+            label="Please tell us in one or two sentences about the most impressive thing you have built or achieved. Include links and images if possible."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.skills_impressive_achievement}
@@ -228,7 +232,7 @@ const InnerForm = props => {
           />
           <Field
             name="skills_is_technical"
-            label="Are you a technical leader? (You are a programmer who can teach without outside assistance)"
+            label="Are you technical? (You are a programmer who can teach without outside assistance)"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.skills_is_technical || 'select'}

@@ -6,11 +6,10 @@ import LogoutButton from 'components/auth/LogoutButton'
 import { withRouter } from 'react-router-dom'
 import { startCase, toLower } from 'lodash'
 
-const Crumb = A.withComponent(Link).extend`
-  &:last-child {
-    font-weight: bold;
-  }
-`
+const Crumb = ({isLast, ...props}) => {
+  const Tag = isLast ? Text.span : A.withComponent(Link)
+  return <Tag {...props} />
+}
 
 class BreadcrumbClass extends Component {
   state = { path: [] }
@@ -26,19 +25,20 @@ class BreadcrumbClass extends Component {
       <Fragment>
         {path.map((section, index) => {
           runningPath.push(section)
-          const isLast = path.length - index > 1
+          const isLast = path.length - index - 1 === 0
           const humanizedSection = startCase(toLower(section))
           return (
             <Fragment key={index}>
               <Crumb
                 to={runningPath.join('/')}
-                color={isLast ? 'red.1' : 'white'}
+                color={isLast ? 'white' : 'red.1'}
                 f={3}
+                isLast={isLast}
               >
                 {humanizedSection}
               </Crumb>
-              {isLast ? (
-                <Text.span mx={2} color="red.0" regular children="›" />
+              {!isLast ? (
+                <Text.span mx={2} color="red.3" regular children="›" />
               ) : null}
             </Fragment>
           )

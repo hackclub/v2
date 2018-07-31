@@ -1,6 +1,7 @@
 import React from 'react'
 import api from 'api'
 import { Heading, Label, Input, Text, cx } from '@hackclub/design-system'
+import { Submit } from 'components/Forms'
 import { withFormik } from 'formik'
 import * as yup from 'yup'
 import storage from 'storage'
@@ -66,6 +67,7 @@ const InnerForm = ({
         children={errors.email || ''}
       />
     )}
+    <Submit mt={3} value="Submit" color={color} bg={bg} inverted onClick={handleSubmit} />
   </form>
 )
 

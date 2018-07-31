@@ -9,30 +9,36 @@ export const tinyDt = d =>
     .replace(`${year}-`, '')
 
 // based on https://github.com/withspectrum/spectrum/blob/alpha/src/helpers/utils.js#L146
-export const timeSince = (previous, current) => {
+export const timeSince = (previous, current = new Date(), absoluteDuration = false) => {
   const msPerSecond = 1000
   const msPerMinute = 60 * 1000
   const msPerHour = msPerMinute * 60
   const msPerDay = msPerHour * 24
   const msPerYear = msPerDay * 365
 
-  const elapsed =
-    (current ? new Date(current) : new Date()) - new Date(previous)
+  const elapsed = new Date(current) - new Date(previous)
 
+  let humanizedTime
   if (elapsed < msPerMinute) {
-    return '< 1m'
+    humanizedTime ='< 1m'
   } else if (elapsed < msPerHour) {
     const now = Math.round(elapsed / msPerMinute)
-    return `${now}m`
+    humanizedTime = `${now}m`
   } else if (elapsed < msPerDay) {
     const now = Math.round(elapsed / msPerHour)
-    return `${now}h`
+    humanizedTime = `${now}h`
   } else if (elapsed < msPerYear) {
     const now = Math.round(elapsed / msPerDay)
-    return `${now}d`
+    humanizedTime = `${now}d`
   } else {
     const now = Math.round(elapsed / msPerYear)
-    return `${now}y`
+    humanizedTime = `${now}y`
+  }
+
+  if (absoluteDuration) {
+    return humanizedTime
+  } else {
+    return elapsed > 0 ? `${humanizedTime} ago` : `in ${humanizedTime}`
   }
 }
 

@@ -163,9 +163,12 @@ class Header extends Component {
   }
 
   onScroll = () => {
-    if (window.scrollY) {
+    const newState = window.scrollY >= 16
+    const { scrolled: oldState } = this.state
+
+    if (newState !== oldState) {
       this.setState({
-        scrolled: window.scrollY >= 16
+        scrolled: newState
       })
     }
   }

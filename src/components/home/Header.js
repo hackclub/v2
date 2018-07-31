@@ -11,6 +11,8 @@ import {
   Button,
   LargeButton
 } from '@hackclub/design-system'
+import styled from 'styled-components'
+import { stats } from 'data.json'
 
 const Root = Flex.withComponent('header').extend`
   text-align: center;
@@ -74,6 +76,26 @@ Notification.defaultProps = {
   justify: 'center'
 }
 
+const HeaderStats = styled.ul`
+margin-top: 0;
+margin-left: -15px;
+padding: 0;
+display: inline;
+`
+
+const HeaderStat = Text.withComponent('li').extend.attrs({ f: [3, 4] })`
+display: inline;
+margin-left: 15px;
+
+&:not(:last-child):after {
+  line-height: 24px;
+  margin-left: 10px;
+  margin-right: -5px;
+  font-size: 32px;
+  content: "\00b7";
+}
+`
+
 const Action = LargeButton.extend.attrs({ scale: true, m: [1, null, 2] })``
 Action.link = Action.withComponent(Link)
 
@@ -99,6 +121,11 @@ export default () => (
       <Heading.h1 f={[6, 7]} mx="auto" mt={2} mb={3}>
         High school coding clubs.
       </Heading.h1>
+      <HeaderStats>
+        <HeaderStat>{stats.school_count} schools</HeaderStat>
+        <HeaderStat>{stats.state_count} states</HeaderStat>
+        <HeaderStat>{stats.country_count} countries</HeaderStat>
+      </HeaderStats>
       <Text f={[3, 4]} mx="auto">
         Hack Club is the world’s largest nonprofit network of computer science
         clubs where members learn to code through tinkering and building

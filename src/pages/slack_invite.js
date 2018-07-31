@@ -37,7 +37,7 @@ const BackgroundGradient = styled(Box)`
 
 const BackgroundVideo = () => (
   <video autoPlay muted loop playsInline>
-    <source src="slack.mp4" type="video/mp4" />
+    <source src="https://hackclub.github.io/slack-invite-background-video/slack.mp4" type="video/mp4" />
   </video>
 )
 

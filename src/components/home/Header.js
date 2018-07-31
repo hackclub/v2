@@ -103,9 +103,9 @@ export default () => (
   <Root>
     <Wrapper>
       <Notification to="/start">
-        <Icon size={24} color="slate" name="announcement" mr={2} />
+        <Icon size={24} color="slate" name="account_balance" mr={2} />
         <Flex color="black" f={1} mr={2}>
-          <strong>Fall applications are open!</strong>
+          <strong>Announcing Bank</strong>
           <Hide xs sm ml={1}>
             {'– '}
             a legal and finance backend for hackathons

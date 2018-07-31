@@ -38,7 +38,7 @@ const generateMethod = method => (path, options = {}, fetchOptions = {}) => {
     }
   }
 
-  const foreignUrl = url.startsWith('http')
+  const foreignUrl = path.startsWith('http')
   const urlPath = foreignUrl ? path : url + path
 
   return fetch(urlPath, { method, ...filteredOptions })

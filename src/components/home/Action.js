@@ -55,7 +55,7 @@ const Action = LargeButton.withComponent(Link)
 const Promo = () => (
   <PromoBox p={[3, 4, 5]}>
     <PromoHeading f={[4, 5, 6]} my={0}>
-      Get Started
+      Get started.
     </PromoHeading>
     <Text f={[2, 4]} mt={3} mb={2}>
       Start a new chapter or join the network with an existing computer

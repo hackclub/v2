@@ -39,7 +39,7 @@ const Root = Flex.withComponent('header').extend`
     line-height: 1;
   }
   p {
-    max-width: 36rem;
+    max-width: 46rem;
   }
 `
 Root.defaultProps = {
@@ -127,9 +127,8 @@ export default () => (
         <HeaderStat>{stats.country_count} countries</HeaderStat>
       </HeaderStats>
       <Text f={[3, 4]} mx="auto">
-        Hack Club is the world’s largest nonprofit network of computer science
-        clubs where members learn to code through tinkering and building
-        projects.
+        Hack Club is a nonprofit network of computer science clubs where
+        members learn to code through tinkering and building projects.
       </Text>
       <Flex
         justify="center"

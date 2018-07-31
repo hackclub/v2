@@ -116,8 +116,8 @@ export default () => (
   <Container w={1} px={[3, 4, null, 2]} mt={[4, 5]}>
     <Box mx={0} mt={5} color="black">
       <Heading.h2 f={[5, 6]} mb={3}>
-        Join the largest community of students building the class they wish they
-        had.
+        Join a nationwide community of students building the class they wish
+        they had.
       </Heading.h2>
       <Container maxWidth={48} mx={0}>
         <Text f={[3, 4]}>
@@ -125,9 +125,8 @@ export default () => (
           <Like href="https://en.wikipedia.org/wiki/Hacker_culture#Ethics_and_principles">
             hacker culture
           </Like>
-          {' '}at high schools worldwide. In meetings, students learn to code
-          through building real-world projects like websites, apps, and
-          games.
+          {' '}at high schools. In meetings, students learn to code through
+          building real-world projects like websites, apps, and games.
         </Text>
       </Container>
     </Box>
@@ -143,13 +142,13 @@ export default () => (
           </Like> and{' '}
           <Like href="http://outlooknewspapers.com/hackademia-aims-for-young-tech-devotees/">
             Hackademia
-          </Like>. They run summer programs like{' '}
-          <Like href="http://thecspn.com/?p=43434">Hack Camp</Like>. They
-          compete in competitions like the{' '}
+          </Like>, run summer programs like{' '}
+          <Like href="http://thecspn.com/?p=43434">Hack Camp</Like>,
+          and compete in competitions like the{' '}
           <Like href="http://www.congressionalappchallenge.us">
             Congressional App Challenge
           </Like>{' '}
-          (and <LikeLink to="/challenge">our challenge!</LikeLink>). Hack Clubs are no ordinary clubs.
+          (and <LikeLink to="/challenge">our challenge!</LikeLink>).
         </Text>
         <ActionLink href="https://www.sfchronicle.com/bayarea/article/Hack-the-Fog-makes-history-as-San-12729895.php" target="_blank" inverted>
           Read about a Hack Club »

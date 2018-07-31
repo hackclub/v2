@@ -50,8 +50,8 @@ export default () => (
     >
       <SlackForm />
     </SlackCard>
-    <Button href="https://hackclub.slack.com" inverted>
-      Sign in to your account »
+    <Button href="https://hackclub.slack.com" target="_blank" inverted>
+      Already have an account? Sign in »
     </Button>
   </Fill>
 )

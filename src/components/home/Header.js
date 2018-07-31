@@ -144,7 +144,7 @@ export default () => (
           Join the Slack
         </Action.link>
         <Action.link to="/start" f={[3, null, 4]}>
-          Learn About Joining »
+          Get Started »
         </Action.link>
       </Flex>
     </Wrapper>

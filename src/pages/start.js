@@ -125,82 +125,70 @@ export default () => (
     <PhotoSection src="/lah_1.jpg" style={{ padding: 0 }}>
       <Container maxWidth={56} p={[2, 3]} mt={[5, 6]} mb={[4, 5]}>
         <Heading.h1 {...styles.ultraline} color="white">
-          Start an incredible coding club at your high school.
+          Buckle up your bootstraps.
         </Heading.h1>
         <Heading.h2 {...styles.subhline} color="white" f={[4, 5]} mt={3} mb={4}>
-          We’ll help every step of the way.
+          Whether you're interested in starting a new chapter or joining Hack
+          Club with an existing CS club, we should talk.
         </Heading.h2>
       </Container>
     </PhotoSection>
-    <Row my={[4, 5]}>
-      <Box mt={-4}>
-        <Text color="accent" f={4} bold caps>
-          Students!
-        </Text>
-        <Heading.h2 {...styles.headline}>Apply and start your club.</Heading.h2>
-      </Box>
-      <Modules w={1}>
-        <Module
-          icon="assignment"
-          heading="Apply"
-          body="Submit your information to start—totally free."
-          color="primary"
-        />
-        <Module
-          icon="ring_volume"
-          heading="Training call"
-          body="We’ll chat and begin a plan for your club."
-          color="teal.7"
-        />
-        <Module
-          icon="event_available"
-          heading="Lead your club!"
-          body="Schedule your first meeting and get ready!"
-          color="info"
-        />
-      </Modules>
-    </Row>
-    <PhotoSection
-      src="/lah_2.jpg"
-      aria-label="Students stacking cups together"
-      py={[4, 5]}
-    >
-      <Container maxWidth={36} my={[4, 5]} align="center">
-        <Heading.h2 {...styles.headline} color="white" mb={2}>
-          Hack Clubs are entirely led by students.
+    <Container px={3} my={[3, 5]}>
+      <Box color="black">
+        <Heading.h2 f={[5, 6]} mb={3}>
+          So what does this actually look like?
         </Heading.h2>
-        <Text {...styles.subhline} color="white" mb={3}>
-          As a club leader, you’ll find 2-3 (student) co-leads to help run your
-          club. You’ll host meetings together.
-        </Text>
-        <OthersCard
-          maxWidth={28}
-          py={3}
-          px={[4, 3]}
-          align="left"
-          boxShadowSize="md"
-        >
-          <Heading.h3 f={4} color="primary" mt={0} mb={2}>
-            Are you a teacher or parent?
-          </Heading.h3>
-          <Text>
-            We hate to say it, but we’re currently only accepting applications
-            from students, but there are many ways teachers and parents can
-            help. Shoot us an email at{' '}
-            <A color="primary" href="mailto:contact@hackclub.com">
-              contact@hackclub.com
-            </A>—we’d love to chat.
+        <Container maxWidth={48} mx={0}>
+          <Text f={[3, 4]}>
+            Hack Clubs meet weekly, typically for 1.5 hours. Meetings
+            resemble mini-hackathons, where members learn to code through
+            building projects like{' '}
+            <A href="https://sohuang.github.io/" target="_blank">websites</A>
+            {' '}and{' '}
+            <A href="https://messy-wool.surge.sh/catch.html" target="_blank">games</A>.
           </Text>
-        </OthersCard>
-      </Container>
-    </PhotoSection>
+          <Text f={[3, 4]} my={3}>
+            Clubs are led by teams of 2-3 students (sorry, no parents or
+            teachers). We ask that at least 1 leader be technically adept
+            enough to write and customize <A href="/workshops" target="_blank">workshops</A>.
+          </Text>
+          <Heading.h3 f={[4, 5]} mt={4}>
+            What happens outside of club meetings?
+          </Heading.h3>
+          <Text f={[3, 4]} my={3}>
+            After Hack Clubs establish a dedicated base of members, they begin
+            to attend{' '}
+            <A href="https://hackathons.hackclub.com" target="_blank">nearby hackathons</A>
+            {' '}and eventually host their own (sometimes with{' '}
+            <A href="/bank" target="_blank">Hack Club Bank</A>).
+          </Text>
+          <Heading.h3 f={[4, 5]} mt={4}>
+            Will you provide everything to make my club successful?
+          </Heading.h3>
+          <Text f={[3, 4]} my={3}>
+            No. Every school is very different and you're going to need to
+            heavily customize our advice and resources. We try our best, but
+            you know your school better than we do.
+          </Text>
+          <Heading.h3 f={[4, 5]} mt={4}>
+            What if I already run a computer science club?
+          </Heading.h3>
+          <Text f={[3, 4]} my={3}>
+            Existing CS clubs are welcome to become Hack Clubs. You get the
+            full benefits of the network, though we'll probably be less
+            helpful than with new clubs.
+          </Text>
+        </Container>
+      </Box>
+    </Container>
     <Row my={[3, 4]}>
       <Box color="black">
         <Heading.h2 {...styles.headline} mb={3}>
-          HQ provides the resources you’ll need to soar.
+          HQ provides the resources to get you started
         </Heading.h2>
         <Text {...styles.subhline}>
-          We know what great programming clubs need to succeed.
+          We have a bunch of experience helping start 200+ clubs and will
+          help you get off the ground.
         </Text>
       </Box>
       <Modules>
@@ -239,6 +227,40 @@ export default () => (
           heading="Marketing"
           body="Get stickers, posters, and ideas for spreading the word about your amazing club meetings."
           color="indigo.5"
+        />
+      </Modules>
+    </Row>
+    <PhotoSection
+      src="/lah_2.jpg"
+      aria-label="Students stacking cups together"
+      py={[50, 250, 350]}
+    >
+    </PhotoSection>
+    <Row my={[4, 5]}>
+      <Box mt={-4}>
+        <Text color="accent" f={4} bold caps>
+          here's the process
+        </Text>
+        <Heading.h2 {...styles.headline}>Apply and start your club.</Heading.h2>
+      </Box>
+      <Modules w={1}>
+        <Module
+          icon="assignment"
+          heading="1. Apply"
+          body="Submit your information to start—totally free."
+          color="primary"
+        />
+        <Module
+          icon="ring_volume"
+          heading="2. Training call"
+          body="We’ll chat and begin a plan for your club."
+          color="teal.7"
+        />
+        <Module
+          icon="event_available"
+          heading="3. Lead your club!"
+          body="Schedule your first meeting and get ready!"
+          color="info"
         />
       </Modules>
     </Row>

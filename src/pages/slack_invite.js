@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
-import { Heading, Container, Flex, Button, cx } from '@hackclub/design-system'
+import { Box, Heading, Container, Flex, Button, cx } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Sheet from 'components/Sheet'
@@ -13,22 +13,41 @@ const Stats = styled(Flex)`
   justify-content: center;
 `
 
-const ImageSheet = styled(Sheet.withComponent('img'))`
-  min-height: 8rem;
+const BackgroundContainer = styled(Box)`
+  & > * {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
 `
+
+const BackgroundGradient = styled(Box)`
+  // Support for browsers that don't support alpha hex codes
+  background: ${cx('fuschia.5')};
+  // Support for browsers that don't support gradients
+  background: ${cx('fuschia.5')}f0;
+
+  background: linear-gradient(
+    -32deg, ${cx('fuschia.5')}f0, ${cx('orange.5')}c0
+  );
+`
+
+const BackgroundVideo = () => (
+  <video autoPlay muted loop playsInline>
+    <source src="slack.mp4" type="video/mp4" />
+  </video>
+)
 
 export default () => (
   <Fragment>
     <Helmet title="Join Our Slack – Hack Club" />
-    <style
-      children={`
-        html {
-          background-image: linear-gradient(
-            -32deg, ${cx('fuschia.5')}, ${cx('orange.5')}
-          );
-        }
-      `}
-    />
+    <BackgroundContainer>
+      <BackgroundVideo />
+      <BackgroundGradient />
+    </BackgroundContainer>
     <Nav />
     <Container maxWidth={48} p={3} color="white" align="center">
       <Heading.h1 f={6} mt={[4, 5]} mb={2}>
@@ -37,6 +56,7 @@ export default () => (
       <Heading.h2 f={4} mb={4} regular>
         Talk to our community, get coding help, have fun.
       </Heading.h2>
+      {/* NOTE(@MaxWofford): Love the idea here, but it looks like stats aren't finished, so I'm commenting it for now
       <Stats>
         <LiveStat
           url=""
@@ -63,26 +83,13 @@ export default () => (
           label="messages this week"
         />
       </Stats>
+      */}
       <Sheet maxWidth={28} align="left" my={4} mx="auto">
         <SlackForm />
       </Sheet>
-      <ImageSheet w={1} bg="smoke" src="" />
-      <Button href="https://hackclub.slack.com" inverted>
-        Sign in »
+      <Button href="https://hackclub.slack.com" inverted target="_blank">
+        Already have an account? Sign in »
       </Button>
     </Container>
-    <SlackCard
-      w={1}
-      p={[3, 4]}
-      boxShadowSize="md"
-      align="left"
-      my={4}
-      mx="auto"
-    >
-      <SlackForm />
-    </SlackCard>
-    <Button href="https://hackclub.slack.com" target="_blank" inverted>
-      Already have an account? Sign in »
-    </Button>
-  </Fill>
+  </Fragment>
 )

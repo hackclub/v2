@@ -97,7 +97,7 @@ const Photo = BackgroundImage.extend.attrs({ role: 'img' })`
   }
 `
 
-const Action = Button.withComponent(Link).extend`
+const Action = Button.withComponent(Link).extend.attrs({mt: [2, 3]})`
   transition: transform 0.125s ease-out;
   will-change: transform;
   transform: scale(1);
@@ -135,7 +135,7 @@ export default () => (
         <Heading.h3 f={4} my={0} caps>
           Beyond club meetings
         </Heading.h3>
-        <Text f={3} my={3}>
+        <Text f={3} mt={3}>
           Hack Clubs attend and run hackathons like{' '}
           <Like href="https://hackchicago.io">
             Hack Chicago

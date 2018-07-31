@@ -1,23 +1,22 @@
 import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
-import { url as apiUrl } from 'api'
-import { Heading, Container, LargeButton } from '@hackclub/design-system'
-import LeaderApplicationForm from 'components/apply/LeaderApplicationForm'
+import api from 'api'
+import { Heading, Container, Card, LargeButton } from '@hackclub/design-system'
+import styled from 'styled-components'
+
 import Login from 'components/auth/Login'
+import Sheet from 'components/Sheet'
 import ApplyNav from 'components/apply/ApplyNav'
 import LoadingBar from 'components/LoadingBar'
-import Footer from 'components/Footer'
+import BG from 'components/BG'
+import LeaderApplicationForm from 'components/apply/LeaderApplicationForm'
 
 export default class extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      status: 'loading',
-      formFields: undefined,
-      id: undefined,
-      authToken: undefined
-    }
+  state = {
+    status: 'loading',
+    formFields: undefined,
+    id: undefined,
+    authToken: undefined
   }
 
   componentDidMount() {
@@ -36,17 +35,8 @@ export default class extends Component {
       const status = 'needsToAuth'
       this.setState({ status })
     } else {
-      fetch(`${apiUrl}/v1/leader_profiles/${id}`, {
-        method: 'GET',
-        headers: { Authorization: `Bearer ${authToken}` }
-      })
-        .then(res => {
-          if (res.ok) {
-            return res.json()
-          } else {
-            throw res
-          }
-        })
+      api
+        .get(`v1/leader_profiles/${id}`)
         .then(json => {
           this.setState({
             status: 'loaded',
@@ -75,18 +65,20 @@ export default class extends Component {
         return (
           <Fragment>
             <ApplyNav />
-            <LeaderApplicationForm
-              params={formFields}
-              id={id}
-              authToken={authToken}
-            />
+            <BG color="snow" />
+            <Sheet mt={3} mb={5}>
+              <LeaderApplicationForm
+                params={formFields}
+                id={id}
+                authToken={authToken}
+              />
+            </Sheet>
             <Heading.h4 align="center">
               Your form is automatically saved ✨
             </Heading.h4>
-            <Container align="center" my={4}>
+            <Container align="center" mt={4} mb={5}>
               <LargeButton.link to="/apply">« Back</LargeButton.link>
             </Container>
-            <Footer />
           </Fragment>
         )
     }

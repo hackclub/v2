@@ -1,14 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import { url as apiUrl } from 'api'
-import { Field } from 'components/Forms'
-import { Box, Flex, Text, IconButton, Link as A } from '@hackclub/design-system'
+import { Field } from '@hackclub/design-system'
+import { SendForm, SendButton } from '../SendForm'
+import api from 'api'
 import * as yup from 'yup'
 
 class LeaderInviteForm extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { errors: undefined }
-  }
+  state = { errors: undefined }
 
   render() {
     const { id, authToken, callback } = this.props
@@ -17,11 +15,12 @@ class LeaderInviteForm extends Component {
     const handleChange = e => {
       if (e.keyCode === 13) {
         e.preventDefault()
-        handleSubmit()
+        handleSubmit(e)
       }
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = e => {
+      if (e) e.preventDefault()
       const leaderInvite = document.querySelector('#leader_invite')
       const schema = yup.object().shape({
         email: yup
@@ -34,17 +33,9 @@ class LeaderInviteForm extends Component {
         .validate({ email: leaderInvite.value })
         .then(data => {
           this.setState({ error: undefined })
-          fetch(`${apiUrl}/v1/new_club_applications/${id}/add_user`, {
-            method: 'POST',
-            headers: {
-              Authorization: `Bearer ${authToken}`,
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-          })
-            .then(res => {
-              if (!res.ok) throw res
-              return res.json()
+          api
+            .post(`v1/new_club_applications/${id}/add_user`, {
+              data
             })
             .then(json => {
               leaderInvite.value = ''
@@ -67,34 +58,22 @@ class LeaderInviteForm extends Component {
     }
 
     return (
-      <Flex align="flex-end" mb={3}>
+      <SendForm onSubmit={handleSubmit} mb={4}>
         <Field
           id="leader_invite"
+          name="new_leader_invite_email"
           onKeyDown={handleChange}
-          placeholder="Co-leader's email"
+          label="New co-leader’s email"
+          placeholder="friend@gmail.com"
           error={error}
-          hint={
-            <Fragment>
-              Still deciding who will be on your team?{' '}
-              <A href="/workshops/leadership_team" target="_blank">
-                Consider this
-              </A>.
-            </Fragment>
-          }
         />
-        <IconButton
-          name="add"
-          bg="success"
-          color="white"
-          size={24}
-          ml={3}
-          p={1}
-          mb={2}
-          circle
+        <SendButton
+          aria-label="Send this invitation"
           onClick={handleSubmit}
-          style={{ flexShrink: 'none' }}
+          name="send"
+          bg="info"
         />
-      </Flex>
+      </SendForm>
     )
   }
 }

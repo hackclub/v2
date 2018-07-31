@@ -4,18 +4,13 @@ import LoginCodeForm from 'components/auth/LoginCodeForm'
 import search from 'search'
 
 class Login extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = { emailSent: false }
-    this.submitCallback = this.submitCallback.bind(this)
-  }
+  state = { emailSent: false }
 
   componentDidMount() {
     this.setState({ email: search.get('email') })
   }
 
-  submitCallback(data) {
+  submitCallback = data => {
     this.setState({
       ...data,
       emailSent: true

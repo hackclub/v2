@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Component, Fragment } from 'react'
 import {
   Box,
   Flex,
@@ -16,6 +16,47 @@ import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Animator from 'components/Animator'
 import Module from 'components/Module'
+import api from 'api'
+import { timeSince } from 'helpers'
+
+class BankStats extends Component {
+  state = {}
+
+  loadStats() {
+    api.get('https://bank.hackclub.com/transactions/stats').then(stats => {
+      const volumeString = (stats.total_volume / 100).toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    })
+      this.setState({ transactionsTotalVolume: volumeString })
+    })
+  }
+  loadStats = this.loadStats.bind(this)
+
+  componentDidMount() {
+    this.loadStats()
+    const intervalId = setInterval(this.loadStats, 10000)
+    this.setState({ intervalId })
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.intervalId)
+  }
+
+  render() {
+    const { transactionsTotalVolume } = this.state
+    const launchDate = '2018-06-28'
+    if (transactionsTotalVolume) {
+      return (
+        <Text maxWidth={32} f={3} my={4}>
+          {transactionsTotalVolume} transacted in the past {timeSince(launchDate, true)}
+        </Text>
+      )
+    } else {
+      return null
+    }
+  }
+}
 
 const Base = Box.extend`
   background-color: #111;
@@ -248,7 +289,7 @@ export default () => (
         body="Talk to our community of experienced event organizers anytime."
       />
     </Modules>
-    <Container maxWidth={48} pt={4} pb={[5, 6]} px={3}>
+    <Container maxWidth={48} pt={4} pb={[4, 5]} px={3}>
       <Join align="left" bg="black" p={[3, 4]}>
         <Container maxWidth={32} mx={0}>
           <Heading.h2 {...subhline} color="white">
@@ -269,6 +310,7 @@ export default () => (
           Apply
         </CTA>
       </Join>
+      <BankStats />
       <Lead maxWidth={32} color="slate" f={1} mt={3}>
         Hack Club does not directly provide banking services. Banking services
         provided by Silicon Valley Bank, an FDIC-certified institution.

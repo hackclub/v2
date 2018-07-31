@@ -103,11 +103,11 @@ const Navigation = props => (
   <NavBar role="navigation" {...props}>
     <Link to="/team" children="Team" />
     <Link to="/donate" children="Donate" />
-    <Link to="/start" children="Start" />
     <Link to="/challenge" children="Challenge" />
     <Link to="/workshops" children="Workshops" />
     <a href="https://hackathons.hackclub.com" children="Hackathons" />
     <Link to="/bank" children="Bank" />
+    <Link to="/start" children="Start" />
   </NavBar>
 )
 

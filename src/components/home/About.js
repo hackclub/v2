@@ -110,6 +110,8 @@ const Action = Button.withComponent(Link).extend`
   }
 `
 
+const ActionLink = Action.withComponent(A)
+
 export default () => (
   <Container w={1} px={[3, 4, null, 2]} mt={[4, 5]}>
     <Box mx={0} mt={5} color="black">
@@ -119,9 +121,12 @@ export default () => (
       </Heading.h2>
       <Container maxWidth={48} mx={0}>
         <Text f={[3, 4]}>
-          Hack Clubs are student-led groups dedicated to fostering the hacker
-          culture at high schools worldwide. In meetings, students learn to
-          code through building real-world projects like websites, apps, and
+          Hack Clubs are student-led groups dedicated to fostering the{' '}
+          <Like href="https://en.wikipedia.org/wiki/Hacker_culture#Ethics_and_principles">
+            hacker culture
+          </Like>
+          {' '}at high schools worldwide. In meetings, students learn to code
+          through building real-world projects like websites, apps, and
           games.
         </Text>
       </Container>
@@ -129,39 +134,38 @@ export default () => (
     <Grid mt={4} mb={[4, 6]} color="white">
       <Box bg="primary" p={[3, 4]}>
         <Heading.h3 f={4} my={0} caps>
-          So much more than a club
+          Beyond club meetings
         </Heading.h3>
         <Text f={3} my={3}>
           Hack Clubs attend and run hackathons like{' '}
           <Like href="https://hackchicago.io">
             Hack Chicago
           </Like> and{' '}
-          <Like href="https://www.sfchronicle.com/bayarea/article/Hack-the-Fog-makes-history-as-San-12729895.php">
-            Hack the Fog
+          <Like href="http://outlooknewspapers.com/hackademia-aims-for-young-tech-devotees/">
+            Hackademia
           </Like>. They run summer programs like{' '}
           <Like href="http://thecspn.com/?p=43434">Hack Camp</Like>. They
           compete in competitions like the{' '}
           <Like href="http://www.congressionalappchallenge.us">
             Congressional App Challenge
           </Like>{' '}
-          (and <LikeLink to="/challenge">our Challenge</LikeLink>!). This is no
-          ordinary club.
+          (and <LikeLink to="/challenge">our challenge!</LikeLink>). Hack Clubs are no ordinary clubs.
         </Text>
-        <Action to="/meetings" inverted>
-          Learn more »
-        </Action>
+        <ActionLink href="https://www.sfchronicle.com/bayarea/article/Hack-the-Fog-makes-history-as-San-12729895.php" target="_blank" inverted>
+          Read about a Hack Club »
+        </ActionLink>
       </Box>
       <Photo src="/about_1.jpg" scale />
       <Photo src="/about_2.jpg" scale />
       <Box bg="info" p={[3, 4]}>
         <Heading.h3 f={4} my={0} caps>
-          The power of a network
+          We help you get started
         </Heading.h3>
         <Modules my={3} w={1}>
           <Module
             icon="forum"
             heading="Online community"
-            body="Talk to thousands of club leaders/members on Slack."
+            body="Talk to hundreds of club leaders/members on Slack."
           />
           <Module
             icon="chrome_reader_mode"
@@ -190,8 +194,12 @@ export default () => (
         <Text f={[3, 4]}>
           Hack Club is heavily inspired by unschooling. At Hack Club, there are
           no teachers or lectures—members work at their own pace on their own
-          projects. Your job as a club leader is to facilitate and provide
-          guidance through mentoring and the power of community.
+          projects. Club leaders act as{' '}
+          <Like href="https://en.wikipedia.org/wiki/Constructionism_(learning_theory)">
+            facilitators
+          </Like>
+          {' '}and provide guidance through mentoring and building a
+          supportive community.
         </Text>
       </Container>
     </Box>
@@ -201,9 +209,10 @@ export default () => (
           Coding is a superpower
         </Heading.h3>
         <Text f={3} my={3}>
-          Learning to code is uniquely empowering: you go from a consumer to a
-          creator. The goal of Hack Club is to help you become that creator. We
-          want a space for hacking at every high school, every week.
+          We believe that coding is probably the closest thing we have to a
+          superpower and that the way we teach it should reflect that.
+          Students should learn to code through building projects, not
+          listening to boring lectures.
         </Text>
         <Action to="/philosophy" bg="warning" inverted>
           Our philosophy »

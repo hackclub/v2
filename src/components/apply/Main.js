@@ -193,6 +193,12 @@ const Main = props => {
   } else {
     submitButtonStatus = 'incomplete'
   }
+  const applicationStatus = profile =>
+    completeApplication
+      ? 'complete'
+      : created_at === updated_at
+        ? 'unopened'
+        : 'incomplete'
 
   const submitStatusProps = {
     unopened: { color: 'primary', children: 'ready for you!' },
@@ -225,7 +231,7 @@ const Main = props => {
           name={
             <Fragment>
               <Text.span bold>Club application</Text.span>
-              <Status type={profileStatus(leaderProfile)} ml={2} />
+              <Status type={applicationStatus()} ml={2} />
             </Fragment>
           }
         />

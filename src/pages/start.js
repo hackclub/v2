@@ -14,7 +14,6 @@ import styled, { css } from 'styled-components'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
-import Animator from 'components/Animator'
 import Module from 'components/Module'
 import Framed from 'components/Framed'
 import Start from 'components/Start'
@@ -123,15 +122,7 @@ export default () => (
       ]}
     />
     <Nav />
-    <Animator
-      is={PhotoSection}
-      data={{
-        opacity: [1, 0.75],
-        transform: [{ translateY: '0px' }, { translateY: '-96px' }]
-      }}
-      image="/lah_1.jpg"
-      style={{ padding: 0 }}
-    >
+    <PhotoSection src="/lah_1.jpg" style={{ padding: 0 }}>
       <Container maxWidth={56} p={[2, 3]} mt={[5, 6]} mb={[4, 5]}>
         <Heading.h1 {...styles.ultraline} color="white">
           Start an incredible coding club at your high school.
@@ -140,7 +131,7 @@ export default () => (
           We’ll help every step of the way.
         </Heading.h2>
       </Container>
-    </Animator>
+    </PhotoSection>
     <Row my={[4, 5]}>
       <Box mt={-4}>
         <Text color="accent" f={4} bold caps>

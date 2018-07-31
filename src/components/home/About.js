@@ -209,10 +209,9 @@ export default () => (
           Coding is a superpower
         </Heading.h3>
         <Text f={3} my={3}>
-          We believe that coding is probably the closest thing we have to a
-          superpower and that the way we teach it should reflect that.
-          Students should learn to code through building projects, not
-          listening to boring lectures.
+          Coding is a superpower and we believe that the way we teach it
+          should reflect that. Students should learn through building
+          projects, not listening to boring lectures.
         </Text>
         <Action to="/philosophy" bg="warning" inverted>
           Our philosophy »

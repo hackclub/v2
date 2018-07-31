@@ -71,5 +71,18 @@ export default () => (
         Sign in »
       </Button>
     </Container>
-  </Fragment>
+    <SlackCard
+      w={1}
+      p={[3, 4]}
+      boxShadowSize="md"
+      align="left"
+      my={4}
+      mx="auto"
+    >
+      <SlackForm />
+    </SlackCard>
+    <Button href="https://hackclub.slack.com" target="_blank" inverted>
+      Already have an account? Sign in »
+    </Button>
+  </Fill>
 )

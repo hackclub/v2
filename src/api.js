@@ -38,7 +38,10 @@ const generateMethod = method => (path, options = {}, fetchOptions = {}) => {
     }
   }
 
-  return fetch(url + path, { method, ...filteredOptions })
+  const foreignUrl = path.startsWith('http')
+  const urlPath = foreignUrl ? path : url + path
+
+  return fetch(urlPath, { method, ...filteredOptions })
     .then(res => {
       if (res.ok) {
         const contentType = res.headers.get('content-type')

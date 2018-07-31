@@ -11,6 +11,8 @@ import {
   Button,
   LargeButton
 } from '@hackclub/design-system'
+import styled from 'styled-components'
+import { stats } from 'data.json'
 
 const Root = Flex.withComponent('header').extend`
   text-align: center;
@@ -74,6 +76,26 @@ Notification.defaultProps = {
   justify: 'center'
 }
 
+const HeaderStats = styled.ul`
+margin-top: 0;
+margin-left: -15px;
+padding: 0;
+display: inline;
+`
+
+const HeaderStat = Text.withComponent('li').extend.attrs({ f: [3, 4] })`
+display: inline;
+margin-left: 15px;
+
+&:not(:last-child):after {
+  line-height: 24px;
+  margin-left: 10px;
+  margin-right: -5px;
+  font-size: 32px;
+  content: "\00b7";
+}
+`
+
 const Action = LargeButton.extend.attrs({ scale: true, m: [1, null, 2] })``
 Action.link = Action.withComponent(Link)
 
@@ -86,7 +108,7 @@ export default () => (
           <strong>Fall applications are open!</strong>
           <Hide xs sm ml={1}>
             {'– '}
-            apply now for fall 2018.
+            a legal and finance backend for hackathons
           </Hide>
         </Flex>
         <Text.span caps color="info" f={1} ml="auto">
@@ -99,6 +121,11 @@ export default () => (
       <Heading.h1 f={[6, 7]} mx="auto" mt={2} mb={3}>
         High school coding clubs.
       </Heading.h1>
+      <HeaderStats>
+        <HeaderStat>{stats.school_count} schools</HeaderStat>
+        <HeaderStat>{stats.state_count} states</HeaderStat>
+        <HeaderStat>{stats.country_count} countries</HeaderStat>
+      </HeaderStats>
       <Text f={[3, 4]} mx="auto">
         Hack Club is the world’s largest nonprofit network of computer science
         clubs where members learn to code through tinkering and building
@@ -111,11 +138,14 @@ export default () => (
         mt={[3, 4]}
         flexDirection={[null, 'column-reverse', 'row']}
       >
-        <Action.link to="/donate" bg="info">
+        <Action.link to="/donate" bg="accent">
           Donate
         </Action.link>
+        <Action.link to="/slack_invite" bg="info">
+          Join the Slack
+        </Action.link>
         <Action.link to="/start" f={[3, null, 4]}>
-          Learn more »
+          Learn About Joining »
         </Action.link>
       </Flex>
     </Wrapper>

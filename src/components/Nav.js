@@ -16,10 +16,10 @@ const Root = Box.withComponent('header').extend`
     (props.scrolled || props.toggled || props.fixed) &&
     css`
       position: fixed;
-      background-color: rgba(255, 255, 255, 0.96875);
+      background-color: rgba(${props.bgColor[0]}, ${props.bgColor[1]}, ${props.bgColor[2]}, 0.96875);
       border-bottom: 1px solid rgba(51, 51, 51, 0.1);
       @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-        background-color: rgba(255, 255, 255, 0.75);
+        background-color: rgba(${props.bgColor[0]}, ${props.bgColor[1]}, ${props.bgColor[2]}, 0.75);
         -webkit-backdrop-filter: saturate(180%) blur(16px);
       }
       ${({ theme }) => theme.mediaQueries.reduceTransparency} {
@@ -103,11 +103,11 @@ const Navigation = props => (
   <NavBar role="navigation" {...props}>
     <Link to="/team" children="Team" />
     <Link to="/donate" children="Donate" />
-    <Link to="/start" children="Start" />
     <Link to="/challenge" children="Challenge" />
     <Link to="/workshops" children="Workshops" />
     <a href="https://hackathons.hackclub.com" children="Hackathons" />
     <Link to="/bank" children="Bank" />
+    <Link to="/start" children="Start" />
   </NavBar>
 )
 
@@ -163,9 +163,12 @@ class Header extends Component {
   }
 
   onScroll = () => {
-    if (window.scrollY) {
+    const newState = window.scrollY >= 16
+    const { scrolled: oldState } = this.state
+
+    if (newState !== oldState) {
       this.setState({
-        scrolled: window.scrollY >= 16
+        scrolled: newState
       })
     }
   }
@@ -177,13 +180,18 @@ class Header extends Component {
   }
 
   render() {
-    const { color = 'white', fixed, ...props } = this.props
+    const {
+      color = 'white',
+      bgColor = [255, 255, 255],
+      fixed,
+      ...props
+    } = this.props
     const { scrolled, toggled } = this.state
-    const baseColor = color === 'white' && scrolled ? 'black' : color
-    const toggleColor =
-      toggled || (color === 'white' && scrolled) ? 'slate' : color
+    const baseColor = (color === 'white' && scrolled) ? 'black' : color
+    const toggleColor = (toggled || (color === 'white' && scrolled)) ? 'slate' : color
+
     return (
-      <Root {...props} fixed={fixed} scrolled={scrolled} toggled={toggled}>
+      <Root {...props} fixed={fixed} scrolled={scrolled} toggled={toggled} bgColor={bgColor}>
         <Content>
           <Flag scrolled={scrolled || fixed} />
           <Navigation color={baseColor} />

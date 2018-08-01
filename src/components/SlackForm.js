@@ -34,7 +34,6 @@ const InnerForm = ({
       value={statusMessage(status)}
       bg="fuschia.6"
       w={1}
-      mt={3}
     />
   </Form>
 )

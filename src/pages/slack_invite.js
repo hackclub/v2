@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
-import { Box, Heading, Container, Flex, Button, cx } from '@hackclub/design-system'
+import { Box, Heading, Container, Flex, Button, Text, cx } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Sheet from 'components/Sheet'
@@ -40,6 +40,10 @@ const BackgroundVideo = () => (
     <source src="https://hackclub.github.io/slack-invite-background-video/slack.mp4" type="video/mp4" />
   </video>
 )
+
+const SlackButton = styled(Button)`
+  display: block;
+`
 
 export default () => (
   <Fragment>
@@ -87,9 +91,12 @@ export default () => (
       <Sheet maxWidth={28} align="left" my={4} mx="auto">
         <SlackForm />
       </Sheet>
-      <Button href="https://hackclub.slack.com" inverted target="_blank">
-        Already have an account? Sign in »
-      </Button>
+      <Sheet maxWidth={28} align="left" my={4} mx="auto">
+        <Text f={2} mb={3}>Already have an account?</Text>
+        <SlackButton href="https://hackclub.slack.com" inverted target="_blank">
+          Sign in »
+        </SlackButton>
+      </Sheet>
     </Container>
   </Fragment>
 )

@@ -135,7 +135,7 @@ export default () => (
         align="center"
         mx={[-1, -2]}
         mt={[3, 4]}
-        flexDirection={[null, 'column-reverse', 'row']}
+        flexDirection={['column-reverse', 'row']}
       >
         <Action.link to="/donate" bg="accent">
           Donate

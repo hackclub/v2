@@ -125,7 +125,7 @@ export default () => (
           <Like href="https://en.wikipedia.org/wiki/Hacker_culture#Ethics_and_principles">
             hacker culture
           </Like>
-          {' '}at high schools. In meetings, students learn to code through
+          {' '}in high schools. In meetings, students learn to code through
           building real-world projects like websites, apps, and games.
         </Text>
       </Container>

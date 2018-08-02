@@ -102,7 +102,7 @@ Action.link = Action.withComponent(Link)
 export default () => (
   <Root>
     <Wrapper>
-      <Notification to="/start">
+      <Notification to="/bank">
         <Icon size={24} color="slate" name="account_balance" mr={2} />
         <Flex color="black" f={1} mr={2}>
           <strong>Announcing Bank</strong>

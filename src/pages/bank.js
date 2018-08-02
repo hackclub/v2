@@ -47,7 +47,7 @@ class BankStats extends Component {
     if (transactionsTotalVolume) {
       return (
         <Text maxWidth={32} f={3} my={4}>
-          {transactionsTotalVolume} transacted in the past {timeSince(launchDate, true)}
+          {transactionsTotalVolume} transacted in the past {timeSince(launchDate, true, new Date(), true)}
         </Text>
       )
     } else {

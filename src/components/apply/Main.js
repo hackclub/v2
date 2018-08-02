@@ -136,7 +136,7 @@ const Help = () => (
   <HelpSheet maxWidth={42} mt={[3, 4]} py={3} px={[3, 4]} bg="blue.0">
     <Flex align="center" flex="1 1 auto" mb={[3, 0]}>
       <Icon name="live_help" size={24} mr={[2, 3]} color="info" />
-      <Text color="info" f={2}>
+      <Text color="info" f={2} align="left">
         Have any questions? We’re here to help out.
       </Text>
     </Flex>

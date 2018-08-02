@@ -15,7 +15,8 @@ class BreadcrumbClass extends Component {
   state = { path: [] }
 
   componentDidMount() {
-    this.setState({ path: location.pathname.split('/').slice(1) })
+    const path = location.pathname.split('/').filter(chunk => chunk != '')
+    this.setState({ path })
   }
 
   render() {

@@ -104,7 +104,7 @@ const styles = {
   }
 }
 
-const title = 'Start Your Hack Club'
+const title = 'Start Your Hack Club | Hack Club'
 const description =
   'Learn how to start a coding club at your high school through Hack Club. Get programming club ideas, curriculum, activities, and more.'
 
@@ -122,10 +122,10 @@ export default () => (
       ]}
     />
     <Nav />
-    <PhotoSection src="/lah_1.jpg" style={{ padding: 0 }}>
+    <PhotoSection src="/lah_2.jpg" style={{ padding: 0 }}>
       <Container maxWidth={56} p={[2, 3]} mt={[5, 6]} mb={[4, 5]}>
         <Heading.h1 {...styles.ultraline} color="white">
-          Buckle up your bootstraps.
+          Let's get started.
         </Heading.h1>
         <Heading.h2 {...styles.subhline} color="white" f={[4, 5]} mt={3} mb={4}>
           Whether you're interested in starting a new chapter or joining Hack
@@ -133,10 +133,74 @@ export default () => (
         </Heading.h2>
       </Container>
     </PhotoSection>
+    <Row my={[3, 4]}>
+      <Box color="black">
+        <Heading.h2 {...styles.headline} mb={3}>
+          HQ provides the support to get you started
+        </Heading.h2>
+        <Text {...styles.subhline}>
+          Get your club started with our resources used by 200+ Hack Clubs.
+        </Text>
+      </Box>
+      <Modules>
+        <Module
+          icon="forum"
+          heading="Community"
+          body="Join our Slack and meet hundreds of other club leaders and members around the world."
+          color="red.5"
+        />
+        <Module
+          icon="pages"
+          heading="Curriculum"
+          body="Give your members dozens of free tutorials for making websites, apps, and games."
+          color="orange.5"
+        />
+        <Module
+          icon="voice_chat"
+          heading="Mentorship"
+          body="Talk to our team over a call or on Slack for guidance and assistance whenever you need help."
+          color="yellow.7"
+        />
+        <Module
+          icon="chrome_reader_mode"
+          heading="Guidelines"
+          body="Learn from hundreds of other clubs—we’ve got information, advice, and experience."
+          color="teal.7"
+        />
+        <Module
+          icon="local_activity"
+          heading="Local events"
+          body="Attend hackathons, workshops, and other events from Hack Clubs near yours."
+          color="blue.5"
+        />
+        <Module
+          icon="wallpaper"
+          heading="Marketing"
+          body="Get stickers, posters, and ideas for spreading the word about your amazing club meetings."
+          color="indigo.5"
+        />
+      </Modules>
+    </Row>
+    <Container px={3} mt={[0, 0, -75]} mb={[3, 5]}>
+      <Box color="black">
+        <Heading.h3 f={[4, 5]} mt={4}>
+          Already have a club?
+        </Heading.h3>
+        <Text f={[3, 4]} my={3}>
+          Great! When established CS clubs join, they get the full benefits
+          of the network. Hack Club is currently optimized for new chapters,
+          but we're increasing the benefits for existing clubs every day with
+          launches like{' '}
+          <A href="https://hackathons.hackclub.com" target="_blank">hackathons</A>
+          {' '}and{' '}
+          <A href="/bank" target="_blank">bank</A>.
+        </Text>
+      </Box>
+    </Container>
     <Container px={3} my={[3, 5]}>
       <Box color="black">
-        <Heading.h2 f={[5, 6]} mb={3}>
-          So what does this actually look like?
+        <Heading.h2 f={[5, 6]} mt={5} mb={4}>
+        What do meetings look like?
         </Heading.h2>
         <Container maxWidth={48} mx={0}>
           <Text f={[3, 4]}>
@@ -166,76 +230,13 @@ export default () => (
             Will you provide everything to make my club successful?
           </Heading.h3>
           <Text f={[3, 4]} my={3}>
-            No. Every school is very different and you're going to need to
-            heavily customize our advice and resources. We try our best, but
-            you know your school better than we do.
-          </Text>
-          <Heading.h3 f={[4, 5]} mt={4}>
-            What if I already run a computer science club?
-          </Heading.h3>
-          <Text f={[3, 4]} my={3}>
-            Existing CS clubs are welcome to become Hack Clubs. You get the
-            full benefits of the network, though we'll probably be less
-            helpful than with new clubs.
+            No. Every school is different and you're going to need to heavily
+            customize our advice and resources. We try our best, but you know
+            your school better than we do.
           </Text>
         </Container>
       </Box>
     </Container>
-    <Row my={[3, 4]}>
-      <Box color="black">
-        <Heading.h2 {...styles.headline} mb={3}>
-          HQ provides the resources to get you started
-        </Heading.h2>
-        <Text {...styles.subhline}>
-          We have a bunch of experience helping start 200+ clubs and will
-          help you get off the ground.
-        </Text>
-      </Box>
-      <Modules>
-        <Module
-          icon="forum"
-          heading="Community"
-          body="Join our Slack and meet thousands of other club leaders and members around the world."
-          color="red.5"
-        />
-        <Module
-          icon="pages"
-          heading="Curriculum"
-          body="Give your members dozens of free tutorials for making websites, apps, and games."
-          color="orange.5"
-        />
-        <Module
-          icon="voice_chat"
-          heading="Mentorship"
-          body="Talk to our team for guidance and assistance whenever you need help."
-          color="yellow.7"
-        />
-        <Module
-          icon="chrome_reader_mode"
-          heading="Guidelines"
-          body="Learn from hundreds of other clubs—we’ve got information, advice, and experience."
-          color="teal.7"
-        />
-        <Module
-          icon="local_activity"
-          heading="Local events"
-          body="Attend hackathons, workshops, and other events from Hack Clubs near yours."
-          color="blue.5"
-        />
-        <Module
-          icon="wallpaper"
-          heading="Marketing"
-          body="Get stickers, posters, and ideas for spreading the word about your amazing club meetings."
-          color="indigo.5"
-        />
-      </Modules>
-    </Row>
-    <PhotoSection
-      src="/lah_2.jpg"
-      aria-label="Students stacking cups together"
-      py={[50, 250, 350]}
-    >
-    </PhotoSection>
     <Row my={[4, 5]}>
       <Box mt={-4}>
         <Text color="accent" f={4} bold caps>
@@ -268,6 +269,14 @@ export default () => (
       mt={4}
       buttonProps={{ children: 'Begin Your Application', to: '/apply' }}
     />
+    <PhotoSection
+      src="/lah_1.jpg"
+      aria-label="Students stacking cups together"
+      py={[0, 250, 350]}
+      my={[0, -50]}
+      style={{zIndex: -1}}
+    >
+    </PhotoSection>
     <Footer />
   </Fragment>
 )

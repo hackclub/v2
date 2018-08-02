@@ -42,10 +42,10 @@ const Start = ({ mt = '-4rem', buttonProps = {}, ...props }) => (
   <Base mt={mt} {...props}>
     <Box p={[2, 3]} align={['center', null, 'right']}>
       <Heading.h2 f={[5, 6]} m={0}>
-        Start your Hack Club.
+        Begin Your Application.
       </Heading.h2>
       <Text color="red.0" f={[3, 4]} my={2}>
-        Build the class you wish you had.
+        Build the class you wish you could take.
       </Text>
       <Text color="red.0" f={[3, 4]} m={0}>
         Bring the movement to your school.

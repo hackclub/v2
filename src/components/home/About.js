@@ -117,7 +117,7 @@ export default () => (
     <Box mx={0} mt={5} color="black">
       <Heading.h2 f={[5, 6]} mb={3}>
         Join a nationwide community of students building the class they wish
-        they had.
+        they could take.
       </Heading.h2>
       <Container maxWidth={48} mx={0}>
         <Text f={[3, 4]}>

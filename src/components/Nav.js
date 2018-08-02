@@ -107,7 +107,7 @@ const Navigation = props => (
     <Link to="/workshops" children="Workshops" />
     <a href="https://hackathons.hackclub.com" children="Hackathons" />
     <Link to="/bank" children="Bank" />
-    <Link to="/start" children="Start" />
+    <Link to="/start" children="Get&nbsp;Started&nbsp;»" />
   </NavBar>
 )
 

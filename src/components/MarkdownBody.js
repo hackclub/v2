@@ -52,6 +52,7 @@ const MarkdownBody = Box.extend`
 
   img {
     max-width: 100%;
+    border-radius: ${({ theme }) => theme.radii[2]};
   }
 
   ol,

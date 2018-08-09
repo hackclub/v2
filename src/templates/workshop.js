@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import styled from 'styled-components'
 import {
   Box,
   Container,
@@ -32,20 +33,16 @@ import Footer from 'components/Footer'
 import { lowerCase, camelCase, isEmpty } from 'lodash'
 import { org } from 'data.json'
 
-const NotOnPrint = Box.extend`
+const NotOnPrint = styled(Box)`
   @media print {
-     {
-      display: none !important;
-    }
+    display: none !important;
   }
 `
 
-const OnlyOnPrint = Box.extend`
+const OnlyOnPrint = styled(Box)`
   display: none !important;
   @media print {
-     {
-      display: initial !important;
-    }
+    display: block !important;
   }
 `
 
@@ -53,23 +50,30 @@ const Header = Box.withComponent('header').extend`
   li a,
   h2,
   p {
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.375);
   }
 `
 
-const Name = Heading.h1.extend`
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.32);
+const Name = styled(Heading.h1)`
+  background-color: ${({ theme }) => theme.colors.white};
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
   color: black;
   display: inline-block;
   mix-blend-mode: screen;
   padding-left: ${({ theme }) => theme.space[4]}px;
   padding-right: ${({ theme }) => theme.space[4]}px;
-  width: max-content;
+  width: min-content;
+  ${({ theme }) => theme.mediaQueries.sm} {
+    width: max-content;
+  }
 `
 
-const Body = Container.withComponent(MarkdownBody)
+const Body = Container.withComponent(MarkdownBody).extend`
+  @media print {
+    max-width: none !important;
+  }
+`
 A.link = A.withComponent(Link)
 Section.h = Section.withComponent('header')
 
@@ -228,7 +232,7 @@ export default ({ data }) => {
           style={{ backgroundImage: `url('${bg}')`, position: 'relative' }}
         >
           <Container pt={5} pb={3} px={2}>
-            <Breadcrumbs align="center" justify="center" my={3} wrap>
+            <Breadcrumbs align="center" justify="center" mt={3} wrap>
               <Breadcrumb to="/workshops" name="Workshops" position={1} />
               <BreadcrumbDivider />
               <Breadcrumb
@@ -239,7 +243,7 @@ export default ({ data }) => {
               <BreadcrumbDivider />
               <Breadcrumb to={slug} name={name} position={3} bold={false} />
             </Breadcrumbs>
-            <Name f={6} mb={2} children={name} />
+            <Name f={6} my={3} children={name} />
             <Heading.h2 f={4} children={description} />
             <Text f={2} caps mt={3} children={linkAuthor(author)} />
           </Container>
@@ -258,23 +262,22 @@ export default ({ data }) => {
           </Flex>
         </Header>
       </NotOnPrint>
-      <OnlyOnPrint>
-        <Text align="right">
+      <OnlyOnPrint p={3}>
+        <Flex align="center" justify="flex-end" my={3}>
           <Image
             src="/logo-red.svg"
             w={`${theme.space[6]}px`}
-            style={{ display: 'inline' }}
+            mr={3}
             alt="Hack Club logo"
-          />{' '}
+          />
           <strong>Computer Science Tutorials</strong>
+        </Flex>
+        <Heading.h1 mt={4} mb={3} children={name} />
+        <Heading.h2 f={4} children={description} />
+        <Text color="muted" my={3} children={linkAuthor(author)} />
+        <Text color="muted">
+          You can find this tutorial online at <u>{url}</u>
         </Text>
-        <Heading.h1 pt={4}>{name}</Heading.h1>
-        <Heading.h4 color="gray.7">{description}</Heading.h4>
-        <Text color="gray.5">{linkAuthor(author)}</Text>
-        <Text color="gray.9" py={2}>
-          You can find this tutorial online at <em>{url}</em>
-        </Text>
-        <hr />
       </OnlyOnPrint>
       <Box w={1} className="invert">
         <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />

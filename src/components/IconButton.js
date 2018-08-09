@@ -22,5 +22,6 @@ IconButton.propTypes = {
   is: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   name: PropTypes.string.isRequired,
   size: PropTypes.number,
-  children: PropTypes.element.isRequired
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
+    .isRequired
 }

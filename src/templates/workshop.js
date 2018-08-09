@@ -29,6 +29,7 @@ import FeedbackForm from 'components/workshops/FeedbackForm'
 import DiscussOnSlack from 'components/DiscussOnSlack'
 import ShareButton from 'components/ShareButton'
 import { Modal, Overlay, CloseButton } from 'components/Modal'
+import Sheet from 'components/Sheet'
 import Footer from 'components/Footer'
 import { lowerCase, camelCase, isEmpty } from 'lodash'
 import { org } from 'data.json'
@@ -104,7 +105,15 @@ const linkAuthor = authorText => {
   return <Fragment>Created by {parsedAuthorText}</Fragment>
 }
 
-const Cards = Container.extend`
+const CardsSection = styled(Box)`
+  background-image: linear-gradient(
+    to bottom,
+    ${({ theme }) => theme.colors.white},
+    ${({ theme }) => theme.colors.snow}
+  );
+`
+
+const Cards = Container.withComponent(NotOnPrint).extend`
   text-align: center;
   display: grid;
   grid-gap: ${({ theme }) => theme.space[4]}px;
@@ -112,19 +121,11 @@ const Cards = Container.extend`
   width: 100%;
 
   > div {
-    max-width: 100%;
-
     &:nth-child(1) {
       grid-area: feedback;
-      border-radius: ${({ theme }) => theme.radius};
-      box-shadow: ${({ theme }) => theme.boxShadows[1]};
     }
     &:nth-child(2) {
       grid-area: share;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
     }
     &:nth-child(3) {
       grid-area: questions;
@@ -138,6 +139,14 @@ const Cards = Container.extend`
     grid-template-areas:
       'feedback feedback share share'
       'feedback feedback questions contribute';
+  }
+
+  ${Sheet} {
+    background: ${({ theme }) => theme.colors.white};
+    margin-bottom: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   textarea {
@@ -218,8 +227,7 @@ export default ({ data }) => {
           { property: 'og:url', content: url }
         ]}
       >
-        <script type="application/ld+json" children={JSON.stringify(schema)} />
-        }
+        <script type="application/ld+json" children={JSON.stringify(schema)} />}
       </Helmet>
       <Nav />
       <NotOnPrint>
@@ -281,62 +289,59 @@ export default ({ data }) => {
       </OnlyOnPrint>
       <Box w={1} className="invert">
         <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
-        <Cards maxWidth={56} p={3} mb={5}>
-          <Card bg="blue.0" p={[3, 4]} align="left">
-            <Heading.h2 f={3} color="blue.8" caps>
-              How was this workshop?
-            </Heading.h2>
-            <Text color="muted" f={1} mt={1} mb={3}>
-              (your feedback is anonymous + appreciated 💙)
-            </Text>
-            <FeedbackForm slug={slug} />
-          </Card>
-          <Box p={3}>
-            <Heading.h2 f={3} color="muted" caps>
-              Made something rad?
-            </Heading.h2>
-            <Heading.h2 color="info" f={5} mb={3}>
-              Share it! 🌟
-            </Heading.h2>
-            <Flex justify="center">
+        <CardsSection py={4}>
+          <Cards px={3}>
+            <Sheet align="left">
+              <Heading.h2 f={4}>How was this workshop?</Heading.h2>
+              <Text color="muted" f={1} mt={1} mb={3}>
+                (your feedback is anonymous + appreciated ❤️)
+              </Text>
+              <FeedbackForm slug={slug} />
+            </Sheet>
+            <Sheet>
+              <Heading.h2 f={4} color="black" mb={3}>
+                Made something fabulous?
+              </Heading.h2>
+              <Flex justify="center">
+                <ShareButton
+                  service="Twitter"
+                  href={twitterURL(
+                    `I just built ${name} with a @hackclub workshop. Make yours:`,
+                    url
+                  )}
+                  bg="#1da1f2"
+                  mr={3}
+                />
+                <ShareButton
+                  service="Facebook"
+                  href={facebookURL(url)}
+                  bg="#3b5998"
+                />
+              </Flex>
+            </Sheet>
+            <Sheet>
+              <Heading.h2 f={4} color="pink.5" mb={3}>
+                Questions?
+              </Heading.h2>
+              <DiscussOnSlack bg="pink.5" f={2} />
+            </Sheet>
+            <Sheet>
+              <Heading.h2 f={4} color="slate" mb={3}>
+                Spotted an issue?
+              </Heading.h2>
               <ShareButton
-                service="Twitter"
-                href={twitterURL(
-                  `I just built ${name} with a @hackclub workshop. Make yours:`,
-                  url
-                )}
-                bg="#1da1f2"
-                mr={3}
+                service="GitHub"
+                bg="slate"
+                f={2}
+                href={githubEditUrl(slug)}
+                target="_blank"
+                aria-label={null}
+                children="Suggest edits"
+                title="If you see something, say something."
               />
-              <ShareButton
-                service="Facebook"
-                href={facebookURL(url)}
-                bg="#3b5998"
-              />
-            </Flex>
-          </Box>
-          <Box>
-            <Heading.h2 f={3} color="primary" caps mb={3}>
-              Questions?
-            </Heading.h2>
-            <DiscussOnSlack bg="primary" f={2} />
-          </Box>
-          <Box>
-            <Heading.h2 f={3} color="slate" caps mb={3}>
-              Spotted an issue?
-            </Heading.h2>
-            <ShareButton
-              service="GitHub"
-              bg="slate"
-              f={2}
-              href={githubEditUrl(slug)}
-              target="_blank"
-              aria-label={null}
-              children="Edit on GitHub"
-              title="If you see something, say something."
-            />
-          </Box>
-        </Cards>
+            </Sheet>
+          </Cards>
+        </CardsSection>
         <Footer />
       </Box>
     </Fragment>

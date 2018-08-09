@@ -12,7 +12,7 @@ export const SocialButton = Button.extend`
           .join('')}-white.svg);
     background-repeat: no-repeat;
     background-size: 100%;
-    flex-shrink: none;
+    flex-shrink: 0;
     width: 18px;
     height: 18px;
   }

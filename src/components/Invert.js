@@ -4,18 +4,26 @@ import { Button } from '@hackclub/design-system'
 import IconButton from 'components/IconButton'
 
 const css = `
-.invert {
-  background-color: #fff;
-  filter: invert(100%);
-}
+  .invert {
+    background-color: #fff;
+    filter: invert(100%);
+  }
 
-img:not([src*=".svg"]),
-video {
-  filter: invert(100%);
-}
+  img:not([src*=".svg"]),
+  video {
+    filter: invert(100%);
+  }
 `
 
 class Invert extends Component {
+  static propTypes = {
+    children: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+  }
+
+  static defaultProps = {
+    children: 'Switch theme'
+  }
+
   state = { active: false }
 
   onClick = e => {
@@ -41,11 +49,3 @@ class Invert extends Component {
 }
 
 export default Invert
-
-Invert.propTypes = {
-  children: PropTypes.element
-}
-
-Invert.defaultProps = {
-  children: 'Switch theme'
-}

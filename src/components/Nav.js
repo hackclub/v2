@@ -36,6 +36,10 @@ const Root = Box.withComponent('header').extend`
         -webkit-backdrop-filter: auto !important;
       }
     `}
+
+  @media print {
+    display: none;
+  }
 `
 
 const Content = Container.extend`

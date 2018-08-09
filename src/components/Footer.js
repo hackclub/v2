@@ -20,6 +20,10 @@ const Base = Box.withComponent('footer').extend`
       height: 24px;
     }
   }
+
+  @media print {
+    display: none;
+  }
 `
 
 const Services = Flex.extend`

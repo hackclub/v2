@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react'
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import {
   Box,
   Flex,
@@ -10,8 +10,7 @@ import {
   Link,
   Card,
   Button,
-  Icon,
-  Image
+  cx
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
@@ -41,13 +40,17 @@ const sortByHumanized = {
   random: 'Random'
 }
 
+const pulse = keyframes`
+  0% { background-color: ${cx('blue.5')}; }
+  33% { background-color: ${cx('fuschia.5')}; }
+  66% { background-color: ${cx('violet.5')}; }
+  100% { background-color: ${cx('blue.5')}; }
+`
 const Header = Section.withComponent('header').extend`
-  background-color: ${({ theme }) => theme.colors.red[5]};
-  background-image: linear-gradient(
-    32deg,
-    ${({ theme }) => theme.colors.pink[5]},
-    ${({ theme }) => theme.colors.red[5]}
-  );
+  background-color: ${({ theme }) => theme.colors.blue[5]};
+  background-image: linear-gradient(90deg, rgba(255, 0, 0, 1), rgba(0, 255, 255, 1));
+  background-blend-mode: overlay;
+  animation: ${pulse} 16s linear infinite;
 `
 
 const HeaderContainer = Container.extend`

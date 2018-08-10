@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import styled from 'styled-components'
 import {
   Flex,
   Section,
@@ -12,6 +13,7 @@ import {
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
+import Name from 'components/Name'
 import Bio from 'components/Bio'
 import Footer from 'components/Footer'
 
@@ -26,7 +28,7 @@ const Header = Section.withComponent('header').extend`
   clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 95%);
 `
 
-const Base = Container.extend`
+const Base = styled(Container)`
   display: grid;
   grid-gap: 1rem;
   ${({ theme }) => theme.mediaQueries.md} {
@@ -68,10 +70,10 @@ export default () => (
     <Nav />
     <Header>
       <Container maxWidth={35} align="center">
-        <Heading.h1 f={[3, 4]} regular caps mt={4}>
+        <Heading.h1 f={[3, 4]} regular caps mt={4} mb={2}>
           Hack Club Team
         </Heading.h1>
-        <Heading.h2 f={6}>We the students.</Heading.h2>
+        <Name f={6}>We the students.</Name>
         <Text f={3} my={3}>
           We believe in a world where every young person is empowered to be the
           change they want to see in the world. Through Hack Club, we’re working

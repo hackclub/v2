@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import styled, { css } from 'styled-components'
 import {
   BackgroundImage,
   Box,
@@ -9,7 +10,6 @@ import {
   Section,
   Text
 } from '@hackclub/design-system'
-import styled, { css } from 'styled-components'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
@@ -18,11 +18,18 @@ import Framed from 'components/Framed'
 import Start from 'components/Start'
 import Footer from 'components/Footer'
 
-const shadows = `
+const shadows = css`
   h1,
+<<<<<<< HEAD
   h2 {
     color: #fff;
     text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+=======
+  h2,
+  p {
+    color: ${({ theme }) => theme.colors.white};
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
+>>>>>>> Edit Start content
   }
 `
 const PhotoSection = styled(Section)`
@@ -132,15 +139,15 @@ export default () => (
           Let’s get started.
         </Heading.h1>
         <Heading.h2 {...styles.subhline} color="white" f={[4, 5]} mt={3}>
-          Whether you're interested in starting a new chapter or joining Hack
-          Club with an existing CS club, we should talk.
+          Whether you’re interested in starting a new chapter or joining Hack
+          Club’s network with an existing CS club, we should talk.
         </Heading.h2>
       </Container>
     </PhotoSection>
     <Row my={[3, 4]}>
       <Box color="black">
         <Heading.h2 {...styles.headline} mb={3}>
-          HQ provides the support to get you started
+          HQ provides the support to get you growing.
         </Heading.h2>
         <Text {...styles.subhline}>
           Get your club started with our resources used by 200+ Hack Clubs.
@@ -185,7 +192,7 @@ export default () => (
         />
       </Modules>
     </Row>
-    <Container px={3} mt={[0, 0, -75]} mb={[3, 5]}>
+    <Container px={3} my={[3, 5]}>
       <Box color="black">
         <Heading.h3 f={[4, 5]} mt={4}>
           Already have a club?
@@ -193,21 +200,18 @@ export default () => (
         <Text f={[3, 4]} my={3}>
           Great! When established CS clubs join, they get the full benefits of
           the network. Hack Club is currently optimized for new chapters, but
-          we're increasing the benefits for existing clubs every day with
-          launches like{' '}
+          we’re increasing the benefits for existing clubs every day with new
+          products like{' '}
           <A href="https://hackathons.hackclub.com" target="_blank">
-            hackathons
+            Hackathons
           </A>{' '}
           and{' '}
           <A href="/bank" target="_blank">
-            bank
-          </A>.
+            Bank
+          </A>
+          .
         </Text>
-      </Box>
-    </Container>
-    <Container px={3} my={[3, 5]}>
-      <Box color="black">
-        <Heading.h2 f={[5, 6]} mt={5} mb={4}>
+        <Heading.h2 f={[5, 6]} mt={4} mb={3}>
           What do meetings look like?
         </Heading.h2>
         <Container maxWidth={48} mx={0}>
@@ -221,7 +225,8 @@ export default () => (
             and{' '}
             <A href="https://messy-wool.surge.sh/catch.html" target="_blank">
               games
-            </A>.
+            </A>
+            .
           </Text>
           <Text f={[3, 4]} my={3}>
             Clubs are led by teams of 2-3 students (sorry, no parents or
@@ -229,7 +234,8 @@ export default () => (
             to write and customize{' '}
             <A href="/workshops" target="_blank">
               workshops
-            </A>.
+            </A>
+            .
           </Text>
           <Heading.h3 f={[4, 5]} mt={4}>
             What happens outside of club meetings?
@@ -243,13 +249,14 @@ export default () => (
             and eventually host their own (sometimes with{' '}
             <A href="/bank" target="_blank">
               Hack Club Bank
-            </A>).
+            </A>
+            ).
           </Text>
           <Heading.h3 f={[4, 5]} mt={4}>
             Will you provide everything to make my club successful?
           </Heading.h3>
           <Text f={[3, 4]} my={3}>
-            No. Every school is different and you're going to need to heavily
+            No. Every school is different and you’re going to need to heavily
             customize our advice and resources. We try our best, but you know
             your school better than we do.
           </Text>
@@ -259,7 +266,7 @@ export default () => (
     <Row my={[4, 5]}>
       <Box mt={-4}>
         <Text color="accent" f={4} bold caps>
-          here's the process
+          Here’s the process
         </Text>
         <Heading.h2 {...styles.headline}>Apply and start your club.</Heading.h2>
       </Box>
@@ -286,7 +293,7 @@ export default () => (
     </Row>
     <Start
       mt={4}
-      buttonProps={{ children: 'Begin Your Application', to: '/apply' }}
+      buttonProps={{ children: 'Apply to Hack Club', to: '/apply' }}
     />
     <PhotoSection
       src="/lah_1.jpg"

@@ -1,18 +1,10 @@
 import React, { Component } from 'react'
-import {
-  Box,
-  Button,
-  Container,
-  Card,
-  Flex,
-  Heading,
-  Text
-} from '@hackclub/design-system'
+import { Box, Button, Flex, Heading, Text } from '@hackclub/design-system'
+import { wordWrap } from 'polished'
+import Sheet from 'components/Sheet'
 import LoginForm from 'components/auth/LoginForm'
 import storage from 'storage'
 import { isEmpty } from 'lodash'
-
-const Sheet = Container.withComponent(Card).extend([])
 
 class Auth extends Component {
   state = { email: '' }
@@ -38,10 +30,8 @@ class Auth extends Component {
 
     return authed ? (
       <Flex align="baseline" {...textProps}>
-        <Text color="inherit" mb={1}>
-          You’re <strong style={{ wordBreak: 'break-all' }}>{email}</strong> ({
-            type
-          }).
+        <Text color="inherit" mb={1} style={wordWrap('break-word')}>
+          You’re <strong>{email}</strong> ({type}).
         </Text>
         <Button.button f={2} ml={3} onClick={this.signOut} bg="info" inverted>
           Change
@@ -69,8 +59,7 @@ Auth.defaultProps = {
     maxWidth: 20,
     p: 3,
     mb: 4,
-    bg: 'primary',
-    boxShadowSize: 'md'
+    bg: 'primary'
   }
 }
 

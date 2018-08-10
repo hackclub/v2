@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 const Sheet = styled(Card.withComponent(Container))`
   position: relative;
+  overflow: hidden;
   border-radius: ${({ theme }) => theme.radii[2]};
   ${props =>
     !props.flat &&

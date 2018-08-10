@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
+import styled from 'styled-components'
 import {
   Box,
   Button,
-  Card,
   Container,
   Flex,
   Heading,
@@ -15,6 +15,8 @@ import {
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
+import Footer from 'components/Footer'
+import Sheet from 'components/Sheet'
 import Stat from 'components/Stat'
 import {
   Triangle,
@@ -27,11 +29,10 @@ import {
 import DonateForm from 'components/donate/DonateForm'
 import Spent from 'components/donate/Spent'
 import Sponsors from 'components/donate/Sponsors'
-import Footer from 'components/Footer'
 import commaNumber from 'comma-number'
 import donors from 'components/donate/donors.json'
 
-const Header = Section.withComponent('header').extend`
+const Header = styled(Section.withComponent('header'))`
   background: url('/pattern.svg');
   > div {
     display: grid;
@@ -42,7 +43,7 @@ const Header = Section.withComponent('header').extend`
   }
 `
 
-const Row = Box.extend`
+const Row = styled(Box)`
   text-align: left;
   ${({ theme }) => theme.mediaQueries.md} {
     display: grid;
@@ -52,17 +53,20 @@ const Row = Box.extend`
   }
 `
 
-const Financials = Box.extend`
+const DonateSheet = styled(Sheet)`
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.0625), 0 16px 32px rgba(0, 0, 0, 0.125) !important;
+`
+
+const Financials = styled(Sheet)`
   display: grid;
   border-radius: ${({ theme }) => theme.radius};
-  overflow: hidden;
 
   ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: 2fr 3fr;
   }
 `
 
-const Stats = Box.extend`
+const Stats = styled(Box)`
   div {
     width: 100%;
     display: block;
@@ -79,7 +83,7 @@ const Stats = Box.extend`
   }
 `
 
-const Shapes = Box.extend`
+const Shapes = styled(Box)`
   display: none;
   ${({ theme }) => theme.mediaQueries.md} {
     display: block;
@@ -92,7 +96,7 @@ const Shapes = Box.extend`
   }
 `
 
-const WishShapes = Shapes.extend`
+const WishShapes = styled(Shapes)`
   svg {
     &:first-child {
       top: 0;
@@ -107,14 +111,14 @@ const WishShapes = Shapes.extend`
     }
   }
 `
-const ContributionShapes = Shapes.extend`
+const ContributionShapes = styled(Shapes)`
   svg {
     right: 12rem;
     top: 1rem;
     color: ${({ theme }) => theme.colors.pink[4]};
   }
 `
-const DonorsShapes = Shapes.extend`
+const DonorsShapes = styled(Shapes)`
   svg:first-child {
     right: 8rem;
     top: 2rem;
@@ -152,23 +156,23 @@ const stats = {
   club: 60
 }
 
-const DonorGrid = Box.extend`
+const DonorGrid = styled(Box)`
   display: grid;
   grid-gap: ${({ theme }) => theme.space[1]}px;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   align-items: center;
   ${({ theme }) => theme.mediaQueries.md} {
     grid-gap: ${({ theme }) => theme.space[3]}px;
   }
 `
 
-const DonorCardBase = Flex.withComponent(Card).extend`
+const DonorCardBase = styled(Sheet)`
+  display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
 `
 const DonorCard = ({ name, link = false }) => (
-  <DonorCardBase bg="white" p={3}>
+  <DonorCardBase bg="white" p={3} mb={0}>
     <Text color="black">{name}</Text>
   </DonorCardBase>
 )
@@ -217,14 +221,9 @@ export default () => (
             Hack Club is a 501(c)(3) non-profit with the EIN 81-2908499.
           </Text>
         </Container>
-        <Card
-          bg="snow"
-          p={[3, 4]}
-          mt={[0, -3, -4]}
-          style={{ overflow: 'hidden' }}
-        >
+        <DonateSheet bg="snow" mt={[0, -3, -4]}>
           <DonateForm />
-        </Card>
+        </DonateSheet>
       </Container>
     </Header>
     <Container {...contentContainer}>
@@ -268,7 +267,7 @@ export default () => (
             When you give to Hack Club, your money goes where students need it
             most.
           </Text>
-          <Financials mt={4}>
+          <Financials p={0} mt={4}>
             <Box bg="primary" color="white" p={[3, 4]} pr={2}>
               <Heading.h3 f={4} mb={2} caps>
                 Financials
@@ -319,8 +318,8 @@ export default () => (
         </Box>
       </Container>
     </Container>
-    <Flex justify="center" bg="snow">
-      <Container {...content} py={[4, 5]} align={['left', 'center']}>
+    <Flex justify="center" bg="snow" color="black">
+      <Container w={1} py={[4, 5]} align={['left', 'center']}>
         <Heading.h2 {...headline} px={3}>
           A few of our amazing donors.
         </Heading.h2>

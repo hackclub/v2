@@ -203,13 +203,14 @@ export class Field extends Component {
       value,
       renderMarkdown,
       bg,
+      mb = 3,
       ...props
     } = this.props
 
     const { Tag, isEditing } = this.state
 
     return (
-      <Label className={type} mb={3} id={name}>
+      <Label className={type} mb={mb} id={name}>
         <Flex style={{ display: 'inline' }} wrap>
           <span>{label}</span>
           {optional ? <Optional /> : null}
@@ -229,19 +230,18 @@ export class Field extends Component {
             <MarkdownRenderer content={value || ' '} />
           </Card>
         )}
-        <div hidden={renderMarkdown && !isEditing ? true : false}>
-          <Tag
-            name={name}
-            type={type}
-            rows={type === 'textarea' ? 5 : null}
-            placeholder={p}
-            children={children}
-            {...this.props}
-            onBlur={this.onBlur}
-            value={value}
-            bg={bg}
-          />
-        </div>
+        <Tag
+          name={name}
+          type={type}
+          rows={type === 'textarea' ? 5 : null}
+          placeholder={p}
+          children={children}
+          {...this.props}
+          onBlur={this.onBlur}
+          value={value}
+          bg={bg}
+          hidden={renderMarkdown && !isEditing ? true : false}
+        />
         {hint && <Hint children={hint} />}
         {renderMarkdown && <Hint children="click to edit" />}
       </Label>

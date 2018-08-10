@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { Card, Container } from '@hackclub/design-system'
 
 const Sheet = styled(Card.withComponent(Container))`
+  position: relative;
   border-radius: ${({ theme }) => theme.radii[2]};
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.0625);
 `

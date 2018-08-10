@@ -76,11 +76,11 @@ const PostForm = withFormik({
       .string()
       .url()
       .required('required')
+      .matches(/repl\.co/, 'must be a repl.co link (see rules)')
   }),
   enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, setStatus, resetForm, props }) => {
     const authToken = storage.get('authToken')
-    const headers = { Authorization: `Bearer ${authToken}` }
     const id = props.challengeId
     api
       .post(`v1/challenges/${id}/posts`, { data })

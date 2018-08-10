@@ -121,7 +121,7 @@ const Footer = ({ children }) => (
         <Text.span color="muted">(toll-free)</Text.span>
       </Text>
       <Text my={2}>
-        <A href="https://conduct.hackclub.com" underline>
+        <A href="https://conduct.hackclub.com" target="_blank" underline>
           Read our code of conduct
         </A>
       </Text>

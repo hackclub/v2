@@ -121,7 +121,7 @@ export default () => (
       </Heading.h2>
       <Container maxWidth={48} mx={0}>
         <Text f={[3, 4]}>
-          Hack Clubs are student-led groups dedicated to fostering the{' '}
+          Hack Clubs are student-led clubs dedicated to fostering the{' '}
           <Like href="https://en.wikipedia.org/wiki/Hacker_culture#Ethics_and_principles">
             hacker culture
           </Like>
@@ -182,6 +182,9 @@ export default () => (
             body="Get materials and ideas for spreading your club."
           />
         </Modules>
+        <Action to="/start" bg="info" inverted>
+          Learn more about joining Hack Club »
+        </Action>
       </Box>
     </Grid>
     <Box mx={0} mt={5} color="black">

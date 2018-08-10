@@ -13,6 +13,7 @@ import {
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
+import Name from 'components/Name'
 import Footer from 'components/Footer'
 import Track from 'components/workshops/Track'
 import WorkshopSearch from 'components/workshops/WorkshopSearch'
@@ -49,17 +50,6 @@ const Background = Section.extend`
   ${({ theme }) => theme.mediaQueries.md} {
     min-height: 100vh;
   }
-`
-
-const Name = Heading.h1.extend`
-  mix-blend-mode: screen;
-  background-color: white;
-  color: black;
-  display: inline-block;
-  padding-left: ${({ theme }) => theme.space[3]}px;
-  padding-right: ${({ theme }) => theme.space[3]}px;
-  clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
 `
 
 const Super = Text.withComponent('mark').extend`

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Box, Container, Flex, Input } from '@hackclub/design-system'
+import { placeholder } from 'polished'
 import Sheet from 'components/Sheet'
 import { Submit } from 'components/Forms'
 import { withFormik } from 'formik'
@@ -28,6 +29,7 @@ const Header = styled(Flex)`
     padding-left: 0;
     font-weight: bold;
     max-width: 100%;
+    ${({ theme }) => placeholder({ color: theme.colors.muted })};
     &:focus {
       box-shadow: none;
     }

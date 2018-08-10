@@ -20,11 +20,6 @@ const Root = Flex.withComponent('header').extend`
   background-size: cover;
   background-position: center top;
   max-width: 100%;
-  overflow: hidden;
-  clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 95%);
-  ${({ theme }) => theme.mediaQueries.md} {
-    clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 90%);
-  }
 
   p,
   h1,
@@ -43,7 +38,8 @@ const Root = Flex.withComponent('header').extend`
   }
 `
 Root.defaultProps = {
-  py: [5, 6],
+  pt: [5, 6],
+  pb: [4, 5],
   align: 'center',
   justify: 'center',
   flexDirection: 'column'

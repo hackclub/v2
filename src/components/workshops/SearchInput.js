@@ -21,16 +21,18 @@ const Search = styled(Input).attrs({
   pr: 3
 })`
   padding-left: 48px; // 16px icon + 32px padding
+  line-height: 1.75;
   max-width: 100%;
   border: 0;
-  line-height: 1.75;
+  border-radius: ${({ theme }) => theme.radii[2]};
   ${({ theme }) => placeholder({ color: theme.colors.muted })};
   font-size: ${({ theme }) => theme.fontSizes[3]}px;
   box-shadow: ${({ theme }) => theme.boxShadows[0]};
   transition: ${({ theme }) => theme.transition} box-shadow;
   &:hover,
   &:focus {
-    box-shadow: ${({ theme }) => theme.boxShadows[1]};
+    box-shadow: ${({ theme }) => theme.boxShadows[1]},
+      0 16px 32px rgba(0, 0, 0, 0.125);
   }
 `
 

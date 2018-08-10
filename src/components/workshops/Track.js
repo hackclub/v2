@@ -23,10 +23,15 @@ const Item = Card.withComponent('li').extend`
   height: 100%;
   position: relative;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-  transition: transform .125s ease-in;
+  border-radius: ${({ theme }) => theme.radii[2]};
   will-change: transform;
-  &:hover {
-    transform: scale(1.03125);
+  box-shadow: ${({ theme }) => theme.boxShadows[0]};
+  transition: ${({ theme }) => theme.transition} all;
+  &:hover,
+  &:focus {
+    box-shadow: ${({ theme }) => theme.boxShadows[1]},
+      0 4px 12px rgba(0, 0, 0, 0.125);
+    transform: scale(1.0625);
   }
   &:before {
     content: counter(li);
@@ -34,12 +39,12 @@ const Item = Card.withComponent('li').extend`
     position: absolute;
     right: ${({ theme }) => theme.space[3]}px;
     width: 1.25rem;
-    height: 1.25rem;
+    line-height: 1.25rem;
     border-radius: .75rem;
     background-color: ${({ theme }) => theme.colors.white};
     color: ${({ theme }) => theme.colors.black};
     font-size: ${({ theme }) => theme.fontSizes[0]}px;
-    letter-spacing: -.02em;
+    letter-spacing: -.125em;
     text-align: center;
     text-shadow: none;
     font-weight: bold;
@@ -61,12 +66,7 @@ const WorkshopItem = ({
   ...props
 }) => (
   <Link to={slug} {...props}>
-    <Item
-      p={3}
-      boxShadowSize="md"
-      bg="accent"
-      style={{ backgroundImage: `url('${bg}')` }}
-    >
+    <Item p={3} bg="accent" style={{ backgroundImage: `url('${bg}')` }}>
       <Heading.h3 color="white" f={3} children={name} />
       <Text color="snow" f={2} children={description} />
     </Item>

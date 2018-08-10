@@ -30,7 +30,8 @@ const Sponsors = props => (
       'Stripe',
       'Segment',
       'Bugsnag',
-      'Google'
+      'Google',
+      'Dialpad'
     ].map(name => <Sponsor name={name} key={name} />)}
   </Base>
 )

@@ -16,6 +16,7 @@ import {
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
+import Name from 'components/Name'
 import IconButton from 'components/IconButton'
 import Form from 'components/challenge/Form'
 import Ended from 'components/challenge/Ended'
@@ -132,6 +133,7 @@ const HeaderContainer = Container.extend`
                 'info form';
               ${HeaderAreaText} {
                 text-align: right;
+                margin-right: -${({ theme }) => theme.space[2]}px;
               }
             `
           : css`
@@ -166,7 +168,7 @@ const HeaderAreaForm = styled(HeaderCard)`
   grid-area: form;
 `
 
-const Title = styled(Flex)`
+const SubmissionsHeading = styled(Flex)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
 `
 
@@ -227,12 +229,17 @@ export default class extends Component {
             success={status === 'success'}
           >
             <HeaderAreaText align="center" mt={3}>
-              <Text color="pink.0" mb={[-2, -3]} f={3} bold caps>
-                Hack Club
+              <Name f={6}>Challenge</Name>
+              <Text
+                color="rgba(255, 255, 255, 0.875)"
+                f={[3, 4]}
+                mt={2}
+                mx={3}
+                bold
+                caps
+              >
+                By Hack Club
               </Text>
-              <Heading.h1 f={[6, 7]} my={0}>
-                Challenge
-              </Heading.h1>
             </HeaderAreaText>
             <HeaderAreaInfo>
               <Text f={2}>
@@ -263,7 +270,7 @@ export default class extends Component {
         </Header>
         <Container maxWidth={48} pt={4} pb={5} px={[0, 3]}>
           {ended && <Ended />}
-          <Title align="center" pb={2} px={[2, 0]}>
+          <SubmissionsHeading align="center" pb={2} px={[2, 0]}>
             <Flex align="center" flex="1 1 auto" wrap>
               <Heading.h2 color="black" f={5} mr={2}>
                 Submissions
@@ -292,7 +299,7 @@ export default class extends Component {
                 ))}
               </DropdownMenu>
             </DropdownContainer>
-          </Title>
+          </SubmissionsHeading>
           <Posts
             challengeId={challenge.id}
             userId={userId}

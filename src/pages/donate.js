@@ -245,7 +245,7 @@ export default () => (
         </Text>
         <Text my={3} {...subtext}>
           You deserve to know exactly where your contribution will go—so{' '}
-          <A href="https://github.com/hackclub/ledger" bold>
+          <A href="https://github.com/hackclub/ledger">
             all of our financials are public
           </A>.
         </Text>
@@ -302,21 +302,21 @@ export default () => (
           We accept donations of time, technical or hard science fiction books,
           stocks/other securities, and cryptocurrency.
         </Text>
+        <Text my={3} {...subtext}>
+          Please get in touch at{' '}
+          <A href="mailto:donate@hackclub.com">donate@hackclub.com</A> if you’re
+          interested in making a contribution with an unsupported token or
+          have any questions.
+        </Text>
         <Box>
           <Button
             href="https://commerce.coinbase.com/checkout/ae7ad42d-0dcd-4e9d-8dc7-ba78648a58cd"
             target="_blank"
             bg="info"
           >
-            Donate with Crypto
+            Donate now with popular cryptocurrencies »
           </Button>
         </Box>
-        <Text my={3} {...subtext}>
-          Please get in touch at{' '}
-          <A href="mailto:donate@hackclub.com">donate@hackclub.com</A> if you’re
-          interested in making a contribution with another token or have any
-          questions.
-        </Text>
       </Container>
     </Container>
     <Flex justify="center" bg="snow">

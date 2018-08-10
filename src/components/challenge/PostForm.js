@@ -11,7 +11,7 @@ const statusMessage = status =>
         success: 'Success!',
         error: 'Something went wrong 🚨'
       }[status]
-    : 'Post your project'
+    : 'Submit your entry'
 const statusColor = status =>
   status === 'success' || status === 'error' ? status.toString() : 'info'
 const InnerForm = ({
@@ -56,7 +56,6 @@ const InnerForm = ({
       onBlur={handleBlur}
       error={touched.url && errors.url}
       bg="white"
-      mb={3}
     />
     <Submit
       disabled={isSubmitting}

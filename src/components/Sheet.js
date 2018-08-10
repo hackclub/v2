@@ -3,6 +3,7 @@ import { Card, Container } from '@hackclub/design-system'
 import PropTypes from 'prop-types'
 
 const Sheet = styled(Card.withComponent(Container))`
+  position: relative;
   border-radius: ${({ theme }) => theme.radii[2]};
   ${props =>
     !props.flat &&

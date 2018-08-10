@@ -10,8 +10,8 @@ const IconButton = ({ is = Button, name, size = 24, children, ...props }) => {
   `
   return (
     <Component {...props}>
-      <Icon color="inherit" name={name} size={size} />
-      {children && <Text.span ml={1} children={children} />}
+      <Icon color="inherit" name={name} size={size} mr={1} />
+      {children && <Text.span children={children} />}
     </Component>
   )
 }

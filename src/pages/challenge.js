@@ -16,6 +16,7 @@ import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import Name from 'components/Name'
+import Sheet from 'components/Sheet'
 import IconButton from 'components/IconButton'
 import Help from 'components/challenge/Help'
 import Form from 'components/challenge/Form'
@@ -80,24 +81,27 @@ const HeaderContainer = Container.extend`
   }
 `
 
-const HeaderCard = styled(Card)`
+const HeaderCard = styled(Sheet).attrs({ p: 3 })`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
   h2,
   p {
     color: ${({ theme }) => theme.colors.black} !important;
   }
 `
-HeaderCard.defaultProps = {
-  boxShadowSize: 'md',
-  p: 3,
-  bg: 'pink.0',
-  align: 'left'
-}
 
 const HeaderAreaText = styled(Box)`
   grid-area: text;
 `
 const HeaderAreaInfo = styled(HeaderCard)`
   grid-area: info;
+  ${({ theme }) => theme.mediaQueries.md} {
+    p {
+      line-height: 1.75;
+    }
+  }
 `
 const HeaderAreaForm = styled(HeaderCard)`
   grid-area: form;
@@ -159,7 +163,7 @@ export default class extends Component {
         <Header py={0} px={3}>
           <HeaderContainer
             pt={[4, 5]}
-            pb={[3, 4]}
+            pb={3}
             align="left"
             success={status === 'success'}
           >
@@ -182,7 +186,7 @@ export default class extends Component {
                 <br />
                 🎁 {challenge.description}
                 <br />
-                ℹ️ Submissions open to Hack Club community members
+                ℹ️ Competition open to Hack Club community members
                 <br />
                 📖{' '}
                 <Link

@@ -236,8 +236,8 @@ export default () => (
     <Banner mt={0}>
       <Headline>A powerful toolbox for organizing your event.</Headline>
       <Lead maxWidth={32}>
-        We’ve got all the tools to start getting your event ready, from domain
-        email to legal forms.
+        We’ve got all the tools to start getting your event ready, from
+        emails with custom domains to legal forms.
       </Lead>
     </Banner>
     <Modules>
@@ -303,9 +303,9 @@ export default () => (
         </CTA>
       </Join>
       <BankStats />
-      <Lead maxWidth={32} color="slate" f={1} mt={3}>
-        Hack Club does not directly provide banking services. Banking services
-        provided by Silicon Valley Bank, an FDIC-certified institution.
+      <Lead maxWidth={26} color="slate" f={1} mt={3}>
+        Hack Club Bank is not a bank. Underlying banking services provided by
+        Silicon Valley Bank, an FDIC-certified institution.
       </Lead>
     </Container>
   </Base>

@@ -9,34 +9,34 @@ import {
   Input,
   Label,
   LargeButton,
+  Icon,
   Text,
   colors
 } from '@hackclub/design-system'
 import { Prompt } from 'react-router'
 import MarkdownRenderer from 'components/MarkdownRenderer'
+import styled from 'styled-components'
 
-const SaveStatusText = Text.extend.attrs({
-  f: [1, 3],
-  p: 1,
-  m: 2,
-  bg: 'white',
-  children: props => (props.saved ? 'Saved' : 'Saving…'),
-  color: props => (props.saved ? 'slate' : 'primary')
-})`
+const SaveBaseIcon = styled(Icon)`
   position: fixed;
   bottom: 0;
   left: 0;
-  border-style: solid;
-  border-width: 1px;
-  border-color: ${props =>
-    props.theme.colors[props.saved ? 'slate' : 'primary']};
-  border-radius: 4px;
-  opacity: ${props => (props.saved ? 0 : 1)};
+  opacity: ${props => (props.saved ? 0 : 0.25)};
   transition-duration: ${props => (props.saved ? 2 : 1)}s;
   transition-delay: ${props => (props.saved ? 4 : 0)}s;
   transition-property: opacity;
   transition-timing-function: ease-in-out;
 `
+
+const SaveStatusIcon = ({saved}) => (
+  <SaveBaseIcon
+    name={saved ? 'cloud_done' : 'cloud_upload'}
+    color={saved ? 'slate' : 'slate'}
+    size={32}
+    m={2}
+    saved={saved}
+    />
+)
 
 const SaveStatusLine = Box.extend`
   width: 100%;
@@ -54,7 +54,7 @@ const SaveStatusLine = Box.extend`
 
 const SaveStatus = ({ saved, type = 'all' }) => (
   <Fragment>
-    {['all', 'text'].indexOf(type) !== -1 && <SaveStatusText saved={saved} />}
+    {['all', 'text'].indexOf(type) !== -1 && <SaveStatusIcon saved={saved} />}
     {['all', 'underline'].indexOf(type) !== -1 && (
       <SaveStatusLine saved={saved} />
     )}

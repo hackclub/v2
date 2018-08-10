@@ -8,9 +8,21 @@ const Root = styled(Sheet)`
   align-items: center;
 `
 
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`
+const Hourglass = styled(Icon)`
+  animation: ${spin} 4s linear infinite;
+`
+
 const Ended = () => (
-    <Icon name="hourglass_empty" size={48} mr={[2, 3]} color="warning" />
   <Root maxWidth={36} bg="teal.1" p={[2, 3]} mb={4}>
+    <Hourglass name="hourglass_empty" size={48} mr={[2, 3]} color="teal.6" />
     <Box color="teal.9">
       <Text f={3} bold>
         This challenge has ended.

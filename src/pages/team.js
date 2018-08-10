@@ -25,7 +25,6 @@ const Header = Section.withComponent('header').extend`
         ${({ theme }) => theme.colors.red[5]}
       )
       repeat;
-  clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 95%);
 `
 
 const Base = styled(Container)`
@@ -63,8 +62,7 @@ export default () => (
     />
     <style
       children={`body {
-        background-image:
-          linear-gradient(to bottom,${cx('white')},${cx('snow')});
+        background: ${cx('snow')};
       }`}
     />
     <Nav />
@@ -87,42 +85,42 @@ export default () => (
         name="Zach Latta"
         role="Executive Director"
         text="Zach dropped out of high school after his freshman year to work in the technology industry and had over 5 million people using his software by the time he turned 17. He founded Hack Club to build the program he wish he had in high school and has been awarded the Thiel Fellowship and Forbes 30 Under 30 for his work."
-        bg="red"
+        pronouns="he/him"
       />
       <Bio
         img="/team/max.jpg"
         name="Max Wofford"
         role="Operations"
         text="After teaching himself to code in junior year of high school, Max joined a group of nomadic hackers in Costa Rica to experience coding in a real-world setting. He has been with Hack Club since day one and is now working full-time in San Francisco to grow the movement."
-        bg="yellow"
+        pronouns="he/him"
       />
       <Bio
         img="/team/lachlan.jpg"
         name="Lachlan Campbell"
         role="Web Designer"
         text="Lachlan, a club leader from State College, PA, joined the team to work on Hack Club’s website. They care about bringing coding to more people and making tools to make information more accessible."
-        bg="blue"
+        pronouns="they/them"
       />
       <Bio
         img="/team/mingjie.jpg"
         name="Mingjie Jiang"
         role="Social Media"
         text="Mingjie leads a local club at Wootton High School in Rockville, Maryland. Aside from trying to engage more students into the world of hacking, he also cares about building a unique public identity for Hack Club."
-        bg="orange"
+        pronouns="he/him"
       />
       <Bio
         img="/team/athul.jpg"
         name="Athul Blesson"
         role="Indian Region"
         text="Athul leads some of the largest Hack Clubs in India. After graduating from high school, he joined as the Regional Manager in India, where he actively leads over a dozen clubs."
-        bg="violet"
+        pronouns="he/him"
       />
       <Bio
         img="/team/orpheus.jpg"
         name="Prophet Orpheus"
         role="Mascot"
         text="Prophet Orpheus is Hack Club’s mascot who takes the form of a nondescript dinosaur. She is always working to help more students to learn to code, and has always been the most active contributor of Hack Club."
-        bg="gray"
+        pronouns="she/her"
       />
     </Base>
     <Updates p={[3, 4]} maxWidth={36} mb={5}>

@@ -10,10 +10,10 @@ const Root = styled(Sheet)`
 `
 
 const DiscussChallenge = () => (
-  <Root maxWidth={36} mt={[3, 4]} p={[2, 3]} bg="red.0">
+  <Root maxWidth={36} mt={[3, 4]} p={[2, 3]} bg="pink.0">
     <Flex align="center" flex="1 1 auto" mb={[3, 0]}>
-      <Icon name="forum" size={32} mr={[2, 3]} color="primary" />
-      <Box align="left" color="primary">
+      <Icon name="forum" size={48} mr={[2, 3]} color="pink.5" />
+      <Box align="left" color="pink.6">
         <Text f={2}>Join the conversation</Text>
         <Text f={3} bold>
           #challenges

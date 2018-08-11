@@ -48,7 +48,7 @@ class DiscussOnSlack extends Component {
     const Tag =
       is === 'button' ? SocialButton.withComponent('button') : SocialButton
     return (
-      <Tag {...props} service="slack" onClick={this.toggle}>
+      <Tag bg="pink.5" {...props} service="slack" onClick={this.toggle}>
         <Box mr={2} />
         Discuss on Slack
       </Tag>

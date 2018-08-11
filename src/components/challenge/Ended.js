@@ -22,7 +22,7 @@ const Hourglass = styled(Icon)`
 
 const Ended = () => (
   <Root maxWidth={36} bg="teal.1" p={[2, 3]} mb={4}>
-    <Hourglass name="hourglass_empty" size={48} mr={[2, 3]} color="teal.6" />
+    <Hourglass name="hourglass_empty" size={48} mr={[2, 3]} color="teal.8" />
     <Box color="teal.9">
       <Text f={3} bold>
         This challenge has ended.

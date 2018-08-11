@@ -59,8 +59,6 @@ const DonateSheet = styled(Sheet)`
 
 const Financials = styled(Sheet)`
   display: grid;
-  border-radius: ${({ theme }) => theme.radius};
-
   ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: 2fr 3fr;
   }
@@ -277,14 +275,13 @@ export default () => (
                   f={6}
                   value={commaNumber(stats.monthly)}
                   label="monthly spend"
-                  mb={3}
                   w={1}
                 />
-                <Stat f={6} mb={2} value={stats.club} label="per club" />
+                <Stat f={6} mt={3} mb={2} value={stats.club} label="per club" />
                 <Stat f={6} value={stats.student} label="per student" />
               </Stats>
             </Box>
-            <Box bg="snow" p={[3, 4]}>
+            <Box p={[3, 4]}>
               <Heading.h3 f={4} my={0} caps>
                 Spending breakdown
               </Heading.h3>

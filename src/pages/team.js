@@ -15,6 +15,7 @@ import Link from 'gatsby-link'
 import Nav from 'components/Nav'
 import Name from 'components/Name'
 import Bio from 'components/Bio'
+import Sheet from 'components/Sheet'
 import Footer from 'components/Footer'
 
 const Header = Section.withComponent('header').extend`
@@ -36,12 +37,24 @@ const Base = styled(Container)`
   }
 `
 
-const Updates = Section.withComponent(Container).extend`
-  background: url('/pattern.svg') ${({ theme }) => theme.colors.white};
-  box-shadow: ${({ theme }) => theme.boxShadows[1]};
-  border-radius: ${({ theme }) => theme.radius};
+const Updates = styled(Sheet)`
+  display: grid;
+  grid-gap: ${({ theme }) => theme.space[3]}px;
+  align-items: flex-start;
+  ${({ theme }) => theme.mediaQueries.md} {
+    grid-template-columns: 1fr auto;
+  }
 `
-const UpdateLink = Button.withComponent(Link)
+const UpdateLink = styled(Button.withComponent(Link)).attrs({
+  caps: true,
+  scale: true,
+  chevronRight: true,
+  bg: 'info',
+  color: 'white',
+  py: 3,
+  px: 4,
+  f: 2
+})``
 
 const title = 'Hack Club Team'
 const description =
@@ -123,13 +136,16 @@ export default () => (
         pronouns="she/her"
       />
     </Base>
-    <Updates p={[3, 4]} maxWidth={36} mb={5}>
-      <Heading.h2 color="black" f={[4, 5]}>
-        What’ve we been doing recently?
-      </Heading.h2>
-      <UpdateLink to="/updates" bg="info" mt={3} chevronRight>
-        Watch monthly updates
-      </UpdateLink>
+    <Updates maxWidth={48} align="left" bg="black">
+      <Container maxWidth={32} mx={0}>
+        <Heading.h2 f={[3, 4]} color="white">
+          What’ve we been doing recently?
+        </Heading.h2>
+        <Text color="smoke">
+          Check out our monthly update videos to see our recent work.
+        </Text>
+      </Container>
+      <UpdateLink to="/updates">Watch now</UpdateLink>
     </Updates>
     <Footer />
   </Fragment>

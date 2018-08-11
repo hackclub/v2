@@ -32,21 +32,8 @@ const Base = styled(Box)`
 const CTA = styled(LargeButton).attrs({ bg: 'teal.6', fontSize: 2 })`
   background: ${theme.gradient('teal.5', 'teal.7')};
 `
-<<<<<<< HEAD
-=======
-CTA.defaultProps = {
-  target: '_blank',
-  scale: true,
-  chevronRight: true,
-  bg: 'teal.6',
-  color: 'white',
-  py: 3,
-  px: 4,
-  f: 2
-}
->>>>>>> Use Sheet for Bank Join
 
-const Modules = Container.extend`
+const Modules = styled(Container)`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   grid-gap: ${({ theme }) => theme.space[3]}px;
@@ -73,29 +60,32 @@ Modules.defaultProps = {
 const Megaline = Heading.h1.extend.attrs({
   f: [6, 7],
   color: 'white'
-})`line-height: 1.125;`
-const Headline = Heading.h2.extend.attrs({
+})`
+  line-height: 1.125;
+`
+const Headline = styled(Heading.h2).attrs({
   f: [5, 6],
   mb: 3,
   color: 'snow',
   bold: true
-})`line-height: 1.125;`
+})`
+  line-height: 1.125;
+`
 const subhline = { f: [3, 4], style: { lineHeight: '1.375' } }
 
 const Lead = Container.withComponent(Text)
 Lead.defaultProps = { f: 3, mx: 'auto' }
 
-const Banner = Container.extend``
-Banner.defaultProps = {
+const Banner = styled(Container).attrs({
   maxWidth: 48,
   mt: 5,
   mb: [3, 4],
   mx: 'auto',
   px: 3,
   align: ['left', 'center']
-}
+})
 
-const Join = Sheet.extend`
+const Join = styled(Sheet)`
   display: grid;
   grid-gap: ${({ theme }) => theme.space[3]}px;
   align-items: flex-start;
@@ -104,7 +94,7 @@ const Join = Sheet.extend`
   }
 `
 
-const Breakdown = Box.extend`
+const Breakdown = styled(Box)`
   div {
     width: 100%;
     display: block;

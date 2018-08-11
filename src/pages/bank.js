@@ -1,63 +1,24 @@
 import React, { Component, Fragment } from 'react'
+import styled from 'styled-components'
 import {
   Box,
   Flex,
   Container,
   Text,
   Heading,
-  Button,
+  LargeButton,
   Link as A,
   Card,
-  Image
+  Image,
+  theme
 } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Module from 'components/Module'
-import api from 'api'
-import { timeSince } from 'helpers'
+import BankStats from 'components/bank/BankStats'
 
-class BankStats extends Component {
-  state = {}
-
-  loadStats() {
-    api.get('https://bank.hackclub.com/transactions/stats').then(stats => {
-      const volumeString = (stats.total_volume / 100).toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD'
-      })
-      this.setState({ transactionsTotalVolume: volumeString })
-    })
-  }
-  loadStats = this.loadStats.bind(this)
-
-  componentDidMount() {
-    this.loadStats()
-    const intervalId = setInterval(this.loadStats, 10000)
-    this.setState({ intervalId })
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.state.intervalId)
-  }
-
-  render() {
-    const { transactionsTotalVolume } = this.state
-    const launchDate = '2018-06-28'
-    if (transactionsTotalVolume) {
-      return (
-        <Text maxWidth={32} f={3} my={4}>
-          {transactionsTotalVolume} transacted in the past{' '}
-          {timeSince(launchDate, true, new Date(), true)} & counting.
-        </Text>
-      )
-    } else {
-      return null
-    }
-  }
-}
-
-const Base = Box.extend`
+const Base = styled(Box)`
   background-color: #111;
   width: 100%;
   max-width: 100vw;
@@ -67,16 +28,9 @@ const Base = Box.extend`
   background-size: 2rem 2rem;
 `
 
-const CTA = Button.extend`
-  text-transform: uppercase;
+const CTA = styled(LargeButton).attrs({ bg: 'teal.6', fontSize: 2 })`
+  background: ${theme.gradient('teal.5', 'teal.7')};
 `
-CTA.defaultProps = {
-  bg: 'teal.6',
-  color: 'white',
-  py: 3,
-  px: 4,
-  f: 2
-}
 
 const Modules = Container.extend`
   display: grid;
@@ -101,19 +55,6 @@ Modules.defaultProps = {
   maxWidth: 64,
   align: ['left', 'center']
 }
-
-const Internal = A.withComponent(Link).extend.attrs({ color: 'inherit' })``
-
-const Alt = Container.withComponent(Flex).extend.attrs({
-  maxWidth: 64,
-  px: 3,
-  flexDirection: 'column'
-})`text-align: left;`
-const AltBox = Box.extend.attrs({ my: 4 })`
-  max-width: 36rem;
-`
-const AltLeft = AltBox.extend``
-const AltRight = AltBox.extend.attrs({ ml: 'auto' })``
 
 const Megaline = Heading.h1.extend.attrs({
   f: [6, 7],

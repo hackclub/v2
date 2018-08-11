@@ -16,6 +16,7 @@ import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Module from 'components/Module'
+import Sheet from 'components/Sheet'
 import BankStats from 'components/bank/BankStats'
 
 const Base = styled(Box)`
@@ -31,6 +32,19 @@ const Base = styled(Box)`
 const CTA = styled(LargeButton).attrs({ bg: 'teal.6', fontSize: 2 })`
   background: ${theme.gradient('teal.5', 'teal.7')};
 `
+<<<<<<< HEAD
+=======
+CTA.defaultProps = {
+  target: '_blank',
+  scale: true,
+  chevronRight: true,
+  bg: 'teal.6',
+  color: 'white',
+  py: 3,
+  px: 4,
+  f: 2
+}
+>>>>>>> Use Sheet for Bank Join
 
 const Modules = Container.extend`
   display: grid;
@@ -81,7 +95,7 @@ Banner.defaultProps = {
   align: ['left', 'center']
 }
 
-const Join = Card.withComponent(Container).extend`
+const Join = Sheet.extend`
   display: grid;
   grid-gap: ${({ theme }) => theme.space[3]}px;
   align-items: flex-start;
@@ -139,12 +153,7 @@ export default () => (
       </Lead>
     </Box>
     <Flex justify="center" mb={[3, 4]}>
-      <CTA
-        href="https://medium.com/hackclub/a-bank-for-student-hackers-e5d894ea5375"
-        target="_blank"
-        scale
-        chevronRight
-      >
+      <CTA href="https://medium.com/hackclub/a-bank-for-student-hackers-e5d894ea5375">
         Read the announcement
       </CTA>
     </Flex>
@@ -224,25 +233,18 @@ export default () => (
       />
     </Modules>
     <Container maxWidth={48} pt={4} pb={[4, 5]} px={3}>
-      <Join align="left" bg="black" p={[3, 4]}>
+      <Join align="left" bg="black">
         <Container maxWidth={32} mx={0}>
           <Heading.h2 {...subhline} color="white">
             Ready to join Hack Club Bank?
           </Heading.h2>
-          <Text>
+          <Text color="smoke">
             You can join immediately with an invitation from an existing Bank
             user or a member of the Hack Club community. Otherwise, tell us
             about your event and we’ll get back to you within two weeks.
           </Text>
         </Container>
-        <CTA
-          href="https://goo.gl/forms/1UzFR4zkljL7dHQ32"
-          target="_blank"
-          scale
-          chevronRight
-        >
-          Apply
-        </CTA>
+        <CTA href="https://goo.gl/forms/1UzFR4zkljL7dHQ32">Apply</CTA>
       </Join>
       <BankStats />
       <Lead maxWidth={26} color="slate" f={1} mt={3}>

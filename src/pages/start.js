@@ -123,7 +123,9 @@ export default () => (
         <Text f={3} bold>
           Fall 2018 applications due by September 30th
         </Text>
-        <Text f={2}>Applications accepted on a rolling basis</Text>
+        <Text f={2}>
+          Applications are open and accepted on a rolling basis.
+        </Text>
       </Notification>
       <Container maxWidth={56} p={[2, 3]} mb={[5, 6]}>
         <Heading.h1 {...styles.ultraline} color="white">

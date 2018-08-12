@@ -52,12 +52,16 @@ const Start = ({ mt = '-4rem', buttonProps = {}, ...props }) => (
       </Text>
     </Box>
     <Box align={['center', null, 'left']} p={3}>
-      <LargeButton.link
-        to="/start"
-        inverted
-        children="Get started »"
-        {...buttonProps}
-      />
+      <Box align="center" style={{display: 'inline-block'}}>
+        <LargeButton.link
+          my={2}
+          to="/start"
+          inverted
+          children="Get started »"
+          {...buttonProps}
+        />
+        <Text>Applications due Sept 30th</Text>
+      </Box>
     </Box>
     <style children="footer{margin-top:-5rem;padding-top:8rem !important}" />
   </Base>

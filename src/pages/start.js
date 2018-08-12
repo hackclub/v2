@@ -33,6 +33,9 @@ const PhotoSection = styled(Section)`
   background-size: cover;
   ${shadows};
 `
+PhotoSection.defaultProps = {
+  py: 4
+}
 
 const Modules = styled(Box)`
   display: grid;
@@ -62,8 +65,8 @@ const Notification = styled(Flex)`
 Notification.defaultProps = {
   py: 3,
   px: 4,
-  mb: 6,
-  mt: 3,
+  mb: 3,
+  mt: 5,
   mx: 2,
   align: 'center',
   justify: 'center',
@@ -115,8 +118,14 @@ export default () => (
       ]}
     />
     <Nav />
-    <PhotoSection src="/lah_2.jpg" style={{ padding: 0 }}>
-      <Container maxWidth={56} p={[2, 3]} mt={[5, 6]}>
+    <PhotoSection src="/lah_2.jpg">
+      <Notification>
+        <Text f={3} bold>
+          Fall 2018 applications due by September 30th
+        </Text>
+        <Text f={2}>Applications accepted on a rolling basis</Text>
+      </Notification>
+      <Container maxWidth={56} p={[2, 3]} mb={[5, 6]}>
         <Heading.h1 {...styles.ultraline} color="white">
           Let’s get started.
         </Heading.h1>
@@ -125,12 +134,6 @@ export default () => (
           Club with an existing CS club, we should talk.
         </Heading.h2>
       </Container>
-      <Notification>
-        <Text f={3} bold>
-          Fall 2018 applications are open until September 30th
-        </Text>
-        <Text f={2}>Applications accepted on a rolling basis</Text>
-      </Notification>
     </PhotoSection>
     <Row my={[3, 4]}>
       <Box color="black">

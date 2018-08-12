@@ -125,7 +125,7 @@ export default () => (
     <PhotoSection src="/lah_2.jpg" style={{ padding: 0 }}>
       <Container maxWidth={56} p={[2, 3]} mt={[5, 6]} mb={[4, 5]}>
         <Heading.h1 {...styles.ultraline} color="white">
-          Let's get started.
+          Let’s get started.
         </Heading.h1>
         <Heading.h2 {...styles.subhline} color="white" f={[4, 5]} mt={3} mb={4}>
           Whether you're interested in starting a new chapter or joining Hack

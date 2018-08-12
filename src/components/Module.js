@@ -7,14 +7,19 @@ const Module = ({ icon, heading, name, body, lg, ...props }) => (
     <Icon
       size={lg ? 64 : 48}
       mr={[3, null, 0]}
-      mb={1}
+      mb={lg ? 2 : 1}
       name={icon}
       color={props.color || 'inherit'}
       style={{ flexShrink: 0 }}
     />
     <div>
       <Heading.h3 mb={1} f={lg ? [4, 5] : 3} children={heading || name} />
-      <Text m={0} f={lg ? 3 : 2} children={body} />
+      <Text
+        m={0}
+        f={lg ? [3, 4] : 2}
+        style={{ lineHeight: '1.375' }}
+        children={body}
+      />
     </div>
   </Flex>
 )

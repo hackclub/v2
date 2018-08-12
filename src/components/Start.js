@@ -46,6 +46,7 @@ const Start = ({ buttonProps = {}, ...props }) => (
         children="Get started"
         chevronRight
         fontSize={[3, 4]}
+        scale
         {...buttonProps}
       />
     </Box>

@@ -167,7 +167,7 @@ export default class extends Component {
             align="left"
             success={status === 'success'}
           >
-            <HeaderAreaText align="center" mt={3}>
+            <HeaderAreaText align="center" pt={[4, 3]}>
               <Name f={6}>Challenge</Name>
               <Text
                 color="rgba(255, 255, 255, 0.875)"

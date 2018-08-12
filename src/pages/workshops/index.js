@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react'
+import styled from 'styled-components'
 import {
   Box,
-  Button,
+  LargeButton,
   Container,
   Card,
   Flex,
@@ -14,6 +15,7 @@ import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
 import Name from 'components/Name'
+import IconButton from 'components/IconButton'
 import Footer from 'components/Footer'
 import Track from 'components/workshops/Track'
 import WorkshopSearch from 'components/workshops/WorkshopSearch'
@@ -27,18 +29,12 @@ import {
   toPairs
 } from 'lodash'
 
-A.link = A.withComponent(Link)
-
-const Base = Box.main.extend`
-  display: grid;
+const Base = styled(Box.main)`
   position: relative;
-  ${({ theme }) => theme.mediaQueries.md} {
-    grid-template-columns: 20rem 1fr;
-  }
 `
 
-const Background = Section.extend`
-  justify-content: flex-start;
+const Background = styled(Section)`
+  justify-content: center;
   background-color: ${({ theme }) => theme.colors.red[5]};
   background-image: url('/pattern.svg'),
     linear-gradient(
@@ -47,23 +43,32 @@ const Background = Section.extend`
       ${({ theme }) => theme.colors.red[5]},
       ${({ theme }) => theme.colors.red[6]}
     );
-  ${({ theme }) => theme.mediaQueries.md} {
-    min-height: 100vh;
-  }
+  color: ${({ theme }) => theme.colors.white};
 `
 
-const Super = Text.withComponent('mark').extend`
-  background: transparent url(/underline.svg) bottom left no-repeat;
-  background-size: 100% 0.5rem;
-  padding-bottom: 0.125rem;
-`
-const SuperButton = Button.withComponent(Link).extend`
-  background-color: ${({ theme }) => theme.colors.fuschia[6]};
+const attrs = {
+  is: LargeButton.withComponent(Link),
+  m: 2,
+  scale: true,
+  chevronRight: true,
+  py: 3,
+  px: 4,
+  f: 2
+}
+const SubmitButton = styled(IconButton).attrs(attrs)`
+  text-transform: uppercase;
   background-image: linear-gradient(
-    -32deg,
-    ${({ theme }) => theme.colors.fuschia[5]},
-    ${({ theme }) => theme.colors.red[5]},
-    ${({ theme }) => theme.colors.red[6]}
+    to bottom,
+    ${({ theme }) => theme.colors.cyan[6]},
+    ${({ theme }) => theme.colors.blue[6]}
+  );
+`
+const PhilosophyButton = styled(IconButton).attrs(attrs)`
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    to bottom,
+    ${({ theme }) => theme.colors.yellow[5]},
+    ${({ theme }) => theme.colors.orange[5]}
   );
 `
 
@@ -93,46 +98,39 @@ export default ({
           { property: 'og:url', content: 'https://hackclub.com/workshops' }
         ]}
       />
-      <Nav color="muted" fixed />
+      <Nav color="white" />
       <Base>
-        <Background p={[3, 2]}>
-          <Box.header align="center" mt={[4, 5]}>
+        <Background p={3}>
+          <Box.header align="center" pt={[4, 3]} pb={[3, 0]}>
             <Name f={6}>Workshops</Name>
-            <Text f={[3, 4]} mt={2} mb={3} bold caps>
+            <Text color="red.0" f={[3, 4]} mt={2} bold caps>
               By Hack Club
             </Text>
-            <Heading.h2 color="red.0" f={4} px={2} regular mb={[4, 5]}>
-              Making leads to learning.
-            </Heading.h2>
-            <Card bg="red.0" p={3} boxShadowSize="md">
-              <Text f={4} color="red.6" style={{ lineHeight: '1.25' }}>
-                Coding is a <Super color="warning">superpower</Super>.<br />
-                So let’s start building.
-              </Text>
-              <SuperButton
-                mt={3}
-                to="/philosophy"
-                children="Our philosophy »"
-              />
-            </Card>
-          </Box.header>
-        </Background>
-        <Box.article bg="white" pt={3}>
-          <Container maxWidth={48} pt={[3, 5]} pb={[4, 5]} px={3}>
             <Text
-              color="black"
-              f={4}
-              mb={4}
-              style={{ lineHeight: '1.25', maxWidth: '42rem' }}
+              f={[3, 4]}
+              color="white"
+              mx="auto"
+              mt={2}
+              mb={3}
+              style={{ lineHeight: '1.25', maxWidth: '36rem' }}
             >
               Learn to code with this collection of community-contributed,
-              self-guided coding tutorials and project ideas.{' '}
-              <A.link to="/workshops/submit">Write one »</A.link>
+              self-guided coding tutorials + ideas.
             </Text>
-            <WorkshopSearch workshops={edges} />
-          </Container>
-          <Footer />
-        </Box.article>
+            <SubmitButton
+              name="new"
+              to="/workshops/submit"
+              children="Submit your own"
+            />
+            <PhilosophyButton
+              name="notes"
+              to="/philosophy"
+              children="Our philosophy"
+            />
+          </Box.header>
+        </Background>
+        <WorkshopSearch workshops={edges} />
+        <Footer />
       </Base>
     </Fragment>
   )

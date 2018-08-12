@@ -59,14 +59,12 @@ Wrapper.defaultProps = {
 
 const Notification = Flex.withComponent(Link).extend`
   border-radius: ${({ theme }) => theme.radius};
-  max-width: 36rem;
   background-color: rgba(255, 255, 255, 0.96875);
   strong {
     font-weight: bold;
   }
 `
 Notification.defaultProps = {
-  w: 1,
   py: 2,
   px: [3, 2],
   mt: [null, -3, -4],
@@ -102,16 +100,16 @@ Action.link = Action.withComponent(Link)
 export default () => (
   <Root>
     <Wrapper>
-      <Notification to="/bank">
-        <Icon size={24} color="slate" name="account_balance" mr={2} />
-        <Flex color="black" f={1} mr={2}>
-          <strong>Announcing Bank</strong>
+      <Notification to="/start">
+        <Icon size={24} color="slate" name="announcement" mr={2} />
+        <Flex color="black" f={[1,3]} mr={2}>
+          <strong>Applications are open!</strong>
           <Hide xs sm ml={1}>
             {'– '}
-            a legal and finance backend for hackathons
+            apply now for fall 2018.
           </Hide>
         </Flex>
-        <Text.span caps color="info" f={1} ml="auto">
+        <Text.span caps color="info" f={1} ml={2}>
           Learn more
         </Text.span>
       </Notification>

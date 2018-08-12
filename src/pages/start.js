@@ -2,7 +2,6 @@ import React, { Fragment } from 'react'
 import {
   BackgroundImage,
   Box,
-  Card,
   Container,
   Flex,
   Heading,
@@ -21,8 +20,7 @@ import Footer from 'components/Footer'
 
 const shadows = `
   h1,
-  h2,
-  p {
+  h2 {
     color: #fff;
     text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
   }
@@ -54,29 +52,24 @@ const Modules = styled(Box)`
   }
 `
 
-const FramedContent = styled(Container)([], shadows)
-const OthersCard = styled(Box)`
-  background-color: rgba(255, 255, 255, 0.625);
-  width: 100vw;
-  left: 0;
-  position: absolute;
-  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    -webkit-backdrop-filter: blur(8px);
-  }
-  ${({ theme }) => theme.mediaQueries.md} {
-    max-width: 28rem;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: ${({ theme }) => theme.radius};
-  }
-  p {
-    color: ${({ theme }) => theme.colors.black};
-    font-size: ${({ theme }) => theme.fontSizes[2]}px;
-    line-height: 1.25;
-    text-shadow: none;
+const Notification = styled(Flex)`
+  border-radius: ${({ theme }) => theme.radius};
+  background-color: rgba(255, 255, 255, 0.9375);
+  strong {
+    font-weight: bold;
   }
 `
+Notification.defaultProps = {
+  py: 3,
+  px: 4,
+  mb: 6,
+  mt: 3,
+  mx: 2,
+  align: 'center',
+  justify: 'center',
+  color: 'slate',
+  flexDirection: 'column'
+}
 
 const Row = Container.extend.attrs({ color: 'black', px: 3, py: [3, 4] })`
   display: grid;
@@ -123,15 +116,21 @@ export default () => (
     />
     <Nav />
     <PhotoSection src="/lah_2.jpg" style={{ padding: 0 }}>
-      <Container maxWidth={56} p={[2, 3]} mt={[5, 6]} mb={[4, 5]}>
+      <Container maxWidth={56} p={[2, 3]} mt={[5, 6]}>
         <Heading.h1 {...styles.ultraline} color="white">
           Let’s get started.
         </Heading.h1>
-        <Heading.h2 {...styles.subhline} color="white" f={[4, 5]} mt={3} mb={4}>
+        <Heading.h2 {...styles.subhline} color="white" f={[4, 5]} mt={3}>
           Whether you're interested in starting a new chapter or joining Hack
           Club with an existing CS club, we should talk.
         </Heading.h2>
       </Container>
+      <Notification>
+        <Text f={3} bold>
+          Applications for Fall 2018 are now open!
+        </Text>
+        <Text f={2}>Read on to learn more</Text>
+      </Notification>
     </PhotoSection>
     <Row my={[3, 4]}>
       <Box color="black">

@@ -105,8 +105,7 @@ export default () => (
         <Flex color="black" f={[1,2]} mr={2}>
           <strong>Applications now open!</strong>
           <Hide xs sm>
-            <Text.span mx={2}>—</Text.span>
-            Apply now for Fall 2018
+            <Text.span ml={1}>Apply now for Fall 2018</Text.span>
           </Hide>
         </Flex>
         <Text.span caps color="info" f={1} mr={1} ml={2}>

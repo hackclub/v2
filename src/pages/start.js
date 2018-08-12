@@ -127,9 +127,9 @@ export default () => (
       </Container>
       <Notification>
         <Text f={3} bold>
-          Applications for Fall 2018 are now open!
+          Fall 2018 applications are open until September 30th
         </Text>
-        <Text f={2}>Read on to learn more</Text>
+        <Text f={2}>Applications accepted on a rolling basis</Text>
       </Notification>
     </PhotoSection>
     <Row my={[3, 4]}>

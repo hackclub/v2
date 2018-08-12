@@ -101,15 +101,15 @@ export default () => (
   <Root>
     <Wrapper>
       <Notification to="/start">
-        <Icon size={24} color="slate" name="announcement" mr={2} />
+        <Icon size={24} color="slate" name="announcement" ml={[0,1]} mr={2} />
         <Flex color="black" f={[1,3]} mr={2}>
-          <strong>Applications are open!</strong>
-          <Hide xs sm ml={1}>
-            {'– '}
-            apply now for fall 2018.
+          <strong>Applications now open!</strong>
+          <Hide xs sm>
+            <Text.span mx={2}>—</Text.span>
+            Apply now for Fall 2018
           </Hide>
         </Flex>
-        <Text.span caps color="info" f={1} ml={2}>
+        <Text.span caps color="info" f={1} mr={1} ml={2}>
           Learn more
         </Text.span>
       </Notification>

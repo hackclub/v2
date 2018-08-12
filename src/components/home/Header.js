@@ -102,7 +102,7 @@ export default () => (
     <Wrapper>
       <Notification to="/start">
         <Icon size={24} color="slate" name="announcement" ml={[0,1]} mr={2} />
-        <Flex color="black" f={[1,3]} mr={2}>
+        <Flex color="black" f={[1,2]} mr={2}>
           <strong>Applications now open!</strong>
           <Hide xs sm>
             <Text.span mx={2}>—</Text.span>

@@ -70,7 +70,7 @@ Notification.defaultProps = {
   mx: 2,
   align: 'center',
   justify: 'center',
-  color: 'slate',
+  color: 'gray.9',
   flexDirection: 'column'
 }
 

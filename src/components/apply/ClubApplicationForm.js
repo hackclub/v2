@@ -21,6 +21,7 @@ import {
 import { withFormik } from 'formik'
 import Link from 'gatsby-link'
 import * as yup from 'yup'
+import api from 'api'
 
 export const clubApplicationSchema = yup.object().shape({
   high_school_name: yup.string().required(),
@@ -53,7 +54,6 @@ const InnerForm = props => {
     handleSubmit,
     isSubmitting,
     id,
-    authToken,
     disableAutosave
   } = props
   return (
@@ -294,21 +294,7 @@ const ClubApplicationForm = withFormik({
   mapPropsToValues: props => props.params,
   enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, props, resetForm }) => {
-    fetch(`${apiUrl}/v1/new_club_applications/${props.id}`, {
-      method: 'PATCH',
-      headers: {
-        Authorization: `Bearer ${props.authToken}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          throw res
-        }
-      })
+    api.patch(`v1/new_club_applications/${props.id}`, { data })
       .then(json => {
         setSubmitting(false)
       })

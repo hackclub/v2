@@ -99,7 +99,7 @@ const InnerForm = props => {
           <Field
             name="high_school_address"
             label="High school’s full address"
-            hint="Please include city, state / province, country, and postal code (if available)."
+            hint="Please include city, state / province, country, and postal code."
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.high_school_address}

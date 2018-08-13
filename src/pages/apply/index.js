@@ -44,7 +44,6 @@ export default class extends Component {
   state = {
     status: 'loading',
     app: undefined,
-    authToken: undefined,
     userId: undefined
   }
 
@@ -55,9 +54,7 @@ export default class extends Component {
       return null
     }
     return api
-      .post(`v1/users/${storage.get('userId')}/new_club_applications`, {
-        authToken: storage.get('authToken')
-      })
+      .post(`v1/users/${storage.get('userId')}/new_club_applications`)
       .then(app => app)
   }
 
@@ -78,9 +75,7 @@ export default class extends Component {
       })
     } else {
       api
-        .get(`v1/users/${storage.get('userId')}/new_club_applications`, {
-          authToken: storage.get('authToken')
-        })
+        .get(`v1/users/${storage.get('userId')}/new_club_applications`)
         .then(json => {
           if (json.length === 0) {
             return this.createNewApplication(true)
@@ -104,10 +99,9 @@ export default class extends Component {
   }
 
   componentDidMount() {
-    const authToken = storage.get('authToken')
     const userId = storage.get('userId')
-    this.setState({ authToken, userId })
-    const needsToAuth = authToken === null || userId === null
+    this.setState({ userId })
+    const needsToAuth = userId === null
 
     if (needsToAuth) {
       this.setState({ status: 'needsToAuth' })
@@ -117,7 +111,7 @@ export default class extends Component {
   }
 
   content() {
-    const { app, status, authToken, userId } = this.state
+    const { app, status, userId } = this.state
     switch (status) {
       case 'needsToAuth':
         return (
@@ -155,7 +149,6 @@ export default class extends Component {
             <Main
               app={app}
               userId={userId}
-              authToken={authToken}
               callback={this.populateApplications}
               resetCallback={this.resetApplication}
             />

@@ -23,6 +23,7 @@ import Status from 'components/apply/Status'
 import fetch from 'unfetch'
 import Link from 'gatsby-link'
 import { timeSince } from 'helpers'
+import api from 'api'
 
 const P = props => <Text my={3} {...props} />
 
@@ -103,7 +104,7 @@ const SectionIcon = styled(Icon).attrs({
 class Section extends Component {
   state = { open: false }
 
-  toggle = e => this.setState(({ open }) => ({ open: !open }))
+  toggle = e => this.setState(({ open }) => ({ open: this.props.to ? open : !open }))
 
   render() {
     const { open } = this.state
@@ -171,7 +172,7 @@ const Main = props => {
     submitted_at,
     point_of_contact_id
   } = props.app
-  const { authToken, callback, app, resetCallback } = props
+  const { callback, app, resetCallback } = props
 
   const leaderProfile = leader_profiles.find(
     profile => profile.user.id == props.userId
@@ -210,89 +211,6 @@ const Main = props => {
   return (
     <Container maxWidth={52} my={4}>
       <Sheet p={[3, 4, 5]}>
-        <Title mb={4} style={{ position: 'relative' }}>
-          Your application to Hack Club is{' '}
-          <SubmitStatus {...submitStatusProps} />
-        </Title>
-
-        {app.rejected_at ? (
-          <Rejected resetCallback={resetCallback} />
-        ) : (
-          <SubmitButton
-            authToken={authToken}
-            applicationId={app.id}
-            status={submitButtonStatus}
-            callback={callback}
-          />
-        )}
-
-        <Section
-          to={`/apply/club?id=${id}`}
-          name={
-            <Fragment>
-              <Text.span bold>Club application</Text.span>
-              <Status type={applicationStatus()} ml={2} />
-            </Fragment>
-          }
-        />
-        <Section
-          to={`/apply/leader?id=${leaderProfile.id}`}
-          name={
-            <Fragment>
-              <Text.span bold>My personal profile</Text.span>
-              <Status type={profileStatus(leaderProfile)} ml={2} />
-            </Fragment>
-          }
-          mb={4}
-        />
-
-        <LeaderInvite id={id} authToken={authToken} callback={callback} />
-
-        {coLeaderProfiles.length === 0 && (
-          <Text py={3} color="muted" align="center" f={3}>
-            <Text.span bold>No co-leaders yet!</Text.span>
-            <br />Tap the green button to add them.
-          </Text>
-        )}
-        {coLeaderProfiles.map(profile => (
-          <Section
-            key={profile.id}
-            sm
-            name={
-              <Fragment>
-                <Text.span children={profile.user.name || profile.user.email} />
-                <Status type={profileStatus(profile)} bg="muted" ml={2} />
-              </Fragment>
-            }
-            openContent={
-              <Text align="right" mb={3}>
-                <Button
-                  onClick={e => {
-                    if (
-                      confirm(
-                        `Are you sure you want to remove ${
-                          profile.user.email
-                        } as a team member?`
-                      )
-                    ) {
-                      api
-                        .delete(`v1/new_club_applications/${id}/remove_user`, {
-                          authToken,
-                          data: { user_id: profile.user.id }
-                        })
-                        .then(json => {
-                          callback()
-                        })
-                    }
-                  }}
-                  children="Remove"
-                />
-              </Text>
-            }
-          />
-        ))}
-      </Sheet>
-      <Sheet p={[3, 4, 5]}>
         <Heading.h3 f={[4, 5]} mb={2}>
           How to get into Hack Club
         </Heading.h3>
@@ -316,6 +234,101 @@ const Main = props => {
           </li>
         </ul>
         <Help />
+      </Sheet>
+      <Sheet p={[3, 4, 5]}>
+        <Section
+          to={`/apply/club?id=${id}`}
+          name={
+            <Fragment>
+              <Text.span bold>Club application</Text.span>
+              <Status type={applicationStatus()} ml={2} />
+            </Fragment>
+          }
+        />
+        <Section
+          to={`/apply/leader?id=${leaderProfile.id}`}
+          name={
+            <Fragment>
+              <Text.span bold>My personal profile</Text.span>
+              <Status type={profileStatus(leaderProfile)} ml={2} />
+            </Fragment>
+          }
+          mb={4}
+        />
+
+        <LeaderInvite id={id} callback={callback} />
+
+        {coLeaderProfiles.length === 0 && (
+          <Text py={3} color="muted" align="center" f={3}>
+            <Text.span bold>No co-leaders yet!</Text.span>
+            <br />Tap the green button to add them.
+          </Text>
+        )}
+        {coLeaderProfiles.map(profile => (
+          <Section
+            key={profile.id}
+            sm
+            name={
+              <Fragment>
+                <Text.span children={profile.user.name || profile.user.email} />
+                <Status type={profileStatus(profile)} bg="muted" ml={2} />
+              </Fragment>
+            }
+            openContent={
+              <Text mb={3} align="right">
+                <Text.span f={3} color="gray.5" mx={1}>
+                  Invited {timeSince(profile.created_at)}.
+                </Text.span>
+                <Text.span f={3} color="gray.5" mx={1}>
+                  {profile.updated_at === null ?
+                    'Not updated yet.' :
+                    `Last updated ${timeSince(profile.updated_at)}.`}
+                </Text.span>
+                { isPoc &&
+                  <Button
+                    m={2}
+                    onClick={e => {
+                      if (
+                        confirm(
+                          `Are you sure you want to remove ${
+                            profile.user.email
+                          } as a team member?`
+                        )
+                      ) {
+                        api
+                          .delete(`v1/new_club_applications/${id}/remove_user`, {
+                            data: { user_id: profile.user.id }
+                          })
+                          .then(json => {
+                            callback()
+                          })
+                          .catch(e => {
+                            alert(e.statusText)
+                          })
+                      }
+                    }}
+                    children="Remove"
+                  />
+                }
+              </Text>
+            }
+          />
+        ))}
+
+          <Title mb={4} style={{ position: 'relative' }}>
+            Your application to Hack Club is{' '}
+            <SubmitStatus {...submitStatusProps} />
+          </Title>
+
+          {app.rejected_at ? (
+            <Rejected resetCallback={resetCallback} />
+          ) : (
+            <SubmitButton
+              applicationId={app.id}
+              status={submitButtonStatus}
+              callback={callback}
+            />
+          )}
       </Sheet>
     </Container>
   )

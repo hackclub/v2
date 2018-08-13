@@ -73,13 +73,15 @@ const Rejected = ({ resetCallback }) => (
   </Box>
 )
 
-const SectionBase = styled(Flex).attrs({
+const SectionBase = styled(Box).attrs({})`
+  border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
+`
+const SectionFlex = styled(Flex).attrs({
   py: 4,
   px: [3, 0],
   mx: [-3, 0],
   align: 'center'
 })`
-  border-top: 1px solid ${({ theme }) => theme.colors.smoke};
   min-height: ${props => (props.sm ? 6 : 10)}rem;
 `
 const SectionHeading = styled(Heading.h2).attrs({
@@ -103,7 +105,8 @@ const SectionIcon = styled(Icon).attrs({
 class Section extends Component {
   state = { open: false }
 
-  toggle = e => this.setState(({ open }) => ({ open: this.props.to ? open : !open }))
+  toggle = e =>
+    this.setState(({ open }) => ({ open: this.props.to ? open : !open }))
 
   render() {
     const { open } = this.state
@@ -111,16 +114,21 @@ class Section extends Component {
     const Element = to ? Link : Fragment
     return (
       <Element to={to}>
-        <SectionBase
-          {...props}
-          onClick={this.toggle}
-          sm={sm}
-          aria-expanded={open}
-        >
-          <SectionHeading sm={sm} children={name} />
-          <SectionIcon open={open} name={to ? 'arrow_forward' : 'more_horiz'} />
+        <SectionBase>
+          <SectionFlex
+            {...props}
+            onClick={this.toggle}
+            sm={sm}
+            aria-expanded={open}
+          >
+            <SectionHeading sm={sm} children={name} />
+            <SectionIcon
+              open={open}
+              name={to ? 'arrow_forward' : 'more_horiz'}
+            />
+          </SectionFlex>
+          {open && openContent}
         </SectionBase>
-        {open && openContent}
       </Element>
     )
   }
@@ -235,6 +243,10 @@ const Main = props => {
         <Help />
       </Sheet>
       <Sheet p={[3, 4, 5]}>
+        <Title my={4} style={{ position: 'relative' }}>
+          Your application to Hack Club is{' '}
+          <SubmitStatus {...submitStatusProps} />
+        </Title>
         <Section
           to={`/apply/club?id=${id}`}
           name={
@@ -252,7 +264,6 @@ const Main = props => {
               <Status type={profileStatus(leaderProfile)} ml={2} />
             </Fragment>
           }
-          mb={4}
         />
 
         <LeaderInvite id={id} callback={callback} />
@@ -279,11 +290,11 @@ const Main = props => {
                   Invited {timeSince(profile.created_at)}.
                 </Text.span>
                 <Text.span f={3} color="gray.5" mx={1}>
-                  {profile.updated_at === null ?
-                    'Not updated yet.' :
-                    `Last updated ${timeSince(profile.updated_at)}.`}
+                  {profile.updated_at === null
+                    ? 'Not updated yet.'
+                    : `Last updated ${timeSince(profile.updated_at)}.`}
                 </Text.span>
-                { isPoc &&
+                {isPoc && (
                   <Button
                     m={2}
                     onClick={e => {
@@ -295,9 +306,12 @@ const Main = props => {
                         )
                       ) {
                         api
-                          .delete(`v1/new_club_applications/${id}/remove_user`, {
-                            data: { user_id: profile.user.id }
-                          })
+                          .delete(
+                            `v1/new_club_applications/${id}/remove_user`,
+                            {
+                              data: { user_id: profile.user.id }
+                            }
+                          )
                           .then(json => {
                             callback()
                           })
@@ -308,17 +322,12 @@ const Main = props => {
                     }}
                     children="Remove"
                   />
-                }
+                )}
               </Text>
             }
           />
         ))}
-
-          <Title mb={4} style={{ position: 'relative' }}>
-            Your application to Hack Club is{' '}
-            <SubmitStatus {...submitStatusProps} />
-          </Title>
-
+        <Box mt={5}>
           {app.rejected_at ? (
             <Rejected resetCallback={resetCallback} />
           ) : (
@@ -328,6 +337,7 @@ const Main = props => {
               callback={callback}
             />
           )}
+        </Box>
       </Sheet>
     </Container>
   )

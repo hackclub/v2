@@ -4,7 +4,6 @@ import { Label, Input, Text, cx } from '@hackclub/design-system'
 import { Submit } from 'components/Forms'
 import { withFormik } from 'formik'
 import * as yup from 'yup'
-import fetch from 'unfetch'
 
 const StyledInput = Input.extend`
   text-align: inherit;

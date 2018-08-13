@@ -5,7 +5,6 @@ import { Submit } from 'components/Forms'
 import { withFormik } from 'formik'
 import * as yup from 'yup'
 import storage from 'storage'
-import fetch from 'unfetch'
 
 const StyledInput = Input.extend`
   text-align: inherit;

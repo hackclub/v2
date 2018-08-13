@@ -271,6 +271,9 @@ export const Form = Container.withComponent('form').extend.attrs({
     grid-template-columns: repeat(1, 1fr);
     h2, .textarea { grid-column: 1 / -1; }
   }
+  textarea {
+    resize: vertical;
+  }
 `
 
 export const Subheading = Heading.h2.extend.attrs({

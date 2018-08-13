@@ -14,6 +14,7 @@ import {
 import { withFormik } from 'formik'
 import Link from 'gatsby-link'
 import * as yup from 'yup'
+import api from 'api'
 
 LargeButton.link = LargeButton.withComponent(Link)
 
@@ -39,6 +40,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.leader_name}
             error={touched.leader_name && errors.leader_name}
+            disabled={values.submitted_at !== null}
           />
           <Field
             name="leader_birthday"
@@ -47,6 +49,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.leader_birthday}
             error={touched.leader_birthday && errors.leader_birthday}
+            disabled={values.submitted_at !== null}
             type="date"
           />
           <Field
@@ -58,6 +61,7 @@ const InnerForm = props => {
             error={
               touched.leader_year_in_school && errors.leader_year_in_school
             }
+            disabled={values.submitted_at !== null}
             type="select"
           >
             <option value="select" disabled>
@@ -76,6 +80,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.leader_phone_number}
             error={touched.leader_phone_number && errors.leader_phone_number}
+            disabled={values.submitted_at !== null}
             type="tel"
           />
           <Field
@@ -86,6 +91,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.leader_address}
             error={touched.leader_address && errors.leader_address}
+            disabled={values.submitted_at !== null}
             type="textarea"
           />
         </Fieldset>
@@ -100,6 +106,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.leader_gender || 'select'}
             error={touched.leader_gender && errors.leader_gender}
+            disabled={values.submitted_at !== null}
             type="select"
           >
             <option value="select" disabled>
@@ -118,6 +125,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.leader_ethnicity || 'select'}
             error={touched.leader_ethnicity && errors.leader_ethnicity}
+            disabled={values.submitted_at !== null}
             type="select"
           >
             <option value="select" disabled>
@@ -147,6 +155,7 @@ const InnerForm = props => {
               touched.presence_personal_website &&
               errors.presence_personal_website
             }
+            disabled={values.submitted_at !== null}
             type="url"
             optional
           />
@@ -158,6 +167,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.presence_github_url}
             error={touched.presence_github_url && errors.presence_github_url}
+            disabled={values.submitted_at !== null}
             type="url"
             optional
           />
@@ -171,6 +181,7 @@ const InnerForm = props => {
             error={
               touched.presence_linkedin_url && errors.presence_linkedin_url
             }
+            disabled={values.submitted_at !== null}
             type="url"
             optional
           />
@@ -184,6 +195,7 @@ const InnerForm = props => {
             error={
               touched.presence_facebook_url && errors.presence_facebook_url
             }
+            disabled={values.submitted_at !== null}
             type="url"
             optional
           />
@@ -195,6 +207,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.presence_twitter_url}
             error={touched.presence_twitter_url && errors.presence_twitter_url}
+            disabled={values.submitted_at !== null}
             type="url"
             optional
           />
@@ -216,6 +229,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.skills_system_hacked}
             error={touched.skills_system_hacked && errors.skills_system_hacked}
+            disabled={values.submitted_at !== null}
             type="textarea"
           />
           <Field
@@ -228,6 +242,7 @@ const InnerForm = props => {
               touched.skills_impressive_achievement &&
               errors.skills_impressive_achievement
             }
+            disabled={values.submitted_at !== null}
             type="textarea"
           />
           <Field
@@ -237,6 +252,7 @@ const InnerForm = props => {
             onBlur={handleBlur}
             value={values.skills_is_technical || 'select'}
             error={touched.skills_is_technical && errors.skills_is_technical}
+            disabled={values.submitted_at !== null}
             type="select"
           >
             <option value="select" disabled>
@@ -259,24 +275,9 @@ const InnerForm = props => {
 const LeaderApplicationForm = withFormik({
   mapPropsToValues: props => props.params,
   handleSubmit: (data, { setSubmitting, props }) => {
-    fetch(`${apiUrl}/v1/leader_profiles/${props.id}`, {
-      method: 'PATCH',
-      headers: {
-        Authorization: `Bearer ${props.authToken}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          throw res
-        }
-      })
+    api.patch(`v1/leader_profiles/${props.id}`, {data})
       .then(json => {
         setSubmitting(false)
-
         // update name stored in analytics w/ latest value if it's changed
         analytics.ready(() => {
           if (analytics.user().traits().email != json.leader_name) {

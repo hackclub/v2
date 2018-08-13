@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
 import api from 'api'
+import search from 'search'
 import { Heading, Container, Card, LargeButton } from '@hackclub/design-system'
 import styled from 'styled-components'
 
@@ -15,46 +16,33 @@ export default class extends Component {
   state = {
     status: 'loading',
     formFields: undefined,
-    id: undefined,
-    authToken: undefined
+    id: undefined
   }
 
   componentDidMount() {
-    let id
-    const params = window.location.search.slice(1).split(/&/)
-    for (let i = 0; i < params.length; i++) {
-      let param = params[i]
-      if (param.split('=')[0] === 'id') {
-        id = param.split('=')[1]
-      }
-    }
-    const authToken = window.localStorage.getItem('authToken')
-    this.setState({ id, authToken })
-    const needsToAuth = authToken === null || id === null
-    if (needsToAuth) {
-      const status = 'needsToAuth'
-      this.setState({ status })
-    } else {
-      api
-        .get(`v1/leader_profiles/${id}`)
-        .then(json => {
+    const id = search.get('id')
+    this.setState({ id })
+    api
+      .get(`v1/leader_profiles/${id}`)
+      .then(json => (
+        api.get(`v1/new_club_applications/${json.new_club_application_id}`).then(newClubApp => {
           this.setState({
             status: 'loaded',
-            formFields: json
+            formFields: {...json, submitted_at: newClubApp.submitted_at}
           })
         })
-        .catch(e => {
-          if (e.status === 401) {
-            const status = 'needsToAuth'
-            this.setState({ status })
-          }
-          alert(e)
-        })
-    }
+      ))
+      .catch(e => {
+        if (e.status === 401) {
+          const status = 'needsToAuth'
+          this.setState({ status })
+        }
+        alert(e.statusText)
+      })
   }
 
   content() {
-    const { status, formFields, id, authToken } = this.state
+    const { status, formFields, id } = this.state
 
     switch (status) {
       case 'needsToAuth':
@@ -70,7 +58,6 @@ export default class extends Component {
               <LeaderApplicationForm
                 params={formFields}
                 id={id}
-                authToken={authToken}
               />
             </Sheet>
             <Heading.h4 align="center">

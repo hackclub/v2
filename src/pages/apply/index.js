@@ -133,7 +133,7 @@ export default class extends Component {
                 Welcome!
               </Heading.h1>
               <Text f={4} mb={3}>
-                We can’t wait to see your club.
+                We can’t wait to see your application.
                 <br />
                 Let’s get started!
               </Text>

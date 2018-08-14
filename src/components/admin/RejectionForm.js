@@ -79,6 +79,7 @@ export default props => {
             handleSubmit={handleSubmit}
             isSubmitting={isSubmitting}
             values={values}
+            saveNotification="underline"
           />
         </Form>
       )}

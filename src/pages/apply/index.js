@@ -51,7 +51,7 @@ export default class extends Component {
     const msg =
       'If you start a new application you won’t be able to access this one. Continue?'
     if (!firstTime && !confirm(msg)) {
-      return null
+      return Promise.resolve(null)
     }
     return api
       .post(`v1/users/${storage.get('userId')}/new_club_applications`)
@@ -60,10 +60,11 @@ export default class extends Component {
 
   resetApplication = () => {
     this.createNewApplication().then(app => {
-      this.setState({
-        status: 'finished',
-        app
-      })
+      const newState = { status: 'finished' }
+      if (app !== null) {
+        newState.app = app
+      }
+      this.setState({ newState })
     })
   }
 

@@ -64,8 +64,8 @@ const MDBreak = Hide.withComponent('br').extend.attrs({
 // `
 
 const Rejected = ({ resetCallback }) => (
-  <Box mb={4}>
-    <Heading.h3 mb={3}>Unfortunately, you’ve been rejected</Heading.h3>
+  <Box mb={4} align="center">
+    <Heading.h2 mb={3}>Unfortunately, you’ve been rejected</Heading.h2>
     <P>
       You can start a new application by clicking{' '}
       <A onClick={resetCallback}>here</A>.

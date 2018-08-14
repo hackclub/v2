@@ -11,6 +11,7 @@ import {
 import Login from 'components/auth/Login'
 import { Tr, Td, Th } from 'components/Table'
 import LoadingBar from 'components/LoadingBar'
+import TestApplicationForm from 'components/admin/TestApplicationForm'
 import InterviewForm from 'components/admin/InterviewForm'
 import RejectionForm from 'components/admin/RejectionForm'
 import AcceptanceForm from 'components/admin/AcceptanceForm'
@@ -123,10 +124,14 @@ export default class extends Component {
   }
 
   updateApplicationList(updatedApplication) {
-    const { clubApplications } = this.state
+    const { clubApplications, selection } = this.state
     clubApplications[updatedApplication.id] = updatedApplication
 
-    this.setState({ clubApplications })
+    if (selection && selection.id === updatedApplication.id) {
+      this.setState({ clubApplications, selection: updatedApplication })
+    } else {
+      this.setState({ clubApplications })
+    }
   }
 
   pointOfContact(application) {
@@ -287,6 +292,10 @@ export default class extends Component {
                         {selection.id}
                       </Badge>
                     </Text>
+                    <TestApplicationForm
+                      application={selection}
+                      updateApplicationList={this.updateApplicationList}
+                    />
                     <Collapsable heading="Reject">
                       <RejectionForm
                         application={selection}

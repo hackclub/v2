@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { withFormik } from 'formik'
 import * as yup from 'yup'
 import api from 'api'
-import { AutoSaver, Field, Submit } from 'components/Forms'
+import { Field, Submit } from 'components/Forms'
 import { Button, Text, Label } from '@hackclub/design-system'
 
 const InnerForm = ({

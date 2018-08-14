@@ -23,6 +23,7 @@ import Status from 'components/apply/Status'
 import Link from 'gatsby-link'
 import { timeSince } from 'helpers'
 import api from 'api'
+import { Modal, CloseButton, Overlay } from 'components/Modal'
 
 const P = props => <Text my={3} {...props} />
 
@@ -43,6 +44,36 @@ const MDBreak = Hide.withComponent('br').extend.attrs({
   sm: true,
   md: true
 })``
+
+class ContactModal extends Component {
+  state = { open: false }
+
+  toggle = () => this.setState(({ open }) => ({ open: !open }))
+
+  render() {
+    const { open } = this.state
+    return (
+      <Fragment>
+        <Button bg="info" onClick={this.toggle} children="Contact us" f={1} />
+        {open && (
+          <Fragment>
+            <Modal w="28rem" align="left" my={4} p={[3, 4]}>
+              <CloseButton onClick={this.toggle} />
+              <Heading.h2>Contact Us</Heading.h2>
+              <Text f={2}>
+                Send any questions about the application process to{' '}
+                <A to="mailto:applications@hackclub.com">
+                  applications@hackclub.com
+                </A>.
+              </Text>
+            </Modal>
+            <Overlay onClick={this.toggle} />
+          </Fragment>
+        )}
+      </Fragment>
+    )
+  }
+}
 
 // NOTE(@lachlanjc): for use if/when we have a slideshow experience
 // const PrimaryButton = styled(IconButton).attrs({
@@ -148,12 +179,7 @@ const Help = () => (
         Have any questions? We’re here to help out.
       </Text>
     </Flex>
-    <Button
-      bg="info"
-      href="mailto:applications@hackclub.com"
-      children="Contact us"
-      f={1}
-    />
+    <ContactModal />
   </HelpSheet>
 )
 

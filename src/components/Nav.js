@@ -134,11 +134,6 @@ class Header extends Component {
     toggled: false
   }
 
-  propTypes = {
-    color: PropTypes.string,
-    fixed: PropTypes.bool
-  }
-
   componentDidMount() {
     this.bindScroll(true)
     if (typeof window !== 'undefined') {
@@ -207,6 +202,10 @@ class Header extends Component {
       </Root>
     )
   }
+}
+Header.propTypes = {
+  color: PropTypes.string,
+  fixed: PropTypes.bool
 }
 
 export default Header

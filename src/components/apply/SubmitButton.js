@@ -16,20 +16,21 @@ class SubmitButton extends Component {
   handleSubmit = () => {
     const { status, applicationId, callback } = this.props
     this.setState({ loading: true })
-    // NOTE(@maxwofford): Give it 3 seconds of waiting to build up anticipation
     if (status !== 'complete') return null
-    const startTime = Time.now
-    api
-      .post(`v1/new_club_applications/${applicationId}/submit`)
-      .then(json => {
-        callback(json)
-      })
-      .catch(e => {
-        alert(e.statusText)
-      })
-      .finally(_ => {
-        this.setState({ loading: false })
-      })
+    // NOTE(@maxwofford): Give it 3 seconds of waiting to build up anticipation
+    setTimeout(() => {
+      api
+        .post(`v1/new_club_applications/${applicationId}/submit`)
+        .then(json => {
+          callback(json)
+        })
+        .catch(e => {
+          alert(e.statusText)
+        })
+        .finally(_ => {
+          this.setState({ loading: false })
+        })
+    }, 3000)
   }
 
   render() {

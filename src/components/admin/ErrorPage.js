@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Text } from '@hackclub/design-system'
 
-const ErrorPage = props => (
+const ErrorPage = ({message = 'Something terrible has happened', ...props}) => (
   <Text color="error" py={3} align="center" {...props}>
-    🚨 Something terrible has happened 🚨
+    🚨 {message} 🚨
     <br />
     Please let us know about this by emailing us at{' '}
     <a href="mailto:itsbroken@hackclub.com">itsbroken@hackclub.com</a>

@@ -28,7 +28,7 @@ class TestApplicationForm extends Component {
         data: { test }
       })
       .then(updatedApp => {
-        this.props.updateApplicationList(updatedApp)
+        this.props.updateApplication(updatedApp)
         this.setState({ status: 'finished' })
       })
   }

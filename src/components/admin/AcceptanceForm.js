@@ -3,7 +3,7 @@ import { LargeButton } from '@hackclub/design-system'
 import api from 'api'
 
 export default props => {
-  const { application, updateApplicationList } = props
+  const { application, updateApplication } = props
 
   return (
     <LargeButton
@@ -19,7 +19,7 @@ export default props => {
         api
           .post(`v1/new_club_applications/${application.id}/accept`)
           .then(json => {
-            updateApplicationList(json)
+            updateApplication(json)
           })
           .catch(e => {
             alert(e.statusText)

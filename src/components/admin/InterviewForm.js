@@ -7,7 +7,7 @@ import api from 'api'
 const Form = Box.withComponent('form')
 
 export default props => {
-  const { application, updateApplicationList } = props
+  const { application, updateApplication } = props
 
   const intialValues = {
     ...application,
@@ -23,7 +23,6 @@ export default props => {
   return (
     <Formik
       initialValues={intialValues}
-      enableReinitialize={true}
       onSubmit={(values, { props, setSubmitting }) => {
         const transformedValues = { ...values }
         if (values.interview_duration) {
@@ -34,7 +33,7 @@ export default props => {
             data: transformedValues
           })
           .then(json => {
-            updateApplicationList(json)
+            updateApplication(json)
             setSubmitting(false)
           })
           .catch(e => {

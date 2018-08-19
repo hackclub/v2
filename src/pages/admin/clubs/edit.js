@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import search from 'search'
 import api from 'api'
-import ClubForm from 'components/admin/clubs/ClubForm'
+import { NewClub } from 'models'
 import NotesForm from 'components/admin/NotesForm'
 import ErrorPage from 'components/admin/ErrorPage'
 import LoadingBar from 'components/LoadingBar'
@@ -26,11 +26,14 @@ class OwnerForm extends Component {
 
   removeOwner() {
     const { club } = this.props
-    api
-      .patch(`v1/new_clubs/${club.id}`, { data: { owner_id: null } })
-      .then(_res => {
-        window.location.reload()
-      })
+
+    NewClub.get(search.get('id'))
+      .then(() =>
+        NewClub.update({ owner_id: null })
+          .then(() =>
+            window.location.reload()
+          )
+      )
       .catch(err => {
         console.error(err)
       })
@@ -136,15 +139,8 @@ export default class extends Component {
     }
   }
   componentDidMount() {
-    const clubId = search.get('id')
-    api
-      .get(`v1/new_clubs/${clubId}`)
-      .then(club => {
-        this.setState({
-          status: 'success',
-          club
-        })
-      })
+    NewClub.get(search.get('id'))
+      .then(club => this.setState({ club, status: 'success' }))
       .catch(err => {
         this.setState({
           status: err.status === 401 ? 'needsToAuth' : 'failure'
@@ -162,7 +158,6 @@ export default class extends Component {
             <Nav />
             <Heading>Club #{club.id}</Heading>
             <OwnerForm club={club} />
-            {/*<ClubForm {...club} />*/}
             <NotesForm modelId={club.id} modelType="new_clubs" />
           </React.Fragment>
         )

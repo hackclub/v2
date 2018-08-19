@@ -13,30 +13,14 @@ import LoadingBar from 'components/LoadingBar'
 import NotesForm from 'components/admin/NotesForm'
 import Nav from 'components/apply/ApplyNav'
 import ErrorPage from 'components/admin/ErrorPage'
-import api from 'api'
+import { NewClub } from 'models'
 
 export default class extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      status: 'loading',
-      clubs: {}
-    }
-  }
+  state = { status: 'loading', clubs: null }
 
   componentDidMount() {
-    api
-      .get('v1/new_clubs')
-      .then(clubs => {
-        const clubsObject = clubs.reduce((accumulator, value, index) => {
-          accumulator[index] = value
-          return accumulator
-        }, {})
-        this.setState({
-          status: 'success',
-          clubs: clubsObject
-        })
-      })
+    NewClub.all()
+      .then(clubs => this.setState({ clubs, status: 'success' }))
       .catch(e => {
         if (e.status === 401) {
           this.setState({ status: 'needsToAuth' })

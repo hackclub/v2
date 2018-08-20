@@ -299,7 +299,7 @@ export default ({ data }) => {
               <ShareButton
                 service="Twitter"
                 href={twitterURL(
-                  `I just built ${name} with a @starthackclub workshop. Make yours:`,
+                  `I just built ${name} with a @hackclub workshop. Make yours:`,
                   url
                 )}
                 bg="#1da1f2"

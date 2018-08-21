@@ -7,7 +7,7 @@ import api from 'api'
 const Form = Box.withComponent('form')
 
 export default props => {
-  const { application, updateApplicationList } = props
+  const { application, updateApplication } = props
 
   const rejected_timestamp = application.rejected_at || new Date().toISOString()
   const initialValues = {
@@ -20,7 +20,6 @@ export default props => {
   return (
     <Formik
       initialValues={initialValues}
-      enableReinitialize={true}
       onSubmit={(values, { props, setSubmitting }) => {
         const transformedValues = { ...values }
         api
@@ -28,7 +27,7 @@ export default props => {
             data: transformedValues
           })
           .then(json => {
-            updateApplicationList(json)
+            updateApplication(json)
             setSubmitting(false)
           })
           .catch(e => {

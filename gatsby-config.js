@@ -70,6 +70,12 @@ module.exports = {
     },
     'gatsby-plugin-sitemap',
     'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-plugin-canonical-urls',
+      options: {
+        siteUrl: 'https://hackclub.com'
+      }
+    },
     'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-plugin-segment',

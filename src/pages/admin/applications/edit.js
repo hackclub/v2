@@ -94,32 +94,17 @@ export default class extends Component {
       })
       return
     }
-    // NewClubApplication.get(id).then(app => {
-    //   this.setState({
-    //     status: 'success',
-    //     app
-    //   })
-    // }).catch(e => {
-    //   this.setState({
-    //     status: 'error',
-    //     error: e.statusText
-    //   })
-    // })
-    api
-      .get(`v1/new_club_applications`)
-      .then(new_club_applications => {
-        const app = new_club_applications.find(nca => nca.id == id)
-        this.setState({
-          status: 'success',
-          app
-        })
+    NewClubApplication.get(id).then(app => {
+      this.setState({
+        status: 'success',
+        app
       })
-      .catch(e => {
-        this.setState({
-          status: 'error',
-          error: e.statusText
-        })
+    }).catch(e => {
+      this.setState({
+        status: 'error',
+        error: e.statusText
       })
+    })
   }
 
   updateApplication(app) {

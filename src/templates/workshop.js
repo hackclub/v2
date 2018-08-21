@@ -237,7 +237,7 @@ export default ({ data }) => {
                 position={2}
               />
               <BreadcrumbDivider />
-              <Breadcrumb to={url} name={name} position={3} bold={false} />
+              <Breadcrumb to={slug} name={name} position={3} bold={false} />
             </Breadcrumbs>
             <Name f={6} mb={2} children={name} />
             <Heading.h2 f={4} children={description} />

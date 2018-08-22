@@ -31,6 +31,8 @@ export default () => (
         <Heading>Hack Club Scholarship</Heading>
         <Text>This scholarship is for high school students who see coding as a superpower and take the initiative to code in their own free time — beyond just what they are assigned in class.</Text>
         <Text>Applicants will submit a project (website, app, etc.) they built with code and record a video demo. They’ll also include a brief write-up about what they worked on with a video demo.</Text>
+      </Section>
+      <Section>
         <Heading.h3>Prizes</Heading.h3>
         <ul align="left">
           <li>1st place: $400 & mentorship sessions with start-up founders
@@ -42,6 +44,8 @@ export default () => (
           <li><Text>4 runners-up get $25</Text></li>
           <li><Text>1 applicant from each state will win access to Hack Club’s expedited application process.</Text></li>
         </ul>
+      </Section>
+      <Section>
         <Heading.h3>Rules</Heading.h3>
         <ul align="left">
           <li><Text>Applications are due on Sept 3rd. at midnight </Text></li>
@@ -49,6 +53,8 @@ export default () => (
           <li><Text>If your project was built by a team, you must be able to show you made a significant contribution (ie. version control history).</Text></li>
           <li><Text>The project must be on a public platform (the web, Google Play, App Store).</Text></li>
         </ul>
+      </Section>
+      <Section>
         <Heading.h3>Contact us</Heading.h3>
         <Text>Contact us at <Link href="mailto:scholarship@hackclub.com">scholarship@hackclub.com</Link> if you have any questions.</Text>
     </Section>

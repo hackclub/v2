@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react'
-import styled from 'styled-components'
+import React from 'react'
+import styled, { css, injectGlobal } from 'styled-components'
 import {
   Box,
   Flex,
@@ -8,9 +8,10 @@ import {
   Heading,
   LargeButton,
   Link as A,
-  Card,
   Image,
-  theme
+  theme,
+  colors,
+  Image
 } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
@@ -19,14 +20,19 @@ import Module from 'components/Module'
 import Sheet from 'components/Sheet'
 import BankStats from 'components/bank/BankStats'
 
-const Base = styled(Box)`
-  background-color: #111;
-  width: 100%;
-  max-width: 100vw;
-  min-height: 100vh;
-  color: ${({ theme }) => theme.colors.gray[3]};
-  background-image: radial-gradient(circle, #444, #444 1px, #111 1px, #111);
-  background-size: 2rem 2rem;
+colors.dark = '#17171d'
+const styles = `
+  body {
+    width: 100%;
+    max-width: 100vw;
+    background-color: ${colors.dark};
+    color: ${colors.gray[3]};
+    background-image: radial-gradient(circle, ${colors.black}, ${
+  colors.black
+} 1px,
+      ${colors.dark} 1px, ${colors.dark});
+    background-size: 2rem 2rem;
+  }
 `
 
 const CTA = styled(LargeButton).attrs({ bg: 'teal.6', fontSize: 2 })`
@@ -83,7 +89,7 @@ const Banner = styled(Container).attrs({
   mx: 'auto',
   px: 3,
   align: ['left', 'center']
-})
+})``
 
 const Join = styled(Sheet)`
   display: grid;
@@ -117,7 +123,7 @@ const desc =
 const img = 'https://hackclub.com/bank-banner.png'
 
 export default () => (
-  <Base align="center">
+  <Box align="center">
     <Helmet
       title={title}
       meta={[
@@ -131,10 +137,11 @@ export default () => (
         { property: 'og:url', content: 'https://hackclub.com/bank' }
       ]}
     />
+    <style children={styles} />
     <Nav color="smoke" bgColor={[40, 40, 40]} />
     <Box>
       <Megaline pt={[5, 6]}>The bank for student hackers.</Megaline>
-      <Lead px={3} maxWidth={48} my={[3, 4]}>
+      <Lead color="inherit" px={3} maxWidth={48} my={[3, 4]}>
         Hack Club Bank is the best place for high school hackers to store money
         for hackathons. Student organizers can invoice sponsors, issue physical
         debit cards, and get access to their event’s financials through a
@@ -156,25 +163,26 @@ export default () => (
     </Banner>
     <Modules>
       <Module
-        icon="account_balance"
+        icon="private-outline"
         name="Bank account"
         body="Get a 501(c)(3) non-profit bank account (contributions will be tax-deductible)."
       />
       <Module
-        icon="history"
+        icon="analytics"
         name="Balance + history"
-        body="Check real-time account balance and transaction history any time."
+        body="Check real-time account balance and transaction history on the site at any time."
       />
       <Module
-        icon="receipt"
+        icon="settings"
         name="Manage your finances"
         body="Add notes to transactions, export data, issue reimbursements. Easy."
       />
     </Modules>
-    <Container maxWidth={70} my={[4, 3]}>
+    <Container maxWidth={70} mt={[4, 3]}>
       <Image w={1} src="/bank-screenshot.png" />
     </Container>
-    <Banner mt={0}>
+    <BankStats />
+    <Banner>
       <Headline>A powerful toolbox for organizing your event.</Headline>
       <Lead maxWidth={32}>
         We’ve got all the tools to start getting your event ready, from emails
@@ -183,17 +191,17 @@ export default () => (
     </Banner>
     <Modules>
       <Module
-        icon="description"
+        icon="edit"
         name="Pre-written forms"
         body="Download free consent and photo release forms for your event. No lawyers needed."
       />
       <Module
-        icon="credit_card"
+        icon="payment"
         name="Debit cards"
         body="Issue physical debit cards to all your team members—no need for reimbursements."
       />
       <Module
-        icon="cloud"
+        icon="google"
         name="G Suite"
         body="Get free G Suite + email addresses (like megan@hackchicago.io) for everyone."
       />
@@ -207,22 +215,22 @@ export default () => (
     </Banner>
     <Modules>
       <Module
-        icon="local_atm"
+        icon="checkmark"
         name="Taxes + accounting"
         body="We’ll handle end-of-year taxes and accounting in the background."
       />
       <Module
-        icon="live_help"
+        icon="support"
         name="Support anytime"
         body="Questions? We’ll never leave you in the dark. Best-effort 12hr response time."
       />
       <Module
-        icon="forum"
+        icon="message"
         name="Community"
         body="Talk to our community of experienced event organizers anytime."
       />
     </Modules>
-    <Container maxWidth={48} pt={4} pb={[4, 5]} px={3}>
+    <Container maxWidth={48} py={[4, 5]} px={3}>
       <Join align="left" bg="black">
         <Container maxWidth={32} mx={0}>
           <Heading.h2 {...subhline} color="white">
@@ -236,11 +244,10 @@ export default () => (
         </Container>
         <CTA href="https://goo.gl/forms/1UzFR4zkljL7dHQ32">Apply</CTA>
       </Join>
-      <BankStats />
-      <Lead maxWidth={26} color="slate" f={1} mt={3}>
-        Hack Club Bank is not a bank. Underlying banking services provided by
-        Silicon Valley Bank, an FDIC-certified institution.
+      <Lead maxWidth={32} color="slate" f={1} mt={3}>
+        Hack Club does not directly provide banking services. Banking services
+        provided by Silicon Valley Bank, an FDIC-certified institution.
       </Lead>
     </Container>
-  </Base>
+  </Box>
 )

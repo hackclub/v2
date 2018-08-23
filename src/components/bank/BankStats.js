@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Text } from '@hackclub/design-system'
+import Sheet from 'components/Sheet'
 import api from 'api'
 import { timeSince } from 'helpers'
 
@@ -34,10 +35,11 @@ class BankStats extends Component {
     const launchDate = '2018-06-28'
     if (transactionsTotalVolume) {
       return (
-        <Container maxWidth={32} my={4}>
-          <Text f={3}>
-            {transactionsTotalVolume} transacted in the past{' '}
-            {timeSince(launchDate, true, new Date(), true)} & counting.
+        <Container>
+          <Text f={[3, 4]}>
+            <Text.span bold>{transactionsTotalVolume}</Text.span> transacted in
+            the past {timeSince(launchDate, true, new Date(), true)} (&
+            counting)
           </Text>
         </Container>
       )

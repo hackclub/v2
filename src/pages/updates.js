@@ -125,7 +125,7 @@ export default () => (
           Updates
         </Heading.h1>
         <Text f={4} color="smoke" style={{ lineHeight: '1.25' }}>
-          Every month we produce a video update with what’s new at Hack Club.
+          Every so often we produce video updates with what’s new at Hack Club.
           Here they all are!
         </Text>
       </Container>

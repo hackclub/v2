@@ -142,7 +142,7 @@ export default () => (
           What’ve we been doing recently?
         </Heading.h2>
         <Text color="smoke">
-          Check out our monthly update videos to see our recent work.
+          Check out our update videos to see our recent work.
         </Text>
       </Container>
       <UpdateLink to="/updates">Watch now</UpdateLink>

@@ -6,8 +6,6 @@ import {
   Container,
   Flex,
   Heading,
-  Icon,
-  LargeButton,
   Link as A,
   Section,
   Text
@@ -18,14 +16,7 @@ import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import Sheet from 'components/Sheet'
 import Stat from 'components/Stat'
-import {
-  Triangle,
-  Hexagon,
-  Pentagon,
-  Square,
-  Circle,
-  Line
-} from 'components/Shapes'
+import { Triangle, Pentagon, Circle } from 'components/Shapes'
 import DonateForm from 'components/donate/DonateForm'
 import Spent from 'components/donate/Spent'
 import Sponsors from 'components/donate/Sponsors'

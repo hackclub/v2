@@ -18,7 +18,7 @@ import { kebabCase } from 'lodash'
 
 const Header = Section.withComponent('header')
 
-const Calendar = Flex.extend`
+const Calendar = styled(Flex)`
   flex-direction: column;
   flex-shrink: 0;
   text-align: center;
@@ -29,20 +29,19 @@ const Calendar = Flex.extend`
   border-style: solid;
   border-radius: 12px;
   font-weight: ${({ theme }) => theme.bold};
-  background-color: ${({ theme }) => theme.colors.snow};
 `
-const Year = Text.extend.attrs({
+const Year = styled(Text).attrs({
   f: 3,
   py: 1,
-  color: 'white'
+  color: 'dark'
 })`
   line-height: 1;
 `
-const Month = Text.extend.attrs({ f: 4, mt: 1 })`
+const Month = styled(Text).attrs({ f: 4, mt: 1 })`
   line-height: 2;
 `
 
-const Updater = Container.withComponent(Flex).extend`
+const Updater = styled(Container.withComponent(Flex))`
   flex-direction: column;
   align-items: center;
   ${({ theme }) => theme.mediaQueries.md} {
@@ -51,7 +50,8 @@ const Updater = Container.withComponent(Flex).extend`
     justify-content: center;
   }
 `
-const Sheet = Card.extend`
+
+const Sheet = styled(Card)`
   box-sizing: border-box;
   width: 100%;
   max-width: 48rem;
@@ -68,7 +68,7 @@ const Sheet = Card.extend`
     padding-top: 41.25%; // NOTE(@lachlanjc): i just guessed until i found this
   }
 `
-const Player = Box.withComponent(YouTubePlayer).extend`
+const Player = styled(Box.withComponent(YouTubePlayer))`
   position: absolute;
   top: 0;
   left: 0;

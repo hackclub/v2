@@ -13,7 +13,7 @@ import {
 import Helmet from 'react-helmet'
 import YouTubePlayer from 'react-player/lib/players/YouTube'
 import Nav from 'components/Nav'
-import Invert from 'components/Invert'
+import Footer from 'components/Footer'
 import { kebabCase } from 'lodash'
 
 const Header = Section.withComponent('header')
@@ -150,5 +150,6 @@ export default () => (
         url="https://youtu.be/Xj32LuE44bU"
       />
     </Container>
+    <Footer dark />
   </Fragment>
 )

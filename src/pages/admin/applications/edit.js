@@ -9,7 +9,7 @@ import {
 } from '@hackclub/design-system'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
-import TestApplicationForm from 'components/admin/TestApplicationForm'
+import IsTestForm from 'components/admin/IsTestForm'
 import RejectionForm from 'components/admin/RejectionForm'
 import NotesForm from 'components/admin/NotesForm'
 import InterviewForm from 'components/admin/InterviewForm'
@@ -125,9 +125,9 @@ export default class extends Component {
               <Heading.h2>
                 Application <Badge bg={statusColor(app)}>{app.id}</Badge>
               </Heading.h2>
-              <TestApplicationForm
-                application={app}
-                updateApplication={this.updateApplication}
+              <IsTestForm
+                model="new_club_applications"
+                id={app.id}
               />
               <Collapsable heading="Reject">
                 <RejectionForm

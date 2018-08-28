@@ -5,6 +5,7 @@ import { NewClub } from 'models'
 import NotesForm from 'components/admin/NotesForm'
 import ErrorPage from 'components/admin/ErrorPage'
 import LoadingBar from 'components/LoadingBar'
+import IsTestForm from 'components/admin/IsTestForm'
 import Nav from 'components/apply/ApplyNav'
 import {
   Heading,
@@ -126,7 +127,10 @@ class OwnerForm extends Component {
   }
 
   render() {
-    return <Container>{this.renderSwitch()}</Container>
+    return <Container>
+      <IsTestForm model="new_clubs" id={search.get('id')} />
+      {this.renderSwitch()}
+    </Container>
   }
 }
 

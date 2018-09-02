@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
-import { Container, Card, Icon, Box, Text } from '@hackclub/design-system'
+import { Box, Text } from '@hackclub/design-system'
+import Icon from 'spectrum-icons'
 import Sheet from 'components/Sheet'
 
 const Root = styled(Sheet)`
@@ -16,14 +17,14 @@ const spin = keyframes`
     transform: rotate(360deg);
   }
 `
-const Hourglass = styled(Icon)`
-  animation: ${spin} 4s linear infinite;
+const Indicator = styled(Box.withComponent(Icon))`
+  animation: ${spin} 8s linear infinite;
 `
 
 const Ended = () => (
-  <Root maxWidth={36} bg="teal.1" p={[2, 3]} mb={4}>
-    <Hourglass name="hourglass_empty" size={48} mr={[2, 3]} color="teal.8" />
-    <Box color="teal.9">
+  <Root maxWidth={36} bg="cyan.1" color="cyan.8" p={[2, 3]} mb={4}>
+    <Indicator glyph="freeze" size={48} mr={[2, 3]} />
+    <Box>
       <Text f={3} bold>
         This challenge has ended.
       </Text>

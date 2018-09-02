@@ -1,16 +1,11 @@
 import React from 'react'
-import {
-  Container,
-  Box,
-  Flex,
-  Heading,
-  Text,
-  LargeButton
-} from '@hackclub/design-system'
+import styled from 'styled-components'
+import { Box, Heading, Text, LargeButton } from '@hackclub/design-system'
 import Link from 'gatsby-link'
+import Sheet from 'components/Sheet'
 import Framed from 'components/Framed'
 
-const PromoBox = Box.extend`
+const PromoBox = styled(Sheet)`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -19,10 +14,6 @@ const PromoBox = Box.extend`
   max-width: 40rem;
   text-align: center;
   z-index: 2;
-  border-radius: ${({ theme }) => theme.radii[2]};
-  box-shadow: ${({ theme }) => theme.boxShadows[3]};
-  background-color: rgba(255, 255, 255, 0.75);
-  background-color: ${({ theme }) => theme.colors.snow};
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     background-color: rgba(255, 255, 255, 0.75);
     -webkit-backdrop-filter: saturate(180%) blur(16px);
@@ -37,42 +28,50 @@ const PromoBox = Box.extend`
   }
 `
 
-const PromoHeading = Heading.h2.extend`
-  background: linear-gradient(
-    48deg,
-    ${({ theme }) => theme.colors.orange[4]},
-    ${({ theme }) => theme.colors.red[5]},
-    ${({ theme }) => theme.colors.red[6]}
-  );
-  background-repeat: no-repeat;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+const PromoHeading = styled(Heading.h2)`
   color: ${({ theme }) => theme.colors.primary};
+  @supports (-webkit-background-clip: text) {
+    background: linear-gradient(
+      48deg,
+      ${({ theme }) => theme.colors.pink[5]},
+      ${({ theme }) => theme.colors.red[5]},
+      ${({ theme }) => theme.colors.orange[5]}
+    );
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 `
 
-const Action = LargeButton.withComponent(Link)
-
-const Promo = () => (
-  <PromoBox p={[3, 4, 5]}>
-    <PromoHeading f={[4, 5, 6]} my={0}>
-      Hack Club.
-    </PromoHeading>
-    <Text f={[2, 4]} mt={3} mb={2}>
-      Start a new chapter or join the network with an existing computer science
-      club.
-    </Text>
-    <Text f={[2, 4]} mb={4}>
-      We're excited to get to know you.
-    </Text>
-    <Action to="/start" chevronRight scale children="Get Started" />
-  </PromoBox>
-)
+const Action = styled(LargeButton.withComponent(Link)).attrs({
+  chevronRight: true,
+  scale: true,
+  f: [2, 3]
+})`
+  background-image: linear-gradient(
+    to bottom,
+    ${({ theme }) => theme.colors.pink[5]},
+    ${({ theme }) => theme.colors.red[5]}
+  );
+`
 
 export default () => (
   <Framed
     imageSrc="/action.jpg"
     imageAlt="Group of high school students coding together"
   >
-    <Promo />
+    <PromoBox p={[3, 4, 5]}>
+      <PromoHeading f={[4, 5, 6]} my={0}>
+        Join Hack Club.
+      </PromoHeading>
+      <Text f={[2, 4]} mt={3} mb={2}>
+        Start a new chapter or join the network with an existing computer
+        science club.
+      </Text>
+      <Text f={[2, 4]} mb={4}>
+        We're excited to get to know you.
+      </Text>
+      <Action to="/start" children="Get Started" />
+    </PromoBox>
   </Framed>
 )

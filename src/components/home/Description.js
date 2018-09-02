@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Text, Link } from '@hackclub/design-system'
 
 export default () => (
-  <Container maxWidth={46} mt={3} mb={4} align="center">
+  <Container maxWidth={46} pt={3} pb={5} align="center">
     <Text color="slate" f={3}>
       Hack Club is a nonprofit network of high school programming clubs that
       teach beginners to code. We provide{' '}

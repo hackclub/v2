@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react'
+import styled from 'styled-components'
 import {
   Box,
   Flex,
@@ -10,6 +11,7 @@ import {
   Hide,
   BackgroundImage
 } from '@hackclub/design-system'
+import { wordWrap } from 'polished'
 import PropTypes from 'prop-types'
 import { Modal, Overlay, CloseButton } from 'components/Modal'
 import Comments from 'components/challenge/Comments'
@@ -17,7 +19,7 @@ import { dt, tinyDt } from 'helpers'
 import { sortBy } from 'lodash'
 import api from 'api'
 
-const Row = Flex.extend`
+const Row = styled(Flex)`
   align-items: center;
   border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
   position: relative;
@@ -26,23 +28,17 @@ const Row = Flex.extend`
   }
 `
 
-const Index = Hide.extend`
+const Index = styled(Hide)`
   width: ${({ theme }) => theme.space[3]}px;
   position: absolute;
   left: -${({ theme }) => theme.space[4]}px;
 `
 
-const Description = Text.extend`
-  word-wrap: break-word;
-  /*
-  word-break is duplicated here because it has a different use in WebKit:
-  https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container
-  */
-  word-break: break-all;
-  word-break: break-word;
+const Description = styled(Text)`
+  ${wordWrap('break-word')};
 `
 
-const UpvoteButton = Button.button.extend`
+const UpvoteButton = styled(Button.button)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -51,7 +47,7 @@ const UpvoteButton = Button.button.extend`
   cursor: ${props => props.cursor};
 `
 
-const CommentButton = Box.withComponent('button').extend`
+const CommentButton = styled(Box.withComponent('button'))`
   background: none;
   border: 0;
   appearance: none;
@@ -76,7 +72,7 @@ const CommentButton = Box.withComponent('button').extend`
   }
 `
 
-const CommentsModal = Modal.extend`
+const CommentsModal = styled(Modal)`
   display: grid;
   grid-template-rows: auto 1fr 2rem;
   min-height: 16rem;
@@ -182,7 +178,7 @@ PostRow.propTypes = {
   onUpvote: PropTypes.func.isRequired,
   onComment: PropTypes.func.isRequired
 }
-const ShirtPostBase = Box.extend`
+const ShirtPostBase = styled(Box)`
   display: inline-block;
   position: relative;
   overflow: hidden;
@@ -198,7 +194,7 @@ const ShirtPostBase = Box.extend`
     padding: 0 !important;
   }
 `
-const ShirtIndex = Text.extend`
+const ShirtIndex = styled(Text)`
   position: absolute;
   top: 0;
   left: 0;
@@ -214,7 +210,7 @@ const ShirtIndex = Text.extend`
   text-align: center;
   font-weight: bold;
 `
-const ShirtImage = BackgroundImage.extend`
+const ShirtImage = styled(BackgroundImage)`
   width: 100%;
   min-height: 12rem;
   max-height: 16rem;

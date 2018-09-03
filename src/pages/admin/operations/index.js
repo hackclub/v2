@@ -73,7 +73,7 @@ class ClubCard extends Component {
       return (
         <Fragment>
           <Text color={textColor} f={1}>
-            Last checked-in {timeSince(mostRecentUpdate)} ago
+            Last checked-in {timeSince(mostRecentUpdate)}
           </Text>
           <Flex mt={3}>
             {checkIns.length > 1 && <Chart data={checkInData} />}

@@ -5,6 +5,7 @@ import {
   Box,
   Flex,
   Heading,
+  Text,
   Badge
 } from '@hackclub/design-system'
 import Login from 'components/auth/Login'
@@ -33,6 +34,8 @@ const FilterButton = ({ toggled, status, toggleFilter }) => (
     style={toggled ? null : { opacity: 0.25 }}
   />
 )
+
+const Assignment = ({ assignee }) => <Text>{assignee}</Text>
 
 export default class extends Component {
   constructor(props) {
@@ -166,6 +169,7 @@ export default class extends Component {
                     <Th>Name</Th>
                     <Th>POC</Th>
                     <Th>Time in Stage</Th>
+                    <Th>Assignment</Th>
                   </Tr>
                 </thead>
                 <tbody>
@@ -190,6 +194,11 @@ export default class extends Component {
                           <Td>{this.pointOfContact(application)}</Td>
                           <Td>
                             {this.filterApplication(application).timeInStage}
+                          </Td>
+                          <Td>
+                            {application.assignee_id !== null && (
+                              <Assignment assignee={application.assignee_id} />
+                            )}
                           </Td>
                         </Tr>
                       ) : null

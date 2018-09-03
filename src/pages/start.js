@@ -191,34 +191,45 @@ export default () => (
           Already have a club?
         </Heading.h3>
         <Text f={[3, 4]} my={3}>
-          Great! When established CS clubs join, they get the full benefits
-          of the network. Hack Club is currently optimized for new chapters,
-          but we're increasing the benefits for existing clubs every day with
+          Great! When established CS clubs join, they get the full benefits of
+          the network. Hack Club is currently optimized for new chapters, but
+          we're increasing the benefits for existing clubs every day with
           launches like{' '}
-          <A href="https://hackathons.hackclub.com" target="_blank">hackathons</A>
-          {' '}and{' '}
-          <A href="/bank" target="_blank">bank</A>.
+          <A href="https://hackathons.hackclub.com" target="_blank">
+            hackathons
+          </A>{' '}
+          and{' '}
+          <A href="/bank" target="_blank">
+            bank
+          </A>.
         </Text>
       </Box>
     </Container>
     <Container px={3} my={[3, 5]}>
       <Box color="black">
         <Heading.h2 f={[5, 6]} mt={5} mb={4}>
-        What do meetings look like?
+          What do meetings look like?
         </Heading.h2>
         <Container maxWidth={48} mx={0}>
           <Text f={[3, 4]}>
-            Hack Clubs meet weekly, typically for 1.5 hours. Meetings
-            resemble mini-hackathons, where members learn to code through
-            building projects like{' '}
-            <A href="https://sohuang.github.io/" target="_blank">websites</A>
-            {' '}and{' '}
-            <A href="https://messy-wool.surge.sh/catch.html" target="_blank">games</A>.
+            Hack Clubs meet weekly, typically for 1.5 hours. Meetings resemble
+            mini-hackathons, where members learn to code through building
+            projects like{' '}
+            <A href="https://sohuang.github.io/" target="_blank">
+              websites
+            </A>{' '}
+            and{' '}
+            <A href="https://messy-wool.surge.sh/catch.html" target="_blank">
+              games
+            </A>.
           </Text>
           <Text f={[3, 4]} my={3}>
             Clubs are led by teams of 2-3 students (sorry, no parents or
-            teachers). We ask that at least 1 leader be technically adept
-            enough to write and customize <A href="/workshops" target="_blank">workshops</A>.
+            teachers). We ask that at least 1 leader be technically adept enough
+            to write and customize{' '}
+            <A href="/workshops" target="_blank">
+              workshops
+            </A>.
           </Text>
           <Heading.h3 f={[4, 5]} mt={4}>
             What happens outside of club meetings?
@@ -226,9 +237,13 @@ export default () => (
           <Text f={[3, 4]} my={3}>
             After Hack Clubs establish a dedicated base of members, they begin
             to attend{' '}
-            <A href="https://hackathons.hackclub.com" target="_blank">nearby hackathons</A>
-            {' '}and eventually host their own (sometimes with{' '}
-            <A href="/bank" target="_blank">Hack Club Bank</A>).
+            <A href="https://hackathons.hackclub.com" target="_blank">
+              nearby hackathons
+            </A>{' '}
+            and eventually host their own (sometimes with{' '}
+            <A href="/bank" target="_blank">
+              Hack Club Bank
+            </A>).
           </Text>
           <Heading.h3 f={[4, 5]} mt={4}>
             Will you provide everything to make my club successful?
@@ -278,9 +293,8 @@ export default () => (
       aria-label="Students stacking cups together"
       py={[0, 250, 350]}
       my={[0, -50]}
-      style={{zIndex: -1}}
-    >
-    </PhotoSection>
+      style={{ zIndex: -1 }}
+    />
     <Footer />
   </Fragment>
 )

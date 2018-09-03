@@ -97,7 +97,8 @@ const InnerForm = props => {
         </Fieldset>
         <Fieldset section="stats">
           <Text color="gray.8" pb={3}>
-            Demographic stats are collected to share in aggregate with donors and will not be used as part of application review.
+            Demographic stats are collected to share in aggregate with donors
+            and will not be used as part of application review.
           </Text>
           <Field
             name="leader_gender"
@@ -219,7 +220,10 @@ const InnerForm = props => {
               <Fragment>
                 Please tell us about the time you most successfully hacked some
                 (non-computer) system to your advantage.{' '}
-                <a href="https://www.quora.com/When-have-you-most-successfully-hacked-a-non-computer-system-to-your-advantage" target="_blank">
+                <a
+                  href="https://www.quora.com/When-have-you-most-successfully-hacked-a-non-computer-system-to-your-advantage"
+                  target="_blank"
+                >
                   Here are examples
                 </a>{' '}
                 of what we’re looking for.
@@ -275,7 +279,8 @@ const InnerForm = props => {
 const LeaderApplicationForm = withFormik({
   mapPropsToValues: props => props.params,
   handleSubmit: (data, { setSubmitting, props }) => {
-    api.patch(`v1/leader_profiles/${props.id}`, {data})
+    api
+      .patch(`v1/leader_profiles/${props.id}`, { data })
       .then(json => {
         setSubmitting(false)
         // update name stored in analytics w/ latest value if it's changed

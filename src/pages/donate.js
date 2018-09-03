@@ -305,8 +305,8 @@ export default () => (
         <Text my={3} {...subtext}>
           Please get in touch at{' '}
           <A href="mailto:donate@hackclub.com">donate@hackclub.com</A> if you’re
-          interested in making a contribution with an unsupported token or
-          have any questions.
+          interested in making a contribution with an unsupported token or have
+          any questions.
         </Text>
         <Box>
           <Button

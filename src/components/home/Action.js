@@ -58,8 +58,8 @@ const Promo = () => (
       Hack Club.
     </PromoHeading>
     <Text f={[2, 4]} mt={3} mb={2}>
-      Start a new chapter or join the network with an existing computer
-      science club.
+      Start a new chapter or join the network with an existing computer science
+      club.
     </Text>
     <Text f={[2, 4]} mb={4}>
       We're excited to get to know you.

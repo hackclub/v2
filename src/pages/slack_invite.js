@@ -1,6 +1,14 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
-import { Box, Heading, Container, Flex, Button, Text, cx } from '@hackclub/design-system'
+import {
+  Box,
+  Heading,
+  Container,
+  Flex,
+  Button,
+  Text,
+  cx
+} from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Sheet from 'components/Sheet'
@@ -31,13 +39,18 @@ const BackgroundGradient = styled(Box)`
   background: ${cx('fuschia.5')}f0;
 
   background: linear-gradient(
-    -32deg, ${cx('fuschia.5')}f0, ${cx('orange.5')}c0
+    -32deg,
+    ${cx('fuschia.5')}f0,
+    ${cx('orange.5')}c0
   );
 `
 
 const BackgroundVideo = () => (
   <video autoPlay muted loop playsInline>
-    <source src="https://hackclub.github.io/slack-invite-background-video/slack.mp4" type="video/mp4" />
+    <source
+      src="https://hackclub.github.io/slack-invite-background-video/slack.mp4"
+      type="video/mp4"
+    />
   </video>
 )
 
@@ -92,7 +105,9 @@ export default () => (
         <SlackForm />
       </Sheet>
       <Sheet maxWidth={28} align="left" my={4} mx="auto">
-        <Text f={2} mb={3}>Already have an account?</Text>
+        <Text f={2} mb={3}>
+          Already have an account?
+        </Text>
         <SlackButton href="https://hackclub.slack.com" inverted target="_blank">
           Sign in »
         </SlackButton>

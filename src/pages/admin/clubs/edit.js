@@ -30,10 +30,7 @@ class OwnerForm extends Component {
 
     NewClub.get(search.get('id'))
       .then(() =>
-        NewClub.update({ owner_id: null })
-          .then(() =>
-            window.location.reload()
-          )
+        NewClub.update({ owner_id: null }).then(() => window.location.reload())
       )
       .catch(err => {
         console.error(err)
@@ -127,10 +124,12 @@ class OwnerForm extends Component {
   }
 
   render() {
-    return <Container>
-      <IsTestForm model="new_clubs" id={search.get('id')} />
-      {this.renderSwitch()}
-    </Container>
+    return (
+      <Container>
+        <IsTestForm model="new_clubs" id={search.get('id')} />
+        {this.renderSwitch()}
+      </Container>
+    )
   }
 }
 

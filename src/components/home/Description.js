@@ -14,8 +14,7 @@ export default () => (
       </Link>,{' '}
       <Link href="https://hackathons.hackclub.com" target="_blank">
         access to high school hackathons
-      </Link>,{' '}
-      and{' '}
+      </Link>, and{' '}
       <Link href="/slack_invite" target="_blank">
         a supportive hacker community.
       </Link>

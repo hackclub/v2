@@ -72,10 +72,10 @@ const InnerForm = ({
       color={color}
       bg={bg}
       mx={inputProps.mx || '0'}
-      style={{display: 'block'}}
+      style={{ display: 'block' }}
       onClick={handleSubmit}
       inverted
-      />
+    />
   </form>
 )
 

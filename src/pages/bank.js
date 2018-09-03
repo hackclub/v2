@@ -23,9 +23,9 @@ class BankStats extends Component {
   loadStats() {
     api.get('https://bank.hackclub.com/transactions/stats').then(stats => {
       const volumeString = (stats.total_volume / 100).toLocaleString('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    })
+        style: 'currency',
+        currency: 'USD'
+      })
       this.setState({ transactionsTotalVolume: volumeString })
     })
   }
@@ -47,7 +47,8 @@ class BankStats extends Component {
     if (transactionsTotalVolume) {
       return (
         <Text maxWidth={32} f={3} my={4}>
-          {transactionsTotalVolume} transacted in the past {timeSince(launchDate, true, new Date(), true)} & counting.
+          {transactionsTotalVolume} transacted in the past{' '}
+          {timeSince(launchDate, true, new Date(), true)} & counting.
         </Text>
       )
     } else {
@@ -236,8 +237,8 @@ export default () => (
     <Banner mt={0}>
       <Headline>A powerful toolbox for organizing your event.</Headline>
       <Lead maxWidth={32}>
-        We’ve got all the tools to start getting your event ready, from
-        emails with custom domains to legal forms.
+        We’ve got all the tools to start getting your event ready, from emails
+        with custom domains to legal forms.
       </Lead>
     </Banner>
     <Modules>

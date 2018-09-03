@@ -19,7 +19,6 @@ Base.defaultProps = {
   color: 'gray.9'
 }
 
-
 class IsTestForm extends Component {
   state = { status: 'loading' }
 
@@ -27,37 +26,43 @@ class IsTestForm extends Component {
     console.log(this.state.test)
     const data = { test: !this.state.test }
     this.setState({ status: 'loading' })
-    api.patch(`v1/${this.props.model}/${this.props.id}`, { data }).then(x => {
-      this.setState({
-        test: x.test,
-        status: 'success'
+    api
+      .patch(`v1/${this.props.model}/${this.props.id}`, { data })
+      .then(x => {
+        this.setState({
+          test: x.test,
+          status: 'success'
+        })
       })
-    }).catch(e => {
-      this.setState({
-        status: 'error',
-        errorMessage: e.statusText
+      .catch(e => {
+        this.setState({
+          status: 'error',
+          errorMessage: e.statusText
+        })
       })
-    })
   }
   toggle = this.toggle.bind(this)
 
   componentDidMount() {
     const { model, id } = this.props
-    api.get(`v1/${model}/${id}`).then(x => {
-      this.setState({
-        test: x.test,
-        status: 'success'
+    api
+      .get(`v1/${model}/${id}`)
+      .then(x => {
+        this.setState({
+          test: x.test,
+          status: 'success'
+        })
       })
-    }).catch(e => {
-      this.setState({
-        status: 'error',
-        errorMessage: e.statusText
+      .catch(e => {
+        this.setState({
+          status: 'error',
+          errorMessage: e.statusText
+        })
       })
-    })
   }
 
   render() {
-    switch(this.state.status) {
+    switch (this.state.status) {
       case 'loading':
         return <LoadingBar />
       case 'success':

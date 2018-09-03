@@ -97,7 +97,7 @@ const Photo = BackgroundImage.extend.attrs({ role: 'img' })`
   }
 `
 
-const Action = Button.withComponent(Link).extend.attrs({mt: [2, 3]})`
+const Action = Button.withComponent(Link).extend.attrs({ mt: [2, 3] })`
   transition: transform 0.125s ease-out;
   will-change: transform;
   transform: scale(1);
@@ -124,9 +124,9 @@ export default () => (
           Hack Clubs are student-led clubs dedicated to fostering the{' '}
           <Like href="https://en.wikipedia.org/wiki/Hacker_culture#Ethics_and_principles">
             hacker culture
-          </Like>
-          {' '}in high schools. In meetings, students learn to code through
-          building real-world projects like websites, apps, and games.
+          </Like>{' '}
+          in high schools. In meetings, students learn to code through building
+          real-world projects like websites, apps, and games.
         </Text>
       </Container>
     </Box>
@@ -137,20 +137,22 @@ export default () => (
         </Heading.h3>
         <Text f={3} mt={3}>
           Hack Clubs attend and run hackathons like{' '}
-          <Like href="https://hackchicago.io">
-            Hack Chicago
-          </Like> and{' '}
+          <Like href="https://hackchicago.io">Hack Chicago</Like> and{' '}
           <Like href="http://outlooknewspapers.com/hackademia-aims-for-young-tech-devotees/">
             Hackademia
           </Like>, run summer programs like{' '}
-          <Like href="http://thecspn.com/?p=43434">Hack Camp</Like>,
-          and compete in competitions like the{' '}
+          <Like href="http://thecspn.com/?p=43434">Hack Camp</Like>, and compete
+          in competitions like the{' '}
           <Like href="http://www.congressionalappchallenge.us">
             Congressional App Challenge
           </Like>{' '}
           (and <LikeLink to="/challenge">our challenge!</LikeLink>).
         </Text>
-        <ActionLink href="https://www.sfchronicle.com/bayarea/article/Hack-the-Fog-makes-history-as-San-12729895.php" target="_blank" inverted>
+        <ActionLink
+          href="https://www.sfchronicle.com/bayarea/article/Hack-the-Fog-makes-history-as-San-12729895.php"
+          target="_blank"
+          inverted
+        >
           Read about a Hack Club »
         </ActionLink>
       </Box>
@@ -199,9 +201,9 @@ export default () => (
           projects. Club leaders act as{' '}
           <Like href="https://en.wikipedia.org/wiki/Constructionism_(learning_theory)">
             facilitators
-          </Like>
-          {' '}and provide guidance through mentoring and building a
-          supportive community.
+          </Like>{' '}
+          and provide guidance through mentoring and building a supportive
+          community.
         </Text>
       </Container>
     </Box>
@@ -211,9 +213,9 @@ export default () => (
           Coding is a superpower
         </Heading.h3>
         <Text f={3} my={3}>
-          Coding is a superpower and we believe that the way we teach it
-          should reflect that. Students should learn through building
-          projects, not listening to boring lectures.
+          Coding is a superpower and we believe that the way we teach it should
+          reflect that. Students should learn through building projects, not
+          listening to boring lectures.
         </Text>
         <Action to="/philosophy" bg="warning" inverted>
           Our philosophy »

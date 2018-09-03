@@ -9,7 +9,12 @@ export const tinyDt = d =>
     .replace(`${year}-`, '')
 
 // based on https://github.com/withspectrum/spectrum/blob/alpha/src/helpers/utils.js#L146
-export const timeSince = (previous, absoluteDuration = false, current = new Date(), longForm = false) => {
+export const timeSince = (
+  previous,
+  absoluteDuration = false,
+  current = new Date(),
+  longForm = false
+) => {
   const msPerSecond = 1000
   const msPerMinute = 60 * 1000
   const msPerHour = msPerMinute * 60
@@ -21,22 +26,22 @@ export const timeSince = (previous, absoluteDuration = false, current = new Date
 
   let humanizedTime
   if (elapsed < msPerMinute) {
-    humanizedTime ='< 1m'
+    humanizedTime = '< 1m'
   } else if (elapsed < msPerHour) {
     const now = Math.round(elapsed / msPerMinute)
-    humanizedTime = (longForm ? `${now} minutes` : `${now}m`)
+    humanizedTime = longForm ? `${now} minutes` : `${now}m`
   } else if (elapsed < msPerDay) {
     const now = Math.round(elapsed / msPerHour)
-    humanizedTime = (longForm ? `${now} hours` : `${now}h`)
+    humanizedTime = longForm ? `${now} hours` : `${now}h`
   } else if (elapsed < msPerWeek) {
     const now = Math.round(elapsed / msPerDay)
-    humanizedTime = (longForm ? `${now} days` : `${now}d`)
+    humanizedTime = longForm ? `${now} days` : `${now}d`
   } else if (elapsed < msPerYear) {
     const now = Math.round(elapsed / msPerWeek)
-    humanizedTime = (longForm ? `${now} weeks` : `${now}w`)
+    humanizedTime = longForm ? `${now} weeks` : `${now}w`
   } else {
     const now = Math.round(elapsed / msPerYear)
-    humanizedTime = (longForm ? `${now} years` : `${now}y`)
+    humanizedTime = longForm ? `${now} years` : `${now}y`
   }
 
   if (absoluteDuration) {

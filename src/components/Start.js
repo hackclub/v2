@@ -52,7 +52,7 @@ const Start = ({ mt = '-4rem', buttonProps = {}, ...props }) => (
       </Text>
     </Box>
     <Box align={['center', null, 'left']} p={3}>
-      <Box align="center" style={{display: 'inline-block'}}>
+      <Box align="center" style={{ display: 'inline-block' }}>
         <Text>Applications due Sept 30th</Text>
         <LargeButton.link
           my={2}

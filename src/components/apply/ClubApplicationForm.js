@@ -294,7 +294,8 @@ const ClubApplicationForm = withFormik({
   mapPropsToValues: props => props.params,
   enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, props, resetForm }) => {
-    api.patch(`v1/new_club_applications/${props.id}`, { data })
+    api
+      .patch(`v1/new_club_applications/${props.id}`, { data })
       .then(json => {
         setSubmitting(false)
       })

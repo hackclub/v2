@@ -94,17 +94,19 @@ export default class extends Component {
       })
       return
     }
-    NewClubApplication.get(id).then(app => {
-      this.setState({
-        status: 'success',
-        app
+    NewClubApplication.get(id)
+      .then(app => {
+        this.setState({
+          status: 'success',
+          app
+        })
       })
-    }).catch(e => {
-      this.setState({
-        status: 'error',
-        error: e.statusText
+      .catch(e => {
+        this.setState({
+          status: 'error',
+          error: e.statusText
+        })
       })
-    })
   }
 
   updateApplication(app) {
@@ -125,10 +127,7 @@ export default class extends Component {
               <Heading.h2>
                 Application <Badge bg={statusColor(app)}>{app.id}</Badge>
               </Heading.h2>
-              <IsTestForm
-                model="new_club_applications"
-                id={app.id}
-              />
+              <IsTestForm model="new_club_applications" id={app.id} />
               <Collapsable heading="Reject">
                 <RejectionForm
                   application={app}

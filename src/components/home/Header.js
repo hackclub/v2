@@ -75,10 +75,10 @@ Notification.defaultProps = {
 }
 
 const HeaderStats = styled.ul`
-margin-top: 0;
-margin-left: -15px;
-padding: 0;
-display: inline;
+  margin-top: 0;
+  margin-left: -15px;
+  padding: 0;
+  display: inline;
 `
 
 const HeaderStat = Text.withComponent('li').extend.attrs({ f: [3, 4] })`
@@ -101,8 +101,8 @@ export default () => (
   <Root>
     <Wrapper>
       <Notification to="/start">
-        <Icon size={24} color="slate" name="announcement" ml={[0,1]} mr={2} />
-        <Flex color="black" f={[1,2]} mr={2}>
+        <Icon size={24} color="slate" name="announcement" ml={[0, 1]} mr={2} />
+        <Flex color="black" f={[1, 2]} mr={2}>
           <strong>Applications now open!</strong>
           <Hide xs sm>
             <Text.span ml={1}>Apply now for fall 2018</Text.span>
@@ -124,8 +124,8 @@ export default () => (
         <HeaderStat>{stats.country_count} countries</HeaderStat>
       </HeaderStats>
       <Text f={[3, 4]} mx="auto">
-        Hack Club is a nonprofit network of computer science clubs where
-        members learn to code through tinkering and building projects.
+        Hack Club is a nonprofit network of computer science clubs where members
+        learn to code through tinkering and building projects.
       </Text>
       <Flex
         justify="center"

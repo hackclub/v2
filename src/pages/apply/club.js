@@ -54,10 +54,7 @@ export default class extends Component {
             <BG color="snow" />
             <ApplyNav />
             <Sheet mt={3} mb={5}>
-              <ClubApplicationForm
-                params={formFields}
-                id={id}
-              />
+              <ClubApplicationForm params={formFields} id={id} />
             </Sheet>
             <Heading.h4 align="center">
               Your form is automatically saved ✨

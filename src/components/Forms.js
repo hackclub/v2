@@ -28,14 +28,14 @@ const SaveBaseIcon = styled(Icon)`
   transition-timing-function: ease-in-out;
 `
 
-const SaveStatusIcon = ({saved}) => (
+const SaveStatusIcon = ({ saved }) => (
   <SaveBaseIcon
     name={saved ? 'cloud_done' : 'cloud_upload'}
     color={saved ? 'slate' : 'slate'}
     size={32}
     m={2}
     saved={saved}
-    />
+  />
 )
 
 const SaveStatusLine = Box.extend`

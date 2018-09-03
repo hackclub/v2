@@ -74,7 +74,7 @@ const WorkshopItem = ({
 )
 
 const descriptions = {
-  club: "Launching your own Hack Club? Here are a few pointers",
+  club: 'Launching your own Hack Club? Here are a few pointers',
   start:
     'Set out on your journey. Start out by building your own website, then tack on new features to make multiplayer games and collaborative web apps.',
   experimental:

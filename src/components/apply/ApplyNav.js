@@ -6,7 +6,7 @@ import LogoutButton from 'components/auth/LogoutButton'
 import { withRouter } from 'react-router-dom'
 import { startCase, toLower } from 'lodash'
 
-const Crumb = ({isLast, ...props}) => {
+const Crumb = ({ isLast, ...props }) => {
   const Tag = isLast ? Text.span : A.withComponent(Link)
   return <Tag {...props} />
 }

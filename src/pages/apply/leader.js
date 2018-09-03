@@ -24,14 +24,16 @@ export default class extends Component {
     this.setState({ id })
     api
       .get(`v1/leader_profiles/${id}`)
-      .then(json => (
-        api.get(`v1/new_club_applications/${json.new_club_application_id}`).then(newClubApp => {
-          this.setState({
-            status: 'loaded',
-            formFields: {...json, submitted_at: newClubApp.submitted_at}
+      .then(json =>
+        api
+          .get(`v1/new_club_applications/${json.new_club_application_id}`)
+          .then(newClubApp => {
+            this.setState({
+              status: 'loaded',
+              formFields: { ...json, submitted_at: newClubApp.submitted_at }
+            })
           })
-        })
-      ))
+      )
       .catch(e => {
         if (e.status === 401) {
           const status = 'needsToAuth'
@@ -55,10 +57,7 @@ export default class extends Component {
             <ApplyNav />
             <BG color="snow" />
             <Sheet mt={3} mb={5}>
-              <LeaderApplicationForm
-                params={formFields}
-                id={id}
-              />
+              <LeaderApplicationForm params={formFields} id={id} />
             </Sheet>
             <Heading.h4 align="center">
               Your form is automatically saved ✨

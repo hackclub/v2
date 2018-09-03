@@ -1,7 +1,10 @@
 import React, { Fragment } from 'react'
 import { Text } from '@hackclub/design-system'
 
-const ErrorPage = ({message = 'Something terrible has happened', ...props}) => (
+const ErrorPage = ({
+  message = 'Something terrible has happened',
+  ...props
+}) => (
   <Text color="error" py={3} align="center" {...props}>
     🚨 {message} 🚨
     <br />

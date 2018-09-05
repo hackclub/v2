@@ -9,4 +9,4 @@
 /static/media/*       https://legacy.hackclub.com/static/media/:splat  200
 /emoji/*              https://legacy.hackclub.com/emoji/:splat  200
 /athul_form.html      https://legacy.hackclub.com/athul_form.html  200
-/component---src*.js  /swkiller.js
+/component---src*     /swkiller.js  200

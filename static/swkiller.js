@@ -1,5 +1,4 @@
-if (!swkiller) {
-  const swkiller = () => {
+(function () {
     /*
     NOTE(max@maxwofford.com) For a few months we used the Gatsby Offline plugin (https://www.gatsbyjs.org/packages/gatsby-plugin-offline/), which registered a service workers on browser clients.
     After removing it we found clients with registered service workers had caching problems that were solved by unregistering the outdated service worker.
@@ -22,6 +21,4 @@ if (!swkiller) {
       })
     }
   }
-
-  swkiller()
-}
+})()

@@ -35,7 +35,7 @@ const FilterButton = ({ toggled, status, toggleFilter }) => (
   />
 )
 
-const Assignment = ({ assignee }) => <Text>{assignee}</Text>
+const Assignment = ({ owner }) => <Text>{owner}</Text>
 
 export default class extends Component {
   constructor(props) {
@@ -196,8 +196,8 @@ export default class extends Component {
                             {this.filterApplication(application).timeInStage}
                           </Td>
                           <Td>
-                            {application.assignee_id !== null && (
-                              <Assignment assignee={application.assignee_id} />
+                            {application.owner !== null && (
+                              <Assignment owner={application.owner.email} />
                             )}
                           </Td>
                         </Tr>

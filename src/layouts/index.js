@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import data from 'data.json'
 import { ThemeProvider, colors } from '@hackclub/design-system'
-import serviceWorkerKiller from 'swkiller'
+import ServiceWorkerKiller from 'components/ServiceWorkerKiller'
 
 const { name, title, description, img, url, org } = data
 
@@ -35,11 +35,9 @@ export default props => (
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: url }
       ])}
-      <script
-        children={`${serviceWorkerKiller.toString()}; serviceWorkerKiller()`}
-      />
       <script type="application/ld+json" children={JSON.stringify(org)} />
     </Helmet>
+    <ServiceWorkerKiller />
     {props.children()}
   </ThemeProvider>
 )

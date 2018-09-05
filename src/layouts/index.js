@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import data from 'data.json'
 import { ThemeProvider, colors } from '@hackclub/design-system'
-import ServiceWorkerKiller from 'components/ServiceWorkerKiller'
 
 const { name, title, description, img, url, org } = data
 
@@ -37,7 +36,6 @@ export default props => (
       ])}
       <script type="application/ld+json" children={JSON.stringify(org)} />
     </Helmet>
-    <ServiceWorkerKiller />
     {props.children()}
   </ThemeProvider>
 )

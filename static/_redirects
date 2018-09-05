@@ -1,11 +1,12 @@
-/c9                /cloud9_setup
-/hack_camp         /camp
-/repl              /replit/start
-/hackathons        https://hackathons.hackclub.com
-/find              https://finder.hackclub.com
-/finder            https://finder.hackclub.com
-/static/js/*       https://legacy.hackclub.com/static/js/:splat  200
-/static/css/*      https://legacy.hackclub.com/static/css/:splat  200
-/static/media/*    https://legacy.hackclub.com/static/media/:splat  200
-/emoji/*           https://legacy.hackclub.com/emoji/:splat  200
-/athul_form.html   https://legacy.hackclub.com/athul_form.html  200
+/c9                   /cloud9_setup
+/hack_camp            /camp
+/repl                 /replit/start
+/hackathons           https://hackathons.hackclub.com
+/find                 https://finder.hackclub.com
+/finder               https://finder.hackclub.com
+/static/js/*          https://legacy.hackclub.com/static/js/:splat  200
+/static/css/*         https://legacy.hackclub.com/static/css/:splat  200
+/static/media/*       https://legacy.hackclub.com/static/media/:splat  200
+/emoji/*              https://legacy.hackclub.com/emoji/:splat  200
+/athul_form.html      https://legacy.hackclub.com/athul_form.html  200
+/component---src*.js  /swkiller.js

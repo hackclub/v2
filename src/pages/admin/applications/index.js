@@ -42,13 +42,9 @@ export default class extends Component {
   constructor(props) {
     super(props)
 
-    const filters = storage.get('admin/applications/setting:filters') || [
-      'unsubmitted',
-      'rejected'
-    ]
     this.state = {
       status: 'loading',
-      filters,
+      filters: [],
       clubApplications: {}
     }
     this.toggleFilter = this.toggleFilter.bind(this)
@@ -63,6 +59,11 @@ export default class extends Component {
   }
 
   componentDidMount() {
+    const filters = storage.get('admin/applications/setting:filters') || [
+      'unsubmitted',
+      'rejected'
+    ]
+    this.setState({ filters })
     api
       .get('v1/new_club_applications?submitted=true')
       .then(apps => {

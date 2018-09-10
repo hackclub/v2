@@ -9,7 +9,7 @@ const ErrorPage = ({
     🚨 {message} 🚨
     <br />
     Please let us know about this by emailing us at{' '}
-    <a href="mailto:itsbroken@hackclub.com">itsbroken@hackclub.com</a>
+    <a href="mailto:bug@hackclub.com">bug@hackclub.com</a>
   </Text>
 )
 export default ErrorPage

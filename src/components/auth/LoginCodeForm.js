@@ -4,6 +4,7 @@ import { Label, Input, Text, cx } from '@hackclub/design-system'
 import { Submit } from 'components/Forms'
 import { withFormik } from 'formik'
 import * as yup from 'yup'
+import storage from 'storage'
 
 const StyledInput = Input.extend`
   text-align: inherit;
@@ -129,7 +130,7 @@ const LoginCodeForm = withFormik({
     api
       .post(`v1/users/${props.userId}/exchange_login_code`, { data })
       .then(json => {
-        window.localStorage.setItem('authToken', json.auth_token)
+        storage.set('authToken', json.auth_token)
         setSubmitting(false)
         // associate current session with authenticated user and update email
         // stored in analytics

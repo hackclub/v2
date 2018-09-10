@@ -24,7 +24,7 @@ class Auth extends Component {
 
   signOut = e => {
     try {
-      localStorage.removeItem('userEmail')
+      storage.remove('userEmail')
       this.setState({ email: null })
     } catch (err) {
       console.error(err)

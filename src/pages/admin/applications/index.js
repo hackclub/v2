@@ -14,6 +14,7 @@ import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 import Nav from 'components/apply/ApplyNav'
 import api from 'api'
+import storage from 'storage'
 import { timeSince } from 'helpers'
 import { xor } from 'lodash'
 
@@ -40,9 +41,14 @@ const Assignment = ({ owner }) => <Text>{owner}</Text>
 export default class extends Component {
   constructor(props) {
     super(props)
+
+    const filters = storage.get('admin/applications/setting:filters') || [
+      'unsubmitted',
+      'rejected'
+    ]
     this.state = {
       status: 'loading',
-      filters: ['unsubmitted', 'rejected'],
+      filters,
       clubApplications: {}
     }
     this.toggleFilter = this.toggleFilter.bind(this)
@@ -90,6 +96,7 @@ export default class extends Component {
     const { selection, filters } = this.state
     const updatedFilters = xor(filters, [filter])
     this.setState({ filters: updatedFilters })
+    storage.set('admin/applications/setting:filters', updatedFilters)
 
     // Deselect applications that get filtered out
     if (

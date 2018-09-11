@@ -24,15 +24,13 @@ const StyledInput = Input.extend`
 const InnerForm = ({
   values,
   errors,
-  touched,
   handleChange,
   handleBlur,
   handleSubmit,
   isSubmitting,
-  userType,
   color,
   bg,
-  status,
+  submitColor,
   inputProps = {},
   textProps = {}
 }) => (
@@ -69,8 +67,8 @@ const InnerForm = ({
     <Submit
       mt={3}
       value="Get login code"
-      color={color}
-      bg={bg}
+      inverted
+      bg={submitColor || bg}
       mx={inputProps.mx || '0'}
       style={{ display: 'block' }}
       onClick={handleSubmit}

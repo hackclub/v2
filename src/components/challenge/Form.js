@@ -36,8 +36,9 @@ const Form = ({ status, closed = false, challengeId }) => {
           <LoginForm
             bg="black"
             color="white"
+            submitColor="primary"
             inputProps={{ w: 18 * 16 }}
-            textProps={{ color: 'black', align: 'left' }}
+            textProps={{ color: 'primary', align: 'left' }}
           />
         </Fragment>
       )

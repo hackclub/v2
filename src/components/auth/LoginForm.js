@@ -19,32 +19,16 @@ class Login extends Component {
 
   render() {
     const { emailSent, userId, email } = this.state
-    const {
-      color,
-      bg,
-      userType = 'applicant',
-      inputProps = {},
-      textProps = {}
-    } = this.props
+    const { userType = 'applicant', ...props } = this.props
 
     return emailSent ? (
-      <LoginCodeForm
-        userId={userId}
-        email={email}
-        color={color}
-        bg={bg}
-        inputProps={inputProps}
-        textProps={textProps}
-      />
+      <LoginCodeForm userId={userId} email={email} {...props} />
     ) : (
       <EmailLoginForm
         submitCallback={this.submitCallback}
         userType={userType}
-        color={color}
-        bg={bg}
-        inputProps={inputProps}
-        textProps={textProps}
         email={email}
+        {...props}
       />
     )
   }

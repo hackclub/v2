@@ -54,15 +54,14 @@ class InnerForm extends Component {
     const {
       values,
       errors,
-      touched,
       handleChange,
       handleBlur,
       handleSubmit,
       isSubmitting,
-      status,
+      email,
       color,
       bg,
-      email,
+      submitColor,
       inputProps = {},
       textProps = {}
     } = this.props
@@ -103,9 +102,9 @@ class InnerForm extends Component {
         )}
         <Submit
           mt={3}
-          value="Submit"
-          color={color}
-          bg={bg}
+          value="Sign in"
+          inverted
+          bg={submitColor || bg}
           mx={inputProps.mx || '0'}
           style={{ display: 'block' }}
           onClick={handleSubmit}

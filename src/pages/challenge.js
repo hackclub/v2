@@ -3,6 +3,7 @@ import styled, { css, keyframes } from 'styled-components'
 import {
   Box,
   Flex,
+  Image,
   Container,
   Heading,
   Text,
@@ -175,7 +176,10 @@ export default class extends Component {
                 bold
                 caps
               >
-                By Hack Club
+                <Link href="https://repl.it" target="_blank" color="inherit">
+                  repl.it
+                </Link>{' '}
+                + Hack Club
               </Text>
             </HeaderAreaText>
             <HeaderAreaInfo>
@@ -200,6 +204,21 @@ export default class extends Component {
         </Header>
         <Container maxWidth={48} pt={4} pb={5} px={[0, 3]}>
           {ended && <Ended />}
+          <Flex mb={4} align="center" justify="center">
+            <Link href="https://repl.it" target="_blank">
+              <Image alt="repl.it logo" src="/replit.svg" w={128} />
+            </Link>
+            <Text.span color="muted" f={4} mx={3} children="+" />
+            <Link
+              href="https://hackclub.com"
+              target="_blank"
+              color="primary"
+              f={[4, 5]}
+              bold
+            >
+              Hack Club
+            </Link>
+          </Flex>
           <SubmissionsHeading align="center" pb={2} px={[3, 0]}>
             <Flex align="center" flex="1 1 auto" wrap>
               <Heading.h2 color="black" f={5} mr={3}>

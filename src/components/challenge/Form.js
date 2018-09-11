@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { Heading, Text } from '@hackclub/design-system'
 import LoginForm from 'components/auth/LoginForm'
 import PostForm from 'components/challenge/PostForm'
@@ -21,7 +21,7 @@ const Form = ({ status, closed = false, challengeId }) => {
         </Fragment>
       ) : (
         <Fragment>
-          <Heading.h2 mt={0} mb={2} f={[3, 4]}>
+          <Heading.h2 mt={0} mb={3} f={[3, 4]}>
             Post your project
           </Heading.h2>
           <PostForm challengeId={challengeId} />

@@ -62,7 +62,7 @@ const InnerForm = ({
       onClick={handleSubmit}
       value={statusMessage(status)}
       bg={statusColor(status)}
-      f={2}
+      f={3}
       w={1}
     />
   </form>
@@ -74,13 +74,12 @@ const PostForm = withFormik({
     description: yup.string(),
     url: yup
       .string()
-      .url()
       .required('required')
+      .url('must be a valid URL')
       .matches(/repl\.co/, 'must be a repl.co link (see rules)')
   }),
   enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, setStatus, resetForm, props }) => {
-    const authToken = storage.get('authToken')
     const id = props.challengeId
     api
       .post(`v1/challenges/${id}/posts`, { data })
@@ -88,9 +87,7 @@ const PostForm = withFormik({
         resetForm()
         setStatus('success')
         setTimeout(() => {
-          if (typeof location !== 'undefined') {
-            location.reload()
-          }
+          if (typeof location !== 'undefined') location.reload()
         }, 1024)
       })
       .catch(e => {

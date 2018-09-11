@@ -103,7 +103,7 @@ const PostRow = ({
     bg={mine ? 'yellow.0' : 'white'}
     title={mine ? '👑 Your post!' : `${name} posted on ${dt(createdAt)}`}
     py={[2, 3]}
-    px={[2, 0]}
+    px={[3, 0]}
     id={`post-${id}`}
   >
     <Index sm xs>

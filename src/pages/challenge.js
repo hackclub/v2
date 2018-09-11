@@ -10,7 +10,7 @@ import {
   Link,
   cx
 } from '@hackclub/design-system'
-imtport Helmet from 'react-helmet'
+import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import Name from 'components/Name'
@@ -67,6 +67,7 @@ const HeaderContainer = Container.extend`
                 'info form';
               ${HeaderAreaText} {
                 text-align: right;
+                margin-right: -${({ theme }) => theme.space[2]}px;
               }
             `
           : css`
@@ -78,7 +79,7 @@ const HeaderContainer = Container.extend`
   }
 `
 
-const HeaderCard = styled(Sheet).attrs({ p: 3 })`
+const HeaderCard = styled(Sheet).attrs({ p: 3, mb: 0 })`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -104,7 +105,7 @@ const HeaderAreaForm = styled(HeaderCard)`
   grid-area: form;
 `
 
-const Title = styled(Flex)`
+const SubmissionsHeading = styled(Flex)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
 `
 
@@ -160,35 +161,33 @@ export default class extends Component {
         <Header py={0} px={3}>
           <HeaderContainer
             pt={[4, 5]}
-            pb={3}
+            pb={[3, 4]}
             align="left"
             success={status === 'success'}
           >
-            <HeaderAreaText align="center" mt={3}>
-              <Text color="pink.0" mb={[-2, -3]} f={3} bold caps>
-                Hack Club
+            <HeaderAreaText align="center" mt={4}>
+              <Name f={6}>Challenge</Name>
+              <Text
+                color="rgba(255, 255, 255, 0.875)"
+                f={[3, 4]}
+                mt={2}
+                mx={3}
+                bold
+                caps
+              >
+                By Hack Club
               </Text>
-              <Heading.h1 f={[6, 7]} my={0}>
-                Challenge
-              </Heading.h1>
             </HeaderAreaText>
             <HeaderAreaInfo>
               <Text f={2}>
-                🌟 Challenge: <strong>{challenge.name}</strong>
+                🌟 Challenge: <strong>{challenge.name}</strong> – build on{' '}
+                <Link href="https://repl.it" target="_blank">
+                  repl.it
+                </Link>
                 <br />
-                🎁 {challenge.description}
+                💸 {challenge.description}
                 <br />
-                ℹ️ Competition open to Hack Club community members
-                <br />
-                📖{' '}
-                <Link
-                  href="/workshops/challenge_ridiculous_api"
-                  target="_blank"
-                  underline
-                >
-                  Click here
-                </Link>{' '}
-                for help getting started
+                💖️ Competition open to Hack Club + repl.it members
                 <br />
                 🏅 Submissions due {dt(challenge.end)}. Top 3 voted win!
               </Text>
@@ -201,10 +200,10 @@ export default class extends Component {
         </Header>
         <Container maxWidth={48} pt={4} pb={5} px={[0, 3]}>
           {ended && <Ended />}
-          <Title align="center" pb={2} px={[2, 0]}>
+          <SubmissionsHeading align="center" pb={2} px={[3, 0]}>
             <Flex align="center" flex="1 1 auto" wrap>
-              <Heading.h2 color="black" f={5} mr={2}>
-                Submissions
+              <Heading.h2 color="black" f={5} mr={3}>
+                Entries
               </Heading.h2>
               <Text f={2} color="muted" align="left">
                 {tinyDt(challenge.start)}–{tinyDt(challenge.end)}
@@ -230,7 +229,7 @@ export default class extends Component {
                 ))}
               </DropdownMenu>
             </DropdownContainer>
-          </Title>
+          </SubmissionsHeading>
           <Posts
             challengeId={challenge.id}
             userId={userId}

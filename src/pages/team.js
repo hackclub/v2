@@ -117,7 +117,7 @@ export default () => (
       <Bio
         img="/team/mingjie.jpg"
         name="Mingjie Jiang"
-        role="Social Media"
+        role="Community"
         text="Mingjie leads a local club at Wootton High School in Rockville, Maryland. Aside from trying to engage more students into the world of hacking, he also cares about building a unique public identity for Hack Club."
         pronouns="he/him"
       />

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Flex, Input, Icon } from '@hackclub/design-system'
+import { Box, Flex, Input } from '@hackclub/design-system'
+import Icon from '@hackclub/icons'
 import { placeholder } from 'polished'
 
 const Relative = styled(Box)`
@@ -43,8 +44,8 @@ const Search = styled(Input).attrs({
 
 const SearchInput = ({ value, placeholder, label, onChange, ...props }) => (
   <Relative {...props}>
-    <Absolute px={3}>
-      <Icon name="search" color="muted" size={24} />
+    <Absolute color="muted" px={2}>
+      <Icon glyph="search" size={36} />
     </Absolute>
     <Search
       value={value}

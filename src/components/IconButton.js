@@ -1,17 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Icon, Button, Text } from '@hackclub/design-system'
 import styled from 'styled-components'
+import { Button, Text } from '@hackclub/design-system'
+import Icon from '@hackclub/icons'
 
-const IconButton = ({ is = Button, name, size = 24, children, ...props }) => {
+const IconButton = ({ is = Button, glyph, size = 24, children, ...props }) => {
   const Component = styled(is)`
     display: inline-flex;
     align-items: center;
+    justify-content: center;
   `
   return (
     <Component {...props}>
-      <Icon color="inherit" name={name} size={size} mr={1} />
-      {children && <Text.span children={children} />}
+      <Icon glyph={glyph} size={size} />
+      {children && <Text.span ml={2} children={children} />}
     </Component>
   )
 }
@@ -20,7 +22,7 @@ export default IconButton
 
 IconButton.propTypes = {
   is: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-  name: PropTypes.string.isRequired,
+  glyph: PropTypes.string.isRequired,
   size: PropTypes.number,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
     .isRequired

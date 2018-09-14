@@ -58,8 +58,7 @@ class Help extends Component {
     }
     return (
       <IconButton
-        name="flag"
-        size={16}
+        glyph="flag-fill"
         children="Rules"
         inverted
         f={2}

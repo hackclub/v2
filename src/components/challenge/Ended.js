@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Box, Text } from '@hackclub/design-system'
-import Icon from 'spectrum-icons'
+import Icon from '@hackclub/icons'
 import Sheet from 'components/Sheet'
 
 const Root = styled(Sheet)`

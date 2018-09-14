@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react'
-import { Box, Card, IconButton } from '@hackclub/design-system'
-import { keyframes } from 'styled-components'
+import { Box } from '@hackclub/design-system'
+import styled, { keyframes } from 'styled-components'
 import ScrollLock from 'react-scrolllock'
+import Icon from '@hackclub/icons'
 
 const modalKeyframes = keyframes`
   0% {
@@ -65,8 +66,20 @@ const Overlay = props => (
   </Fragment>
 )
 
+const ButtonReset = styled(Box.withComponent('button')).attrs({
+  role: 'button',
+  p: 3
+})`
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-radius: ${({ theme }) => theme.pill};
+  cursor: pointer;
+`
 const CloseButton = props => (
-  <IconButton name="close" color="muted" circle p={3} {...props} />
+  <ButtonReset aria-label="Close" color="muted" {...props}>
+    <Icon glyph="view-close-small" size={24} />
+  </ButtonReset>
 )
 
 export default { Modal, Overlay, Overlayer, CloseButton }

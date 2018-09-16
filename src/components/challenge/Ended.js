@@ -22,13 +22,13 @@ const Indicator = styled(Box.withComponent(Icon))`
 `
 
 const Ended = () => (
-  <Root maxWidth={36} bg="cyan.1" color="cyan.8" p={[2, 3]} mb={4}>
+  <Root maxWidth={36} bg="cyan.1" color="cyan.9" p={[2, 3]} mb={4}>
     <Indicator glyph="freeze" size={48} mr={[2, 3]} />
     <Box>
       <Text f={3} bold>
         This challenge has ended.
       </Text>
-      <Text f={2}>Check back next week for the new challenge!</Text>
+      <Text f={2}>Check back soon for the next one!</Text>
     </Box>
   </Root>
 )

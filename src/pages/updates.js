@@ -8,13 +8,29 @@ import {
   Section,
   Flex,
   Card,
-  cx
+  cx,
+  colors
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import YouTubePlayer from 'react-player/lib/players/YouTube'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import { kebabCase } from 'lodash'
+
+colors.dark = '#17171d'
+const styles = `
+  body {
+    width: 100%;
+    max-width: 100vw;
+    background-color: ${colors.dark};
+    color: ${colors.gray[3]};
+    background-image: radial-gradient(circle, ${colors.black}, ${
+  colors.black
+} 1px,
+      ${colors.dark} 1px, ${colors.dark});
+    background-size: 2rem 2rem;
+  }
+`
 
 const Header = Section.withComponent('header')
 
@@ -117,14 +133,14 @@ export default () => (
         { property: 'og:url', content: 'https://hackclub.com/updates' }
       ]}
     />
-    <style children="body{background:#111}" />
+    <style children={styles} />
     <Nav color="white" />
     <Header py={4} align="center" justify="center">
       <Container mt={5} maxWidth={32}>
         <Heading.h1 color="white" f={6}>
           Updates
         </Heading.h1>
-        <Text f={4} color="smoke" style={{ lineHeight: '1.25' }}>
+        <Text f={4} color="muted" style={{ lineHeight: '1.25' }}>
           Every so often we produce video updates with what’s new at Hack Club.
           Here they all are!
         </Text>

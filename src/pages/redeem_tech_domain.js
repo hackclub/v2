@@ -1,16 +1,22 @@
 import React, { Fragment } from 'react'
-import { Container, Heading, Text, Section } from '@hackclub/design-system'
+import {
+  Container,
+  Heading,
+  Text,
+  Section,
+  theme
+} from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import RedeemTechDomainForm from 'components/RedeemTechDomainForm'
 
 const Header = Section.withComponent('header').extend`
-  background-color: ${({ theme }) => theme.colors.red[5]};
+  background-color: ${theme.colors.red[5]};
   background-image: linear-gradient(
     -32deg,
-    ${({ theme }) => theme.colors.orange[4]},
-    ${({ theme }) => theme.colors.red[5]},
-    ${({ theme }) => theme.colors.red[6]}
+    ${theme.colors.orange[4]},
+    ${theme.colors.red[5]},
+    ${theme.colors.red[6]}
   );
 `
 
@@ -18,8 +24,8 @@ export default () => (
   <Fragment>
     <Helmet title="Free .TECH Domain – Hack Club" />
     <Nav />
-    <Header align="center">
-      <Container maxWidth={32} pt={4}>
+    <Header align="center" px={0}>
+      <Container maxWidth={32} pt={4} px={3}>
         <Heading.h1 f={[5, 6]} mt={0} mb={2}>
           Free .TECH Domain!
         </Heading.h1>

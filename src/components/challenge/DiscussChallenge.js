@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Container, Card, Icon, Box, Flex, Text } from '@hackclub/design-system'
+import { Box, Flex, Text } from '@hackclub/design-system'
+import Icon from '@hackclub/icons'
 import Sheet from 'components/Sheet'
 import DiscussOnSlack from 'components/DiscussOnSlack'
 
@@ -10,10 +11,10 @@ const Root = styled(Sheet)`
 `
 
 const DiscussChallenge = () => (
-  <Root maxWidth={36} mt={[3, 4]} p={[2, 3]} bg="pink.0">
+  <Root maxWidth={36} mt={[3, 4]} p={[2, 3]} bg="pink.0" color="pink.6">
     <Flex align="center" flex="1 1 auto" mb={[3, 0]}>
-      <Icon name="forum" size={48} mr={[2, 3]} color="pink.5" />
-      <Box align="left" color="pink.6">
+      <Icon glyph="message-fill" size={48} />
+      <Box align="left" color="pink.6" ml={[2, 3]}>
         <Text f={2}>Join the conversation</Text>
         <Text f={3} bold>
           #challenges

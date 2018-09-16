@@ -49,13 +49,12 @@ const Item = styled(Card.withComponent('li'))`
     position: absolute;
     right: ${({ theme }) => theme.space[3]}px;
     top: ${({ theme }) => theme.space[3]}px;
-    width: 1.25rem;
-    line-height: 1.25rem;
+    width: 1.125rem;
+    line-height: 1.125rem;
     border-radius: 0.75rem;
     background-color: ${({ theme }) => theme.colors.white};
     color: ${({ theme }) => theme.colors.black};
     font-size: ${({ theme }) => theme.fontSizes[0]}px;
-    letter-spacing: -0.125em;
     text-align: center;
     text-shadow: none;
     font-weight: bold;

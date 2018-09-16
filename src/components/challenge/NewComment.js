@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import { Input, IconButton } from '@hackclub/design-system'
+import React from 'react'
 import { withFormik } from 'formik'
 import { isEmpty } from 'lodash'
 import Composer, { LS_BODY_KEY } from './CommentComposer'

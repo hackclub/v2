@@ -28,10 +28,9 @@ import MarkdownBody from 'components/MarkdownBody'
 import FeedbackForm from 'components/workshops/FeedbackForm'
 import DiscussOnSlack from 'components/DiscussOnSlack'
 import ShareButton from 'components/ShareButton'
-import { Modal, Overlay, CloseButton } from 'components/Modal'
 import Sheet from 'components/Sheet'
 import Footer from 'components/Footer'
-import { lowerCase, camelCase, isEmpty } from 'lodash'
+import { isEmpty } from 'lodash'
 import { org } from 'data.json'
 
 const NotOnPrint = styled(Box)`

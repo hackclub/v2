@@ -3,10 +3,6 @@ import styled from 'styled-components'
 import {
   Box,
   LargeButton,
-  Container,
-  Card,
-  Flex,
-  Heading,
   Link as A,
   Section,
   Text
@@ -17,17 +13,7 @@ import Nav from 'components/Nav'
 import Name from 'components/Name'
 import IconButton from 'components/IconButton'
 import Footer from 'components/Footer'
-import Track from 'components/workshops/Track'
 import WorkshopSearch from 'components/workshops/WorkshopSearch'
-import {
-  groupBy,
-  orderBy,
-  camelCase,
-  map,
-  fromPairs,
-  reverse,
-  toPairs
-} from 'lodash'
 
 const Base = styled(Box.main)`
   position: relative;

@@ -2,21 +2,12 @@ import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
 import api from 'api'
 import storage from 'storage'
-import { timeSince } from 'helpers'
 import {
-  Box,
-  Button,
-  Card,
-  Container,
   Flex,
   Heading,
-  Hide,
-  IconButton,
   LargeButton,
   Link as DSLink,
-  Section,
-  Text,
-  cx
+  Text
 } from '@hackclub/design-system'
 import styled from 'styled-components'
 

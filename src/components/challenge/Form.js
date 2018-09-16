@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { Heading, Text } from '@hackclub/design-system'
 import LoginForm from 'components/auth/LoginForm'
 import PostForm from 'components/challenge/PostForm'

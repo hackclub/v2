@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react'
-import { Box, Heading, Text, Link } from '@hackclub/design-system'
+import { Heading, Text, Link } from '@hackclub/design-system'
 import IconButton from 'components/IconButton'
 import { Modal, Overlay, CloseButton } from 'components/Modal'
 

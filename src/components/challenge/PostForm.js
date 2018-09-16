@@ -76,7 +76,7 @@ const PostForm = withFormik({
       .string()
       .required('required')
       .url('must be a valid URL')
-      .matches(/repl\.co/, 'must be a repl.co link (see rules)')
+      .matches(/repl\.it/, 'must be a repl.it link (see rules)')
   }),
   enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, setStatus, resetForm, props }) => {

@@ -1,13 +1,7 @@
 import React, { Component, Fragment } from 'react'
-import {
-  Box,
-  Flex,
-  Text,
-  Heading,
-  Link,
-  Button,
-  Icon
-} from '@hackclub/design-system'
+import styled from 'styled-components'
+import { Box, Flex, Heading, Link } from '@hackclub/design-system'
+import Icon from '@hackclub/icons'
 import FlipMove from 'react-flip-move'
 import Auth from 'components/Auth'
 import LoadingBar from 'components/LoadingBar'
@@ -15,11 +9,10 @@ import ErrorPage from 'components/admin/ErrorPage'
 import Comment from 'components/challenge/Comment'
 import NewComment from 'components/challenge/NewComment'
 import NoComments from 'components/challenge/NoComments'
-import PropTypes from 'prop-types'
 import api from 'api'
 import { isEmpty, remove, find } from 'lodash'
 
-const Header = Flex.extend`
+const Header = styled(Flex)`
   align-items: baseline;
   border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
   h2 {
@@ -27,7 +20,7 @@ const Header = Flex.extend`
   }
 `
 
-const Container = Box.extend`
+const Container = styled(Box)`
   position: relative;
   min-height: 16rem;
   max-height: 100%;
@@ -80,8 +73,8 @@ class Comments extends Component {
       <Fragment>
         <Header pb={1}>
           <Heading.h2 f={[4, 5]} children={name} />
-          <Link href={url} target="_blank" ml={2}>
-            <Icon name="open_in_new" color="info" size={24} />
+          <Link href={url} target="_blank" ml={2} color="info">
+            <Icon glyph="external" size={32} />
           </Link>
         </Header>
         <Container>

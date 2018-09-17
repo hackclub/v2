@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css, injectGlobal } from 'styled-components'
+import styled from 'styled-components'
 import {
   Box,
   Flex,
@@ -16,6 +16,7 @@ import {
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
+import Footer from 'components/Footer'
 import Module from 'components/Module'
 import Sheet from 'components/Sheet'
 import BankStats from 'components/bank/BankStats'
@@ -41,13 +42,13 @@ const CTA = styled(LargeButton).attrs({ bg: 'teal.6', fontSize: 2 })`
 
 const Modules = styled(Container)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   grid-gap: ${({ theme }) => theme.space[3]}px;
   h3,
   svg {
     color: ${({ theme }) => theme.colors.white};
   }
   ${({ theme }) => theme.mediaQueries.md} {
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: ${({ theme }) => theme.space[4]}px;
     > div {
       align-items: center;
@@ -55,12 +56,12 @@ const Modules = styled(Container)`
   }
 `
 Modules.defaultProps = {
-  py: 0,
   px: 3,
-  my: 3,
+  mt: [4, null, 3],
+  mb: 3,
   mx: 'auto',
   maxWidth: 64,
-  align: ['left', 'center']
+  align: ['left', null, 'center']
 }
 
 const Megaline = Heading.h1.extend.attrs({
@@ -120,7 +121,7 @@ const Breakdown = styled(Box)`
 const title = 'Hack Club Bank – The Bank For Student Hackers'
 const desc =
   'Get a bank account for your high school coding event or hackathon with the backing of a 501(c)(3) non-profit. Student organizers can invoice sponsors, issue physical debit cards, and get access to their event’s financials through a real-time dashboard.'
-const img = 'https://hackclub.com/bank-banner.png'
+const img = 'https://hackclub.com/cards/bank.png'
 
 export default () => (
   <Box align="center">
@@ -138,7 +139,7 @@ export default () => (
       ]}
     />
     <style children={styles} />
-    <Nav color="smoke" bgColor={[40, 40, 40]} />
+    <Nav dark />
     <Box>
       <Megaline pt={[5, 6]}>The bank for student hackers.</Megaline>
       <Lead color="inherit" px={3} maxWidth={48} my={[3, 4]}>
@@ -178,7 +179,7 @@ export default () => (
         body="Add notes to transactions, export data, issue reimbursements. Easy."
       />
     </Modules>
-    <Container maxWidth={70} mt={[4, 3]}>
+    <Container my={[4, 3]}>
       <Image w={1} src="/bank-screenshot.png" />
     </Container>
     <BankStats />
@@ -249,5 +250,6 @@ export default () => (
         provided by Silicon Valley Bank, an FDIC-certified institution.
       </Lead>
     </Container>
+    <Footer dark />
   </Box>
 )

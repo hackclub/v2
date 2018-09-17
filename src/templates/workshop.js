@@ -8,9 +8,7 @@ import {
   Link as A,
   Text,
   Section,
-  Icon,
   Button,
-  Card,
   Image,
   theme
 } from '@hackclub/design-system'
@@ -46,7 +44,7 @@ const OnlyOnPrint = styled(Box)`
   }
 `
 
-const Header = Box.withComponent('header').extend`
+const Header = styled(Box.withComponent('header'))`
   li a,
   h2,
   p {
@@ -69,7 +67,7 @@ const Name = styled(Heading.h1)`
   }
 `
 
-const Body = Container.withComponent(MarkdownBody).extend`
+const Body = styled(Container.withComponent(MarkdownBody))`
   @media print {
     max-width: none !important;
   }
@@ -179,9 +177,9 @@ export default ({ data }) => {
   const authorUrl = makeUrl('github.com', authorUsername)
 
   const title = `${name} – Hack Club Workshops`
-  const l = description.charAt(0).toUpperCase() + description.slice(1)
-  const desc = `Free coding tutorial for ${l}, published on Hack Club Workshops.`
-  const img = 'https://hackclub.com/workshops.png'
+  const d = description.charAt(0).toUpperCase() + description.slice(1)
+  const desc = `Free coding tutorial for ${d}, published on Hack Club Workshops.`
+  const img = 'https://hackclub.com/cards/workshops.png'
   const url = makeUrl('hackclub.com', slug)
 
   const schema = {
@@ -226,7 +224,7 @@ export default ({ data }) => {
           { property: 'og:url', content: url }
         ]}
       >
-        <script type="application/ld+json" children={JSON.stringify(schema)} />}
+        <script type="application/ld+json" children={JSON.stringify(schema)} />
       </Helmet>
       <Nav />
       <NotOnPrint>
@@ -258,7 +256,7 @@ export default ({ data }) => {
             <Invert f={2} my={1} />
             <IconButton
               bg="slate"
-              name="edit"
+              glyph="edit"
               children="Edit"
               inverted
               href={githubEditUrl(slug)}
@@ -325,7 +323,7 @@ export default ({ data }) => {
               <DiscussOnSlack f={2} />
             </Sheet>
             <Sheet>
-              <Heading.h2 f={4} color="slate" mb={3}>
+              <Heading.h2 f={4} color="black" mb={3}>
                 Spotted an issue?
               </Heading.h2>
               <ShareButton

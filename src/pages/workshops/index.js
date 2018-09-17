@@ -24,19 +24,17 @@ const Background = styled(Section)`
   background-color: ${({ theme }) => theme.colors.red[5]};
   background-image: url('/pattern.svg'),
     linear-gradient(
-      -86deg,
-      ${({ theme }) => theme.colors.orange[5]},
-      ${({ theme }) => theme.colors.red[5]},
-      ${({ theme }) => theme.colors.red[6]}
+      -64deg,
+      ${({ theme }) => theme.colors.indigo[5]},
+      ${({ theme }) => theme.colors.violet[5]},
+      ${({ theme }) => theme.colors.violet[6]}
     );
-  color: ${({ theme }) => theme.colors.white};
 `
 
 const attrs = {
   is: LargeButton.withComponent(Link),
   m: 2,
   scale: true,
-  chevronRight: true,
   py: 3,
   px: 4,
   f: 2
@@ -53,8 +51,8 @@ const PhilosophyButton = styled(IconButton).attrs(attrs)`
   text-transform: uppercase;
   background-image: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.colors.yellow[5]},
-    ${({ theme }) => theme.colors.orange[5]}
+    ${({ theme }) => theme.colors.orange[5]},
+    ${({ theme }) => theme.colors.red[5]}
   );
 `
 
@@ -66,7 +64,7 @@ export default ({
   const title = 'Hack Club Workshops'
   const desc =
     'Get free coding tutorials, project ideas, and programming club activities from Hack Club, a community of high school developers.'
-  const img = 'https://hackclub.com/workshops.png'
+  const img = 'https://hackclub.com/cards/workshops.png'
 
   return (
     <Fragment>
@@ -104,12 +102,13 @@ export default ({
               self-guided coding tutorials + ideas.
             </Text>
             <SubmitButton
-              name="new"
+              glyph="post"
               to="/workshops/submit"
               children="Submit your own"
+              bg="cyan.6"
             />
             <PhilosophyButton
-              name="notes"
+              glyph="quote"
               to="/philosophy"
               children="Our philosophy"
             />

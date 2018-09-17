@@ -8,8 +8,6 @@ import {
   Text,
   Section,
   Link,
-  Card,
-  Button,
   cx
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
@@ -114,7 +112,7 @@ const SubmissionsHeading = styled(Flex)`
 const title = 'Hack Club Challenge'
 const desc =
   'Join Hack Club’s high school coding challenge. Submit your entry to compete in our monthly programming contest and win prizes.'
-const img = 'https://hackclub.com/challenge.png'
+const img = 'https://hackclub.com/cards/challenge.png'
 
 export default class extends Component {
   state = { status: 'loading', sortBy: 'top' }

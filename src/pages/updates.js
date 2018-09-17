@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import styled, { injectGlobal } from 'styled-components'
+import styled from 'styled-components'
 import {
   Container,
   Heading,
@@ -113,10 +113,10 @@ const Update = ({ month, year, color = 'primary', url, ...props }) => (
   </Updater>
 )
 
-const title = 'Monthly Updates – Hack Club'
+const title = 'Update Videos – Hack Club'
 const desc =
-  'Watch all of Hack Club’s monthly update videos on what’s new in our community of high school coding clubs.'
-const img = 'https://hackclub.com/updates.png'
+  'Watch all of Hack Club’s update videos on what’s new in our community of high school coding clubs.'
+const img = 'https://hackclub.com/cards/updates.png'
 
 export default () => (
   <Fragment>
@@ -134,7 +134,7 @@ export default () => (
       ]}
     />
     <style children={styles} />
-    <Nav color="white" />
+    <Nav dark />
     <Header py={4} align="center" justify="center">
       <Container mt={5} maxWidth={32}>
         <Heading.h1 color="white" f={6}>

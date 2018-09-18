@@ -1,23 +1,26 @@
 import React from 'react'
-import { Container, Text, Link } from '@hackclub/design-system'
+import { Container, Text, Link as A } from '@hackclub/design-system'
+import Link from 'gatsby-link'
+
+A.link = A.withComponent(Link)
 
 export default () => (
-  <Container maxWidth={46} pt={3} pb={5} align="center">
-    <Text color="slate" f={3}>
-      Hack Club is a nonprofit network of high school programming clubs that
-      teach beginners to code. We provide{' '}
-      <Link href="https://guide.hackclub.com" target="_blank">
+  <Container maxWidth={46} p={3} pb={5} align="center">
+    <Text color="slate" fontSize={[2, 3]}>
+      Hack Club is a nonprofit network of high school CS clubs that teach
+      beginners to code. We provide{' '}
+      <A href="https://guide.hackclub.com" target="_blank">
         club activities
-      </Link>,{' '}
-      <Link href="/workshops" target="_blank">
+      </A>,{' '}
+      <A.link to="/workshops" target="_blank">
         programming club curriculum
-      </Link>,{' '}
+      </A.link>,{' '}
       <Link href="https://hackathons.hackclub.com" target="_blank">
         access to high school hackathons
-      </Link>, and{' '}
-      <Link href="/slack_invite" target="_blank">
+      </Link>, &{' '}
+      <A.link to="/hackers" target="_blank">
         a supportive hacker community.
-      </Link>
+      </A.link>
     </Text>
   </Container>
 )

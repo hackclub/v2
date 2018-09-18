@@ -46,7 +46,6 @@ const Updates = styled(Sheet)`
   }
 `
 const UpdateLink = styled(Button.withComponent(Link)).attrs({
-  caps: true,
   scale: true,
   chevronRight: true,
   bg: 'info',
@@ -54,7 +53,14 @@ const UpdateLink = styled(Button.withComponent(Link)).attrs({
   py: 3,
   px: 4,
   f: 2
-})``
+})`
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    to bottom,
+    ${({ theme }) => theme.colors.cyan[6]},
+    ${({ theme }) => theme.colors.blue[6]}
+  );
+`
 
 const title = 'Hack Club Team'
 const description =
@@ -110,15 +116,15 @@ export default () => (
       <Bio
         img="/team/lachlan.jpg"
         name="Lachlan Campbell"
-        role="Web Designer"
-        text="Lachlan, a club leader from State College, PA, joined the team to work on Hack Club’s website. They care about bringing coding to more people and making tools to make information more accessible."
+        role="Web/Design"
+        text="Lachlan, a club leader from State College, PA, joined to work on hackclub.com. Over a year later, they now manage Hack Club’s design and branding, and build the website and Design System."
         pronouns="they/them"
       />
       <Bio
         img="/team/mingjie.jpg"
         name="Mingjie Jiang"
         role="Community"
-        text="Mingjie leads a local club at Wootton High School in Rockville, Maryland. Aside from trying to engage more students into the world of hacking, he also cares about building a unique public identity for Hack Club."
+        text="Mingjie leads a local club at Wootton High School in Rockville, Maryland. Aside from engaging more students into the world of hacking, he also cares about building a unique public identity for Hack Club."
         pronouns="he/him"
       />
       <Bio
@@ -142,7 +148,7 @@ export default () => (
           What’ve we been doing recently?
         </Heading.h2>
         <Text color="smoke">
-          Check out our update videos to see our recent work.
+          Check out our latest update videos to see our work.
         </Text>
       </Container>
       <UpdateLink to="/updates">Watch now</UpdateLink>

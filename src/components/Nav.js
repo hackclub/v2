@@ -1,10 +1,26 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { Box, Flex, Link as A, Container, Icon } from '@hackclub/design-system'
+import {
+  Box,
+  Flex,
+  Link as A,
+  Container,
+  cx,
+  theme
+} from '@hackclub/design-system'
+import Icon from '@hackclub/icons'
 import Flag from 'components/Flag'
 import Link from 'gatsby-link'
 import ScrollLock from 'react-scrolllock'
+
+const rgbaBgColor = (props, opacity) =>
+  `rgba(
+    ${props.bgColor[0]},
+    ${props.bgColor[1]},
+    ${props.bgColor[2]},
+    ${opacity}
+  )`
 
 const Root = Box.withComponent('header').extend`
   position: absolute;
@@ -16,23 +32,13 @@ const Root = Box.withComponent('header').extend`
     (props.scrolled || props.toggled || props.fixed) &&
     css`
       position: fixed;
-      background-color: rgba(
-        ${props.bgColor[0]},
-        ${props.bgColor[1]},
-        ${props.bgColor[2]},
-        0.96875
-      );
-      border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+      background-color: ${rgbaBgColor(props, 0.96875)};
+      border-bottom: 1px solid rgba(48, 48, 48, 0.125);
       @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-        background-color: rgba(
-          ${props.bgColor[0]},
-          ${props.bgColor[1]},
-          ${props.bgColor[2]},
-          0.75
-        );
+        background-color: ${rgbaBgColor(props, 0.75)};
         -webkit-backdrop-filter: saturate(180%) blur(16px);
       }
-      ${({ theme }) => theme.mediaQueries.reduceTransparency} {
+      ${theme.mediaQueries.reduceTransparency} {
         -webkit-backdrop-filter: auto !important;
       }
     `}
@@ -47,9 +53,9 @@ const Content = Container.extend`
   align-items: center;
   justify-content: space-between;
   position: relative;
-  padding-left: ${({ theme }) => theme.space[3]}px;
-  ${({ theme }) => theme.mediaQueries.md} {
-    padding: 0 ${({ theme }) => theme.space[4]}px;
+  padding-left: ${theme.space[3]}px;
+  ${theme.mediaQueries.md} {
+    padding: 0 ${theme.space[4]}px;
   }
 `
 
@@ -66,17 +72,17 @@ const hoverColor = name =>
 const NavBar = Box.withComponent('nav').extend`
   display: none;
   a {
-    color: ${props => props.theme.cx(props.color)};
-    margin-left: ${({ theme }) => theme.space[2]}px;
-    padding: ${({ theme }) => theme.space[2]}px;
+    color: ${props => cx(props.color)};
+    margin-left: ${theme.space[2]}px;
+    padding: ${theme.space[2]}px;
     text-decoration: none;
   }
   ${props =>
     props.isMobile
       ? css`
-          display: ${props => (props.toggled ? 'flex' : 'none')};
+          display: ${props.toggled ? 'flex' : 'none'};
           flex-direction: column;
-          overflow-y: scroll;
+          overflow-y: auto;
           text-align: left;
           height: 100vh;
           a {
@@ -87,9 +93,8 @@ const NavBar = Box.withComponent('nav').extend`
             font-weight: bold;
             width: 100%;
             max-width: 18rem;
-            color: ${({ theme }) => theme.colors.black};
             &:not(:last-child) {
-              border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+              border-bottom: 1px solid rgba(48, 48, 48, 0.125);
             }
             @media screen and (max-width: 22em) {
               max-width: 16rem;
@@ -104,10 +109,10 @@ const NavBar = Box.withComponent('nav').extend`
             transform: translateX(-50%);
           }
           a {
-            font-size: ${({ theme }) => theme.fontSizes[1]}px;
+            font-size: ${theme.fontSizes[1]}px;
             text-transform: uppercase;
             &:hover {
-              color: ${({ theme }) => theme.cx(hoverColor(props.color))};
+              color: ${theme.cx(hoverColor(props.color))};
             }
           }
         `};
@@ -115,7 +120,6 @@ const NavBar = Box.withComponent('nav').extend`
 
 const Navigation = props => (
   <NavBar role="navigation" {...props}>
-    <Link to="/team" children="Team" />
     <Link to="/donate" children="Donate" />
     <Link to="/challenge" children="Challenge" />
     <Link to="/workshops" children="Workshops" />
@@ -137,7 +141,7 @@ const ToggleContainer = styled(Flex)`
 
 const Toggle = styled(Icon)`
   display: block;
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     display: none;
   }
 `
@@ -146,6 +150,18 @@ class Header extends Component {
   state = {
     scrolled: false,
     toggled: false
+  }
+
+  static defaultProps = {
+    dark: false,
+    color: 'white'
+  }
+
+  static propTypes = {
+    color: PropTypes.string,
+    bgColor: PropTypes.arrayOf(PropTypes.number),
+    dark: PropTypes.bool,
+    fixed: PropTypes.bool
   }
 
   componentDidMount() {
@@ -189,16 +205,18 @@ class Header extends Component {
   }
 
   render() {
-    const {
-      color = 'white',
-      bgColor = [255, 255, 255],
-      fixed,
-      ...props
-    } = this.props
+    const { color, dark, fixed, bgColor, ...props } = this.props
     const { scrolled, toggled } = this.state
-    const baseColor = color === 'white' && scrolled ? 'black' : color
-    const toggleColor =
-      toggled || (color === 'white' && scrolled) ? 'slate' : color
+    const baseColor = dark
+      ? color || 'white'
+      : color === 'white' && scrolled
+        ? 'black'
+        : color
+    const toggleColor = dark
+      ? color || 'snow'
+      : toggled || (color === 'white' && scrolled)
+        ? 'slate'
+        : color
 
     return (
       <Root
@@ -206,19 +224,16 @@ class Header extends Component {
         fixed={fixed}
         scrolled={scrolled}
         toggled={toggled}
-        bgColor={bgColor}
+        bgColor={bgColor || (dark ? [32, 32, 32] : [255, 255, 255])}
       >
         <Content>
           <Flag scrolled={scrolled || fixed} />
-          <Navigation color={baseColor} />
+          <Navigation color={baseColor} dark={dark} />
           <ToggleContainer color={toggleColor} onClick={this.handleToggleMenu}>
-            <Toggle
-              name={toggled ? 'close' : 'drag_handle'}
-              toggled={toggled}
-            />
+            <Toggle glyph={toggled ? 'view-close' : 'menu'} toggled={toggled} />
           </ToggleContainer>
         </Content>
-        <Navigation isMobile toggled={toggled} />
+        <Navigation isMobile toggled={toggled} color={baseColor} tdark={dark} />
         {toggled && <ScrollLock />}
       </Root>
     )

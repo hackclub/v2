@@ -1,17 +1,32 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { Button } from '@hackclub/design-system'
+import { Button, theme } from '@hackclub/design-system'
 import IconButton from 'components/IconButton'
 
+theme.colors.dark = '#17171d'
 const css = `
   .invert {
-    background-color: #fff;
+    background-color: ${theme.colors.dark};
+    color: ${theme.colors.white} !important;
+  }
+
+  .invert > * {
     filter: invert(100%);
   }
 
-  img:not([src*=".svg"]),
-  video {
-    filter: invert(100%);
+  .invert p > a {
+    color: ${theme.colors.info} !important;
+  }
+
+  .invert h1,
+  .invert h2 {
+    border-bottom-color: ${theme.colors.muted};
+  }
+
+  .invert video,
+  .invert .gatsby-resp-image-link,
+  .invert p > img:not([src*=".svg"]) {
+    filter: invert(100%) !important;
   }
 `
 

@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
 import api from 'api'
-import search from 'search'
-import { Heading, Container, Card, LargeButton } from '@hackclub/design-system'
-import styled from 'styled-components'
+import { Heading, Container, LargeButton } from '@hackclub/design-system'
 
 import Login from 'components/auth/Login'
 import Sheet from 'components/Sheet'
@@ -56,14 +54,20 @@ export default class extends Component {
           <Fragment>
             <ApplyNav />
             <BG color="snow" />
-            <Sheet mt={3} mb={5}>
-              <LeaderApplicationForm params={formFields} id={id} />
+            <Sheet maxWidth={48} mt={3} mb={5}>
+              <LeaderApplicationForm
+                params={formFields}
+                id={id}
+                authToken={authToken}
+              />
             </Sheet>
             <Heading.h4 align="center">
               Your form is automatically saved ✨
             </Heading.h4>
             <Container align="center" mt={4} mb={5}>
-              <LargeButton.link to="/apply">« Back</LargeButton.link>
+              <LargeButton.link to="/apply" chevronLeft>
+                Back
+              </LargeButton.link>
             </Container>
           </Fragment>
         )

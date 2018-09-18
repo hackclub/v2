@@ -1,155 +1,108 @@
-import React, { Component, Fragment } from 'react'
+import React from 'react'
+import styled from 'styled-components'
 import {
   Box,
   Flex,
   Container,
   Text,
   Heading,
-  Button,
+  LargeButton as Button,
   Link as A,
-  Card,
-  Image
+  Image,
+  theme
 } from '@hackclub/design-system'
-import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
+import Footer from 'components/Footer'
 import Module from 'components/Module'
-import api from 'api'
-import { timeSince } from 'helpers'
+import Sheet from 'components/Sheet'
+import BankStats from 'components/bank/BankStats'
 
-class BankStats extends Component {
-  state = {}
-
-  loadStats() {
-    api.get('https://bank.hackclub.com/transactions/stats').then(stats => {
-      const volumeString = (stats.total_volume / 100).toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD'
-      })
-      this.setState({ transactionsTotalVolume: volumeString })
-    })
+const styles = `
+  body {
+    width: 100%;
+    max-width: 100vw;
+    background-color: ${theme.colors.dark};
+    color: ${theme.colors.gray[3]};
+    background-image: radial-gradient(circle, ${theme.colors.black}, ${
+  theme.colors.black
+} 1px,
+      ${theme.colors.dark} 1px, ${theme.colors.dark});
+    background-size: 2rem 2rem;
   }
-  loadStats = this.loadStats.bind(this)
-
-  componentDidMount() {
-    this.loadStats()
-    const intervalId = setInterval(this.loadStats, 10000)
-    this.setState({ intervalId })
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.state.intervalId)
-  }
-
-  render() {
-    const { transactionsTotalVolume } = this.state
-    const launchDate = '2018-06-28'
-    if (transactionsTotalVolume) {
-      return (
-        <Text maxWidth={32} f={3} my={4}>
-          {transactionsTotalVolume} transacted in the past{' '}
-          {timeSince(launchDate, true, new Date(), true)} & counting.
-        </Text>
-      )
-    } else {
-      return null
-    }
-  }
-}
-
-const Base = Box.extend`
-  background-color: #111;
-  width: 100%;
-  max-width: 100vw;
-  min-height: 100vh;
-  color: ${({ theme }) => theme.colors.gray[3]};
-  background-image: radial-gradient(circle, #444, #444 1px, #111 1px, #111);
-  background-size: 2rem 2rem;
 `
 
-const CTA = Button.extend`
-  text-transform: uppercase;
+const CTA = styled(Button).attrs({
+  target: '_blank',
+  scale: true,
+  chevronRight: true,
+  bg: 'teal.6'
+})`
+  background: ${theme.gradient('teal.6', 'teal.7', 'teal.8')};
 `
-CTA.defaultProps = {
-  bg: 'teal.6',
-  color: 'white',
-  py: 3,
-  px: 4,
-  f: 2
-}
 
-const Modules = Container.extend`
+const Modules = styled(Container)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-  grid-gap: ${({ theme }) => theme.space[3]}px;
+  grid-gap: ${theme.space[3]}px;
   h3,
   svg {
-    color: ${({ theme }) => theme.colors.white};
+    color: ${theme.colors.white};
   }
-  ${({ theme }) => theme.mediaQueries.md} {
-    grid-gap: ${({ theme }) => theme.space[4]}px;
+  ${theme.mediaQueries.md} {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: ${theme.space[4]}px;
     > div {
       align-items: center;
     }
   }
 `
 Modules.defaultProps = {
-  py: 0,
   px: 3,
-  my: 3,
+  mt: [4, null, 3],
+  mb: 3,
   mx: 'auto',
   maxWidth: 64,
-  align: ['left', 'center']
+  align: ['left', null, 'center']
 }
 
-const Internal = A.withComponent(Link).extend.attrs({ color: 'inherit' })``
-
-const Alt = Container.withComponent(Flex).extend.attrs({
-  maxWidth: 64,
-  px: 3,
-  flexDirection: 'column'
-})`text-align: left;`
-const AltBox = Box.extend.attrs({ my: 4 })`
-  max-width: 36rem;
-`
-const AltLeft = AltBox.extend``
-const AltRight = AltBox.extend.attrs({ ml: 'auto' })``
-
-const Megaline = Heading.h1.extend.attrs({
-  f: [6, 7],
+const Megaline = styled(Heading.h1).attrs({
+  fontSize: [6, 7],
   color: 'white'
-})`line-height: 1.125;`
-const Headline = Heading.h2.extend.attrs({
+})`
+  line-height: 1.125;
+`
+const Headline = styled(Heading.h2).attrs({
   f: [5, 6],
   mb: 3,
   color: 'snow',
   bold: true
-})`line-height: 1.125;`
+})`
+  line-height: 1.125;
+`
 const subhline = { f: [3, 4], style: { lineHeight: '1.375' } }
 
 const Lead = Container.withComponent(Text)
 Lead.defaultProps = { f: 3, mx: 'auto' }
 
-const Banner = Container.extend``
-Banner.defaultProps = {
+const Banner = styled(Container).attrs({
   maxWidth: 48,
   mt: 5,
   mb: [3, 4],
   mx: 'auto',
   px: 3,
   align: ['left', 'center']
-}
+})``
 
-const Join = Card.withComponent(Container).extend`
+const Join = styled(Sheet)`
   display: grid;
-  grid-gap: ${({ theme }) => theme.space[3]}px;
+  grid-gap: ${theme.space[3]}px;
   align-items: flex-start;
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     grid-template-columns: 32rem auto;
   }
 `
 
-const Breakdown = Box.extend`
+const Breakdown = styled(Box)`
   div {
     width: 100%;
     display: block;
@@ -157,22 +110,22 @@ const Breakdown = Box.extend`
   }
   span:before {
     content: '$';
-    font-size: ${({ theme }) => theme.fontSizes[4]}px;
+    font-size: ${theme.fontSizes[4]}px;
     margin-left: -12px;
     vertical-align: super;
   }
   p {
-    color: ${({ theme }) => theme.colors.red[1]};
+    color: ${theme.colors.red[1]};
   }
 `
 
 const title = 'Hack Club Bank – The Bank For Student Hackers'
 const desc =
   'Get a bank account for your high school coding event or hackathon with the backing of a 501(c)(3) non-profit. Student organizers can invoice sponsors, issue physical debit cards, and get access to their event’s financials through a real-time dashboard.'
-const img = 'https://hackclub.com/bank-banner.png'
+const img = 'https://hackclub.com/cards/bank.png'
 
 export default () => (
-  <Base align="center">
+  <Box align="center">
     <Helmet
       title={title}
       meta={[
@@ -186,10 +139,11 @@ export default () => (
         { property: 'og:url', content: 'https://hackclub.com/bank' }
       ]}
     />
-    <Nav color="smoke" bgColor={[40, 40, 40]} />
+    <style children={styles} />
+    <Nav dark />
     <Box>
       <Megaline pt={[5, 6]}>The bank for student hackers.</Megaline>
-      <Lead px={3} maxWidth={48} my={[3, 4]}>
+      <Lead color="inherit" px={3} maxWidth={48} my={[3, 4]}>
         Hack Club Bank is the best place for high school hackers to store money
         for hackathons. Student organizers can invoice sponsors, issue physical
         debit cards, and get access to their event’s financials through a
@@ -198,12 +152,7 @@ export default () => (
       </Lead>
     </Box>
     <Flex justify="center" mb={[3, 4]}>
-      <CTA
-        href="https://medium.com/hackclub/a-bank-for-student-hackers-e5d894ea5375"
-        target="_blank"
-        scale
-        chevronRight
-      >
+      <CTA href="https://medium.com/hackclub/a-bank-for-student-hackers-e5d894ea5375">
         Read the announcement
       </CTA>
     </Flex>
@@ -216,25 +165,30 @@ export default () => (
     </Banner>
     <Modules>
       <Module
-        icon="account_balance"
+        icon="bank-account"
         name="Bank account"
         body="Get a 501(c)(3) non-profit bank account (contributions will be tax-deductible)."
       />
       <Module
-        icon="history"
+        icon="analytics"
         name="Balance + history"
-        body="Check real-time account balance and transaction history any time."
+        body="Check real-time account balance and transaction history on the site at any time."
       />
       <Module
-        icon="receipt"
+        icon="settings"
         name="Manage your finances"
         body="Add notes to transactions, export data, issue reimbursements. Easy."
       />
     </Modules>
-    <Container maxWidth={70} my={[4, 3]}>
-      <Image w={1} src="/bank-screenshot.png" />
+    <Container my={[4, 3]}>
+      <Image
+        width={1}
+        src="/bank-screenshot.png"
+        alt="Screenshot of the Bank UI on iPad"
+      />
     </Container>
-    <Banner mt={0}>
+    <BankStats />
+    <Banner>
       <Headline>A powerful toolbox for organizing your event.</Headline>
       <Lead maxWidth={32}>
         We’ve got all the tools to start getting your event ready, from emails
@@ -243,17 +197,17 @@ export default () => (
     </Banner>
     <Modules>
       <Module
-        icon="description"
+        icon="docs"
         name="Pre-written forms"
         body="Download free consent and photo release forms for your event. No lawyers needed."
       />
       <Module
-        icon="credit_card"
+        icon="card"
         name="Debit cards"
         body="Issue physical debit cards to all your team members—no need for reimbursements."
       />
       <Module
-        icon="cloud"
+        icon="google"
         name="G Suite"
         body="Get free G Suite + email addresses (like megan@hackchicago.io) for everyone."
       />
@@ -267,47 +221,40 @@ export default () => (
     </Banner>
     <Modules>
       <Module
-        icon="local_atm"
+        icon="payment"
         name="Taxes + accounting"
         body="We’ll handle end-of-year taxes and accounting in the background."
       />
       <Module
-        icon="live_help"
+        icon="support"
         name="Support anytime"
         body="Questions? We’ll never leave you in the dark. Best-effort 12hr response time."
       />
       <Module
-        icon="forum"
+        icon="message"
         name="Community"
         body="Talk to our community of experienced event organizers anytime."
       />
     </Modules>
-    <Container maxWidth={48} pt={4} pb={[4, 5]} px={3}>
-      <Join align="left" bg="black" p={[3, 4]}>
+    <Container maxWidth={48} py={[4, 5]} px={3}>
+      <Join align="left" bg="black">
         <Container maxWidth={32} mx={0}>
           <Heading.h2 {...subhline} color="white">
             Ready to join Hack Club Bank?
           </Heading.h2>
-          <Text>
+          <Text color="smoke">
             You can join immediately with an invitation from an existing Bank
             user or a member of the Hack Club community. Otherwise, tell us
             about your event and we’ll get back to you within two weeks.
           </Text>
         </Container>
-        <CTA
-          href="https://goo.gl/forms/1UzFR4zkljL7dHQ32"
-          target="_blank"
-          scale
-          chevronRight
-        >
-          Apply
-        </CTA>
+        <CTA href="https://goo.gl/forms/1UzFR4zkljL7dHQ32">Apply</CTA>
       </Join>
-      <BankStats />
-      <Lead maxWidth={26} color="slate" f={1} mt={3}>
-        Hack Club Bank is not a bank. Underlying banking services provided by
-        Silicon Valley Bank, an FDIC-certified institution.
+      <Lead maxWidth={32} color="slate" f={1} mt={3}>
+        Hack Club does not directly provide banking services. Banking services
+        provided by Silicon Valley Bank, an FDIC-certified institution.
       </Lead>
     </Container>
-  </Base>
+    <Footer dark />
+  </Box>
 )

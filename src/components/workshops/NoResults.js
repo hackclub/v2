@@ -1,11 +1,12 @@
+import styled from 'styled-components'
 import React from 'react'
-import { Flex, Text } from '@hackclub/design-system'
+import { Flex, Text, theme } from '@hackclub/design-system'
 
-const Rounded = Flex.extend`
-  border-radius: ${({ theme }) => theme.radii[1]};
+const Rounded = styled(Flex)`
+  border-radius: ${theme.radii[1]};
 `
 
-const BreakWord = Text.extend``
+const BreakWord = styled(Text)``
 
 export default ({ value }) => (
   <Rounded

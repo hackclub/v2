@@ -1,15 +1,18 @@
 import React, { Fragment, Component } from 'react'
+import styled from 'styled-components'
 import {
+  BackgroundImage,
   Box,
-  Flex,
-  Icon,
   Button,
+  Flex,
   Heading,
+  Hide,
+  Icon,
   Link,
   Text,
-  Hide,
-  BackgroundImage
+  theme
 } from '@hackclub/design-system'
+import { wordWrap } from 'polished'
 import PropTypes from 'prop-types'
 import { Modal, Overlay, CloseButton } from 'components/Modal'
 import Comments from 'components/challenge/Comments'
@@ -17,47 +20,44 @@ import { dt, tinyDt } from 'helpers'
 import { sortBy } from 'lodash'
 import api from 'api'
 
-const Row = Flex.extend`
+const Row = styled(Flex)`
   align-items: center;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
+  border-bottom: 1px solid ${theme.colors.smoke};
   position: relative;
   a {
     flex: 1 1 auto;
   }
 `
 
-const Index = Hide.extend`
-  width: ${({ theme }) => theme.space[3]}px;
+const Index = styled(Hide)`
+  width: ${theme.space[3]}px;
   position: absolute;
-  left: -${({ theme }) => theme.space[4]}px;
+  left: -${theme.space[4]}px;
 `
 
-const Description = Text.extend`
-  word-wrap: break-word;
-  /*
-  word-break is duplicated here because it has a different use in WebKit:
-  https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container
-  */
-  word-break: break-all;
-  word-break: break-word;
+const Description = styled(Text)`
+  ${wordWrap('break-word')};
 `
 
-const UpvoteButton = Button.button.extend`
+const UpvoteButton = styled(Button.button)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 72px;
+  width: 84px;
   box-shadow: none !important;
   cursor: ${props => props.cursor};
+  svg {
+    margin: -12px 0;
+  }
 `
 
-const CommentButton = Box.withComponent('button').extend`
+const CommentButton = styled(Box.withComponent('button'))`
   background: none;
   border: 0;
   appearance: none;
   font-family: inherit;
-  font-size: ${({ theme }) => theme.fontSizes[0]}px;
-  line-height: 1;
+  font-size: ${theme.fontSizes[0]}px;
+  line-height: 1.875;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -69,14 +69,14 @@ const CommentButton = Box.withComponent('button').extend`
   span {
     position: absolute;
     width: 100%;
-    top: ${({ theme }) => theme.space[2]}px;
+    top: ${theme.space[2]}px;
   }
-  ${({ theme }) => theme.mediaQueries.md} {
-    padding-right: ${({ theme }) => theme.space[3]}px;
+  ${theme.mediaQueries.md} {
+    padding-right: ${theme.space[3]}px;
   }
 `
 
-const CommentsModal = Modal.extend`
+const CommentsModal = styled(Modal)`
   display: grid;
   grid-template-rows: auto 1fr 2rem;
   min-height: 16rem;
@@ -123,17 +123,18 @@ const PostRow = ({
         disabled={loading}
         cursor={disabled ? 'not-allowed' : loading ? 'wait' : 'pointer'}
       >
-        <Icon size={20} name="arrow_upward" />
-        <Text.span ml={1} f={2} children={upvotesCount} />
+        <Icon size={48} glyph={upvoted ? 'thumbsup-fill' : 'thumbsup'} />
+        <Text.span ml={1} fontSize={2} children={upvotesCount} />
       </UpvoteButton>
       <Flex
-        w={1}
+        width={1}
         align="center"
         justify="center"
         mt={1}
+        color="gray.6"
         title={`${clickCount} views`}
       >
-        <Icon size={16} name="remove_red_eye" color="gray.5" />
+        <Icon size={24} glyph="view" />
         <Text.span
           ml={1}
           f={1}
@@ -143,25 +144,30 @@ const PostRow = ({
         />
       </Flex>
     </Box>
-    <Link w={1} href={url} target="_blank" color="black" px={3}>
+    <Link width={1} href={url} target="_blank" color="black" px={3}>
       <Heading.h3 f={3} m={0}>
         {name}
-        <Text.span ml={2} f={0} mt={1} color="muted" regular>
-          {tinyDt(createdAt)}
-        </Text.span>
+        <Text.span
+          mt={1}
+          ml={2}
+          fontSize={0}
+          color="muted"
+          regular
+          children={tinyDt(createdAt)}
+        />
       </Heading.h3>
-      <Description color="muted" f={2}>
+      <Description color="muted" fontSize={2}>
         {description}
       </Description>
     </Link>
     <CommentButton
       aria-label={`Open comments: ${commentsCount}`}
+      color={commentsCount === 0 ? 'gray.5' : 'info'}
       onClick={onComment}
     >
       <Icon
-        name="chat_bubble"
-        color={commentsCount === 0 ? 'gray.5' : 'info'}
-        size={32}
+        glyph={commentsCount === 0 ? 'message-simple' : 'message-simple-fill'}
+        size={36}
       />
       <Text.span bold color="white" children={commentsCount} />
     </CommentButton>
@@ -182,44 +188,44 @@ PostRow.propTypes = {
   onUpvote: PropTypes.func.isRequired,
   onComment: PropTypes.func.isRequired
 }
-const ShirtPostBase = Box.extend`
+const GridPostBase = styled(Box)`
   display: inline-block;
   position: relative;
   overflow: hidden;
-  ${({ theme }) => theme.mediaQueries.md} {
-    border-radius: ${({ theme }) => theme.radius};
-    box-shadow: ${({ theme }) => theme.boxShadows[0]};
-    transition: ${({ theme }) => theme.transition} all;
+  ${theme.mediaQueries.md} {
+    border-radius: ${theme.radius};
+    box-shadow: ${theme.boxShadows[0]};
+    transition: ${theme.transition} all;
     &:hover {
-      box-shadow: ${({ theme }) => theme.boxShadows[2]};
+      box-shadow: ${theme.boxShadows[2]};
     }
   }
   ${CommentButton} {
     padding: 0 !important;
   }
 `
-const ShirtIndex = Text.extend`
+const GridIndex = styled(Text)`
   position: absolute;
   top: 0;
   left: 0;
-  margin: ${({ theme }) => theme.space[3]}px;
+  margin: ${theme.space[3]}px;
   width: 1.25rem;
   height: 1.25rem;
   line-height: 1.25rem;
   border-radius: 0.75rem;
   background-color: rgba(255, 255, 255, 0.875);
-  color: ${({ theme }) => theme.colors.black};
-  font-size: ${({ theme }) => theme.fontSizes[0]}px;
+  color: ${theme.colors.black};
+  font-size: ${theme.fontSizes[0]}px;
   letter-spacing: -0.02em;
   text-align: center;
   font-weight: bold;
 `
-const ShirtImage = BackgroundImage.extend`
+const GridImage = styled(BackgroundImage)`
   width: 100%;
   min-height: 12rem;
   max-height: 16rem;
 `
-const ShirtPostRow = ({
+const GridPostRow = ({
   id,
   name,
   url,
@@ -235,13 +241,13 @@ const ShirtPostRow = ({
   loading,
   index
 }) => (
-  <ShirtPostBase
+  <GridPostBase
     bg={mine ? 'yellow.0' : 'white'}
     title={mine ? '👑 Your post!' : `${name} posted on ${dt(createdAt)}`}
     id={`post-${id}`}
   >
-    <ShirtIndex bold children={index} />
-    <ShirtImage src={url} />
+    <GridIndex bold children={index} />
+    <GridImage src={url} />
     <Flex align="flex-start" p={3}>
       <Box align="left" w={1} color="black" mr={2}>
         <Heading.h3 f={3} m={0}>
@@ -259,12 +265,13 @@ const ShirtPostRow = ({
           <CommentButton
             aria-label={`Open comments: ${commentsCount}`}
             onClick={onComment}
+            color="info"
           >
-            <Icon name="chat_bubble" color="info" size={32} />
+            <Icon glyph="message-simple-fill" size={32} />
             <Text.span bold color="white" children={commentsCount} />
           </CommentButton>
-          <Link ml={1} href={url} target="_blank">
-            <Icon name="open_in_new" color="muted" size={24} />
+          <Link ml={1} href={url} target="_blank" color="muted">
+            <Icon glyph="external" size={24} />
           </Link>
         </Flex>
         <UpvoteButton
@@ -275,14 +282,14 @@ const ShirtPostRow = ({
           disabled={loading}
           cursor={disabled ? 'not-allowed' : loading ? 'wait' : 'pointer'}
         >
-          <Icon size={20} name="arrow_upward" />
+          <Icon size={28} glyph="up-caret" />
           <Text.span ml={1} f={2} children={upvotesCount} />
         </UpvoteButton>
       </Box>
     </Flex>
-  </ShirtPostBase>
+  </GridPostBase>
 )
-ShirtPostRow.propTypes = {
+GridPostRow.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
@@ -318,7 +325,7 @@ class Post extends Component {
     // run the update immediately
     this.updateRequest()
     // schedule future requests
-    this.poller = setInterval(this.poll, 2048)
+    this.poller = setInterval(this.poll, 2000)
   }
   poll = () => {
     if (this.state.commentsOpen) {
@@ -355,25 +362,11 @@ class Post extends Component {
     this.setState({ commentsOpen: false })
   }
   render() {
-    const {
-      id,
-      name,
-      url,
-      description,
-      createdAt,
-      mine,
-      commentsCount,
-      upvotesCount,
-      upvoted = false,
-      onUpvote,
-      disabled,
-      shirt = false
-    } = this.props
+    const { id, name, url } = this.props
     const { status, commentsOpen, comments, email } = this.state
-    const Element = shirt ? ShirtPostRow : PostRow
     return (
       <Fragment>
-        <Element onComment={this.onOpen} {...this.props} />
+        <PostRow onComment={this.onOpen} {...this.props} />
         {commentsOpen && (
           <Fragment>
             <CommentsModal align="left" p={[3, 4]}>

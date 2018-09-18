@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import { url as apiUrl } from 'api'
 import { Field } from '@hackclub/design-system'
 import { SendForm, SendButton } from '../SendForm'
 import api from 'api'
@@ -58,7 +57,7 @@ class LeaderInviteForm extends Component {
     }
 
     return (
-      <SendForm onSubmit={handleSubmit} mb={4}>
+      <SendForm onSubmit={handleSubmit}>
         <Field
           id="leader_invite"
           name="new_leader_invite_email"
@@ -66,12 +65,13 @@ class LeaderInviteForm extends Component {
           label="New co-leader’s email"
           placeholder="friend@gmail.com"
           error={error}
+          mb={4}
         />
         <SendButton
           aria-label="Send this invitation"
           onClick={handleSubmit}
-          name="send"
           bg="info"
+          mb={4}
         />
       </SendForm>
     )

@@ -21,7 +21,8 @@ const InnerForm = ({
           Should this event be listed on{' '}
           <a href="https://hackathons.hackclub.com" target="_blank">
             hackathons.hackclub.com
-          </a>?
+          </a>
+          ?
         </Fragment>
       }
       name="public"

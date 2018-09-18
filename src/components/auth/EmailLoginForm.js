@@ -1,12 +1,13 @@
+import styled from 'styled-components'
 import React from 'react'
 import api from 'api'
-import { Heading, Label, Input, Text, cx } from '@hackclub/design-system'
+import { Label, Input, Text, cx } from '@hackclub/design-system'
 import { Submit } from 'components/Forms'
 import { withFormik } from 'formik'
 import * as yup from 'yup'
 import storage from 'storage'
 
-const StyledInput = Input.extend`
+const StyledInput = styled(Input)`
   text-align: inherit;
   background: ${props => cx(props.color)};
   color: ${props => cx(props.bg)};
@@ -68,7 +69,7 @@ const InnerForm = ({
     )}
     <Submit
       mt={3}
-      value="Get login code"
+      value="Get code"
       color={color}
       bg={bg}
       mx={inputProps.mx || '0'}

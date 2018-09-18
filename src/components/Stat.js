@@ -1,7 +1,8 @@
+import styled from 'styled-components'
 import React from 'react'
 import { Box, Text } from '@hackclub/design-system'
 
-const Base = Box.extend`
+const Base = styled(Box)`
   display: inline-block;
   line-height: 1;
 `

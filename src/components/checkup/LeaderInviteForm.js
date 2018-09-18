@@ -2,7 +2,7 @@ import React from 'react'
 import { withFormik } from 'formik'
 import api from 'api'
 import * as yup from 'yup'
-import { Field, Submit } from 'components/Forms'
+import { Field } from 'components/Forms'
 import { SendForm, SendButton } from '../SendForm'
 import { isEmpty } from 'lodash'
 
@@ -13,8 +13,8 @@ const getStatus = {
     error: 'warning'
   },
   icon: {
-    success: 'check_circle',
-    error: 'error'
+    success: 'checkmark',
+    error: 'important'
   }
 }
 
@@ -44,7 +44,7 @@ const InnerForm = ({
       aria-label="Send this invitation"
       disabled={isEmpty(values.email)}
       bg={getStatus.bg[status] || 'info'}
-      name={getStatus.icon[status] || 'send'}
+      glyph={getStatus.icon[status] || 'send'}
     />
   </SendForm>
 )

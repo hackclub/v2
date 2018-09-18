@@ -1,5 +1,6 @@
 import React from 'react'
-import { Flex, Box, Text, cx } from '@hackclub/design-system'
+import styled from 'styled-components'
+import { Flex, Box, Text, theme, cx } from '@hackclub/design-system'
 import { map, sum, values, capitalize, round } from 'lodash'
 import commaNumber from 'comma-number'
 
@@ -15,7 +16,7 @@ const colors = {
 }
 const total = sum(values(segments))
 
-const Row = Flex.extend`
+const Row = styled(Flex)`
   align-items: center;
 
   span {
@@ -24,9 +25,9 @@ const Row = Flex.extend`
   }
 `
 
-const Bar = Box.extend`
-  border-radius: ${({ theme }) => theme.radius};
-  height: ${({ theme }) => theme.space[4]}px;
+const Bar = styled(Box)`
+  border-radius: ${theme.radius};
+  height: ${theme.space[4]}px;
   min-width: 1px;
 `
 

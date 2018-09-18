@@ -1,7 +1,8 @@
-import { Flex, IconButton } from '@hackclub/design-system'
+import { Flex, IconButton, theme } from '@hackclub/design-system'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
-export const SendForm = Flex.withComponent('form').extend`
+export const SendForm = styled(Flex.withComponent('form'))`
   position: relative;
   z-index: 4;
 
@@ -13,20 +14,28 @@ export const SendForm = Flex.withComponent('form').extend`
 `
 SendForm.defaultProps = {
   align: 'flex-end',
-  w: 1
+  width: 1
 }
 
 export const SendButton = styled(IconButton)`
-  box-shadow: ${({ theme }) => theme.boxShadows[0]} !important;
-  transition: ${({ theme }) => theme.transition} box-shadow;
+  box-shadow: ${theme.boxShadows[0]} !important;
+  transition: ${theme.transition} box-shadow;
   &:hover,
   &:focus {
-    box-shadow: ${({ theme }) => theme.boxShadows[1]} !important;
+    box-shadow: ${theme.boxShadows[1]} !important;
   }
 `
+SendButton.propTypes = {
+  type: PropTypes.string,
+  color: PropTypes.string,
+  glyph: PropTypes.string,
+  size: PropTypes.number
+}
 SendButton.defaultProps = {
   type: 'submit',
   color: 'white',
-  size: 20,
+  glyph: 'send',
+  size: 28,
+  py: 1,
   ml: 3
 }

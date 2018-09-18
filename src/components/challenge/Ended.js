@@ -1,21 +1,36 @@
 import React from 'react'
-import { Container, Card, Icon, Box, Text } from '@hackclub/design-system'
+import styled, { keyframes } from 'styled-components'
+import { Box, Text } from '@hackclub/design-system'
+import Icon from '@hackclub/icons'
+import Sheet from 'components/Sheet'
 
-const Sheet = Container.withComponent(Card).extend`
+const Root = styled(Sheet)`
   display: flex;
   align-items: center;
 `
 
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`
+const Indicator = styled(Box.withComponent(Icon))`
+  animation: ${spin} 8s linear infinite;
+`
+
 const Ended = () => (
-  <Sheet maxWidth={32} bg="yellow.1" p={[2, 3]} mt={-3} mb={3}>
-    <Icon name="hourglass_empty" size={48} mr={[2, 3]} color="warning" />
-    <Box color="orange.6">
+  <Root maxWidth={36} bg="cyan.1" color="cyan.9" p={[2, 3]} mb={4}>
+    <Indicator glyph="freeze" size={48} mr={[2, 3]} />
+    <Box>
       <Text f={3} bold>
         This challenge has ended.
       </Text>
-      <Text f={2}>Check back next week for the new challenge!</Text>
+      <Text f={2}>Check back soon for the next one!</Text>
     </Box>
-  </Sheet>
+  </Root>
 )
 
 export default Ended

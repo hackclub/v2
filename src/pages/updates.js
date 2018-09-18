@@ -1,24 +1,36 @@
 import React, { Fragment } from 'react'
-import styled, { injectGlobal } from 'styled-components'
+import styled from 'styled-components'
 import {
-  Container,
-  Heading,
   Box,
-  Text,
-  Section,
-  Flex,
   Card,
+  Container,
+  Flex,
+  Heading,
+  Text,
+  theme,
   cx
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import YouTubePlayer from 'react-player/lib/players/YouTube'
 import Nav from 'components/Nav'
-import Invert from 'components/Invert'
+import Footer from 'components/Footer'
 import { kebabCase } from 'lodash'
 
-const Header = Section.withComponent('header')
+const styles = `
+  body {
+    width: 100%;
+    max-width: 100vw;
+    background-color: ${theme.colors.dark};
+    color: ${theme.colors.gray[3]};
+    background-image: radial-gradient(circle, ${theme.colors.black}, ${
+  theme.colors.black
+} 1px,
+      ${theme.colors.dark} 1px, ${theme.colors.dark});
+    background-size: 2rem 2rem;
+  }
+`
 
-const Calendar = Flex.extend`
+const Calendar = styled(Flex)`
   flex-direction: column;
   flex-shrink: 0;
   text-align: center;
@@ -28,30 +40,30 @@ const Calendar = Flex.extend`
   border-color: ${props => cx(props.color)};
   border-style: solid;
   border-radius: 12px;
-  font-weight: ${({ theme }) => theme.bold};
-  background-color: ${({ theme }) => theme.colors.snow};
+  font-weight: ${theme.bold};
 `
-const Year = Text.extend.attrs({
+const Year = styled(Text).attrs({
   f: 3,
   py: 1,
-  color: 'white'
+  color: 'dark'
 })`
   line-height: 1;
 `
-const Month = Text.extend.attrs({ f: 4, mt: 1 })`
+const Month = styled(Text).attrs({ f: 4, mt: 1 })`
   line-height: 2;
 `
 
-const Updater = Container.withComponent(Flex).extend`
+const Updater = styled(Container.withComponent(Flex))`
   flex-direction: column;
   align-items: center;
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
   }
 `
-const Sheet = Card.extend`
+
+const Sheet = styled(Card)`
   box-sizing: border-box;
   width: 100%;
   max-width: 48rem;
@@ -59,16 +71,16 @@ const Sheet = Card.extend`
   position: relative;
   padding-top: 55%;
   overflow: hidden;
-  box-shadow: ${({ theme }) => theme.boxShadows[1]};
+  box-shadow: ${theme.boxShadows[1]};
   transition: 0.25s ease-out box-shadow;
   &:hover {
-    box-shadow: ${({ theme }) => theme.boxShadows[2]};
+    box-shadow: ${theme.boxShadows[2]};
   }
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     padding-top: 41.25%; // NOTE(@lachlanjc): i just guessed until i found this
   }
 `
-const Player = Box.withComponent(YouTubePlayer).extend`
+const Player = styled(Box.withComponent(YouTubePlayer))`
   position: absolute;
   top: 0;
   left: 0;
@@ -97,10 +109,10 @@ const Update = ({ month, year, color = 'primary', url, ...props }) => (
   </Updater>
 )
 
-const title = 'Monthly Updates – Hack Club'
+const title = 'Update Videos – Hack Club'
 const desc =
-  'Watch all of Hack Club’s monthly update videos on what’s new in our community of high school coding clubs.'
-const img = 'https://hackclub.com/updates.png'
+  'Watch all of Hack Club’s update videos on what’s new in our community of high school coding clubs.'
+const img = 'https://hackclub.com/cards/updates.png'
 
 export default () => (
   <Fragment>
@@ -117,20 +129,26 @@ export default () => (
         { property: 'og:url', content: 'https://hackclub.com/updates' }
       ]}
     />
-    <style children="body{background:#111}" />
-    <Nav color="white" />
-    <Header py={4} align="center" justify="center">
+    <style children={styles} />
+    <Nav dark />
+    <Box py={4} align="center" justify="center">
       <Container mt={5} maxWidth={32}>
         <Heading.h1 color="white" f={6}>
           Updates
         </Heading.h1>
-        <Text f={4} color="smoke" style={{ lineHeight: '1.25' }}>
-          Every month we produce a video update with what’s new at Hack Club.
+        <Text f={4} color="muted" style={{ lineHeight: '1.25' }}>
+          Every so often we produce video updates with what’s new at Hack Club.
           Here they all are!
         </Text>
       </Container>
-    </Header>
+    </Box>
     <Container pb={4}>
+      <Update
+        color="yellow.6"
+        month="July"
+        year={2018}
+        url="https://youtu.be/k8HI0y2CyKI"
+      />
       <Update
         color="green.6"
         month="May"
@@ -150,5 +168,6 @@ export default () => (
         url="https://youtu.be/Xj32LuE44bU"
       />
     </Container>
+    <Footer dark />
   </Fragment>
 )

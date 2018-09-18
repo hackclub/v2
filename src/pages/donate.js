@@ -1,68 +1,112 @@
 import React, { Fragment } from 'react'
+import styled from 'styled-components'
 import {
   Box,
   Button,
-  Card,
   Container,
   Flex,
   Heading,
-  Icon,
-  LargeButton,
   Link as A,
   Section,
-  Text
+  Text,
+  Avatar,
+  theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
+import Footer from 'components/Footer'
+import Sheet from 'components/Sheet'
 import Stat from 'components/Stat'
-import {
-  Triangle,
-  Hexagon,
-  Pentagon,
-  Square,
-  Circle,
-  Line
-} from 'components/Shapes'
+import { Triangle, Pentagon, Circle } from 'components/Shapes'
 import DonateForm from 'components/donate/DonateForm'
 import Spent from 'components/donate/Spent'
 import Sponsors from 'components/donate/Sponsors'
-import Footer from 'components/Footer'
 import commaNumber from 'comma-number'
 import donors from 'components/donate/donors.json'
 
-const Header = Section.withComponent('header').extend`
+const Header = styled(Section.withComponent('header'))`
   background: url('/pattern.svg');
   > div {
     display: grid;
-    grid-gap: ${({ theme }) => theme.space[4]}px;
-    ${({ theme }) => theme.mediaQueries.md} {
+    grid-gap: ${theme.space[4]}px;
+    ${theme.mediaQueries.md} {
       grid-template-columns: 3fr 2fr;
     }
   }
 `
 
-const Row = Box.extend`
+const Row = styled(Box)`
   text-align: left;
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     display: grid;
-    grid-gap: ${({ theme }) => theme.space[3]}px;
+    grid-gap: ${theme.space[3]}px;
     grid-template-columns: ${({ reverse }) =>
       reverse ? '3fr 2fr' : '2fr 3fr'};
   }
 `
 
-const Financials = Box.extend`
-  display: grid;
-  border-radius: ${({ theme }) => theme.radius};
-  overflow: hidden;
+const DonateSheet = styled(Sheet)`
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.0625), 0 16px 32px rgba(0, 0, 0, 0.125) !important;
+  > div > div:first-child {
+    background-image: radial-gradient(
+      ellipse farthest-corner at top left,
+      ${theme.colors.orange[5]},
+      ${theme.colors.red[5]}
+    );
+  }
+`
 
-  ${({ theme }) => theme.mediaQueries.md} {
+const Quote = styled(Sheet).attrs({
+  maxWidth: 48,
+  f: 3,
+  px: [3, 4, 5],
+  py: 5,
+  color: 'white'
+})`
+  position: relative;
+  &:before {
+    content: '“';
+    line-height: 1;
+    font-size: ${theme.fontSizes[7]}px;
+    padding-left: ${theme.space[1]}px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: ${theme.colors.snow};
+    padding: ${theme.space[3]}px;
+  }
+`
+const FirstQuote = styled(Quote)`
+  background-image: radial-gradient(
+    ellipse farthest-corner at top left,
+    ${theme.colors.cyan[5]},
+    ${theme.colors.teal[6]},
+    ${theme.colors.green[7]}
+  );
+`
+const SecondQuote = styled(Quote)`
+  background-image: radial-gradient(
+    ellipse farthest-corner at bottom left,
+    ${theme.colors.blue[5]},
+    ${theme.colors.indigo[5]},
+    ${theme.colors.violet[5]}
+  );
+`
+
+const Financials = styled(Sheet)`
+  display: grid;
+  ${theme.mediaQueries.md} {
     grid-template-columns: 2fr 3fr;
   }
 `
 
-const Stats = Box.extend`
+const Stats = styled(Box)`
+  background-image: radial-gradient(
+    ellipse farthest-corner at top left,
+    ${theme.colors.teal[6]},
+    ${theme.colors.cyan[6]}
+  );
   div {
     width: 100%;
     display: block;
@@ -70,18 +114,18 @@ const Stats = Box.extend`
   }
   span:before {
     content: '$';
-    font-size: ${({ theme }) => theme.fontSizes[4]}px;
+    font-size: ${theme.fontSizes[4]}px;
     margin-left: -12px;
     vertical-align: super;
   }
   p {
-    color: ${({ theme }) => theme.colors.red[1]};
+    color: ${theme.colors.teal[1]};
   }
 `
 
-const Shapes = Box.extend`
+const Shapes = styled(Box)`
   display: none;
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     display: block;
     float: right;
     position: relative;
@@ -91,8 +135,7 @@ const Shapes = Box.extend`
     }
   }
 `
-
-const WishShapes = Shapes.extend`
+const WishShapes = styled(Shapes)`
   svg {
     &:first-child {
       top: 0;
@@ -107,23 +150,11 @@ const WishShapes = Shapes.extend`
     }
   }
 `
-const ContributionShapes = Shapes.extend`
+const ContributionShapes = styled(Shapes)`
   svg {
     right: 12rem;
     top: 1rem;
-    color: ${({ theme }) => theme.colors.pink[4]};
-  }
-`
-const DonorsShapes = Shapes.extend`
-  svg:first-child {
-    right: 8rem;
-    top: 2rem;
-    color: ${({ theme }) => theme.colors.orange[4]};
-  }
-  svg:last-child {
-    right: 4rem;
-    top: 4rem;
-    color: ${({ theme }) => theme.hexa('blue.4', 0.75)};
+    color: ${theme.colors.yellow[4]};
   }
 `
 
@@ -152,23 +183,32 @@ const stats = {
   club: 60
 }
 
-const DonorGrid = Box.extend`
+const DonorGrid = styled(Box)`
   display: grid;
-  grid-gap: ${({ theme }) => theme.space[1]}px;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  grid-gap: ${theme.space[1]}px;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   align-items: center;
-  ${({ theme }) => theme.mediaQueries.md} {
-    grid-gap: ${({ theme }) => theme.space[3]}px;
+  p,
+  a {
+    width: 100%;
+  }
+  ${theme.mediaQueries.md} {
+    grid-gap: ${theme.space[3]}px;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   }
 `
 
-const DonorCardBase = Flex.withComponent(Card).extend`
+const DonorCardBase = styled(Sheet)`
+  display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  @media screen and (max-width: ${theme.breakpoints.sm}em) {
+    border-radius: 0;
+    box-shadow: none;
+  }
 `
 const DonorCard = ({ name, link = false }) => (
-  <DonorCardBase bg="white" p={3}>
+  <DonorCardBase bg="white" p={3} mb={0}>
     <Text color="black">{name}</Text>
   </DonorCardBase>
 )
@@ -200,12 +240,18 @@ export default () => (
     />
     <Nav color="muted" />
     <Header px={0} py={4}>
-      <Container {...contentContainer} align="left" pt={[5, 6]} pb={[4, 5]}>
-        <Container maxWidth={36} mx={0}>
+      <Container
+        {...contentContainer}
+        maxWidth={72}
+        align="left"
+        pt={[5, 6]}
+        pb={[4, 5]}
+      >
+        <Container maxWidth={48} mx={0}>
           <Heading.h1 color="primary" f={[3, 4]} caps>
             Donate to Hack Club
           </Heading.h1>
-          <Heading.h2 my={3} {...headline}>
+          <Heading.h2 mt={2} mb={3} {...headline} f={[6, 7]}>
             We rely on people like you to bring coding to the world.
           </Heading.h2>
           <Text {...subhline}>
@@ -213,21 +259,39 @@ export default () => (
             Club at every high school.
           </Text>
           <Text mt={3} f={2} color="muted">
-            Your contribution is tax-deductible.<br />
+            Your contribution is tax-deductible.
+            <br />
             Hack Club is a 501(c)(3) non-profit with the EIN 81-2908499.
           </Text>
         </Container>
-        <Card
-          bg="snow"
-          p={[3, 4]}
-          mt={[0, -3, -4]}
-          style={{ overflow: 'hidden' }}
-        >
+        <DonateSheet bg="snow" mt={[0, -3, -4]}>
           <DonateForm />
-        </Card>
+        </DonateSheet>
       </Container>
     </Header>
     <Container {...contentContainer}>
+      <FirstQuote mb={[4, 5, null, 6]}>
+        <Text f={4} mb={3}>
+          When I took CS classes in high school, I always found myself
+          disengaged and feeling like they were just another class. After
+          getting involved in Hack Club, a career in computer science changed
+          from a possibility to reality.
+        </Text>
+        <Text f={[4, 5]} bold>
+          Because of Hack Club, I started organizing hackathons with hundreds of
+          participants, interning for companies including Intuit, and most
+          importantly, fell in love with building things with code.
+        </Text>
+        <Flex align="center" mt={[3, 4]}>
+          <Avatar src="/hackers/selynna.jpg" size={48} mr={3} />
+          <Box align="left" f={3}>
+            <Text.span bold>Selynna Sun</Text.span>
+            <Text fontSize={2} color="green.1">
+              Sophomore & CS Major @ Cal Poly SLO
+            </Text>
+          </Box>
+        </Flex>
+      </FirstQuote>
       <WishShapes mt={3}>
         <Triangle size={128} rotate={64} />
         <Circle size={128} />
@@ -247,7 +311,8 @@ export default () => (
           You deserve to know exactly where your contribution will go—so{' '}
           <A href="https://github.com/hackclub/ledger">
             all of our financials are public
-          </A>.
+          </A>
+          .
         </Text>
       </Container>
       <Row my={5} {...content}>
@@ -268,24 +333,21 @@ export default () => (
             When you give to Hack Club, your money goes where students need it
             most.
           </Text>
-          <Financials mt={4}>
-            <Box bg="primary" color="white" p={[3, 4]} pr={2}>
+          <Financials p={0} mt={4}>
+            <Stats bg="success" color="white" p={[3, 4]} pr={2}>
               <Heading.h3 f={4} mb={2} caps>
                 Financials
               </Heading.h3>
-              <Stats>
-                <Stat
-                  f={6}
-                  value={commaNumber(stats.monthly)}
-                  label="monthly spend"
-                  mb={3}
-                  w={1}
-                />
-                <Stat f={6} mb={2} value={stats.club} label="per club" />
-                <Stat f={6} value={stats.student} label="per student" />
-              </Stats>
-            </Box>
-            <Box bg="snow" p={[3, 4]}>
+              <Stat
+                f={6}
+                value={commaNumber(stats.monthly)}
+                label="monthly spend"
+                w={1}
+              />
+              <Stat f={6} mt={3} mb={2} value={stats.club} label="per club" />
+              <Stat f={6} value={stats.student} label="per student" />
+            </Stats>
+            <Box p={[3, 4]}>
               <Heading.h3 f={4} my={0} caps>
                 Spending breakdown
               </Heading.h3>
@@ -318,9 +380,26 @@ export default () => (
           </Button>
         </Box>
       </Container>
+      <SecondQuote mt={[3, 4]} mb={[4, 5, 6]}>
+        <Text f={[4, 5]} bold>
+          Hack Club has inspired me to grow and become the person I am today.
+          Being part of the community allows me to meet countless like-minded
+          individuals who challenge me to become a better person, and a better
+          hacker.
+        </Text>
+        <Flex align="center" mt={[3, 4]}>
+          <Avatar src="/hackers/rashid.jpg" size={48} mr={3} />
+          <Box align="left" f={3}>
+            <Text.span bold>Rashid Al-Abri</Text.span>
+            <Text f={2} color="blue.1">
+              Club leader from Oman in Victoria, BC, Canada
+            </Text>
+          </Box>
+        </Flex>
+      </SecondQuote>
     </Container>
-    <Flex justify="center" bg="snow">
-      <Container {...content} py={[4, 5]} align={['left', 'center']}>
+    <Flex justify="center" bg="snow" color="black">
+      <Container w={1} py={[4, 5]} align={['left', 'center']}>
         <Heading.h2 {...headline} px={3}>
           A few of our amazing donors.
         </Heading.h2>

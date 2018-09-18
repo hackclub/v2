@@ -1,26 +1,22 @@
-import React, { Component, Fragment } from 'react'
-import { Input } from '@hackclub/design-system'
+import styled from 'styled-components'
+import React, { Component } from 'react'
+import { Input, theme } from '@hackclub/design-system'
 import MarkdownBody from 'components/MarkdownBody'
 import Editor from 'draft-js-plugins-editor'
 import Prism from 'prismjs'
-import {
-  EditorState,
-  ContentState,
-  convertToRaw,
-  convertFromRaw
-} from 'draft-js'
+import { EditorState, convertToRaw, convertFromRaw } from 'draft-js'
 import createMarkdownPlugin from 'draft-js-markdown-plugin'
 import createCodeEditorPlugin from 'draft-js-code-editor-plugin'
 import createPrismPlugin from 'draft-js-prism-plugin'
 import { mdToDraftjs, draftjsToMd } from 'draftjs-md-converter'
-import { isEmpty, debounce } from 'lodash'
+import { isEmpty } from 'lodash'
 
-const LangField = Input.withComponent('select').extend`
+const LangField = styled(Input.withComponent('select'))`
   line-height: 1;
-  font-size: ${({ theme }) => theme.fontSizes[1]}px;
-  padding: 0 ${({ theme }) => theme.space[2]}px;
-  margin-top: ${({ theme }) => theme.space[2]}px;
-  margin-bottom: -${({ theme }) => theme.space[1]}px;
+  font-size: ${theme.fontSizes[1]}px;
+  padding: 0 ${theme.space[2]}px;
+  margin-top: ${theme.space[2]}px;
+  margin-bottom: -${theme.space[1]}px;
   max-width: 10rem;
 `
 
@@ -32,7 +28,7 @@ const renderLanguageSelect = ({ options, onChange, selectedValue }) => (
   </LangField>
 )
 
-const Body = MarkdownBody.extend`
+const Body = styled(MarkdownBody)`
   .DraftEditor-editorContainer > div {
     min-height: 4rem;
   }

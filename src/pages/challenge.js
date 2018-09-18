@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react'
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import {
   Box,
   Flex,
@@ -7,21 +7,20 @@ import {
   Heading,
   Text,
   Section,
-  Link,
-  Card,
-  Button,
-  Icon,
-  Image
+  theme,
+  cx
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
+import Name from 'components/Name'
+import Sheet from 'components/Sheet'
 import IconButton from 'components/IconButton'
+import Help from 'components/challenge/Help'
 import Form from 'components/challenge/Form'
 import Ended from 'components/challenge/Ended'
 import Posts from 'components/challenge/Posts'
 import DiscussChallenge from 'components/challenge/DiscussChallenge'
-import { Modal, Overlay, CloseButton } from 'components/Modal'
 import {
   DropdownContainer,
   DropdownMenu,
@@ -40,90 +39,30 @@ const sortByHumanized = {
   random: 'Random'
 }
 
-class Help extends Component {
-  state = { active: false }
-
-  toggleRules = () => {
-    this.setState(state => ({ active: !state.active }))
-  }
-
-  // Render a modal for challenge rules on button press
-  render() {
-    if (this.state.active) {
-      return (
-        <Fragment>
-          <Modal align="left" my={4} p={[3, 4]}>
-            <CloseButton onClick={this.toggleRules} />
-            <Heading.h2>Challenge Rules</Heading.h2>
-            {/*
-            <Text
-              f={2}
-              mt={3}
-              color="info"
-              py={2}
-              px={3}
-              bg="blue.0"
-              style={{ borderRadius: 4 }}
-            >
-              For this challenge, your entry must use{' '}
-              <Link href="https://p5js.org" target="_blank" bold>
-                p5.js
-              </Link>{' '}
-              in its code.
-            </Text>
-            */}
-            <Text f={2} my={3}>
-              Challenge is open to Hack Club members and repl.it users. It
-              strictly follows Hack Club’s{' '}
-              <Link href="https://conduct.hackclub.com" target="_blank">
-                Code of Conduct
-              </Link>. Anything breaking our Code of Conduct (ex. voter fraud)
-              and contestants found cheating can be temporarily or permanently
-              banned.
-            </Text>
-            <Text f={2}>
-              If you think anyone has violated our Conduct or cheating policy,
-              please reach out to us confidentially at{' '}
-              <Link href="mailto:challenge@hackclub.com">
-                challenge@hackclub.com
-              </Link>.
-            </Text>
-          </Modal>
-          <Overlay onClick={this.toggleRules} />
-        </Fragment>
-      )
-    }
-    return (
-      <IconButton
-        name="flag"
-        size={16}
-        children="Rules"
-        inverted
-        f={2}
-        onClick={this.toggleRules}
-        style={{ float: 'right' }}
-        {...this.props}
-      />
-    )
-  }
-}
-
-const Header = Section.withComponent('header').extend`
-  background-color: ${({ theme }) => theme.colors.red[5]};
+const pulse = keyframes`
+  0% { background-color: ${cx('blue.5')}; }
+  33% { background-color: ${cx('fuschia.5')}; }
+  66% { background-color: ${cx('violet.5')}; }
+  100% { background-color: ${cx('blue.5')}; }
+`
+const Header = styled(Section.withComponent('header'))`
+  background-color: ${theme.colors.blue[5]};
   background-image: linear-gradient(
-    32deg,
-    ${({ theme }) => theme.colors.pink[5]},
-    ${({ theme }) => theme.colors.red[5]}
+    90deg,
+    rgba(255, 0, 0, 1),
+    rgba(0, 255, 255, 1)
   );
+  background-blend-mode: overlay;
+  animation: ${pulse} 16s linear infinite;
 `
 
-const HeaderContainer = Container.extend`
+const HeaderContainer = styled(Container)`
   display: grid;
-  grid-gap: ${({ theme }) => theme.space[3]}px;
+  grid-gap: ${theme.space[3]}px;
   grid-template-areas: 'text' 'info' 'form';
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: ${({ theme }) => theme.space[4]}px;
+    grid-gap: ${theme.space[4]}px;
       ${props =>
         props.success
           ? css`
@@ -132,6 +71,7 @@ const HeaderContainer = Container.extend`
                 'info form';
               ${HeaderAreaText} {
                 text-align: right;
+                margin-right: -${theme.space[2]}px;
               }
             `
           : css`
@@ -143,37 +83,40 @@ const HeaderContainer = Container.extend`
   }
 `
 
-const HeaderCard = styled(Card)`
+const HeaderCard = styled(Sheet).attrs({ p: 3 })`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
   h2,
   p {
-    color: ${({ theme }) => theme.colors.black} !important;
+    color: ${theme.colors.black} !important;
   }
 `
-HeaderCard.defaultProps = {
-  boxShadowSize: 'md',
-  p: 3,
-  bg: 'pink.0',
-  align: 'left'
-}
 
 const HeaderAreaText = styled(Box)`
   grid-area: text;
 `
 const HeaderAreaInfo = styled(HeaderCard)`
   grid-area: info;
+  ${theme.mediaQueries.md} {
+    p {
+      line-height: 1.75;
+    }
+  }
 `
 const HeaderAreaForm = styled(HeaderCard)`
   grid-area: form;
 `
 
-const Title = styled(Flex)`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
+const SubmissionsHeading = styled(Flex)`
+  border-bottom: 1px solid ${theme.colors.smoke};
 `
 
 const title = 'Hack Club Challenge'
 const desc =
   'Join Hack Club’s high school coding challenge. Submit your entry to compete in our monthly programming contest and win prizes.'
-const img = 'https://hackclub.com/challenge.png'
+const img = 'https://hackclub.com/cards/challenge.png'
 
 export default class extends Component {
   state = { status: 'loading', sortBy: 'top' }
@@ -222,17 +165,22 @@ export default class extends Component {
         <Header py={0} px={3}>
           <HeaderContainer
             pt={[4, 5]}
-            pb={[3, 4]}
+            pb={3}
             align="left"
             success={status === 'success'}
           >
-            <HeaderAreaText align="center" mt={3}>
-              <Text color="pink.0" mb={[-2, -3]} f={3} bold caps>
-                Hack Club
+            <HeaderAreaText align="center" pt={[4, 3]}>
+              <Name f={6}>Challenge</Name>
+              <Text
+                color="rgba(255, 255, 255, 0.875)"
+                f={[3, 4]}
+                mt={2}
+                mx={3}
+                bold
+                caps
+              >
+                By Hack Club
               </Text>
-              <Heading.h1 f={[6, 7]} my={0}>
-                Challenge
-              </Heading.h1>
             </HeaderAreaText>
             <HeaderAreaInfo>
               <Text f={2}>
@@ -240,17 +188,7 @@ export default class extends Component {
                 <br />
                 🎁 {challenge.description}
                 <br />
-                ℹ️ Submissions open to Hack Club community members
-                <br />
-                📖{' '}
-                <Link
-                  href="/workshops/challenge_ridiculous_api"
-                  target="_blank"
-                  underline
-                >
-                  Click here
-                </Link>{' '}
-                for help getting started
+                ℹ️ Competition open to Hack Club community members
                 <br />
                 🏅 Submissions due {dt(challenge.end)}. Top 3 voted win!
               </Text>
@@ -263,7 +201,7 @@ export default class extends Component {
         </Header>
         <Container maxWidth={48} pt={4} pb={5} px={[0, 3]}>
           {ended && <Ended />}
-          <Title align="center" pb={2} px={[2, 0]}>
+          <SubmissionsHeading align="center" pb={2} px={[2, 0]}>
             <Flex align="center" flex="1 1 auto" wrap>
               <Heading.h2 color="black" f={5} mr={2}>
                 Submissions
@@ -274,10 +212,9 @@ export default class extends Component {
             </Flex>
             <DropdownContainer>
               <IconButton
-                name="sort"
-                size={16}
+                glyph="filter"
                 bg="info"
-                f={2}
+                fontSize={2}
                 style={{ whiteSpace: 'nowrap' }}
                 children={sortByHumanized[sortBy]}
               />
@@ -292,7 +229,7 @@ export default class extends Component {
                 ))}
               </DropdownMenu>
             </DropdownContainer>
-          </Title>
+          </SubmissionsHeading>
           <Posts
             challengeId={challenge.id}
             userId={userId}

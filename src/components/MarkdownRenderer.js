@@ -1,6 +1,7 @@
+import styled from 'styled-components'
 import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { Box, Heading, Link as A } from '@hackclub/design-system'
+import { Box, Link as A, theme } from '@hackclub/design-system'
 import api from 'api'
 
 function flatten(text, child) {
@@ -20,7 +21,7 @@ const CustomHeading = props => {
   return React.createElement(`h${props.level}`, { id: slug }, props.children)
 }
 
-const Body = Box.extend`
+const Body = styled(Box)`
   div > :first-child {
     margin-top: 0 !important;
   }
@@ -32,25 +33,25 @@ const Body = Box.extend`
   h2,
   h3 {
     margin-top: 0;
-    margin-bottom: ${({ theme }) => theme.space[2]}px;
+    margin-bottom: ${theme.space[2]}px;
   }
 
   ol,
   ul {
-    padding-left: ${({ theme }) => theme.space[3]}px;
+    padding-left: ${theme.space[3]}px;
   }
 
   p,
   li {
-    margin-top: ${({ theme }) => theme.space[2]}px;
-    margin-bottom: ${({ theme }) => theme.space[2]}px;
+    margin-top: ${theme.space[2]}px;
+    margin-bottom: ${theme.space[2]}px;
   }
 
   hr {
     border: 0;
     height: 2px;
-    background-color: ${({ theme }) => theme.colors.muted};
-    margin: ${({ theme }) => theme.space[3]}px;
+    background-color: ${theme.colors.muted};
+    margin: ${theme.space[3]}px;
     border-radius: 2px;
   }
 `

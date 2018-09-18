@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react'
+import styled from 'styled-components'
 import {
   Heading,
   Container,
   Box,
   Text,
   Section,
-  Link as A
+  Link as A,
+  theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
@@ -15,19 +17,22 @@ import Footer from 'components/Footer'
 
 A.link = A.withComponent(Link)
 
-const Header = Section.withComponent('header').extend`
-  background-color: ${({ theme }) => theme.colors.fuschia[6]};
+const Header = styled(Section.withComponent('header')).attrs({
+  bg: 'fuschia.6'
+})`
   background-image: linear-gradient(
     32deg,
-    ${({ theme }) => theme.colors.fuschia[5]} 0%,
-    ${({ theme }) => theme.colors.red[5]} 64%,
-    ${({ theme }) => theme.colors.red[6]} 100%
+    ${theme.colors.fuschia[5]} 0%,
+    ${theme.colors.red[5]} 64%,
+    ${theme.colors.red[6]} 100%
   );
   clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0% 90%);
-  > div { position: relative; }
+  > div {
+    position: relative;
+  }
 `
 
-const Seal = Box.extend`
+const Seal = styled(Box)`
   border-radius: 9999px;
   background-color: white;
   color: black;
@@ -37,18 +42,22 @@ const Seal = Box.extend`
   height: 12rem;
   position: absolute;
   margin-top: -1rem;
-  transform: rotate(3deg);
-  ${({ theme }) => theme.mediaQueries.md} {
-    margin-top: -3rem;
+  transform: rotate(4deg);
+  ${theme.mediaQueries.sm} {
+    transform: rotate(3deg);
+    margin-top: -${theme.space[5]}px;
   }
 `
 
-const HeadLine = Heading.h1.extend.attrs({ f: [5, 7, 8] })`
+const HeadLine = styled(Heading.h1).attrs({
+  f: [5, 7, 8],
+  color: 'white',
+  caps: true
+})`
   line-height: 1.125 !important;
-  text-transform: uppercase;
   &:nth-of-type(2) {
     padding-left: 1.5rem;
-    ${({ theme }) => theme.mediaQueries.md} {
+    ${theme.mediaQueries.md} {
       padding-left: 6rem;
     }
   }
@@ -67,7 +76,7 @@ const HeadLine = Heading.h1.extend.attrs({ f: [5, 7, 8] })`
       right: -0.5rem;
       width: 9.5rem;
       height: 2.5rem;
-      ${({ theme }) => theme.mediaQueries.sm} {
+      ${theme.mediaQueries.sm} {
         width: 20rem;
         height: 5.5rem;
       }
@@ -75,26 +84,26 @@ const HeadLine = Heading.h1.extend.attrs({ f: [5, 7, 8] })`
   }
 `
 
-const Row = Container.extend.attrs({ px: 3, maxWidth: 56 })`
+const Row = styled(Container).attrs({ px: 3, color: 'black' })`
   display: grid;
-  grid-gap: ${({ theme }) => theme.space[3]}px;
   text-align: left;
   h2 {
     line-height: 1;
   }
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
+    grid-gap: ${theme.space[3]}px;
     grid-template-columns: 2fr 3fr;
   }
 `
 
-const Super = Text.withComponent('mark').extend`
-  background-color: ${({ theme }) => theme.colors.warning};
+const Super = styled(Text.withComponent('mark'))`
+  background-color: ${theme.colors.warning};
   clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
-  color: ${({ theme }) => theme.colors.white};
+  color: ${theme.colors.white};
   display: inline-block;
-  padding-bottom: ${({ theme }) => theme.space[2]}px;
-  padding-left: ${({ theme }) => theme.space[3]}px;
-  padding-right: ${({ theme }) => theme.space[3]}px;
+  padding-bottom: ${theme.space[2]}px;
+  padding-left: ${theme.space[3]}px;
+  padding-right: ${theme.space[3]}px;
 `
 
 const title = 'Hack Club Philosophy'
@@ -116,8 +125,8 @@ export default () => (
       ]}
     />
     <Nav />
-    <Header pt={0}>
-      <Container w={1} maxWidth={56} pt={4} pb={[4, 3]} px={3} align="left">
+    <Header>
+      <Container w={1} maxWidth={56} py={5} px={3} align="left">
         <HeadLine children="We’re" />
         <HeadLine children="at our best" />
         <HeadLine children="when we’re" />
@@ -132,11 +141,11 @@ export default () => (
         </Seal>
       </Container>
     </Header>
-    <Row py={4}>
+    <Row py={4} mt={[0, 4]}>
       <Heading.h2 f={[5, 6]} color="red.5">
         Coding is a <Super>superpower.</Super>
       </Heading.h2>
-      <Text f={3}>
+      <Text f={[3, 4]}>
         Learning to code is uniquely like gaining a superpower: it converts you
         from a consumer to a creator. Suddenly, computers become a tool for
         creating.
@@ -146,7 +155,7 @@ export default () => (
       <Heading.h2 f={[5, 6]} color="fuschia.5">
         Make, from anywhere.
       </Heading.h2>
-      <Text f={3}>
+      <Text f={[3, 4]}>
         There’s never been a better time for making: anywhere in the world,
         anyone with a laptop and an internet connection can learn to make an
         app. Building things has never been so globally democratized.
@@ -156,7 +165,7 @@ export default () => (
       <Heading.h2 f={[5, 6]} color="violet.5">
         Hack, hack, hack.
       </Heading.h2>
-      <Text f={3}>
+      <Text f={[3, 4]}>
         <strong>The goal of Hack Club is to help you become a hacker.</strong>{' '}
         We want a space at every school where people are making interesting
         things with code, every week. Schools don’t provide that, so we’re
@@ -168,7 +177,7 @@ export default () => (
       <Heading.h2 f={[5, 6]} color="indigo.5">
         Start building.
       </Heading.h2>
-      <Text f={3}>
+      <Text f={[3, 4]}>
         Most coding classes teach you programming concepts instead of how to
         write real code—it’s like trying to learn carpentry without any wood. So
         at Hack Club, you learn to code entirely through building things. You
@@ -179,7 +188,7 @@ export default () => (
       <Heading.h2 f={[5, 6]} color="blue.6">
         Learn as you build.
       </Heading.h2>
-      <Text f={3}>
+      <Text f={[3, 4]}>
         Just as the best carpenters didn’t learn in the classroom, neither did
         the best programmers. Through our{' '}
         <A.link to="/workshops">workshops</A.link>, you’ll be walked through
@@ -192,7 +201,7 @@ export default () => (
       <Heading.h2 f={[5, 6]} color="cyan.7">
         Be part of a community.
       </Heading.h2>
-      <Text f={3}>
+      <Text f={[3, 4]}>
         Hack Club gives you a worldwide community of thousands of other young
         makers to talk to. We’re artists, writers, engineers, tinkerers,
         campers, filmmakers, volunteers. We make things. We help one another. We

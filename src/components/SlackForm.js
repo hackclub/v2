@@ -28,7 +28,7 @@ const InnerForm = ({
       onBlur={handleBlur}
       error={touched.email && errors.email}
     />
-    <Submit
+    <Submit.lg
       disabled={isSubmitting}
       onClick={handleSubmit}
       value={statusMessage(status)}

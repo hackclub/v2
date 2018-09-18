@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import styled from 'styled-components'
 import {
   Box,
   Container,
@@ -7,9 +8,6 @@ import {
   Link as A,
   Text,
   Section,
-  Icon,
-  Button,
-  Card,
   Image,
   theme
 } from '@hackclub/design-system'
@@ -27,49 +25,52 @@ import MarkdownBody from 'components/MarkdownBody'
 import FeedbackForm from 'components/workshops/FeedbackForm'
 import DiscussOnSlack from 'components/DiscussOnSlack'
 import ShareButton from 'components/ShareButton'
-import { Modal, Overlay, CloseButton } from 'components/Modal'
+import Sheet from 'components/Sheet'
 import Footer from 'components/Footer'
-import { lowerCase, camelCase, isEmpty } from 'lodash'
+import { isEmpty } from 'lodash'
 import { org } from 'data.json'
 
-const NotOnPrint = Box.extend`
+const NotOnPrint = styled(Box)`
   @media print {
-     {
-      display: none !important;
-    }
+    display: none !important;
   }
 `
 
-const OnlyOnPrint = Box.extend`
+const OnlyOnPrint = styled(Box)`
   display: none !important;
   @media print {
-     {
-      display: initial !important;
-    }
+    display: block !important;
   }
 `
 
-const Header = Box.withComponent('header').extend`
+const Header = styled(Box.withComponent('header'))`
   li a,
   h2,
   p {
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.375);
   }
 `
 
-const Name = Heading.h1.extend`
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.32);
+const Name = styled(Heading.h1)`
+  background-color: ${theme.colors.white};
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
   color: black;
   display: inline-block;
   mix-blend-mode: screen;
-  padding-left: ${({ theme }) => theme.space[4]}px;
-  padding-right: ${({ theme }) => theme.space[4]}px;
-  width: max-content;
+  padding-left: ${theme.space[4]}px;
+  padding-right: ${theme.space[4]}px;
+  width: min-content;
+  ${theme.mediaQueries.sm} {
+    width: max-content;
+  }
 `
 
-const Body = Container.withComponent(MarkdownBody)
+const Body = styled(Container.withComponent(MarkdownBody))`
+  @media print {
+    max-width: none !important;
+  }
+`
 A.link = A.withComponent(Link)
 Section.h = Section.withComponent('header')
 
@@ -100,27 +101,27 @@ const linkAuthor = authorText => {
   return <Fragment>Created by {parsedAuthorText}</Fragment>
 }
 
-const Cards = Container.extend`
+const CardsSection = styled(Box)`
+  background-image: linear-gradient(
+    to bottom,
+    ${theme.colors.white},
+    ${theme.colors.snow}
+  );
+`
+
+const Cards = styled(Container.withComponent(NotOnPrint))`
   text-align: center;
   display: grid;
-  grid-gap: ${({ theme }) => theme.space[4]}px;
+  grid-gap: ${theme.space[4]}px;
   grid-template-areas: 'feedback' 'share' 'questions' 'contribute';
   width: 100%;
 
   > div {
-    max-width: 100%;
-
     &:nth-child(1) {
       grid-area: feedback;
-      border-radius: ${({ theme }) => theme.radius};
-      box-shadow: ${({ theme }) => theme.boxShadows[1]};
     }
     &:nth-child(2) {
       grid-area: share;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
     }
     &:nth-child(3) {
       grid-area: questions;
@@ -130,10 +131,18 @@ const Cards = Container.extend`
     }
   }
 
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     grid-template-areas:
       'feedback feedback share share'
       'feedback feedback questions contribute';
+  }
+
+  ${Sheet} {
+    background: ${theme.colors.white};
+    margin-bottom: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   textarea {
@@ -167,9 +176,9 @@ export default ({ data }) => {
   const authorUrl = makeUrl('github.com', authorUsername)
 
   const title = `${name} – Hack Club Workshops`
-  const l = description.charAt(0).toUpperCase() + description.slice(1)
-  const desc = `Free coding tutorial for ${l}, published on Hack Club Workshops.`
-  const img = 'https://hackclub.com/workshops.png'
+  const d = description.charAt(0).toUpperCase() + description.slice(1)
+  const desc = `Free coding tutorial for ${d}, published on Hack Club Workshops.`
+  const img = 'https://hackclub.com/cards/workshops.png'
   const url = makeUrl('hackclub.com', slug)
 
   const schema = {
@@ -215,7 +224,6 @@ export default ({ data }) => {
         ]}
       >
         <script type="application/ld+json" children={JSON.stringify(schema)} />
-        }
       </Helmet>
       <Nav />
       <NotOnPrint>
@@ -224,12 +232,11 @@ export default ({ data }) => {
           color="white"
           p={0}
           align="center"
-          className="invert"
           style={{ backgroundImage: `url('${bg}')`, position: 'relative' }}
         >
           <Container pt={5} pb={3} px={2}>
-            <Breadcrumbs align="center" justify="center" my={3} wrap>
-              <Breadcrumb to="/workshops" name="Workshops" position={1} />
+            <Breadcrumbs align="center" justify="center" mt={3} mb={2} wrap>
+              <Breadcrumb to="/workshops" name="All Workshops" position={1} />
               <BreadcrumbDivider />
               <Breadcrumb
                 to={`/workshops#${group}`}
@@ -237,9 +244,8 @@ export default ({ data }) => {
                 position={2}
               />
               <BreadcrumbDivider />
-              <Breadcrumb to={slug} name={name} position={3} bold={false} />
             </Breadcrumbs>
-            <Name f={6} mb={2} children={name} />
+            <Name f={6} mb={3} children={name} />
             <Heading.h2 f={4} children={description} />
             <Text f={2} caps mt={3} children={linkAuthor(author)} />
           </Container>
@@ -247,7 +253,7 @@ export default ({ data }) => {
             <Invert f={2} my={1} />
             <IconButton
               bg="slate"
-              name="edit"
+              glyph="edit"
               children="Edit"
               inverted
               href={githubEditUrl(slug)}
@@ -258,82 +264,78 @@ export default ({ data }) => {
           </Flex>
         </Header>
       </NotOnPrint>
-      <OnlyOnPrint>
-        <Text align="right">
+      <OnlyOnPrint p={3}>
+        <Flex align="center" justify="flex-end" my={3}>
           <Image
             src="/logo-red.svg"
             w={`${theme.space[6]}px`}
-            style={{ display: 'inline' }}
+            mr={3}
             alt="Hack Club logo"
-          />{' '}
+          />
           <strong>Computer Science Tutorials</strong>
+        </Flex>
+        <Heading.h1 mt={4} mb={3} children={name} />
+        <Heading.h2 f={4} children={description} />
+        <Text color="muted" my={3} children={linkAuthor(author)} />
+        <Text color="muted">
+          You can find this tutorial online at <u>{url}</u>
         </Text>
-        <Heading.h1 pt={4}>{name}</Heading.h1>
-        <Heading.h4 color="gray.7">{description}</Heading.h4>
-        <Text color="gray.5">{linkAuthor(author)}</Text>
-        <Text color="gray.9" py={2}>
-          You can find this tutorial online at <em>{url}</em>
-        </Text>
-        <hr />
       </OnlyOnPrint>
       <Box w={1} className="invert">
         <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
-        <Cards maxWidth={56} p={3} mb={5}>
-          <Card bg="blue.0" p={[3, 4]} align="left">
-            <Heading.h2 f={3} color="blue.8" caps>
-              How was this workshop?
-            </Heading.h2>
-            <Text color="muted" f={1} mt={1} mb={3}>
-              (your feedback is anonymous + appreciated 💙)
-            </Text>
-            <FeedbackForm slug={slug} />
-          </Card>
-          <Box p={3}>
-            <Heading.h2 f={3} color="muted" caps>
-              Made something rad?
-            </Heading.h2>
-            <Heading.h2 color="info" f={5} mb={3}>
-              Share it! 🌟
-            </Heading.h2>
-            <Flex justify="center">
+        <CardsSection py={4}>
+          <Cards px={3}>
+            <Sheet align="left">
+              <Heading.h2 f={4}>How was this workshop?</Heading.h2>
+              <Text color="muted" f={1} mt={1} mb={3}>
+                (your feedback is anonymous + appreciated ❤️)
+              </Text>
+              <FeedbackForm slug={slug} />
+            </Sheet>
+            <Sheet>
+              <Heading.h2 f={4} color="black" mb={3}>
+                Made something fabulous?
+              </Heading.h2>
+              <Flex justify="center">
+                <ShareButton
+                  service="Twitter"
+                  href={twitterURL(
+                    `I just built ${name} with a @hackclub workshop. Make yours:`,
+                    url
+                  )}
+                  bg="#1da1f2"
+                  mr={3}
+                />
+                <ShareButton
+                  service="Facebook"
+                  href={facebookURL(url)}
+                  bg="#3b5998"
+                />
+              </Flex>
+            </Sheet>
+            <Sheet>
+              <Heading.h2 f={4} color="pink.5" mb={3}>
+                Questions?
+              </Heading.h2>
+              <DiscussOnSlack f={2} />
+            </Sheet>
+            <Sheet>
+              <Heading.h2 f={4} color="black" mb={3}>
+                Spotted an issue?
+              </Heading.h2>
               <ShareButton
-                service="Twitter"
-                href={twitterURL(
-                  `I just built ${name} with a @hackclub workshop. Make yours:`,
-                  url
-                )}
-                bg="#1da1f2"
-                mr={3}
+                service="GitHub"
+                bg="slate"
+                f={2}
+                href={githubEditUrl(slug)}
+                target="_blank"
+                aria-label={null}
+                children="Suggest edits"
+                title="If you see something, say something."
               />
-              <ShareButton
-                service="Facebook"
-                href={facebookURL(url)}
-                bg="#3b5998"
-              />
-            </Flex>
-          </Box>
-          <Box>
-            <Heading.h2 f={3} color="primary" caps mb={3}>
-              Questions?
-            </Heading.h2>
-            <DiscussOnSlack bg="primary" f={2} />
-          </Box>
-          <Box>
-            <Heading.h2 f={3} color="slate" caps mb={3}>
-              Spotted an issue?
-            </Heading.h2>
-            <ShareButton
-              service="GitHub"
-              bg="slate"
-              f={2}
-              href={githubEditUrl(slug)}
-              target="_blank"
-              aria-label={null}
-              children="Edit on GitHub"
-              title="If you see something, say something."
-            />
-          </Box>
-        </Cards>
+            </Sheet>
+          </Cards>
+        </CardsSection>
         <Footer />
       </Box>
     </Fragment>

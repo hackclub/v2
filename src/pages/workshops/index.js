@@ -1,79 +1,58 @@
 import React, { Fragment } from 'react'
+import styled from 'styled-components'
 import {
   Box,
-  Button,
-  Container,
-  Card,
-  Flex,
-  Heading,
+  LargeButton,
   Link as A,
   Section,
-  Text
+  Text,
+  theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
+import Name from 'components/Name'
+import IconButton from 'components/IconButton'
 import Footer from 'components/Footer'
-import Track from 'components/workshops/Track'
 import WorkshopSearch from 'components/workshops/WorkshopSearch'
-import {
-  groupBy,
-  orderBy,
-  camelCase,
-  map,
-  fromPairs,
-  reverse,
-  toPairs
-} from 'lodash'
 
-A.link = A.withComponent(Link)
-
-const Base = Box.main.extend`
-  display: grid;
+const Base = styled(Box.main)`
   position: relative;
-  ${({ theme }) => theme.mediaQueries.md} {
-    grid-template-columns: 20rem 1fr;
-  }
 `
 
-const Background = Section.extend`
-  justify-content: flex-start;
-  background-color: ${({ theme }) => theme.colors.red[5]};
+const Background = styled(Section)`
+  background-color: ${theme.colors.indigo[5]};
   background-image: url('/pattern.svg'),
     linear-gradient(
-      -86deg,
-      ${({ theme }) => theme.colors.orange[5]},
-      ${({ theme }) => theme.colors.red[5]},
-      ${({ theme }) => theme.colors.red[6]}
+      -64deg,
+      ${theme.colors.indigo[5]},
+      ${theme.colors.violet[5]},
+      ${theme.colors.violet[6]}
     );
-  ${({ theme }) => theme.mediaQueries.md} {
-    min-height: 100vh;
-  }
 `
 
-const Name = Heading.h1.extend`
-  mix-blend-mode: screen;
-  background-color: white;
-  color: black;
-  display: inline-block;
-  padding-left: ${({ theme }) => theme.space[3]}px;
-  padding-right: ${({ theme }) => theme.space[3]}px;
-  clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
-`
-
-const Super = Text.withComponent('mark').extend`
-  background: transparent url(/underline.svg) bottom left no-repeat;
-  background-size: 100% 0.5rem;
-  padding-bottom: 0.125rem;
-`
-const SuperButton = Button.withComponent(Link).extend`
-  background-color: ${({ theme }) => theme.colors.fuschia[6]};
+const attrs = {
+  is: LargeButton.withComponent(Link),
+  m: 2,
+  scale: true,
+  py: 3,
+  px: 4,
+  f: 2
+}
+const SubmitButton = styled(IconButton).attrs(attrs)`
+  text-transform: uppercase;
   background-image: linear-gradient(
-    -32deg,
-    ${({ theme }) => theme.colors.fuschia[5]},
-    ${({ theme }) => theme.colors.red[5]},
-    ${({ theme }) => theme.colors.red[6]}
+    to bottom,
+    ${theme.colors.cyan[6]},
+    ${theme.colors.blue[6]}
+  );
+`
+const PhilosophyButton = styled(IconButton).attrs(attrs)`
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    to bottom,
+    ${theme.colors.orange[5]},
+    ${theme.colors.red[5]}
   );
 `
 
@@ -85,7 +64,7 @@ export default ({
   const title = 'Hack Club Workshops'
   const desc =
     'Get free coding tutorials, project ideas, and programming club activities from Hack Club, a community of high school developers.'
-  const img = 'https://hackclub.com/workshops.png'
+  const img = 'https://hackclub.com/cards/workshops.png'
 
   return (
     <Fragment>
@@ -103,46 +82,40 @@ export default ({
           { property: 'og:url', content: 'https://hackclub.com/workshops' }
         ]}
       />
-      <Nav color="muted" fixed />
+      <Nav />
       <Base>
-        <Background p={[3, 2]}>
-          <Box.header align="center" mt={[4, 5]}>
+        <Background px={3} pt={4}>
+          <Box.header align="center" pt={4} pb={3}>
             <Name f={6}>Workshops</Name>
-            <Text f={[3, 4]} mt={2} mb={3} bold caps>
+            <Text color="violet.0" f={[3, 4]} mt={2} bold caps>
               By Hack Club
             </Text>
-            <Heading.h2 color="red.0" f={4} px={2} regular mb={[4, 5]}>
-              Making leads to learning.
-            </Heading.h2>
-            <Card bg="red.0" p={3} boxShadowSize="md">
-              <Text f={4} color="red.6" style={{ lineHeight: '1.25' }}>
-                Coding is a <Super color="warning">superpower</Super>.<br />
-                So let’s start building.
-              </Text>
-              <SuperButton
-                mt={3}
-                to="/philosophy"
-                children="Our philosophy »"
-              />
-            </Card>
-          </Box.header>
-        </Background>
-        <Box.article bg="white" pt={3}>
-          <Container maxWidth={48} pt={[3, 5]} pb={[4, 5]} px={3}>
             <Text
-              color="black"
-              f={4}
-              mb={4}
-              style={{ lineHeight: '1.25', maxWidth: '42rem' }}
+              fontSize={[3, 4]}
+              color="white"
+              mx="auto"
+              mt={[2, 3]}
+              mb={3}
+              style={{ lineHeight: '1.25', maxWidth: '36rem' }}
             >
               Learn to code with this collection of community-contributed,
-              self-guided coding tutorials and project ideas.{' '}
-              <A.link to="/workshops/submit">Write one »</A.link>
+              self-guided coding tutorials + ideas.
             </Text>
-            <WorkshopSearch workshops={edges} />
-          </Container>
-          <Footer />
-        </Box.article>
+            <SubmitButton
+              glyph="post"
+              to="/workshops/submit"
+              children="Submit your own"
+              bg="cyan.6"
+            />
+            <PhilosophyButton
+              glyph="quote"
+              to="/philosophy"
+              children="Our philosophy"
+            />
+          </Box.header>
+        </Background>
+        <WorkshopSearch workshops={edges} />
+        <Footer />
       </Base>
     </Fragment>
   )

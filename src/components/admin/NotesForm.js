@@ -196,7 +196,12 @@ export default class NotesForm extends Component {
       case 'success':
         return (
           <Fragment>
-            <IconButton name="add" bg="success" circle onClick={this.addNote} />
+            <IconButton
+              glyph="post"
+              bg="success"
+              circle
+              onClick={this.addNote}
+            />
             {notes
               .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
               .map((note, index) => (

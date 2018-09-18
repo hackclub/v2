@@ -140,8 +140,8 @@ class Invite extends Component {
         <Heading.h2>{invite.new_club.high_school_name}</Heading.h2>
         <Text>{invite.new_club.high_school_adress}</Text>
         <Text>
-          invited by {invite.sender.username && `${invite.sender.username} `}
-          ({invite.sender.email})
+          invited by {invite.sender.username && `${invite.sender.username} `}(
+          {invite.sender.email})
         </Text>
         <Box my={3}>{this.renderSwitch()}</Box>
       </Card>

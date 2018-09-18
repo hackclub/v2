@@ -1,9 +1,10 @@
 import React from 'react'
-import { Box, Image, Link } from '@hackclub/design-system'
+import styled from 'styled-components'
+import { Box, Image, Link, theme } from '@hackclub/design-system'
 
-const Base = Box.extend`
+const Base = styled(Box)`
   display: grid;
-  grid-gap: ${({ theme }) => theme.space[3]}px;
+  grid-gap: ${theme.space[3]}px;
   grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
   align-items: center;
   justify-content: center;
@@ -32,7 +33,9 @@ const Sponsors = props => (
       'Bugsnag',
       'Google',
       'Dialpad'
-    ].map(name => <Sponsor name={name} key={name} />)}
+    ].map(name => (
+      <Sponsor name={name} key={name} />
+    ))}
   </Base>
 )
 

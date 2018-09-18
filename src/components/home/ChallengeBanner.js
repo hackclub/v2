@@ -1,9 +1,10 @@
+import styled from 'styled-components'
 import React from 'react'
 import { Flex, Icon, Text } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 
-const Base = Flex.withComponent(Link).extend`
-  border-radius: ${({ theme }) => theme.radius};
+const Base = styled(Flex.withComponent(Link))`
+  border-radius: ${theme.radius};
   max-width: 28rem;
 `
 Base.defaultProps = {

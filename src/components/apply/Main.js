@@ -1,20 +1,17 @@
 import React, { Component, Fragment } from 'react'
+import styled, { css } from 'styled-components'
 import {
   Box,
   Button,
-  Card,
   Container,
   Flex,
   Heading,
-  Hide,
-  Icon,
-  IconButton,
-  LargeButton,
   Link as DSLink,
   Text,
-  cx
+  Icon,
+  theme
 } from '@hackclub/design-system'
-import styled from 'styled-components'
+import { wordWrap } from 'polished'
 import LeaderInvite from 'components/apply/LeaderInvite'
 import { clubApplicationSchema } from 'components/apply/ClubApplicationForm'
 import Sheet from 'components/Sheet'
@@ -27,23 +24,16 @@ import { Modal, CloseButton, Overlay } from 'components/Modal'
 
 const P = props => <Text my={3} {...props} />
 
-const A = DSLink.extend`
+const A = styled(DSLink)`
   cursor: pointer;
   &:hover {
     text-decoration: underline;
   }
 `
 
-const Neg = () => <Text.span color="error" bold children="NOT" />
-
 const Title = styled(Heading.h1).attrs({ f: 6 })`
   line-height: 1.25;
 `
-const MDBreak = Hide.withComponent('br').extend.attrs({
-  xs: true,
-  sm: true,
-  md: true
-})``
 
 class ContactModal extends Component {
   state = { open: false }
@@ -64,7 +54,8 @@ class ContactModal extends Component {
                 Send any questions about the application process to{' '}
                 <A to="mailto:applications@hackclub.com">
                   applications@hackclub.com
-                </A>.
+                </A>
+                .
               </Text>
             </Modal>
             <Overlay onClick={this.toggle} />
@@ -86,17 +77,19 @@ class ContactModal extends Component {
 //   position: absolute;
 //   right: 0;
 //   bottom: -64px;
-//   box-shadow: ${({ theme }) => theme.boxShadows[1]} !important;
-//   transition: ${({ theme }) => theme.transition} box-shadow;
+//   box-shadow: ${theme.boxShadows[1]} !important;
+//   transition: ${theme.transition} box-shadow;
 //   &:hover,
 //   &:focus {
-//     box-shadow: ${({ theme }) => theme.boxShadows[2]} !important;
+//     box-shadow: ${theme.boxShadows[2]} !important;
 //   }
 // `
 
 const Rejected = ({ resetCallback }) => (
-  <Box mb={4} align="center">
-    <Heading.h2 mb={3}>Unfortunately, you’ve been rejected</Heading.h2>
+  <Box mb={4}>
+    <Heading.h3 color="error" mb={3}>
+      Unfortunately, you’ve been rejected
+    </Heading.h3>
     <P>
       You can start a new application by clicking{' '}
       <A onClick={resetCallback}>here</A>.
@@ -105,7 +98,7 @@ const Rejected = ({ resetCallback }) => (
 )
 
 const SectionBase = styled(Box).attrs({})`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
+  border-bottom: 1px solid ${theme.colors.smoke};
 `
 const SectionFlex = styled(Flex).attrs({
   py: 4,
@@ -120,17 +113,30 @@ const SectionHeading = styled(Heading.h2).attrs({
   regular: true,
   align: 'left'
 })`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   line-height: 1.25;
   max-width: 32rem;
+  ${wordWrap('break-word')};
 `
 const SectionIcon = styled(Icon).attrs({
   color: props => (props.open ? 'gray.5' : 'gray.4'),
-  size: 36,
+  size: 32,
+  mr: 1,
   ml: 'auto'
 })`
-  transition: ${({ theme }) => theme.transition} all;
+  transition: ${theme.transition} all;
   transform: rotate(${props => (props.open ? 90 : 0)}deg);
   user-select: none;
+  ${props =>
+    props.glyph === 'member-remove' &&
+    css`
+      cursor: pointer;
+      &:hover {
+        color: ${theme.colors.red[4]};
+      }
+    `};
 `
 
 class Section extends Component {
@@ -145,45 +151,46 @@ class Section extends Component {
     const Element = to ? Link : Fragment
     return (
       <Element to={to}>
-        <SectionBase>
-          <SectionFlex
-            {...props}
-            onClick={this.toggle}
-            sm={sm}
-            aria-expanded={open}
-          >
-            <SectionHeading sm={sm} children={name} />
-            <SectionIcon
-              open={open}
-              name={to ? 'arrow_forward' : 'more_horiz'}
-            />
-          </SectionFlex>
-          {open && openContent}
+        <SectionBase
+          {...props}
+          onClick={this.toggle}
+          sm={sm}
+          aria-expanded={open}
+        >
+          <SectionHeading sm={sm} children={name} />
+          <SectionIcon open={open} glyph={to ? 'view-forward' : 'options'} />
         </SectionBase>
       </Element>
     )
   }
 }
 
-const HelpSheet = styled(Container.withComponent(Card))`
+const HelpSheet = styled(Container).attrs({
+  mt: [3, 4],
+  p: 0,
+  px: [3, 4],
+  py: 3,
+  bg: 'blue.0'
+})`
+  border-radius: ${theme.radii[2]};
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 `
 
 const Help = () => (
-  <HelpSheet maxWidth={42} mt={[3, 4]} py={3} px={[3, 4]} bg="blue.0">
+  <HelpSheet>
     <Flex align="center" flex="1 1 auto" mb={[3, 0]}>
-      <Icon name="live_help" size={24} mr={[2, 3]} color="info" />
-      <Text color="info" f={2} align="left">
-        Have any questions? We’re here to help out.
+      <Icon glyph="support" size={36} mr={[2, 3]} color="info" />
+      <Text color="info" fontSize={2} align="left">
+        Have any questions? <strong>We’re here to help out.</strong>
       </Text>
     </Flex>
     <ContactModal />
   </HelpSheet>
 )
 
-const SubmitStatus = Text.withComponent('mark').extend`
+const SubmitStatus = styled(Text.withComponent('mark'))`
   background: transparent url(/underline.svg) bottom left no-repeat;
   background-size: 100% 0.75rem;
   padding-bottom: 0.125rem;
@@ -202,7 +209,6 @@ const Main = props => {
     leader_profiles,
     updated_at,
     created_at,
-    submitted_at,
     point_of_contact_id
   } = props.app
   const { callback, app, resetCallback } = props
@@ -278,7 +284,7 @@ const Main = props => {
           name={
             <Fragment>
               <Text.span bold>Club application</Text.span>
-              <Status type={applicationStatus()} ml={2} />
+              <Status type={applicationStatus()} ml={[2, 3]} />
             </Fragment>
           }
         />
@@ -287,7 +293,7 @@ const Main = props => {
           name={
             <Fragment>
               <Text.span bold>My personal profile</Text.span>
-              <Status type={profileStatus(leaderProfile)} ml={2} />
+              <Status type={profileStatus(leaderProfile)} ml={[2, 3]} />
             </Fragment>
           }
         />
@@ -297,61 +303,42 @@ const Main = props => {
         {coLeaderProfiles.length === 0 && (
           <Text py={3} color="muted" align="center" f={3}>
             <Text.span bold>No co-leaders yet!</Text.span>
-            <br />Tap the green button to add them.
+            <br />
+            Tap the green button to add them.
           </Text>
         )}
         {coLeaderProfiles.map(profile => (
-          <Section
-            key={profile.id}
-            sm
-            name={
-              <Fragment>
-                <Text.span children={profile.user.name || profile.user.email} />
-                <Status type={profileStatus(profile)} bg="muted" ml={2} />
-              </Fragment>
-            }
-            openContent={
-              <Text mb={3} align="right">
-                <Text.span f={3} color="gray.5" mx={1}>
-                  Invited {timeSince(profile.created_at)}.
-                </Text.span>
-                <Text.span f={3} color="gray.5" mx={1}>
-                  {profile.updated_at === null
-                    ? 'Not updated yet.'
-                    : `Last updated ${timeSince(profile.updated_at)}.`}
-                </Text.span>
-                {isPoc && (
-                  <Button
-                    m={2}
-                    onClick={e => {
-                      if (
-                        confirm(
-                          `Are you sure you want to remove ${
-                            profile.user.email
-                          } as a team member?`
-                        )
-                      ) {
-                        api
-                          .delete(
-                            `v1/new_club_applications/${id}/remove_user`,
-                            {
-                              data: { user_id: profile.user.id }
-                            }
-                          )
-                          .then(json => {
-                            callback()
-                          })
-                          .catch(e => {
-                            alert(e.statusText)
-                          })
-                      }
-                    }}
-                    children="Remove"
-                  />
-                )}
-              </Text>
-            }
-          />
+          <SectionBase sm key={profile.id}>
+            <SectionHeading sm>
+              <Text.span
+                children={profile.user.name || profile.user.email}
+                mr={[2, 3]}
+              />
+              <Status type={profileStatus(profile)} bg="muted" />
+            </SectionHeading>
+            <SectionIcon
+              glyph="member-remove"
+              onClick={e => {
+                if (
+                  confirm(
+                    `Are you sure you want to remove ${
+                      profile.user.email
+                    } as a team member?`
+                  )
+                ) {
+                  api
+                    .delete(`v1/new_club_applications/${id}/remove_user`, {
+                      authToken,
+                      data: { user_id: profile.user.id }
+                    })
+                    .then(json => {
+                      callback()
+                    })
+                }
+              }}
+              aria-label="Remove team member"
+            />
+          </SectionBase>
         ))}
         <Box mt={5}>
           {app.rejected_at ? (

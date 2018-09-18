@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import {
   Box,
   LargeButton,
@@ -8,13 +9,15 @@ import {
   Icon,
   Input,
   Label,
-  Text
+  Text,
+  theme
 } from '@hackclub/design-system'
+import { placeholder } from 'polished'
 import { CLIENT_URL, PUBLIC_STRIPE_KEY } from 'constants'
 import { toNumber } from 'lodash'
 import api from 'api'
 
-const Secure = Flex.extend`
+const Secure = styled(Flex)`
   position: absolute;
   top: 0;
   right: 0;
@@ -25,26 +28,24 @@ const Secure = Flex.extend`
 
 const amounts = [10, 20, 40, 100]
 
-const AmountsGrid = Box.extend`
+const AmountsGrid = styled(Box)`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: ${({ theme }) => theme.space[3]}px;
+  grid-gap: ${theme.space[3]}px;
   input[type='radio'] {
     display: none;
     &:checked + label {
-      background-color: ${({ theme }) => theme.colors.blue[7]} !important;
+      background-color: ${theme.colors.blue[7]} !important;
     }
   }
   input[type='number'] {
     text-align: center;
-    border-radius: ${({ theme }) => theme.pill};
+    border-radius: ${theme.pill};
     grid-column: 2 / span 2;
   }
 `
 
-const Amount = Button.withComponent('label').extend`
-  border-radius: ${({ theme }) => theme.pill};
-`
+const Amount = styled(Button.withComponent('label'))``
 
 const Option = ({ amount, ...props }) => [
   <input
@@ -60,11 +61,9 @@ const Option = ({ amount, ...props }) => [
   </Amount>
 ]
 
-const Other = Input.extend`
-  color: ${({ theme }) => theme.colors.black};
-  ::placeholder {
-    color: ${({ theme }) => theme.colors.muted};
-  }
+const Other = styled(Input)`
+  color: ${theme.colors.black};
+  ${placeholder({ color: theme.colors.muted })};
 `
 
 class DonateForm extends Component {
@@ -90,7 +89,7 @@ class DonateForm extends Component {
             <Text f={0} color="red.1" caps bold>
               Secure
             </Text>
-            <Icon size={16} name="lock" color="red.1" ml={2} />
+            <Icon size={16} glyph="private" color="red.1" ml={2} />
           </Secure>
           <Heading.h2 mt={[-3, -4]} pt={4} px={3} f={5}>
             Become a patron

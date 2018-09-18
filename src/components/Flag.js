@@ -1,4 +1,5 @@
 import React from 'react'
+import { theme } from '@hackclub/design-system'
 import styled, { css } from 'styled-components'
 import Link from 'gatsby-link'
 
@@ -8,9 +9,9 @@ const Flag = styled(Link)`
   flex-shrink: 0;
   width: 112px;
   height: 48px;
-  transition: ${({ theme }) => theme.transition} transform;
+  transition: ${theme.transition} transform;
   transform-origin: top left;
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     width: 144px;
     height: 72px;
   }
@@ -19,7 +20,7 @@ const Flag = styled(Link)`
     css`
       transform: scale(0.75);
       height: 44px !important;
-      ${({ theme }) => theme.mediaQueries.md} {
+      ${theme.mediaQueries.md} {
         height: 54px !important;
       }
     `};

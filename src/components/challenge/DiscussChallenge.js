@@ -1,23 +1,28 @@
 import React from 'react'
-import { Container, Card, Icon, Box, Flex, Text } from '@hackclub/design-system'
+import styled from 'styled-components'
+import { Box, Flex, Text } from '@hackclub/design-system'
+import Icon from '@hackclub/icons'
+import Sheet from 'components/Sheet'
 import DiscussOnSlack from 'components/DiscussOnSlack'
 
-const Sheet = Container.withComponent(Card).extend`
+const Root = styled(Sheet)`
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
 `
 
 const DiscussChallenge = () => (
-  <Sheet maxWidth={42} mt={[3, 4]} py={3} px={[3, 4]} bg="red.0">
+  <Root maxWidth={36} mt={[3, 4]} p={[2, 3]} bg="pink.0" color="pink.6">
     <Flex align="center" flex="1 1 auto" mb={[3, 0]}>
-      <Icon name="forum" size={24} mr={[2, 3]} color="primary" />
-      <Text color="primary" f={2}>
-        Join the conversation in <Text.span bold>#challenges</Text.span>
-      </Text>
+      <Icon glyph="message-fill" size={48} />
+      <Box align="left" color="pink.6" ml={[2, 3]}>
+        <Text f={2}>Join the conversation</Text>
+        <Text f={3} bold>
+          #challenges
+        </Text>
+      </Box>
     </Flex>
     <DiscussOnSlack f={2} />
-  </Sheet>
+  </Root>
 )
 
 export default DiscussChallenge

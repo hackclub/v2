@@ -1,11 +1,14 @@
 import React from 'react'
-import { Flex, Link as A, Text } from '@hackclub/design-system'
-import Link from 'gatsby-link'
+import styled from 'styled-components'
+import { Flex, Link as A, Text, theme } from '@hackclub/design-system'
 
-export const BreadcrumbList = Flex.withComponent('ol').extend`
+export const BreadcrumbList = styled(Flex.withComponent('ol'))`
+  font-size: ${theme.fontSizes[3]}px;
+  font-weight: bold;
   line-height: 1.25;
   list-style: none;
   padding-left: 0;
+  text-transform: uppercase;
 `
 export const Breadcrumbs = props => (
   <BreadcrumbList
@@ -25,9 +28,6 @@ export const Breadcrumb = ({ type = 'Thing', position, name, ...props }) => (
       itemType={`http://schema.org/${type}`}
       itemProp="item"
       color="inherit"
-      f={3}
-      bold
-      caps
       {...props}
     >
       <span itemProp="name" children={name} />
@@ -36,5 +36,5 @@ export const Breadcrumb = ({ type = 'Thing', position, name, ...props }) => (
   </li>
 )
 export const BreadcrumbDivider = () => (
-  <Text.span mx={2} color="snow" f={3} children="›" />
+  <Text.span mx={2} color="snow" fontSize={3} children="›" />
 )

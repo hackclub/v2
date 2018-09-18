@@ -1,11 +1,14 @@
 import React from 'react'
-import { Box, Flex, Input, Icon } from '@hackclub/design-system'
+import styled from 'styled-components'
+import { Box, Flex, Input, theme } from '@hackclub/design-system'
+import Icon from '@hackclub/icons'
+import { placeholder } from 'polished'
 
-const Relative = Box.extend`
+const Relative = styled(Box)`
   position: relative;
 `
 
-const Absolute = Flex.extend`
+const Absolute = styled(Flex)`
   align-items: center;
   position: absolute;
   top: 0;
@@ -14,27 +17,33 @@ const Absolute = Flex.extend`
   height: 100%;
 `
 
-const Search = Input.extend.attrs({
+const Search = styled(Input).attrs({
+  bg: 'white',
   py: 2,
   pr: 3
 })`
   padding-left: 48px; // 16px icon + 32px padding
+  line-height: 48px;
   max-width: 100%;
   border: 0;
-  line-height: 1.75;
-  font-size: ${({ theme }) => theme.fontSizes[3]}px;
-  box-shadow: ${({ theme }) => theme.boxShadows[0]};
-  transition: ${({ theme }) => theme.transition} box-shadow;
+  border-radius: ${theme.radii[2]};
+  ${({ theme }) => placeholder({ color: theme.colors.muted })};
+  font-size: ${theme.fontSizes[3]}px;
+  box-shadow: ${theme.boxShadows[1]}, 0 16px 32px rgba(0, 0, 0, 0.0625);
+  transition: ${theme.transition} box-shadow;
   &:hover,
   &:focus {
-    box-shadow: ${({ theme }) => theme.boxShadows[1]};
+    box-shadow: ${theme.boxShadows[1]}, 0 16px 48px rgba(0, 0, 0, 0.125);
+  }
+  ${theme.mediaQueries.md} {
+    font-size: ${theme.fontSizes[4]}px;
   }
 `
 
-export default ({ value, placeholder, label, onChange, ...props }) => (
-  <Relative mb={4} {...props}>
-    <Absolute px={3}>
-      <Icon name="search" color="muted" />
+const SearchInput = ({ value, placeholder, label, onChange, ...props }) => (
+  <Relative {...props}>
+    <Absolute color="muted" px={2}>
+      <Icon glyph="search" size={36} />
     </Absolute>
     <Search
       value={value}
@@ -45,3 +54,5 @@ export default ({ value, placeholder, label, onChange, ...props }) => (
     />
   </Relative>
 )
+
+export default SearchInput

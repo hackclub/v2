@@ -1,10 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
-import { Badge, Text } from '@hackclub/design-system'
-
-const Base = styled(Badge)`
-  font-weight: inherit;
-`
+import { Badge } from '@hackclub/design-system'
 
 const Status = ({ type, ...props }) => {
   const data = {
@@ -13,7 +8,7 @@ const Status = ({ type, ...props }) => {
     complete: { bg: 'success', children: 'complete' },
     submitted: { bg: 'success', children: 'submitted' }
   }[type]
-  return <Base {...data} {...props} />
+  return <Badge normal {...data} {...props} />
 }
 
 export default Status

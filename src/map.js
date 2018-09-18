@@ -60,15 +60,18 @@ const css = `.rsm-svg{width:100vw;height:100vh;object-fit:cover}
 .rsm-geographies path{fill:${fill};stroke:${stroke};stroke-width:.25;outline:none}
 .rsm-markers circle{fill:${pin};stroke-width:0;opacity:.667}`
 
-const API = 'https://api.hackclub.com/v1/clubs'
+const API = 'https://api.hackclub.com/v1/new_clubs'
 const GEO = 'https://unpkg.com/world-atlas@1.1.4/world/50m.json'
 const locations = []
 axios(API)
   .then(res => {
     forEach(res.data, club => {
-      const { name, latitude, longitude } = club
-      const coordinates = [toNumber(longitude), toNumber(latitude)]
-      locations.push({ name, coordinates })
+      const { high_school_latitude, high_school_longitude } = club
+      const coordinates = [
+        toNumber(high_school_longitude),
+        toNumber(high_school_latitude)
+      ]
+      locations.push({ coordinates })
     })
     return locations
   })

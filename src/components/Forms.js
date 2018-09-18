@@ -11,7 +11,7 @@ import {
   LargeButton,
   Icon,
   Text,
-  colors
+  theme
 } from '@hackclub/design-system'
 import { Prompt } from 'react-router'
 import MarkdownRenderer from 'components/MarkdownRenderer'
@@ -38,7 +38,7 @@ const SaveStatusIcon = ({ saved }) => (
   />
 )
 
-const SaveStatusLine = Box.extend`
+const SaveStatusLine = styled(Box)`
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -117,17 +117,19 @@ export class AutoSaver extends Component {
   }
 }
 
-export const Error = Text.span.extend.attrs({
+export const Error = styled(Text.span).attrs({
   className: 'error',
   color: 'error',
   f: 1,
   ml: 1
 })`
   text-transform: lowercase;
-  &:before { content: '— '; }
+  &:before {
+    content: '— ';
+  }
 `
 
-export const Hint = Text.span.extend.attrs({
+export const Hint = styled(Text.span).attrs({
   color: 'slate',
   f: 1,
   mt: 1,
@@ -203,13 +205,14 @@ export class Field extends Component {
       value,
       renderMarkdown,
       bg,
+      mb = 3,
       ...props
     } = this.props
 
     const { Tag, isEditing } = this.state
 
     return (
-      <Label className={type} mb={3} id={name}>
+      <Label className={type} mb={mb} id={name}>
         <Flex style={{ display: 'inline' }} wrap>
           <span>{label}</span>
           {optional ? <Optional /> : null}
@@ -229,61 +232,74 @@ export class Field extends Component {
             <MarkdownRenderer content={value || ' '} />
           </Card>
         )}
-        <div hidden={renderMarkdown && !isEditing ? true : false}>
-          <Tag
-            name={name}
-            type={type}
-            rows={type === 'textarea' ? 5 : null}
-            placeholder={p}
-            children={children}
-            {...this.props}
-            onBlur={this.onBlur}
-            value={value}
-            bg={bg}
-          />
-        </div>
+        <Tag
+          name={name}
+          type={type}
+          rows={type === 'textarea' ? 5 : null}
+          placeholder={p}
+          children={children}
+          {...this.props}
+          onBlur={this.onBlur}
+          value={value}
+          bg={bg}
+          hidden={renderMarkdown && !isEditing ? true : false}
+        />
         {hint && <Hint children={hint} />}
         {renderMarkdown && <Hint children="click to edit" />}
       </Label>
     )
   }
 }
+export const Submit = styled(Button.withComponent('input')).attrs({
+  type: 'submit',
+  color: 'white',
+  py: 2,
+  px: 3,
+  f: 2
+})`
+  text-transform: uppercase;
+`
+Submit.lg = styled(LargeButton.withComponent('input')).attrs({
+  type: 'submit',
+  color: 'white',
+  py: 3,
+  px: 4,
+  f: 3
+})`
+  text-transform: uppercase;
+`
 
-export const Submit = Button.withComponent('input').extend.attrs({
-  type: 'submit'
-})``
-Submit.lg = LargeButton.withComponent('input').extend.attrs({
-  type: 'submit'
-})``
-
-export const FormWrapper = Flex.withComponent(Container).extend`
+export const FormWrapper = styled(Flex.withComponent(Container))`
   flex-direction: column;
 `
 
-export const Form = Container.withComponent('form').extend.attrs({
+export const Form = styled(Container.withComponent('form')).attrs({
   py: 4,
   px: 3,
   maxWidth: 42
 })`
   display: grid;
   grid-gap: 1rem;
-  ${({ theme }) => theme.mediaQueries[1]} {
+  ${theme.mediaQueries[1]} {
     grid-template-columns: repeat(1, 1fr);
-    h2, .textarea { grid-column: 1 / -1; }
+    h2,
+    .textarea {
+      grid-column: 1 / -1;
+    }
   }
   textarea {
     resize: vertical;
   }
 `
 
-export const Subheading = Heading.h2.extend.attrs({
+export const Subheading = styled(Heading.h2).attrs({
   f: 4,
   color: 'primary'
 })`
   text-transform: capitalize;
 `
 
-const HeadingBox = Box.extend.attrs({
+const HeadingBox = styled(Box).attrs({
   mr: 3
 })`
   text-align: left;
@@ -291,13 +307,13 @@ const HeadingBox = Box.extend.attrs({
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: auto;
-  ${({ theme }) => theme.mediaQueries[1]} {
+  ${theme.mediaQueries[1]} {
     flex-basis: 7rem;
     text-align: right;
   }
 `
 
-const FieldsBox = Box.extend.attrs({})`
+const FieldsBox = styled(Box).attrs({})`
   order: 2;
   flex-grow: 1;
 `

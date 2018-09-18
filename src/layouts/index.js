@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Helmet from 'react-helmet'
-import data from 'data.json'
-import { ThemeProvider, colors } from '@hackclub/design-system'
-
-const { name, title, description, img, url, org } = data
+import { name, title, description, img, url, org } from 'data.json'
+import { ThemeProvider, theme } from '@hackclub/design-system'
+import serviceWorkerKiller from '../../static/swkiller'
 
 const meta = tags =>
   tags.map((props, index) =>
@@ -17,7 +16,7 @@ export default props => (
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width,initial-scale=1" />
       <meta name="format-detection" content="telephone=no" />
-      <meta name="theme-color" content={colors.primary} />
+      <meta name="theme-color" content={theme.colors.primary} />
       {meta([
         { name: 'description', content: description },
         { name: 'twitter:card', content: 'summary_large_image' },
@@ -34,6 +33,9 @@ export default props => (
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: url }
       ])}
+      <script
+        children={`${serviceWorkerKiller.toString()}; serviceWorkerKiller()`}
+      />
       <script type="application/ld+json" children={JSON.stringify(org)} />
     </Helmet>
     {props.children()}

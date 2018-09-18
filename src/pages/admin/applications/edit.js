@@ -10,6 +10,7 @@ import {
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 import IsTestForm from 'components/admin/IsTestForm'
+import AssignmentForm from 'components/admin/AssignmentForm'
 import RejectionForm from 'components/admin/RejectionForm'
 import NotesForm from 'components/admin/NotesForm'
 import InterviewForm from 'components/admin/InterviewForm'
@@ -128,6 +129,7 @@ export default class extends Component {
                 Application <Badge bg={statusColor(app)}>{app.id}</Badge>
               </Heading.h2>
               <IsTestForm model="new_club_applications" id={app.id} />
+              <AssignmentForm id={app.id} />
               <Collapsable heading="Reject">
                 <RejectionForm
                   application={app}

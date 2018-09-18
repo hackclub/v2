@@ -13,6 +13,14 @@ export default class Model {
       .get(`v1/${this.modelName}/${id}`)
       .then(res => this.setSelection(res))
   }
+  get_by(obj) {
+    const params = Object.keys(obj)
+      .map(key => `${key}=${obj[key]}`)
+      .join('&')
+    return api
+      .get(`v1/${this.modelName}/?${params}`)
+      .then(res => this.setSelection(res))
+  }
   all() {
     return api.get(`v1/${this.modelName}`).then(res => this.setSelection(res))
   }
@@ -34,3 +42,4 @@ export default class Model {
 
 export const NewClubApplication = new Model('new_club_applications')
 export const NewClub = new Model('new_clubs')
+export const User = new Model('users')

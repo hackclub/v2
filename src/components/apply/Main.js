@@ -3,14 +3,15 @@ import styled, { css } from 'styled-components'
 import {
   Box,
   Button,
-  Card,
   Container,
   Flex,
   Heading,
   Link as DSLink,
-  Text
+  Text,
+  Icon,
+  theme
 } from '@hackclub/design-system'
-import Icon from '@hackclub/icons'
+import { wordWrap } from 'polished'
 import LeaderInvite from 'components/apply/LeaderInvite'
 import { clubApplicationSchema } from 'components/apply/ClubApplicationForm'
 import Sheet from 'components/Sheet'
@@ -117,10 +118,12 @@ const SectionHeading = styled(Heading.h2).attrs({
   align-items: center;
   line-height: 1.25;
   max-width: 32rem;
+  ${wordWrap('break-word')};
 `
-const SectionIcon = styled(Box.withComponent(Icon)).attrs({
+const SectionIcon = styled(Icon).attrs({
   color: props => (props.open ? 'gray.5' : 'gray.4'),
-  size: 36,
+  size: 32,
+  mr: 1,
   ml: 'auto'
 })`
   transition: ${({ theme }) => theme.transition} all;
@@ -162,18 +165,25 @@ class Section extends Component {
   }
 }
 
-const HelpSheet = styled(Container.withComponent(Card))`
+const HelpSheet = styled(Container).attrs({
+  mt: [3, 4],
+  p: 0,
+  px: [3, 4],
+  py: 3,
+  bg: 'blue.0'
+})`
+  border-radius: ${theme.radii[2]};
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 `
 
 const Help = () => (
-  <HelpSheet maxWidth={42} mt={[3, 4]} py={3} px={[3, 4]} bg="blue.0">
+  <HelpSheet>
     <Flex align="center" flex="1 1 auto" mb={[3, 0]}>
-      <Icon glyph="support" size={32} mr={[2, 3]} color="info" />
-      <Text color="info" f={2} align="left">
-        Have any questions? We’re here to help out.
+      <Icon glyph="support" size={36} mr={[2, 3]} color="info" />
+      <Text color="info" fontSize={2} align="left">
+        Have any questions? <strong>We’re here to help out.</strong>
       </Text>
     </Flex>
     <ContactModal />
@@ -300,8 +310,11 @@ const Main = props => {
         {coLeaderProfiles.map(profile => (
           <SectionBase sm key={profile.id}>
             <SectionHeading sm>
-              <Text.span children={profile.user.name || profile.user.email} />
-              <Status type={profileStatus(profile)} bg="muted" ml={[2, 3]} />
+              <Text.span
+                children={profile.user.name || profile.user.email}
+                mr={[2, 3]}
+              />
+              <Status type={profileStatus(profile)} bg="muted" />
             </SectionHeading>
             <SectionIcon
               glyph="member-remove"

@@ -13,20 +13,20 @@ import styled from 'styled-components'
 
 import Pulse from 'pulse'
 import Link from 'gatsby-link'
-import { clubApplicationSchema } from 'components/apply/ClubApplicationForm'
 import ApplyNav from 'components/apply/ApplyNav'
 import Sheet from 'components/Sheet'
 import Main from 'components/apply/Main'
-import Status from 'components/apply/Status'
 import LoginForm from 'components/auth/LoginForm'
 import LoadingBar from 'components/LoadingBar'
 
 LargeButton.link = LargeButton.withComponent(Link)
 
-const Full = styled(Flex)`
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+const Full = styled(Flex).attrs({
+  flexDirection: 'column',
+  align: 'center',
+  justify: 'center',
+  p: 3
+})`
   width: 100vw;
   height: 100vh;
 `
@@ -113,12 +113,13 @@ export default class extends Component {
               maxWidth={36}
               bg="black"
               color="white"
+              align="left"
               style={{ mixBlendMode: 'multiply' }}
             >
-              <Heading.h1 f={[5, 6]} style={{ lineHeight: '1.125' }}>
+              <Heading.h1 f={6} style={{ lineHeight: '1.125' }}>
                 Welcome!
               </Heading.h1>
-              <Text f={4} mb={3}>
+              <Text f={4} mt={2} mb={3}>
                 We can’t wait to see your application.
                 <br />
                 Let’s get started!

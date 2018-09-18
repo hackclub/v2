@@ -2,7 +2,7 @@ import { Flex, IconButton } from '@hackclub/design-system'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-export const SendForm = Flex.withComponent('form').extend`
+export const SendForm = styled(Flex.withComponent('form'))`
   position: relative;
   z-index: 4;
 
@@ -35,6 +35,7 @@ SendButton.defaultProps = {
   type: 'submit',
   color: 'white',
   glyph: 'send',
-  size: 20,
+  size: 28,
+  py: 1,
   ml: 3
 }

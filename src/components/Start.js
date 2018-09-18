@@ -4,7 +4,7 @@ import { Box, Heading, Text, LargeButton } from '@hackclub/design-system'
 import Sheet from 'components/Sheet'
 import Link from 'gatsby-link'
 
-const Base = styled(Sheet)`
+const Base = styled(Sheet).attrs({ maxWidth: 64 - 2 })`
   background-color: ${({ theme }) => theme.colors.red[5]};
   background-image: linear-gradient(
     -48deg,
@@ -15,7 +15,7 @@ const Base = styled(Sheet)`
   display: grid;
   align-items: center;
   ${({ theme }) => theme.mediaQueries.md} {
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 4fr 2fr;
   }
   h3 {
     font-weight: normal;

@@ -1,39 +1,29 @@
 import React, { Fragment } from 'react'
-<<<<<<< HEAD
 import styled from 'styled-components'
-=======
-import styled, { css } from 'styled-components'
->>>>>>> New Slack page
 import {
   Box,
   Heading,
   Container,
   Flex,
-<<<<<<< HEAD
-  Button,
   Text,
-  cx
-} from '@hackclub/design-system'
-=======
-  Text,
+  Link,
+  Icon,
   theme,
   cx
 } from '@hackclub/design-system'
-import Icon from '@hackclub/icons'
->>>>>>> New Slack page
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Sheet from 'components/Sheet'
 import SlackForm from 'components/SlackForm'
 import { ColoredHeadline } from '../components/Content'
 
-theme.colors.dark = '#17171d'
-
+/*
 const Stats = styled(Flex)`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 `
+*/
 
 const BackgroundGradient = styled(Box)`
   position: relative;
@@ -67,11 +57,10 @@ const BackgroundVideo = () => (
   </BackgroundVideoBase>
 )
 
-// NOTE(@lachlanjc): Using Sheet breaks this for some reason
-const Banner = styled(Container.withComponent('a')).attrs({
+const Announcement = styled(Sheet).attrs({
   width: 1,
   maxWidth: 28,
-  py: 2,
+  p: 2,
   px: [3, 2],
   mt: [null, -3, -4],
   mb: 3,
@@ -83,9 +72,6 @@ const Banner = styled(Container.withComponent('a')).attrs({
   background-color: rgba(255, 255, 255, 0.96875);
   border-radius: ${({ theme }) => theme.radii[2]};
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.0625);
-  strong {
-    font-weight: bold;
-  }
 `
 
 const Dark = styled(Box).attrs({ bg: 'dark', color: 'white' })``
@@ -224,15 +210,25 @@ export default () => (
     <BackgroundGradient>
       <BackgroundVideo />
       <Container px={3} pt={[5, 6]} color="white" align="center">
-        <Banner href="https://hackclub.slack.com" target="_blank">
-          <Icon size={24} glyph="history" />
-          <Text color="black" fontSize={2} mx={1} bold>
+        <Announcement>
+          <Icon size={24} glyph="history" color="slate" />
+          <Text color="black" fontSize={2} ml={1} bold>
             Already have an account?
           </Text>
-          <Text.span caps color="accent" fontSize={2} ml="auto">
+          <Link
+            caps
+            color="accent"
+            fontSize={2}
+            px={2}
+            bold
+            ml="auto"
+            href="https://hackclub.slack.com"
+            target="_blank"
+            chevronRight
+          >
             Sign in
-          </Text.span>
-        </Banner>
+          </Link>
+        </Announcement>
         <Heading.h1 f={[6, 7]} mt={[3, 4]} mb={2}>
           Join the Hack Club Slack
         </Heading.h1>

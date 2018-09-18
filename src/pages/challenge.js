@@ -186,16 +186,6 @@ export default class extends Component {
                 <br />
                 ℹ️ Competition open to Hack Club community members
                 <br />
-                📖{' '}
-                <Link
-                  href="/workshops/challenge_ridiculous_api"
-                  target="_blank"
-                  underline
-                >
-                  Click here
-                </Link>{' '}
-                for help getting started
-                <br />
                 🏅 Submissions due {dt(challenge.end)}. Top 3 voted win!
               </Text>
             </HeaderAreaInfo>
@@ -218,10 +208,9 @@ export default class extends Component {
             </Flex>
             <DropdownContainer>
               <IconButton
-                name="sort"
-                size={16}
+                glyph="filter"
                 bg="info"
-                f={2}
+                fontSize={2}
                 style={{ whiteSpace: 'nowrap' }}
                 children={sortByHumanized[sortBy]}
               />

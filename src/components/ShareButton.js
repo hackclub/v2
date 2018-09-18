@@ -6,7 +6,7 @@ const ShareButton = ({ service, children, ...props }) => (
     target="_blank"
     aria-label={`Share on ${props.service}`}
     glyph={service.toLowerCase()}
-    f={2}
+    fontSize={2}
     {...props}
     children={children || service}
   />

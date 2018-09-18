@@ -20,8 +20,7 @@ const Base = styled(Box.main)`
 `
 
 const Background = styled(Section)`
-  justify-content: center;
-  background-color: ${({ theme }) => theme.colors.red[5]};
+  background-color: ${({ theme }) => theme.colors.indigo[5]};
   background-image: url('/pattern.svg'),
     linear-gradient(
       -64deg,
@@ -82,19 +81,19 @@ export default ({
           { property: 'og:url', content: 'https://hackclub.com/workshops' }
         ]}
       />
-      <Nav color="white" />
+      <Nav />
       <Base>
-        <Background p={3}>
-          <Box.header align="center" pt={[4, 3]} pb={[3, 0]}>
+        <Background px={3} pt={4}>
+          <Box.header align="center" pt={4} pb={3}>
             <Name f={6}>Workshops</Name>
-            <Text color="red.0" f={[3, 4]} mt={2} bold caps>
+            <Text color="violet.0" f={[3, 4]} mt={2} bold caps>
               By Hack Club
             </Text>
             <Text
-              f={[3, 4]}
+              fontSize={[3, 4]}
               color="white"
               mx="auto"
-              mt={2}
+              mt={[2, 3]}
               mb={3}
               style={{ lineHeight: '1.25', maxWidth: '36rem' }}
             >

@@ -1,14 +1,12 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import {
-  Flex,
   Section,
   Heading,
   Text,
   Container,
-  Card,
   Button,
-  cx
+  theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
@@ -18,14 +16,10 @@ import Bio from 'components/Bio'
 import Sheet from 'components/Sheet'
 import Footer from 'components/Footer'
 
-const Header = Section.withComponent('header').extend`
+const Header = styled(Section)`
   background: url('/pattern.svg'),
-    linear-gradient(
-        -64deg,
-        ${({ theme }) => theme.colors.orange[5]},
-        ${({ theme }) => theme.colors.red[5]}
-      )
-      repeat;
+    linear-gradient(-64deg, ${theme.colors.orange[5]}, ${theme.colors.red[5]});
+  background-repeat: repeat;
 `
 
 const Base = styled(Container)`
@@ -81,12 +75,12 @@ export default () => (
     />
     <style
       children={`body {
-        background: ${cx('snow')};
+        background: ${theme.colors.snow};
       }`}
     />
     <Nav />
-    <Header>
-      <Container maxWidth={35} align="center">
+    <Header color="white">
+      <Container maxWidth={35} align="center" py={5}>
         <Heading.h1 f={[3, 4]} regular caps mt={4} mb={2}>
           Hack Club Team
         </Heading.h1>

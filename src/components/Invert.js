@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Button, theme } from '@hackclub/design-system'
 import IconButton from 'components/IconButton'
 
-theme.colors.dark = '#17171d'
 const css = `
   .invert {
     background-color: ${theme.colors.dark};
@@ -48,7 +47,7 @@ class Invert extends Component {
   render() {
     const { active } = this.state
     const props = {
-      name: this.props.icon || (active ? 'invert_colors_off' : 'invert_colors'),
+      glyph: this.props.icon || (active ? 'view-fill' : 'view'),
       bg: active ? 'black' : 'slate',
       'aria-pressed': active,
       inverted: true,

@@ -1,13 +1,12 @@
-import React, { Fragment } from 'react'
-import { Box, Flex, Text, Icon, IconButton } from '@hackclub/design-system'
+import React from 'react'
+import { Box, Flex, Text, IconButton } from '@hackclub/design-system'
+import Icon from '@hackclub/icons'
 import ReactMarkdown from 'react-markdown'
 import { QuotedCommentByline, commentStyle } from 'components/challenge/style'
-import MarkdownBody from 'components/MarkdownBody'
-import PropTypes from 'prop-types'
 
 const DeleteButton = props => (
   <IconButton
-    name="close"
+    glyph="view-close"
     color="white"
     bg="muted"
     size={16}
@@ -45,8 +44,8 @@ const Body = Box.withComponent(ReactMarkdown).extend`
 const QuotedComment = ({ data, onDelete, ...props }) => (
   <Root {...props}>
     <Group mr={onDelete && 3}>
-      <Byline>
-        <Icon name="reply" size={16} color="gray.5" />
+      <Byline color="gray.5">
+        <Icon glyph="reply" size={16} />
         <Text.span color="muted" f={1} mb={0} children={data.user.email} />
       </Byline>
       <Body source={data.body} />

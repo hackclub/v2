@@ -17,7 +17,6 @@ import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import { kebabCase } from 'lodash'
 
-colors.dark = '#17171d'
 const styles = `
   body {
     width: 100%;
@@ -31,8 +30,6 @@ const styles = `
     background-size: 2rem 2rem;
   }
 `
-
-const Header = Section.withComponent('header')
 
 const Calendar = styled(Flex)`
   flex-direction: column;
@@ -135,7 +132,7 @@ export default () => (
     />
     <style children={styles} />
     <Nav dark />
-    <Header py={4} align="center" justify="center">
+    <Box py={4} align="center" justify="center">
       <Container mt={5} maxWidth={32}>
         <Heading.h1 color="white" f={6}>
           Updates
@@ -145,7 +142,7 @@ export default () => (
           Here they all are!
         </Text>
       </Container>
-    </Header>
+    </Box>
     <Container pb={4}>
       <Update
         color="yellow.6"

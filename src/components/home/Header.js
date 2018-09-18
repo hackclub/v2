@@ -1,22 +1,26 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import styled from 'styled-components'
 import {
   Container,
   Flex,
-  Box,
   Heading,
-  Text,
   Hide,
   Icon,
-  Button,
-  LargeButton
+  LargeButton,
+  Link as A,
+  Text
 } from '@hackclub/design-system'
-import styled from 'styled-components'
+import Link from 'gatsby-link'
+import Sheet from 'components/Sheet'
 import { stats } from 'data.json'
 
-const Root = Flex.withComponent('header').extend`
+const Root = styled(Flex.withComponent('section')).attrs({
+  align: 'center',
+  justify: 'center',
+  flexDirection: 'column'
+})`
   text-align: center;
-  background: #222 url('/map.svg') no-repeat;
+  background: ${({ theme }) => theme.colors.dark} url('/map.svg') no-repeat;
   background-size: cover;
   background-position: center top;
   max-width: 100%;
@@ -37,81 +41,112 @@ const Root = Flex.withComponent('header').extend`
     max-width: 46rem;
   }
 `
-Root.defaultProps = {
-  pt: [5, 6],
-  pb: [4, 5],
-  align: 'center',
-  justify: 'center',
-  flexDirection: 'column'
-}
 
-const Wrapper = Container.withComponent(Flex)
-Wrapper.defaultProps = {
+const Wrapper = styled(Container.withComponent(Flex)).attrs({
   color: 'white',
   flexDirection: 'column',
   maxWidth: 48,
-  px: [2, null, 0]
-}
+  px: [2, null, 0],
+  pt: [5, 6],
+  pb: [4, 5]
+})``
 
-const Notification = Flex.withComponent(Link).extend`
-  border-radius: ${({ theme }) => theme.radius};
-  background-color: rgba(255, 255, 255, 0.96875);
-  strong {
-    font-weight: bold;
-  }
-`
-Notification.defaultProps = {
-  py: 2,
+const Announcement = styled(Sheet).attrs({
+  width: 1,
+  maxWidth: 36,
+  p: 2,
   px: [3, 2],
   mt: [null, -3, -4],
   mb: 3,
-  mx: 'auto',
-  align: 'center',
-  justify: 'center'
-}
+  color: 'slate'
+})`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
-const HeaderStats = styled.ul`
-  margin-top: 0;
-  margin-left: -15px;
-  padding: 0;
+const HeaderStats = styled(Text.withComponent('ul')).attrs({
+  mt: 0,
+  ml: -2,
+  mb: [2, 3],
+  p: 0
+})`
+  line-height: 1;
+`
+
+const HeaderStat = styled(Text.withComponent('li')).attrs({ f: [3, 4], ml: 2 })`
   display: inline;
+  &:not(:last-child):after {
+    position: relative;
+    top: 2px;
+    margin-left: ${({ theme }) => theme.space[2]}px;
+    margin-right: -2px;
+    font-size: ${({ theme }) => theme.fontSizes[5]}px;
+    content: '\00b7';
+  }
 `
 
-const HeaderStat = Text.withComponent('li').extend.attrs({ f: [3, 4] })`
-display: inline;
-margin-left: 15px;
-
-&:not(:last-child):after {
-  line-height: 24px;
-  margin-left: 10px;
-  margin-right: -5px;
-  font-size: 32px;
-  content: "\00b7";
-}
+const Action = styled(LargeButton.withComponent(Link)).attrs({
+  m: [1, null, 2],
+  scale: true,
+  py: 3,
+  px: [3, 4],
+  f: 2
+})``
+const DonateAction = styled(Action)`
+  background-image: linear-gradient(
+    to bottom,
+    ${({ theme }) => theme.colors.lime[6]},
+    ${({ theme }) => theme.colors.teal[6]}
+  );
+  @media screen and (max-width: 512px) {
+    display: none;
+  }
 `
-
-const Action = LargeButton.extend.attrs({ scale: true, m: [1, null, 2] })``
-Action.link = Action.withComponent(Link)
+const SlackAction = styled(Action)`
+  background-image: linear-gradient(
+    to bottom,
+    ${({ theme }) => theme.colors.cyan[6]},
+    ${({ theme }) => theme.colors.blue[6]}
+  );
+`
+const StartAction = styled(Action).attrs({ py: 3, px: 4 })`
+  background-image: linear-gradient(
+    to bottom,
+    ${({ theme }) => theme.colors.orange[5]},
+    ${({ theme }) => theme.colors.red[5]}
+  );
+`
 
 export default () => (
   <Root>
     <Wrapper>
-      <Notification to="/start">
-        <Icon size={24} color="slate" name="announcement" ml={[0, 1]} mr={2} />
-        <Flex color="black" f={[1, 2]} mr={2}>
-          <strong>Applications now open!</strong>
-          <Hide xs sm>
-            <Text.span ml={1}>Apply now for fall 2018</Text.span>
+      <Announcement>
+        <Icon size={24} glyph="flag-fill" color="black" mr={1} />
+        <Flex color="black" fontSize={1}>
+          <strong>Open for Fall 2018!</strong>
+          <Hide xs sm ml={1}>
+            {'– '}
+            apply now to start your Hack Club
           </Hide>
         </Flex>
-        <Text.span caps color="info" f={1} mr={1} ml={2}>
+        <A.link
+          caps
+          color="info"
+          fontSize={2}
+          px={2}
+          bold
+          ml="auto"
+          to="/start"
+          chevronRight
+        >
           Learn more
-        </Text.span>
-      </Notification>
+        </A.link>
+      </Announcement>
       <Text f={[3, 4]} mx="auto" mt={3} mb={0} caps>
         By the students, for the students.
       </Text>
-      <Heading.h1 f={[6, 7]} mx="auto" mt={2} mb={3}>
+      <Heading.h1 f={[6, 7, 8]} mx={[0, null, -3, -5]} mt={2} mb={3}>
         High school coding clubs.
       </Heading.h1>
       <HeaderStats>
@@ -123,22 +158,19 @@ export default () => (
         Hack Club is a nonprofit network of computer science clubs where members
         learn to code through tinkering and building projects.
       </Text>
-      <Flex
-        justify="center"
-        align="center"
-        mx={[-1, -2]}
-        mt={[3, 4]}
-        flexDirection={['column-reverse', 'row']}
-      >
-        <Action.link to="/donate" bg="accent">
+      <Flex justify="center" align="center" mx={[-1, -2]} mt={[3, 4]}>
+        <DonateAction to="/donate" bg="teal.6">
           Donate
-        </Action.link>
-        <Action.link to="/slack_invite" bg="info">
-          Join the Slack
-        </Action.link>
-        <Action.link to="/start" f={[3, null, 4]}>
-          Get Started »
-        </Action.link>
+        </DonateAction>
+        <SlackAction to="/slack_invite" bg="info">
+          <Hide xs style={{ display: 'inline' }}>
+            Join{' '}
+          </Hide>
+          Slack
+        </SlackAction>
+        <StartAction to="/start" f={[3, null, 4]} chevronRight>
+          Get Started
+        </StartAction>
       </Flex>
     </Wrapper>
   </Root>

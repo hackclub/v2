@@ -52,7 +52,7 @@ const LeaderCard = ({ name, id, email, position }) => (
   <Fragment>
     <LinkSpan href={`/admin/operations/leader?id=${id}`}>{name}</LinkSpan>
     <IconButton
-      name="close"
+      glyph="view-close"
       color="error"
       px={0}
       size={20}
@@ -78,7 +78,7 @@ const InviteCard = ({ email, id }) => (
     {/* The delete endpoint doesn’t exist yet */}
     {/*
       <IconButton
-        name="close"
+        glyph="view-close"
         color="error"
         px={0}
         size={20}

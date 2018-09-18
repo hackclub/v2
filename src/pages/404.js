@@ -10,8 +10,7 @@ import {
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
-
-theme.colors.dark = '#17171d'
+import BG from 'components/BG'
 
 const animation1 = keyframes`
   0% {
@@ -177,7 +176,7 @@ export default () => (
   <Fragment>
     <Helmet title="404 – Hack Club" />
     <Nav color="primary" dark />
-    <style children={`body{background:${theme.colors.dark};}`} />
+    <BG color="dark" />
     <Container maxWidth={48} px={2} py={6} align="center">
       <Blinking>404!</Blinking>
       <Text f={4} mt={2} mb={4} color="muted">

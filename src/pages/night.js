@@ -4,7 +4,7 @@ import {
   Container,
   BackgroundImage,
   Heading,
-  Button,
+  LargeButton,
   theme
 } from '@hackclub/design-system'
 import Link from 'gatsby-link'
@@ -45,13 +45,10 @@ const Megaline = styled(Heading.h1).attrs({
 `
 
 const CTA = styled(IconButton).attrs({
-  is: Button.withComponent(Link),
+  is: LargeButton.withComponent(Link),
   bg: 'night',
   color: 'white',
-  glyph: 'slack',
-  py: 3,
-  px: 4,
-  fontSize: 3
+  glyph: 'slack'
 })`
   background: radial-gradient(
     ellipse farthest-corner at top left,

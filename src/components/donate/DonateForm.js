@@ -90,7 +90,7 @@ class DonateForm extends Component {
             <Text f={0} color="red.1" caps bold>
               Secure
             </Text>
-            <Icon size={16} name="lock" color="red.1" ml={2} />
+            <Icon size={16} glyph="private" color="red.1" ml={2} />
           </Secure>
           <Heading.h2 mt={[-3, -4]} pt={4} px={3} f={5}>
             Become a patron

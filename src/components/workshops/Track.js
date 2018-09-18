@@ -1,22 +1,29 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Card, Container, Heading, Text } from '@hackclub/design-system'
+import {
+  Box,
+  Card,
+  Container,
+  Heading,
+  Text,
+  theme
+} from '@hackclub/design-system'
 import Link from 'gatsby-link'
 import { capitalize, map } from 'lodash'
 
 const Root = styled(Box.section)`
   background-image: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.colors.white},
-    ${({ theme }) => theme.colors.snow}
+    ${theme.colors.white},
+    ${theme.colors.snow}
   );
 `
 
-const Grid = styled(Container.withComponent('ol'))`
+const Grid = styled(Container).attrs({ px: 3, mt: [3, 4] })`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
   grid-auto-rows: 1fr;
-  grid-gap: ${({ theme }) => theme.space[3]}px;
+  grid-gap: ${theme.space[3]}px;
   counter-reset: li;
   list-style: none;
   a {
@@ -24,7 +31,7 @@ const Grid = styled(Container.withComponent('ol'))`
   }
 `
 
-const Item = styled(Card.withComponent('li'))`
+const Item = styled(Card).attrs({ bg: 'primary', p: 3 })`
   text-align: left;
   background-size: cover;
   background-position: center;
@@ -32,29 +39,32 @@ const Item = styled(Card.withComponent('li'))`
   height: 100%;
   position: relative;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-  border-radius: ${({ theme }) => theme.radii[2]};
+  border-radius: ${theme.radii[2]};
   will-change: transform;
-  box-shadow: ${({ theme }) => theme.boxShadows[0]};
+  box-shadow: ${theme.boxShadows[0]};
   transition: 0.1875s ease-in-out all;
   &:hover,
   &:focus {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.125), 0 8px 24px rgba(0, 0, 0, 0.125),
       0 16px 32px rgba(0, 0, 0, 0.125);
-    transform: scale(1.25);
+    transform: scale(1.125);
     z-index: 4;
+    ${theme.mediaQueries.md} {
+      transform: scale(1.25);
+    }
   }
   &:before {
     content: counter(li);
     counter-increment: li;
     position: absolute;
-    right: ${({ theme }) => theme.space[3]}px;
-    top: ${({ theme }) => theme.space[3]}px;
+    right: ${theme.space[3]}px;
+    top: ${theme.space[3]}px;
     width: 1.125rem;
     line-height: 1.125rem;
     border-radius: 0.75rem;
-    background-color: ${({ theme }) => theme.colors.white};
-    color: ${({ theme }) => theme.colors.black};
-    font-size: ${({ theme }) => theme.fontSizes[0]}px;
+    background-color: ${theme.colors.white};
+    color: ${theme.colors.black};
+    font-size: ${theme.fontSizes[0]}px;
     text-align: center;
     text-shadow: none;
     font-weight: bold;
@@ -76,7 +86,7 @@ const WorkshopItem = ({
   ...props
 }) => (
   <Link to={slug} {...props}>
-    <Item p={3} bg="primary" style={{ backgroundImage: `url('${bg}')` }}>
+    <Item style={{ backgroundImage: `url('${bg}')` }}>
       <Heading.h3 color="white" f={3} mb={[null, 3]} children={name} />
       <Text color="snow" f={2} children={description} />
     </Item>
@@ -106,7 +116,7 @@ const Track = ({ name, data, ...props }) => (
         <Text color="slate" f={2} children={descriptions[name]} />
       )}
     </Container>
-    <Grid px={3}>
+    <Grid>
       {map(data, (edge, ii) => (
         <WorkshopItem data={edge.node} key={`workshops-${name}-${ii}`} />
       ))}

@@ -13,8 +13,8 @@ const getStatus = {
     error: 'warning'
   },
   icon: {
-    success: 'check_circle',
-    error: 'error'
+    success: 'checkmark',
+    error: 'important'
   }
 }
 
@@ -44,7 +44,7 @@ const InnerForm = ({
       aria-label="Send this invitation"
       disabled={isEmpty(values.email)}
       bg={getStatus.bg[status] || 'info'}
-      name={getStatus.icon[status] || 'send'}
+      glyph={getStatus.icon[status] || 'send'}
     />
   </SendForm>
 )

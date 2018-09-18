@@ -8,7 +8,6 @@ import {
   Link as A,
   Text,
   Section,
-  Button,
   Image,
   theme
 } from '@hackclub/design-system'
@@ -233,12 +232,11 @@ export default ({ data }) => {
           color="white"
           p={0}
           align="center"
-          className="invert"
           style={{ backgroundImage: `url('${bg}')`, position: 'relative' }}
         >
           <Container pt={5} pb={3} px={2}>
-            <Breadcrumbs align="center" justify="center" mt={3} wrap>
-              <Breadcrumb to="/workshops" name="Workshops" position={1} />
+            <Breadcrumbs align="center" justify="center" mt={3} mb={2} wrap>
+              <Breadcrumb to="/workshops" name="All Workshops" position={1} />
               <BreadcrumbDivider />
               <Breadcrumb
                 to={`/workshops#${group}`}
@@ -246,9 +244,8 @@ export default ({ data }) => {
                 position={2}
               />
               <BreadcrumbDivider />
-              <Breadcrumb to={slug} name={name} position={3} bold={false} />
             </Breadcrumbs>
-            <Name f={6} my={3} children={name} />
+            <Name f={6} mb={3} children={name} />
             <Heading.h2 f={4} children={description} />
             <Text f={2} caps mt={3} children={linkAuthor(author)} />
           </Container>

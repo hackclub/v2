@@ -3,6 +3,7 @@ import { Box } from '@hackclub/design-system'
 import styled, { keyframes } from 'styled-components'
 import ScrollLock from 'react-scrolllock'
 import Icon from '@hackclub/icons'
+import Sheet from 'components/Sheet'
 
 const modalKeyframes = keyframes`
   0% {
@@ -18,9 +19,8 @@ const modalKeyframes = keyframes`
   }
 `
 
-const Modal = Card.extend`
-  background-color: ${({ theme }) => theme.colors.white};
-  box-shadow: ${({ theme }) => theme.boxShadows[2]};
+const Modal = styled(Sheet)`
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.0625), 0 16px 32px rgba(0, 0, 0, 0.125) !important;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -35,8 +35,7 @@ const Modal = Card.extend`
   width: ${props => props.w || props.width || '36rem'};
   max-width: 95vw;
   max-height: 95vh;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
@@ -48,8 +47,8 @@ const Modal = Card.extend`
 `
 
 const Overlayer = Box.extend`
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.375);
+  z-index: 1024;
+  background-color: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(6px);
 
   position: fixed;

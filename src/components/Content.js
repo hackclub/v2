@@ -20,7 +20,15 @@ export const Headline = styled(Heading.h2).attrs({
 `
 
 export const Subhline = styled(Heading.h3).attrs({
-  f: [5, 6],
+  fontSize: [5, 6],
+  mb: 3,
+  bold: true
+})`
+  line-height: 1;
+`
+
+export const Featline = styled(Heading.h3).attrs({
+  fontSize: [4, 5],
   mb: 3,
   bold: true
 })`

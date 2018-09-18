@@ -1,7 +1,8 @@
-import { Box, mediaQueries } from '@hackclub/design-system'
+import styled from 'styled-components'
+import { Box } from '@hackclub/design-system'
 import { range } from 'lodash'
 
-const MarkdownBody = Box.extend`
+const MarkdownBody = styled(Box)`
   color: ${({ theme }) => theme.colors.black};
   font-size: 112.5%;
   line-height: 1.625;
@@ -25,7 +26,7 @@ const MarkdownBody = Box.extend`
     }
   }
 
-  /* hides title, assumes rendering separately */
+  // hides title, assumes rendering separately
   > h1:first-child {
     display: none;
   }
@@ -41,7 +42,7 @@ const MarkdownBody = Box.extend`
   h3,
   h4,
   strong {
-    font-weight: ${({ theme }) => theme.bold};
+    font-weight: bold;
   }
 
   ${range(1, 6)
@@ -129,7 +130,7 @@ const MarkdownBody = Box.extend`
     word-wrap: normal;
   }
 
-  /* Syntax highlighting */
+  // Custom syntax highlighting
   .namespace {
     opacity: 0.75;
   }

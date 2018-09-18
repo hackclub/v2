@@ -61,14 +61,14 @@ export default () => (
     imageAlt="Group of high school students coding together"
   >
     <PromoBox p={[3, 4, 5]}>
-      <PromoHeading f={[4, 5, 6]} my={0}>
+      <PromoHeading fontSize={[5, 6]} my={0}>
         Join Hack Club.
       </PromoHeading>
-      <Text f={[2, 4]} mt={3} mb={2}>
+      <Text fontSize={[2, 4]} mt={3} mb={2}>
         Start a new chapter or join the network with an existing computer
         science club.
       </Text>
-      <Text f={[2, 4]} mb={4}>
+      <Text fontSize={[2, 4]} mb={4}>
         We're excited to get to know you.
       </Text>
       <Action to="/start" children="Get Started" />

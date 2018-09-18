@@ -1,7 +1,20 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import api from 'api'
+import styled from 'styled-components'
 import { LargeButton } from '@hackclub/design-system'
+
+const Root = styled(LargeButton).attrs({
+  py: 4,
+  px: 4,
+  fontSize: [3, 4]
+})`
+  background-image: linear-gradient(
+    to bottom,
+    ${({ theme }) => theme.colors.orange[5]},
+    ${({ theme }) => theme.colors.red[5]}
+  );
+`
 
 class SubmitButton extends Component {
   static propTypes = {
@@ -37,7 +50,7 @@ class SubmitButton extends Component {
     const { status } = this.props
     const { loading } = this.state
     return (
-      <LargeButton
+      <Root
         onClick={this.handleSubmit}
         bg={loading ? 'black' : status === 'submitted' ? 'success' : 'primary'}
         disabled={status !== 'complete' || loading}

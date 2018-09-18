@@ -78,10 +78,6 @@ export const commentStyle = css`
     margin-bottom: ${({ theme }) => theme.space[1]}px;
   }
 
-  strong {
-    font-weight: ${({ theme }) => theme.bold};
-  }
-
   img {
     max-width: 100%;
   }

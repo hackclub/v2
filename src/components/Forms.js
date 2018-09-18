@@ -11,6 +11,7 @@ import {
   LargeButton,
   Icon,
   Text,
+  theme,
   colors
 } from '@hackclub/design-system'
 import { Prompt } from 'react-router'
@@ -248,13 +249,24 @@ export class Field extends Component {
     )
   }
 }
-
 export const Submit = Button.withComponent('input').extend.attrs({
-  type: 'submit'
-})``
+  type: 'submit',
+  color: 'white',
+  py: 2,
+  px: 3,
+  f: 2
+})`
+  text-transform: uppercase;
+`
 Submit.lg = LargeButton.withComponent('input').extend.attrs({
-  type: 'submit'
-})``
+  type: 'submit',
+  color: 'white',
+  py: 3,
+  px: 4,
+  f: 3
+})`
+  text-transform: uppercase;
+`
 
 export const FormWrapper = Flex.withComponent(Container).extend`
   flex-direction: column;

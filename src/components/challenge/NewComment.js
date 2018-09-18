@@ -7,7 +7,7 @@ import * as yup from 'yup'
 import api from 'api'
 
 const statusIcon = status =>
-  ({ success: 'check_circle', error: 'error' }[status] || 'send')
+  ({ success: 'send-fill', error: 'important' }[status] || 'send')
 const statusColor = status => (status === 'error' ? 'error' : 'info')
 const InnerForm = ({
   values,
@@ -39,7 +39,7 @@ const InnerForm = ({
       aria-label="Post your comment"
       onClick={handleSubmit}
       disabled={isEmpty(props.email)}
-      name={statusIcon(status)}
+      glyph={statusIcon(status)}
       bg={statusColor(status)}
     />
   </SendForm>

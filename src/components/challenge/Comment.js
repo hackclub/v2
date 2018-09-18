@@ -119,7 +119,7 @@ const Megamoji = Text.extend`
 
 const ReplyButton = props => (
   <IconButton
-    name="reply"
+    glyph="reply"
     color="info"
     size={16}
     p={1}
@@ -130,7 +130,7 @@ const ReplyButton = props => (
 )
 const DeleteButton = props => (
   <IconButton
-    name="close"
+    glyph="delete"
     color="error"
     size={16}
     p={1}

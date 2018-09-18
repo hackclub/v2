@@ -6,14 +6,11 @@ import {
   Container,
   Text,
   Heading,
-  LargeButton,
+  LargeButton as Button,
   Link as A,
   Image,
-  theme,
-  colors,
-  Image
+  theme
 } from '@hackclub/design-system'
-import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
@@ -21,23 +18,27 @@ import Module from 'components/Module'
 import Sheet from 'components/Sheet'
 import BankStats from 'components/bank/BankStats'
 
-colors.dark = '#17171d'
 const styles = `
   body {
     width: 100%;
     max-width: 100vw;
-    background-color: ${colors.dark};
-    color: ${colors.gray[3]};
-    background-image: radial-gradient(circle, ${colors.black}, ${
-  colors.black
+    background-color: ${theme.colors.dark};
+    color: ${theme.colors.gray[3]};
+    background-image: radial-gradient(circle, ${theme.colors.black}, ${
+  theme.colors.black
 } 1px,
-      ${colors.dark} 1px, ${colors.dark});
+      ${theme.colors.dark} 1px, ${theme.colors.dark});
     background-size: 2rem 2rem;
   }
 `
 
-const CTA = styled(LargeButton).attrs({ bg: 'teal.6', fontSize: 2 })`
-  background: ${theme.gradient('teal.5', 'teal.7')};
+const CTA = styled(Button).attrs({
+  target: '_blank',
+  scale: true,
+  chevronRight: true,
+  bg: 'teal.6'
+})`
+  background: ${theme.gradient('teal.6', 'teal.7', 'teal.8')};
 `
 
 const Modules = styled(Container)`
@@ -65,7 +66,7 @@ Modules.defaultProps = {
 }
 
 const Megaline = Heading.h1.extend.attrs({
-  f: [6, 7],
+  fontSize: [6, 7],
   color: 'white'
 })`
   line-height: 1.125;
@@ -164,7 +165,7 @@ export default () => (
     </Banner>
     <Modules>
       <Module
-        icon="private-outline"
+        icon="bank-account"
         name="Bank account"
         body="Get a 501(c)(3) non-profit bank account (contributions will be tax-deductible)."
       />
@@ -180,7 +181,11 @@ export default () => (
       />
     </Modules>
     <Container my={[4, 3]}>
-      <Image w={1} src="/bank-screenshot.png" />
+      <Image
+        width={1}
+        src="/bank-screenshot.png"
+        alt="Screenshot of the Bank UI on iPad"
+      />
     </Container>
     <BankStats />
     <Banner>
@@ -192,12 +197,12 @@ export default () => (
     </Banner>
     <Modules>
       <Module
-        icon="edit"
+        icon="docs"
         name="Pre-written forms"
         body="Download free consent and photo release forms for your event. No lawyers needed."
       />
       <Module
-        icon="payment"
+        icon="card"
         name="Debit cards"
         body="Issue physical debit cards to all your team members—no need for reimbursements."
       />
@@ -216,7 +221,7 @@ export default () => (
     </Banner>
     <Modules>
       <Module
-        icon="checkmark"
+        icon="payment"
         name="Taxes + accounting"
         body="We’ll handle end-of-year taxes and accounting in the background."
       />

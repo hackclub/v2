@@ -115,22 +115,10 @@ const FeatureLink = styled(A.link).attrs({
 })`
   display: block;
 `
-Notification.defaultProps = {
-  py: 3,
-  px: 4,
-  mb: 3,
-  mt: 5,
-  mx: 2,
-  align: 'center',
-  justify: 'center',
-  color: 'gray.9',
-  flexDirection: 'column'
-}
 
-const ModuleIcon = Box.withComponent(Icon)
 const Module = ({ icon, name, body, ...props }) => (
   <Flex flexDirection="column" {...props}>
-    <ModuleIcon
+    <IconIcon
       size={64}
       mb={2}
       glyph={icon}
@@ -349,7 +337,7 @@ export default () => (
             </FeatureLink>
           </TextFeature>
           <TextFeature>
-            <ModuleIcon glyph="idea" size={64} color="warning" mb={2} />
+            <Icon glyph="idea" size={64} color="warning" mb={2} />
             <Text>
               <Text.span color="warning">Learn from all our clubs</Text.span>
               —we’ve got information, advice, & experience to share.
@@ -384,12 +372,7 @@ export default () => (
       </Container>
     </Flex>
     <Flex flexDirection={['column', null, 'row']} justify="center" py={[4, 5]}>
-      <ModuleIcon
-        glyph="welcome"
-        color="pink.5"
-        size={128}
-        m={[null, null, 3]}
-      />
+      <Icon glyph="welcome" color="pink.5" size={128} m={[null, null, 3]} />
       <Container {...styles.contentContainer} maxWidth={48} align="left" mx={0}>
         <Heading.h2 {...styles.headline}>
           Start a new club, or bring your own. We’re excited to meet you.

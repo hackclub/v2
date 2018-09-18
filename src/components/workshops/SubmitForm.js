@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Box, Container, Flex, Input } from '@hackclub/design-system'
+import { Box, Flex, Input, theme } from '@hackclub/design-system'
 import { placeholder } from 'polished'
 import Sheet from 'components/Sheet'
 import { Submit } from 'components/Forms'
 import { withFormik } from 'formik'
-import { isEmpty } from 'lodash'
 import Composer, { LS_NAME_KEY, LS_BODY_KEY } from './Composer'
 import * as yup from 'yup'
 import api from 'api'
@@ -16,13 +15,13 @@ const Root = styled(Sheet)`
   }
 
   .public-DraftEditorPlaceholder-inner {
-    color: ${({ theme }) => theme.colors.muted};
-    font-size: ${({ theme }) => theme.fontSizes[2]}px;
+    color: ${theme.colors.muted};
+    font-size: ${theme.fontSizes[2]}px;
   }
 `
 
 const Header = styled(Flex)`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
+  border-bottom: 1px solid ${theme.colors.smoke};
 
   input {
     border: 0;

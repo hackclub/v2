@@ -1,4 +1,4 @@
-import { Flex, IconButton } from '@hackclub/design-system'
+import { Flex, IconButton, theme } from '@hackclub/design-system'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
@@ -18,11 +18,11 @@ SendForm.defaultProps = {
 }
 
 export const SendButton = styled(IconButton)`
-  box-shadow: ${({ theme }) => theme.boxShadows[0]} !important;
-  transition: ${({ theme }) => theme.transition} box-shadow;
+  box-shadow: ${theme.boxShadows[0]} !important;
+  transition: ${theme.transition} box-shadow;
   &:hover,
   &:focus {
-    box-shadow: ${({ theme }) => theme.boxShadows[1]} !important;
+    box-shadow: ${theme.boxShadows[1]} !important;
   }
 `
 SendButton.propTypes = {

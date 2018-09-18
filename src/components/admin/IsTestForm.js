@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import ErrorPage from 'components/admin/ErrorPage'
 import LoadingBar from 'components/LoadingBar'
 import api from 'api'
-import { Label, Flex } from '@hackclub/design-system'
+import { Label, Flex, theme } from '@hackclub/design-system'
 import styled from 'styled-components'
 
 const Base = styled(Flex)`
-  border-radius: ${({ theme }) => theme.radius};
-  border: 1px solid ${({ theme }) => theme.colors.smoke};
+  border-radius: ${theme.radius};
+  border: 1px solid ${theme.colors.smoke};
   background: ${({ theme, test }) =>
     test ? theme.colors.blue[1] : theme.colors.white}44;
 `

@@ -7,7 +7,7 @@ import {
   Heading,
   Text,
   Section,
-  Link,
+  theme,
   cx
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
@@ -46,7 +46,7 @@ const pulse = keyframes`
   100% { background-color: ${cx('blue.5')}; }
 `
 const Header = Section.withComponent('header').extend`
-  background-color: ${({ theme }) => theme.colors.blue[5]};
+  background-color: ${theme.colors.blue[5]};
   background-image: linear-gradient(90deg, rgba(255, 0, 0, 1), rgba(0, 255, 255, 1));
   background-blend-mode: overlay;
   animation: ${pulse} 16s linear infinite;
@@ -54,11 +54,11 @@ const Header = Section.withComponent('header').extend`
 
 const HeaderContainer = Container.extend`
   display: grid;
-  grid-gap: ${({ theme }) => theme.space[3]}px;
+  grid-gap: ${theme.space[3]}px;
   grid-template-areas: 'text' 'info' 'form';
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: ${({ theme }) => theme.space[4]}px;
+    grid-gap: ${theme.space[4]}px;
       ${props =>
         props.success
           ? css`
@@ -67,7 +67,7 @@ const HeaderContainer = Container.extend`
                 'info form';
               ${HeaderAreaText} {
                 text-align: right;
-                margin-right: -${({ theme }) => theme.space[2]}px;
+                margin-right: -${theme.space[2]}px;
               }
             `
           : css`
@@ -86,7 +86,7 @@ const HeaderCard = styled(Sheet).attrs({ p: 3 })`
   text-align: left;
   h2,
   p {
-    color: ${({ theme }) => theme.colors.black} !important;
+    color: ${theme.colors.black} !important;
   }
 `
 
@@ -95,7 +95,7 @@ const HeaderAreaText = styled(Box)`
 `
 const HeaderAreaInfo = styled(HeaderCard)`
   grid-area: info;
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     p {
       line-height: 1.75;
     }
@@ -106,7 +106,7 @@ const HeaderAreaForm = styled(HeaderCard)`
 `
 
 const SubmissionsHeading = styled(Flex)`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
+  border-bottom: 1px solid ${theme.colors.smoke};
 `
 
 const title = 'Hack Club Challenge'

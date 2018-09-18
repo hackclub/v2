@@ -9,6 +9,7 @@ import createCodeEditorPlugin from 'draft-js-code-editor-plugin'
 import { mdToDraftjs, draftjsToMd } from 'draftjs-md-converter'
 import { debounce, isEmpty } from 'lodash'
 import styled from 'styled-components'
+import { theme } from '@hackclub/design-system'
 
 const features = {
   inline: ['BOLD', 'ITALIC', 'CODE', 'STRIKETHROUGH', 'LINK', 'IMAGE'],
@@ -19,11 +20,11 @@ const plugins = [createMarkdownPlugin({ features }), createCodeEditorPlugin()]
 
 export const LS_BODY_KEY = 'new-comment'
 
-const Root = MarkdownBody.extend`
-  background-color: ${({ theme }) => theme.colors.white};
-  border: 1px solid ${({ theme }) => theme.colors.smoke};
+const Root = styled(MarkdownBody)`
+  background-color: ${theme.colors.white};
+  border: 1px solid ${theme.colors.smoke};
   border-radius: 18px;
-  padding: ${({ theme }) => theme.space[1]}px;
+  padding: ${theme.space[1]}px;
 
   .DraftEditor-root {
     position: relative;
@@ -33,13 +34,12 @@ const Root = MarkdownBody.extend`
     position: absolute;
     top: 3px;
     padding-left: 12px;
-    color: ${({ theme }) => theme.colors.muted};
-    font-size: ${({ theme }) => theme.fontSizes[1]}px;
+    color: ${theme.colors.muted};
+    font-size: ${theme.fontSizes[1]}px;
   }
 
   .DraftEditor-editorContainer > div {
-    padding: ${({ theme }) => theme.space[1]}px
-      ${({ theme }) => theme.space[3] - theme.space[1]}px;
+    padding: ${theme.space[1]}px ${theme.space[3] - theme.space[1]}px;
     ${commentStyle};
   }
 `

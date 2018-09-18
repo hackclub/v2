@@ -3,7 +3,7 @@ import { Flex, Icon, Text } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 
 const Base = Flex.withComponent(Link).extend`
-  border-radius: ${({ theme }) => theme.radius};
+  border-radius: ${theme.radius};
   max-width: 28rem;
 `
 Base.defaultProps = {

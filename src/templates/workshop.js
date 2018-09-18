@@ -52,16 +52,16 @@ const Header = styled(Box.withComponent('header'))`
 `
 
 const Name = styled(Heading.h1)`
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${theme.colors.white};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
   color: black;
   display: inline-block;
   mix-blend-mode: screen;
-  padding-left: ${({ theme }) => theme.space[4]}px;
-  padding-right: ${({ theme }) => theme.space[4]}px;
+  padding-left: ${theme.space[4]}px;
+  padding-right: ${theme.space[4]}px;
   width: min-content;
-  ${({ theme }) => theme.mediaQueries.sm} {
+  ${theme.mediaQueries.sm} {
     width: max-content;
   }
 `
@@ -104,15 +104,15 @@ const linkAuthor = authorText => {
 const CardsSection = styled(Box)`
   background-image: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.colors.white},
-    ${({ theme }) => theme.colors.snow}
+    ${theme.colors.white},
+    ${theme.colors.snow}
   );
 `
 
 const Cards = Container.withComponent(NotOnPrint).extend`
   text-align: center;
   display: grid;
-  grid-gap: ${({ theme }) => theme.space[4]}px;
+  grid-gap: ${theme.space[4]}px;
   grid-template-areas: 'feedback' 'share' 'questions' 'contribute';
   width: 100%;
 
@@ -131,14 +131,14 @@ const Cards = Container.withComponent(NotOnPrint).extend`
     }
   }
 
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     grid-template-areas:
       'feedback feedback share share'
       'feedback feedback questions contribute';
   }
 
   ${Sheet} {
-    background: ${({ theme }) => theme.colors.white};
+    background: ${theme.colors.white};
     margin-bottom: 0 !important;
     display: flex;
     flex-direction: column;

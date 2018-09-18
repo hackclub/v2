@@ -1,19 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 import {
-  Card,
   Flex,
   Box,
   Heading,
   Text,
   Avatar,
-  Badge
+  Badge,
+  theme
 } from '@hackclub/design-system'
 import Sheet from 'components/Sheet'
 
 const Base = styled(Sheet)`
   display: flex;
-  border-radius: ${({ theme }) => theme.radii[2]};
+  border-radius: ${theme.radii[2]};
   max-width: 36rem;
   img {
     flex-shrink: 0;

@@ -5,22 +5,23 @@ import {
   Flex,
   Text,
   IconButton,
+  theme,
   cx
 } from '@hackclub/design-system'
 import Gravatar from 'react-gravatar'
 import ReactMarkdown from 'react-markdown'
-import MarkdownBody from 'components/MarkdownBody'
 import QuotedComment from 'components/challenge/QuotedComment'
 import PropTypes from 'prop-types'
 import { CommentByline, commentStyle } from 'components/challenge/style'
 import { onlyContainsEmoji, timeSince } from 'helpers'
 import { isEmpty } from 'lodash'
+import { wordWrap } from 'polished'
 import styled, { css } from 'styled-components'
 
 const gradient = (a, b) =>
   `linear-gradient(to bottom, ${cx(a)} 0%, ${cx(b)} 100%)`
 
-const Root = Flex.extend`
+const Root = styled(Flex)`
   button {
     transform: scale(0);
     will-change: transform;
@@ -35,14 +36,14 @@ const Root = Flex.extend`
 const aviMargin = css`
   margin-top: 18px;
 ` // 14px (byline size) + 4px (margin)
-const Avi = Avatar.withComponent(Gravatar).extend`
+const Avi = styled(Avatar.withComponent(Gravatar))`
   ${aviMargin};
 `
-const BlankAvi = Box.extend`
+const BlankAvi = styled(Box)`
   width: 28px;
   height: 28px;
 `
-const NestedAvi = BlankAvi.withComponent('aside').extend`
+const NestedAvi = styled(BlankAvi.withComponent('aside'))`
   ${aviMargin};
   position: relative;
   > button {
@@ -51,8 +52,8 @@ const NestedAvi = BlankAvi.withComponent('aside').extend`
     @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
       -webkit-backdrop-filter: saturate(180%) blur(2px);
     }
-    ${({ theme }) => theme.mediaQueries.reduceTransparency} {
-      background: ${({ theme }) => theme.colors.white} !important;
+    ${theme.mediaQueries.reduceTransparency} {
+      background: ${theme.colors.white} !important;
     }
   }
   img {
@@ -60,13 +61,13 @@ const NestedAvi = BlankAvi.withComponent('aside').extend`
   }
 `
 
-const Group = Flex.extend`
+const Group = styled(Flex)`
   flex-direction: column;
   flex: auto;
   max-width: 100%;
   align-items: ${props => (props.mine ? 'flex-end' : 'flex-start')};
-  margin-right: ${props => (props.mine ? props.theme.space[2] : 0)}px;
-  margin-left: ${props => (props.mine ? 0 : props.theme.space[2])}px;
+  margin-right: ${props => (props.mine ? theme.space[2] : 0)}px;
+  margin-left: ${props => (props.mine ? 0 : theme.space[2])}px;
   text-align: left;
   &:hover time {
     opacity: 1;
@@ -76,7 +77,7 @@ const Group = Flex.extend`
 const Byline = CommentByline
 
 const Time = Text.withComponent('time').extend`
-  margin: 0 ${({ theme }) => theme.space[2]}px;
+  margin: 0 ${theme.space[2]}px;
   opacity: 0;
   transition: opacity 0.25s ease-out;
   &:hover {
@@ -84,37 +85,34 @@ const Time = Text.withComponent('time').extend`
   }
 `
 
-const Bubble = Box.extend`
+const Bubble = styled(Box)`
   ${props =>
     !props.emoji &&
     css`
       background-color: ${props =>
-        props.mine ? props.theme.colors.info : props.theme.colors.snow};
+        props.mine ? theme.colors.info : theme.colors.snow};
       background-image: ${props =>
         props.mine
           ? gradient('blue.5', 'blue.6')
           : gradient('gray.0', 'gray.1')};
       border-radius: 18px;
-      padding: ${({ theme }) => theme.space[1]}px;
+      padding: ${theme.space[1]}px;
       min-height: 36px;
     `};
-  color: ${props =>
-    props.mine ? props.theme.colors.white : props.theme.colors.black};
-  margin-top: ${({ theme }) => theme.space[1]}px;
+  color: ${props => (props.mine ? theme.colors.white : theme.colors.black)};
+  margin-top: ${theme.space[1]}px;
   max-width: 24rem;
 `
 
-const Body = Box.withComponent(ReactMarkdown).extend`
-  padding: ${({ theme }) => theme.space[1]}px ${({ theme }) =>
-  theme.space[3] - theme.space[1]}px;
+const Body = styled(Box.withComponent(ReactMarkdown))`
+  padding: ${theme.space[1]}px
+    ${({ theme }) => theme.space[3] - theme.space[1]}px;
   ${commentStyle};
 `
 
-const Megamoji = Text.extend`
-  font-size: ${({ theme }) => theme.fontSizes[5]}px;
-  word-wrap: break-word;
-  word-break: break-all;
-  word-break: break-word;
+const Megamoji = styled(Text)`
+  font-size: ${theme.fontSizes[5]}px;
+  ${wordWrap('break-word')};
 `
 
 const ReplyButton = props => (

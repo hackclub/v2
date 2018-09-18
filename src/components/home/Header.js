@@ -8,7 +8,8 @@ import {
   Icon,
   LargeButton,
   Link as A,
-  Text
+  Text,
+  theme
 } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 import Sheet from 'components/Sheet'
@@ -20,7 +21,7 @@ const Root = styled(Flex.withComponent('section')).attrs({
   flexDirection: 'column'
 })`
   text-align: center;
-  background: ${({ theme }) => theme.colors.dark} url('/map.svg') no-repeat;
+  background: ${theme.colors.dark} url('/map.svg') no-repeat;
   background-size: cover;
   background-position: center top;
   max-width: 100%;
@@ -79,9 +80,9 @@ const HeaderStat = styled(Text.withComponent('li')).attrs({ f: [3, 4], ml: 2 })`
   &:not(:last-child):after {
     position: relative;
     top: 2px;
-    margin-left: ${({ theme }) => theme.space[2]}px;
+    margin-left: ${theme.space[2]}px;
     margin-right: -2px;
-    font-size: ${({ theme }) => theme.fontSizes[5]}px;
+    font-size: ${theme.fontSizes[5]}px;
     content: '\00b7';
   }
 `
@@ -96,8 +97,8 @@ const Action = styled(LargeButton.withComponent(Link)).attrs({
 const DonateAction = styled(Action)`
   background-image: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.colors.lime[6]},
-    ${({ theme }) => theme.colors.teal[6]}
+    ${theme.colors.lime[6]},
+    ${theme.colors.teal[6]}
   );
   @media screen and (max-width: 512px) {
     display: none;
@@ -106,15 +107,15 @@ const DonateAction = styled(Action)`
 const SlackAction = styled(Action)`
   background-image: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.colors.cyan[6]},
-    ${({ theme }) => theme.colors.blue[6]}
+    ${theme.colors.cyan[6]},
+    ${theme.colors.blue[6]}
   );
 `
 const StartAction = styled(Action).attrs({ py: 3, px: 4 })`
   background-image: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.colors.orange[5]},
-    ${({ theme }) => theme.colors.red[5]}
+    ${theme.colors.orange[5]},
+    ${theme.colors.red[5]}
   );
 `
 

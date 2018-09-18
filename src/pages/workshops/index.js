@@ -5,7 +5,8 @@ import {
   LargeButton,
   Link as A,
   Section,
-  Text
+  Text,
+  theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
@@ -20,13 +21,13 @@ const Base = styled(Box.main)`
 `
 
 const Background = styled(Section)`
-  background-color: ${({ theme }) => theme.colors.indigo[5]};
+  background-color: ${theme.colors.indigo[5]};
   background-image: url('/pattern.svg'),
     linear-gradient(
       -64deg,
-      ${({ theme }) => theme.colors.indigo[5]},
-      ${({ theme }) => theme.colors.violet[5]},
-      ${({ theme }) => theme.colors.violet[6]}
+      ${theme.colors.indigo[5]},
+      ${theme.colors.violet[5]},
+      ${theme.colors.violet[6]}
     );
 `
 
@@ -42,16 +43,16 @@ const SubmitButton = styled(IconButton).attrs(attrs)`
   text-transform: uppercase;
   background-image: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.colors.cyan[6]},
-    ${({ theme }) => theme.colors.blue[6]}
+    ${theme.colors.cyan[6]},
+    ${theme.colors.blue[6]}
   );
 `
 const PhilosophyButton = styled(IconButton).attrs(attrs)`
   text-transform: uppercase;
   background-image: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.colors.orange[5]},
-    ${({ theme }) => theme.colors.red[5]}
+    ${theme.colors.orange[5]},
+    ${theme.colors.red[5]}
   );
 `
 

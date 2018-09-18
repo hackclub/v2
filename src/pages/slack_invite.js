@@ -70,7 +70,7 @@ const Announcement = styled(Sheet).attrs({
   align-items: center;
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.96875);
-  border-radius: ${({ theme }) => theme.radii[2]};
+  border-radius: ${theme.radii[2]};
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.0625);
 `
 

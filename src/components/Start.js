@@ -1,20 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Heading, Text, LargeButton } from '@hackclub/design-system'
+import { Box, Heading, Text, LargeButton, theme } from '@hackclub/design-system'
 import Sheet from 'components/Sheet'
 import Link from 'gatsby-link'
 
 const Base = styled(Sheet).attrs({ maxWidth: 64 - 2 })`
-  background-color: ${({ theme }) => theme.colors.red[5]};
+  background-color: ${theme.colors.red[5]};
   background-image: linear-gradient(
     -48deg,
-    ${({ theme }) => theme.colors.orange[4]},
-    ${({ theme }) => theme.colors.red[5]},
-    ${({ theme }) => theme.colors.red[6]}
+    ${theme.colors.orange[4]},
+    ${theme.colors.red[5]},
+    ${theme.colors.red[6]}
   );
   display: grid;
   align-items: center;
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     grid-template-columns: 4fr 2fr;
   }
   h3 {

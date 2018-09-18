@@ -1,14 +1,16 @@
 import React from 'react'
-import { Box, Text, colors } from '@hackclub/design-system'
+import { Box, Text, theme } from '@hackclub/design-system'
 
 const trClickable = `
-  box-shadow: 2px 0px 16px ${colors.gray[1]}, 0px 0px 1px 1px ${colors.gray[4]};
+  box-shadow: 2px 0px 16px ${theme.colors.gray[1]}, 0px 0px 1px 1px ${
+  theme.colors.gray[4]
+};
 `
 
 export const Tr = Box.withComponent('tr').extend`
   cursor: ${props => (props.onClick ? 'pointer' : 'inherit')};
   &:nth-child(odd) {
-    background-color: ${({ theme }) => theme.colors.gray[0]};
+    background-color: ${theme.colors.gray[0]};
   }
   &:hover {
     ${props => props.onClick && trClickable}

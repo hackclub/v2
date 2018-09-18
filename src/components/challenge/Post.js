@@ -1,16 +1,17 @@
 import React, { Fragment, Component } from 'react'
 import styled from 'styled-components'
 import {
+  BackgroundImage,
   Box,
-  Flex,
   Button,
+  Flex,
   Heading,
+  Hide,
+  Icon,
   Link,
   Text,
-  Hide,
-  BackgroundImage
+  theme
 } from '@hackclub/design-system'
-import Icon from '@hackclub/icons'
 import { wordWrap } from 'polished'
 import PropTypes from 'prop-types'
 import { Modal, Overlay, CloseButton } from 'components/Modal'
@@ -21,7 +22,7 @@ import api from 'api'
 
 const Row = styled(Flex)`
   align-items: center;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
+  border-bottom: 1px solid ${theme.colors.smoke};
   position: relative;
   a {
     flex: 1 1 auto;
@@ -29,9 +30,9 @@ const Row = styled(Flex)`
 `
 
 const Index = styled(Hide)`
-  width: ${({ theme }) => theme.space[3]}px;
+  width: ${theme.space[3]}px;
   position: absolute;
-  left: -${({ theme }) => theme.space[4]}px;
+  left: -${theme.space[4]}px;
 `
 
 const Description = styled(Text)`
@@ -55,7 +56,7 @@ const CommentButton = styled(Box.withComponent('button'))`
   border: 0;
   appearance: none;
   font-family: inherit;
-  font-size: ${({ theme }) => theme.fontSizes[0]}px;
+  font-size: ${theme.fontSizes[0]}px;
   line-height: 1.875;
   display: inline-flex;
   align-items: center;
@@ -68,10 +69,10 @@ const CommentButton = styled(Box.withComponent('button'))`
   span {
     position: absolute;
     width: 100%;
-    top: ${({ theme }) => theme.space[2]}px;
+    top: ${theme.space[2]}px;
   }
-  ${({ theme }) => theme.mediaQueries.md} {
-    padding-right: ${({ theme }) => theme.space[3]}px;
+  ${theme.mediaQueries.md} {
+    padding-right: ${theme.space[3]}px;
   }
 `
 
@@ -191,12 +192,12 @@ const GridPostBase = styled(Box)`
   display: inline-block;
   position: relative;
   overflow: hidden;
-  ${({ theme }) => theme.mediaQueries.md} {
-    border-radius: ${({ theme }) => theme.radius};
-    box-shadow: ${({ theme }) => theme.boxShadows[0]};
-    transition: ${({ theme }) => theme.transition} all;
+  ${theme.mediaQueries.md} {
+    border-radius: ${theme.radius};
+    box-shadow: ${theme.boxShadows[0]};
+    transition: ${theme.transition} all;
     &:hover {
-      box-shadow: ${({ theme }) => theme.boxShadows[2]};
+      box-shadow: ${theme.boxShadows[2]};
     }
   }
   ${CommentButton} {
@@ -207,14 +208,14 @@ const GridIndex = styled(Text)`
   position: absolute;
   top: 0;
   left: 0;
-  margin: ${({ theme }) => theme.space[3]}px;
+  margin: ${theme.space[3]}px;
   width: 1.25rem;
   height: 1.25rem;
   line-height: 1.25rem;
   border-radius: 0.75rem;
   background-color: rgba(255, 255, 255, 0.875);
-  color: ${({ theme }) => theme.colors.black};
-  font-size: ${({ theme }) => theme.fontSizes[0]}px;
+  color: ${theme.colors.black};
+  font-size: ${theme.fontSizes[0]}px;
   letter-spacing: -0.02em;
   text-align: center;
   font-weight: bold;

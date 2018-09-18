@@ -1,15 +1,14 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import {
-  Container,
-  Heading,
   Box,
-  Text,
-  Section,
-  Flex,
   Card,
-  cx,
-  colors
+  Container,
+  Flex,
+  Heading,
+  Text,
+  theme,
+  cx
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import YouTubePlayer from 'react-player/lib/players/YouTube'
@@ -21,12 +20,12 @@ const styles = `
   body {
     width: 100%;
     max-width: 100vw;
-    background-color: ${colors.dark};
-    color: ${colors.gray[3]};
-    background-image: radial-gradient(circle, ${colors.black}, ${
-  colors.black
+    background-color: ${theme.colors.dark};
+    color: ${theme.colors.gray[3]};
+    background-image: radial-gradient(circle, ${theme.colors.black}, ${
+  theme.colors.black
 } 1px,
-      ${colors.dark} 1px, ${colors.dark});
+      ${theme.colors.dark} 1px, ${theme.colors.dark});
     background-size: 2rem 2rem;
   }
 `
@@ -41,7 +40,7 @@ const Calendar = styled(Flex)`
   border-color: ${props => cx(props.color)};
   border-style: solid;
   border-radius: 12px;
-  font-weight: ${({ theme }) => theme.bold};
+  font-weight: ${theme.bold};
 `
 const Year = styled(Text).attrs({
   f: 3,
@@ -57,7 +56,7 @@ const Month = styled(Text).attrs({ f: 4, mt: 1 })`
 const Updater = styled(Container.withComponent(Flex))`
   flex-direction: column;
   align-items: center;
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
@@ -72,12 +71,12 @@ const Sheet = styled(Card)`
   position: relative;
   padding-top: 55%;
   overflow: hidden;
-  box-shadow: ${({ theme }) => theme.boxShadows[1]};
+  box-shadow: ${theme.boxShadows[1]};
   transition: 0.25s ease-out box-shadow;
   &:hover {
-    box-shadow: ${({ theme }) => theme.boxShadows[2]};
+    box-shadow: ${theme.boxShadows[2]};
   }
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     padding-top: 41.25%; // NOTE(@lachlanjc): i just guessed until i found this
   }
 `

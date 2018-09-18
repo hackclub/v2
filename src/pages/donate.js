@@ -29,8 +29,8 @@ const Header = styled(Section.withComponent('header'))`
   background: url('/pattern.svg');
   > div {
     display: grid;
-    grid-gap: ${({ theme }) => theme.space[4]}px;
-    ${({ theme }) => theme.mediaQueries.md} {
+    grid-gap: ${theme.space[4]}px;
+    ${theme.mediaQueries.md} {
       grid-template-columns: 3fr 2fr;
     }
   }
@@ -38,9 +38,9 @@ const Header = styled(Section.withComponent('header'))`
 
 const Row = styled(Box)`
   text-align: left;
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     display: grid;
-    grid-gap: ${({ theme }) => theme.space[3]}px;
+    grid-gap: ${theme.space[3]}px;
     grid-template-columns: ${({ reverse }) =>
       reverse ? '3fr 2fr' : '2fr 3fr'};
   }
@@ -96,7 +96,7 @@ const SecondQuote = styled(Quote)`
 
 const Financials = styled(Sheet)`
   display: grid;
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     grid-template-columns: 2fr 3fr;
   }
 `
@@ -114,18 +114,18 @@ const Stats = styled(Box)`
   }
   span:before {
     content: '$';
-    font-size: ${({ theme }) => theme.fontSizes[4]}px;
+    font-size: ${theme.fontSizes[4]}px;
     margin-left: -12px;
     vertical-align: super;
   }
   p {
-    color: ${({ theme }) => theme.colors.teal[1]};
+    color: ${theme.colors.teal[1]};
   }
 `
 
 const Shapes = styled(Box)`
   display: none;
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     display: block;
     float: right;
     position: relative;
@@ -185,15 +185,15 @@ const stats = {
 
 const DonorGrid = styled(Box)`
   display: grid;
-  grid-gap: ${({ theme }) => theme.space[1]}px;
+  grid-gap: ${theme.space[1]}px;
   grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   align-items: center;
   p,
   a {
     width: 100%;
   }
-  ${({ theme }) => theme.mediaQueries.md} {
-    grid-gap: ${({ theme }) => theme.space[3]}px;
+  ${theme.mediaQueries.md} {
+    grid-gap: ${theme.space[3]}px;
     grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   }
 `

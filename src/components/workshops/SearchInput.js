@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Flex, Input } from '@hackclub/design-system'
+import { Box, Flex, Input, theme } from '@hackclub/design-system'
 import Icon from '@hackclub/icons'
 import { placeholder } from 'polished'
 
@@ -26,19 +26,17 @@ const Search = styled(Input).attrs({
   line-height: 48px;
   max-width: 100%;
   border: 0;
-  border-radius: ${({ theme }) => theme.radii[2]};
+  border-radius: ${theme.radii[2]};
   ${({ theme }) => placeholder({ color: theme.colors.muted })};
-  font-size: ${({ theme }) => theme.fontSizes[3]}px;
-  box-shadow: ${({ theme }) => theme.boxShadows[1]},
-    0 16px 32px rgba(0, 0, 0, 0.0625);
-  transition: ${({ theme }) => theme.transition} box-shadow;
+  font-size: ${theme.fontSizes[3]}px;
+  box-shadow: ${theme.boxShadows[1]}, 0 16px 32px rgba(0, 0, 0, 0.0625);
+  transition: ${theme.transition} box-shadow;
   &:hover,
   &:focus {
-    box-shadow: ${({ theme }) => theme.boxShadows[1]},
-      0 16px 48px rgba(0, 0, 0, 0.125);
+    box-shadow: ${theme.boxShadows[1]}, 0 16px 48px rgba(0, 0, 0, 0.125);
   }
-  ${({ theme }) => theme.mediaQueries.md} {
-    font-size: ${({ theme }) => theme.fontSizes[4]}px;
+  ${theme.mediaQueries.md} {
+    font-size: ${theme.fontSizes[4]}px;
   }
 `
 

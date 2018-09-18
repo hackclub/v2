@@ -1,16 +1,16 @@
 import React from 'react'
-import { Box } from '@hackclub/design-system'
+import { Box, theme } from '@hackclub/design-system'
 import styled from 'styled-components'
 import Animator from 'components/Animator'
 
-const Base = Box.section.extend`
+const Base = styled(Box.section)`
   position: relative;
   width: 100%;
   height: 100vh;
   min-height: 36rem;
   max-height: 64rem;
-  padding: ${({ theme }) => theme.space[4]}px;
-  padding-top: ${({ theme }) => theme.space[5]}px;
+  padding: ${theme.space[4]}px;
+  padding-top: ${theme.space[5]}px;
 `
 
 const Photo = styled.img`
@@ -44,25 +44,25 @@ const BorderBase = styled.div`
   background: white;
 `
 
-const BorderTop = BorderBase.extend`
+const BorderTop = styled(BorderBase)`
   top: 0;
   left: 0;
   width: 100%;
   height: 5vw;
-  min-height: ${({ theme }) => theme.space[4]}px;
+  min-height: ${theme.space[4]}px;
   transform-origin: center top;
 `
 
-const BorderRight = BorderBase.extend`
+const BorderRight = styled(BorderBase)`
   top: 0;
   right: 0;
   width: 5vw;
   height: 100%;
-  min-width: ${({ theme }) => theme.space[3]}px;
+  min-width: ${theme.space[3]}px;
   transform-origin: right center;
 `
 
-const BorderBottom = BorderBase.extend`
+const BorderBottom = styled(BorderBase)`
   bottom: 0;
   left: 0;
   width: 100%;
@@ -70,12 +70,12 @@ const BorderBottom = BorderBase.extend`
   transform-origin: center bottom;
 `
 
-const BorderLeft = BorderBase.extend`
+const BorderLeft = styled(BorderBase)`
   top: 0;
   left: 0;
   width: 5vw;
   height: 100%;
-  min-width: ${({ theme }) => theme.space[3]}px;
+  min-width: ${theme.space[3]}px;
   transform-origin: left center;
 `
 

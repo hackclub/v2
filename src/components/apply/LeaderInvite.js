@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
-import { Flex, IconButton, Text } from '@hackclub/design-system'
-import styled, { css } from 'styled-components'
+import { Flex, IconButton, Text, theme } from '@hackclub/design-system'
+import styled from 'styled-components'
 import LeaderInviteForm from 'components/apply/LeaderInviteForm'
 
 const SectionIcon = styled(IconButton).attrs({
@@ -11,13 +11,13 @@ const SectionIcon = styled(IconButton).attrs({
   ml: 'auto',
   circle: true
 })`
-  transition: ${({ theme }) => theme.transition} all;
+  transition: ${theme.transition} all;
   transform: rotate(${props => (props.open ? 90 : 0)}deg);
   user-select: none;
-  box-shadow: ${({ theme }) => theme.boxShadows[0]} !important;
+  box-shadow: ${theme.boxShadows[0]} !important;
   &:hover,
   &:focus {
-    box-shadow: ${({ theme }) => theme.boxShadows[1]} !important;
+    box-shadow: ${theme.boxShadows[1]} !important;
   }
 `
 

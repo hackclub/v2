@@ -1,25 +1,25 @@
-import { Flex } from '@hackclub/design-system'
+import { Flex, theme } from '@hackclub/design-system'
 import styled, { css } from 'styled-components'
 
-export const Byline = Flex.withComponent('p').extend`
+export const Byline = styled(Flex.withComponent('p'))`
   margin: 0 !important;
   line-height: 1;
-  color: ${({ theme }) => theme.colors.muted};
-  font-size: ${({ theme }) => theme.fontSizes[1]}px;
+  color: ${theme.colors.muted};
+  font-size: ${theme.fontSizes[1]}px;
   -webkit-user-select: none; /* Chrome/Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+ */
   max-width: 100%;
 `
-export const CommentByline = Byline.extend`
+export const CommentByline = styled(Byline)`
   flex-direction: ${props => (props.mine ? 'row-reverse' : 'row')};
 `
-export const QuotedCommentByline = Byline.extend`
+export const QuotedCommentByline = styled(Byline)`
   align-items: center;
-  margin-bottom: ${({ theme }) => theme.space[1] / 2}px;
+  margin-bottom: ${theme.space[1] / 2}px;
 
   svg {
-    margin-right: ${({ theme }) => theme.space[1]}px;
+    margin-right: ${theme.space[1]}px;
   }
 
   > p {
@@ -28,7 +28,7 @@ export const QuotedCommentByline = Byline.extend`
 `
 
 export const commentStyle = css`
-  font-size: ${({ theme }) => theme.fontSizes[1]}px;
+  font-size: ${theme.fontSizes[1]}px;
   line-height: 1.375;
   vertical-align: middle;
   white-space: pre-line;
@@ -47,8 +47,8 @@ export const commentStyle = css`
   }
 
   > p {
-    margin-top: ${({ theme }) => theme.space[1]}px;
-    margin-bottom: ${({ theme }) => theme.space[1]}px;
+    margin-top: ${theme.space[1]}px;
+    margin-bottom: ${theme.space[1]}px;
   }
 
   a {
@@ -59,23 +59,23 @@ export const commentStyle = css`
   h2,
   h3 {
     margin-top: 0;
-    margin-bottom: ${({ theme }) => theme.space[2]}px;
+    margin-bottom: ${theme.space[2]}px;
   }
 
   ol,
   ul {
-    padding-left: ${({ theme }) => theme.space[3]}px;
+    padding-left: ${theme.space[3]}px;
   }
 
   blockquote {
     border-left: 2px solid currentColor;
-    padding-left: ${({ theme }) => theme.space[2]}px;
+    padding-left: ${theme.space[2]}px;
     margin-left: 0;
   }
 
   li {
-    margin-top: ${({ theme }) => theme.space[1]}px;
-    margin-bottom: ${({ theme }) => theme.space[1]}px;
+    margin-top: ${theme.space[1]}px;
+    margin-bottom: ${theme.space[1]}px;
   }
 
   img {

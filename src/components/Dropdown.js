@@ -1,10 +1,9 @@
-import React, { Fragment } from 'react'
-import { Box, Flex, Card } from '@hackclub/design-system'
+import { Box, Flex, Card, theme } from '@hackclub/design-system'
 import { css, keyframes } from 'styled-components'
 
 const zoom = keyframes`
   0% {
-    box-shadow: ${({ theme }) => theme.boxShadows[1]};
+    box-shadow: ${theme.boxShadows[1]};
     transform: scale(0);
   }
 
@@ -13,7 +12,7 @@ const zoom = keyframes`
   }
 
   100% {
-    box-shadow: ${({ theme }) => theme.boxShadows[2]};
+    box-shadow: ${theme.boxShadows[2]};
     transform: scale(1);
   }
 `
@@ -32,9 +31,9 @@ const DropdownMenu = Card.withComponent(Flex).extend`
   opacity: 0;
   flex-direction: column;
   align-items: stretch;
-  padding: ${({ theme }) => theme.space[2]}px 0;
-  background-color: ${({ theme }) => theme.colors.white};
-  box-shadow: ${({ theme }) => theme.boxShadows[2]};
+  padding: ${theme.space[2]}px 0;
+  background-color: ${theme.colors.white};
+  box-shadow: ${theme.boxShadows[2]};
   width: ${props => props.w || props.width || '256px'};
   max-width: 95vw;
   z-index: 4;
@@ -47,18 +46,18 @@ const DropdownMenu = Card.withComponent(Flex).extend`
 `
 
 const DropdownMenuOption = Box.extend`
-  padding: ${({ theme }) => theme.space[2]}px ${({ theme }) => theme.space[3]}px;
+  padding: ${theme.space[2]}px ${theme.space[3]}px;
   cursor: pointer;
   width: 100%;
   ${props =>
     props.active &&
     css`
-      background-color: ${({ theme }) => theme.colors.smoke};
-      font-weight: ${({ theme }) => theme.bold};
+      background-color: ${theme.colors.smoke};
+      font-weight: ${theme.bold};
     `};
   &:hover {
-    transition: ${({ theme }) => theme.transition} background-color;
-    background-color: ${({ theme }) => theme.colors.blue[0]};
+    transition: ${theme.transition} background-color;
+    background-color: ${theme.colors.blue[0]};
   }
 `
 

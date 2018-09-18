@@ -7,7 +7,8 @@ import {
   Text,
   Button,
   BackgroundImage,
-  Link as A
+  Link as A,
+  theme
 } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 import Module from 'components/Module'
@@ -18,7 +19,7 @@ import { stats } from 'data.json'
 
 const Grid = styled(Box)`
   display: grid;
-  grid-gap: ${({ theme }) => theme.space[3]}px;
+  grid-gap: ${theme.space[3]}px;
   width: 100%;
 
   > div {
@@ -28,44 +29,44 @@ const Grid = styled(Box)`
     max-width: 100%;
   }
 
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: ${({ theme }) => theme.space[4]}px;
+    grid-gap: ${theme.space[4]}px;
   }
 `
 
 const IntroSheet = styled(Sheet).attrs({ color: 'white' })`
   background: linear-gradient(
     128deg,
-    ${({ theme }) => theme.colors.orange[5]},
-    ${({ theme }) => theme.colors.red[5]}
+    ${theme.colors.orange[5]},
+    ${theme.colors.red[5]}
   );
 `
 
 const ModulesSheet = styled(Sheet).attrs({ color: 'white' })`
   background: linear-gradient(
     32deg,
-    ${({ theme }) => theme.colors.indigo[5]},
-    ${({ theme }) => theme.colors.blue[5]}
+    ${theme.colors.indigo[5]},
+    ${theme.colors.blue[5]}
   );
 `
 
 const Modules = styled(Box)`
   display: grid;
-  grid-gap: ${({ theme }) => theme.space[3]}px;
-  ${({ theme }) => theme.mediaQueries.md} {
+  grid-gap: ${theme.space[3]}px;
+  ${theme.mediaQueries.md} {
     grid-template-columns: repeat(2, 1fr);
   }
   svg {
-    margin-left: -${({ theme }) => theme.space[1]}px;
+    margin-left: -${theme.space[1]}px;
   }
 `
 
 const Super = styled(Sheet).attrs({ color: 'white' })`
   background: linear-gradient(
     -128deg,
-    ${({ theme }) => theme.colors.cyan[6]},
-    ${({ theme }) => theme.colors.blue[6]}
+    ${theme.colors.cyan[6]},
+    ${theme.colors.blue[6]}
   );
   position: relative;
 
@@ -87,7 +88,7 @@ const Super = styled(Sheet).attrs({ color: 'white' })`
 `
 
 const Graph = styled(Sheet).attrs({ color: 'white' })`
-  background: ${({ theme }) => theme.colors.teal[7]} url(/graph.svg) no-repeat;
+  background: ${theme.colors.teal[7]} url(/graph.svg) no-repeat;
   background-size: 100% 100%;
 `
 
@@ -97,7 +98,7 @@ const Stats = styled(Box)`
     text-align: left;
   }
   p {
-    color: ${({ theme }) => theme.colors.teal[0]};
+    color: ${theme.colors.teal[0]};
   }
 `
 

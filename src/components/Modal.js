@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Box } from '@hackclub/design-system'
+import { Box, theme } from '@hackclub/design-system'
 import styled, { keyframes } from 'styled-components'
 import ScrollLock from 'react-scrolllock'
 import Icon from '@hackclub/icons'
@@ -27,7 +27,7 @@ const Modal = styled(Sheet)`
   transform: translate(-50%, -50%);
   z-index: 1100;
 
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     animation: ${modalKeyframes} ease-in 0.25s;
   }
 
@@ -72,7 +72,7 @@ const ButtonReset = styled(Box.withComponent('button')).attrs({
   appearance: none;
   background: transparent;
   border: 0;
-  border-radius: ${({ theme }) => theme.pill};
+  border-radius: ${theme.pill};
   cursor: pointer;
 `
 const CloseButton = props => (

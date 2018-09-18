@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
-import { Box, Flex, Heading, Link } from '@hackclub/design-system'
+import { Box, Flex, Heading, Link, theme } from '@hackclub/design-system'
 import Icon from '@hackclub/icons'
 import FlipMove from 'react-flip-move'
 import Auth from 'components/Auth'
@@ -14,7 +14,7 @@ import { isEmpty, remove, find } from 'lodash'
 
 const Header = styled(Flex)`
   align-items: baseline;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
+  border-bottom: 1px solid ${theme.colors.smoke};
   h2 {
     line-height: 1.125;
   }
@@ -26,7 +26,7 @@ const Container = styled(Box)`
   max-height: 100%;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  margin-bottom: ${({ theme }) => theme.space[3]}px;
+  margin-bottom: ${theme.space[3]}px;
 `
 
 class Comments extends Component {

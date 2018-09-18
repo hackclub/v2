@@ -1,6 +1,12 @@
 import React from 'react'
-import { Box, Flex, Text, IconButton } from '@hackclub/design-system'
-import Icon from '@hackclub/icons'
+import {
+  Box,
+  Flex,
+  Text,
+  Icon,
+  IconButton,
+  theme
+} from '@hackclub/design-system'
 import ReactMarkdown from 'react-markdown'
 import { QuotedCommentByline, commentStyle } from 'components/challenge/style'
 
@@ -22,7 +28,7 @@ const Root = Flex.extend`
   align-items: flex-start;
 
   ~ .public-DraftEditorPlaceholder-inner {
-    top: ${({ theme }) => theme.space[2]}px !important;
+    top: ${theme.space[2]}px !important;
   }
 `
 
@@ -34,10 +40,10 @@ const Group = Flex.extend`
 const Byline = QuotedCommentByline
 
 const Body = Box.withComponent(ReactMarkdown).extend`
-  color: ${({ theme }) => theme.colors.slate};
-  border-left: 4px solid ${({ theme }) => theme.colors.smoke};
-  padding-left: ${({ theme }) => theme.space[3]}px;
-  margin-top: ${({ theme }) => theme.space[1]}px;
+  color: ${theme.colors.slate};
+  border-left: 4px solid ${theme.colors.smoke};
+  padding-left: ${theme.space[3]}px;
+  margin-top: ${theme.space[1]}px;
   ${commentStyle};
 `
 

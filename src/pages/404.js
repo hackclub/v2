@@ -162,12 +162,12 @@ const Blinking = styled(Heading.h1).attrs({
   }
   &:after {
     left: 2px;
-    text-shadow: -2px 0 ${({ theme }) => theme.colors.primary};
+    text-shadow: -2px 0 ${theme.colors.primary};
     animation: ${animation1} 2s infinite linear alternate-reverse;
   }
   &:before {
     left: -2px;
-    text-shadow: -2px 0 ${({ theme }) => theme.colors.info};
+    text-shadow: -2px 0 ${theme.colors.info};
     animation: ${animation2} 4s infinite linear alternate-reverse;
   }
 `

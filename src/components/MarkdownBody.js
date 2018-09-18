@@ -1,20 +1,20 @@
 import styled from 'styled-components'
-import { Box } from '@hackclub/design-system'
+import { Box, theme } from '@hackclub/design-system'
 import { range } from 'lodash'
 
 const MarkdownBody = styled(Box)`
-  color: ${({ theme }) => theme.colors.black};
+  color: ${theme.colors.black};
   font-size: 112.5%;
   line-height: 1.625;
   word-wrap: break-word;
 
   .public-DraftEditorPlaceholder-inner {
-    color: ${({ theme }) => theme.colors.muted};
-    font-size: ${({ theme }) => theme.fontSizes[2]}px;
+    color: ${theme.colors.muted};
+    font-size: ${theme.fontSizes[2]}px;
   }
 
   a {
-    color: ${({ theme }) => theme.colors.info};
+    color: ${theme.colors.info};
     em {
       font-style: normal;
       &:before {
@@ -33,8 +33,8 @@ const MarkdownBody = styled(Box)`
 
   h1,
   h2 {
-    padding-bottom: ${({ theme }) => theme.space[2]}px;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
+    padding-bottom: ${theme.space[2]}px;
+    border-bottom: 1px solid ${theme.colors.smoke};
   }
 
   h1,
@@ -46,59 +46,57 @@ const MarkdownBody = styled(Box)`
   }
 
   ${range(1, 6)
-    .map(
-      n => `h${n} { font-size: ${({ theme }) => theme.fontSizes[6 - n]}px; }`
-    )
+    .map(n => `h${n} { font-size: ${theme.fontSizes[6 - n]}px; }`)
     .join('')};
 
   img {
     max-width: 100%;
-    border-radius: ${({ theme }) => theme.radii[2]};
+    border-radius: ${theme.radii[2]};
   }
 
   ol,
   ul {
-    padding-left: ${({ theme }) => theme.space[3] * 1.5}px;
+    padding-left: ${theme.space[3] * 1.5}px;
   }
 
   blockquote {
-    border-left: 4px solid ${({ theme }) => theme.colors.smoke};
-    color: ${({ theme }) => theme.colors.slate};
-    padding-left: ${({ theme }) => theme.space[3]}px;
+    border-left: 4px solid ${theme.colors.smoke};
+    color: ${theme.colors.slate};
+    padding-left: ${theme.space[3]}px;
     margin-left: 0;
   }
 
   p,
   li {
-    margin-top: ${({ theme }) => theme.space[2]}px;
-    margin-bottom: ${({ theme }) => theme.space[2]}px;
+    margin-top: ${theme.space[2]}px;
+    margin-bottom: ${theme.space[2]}px;
   }
 
   hr {
     border: 0;
     height: 4px;
-    background-color: ${({ theme }) => theme.colors.primary};
-    max-width: ${({ theme }) => theme.space[7]}px;
-    margin: ${({ theme }) => theme.space[4]}px auto;
+    background-color: ${theme.colors.primary};
+    max-width: ${theme.space[7]}px;
+    margin: ${theme.space[4]}px auto;
     border-radius: 4px;
   }
 
   pre,
   code,
   kbd {
-    font-family: ${({ theme }) => theme.mono};
-    font-size: ${({ theme }) => theme.fontSizes[2]}px;
+    font-family: ${theme.mono};
+    font-size: ${theme.fontSizes[2]}px;
     word-break: break-word;
   }
 
   pre,
   code {
-    background-color: ${({ theme }) => theme.colors.gray[1]};
-    color: ${({ theme }) => theme.colors.black};
+    background-color: ${theme.colors.gray[1]};
+    color: ${theme.colors.black};
   }
   a code {
-    background-color: ${({ theme }) => theme.colors.info};
-    color: ${({ theme }) => theme.colors.white};
+    background-color: ${theme.colors.info};
+    color: ${theme.colors.white};
     text-decoration: underline;
   }
   del code {
@@ -111,21 +109,21 @@ const MarkdownBody = styled(Box)`
   code,
   kbd {
     border-radius: 3px;
-    padding: ${({ theme }) => theme.space[1]}px;
+    padding: ${theme.space[1]}px;
   }
 
   kbd {
-    background-color: ${({ theme }) => theme.colors.gray[8]};
-    color: ${({ theme }) => theme.colors.white};
+    background-color: ${theme.colors.gray[8]};
+    color: ${theme.colors.white};
   }
 
   pre {
-    border-radius: ${({ theme }) => theme.radius};
+    border-radius: ${theme.radius};
     line-height: 1.375;
     max-width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    padding: ${({ theme }) => theme.space[3]}px;
+    padding: ${theme.space[3]}px;
     position: relative;
     word-wrap: normal;
   }
@@ -138,10 +136,10 @@ const MarkdownBody = styled(Box)`
   .token.prolog,
   .token.doctype,
   .token.cdata {
-    color: ${({ theme }) => theme.colors.gray[6]};
+    color: ${theme.colors.gray[6]};
   }
   .token.punctuation {
-    color: ${({ theme }) => theme.colors.gray[6]};
+    color: ${theme.colors.gray[6]};
   }
   .token.property,
   .token.tag,
@@ -150,7 +148,7 @@ const MarkdownBody = styled(Box)`
   .token.constant,
   .token.symbol,
   .token.deleted {
-    color: ${({ theme }) => theme.colors.red[6]};
+    color: ${theme.colors.red[6]};
   }
   .token.selector,
   .token.attr-name,
@@ -158,31 +156,31 @@ const MarkdownBody = styled(Box)`
   .token.char,
   .token.builtin,
   .token.inserted {
-    color: ${({ theme }) => theme.colors.teal[8]};
+    color: ${theme.colors.teal[8]};
   }
   .token.operator,
   .token.entity,
   .token.url,
   .language-css .token.string,
   .style .token.string {
-    color: ${({ theme }) => theme.colors.violet[6]};
+    color: ${theme.colors.violet[6]};
   }
   .token.url {
-    background: ${({ theme }) => theme.colors.blue[1]};
-    color: ${({ theme }) => theme.colors.indigo[6]};
+    background: ${theme.colors.blue[1]};
+    color: ${theme.colors.indigo[6]};
   }
   .token.atrule,
   .token.attr-value,
   .token.keyword {
-    color: ${({ theme }) => theme.colors.blue[6]};
+    color: ${theme.colors.blue[6]};
   }
   .token.function {
-    color: ${({ theme }) => theme.colors.pink[6]};
+    color: ${theme.colors.pink[6]};
   }
   .token.regex,
   .token.important,
   .token.variable {
-    color: ${({ theme }) => theme.colors.orange[6]};
+    color: ${theme.colors.orange[6]};
   }
   .token.important,
   .token.bold {
@@ -204,7 +202,7 @@ const MarkdownBody = styled(Box)`
     position: absolute;
     left: 0;
     right: 0;
-    margin-top: ${({ theme }) => theme.space[2]}px;
+    margin-top: ${theme.space[2]}px;
     background: rgba(250, 247, 133, 0.8);
     pointer-events: none;
     white-space: pre;

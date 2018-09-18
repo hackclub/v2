@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Heading, Text, LargeButton } from '@hackclub/design-system'
+import { Box, Heading, Text, LargeButton, theme } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 import Sheet from 'components/Sheet'
 import Framed from 'components/Framed'
@@ -18,10 +18,10 @@ const PromoBox = styled(Sheet)`
     background-color: rgba(255, 255, 255, 0.75);
     -webkit-backdrop-filter: saturate(180%) blur(16px);
   }
-  ${({ theme }) => theme.mediaQueries.reduceTransparency} {
+  ${theme.mediaQueries.reduceTransparency} {
     -webkit-backdrop-filter: auto !important;
   }
-  ${({ theme }) => theme.mediaQueries.sm} {
+  ${theme.mediaQueries.sm} {
     br {
       display: none;
     }
@@ -29,13 +29,13 @@ const PromoBox = styled(Sheet)`
 `
 
 const PromoHeading = styled(Heading.h2)`
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${theme.colors.primary};
   @supports (-webkit-background-clip: text) {
     background: linear-gradient(
       48deg,
-      ${({ theme }) => theme.colors.pink[5]},
-      ${({ theme }) => theme.colors.red[5]},
-      ${({ theme }) => theme.colors.orange[5]}
+      ${theme.colors.pink[5]},
+      ${theme.colors.red[5]},
+      ${theme.colors.orange[5]}
     );
     background-repeat: no-repeat;
     -webkit-background-clip: text;
@@ -50,8 +50,8 @@ const Action = styled(LargeButton.withComponent(Link)).attrs({
 })`
   background-image: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.colors.pink[5]},
-    ${({ theme }) => theme.colors.red[5]}
+    ${theme.colors.pink[5]},
+    ${theme.colors.red[5]}
   );
 `
 

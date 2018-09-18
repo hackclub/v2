@@ -7,7 +7,8 @@ import {
   Text,
   Link as A,
   Container,
-  hexa
+  hexa,
+  theme
 } from '@hackclub/design-system'
 import Icon from '@hackclub/icons'
 import Link from 'gatsby-link'
@@ -23,13 +24,13 @@ const Base = styled(Box.withComponent('footer'))`
   ${props =>
     props.dark &&
     css`
-      background-size: ${({ theme }) => theme.space[4]}px
-        ${({ theme }) => theme.space[4]}px;
+      background-size: ${theme.space[4]}px
+        ${theme.space[4]}px;
       h2 {
-        color: ${({ theme }) => theme.colors.gray[4]};
+        color: ${theme.colors.gray[4]};
       }
       ${BottomLine} {
-        border-color: ${({ theme }) => theme.colors.black};
+        border-color: ${theme.colors.black};
       }
     `} @media print {
     display: none;
@@ -39,10 +40,10 @@ const Base = styled(Box.withComponent('footer'))`
 const Columns = styled(Container)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: ${({ theme }) => theme.space[3]}px;
+  grid-gap: ${theme.space[3]}px;
 
-  ${({ theme }) => theme.mediaQueries.md} {
-    grid-gap: ${({ theme }) => theme.space[4]}px;
+  ${theme.mediaQueries.md} {
+    grid-gap: ${theme.space[4]}px;
     grid-template-columns: repeat(4, 1fr);
   }
 `
@@ -57,7 +58,7 @@ const Services = styled(Flex)`
     width: 32px;
     height: 32px;
   }
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     max-width: 12rem;
   }
 `
@@ -85,12 +86,12 @@ const Pages = styled(Box)`
   a {
     display: block;
     color: inherit;
-    margin-bottom: ${({ theme }) => theme.space[2]}px;
+    margin-bottom: ${theme.space[2]}px;
   }
 `
 
 const BottomLine = styled(Box)`
-  border-top: 1px solid ${({ theme }) => theme.colors.smoke};
+  border-top: 1px solid ${theme.colors.smoke};
 `
 
 const Footer = ({ dark = false, children }) => (

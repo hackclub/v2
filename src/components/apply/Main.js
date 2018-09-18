@@ -77,11 +77,11 @@ class ContactModal extends Component {
 //   position: absolute;
 //   right: 0;
 //   bottom: -64px;
-//   box-shadow: ${({ theme }) => theme.boxShadows[1]} !important;
-//   transition: ${({ theme }) => theme.transition} box-shadow;
+//   box-shadow: ${theme.boxShadows[1]} !important;
+//   transition: ${theme.transition} box-shadow;
 //   &:hover,
 //   &:focus {
-//     box-shadow: ${({ theme }) => theme.boxShadows[2]} !important;
+//     box-shadow: ${theme.boxShadows[2]} !important;
 //   }
 // `
 
@@ -98,7 +98,7 @@ const Rejected = ({ resetCallback }) => (
 )
 
 const SectionBase = styled(Box).attrs({})`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.smoke};
+  border-bottom: 1px solid ${theme.colors.smoke};
 `
 const SectionFlex = styled(Flex).attrs({
   py: 4,
@@ -126,7 +126,7 @@ const SectionIcon = styled(Icon).attrs({
   mr: 1,
   ml: 'auto'
 })`
-  transition: ${({ theme }) => theme.transition} all;
+  transition: ${theme.transition} all;
   transform: rotate(${props => (props.open ? 90 : 0)}deg);
   user-select: none;
   ${props =>
@@ -134,7 +134,7 @@ const SectionIcon = styled(Icon).attrs({
     css`
       cursor: pointer;
       &:hover {
-        color: ${({ theme }) => theme.colors.red[4]};
+        color: ${theme.colors.red[4]};
       }
     `};
 `

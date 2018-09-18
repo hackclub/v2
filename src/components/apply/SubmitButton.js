@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import api from 'api'
 import styled from 'styled-components'
-import { LargeButton } from '@hackclub/design-system'
+import { LargeButton, theme } from '@hackclub/design-system'
 
 const Root = styled(LargeButton).attrs({
   py: 4,
@@ -11,8 +11,8 @@ const Root = styled(LargeButton).attrs({
 })`
   background-image: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.colors.orange[5]},
-    ${({ theme }) => theme.colors.red[5]}
+    ${theme.colors.orange[5]},
+    ${theme.colors.red[5]}
   );
 `
 

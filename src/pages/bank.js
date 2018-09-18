@@ -43,14 +43,14 @@ const CTA = styled(Button).attrs({
 
 const Modules = styled(Container)`
   display: grid;
-  grid-gap: ${({ theme }) => theme.space[3]}px;
+  grid-gap: ${theme.space[3]}px;
   h3,
   svg {
-    color: ${({ theme }) => theme.colors.white};
+    color: ${theme.colors.white};
   }
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: ${({ theme }) => theme.space[4]}px;
+    grid-gap: ${theme.space[4]}px;
     > div {
       align-items: center;
     }
@@ -95,9 +95,9 @@ const Banner = styled(Container).attrs({
 
 const Join = styled(Sheet)`
   display: grid;
-  grid-gap: ${({ theme }) => theme.space[3]}px;
+  grid-gap: ${theme.space[3]}px;
   align-items: flex-start;
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     grid-template-columns: 32rem auto;
   }
 `
@@ -110,12 +110,12 @@ const Breakdown = styled(Box)`
   }
   span:before {
     content: '$';
-    font-size: ${({ theme }) => theme.fontSizes[4]}px;
+    font-size: ${theme.fontSizes[4]}px;
     margin-left: -12px;
     vertical-align: super;
   }
   p {
-    color: ${({ theme }) => theme.colors.red[1]};
+    color: ${theme.colors.red[1]};
   }
 `
 

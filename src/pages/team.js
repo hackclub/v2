@@ -10,6 +10,7 @@ import {
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
+import BG from 'components/BG'
 import Nav from 'components/Nav'
 import Name from 'components/Name'
 import Bio from 'components/Bio'
@@ -25,7 +26,7 @@ const Header = styled(Section)`
 const Base = styled(Container)`
   display: grid;
   grid-gap: 1rem;
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     grid-gap: 2rem;
     grid-template-columns: repeat(2, 1fr);
   }
@@ -33,9 +34,9 @@ const Base = styled(Container)`
 
 const Updates = styled(Sheet)`
   display: grid;
-  grid-gap: ${({ theme }) => theme.space[3]}px;
+  grid-gap: ${theme.space[3]}px;
   align-items: flex-start;
-  ${({ theme }) => theme.mediaQueries.md} {
+  ${theme.mediaQueries.md} {
     grid-template-columns: 1fr auto;
   }
 `
@@ -51,8 +52,8 @@ const UpdateLink = styled(Button.withComponent(Link)).attrs({
   text-transform: uppercase;
   background-image: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.colors.cyan[6]},
-    ${({ theme }) => theme.colors.blue[6]}
+    ${theme.colors.cyan[6]},
+    ${theme.colors.blue[6]}
   );
 `
 
@@ -73,14 +74,10 @@ export default () => (
         { property: 'og:url', content: 'https://hackclub.com/team' }
       ]}
     />
-    <style
-      children={`body {
-        background: ${theme.colors.snow};
-      }`}
-    />
+    <BG color="snow" />
     <Nav />
     <Header color="white">
-      <Container maxWidth={35} align="center" py={5}>
+      <Container maxWidth={35} align="center" py={3}>
         <Heading.h1 f={[3, 4]} regular caps mt={4} mb={2}>
           Hack Club Team
         </Heading.h1>

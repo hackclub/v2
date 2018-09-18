@@ -16,7 +16,7 @@ import Nav from 'components/apply/ApplyNav'
 import api from 'api'
 import storage from 'storage'
 import { timeSince } from 'helpers'
-import { xor } from 'lodash'
+import { xor, orderBy } from 'lodash'
 
 const colorMap = {
   unsubmitted: 'gray.3',
@@ -109,29 +109,31 @@ export default class extends Component {
   }
 
   filterApplication(application, filters = this.state.filters) {
-    let status, updatedAt
+    let status, lastStageUpdate
     if (application.accepted_at) {
       status = 'accepted'
-      updatedAt = timeSince(application.accepted_at)
+      lastStageUpdate = application.accepted_at
     } else if (application.rejected_at) {
       status = 'rejected'
-      updatedAt = timeSince(application.rejected_at)
+      lastStageUpdate = application.rejected_at
     } else if (application.interviewed_at) {
       status = 'interviewed'
-      updatedAt = timeSince(application.interviewed_at)
+      lastStageUpdate = application.interviewed_at
     } else if (application.submitted_at) {
       status = 'submitted'
-      updatedAt = timeSince(application.submitted_at)
+      lastStageUpdate = application.submitted_at
     } else {
       status = 'unsubmitted'
-      updatedAt = timeSince(application.created_at)
+      lastStageUpdate = application.created_at
     }
 
     return {
+      ...application,
       visible: filters.indexOf(status) === -1,
       selected: this.state.selection === application,
       color: colorMap[status],
-      timeInStage: updatedAt
+      timeInStage: timeSince(lastStageUpdate),
+      lastStageUpdate
     }
   }
 
@@ -181,9 +183,15 @@ export default class extends Component {
                   </Tr>
                 </thead>
                 <tbody>
-                  {Object.values(clubApplications).map(
+                  {orderBy(
+                    Object.values(clubApplications).map(c =>
+                      this.filterApplication(c)
+                    ),
+                    'lastStageUpdate',
+                    'desc'
+                  ).map(
                     application =>
-                      this.filterApplication(application).visible ? (
+                      application.visible ? (
                         <Tr
                           key={application.id}
                           onClick={e => {
@@ -194,15 +202,13 @@ export default class extends Component {
                         >
                           <Td>
                             <Badge
-                              bg={this.filterApplication(application).color}
+                              bg={application.color}
                               children={application.id}
                             />
                           </Td>
                           <Td>{application.high_school_name}</Td>
                           <Td>{this.pointOfContact(application)}</Td>
-                          <Td>
-                            {this.filterApplication(application).timeInStage}
-                          </Td>
+                          <Td>{application.timeInStage}</Td>
                           <Td>
                             {application.owner !== null && (
                               <Assignment owner={application.owner.email} />

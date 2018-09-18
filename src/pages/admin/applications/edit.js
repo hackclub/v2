@@ -17,6 +17,7 @@ import NotesForm from 'components/admin/NotesForm'
 import InterviewForm from 'components/admin/InterviewForm'
 import AcceptanceForm from 'components/admin/AcceptanceForm'
 import Information from 'components/admin/Information'
+import LeaderProfileInfo from 'components/admin/LeaderProfileInfo'
 import Nav from 'components/apply/ApplyNav'
 import search from 'search'
 import api from 'api'
@@ -66,10 +67,10 @@ class Collapsable extends Component {
   render() {
     const { status } = this.state
     return (
-      <Card boxShadowSize="sm" my={2} p={3} style={{userSelect: 'none'}}>
+      <Card boxShadowSize="sm" my={2} p={3}>
         <Heading.h2
           my={2}
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: 'pointer', userSelect: 'none' }}
           onClick={() => {
             this.setState({ status: !status })
           }}
@@ -101,11 +102,13 @@ export default class extends Component {
       .then(app => {
         // these names get confusing quickly. Basically "*full* leader profiles" are queried from the API because the "leader profiles" attached to an app don't give all the fields we need.
         // they both get combined into "merged leader profiles"
-        const mergedLeaderProfileRequests = app.leader_profiles.map(lp => LeaderProfile.get(lp.id).then(flp => ({...flp, ...lp})))
+        const mergedLeaderProfileRequests = app.leader_profiles.map(lp =>
+          LeaderProfile.get(lp.id).then(flp => ({ ...flp, ...lp }))
+        )
         Promise.all(mergedLeaderProfileRequests).then(mlpRequest => {
           this.setState({
             status: 'success',
-            app: {...app, leader_profiles: mlpRequest }
+            app: { ...app, leader_profiles: mlpRequest }
           })
         })
       })
@@ -153,12 +156,19 @@ export default class extends Component {
                 />
               </Collapsable>
               <Collapsable heading="Application">
-                <Collapsable heading={`Application: ${app.high_school_name}`} f={4}>
+                <Collapsable
+                  heading={`Application: ${app.high_school_name}`}
+                  f={4}
+                >
                   <Information application={app} />
                 </Collapsable>
                 {app.leader_profiles.map(lp => (
-                  <Collapsable heading={`Leader Profile: ${lp.leader_name}`} f={3}>
-
+                  <Collapsable
+                    heading={`Leader Profile: ${lp.leader_name}`}
+                    f={3}
+                    key={lp.id}
+                  >
+                    <LeaderProfileInfo leaderProfile={lp} />
                   </Collapsable>
                 ))}
               </Collapsable>

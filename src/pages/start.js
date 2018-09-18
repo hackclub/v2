@@ -118,7 +118,7 @@ const FeatureLink = styled(A.link).attrs({
 
 const Module = ({ icon, name, body, ...props }) => (
   <Flex flexDirection="column" {...props}>
-    <IconIcon
+    <Icon
       size={64}
       mb={2}
       glyph={icon}

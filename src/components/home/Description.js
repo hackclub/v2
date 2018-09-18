@@ -11,13 +11,16 @@ export default () => (
       beginners to code. We provide{' '}
       <A href="https://guide.hackclub.com" target="_blank">
         club activities
-      </A>,{' '}
+      </A>
+      ,{' '}
       <A.link to="/workshops" target="_blank">
         programming club curriculum
-      </A.link>,{' '}
+      </A.link>
+      ,{' '}
       <Link href="https://hackathons.hackclub.com" target="_blank">
         access to high school hackathons
-      </Link>, &{' '}
+      </Link>
+      , &{' '}
       <A.link to="/hackers" target="_blank">
         a supportive hacker community.
       </A.link>

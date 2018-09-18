@@ -53,7 +53,8 @@ export default class extends Component {
               <Heading.h2 color="muted" f={4} mt={2} regular>
                 Hello, it’s{' '}
                 {new Date().toLocaleDateString('en-us', { weekday: 'long' })}
-                {'. '}You’re doing great.
+                {'. '}
+                You’re doing great.
               </Heading.h2>
               <Flex justify="center" mt={[3, 4]}>
                 <table>

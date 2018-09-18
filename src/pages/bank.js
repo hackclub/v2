@@ -65,7 +65,7 @@ Modules.defaultProps = {
   align: ['left', null, 'center']
 }
 
-const Megaline = Heading.h1.extend.attrs({
+const Megaline = styled(Heading.h1).attrs({
   fontSize: [6, 7],
   color: 'white'
 })`

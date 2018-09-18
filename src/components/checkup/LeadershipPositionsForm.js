@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import React, { Component, Fragment } from 'react'
 import ErrorPage from 'components/admin/ErrorPage'
 import LoadingBar from 'components/LoadingBar'
@@ -215,7 +216,7 @@ class LeaderPosition extends Component {
   }
 }
 
-const PositionCard = Card.extend.attrs({
+const PositionCard = styled(Card).attrs({
   p: 3,
   my: 3,
   boxShadowSize: 'sm'

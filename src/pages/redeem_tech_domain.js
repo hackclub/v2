@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import React, { Fragment } from 'react'
 import {
   Container,
@@ -10,7 +11,7 @@ import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import RedeemTechDomainForm from 'components/RedeemTechDomainForm'
 
-const Header = Section.withComponent('header').extend`
+const Header = styled(Section.withComponent('header'))`
   background-color: ${theme.colors.red[5]};
   background-image: linear-gradient(
     -32deg,

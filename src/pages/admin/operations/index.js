@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import React, { Component, Fragment } from 'react'
 import ErrorPage from 'components/admin/ErrorPage'
 import LoadingBar from 'components/LoadingBar'
@@ -20,7 +21,7 @@ import {
 } from '@hackclub/design-system'
 import api from 'api'
 
-const FlexCardLink = Card.withComponent('a').extend`
+const FlexCardLink = styled(Card.withComponent('a'))`
   display: flex;
   align-items: center;
 

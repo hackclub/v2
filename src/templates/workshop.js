@@ -109,7 +109,7 @@ const CardsSection = styled(Box)`
   );
 `
 
-const Cards = Container.withComponent(NotOnPrint).extend`
+const Cards = styled(Container.withComponent(NotOnPrint))`
   text-align: center;
   display: grid;
   grid-gap: ${theme.space[4]}px;

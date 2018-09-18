@@ -1,5 +1,5 @@
 import { Box, Flex, Card, theme } from '@hackclub/design-system'
-import { css, keyframes } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 
 const zoom = keyframes`
   0% {
@@ -17,7 +17,7 @@ const zoom = keyframes`
   }
 `
 
-const DropdownContainer = Box.extend`
+const DropdownContainer = styled(Box)`
   position: relative;
   &:hover > div {
     display: block;
@@ -26,7 +26,7 @@ const DropdownContainer = Box.extend`
   }
 `
 
-const DropdownMenu = Card.withComponent(Flex).extend`
+const DropdownMenu = styled(Card.withComponent(Flex))`
   display: none;
   opacity: 0;
   flex-direction: column;
@@ -45,7 +45,7 @@ const DropdownMenu = Card.withComponent(Flex).extend`
   -webkit-overflow-scrolling: touch;
 `
 
-const DropdownMenuOption = Box.extend`
+const DropdownMenuOption = styled(Box)`
   padding: ${theme.space[2]}px ${theme.space[3]}px;
   cursor: pointer;
   width: 100%;

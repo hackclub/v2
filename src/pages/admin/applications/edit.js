@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import React, { Component, Fragment } from 'react'
 import {
   Box,
@@ -46,14 +47,14 @@ const statusColor = app => {
   }
 }
 
-const Revealer = Box.extend`
+const Revealer = styled(Box)`
   transform: scaleY(${props => (props.active ? 1 : 0)});
   height: ${props => (props.active ? 'auto' : '0')};
   opacity: ${props => (props.active ? 1 : 0)};
   transition: 0.05s ease-out;
 `
 
-const Arrow = Text.span.extend.attrs({
+const Arrow = styled(Text.span).attrs({
   children: '❯'
 })`
   transform: rotate(${props => (props.active ? 90 : 0)}deg);

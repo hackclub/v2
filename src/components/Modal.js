@@ -46,7 +46,7 @@ const Modal = styled(Sheet)`
   }
 `
 
-const Overlayer = Box.extend`
+const Overlayer = styled(Box)`
   z-index: 1024;
   background-color: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(6px);

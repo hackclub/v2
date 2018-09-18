@@ -40,8 +40,9 @@ class Help extends Component {
               strictly follows Hack Club’s{' '}
               <Link href="https://conduct.hackclub.com" target="_blank">
                 Code of Conduct
-              </Link>. Anything breaking our Code of Conduct (ex. voter fraud)
-              and contestants found cheating can be temporarily or permanently
+              </Link>
+              . Anything breaking our Code of Conduct (ex. voter fraud) and
+              contestants found cheating can be temporarily or permanently
               banned.
             </Text>
             <Text f={2}>
@@ -49,7 +50,8 @@ class Help extends Component {
               please reach out to us confidentially at{' '}
               <Link href="mailto:challenge@hackclub.com">
                 challenge@hackclub.com
-              </Link>.
+              </Link>
+              .
             </Text>
           </Modal>
           <Overlay onClick={this.toggleRules} />

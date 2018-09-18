@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import React, { Component } from 'react'
 import api from 'api'
 import { Label, Input, Text, cx } from '@hackclub/design-system'
@@ -6,7 +7,7 @@ import { withFormik } from 'formik'
 import * as yup from 'yup'
 import storage from 'storage'
 
-const StyledInput = Input.extend`
+const StyledInput = styled(Input)`
   text-align: inherit;
   background: ${props => cx(props.color)};
   color: ${props => cx(props.bg)};

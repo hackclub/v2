@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { Box, Link as A, theme } from '@hackclub/design-system'
@@ -20,7 +21,7 @@ const CustomHeading = props => {
   return React.createElement(`h${props.level}`, { id: slug }, props.children)
 }
 
-const Body = Box.extend`
+const Body = styled(Box)`
   div > :first-child {
     margin-top: 0 !important;
   }

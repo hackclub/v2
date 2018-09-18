@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import React, { Fragment } from 'react'
 import {
   Button,
@@ -15,7 +16,7 @@ import Footer from 'components/Footer'
 // These 2 colors are from the gradient used on the original Hack Camp website
 const campTheme = ['rgb(255, 75, 85)', 'rgb(212, 78, 116)']
 
-const Header = Section.withComponent('header').extend`
+const Header = styled(Section.withComponent('header'))`
   background-color: ${campTheme[0]};
   background-image: linear-gradient(
     45deg,
@@ -53,7 +54,8 @@ export default () => (
           color={campTheme[0]}
           href="https://hackclub.github.io/camp/"
           children="old Hack Camp website"
-        />?
+        />
+        ?
       </Text>
       <Text color="slate">
         Still interested in a camp? Try{' '}
@@ -61,7 +63,8 @@ export default () => (
           color={campTheme[0]}
           href="https://camp.masonhackclub.com/"
           children="🚀 Mason Hack Camp"
-        />.
+        />
+        .
       </Text>
     </Container>
     <Footer />

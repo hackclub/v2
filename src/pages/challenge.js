@@ -45,14 +45,18 @@ const pulse = keyframes`
   66% { background-color: ${cx('violet.5')}; }
   100% { background-color: ${cx('blue.5')}; }
 `
-const Header = Section.withComponent('header').extend`
+const Header = styled(Section.withComponent('header'))`
   background-color: ${theme.colors.blue[5]};
-  background-image: linear-gradient(90deg, rgba(255, 0, 0, 1), rgba(0, 255, 255, 1));
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 1),
+    rgba(0, 255, 255, 1)
+  );
   background-blend-mode: overlay;
   animation: ${pulse} 16s linear infinite;
 `
 
-const HeaderContainer = Container.extend`
+const HeaderContainer = styled(Container)`
   display: grid;
   grid-gap: ${theme.space[3]}px;
   grid-template-areas: 'text' 'info' 'form';

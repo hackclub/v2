@@ -1,10 +1,11 @@
+import styled from 'styled-components'
 import React, { Fragment } from 'react'
 import { Container, Heading, Section, theme } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Cloud9Form from 'components/Cloud9Form'
 
-const Header = Section.withComponent('header').extend`
+const Header = styled(Section.withComponent('header'))`
   background-color: ${theme.colors.blue[6]};
   background-image: linear-gradient(
     -18deg,

@@ -24,8 +24,7 @@ const Base = styled(Box.withComponent('footer'))`
   ${props =>
     props.dark &&
     css`
-      background-size: ${theme.space[4]}px
-        ${theme.space[4]}px;
+      background-size: ${theme.space[4]}px ${theme.space[4]}px;
       h2 {
         color: ${theme.colors.gray[4]};
       }

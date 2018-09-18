@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import React from 'react'
 import {
   Box,
@@ -23,7 +24,7 @@ const DeleteButton = props => (
   />
 )
 
-const Root = Flex.extend`
+const Root = styled(Flex)`
   border-radius: 15px;
   align-items: flex-start;
 
@@ -32,14 +33,14 @@ const Root = Flex.extend`
   }
 `
 
-const Group = Flex.extend`
+const Group = styled(Flex)`
   flex: 1 1 auto;
   flex-direction: column;
 `
 
 const Byline = QuotedCommentByline
 
-const Body = Box.withComponent(ReactMarkdown).extend`
+const Body = styled(Box.withComponent(ReactMarkdown))`
   color: ${theme.colors.slate};
   border-left: 4px solid ${theme.colors.smoke};
   padding-left: ${theme.space[3]}px;

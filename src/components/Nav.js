@@ -22,7 +22,7 @@ const rgbaBgColor = (props, opacity) =>
     ${opacity}
   )`
 
-const Root = Box.withComponent('header').extend`
+const Root = styled(Box.withComponent('header'))`
   position: absolute;
   top: 0;
   width: 100%;
@@ -41,14 +41,12 @@ const Root = Box.withComponent('header').extend`
       ${theme.mediaQueries.reduceTransparency} {
         -webkit-backdrop-filter: auto !important;
       }
-    `}
-
-  @media print {
+    `} @media print {
     display: none;
   }
 `
 
-const Content = Container.extend`
+const Content = styled(Container)`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -69,7 +67,7 @@ const hoverColor = name =>
     primary: 'error'
   }[name] || 'black')
 
-const NavBar = Box.withComponent('nav').extend`
+const NavBar = styled(Box.withComponent('nav'))`
   display: none;
   a {
     color: ${props => cx(props.color)};

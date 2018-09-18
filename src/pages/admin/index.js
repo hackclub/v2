@@ -1,9 +1,10 @@
+import styled from 'styled-components'
 import React from 'react'
 import { Container, Flex, Button, Heading } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 
-const Action = Button.withComponent(Link).extend.attrs({ m: 2 })``
+const Action = styled(Button.withComponent(Link)).attrs({ m: 2 })``
 
 export default () => (
   <Container maxWidth={48} align="center" px={3} py={[4, 5]}>

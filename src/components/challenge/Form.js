@@ -31,7 +31,8 @@ const Form = ({ status, closed = false, challengeId }) => {
       return (
         <Fragment>
           <Heading.h2 mt={0} mb={3} f={[3, 4]}>
-            Sign in to {!closed && 'post + '}upvote
+            Sign in to {!closed && 'post + '}
+            upvote
           </Heading.h2>
           <LoginForm
             bg="black"

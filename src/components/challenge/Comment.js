@@ -76,7 +76,7 @@ const Group = styled(Flex)`
 
 const Byline = CommentByline
 
-const Time = Text.withComponent('time').extend`
+const Time = styled(Text.withComponent('time'))`
   margin: 0 ${theme.space[2]}px;
   opacity: 0;
   transition: opacity 0.25s ease-out;

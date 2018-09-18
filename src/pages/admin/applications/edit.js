@@ -5,6 +5,7 @@ import {
   Heading,
   Text,
   Container,
+  Card,
   Badge
 } from '@hackclub/design-system'
 import LoadingBar from 'components/LoadingBar'
@@ -19,7 +20,7 @@ import Information from 'components/admin/Information'
 import Nav from 'components/apply/ApplyNav'
 import search from 'search'
 import api from 'api'
-import { NewClubApplication } from 'models'
+import { NewClubApplication, LeaderProfile } from 'models'
 import { timeSince } from 'helpers'
 
 const colorMap = {
@@ -48,7 +49,7 @@ const Revealer = Box.extend`
   transform: scaleY(${props => (props.active ? 1 : 0)});
   height: ${props => (props.active ? 'auto' : '0')};
   opacity: ${props => (props.active ? 1 : 0)};
-  transition: ${props => (props.active ? '0.1s ease-out' : '0.5s ease-in')};
+  transition: 0.05s ease-out;
 `
 
 const Arrow = Text.span.extend.attrs({
@@ -56,7 +57,7 @@ const Arrow = Text.span.extend.attrs({
 })`
   transform: rotate(${props => (props.active ? 90 : 0)}deg);
   display: inline-block;
-  transition: ${props => (props.active ? '0.2s ease-out' : '0.3s ease-in')};
+  transition: ${props => (props.active ? '0.1s ease-out' : '0.2s ease-in')};
 `
 
 class Collapsable extends Component {
@@ -65,18 +66,19 @@ class Collapsable extends Component {
   render() {
     const { status } = this.state
     return (
-      <Fragment>
+      <Card boxShadowSize="sm" my={2} p={3} style={{userSelect: 'none'}}>
         <Heading.h2
           my={2}
           style={{ cursor: 'pointer' }}
           onClick={() => {
             this.setState({ status: !status })
           }}
+          f={this.props.f}
         >
           {this.props.heading} <Arrow ml={2} active={status} />
         </Heading.h2>
         <Revealer active={status}>{this.props.children}</Revealer>
-      </Fragment>
+      </Card>
     )
   }
 }
@@ -97,9 +99,14 @@ export default class extends Component {
     }
     NewClubApplication.get(id)
       .then(app => {
-        this.setState({
-          status: 'success',
-          app
+        // these names get confusing quickly. Basically "*full* leader profiles" are queried from the API because the "leader profiles" attached to an app don't give all the fields we need.
+        // they both get combined into "merged leader profiles"
+        const mergedLeaderProfileRequests = app.leader_profiles.map(lp => LeaderProfile.get(lp.id).then(flp => ({...flp, ...lp})))
+        Promise.all(mergedLeaderProfileRequests).then(mlpRequest => {
+          this.setState({
+            status: 'success',
+            app: {...app, leader_profiles: mlpRequest }
+          })
         })
       })
       .catch(e => {
@@ -146,7 +153,14 @@ export default class extends Component {
                 />
               </Collapsable>
               <Collapsable heading="Application">
-                <Information application={app} />
+                <Collapsable heading={`Application: ${app.high_school_name}`} f={4}>
+                  <Information application={app} />
+                </Collapsable>
+                {app.leader_profiles.map(lp => (
+                  <Collapsable heading={`Leader Profile: ${lp.leader_name}`} f={3}>
+
+                  </Collapsable>
+                ))}
               </Collapsable>
               <Collapsable heading="Accept">
                 <AcceptanceForm

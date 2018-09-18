@@ -43,3 +43,4 @@ export default class Model {
 export const NewClubApplication = new Model('new_club_applications')
 export const NewClub = new Model('new_clubs')
 export const User = new Model('users')
+export const LeaderProfile = new Model('leader_profiles')

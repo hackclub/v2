@@ -24,6 +24,7 @@ const css = `
 
   .invert video,
   .invert .gatsby-resp-image-link,
+  .invert div img,
   .invert p > img:not([src*=".svg"]) {
     filter: invert(100%) !important;
   }

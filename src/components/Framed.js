@@ -58,7 +58,7 @@ const BorderRight = BorderBase.extend`
   right: 0;
   width: 5vw;
   height: 100%;
-  min-width: ${({ theme }) => theme.space[4]}px;
+  min-width: ${({ theme }) => theme.space[3]}px;
   transform-origin: right center;
 `
 
@@ -75,6 +75,7 @@ const BorderLeft = BorderBase.extend`
   left: 0;
   width: 5vw;
   height: 100%;
+  min-width: ${({ theme }) => theme.space[3]}px;
   transform-origin: left center;
 `
 

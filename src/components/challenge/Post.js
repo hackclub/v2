@@ -47,7 +47,7 @@ const UpvoteButton = styled(Button.button)`
   box-shadow: none !important;
   cursor: ${props => props.cursor};
   svg {
-    margin: -${theme.space[2]}px 0;
+    margin: -${theme.space[1]}px 0;
   }
 `
 
@@ -123,7 +123,7 @@ const PostRow = ({
         disabled={loading}
         cursor={disabled ? 'not-allowed' : loading ? 'wait' : 'pointer'}
       >
-        <Icon size={36} glyph={upvoted ? 'thumbsup-fill' : 'thumbsup'} />
+        <Icon size={32} glyph={upvoted ? 'thumbsup-fill' : 'thumbsup'} />
         <Text.span ml={1} fontSize={2} children={upvotesCount} />
       </UpvoteButton>
       <Flex

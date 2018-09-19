@@ -19,6 +19,7 @@ import Footer from 'components/Footer'
 import Sheet from 'components/Sheet'
 import Stat from 'components/Stat'
 import { Triangle, Pentagon, Circle } from 'components/Shapes'
+import { Headline, Subhline, Lead } from 'components/Content'
 import DonateForm from 'components/donate/DonateForm'
 import Spent from 'components/donate/Spent'
 import Sponsors from 'components/donate/Sponsors'
@@ -240,13 +241,7 @@ export default () => (
     />
     <Nav color="muted" />
     <Header px={0} py={4}>
-      <Container
-        {...contentContainer}
-        maxWidth={72}
-        align="left"
-        pt={[5, 6]}
-        pb={[4, 5]}
-      >
+      <Container {...contentContainer} maxWidth={72} align="left" py={6}>
         <Container maxWidth={48} mx={0}>
           <Heading.h1 color="primary" f={[3, 4]} caps>
             Donate to Hack Club
@@ -254,10 +249,10 @@ export default () => (
           <Heading.h2 mt={2} mb={3} {...headline} f={[6, 7]}>
             We rely on people like you to bring coding to the world.
           </Heading.h2>
-          <Text {...subhline}>
+          <Lead>
             Contribute today to empower the next generation. Help start a Hack
             Club at every high school.
-          </Text>
+          </Lead>
           <Text mt={3} f={2} color="muted">
             Your contribution is tax-deductible.
             <br />
@@ -270,7 +265,7 @@ export default () => (
       </Container>
     </Header>
     <Container {...contentContainer}>
-      <FirstQuote mb={[4, 5, null, 6]}>
+      <FirstQuote mb={[5, 6]}>
         <Text f={4} mb={3}>
           When I took CS classes in high school, I always found myself
           disengaged and feeling like they were just another class. After
@@ -297,7 +292,7 @@ export default () => (
         <Circle size={128} />
       </WishShapes>
       <Container {...content}>
-        <Heading.h2 {...headline}>Transparent, free, and open.</Heading.h2>
+        <Headline>Transparent, free, & open.</Headline>
         <Text my={3} {...subtext}>
           Hack Club is a new kind of non-profit with{' '}
           <strong>total transparency</strong>. We open source all of our{' '}
@@ -317,9 +312,7 @@ export default () => (
       </Container>
       <Row my={5} {...content}>
         <Box>
-          <Heading.h2 {...headline}>
-            Every last contribution is for our clubs.
-          </Heading.h2>
+          <Subhline>Every last contribution is for our clubs.</Subhline>
           <ContributionShapes>
             <Pentagon size={128} rotate={16} />
           </ContributionShapes>
@@ -356,31 +349,29 @@ export default () => (
           </Financials>
         </Box>
       </Row>
-      <Container pb={4} {...content}>
-        <Heading.h2 {...headline}>
-          Contribute more than just dollars.
-        </Heading.h2>
-        <Text my={3} {...subtext}>
+      <Container py={4}>
+        <Subhline>Contribute beyond just dollars.</Subhline>
+        <Lead my={3} maxWidth={48} mx={0}>
           We accept donations of time, technical or hard science fiction books,
           stocks/other securities, and cryptocurrency.
-        </Text>
-        <Text my={3} {...subtext}>
+        </Lead>
+        <Lead my={3} maxWidth={48} mx={0}>
           Please get in touch at{' '}
           <A href="mailto:donate@hackclub.com">donate@hackclub.com</A> if you’re
           interested in making a contribution with an unsupported token or have
           any questions.
-        </Text>
+        </Lead>
         <Box>
           <Button
             href="https://commerce.coinbase.com/checkout/ae7ad42d-0dcd-4e9d-8dc7-ba78648a58cd"
             target="_blank"
             bg="info"
           >
-            Donate now with popular cryptocurrencies »
+            Donate with popular cryptocurrencies »
           </Button>
         </Box>
       </Container>
-      <SecondQuote mt={[3, 4]} mb={[4, 5, 6]}>
+      <SecondQuote mt={[3, 4]} mb={[4, 5]}>
         <Text f={[4, 5]} bold>
           Hack Club has inspired me to grow and become the person I am today.
           Being part of the community allows me to meet countless like-minded
@@ -400,9 +391,9 @@ export default () => (
     </Container>
     <Flex justify="center" bg="snow" color="black">
       <Container w={1} py={[4, 5]} align={['left', 'center']}>
-        <Heading.h2 {...headline} px={3}>
+        <Headline px={3} mt={[3, 4]} mb={[4, 5]}>
           A few of our amazing donors.
-        </Heading.h2>
+        </Headline>
         <DonorGrid mt={4} mb={3}>
           {Object.keys(donors).map(name => (
             <DonorListing key={name} name={name} url={donors[name]} />
@@ -415,9 +406,9 @@ export default () => (
     </Flex>
     <Container {...contentContainer}>
       <Row my={5} {...content}>
-        <Heading.h2 {...headline} f={5} mb={4}>
+        <Subhline mb={4}>
           Some fabulous companies donate their products to us.
-        </Heading.h2>
+        </Subhline>
         <Sponsors />
       </Row>
     </Container>

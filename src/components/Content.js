@@ -28,7 +28,7 @@ export const Subhline = styled(Heading.h3).attrs({
 `
 
 export const Featline = styled(Heading.h3).attrs({
-  fontSize: [4, 5],
+  fontSize: 5,
   mb: 3,
   bold: true
 })`

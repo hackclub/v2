@@ -6,15 +6,12 @@ import Link from 'gatsby-link'
 
 const Base = styled(Sheet).attrs({ maxWidth: 64 - 2 })`
   background-color: ${theme.colors.red[5]};
-  background-image: linear-gradient(
-    -48deg,
-    ${theme.colors.orange[4]},
-    ${theme.colors.red[5]},
-    ${theme.colors.red[6]}
-  );
+  background-image: ${theme.gradient('orange.5', 'red.5', 'red.6')};
   display: grid;
+  grid-gap: ${theme.space[4]}px;
   align-items: center;
   ${theme.mediaQueries.md} {
+    grid-gap: ${theme.space[5]}px;
     grid-template-columns: 4fr 2fr;
   }
   h3 {
@@ -27,19 +24,19 @@ const Base = styled(Sheet).attrs({ maxWidth: 64 - 2 })`
 LargeButton.link = LargeButton.withComponent(Link)
 
 const Start = ({ buttonProps = {}, ...props }) => (
-  <Base my={4} {...props}>
-    <Box p={[2, 3]} align={['center', null, 'right']}>
+  <Base p={[4, 5]} my={4} {...props}>
+    <Box align={['center', null, 'right']}>
       <Heading.h2 color="white" f={[5, 6]} m={0}>
-        Applications due Sept 30th.
+        Apply by Sept 30th.
       </Heading.h2>
       <Text color="red.0" f={[3, 4]} my={2}>
-        Build the class you wish you could take.
+        Build the class you wish you took.
       </Text>
       <Text color="red.0" f={[3, 4]} m={0}>
         Bring the movement to your school.
       </Text>
     </Box>
-    <Box align={['center', null, 'left']} p={3}>
+    <Box align={['center', null, 'left']}>
       <LargeButton.link
         to="/start"
         inverted

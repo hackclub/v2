@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
+import search from 'search'
 import api from 'api'
 import { Heading, Container, LargeButton } from '@hackclub/design-system'
-import styled from 'styled-components'
 
 import Login from 'components/auth/Login'
 import Sheet from 'components/Sheet'
@@ -53,11 +53,7 @@ export default class extends Component {
             <BG color="snow" />
             <ApplyNav />
             <Sheet maxWidth={48} mt={3} mb={5}>
-              <ClubApplicationForm
-                params={formFields}
-                id={id}
-                authToken={authToken}
-              />
+              <ClubApplicationForm params={formFields} id={id} />
             </Sheet>
             <Heading.h4 align="center">
               Your form is automatically saved ✨

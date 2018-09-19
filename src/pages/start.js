@@ -17,6 +17,7 @@ import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Nav from 'components/Nav'
 import Sheet from 'components/Sheet'
+import { Headline, Featline } from 'components/Content'
 import Footer from 'components/Footer'
 
 const shadows = css`
@@ -256,14 +257,14 @@ export default () => (
     </PhotoSection>
     <Box bg="white" py={[4, 5]}>
       <Container {...styles.contentContainer}>
+        <Text f={4} caps bold color="muted">
+          Imagine
+        </Text>
+        <Headline my={3}>
+          Here’s <Text.span color="accent">an hour</Text.span> of a club
+          meeting.
+        </Headline>
         <TextBox mb={4}>
-          <Text f={4} caps bold color="muted">
-            Imagine
-          </Text>
-          <Heading.h2 {...styles.headline}>
-            Here’s <Text.span color="accent">an hour</Text.span> of a club
-            meeting.
-          </Heading.h2>
           <Text {...styles.lead}>
             Hack Clubs meet weekly, typically for 1.5 hours. Meetings resemble
             mini-hackathons, where members learn to code through building
@@ -300,14 +301,14 @@ export default () => (
     </Box>
     <Flex flexDirection="column" bg="snow" py={[4, 5]}>
       <Container {...styles.contentContainer}>
+        <Text f={4} caps bold color="muted">
+          Resources
+        </Text>
+        <Headline my={3}>
+          We’ll provide support to get your club{' '}
+          <Text.span color="teal.6">going & growing</Text.span>.
+        </Headline>
         <TextBox maxWidth={48}>
-          <Text f={4} caps bold color="muted">
-            Resources
-          </Text>
-          <Heading.h2 {...styles.headline} mb={3}>
-            We’ll provide support to get your club{' '}
-            <Text.span color="teal.6">going & growing</Text.span>.
-          </Heading.h2>
           <Text {...styles.lead}>
             From working with our 200+ Hack Clubs at high schools around the
             world, we’ve assembled the resources you’ll need for a successful
@@ -374,9 +375,9 @@ export default () => (
     <Flex flexDirection={['column', null, 'row']} justify="center" py={[4, 5]}>
       <Icon glyph="welcome" color="pink.5" size={128} m={[null, null, 3]} />
       <Container {...styles.contentContainer} maxWidth={48} align="left" mx={0}>
-        <Heading.h2 {...styles.headline}>
+        <Headline>
           Start a new club, or bring your own. We’re excited to meet you.
-        </Heading.h2>
+        </Headline>
         <Text {...styles.lead} mt={3}>
           When established CS clubs join, they get the full benefits of the
           network. While Hack Club is currently optimized for new chapters,
@@ -403,9 +404,7 @@ export default () => (
           <Text f={4} caps bold color="muted">
             About
           </Text>
-          <Heading.h2 {...styles.headline}>
-            Teach coding, bring together a community.
-          </Heading.h2>
+          <Headline my={3}>Teach coding, bring together a community.</Headline>
           <Text {...styles.lead}>
             Clubs are led by teams of 2-3 students (sorry, no parents or
             teachers). We ask that at least 1 leader be technically adept enough
@@ -418,9 +417,7 @@ export default () => (
         </TextBox>
         <TwoUp mt={4}>
           <Sheet>
-            <Heading.h3 {...styles.miniline}>
-              What happens outside of club meetings?
-            </Heading.h3>
+            <Featline>What happens outside of club meetings?</Featline>
             <Text f={3}>
               After Hack Clubs establish a dedicated base of members, they begin
               to attend{' '}
@@ -437,9 +434,9 @@ export default () => (
           <ImageSheet src="/start/meeting_1.jpg" />
           <ImageSheet src="/start/meeting_2.jpg" />
           <Sheet>
-            <Heading.h3 {...styles.miniline}>
+            <Featline>
               Will you provide everything to make my club a success?
-            </Heading.h3>
+            </Featline>
             <Text f={3}>
               No. Every school is different and you’re going to need to heavily
               customize our advice and resources. We try our best, but you know
@@ -455,13 +452,14 @@ export default () => (
           <Text f={4} caps bold color="muted">
             Application
           </Text>
-          <Heading.h2 {...styles.headline} mb={3}>
+          <Headline my={3}>
             Apply today to{' '}
             <Text.span color="primary">start your club</Text.span> at your high
-            school this fall.
-          </Heading.h2>
+            school.
+          </Headline>
           <Text {...styles.lead}>
-            You’ll be joining hundreds of applicants to our program.
+            You’ll be joining hundreds of other applicants to our program from
+            around the world. Your application is all online and totally free.
           </Text>
         </TextBox>
         <Steps>
@@ -469,7 +467,7 @@ export default () => (
             <Module
               icon="edit"
               name="1. Application"
-              body="Submit your info to get the ball rolling, totally free."
+              body="Submit your info to get the ball rolling, right here."
               color="white"
             />
           </StepOne>
@@ -506,7 +504,7 @@ export default () => (
         color="white"
         mb={0}
       >
-        <Heading.h2 {...styles.ultraline}>Begin your application.</Heading.h2>
+        <Headline>Begin your application.</Headline>
         <Box
           f={[3, 4, 5]}
           my={3}

@@ -58,32 +58,31 @@ const Header = styled(Section.withComponent('header'))`
 
 const HeaderContainer = styled(Container)`
   display: grid;
-  grid-gap: ${theme.space[3]}px;
+  grid-gap: ${theme.space[4]}px;
   grid-template-areas: 'text' 'info' 'form';
   ${theme.mediaQueries.md} {
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: ${theme.space[4]}px;
-      ${props =>
-        props.success
-          ? css`
-              grid-template-areas:
-                'text form'
-                'info form';
-              ${HeaderAreaText} {
-                text-align: right;
-                margin-right: -${theme.space[2]}px;
-              }
-            `
-          : css`
-              grid-template-areas:
-                'text text'
-                'info form';
-            `};
+    ${props =>
+      props.success
+        ? css`
+            grid-template-areas:
+              'text form'
+              'info form';
+            ${HeaderAreaText} {
+              text-align: right;
+              margin-right: -${theme.space[2]}px;
+            }
+          `
+        : css`
+            grid-template-areas:
+              'text text'
+              'info form';
+          `};
     }
   }
 `
 
-const HeaderCard = styled(Sheet).attrs({ p: 3 })`
+const HeaderCard = styled(Sheet).attrs({ p: 3, mb: 0 })`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -162,10 +161,10 @@ export default class extends Component {
           ]}
         />
         <Nav />
-        <Header py={0} px={3}>
+        <Header p={3}>
           <HeaderContainer
             pt={[4, 5]}
-            pb={3}
+            pb={4}
             align="left"
             success={status === 'success'}
           >

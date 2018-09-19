@@ -30,8 +30,8 @@ class LeaderInvite extends Component {
     const { open } = this.state
     return (
       <Fragment>
-        <Flex align="center" aria-expanded={open} mt={3} mb={2}>
-          <Text f={4} color="muted" bold caps>
+        <Flex align="center" aria-expanded={open} mt={[4, 5]} mb={2}>
+          <Text fontSize={4} color="muted" bold caps>
             Co-leaders
           </Text>
           <SectionIcon open={open} onClick={this.toggle} />

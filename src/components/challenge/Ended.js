@@ -22,7 +22,7 @@ const Indicator = styled(Box.withComponent(Icon))`
 `
 
 const Ended = () => (
-  <Root maxWidth={36} bg="cyan.1" color="cyan.9" p={[2, 3]} mb={4}>
+  <Root maxWidth={36} bg="cyan.1" color="cyan.9" p={3} mb={4}>
     <Indicator glyph="freeze" size={48} mr={[2, 3]} />
     <Box>
       <Text f={3} bold>

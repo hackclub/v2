@@ -35,20 +35,12 @@ const Grid = styled(Box)`
   }
 `
 
-const IntroSheet = styled(Sheet).attrs({ color: 'white' })`
-  background: linear-gradient(
-    128deg,
-    ${theme.colors.orange[5]},
-    ${theme.colors.red[5]}
-  );
+const IntroSheet = styled(Sheet).attrs({ color: 'white', p: 4 })`
+  background: ${theme.gradient('orange.5', 'red.5')};
 `
 
-const ModulesSheet = styled(Sheet).attrs({ color: 'white' })`
-  background: linear-gradient(
-    32deg,
-    ${theme.colors.indigo[5]},
-    ${theme.colors.blue[5]}
-  );
+const ModulesSheet = styled(Sheet).attrs({ color: 'white', p: 4 })`
+  background: ${theme.gradient('indigo.5', 'blue.5')};
 `
 
 const Modules = styled(Box)`
@@ -62,12 +54,8 @@ const Modules = styled(Box)`
   }
 `
 
-const Super = styled(Sheet).attrs({ color: 'white' })`
-  background: linear-gradient(
-    -128deg,
-    ${theme.colors.cyan[6]},
-    ${theme.colors.blue[6]}
-  );
+const Super = styled(Sheet).attrs({ color: 'white', p: 4 })`
+  background: ${theme.gradient('cyan.6', 'blue.6')};
   position: relative;
 
   &:before {
@@ -87,7 +75,7 @@ const Super = styled(Sheet).attrs({ color: 'white' })`
   }
 `
 
-const Graph = styled(Sheet).attrs({ color: 'white' })`
+const Graph = styled(Sheet).attrs({ color: 'white', p: 4 })`
   background: ${theme.colors.teal[7]} url(/graph.svg) no-repeat;
   background-size: 100% 100%;
 `
@@ -131,8 +119,8 @@ const ActionLink = styled(Button.withComponent(A)).attrs(action)`
 `
 
 export default () => (
-  <Container w={1} px={[3, 4, null, 2]} mt={[4, 5]} color="black">
-    <Heading.h2 f={[5, 6]} mb={3}>
+  <Container width={1} px={[3, 4, null, 2]} mt={5} color="black">
+    <Heading.h2 fontSize={[5, 6]} mb={3}>
       Join a nationwide community of students building the class they wish they
       could take.
     </Heading.h2>

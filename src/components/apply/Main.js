@@ -97,15 +97,13 @@ const Rejected = ({ resetCallback }) => (
   </Box>
 )
 
-const SectionBase = styled(Box).attrs({})`
-  border-bottom: 1px solid ${theme.colors.smoke};
-`
-const SectionFlex = styled(Flex).attrs({
+const SectionBase = styled(Flex).attrs({
   py: 4,
   px: [3, 0],
   mx: [-3, 0],
   align: 'center'
 })`
+  border-top: 1px solid ${theme.colors.smoke};
   min-height: ${props => (props.sm ? 6 : 10)}rem;
 `
 const SectionHeading = styled(Heading.h2).attrs({
@@ -275,7 +273,7 @@ const Main = props => {
         <Help />
       </Sheet>
       <Sheet p={[3, 4, 5]}>
-        <Title my={4} style={{ position: 'relative' }}>
+        <Title mb={4} style={{ position: 'relative' }}>
           Your application to Hack Club is{' '}
           <SubmitStatus {...submitStatusProps} />
         </Title>
@@ -297,9 +295,7 @@ const Main = props => {
             </Fragment>
           }
         />
-
         <LeaderInvite id={id} callback={callback} />
-
         {coLeaderProfiles.length === 0 && (
           <Text py={3} color="muted" align="center" f={3}>
             <Text.span bold>No co-leaders yet!</Text.span>
@@ -340,7 +336,7 @@ const Main = props => {
             />
           </SectionBase>
         ))}
-        <Box mt={5}>
+        <Box mt={4}>
           {app.rejected_at ? (
             <Rejected resetCallback={resetCallback} />
           ) : (

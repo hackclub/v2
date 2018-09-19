@@ -14,8 +14,8 @@ import Icon from '@hackclub/icons'
 import Link from 'gatsby-link'
 
 const Base = styled(Box.withComponent('footer'))`
-  background: ${({ theme, dark }) =>
-    dark
+  background: ${props =>
+    props.dark
       ? `${theme.colors.darker} radial-gradient(${hexa(
           theme.colors.black,
           0.5

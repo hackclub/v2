@@ -1,19 +1,8 @@
 import React, { Fragment } from 'react'
-import { url as apiUrl } from 'api'
-import { Container, LargeButton, Heading, Text } from '@hackclub/design-system'
-import {
-  Aside,
-  AutoSaver,
-  ConfirmClose,
-  Field,
-  Fieldset,
-  Form,
-  FormWrapper,
-  Submit
-} from 'components/Forms'
+import { LargeButton, Text } from '@hackclub/design-system'
+import { AutoSaver, Field, Fieldset, Form, FormWrapper } from 'components/Forms'
 import { withFormik } from 'formik'
 import Link from 'gatsby-link'
-import * as yup from 'yup'
 import api from 'api'
 
 LargeButton.link = LargeButton.withComponent(Link)

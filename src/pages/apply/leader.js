@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
+import search from 'search'
 import api from 'api'
 import { Heading, Container, LargeButton } from '@hackclub/design-system'
 
@@ -55,11 +56,7 @@ export default class extends Component {
             <ApplyNav />
             <BG color="snow" />
             <Sheet maxWidth={48} mt={3} mb={5}>
-              <LeaderApplicationForm
-                params={formFields}
-                id={id}
-                authToken={authToken}
-              />
+              <LeaderApplicationForm params={formFields} id={id} />
             </Sheet>
             <Heading.h4 align="center">
               Your form is automatically saved ✨

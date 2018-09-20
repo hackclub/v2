@@ -7,7 +7,8 @@ import { LargeButton, theme } from '@hackclub/design-system'
 const Root = styled(LargeButton).attrs({
   py: 4,
   px: 4,
-  fontSize: [3, 4]
+  fontSize: [3, 4],
+  width: 1
 })`
   background-image: linear-gradient(
     to bottom,
@@ -54,10 +55,6 @@ class SubmitButton extends Component {
         onClick={this.handleSubmit}
         bg={loading ? 'black' : status === 'submitted' ? 'success' : 'primary'}
         disabled={status !== 'complete' || loading}
-        w={1}
-        mt={2}
-        mb={4}
-        f={3}
         children={
           status === 'submitted'
             ? 'We’ve recieved your application'

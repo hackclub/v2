@@ -245,7 +245,7 @@ export default () => (
           improve it further.
         </FirstLetter>
         <Text my={3}>
-          Above all, without the community Hack Club provided, I wouldn't have
+          Above all, without the community Hack Club provided, I wouldn’t have
           learned a lot of the things I know today. I wouldn’t have understood
           promises in JavaScript. I wouldn’t have discovered hackathons. I
           wouldn’t have met many of the people I call friends today.{' '}
@@ -346,7 +346,7 @@ export default () => (
           club, you’re welcome to join our network! If you’re interested in
           starting your own, we’ll help you out every step fo the way.
         </Text>
-        <StartCTA href="https://finder.hackclub.com" mt={3}>
+        <StartCTA to="/start" mt={3}>
           Start your club
         </StartCTA>
         <OutlineButton

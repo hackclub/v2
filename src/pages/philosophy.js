@@ -209,6 +209,6 @@ export default () => (
       </Text>
     </Row>
     <Start mt={3} />
-    <Footer />
+    <Footer mt={5} />
   </Fragment>
 )

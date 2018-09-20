@@ -19,7 +19,7 @@ const modalKeyframes = keyframes`
   }
 `
 
-const Modal = styled(Sheet)`
+const Modal = styled(Sheet).attrs({ bg: 'white' })`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.0625), 0 16px 32px rgba(0, 0, 0, 0.125) !important;
   position: fixed;
   top: 50%;

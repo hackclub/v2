@@ -14,8 +14,8 @@ import Icon from '@hackclub/icons'
 import Link from 'gatsby-link'
 
 const Base = styled(Box.withComponent('footer'))`
-  background: ${({ theme, dark }) =>
-    dark
+  background: ${props =>
+    props.dark
       ? `${theme.colors.darker} radial-gradient(${hexa(
           theme.colors.black,
           0.5
@@ -39,7 +39,7 @@ const Base = styled(Box.withComponent('footer'))`
 const Columns = styled(Container)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: ${theme.space[3]}px;
+  grid-gap: ${theme.space[2]}px;
 
   ${theme.mediaQueries.md} {
     grid-gap: ${theme.space[4]}px;
@@ -93,8 +93,14 @@ const BottomLine = styled(Box)`
   border-top: 1px solid ${theme.colors.smoke};
 `
 
-const Footer = ({ dark = false, children }) => (
-  <Base color={dark ? 'muted' : 'slate'} py={[4, 5]} dark={dark} align="left">
+const Footer = ({ dark = false, children, ...props }) => (
+  <Base
+    color={dark ? 'muted' : 'slate'}
+    py={[4, 5]}
+    dark={dark}
+    align="left"
+    {...props}
+  >
     {children}
     <Columns px={3}>
       <Box>
@@ -159,11 +165,12 @@ const Footer = ({ dark = false, children }) => (
         </Services>
         <Text my={2}>
           <a href="tel:1-855-625-HACK">1-855-625-HACK</a>
-          <Text.span color="muted" children=" (call toll-free)" />
+          <br />
+          <Text.span color="muted" children="(call toll-free)" />
         </Text>
       </Box>
     </Columns>
-    <Container px={3} mt={4}>
+    <Container px={3} mt={[3, 4]}>
       <Box f={2}>
         <Text>Office: 576 Natoma St, San Francisco, CA 94103</Text>
         <Text>Mail: 8605 Santa Monica Blvd #86294, Los Angeles, CA 90069</Text>

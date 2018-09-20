@@ -60,16 +60,16 @@ export default () => (
     imageSrc="/action.jpg"
     imageAlt="Group of high school students coding together"
   >
-    <PromoBox p={[3, 4, 5]}>
+    <PromoBox py={[4, 5]} px={[3, 5]}>
       <PromoHeading fontSize={[5, 6]} my={0}>
         Join Hack Club.
       </PromoHeading>
-      <Text fontSize={[2, 4]} mt={3} mb={2}>
+      <Text fontSize={[3, 4]} mt={3} mb={2}>
         Start a new chapter or join the network with an existing computer
         science club.
       </Text>
-      <Text fontSize={[2, 4]} mb={4}>
-        We're excited to get to know you.
+      <Text fontSize={[3, 4]} mb={4}>
+        We're excited to meet you.
       </Text>
       <Action to="/start" children="Get Started" />
     </PromoBox>

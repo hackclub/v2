@@ -69,7 +69,7 @@ const InnerForm = ({
     )}
     <Submit
       mt={3}
-      value="Get code"
+      value="Get login code"
       color={color}
       bg={bg}
       mx={inputProps.mx || '0'}

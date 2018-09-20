@@ -1,5 +1,4 @@
-import React, { Fragment } from 'react'
-import { url as apiUrl } from 'api'
+import React from 'react'
 import { AutoSaver, Field, Fieldset, Form, FormWrapper } from 'components/Forms'
 import { LargeButton } from '@hackclub/design-system'
 import { withFormik } from 'formik'

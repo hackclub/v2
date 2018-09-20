@@ -125,7 +125,10 @@ const Footer = ({ dark = false, children, ...props }) => (
           <Link to="/apply" children="Apply" />
           <Link to="/challenge" children="Challenge" />
           <Link to="/workshops" children="Workshops" />
-          <a href="https://leaders.hackclub.com" children="Leaders" />
+          <a
+            href="https://leaders.hackclub.com/?ref=footer"
+            children="Leaders"
+          />
         </Pages>
       </Box>
       <Box>
@@ -135,7 +138,7 @@ const Footer = ({ dark = false, children, ...props }) => (
         <Pages>
           <a href="https://conduct.hackclub.com" children="Code of Conduct" />
           <a href="https://hackathons.hackclub.com" children="Hackathons" />
-          <a href="https://shop.hackclub.com" children="Shop" />
+          <a href="https://shop.hackclub.com/?ref=footer" children="Shop" />
           <Link to="/bank" children="Bank" />
           <Link to="/night" children="Hack Night" />
         </Pages>

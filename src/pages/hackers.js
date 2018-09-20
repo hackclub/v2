@@ -245,7 +245,7 @@ export default () => (
           improve it further.
         </FirstLetter>
         <Text my={3}>
-          Above all, without the community Hack Club provided, I wouldn't have
+          Above all, without the community Hack Club provided, I wouldn’t have
           learned a lot of the things I know today. I wouldn’t have understood
           promises in JavaScript. I wouldn’t have discovered hackathons. I
           wouldn’t have met many of the people I call friends today.{' '}

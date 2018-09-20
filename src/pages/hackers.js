@@ -346,7 +346,7 @@ export default () => (
           club, you’re welcome to join our network! If you’re interested in
           starting your own, we’ll help you out every step fo the way.
         </Text>
-        <StartCTA href="https://finder.hackclub.com" mt={3}>
+        <StartCTA to="/start" mt={3}>
           Start your club
         </StartCTA>
         <OutlineButton

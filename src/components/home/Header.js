@@ -138,7 +138,7 @@ export default () => (
           px={2}
           bold
           ml="auto"
-          to="https://leaders.hackclub.com/?ref=home"
+          href="https://leaders.hackclub.com/?ref=home"
           chevronRight
         >
           Learn more

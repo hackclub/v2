@@ -123,26 +123,26 @@ export default () => (
   <Root>
     <Wrapper>
       <Announcement>
-        <Icon size={24} glyph="flag-fill" color="black" mr={1} />
+        <Icon size={24} glyph="notification" color="slate" mr={1} />
         <Flex color="black" fontSize={1}>
-          <strong>Open for Fall 2018!</strong>
+          <strong>New for leaders!</strong>
           <Hide xs sm ml={1}>
             {'– '}
-            apply now to start your Hack Club
+            get a subdomain for your club
           </Hide>
         </Flex>
-        <A.link
+        <A
           caps
           color="info"
           fontSize={2}
           px={2}
           bold
           ml="auto"
-          to="/start"
+          to="https://leaders.hackclub.com/?ref=home"
           chevronRight
         >
           Learn more
-        </A.link>
+        </A>
       </Announcement>
       <Text f={[3, 4]} mx="auto" mt={3} mb={0} caps>
         By the students, for the students.

@@ -69,7 +69,7 @@ export default () => (
         science club.
       </Text>
       <Text fontSize={[3, 4]} mb={4}>
-        We're excited to meet you.
+        We’re excited to meet you.
       </Text>
       <Action to="/start" children="Get Started" />
     </PromoBox>

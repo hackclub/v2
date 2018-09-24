@@ -21,6 +21,9 @@ import Link from 'gatsby-link'
 import { timeSince } from 'helpers'
 import api from 'api'
 import { Modal, CloseButton, Overlay } from 'components/Modal'
+import storage from 'storage'
+
+const authToken = storage.get('authToken')
 
 const P = props => <Text my={3} {...props} />
 

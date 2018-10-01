@@ -27,7 +27,7 @@ const Start = ({ buttonProps = {}, ...props }) => (
   <Base p={[4, 5]} my={4} {...props}>
     <Box align={['center', null, 'right']}>
       <Heading.h2 color="white" f={[5, 6]} m={0}>
-        Apply by Sept 30th.
+        Late applications open.
       </Heading.h2>
       <Text color="red.0" f={[3, 4]} my={2}>
         Build the class you wish you took.

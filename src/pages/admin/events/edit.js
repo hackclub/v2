@@ -10,15 +10,9 @@ import search from 'search'
 import { Text, Image, BackgroundImage } from '@hackclub/design-system'
 
 export default class extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      event: undefined,
-      status: 'loading'
-    }
-
-    this.updateEvent = this.updateEvent.bind(this)
+  state = {
+    event: undefined,
+    status: 'loading'
   }
 
   updateEvent(updatedEvent) {
@@ -81,7 +75,7 @@ export default class extends Component {
             <Nav />
             <ImageForm
               type="logo"
-              updateEvent={this.updateEvent}
+              updateEvent={::this.updateEvent}
               image={event && event.logo}
               previewTag={({ imageUrl }) => (
                 <Image src={imageUrl} height="60px !important" />
@@ -89,7 +83,7 @@ export default class extends Component {
             />
             <ImageForm
               type="banner"
-              updateEvent={this.updateEvent}
+              updateEvent={::this.updateEvent}
               image={event && event.banner}
               previewTag={({ imageUrl }) => (
                 <BackgroundImage
@@ -100,7 +94,7 @@ export default class extends Component {
                 />
               )}
             />
-            <EventForm event={event} updateEvent={this.updateEvent} />
+            <EventForm event={event} updateEvent={::this.updateEvent} />
           </Fragment>
         )
       default:

@@ -227,7 +227,7 @@ const Animator = () => {
       this.target = r
       this.startTime = performance.now() + performance.timing.navigationStart
       this.shouldUpdate = true
-      requestAnimationFrame(this.update.bind(this))
+      requestAnimationFrame(::this.update)
     }
     return (
       e(i, [
@@ -246,7 +246,7 @@ const Animator = () => {
                 this.animated[t].update(this.target)
               for (let e = 0; e < this.animated.length; e++)
                 this.animated[e].draw(this.target)
-              requestAnimationFrame(this.update.bind(this))
+              requestAnimationFrame(::this.update)
             }
           }
         }

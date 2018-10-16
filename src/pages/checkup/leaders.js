@@ -23,7 +23,6 @@ export default class extends Component {
   }
 
   componentDidMount() {
-    this.refresh = this.refresh.bind(this)
     this.refresh()
   }
 
@@ -76,12 +75,12 @@ export default class extends Component {
               <LeadershipPositionsForm
                 positions={positions}
                 leaderId={user.new_leader.id}
-                callback={this.refresh}
+                callback={::this.refresh}
               />
               <Heading.h3 f={4} mt={4} mb={2}>
                 Add a new leader
               </Heading.h3>
-              <LeaderInviteForm clubId={club.id} callback={this.refresh} />
+              <LeaderInviteForm clubId={club.id} callback={::this.refresh} />
               <Heading.h2 mt={4}>Finish</Heading.h2>
               <Text my={3}>
                 Once this list is up-to-date you can continue to the final page

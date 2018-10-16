@@ -124,7 +124,6 @@ export default class extends Component {
   updateApplication(app) {
     this.setState({ app })
   }
-  updateApplication = this.updateApplication.bind(this)
 
   render() {
     const { status, error, app } = this.state
@@ -144,7 +143,7 @@ export default class extends Component {
               <Collapsable heading="Reject">
                 <RejectionForm
                   application={app}
-                  updateApplication={this.updateApplication}
+                  updateApplication={::this.updateApplication}
                 />
               </Collapsable>
               <Collapsable heading="Notes">
@@ -153,7 +152,7 @@ export default class extends Component {
               <Collapsable heading="Interview">
                 <InterviewForm
                   application={app}
-                  updateApplication={this.updateApplication}
+                  updateApplication={::this.updateApplication}
                 />
               </Collapsable>
               <Collapsable heading="Application">

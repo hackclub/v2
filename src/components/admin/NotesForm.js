@@ -9,13 +9,9 @@ import ErrorPage from 'components/admin/ErrorPage'
 Box.form = Box.withComponent('form')
 
 class SingleNote extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      id: props.note.id,
-      note: props.note
-    }
-    this.handleSubmit = this.handleSubmit.bind(this)
+  state = {
+    id: this.props.note.id,
+    note: this.props.note
   }
 
   componentWillReceiveProps(nextProps) {
@@ -70,7 +66,7 @@ class SingleNote extends Component {
         <Formik
           initialValues={note}
           enableReinitialize={true}
-          onSubmit={this.handleSubmit}
+          onSubmit={::this.handleSubmit}
         >
           {props => {
             const {
@@ -115,17 +111,10 @@ class SingleNote extends Component {
 }
 
 export default class NotesForm extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      notes: [],
-      status: 'loading',
-      authors: {}
-    }
-
-    this.addNote = this.addNote.bind(this)
-    this.loadNotes = this.loadNotes.bind(this)
+  state = {
+    notes: [],
+    status: 'loading',
+    authors: {}
   }
   componentDidMount() {
     this.loadNotes(this.props.modelId)
@@ -200,7 +189,7 @@ export default class NotesForm extends Component {
               glyph="post"
               bg="success"
               circle
-              onClick={this.addNote}
+              onClick={::this.addNote}
             />
             {notes
               .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))

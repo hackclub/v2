@@ -1,6 +1,7 @@
 /c9                   /cloud9_setup
+/workshops/slack      /slack_invite
 /hack_camp            /camp
-/repl                 /replit/start
+/repl                 /start
 /hackathons           https://hackathons.hackclub.com
 /find                 https://finder.hackclub.com
 /finder               https://finder.hackclub.com

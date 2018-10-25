@@ -183,6 +183,14 @@ const channels = [
   {
     name: 'challenges',
     color: 'yellow'
+  },
+  {
+    name: 'blockchain',
+    color: 'indigo'
+  },
+  {
+    name: 'counttoamillion',
+    color: 'red'
   }
 ]
 

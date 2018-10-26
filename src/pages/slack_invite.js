@@ -109,6 +109,9 @@ const Channel = styled(Sheet).attrs({
     left: auto;
     right: 0;
   }
+  &:nth-of-type(12) img {
+    top: 0;
+  }
   &:nth-of-type(6) img {
     left: auto;
     right: 0;
@@ -159,7 +162,7 @@ const channels = [
   {
     name: 'linux',
     desc:
-      'Share your setup, find ideas, ask for help. We’ve got a community of enthusiasts.',
+      'Share your setup, find ideas, & get help with a community of enthusiasts.',
     color: 'blue'
   },
   {
@@ -182,6 +185,14 @@ const channels = [
   {
     name: 'challenges',
     color: 'yellow'
+  },
+  {
+    name: 'blockchain',
+    color: 'indigo'
+  },
+  {
+    name: 'counttoamillion',
+    color: 'red'
   }
 ]
 

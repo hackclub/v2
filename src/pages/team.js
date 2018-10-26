@@ -77,15 +77,15 @@ export default () => (
     <BG color="snow" />
     <Nav />
     <Header color="white">
-      <Container maxWidth={35} align="center" py={3}>
+      <Container maxWidth={36} align="center" py={[3, 4]}>
         <Heading.h1 f={[3, 4]} regular caps mt={4} mb={2}>
           Hack Club Team
         </Heading.h1>
         <Name f={6}>We the students.</Name>
         <Text f={3} my={3}>
           We believe in a world where every young person is empowered to be the
-          change they want to see in the world. Through Hack Club, we’re working
-          hard to make it reality.
+          change they want to see around them. At Hack Club, we’re working hard
+          to make it reality.
         </Text>
       </Container>
     </Header>

@@ -4,7 +4,7 @@ import { Box, Heading, Text, LargeButton, theme } from '@hackclub/design-system'
 import Sheet from 'components/Sheet'
 import Link from 'gatsby-link'
 
-const Base = styled(Sheet).attrs({ maxWidth: 64 - 2 })`
+const Base = styled(Sheet).attrs({ maxWidth: 72 - 2 })`
   background-color: ${theme.colors.red[5]};
   background-image: ${theme.gradient('orange.5', 'red.5', 'red.6')};
   display: grid;
@@ -24,7 +24,7 @@ const Base = styled(Sheet).attrs({ maxWidth: 64 - 2 })`
 LargeButton.link = LargeButton.withComponent(Link)
 
 const Start = ({ buttonProps = {}, ...props }) => (
-  <Base p={[4, 5]} my={4} {...props}>
+  <Base px={[2, 4, 5]} py={[4, 5, 6]} my={4} {...props}>
     <Box align={['center', null, 'right']}>
       <Heading.h2 color="white" f={[5, 6]} m={0}>
         Late applications open.

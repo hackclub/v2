@@ -31,7 +31,7 @@ const Bio = ({ img, name, role, pronouns, text, ...props }) => (
         <Heading.h3 f={4} m={0} mr={2} color="black" children={name} />
         <Badge px={2} f={1} bg="primary" children={role} />
       </Flex>
-      <Text f={2} mt={[1, 2]} mb={0} color="black" children={text} />
+      <Text f={2} mt={[1, 2]} mb={0} color="slate" children={text} />
     </Box>
   </Base>
 )

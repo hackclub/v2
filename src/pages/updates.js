@@ -131,8 +131,8 @@ export default () => (
     />
     <style children={styles} />
     <Nav dark />
-    <Box py={4} align="center" justify="center">
-      <Container mt={5} maxWidth={32}>
+    <Box py={[4, 5]} align="center" justify="center">
+      <Container pt={5} maxWidth={32}>
         <Heading.h1 color="white" f={6}>
           Updates
         </Heading.h1>

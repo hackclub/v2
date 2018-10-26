@@ -32,7 +32,7 @@ const Row = styled(Flex)`
 const Index = styled(Hide)`
   width: ${theme.space[3]}px;
   position: absolute;
-  left: -${theme.space[4]}px;
+  left: -${theme.space[5]}px;
 `
 
 const Description = styled(Text)`
@@ -69,7 +69,7 @@ const CommentButton = styled(Box.withComponent('button'))`
   span {
     position: absolute;
     width: 100%;
-    top: ${theme.space[2]}px;
+    top: 8px;
   }
   ${theme.mediaQueries.md} {
     padding-right: ${theme.space[3]}px;
@@ -107,12 +107,7 @@ const PostRow = ({
     id={`post-${id}`}
   >
     <Index sm xs>
-      <Text
-        align="right"
-        color={mine ? 'warning' : 'muted'}
-        bold
-        children={index}
-      />
+      <Text align="right" color={mine ? 'warning' : 'muted'} children={index} />
     </Index>
     <Box>
       <UpvoteButton

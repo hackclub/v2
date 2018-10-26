@@ -26,7 +26,7 @@ import Sponsors from 'components/donate/Sponsors'
 import commaNumber from 'comma-number'
 import donors from 'components/donate/donors.json'
 
-const Header = styled(Section.withComponent('header'))`
+const Header = styled(Box.withComponent('header'))`
   background: url('/pattern.svg');
   > div {
     display: grid;
@@ -59,10 +59,9 @@ const DonateSheet = styled(Sheet)`
 `
 
 const Quote = styled(Sheet).attrs({
-  maxWidth: 48,
-  f: 3,
-  px: [3, 4, 5],
-  py: 5,
+  maxWidth: 52,
+  fontSize: 3,
+  p: [4, 5],
   color: 'white'
 })`
   position: relative;
@@ -75,6 +74,7 @@ const Quote = styled(Sheet).attrs({
     left: 0;
     top: 0;
     color: ${theme.colors.snow};
+    opacity: 0.5;
     padding: ${theme.space[3]}px;
   }
 `
@@ -164,8 +164,8 @@ const subhline = { f: [3, 4], style: { lineHeight: '1.375' } }
 const subtext = { f: [3, 4], style: { lineHeight: '1.5' } }
 
 const contentContainer = {
-  maxWidth: 64,
-  w: 1,
+  maxWidth: 72,
+  width: 1,
   p: 3,
   color: 'black',
   style: { position: 'relative' }
@@ -240,8 +240,15 @@ export default () => (
       ]}
     />
     <Nav color="muted" />
-    <Header px={0} py={4}>
-      <Container {...contentContainer} maxWidth={72} align="left" py={6}>
+    <Header pt={[4, 5, 6]}>
+      <Container
+        color="black"
+        maxWidth={64}
+        align="left"
+        pt={[6, 7]}
+        pb={6}
+        px={3}
+      >
         <Container maxWidth={48} mx={0}>
           <Heading.h1 color="primary" f={[3, 4]} caps>
             Donate to Hack Club

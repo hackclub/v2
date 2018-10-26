@@ -96,7 +96,7 @@ const BottomLine = styled(Box)`
 const Footer = ({ dark = false, children, ...props }) => (
   <Base
     color={dark ? 'muted' : 'slate'}
-    py={[4, 5]}
+    py={[4, 5, 6]}
     dark={dark}
     align="left"
     {...props}

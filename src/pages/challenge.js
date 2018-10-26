@@ -163,7 +163,8 @@ export default class extends Component {
         <Nav />
         <Header p={3}>
           <HeaderContainer
-            pt={[4, 5]}
+            maxWidth={64}
+            pt={[4, 5, 6]}
             pb={4}
             align="left"
             success={status === 'success'}

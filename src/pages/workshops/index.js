@@ -85,7 +85,7 @@ export default ({
       <Nav />
       <Base>
         <Background px={3} pt={4}>
-          <Box.header align="center" pt={4} pb={3}>
+          <Box.header align="center" pt={[4, 5, 6]} pb={3}>
             <Name f={6}>Workshops</Name>
             <Text color="violet.0" f={[3, 4]} mt={2} bold caps>
               By Hack Club

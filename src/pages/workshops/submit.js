@@ -15,7 +15,7 @@ export default () => (
     <Nav color="slate" />
     <BG color="snow" />
     <Header py={4} align="center">
-      <Container maxWidth={32} mt={5}>
+      <Container maxWidth={32} pt={[5, 6]} pb={4}>
         <Heading.h1 color="black" f={[5, 6]}>
           Submit a Workshop
         </Heading.h1>

@@ -95,18 +95,17 @@ const Bubble = styled(Box)`
         props.mine
           ? gradient('blue.5', 'blue.6')
           : gradient('gray.0', 'gray.1')};
-      border-radius: 18px;
+      border-radius: 21px;
+      min-height: 42px;
       padding: ${theme.space[1]}px;
-      min-height: 36px;
     `};
-  color: ${props => (props.mine ? theme.colors.white : theme.colors.black)};
+  color: ${props => theme.colors[props.mine ? 'white' : 'black']};
   margin-top: ${theme.space[1]}px;
   max-width: 24rem;
 `
 
 const Body = styled(Box.withComponent(ReactMarkdown))`
-  padding: ${theme.space[1]}px
-    ${({ theme }) => theme.space[3] - theme.space[1]}px;
+  padding: 4px 8px;
   ${commentStyle};
 `
 

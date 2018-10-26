@@ -96,10 +96,12 @@ const Quote = styled(Sheet).attrs({ maxWidth: 48, bg: 'smoke', f: 3 })`
   }
 `
 const FirstLetter = styled(Text)`
-  @supports (-webkit-initial-letter: 1) {
+  @supports (initial-letter: 1) or (-webkit-initial-letter: 1) {
     &:first-child:first-letter {
-      -webkit-initial-letter: 3;
+      -webkit-initial-letter: 2;
+      initial-letter: 2;
       margin-right: ${theme.space[3]}px;
+      margin-left: ${theme.space[3]}px;
       font-weight: bold;
     }
   }
@@ -174,7 +176,7 @@ export default () => (
       ]}
     />
     <Nav dark />
-    <Box bg="dark" align="center">
+    <Box bg="dark" align="center" pt={[4, 5]}>
       <Container maxWidth={72} px={3} py={[5, 6]}>
         <Megaline color="snow" mt={4}>
           Welcome, high school hackers. You’ve found your place.
@@ -207,7 +209,7 @@ export default () => (
         <Features mt={[4, 5]}>
           <Box>
             <CommunityLine />
-            <Subhline color="smoke" mt={4}>
+            <Subhline color="smoke" mt={5}>
               Join the party & show your work.
             </Subhline>
             <Text color="muted" f={4}>
@@ -217,7 +219,7 @@ export default () => (
           </Box>
           <Box>
             <CommunityLine />
-            <Subhline color="smoke" mt={4}>
+            <Subhline color="smoke" mt={5}>
               Meet some truly incredible people.
             </Subhline>
             <Text color="muted" f={4}>
@@ -288,8 +290,10 @@ export default () => (
         <Features mt={[4, 5]}>
           <Box>
             <ResourcesLine />
-            <Subhline color="smoke" mt={4}>
-              Running an event? We can help.
+            <Subhline color="smoke" mt={5}>
+              Running an event?
+              <br />
+              We can help.
             </Subhline>
             <Text color="muted" f={4}>
               Organizing a hackathon is tough. Luckily,{' '}
@@ -300,7 +304,7 @@ export default () => (
           </Box>
           <Box>
             <ResourcesLine />
-            <Subhline color="smoke" mt={4}>
+            <Subhline color="smoke" mt={5}>
               Learn as you build at hackathons & events.
             </Subhline>
             <Text color="muted" f={4}>
@@ -323,7 +327,7 @@ export default () => (
       <Container px={3} py={[5, 6]}>
         <GlowingIcon glyph="explore" color="#c57206" size={96} ml={-2} />
         <ColoredHeadline colors={['#d98b38', '#c57206', '#7c3b00']}>
-          Come to Hack Night, our weekly nighttime hackathons.
+          Come to Hack&nbsp;Night, our weekly nighttime hackathons.
         </ColoredHeadline>
         <Text color="#a56a3b" f={4} mb={3} style={{ maxWidth: '48rem' }}>
           Every Saturday night at 6pm PST, a group from our community comes

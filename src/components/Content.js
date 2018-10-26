@@ -37,6 +37,7 @@ export const Featline = styled(Heading.h3).attrs({
 
 export const ColoredHeadline = styled(Headline).attrs({ pb: 2, mb: 3 })`
   color: ${({ colors }) => cx(colors[2])};
+  max-width: 54rem;
   @supports (-webkit-background-clip: text) {
     background: linear-gradient(
       to right,

@@ -214,8 +214,8 @@ const styles = {
   miniline: { f: [4, 5], mb: 2, style: { lineHeight: '1.25' } },
   lead: { f: [3, 4], my: 3, regular: true, style: { lineHeight: '1.5' } },
   contentContainer: {
-    maxWidth: 64,
-    w: 1,
+    maxWidth: 72,
+    width: 1,
     p: 3,
     color: 'black'
   }
@@ -240,7 +240,14 @@ export default () => (
     />
     <Nav />
     <PhotoSection inverted src="/start/header.jpg" style={{ padding: 0 }}>
-      <Container maxWidth={56} p={[2, 3]} mt={[5, 6]} mb={[4, 5]} color="white">
+      <Container
+        maxWidth={56}
+        px={[2, 3]}
+        py={[4, 5, 6]}
+        mt={[5, 6]}
+        mb={[4, 5]}
+        color="white"
+      >
         <Heading.h1 {...styles.ultraline} f={[6, 7, 8]}>
           You’re about to start an incredible coding club.
         </Heading.h1>
@@ -301,14 +308,14 @@ export default () => (
     </Box>
     <Flex flexDirection="column" bg="snow" py={[4, 5]}>
       <Container {...styles.contentContainer}>
-        <Text f={4} caps bold color="muted">
-          Resources
-        </Text>
-        <Headline my={3}>
-          We’ll provide support to get your club{' '}
-          <Text.span color="teal.6">going & growing</Text.span>.
-        </Headline>
         <TextBox maxWidth={48}>
+          <Text f={4} caps bold color="muted">
+            Resources
+          </Text>
+          <Headline my={3}>
+            We’ll provide support to get your club{' '}
+            <Text.span color="teal.6">going & growing</Text.span>.
+          </Headline>
           <Text {...styles.lead}>
             From working with our 200+ Hack Clubs at high schools around the
             world, we’ve assembled the resources you’ll need for a successful
@@ -372,32 +379,38 @@ export default () => (
         </Features>
       </Container>
     </Flex>
-    <Flex flexDirection={['column', null, 'row']} justify="center" py={[4, 5]}>
-      <Icon glyph="welcome" color="pink.5" size={128} m={[null, null, 3]} />
-      <Container {...styles.contentContainer} maxWidth={48} align="left" mx={0}>
-        <Headline>
-          Start a new club, or bring your own. We’re excited to meet you.
-        </Headline>
-        <Text {...styles.lead} mt={3}>
-          When established CS clubs join, they get the full benefits of the
-          network. While Hack Club is currently optimized for new chapters,
-          we’re increasing the benefits for existing clubs every day by
-          launching new projects like{' '}
-          <A.link to="/challenge" target="_blank">
-            Challenge
-          </A.link>
-          ,{' '}
-          <A href="https://hackathons.hackclub.com" target="_blank">
-            Hackathons
-          </A>
-          , &{' '}
-          <A.link to="/bank" target="_blank">
-            Bank
-          </A.link>
-          .
-        </Text>
-      </Container>
-    </Flex>
+    <Container {...styles.contentContainer} maxWidth={64}>
+      <Flex
+        flexDirection={['column', null, 'row']}
+        justify="center"
+        py={[4, 5, 6]}
+      >
+        <Icon glyph="welcome" color="pink.5" size={96} m={[null, null, 3]} />
+        <Box align="left">
+          <Headline>
+            Start a new club, or bring your own. We’re excited to meet you.
+          </Headline>
+          <Text {...styles.lead} mt={3}>
+            When established CS clubs join, they get the full benefits of the
+            network. While Hack Club is currently optimized for new chapters,
+            we’re increasing the benefits for existing clubs every day by
+            launching new projects like{' '}
+            <A.link to="/challenge" target="_blank">
+              Challenge
+            </A.link>
+            ,{' '}
+            <A href="https://hackathons.hackclub.com" target="_blank">
+              Hackathons
+            </A>
+            , &{' '}
+            <A.link to="/bank" target="_blank">
+              Bank
+            </A.link>
+            .
+          </Text>
+        </Box>
+      </Flex>
+    </Container>
     <Flex flexDirection="column" bg="snow" py={[4, 5]}>
       <Container {...styles.contentContainer}>
         <TextBox>

@@ -39,7 +39,7 @@ const Root = styled(Flex.withComponent('section')).attrs({
     line-height: 1;
   }
   p {
-    max-width: 46rem;
+    max-width: 36rem;
   }
 `
 
@@ -48,8 +48,8 @@ const Wrapper = styled(Container.withComponent(Flex)).attrs({
   flexDirection: 'column',
   maxWidth: 48,
   px: [2, null, 0],
-  pt: [5, 6],
-  pb: [4, 5]
+  pt: [5, 6, 7],
+  pb: [4, 5, 6]
 })``
 
 const Announcement = styled(Sheet).attrs({
@@ -67,6 +67,7 @@ const Announcement = styled(Sheet).attrs({
 `
 
 const HeaderStats = styled(Text.withComponent('ul')).attrs({
+  color: 'blue.1',
   mt: 0,
   ml: -2,
   mb: [2, 3],
@@ -79,7 +80,7 @@ const HeaderStat = styled(Text.withComponent('li')).attrs({ f: [3, 4], ml: 2 })`
   display: inline;
   &:not(:last-child):after {
     position: relative;
-    top: 2px;
+    top: 6px;
     margin-left: ${theme.space[2]}px;
     margin-right: -2px;
     font-size: ${theme.fontSizes[5]}px;
@@ -147,7 +148,7 @@ export default () => (
       <Text f={[3, 4]} mx="auto" mt={3} mb={0} caps>
         By the students, for the students.
       </Text>
-      <Heading.h1 f={[6, 7, 8]} mx={[0, null, -3, -5]} mt={2} mb={3}>
+      <Heading.h1 f={[7, 8]} mx={[0, null, -3, -5]} my={2}>
         High school coding clubs.
       </Heading.h1>
       <HeaderStats>

@@ -234,7 +234,7 @@ export default ({ data }) => {
           align="center"
           style={{ backgroundImage: `url('${bg}')`, position: 'relative' }}
         >
-          <Container pt={5} pb={3} px={2}>
+          <Container pt={[5, 6]} px={2}>
             <Breadcrumbs align="center" justify="center" mt={3} mb={2} wrap>
               <Breadcrumb to="/workshops" name="All Workshops" position={1} />
               <BreadcrumbDivider />
@@ -247,9 +247,9 @@ export default ({ data }) => {
             </Breadcrumbs>
             <Name f={6} mb={3} children={name} />
             <Heading.h2 f={4} children={description} />
-            <Text f={2} caps mt={3} children={linkAuthor(author)} />
+            <Text f={2} caps mt={3} mb={[3, 0]} children={linkAuthor(author)} />
           </Container>
-          <Flex w={1} p={3} justify="space-between">
+          <Flex w={1} px={3} pb={3} justify="space-between">
             <Invert f={2} my={1} />
             <IconButton
               bg="slate"

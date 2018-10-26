@@ -77,7 +77,6 @@ const Announcement = styled(Sheet).attrs({
 const Dark = styled(Box).attrs({ bg: 'dark', color: 'white' })``
 
 const Grid = styled(Container.withComponent(Flex)).attrs({
-  maxWidth: 64,
   px: [3, 4],
   wrap: true
 })`
@@ -209,7 +208,7 @@ export default () => (
     <Nav />
     <BackgroundGradient>
       <BackgroundVideo />
-      <Container px={3} pt={[5, 6]} color="white" align="center">
+      <Container px={3} pt={[5, 6, 7]} color="white" align="center">
         <Announcement>
           <Icon size={24} glyph="history" color="slate" />
           <Text color="black" fontSize={2} ml={1} bold>
@@ -274,8 +273,8 @@ export default () => (
         <Icon glyph="down-caret" size={48} />
       </Flex>
     </BackgroundGradient>
-    <Dark py={5}>
-      <Container maxWidth={36} px={3} mb={4} align="center">
+    <Dark py={[5, 6]}>
+      <Container maxWidth={36} px={3} mb={5} align="center">
         <ColoredHeadline colors={['fuschia.5', 'pink.5', 'orange.5']} mb={2}>
           Channels galore.
         </ColoredHeadline>

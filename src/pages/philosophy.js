@@ -45,7 +45,7 @@ const Seal = styled(Box)`
   transform: rotate(4deg);
   ${theme.mediaQueries.sm} {
     transform: rotate(3deg);
-    margin-top: -${theme.space[5]}px;
+    margin-top: -3rem;
   }
 `
 
@@ -84,11 +84,12 @@ const HeadLine = styled(Heading.h1).attrs({
   }
 `
 
-const Row = styled(Container).attrs({ px: 3, color: 'black' })`
+const Row = styled(Container).attrs({ px: 3, py: [4, 5], color: 'black' })`
   display: grid;
   text-align: left;
   h2 {
     line-height: 1;
+    margin-bottom: ${theme.space[3]}px;
   }
   ${theme.mediaQueries.md} {
     grid-gap: ${theme.space[3]}px;
@@ -126,7 +127,7 @@ export default () => (
     />
     <Nav />
     <Header>
-      <Container w={1} maxWidth={56} py={5} px={3} align="left">
+      <Container width={1} maxWidth={56} py={[6]} px={3} align="left">
         <HeadLine children="We’re" />
         <HeadLine children="at our best" />
         <HeadLine children="when we’re" />
@@ -151,7 +152,7 @@ export default () => (
         creating.
       </Text>
     </Row>
-    <Row py={4}>
+    <Row>
       <Heading.h2 f={[5, 6]} color="fuschia.5">
         Make, from anywhere.
       </Heading.h2>
@@ -161,7 +162,7 @@ export default () => (
         app. Building things has never been so globally democratized.
       </Text>
     </Row>
-    <Row py={4}>
+    <Row>
       <Heading.h2 f={[5, 6]} color="violet.5">
         Hack, hack, hack.
       </Heading.h2>
@@ -173,7 +174,7 @@ export default () => (
         everyone.
       </Text>
     </Row>
-    <Row py={4}>
+    <Row>
       <Heading.h2 f={[5, 6]} color="indigo.5">
         Start building.
       </Heading.h2>
@@ -184,7 +185,7 @@ export default () => (
         start with no experience and build and ship a project every meeting.
       </Text>
     </Row>
-    <Row py={4}>
+    <Row>
       <Heading.h2 f={[5, 6]} color="blue.6">
         Learn as you build.
       </Heading.h2>
@@ -197,7 +198,7 @@ export default () => (
         the way, but we’re here to help.
       </Text>
     </Row>
-    <Row py={4}>
+    <Row>
       <Heading.h2 f={[5, 6]} color="cyan.7">
         Be part of a community.
       </Heading.h2>

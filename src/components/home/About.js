@@ -119,7 +119,7 @@ const ActionLink = styled(Button.withComponent(A)).attrs(action)`
 `
 
 export default () => (
-  <Container width={1} px={[3, 4, null, 2]} mt={5} color="black">
+  <Container width={1} px={[3, 4, null, 2]} py={[4, 5]} mt={5} color="black">
     <Heading.h2 fontSize={[5, 6]} mb={3}>
       Join a nationwide community of students building the class they wish they
       could take.

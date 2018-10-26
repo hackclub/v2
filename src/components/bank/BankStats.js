@@ -36,7 +36,7 @@ class BankStats extends Component {
     if (transactionsTotalVolume) {
       return (
         <Container>
-          <Text f={[3, 4]}>
+          <Text fontSize={[3, 4]}>
             <Text.span bold>{transactionsTotalVolume}</Text.span> transacted in
             the past {timeSince(launchDate, true, new Date(), true)} (&
             counting)

@@ -85,7 +85,7 @@ const LeaderInvite = ({ position }) => {
             </Box>
             <Button
               inverted
-              f={2}
+              fontSize={2}
               onClick={() =>
                 alert(
                   `Let me know at max@hackclub.com you want invite #${
@@ -160,7 +160,7 @@ class LeaderPosition extends Component {
               <Button
                 inverted={leader_profile.name !== this.state.typed}
                 disabled={leader_profile.name !== this.state.typed}
-                w={1}
+                width={1}
                 onClick={() => {
                   if (leader_profile.name === this.state.typed) {
                     this.deletePosition()
@@ -187,7 +187,7 @@ class LeaderPosition extends Component {
               </Box>
               {!mine && (
                 <Button
-                  f={2}
+                  fontSize={2}
                   inverted
                   onClick={() => this.setState({ status: 'confirming' })}
                 >

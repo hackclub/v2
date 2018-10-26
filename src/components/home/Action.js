@@ -46,7 +46,7 @@ const PromoHeading = styled(Heading.h2)`
 const Action = styled(LargeButton.withComponent(Link)).attrs({
   chevronRight: true,
   scale: true,
-  f: [2, 3]
+  fontSize: [2, 3]
 })`
   background-image: linear-gradient(
     to bottom,

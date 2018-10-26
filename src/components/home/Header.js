@@ -76,7 +76,7 @@ const HeaderStats = styled(Text.withComponent('ul')).attrs({
   line-height: 1;
 `
 
-const HeaderStat = styled(Text.withComponent('li')).attrs({ f: [3, 4], ml: 2 })`
+const HeaderStat = styled(Text.withComponent('li')).attrs({ fontSize: [3, 4], ml: 2 })`
   display: inline;
   &:not(:last-child):after {
     position: relative;
@@ -93,7 +93,7 @@ const Action = styled(LargeButton.withComponent(Link)).attrs({
   scale: true,
   py: 3,
   px: [3, 4],
-  f: 2
+  fontSize: 2
 })``
 const DonateAction = styled(Action)`
   background-image: linear-gradient(
@@ -145,10 +145,10 @@ export default () => (
           Learn more
         </A>
       </Announcement>
-      <Text f={[3, 4]} mx="auto" mt={3} mb={0} caps>
+      <Text fontSize={[3, 4]} mx="auto" mt={3} mb={0} caps>
         By the students, for the students.
       </Text>
-      <Heading.h1 f={[7, 8]} mx={[0, null, -3, -5]} my={2}>
+      <Heading.h1 fontSize={[7, 8]} mx={[0, null, -3, -5]} my={2}>
         High school coding clubs.
       </Heading.h1>
       <HeaderStats>
@@ -156,7 +156,7 @@ export default () => (
         <HeaderStat>{stats.state_count} states</HeaderStat>
         <HeaderStat>{stats.country_count} countries</HeaderStat>
       </HeaderStats>
-      <Text f={[3, 4]} mx="auto">
+      <Text fontSize={[3, 4]} mx="auto">
         Hack Club is a nonprofit network of computer science clubs where members
         learn to code through tinkering and building projects.
       </Text>
@@ -170,7 +170,7 @@ export default () => (
           </Hide>
           Slack
         </SlackAction>
-        <StartAction to="/start" f={[3, null, 4]} chevronRight>
+        <StartAction to="/start" fontSize={[3, null, 4]} chevronRight>
           Get Started
         </StartAction>
       </Flex>

@@ -114,7 +114,7 @@ export class AutoSaver extends Component {
 export const Error = styled(Text.span).attrs({
   className: 'error',
   color: 'error',
-  f: 1,
+  fontSize: 1,
   ml: 1
 })`
   text-transform: lowercase;
@@ -125,7 +125,7 @@ export const Error = styled(Text.span).attrs({
 
 export const Hint = styled(Text.span).attrs({
   color: 'slate',
-  f: 1,
+  fontSize: 1,
   mt: 1,
   align: 'left'
 })`
@@ -153,7 +153,7 @@ export class ConfirmClose extends Component {
 export const Optional = () => (
   <Text.span
     className="optional"
-    f={1}
+    fontSize={1}
     ml={1}
     color="muted"
     children="(optional)"
@@ -219,7 +219,7 @@ export class Field extends Component {
             boxShadowSize="sm"
             mt={1}
             p={[2, 3]}
-            w={1}
+            width={1}
             bg={bg}
             style={{ cursor: 'pointer' }}
           >
@@ -249,7 +249,7 @@ export const Submit = styled(Button.withComponent('input')).attrs({
   color: 'white',
   py: 2,
   px: 3,
-  f: 2
+  fontSize: 2
 })`
   text-transform: uppercase;
 `
@@ -258,7 +258,7 @@ Submit.lg = styled(LargeButton.withComponent('input')).attrs({
   color: 'white',
   py: 3,
   px: 4,
-  f: 3
+  fontSize: 3
 })`
   text-transform: uppercase;
 `
@@ -287,7 +287,7 @@ export const Form = styled(Container.withComponent('form')).attrs({
 `
 
 export const Subheading = styled(Heading.h2).attrs({
-  f: 4,
+  fontSize: 4,
   color: 'primary'
 })`
   text-transform: capitalize;

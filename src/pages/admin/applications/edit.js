@@ -75,7 +75,7 @@ class Collapsable extends Component {
           onClick={() => {
             this.setState({ status: !status })
           }}
-          f={this.props.f}
+          fontSize={this.props.f}
         >
           {this.props.heading} <Arrow ml={2} active={status} />
         </Heading.h2>
@@ -158,14 +158,14 @@ export default class extends Component {
               <Collapsable heading="Application">
                 <Collapsable
                   heading={`Application: ${app.high_school_name}`}
-                  f={4}
+                  fontSize={4}
                 >
                   <Information application={app} />
                 </Collapsable>
                 {app.leader_profiles.map(lp => (
                   <Collapsable
                     heading={`Leader Profile: ${lp.leader_name}`}
-                    f={3}
+                    fontSize={3}
                     key={lp.id}
                   >
                     <LeaderProfileInfo leaderProfile={lp} />

@@ -26,13 +26,13 @@ LargeButton.link = LargeButton.withComponent(Link)
 const Start = ({ buttonProps = {}, ...props }) => (
   <Base px={[2, 4, 5]} py={[4, 5, 6]} my={4} {...props}>
     <Box align={['center', null, 'right']}>
-      <Heading.h2 color="white" f={[5, 6]} m={0}>
+      <Heading.h2 color="white" fontSize={[5, 6]} m={0}>
         Late applications open.
       </Heading.h2>
-      <Text color="red.0" f={[3, 4]} my={2}>
+      <Text color="red.0" fontSize={[3, 4]} my={2}>
         Build the class you wish you took.
       </Text>
-      <Text color="red.0" f={[3, 4]} m={0}>
+      <Text color="red.0" fontSize={[3, 4]} m={0}>
         Bring the movement to your school.
       </Text>
     </Box>

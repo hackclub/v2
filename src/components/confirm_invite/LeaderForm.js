@@ -162,7 +162,7 @@ const InnerForm = ({
       onClick={handleSubmit}
       value="Submit"
       bg="primary"
-      f={4}
+      fontSize={4}
     />
   </form>
 )

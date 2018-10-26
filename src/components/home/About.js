@@ -125,7 +125,7 @@ export default () => (
       could take.
     </Heading.h2>
     <Container maxWidth={48} mx={0}>
-      <Text f={[3, 4]}>
+      <Text fontSize={[3, 4]}>
         Hack Clubs are student-led groups dedicated to fostering the{' '}
         <Like href="https://en.wikipedia.org/wiki/Hacker_culture#Ethics_and_principles">
           hacker culture
@@ -137,7 +137,7 @@ export default () => (
     <Grid mt={4} mb={[4, 6]}>
       <IntroSheet>
         <Featline>Go beyond club meetings.</Featline>
-        <Text f={3} mt={3}>
+        <Text fontSize={3} mt={3}>
           Hack Clubs attend and run hackathons like{' '}
           <Like href="https://hackchicago.io">Hack Chicago</Like> and{' '}
           <Like href="http://outlooknewspapers.com/hackademia-aims-for-young-tech-devotees/">
@@ -163,7 +163,7 @@ export default () => (
       <Photo src="/about_2.jpg" scale />
       <ModulesSheet>
         <Featline>We help you get started.</Featline>
-        <Modules my={3} w={1}>
+        <Modules my={3} width={1}>
           <Module
             icon="support"
             name="Online community"
@@ -188,12 +188,12 @@ export default () => (
       </ModulesSheet>
     </Grid>
     <Box mx={0} mt={5} color="black">
-      <Heading.h2 f={[5, 6]} mb={3}>
+      <Heading.h2 fontSize={[5, 6]} mb={3}>
         We believe people learn best when they take control of their own
         education.
       </Heading.h2>
       <Container maxWidth={48} mx={0}>
-        <Text f={[3, 4]}>
+        <Text fontSize={[3, 4]}>
           Hack Club is heavily inspired by unschooling. At Hack Club, there are
           no teachers or lectures—members work at their own pace on their own
           projects. Club leaders act as{' '}
@@ -208,7 +208,7 @@ export default () => (
     <Grid my={[4, 5]} color="white" pb={3}>
       <Super>
         <Featline>Coding is a superpower.</Featline>
-        <Text f={3} my={3}>
+        <Text fontSize={3} my={3}>
           Coding is a superpower and we believe that the way we teach it should
           reflect that. Students should learn through building projects, not
           listening to boring lectures.
@@ -222,10 +222,14 @@ export default () => (
       <Graph>
         <Featline>Grassroots & growing.</Featline>
         <Stats mt={3} mb={2}>
-          <Stat f={7} value={stats.school_count} label="schools" />
-          <Stat f={7} value={stats.country_count} label="countries" />
-          <Stat f={7} value={stats.state_count} label="states" />
-          <Stat f={7} value={stats.approximate_members} label="members" />
+          <Stat fontSize={7} value={stats.school_count} label="schools" />
+          <Stat fontSize={7} value={stats.country_count} label="countries" />
+          <Stat fontSize={7} value={stats.state_count} label="states" />
+          <Stat
+            fontSize={7}
+            value={stats.approximate_members}
+            label="members"
+          />
         </Stats>
         <Action to="/hackers" bg="teal.6">
           Our community

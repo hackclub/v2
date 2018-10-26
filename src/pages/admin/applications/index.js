@@ -150,9 +150,9 @@ export default class extends Component {
                 align="center"
                 wrap
               >
-                <Heading.h1 f={[5, 6]}>Dashboard</Heading.h1>
+                <Heading.h1 fontSize={[5, 6]}>Dashboard</Heading.h1>
               </Flex>
-              <Heading.h2 color="muted" f={4} mt={2} regular>
+              <Heading.h2 color="muted" fontSize={4} mt={2} regular>
                 Hello, it’s{' '}
                 {new Date().toLocaleDateString('en-us', { weekday: 'long' })}
                 {'. '}

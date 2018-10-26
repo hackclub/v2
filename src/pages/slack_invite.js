@@ -228,10 +228,10 @@ export default () => (
             Sign in
           </Link>
         </Announcement>
-        <Heading.h1 f={[6, 7]} mt={[3, 4]} mb={2}>
+        <Heading.h1 fontSize={[6, 7]} mt={[3, 4]} mb={2}>
           Join the Hack Club Slack
         </Heading.h1>
-        <Heading.h2 color="pink.0" f={[4, 5]} mb={4} regular>
+        <Heading.h2 color="pink.0" fontSize={[4, 5]} mb={4} regular>
           Talk to our community, get coding help, have fun.
         </Heading.h2>
         {/* NOTE(@lachlanjc): Waiting on these endpoints
@@ -239,7 +239,7 @@ export default () => (
           <LiveStat
             url=""
             path="total_members"
-            f={7}
+            fontSize={7}
             mx={2}
             fallback="2K"
             label="total members"
@@ -247,7 +247,7 @@ export default () => (
           <LiveStat
             url=""
             path="new_members_this_month"
-            f={7}
+            fontSize={7}
             mx={2}
             fallback="256"
             label="new members this month"
@@ -255,7 +255,7 @@ export default () => (
           <LiveStat
             url=""
             path="new_messages_this_week"
-            f={7}
+            fontSize={7}
             mx={2}
             fallback="12K"
             label="messages this week"

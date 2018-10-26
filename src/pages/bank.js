@@ -72,17 +72,17 @@ const Megaline = styled(Heading.h1).attrs({
   line-height: 1.125;
 `
 const Headline = styled(Heading.h2).attrs({
-  f: [5, 6],
+  fontSize: [5, 6],
   mb: 3,
   color: 'snow',
   bold: true
 })`
   line-height: 1.125;
 `
-const subhline = { f: [3, 4], style: { lineHeight: '1.375' } }
+const subhline = { fontSize: [3, 4], style: { lineHeight: '1.375' } }
 
 const Lead = Container.withComponent(Text)
-Lead.defaultProps = { f: 3, mx: 'auto' }
+Lead.defaultProps = { fontSize: 3, mx: 'auto' }
 
 const Banner = styled(Container).attrs({
   maxWidth: 48,
@@ -232,7 +232,7 @@ export default () => (
         </Container>
         <CTA href="https://goo.gl/forms/1UzFR4zkljL7dHQ32">Apply</CTA>
       </Join>
-      <Lead maxWidth={32} color="slate" f={1} mt={3}>
+      <Lead maxWidth={32} color="slate" fontSize={1} mt={3}>
         Hack Club does not directly provide banking services. Banking services
         provided by Silicon Valley Bank, an FDIC-certified institution.
       </Lead>

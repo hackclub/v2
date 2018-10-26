@@ -33,14 +33,14 @@ export default () => (
     <Nav />
     <Header align="center">
       <Container maxWidth={32} pt={4}>
-        <Heading.h1 f={[5, 6]} mt={0} mb={2}>
+        <Heading.h1 fontSize={[5, 6]} mt={0} mb={2}>
           Hack Camp has been discontinued.
         </Heading.h1>
-        <Heading f={[3, 4]}>We’ve replaced camps in favor of clubs!</Heading>
+        <Heading fontSize={[3, 4]}>We’ve replaced camps in favor of clubs!</Heading>
       </Container>
     </Header>
     <Container maxWidth={32} py={[3, 4]} color="black" align="center">
-      <Text f={3}>
+      <Text fontSize={3}>
         Apply to our clubs program and we’ll help you launch and lead a coding
         club at your school. It’s like summer camp, except that it runs all year
         long!

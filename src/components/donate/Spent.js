@@ -44,14 +44,14 @@ const Item = ({ label, value, ...props }) => (
         width: 256 * (value / total)
       }}
     />
-    <Text.span f={1} bold color={`${colors[label]}.6`} ml={3}>
+    <Text.span fontSize={1} bold color={`${colors[label]}.6`} ml={3}>
       {capitalize(label)}: {`$${commaNumber(round(value))}`}
     </Text.span>
   </Row>
 )
 
 const Spent = () => (
-  <Box w={1}>
+  <Box width={1}>
     {map(segments, (value, segment) => (
       <Item label={segment} key={segment} value={value} />
     ))}

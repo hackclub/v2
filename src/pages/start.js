@@ -127,8 +127,8 @@ const Module = ({ icon, name, body, ...props }) => (
       style={{ flexShrink: 0 }}
     />
     <Box>
-      <Heading.h3 mb={1} f={5} children={name} />
-      <Text f={4} style={{ lineHeight: '1.375' }} children={body} />
+      <Heading.h3 mb={1} fontSize={5} children={name} />
+      <Text fontSize={4} style={{ lineHeight: '1.375' }} children={body} />
     </Box>
   </Flex>
 )
@@ -209,10 +209,10 @@ const ImageSheet = styled(Sheet.withComponent(BackgroundImage))`
 `
 
 const styles = {
-  ultraline: { f: [6, 7], style: { lineHeight: '1' } },
-  headline: { f: [5, 6], style: { lineHeight: '1.125' } },
-  miniline: { f: [4, 5], mb: 2, style: { lineHeight: '1.25' } },
-  lead: { f: [3, 4], my: 3, regular: true, style: { lineHeight: '1.5' } },
+  ultraline: { fontSize: [6, 7], style: { lineHeight: '1' } },
+  headline: { fontSize: [5, 6], style: { lineHeight: '1.125' } },
+  miniline: { fontSize: [4, 5], mb: 2, style: { lineHeight: '1.25' } },
+  lead: { fontSize: [3, 4], my: 3, regular: true, style: { lineHeight: '1.5' } },
   contentContainer: {
     maxWidth: 72,
     width: 1,
@@ -248,11 +248,11 @@ export default () => (
         mb={[4, 5]}
         color="white"
       >
-        <Heading.h1 {...styles.ultraline} f={[6, 7, 8]}>
+        <Heading.h1 {...styles.ultraline} fontSize={[6, 7, 8]}>
           You’re about to start an incredible coding club.
         </Heading.h1>
         <Heading.h2
-          f={[3, 4]}
+          fontSize={[3, 4]}
           mt={3}
           mx="auto"
           style={{ fontWeight: 'normal', maxWidth: '48rem' }}
@@ -264,7 +264,7 @@ export default () => (
     </PhotoSection>
     <Box bg="white" py={[4, 5]}>
       <Container {...styles.contentContainer}>
-        <Text f={4} caps bold color="muted">
+        <Text fontSize={4} caps bold color="muted">
           Imagine
         </Text>
         <Headline my={3}>
@@ -309,7 +309,7 @@ export default () => (
     <Flex flexDirection="column" bg="snow" py={[4, 5]}>
       <Container {...styles.contentContainer}>
         <TextBox maxWidth={48}>
-          <Text f={4} caps bold color="muted">
+          <Text fontSize={4} caps bold color="muted">
             Resources
           </Text>
           <Headline my={3}>
@@ -414,7 +414,7 @@ export default () => (
     <Flex flexDirection="column" bg="snow" py={[4, 5]}>
       <Container {...styles.contentContainer}>
         <TextBox>
-          <Text f={4} caps bold color="muted">
+          <Text fontSize={4} caps bold color="muted">
             About
           </Text>
           <Headline my={3}>Teach coding, bring together a community.</Headline>
@@ -431,7 +431,7 @@ export default () => (
         <TwoUp mt={4}>
           <Sheet>
             <Featline>What happens outside of club meetings?</Featline>
-            <Text f={3}>
+            <Text fontSize={3}>
               After Hack Clubs establish a dedicated base of members, they begin
               to attend{' '}
               <A href="https://hackathons.hackclub.com" target="_blank">
@@ -450,7 +450,7 @@ export default () => (
             <Featline>
               Will you provide everything to make my club a success?
             </Featline>
-            <Text f={3}>
+            <Text fontSize={3}>
               No. Every school is different and you’re going to need to heavily
               customize our advice and resources. We try our best, but you know
               your school better than we do.
@@ -462,7 +462,7 @@ export default () => (
     <Box py={[4, 5]}>
       <Container {...styles.contentContainer}>
         <TextBox maxWidth={48} mb={4}>
-          <Text f={4} caps bold color="muted">
+          <Text fontSize={4} caps bold color="muted">
             Application
           </Text>
           <Headline my={3}>
@@ -519,7 +519,7 @@ export default () => (
       >
         <Headline>Begin your application.</Headline>
         <Box
-          f={[3, 4, 5]}
+          fontSize={[3, 4, 5]}
           my={3}
           style={{ fontWeight: 'normal', lineHeight: '1.75' }}
         >

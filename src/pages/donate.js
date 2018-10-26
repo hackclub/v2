@@ -159,9 +159,9 @@ const ContributionShapes = styled(Shapes)`
   }
 `
 
-const headline = { f: [5, 6], mb: 3, style: { lineHeight: '1.125' } }
-const subhline = { f: [3, 4], style: { lineHeight: '1.375' } }
-const subtext = { f: [3, 4], style: { lineHeight: '1.5' } }
+const headline = { fontSize: [5, 6], mb: 3, style: { lineHeight: '1.125' } }
+const subhline = { fontSize: [3, 4], style: { lineHeight: '1.375' } }
+const subtext = { fontSize: [3, 4], style: { lineHeight: '1.5' } }
 
 const contentContainer = {
   maxWidth: 72,
@@ -250,17 +250,17 @@ export default () => (
         px={3}
       >
         <Container maxWidth={48} mx={0}>
-          <Heading.h1 color="primary" f={[3, 4]} caps>
+          <Heading.h1 color="primary" fontSize={[3, 4]} caps>
             Donate to Hack Club
           </Heading.h1>
-          <Heading.h2 mt={2} mb={3} {...headline} f={[6, 7]}>
+          <Heading.h2 mt={2} mb={3} {...headline} fontSize={[6, 7]}>
             We rely on people like you to bring coding to the world.
           </Heading.h2>
           <Lead>
             Contribute today to empower the next generation. Help start a Hack
             Club at every high school.
           </Lead>
-          <Text mt={3} f={2} color="muted">
+          <Text mt={3} fontSize={2} color="muted">
             Your contribution is tax-deductible.
             <br />
             Hack Club is a 501(c)(3) non-profit with the EIN 81-2908499.
@@ -273,20 +273,20 @@ export default () => (
     </Header>
     <Container {...contentContainer}>
       <FirstQuote mb={[5, 6]}>
-        <Text f={4} mb={3}>
+        <Text fontSize={4} mb={3}>
           When I took CS classes in high school, I always found myself
           disengaged and feeling like they were just another class. After
           getting involved in Hack Club, a career in computer science changed
           from a possibility to reality.
         </Text>
-        <Text f={[4, 5]} bold>
+        <Text fontSize={[4, 5]} bold>
           Because of Hack Club, I started organizing hackathons with hundreds of
           participants, interning for companies including Intuit, and most
           importantly, fell in love with building things with code.
         </Text>
         <Flex align="center" mt={[3, 4]}>
           <Avatar src="/hackers/selynna.jpg" size={48} mr={3} />
-          <Box align="left" f={3}>
+          <Box align="left" fontSize={3}>
             <Text.span bold>Selynna Sun</Text.span>
             <Text fontSize={2} color="green.1">
               Sophomore & CS Major @ Cal Poly SLO
@@ -335,20 +335,26 @@ export default () => (
           </Text>
           <Financials p={0} mt={4}>
             <Stats bg="success" color="white" p={[3, 4]} pr={2}>
-              <Heading.h3 f={4} mb={2} caps>
+              <Heading.h3 fontSize={4} mb={2} caps>
                 Financials
               </Heading.h3>
               <Stat
-                f={6}
+                fontSize={6}
                 value={commaNumber(stats.monthly)}
                 label="monthly spend"
-                w={1}
+                width={1}
               />
-              <Stat f={6} mt={3} mb={2} value={stats.club} label="per club" />
-              <Stat f={6} value={stats.student} label="per student" />
+              <Stat
+                fontSize={6}
+                mt={3}
+                mb={2}
+                value={stats.club}
+                label="per club"
+              />
+              <Stat fontSize={6} value={stats.student} label="per student" />
             </Stats>
             <Box p={[3, 4]}>
-              <Heading.h3 f={4} my={0} caps>
+              <Heading.h3 fontSize={4} my={0} caps>
                 Spending breakdown
               </Heading.h3>
               <Spent />
@@ -379,7 +385,7 @@ export default () => (
         </Box>
       </Container>
       <SecondQuote mt={[3, 4]} mb={[4, 5]}>
-        <Text f={[4, 5]} bold>
+        <Text fontSize={[4, 5]} bold>
           Hack Club has inspired me to grow and become the person I am today.
           Being part of the community allows me to meet countless like-minded
           individuals who challenge me to become a better person, and a better
@@ -387,9 +393,9 @@ export default () => (
         </Text>
         <Flex align="center" mt={[3, 4]}>
           <Avatar src="/hackers/rashid.jpg" size={48} mr={3} />
-          <Box align="left" f={3}>
+          <Box align="left" fontSize={3}>
             <Text.span bold>Rashid Al-Abri</Text.span>
-            <Text f={2} color="blue.1">
+            <Text fontSize={2} color="blue.1">
               Club leader from Oman in Victoria, BC, Canada
             </Text>
           </Box>
@@ -397,7 +403,7 @@ export default () => (
       </SecondQuote>
     </Container>
     <Flex justify="center" bg="snow" color="black">
-      <Container w={1} py={[4, 5]} align={['left', 'center']}>
+      <Container width={1} py={[4, 5]} align={['left', 'center']}>
         <Headline px={3} mt={[3, 4]} mb={[4, 5]}>
           A few of our amazing donors.
         </Headline>

@@ -13,7 +13,7 @@ const NoComments = () => (
     py={4}
   >
     <Icon glyph="message-new" size={64} />
-    <Text color="gray.6" f={[2, 3]} mt={2} bold>
+    <Text color="gray.6" fontSize={[2, 3]} mt={2} bold>
       No comments here yet—want to start the conversation below?
     </Text>
   </Base>

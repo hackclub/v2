@@ -33,7 +33,7 @@ const InnerForm = ({
       onClick={handleSubmit}
       value={statusMessage(status)}
       bg="info"
-      w={1}
+      width={1}
       mt={3}
     />
   </Form>

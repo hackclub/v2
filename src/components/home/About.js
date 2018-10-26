@@ -120,7 +120,7 @@ const ActionLink = styled(Button.withComponent(A)).attrs(action)`
 
 export default () => (
   <Container width={1} px={[3, 4, null, 2]} py={[4, 5]} mt={5} color="black">
-    <Heading.h2 fontSize={[5, 6]} mb={3}>
+    <Heading.h2 style={{ maxWidth: '64rem' }} fontSize={[5, 6]} mb={3}>
       Join a nationwide community of students building the class they wish they
       could take.
     </Heading.h2>
@@ -134,7 +134,7 @@ export default () => (
         real-world projects like websites, apps, and games.
       </Text>
     </Container>
-    <Grid mt={4} mb={[4, 6]}>
+    <Grid mt={[4, 5]} mb={[5, 6]}>
       <IntroSheet>
         <Featline>Go beyond club meetings.</Featline>
         <Text fontSize={3} mt={3}>
@@ -188,7 +188,7 @@ export default () => (
       </ModulesSheet>
     </Grid>
     <Box mx={0} mt={5} color="black">
-      <Heading.h2 fontSize={[5, 6]} mb={3}>
+      <Heading.h2 style={{ maxWidth: '64rem' }} fontSize={[5, 6]} mb={3}>
         We believe people learn best when they take control of their own
         education.
       </Heading.h2>
@@ -205,7 +205,7 @@ export default () => (
         </Text>
       </Container>
     </Box>
-    <Grid my={[4, 5]} color="white" pb={3}>
+    <Grid mt={[4, 5]} mb={[5, 6]} color="white">
       <Super>
         <Featline>Coding is a superpower.</Featline>
         <Text fontSize={3} my={3}>

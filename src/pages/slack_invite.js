@@ -163,7 +163,7 @@ const channels = [
   {
     name: 'linux',
     desc:
-      'Share your setup, find ideas, ask for help. We’ve got a community of enthusiasts.',
+      'Share your setup, find ideas, & get help with a community of enthusiasts.',
     color: 'blue'
   },
   {

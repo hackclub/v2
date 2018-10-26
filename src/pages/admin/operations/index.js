@@ -73,7 +73,7 @@ class ClubCard extends Component {
       }))
       return (
         <Fragment>
-          <Text color={textColor} f={1}>
+          <Text color={textColor} fontSize={1}>
             Last checked-in {timeSince(mostRecentUpdate)}
           </Text>
           <Flex mt={3}>
@@ -83,7 +83,7 @@ class ClubCard extends Component {
       )
     } else {
       return (
-        <Text f={1} color="muted">
+        <Text fontSize={1} color="muted">
           Never checked in
         </Text>
       )
@@ -109,14 +109,14 @@ class ClubCard extends Component {
         boxShadowSize="sm"
         p={[2, 3]}
         m={3}
-        f={3}
+        fontSize={3}
         href={`/admin/operations/club?id=${this.props.id}`}
       >
         <Box align="left" mr={3}>
           <Text bold color="black">
             {this.props.high_school_name}
           </Text>
-          <Text color="slate" f={1}>
+          <Text color="slate" fontSize={1}>
             {this.props.new_leaders.map((leader, index) => (
               <Fragment key={leader.id}>
                 <Text.span>{leader.name}</Text.span>

@@ -34,17 +34,17 @@ class Auth extends Component {
           You’re <strong>{email}</strong> ({type}
           ).
         </Text>
-        <Button.button f={2} ml={3} onClick={this.signOut} bg="info" inverted>
+        <Button.button fontSize={2} ml={3} onClick={this.signOut} bg="info" inverted>
           Change
         </Button.button>
       </Flex>
     ) : (
       <Sheet {...cardProps}>
-        <Heading.h2 color="white" mt={0} mb={2} f={3} children={headline} />
+        <Heading.h2 color="white" mt={0} mb={2} fontSize={3} children={headline} />
         <LoginForm
           bg="black"
           color="white"
-          inputProps={{ w: 18 * 16 }}
+          inputProps={{ width: 18 * 16 }}
           textProps={{ color: 'black', align: 'left' }}
         />
       </Sheet>

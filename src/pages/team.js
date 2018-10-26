@@ -47,7 +47,7 @@ const UpdateLink = styled(Button.withComponent(Link)).attrs({
   color: 'white',
   py: 3,
   px: 4,
-  f: 2
+  fontSize: 2
 })`
   text-transform: uppercase;
   background-image: linear-gradient(
@@ -77,15 +77,15 @@ export default () => (
     <BG color="snow" />
     <Nav />
     <Header color="white">
-      <Container maxWidth={35} align="center" py={3}>
-        <Heading.h1 f={[3, 4]} regular caps mt={4} mb={2}>
+      <Container maxWidth={36} align="center" py={[3, 4]}>
+        <Heading.h1 fontSize={[3, 4]} regular caps mt={4} mb={2}>
           Hack Club Team
         </Heading.h1>
-        <Name f={6}>We the students.</Name>
-        <Text f={3} my={3}>
+        <Name fontSize={6}>We the students.</Name>
+        <Text fontSize={3} my={3}>
           We believe in a world where every young person is empowered to be the
-          change they want to see in the world. Through Hack Club, we’re working
-          hard to make it reality.
+          change they want to see around them. At Hack Club, we’re working hard
+          to make it reality.
         </Text>
       </Container>
     </Header>
@@ -135,7 +135,7 @@ export default () => (
     </Base>
     <Updates maxWidth={48} align="left" bg="black">
       <Container maxWidth={32} mx={0}>
-        <Heading.h2 f={[3, 4]} color="white">
+        <Heading.h2 fontSize={[3, 4]} color="white">
           What’ve we been doing recently?
         </Heading.h2>
         <Text color="smoke">

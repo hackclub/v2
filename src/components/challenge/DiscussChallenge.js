@@ -26,13 +26,13 @@ const DiscussChallenge = () => (
     >
       <Icon glyph="message-fill" size={48} />
       <Box align="left" color="pink.6" ml={[2, 3]}>
-        <Text f={2}>Join the conversation</Text>
-        <Text f={3} bold>
+        <Text fontSize={2}>Join the conversation</Text>
+        <Text fontSize={3} bold>
           #challenges
         </Text>
       </Box>
     </Flex>
-    <DiscussOnSlack f={2} />
+    <DiscussOnSlack fontSize={2} />
   </Root>
 )
 

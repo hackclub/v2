@@ -54,14 +54,14 @@ class SelfForm extends Component {
                 onClick={() => this.handleClick('staying')}
                 bg="success"
                 m={2}
-                w={1}
+                width={1}
               >
                 Yes
               </Button>
               <Button
                 onClick={() => this.handleClick('leaving')}
                 m={2}
-                w={1}
+                width={1}
                 inverted
               >
                 No
@@ -78,7 +78,7 @@ class SelfForm extends Component {
               interview. It will be a short (~10 minutes) call to talk about
               your time with your club.
             </Text>
-            <Button href="https://exit-interview.hackclub.com" w={1}>
+            <Button href="https://exit-interview.hackclub.com" width={1}>
               Schedule the call
             </Button>
           </Fragment>

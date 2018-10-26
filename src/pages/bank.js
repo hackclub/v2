@@ -61,32 +61,32 @@ Modules.defaultProps = {
   mt: [4, null, 3],
   mb: 3,
   mx: 'auto',
-  maxWidth: 64,
+  maxWidth: 72,
   align: ['left', null, 'center']
 }
 
 const Megaline = styled(Heading.h1).attrs({
-  fontSize: [6, 7],
+  fontSize: [6, 7, 8],
   color: 'white'
 })`
   line-height: 1.125;
 `
 const Headline = styled(Heading.h2).attrs({
-  f: [5, 6],
+  fontSize: [5, 6],
   mb: 3,
   color: 'snow',
   bold: true
 })`
   line-height: 1.125;
 `
-const subhline = { f: [3, 4], style: { lineHeight: '1.375' } }
+const subhline = { fontSize: [3, 4], style: { lineHeight: '1.375' } }
 
 const Lead = Container.withComponent(Text)
-Lead.defaultProps = { f: 3, mx: 'auto' }
+Lead.defaultProps = { fontSize: 3, mx: 'auto' }
 
 const Banner = styled(Container).attrs({
   maxWidth: 48,
-  mt: 5,
+  mt: [5, 6],
   mb: [3, 4],
   mx: 'auto',
   px: 3,
@@ -99,23 +99,6 @@ const Join = styled(Sheet)`
   align-items: flex-start;
   ${theme.mediaQueries.md} {
     grid-template-columns: 32rem auto;
-  }
-`
-
-const Breakdown = styled(Box)`
-  div {
-    width: 100%;
-    display: block;
-    text-align: left !important;
-  }
-  span:before {
-    content: '$';
-    font-size: ${theme.fontSizes[4]}px;
-    margin-left: -12px;
-    vertical-align: super;
-  }
-  p {
-    color: ${theme.colors.red[1]};
   }
 `
 
@@ -142,13 +125,12 @@ export default () => (
     <style children={styles} />
     <Nav dark />
     <Box>
-      <Megaline pt={[5, 6]}>The bank for student hackers.</Megaline>
+      <Megaline pt={[6, 7]}>The bank for student hackers.</Megaline>
       <Lead color="inherit" px={3} maxWidth={48} my={[3, 4]}>
         Hack Club Bank is the best place for high school hackers to store money
         for hackathons. Student organizers can invoice sponsors, issue physical
-        debit cards, and get access to their event’s financials through a
-        real-time dashboard all with the benefits of the backing of a 501(c)(3)
-        nonprofit.
+        debit cards, and get access to their event’s financials through a live
+        dashboard all with the benefits of the backing of a 501(c)(3) nonprofit.
       </Lead>
     </Box>
     <Flex justify="center" mb={[3, 4]}>
@@ -188,11 +170,11 @@ export default () => (
       />
     </Container>
     <BankStats />
-    <Banner>
+    <Banner maxWidth={36}>
       <Headline>A powerful toolbox for organizing your event.</Headline>
-      <Lead maxWidth={32}>
-        We’ve got all the tools to start getting your event ready, from emails
-        with custom domains to legal forms.
+      <Lead>
+        We’ve got all the tools to start planning your event, from emails with
+        custom domains to legal forms.
       </Lead>
     </Banner>
     <Modules>
@@ -250,7 +232,7 @@ export default () => (
         </Container>
         <CTA href="https://goo.gl/forms/1UzFR4zkljL7dHQ32">Apply</CTA>
       </Join>
-      <Lead maxWidth={32} color="slate" f={1} mt={3}>
+      <Lead maxWidth={32} color="slate" fontSize={1} mt={3}>
         Hack Club does not directly provide banking services. Banking services
         provided by Silicon Valley Bank, an FDIC-certified institution.
       </Lead>

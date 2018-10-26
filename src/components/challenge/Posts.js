@@ -215,7 +215,7 @@ class Posts extends Component {
         return (
           <Fragment>
             {isEmpty(posts) && (
-              <Text f={3} color="muted" py={4} align="center" bold>
+              <Text fontSize={3} color="muted" py={4} align="center" bold>
                 No submissions yet!
               </Text>
             )}

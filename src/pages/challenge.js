@@ -163,16 +163,17 @@ export default class extends Component {
         <Nav />
         <Header p={3}>
           <HeaderContainer
-            pt={[4, 5]}
+            maxWidth={64}
+            pt={[4, 5, 6]}
             pb={4}
             align="left"
             success={status === 'success'}
           >
             <HeaderAreaText align="center" pt={[4, 3]}>
-              <Name f={6}>Challenge</Name>
+              <Name fontSize={6}>Challenge</Name>
               <Text
                 color="rgba(255, 255, 255, 0.875)"
-                f={[3, 4]}
+                fontSize={[3, 4]}
                 mt={2}
                 mx={3}
                 bold
@@ -182,7 +183,7 @@ export default class extends Component {
               </Text>
             </HeaderAreaText>
             <HeaderAreaInfo>
-              <Text f={2}>
+              <Text fontSize={2}>
                 🌟 Challenge: <strong>{challenge.name}</strong>
                 <br />
                 🎁 {challenge.description}
@@ -202,10 +203,10 @@ export default class extends Component {
           {ended && <Ended />}
           <SubmissionsHeading align="center" pb={2} px={[2, 0]}>
             <Flex align="center" flex="1 1 auto" wrap>
-              <Heading.h2 color="black" f={5} mr={2}>
+              <Heading.h2 color="black" fontSize={5} mr={2}>
                 Submissions
               </Heading.h2>
-              <Text f={2} color="muted" align="left">
+              <Text fontSize={2} color="muted" align="left">
                 {tinyDt(challenge.start)}–{tinyDt(challenge.end)}
               </Text>
             </Flex>

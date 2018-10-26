@@ -96,7 +96,7 @@ const BottomLine = styled(Box)`
 const Footer = ({ dark = false, children, ...props }) => (
   <Base
     color={dark ? 'muted' : 'slate'}
-    py={[4, 5]}
+    py={[4, 5, 6]}
     dark={dark}
     align="left"
     {...props}
@@ -104,7 +104,7 @@ const Footer = ({ dark = false, children, ...props }) => (
     {children}
     <Columns px={3}>
       <Box>
-        <Heading.h2 f={3} mb={3}>
+        <Heading.h2 fontSize={3} mb={3}>
           Hack Club
         </Heading.h2>
         <Pages>
@@ -117,7 +117,7 @@ const Footer = ({ dark = false, children, ...props }) => (
         </Pages>
       </Box>
       <Box>
-        <Heading.h2 f={3} mb={3}>
+        <Heading.h2 fontSize={3} mb={3}>
           For Clubs
         </Heading.h2>
         <Pages>
@@ -132,7 +132,7 @@ const Footer = ({ dark = false, children, ...props }) => (
         </Pages>
       </Box>
       <Box>
-        <Heading.h2 f={3} mb={3}>
+        <Heading.h2 fontSize={3} mb={3}>
           Resources
         </Heading.h2>
         <Pages>
@@ -144,7 +144,7 @@ const Footer = ({ dark = false, children, ...props }) => (
         </Pages>
       </Box>
       <Box>
-        <Heading.h2 f={3} mb={3}>
+        <Heading.h2 fontSize={3} mb={3}>
           Join the Club
         </Heading.h2>
         <Services>
@@ -174,12 +174,12 @@ const Footer = ({ dark = false, children, ...props }) => (
       </Box>
     </Columns>
     <Container px={3} mt={[3, 4]}>
-      <Box f={2}>
+      <Box fontSize={2}>
         <Text>Office: 576 Natoma St, San Francisco, CA 94103</Text>
         <Text>Mail: 8605 Santa Monica Blvd #86294, Los Angeles, CA 90069</Text>
       </Box>
       <BottomLine mt={3}>
-        <Text f={1} mt={2} color="muted">
+        <Text fontSize={1} mt={2} color="muted">
           © {new Date().getFullYear()} Hack Club. Nonprofit EIN: 81-2908499.
         </Text>
       </BottomLine>

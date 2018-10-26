@@ -204,8 +204,8 @@ const InnerForm = ({
         value={submitStatus(buttonState)}
         bg={submitColor(buttonState)}
         mt={3}
-        w={1}
-        f={4}
+        width={1}
+        fontSize={4}
       />
       {status === 'redirecting' && (
         <Text>

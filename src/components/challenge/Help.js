@@ -20,7 +20,7 @@ class Help extends Component {
             <Heading.h2>Challenge Rules</Heading.h2>
             {/*
             <Text
-              f={2}
+              fontSize={2}
               mt={3}
               color="info"
               py={2}
@@ -35,7 +35,7 @@ class Help extends Component {
               in its code.
             </Text>
             */}
-            <Text f={2} my={3}>
+            <Text fontSize={2} my={3}>
               Challenge is open to Hack Club members and repl.it users. It
               strictly follows Hack Club’s{' '}
               <Link href="https://conduct.hackclub.com" target="_blank">
@@ -45,7 +45,7 @@ class Help extends Component {
               contestants found cheating can be temporarily or permanently
               banned.
             </Text>
-            <Text f={2}>
+            <Text fontSize={2}>
               If you think anyone has violated our Conduct or cheating policy,
               please reach out to us confidentially at{' '}
               <Link href="mailto:challenge@hackclub.com">
@@ -63,7 +63,7 @@ class Help extends Component {
         glyph="flag-fill"
         children="Rules"
         inverted
-        f={2}
+        fontSize={2}
         m={3}
         onClick={this.toggleRules}
         style={{ position: 'absolute', right: 0, top: 0 }}

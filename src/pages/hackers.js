@@ -60,7 +60,7 @@ const HeadlineIcon = styled(GlowingIcon)`
 `
 
 const Megaline = styled(Heading.h1).attrs({
-  f: [6, 7, 8],
+  fontSize: [6, 7, 8],
   mx: 'auto'
 })`
   line-height: 1.125;
@@ -79,9 +79,9 @@ const Megaline = styled(Heading.h1).attrs({
 `
 
 const Lead = Container.withComponent(Text)
-Lead.defaultProps = { f: 3, mx: 'auto' }
+Lead.defaultProps = { fontSize: 3, mx: 'auto' }
 
-const Quote = styled(Sheet).attrs({ maxWidth: 48, bg: 'smoke', f: 3 })`
+const Quote = styled(Sheet).attrs({ maxWidth: 48, bg: 'smoke', fontSize: 3 })`
   position: relative;
   &:before {
     content: '“';
@@ -96,10 +96,12 @@ const Quote = styled(Sheet).attrs({ maxWidth: 48, bg: 'smoke', f: 3 })`
   }
 `
 const FirstLetter = styled(Text)`
-  @supports (-webkit-initial-letter: 1) {
+  @supports (initial-letter: 1) or (-webkit-initial-letter: 1) {
     &:first-child:first-letter {
-      -webkit-initial-letter: 3;
+      -webkit-initial-letter: 2;
+      initial-letter: 2;
       margin-right: ${theme.space[3]}px;
+      margin-left: ${theme.space[3]}px;
       font-weight: bold;
     }
   }
@@ -174,12 +176,12 @@ export default () => (
       ]}
     />
     <Nav dark />
-    <Box bg="dark" align="center">
+    <Box bg="dark" align="center" pt={[4, 5]}>
       <Container maxWidth={72} px={3} py={[5, 6]}>
         <Megaline color="snow" mt={4}>
           Welcome, high school hackers. You’ve found your place.
         </Megaline>
-        <Lead f={[3, 4]} color="smoke" px={3} maxWidth={48} mt={[3, 4]}>
+        <Lead fontSize={[3, 4]} color="smoke" px={3} maxWidth={48} mt={[3, 4]}>
           Hack Club is a worldwide community of high school hackers and coding
           clubs. We make together, learn together, organize hackathons together.
           This is your home.
@@ -192,12 +194,12 @@ export default () => (
           Join an incredible worldwide community of hackers.
           <HeadlineIcon glyph="like-fill" color="pink.5" size={48} ml={2} />
         </ColoredHeadline>
-        <Text color="smoke" f={4} mb={3} style={{ maxWidth: '48rem' }}>
+        <Text color="smoke" fontSize={4} mb={3} style={{ maxWidth: '48rem' }}>
           Hack Club gives you a community of thousands of other young makers to
           talk to. We’re artists, writers, engineers, tinkerers, campers,
           filmmakers, volunteers. We make things. We help one another.
         </Text>
-        <Text color="smoke" f={4} mb={4} style={{ maxWidth: '48rem' }}>
+        <Text color="smoke" fontSize={4} mb={4} style={{ maxWidth: '48rem' }}>
           Have a coding question? Looking for feedback on your project? Trying
           to start a local meetup group? You’ll find some phenomenal people to
           talk to in our Slack community with 3,000+ members around the world
@@ -207,20 +209,20 @@ export default () => (
         <Features mt={[4, 5]}>
           <Box>
             <CommunityLine />
-            <Subhline color="smoke" mt={4}>
+            <Subhline color="smoke" mt={5}>
               Join the party & show your work.
             </Subhline>
-            <Text color="muted" f={4}>
+            <Text color="muted" fontSize={4}>
               Making projects alone can be isolating. In the Slack community,
               you’ll find supporters and collaborators for your work.
             </Text>
           </Box>
           <Box>
             <CommunityLine />
-            <Subhline color="smoke" mt={4}>
+            <Subhline color="smoke" mt={5}>
               Meet some truly incredible people.
             </Subhline>
-            <Text color="muted" f={4}>
+            <Text color="muted" fontSize={4}>
               You’re going to meet super talented people, who organize
               hackathons, start coding clubs, lead camps, classes, and more.
             </Text>
@@ -260,10 +262,10 @@ export default () => (
         </Text>
         <Flex align="center" mt={3}>
           <Avatar src="/hackers/victor.png" size={48} mr={2} />
-          <Text f={3} bold>
+          <Text fontSize={3} bold>
             Victor Truong
           </Text>
-          <Text f={2} color="slate" ml={2}>
+          <Text fontSize={2} color="slate" ml={2}>
             (@ifvictr on Slack)
           </Text>
         </Flex>
@@ -274,7 +276,7 @@ export default () => (
         <ColoredHeadline colors={['fuschia.5', 'violet.5', 'blue.5']}>
           Grow as a programmer & human with our resources.
         </ColoredHeadline>
-        <Text color="smoke" f={4} mb={4} style={{ maxWidth: '48rem' }}>
+        <Text color="smoke" fontSize={4} mb={4} style={{ maxWidth: '48rem' }}>
           We run monthly <A href="/challenge">Challenges</A>, coding
           competitions around a theme with cash prizes. We offer dozens of{' '}
           <A href="/workshops">free, open-source coding tutorials</A>. We{' '}
@@ -288,10 +290,12 @@ export default () => (
         <Features mt={[4, 5]}>
           <Box>
             <ResourcesLine />
-            <Subhline color="smoke" mt={4}>
-              Running an event? We can help.
+            <Subhline color="smoke" mt={5}>
+              Running an event?
+              <br />
+              We can help.
             </Subhline>
-            <Text color="muted" f={4}>
+            <Text color="muted" fontSize={4}>
               Organizing a hackathon is tough. Luckily,{' '}
               <A href="/bank">Hack Club Bank</A> offers best-in-class fiscal
               sponsorship for high school events, and we’ll help you every step
@@ -300,10 +304,10 @@ export default () => (
           </Box>
           <Box>
             <ResourcesLine />
-            <Subhline color="smoke" mt={4}>
+            <Subhline color="smoke" mt={5}>
               Learn as you build at hackathons & events.
             </Subhline>
-            <Text color="muted" f={4}>
+            <Text color="muted" fontSize={4}>
               We maintain an open source, up-to-date list of all the{' '}
               <A href="https://hackathons.hackclub.com">
                 high school hackathons
@@ -323,9 +327,9 @@ export default () => (
       <Container px={3} py={[5, 6]}>
         <GlowingIcon glyph="explore" color="#c57206" size={96} ml={-2} />
         <ColoredHeadline colors={['#d98b38', '#c57206', '#7c3b00']}>
-          Come to Hack Night, our weekly nighttime hackathons.
+          Come to Hack&nbsp;Night, our weekly nighttime hackathons.
         </ColoredHeadline>
-        <Text color="#a56a3b" f={4} mb={3} style={{ maxWidth: '48rem' }}>
+        <Text color="#a56a3b" fontSize={4} mb={3} style={{ maxWidth: '48rem' }}>
           Every Saturday night at 6pm PST, a group from our community comes
           together for Hack Night. It’s a remote hackathon, social hangout, and
           a ton of fun. Build, learn, and share together.
@@ -340,7 +344,7 @@ export default () => (
         <ColoredHeadline colors={['red.5', 'orange.5', 'yellow.5']}>
           Start a coding club at your high school, or bring yours.
         </ColoredHeadline>
-        <Text color="smoke" f={4} mb={3} style={{ maxWidth: '48rem' }}>
+        <Text color="smoke" fontSize={4} mb={3} style={{ maxWidth: '48rem' }}>
           Beyond our community, Hack Club is a nonprofit collective of coding
           clubs led by high schoolers everywhere. If you’ve already got a coding
           club, you’re welcome to join our network! If you’re interested in
@@ -360,16 +364,16 @@ export default () => (
         </OutlineButton>
       </Container>
       <MegaQuote mt={5}>
-        <Text f={6} bold>
+        <Text fontSize={6} bold>
           Before I started Hack Club in sophomore year, I didn’t believe in
           myself. I didn’t think I could do big things.
         </Text>
         <Flex align="center" mt={[4, 5]} mb={[-3, -4]}>
           <Avatar src="/hackers/megan.png" size={48} mr={3} />
-          <Box align="left" f={3}>
+          <Box align="left" fontSize={3}>
             <Text.span bold>Megan Cui</Text.span>, Cincinnati
             <br />
-            <Text f={2} color="smoke">
+            <Text fontSize={2} color="smoke">
               (@megan on Slack)
             </Text>
           </Box>

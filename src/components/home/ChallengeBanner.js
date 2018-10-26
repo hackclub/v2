@@ -19,7 +19,7 @@ Base.defaultProps = {
 
 const ChallengeBanner = () => (
   <Base to="/challenge">
-    <Text bold color="info" f={3} mr={2}>
+    <Text bold color="info" fontSize={3} mr={2}>
       Check out projects built by students
     </Text>
     <Icon name="open_in_new" size={28} ml="auto" color="info" />

@@ -234,7 +234,7 @@ export default ({ data }) => {
           align="center"
           style={{ backgroundImage: `url('${bg}')`, position: 'relative' }}
         >
-          <Container pt={5} pb={3} px={2}>
+          <Container pt={[5, 6]} px={2}>
             <Breadcrumbs align="center" justify="center" mt={3} mb={2} wrap>
               <Breadcrumb to="/workshops" name="All Workshops" position={1} />
               <BreadcrumbDivider />
@@ -245,12 +245,18 @@ export default ({ data }) => {
               />
               <BreadcrumbDivider />
             </Breadcrumbs>
-            <Name f={6} mb={3} children={name} />
-            <Heading.h2 f={4} children={description} />
-            <Text f={2} caps mt={3} children={linkAuthor(author)} />
+            <Name fontSize={6} mb={3} children={name} />
+            <Heading.h2 fontSize={4} children={description} />
+            <Text
+              fontSize={2}
+              caps
+              mt={3}
+              mb={[3, 0]}
+              children={linkAuthor(author)}
+            />
           </Container>
-          <Flex w={1} p={3} justify="space-between">
-            <Invert f={2} my={1} />
+          <Flex width={1} px={3} pb={3} justify="space-between">
+            <Invert fontSize={2} my={1} />
             <IconButton
               bg="slate"
               glyph="edit"
@@ -258,7 +264,7 @@ export default ({ data }) => {
               inverted
               href={githubEditUrl(slug)}
               target="_blank"
-              f={2}
+              fontSize={2}
               my={1}
             />
           </Flex>
@@ -268,32 +274,32 @@ export default ({ data }) => {
         <Flex align="center" justify="flex-end" my={3}>
           <Image
             src="/logo-red.svg"
-            w={`${theme.space[6]}px`}
+            width={`${theme.space[6]}px`}
             mr={3}
             alt="Hack Club logo"
           />
           <strong>Computer Science Tutorials</strong>
         </Flex>
         <Heading.h1 mt={4} mb={3} children={name} />
-        <Heading.h2 f={4} children={description} />
+        <Heading.h2 fontSize={4} children={description} />
         <Text color="muted" my={3} children={linkAuthor(author)} />
         <Text color="muted">
           You can find this tutorial online at <u>{url}</u>
         </Text>
       </OnlyOnPrint>
-      <Box w={1} className="invert">
+      <Box width={1} className="invert">
         <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
         <CardsSection py={4}>
           <Cards px={3}>
             <Sheet align="left">
-              <Heading.h2 f={4}>How was this workshop?</Heading.h2>
-              <Text color="muted" f={1} mt={1} mb={3}>
+              <Heading.h2 fontSize={4}>How was this workshop?</Heading.h2>
+              <Text color="muted" fontSize={1} mt={1} mb={3}>
                 (your feedback is anonymous + appreciated ❤️)
               </Text>
               <FeedbackForm slug={slug} />
             </Sheet>
             <Sheet>
-              <Heading.h2 f={4} color="black" mb={3}>
+              <Heading.h2 fontSize={4} color="black" mb={3}>
                 Made something fabulous?
               </Heading.h2>
               <Flex justify="center">
@@ -314,19 +320,19 @@ export default ({ data }) => {
               </Flex>
             </Sheet>
             <Sheet>
-              <Heading.h2 f={4} color="pink.5" mb={3}>
+              <Heading.h2 fontSize={4} color="pink.5" mb={3}>
                 Questions?
               </Heading.h2>
-              <DiscussOnSlack f={2} />
+              <DiscussOnSlack fontSize={2} />
             </Sheet>
             <Sheet>
-              <Heading.h2 f={4} color="black" mb={3}>
+              <Heading.h2 fontSize={4} color="black" mb={3}>
                 Spotted an issue?
               </Heading.h2>
               <ShareButton
                 service="GitHub"
                 bg="slate"
-                f={2}
+                fontSize={2}
                 href={githubEditUrl(slug)}
                 target="_blank"
                 aria-label={null}

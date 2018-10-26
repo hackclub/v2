@@ -26,9 +26,9 @@ const FlexCard = Card.withComponent(Flex)
 
 const EventCard = ({ meeting_date, attendance, notes }) => (
   <FlexCard boxShadowSize="sm" align="flex-start" p={3} my={3}>
-    <Badge bg="muted" children={timeSince(Date.parse(meeting_date))} f={2} />
+    <Badge bg="muted" children={timeSince(Date.parse(meeting_date))} fontSize={2} />
     <Box ml={3}>
-      <Heading.h3 f={3} children={meeting_date} />
+      <Heading.h3 fontSize={3} children={meeting_date} />
       <Text color="slate">{attendance} members</Text>
       <Text>{notes}</Text>
     </Box>
@@ -137,9 +137,9 @@ export default class extends Component {
             <Helmet title={`Dumb club #${club.id}`} />
             <Nav />
             <Container color="black" maxWidth={36} py={4}>
-              <Heading.h1 f={[5, 6]} children={club.high_school_name} />
+              <Heading.h1 fontSize={[5, 6]} children={club.high_school_name} />
               {club.club_website && (
-                <Flex align="center" f={2} bold mt={3} mb={2}>
+                <Flex align="center" fontSize={2} bold mt={3} mb={2}>
                   <Link
                     color="info"
                     target="_blank"
@@ -149,7 +149,7 @@ export default class extends Component {
                   <Icon size={16} name="open_in_new" color="muted" ml={2} />
                 </Flex>
               )}
-              <Text f={2} color="muted" children={club.high_school_address} />
+              <Text fontSize={2} color="muted" children={club.high_school_address} />
               {showInviteModal && (
                 <Fragment>
                   <Modal align="left" my={4} p={[3, 4]}>
@@ -212,7 +212,7 @@ export default class extends Component {
                   <Flex justify="center">
                     <Chart data={checkInData} />
                   </Flex>
-                  <Heading.h2 f={4} mt={2}>
+                  <Heading.h2 fontSize={4} mt={2}>
                     Meetings
                   </Heading.h2>
                   {checkIns.map(checkIn => (

@@ -9,10 +9,10 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
-"@hackclub/design-system@^0.0.1-13":
-  version "0.0.1-13"
-  resolved "https://registry.yarnpkg.com/@hackclub/design-system/-/design-system-0.0.1-13.tgz#3b7f5dbcf1fa757e51dc20e732eeb61db33fd977"
-  integrity sha512-sZ1lrPniJTJaZdeN237KvZvudpRY1al+LfSWwfWAsj78rUJCTaD9UCad23sctFWZN+b8m8HW4o8xpNHKWa1bTA==
+"@hackclub/design-system@^0.0.1-14":
+  version "0.0.1-14"
+  resolved "https://registry.yarnpkg.com/@hackclub/design-system/-/design-system-0.0.1-14.tgz#a9d011ae4e91902db615d5a5e804649cd44901aa"
+  integrity sha512-Wa/afPd3IF6sfWhLzmX7DR3zB96mAUvoLmd8GWIFloQQSaWXmLTrYVsuEB9/Z+2ZX3KNCGdGHtoUCrydffp9CA==
   dependencies:
     "@hackclub/icons" "^0.0.1"
     clean-tag "^1.0.4"

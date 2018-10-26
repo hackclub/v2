@@ -8,10 +8,10 @@ const Base = styled(Box)`
 `
 
 const Stat = ({ label, value, children, f = [6, 7], ...props }) => (
-  <Base mt={1} mb={1} w={128} align="center" {...props}>
+  <Base mt={1} mb={1} width={128} align="center" {...props}>
     {children}
-    <Text.span f={f} m={0} bold children={value} />
-    {label && <Text color="snow" f={2} m={0} caps children={label} />}
+    <Text.span fontSize={f} m={0} bold children={value} />
+    {label && <Text color="snow" fontSize={2} m={0} caps children={label} />}
   </Base>
 )
 

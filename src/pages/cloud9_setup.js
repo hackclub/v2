@@ -21,10 +21,10 @@ export default () => (
     <Nav />
     <Header align="center">
       <Container maxWidth={28} pt={4}>
-        <Heading.h1 f={[5, 6]} mt={0} mb={3}>
+        <Heading.h1 fontSize={[5, 6]} mt={0} mb={3}>
           Let’s get you coding on Cloud9.
         </Heading.h1>
-        <Heading.h2 color="blue.0" f={[3, 4]}>
+        <Heading.h2 color="blue.0" fontSize={[3, 4]}>
           Enter your email below and you’ll receive an invitation.
         </Heading.h2>
       </Container>

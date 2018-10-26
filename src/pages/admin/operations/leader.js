@@ -43,9 +43,9 @@ export default class extends Component {
             <Nav />
             <Helmet title={`Leader Profile ${leader.id} - ${leader.name}`} />
             <Container color="black" maxWidth={36} py={4}>
-              <Heading.h1 f={[5, 6]}>{leader.name}</Heading.h1>
-              <Text f={2} color="muted" children={leader.address} />
-              <Text f={2} color="muted" children={leader.phone_number} />
+              <Heading.h1 fontSize={[5, 6]}>{leader.name}</Heading.h1>
+              <Text fontSize={2} color="muted" children={leader.address} />
+              <Text fontSize={2} color="muted" children={leader.phone_number} />
               <Link href={`mailto:${leader.email}`}>{leader.email}</Link>
             </Container>
           </Fragment>

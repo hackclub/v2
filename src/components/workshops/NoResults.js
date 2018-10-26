@@ -17,7 +17,7 @@ export default ({ value }) => (
     px={4}
     py={5}
   >
-    <BreakWord f={3} lineHeight="normal" color="black">
+    <BreakWord fontSize={3} lineHeight="normal" color="black">
       No results found {value && `for "${value}"`}
     </BreakWord>
   </Rounded>

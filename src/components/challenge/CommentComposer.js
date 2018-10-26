@@ -23,7 +23,7 @@ export const LS_BODY_KEY = 'new-comment'
 const Root = styled(MarkdownBody)`
   background-color: ${theme.colors.white};
   border: 1px solid ${theme.colors.smoke};
-  border-radius: 18px;
+  border-radius: 21px;
   padding: ${theme.space[1]}px;
 
   .DraftEditor-root {
@@ -32,14 +32,14 @@ const Root = styled(MarkdownBody)`
 
   .public-DraftEditorPlaceholder-inner {
     position: absolute;
-    top: 3px;
-    padding-left: 12px;
+    top: 2px;
+    padding-left: 8px;
     color: ${theme.colors.muted};
     font-size: ${theme.fontSizes[1]}px;
   }
 
   .DraftEditor-editorContainer > div {
-    padding: ${theme.space[1]}px ${theme.space[3] - theme.space[1]}px;
+    padding: 4px 8px;
     ${commentStyle};
   }
 `

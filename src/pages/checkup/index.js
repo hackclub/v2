@@ -60,15 +60,15 @@ export default class extends Component {
           <Fragment>
             <Nav breadcrumb={false} />
             <Section bg="primary" color="white">
-              <Heading.h1 f={[5, 6]} mb={[2, 3]}>
+              <Heading.h1 fontSize={[5, 6]} mb={[2, 3]}>
                 It’s the end of the school year! 🎉
               </Heading.h1>
-              <Text f={[2, 3]}>
+              <Text fontSize={[2, 3]}>
                 Time to update your club and leader’s info.
               </Text>
             </Section>
             <Container color="black" p={3} maxWidth={36}>
-              <Heading.h2 f={[4, 5]} mt={3} mb={2}>
+              <Heading.h2 fontSize={[4, 5]} mt={3} mb={2}>
                 Update your profile
               </Heading.h2>
               <Text mb={3}>
@@ -85,7 +85,7 @@ export default class extends Component {
           <Fragment>
             <Nav breadcrumb={false} />
             <Container color="black" p={3} maxWidth={36} align="center">
-              <Heading.h2 f={[4, 5]} mt={3} mb={3}>
+              <Heading.h2 fontSize={[4, 5]} mt={3} mb={3}>
                 No Clubs Found
               </Heading.h2>
               <Text>

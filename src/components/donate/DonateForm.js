@@ -86,20 +86,20 @@ class DonateForm extends Component {
       <Box align="center" style={{ position: 'relative' }}>
         <Box bg="primary" color="white" mx={[-3, -4]} pb={4} mb={3}>
           <Secure p={2} mr={[-3, -4]}>
-            <Text f={0} color="red.1" caps bold>
+            <Text fontSize={0} color="red.1" caps bold>
               Secure
             </Text>
             <Icon size={16} glyph="private" color="red.1" ml={2} />
           </Secure>
-          <Heading.h2 mt={[-3, -4]} pt={4} px={3} f={5}>
+          <Heading.h2 mt={[-3, -4]} pt={4} px={3} fontSize={5}>
             Become a patron
           </Heading.h2>
-          <Text color="snow" mt={1} f={1}>
+          <Text color="snow" mt={1} fontSize={1}>
             Just $3 supports a student for a month
           </Text>
         </Box>
         <Flex align="center" justify="center" color="black">
-          <Text f={3} bold>
+          <Text fontSize={3} bold>
             Select an amount
           </Text>
           <Text.span mx={2} children="—" />
@@ -115,12 +115,12 @@ class DonateForm extends Component {
               checked={recurring}
               onChange={this.handleRecurringChange}
             />
-            <Text.span f={2} ml={1}>
+            <Text.span fontSize={2} ml={1}>
               monthly?
             </Text.span>
           </Label>
         </Flex>
-        <AmountsGrid w={1} mt={3} mb={4}>
+        <AmountsGrid width={1} mt={3} mb={4}>
           {amounts.map(amount => (
             <Option
               amount={amount}
@@ -134,13 +134,13 @@ class DonateForm extends Component {
             onChange={e => this.handleAmountChange(e.target.value)}
           />
         </AmountsGrid>
-        <Text color="slate" mb={3} f={1}>
+        <Text color="slate" mb={3} fontSize={1}>
           Our recommended donation is $20/month
         </Text>
         <LargeButton
           onClick={e => this.startStripe(e)}
           children={this.buttonText()}
-          w={1}
+          width={1}
         />
       </Box>
     )

@@ -45,7 +45,7 @@ const InnerForm = ({
       onClick={handleSubmit}
       value={statusMessage(status)}
       bg={statusColor(status)}
-      f={2}
+      fontSize={2}
       mt={2}
     />
   </form>

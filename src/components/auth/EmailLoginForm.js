@@ -61,7 +61,7 @@ const InnerForm = ({
     </Label>
     {errors.email && (
       <Text
-        f={1}
+        fontSize={1}
         mt={2}
         align={textProps.align || 'center'}
         children={errors.email || ''}

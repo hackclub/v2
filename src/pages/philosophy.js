@@ -45,12 +45,12 @@ const Seal = styled(Box)`
   transform: rotate(4deg);
   ${theme.mediaQueries.sm} {
     transform: rotate(3deg);
-    margin-top: -${theme.space[5]}px;
+    margin-top: -3rem;
   }
 `
 
 const HeadLine = styled(Heading.h1).attrs({
-  f: [5, 7, 8],
+  fontSize: [5, 7, 8],
   color: 'white',
   caps: true
 })`
@@ -84,11 +84,12 @@ const HeadLine = styled(Heading.h1).attrs({
   }
 `
 
-const Row = styled(Container).attrs({ px: 3, color: 'black' })`
+const Row = styled(Container).attrs({ px: 3, py: [4, 5], color: 'black' })`
   display: grid;
   text-align: left;
   h2 {
     line-height: 1;
+    margin-bottom: ${theme.space[3]}px;
   }
   ${theme.mediaQueries.md} {
     grid-gap: ${theme.space[3]}px;
@@ -126,46 +127,46 @@ export default () => (
     />
     <Nav />
     <Header>
-      <Container w={1} maxWidth={56} py={5} px={3} align="left">
+      <Container width={1} maxWidth={56} py={[6]} px={3} align="left">
         <HeadLine children="We’re" />
         <HeadLine children="at our best" />
         <HeadLine children="when we’re" />
         <HeadLine children="making." />
         <Seal pt={[3, 4]}>
-          <Text f={[1, 2]} caps>
+          <Text fontSize={[1, 2]} caps>
             The Hack Club
           </Text>
-          <Text f={[3, 4]} bold caps>
+          <Text fontSize={[3, 4]} bold caps>
             Philosophy
           </Text>
         </Seal>
       </Container>
     </Header>
     <Row py={4} mt={[0, 4]}>
-      <Heading.h2 f={[5, 6]} color="red.5">
+      <Heading.h2 fontSize={[5, 6]} color="red.5">
         Coding is a <Super>superpower.</Super>
       </Heading.h2>
-      <Text f={[3, 4]}>
+      <Text fontSize={[3, 4]}>
         Learning to code is uniquely like gaining a superpower: it converts you
         from a consumer to a creator. Suddenly, computers become a tool for
         creating.
       </Text>
     </Row>
-    <Row py={4}>
-      <Heading.h2 f={[5, 6]} color="fuschia.5">
+    <Row>
+      <Heading.h2 fontSize={[5, 6]} color="fuschia.5">
         Make, from anywhere.
       </Heading.h2>
-      <Text f={[3, 4]}>
+      <Text fontSize={[3, 4]}>
         There’s never been a better time for making: anywhere in the world,
         anyone with a laptop and an internet connection can learn to make an
         app. Building things has never been so globally democratized.
       </Text>
     </Row>
-    <Row py={4}>
-      <Heading.h2 f={[5, 6]} color="violet.5">
+    <Row>
+      <Heading.h2 fontSize={[5, 6]} color="violet.5">
         Hack, hack, hack.
       </Heading.h2>
-      <Text f={[3, 4]}>
+      <Text fontSize={[3, 4]}>
         <strong>The goal of Hack Club is to help you become a hacker.</strong>{' '}
         We want a space at every school where people are making interesting
         things with code, every week. Schools don’t provide that, so we’re
@@ -173,22 +174,22 @@ export default () => (
         everyone.
       </Text>
     </Row>
-    <Row py={4}>
-      <Heading.h2 f={[5, 6]} color="indigo.5">
+    <Row>
+      <Heading.h2 fontSize={[5, 6]} color="indigo.5">
         Start building.
       </Heading.h2>
-      <Text f={[3, 4]}>
+      <Text fontSize={[3, 4]}>
         Most coding classes teach you programming concepts instead of how to
         write real code—it’s like trying to learn carpentry without any wood. So
         at Hack Club, you learn to code entirely through building things. You
         start with no experience and build and ship a project every meeting.
       </Text>
     </Row>
-    <Row py={4}>
-      <Heading.h2 f={[5, 6]} color="blue.6">
+    <Row>
+      <Heading.h2 fontSize={[5, 6]} color="blue.6">
         Learn as you build.
       </Heading.h2>
-      <Text f={[3, 4]}>
+      <Text fontSize={[3, 4]}>
         Just as the best carpenters didn’t learn in the classroom, neither did
         the best programmers. Through our{' '}
         <A.link to="/workshops">workshops</A.link>, you’ll be walked through
@@ -197,11 +198,11 @@ export default () => (
         the way, but we’re here to help.
       </Text>
     </Row>
-    <Row py={4}>
-      <Heading.h2 f={[5, 6]} color="cyan.7">
+    <Row>
+      <Heading.h2 fontSize={[5, 6]} color="cyan.7">
         Be part of a community.
       </Heading.h2>
-      <Text f={[3, 4]}>
+      <Text fontSize={[3, 4]}>
         Hack Club gives you a worldwide community of thousands of other young
         makers to talk to. We’re artists, writers, engineers, tinkerers,
         campers, filmmakers, volunteers. We make things. We help one another. We

@@ -32,7 +32,7 @@ const Row = styled(Flex)`
 const Index = styled(Hide)`
   width: ${theme.space[3]}px;
   position: absolute;
-  left: -${theme.space[4]}px;
+  left: -${theme.space[5]}px;
 `
 
 const Description = styled(Text)`
@@ -69,7 +69,7 @@ const CommentButton = styled(Box.withComponent('button'))`
   span {
     position: absolute;
     width: 100%;
-    top: ${theme.space[2]}px;
+    top: 8px;
   }
   ${theme.mediaQueries.md} {
     padding-right: ${theme.space[3]}px;
@@ -107,12 +107,7 @@ const PostRow = ({
     id={`post-${id}`}
   >
     <Index sm xs>
-      <Text
-        align="right"
-        color={mine ? 'warning' : 'muted'}
-        bold
-        children={index}
-      />
+      <Text align="right" color={mine ? 'warning' : 'muted'} children={index} />
     </Index>
     <Box>
       <UpvoteButton
@@ -136,7 +131,7 @@ const PostRow = ({
         <Icon size={24} glyph="view" />
         <Text.span
           ml={1}
-          f={1}
+          fontSize={1}
           color="muted"
           style={{ lineHeight: 1 }}
           children={clickCount}
@@ -144,7 +139,7 @@ const PostRow = ({
       </Flex>
     </Box>
     <Link width={1} href={url} target="_blank" color="black" px={3}>
-      <Heading.h3 f={3} m={0}>
+      <Heading.h3 fontSize={3} m={0}>
         {name}
         <Text.span
           mt={1}
@@ -248,19 +243,19 @@ const GridPostRow = ({
     <GridIndex bold children={index} />
     <GridImage src={url} />
     <Flex align="flex-start" p={3}>
-      <Box align="left" w={1} color="black" mr={2}>
-        <Heading.h3 f={3} m={0}>
+      <Box align="left" width={1} color="black" mr={2}>
+        <Heading.h3 fontSize={3} m={0}>
           {name}
-          <Text.span ml={2} f={0} mt={1} color="muted" regular>
+          <Text.span ml={2} fontSize={0} mt={1} color="muted" regular>
             {tinyDt(createdAt)}
           </Text.span>
         </Heading.h3>
-        <Description color="muted" f={2}>
+        <Description color="muted" fontSize={2}>
           {description}
         </Description>
       </Box>
       <Box>
-        <Flex w={1} align="center" justify="space-between" px={1} mb={1}>
+        <Flex width={1} align="center" justify="space-between" px={1} mb={1}>
           <CommentButton
             aria-label={`Open comments: ${commentsCount}`}
             onClick={onComment}
@@ -282,7 +277,7 @@ const GridPostRow = ({
           cursor={disabled ? 'not-allowed' : loading ? 'wait' : 'pointer'}
         >
           <Icon size={28} glyph="up-caret" />
-          <Text.span ml={1} f={2} children={upvotesCount} />
+          <Text.span ml={1} fontSize={2} children={upvotesCount} />
         </UpvoteButton>
       </Box>
     </Flex>

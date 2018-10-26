@@ -48,7 +48,7 @@ const Wrapper = styled(Container.withComponent(Flex)).attrs({
   flexDirection: 'column',
   maxWidth: 48,
   px: [2, null, 0],
-  pt: [5, 6, 7],
+  pt: [6, 7],
   pb: [4, 5, 6]
 })``
 
@@ -76,14 +76,17 @@ const HeaderStats = styled(Text.withComponent('ul')).attrs({
   line-height: 1;
 `
 
-const HeaderStat = styled(Text.withComponent('li')).attrs({ fontSize: [3, 4], ml: 2 })`
+const HeaderStat = styled(Text.withComponent('li')).attrs({
+  fontSize: [2, 3],
+  ml: 2
+})`
   display: inline;
   &:not(:last-child):after {
     position: relative;
     top: 6px;
     margin-left: ${theme.space[2]}px;
     margin-right: -2px;
-    font-size: ${theme.fontSizes[5]}px;
+    font-size: ${theme.fontSizes[4]}px;
     content: '\00b7';
   }
 `
@@ -145,7 +148,14 @@ export default () => (
           Learn more
         </A>
       </Announcement>
-      <Text fontSize={[3, 4]} mx="auto" mt={3} mb={0} caps>
+      <Text
+        fontSize={[3, 4]}
+        mx="auto"
+        mt={3}
+        mb={0}
+        caps
+        style={{ letterSpacing: '.05em' }}
+      >
         By the students, for the students.
       </Text>
       <Heading.h1 fontSize={[7, 8]} mx={[0, null, -3, -5]} my={2}>

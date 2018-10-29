@@ -169,7 +169,21 @@ class CarouselSubmissionForm extends Component {
           alignSelf: 'center',
         }}
       >
-        <Auth headline={'Are you human?'} style={{ flexGrow: 1 }} />
+        <Fragment>
+          <Heading.h4 mb={2} style={{}}>
+            Before you submit something...
+          </Heading.h4>
+          <Auth
+            headline={"Please prove you're human"}
+            cardProps={{
+              maxWidth: 20,
+              p: 3,
+              mb: 0,
+              bg: 'primary',
+            }}
+            style={{ flexGrow: 1 }}
+          />
+        </Fragment>
         {!authed ? null : (
           <Fragment>
             <Flex m={1} style={{ alignItems: 'center' }}>

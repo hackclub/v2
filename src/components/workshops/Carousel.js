@@ -115,7 +115,6 @@ class CarouselSubmissionForm extends Component {
     console.log('Clicking Submit Button')
     const { workshopSlug, userEmail, submissionData } = this.props
     const { liveUrl, codeUrl } = submissionData
-    const authToken = storage.get('authToken')
 
     api
       .post(`v1/workshops/${workshopSlug}/projects`, {
@@ -126,7 +125,6 @@ class CarouselSubmissionForm extends Component {
           // screenshot_id: screenshotId
         }),
         headers: { 'Content-Type': 'application/json' },
-        authToken,
       })
       .then(resp => location.reload())
 
@@ -147,10 +145,8 @@ class CarouselSubmissionForm extends Component {
   }
 
   render() {
-    const { workshopSlug, userEmail, submissionData } = this.props
+    const { workshopSlug, submissionData, authed, authData } = this.props
     const { liveUrl, codeUrl } = submissionData
-
-    const authed = !isEmpty(userEmail)
 
     const onClickSubmitButton = this.onClickSubmitButton.bind(this)
     const onChangeLiveURL = this.onChangeLiveURL.bind(this)
@@ -226,6 +222,8 @@ class Carousel extends Component {
       liveUrl: '',
       codeUrl: '',
     },
+    authed: false,
+    authData: {},
     userEmail: '',
     liveFrameStatus: 'empty',
     liveFrameImage: null,
@@ -268,6 +266,25 @@ class Carousel extends Component {
     })
   }
 
+  componentDidMount() {
+    const self = this
+    api
+      .get(`v1/users/current`)
+      .then(response => {
+        console.log(
+          'User is authorized! Auth data: ' + JSON.stringify(response)
+        )
+        self.setState({
+          authed: true,
+          authData: response,
+        })
+      })
+      .catch(error => {
+        console.log('User is not authorized! Error: ' + error.toString())
+        self.setState({ authed: false, authData: {} })
+      })
+  }
+
   setLiveFrameStatus(liveFrameStatus) {
     this.setState({ liveFrameStatus })
   }
@@ -285,6 +302,8 @@ class Carousel extends Component {
       projects,
       submissionData,
       userEmail,
+      authed,
+      authData,
       liveFrameStatus,
       liveFrameImage,
     } = this.state
@@ -292,6 +311,7 @@ class Carousel extends Component {
     const setSubmissionData = this.setSubmissionData.bind(this)
 
     const submissionProject = {
+      user: authData,
       live_url: submissionData.liveUrl,
       code_url: submissionData.codeUrl,
       screenshot: {},
@@ -381,6 +401,8 @@ class Carousel extends Component {
             </Flex>
           </Flex>
           <CarouselSubmissionForm
+            authed={authed}
+            authData={authData}
             userEmail={userEmail}
             workshopSlug={slug}
             submissionData={submissionData}

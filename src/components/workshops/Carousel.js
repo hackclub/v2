@@ -77,15 +77,15 @@ class CarouselProject extends Component {
           style={{
             paddingBottom: "50%",
             position: "relative",
-            overflow: "hidden"
+            overflow: "hidden",
+            borderRadius: 5,
+            border: "1px solid #EEE"
           }}
         >
           <Image
             src={imageUrl}
-            onClick={onClickImage}
             style={{
               objectFit: "cover",
-              cursor: "Pointer",
               position: "absolute",
               top: 0,
               left: 0,
@@ -94,8 +94,15 @@ class CarouselProject extends Component {
             }}
           />
         </Box>
-        <A href={live_url} />
-        <A href={code_url}>Code!</A>
+        <Flex
+          m={2}
+          style={{
+            justifyContent: "space-between"
+          }}
+        >
+          <A href={live_url}>Live Version</A>
+          <A href={code_url}>Code</A>
+        </Flex>
       </Flex>
     );
   }
@@ -120,7 +127,9 @@ class CarouselSubmissionForm extends Component {
           "Content-Type": "application/json"
         }
       }
-    ).then(resp => resp.json());
+    ).then(resp => location.reload());
+    // For now, just refresh the page. Needs a real submssion complete page eventually.
+    //.then(resp => resp.json());
   }
 
   onChangeLiveURL(event) {
@@ -197,8 +206,6 @@ class CarouselSubmissionForm extends Component {
 class Carousel extends Component {
   state = {
     autoplay: false,
-    projectIndex: 0,
-    submitting: false,
     submissionData: {
       liveUrl: "",
       codeUrl: ""
@@ -255,105 +262,37 @@ class Carousel extends Component {
     this.setState({ submissionData });
   }
 
-  onClickSubmitButton() {
-    const { projects, projectIndex, autoplay } = this.state;
-    if (autoplay) this.cancelAutoplay();
-    this.setState({ submitting: true });
-  }
-
-  setProjectIndex(index) {
-    const { projects, projectIndex } = this.state;
-    index = Math.min(index, projects.length - 1);
-    index = Math.max(index, 0);
-    this.setState({ projectIndex: index });
-  }
-
-  nextProject() {
-    console.log("Showing Next Rehack");
-    const { projects, projectIndex } = this.state;
-    this.setProjectIndex(projectIndex + 1);
-  }
-
-  previousProject() {
-    console.log("Showing Previous Rehack");
-    const { projects, projectIndex } = this.state;
-    this.setProjectIndex(projectIndex - 1);
-  }
-
-  onClickNextButton() {
-    const { projects, projectIndex, autoplay } = this.state;
-    if (autoplay) this.cancelAutoplay();
-    this.nextProject();
-  }
-
-  onClickPreviousButton() {
-    const { projects, projectIndex, autoplay } = this.state;
-    if (autoplay) this.cancelAutoplay();
-    this.previousProject();
-  }
-
-  cancelAutoplay() {
-    console.log("Cancelling autoplay");
-    this.setState({ autoplay: false });
-    clearInterval(this.state.autoplayId);
-  }
-
-  beginAutoplay() {
-    console.log("Beginning autoplay");
-    const cb = this.advanceAutoplay.bind(this);
-    const autoplayId = setInterval(cb, 5000);
-    this.setState({
-      autoplay: true,
-      autoplayId
-    });
-  }
-
-  advanceAutoplay() {
-    console.log("Advancing autoplay");
-    this.nextProject();
-  }
-
-  componentDidMount() {
-    this.beginAutoplay();
-  }
-
   render() {
     const { slug } = this.props;
     const {
       original,
       projects,
-      projectIndex,
       submissionData,
       userEmail,
       liveFrameStatus,
       liveFrameImage
     } = this.state;
 
-    const onClickNextButton = this.onClickNextButton.bind(this);
-    const onClickPreviousButton = this.onClickPreviousButton.bind(this);
-    const onClickSubmitButton = this.onClickSubmitButton.bind(this);
-
     const setSubmissionData = this.setSubmissionData.bind(this);
 
-    const submissionProject =
-      liveFrameStatus == "empty"
-        ? projects[projectIndex]
-        : {
-            live_url: submissionData.liveUrl,
-            code_url: submissionData.codeUrl,
-            screenshot: {}
-          };
+    const submissionProject = {
+      live_url: submissionData.liveUrl,
+      code_url: submissionData.codeUrl,
+      screenshot: {}
+    };
 
     const sliderSettings = {
       dots: false,
+      arrows: false,
       vertical: true,
       verticalSwiping: true,
       infinite: true,
       speed: 500,
       autoplay: true,
-      autoplaySpeed: 2000,
+      autoplaySpeed: 4000,
       slidesToShow: 1,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      pauseOnHover: true
     };
 
     return (
@@ -417,7 +356,6 @@ class Carousel extends Component {
                     bottom: 0
                   }}
                 >
-                  {" "}
                   {projects.map(project => (
                     <CarouselProject project={project} isOriginal={false} />
                   ))}

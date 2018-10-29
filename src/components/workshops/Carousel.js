@@ -6,6 +6,7 @@ import {
   Card,
   Container,
   Flex,
+  Label,
   Heading,
   Link as A,
   Text,
@@ -144,25 +145,36 @@ class CarouselSubmissionForm extends Component {
           borderRadius: 5,
           flexGrow: 1,
           flexShrink: 1,
-          flexDirection: 'column'
+          flexDirection: 'column',
+          alignSelf: 'center'
         }}
       >
-        <Input
-          placeholder="Live URL (where can we see the final product?)"
-          value={liveUrl}
-          onChange={onChangeLiveURL}
-        />
-        <Input
-          placeholder="Code URL (where can we see the code?)"
-          value={codeUrl}
-          onChange={onChangeCodeURL}
-        />
-        <Input
-          placeholder="Email (non-public; just gotta verify you're human)"
-          value={email}
-          onChange={onChangeEmail}
-        />
+        <Flex m={1} style={{ alignItems: 'center' }}>
+          <Label style={{ width: 150 }}>Live URL</Label>
+          <Input
+            placeholder="(where's the final product?)"
+            value={liveUrl}
+            onChange={onChangeLiveURL}
+          />
+        </Flex>
+        <Flex m={1} style={{ alignItems: 'center' }}>
+          <Label style={{ width: 150 }}>Code URL</Label>
+          <Input
+            placeholder="(where's the code?)"
+            value={codeUrl}
+            onChange={onChangeCodeURL}
+          />
+        </Flex>
+        <Flex m={1} style={{ alignItems: 'center' }}>
+          <Label style={{ width: 150 }}>Email</Label>
+          <Input
+            placeholder="(to verify you're human)"
+            value={email}
+            onChange={onChangeEmail}
+          />
+        </Flex>
         <Button
+          m={1}
           disabled={disableSubmission}
           onClick={disableSubmission ? null : onClickSubmitButton}
           style={{ flexGrow: 1 }}

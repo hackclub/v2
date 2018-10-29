@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from "react";
-import api from "api";
-import Auth from "components/Auth";
-import storage from "storage";
-import { isEmpty } from "lodash";
-import Slider from "react-slick";
-import { Helmet } from "react-helmet";
+import React, { Component, Fragment } from 'react'
+import api from 'api'
+import Auth from 'components/Auth'
+import storage from 'storage'
+import { isEmpty } from 'lodash'
+import Slider from 'react-slick'
+import { Helmet } from 'react-helmet'
 import {
   Box,
   Card,
@@ -21,35 +21,35 @@ import {
   BackgroundImage,
   Loading,
   Input,
-  theme
-} from "@hackclub/design-system";
+  theme,
+} from '@hackclub/design-system'
 
 class CarouselProject extends Component {
-  state = { status: "loading" };
+  state = { status: 'loading' }
 
   onClickImage() {
-    console.log("Clicking Image");
-    return;
-    const { live_url } = this.props.project;
-    window.open(live_url, "_blank");
+    console.log('Clicking Image')
+    return
+    const { live_url } = this.props.project
+    window.open(live_url, '_blank')
   }
 
   render() {
-    const { project, isOriginal = false, liveFrame = false } = this.props;
-    const { author = "???", live_url, code_url, screenshot } = project;
+    const { project, isOriginal = false, liveFrame = false } = this.props
+    const { author = '???', live_url, code_url, screenshot } = project
 
-    const onClickImage = this.onClickImage.bind(this);
+    const onClickImage = this.onClickImage.bind(this)
     const authorString = isOriginal
       ? `Original by ${author}`
-      : `Rehacked by ${author}`;
+      : `Rehacked by ${author}`
 
     const imageUrl = liveFrame
       ? (function() {
-          const url = live_url;
-          const accessKey = "d7d3cada424e0439f48de1a1b50160dd";
-          return `http://api.screenshotlayer.com/api/capture?access_key=${accessKey}&url=${url}&viewport=1440x900&format=PNG`;
+          const url = live_url
+          const accessKey = 'd7d3cada424e0439f48de1a1b50160dd'
+          return `http://api.screenshotlayer.com/api/capture?access_key=${accessKey}&url=${url}&viewport=1440x900&format=PNG`
         })()
-      : "http://api.hackclub.com" + screenshot.file_path;
+      : 'http://api.hackclub.com' + screenshot.file_path
 
     return (
       <Flex
@@ -61,13 +61,13 @@ class CarouselProject extends Component {
           flexBasis: 0,
           flexGrow: 1,
           flexShrink: 1,
-          flexDirection: "column"
+          flexDirection: 'column',
         }}
       >
         <Heading.h4
           m={1}
           style={{
-            alignSelf: isOriginal ? "flex-end" : "flex-start"
+            alignSelf: isOriginal ? 'flex-end' : 'flex-start',
           }}
         >
           {authorString}
@@ -75,86 +75,86 @@ class CarouselProject extends Component {
         <Box
           m={1}
           style={{
-            paddingBottom: "50%",
-            position: "relative",
-            overflow: "hidden",
+            paddingBottom: '50%',
+            position: 'relative',
+            overflow: 'hidden',
             borderRadius: 5,
-            border: "1px solid #EEE"
+            border: '1px solid #EEE',
           }}
         >
           <Image
             src={imageUrl}
             style={{
-              objectFit: "cover",
-              position: "absolute",
+              objectFit: 'cover',
+              position: 'absolute',
               top: 0,
               left: 0,
               right: 0,
-              bottom: 0
+              bottom: 0,
             }}
           />
         </Box>
         <Flex
           m={2}
           style={{
-            justifyContent: "space-between"
+            justifyContent: 'space-between',
           }}
         >
           <A href={live_url}>Live Version</A>
           <A href={code_url}>Code</A>
         </Flex>
       </Flex>
-    );
+    )
   }
 }
 
 class CarouselSubmissionForm extends Component {
   onClickSubmitButton() {
-    console.log("Clicking Submit Button");
-    const { workshopSlug, userEmail, submissionData } = this.props;
-    const { liveUrl, codeUrl } = submissionData;
+    console.log('Clicking Submit Button')
+    const { workshopSlug, userEmail, submissionData } = this.props
+    const { liveUrl, codeUrl } = submissionData
 
     return fetch(
-      "https://api.hackclub.com/v1/workshops/" + workshopSlug + "/projects",
+      'https://api.hackclub.com/v1/workshops/' + workshopSlug + '/projects',
       {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify({
           live_url: liveUrl,
-          code_url: codeUrl
+          code_url: codeUrl,
           // screenshot_id: screenshotId
         }),
         headers: {
-          "Content-Type": "application/json"
-        }
+          'Content-Type': 'application/json',
+        },
       }
-    ).then(resp => location.reload());
+    ).then(resp => location.reload())
     // For now, just refresh the page. Needs a real submssion complete page eventually.
     //.then(resp => resp.json());
   }
 
   onChangeLiveURL(event) {
-    const liveUrl = event.target.value;
-    const { submissionData } = this.props;
-    this.props.setSubmissionData({ ...submissionData, liveUrl });
+    const liveUrl = event.target.value
+    const { submissionData } = this.props
+    this.props.setSubmissionData({ ...submissionData, liveUrl })
   }
 
   onChangeCodeURL(event) {
-    const codeUrl = event.target.value;
-    const { submissionData } = this.props;
-    this.props.setSubmissionData({ ...submissionData, codeUrl });
+    const codeUrl = event.target.value
+    const { submissionData } = this.props
+    this.props.setSubmissionData({ ...submissionData, codeUrl })
   }
 
   render() {
-    const { workshopSlug, userEmail, submissionData } = this.props;
-    const { liveUrl, codeUrl } = submissionData;
+    const { workshopSlug, userEmail, submissionData } = this.props
+    const { liveUrl, codeUrl } = submissionData
 
-    const authed = !isEmpty(userEmail);
+    const authed = !isEmpty(userEmail)
 
-    const onClickSubmitButton = this.onClickSubmitButton.bind(this);
-    const onChangeLiveURL = this.onChangeLiveURL.bind(this);
-    const onChangeCodeURL = this.onChangeCodeURL.bind(this);
+    const onClickSubmitButton = this.onClickSubmitButton.bind(this)
+    const onChangeLiveURL = this.onChangeLiveURL.bind(this)
+    const onChangeCodeURL = this.onChangeCodeURL.bind(this)
 
-    const disableSubmission = liveUrl == "" || codeUrl == "";
+    const disableSubmission = liveUrl == '' || codeUrl == ''
 
     return (
       <Flex
@@ -165,14 +165,14 @@ class CarouselSubmissionForm extends Component {
           borderRadius: 5,
           flexGrow: 1,
           flexShrink: 1,
-          flexDirection: "column",
-          alignSelf: "center"
+          flexDirection: 'column',
+          alignSelf: 'center',
         }}
       >
-        <Auth headline={"Are you human?"} style={{ flexGrow: 1 }} />
+        <Auth headline={'Are you human?'} style={{ flexGrow: 1 }} />
         {!authed ? null : (
           <Fragment>
-            <Flex m={1} style={{ alignItems: "center" }}>
+            <Flex m={1} style={{ alignItems: 'center' }}>
               <Label style={{ width: 150 }}>Live URL</Label>
               <Input
                 placeholder="(where's the final product?)"
@@ -180,7 +180,7 @@ class CarouselSubmissionForm extends Component {
                 onChange={onChangeLiveURL}
               />
             </Flex>
-            <Flex m={1} style={{ alignItems: "center" }}>
+            <Flex m={1} style={{ alignItems: 'center' }}>
               <Label style={{ width: 150 }}>Code URL</Label>
               <Input
                 placeholder="(where's the code?)"
@@ -199,7 +199,7 @@ class CarouselSubmissionForm extends Component {
           </Fragment>
         )}
       </Flex>
-    );
+    )
   }
 }
 
@@ -207,79 +207,79 @@ class Carousel extends Component {
   state = {
     autoplay: false,
     submissionData: {
-      liveUrl: "",
-      codeUrl: ""
+      liveUrl: '',
+      codeUrl: '',
     },
-    userEmail: "",
-    liveFrameStatus: "empty",
-    liveFrameImage: null
-  };
+    userEmail: '',
+    liveFrameStatus: 'empty',
+    liveFrameImage: null,
+  }
 
   constructor(props) {
-    super(props);
+    super(props)
 
-    const { slug } = props;
-    console.log("Slug is " + slug);
+    const { slug } = props
+    console.log('Slug is ' + slug)
 
-    const userEmail = storage.get("userEmail");
-    this.state.userEmail = userEmail;
+    const userEmail = storage.get('userEmail')
+    this.state.userEmail = userEmail
 
     const exampleData = {
-      author: "msw",
-      live_url: "https://zachlatta.github.io",
-      code_url: "https://github.com/zachlatta/zachlatta.github.io",
+      author: 'msw',
+      live_url: 'https://zachlatta.github.io',
+      code_url: 'https://github.com/zachlatta/zachlatta.github.io',
       screenshot: {
         id: 4,
-        created_at: "2018-04-13T03:18:50.716Z",
-        updated_at: "2018-04-13T03:19:06.553Z",
-        type: "workshop_project_screenshot",
+        created_at: '2018-04-13T03:18:50.716Z',
+        updated_at: '2018-04-13T03:19:06.553Z',
+        type: 'workshop_project_screenshot',
         file_path:
-          "/rails/active_storage/variants/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dMIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f1d52341ad5ccaccbb2b3a4b1b191d57fd531b4/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdERG9LYzNSeWFYQlVPZzVwYm5SbGNteGhZMlZKSWdwUWJHRnVaUVk2QmtWVU9oSm5ZWFZ6YzJsaGJsOWliSFZ5Wmdrd0xqQTFPZ3h4ZFdGc2FYUjVTU0lJT0RVbEJqc0hWRG9MWkdWbWFXNWxTU0lhYW5CbFp6cGtZM1F0YldWMGFHOWtQV1pzYjJGMEJqc0hWRG9VYzJGdGNHeHBibWRmWm1GamRHOXlTU0lLTkRveU9qQUdPd2RVT2d0eVpYTnBlbVZKSWdrMU1EQjRCanNIVkE9PSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--7d4c10d23979a9bcafff7ea8da85dcefd2837226/Screenshot%202018-04-12%2020.18.17.png"
-      }
-    };
+          '/rails/active_storage/variants/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dMIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f1d52341ad5ccaccbb2b3a4b1b191d57fd531b4/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdERG9LYzNSeWFYQlVPZzVwYm5SbGNteGhZMlZKSWdwUWJHRnVaUVk2QmtWVU9oSm5ZWFZ6YzJsaGJsOWliSFZ5Wmdrd0xqQTFPZ3h4ZFdGc2FYUjVTU0lJT0RVbEJqc0hWRG9MWkdWbWFXNWxTU0lhYW5CbFp6cGtZM1F0YldWMGFHOWtQV1pzYjJGMEJqc0hWRG9VYzJGdGNHeHBibWRmWm1GamRHOXlTU0lLTkRveU9qQUdPd2RVT2d0eVpYTnBlbVZKSWdrMU1EQjRCanNIVkE9PSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--7d4c10d23979a9bcafff7ea8da85dcefd2837226/Screenshot%202018-04-12%2020.18.17.png',
+      },
+    }
 
-    this.state.original = { ...exampleData };
+    this.state.original = { ...exampleData }
     this.state.projects = [
       { ...exampleData },
       { ...exampleData },
-      { ...exampleData }
-    ];
+      { ...exampleData },
+    ]
 
     api.get(`v1/workshops/${slug}/projects`).then(projects => {
       this.setState({
-        projects
-      });
-    });
+        projects,
+      })
+    })
   }
 
   setLiveFrameStatus(liveFrameStatus) {
-    this.setState({ liveFrameStatus });
+    this.setState({ liveFrameStatus })
   }
 
   setSubmissionData(submissionData) {
     // disabled Live Frame feature for now, since screenshotlayer free tier limits us here
-    this.setLiveFrameStatus(submissionData.liveUrl == "" ? "empty" : "loading");
-    this.setState({ submissionData });
+    this.setLiveFrameStatus(submissionData.liveUrl == '' ? 'empty' : 'loading')
+    this.setState({ submissionData })
   }
 
   render() {
-    const { slug } = this.props;
+    const { slug } = this.props
     const {
       original,
       projects,
       submissionData,
       userEmail,
       liveFrameStatus,
-      liveFrameImage
-    } = this.state;
+      liveFrameImage,
+    } = this.state
 
-    const setSubmissionData = this.setSubmissionData.bind(this);
+    const setSubmissionData = this.setSubmissionData.bind(this)
 
     const submissionProject = {
       live_url: submissionData.liveUrl,
       code_url: submissionData.codeUrl,
-      screenshot: {}
-    };
+      screenshot: {},
+    }
 
     const sliderSettings = {
       dots: false,
@@ -292,8 +292,8 @@ class Carousel extends Component {
       autoplaySpeed: 4000,
       slidesToShow: 1,
       slidesToScroll: 1,
-      pauseOnHover: true
-    };
+      pauseOnHover: true,
+    }
 
     return (
       <Box bg="#EEE" p={4}>
@@ -310,17 +310,17 @@ class Carousel extends Component {
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
           />
         </Helmet>
-        <Flex style={{ flexDirection: "column" }}>
+        <Flex style={{ flexDirection: 'column' }}>
           <Flex justify="space-between" style={{}}>
             <Flex
               style={{
                 margin: 0,
-                width: "50%",
+                width: '50%',
                 flexGrow: 1,
                 flexShrink: 1,
-                alignSelf: "center",
-                overflow: "hidden",
-                position: "relative"
+                alignSelf: 'center',
+                overflow: 'hidden',
+                position: 'relative',
               }}
             >
               <CarouselProject project={original} isOriginal={true} />
@@ -329,15 +329,15 @@ class Carousel extends Component {
             <Flex
               style={{
                 margin: 0,
-                width: "50%",
-                flexDirection: "column",
+                width: '50%',
+                flexDirection: 'column',
                 flexShrink: 1,
-                alignSelf: "stretch",
-                overflow: "hidden",
-                position: "relative"
+                alignSelf: 'stretch',
+                overflow: 'hidden',
+                position: 'relative',
               }}
             >
-              {liveFrameStatus != "empty" ? (
+              {liveFrameStatus != 'empty' ? (
                 <CarouselProject
                   liveFrame
                   project={submissionProject}
@@ -349,11 +349,11 @@ class Carousel extends Component {
                   style={{
                     margin: 0,
                     flexBasis: 0,
-                    position: "absolute",
+                    position: 'absolute',
                     top: 0,
                     left: 0,
                     right: 0,
-                    bottom: 0
+                    bottom: 0,
                   }}
                 >
                   {projects.map(project => (
@@ -371,8 +371,8 @@ class Carousel extends Component {
           />
         </Flex>
       </Box>
-    );
+    )
   }
 }
 
-export default Carousel;
+export default Carousel

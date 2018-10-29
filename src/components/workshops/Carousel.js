@@ -36,12 +36,14 @@ class CarouselProject extends Component {
 
   render() {
     const { project, isOriginal = false, liveFrame = false } = this.props
-    const { author = '???', live_url, code_url, screenshot } = project
+    const { user = null, live_url, code_url, screenshot } = project
+
+    const username = user ? user.username : '???'
 
     const onClickImage = this.onClickImage.bind(this)
     const authorString = isOriginal
-      ? `Original by ${author}`
-      : `Rehacked by ${author}`
+      ? `Original by ${username}`
+      : `Rehacked by ${username}`
 
     const imageUrl = liveFrame
       ? (function() {
@@ -113,22 +115,22 @@ class CarouselSubmissionForm extends Component {
     console.log('Clicking Submit Button')
     const { workshopSlug, userEmail, submissionData } = this.props
     const { liveUrl, codeUrl } = submissionData
+    const authToken = storage.get('authToken')
 
-    return fetch(
-      'https://api.hackclub.com/v1/workshops/' + workshopSlug + '/projects',
-      {
+    api
+      .post(`v1/workshops/${workshopSlug}/projects`, {
         method: 'POST',
         body: JSON.stringify({
           live_url: liveUrl,
           code_url: codeUrl,
           // screenshot_id: screenshotId
         }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    ).then(resp => location.reload())
-    // For now, just refresh the page. Needs a real submssion complete page eventually.
+        headers: { 'Content-Type': 'application/json' },
+        authToken,
+      })
+      .then(resp => location.reload())
+
+    // For now, just refresh the page. Needs a real Submssion Complete page eventually.
     //.then(resp => resp.json());
   }
 
@@ -239,7 +241,7 @@ class Carousel extends Component {
     this.state.userEmail = userEmail
 
     const exampleData = {
-      author: 'msw',
+      user: { username: 'msw' },
       live_url: 'https://zachlatta.github.io',
       code_url: 'https://github.com/zachlatta/zachlatta.github.io',
       screenshot: {

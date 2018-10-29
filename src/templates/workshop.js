@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from "react";
-import styled from "styled-components";
+import React, { Component, Fragment } from 'react'
+import styled from 'styled-components'
 import {
   Box,
   Container,
@@ -10,47 +10,47 @@ import {
   Section,
   Image,
   theme
-} from "@hackclub/design-system";
-import Helmet from "react-helmet";
-import Link from "gatsby-link";
-import Nav from "components/Nav";
+} from '@hackclub/design-system'
+import Helmet from 'react-helmet'
+import Link from 'gatsby-link'
+import Nav from 'components/Nav'
 import {
   Breadcrumbs,
   Breadcrumb,
   BreadcrumbDivider
-} from "components/Breadcrumbs";
-import Invert from "components/Invert";
-import IconButton from "components/IconButton";
-import MarkdownBody from "components/MarkdownBody";
-import FeedbackForm from "components/workshops/FeedbackForm";
-import Carousel from "components/workshops/Carousel";
-import DiscussOnSlack from "components/DiscussOnSlack";
-import ShareButton from "components/ShareButton";
-import Sheet from "components/Sheet";
-import Footer from "components/Footer";
-import { isEmpty } from "lodash";
-import { org } from "data.json";
+} from 'components/Breadcrumbs'
+import Invert from 'components/Invert'
+import IconButton from 'components/IconButton'
+import MarkdownBody from 'components/MarkdownBody'
+import FeedbackForm from 'components/workshops/FeedbackForm'
+import Carousel from 'components/workshops/Carousel'
+import DiscussOnSlack from 'components/DiscussOnSlack'
+import ShareButton from 'components/ShareButton'
+import Sheet from 'components/Sheet'
+import Footer from 'components/Footer'
+import { isEmpty } from 'lodash'
+import { org } from 'data.json'
 
 const NotOnPrint = styled(Box)`
   @media print {
     display: none !important;
   }
-`;
+`
 
 const OnlyOnPrint = styled(Box)`
   display: none !important;
   @media print {
     display: block !important;
   }
-`;
+`
 
-const Header = styled(Box.withComponent("header"))`
+const Header = styled(Box.withComponent('header'))`
   li a,
   h2,
   p {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.375);
   }
-`;
+`
 
 const Name = styled(Heading.h1)`
   background-color: ${theme.colors.white};
@@ -65,22 +65,22 @@ const Name = styled(Heading.h1)`
   ${theme.mediaQueries.sm} {
     width: max-content;
   }
-`;
+`
 
 const Body = styled(Container.withComponent(MarkdownBody))`
   @media print {
     max-width: none !important;
   }
-`;
-A.link = A.withComponent(Link);
-Section.h = Section.withComponent("header");
+`
+A.link = A.withComponent(Link)
+Section.h = Section.withComponent('header')
 
 const linkAuthor = authorText => {
-  if (isEmpty(authorText)) return null;
+  if (isEmpty(authorText)) return null
   // This iterates over each word in authorText, finds GitHub usernames (any
   // text that looks like "@orpheus", and turns them into links.
-  const parsedAuthorText = authorText.split(" ").map((word, index, arr) => {
-    const matches = word.match(/@(\w+)/);
+  const parsedAuthorText = authorText.split(' ').map((word, index, arr) => {
+    const matches = word.match(/@(\w+)/)
     const processedWord = matches ? (
       <A
         href={`https://github.com/${matches[1]}`}
@@ -90,17 +90,17 @@ const linkAuthor = authorText => {
       />
     ) : (
       word
-    );
+    )
 
     // This pads returned results with spaces, making our final array look the
     // following:
     //   [ 'Hack', ' ', 'Club', ' ', 'staff' ]
     // if last item in array, don't give an extra space
-    return index === arr.length - 1 ? processedWord : [processedWord, " "];
-  });
+    return index === arr.length - 1 ? processedWord : [processedWord, ' ']
+  })
 
-  return <Fragment>Created by {parsedAuthorText}</Fragment>;
-};
+  return <Fragment>Created by {parsedAuthorText}</Fragment>
+}
 
 const CardsSection = styled(Box)`
   background-image: linear-gradient(
@@ -108,13 +108,13 @@ const CardsSection = styled(Box)`
     ${theme.colors.white},
     ${theme.colors.snow}
   );
-`;
+`
 
 const Cards = styled(Container.withComponent(NotOnPrint))`
   text-align: center;
   display: grid;
   grid-gap: ${theme.space[4]}px;
-  grid-template-areas: "feedback" "share" "questions" "contribute";
+  grid-template-areas: 'feedback' 'share' 'questions' 'contribute';
   width: 100%;
 
   > div {
@@ -134,8 +134,8 @@ const Cards = styled(Container.withComponent(NotOnPrint))`
 
   ${theme.mediaQueries.md} {
     grid-template-areas:
-      "feedback feedback share share"
-      "feedback feedback questions contribute";
+      'feedback feedback share share'
+      'feedback feedback questions contribute';
   }
 
   ${Sheet} {
@@ -149,46 +149,46 @@ const Cards = styled(Container.withComponent(NotOnPrint))`
   textarea {
     resize: vertical;
   }
-`;
+`
 
 const githubEditUrl = slug =>
-  `https://github.com/hackclub/hackclub/edit/master${slug}/README.md`;
+  `https://github.com/hackclub/hackclub/edit/master${slug}/README.md`
 const twitterURL = (text, url) =>
   `https://twitter.com/intent/tweet?text=${text
-    .split(" ")
-    .join("%20")}&url=${url}`;
+    .split(' ')
+    .join('%20')}&url=${url}`
 const facebookURL = (text, url) =>
-  `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  `https://www.facebook.com/sharer/sharer.php?u=${url}`
 
-const makeUrl = (domain, slug) => `https://${domain}${slug}`;
+const makeUrl = (domain, slug) => `https://${domain}${slug}`
 
 export default ({ data }) => {
-  if (isEmpty(data)) return null;
+  if (isEmpty(data)) return null
 
   const {
     fields: { slug, bg },
-    frontmatter: { name, description, author = "", group = "start", order = 1 },
+    frontmatter: { name, description, author = '', group = 'start', order = 1 },
     html
-  } = data.markdownRemark;
+  } = data.markdownRemark
 
-  const authorUsername = (author || "").match(/@(\S+)/)
-    ? author.replace("@", "")
-    : "hackclub";
-  const authorUrl = makeUrl("github.com", authorUsername);
+  const authorUsername = (author || '').match(/@(\S+)/)
+    ? author.replace('@', '')
+    : 'hackclub'
+  const authorUrl = makeUrl('github.com', authorUsername)
 
-  const title = `${name} – Hack Club Workshops`;
-  const d = description.charAt(0).toUpperCase() + description.slice(1);
-  const desc = `Free coding tutorial for ${d}, published on Hack Club Workshops.`;
-  const img = "https://hackclub.com/cards/workshops.png";
-  const url = makeUrl("hackclub.com", slug);
+  const title = `${name} – Hack Club Workshops`
+  const d = description.charAt(0).toUpperCase() + description.slice(1)
+  const desc = `Free coding tutorial for ${d}, published on Hack Club Workshops.`
+  const img = 'https://hackclub.com/cards/workshops.png'
+  const url = makeUrl('hackclub.com', slug)
 
   const schema = {
-    "@context": "http://schema.org",
-    "@type": "HowTo",
+    '@context': 'http://schema.org',
+    '@type': 'HowTo',
     headline: name,
-    image: [makeUrl("hackclub.com", bg)],
+    image: [makeUrl('hackclub.com', bg)],
     author: {
-      "@type": "Person",
+      '@type': 'Person',
       name: author,
       url: authorUrl
     },
@@ -197,31 +197,34 @@ export default ({ data }) => {
     description,
     genre: group,
     position: order,
-    educationalUse: "assignment",
+    educationalUse: 'assignment',
     isAccessibleForFree: true,
     potentialAction: {
-      "@type": "CreateAction",
+      '@type': 'CreateAction',
       result: {
-        "@type": "CreativeWork",
+        '@type': 'CreativeWork',
         name
       }
     }
-  };
+  }
 
   return (
     <Fragment>
       <Helmet
         title={title}
         meta={[
-          { name: "description", content: desc },
-          { name: "twitter:title", content: title },
-          { name: "twitter:description", content: desc },
-          { name: "twitter:image", content: img },
-          { property: "og:title", content: title },
-          { property: "og:description", content: desc },
-          { property: "og:image", content: img },
-          { property: "og:site_name", content: "Hack Club Workshops" },
-          { property: "og:url", content: url }
+          { name: 'description', content: desc },
+          { name: 'twitter:title', content: title },
+          { name: 'twitter:description', content: desc },
+          { name: 'twitter:image', content: img },
+          { property: 'og:title', content: title },
+          { property: 'og:description', content: desc },
+          { property: 'og:image', content: img },
+          {
+            property: 'og:site_name',
+            content: 'Hack Club Workshops'
+          },
+          { property: 'og:url', content: url }
         ]}
       >
         <script type="application/ld+json" children={JSON.stringify(schema)} />
@@ -233,7 +236,10 @@ export default ({ data }) => {
           color="white"
           p={0}
           align="center"
-          style={{ backgroundImage: `url('${bg}')`, position: "relative" }}
+          style={{
+            backgroundImage: `url('${bg}')`,
+            position: 'relative'
+          }}
         >
           <Container pt={5} pb={3} px={2}>
             <Breadcrumbs align="center" justify="center" mt={3} mb={2} wrap>
@@ -265,7 +271,7 @@ export default ({ data }) => {
           </Flex>
         </Header>
       </NotOnPrint>
-      <Carousel slug={slug} />
+      <Carousel slug={slug.replace('/workshops/', '')} />
       <OnlyOnPrint p={3}>
         <Flex align="center" justify="flex-end" my={3}>
           <Image
@@ -341,8 +347,8 @@ export default ({ data }) => {
         <Footer />
       </Box>
     </Fragment>
-  );
-};
+  )
+}
 export const pageQuery = graphql`
   query WorkshopBySlug($path: String!) {
     markdownRemark(fields: { slug: { eq: $path } }) {
@@ -360,4 +366,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

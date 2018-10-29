@@ -169,21 +169,21 @@ class CarouselSubmissionForm extends Component {
           alignSelf: 'center',
         }}
       >
-        <Fragment>
+        {authed ? null : (
           <Heading.h4 mb={2} style={{}}>
             Before you submit something...
           </Heading.h4>
-          <Auth
-            headline={"Please prove you're human"}
-            cardProps={{
-              maxWidth: 20,
-              p: 3,
-              mb: 0,
-              bg: 'primary',
-            }}
-            style={{ flexGrow: 1 }}
-          />
-        </Fragment>
+        )}
+        <Auth
+          headline={"Please prove you're human"}
+          cardProps={{
+            maxWidth: 20,
+            p: 3,
+            mb: 0,
+            bg: 'primary',
+          }}
+          style={{ flexGrow: 1 }}
+        />
         {!authed ? null : (
           <Fragment>
             <Flex m={1} style={{ alignItems: 'center' }}>
@@ -303,7 +303,8 @@ class Carousel extends Component {
       infinite: true,
       speed: 500,
       autoplay: true,
-      autoplaySpeed: 4000,
+      initialSlide: projects.length - 1,
+      autoplaySpeed: 5000,
       slidesToShow: 1,
       slidesToScroll: 1,
       pauseOnHover: true,

@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import api from 'api'
 import Auth from 'components/Auth'
-import storage from 'storage'
 import { isEmpty } from 'lodash'
 import Slider from 'react-slick'
 import { Helmet } from 'react-helmet'

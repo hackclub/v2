@@ -344,7 +344,7 @@ export default () => (
           Beyond our community, Hack Club is a nonprofit collective of coding
           clubs led by high schoolers everywhere. If you’ve already got a coding
           club, you’re welcome to join our network! If you’re interested in
-          starting your own, we’ll help you out every step fo the way.
+          starting your own, we’ll help you out every step of the way.
         </Text>
         <StartCTA to="/start" mt={3}>
           Start your club

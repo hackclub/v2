@@ -113,7 +113,7 @@ class CarouselProject extends Component {
 class CarouselSubmissionForm extends Component {
   onClickSubmitButton() {
     console.log('Clicking Submit Button')
-    const { workshopSlug, userEmail, submissionData } = this.props
+    const { workshopSlug, submissionData } = this.props
     const { liveUrl, codeUrl } = submissionData
 
     api
@@ -224,7 +224,6 @@ class Carousel extends Component {
     },
     authed: false,
     authData: {},
-    userEmail: '',
     liveFrameStatus: 'empty',
     liveFrameImage: null,
   }
@@ -234,9 +233,6 @@ class Carousel extends Component {
 
     const { slug } = props
     console.log('Slug is ' + slug)
-
-    const userEmail = storage.get('userEmail')
-    this.state.userEmail = userEmail
 
     const exampleData = {
       user: { username: 'msw' },
@@ -301,7 +297,6 @@ class Carousel extends Component {
       original,
       projects,
       submissionData,
-      userEmail,
       authed,
       authData,
       liveFrameStatus,
@@ -403,7 +398,6 @@ class Carousel extends Component {
           <CarouselSubmissionForm
             authed={authed}
             authData={authData}
-            userEmail={userEmail}
             workshopSlug={slug}
             submissionData={submissionData}
             setSubmissionData={setSubmissionData}

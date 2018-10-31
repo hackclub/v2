@@ -26,13 +26,6 @@ import {
 class CarouselProject extends Component {
   state = { status: 'loading' }
 
-  onClickImage() {
-    console.log('Clicking Image')
-    return
-    const { live_url } = this.props.project
-    window.open(live_url, '_blank')
-  }
-
   render() {
     const { project, isOriginal = false, liveFrame = false } = this.props
     const { user = null, live_url, code_url, screenshot } = project
@@ -111,7 +104,6 @@ class CarouselProject extends Component {
 
 class CarouselSubmissionForm extends Component {
   onClickSubmitButton() {
-    console.log('Clicking Submit Button')
     const { workshopSlug, submissionData } = this.props
     const { liveUrl, codeUrl } = submissionData
 
@@ -231,7 +223,6 @@ class Carousel extends Component {
     super(props)
 
     const { slug } = props
-    console.log('Slug is ' + slug)
 
     const exampleData = {
       user: { username: 'msw' },

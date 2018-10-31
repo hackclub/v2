@@ -1,6 +1,5 @@
 import fetch from 'unfetch'
 import storage from 'storage'
-import { each } from 'lodash'
 
 export const url = 'https://api.hackclub.com/'
 const methods = ['GET', 'PUT', 'POST', 'PATCH', 'DELETE']
@@ -12,7 +11,7 @@ const generateMethod = method => (path, options = {}, fetchOptions = {}) => {
     options.authToken = authToken
   }
 
-  each(options, (value, key) => {
+  for (let [key, value] of Object.entries(options)) {
     switch (key) {
       case 'authToken':
         filteredOptions.headers = filteredOptions.headers || {}
@@ -31,7 +30,7 @@ const generateMethod = method => (path, options = {}, fetchOptions = {}) => {
         filteredOptions[key] = value
         break
     }
-  })
+  }
 
   if (fetchOptions.noAuth) {
     if (filteredOptions.headers && filteredOptions.headers['Authorization']) {

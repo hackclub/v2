@@ -135,7 +135,14 @@ class CarouselSubmissionForm extends Component {
   }
 
   render() {
-    const { workshopSlug, submissionData, authed, authData } = this.props
+    const {
+      workshopSlug,
+      submissionData,
+      authed,
+      authData,
+      onSignOut,
+    } = this.props
+
     const { liveUrl, codeUrl } = submissionData
 
     const onClickSubmitButton = this.onClickSubmitButton.bind(this)
@@ -163,6 +170,9 @@ class CarouselSubmissionForm extends Component {
           </Heading.h4>
         )}
         <Auth
+          preAuthed={authed}
+          preAuthData={authData}
+          onSignOut={onSignOut}
           headline={"Please prove you're human"}
           cardProps={{
             maxWidth: 20,
@@ -208,6 +218,7 @@ class CarouselSubmissionForm extends Component {
 class Carousel extends Component {
   state = {
     autoplay: false,
+    submitting: false,
     submissionData: {
       liveUrl: '',
       codeUrl: '',
@@ -282,11 +293,21 @@ class Carousel extends Component {
     this.setState({ submissionData })
   }
 
+  onClickSubmitButton() {
+    this.setState({ submitting: true })
+  }
+
+  onSignOut() {
+    console.log('Signing out')
+    this.setState({ authed: false, authData: {} })
+  }
+
   render() {
     const { slug } = this.props
     const {
       original,
       projects,
+      submitting,
       submissionData,
       authed,
       authData,
@@ -295,6 +316,8 @@ class Carousel extends Component {
     } = this.state
 
     const setSubmissionData = this.setSubmissionData.bind(this)
+    const onClickSubmitButton = this.onClickSubmitButton.bind(this)
+    const onSignOut = this.onSignOut.bind(this)
 
     const submissionProject = {
       user: authData,
@@ -319,7 +342,15 @@ class Carousel extends Component {
     }
 
     return (
-      <Box bg="#EEE" p={4}>
+      <Flex
+        bg="#EEE"
+        p={4}
+        style={{
+          flexDirection: 'column',
+
+          alignItems: 'center',
+        }}
+      >
         <Helmet>
           <link
             rel="stylesheet"
@@ -386,15 +417,30 @@ class Carousel extends Component {
               )}
             </Flex>
           </Flex>
+        </Flex>
+        {submitting ? (
           <CarouselSubmissionForm
             authed={authed}
             authData={authData}
+            onSignOut={onSignOut}
             workshopSlug={slug}
             submissionData={submissionData}
             setSubmissionData={setSubmissionData}
           />
-        </Flex>
-      </Box>
+        ) : (
+          <Button
+            px={4}
+            py={3}
+            m={4}
+            mb={0}
+            scale
+            fontSize={4}
+            onClick={onClickSubmitButton}
+          >
+            I made something
+          </Button>
+        )}
+      </Flex>
     )
   }
 }

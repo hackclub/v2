@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react'
-import api from 'api'
-import Auth from 'components/Auth'
-import CarouselProject from './CarouselProject'
-import Slider from 'react-slick'
 import { Helmet } from 'react-helmet'
+import Slider from 'react-slick'
+import api from 'api'
+import CarouselProject from './CarouselProject'
+import CarouselSubmissionForm from './CarouselSubmissionForm'
 import {
   Box,
   Card,
@@ -11,131 +11,9 @@ import {
   Flex,
   Label,
   Heading,
-  Link as A,
-  Text,
-  Section,
-  Image,
   Button,
-  IconButton,
-  BackgroundImage,
-  Loading,
-  Input,
   theme,
 } from '@hackclub/design-system'
-
-class CarouselSubmissionForm extends Component {
-  onClickSubmitButton() {
-    const { workshopSlug, submissionData } = this.props
-    const { liveUrl, codeUrl } = submissionData
-
-    api
-      .post(`v1/workshops/${workshopSlug}/projects`, {
-        method: 'POST',
-        body: JSON.stringify({
-          live_url: liveUrl,
-          code_url: codeUrl,
-          // screenshot_id: screenshotId
-        }),
-        headers: { 'Content-Type': 'application/json' },
-      })
-      .then(resp => location.reload())
-
-    // For now, just refresh the page. Needs a real Submssion Complete page eventually.
-    //.then(resp => resp.json());
-  }
-
-  onChangeLiveURL(event) {
-    const liveUrl = event.target.value
-    const { submissionData } = this.props
-    this.props.setSubmissionData({ ...submissionData, liveUrl })
-  }
-
-  onChangeCodeURL(event) {
-    const codeUrl = event.target.value
-    const { submissionData } = this.props
-    this.props.setSubmissionData({ ...submissionData, codeUrl })
-  }
-
-  render() {
-    const {
-      workshopSlug,
-      submissionData,
-      authed,
-      authData,
-      onSignOut,
-    } = this.props
-
-    const { liveUrl, codeUrl } = submissionData
-
-    const onClickSubmitButton = this.onClickSubmitButton.bind(this)
-    const onChangeLiveURL = this.onChangeLiveURL.bind(this)
-    const onChangeCodeURL = this.onChangeCodeURL.bind(this)
-
-    const disableSubmission = liveUrl == '' || codeUrl == ''
-
-    return (
-      <Flex
-        p={4}
-        bg="#FFF"
-        style={{
-          margin: 10,
-          borderRadius: 5,
-          flexGrow: 1,
-          flexShrink: 1,
-          flexDirection: 'column',
-          alignSelf: 'center',
-        }}
-      >
-        {authed ? null : (
-          <Heading.h4 mb={2} style={{}}>
-            Before you submit something...
-          </Heading.h4>
-        )}
-        <Auth
-          preAuthed={authed}
-          preAuthData={authData}
-          onSignOut={onSignOut}
-          headline={"Please prove you're human"}
-          cardProps={{
-            maxWidth: 20,
-            p: 3,
-            mb: 0,
-            bg: 'primary',
-          }}
-          style={{ flexGrow: 1 }}
-        />
-        {!authed ? null : (
-          <Fragment>
-            <Flex m={1} style={{ alignItems: 'center' }}>
-              <Label style={{ width: 150 }}>Live URL</Label>
-              <Input
-                placeholder="(where's the final product?)"
-                value={liveUrl}
-                onChange={onChangeLiveURL}
-              />
-            </Flex>
-            <Flex m={1} style={{ alignItems: 'center' }}>
-              <Label style={{ width: 150 }}>Code URL</Label>
-              <Input
-                placeholder="(where's the code?)"
-                value={codeUrl}
-                onChange={onChangeCodeURL}
-              />
-            </Flex>
-            <Button
-              m={1}
-              disabled={disableSubmission}
-              onClick={disableSubmission ? null : onClickSubmitButton}
-              style={{ flexGrow: 1 }}
-            >
-              Submit My Thing
-            </Button>
-          </Fragment>
-        )}
-      </Flex>
-    )
-  }
-}
 
 class Carousel extends Component {
   state = {

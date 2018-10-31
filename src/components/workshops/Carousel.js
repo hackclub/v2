@@ -253,16 +253,18 @@ class Carousel extends Component {
       { ...exampleData },
       { ...exampleData },
     ]
-
-    api.get(`v1/workshops/${slug}/projects`).then(projects => {
-      this.setState({
-        projects,
-      })
-    })
   }
 
   componentDidMount() {
     const self = this
+    const { slug } = this.props
+
+    api.get(`v1/workshops/${slug}/projects`).then(projects => {
+      self.setState({
+        projects,
+      })
+    })
+
     api
       .get(`v1/users/current`)
       .then(response => {

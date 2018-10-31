@@ -40,13 +40,15 @@ class Auth extends Component {
   }
 
   signOut = e => {
-    const { signOutCallback } = this.props
+    const { onSignOut } = this.props
 
     try {
       storage.remove('userEmail')
       storage.remove('authToken')
+
+      if (onSignOut) onSignOut()
+
       this.setState({ authed: false, authData: {} })
-      if (signOutCallback) signOutCallback()
     } catch (err) {
       console.error(err)
     }

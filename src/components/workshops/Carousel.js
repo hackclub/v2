@@ -32,7 +32,6 @@ class CarouselProject extends Component {
 
     const username = user ? user.username : '???'
 
-    const onClickImage = this.onClickImage.bind(this)
     const authorString = isOriginal
       ? `Original by ${username}`
       : `Rehacked by ${username}`

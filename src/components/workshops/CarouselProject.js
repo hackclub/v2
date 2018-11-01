@@ -20,7 +20,7 @@ class CarouselProject extends Component {
     const { project, isOriginal = false, liveFrame = false } = this.props
     const { user = null, live_url, code_url, screenshot } = project
 
-    const username = user ? user.username : '???'
+    const username = user && user.username ? user.username : '???'
 
     const authorString = isOriginal
       ? `Original by ${username}`

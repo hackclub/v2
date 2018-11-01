@@ -144,7 +144,8 @@ class Carousel extends Component {
     return (
       <Flex
         bg="#EEE"
-        p={4}
+        m={0}
+        py={3}
         style={{
           flexDirection: 'column',
 
@@ -164,11 +165,12 @@ class Carousel extends Component {
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
           />
         </Helmet>
-        <Flex style={{ flexDirection: 'column' }}>
+        <Flex mb={2} mx={4} style={{ flexDirection: 'column' }}>
           <Flex justify="space-between" style={{}}>
             <Flex
+              m={0}
+              mr={1}
               style={{
-                margin: 0,
                 width: '50%',
                 flexGrow: 1,
                 flexShrink: 1,
@@ -181,8 +183,9 @@ class Carousel extends Component {
             </Flex>
 
             <Flex
+              m={0}
+              ml={1}
               style={{
-                margin: 0,
                 width: '50%',
                 flexDirection: 'column',
                 flexShrink: 1,
@@ -231,7 +234,7 @@ class Carousel extends Component {
           <Button
             px={4}
             py={3}
-            m={4}
+            m={0}
             mb={0}
             scale
             fontSize={4}

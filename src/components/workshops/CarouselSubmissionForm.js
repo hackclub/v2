@@ -82,6 +82,7 @@ class CarouselSubmissionForm extends Component {
 
     return (
       <Flex
+        m={0}
         p={4}
         bg="#FFF"
         style={{

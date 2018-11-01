@@ -34,11 +34,17 @@ class CarouselProject extends Component {
 
     return (
       <Flex
-        m={1}
-        p={4}
+        mx={0}
+        my={1}
+        pl={isOriginal ? 3 : 3}
+        pr={isOriginal ? 3 : 3}
+        py={3}
         bg="#FFF"
         style={{
-          borderRadius: 5,
+          borderBottomLeftRadius: isOriginal ? 20 : 5,
+          borderBottomRightRadius: isOriginal ? 5 : 20,
+          borderTopLeftRadius: isOriginal ? 20 : 5,
+          borderTopRightRadius: isOriginal ? 5 : 20,
           flexBasis: 0,
           flexGrow: 1,
           flexShrink: 1,
@@ -46,7 +52,7 @@ class CarouselProject extends Component {
         }}
       >
         <Heading.h4
-          m={1}
+          mb={2}
           style={{
             alignSelf: isOriginal ? 'flex-end' : 'flex-start',
           }}
@@ -54,13 +60,13 @@ class CarouselProject extends Component {
           {authorString}
         </Heading.h4>
         <Box
-          m={1}
+          mb={2}
           style={{
             paddingBottom: '50%',
             position: 'relative',
             overflow: 'hidden',
             borderRadius: 5,
-            border: '1px solid #EEE',
+            border: '2px solid #F0F0F0',
           }}
         >
           <Image
@@ -76,13 +82,17 @@ class CarouselProject extends Component {
           />
         </Box>
         <Flex
-          m={2}
+          m={0}
           style={{
             justifyContent: 'space-between',
           }}
         >
-          <A href={live_url}>Live Version</A>
-          <A href={code_url}>Code</A>
+          <A mr={2} href={live_url} style={{ whiteSpace: 'nowrap' }}>
+            Live Version
+          </A>
+          <A ml={2} href={code_url}>
+            Code
+          </A>
         </Flex>
       </Flex>
     )

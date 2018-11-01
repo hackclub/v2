@@ -14,8 +14,6 @@ import {
 } from '@hackclub/design-system'
 
 class CarouselProject extends Component {
-  state = { status: 'loading' }
-
   render() {
     const { project, isOriginal = false, liveFrame = false } = this.props
     const { user = null, live_url, code_url, screenshot } = project

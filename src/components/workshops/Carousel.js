@@ -217,7 +217,7 @@ class Carousel extends Component {
           />
         </Helmet>
         <Heading.h3 p={0} m={0} mb={3}>
-          This workshop has {projects.length} rehack
+          Rehacked {projects.length} Time
           {projects.length == 1 ? '' : 's'}
         </Heading.h3>
         <CarouselInner>

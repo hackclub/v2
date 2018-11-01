@@ -146,6 +146,7 @@ class Carousel extends Component {
         bg="#EEE"
         m={0}
         py={3}
+        px={4}
         style={{
           flexDirection: 'column',
 
@@ -165,7 +166,7 @@ class Carousel extends Component {
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
           />
         </Helmet>
-        <Flex mb={2} mx={4} style={{ flexDirection: 'column' }}>
+        <Flex mb={2} mx={0} style={{ flexDirection: 'column' }}>
           <Flex justify="space-between" style={{}}>
             <Flex
               m={0}

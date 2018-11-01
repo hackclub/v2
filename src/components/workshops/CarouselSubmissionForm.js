@@ -14,11 +14,17 @@ import {
 } from '@hackclub/design-system'
 
 class CarouselSubmissionForm extends Component {
-  state = { verifying: false }
+  state = { verifying: false, requestingSubmission: false }
 
   onClickSubmitButton() {
     const { workshopSlug, submissionData } = this.props
+    const { requestingSubmission } = this.state
     const { liveUrl, codeUrl } = submissionData
+
+    // To prevent double-click resubmissions
+    if (requestingSubmission) return
+
+    this.setState({ requestingSubmission: true })
 
     api
       .post(`v1/workshops/${workshopSlug}/projects`, {
@@ -61,7 +67,7 @@ class CarouselSubmissionForm extends Component {
       onSignOut,
     } = this.props
 
-    const { verifying } = this.state
+    const { verifying, requestingSubmission } = this.state
 
     const { liveUrl, codeUrl } = submissionData
 
@@ -71,12 +77,8 @@ class CarouselSubmissionForm extends Component {
     const onChangeLiveURL = this.onChangeLiveURL.bind(this)
     const onChangeCodeURL = this.onChangeCodeURL.bind(this)
 
-    const disableSubmission = liveUrl == '' || codeUrl == ''
-
-    const onSignOutVerify = () => {
-      onSignOut()
-      onClickVeryifyButton()
-    }
+    const disableSubmission =
+      liveUrl == '' || codeUrl == '' || requestingSubmission
 
     return (
       <Flex
@@ -91,7 +93,7 @@ class CarouselSubmissionForm extends Component {
           alignSelf: 'center',
         }}
       >
-        {false ? null : (
+        {verifying ? null : (
           <Fragment>
             <Flex m={1} style={{ alignItems: 'center' }}>
               <Label style={{ width: 150 }}>Live URL</Label>
@@ -121,7 +123,8 @@ class CarouselSubmissionForm extends Component {
             <Auth
               preAuthed={authed}
               preAuthData={authData}
-              onSignOut={onSignOut}
+              signOutCallback={onSignOut}
+              loginCallback={onClickSubmitButton}
               headline={"Please prove you're human"}
               cardProps={{
                 maxWidth: 20,

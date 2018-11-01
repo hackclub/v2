@@ -65,7 +65,8 @@ class InnerForm extends Component {
       bg,
       email,
       inputProps = {},
-      textProps = {}
+      textProps = {},
+      loginCallback = null,
     } = this.props
     return (
       <form onSubmit={handleSubmit}>
@@ -119,13 +120,14 @@ class InnerForm extends Component {
 const LoginCodeForm = withFormik({
   mapPropsToValues: ({ params }) => ({ ...params }),
   validationSchema: yup.object().shape({
-    loginCode: yup.string()
+    loginCode: yup.string(),
   }),
   handleSubmit: (unformattedData, { props, setSubmitting, setErrors }) => {
     if (!unformattedData.loginCode) {
       setSubmitting(false)
       return null
     }
+    const { loginCallback = null } = props
     const strippedLoginCode = unformattedData.loginCode.replace(/\D/g, '')
     const data = { login_code: strippedLoginCode }
     api
@@ -136,7 +138,9 @@ const LoginCodeForm = withFormik({
         // associate current session with authenticated user and update email
         // stored in analytics
         analytics.identify(props.userId, { email: props.email })
-        window.location.reload()
+
+        if (loginCallback) loginCallback()
+        else window.location.reload()
       })
       .catch(e => {
         console.error(e)
@@ -144,6 +148,6 @@ const LoginCodeForm = withFormik({
         setSubmitting(false)
       })
   },
-  displayName: 'LoginCodeForm'
+  displayName: 'LoginCodeForm',
 })(InnerForm)
 export default LoginCodeForm

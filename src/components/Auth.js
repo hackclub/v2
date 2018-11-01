@@ -40,13 +40,13 @@ class Auth extends Component {
   }
 
   signOut = e => {
-    const { onSignOut } = this.props
+    const { signOutCallback } = this.props
 
     try {
       storage.remove('userEmail')
       storage.remove('authToken')
 
-      if (onSignOut) onSignOut()
+      if (signOutCallback) signOutCallback()
 
       this.setState({ authed: false, authData: {} })
     } catch (err) {
@@ -62,6 +62,7 @@ class Auth extends Component {
       headline,
       preAuthed = false,
       preAuthData = {},
+      loginCallback = null,
     } = this.props
 
     const { authed, authData } = this.state
@@ -85,6 +86,7 @@ class Auth extends Component {
           color="white"
           inputProps={{ w: 18 * 16 }}
           textProps={{ color: 'black', align: 'left' }}
+          loginCallback={loginCallback}
         />
       </Sheet>
     )

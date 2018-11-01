@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import api from 'api'
 import Auth from 'components/Auth'
+import { isURL } from 'validator'
 import {
   Box,
   Card,
@@ -23,7 +24,6 @@ class CarouselSubmissionForm extends Component {
 
     // To prevent double-click resubmissions
     if (requestingSubmission) return
-
     this.setState({ requestingSubmission: true })
 
     api
@@ -36,10 +36,8 @@ class CarouselSubmissionForm extends Component {
         }),
         headers: { 'Content-Type': 'application/json' },
       })
+      // For now, just refresh the page. Needs a real Submssion Complete page eventually.
       .then(resp => location.reload())
-
-    // For now, just refresh the page. Needs a real Submssion Complete page eventually.
-    //.then(resp => resp.json());
   }
 
   onChangeLiveURL(event) {
@@ -77,8 +75,9 @@ class CarouselSubmissionForm extends Component {
     const onChangeLiveURL = this.onChangeLiveURL.bind(this)
     const onChangeCodeURL = this.onChangeCodeURL.bind(this)
 
-    const disableSubmission =
-      liveUrl == '' || codeUrl == '' || requestingSubmission
+    const validURLs = isURL(liveUrl) && isURL(codeUrl)
+
+    const disableSubmission = !validURLs || requestingSubmission
 
     return (
       <Flex

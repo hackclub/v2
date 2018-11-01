@@ -69,6 +69,7 @@
     "serve": "^9.1.0",
     "styled-components": "^3.4.9",
     "unfetch": "^3.0.0",
+    "validator": "^10.8.0",
     "yup": "^0.26.5"
   },
   "devDependencies": {

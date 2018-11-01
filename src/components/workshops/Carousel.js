@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import { Helmet } from 'react-helmet'
 import Slider from 'react-slick'
+
 import api from 'api'
-import CarouselProject from './CarouselProject'
-import CarouselSubmissionForm from './CarouselSubmissionForm'
+import styled from 'styled-components'
 import {
   Box,
   Card,
@@ -15,6 +15,66 @@ import {
   theme,
 } from '@hackclub/design-system'
 
+import CarouselProject from 'components/workshops/CarouselProject'
+import CarouselSubmissionForm from 'components/workshops/CarouselSubmissionForm'
+
+const OriginalWrapper = styled(Flex).attrs({ m: 0, mr: 1 })`
+  width: 200px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-self: center;
+  overflow: hidden;
+  position: relative;
+
+  ${theme.mediaQueries.sm} {
+    width: 240px;
+  }
+  ${theme.mediaQueries.md} {
+    width: 350px;
+  }
+`
+
+const RehackWrapper = styled(Flex).attrs({ m: 0, ml: 1 })`
+  width: 200px;
+  flex-direction: column;
+  flex-shrink: 1;
+  align-self: stretch;
+  overflow: hidden;
+  position: relative;
+
+  ${theme.mediaQueries.sm} {
+    width: 240px;
+  }
+  ${theme.mediaQueries.md} {
+    width: 350px;
+  }
+`
+
+const RehackSlider = styled(Slider).attrs({})`
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+`
+
+const CarouselOuter = styled(Flex).attrs({
+  bg: '#EEE',
+  m: 0,
+  pt: 3,
+  pb: 4,
+  px: 4,
+})`
+  flex-direction: column;
+  align-items: center;
+`
+
+const CarouselInner = styled(Flex).attrs({
+  mb: 3,
+})`
+  flex-direction: column;
+`
 class Carousel extends Component {
   state = {
     autoplay: false,
@@ -142,17 +202,7 @@ class Carousel extends Component {
     }
 
     return (
-      <Flex
-        bg="#EEE"
-        m={0}
-        py={3}
-        px={4}
-        style={{
-          flexDirection: 'column',
-
-          alignItems: 'center',
-        }}
-      >
+      <CarouselOuter>
         <Helmet>
           <link
             rel="stylesheet"
@@ -166,35 +216,17 @@ class Carousel extends Component {
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
           />
         </Helmet>
-        <Flex mb={2} mx={0} style={{ flexDirection: 'column' }}>
-          <Flex justify="space-between" style={{}}>
-            <Flex
-              m={0}
-              mr={1}
-              style={{
-                width: '50%',
-                flexGrow: 1,
-                flexShrink: 1,
-                alignSelf: 'center',
-                overflow: 'hidden',
-                position: 'relative',
-              }}
-            >
+        <Heading.h3 p={0} m={0} mb={3}>
+          This workshop has {projects.length} rehack
+          {projects.length == 1 ? '' : 's'}
+        </Heading.h3>
+        <CarouselInner>
+          <Flex justify="space-between">
+            <OriginalWrapper>
               <CarouselProject project={original} isOriginal={true} />
-            </Flex>
+            </OriginalWrapper>
 
-            <Flex
-              m={0}
-              ml={1}
-              style={{
-                width: '50%',
-                flexDirection: 'column',
-                flexShrink: 1,
-                alignSelf: 'stretch',
-                overflow: 'hidden',
-                position: 'relative',
-              }}
-            >
+            <RehackWrapper>
               {liveFrameStatus != 'empty' ? (
                 <CarouselProject
                   liveFrame
@@ -202,26 +234,15 @@ class Carousel extends Component {
                   isOriginal={false}
                 />
               ) : (
-                <Slider
-                  {...sliderSettings}
-                  style={{
-                    margin: 0,
-                    flexBasis: 0,
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                  }}
-                >
+                <RehackSlider {...sliderSettings}>
                   {projects.map(project => (
                     <CarouselProject project={project} isOriginal={false} />
                   ))}
-                </Slider>
+                </RehackSlider>
               )}
-            </Flex>
+            </RehackWrapper>
           </Flex>
-        </Flex>
+        </CarouselInner>
         {submitting ? (
           <CarouselSubmissionForm
             authed={authed}
@@ -244,7 +265,7 @@ class Carousel extends Component {
             I made something
           </Button>
         )}
-      </Flex>
+      </CarouselOuter>
     )
   }
 }

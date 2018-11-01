@@ -28,7 +28,7 @@ class CarouselProject extends Component {
 
     const imageUrl = liveFrame
       ? (function() {
-          const url = live_url
+          const url = live_url.startsWith('http') ? url : 'http://' + url
           const accessKey = 'd7d3cada424e0439f48de1a1b50160dd'
           return `http://api.screenshotlayer.com/api/capture?access_key=${accessKey}&url=${url}&viewport=1440x900&format=PNG`
         })()

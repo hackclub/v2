@@ -11,6 +11,7 @@ import {
   Text,
   Button,
   Input,
+  Field,
   theme,
 } from '@hackclub/design-system'
 
@@ -94,22 +95,28 @@ class CarouselSubmissionForm extends Component {
       >
         {verifying ? null : (
           <Fragment>
-            <Flex m={1} style={{ alignItems: 'center' }}>
-              <Label style={{ width: 150 }}>Live URL</Label>
-              <Input
-                placeholder="(where's the final product?)"
-                value={liveUrl}
-                onChange={onChangeLiveURL}
-              />
-            </Flex>
-            <Flex m={1} style={{ alignItems: 'center' }}>
-              <Label style={{ width: 150 }}>Code URL</Label>
-              <Input
-                placeholder="(where's the code?)"
-                value={codeUrl}
-                onChange={onChangeCodeURL}
-              />
-            </Flex>
+            <Field
+              align="stretch"
+              label="Live URL"
+              name="Live URL"
+              placeholder="(where's the final product?)"
+              value={liveUrl}
+              onChange={onChangeLiveURL}
+              style={{
+                minWidth: 320,
+              }}
+            />
+            <Field
+              align="stretch"
+              label="Code URL"
+              name="Code URL"
+              placeholder="(where's the code?)"
+              value={codeUrl}
+              onChange={onChangeCodeURL}
+              style={{
+                minWidth: 320,
+              }}
+            />
           </Fragment>
         )}
         {authed || !verifying ? null : (

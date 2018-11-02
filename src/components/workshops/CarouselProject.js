@@ -27,10 +27,21 @@ const ProjectOuter = styled(Flex).attrs({
   background-image: url(${props => props.backgroundSrc});
   background-size: cover;
   background-position: center;
-  align-items: ${props => (props.isOriginal ? 'flex-end' : 'flex-start')}
-    ${theme.mediaQueries.md} {
+  border-radius: ${props =>
+    props.isOriginal ? '10px 0px 0px 10px' : '0px 10px 10px 0px'};
+  ${theme.mediaQueries.md} {
+    border-radius: ${props =>
+      props.isOriginal ? '20px 5px 5px 20px' : '5px 20px 20px 5px'};
     align-items: stretch;
     background-image: none;
+  }
+
+  .left {
+    display: none;
+    align-items: flex-end;
+  }
+  .right {
+    align-items: flex-start;
   }
 `
 
@@ -41,17 +52,25 @@ const TextBar = styled(Flex).attrs({
   bg: ['white', 'white', 'none'],
 })`
   flex-direction: column;
-  align-items: ${props => (props.isOriginal ? 'flex-end' : 'flex-start')};
   margin-top: 40px;
   opacity: 0.8;
+  flex-grow: 1;
   border-radius: ${props =>
     props.isOriginal ? '10px 0px 0px 10px' : '0px 10px 10px 0px'};
   ${theme.mediaQueries.md} {
     opacity: 1;
+    flex-grow: 0;
     margin-top: 0px;
     align-items: center top;
     justify-content: space-between;
     flex-direction: ${props => (props.isOriginal ? 'row-reverse' : 'row')};
+  }
+
+  .left {
+    align-items: flex-end;
+  }
+  .right {
+    align-items: flex-start;
   }
 `
 const LinkBar = styled(Flex).attrs({
@@ -104,12 +123,14 @@ class CarouselProject extends Component {
       <ProjectOuter
         backgroundSrc={imageUrl}
         isOriginal={isOriginal}
-        style={{
-          borderBottomLeftRadius: isOriginal ? 20 : 5,
-          borderBottomRightRadius: isOriginal ? 5 : 20,
-          borderTopLeftRadius: isOriginal ? 20 : 5,
-          borderTopRightRadius: isOriginal ? 5 : 20,
-        }}
+        style={
+          {
+            // borderBottomLeftRadius: isOriginal ? 20 : 5,
+            // borderBottomRightRadius: isOriginal ? 5 : 20,
+            // borderTopLeftRadius: isOriginal ? 20 : 5,
+            // borderTopRightRadius: isOriginal ? 5 : 20,
+          }
+        }
       >
         <ImageWrapper>
           <Image

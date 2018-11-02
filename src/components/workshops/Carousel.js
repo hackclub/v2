@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import { Helmet } from 'react-helmet'
 import Slider from 'react-slick'
 
 import api from 'api'
@@ -18,7 +17,10 @@ import {
 import CarouselProject from 'components/workshops/CarouselProject'
 import CarouselSubmissionForm from 'components/workshops/CarouselSubmissionForm'
 
-const OriginalWrapper = styled(Flex).attrs({ m: 0, mr: 1 })`
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+
+const OriginalWrapper = styled(Flex).attrs({ m: 0, mr: [0, 0, 1] })`
   width: 200px;
   flex-grow: 1;
   flex-shrink: 1;
@@ -34,7 +36,7 @@ const OriginalWrapper = styled(Flex).attrs({ m: 0, mr: 1 })`
   }
 `
 
-const RehackWrapper = styled(Flex).attrs({ m: 0, ml: 1 })`
+const RehackWrapper = styled(Flex).attrs({ m: 0, ml: [0, 0, 1] })`
   width: 200px;
   flex-direction: column;
   flex-shrink: 1;
@@ -201,19 +203,6 @@ class Carousel extends Component {
 
     return (
       <CarouselOuter>
-        <Helmet>
-          <link
-            rel="stylesheet"
-            type="text/css"
-            charset="UTF-8"
-            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-          />
-        </Helmet>
         <Heading.h3 p={0} mb={[2, 3, 4]}>
           {projects.length} Rehack
           {projects.length == 1 ? '' : 's'}

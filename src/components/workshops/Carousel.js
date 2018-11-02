@@ -66,10 +66,9 @@ const CarouselOuter = styled(Flex).attrs({
   bg: theme.colors.smoke,
   m: 0,
   p: [2, 3, 4],
-})`
-  flex-direction: column;
-  align-items: center;
-`
+  flexDirection: 'column',
+  align: 'center',
+})``
 
 const CarouselInner = styled(Flex).attrs({
   mb: [2, 3, 4],

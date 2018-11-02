@@ -16,7 +16,7 @@ import {
 
 const CarouselSubmissionFormOuter = styled(Flex).attrs({
   p: [2, 3, 4],
-  bg: 'white',
+  bg: theme.colors.white,
   align: 'center',
 })`
   border-radius: 5px;

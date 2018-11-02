@@ -18,12 +18,12 @@ const ProjectOuter = styled(Flex).attrs({
   p: [0, 0, 4],
   bg: [theme.colors.white, theme.colors.white, theme.colors.white],
   justify: 'flex-end',
+  flexDirection: 'column',
 })`
   position: relative;
   flex-basis: 0;
   flex-grow: 1;
   flex-shrink: 1;
-  flex-direction: column;
   overflow: hidden;
   ${theme.mediaQueries.md} {
     align-items: stretch;

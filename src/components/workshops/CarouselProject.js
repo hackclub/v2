@@ -120,18 +120,7 @@ class CarouselProject extends Component {
       : 'http://api.hackclub.com' + screenshot.file_path
 
     return (
-      <ProjectOuter
-        backgroundSrc={imageUrl}
-        isOriginal={isOriginal}
-        style={
-          {
-            // borderBottomLeftRadius: isOriginal ? 20 : 5,
-            // borderBottomRightRadius: isOriginal ? 5 : 20,
-            // borderTopLeftRadius: isOriginal ? 20 : 5,
-            // borderTopRightRadius: isOriginal ? 5 : 20,
-          }
-        }
-      >
+      <ProjectOuter backgroundSrc={imageUrl} isOriginal={isOriginal}>
         <ImageWrapper>
           <Image
             src={imageUrl}

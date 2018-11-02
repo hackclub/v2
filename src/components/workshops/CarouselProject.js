@@ -10,12 +10,11 @@ import {
   Text,
   Image,
   Button,
-  IconButton,
   theme,
 } from '@hackclub/design-system'
 
 const ProjectOuter = styled(Flex).attrs({
-  p: [2, 3, 4],
+  p: [0, 0, 4],
   bg: 'white',
   justify: 'flex-end',
 })`
@@ -24,64 +23,36 @@ const ProjectOuter = styled(Flex).attrs({
   flex-grow: 1;
   flex-shrink: 1;
   flex-direction: column;
-  background-image: url(${props => props.backgroundSrc});
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
   border-radius: ${props =>
     props.isOriginal ? '10px 0px 0px 10px' : '0px 10px 10px 0px'};
+
   ${theme.mediaQueries.md} {
+    align-items: stretch;
     border-radius: ${props =>
       props.isOriginal ? '20px 5px 5px 20px' : '5px 20px 20px 5px'};
-    align-items: stretch;
-    background-image: none;
-  }
-
-  .left {
-    display: none;
-    align-items: flex-end;
-  }
-  .right {
-    align-items: flex-start;
   }
 `
 
 const TextBar = styled(Flex).attrs({
   p: [1, 1, 0],
-  mb: 0,
-  m: 0,
   bg: ['white', 'white', 'none'],
+  justify: ['center', 'center', 'space-between'],
 })`
   flex-direction: column;
-  margin-top: 40px;
-  opacity: 0.8;
-  flex-grow: 1;
-  border-radius: ${props =>
-    props.isOriginal ? '10px 0px 0px 10px' : '0px 10px 10px 0px'};
+  align-items: ${props => (props.isOriginal ? 'flex-end' : 'flex-start')};
+
   ${theme.mediaQueries.md} {
-    opacity: 1;
-    flex-grow: 0;
-    margin-top: 0px;
-    align-items: center top;
+    align-items: stretch;
     justify-content: space-between;
     flex-direction: ${props => (props.isOriginal ? 'row-reverse' : 'row')};
   }
-
-  .left {
-    align-items: flex-end;
-  }
-  .right {
-    align-items: flex-start;
-  }
 `
 const LinkBar = styled(Flex).attrs({
-  m: 0,
-  mb: 0,
   mx: 1,
-  p: 0,
 })``
 
 const AuthorLabel = styled(Label).attrs({
-  m: 0,
   mx: 1,
   fontSize: 3,
 })`
@@ -89,17 +60,25 @@ const AuthorLabel = styled(Label).attrs({
 `
 
 const ImageWrapper = styled(Box).attrs({
-  mb: 2,
+  mb: [0, 0, 2],
 })`
   padding-bottom: 50%;
   position: relative;
   overflow: hidden;
   border-radius: 5;
-  border: 2px solid #f0f0f0;
-  display: none;
+  border-bottom: 2px solid #f0f0f0;
   ${theme.mediaQueries.md} {
-    display: inherit;
+    border: 2px solid #f0f0f0;
   }
+`
+
+const WrappedImage = styled(Image)`
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `
 
 class CarouselProject extends Component {
@@ -120,35 +99,17 @@ class CarouselProject extends Component {
       : 'http://api.hackclub.com' + screenshot.file_path
 
     return (
-      <ProjectOuter backgroundSrc={imageUrl} isOriginal={isOriginal}>
+      <ProjectOuter isOriginal={isOriginal}>
         <ImageWrapper>
-          <Image
-            src={imageUrl}
-            style={{
-              objectFit: 'cover',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-            }}
-          />
+          <WrappedImage src={imageUrl} />
         </ImageWrapper>
         <TextBar isOriginal={isOriginal}>
           <AuthorLabel isOriginal={isOriginal}>{authorString}</AuthorLabel>
           <LinkBar>
-            <A
-              fontSize={3}
-              m={0}
-              mr={2}
-              px={0}
-              p={0}
-              href={live_url}
-              style={{ whiteSpace: 'nowrap' }}
-            >
+            <A mr={2} fontSize={3} href={live_url}>
               Live
             </A>
-            <A m={0} ml={2} fontSize={3} px={0} p={0} href={code_url}>
+            <A ml={2} fontSize={3} href={code_url}>
               Code
             </A>
           </LinkBar>

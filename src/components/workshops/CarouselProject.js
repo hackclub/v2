@@ -15,25 +15,41 @@ import {
 } from '@hackclub/design-system'
 
 const ProjectOuter = styled(Flex).attrs({
-  mx: 0,
-  my: 1,
-  py: 3,
-  bg: '#FFF',
+  p: [2, 3, 4],
+  bg: 'white',
+  justify: 'flex-end',
 })`
+  position: relative;
   flex-basis: 0;
   flex-grow: 1;
   flex-shrink: 1;
   flex-direction: column;
+  background-image: url(${props => props.backgroundSrc});
+  background-size: cover;
+  background-position: center;
+  align-items: ${props => (props.isOriginal ? 'flex-end' : 'flex-start')}
+    ${theme.mediaQueries.md} {
+    align-items: stretch;
+    background-image: none;
+  }
 `
 
 const TextBar = styled(Flex).attrs({
-  m: 0,
+  p: [1, 1, 0],
   mb: 0,
+  m: 0,
+  bg: ['white', 'white', 'none'],
 })`
   flex-direction: column;
   align-items: ${props => (props.isOriginal ? 'flex-end' : 'flex-start')};
+  margin-top: 40px;
+  opacity: 0.8;
+  border-radius: ${props =>
+    props.isOriginal ? '10px 0px 0px 10px' : '0px 10px 10px 0px'};
   ${theme.mediaQueries.md} {
-    align-items: center;
+    opacity: 1;
+    margin-top: 0px;
+    align-items: center top;
     justify-content: space-between;
     flex-direction: ${props => (props.isOriginal ? 'row-reverse' : 'row')};
   }
@@ -41,13 +57,30 @@ const TextBar = styled(Flex).attrs({
 const LinkBar = styled(Flex).attrs({
   m: 0,
   mb: 0,
+  mx: 1,
+  p: 0,
 })``
 
-const AuthorHeading = styled(Heading.h4).attrs({
+const AuthorLabel = styled(Label).attrs({
   m: 0,
   mx: 1,
+  fontSize: 3,
 })`
   white-space: nowrap;
+`
+
+const ImageWrapper = styled(Box).attrs({
+  mb: 2,
+})`
+  padding-bottom: 50%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5;
+  border: 2px solid #f0f0f0;
+  display: none;
+  ${theme.mediaQueries.md} {
+    display: inherit;
+  }
 `
 
 class CarouselProject extends Component {
@@ -69,8 +102,7 @@ class CarouselProject extends Component {
 
     return (
       <ProjectOuter
-        pl={isOriginal ? 3 : 3}
-        pr={isOriginal ? 3 : 3}
+        backgroundSrc={imageUrl}
         isOriginal={isOriginal}
         style={{
           borderBottomLeftRadius: isOriginal ? 20 : 5,
@@ -79,16 +111,7 @@ class CarouselProject extends Component {
           borderTopRightRadius: isOriginal ? 5 : 20,
         }}
       >
-        <Box
-          mb={2}
-          style={{
-            paddingBottom: '50%',
-            position: 'relative',
-            overflow: 'hidden',
-            borderRadius: 5,
-            border: '2px solid #F0F0F0',
-          }}
-        >
+        <ImageWrapper>
           <Image
             src={imageUrl}
             style={{
@@ -100,16 +123,10 @@ class CarouselProject extends Component {
               bottom: 0,
             }}
           />
-        </Box>
+        </ImageWrapper>
         <TextBar isOriginal={isOriginal}>
-          <AuthorHeading
-            isOriginal={isOriginal}
-            pl={isOriginal ? 1 : 0}
-            pr={isOriginal ? 0 : 1}
-          >
-            {authorString}
-          </AuthorHeading>
-          <LinkBar mx={1} pl={isOriginal ? 0 : 0} pr={isOriginal ? 0 : 0}>
+          <AuthorLabel isOriginal={isOriginal}>{authorString}</AuthorLabel>
+          <LinkBar>
             <A
               fontSize={3}
               m={0}

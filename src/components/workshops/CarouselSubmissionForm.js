@@ -122,7 +122,7 @@ class CarouselSubmissionForm extends Component {
         )}
         {authed || !verifying ? null : (
           <Heading.h4 m={2} mb={2} style={{}}>
-            Before you submit...
+            Before you submit…
           </Heading.h4>
         )}
         {!(authed || verifying) ? null : (

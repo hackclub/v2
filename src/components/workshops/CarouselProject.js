@@ -25,13 +25,22 @@ const ProjectOuter = styled(Flex).attrs({
   flex-shrink: 1;
   flex-direction: column;
   overflow: hidden;
-  border-radius: ${props =>
-    props.isOriginal ? '10px 0px 0px 10px' : '0px 10px 10px 0px'};
-
   ${theme.mediaQueries.md} {
     align-items: stretch;
-    border-radius: ${props =>
-      props.isOriginal ? '20px 5px 5px 20px' : '5px 20px 20px 5px'};
+  }
+`
+
+const ProjectOuterLeft = styled(ProjectOuter)`
+  border-radius: 10px 0px 0px 10px;
+  ${theme.mediaQueries.md} {
+    border-radius: 20px 5px 5px 20px;
+  }
+`
+
+const ProjectOuterRight = styled(ProjectOuter)`
+  border-radius: 0px 10px 10px 0px;
+  ${theme.mediaQueries.md} {
+    border-radius: 5px 20px 20px 5px;
   }
 `
 
@@ -41,14 +50,26 @@ const TextBar = styled(Flex).attrs({
   justify: ['center', 'center', 'space-between'],
 })`
   flex-direction: column;
-  align-items: ${props => (props.isOriginal ? 'flex-end' : 'flex-start')};
-
   ${theme.mediaQueries.md} {
     align-items: stretch;
     justify-content: space-between;
-    flex-direction: ${props => (props.isOriginal ? 'row-reverse' : 'row')};
   }
 `
+
+const TextBarLeft = styled(TextBar)`
+  align-items: flex-end;
+  ${theme.mediaQueries.md} {
+    flex-direction: row-reverse;
+  }
+`
+
+const TextBarRight = styled(TextBar)`
+  align-items: flex-start;
+  ${theme.mediaQueries.md} {
+    flex-direction: row;
+  }
+`
+
 const LinkBar = styled(Flex).attrs({
   mx: 1,
 })``
@@ -97,6 +118,20 @@ const WrappedText = styled(Text).attrs({})`
   color: ${theme.colors.silver};
 `
 
+const orientProjectOuter = (left, inner) =>
+  left ? (
+    <ProjectOuterLeft>{inner}</ProjectOuterLeft>
+  ) : (
+    <ProjectOuterRight>{inner}</ProjectOuterRight>
+  )
+
+const orientTextBar = (left, inner) =>
+  left ? (
+    <TextBarLeft>{inner}</TextBarLeft>
+  ) : (
+    <TextBarRight>{inner}</TextBarRight>
+  )
+
 class CarouselProject extends Component {
   render() {
     const { project, isOriginal = false, liveFrame = false } = this.props
@@ -119,8 +154,9 @@ class CarouselProject extends Component {
         })()
       : 'http://api.hackclub.com' + screenshot.file_path
 
-    return (
-      <ProjectOuter isOriginal={isOriginal}>
+    return orientProjectOuter(
+      isOriginal,
+      <Fragment>
         <ImageWrapper>
           {empty ? (
             <WrappedText>
@@ -132,26 +168,29 @@ class CarouselProject extends Component {
             <WrappedImage src={imageUrl} alt={authorString} />
           )}
         </ImageWrapper>
-        <TextBar isOriginal={isOriginal}>
-          <AuthorLabel isOriginal={isOriginal}>{authorString}</AuthorLabel>
-          <LinkBar>
-            {isURL(live_url) ? (
-              <A mr={2} fontSize={3} href={live_url}>
-                Live
-              </A>
-            ) : (
-              <DeadLink mr={2}>Live</DeadLink>
-            )}
-            {isURL(code_url) ? (
-              <A ml={2} fontSize={3} href={code_url}>
-                Code
-              </A>
-            ) : (
-              <DeadLink ml={2}>Code</DeadLink>
-            )}
-          </LinkBar>
-        </TextBar>
-      </ProjectOuter>
+        {orientTextBar(
+          isOriginal,
+          <Fragment>
+            <AuthorLabel>{authorString}</AuthorLabel>
+            <LinkBar>
+              {isURL(live_url) ? (
+                <A mr={2} fontSize={3} href={live_url}>
+                  Live
+                </A>
+              ) : (
+                <DeadLink mr={2}>Live</DeadLink>
+              )}
+              {isURL(code_url) ? (
+                <A ml={2} fontSize={3} href={code_url}>
+                  Code
+                </A>
+              ) : (
+                <DeadLink ml={2}>Code</DeadLink>
+              )}
+            </LinkBar>
+          </Fragment>
+        )}
+      </Fragment>
     )
   }
 }

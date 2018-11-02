@@ -1,19 +1,49 @@
 import React, { Component, Fragment } from 'react'
 import api from 'api'
-import Auth from 'components/Auth'
 import { isURL } from 'validator'
+import styled from 'styled-components'
+import Auth from 'components/Auth'
 import {
   Box,
-  Card,
   Flex,
   Label,
   Heading,
   Text,
   Button,
-  Input,
   Field,
   theme,
 } from '@hackclub/design-system'
+
+const CarouselSubmissionFormOuter = styled(Flex).attrs({
+  p: [2, 3, 4],
+  bg: 'white',
+  align: 'center',
+})`
+  border-radius: 5px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-direction: column;
+  ${theme.mediaQueries.md} {
+    border-radius: 10px;
+  }
+`
+
+const LiveField = styled(Field).attrs({
+  label: 'Live URL',
+  name: 'Live URL',
+  placeholder: "(where's the final product?)",
+})`
+  min-width: 320px;
+`
+
+const CodeField = styled(Field).attrs({
+  label: 'Code URL',
+  name: 'Code URL',
+  placeholder: "(where's the code?)",
+  mb: [1, 2, 3],
+})`
+  min-width: 320px;
+`
 
 class CarouselSubmissionForm extends Component {
   state = { verifying: false, requestingSubmission: false }
@@ -33,6 +63,7 @@ class CarouselSubmissionForm extends Component {
         body: JSON.stringify({
           live_url: liveUrl,
           code_url: codeUrl,
+          // Screenshot happens on backend for now
           // screenshot_id: screenshotId
         }),
         headers: { 'Content-Type': 'application/json' },
@@ -81,47 +112,15 @@ class CarouselSubmissionForm extends Component {
     const disableSubmission = !validURLs || requestingSubmission
 
     return (
-      <Flex
-        m={0}
-        p={[2, 3, 4]}
-        bg={theme.colors.white}
-        style={{
-          margin: 10,
-          borderRadius: 5,
-          flexGrow: 1,
-          flexShrink: 1,
-          flexDirection: 'column',
-          alignSelf: 'center',
-        }}
-      >
+      <CarouselSubmissionFormOuter>
         {verifying ? null : (
           <Fragment>
-            <Field
-              align="stretch"
-              label="Live URL"
-              name="Live URL"
-              placeholder="(where's the final product?)"
-              value={liveUrl}
-              onChange={onChangeLiveURL}
-              style={{
-                minWidth: 320,
-              }}
-            />
-            <Field
-              align="stretch"
-              label="Code URL"
-              name="Code URL"
-              placeholder="(where's the code?)"
-              value={codeUrl}
-              onChange={onChangeCodeURL}
-              style={{
-                minWidth: 320,
-              }}
-            />
+            <LiveField value={liveUrl} onChange={onChangeLiveURL} />
+            <CodeField value={codeUrl} onChange={onChangeCodeURL} />
           </Fragment>
         )}
         {authed || !verifying ? null : (
-          <Heading.h4 m={2}>Before you submit…</Heading.h4>
+          <Heading.h4 mb={2}>Before you submit…</Heading.h4>
         )}
         {!(authed || verifying) ? null : (
           <Fragment>
@@ -130,20 +129,18 @@ class CarouselSubmissionForm extends Component {
               preAuthData={authData}
               signOutCallback={onSignOut}
               loginCallback={onClickSubmitButton}
-              headline={"Please prove you're human"}
+              headline={"Show that you're human"}
               cardProps={{
                 maxWidth: 20,
                 p: 3,
                 mb: 0,
                 bg: 'primary',
               }}
-              style={{ flexGrow: 1 }}
             />
           </Fragment>
         )}
         {!(authed || !verifying) ? null : (
           <Button
-            m={1}
             px={3}
             py={2}
             disabled={disableSubmission}
@@ -154,12 +151,11 @@ class CarouselSubmissionForm extends Component {
                   ? onClickSubmitButton
                   : onClickVeryifyButton
             }
-            style={{ alignSelf: 'center', flexGrow: 0 }}
           >
             {authed ? 'Submit My Thing' : 'Verify & Submit'}
           </Button>
         )}
-      </Flex>
+      </CarouselSubmissionFormOuter>
     )
   }
 }

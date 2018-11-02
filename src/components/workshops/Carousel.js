@@ -62,16 +62,14 @@ const RehackSlider = styled(Slider).attrs({})`
 const CarouselOuter = styled(Flex).attrs({
   bg: '#EEE',
   m: 0,
-  pt: 4,
-  pb: 4,
-  px: 4,
+  p: [2, 3, 4],
 })`
   flex-direction: column;
   align-items: center;
 `
 
 const CarouselInner = styled(Flex).attrs({
-  mb: 4,
+  mb: [2, 3, 4],
 })`
   flex-direction: column;
 `
@@ -216,8 +214,8 @@ class Carousel extends Component {
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
           />
         </Helmet>
-        <Heading.h3 p={0} mb={4}>
-          Rehacked {projects.length} Time
+        <Heading.h3 p={0} mb={[2, 3, 4]}>
+          {projects.length} Rehack
           {projects.length == 1 ? '' : 's'}
         </Heading.h3>
         <CarouselInner>

@@ -83,7 +83,7 @@ class CarouselSubmissionForm extends Component {
     return (
       <Flex
         m={0}
-        p={4}
+        p={[2, 3, 4]}
         bg="#FFF"
         style={{
           margin: 10,

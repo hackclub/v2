@@ -84,7 +84,7 @@ class CarouselSubmissionForm extends Component {
       <Flex
         m={0}
         p={[2, 3, 4]}
-        bg="#FFF"
+        bg={theme.colors.white}
         style={{
           margin: 10,
           borderRadius: 5,
@@ -121,9 +121,7 @@ class CarouselSubmissionForm extends Component {
           </Fragment>
         )}
         {authed || !verifying ? null : (
-          <Heading.h4 m={2} mb={2} style={{}}>
-            Before you submit…
-          </Heading.h4>
+          <Heading.h4 m={2}>Before you submit…</Heading.h4>
         )}
         {!(authed || verifying) ? null : (
           <Fragment>

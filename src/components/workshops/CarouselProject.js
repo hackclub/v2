@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import api from 'api'
 import styled from 'styled-components'
+import { isURL } from 'validator'
 import {
   Box,
   Flex,
@@ -15,7 +16,7 @@ import {
 
 const ProjectOuter = styled(Flex).attrs({
   p: [0, 0, 4],
-  bg: 'white',
+  bg: [theme.colors.white, theme.colors.white, theme.colors.white],
   justify: 'flex-end',
 })`
   position: relative;
@@ -35,8 +36,8 @@ const ProjectOuter = styled(Flex).attrs({
 `
 
 const TextBar = styled(Flex).attrs({
-  p: [1, 1, 0],
-  bg: ['white', 'white', 'none'],
+  px: [1, 1, 0],
+  py: 0,
   justify: ['center', 'center', 'space-between'],
 })`
   flex-direction: column;
@@ -52,6 +53,11 @@ const LinkBar = styled(Flex).attrs({
   mx: 1,
 })``
 
+const DeadLink = styled(Text).attrs({
+  fontSize: 3,
+  color: theme.colors.silver,
+})``
+
 const AuthorLabel = styled(Label).attrs({
   mx: 1,
   fontSize: 3,
@@ -61,14 +67,15 @@ const AuthorLabel = styled(Label).attrs({
 
 const ImageWrapper = styled(Box).attrs({
   mb: [0, 0, 2],
+  justify: 'center',
 })`
   padding-bottom: 50%;
   position: relative;
   overflow: hidden;
   border-radius: 5;
-  border-bottom: 2px solid #f0f0f0;
+  border-bottom: 2px solid ${theme.colors.snow};
   ${theme.mediaQueries.md} {
-    border: 2px solid #f0f0f0;
+    border: 2px solid ${theme.colors.snow};
   }
 `
 
@@ -80,15 +87,29 @@ const WrappedImage = styled(Image)`
   right: 0;
   bottom: 0;
 `
+const WrappedText = styled(Text).attrs({})`
+  transform: rotate(-3deg);
+  position: absolute;
+  text-align: center;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  color: ${theme.colors.silver};
+`
 
 class CarouselProject extends Component {
   render() {
     const { project, isOriginal = false, liveFrame = false } = this.props
-    const { user = null, live_url, code_url, screenshot } = project
+    const {
+      user = null,
+      empty = false,
+      live_url,
+      code_url,
+      screenshot,
+    } = project
 
-    const username = user && user.username ? user.username : '???'
-
-    const authorString = isOriginal ? `By ${username}` : `By ${username}`
+    const authorString =
+      user && user.username ? `By ${user.username}` : '¯\\_(ツ)_/¯'
 
     const imageUrl = liveFrame
       ? (function() {
@@ -101,17 +122,33 @@ class CarouselProject extends Component {
     return (
       <ProjectOuter isOriginal={isOriginal}>
         <ImageWrapper>
-          <WrappedImage src={imageUrl} />
+          {empty ? (
+            <WrappedText>
+              no examples here yet…
+              <br />
+              you should submit one
+            </WrappedText>
+          ) : (
+            <WrappedImage src={imageUrl} alt={authorString} />
+          )}
         </ImageWrapper>
         <TextBar isOriginal={isOriginal}>
           <AuthorLabel isOriginal={isOriginal}>{authorString}</AuthorLabel>
           <LinkBar>
-            <A mr={2} fontSize={3} href={live_url}>
-              Live
-            </A>
-            <A ml={2} fontSize={3} href={code_url}>
-              Code
-            </A>
+            {isURL(live_url) ? (
+              <A mr={2} fontSize={3} href={live_url}>
+                Live
+              </A>
+            ) : (
+              <DeadLink mr={2}>Live</DeadLink>
+            )}
+            {isURL(code_url) ? (
+              <A ml={2} fontSize={3} href={code_url}>
+                Code
+              </A>
+            ) : (
+              <DeadLink ml={2}>Code</DeadLink>
+            )}
           </LinkBar>
         </TextBar>
       </ProjectOuter>

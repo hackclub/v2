@@ -20,7 +20,7 @@ import CarouselSubmissionForm from 'components/workshops/CarouselSubmissionForm'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-const OriginalWrapper = styled(Flex).attrs({ m: 0, mr: [0, 0, 1] })`
+const OriginalWrapper = styled(Flex).attrs({ mr: 1 })`
   width: 200px;
   flex-grow: 1;
   flex-shrink: 1;
@@ -36,7 +36,7 @@ const OriginalWrapper = styled(Flex).attrs({ m: 0, mr: [0, 0, 1] })`
   }
 `
 
-const RehackWrapper = styled(Flex).attrs({ m: 0, ml: [0, 0, 1] })`
+const RehackWrapper = styled(Flex).attrs({ ml: 1 })`
   width: 200px;
   flex-direction: column;
   flex-shrink: 1;
@@ -52,8 +52,9 @@ const RehackWrapper = styled(Flex).attrs({ m: 0, ml: [0, 0, 1] })`
   }
 `
 
-const RehackSlider = styled(Slider).attrs({})`
+const RehackSlider = styled(Slider)`
   margin: 0;
+  overflow: hidden;
   position: absolute;
   top: 0;
   left: 0;
@@ -62,7 +63,7 @@ const RehackSlider = styled(Slider).attrs({})`
 `
 
 const CarouselOuter = styled(Flex).attrs({
-  bg: '#EEE',
+  bg: theme.colors.smoke,
   m: 0,
   p: [2, 3, 4],
 })`
@@ -88,32 +89,27 @@ class Carousel extends Component {
     liveFrameStatus: 'empty',
     liveFrameImage: null,
   }
+  emptyProject = {
+    user: { username: '' },
+    empty: true,
+    live_url: '',
+    code_url: '',
+    screenshot: {
+      id: -1,
+      created_at: '',
+      updated_at: '',
+      type: '',
+      file_path: '',
+    },
+  }
 
   constructor(props) {
     super(props)
 
     const { slug } = props
 
-    const exampleData = {
-      user: { username: 'msw' },
-      live_url: 'https://zachlatta.github.io',
-      code_url: 'https://github.com/zachlatta/zachlatta.github.io',
-      screenshot: {
-        id: 4,
-        created_at: '2018-04-13T03:18:50.716Z',
-        updated_at: '2018-04-13T03:19:06.553Z',
-        type: 'workshop_project_screenshot',
-        file_path:
-          '/rails/active_storage/variants/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dMIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f1d52341ad5ccaccbb2b3a4b1b191d57fd531b4/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdERG9LYzNSeWFYQlVPZzVwYm5SbGNteGhZMlZKSWdwUWJHRnVaUVk2QmtWVU9oSm5ZWFZ6YzJsaGJsOWliSFZ5Wmdrd0xqQTFPZ3h4ZFdGc2FYUjVTU0lJT0RVbEJqc0hWRG9MWkdWbWFXNWxTU0lhYW5CbFp6cGtZM1F0YldWMGFHOWtQV1pzYjJGMEJqc0hWRG9VYzJGdGNHeHBibWRmWm1GamRHOXlTU0lLTkRveU9qQUdPd2RVT2d0eVpYTnBlbVZKSWdrMU1EQjRCanNIVkE9PSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--7d4c10d23979a9bcafff7ea8da85dcefd2837226/Screenshot%202018-04-12%2020.18.17.png',
-      },
-    }
-
-    this.state.original = { ...exampleData }
-    this.state.projects = [
-      { ...exampleData },
-      { ...exampleData },
-      { ...exampleData },
-    ]
+    this.state.original = this.emptyProject
+    this.state.projects = []
   }
 
   componentDidMount() {
@@ -121,7 +117,11 @@ class Carousel extends Component {
     const { slug } = this.props
 
     api.get(`v1/workshops/${slug}/projects`).then(projects => {
+      const original =
+        projects.length > 0 ? projects.shift() : this.emptyProject
+
       self.setState({
+        original,
         projects,
       })
     })
@@ -148,7 +148,6 @@ class Carousel extends Component {
   }
 
   setSubmissionData(submissionData) {
-    // disabled Live Frame feature for now, since screenshotlayer free tier limits us here
     this.setLiveFrameStatus(submissionData.liveUrl == '' ? 'empty' : 'loading')
     this.setState({ submissionData })
   }
@@ -203,27 +202,28 @@ class Carousel extends Component {
 
     return (
       <CarouselOuter>
-        <Heading.h3 p={0} mb={[2, 3, 4]}>
+        <Heading.h3 mb={[2, 3, 4]}>
           {projects.length} Rehack
           {projects.length == 1 ? '' : 's'}
         </Heading.h3>
         <CarouselInner>
           <Flex justify="space-between">
             <OriginalWrapper>
-              <CarouselProject project={original} isOriginal={true} />
+              <CarouselProject project={original} isOriginal />
             </OriginalWrapper>
 
             <RehackWrapper>
               {liveFrameStatus != 'empty' ? (
-                <CarouselProject
-                  liveFrame
-                  project={submissionProject}
-                  isOriginal={false}
-                />
+                <CarouselProject liveFrame project={submissionProject} />
+              ) : projects.length == 0 ? (
+                <CarouselProject project={this.emptyProject} />
               ) : (
                 <RehackSlider {...sliderSettings}>
                   {projects.map(project => (
-                    <CarouselProject project={project} isOriginal={false} />
+                    <CarouselProject
+                      project={project}
+                      key={project.screenshot.id}
+                    />
                   ))}
                 </RehackSlider>
               )}
@@ -241,10 +241,8 @@ class Carousel extends Component {
           />
         ) : (
           <Button
-            px={4}
-            py={3}
-            m={0}
-            mb={0}
+            px={[3, 4, 4]}
+            py={[2, 3, 3]}
             scale
             fontSize={4}
             onClick={onClickSubmitButton}

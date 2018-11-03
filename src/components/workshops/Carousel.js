@@ -147,7 +147,8 @@ class Carousel extends Component {
   }
 
   setSubmissionData(submissionData) {
-    this.setLiveFrameStatus(submissionData.liveUrl == '' ? 'empty' : 'loading')
+    // Disable "Live Frame" feature for now
+    // this.setLiveFrameStatus(submissionData.liveUrl == '' ? 'empty' : 'loading')
     this.setState({ submissionData })
   }
 

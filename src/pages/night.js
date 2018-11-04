@@ -80,7 +80,7 @@ export default () => (
     />
     <Nav color={theme.colors.nightMuted} dark />
     <Hero
-      src="/nightjpg"
+      src="/night.jpg"
       aria-label="Blood moon & stars in the night sky"
       bg="darker"
     >

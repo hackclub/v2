@@ -16,7 +16,7 @@ import {
 
 const ProjectOuter = styled(Flex).attrs({
   p: [0, 0, 4],
-  bg: [theme.colors.white, theme.colors.white, theme.colors.white],
+  bg: 'white',
   justify: 'flex-end',
   flexDirection: 'column',
 })`

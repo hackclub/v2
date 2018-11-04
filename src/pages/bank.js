@@ -162,11 +162,11 @@ export default () => (
         body="Add notes to transactions, export data, issue reimbursements. Easy."
       />
     </Modules>
-    <Container my={[4, 3]}>
+    <Container maxWidth={48} my={4}>
       <Image
         width={1}
         src="/bank-screenshot.png"
-        alt="Screenshot of the Bank UI on iPad"
+        alt="Screenshot of Bank on an iPad Pro"
       />
     </Container>
     <BankStats />

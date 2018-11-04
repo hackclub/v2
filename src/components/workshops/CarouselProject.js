@@ -108,7 +108,7 @@ const WrappedImage = styled(Image)`
   right: 0;
   bottom: 0;
 `
-const WrappedText = styled(Text).attrs({})`
+const WrappedText = styled(Text).attrs({ color: 'muted' })`
   transform: rotate(-3deg);
   position: absolute;
   text-align: center;

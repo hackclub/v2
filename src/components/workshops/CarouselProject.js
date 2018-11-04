@@ -47,7 +47,7 @@ const ProjectOuterRight = styled(ProjectOuter)`
 const TextBar = styled(Flex).attrs({
   px: [1, 1, 0],
   py: 0,
-  justify: ['center', 'center', 'space-between'],
+  justify: ['center', null, 'space-between'],
 })`
   flex-direction: column;
   ${theme.mediaQueries.md} {

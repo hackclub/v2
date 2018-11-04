@@ -39,7 +39,7 @@ const LiveField = styled(Field).attrs({
 const CodeField = styled(Field).attrs({
   label: 'Code URL',
   name: 'Code URL',
-  placeholder: "(where's the code?)",
+  placeholder: '(where’s the code?)',
   mb: [1, 2, 3],
 })`
   min-width: 320px;

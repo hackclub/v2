@@ -31,7 +31,7 @@ const CarouselSubmissionFormOuter = styled(Flex).attrs({
 const LiveField = styled(Field).attrs({
   label: 'Live URL',
   name: 'Live URL',
-  placeholder: "(where's the final product?)",
+  placeholder: '(where’s the final product?)',
 })`
   min-width: 320px;
 `

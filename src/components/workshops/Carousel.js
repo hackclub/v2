@@ -203,7 +203,7 @@ class Carousel extends Component {
       <CarouselOuter>
         <Heading.h3 mb={[2, 3, 4]}>
           {projects.length} Rehack
-          {projects.length == 1 && 's'}
+          {projects.length != 1 && 's'}
         </Heading.h3>
         <CarouselInner>
           <Flex justify="space-between">

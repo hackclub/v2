@@ -63,7 +63,7 @@ const RehackSlider = styled(Slider)`
 `
 
 const CarouselOuter = styled(Flex).attrs({
-  bg: theme.colors.smoke,
+  bg: 'smoke',
   m: 0,
   p: [2, 3, 4],
   flexDirection: 'column',

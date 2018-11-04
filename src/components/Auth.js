@@ -10,12 +10,6 @@ import { isEmpty } from 'lodash'
 class Auth extends Component {
   state = { authed: false, authData: {} }
 
-  constructor(props) {
-    super(props)
-
-    const { preAuthed = false, preAuthData = null } = props
-  }
-
   componentDidMount() {
     const { preAuthData = null } = this.props
     const self = this

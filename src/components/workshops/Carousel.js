@@ -112,14 +112,13 @@ class Carousel extends Component {
   }
 
   componentDidMount() {
-    const self = this
     const { slug } = this.props
 
     api.get(`v1/workshops/${slug}/projects`).then(projects => {
       const original =
         projects.length > 0 ? projects.shift() : this.emptyProject
 
-      self.setState({
+      this.setState({
         original,
         projects,
       })
@@ -131,14 +130,14 @@ class Carousel extends Component {
         console.log(
           'User is authorized! Auth data: ' + JSON.stringify(response)
         )
-        self.setState({
+        this.setState({
           authed: true,
           authData: response,
         })
       })
       .catch(error => {
         console.log('User is not authorized! Error: ' + error.toString())
-        self.setState({ authed: false, authData: {} })
+        this.setState({ authed: false, authData: {} })
       })
   }
 

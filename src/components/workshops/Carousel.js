@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import Slider from 'react-slick'
+import { remove } from 'lodash'
 
 import api from 'api'
 import styled from 'styled-components'
@@ -115,8 +116,11 @@ class Carousel extends Component {
     const { slug } = this.props
 
     api.get(`v1/workshops/${slug}/projects`).then(projects => {
-      const original =
-        projects.length > 0 ? projects.shift() : this.emptyProject
+      let original = projects.find(
+        project => project.user && project.user.username == 'prophetorpheus'
+      )
+      if (original) remove(projects, original)
+      else original = this.emptyProject
 
       this.setState({
         original,

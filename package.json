@@ -37,7 +37,7 @@
     "gatsby-plugin-react-helmet": "^3.0.1",
     "gatsby-plugin-resolve-src": "^1.1.4",
     "gatsby-plugin-root-import": "^2.0.4",
-    "gatsby-plugin-segment": "^1.0.2",
+    "gatsby-plugin-segment-js": "^2.0.1",
     "gatsby-plugin-sharp": "^2.0.12",
     "gatsby-plugin-sitemap": "^2.0.2",
     "gatsby-plugin-styled-components": "^3.0.1",

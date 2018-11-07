@@ -90,9 +90,9 @@ module.exports = {
     'gatsby-plugin-sitemap',
     'gatsby-plugin-react-helmet',
     {
-      resolve: 'gatsby-plugin-segment',
+      resolve: 'gatsby-plugin-segment-js',
       options: {
-        writeKey: '35oTlU4UqlhIN8VGYmBxAzyDdfzhcscw'
+        prodKey: '35oTlU4UqlhIN8VGYmBxAzyDdfzhcscw'
       }
     },
     {

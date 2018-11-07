@@ -34,7 +34,7 @@ export default class extends Component {
   }
 
   render() {
-    const { status, club, user } = this.state
+    const { status, club } = this.state
     switch (status) {
       case 'loading':
         return <LoadingBar fill />
@@ -49,7 +49,7 @@ export default class extends Component {
               <Card boxShadowSize="md" p={3} my={3}>
                 <ClubForm
                   {...club}
-                  redirectUrl={`${location.origin}/checkup/leaders?id=${
+                  redirectUrl={`${window.location.origin}/checkup/leaders?id=${
                     club.id
                   }`}
                 />

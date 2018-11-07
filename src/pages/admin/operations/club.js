@@ -26,7 +26,11 @@ const FlexCard = Card.withComponent(Flex)
 
 const EventCard = ({ meeting_date, attendance, notes }) => (
   <FlexCard boxShadowSize="sm" align="flex-start" p={3} my={3}>
-    <Badge bg="muted" children={timeSince(Date.parse(meeting_date))} fontSize={2} />
+    <Badge
+      bg="muted"
+      children={timeSince(Date.parse(meeting_date))}
+      fontSize={2}
+    />
     <Box ml={3}>
       <Heading.h3 fontSize={3} children={meeting_date} />
       <Text color="slate">{attendance} members</Text>
@@ -36,7 +40,7 @@ const EventCard = ({ meeting_date, attendance, notes }) => (
 )
 
 const removeLeadershipPosition = (positionId, name) => {
-  const confirmation = confirm(
+  const confirmation = window.confirm(
     `Are you sure you want to remove ${name} from the club?`
   )
   if (confirmation) {
@@ -62,7 +66,7 @@ const LeaderCard = ({ name, id, email, position }) => (
 )
 
 const removeInvite = (id, email) => {
-  const confirmation = confirm(
+  const confirmation = window.confirm(
     `Are you sure you want to remove ${email}’s invite?`
   )
   if (confirmation) {
@@ -149,7 +153,11 @@ export default class extends Component {
                   <Icon size={16} name="open_in_new" color="muted" ml={2} />
                 </Flex>
               )}
-              <Text fontSize={2} color="muted" children={club.high_school_address} />
+              <Text
+                fontSize={2}
+                color="muted"
+                children={club.high_school_address}
+              />
               {showInviteModal && (
                 <Fragment>
                   <Modal align="left" my={4} p={[3, 4]}>

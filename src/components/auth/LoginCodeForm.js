@@ -55,7 +55,6 @@ class InnerForm extends Component {
     const {
       values,
       errors,
-      touched,
       handleChange,
       handleBlur,
       handleSubmit,

@@ -195,7 +195,7 @@ export default class extends Component {
                         <Tr
                           key={application.id}
                           onClick={e => {
-                            location.href = `/admin/applications/edit?id=${
+                            window.location.href = `/admin/applications/edit?id=${
                               application.id
                             }`
                           }}

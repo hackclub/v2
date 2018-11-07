@@ -27,7 +27,7 @@ export default class extends Component {
           .get(`v1/new_leaders/${user.new_leader.id}/new_clubs`)
           .then(clubs => {
             if (clubs.length > 0) {
-              const urlBase = location.origin + location.pathname
+              const urlBase = window.location.origin + window.location.pathname
               const clubUrl = `${urlBase}/club?id=${clubs[0].id}`
               const clubsUrl = `${urlBase}/clubs`
               this.setState({

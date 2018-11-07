@@ -35,7 +35,7 @@ export default class extends Component {
   createNewApplication = (firstTime = false) => {
     const msg =
       'If you start a new application you won’t be able to access this one. Continue?'
-    if (!firstTime && !confirm(msg)) {
+    if (!firstTime && !window.confirm(msg)) {
       return Promise.resolve(null)
     }
     return api

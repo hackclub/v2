@@ -1,10 +1,29 @@
+const path = require('path')
+
 module.exports = {
   siteMetadata: {
     title: 'Hack Club',
     siteUrl: 'https://hackclub.com'
   },
   plugins: [
-    'gatsby-plugin-resolve-src',
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        src: path.join(__dirname, 'src'),
+        components: path.join(__dirname, 'src/components'),
+        pages: path.join(__dirname, 'src/pages'),
+        animator: path.join(__dirname, 'src/animator'),
+        api: path.join(__dirname, 'src/api'),
+        constants: path.join(__dirname, 'src/constants'),
+        data: path.join(__dirname, 'src/data.json'),
+        helpers: path.join(__dirname, 'src/models'),
+        map: path.join(__dirname, 'src/map'),
+        models: path.join(__dirname, 'src/models'),
+        pulse: path.join(__dirname, 'src/pulse'),
+        search: path.join(__dirname, 'src/search'),
+        storage: path.join(__dirname, 'src/storage')
+      }
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -71,18 +90,19 @@ module.exports = {
     'gatsby-plugin-sitemap',
     'gatsby-plugin-react-helmet',
     {
+      resolve: 'gatsby-plugin-segment',
+      options: {
+        writeKey: '35oTlU4UqlhIN8VGYmBxAzyDdfzhcscw'
+      }
+    },
+    {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
         siteUrl: 'https://hackclub.com'
       }
     },
     'gatsby-plugin-styled-components',
-    {
-      resolve: 'gatsby-plugin-segment',
-      options: {
-        writeKey: '35oTlU4UqlhIN8VGYmBxAzyDdfzhcscw'
-      }
-    },
+    'gatsby-plugin-no-sourcemaps',
     {
       resolve: 'gatsby-plugin-netlify',
       options: {

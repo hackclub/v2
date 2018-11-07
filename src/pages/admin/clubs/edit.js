@@ -16,7 +16,6 @@ import {
   Box
 } from '@hackclub/design-system'
 import Autocomplete from 'react-autocomplete'
-import styled from 'styled-components'
 
 class OwnerForm extends Component {
   state = {

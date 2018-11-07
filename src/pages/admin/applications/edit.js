@@ -21,9 +21,7 @@ import Information from 'components/admin/Information'
 import LeaderProfileInfo from 'components/admin/LeaderProfileInfo'
 import Nav from 'components/apply/ApplyNav'
 import search from 'search'
-import api from 'api'
 import { NewClubApplication, LeaderProfile } from 'models'
-import { timeSince } from 'helpers'
 
 const colorMap = {
   unsubmitted: 'gray.3',

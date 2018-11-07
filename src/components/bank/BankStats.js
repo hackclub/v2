@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Container, Text } from '@hackclub/design-system'
-import Sheet from 'components/Sheet'
 import api from 'api'
 import { timeSince } from 'helpers'
 

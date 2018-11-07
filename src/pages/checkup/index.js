@@ -8,7 +8,6 @@ import api from 'api'
 import {
   Container,
   Card,
-  Link,
   Text,
   Heading,
   Section
@@ -61,7 +60,10 @@ export default class extends Component {
             <Nav breadcrumb={false} />
             <Section bg="primary" color="white">
               <Heading.h1 fontSize={[5, 6]} mb={[2, 3]}>
-                It’s the end of the school year! 🎉
+                It’s the end of the school year!{' '}
+                <span aria-label="celebrate" role="img">
+                  🎉
+                </span>
               </Heading.h1>
               <Text fontSize={[2, 3]}>
                 Time to update your club and leader’s info.

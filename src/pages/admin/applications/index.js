@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import {
   Container,
   Button,
-  Box,
   Flex,
   Heading,
   Text,

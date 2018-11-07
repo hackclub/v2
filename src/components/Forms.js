@@ -62,10 +62,16 @@ const SaveStatus = ({ saved, type = 'all' }) => (
 )
 
 export class AutoSaver extends Component {
-  state = { previousValues: this.props.values }
+  constructor(props) {
+    super(props)
+    this.state = {
+      previousValues: props.values
+    }
+    this.autoSave = this.autoSave.bind(this)
+  }
 
   componentWillMount() {
-    const intervalId = setInterval(::this.autoSave, 1000)
+    const intervalId = setInterval(this.autoSave, 1000)
     this.setState({ intervalId })
   }
 

@@ -18,13 +18,19 @@ import {
 import { Modal, Overlay, CloseButton } from 'components/Modal'
 
 class Invite extends Component {
-  state = {
-    status: this.props.accepted
-      ? 'accepted'
-      : this.props.rejected
-        ? 'rejected'
-        : 'undecided',
-    formActive: false
+  constructor(props) {
+    super(props)
+    this.state = {
+      status: props.accepted
+        ? 'accepted'
+        : props.rejected
+          ? 'rejected'
+          : 'undecided',
+      formActive: false
+    }
+    this.rejectInvite = this.rejectInvite.bind(this)
+    this.acceptInvite = this.acceptInvite.bind(this)
+    this.submitAcceptance = this.submitAcceptance.bind(this)
   }
 
   rejectInvite() {
@@ -84,7 +90,7 @@ class Invite extends Component {
                     email={user.email}
                     userId={user.id}
                     clubId={invite.new_club.id}
-                    callback={::this.submitAcceptance}
+                    callback={this.submitAcceptance}
                   />
                 </Modal>
                 <Overlay
@@ -107,7 +113,7 @@ class Invite extends Component {
               color="white"
               bg="primary"
               mx={2}
-              onClick={::this.acceptInvite}
+              onClick={this.acceptInvite}
             >
               Accept
             </Button>
@@ -115,7 +121,7 @@ class Invite extends Component {
               color="white"
               bg="primary"
               mx={2}
-              onClick={::this.rejectInvite}
+              onClick={this.rejectInvite}
               inverted
             >
               Reject
@@ -144,7 +150,11 @@ class Invite extends Component {
 }
 
 export default class extends Component {
-  state = { status: 'loading' }
+  constructor(props) {
+    super(props)
+    this.state = { status: 'loading' }
+    this.updateLeader = this.updateLeader.bind(this)
+  }
 
   componentDidMount() {
     api
@@ -213,7 +223,7 @@ export default class extends Component {
                   key={invite.id}
                   invite={invite}
                   user={user}
-                  updateLeader={::this.updateLeader}
+                  updateLeader={this.updateLeader}
                   rejected={invite.rejected_at !== null}
                   accepted={invite.accepted_at !== null}
                 />

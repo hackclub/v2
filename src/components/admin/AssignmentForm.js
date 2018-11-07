@@ -36,6 +36,7 @@ class AssignmentForm extends Component {
       NewClubApplication.update({ owner_id: ownerId || null })
     )
   }
+  handleChange = this.handleChange.bind(this)
   render() {
     switch (this.state.status) {
       case 'loading':
@@ -45,7 +46,7 @@ class AssignmentForm extends Component {
           <Field
             label="Assignee"
             type="select"
-            onChange={::this.handleChange}
+            onChange={this.handleChange}
             value={this.state.value}
           >
             <option value="">Unset</option>

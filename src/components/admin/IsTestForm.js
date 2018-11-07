@@ -41,6 +41,7 @@ class IsTestForm extends Component {
         })
       })
   }
+  toggle = this.toggle.bind(this)
 
   componentDidMount() {
     const { model, id } = this.props
@@ -73,7 +74,7 @@ class IsTestForm extends Component {
               m={2}
               style={{ WebkitAppearance: 'checkbox' }}
               checked={this.state.test}
-              onChange={::this.toggle}
+              onChange={this.toggle}
             />
           </Base>
         )

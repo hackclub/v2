@@ -39,10 +39,15 @@ const FilterButton = ({ toggled, status, toggleFilter }) => (
 const Assignment = ({ owner }) => <Text>{owner}</Text>
 
 export default class extends Component {
-  state = {
-    status: 'loading',
-    filters: [],
-    clubApplications: {}
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      status: 'loading',
+      filters: [],
+      clubApplications: {}
+    }
+    this.toggleFilter = this.toggleFilter.bind(this)
   }
 
   addAppToList(apps) {
@@ -162,7 +167,7 @@ export default class extends Component {
                 {Object.keys(colorMap).map((status, index) => (
                   <FilterButton
                     key={index}
-                    toggleFilter={::this.toggleFilter}
+                    toggleFilter={this.toggleFilter}
                     status={status}
                     toggled={this.state.filters.indexOf(status) === -1}
                   />

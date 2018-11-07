@@ -6,7 +6,13 @@ import api, { url as apiUrl } from 'api'
 const Label = Button.withComponent('label')
 
 class ImageForm extends Component {
-  state = { image: this.props.image }
+  constructor(props) {
+    super(props)
+
+    this.state = { image: this.props.image }
+
+    this.handleChange = this.handleChange.bind(this)
+  }
 
   handleChange(e) {
     const data = new FormData()
@@ -26,7 +32,7 @@ class ImageForm extends Component {
     return (
       <form>
         <input
-          onChange={::this.handleChange}
+          onChange={this.handleChange}
           id={type}
           type="file"
           accept=".jpg, .jpeg, .png"

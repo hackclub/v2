@@ -263,7 +263,7 @@ const Animator = () => {
       return i
     })
   const chrome = navigator.userAgent.includes('Chrome')
-  const m = new d(document.querySelectorAll('[data-animator]'), scrollY)
+  const m = new d(document.querySelectorAll('[data-animator]'), window.scrollY)
   if (chrome) {
     document.documentElement.classList.add('chrome')
     m.animated.forEach(t => {
@@ -276,11 +276,11 @@ const Animator = () => {
     w = true
   }
   setTimeout(v, 256)
-  addEventListener('scroll', t => {
-    m.target = scrollY
-    scrollY > 8 && !w && v()
+  window.addEventListener('scroll', t => {
+    m.target = window.scrollY
+    window.scrollY > 8 && !w && v()
   })
-  addEventListener('resize', t => {
+  window.addEventListener('resize', t => {
     m.updateDimensions()
   })
 }

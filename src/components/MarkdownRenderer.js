@@ -66,11 +66,8 @@ export default class extends Component {
       status: content !== undefined ? 'success' : path ? 'loading' : 'error',
       content: content
     }
-  }
 
-  componentWillMount() {
     const { status } = this.state
-    const { path } = this.props
 
     if (status === 'success') {
       return null
@@ -82,9 +79,9 @@ export default class extends Component {
 
     api
       .get(`v1/repo/${path}`)
-      .then(md => {
+      .then(content => {
         this.setState({
-          content: md,
+          content,
           status: 'success'
         })
       })
@@ -93,7 +90,7 @@ export default class extends Component {
       })
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(nextProps) {
     if (this.state.content !== nextProps.content) {
       this.setState({ content: nextProps.content })
     }

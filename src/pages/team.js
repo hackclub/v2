@@ -9,7 +9,7 @@ import {
   theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import BG from 'components/BG'
 import Nav from 'components/Nav'
 import Name from 'components/Name'

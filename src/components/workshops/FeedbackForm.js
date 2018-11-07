@@ -4,7 +4,7 @@ import { withFormik } from 'formik'
 import { map, last, keys, omit } from 'lodash'
 import * as yup from 'yup'
 import api from 'api'
-import { workshopFeedback } from 'data.json'
+import { workshopFeedback } from 'data'
 
 const statusMessage = status =>
   status
@@ -59,7 +59,7 @@ const FeedbackForm = withFormik({
   handleSubmit: (data, { props, setStatus, setSubmitting, resetForm }) => {
     const feedback = {}
     map(omit(data, 'slug'), (res, id) => {
-      feedback[questions[id]] = res
+      feedback[workshopFeedback[id]] = res
     })
     const body = JSON.stringify({
       workshop_slug: last(props.slug.split('/')),

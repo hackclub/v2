@@ -14,7 +14,7 @@ import {
   theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Nav from 'components/Nav'
 import Sheet from 'components/Sheet'
 import { Headline, Featline } from 'components/Content'

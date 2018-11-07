@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { LargeButton, Text } from '@hackclub/design-system'
 import { AutoSaver, Field, Fieldset, Form, FormWrapper } from 'components/Forms'
 import { withFormik } from 'formik'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import api from 'api'
 
 LargeButton.link = LargeButton.withComponent(Link)
@@ -15,8 +15,7 @@ const InnerForm = props => {
     handleChange,
     handleBlur,
     handleSubmit,
-    isSubmitting,
-    params
+    isSubmitting
   } = props
   return (
     <FormWrapper>
@@ -212,6 +211,7 @@ const InnerForm = props => {
                 <a
                   href="https://www.quora.com/When-have-you-most-successfully-hacked-a-non-computer-system-to-your-advantage"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Here are examples
                 </a>{' '}
@@ -274,7 +274,7 @@ const LeaderApplicationForm = withFormik({
         setSubmitting(false)
         // update name stored in analytics w/ latest value if it's changed
         analytics.ready(() => {
-          if (analytics.user().traits().email != json.leader_name) {
+          if (analytics.user().traits().email !== json.leader_name) {
             analytics.identify({ name: json.leader_name })
           }
         })

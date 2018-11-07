@@ -11,7 +11,7 @@ import {
   theme
 } from '@hackclub/design-system'
 import Icon from '@hackclub/icons'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 
 const Base = styled(Box.withComponent('footer'))`
   background: ${props =>

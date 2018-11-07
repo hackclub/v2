@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Box, Heading, Text, LargeButton, theme } from '@hackclub/design-system'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Sheet from 'components/Sheet'
 import Framed from 'components/Framed'
 

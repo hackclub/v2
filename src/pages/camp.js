@@ -9,7 +9,7 @@ import {
   Link as A
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 

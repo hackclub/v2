@@ -1,6 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { name, title, description, img, url, org } from 'data.json'
+import { name, title, description, img, url, org } from 'data'
 import { ThemeProvider, theme } from '@hackclub/design-system'
 import serviceWorkerKiller from '../../static/swkiller'
 

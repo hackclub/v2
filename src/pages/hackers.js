@@ -15,7 +15,7 @@ import {
   hexa
 } from '@hackclub/design-system'
 import Icon from '@hackclub/icons'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'

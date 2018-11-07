@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Text, Link as A } from '@hackclub/design-system'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 
 A.link = A.withComponent(Link)
 

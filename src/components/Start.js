@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Box, Heading, Text, LargeButton, theme } from '@hackclub/design-system'
 import Sheet from 'components/Sheet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 
 const Base = styled(Sheet).attrs({ maxWidth: 72 - 2 })`
   background-color: ${theme.colors.red[5]};

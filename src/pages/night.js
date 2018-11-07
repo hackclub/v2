@@ -7,7 +7,7 @@ import {
   LargeButton,
   theme
 } from '@hackclub/design-system'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'

@@ -12,7 +12,7 @@ import {
   theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link, graphql } from 'gatsby'
 import Nav from 'components/Nav'
 import {
   Breadcrumbs,
@@ -28,7 +28,7 @@ import ShareButton from 'components/ShareButton'
 import Sheet from 'components/Sheet'
 import Footer from 'components/Footer'
 import { isEmpty } from 'lodash'
-import { org } from 'data.json'
+import { org } from 'data'
 
 const NotOnPrint = styled(Box)`
   @media print {

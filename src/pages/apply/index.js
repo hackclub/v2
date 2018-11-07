@@ -12,7 +12,7 @@ import {
 import styled from 'styled-components'
 
 import Pulse from 'pulse'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import ApplyNav from 'components/apply/ApplyNav'
 import Sheet from 'components/Sheet'
 import Main from 'components/apply/Main'

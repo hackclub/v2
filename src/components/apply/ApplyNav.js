@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from 'react'
-import Link from 'gatsby-link'
+import React, { Component } from 'react'
+import { Link } from 'gatsby'
 import { Text, Flex, Box, Link as A } from '@hackclub/design-system'
 import Flag from 'components/Flag'
 import LogoutButton from 'components/auth/LogoutButton'
-import { withRouter } from 'react-router-dom'
+import { withRouter } from '@reach/router'
 import { startCase, toLower } from 'lodash'
 
 const Crumb = ({ isLast, ...props }) => {
@@ -11,11 +11,11 @@ const Crumb = ({ isLast, ...props }) => {
   return <Tag {...props} />
 }
 
-class BreadcrumbClass extends Component {
+class Breadcrumb extends Component {
   state = { path: [] }
 
   componentDidMount() {
-    const path = location.pathname.split('/').filter(chunk => chunk != '')
+    const path = window.location.pathname.split('/').filter(a => a != '')
     this.setState({ path })
   }
 
@@ -23,13 +23,13 @@ class BreadcrumbClass extends Component {
     const { path } = this.state
     const runningPath = ['']
     return (
-      <Fragment>
+      <>
         {path.map((section, index) => {
           runningPath.push(section)
           const isLast = path.length - index - 1 === 0
           const humanizedSection = startCase(toLower(section))
           return (
-            <Fragment key={index}>
+            <>
               <Crumb
                 to={runningPath.join('/')}
                 color={isLast ? 'black' : 'slate'}
@@ -38,18 +38,16 @@ class BreadcrumbClass extends Component {
               >
                 {humanizedSection}
               </Crumb>
-              {!isLast ? (
+              {!isLast && (
                 <Text.span mx={2} color="muted" regular children="›" />
-              ) : null}
-            </Fragment>
+              )}
+            </>
           )
         })}
-      </Fragment>
+      </>
     )
   }
 }
-
-const Breadcrumb = withRouter(BreadcrumbClass)
 
 const ApplyNav = ({ breadcrumb = true, ...props }) => (
   <Flex

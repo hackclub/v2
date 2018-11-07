@@ -17,7 +17,7 @@ import { clubApplicationSchema } from 'components/apply/ClubApplicationForm'
 import Sheet from 'components/Sheet'
 import SubmitButton from 'components/apply/SubmitButton'
 import Status from 'components/apply/Status'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import { timeSince } from 'helpers'
 import api from 'api'
 import { Modal, CloseButton, Overlay } from 'components/Modal'
@@ -47,7 +47,12 @@ class ContactModal extends Component {
     const { open } = this.state
     return (
       <Fragment>
-        <Button bg="info" onClick={this.toggle} children="Contact us" fontSize={1} />
+        <Button
+          bg="info"
+          onClick={this.toggle}
+          children="Contact us"
+          fontSize={1}
+        />
         {open && (
           <Fragment>
             <Modal w="28rem" align="left" my={4} p={[3, 4]}>
@@ -319,7 +324,7 @@ const Main = props => {
               glyph="member-remove"
               onClick={e => {
                 if (
-                  confirm(
+                  window.confirm(
                     `Are you sure you want to remove ${
                       profile.user.email
                     } as a team member?`

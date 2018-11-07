@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import React from 'react'
 import { Container, Flex, Button, Heading } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 
 const Action = styled(Button.withComponent(Link)).attrs({ m: 2 })``
 

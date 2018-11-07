@@ -11,9 +11,9 @@ import {
   Text,
   theme
 } from '@hackclub/design-system'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Sheet from 'components/Sheet'
-import { stats } from 'data.json'
+import { stats } from 'data'
 
 const Root = styled(Flex.withComponent('section')).attrs({
   align: 'center',

@@ -10,12 +10,12 @@ import {
   Link as A,
   theme
 } from '@hackclub/design-system'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Module from 'components/Module'
 import Stat from 'components/Stat'
 import Sheet from 'components/Sheet'
 import { Featline } from 'components/Content'
-import { stats } from 'data.json'
+import { stats } from 'data'
 
 const Grid = styled(Box)`
   display: grid;

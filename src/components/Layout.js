@@ -9,7 +9,7 @@ const meta = tags =>
     React.createElement('meta', { ...props, key: index })
   )
 
-export default props => (
+export default ({ children, ...props }) => (
   <ThemeProvider webfonts>
     <Helmet defaultTitle={title}>
       <html lang="en" />
@@ -38,6 +38,6 @@ export default props => (
       />
       <script type="application/ld+json" children={JSON.stringify(org)} />
     </Helmet>
-    {props.children()}
+    {children}
   </ThemeProvider>
 )

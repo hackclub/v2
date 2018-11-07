@@ -237,34 +237,6 @@ export default () => (
         <Heading.h2 color="pink.0" fontSize={[4, 5]} mb={4} regular>
           Talk to our community, get coding help, have fun.
         </Heading.h2>
-        {/* NOTE(@lachlanjc): Waiting on these endpoints
-        <Stats>
-          <LiveStat
-            url=""
-            path="total_members"
-            fontSize={7}
-            mx={2}
-            fallback="2K"
-            label="total members"
-          />
-          <LiveStat
-            url=""
-            path="new_members_this_month"
-            fontSize={7}
-            mx={2}
-            fallback="256"
-            label="new members this month"
-          />
-          <LiveStat
-            url=""
-            path="new_messages_this_week"
-            fontSize={7}
-            mx={2}
-            fallback="12K"
-            label="messages this week"
-          />
-        </Stats>
-        */}
         <Sheet maxWidth={28} align="left" my={4} mx="auto">
           <SlackForm />
         </Sheet>

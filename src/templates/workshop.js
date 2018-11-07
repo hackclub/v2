@@ -21,7 +21,6 @@ import {
   Breadcrumb,
   BreadcrumbDivider
 } from 'components/Breadcrumbs'
-import Invert from 'components/Invert'
 import IconButton from 'components/IconButton'
 import MarkdownBody from 'components/MarkdownBody'
 import FeedbackForm from 'components/workshops/FeedbackForm'
@@ -319,7 +318,6 @@ export default ({ data }) => {
             />
           </Container>
           <Flex width={1} px={3} pb={3} justify="center">
-            {/* <Invert fontSize={2} my={1} /> */}
             <IconButton
               bg="slate"
               glyph="edit"

@@ -9,7 +9,7 @@ import IconButton from 'components/IconButton'
 import Footer from 'components/Footer'
 import WorkshopSearch from 'components/workshops/WorkshopSearch'
 
-const Base = styled(Box.main)`
+const Base = styled(Box.withComponent('main'))`
   position: relative;
 `
 

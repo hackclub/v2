@@ -213,10 +213,10 @@ const Main = props => {
   const { callback, app, resetCallback } = props
 
   const leaderProfile = leader_profiles.find(
-    profile => profile.user.id == props.userId
+    profile => Number(profile.user.id) === Number(props.userId)
   )
   const coLeaderProfiles = leader_profiles.filter(
-    profile => profile.user.id != props.userId
+    profile => Number(profile.user.id) !== Number(props.userId)
   )
 
   const completeProfiles = leader_profiles.every(

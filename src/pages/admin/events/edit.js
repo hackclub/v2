@@ -22,12 +22,12 @@ export default class extends Component {
   }
 
   updateEvent(updatedEvent) {
-    this.setState({
+    this.setState(state => ({
       event: {
-        ...this.state.event,
+        ...state.event,
         ...updatedEvent
       }
-    })
+    }))
     if (!search.get('id') && this.state.event.id) {
       search.set('id', this.state.event.id)
     }

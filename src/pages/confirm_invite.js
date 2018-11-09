@@ -189,12 +189,12 @@ export default class extends Component {
   }
 
   updateLeader(newLeader) {
-    this.setState({
+    this.setState(state => ({
       user: {
-        ...this.state.user,
+        ...state.user,
         new_leader: newLeader
       }
-    })
+    }))
   }
 
   render() {

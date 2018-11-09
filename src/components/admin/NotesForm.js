@@ -148,25 +148,19 @@ export default class NotesForm extends Component {
             new Promise((resolve, reject) => {
               const userId = note.user_id
               if (authors[userId]) {
-                this.setState({
-                  notes: [
-                    ...this.state.notes,
-                    { ...note, author: authors[userId] }
-                  ]
-                })
+                this.setState(state => ({
+                  notes: [...state.notes, { ...note, author: authors[userId] }]
+                }))
                 resolve()
               } else {
                 api
                   .get(`v1/users/${userId}`)
                   .then(user => {
                     authors[userId] = user.email
-                    this.setState({
-                      notes: [
-                        ...this.state.notes,
-                        { ...note, author: user.email }
-                      ],
+                    this.setState(state => ({
+                      notes: [...state.notes, { ...note, author: user.email }],
                       authors
-                    })
+                    }))
                     resolve()
                   })
                   .catch(err => {
@@ -184,7 +178,9 @@ export default class NotesForm extends Component {
       })
   }
   addNote() {
-    this.setState({ notes: [...this.state.notes, { created_at: new Date() }] })
+    this.setState(state => ({
+      notes: [...state.notes, { created_at: new Date() }]
+    }))
   }
   render() {
     const { modelType, modelId } = this.props

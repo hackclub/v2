@@ -7,7 +7,6 @@ import {
   Text,
   Heading,
   LargeButton as Button,
-  Link as A,
   Image,
   theme
 } from '@hackclub/design-system'

@@ -58,7 +58,7 @@ const regex = new RegExp(
 )
 export const onlyContainsEmoji = text => regex.test(text)
 
-function formatChunk(type, date) {
+const formatChunk = (type, date) => {
   const days = [
     'Sunday',
     'Monday',
@@ -72,7 +72,7 @@ function formatChunk(type, date) {
     'January',
     'Febuary',
     'March',
-    ' April',
+    'April',
     'May',
     'June',
     'July',

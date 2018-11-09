@@ -1,13 +1,6 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
-import {
-  Box,
-  LargeButton,
-  Link as A,
-  Section,
-  Text,
-  theme
-} from '@hackclub/design-system'
+import { Box, LargeButton, Section, Text, theme } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import { Link, graphql } from 'gatsby'
 import Nav from 'components/Nav'

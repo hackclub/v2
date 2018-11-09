@@ -86,11 +86,10 @@ class Composer extends Component {
   }
 
   render() {
-    const { saved, body } = this.state
     return (
       <Body mt={2}>
         <Editor
-          editorState={body}
+          editorState={this.state.body}
           plugins={this.state.plugins}
           spellCheck={true}
           autoCapitalize="sentences"

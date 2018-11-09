@@ -7,7 +7,6 @@ import {
   Flex,
   Heading,
   Link as A,
-  Section,
   Text,
   Avatar,
   theme

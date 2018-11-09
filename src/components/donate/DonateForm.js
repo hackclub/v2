@@ -81,7 +81,6 @@ class DonateForm extends Component {
   }
 
   render() {
-    const { custom, recurring, amount } = this.state
     return (
       <Box align="center" style={{ position: 'relative' }}>
         <Box bg="primary" color="white" mx={[-3, -4]} pb={4} mb={3}>
@@ -112,7 +111,7 @@ class DonateForm extends Component {
                 MozAppearance: 'checkbox',
                 appearance: 'checkbox'
               }}
-              checked={recurring}
+              checked={this.state.recurring}
               onChange={this.handleRecurringChange}
             />
             <Text.span fontSize={2} ml={1}>

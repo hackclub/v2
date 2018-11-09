@@ -9,7 +9,6 @@ import {
   Badge,
   Box,
   Heading,
-  Link,
   Button,
   Flex,
   Field
@@ -58,6 +57,12 @@ const StatusBadge = ({ status }) => {
       return (
         <Badge color="white" bg="warning">
           Not leading
+        </Badge>
+      )
+    default:
+      return (
+        <Badge color="white" bg="slate">
+          Loading
         </Badge>
       )
   }

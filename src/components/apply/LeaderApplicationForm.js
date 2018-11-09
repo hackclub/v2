@@ -273,8 +273,11 @@ const LeaderApplicationForm = withFormik({
       .then(json => {
         setSubmitting(false)
         // update name stored in analytics w/ latest value if it's changed
+        // eslint-disable-next-line
         analytics.ready(() => {
+          // eslint-disable-next-line
           if (analytics.user().traits().email !== json.leader_name) {
+            // eslint-disable-next-line
             analytics.identify({ name: json.leader_name })
           }
         })

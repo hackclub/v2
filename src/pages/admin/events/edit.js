@@ -7,7 +7,7 @@ import ErrorPage from 'components/admin/ErrorPage'
 import Nav from 'components/apply/ApplyNav'
 import api from 'api'
 import search from 'search'
-import { Text, Image, BackgroundImage } from '@hackclub/design-system'
+import { Image, BackgroundImage } from '@hackclub/design-system'
 
 export default class extends Component {
   constructor(props) {
@@ -51,7 +51,7 @@ export default class extends Component {
                   status: 'success'
                 })
               } else {
-                throw 'Event not found'
+                console.error('Event not found')
               }
             })
             .catch(err => {

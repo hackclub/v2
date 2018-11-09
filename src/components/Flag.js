@@ -1,4 +1,3 @@
-import React from 'react'
 import { theme } from '@hackclub/design-system'
 import styled, { css } from 'styled-components'
 import { Link } from 'gatsby'

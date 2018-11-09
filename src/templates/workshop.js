@@ -294,7 +294,11 @@ export default ({ data }) => {
             <Sheet align="left">
               <Heading.h2 fontSize={4}>How was this workshop?</Heading.h2>
               <Text color="muted" fontSize={1} mt={1} mb={3}>
-                (your feedback is anonymous + appreciated ❤️)
+                (your feedback is anonymous + appreciated{' '}
+                <span role="img" aria-label="heart emoji">
+                  ❤️
+                </span>
+                )
               </Text>
               <FeedbackForm slug={slug} />
             </Sheet>

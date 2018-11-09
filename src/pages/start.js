@@ -20,6 +20,16 @@ import Sheet from 'components/Sheet'
 import { Headline, Featline } from 'components/Content'
 import Footer from 'components/Footer'
 
+A.link = A.withComponent(Link)
+const FeatureLink = styled(A.link).attrs({
+  mt: [3, 4],
+  fontSize: 3,
+  underline: true,
+  chevronRight: true
+})`
+  display: block;
+`
+
 const shadows = css`
   h2,
   h3,
@@ -105,16 +115,6 @@ const PhotoFeature = styled(PhotoSection.withComponent(TextFeature))`
   > p {
     color: ${theme.colors.white};
   }
-`
-
-A.link = A.withComponent(Link)
-const FeatureLink = styled(A.link).attrs({
-  mt: [3, 4],
-  fontSize: 3,
-  underline: true,
-  chevronRight: true
-})`
-  display: block;
 `
 
 const Module = ({ icon, name, body, ...props }) => (
@@ -212,7 +212,12 @@ const styles = {
   ultraline: { fontSize: [6, 7], style: { lineHeight: '1' } },
   headline: { fontSize: [5, 6], style: { lineHeight: '1.125' } },
   miniline: { fontSize: [4, 5], mb: 2, style: { lineHeight: '1.25' } },
-  lead: { fontSize: [3, 4], my: 3, regular: true, style: { lineHeight: '1.5' } },
+  lead: {
+    fontSize: [3, 4],
+    my: 3,
+    regular: true,
+    style: { lineHeight: '1.5' }
+  },
   contentContainer: {
     maxWidth: 72,
     width: 1,

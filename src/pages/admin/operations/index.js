@@ -9,15 +9,13 @@ import Fuse from 'fuse.js'
 import Chart from 'components/admin/operations/CheckInChart'
 import { timeSince, formatDate } from 'helpers'
 import {
-  Text,
+  Box,
   Card,
   Container,
-  Link,
-  Icon,
-  Flex,
-  Box,
   Field,
-  Heading
+  Flex,
+  Icon,
+  Text
 } from '@hackclub/design-system'
 import api from 'api'
 
@@ -91,7 +89,7 @@ class ClubCard extends Component {
   }
 
   renderSwitch() {
-    const { status, checkIns } = this.state
+    const { status } = this.state
     switch (status) {
       case 'success':
         return this.mostRecentCheckin()

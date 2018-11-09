@@ -5,7 +5,7 @@ import IconButton from 'components/IconButton'
 import Login from 'components/auth/Login'
 import Nav from 'components/apply/ApplyNav'
 import { Tr, Td, Th } from 'components/Table'
-import { Box, Container, Text, Link } from '@hackclub/design-system'
+import { Box, Container } from '@hackclub/design-system'
 import api from 'api'
 
 export default class extends Component {

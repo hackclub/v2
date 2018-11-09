@@ -185,13 +185,25 @@ export default class extends Component {
             </HeaderAreaText>
             <HeaderAreaInfo>
               <Text fontSize={2}>
-                🌟 Challenge: <strong>{challenge.name}</strong>
+                <span role="img" aria-label="star emoji">
+                  🌟
+                </span>{' '}
+                Challenge: <strong>{challenge.name}</strong>
                 <br />
-                🎁 {challenge.description}
+                <span role="img" aria-label="present emoji">
+                  🎁
+                </span>{' '}
+                {challenge.description}
                 <br />
-                ℹ️ Competition open to Hack Club community members
+                <span role="img" aria-label="info emoji">
+                  ℹ️
+                </span>{' '}
+                Competition open to Hack Club community members
                 <br />
-                🏅 Submissions due {dt(challenge.end)}. Top 3 voted win!
+                <span role="img" aria-label="medal emoji">
+                  🏅
+                </span>{' '}
+                Submissions due {dt(challenge.end)}. Top 3 voted win!
               </Text>
             </HeaderAreaInfo>
             <HeaderAreaForm>

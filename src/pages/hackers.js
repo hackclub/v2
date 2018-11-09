@@ -20,12 +20,7 @@ import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import Sheet from 'components/Sheet'
-import {
-  ColoredHeadline,
-  Headline,
-  Subhline,
-  Highlight
-} from 'components/Content'
+import { ColoredHeadline, Subhline, Highlight } from 'components/Content'
 
 const cta = {
   chevronRight: true,
@@ -233,7 +228,7 @@ export default () => (
           />
           <Photo
             src="/hackers/github.jpg"
-            aria-lable="Hack Club members posing at GitHub"
+            aria-label="Hack Club members posing at GitHub"
           />
         </Features>
       </Container>

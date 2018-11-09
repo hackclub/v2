@@ -19,7 +19,7 @@ const modalKeyframes = keyframes`
   }
 `
 
-const Modal = styled(Sheet).attrs({ bg: 'white' })`
+export const Modal = styled(Sheet).attrs({ bg: 'white' })`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.0625), 0 16px 32px rgba(0, 0, 0, 0.125) !important;
   position: fixed;
   top: 50%;
@@ -46,7 +46,7 @@ const Modal = styled(Sheet).attrs({ bg: 'white' })`
   }
 `
 
-const Overlayer = styled(Box)`
+export const Overlayer = styled(Box)`
   z-index: 1024;
   background-color: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(6px);
@@ -58,7 +58,7 @@ const Overlayer = styled(Box)`
   height: 100%;
 `
 
-const Overlay = props => (
+export const Overlay = props => (
   <Fragment>
     <Overlayer {...props} />
     <ScrollLock />
@@ -75,10 +75,10 @@ const ButtonReset = styled(Box.withComponent('button')).attrs({
   border-radius: ${theme.pill};
   cursor: pointer;
 `
-const CloseButton = props => (
+export const CloseButton = props => (
   <ButtonReset aria-label="Close" color="muted" {...props}>
     <Icon glyph="view-close-small" size={24} />
   </ButtonReset>
 )
 
-export default { Modal, Overlay, Overlayer, CloseButton }
+// export default { Modal, Overlay, Overlayer, CloseButton }

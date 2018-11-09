@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Container, Heading, Text, Section, cx } from '@hackclub/design-system'
+import { Container, Heading, Text, Section } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import BG from 'components/BG'
 import Nav from 'components/Nav'

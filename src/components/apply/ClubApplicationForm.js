@@ -36,7 +36,6 @@ const InnerForm = props => {
     handleBlur,
     handleSubmit,
     isSubmitting,
-    id,
     disableAutosave
   } = props
   return (

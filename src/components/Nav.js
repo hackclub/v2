@@ -1,14 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import {
-  Box,
-  Flex,
-  Link as A,
-  Container,
-  cx,
-  theme
-} from '@hackclub/design-system'
+import { Box, Flex, Container, cx, theme } from '@hackclub/design-system'
 import Icon from '@hackclub/icons'
 import Flag from 'components/Flag'
 import { Link } from 'gatsby'
@@ -123,6 +116,7 @@ const Navigation = props => (
       href="https://shop.hackclub.com/?ref=nav"
       children="Shop"
       target="_blank"
+      rel="noopener noreferrer"
     />
     <Link to="/challenge" children="Challenge" />
     <Link to="/workshops" children="Workshops" />
@@ -130,6 +124,7 @@ const Navigation = props => (
       href="https://hackathons.hackclub.com/?ref=nav"
       children="Hackathons"
       target="_blank"
+      rel="noopener noreferrer"
     />
     <Link to="/bank" children="Bank" />
     <Link to="/start" children="Get&nbsp;Started&nbsp;»" />
@@ -217,13 +212,13 @@ class Header extends Component {
     const baseColor = dark
       ? color || 'white'
       : color === 'white' && scrolled
-        ? 'black'
-        : color
+      ? 'black'
+      : color
     const toggleColor = dark
       ? color || 'snow'
       : toggled || (color === 'white' && scrolled)
-        ? 'slate'
-        : color
+      ? 'slate'
+      : color
 
     return (
       <Root

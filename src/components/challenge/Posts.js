@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Box, Text } from '@hackclub/design-system'
+import { Text } from '@hackclub/design-system'
 import Post from 'components/challenge/Post'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'

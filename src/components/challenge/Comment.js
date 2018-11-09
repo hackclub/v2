@@ -150,8 +150,7 @@ class Comment extends Component {
       user,
       body,
       onReply,
-      onDelete,
-      ...props
+      onDelete
     } = this.props
     const emoji = onlyContainsEmoji(body)
     return (

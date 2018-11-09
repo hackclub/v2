@@ -18,7 +18,6 @@ import Sheet from 'components/Sheet'
 import SubmitButton from 'components/apply/SubmitButton'
 import Status from 'components/apply/Status'
 import { Link } from 'gatsby'
-import { timeSince } from 'helpers'
 import api from 'api'
 import { Modal, CloseButton, Overlay } from 'components/Modal'
 import storage from 'storage'
@@ -206,8 +205,8 @@ const profileStatus = profile =>
   profile.completed_at !== null
     ? 'complete'
     : profile.created_at === profile.updated_at
-      ? 'unopened'
-      : 'incomplete'
+    ? 'unopened'
+    : 'incomplete'
 
 const Main = props => {
   const {
@@ -225,7 +224,6 @@ const Main = props => {
   const coLeaderProfiles = leader_profiles.filter(
     profile => profile.user.id != props.userId
   )
-  const isPoc = leaderProfile.user.id === point_of_contact_id
 
   const completeProfiles = leader_profiles.every(
     profile => profile.completed_at
@@ -243,8 +241,8 @@ const Main = props => {
     completeApplication
       ? 'complete'
       : created_at === updated_at
-        ? 'unopened'
-        : 'incomplete'
+      ? 'unopened'
+      : 'incomplete'
 
   const submitStatusProps = {
     unopened: { color: 'primary', children: 'ready for you!' },

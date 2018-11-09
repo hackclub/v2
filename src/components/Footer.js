@@ -46,7 +46,6 @@ const Columns = styled(Container)`
     grid-template-columns: repeat(4, 1fr);
   }
 `
-const SocialColumn = styled(Box)``
 
 const Services = styled(Flex)`
   a {

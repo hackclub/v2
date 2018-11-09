@@ -12,7 +12,7 @@ import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import IconButton from 'components/IconButton'
-import { Headline, Lead } from 'components/Content'
+import { Lead } from 'components/Content'
 
 theme.colors.night = '#c57206'
 theme.colors.nightMuted = '#a56a3b'

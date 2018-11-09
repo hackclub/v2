@@ -175,7 +175,7 @@ export default withFormik({
     setStatus('loading')
     api
       .patch(`v1/new_clubs/${props.id}`, { data: values })
-      .then(_res => {
+      .then(() => {
         setSubmitting(false)
         setStatus('success')
         setTimeout(() => {

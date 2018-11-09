@@ -93,42 +93,42 @@ export default () => (
       <Bio
         img="/team/zach.jpg"
         name="Zach Latta"
-        role="Executive Director"
+        teamRole="Executive Director"
         text="Zach dropped out of high school after his freshman year to work in the technology industry and had over 5 million people using his software by the time he turned 17. He founded Hack Club to build the program he wish he had in high school and has been awarded the Thiel Fellowship and Forbes 30 Under 30 for his work."
         pronouns="he/him"
       />
       <Bio
         img="/team/max.jpg"
         name="Max Wofford"
-        role="Operations"
+        teamRole="Operations"
         text="After teaching himself to code in junior year of high school, Max joined a group of nomadic hackers in Costa Rica to experience coding in a real-world setting. He has been with Hack Club since day one and is now working full-time in San Francisco to grow the movement."
         pronouns="he/him"
       />
       <Bio
         img="/team/lachlan.jpg"
         name="Lachlan Campbell"
-        role="Web/Design"
+        teamRole="Web/Design"
         text="Lachlan, a club leader from State College, PA, joined to work on hackclub.com. Over a year later, they now manage Hack Club’s design and branding, and build the website and Design System."
         pronouns="they/them"
       />
       <Bio
         img="/team/mingjie.jpg"
         name="Mingjie Jiang"
-        role="Community"
+        teamRole="Community"
         text="Mingjie leads a local club at Wootton High School in Rockville, Maryland. Aside from engaging more students into the world of hacking, he also cares about building a unique public identity for Hack Club."
         pronouns="he/him"
       />
       <Bio
         img="/team/athul.jpg"
         name="Athul Blesson"
-        role="Indian Region"
+        teamRole="Indian Region"
         text="Athul leads some of the largest Hack Clubs in India. After graduating from high school, he joined as the Regional Manager in India, where he actively leads over a dozen clubs."
         pronouns="he/him"
       />
       <Bio
         img="/team/orpheus.jpg"
         name="Prophet Orpheus"
-        role="Mascot"
+        teamRole="Mascot"
         text="Prophet Orpheus is Hack Club’s mascot who takes the form of a nondescript dinosaur. She is always working to help more students to learn to code, and has always been the most active contributor of Hack Club."
         pronouns="she/her"
       />

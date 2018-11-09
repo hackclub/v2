@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {
   Box,
   Container,
   Flex,
   Heading,
-  Link as A,
-  Text,
-  Section,
   Image,
+  Link as A,
+  Section,
+  Text,
   theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'

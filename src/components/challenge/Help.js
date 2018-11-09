@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react'
+import React, { Component } from 'react'
 import { Heading, Text, Link } from '@hackclub/design-system'
 import IconButton from 'components/IconButton'
 import { Modal, Overlay, CloseButton } from 'components/Modal'

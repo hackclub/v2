@@ -55,7 +55,6 @@ class Comments extends Component {
   }
 
   onDelete = id => {
-    const { data } = this.state
     api
       .delete(`v1/post_comments/${id}`)
       .then(() => {

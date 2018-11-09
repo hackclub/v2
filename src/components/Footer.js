@@ -1,12 +1,12 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import {
-  Flex,
   Box,
-  Heading,
-  Text,
-  Link as A,
   Container,
+  Flex,
+  Heading,
+  Link as A,
+  Text,
   hexa,
   theme
 } from '@hackclub/design-system'
@@ -135,10 +135,30 @@ const Footer = ({ dark = false, children, ...props }) => (
           Resources
         </Heading.h2>
         <Pages>
-          <a href="https://conduct.hackclub.com" children="Code of Conduct" />
-          <a href="https://finder.hackclub.com" children="Finder" />
-          <a href="https://hackathons.hackclub.com" children="Hackathons" />
-          <a href="https://shop.hackclub.com/?ref=footer" children="Shop" />
+          <a
+            href="https://conduct.hackclub.com"
+            children="Code of Conduct"
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+          <a
+            href="https://finder.hackclub.com"
+            children="Finder"
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+          <a
+            href="https://hackathons.hackclub.com"
+            children="Hackathons"
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+          <a
+            href="https://shop.hackclub.com/?ref=footer"
+            children="Shop"
+            target="_blank"
+            rel="noopener noreferrer"
+          />
           <Link to="/bank" children="Bank" />
           {/* <Link to="/night" children="Hack Night" /> */}
         </Pages>

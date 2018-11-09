@@ -67,7 +67,6 @@ export class AutoSaver extends Component {
     this.state = {
       previousValues: props.values
     }
-    this.autoSave = this.autoSave.bind(this)
   }
 
   componentWillMount() {
@@ -79,7 +78,7 @@ export class AutoSaver extends Component {
     clearInterval(this.state.intervalId)
   }
 
-  autoSave() {
+  autoSave = () => {
     const { handleSubmit, isSubmitting, values } = this.props
     const { previousValues } = this.state
     const unsavedChanges = previousValues !== values
@@ -168,7 +167,7 @@ export const Optional = () => (
 
 export class Field extends Component {
   componentWillMount() {
-    const { type, renderMarkdown } = this.props
+    const { type } = this.props
     const Tag = Input.withComponent(
       ['textarea', 'select'].indexOf(type) === -1 ? 'input' : type
     )
@@ -205,8 +204,7 @@ export class Field extends Component {
       value,
       renderMarkdown,
       bg,
-      mb = 3,
-      ...props
+      mb = 3
     } = this.props
 
     const { Tag, isEditing } = this.state

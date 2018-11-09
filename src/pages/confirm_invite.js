@@ -7,13 +7,13 @@ import Nav from 'components/apply/ApplyNav'
 import api from 'api'
 import Helmet from 'react-helmet'
 import {
-  Container,
-  Card,
-  Heading,
-  Button,
   Badge,
-  Text,
-  Box
+  Box,
+  Button,
+  Card,
+  Container,
+  Heading,
+  Text
 } from '@hackclub/design-system'
 import { Modal, Overlay, CloseButton } from 'components/Modal'
 
@@ -24,8 +24,8 @@ class Invite extends Component {
       status: props.accepted
         ? 'accepted'
         : props.rejected
-          ? 'rejected'
-          : 'undecided',
+        ? 'rejected'
+        : 'undecided',
       formActive: false
     }
     this.rejectInvite = this.rejectInvite.bind(this)
@@ -48,7 +48,7 @@ class Invite extends Component {
   }
 
   acceptInvite() {
-    const { invite, user } = this.props
+    const { user } = this.props
     if (user.new_leader) {
       this.setState({ status: 'loading' })
       this.submitAcceptance()
@@ -198,7 +198,7 @@ export default class extends Component {
   }
 
   render() {
-    const { status, invites, pendingInviteCount, leader, user } = this.state
+    const { status, invites, pendingInviteCount, user } = this.state
     switch (status) {
       case 'loading':
         return <LoadingBar fill />

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import ErrorPage from 'components/admin/ErrorPage'
 import LoadingBar from 'components/LoadingBar'
 import Login from 'components/auth/Login'
@@ -70,14 +70,14 @@ class ClubCard extends Component {
         x: formatDate('mmm dd', checkIn.meeting_date)
       }))
       return (
-        <Fragment>
+        <>
           <Text color={textColor} fontSize={1}>
             Last checked-in {timeSince(mostRecentUpdate)}
           </Text>
           <Flex mt={3}>
             {checkIns.length > 1 && <Chart data={checkInData} />}
           </Flex>
-        </Fragment>
+        </>
       )
     } else {
       return (
@@ -116,10 +116,10 @@ class ClubCard extends Component {
           </Text>
           <Text color="slate" fontSize={1}>
             {this.props.new_leaders.map((leader, index) => (
-              <Fragment key={leader.id}>
+              <>
                 <Text.span>{leader.name}</Text.span>
                 {this.props.new_leaders.length - 1 > index && ', '}
-              </Fragment>
+              </>
             ))}
           </Text>
           {this.renderSwitch()}
@@ -174,7 +174,7 @@ export default class extends Component {
         })
         const visibleClubIds = fuse.search(searchQuery).map(club => club.id)
         return (
-          <Fragment>
+          <>
             <Helmet title="🛠 Dumb Operations Dashboard – Hack Club" />
             <Nav />
             <Container maxWidth={32}>
@@ -199,7 +199,7 @@ export default class extends Component {
                 ))}
               </Box>
             </Container>
-          </Fragment>
+          </>
         )
       case 'needsToAuth':
         return <Login userType="owner" />

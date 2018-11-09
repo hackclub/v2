@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {
   Heading,
@@ -113,7 +113,7 @@ const desc =
   'We want to make building apps and websites accessible to everyone through programming clubs at every high school.'
 
 export default () => (
-  <Fragment>
+  <>
     <Helmet
       title={title}
       meta={[
@@ -211,5 +211,5 @@ export default () => (
     </Row>
     <Start mt={3} />
     <Footer mt={5} />
-  </Fragment>
+  </>
 )

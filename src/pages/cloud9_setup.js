@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Container, Heading, Section, theme } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
@@ -16,7 +16,7 @@ const Header = styled(Section.withComponent('header'))`
 `
 
 export default () => (
-  <Fragment>
+  <>
     <Helmet title="Cloud9 – Hack Club" />
     <Nav />
     <Header align="center">
@@ -30,5 +30,5 @@ export default () => (
       </Container>
     </Header>
     <Cloud9Form />
-  </Fragment>
+  </>
 )

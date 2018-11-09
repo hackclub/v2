@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled, { css } from 'styled-components'
 import {
   BackgroundImage,
@@ -231,7 +231,7 @@ const description =
   'Learn how to start a coding club at your high school through Hack Club. Get programming club ideas, curriculum, activities, and more.'
 
 export default () => (
-  <Fragment>
+  <>
     <Helmet
       title={title}
       meta={[
@@ -536,5 +536,5 @@ export default () => (
       </PhotoFeature>
     </Box>
     <Footer />
-  </Fragment>
+  </>
 )

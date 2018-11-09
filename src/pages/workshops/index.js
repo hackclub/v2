@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Box, LargeButton, Section, Text, theme } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
@@ -60,7 +60,7 @@ export default ({
   const img = 'https://hackclub.com/cards/workshops.png'
 
   return (
-    <Fragment>
+    <>
       <Helmet
         title={title}
         meta={[
@@ -110,7 +110,7 @@ export default ({
         <WorkshopSearch workshops={edges} />
         <Footer />
       </Base>
-    </Fragment>
+    </>
   )
 }
 

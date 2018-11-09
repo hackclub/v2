@@ -359,10 +359,10 @@ class Post extends Component {
     const { id, name, url } = this.props
     const { status, commentsOpen, comments, email } = this.state
     return (
-      <Fragment>
+      <>
         <PostRow onComment={this.onOpen} {...this.props} />
         {commentsOpen && (
-          <Fragment>
+          <>
             <CommentsModal align="left" p={[3, 4]}>
               <CloseButton onClick={this.onClose} />
               <Comments
@@ -375,9 +375,9 @@ class Post extends Component {
               />
             </CommentsModal>
             <Overlay onClick={this.onClose} />
-          </Fragment>
+          </>
         )}
-      </Fragment>
+      </>
     )
   }
 }

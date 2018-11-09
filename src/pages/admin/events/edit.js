@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import LoadingBar from 'components/LoadingBar'
 import Login from 'components/auth/Login'
 import EventForm from 'components/admin/events/EventForm'
@@ -77,7 +77,7 @@ export default class extends Component {
         return <Login userType="admin" />
       case 'success':
         return (
-          <Fragment>
+          <>
             <Nav />
             <ImageForm
               type="logo"
@@ -101,7 +101,7 @@ export default class extends Component {
               )}
             />
             <EventForm event={event} updateEvent={this.updateEvent} />
-          </Fragment>
+          </>
         )
       default:
         return <ErrorPage />

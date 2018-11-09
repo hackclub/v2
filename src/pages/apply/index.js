@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import api from 'api'
 import storage from 'storage'
@@ -130,7 +130,7 @@ export default class extends Component {
         return <LoadingBar fill />
       case 'finished':
         return (
-          <Fragment>
+          <>
             <ApplyNav breadcrumb={0} />
             <Pulse />
             <Main
@@ -139,7 +139,7 @@ export default class extends Component {
               callback={this.populateApplications}
               resetCallback={this.resetApplication}
             />
-          </Fragment>
+          </>
         )
       default:
         return (
@@ -152,10 +152,10 @@ export default class extends Component {
 
   render() {
     return (
-      <Fragment>
+      <>
         <Helmet title="Apply – Hack Club" />
         {this.content()}
-      </Fragment>
+      </>
     )
   }
 }

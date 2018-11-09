@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Text } from '@hackclub/design-system'
 import Post from 'components/challenge/Post'
 import LoadingBar from 'components/LoadingBar'
@@ -213,7 +213,7 @@ class Posts extends Component {
         return <LoadingBar />
       case 'success':
         return (
-          <Fragment>
+          <>
             {isEmpty(posts) && (
               <Text fontSize={3} color="muted" py={4} align="center" bold>
                 No submissions yet!
@@ -239,7 +239,7 @@ class Posts extends Component {
                 key={post.id}
               />
             ))}
-          </Fragment>
+          </>
         )
       default:
         return <ErrorPage />

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import {
   Box,
@@ -98,7 +98,7 @@ const linkAuthor = authorText => {
     return index === arr.length - 1 ? processedWord : [processedWord, ' ']
   })
 
-  return <Fragment>Created by {parsedAuthorText}</Fragment>
+  return <>Created by {parsedAuthorText}</>
 }
 
 const CardsSection = styled(Box)`
@@ -208,7 +208,7 @@ export default ({ data }) => {
   }
 
   return (
-    <Fragment>
+    <>
       <Helmet
         title={title}
         meta={[
@@ -348,7 +348,7 @@ export default ({ data }) => {
         </CardsSection>
         <Footer />
       </Box>
-    </Fragment>
+    </>
   )
 }
 export const pageQuery = graphql`

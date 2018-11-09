@@ -14,7 +14,7 @@ class Help extends Component {
   render() {
     if (this.state.active) {
       return (
-        <Fragment>
+        <>
           <Modal align="left" my={4} p={[3, 4]}>
             <CloseButton onClick={this.toggleRules} />
             <Heading.h2>Challenge Rules</Heading.h2>
@@ -55,7 +55,7 @@ class Help extends Component {
             </Text>
           </Modal>
           <Overlay onClick={this.toggleRules} />
-        </Fragment>
+        </>
       )
     }
     return (

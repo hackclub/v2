@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 import IconButton from 'components/IconButton'
@@ -43,7 +43,7 @@ export default class extends Component {
         return <Login userType="admin" />
       case 'success':
         return (
-          <Fragment>
+          <>
             <Nav />
             <Container maxWidth={36}>
               <Box align="center" py={[3, 4]}>
@@ -75,7 +75,7 @@ export default class extends Component {
                 </tbody>
               </table>
             </Container>
-          </Fragment>
+          </>
         )
       default:
         return <ErrorPage />

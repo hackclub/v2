@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Formik } from 'formik'
 import api from 'api'
 import { AutoSaver, Field } from 'components/Forms'
@@ -194,7 +194,7 @@ export default class NotesForm extends Component {
         return <LoadingBar />
       case 'success':
         return (
-          <Fragment>
+          <>
             <IconButton
               glyph="post"
               bg="success"
@@ -211,7 +211,7 @@ export default class NotesForm extends Component {
                   modelType={modelType}
                 />
               ))}
-          </Fragment>
+          </>
         )
       default:
         return <ErrorPage />

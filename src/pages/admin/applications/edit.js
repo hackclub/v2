@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import {
   Box,
   Flex,
@@ -131,7 +131,7 @@ export default class extends Component {
         return <LoadingBar fill />
       case 'success':
         return (
-          <Fragment>
+          <>
             <Nav />
             <Container maxwidth={80} p={[3, 4]}>
               <Heading.h2>
@@ -178,7 +178,7 @@ export default class extends Component {
                 />
               </Collapsable>
             </Container>
-          </Fragment>
+          </>
         )
       case 'error':
         return <ErrorPage message={error} />

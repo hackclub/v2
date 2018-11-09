@@ -1,16 +1,8 @@
-import React, { Component, Fragment } from 'react'
-import {
-  Container,
-  Button,
-  Flex,
-  Heading,
-  Text,
-  Badge
-} from '@hackclub/design-system'
+import React, { Component } from 'react'
+import { Badge, Container, Flex, Heading } from '@hackclub/design-system'
 import Login from 'components/auth/Login'
 import { Tr, Td, Th } from 'components/Table'
 import LoadingBar from 'components/LoadingBar'
-import NotesForm from 'components/admin/NotesForm'
 import Nav from 'components/apply/ApplyNav'
 import ErrorPage from 'components/admin/ErrorPage'
 import { NewClub } from 'models'
@@ -39,7 +31,7 @@ export default class extends Component {
         return <Login userType="admin" />
       case 'success':
         return (
-          <Fragment>
+          <>
             <Nav />
             <Container maxwidth={80} p={[3, 4]}>
               <Flex
@@ -82,7 +74,7 @@ export default class extends Component {
                 </table>
               </Flex>
             </Container>
-          </Fragment>
+          </>
         )
       default:
         return <ErrorPage />

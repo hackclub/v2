@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import ErrorPage from 'components/admin/ErrorPage'
 import LoadingBar from 'components/LoadingBar'
 import LoginPage from 'components/auth/Login'
@@ -76,10 +76,10 @@ class Invite extends Component {
     switch (status) {
       case 'loading':
         return (
-          <Fragment>
+          <>
             <Button bg="warning">Loading…</Button>
             {showForm && (
-              <Fragment>
+              <>
                 <Modal align="left" my={4} p={[3, 4]}>
                   <CloseButton
                     onClick={() =>
@@ -98,9 +98,9 @@ class Invite extends Component {
                     this.setState({ status: 'undecided', showForm: false })
                   }
                 />
-              </Fragment>
+              </>
             )}
-          </Fragment>
+          </>
         )
       case 'accepted':
         return <Badge bg="success">Invite accepted</Badge>
@@ -108,7 +108,7 @@ class Invite extends Component {
         return <Badge bg="error">Invite rejected</Badge>
       case 'undecided':
         return (
-          <Fragment>
+          <>
             <Button
               color="white"
               bg="primary"
@@ -126,7 +126,7 @@ class Invite extends Component {
             >
               Reject
             </Button>
-          </Fragment>
+          </>
         )
       default:
         return <ErrorPage />
@@ -204,7 +204,7 @@ export default class extends Component {
         return <LoadingBar fill />
       case 'success':
         return (
-          <Fragment>
+          <>
             <Helmet title="Confirm Invitation – Hack Club" />
             <Nav />
             <Container maxWidth={32}>
@@ -242,7 +242,7 @@ export default class extends Component {
                 </Box>
               )}
             </Container>
-          </Fragment>
+          </>
         )
       case 'needsToAuth':
         return <LoginPage heading="Confirm your invite" />

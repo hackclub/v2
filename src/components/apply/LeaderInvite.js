@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Flex, IconButton, Text, theme } from '@hackclub/design-system'
 import styled from 'styled-components'
 import LeaderInviteForm from 'components/apply/LeaderInviteForm'
@@ -29,7 +29,7 @@ class LeaderInvite extends Component {
   render() {
     const { open } = this.state
     return (
-      <Fragment>
+      <>
         <Flex align="center" aria-expanded={open} mt={[4, 5]} mb={2}>
           <Text fontSize={4} color="muted" bold caps>
             Co-leaders
@@ -37,7 +37,7 @@ class LeaderInvite extends Component {
           <SectionIcon open={open} onClick={this.toggle} />
         </Flex>
         {open && <LeaderInviteForm {...this.props} />}
-      </Fragment>
+      </>
     )
   }
 }

@@ -13,9 +13,9 @@ class DiscussOnSlack extends Component {
 
   render() {
     return (
-      <Fragment>
+      <>
         {this.state.active && (
-          <Fragment>
+          <>
             <Modal w="28rem" align="left" my={4} p={[3, 4]}>
               <CloseButton onClick={this.toggle} />
               <Heading.h2>Join our Slack</Heading.h2>
@@ -42,7 +42,7 @@ class DiscussOnSlack extends Component {
               <SlackForm />
             </Modal>
             <Overlay onClick={this.toggle} />
-          </Fragment>
+          </>
         )}
         <ShareButton
           bg="pink.5"
@@ -53,7 +53,7 @@ class DiscussOnSlack extends Component {
           <Box mr={2} />
           Discuss on Slack
         </ShareButton>
-      </Fragment>
+      </>
     )
   }
 }

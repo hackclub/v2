@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import search from 'search'
 import api from 'api'
 import { NewClub } from 'models'
@@ -102,7 +102,7 @@ class OwnerForm extends Component {
       )
     } else {
       return (
-        <Fragment>
+        <>
           <Text>Club owner unset.</Text>
           <form onSubmit={this.handleSubmit}>
             <Autocomplete
@@ -117,7 +117,7 @@ class OwnerForm extends Component {
               onSelect={value => this.setState({ value })}
             />
           </form>
-        </Fragment>
+        </>
       )
     }
   }

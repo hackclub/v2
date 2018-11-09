@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { LargeButton, Text } from '@hackclub/design-system'
 import { AutoSaver, Field, Fieldset, Form, FormWrapper } from 'components/Forms'
 import { withFormik } from 'formik'
@@ -205,7 +205,7 @@ const InnerForm = props => {
           <Field
             name="skills_system_hacked"
             label={
-              <Fragment>
+              <>
                 Please tell us about the time you most successfully hacked some
                 (non-computer) system to your advantage.{' '}
                 <a
@@ -216,7 +216,7 @@ const InnerForm = props => {
                   Here are examples
                 </a>{' '}
                 of what we’re looking for.
-              </Fragment>
+              </>
             }
             onChange={handleChange}
             onBlur={handleBlur}

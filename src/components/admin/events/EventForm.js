@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { withFormik } from 'formik'
 import * as yup from 'yup'
 import api from 'api'
@@ -17,7 +17,7 @@ const InnerForm = ({
   <form onSubmit={handleSubmit}>
     <Field
       label={
-        <Fragment>
+        <>
           Should this event be listed on{' '}
           <a
             href="https://hackathons.hackclub.com"
@@ -27,7 +27,7 @@ const InnerForm = ({
             hackathons.hackclub.com
           </a>
           ?
-        </Fragment>
+        </>
       }
       name="public"
       value={values.public}

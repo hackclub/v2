@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Header from 'components/home/Header'
@@ -8,7 +8,7 @@ import Description from 'components/home/Description'
 import Footer from 'components/Footer'
 
 export default () => (
-  <Fragment>
+  <>
     <Helmet>
       <meta
         name="google-site-verification"
@@ -22,5 +22,5 @@ export default () => (
     <Footer>
       <Description />
     </Footer>
-  </Fragment>
+  </>
 )

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import search from 'search'
 import api from 'api'
@@ -52,7 +52,7 @@ export default class extends Component {
         return <LoadingBar fill />
       default:
         return (
-          <Fragment>
+          <>
             <ApplyNav />
             <BG color="snow" />
             <Sheet maxWidth={48} mt={3} mb={5}>
@@ -66,17 +66,17 @@ export default class extends Component {
                 Back
               </LargeButton.link>
             </Container>
-          </Fragment>
+          </>
         )
     }
   }
 
   render() {
     return (
-      <Fragment>
+      <>
         <Helmet title="Edit Leader Application – Hack Club" />
         {this.content()}
-      </Fragment>
+      </>
     )
   }
 }

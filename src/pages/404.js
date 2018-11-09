@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import {
   Heading,
@@ -173,7 +173,7 @@ const Blinking = styled(Heading.h1).attrs({
 `
 
 export default () => (
-  <Fragment>
+  <>
     <Helmet title="404 – Hack Club" />
     <Nav color="primary" dark />
     <BG color="dark" />
@@ -185,5 +185,5 @@ export default () => (
       <LargeButton href="/">Go Home 🏡</LargeButton>
     </Container>
     <Footer dark />
-  </Fragment>
+  </>
 )

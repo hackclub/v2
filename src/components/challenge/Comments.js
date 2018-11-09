@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Box, Flex, Heading, Link, theme } from '@hackclub/design-system'
 import Icon from '@hackclub/icons'
@@ -70,7 +70,7 @@ class Comments extends Component {
     const { status, name, url, id, email } = this.props
     const { data, parent } = this.state
     return (
-      <Fragment>
+      <>
         <Header pb={1}>
           <Heading.h2 fontSize={[4, 5]} children={name} />
           <Link href={url} target="_blank" ml={2} color="info">
@@ -136,7 +136,7 @@ class Comments extends Component {
             onSubmit={this.onSubmit}
           />
         )}
-      </Fragment>
+      </>
     )
   }
 }

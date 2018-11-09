@@ -45,7 +45,7 @@ class ContactModal extends Component {
   render() {
     const { open } = this.state
     return (
-      <Fragment>
+      <>
         <Button
           bg="info"
           onClick={this.toggle}
@@ -53,7 +53,7 @@ class ContactModal extends Component {
           fontSize={1}
         />
         {open && (
-          <Fragment>
+          <>
             <Modal w="28rem" align="left" my={4} p={[3, 4]}>
               <CloseButton onClick={this.toggle} />
               <Heading.h2>Contact Us</Heading.h2>
@@ -66,9 +66,9 @@ class ContactModal extends Component {
               </Text>
             </Modal>
             <Overlay onClick={this.toggle} />
-          </Fragment>
+          </>
         )}
-      </Fragment>
+      </>
     )
   }
 }
@@ -286,19 +286,19 @@ const Main = props => {
         <Section
           to={`/apply/club?id=${id}`}
           name={
-            <Fragment>
+            <>
               <Text.span bold>Club application</Text.span>
               <Status type={applicationStatus()} ml={[2, 3]} />
-            </Fragment>
+            </>
           }
         />
         <Section
           to={`/apply/leader?id=${leaderProfile.id}`}
           name={
-            <Fragment>
+            <>
               <Text.span bold>My personal profile</Text.span>
               <Status type={profileStatus(leaderProfile)} ml={[2, 3]} />
-            </Fragment>
+            </>
           }
         />
         <LeaderInvite id={id} callback={callback} />

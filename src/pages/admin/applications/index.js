@@ -189,33 +189,32 @@ export default class extends Component {
                     ),
                     'lastStageUpdate',
                     'desc'
-                  ).map(
-                    application =>
-                      application.visible ? (
-                        <Tr
-                          key={application.id}
-                          onClick={e => {
-                            window.location.href = `/admin/applications/edit?id=${
-                              application.id
-                            }`
-                          }}
-                        >
-                          <Td>
-                            <Badge
-                              bg={application.color}
-                              children={application.id}
-                            />
-                          </Td>
-                          <Td>{application.high_school_name}</Td>
-                          <Td>{this.pointOfContact(application)}</Td>
-                          <Td>{application.timeInStage}</Td>
-                          <Td>
-                            {application.owner !== null && (
-                              <Assignment owner={application.owner.email} />
-                            )}
-                          </Td>
-                        </Tr>
-                      ) : null
+                  ).map(application =>
+                    application.visible ? (
+                      <Tr
+                        key={application.id}
+                        onClick={() => {
+                          window.location.href = `/admin/applications/edit?id=${
+                            application.id
+                          }`
+                        }}
+                      >
+                        <Td>
+                          <Badge
+                            bg={application.color}
+                            children={application.id}
+                          />
+                        </Td>
+                        <Td>{application.high_school_name}</Td>
+                        <Td>{this.pointOfContact(application)}</Td>
+                        <Td>{application.timeInStage}</Td>
+                        <Td>
+                          {application.owner !== null && (
+                            <Assignment owner={application.owner.email} />
+                          )}
+                        </Td>
+                      </Tr>
+                    ) : null
                   )}
                 </tbody>
               </table>

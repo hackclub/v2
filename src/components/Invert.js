@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button, theme } from '@hackclub/design-system'
 import IconButton from 'components/IconButton'
@@ -55,10 +55,10 @@ class Invert extends Component {
       ...this.props
     }
     return (
-      <Fragment>
+      <>
         {active && <style dangerouslySetInnerHTML={{ __html: css }} />}
         <IconButton is={Button.button} onClick={this.onClick} {...props} />
-      </Fragment>
+      </>
     )
   }
 }

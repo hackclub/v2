@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Box, theme } from '@hackclub/design-system'
 import styled, { keyframes } from 'styled-components'
 import ScrollLock from 'react-scrolllock'
@@ -59,10 +59,10 @@ export const Overlayer = styled(Box)`
 `
 
 export const Overlay = props => (
-  <Fragment>
+  <>
     <Overlayer {...props} />
     <ScrollLock />
-  </Fragment>
+  </>
 )
 
 const ButtonReset = styled(Box.withComponent('button')).attrs({

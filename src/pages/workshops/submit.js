@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Container, Heading, Text, Section } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import BG from 'components/BG'
@@ -10,7 +10,7 @@ import Footer from 'components/Footer'
 const Header = Section.withComponent('header')
 
 export default () => (
-  <Fragment>
+  <>
     <Helmet title="Submit a Workshop – Hack Club" />
     <Nav color="slate" />
     <BG color="snow" />
@@ -28,5 +28,5 @@ export default () => (
     <Auth />
     <SubmitForm />
     <Footer />
-  </Fragment>
+  </>
 )

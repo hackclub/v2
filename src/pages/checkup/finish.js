@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import Login from 'components/auth/Login'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
@@ -45,7 +45,7 @@ class SelfForm extends Component {
     switch (status) {
       case 'ready':
         return (
-          <Fragment>
+          <>
             <Heading>Will you lead the club next semester?</Heading>
             <Flex my={3}>
               <Button
@@ -65,11 +65,11 @@ class SelfForm extends Component {
                 No
               </Button>
             </Flex>
-          </Fragment>
+          </>
         )
       case 'leaving':
         return (
-          <Fragment>
+          <>
             <Heading>Leaving?</Heading>
             <Text my={3}>
               Sorry to hear you’re leaving. The last step is to have an exit
@@ -79,17 +79,17 @@ class SelfForm extends Component {
             <Button href="https://exit-interview.hackclub.com" width={1}>
               Schedule the call
             </Button>
-          </Fragment>
+          </>
         )
       case 'staying':
         return (
-          <Fragment>
+          <>
             <Heading>Complete!</Heading>
             <Text my={3}>
               You’re leading your club next semester. The checkup is over. You
               can close this window.
             </Text>
-          </Fragment>
+          </>
         )
       case 'loading':
         return <LoadingBar />
@@ -139,7 +139,7 @@ export default class extends Component {
         return <LoadingBar fill />
       case 'success':
         return (
-          <Fragment>
+          <>
             <Nav breadcrumb={false} />
             <Container my={3} maxWidth={32}>
               <Card FlexShadowSize="sm" p={3}>
@@ -151,11 +151,11 @@ export default class extends Component {
                 />
               </Card>
             </Container>
-          </Fragment>
+          </>
         )
       case 'deleted':
         return (
-          <Fragment>
+          <>
             <Nav breadcrumb={false} />
             <Container my={3} maxWidth={32}>
               <Heading>Removed</Heading>
@@ -165,7 +165,7 @@ export default class extends Component {
                 <Link href="mailto:max@hackclub.com">max@hackclub.com</Link>.
               </Text>
             </Container>
-          </Fragment>
+          </>
         )
       case 'needsToAuth':
         return <Login heading="Sign in to view" />

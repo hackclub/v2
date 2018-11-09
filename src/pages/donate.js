@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {
   Box,
@@ -226,7 +226,7 @@ const DonorListing = ({ name, url }) => {
 }
 
 export default () => (
-  <Fragment>
+  <>
     <Helmet
       title={title}
       meta={[
@@ -425,5 +425,5 @@ export default () => (
       </Row>
     </Container>
     <Footer />
-  </Fragment>
+  </>
 )

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {
   Box,
@@ -115,7 +115,7 @@ const desc =
 const img = 'https://hackclub.com/cards/updates.png'
 
 export default () => (
-  <Fragment>
+  <>
     <Helmet
       title={title}
       meta={[
@@ -169,5 +169,5 @@ export default () => (
       />
     </Container>
     <Footer dark />
-  </Fragment>
+  </>
 )

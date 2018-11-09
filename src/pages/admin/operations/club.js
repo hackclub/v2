@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 import Nav from 'components/apply/ApplyNav'
@@ -53,7 +53,7 @@ const removeLeadershipPosition = (positionId, name) => {
 const LinkSpan = Text.span.withComponent(Link)
 
 const LeaderCard = ({ name, id, email, position }) => (
-  <Fragment>
+  <>
     <LinkSpan href={`/admin/operations/leader?id=${id}`}>{name}</LinkSpan>
     <IconButton
       glyph="view-close"
@@ -62,9 +62,10 @@ const LeaderCard = ({ name, id, email, position }) => (
       size={20}
       onClick={() => removeLeadershipPosition(position.id, name)}
     />
-  </Fragment>
+  </>
 )
 
+/* The delete endpoint doesn’t exist yet
 const removeInvite = (id, email) => {
   const confirmation = window.confirm(
     `Are you sure you want to remove ${email}’s invite?`
@@ -75,11 +76,11 @@ const removeInvite = (id, email) => {
     })
   }
 }
+*/
 
 const InviteCard = ({ email, id }) => (
   <li>
     {email}
-    {/* The delete endpoint doesn’t exist yet */}
     {/*
       <IconButton
         glyph="view-close"
@@ -137,7 +138,7 @@ export default class extends Component {
           invite => !(invite.rejected_at || invite.accepted_at)
         )
         return (
-          <Fragment>
+          <>
             <Helmet title={`Dumb club #${club.id}`} />
             <Nav />
             <Container color="black" maxWidth={36} py={4}>
@@ -159,7 +160,7 @@ export default class extends Component {
                 children={club.high_school_address}
               />
               {showInviteModal && (
-                <Fragment>
+                <>
                   <Modal align="left" my={4} p={[3, 4]}>
                     <CloseButton
                       onClick={() => this.setState({ showInviteModal: false })}
@@ -175,12 +176,12 @@ export default class extends Component {
                   <Overlay
                     onClick={() => this.setState({ showInviteModal: false })}
                   />
-                </Fragment>
+                </>
               )}
               <Text>
                 Lead by:{' '}
                 {club.new_leaders.map((leader, index) => (
-                  <Fragment>
+                  <>
                     <LeaderCard
                       {...leader}
                       position={club.leadership_positions.find(
@@ -193,12 +194,12 @@ export default class extends Component {
                       ? ', '
                       : ' '}
                     {index + 2 === club.new_leaders.length && 'and '}
-                  </Fragment>
+                  </>
                 ))}
               </Text>
               <Text mb={2}>
                 {leaderInvites.length > 0 && (
-                  <Fragment>
+                  <>
                     Pending invitations:{' '}
                     <ul>
                       {leaderInvites.map((invite, index) => (
@@ -209,14 +210,14 @@ export default class extends Component {
                         />
                       ))}
                     </ul>
-                  </Fragment>
+                  </>
                 )}
                 <Link onClick={() => this.setState({ showInviteModal: true })}>
                   Invite another leader
                 </Link>
               </Text>
               {checkIns.length > 0 ? (
-                <Fragment>
+                <>
                   <Flex justify="center">
                     <Chart data={checkInData} />
                   </Flex>
@@ -226,14 +227,14 @@ export default class extends Component {
                   {checkIns.map(checkIn => (
                     <EventCard {...checkIn} key={checkIn.id} />
                   ))}
-                </Fragment>
+                </>
               ) : (
                 <Heading.h3 bold mt={5} color="muted" align="center">
                   No recorded meetings
                 </Heading.h3>
               )}
             </Container>
-          </Fragment>
+          </>
         )
       case 'error':
         return <ErrorPage />

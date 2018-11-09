@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import {
   Box,
   Button,
@@ -53,12 +53,12 @@ const SaveStatusLine = styled(Box)`
 `
 
 const SaveStatus = ({ saved, type = 'all' }) => (
-  <Fragment>
+  <>
     {['all', 'text'].indexOf(type) !== -1 && <SaveStatusIcon saved={saved} />}
     {['all', 'underline'].indexOf(type) !== -1 && (
       <SaveStatusLine saved={saved} />
     )}
-  </Fragment>
+  </>
 )
 
 export class AutoSaver extends Component {
@@ -109,10 +109,10 @@ export class AutoSaver extends Component {
     const { unsavedChanges } = this.state
     const { saveNotification } = this.props
     return (
-      <Fragment>
+      <>
         <SaveStatus type={saveNotification} saved={!unsavedChanges} />
         {unsavedChanges && <ConfirmClose />}
-      </Fragment>
+      </>
     )
   }
 }

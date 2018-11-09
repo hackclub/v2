@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Container } from '@hackclub/design-system'
 import SearchInput from './SearchInput'
 import Track from './Track'
@@ -50,7 +50,7 @@ class WorkshopSearch extends Component {
     })
 
     return (
-      <Fragment>
+      <>
         <Container maxWidth={42} mt={-4} px={3} style={{ zIndex: 2 }}>
           <SearchInput
             placeholder="Search workshops"
@@ -60,7 +60,7 @@ class WorkshopSearch extends Component {
           />
         </Container>
         {results.length !== 0 ? (
-          <Fragment>
+          <>
             {sortedGroups.map(group => (
               <Track
                 key={`workshops-${group[0]}`}
@@ -68,11 +68,11 @@ class WorkshopSearch extends Component {
                 data={group[1]}
               />
             ))}
-          </Fragment>
+          </>
         ) : (
           <NoResults value={this.state.value} />
         )}
-      </Fragment>
+      </>
     )
   }
 }

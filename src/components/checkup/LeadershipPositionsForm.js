@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import ErrorPage from 'components/admin/ErrorPage'
 import LoadingBar from 'components/LoadingBar'
 import api from 'api'
@@ -79,7 +79,7 @@ const LeaderInvite = ({ position }) => {
   switch (status) {
     case 'invited':
       return (
-        <Fragment>
+        <>
           <Flex justify="space-between" align="center">
             <Box align="left">
               <LeaderStatus status="invited" />
@@ -102,17 +102,17 @@ const LeaderInvite = ({ position }) => {
               Revoke
             </Button>
           </Flex>
-        </Fragment>
+        </>
       )
     case 'rejected':
       return (
-        <Fragment>
+        <>
           <LeaderStatus status="rejected" />
           <Text>
             <Text.span bold>{position.user.email}</Text.span> rejected the
             invitation.
           </Text>
-        </Fragment>
+        </>
       )
   }
 }
@@ -143,7 +143,7 @@ class LeaderPosition extends Component {
     switch (this.state.status) {
       case 'confirming':
         return (
-          <Fragment>
+          <>
             <Modal align="left" my={4} p={[3, 4]}>
               <CloseButton
                 onClick={() => this.setState({ status: 'success' })}
@@ -179,11 +179,11 @@ class LeaderPosition extends Component {
             <LeaderStatus status="loading" />
             <Text color="gray.4">Loading…</Text>
             <LoadingBar />
-          </Fragment>
+          </>
         )
       case 'success':
         return (
-          <Fragment>
+          <>
             <LeaderStatus status={deleted_at ? 'inactive' : 'active'} />
             <Flex justify="space-between" align="center">
               <Box align="left">
@@ -200,12 +200,12 @@ class LeaderPosition extends Component {
                 </Button>
               )}
             </Flex>
-          </Fragment>
+          </>
         )
       case 'deleting':
       case 'deleted':
         return (
-          <Fragment>
+          <>
             <LeaderStatus status="loading" />
             <Flex justify="space-between" align="center">
               <Box align="left">
@@ -213,7 +213,7 @@ class LeaderPosition extends Component {
                 <Text color="muted">{leader_profile.email}</Text>
               </Box>
             </Flex>
-          </Fragment>
+          </>
         )
       default:
         return <ErrorPage />
@@ -235,7 +235,7 @@ export default class extends Component {
   render() {
     const { positions, callback, leaderId } = this.props
     return (
-      <Fragment>
+      <>
         {positions.invites
           .concat(positions.leaders)
           // invites with accepted_at should already have leader positions
@@ -254,7 +254,7 @@ export default class extends Component {
               )}
             </PositionCard>
           ))}
-      </Fragment>
+      </>
     )
   }
 }

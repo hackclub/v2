@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 import Nav from 'components/apply/ApplyNav'
@@ -39,7 +39,7 @@ export default class extends Component {
         return <LoadingBar fill />
       case 'success':
         return (
-          <Fragment>
+          <>
             <Nav />
             <Helmet title={`Leader Profile ${leader.id} - ${leader.name}`} />
             <Container color="black" maxWidth={36} py={4}>
@@ -48,7 +48,7 @@ export default class extends Component {
               <Text fontSize={2} color="muted" children={leader.phone_number} />
               <Link href={`mailto:${leader.email}`}>{leader.email}</Link>
             </Container>
-          </Fragment>
+          </>
         )
       case 'error':
         return <ErrorPage />

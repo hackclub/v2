@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import Login from 'components/auth/Login'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
@@ -40,7 +40,7 @@ export default class extends Component {
         return <LoadingBar fill />
       case 'success':
         return (
-          <Fragment>
+          <>
             <Nav breadcrumb={false} />
             <Container color="black" p={3} maxWidth={36}>
               <Heading.h2 fontSize={5} mt={4}>
@@ -55,7 +55,7 @@ export default class extends Component {
                 />
               </Card>
             </Container>
-          </Fragment>
+          </>
         )
       case 'needsToAuth':
         return <Login heading="Sign in to view" />

@@ -147,7 +147,7 @@ export default class extends Component {
     const challenge = data.allChallengesJson.edges[0].node
     const ended = Date.parse(new Date()) > Date.parse(challenge.end)
     return (
-      <Fragment>
+      <>
         <Helmet
           title={title}
           meta={[
@@ -252,7 +252,7 @@ export default class extends Component {
           <DiscussChallenge />
         </Container>
         <Footer />
-      </Fragment>
+      </>
     )
   }
 }

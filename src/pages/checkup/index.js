@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import Login from 'components/auth/Login'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
@@ -56,7 +56,7 @@ export default class extends Component {
         return <LoadingBar fill />
       case 'success':
         return (
-          <Fragment>
+          <>
             <Nav breadcrumb={false} />
             <Section bg="primary" color="white">
               <Heading.h1 fontSize={[5, 6]} mb={[2, 3]}>
@@ -80,11 +80,11 @@ export default class extends Component {
                 <LeaderForm {...this.state.user} redirectUrl={redirectUrl} />
               </Card>
             </Container>
-          </Fragment>
+          </>
         )
       case 'noClubs':
         return (
-          <Fragment>
+          <>
             <Nav breadcrumb={false} />
             <Container color="black" p={3} maxWidth={36} align="center">
               <Heading.h2 fontSize={[4, 5]} mt={3} mb={3}>
@@ -94,7 +94,7 @@ export default class extends Component {
                 We couldn’t find any clubs associated with your email.
               </Text>
             </Container>
-          </Fragment>
+          </>
         )
       case 'needsToAuth':
         return <Login heading="Sign in to view" />

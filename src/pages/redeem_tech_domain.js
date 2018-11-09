@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { Fragment } from 'react'
+import React from 'react'
 import {
   Container,
   Heading,
@@ -22,7 +22,7 @@ const Header = styled(Section.withComponent('header'))`
 `
 
 export default () => (
-  <Fragment>
+  <>
     <Helmet title="Free .TECH Domain – Hack Club" />
     <Nav />
     <Header align="center" px={0}>
@@ -41,5 +41,5 @@ export default () => (
       </Container>
     </Header>
     <RedeemTechDomainForm />
-  </Fragment>
+  </>
 )

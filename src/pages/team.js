@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {
   Section,
@@ -62,7 +62,7 @@ const description =
   'Meet the team that runs Hack Club, a global nonprofit network of high school computer science clubs.'
 
 export default () => (
-  <Fragment>
+  <>
     <Helmet
       title={title}
       meta={[
@@ -145,5 +145,5 @@ export default () => (
       <UpdateLink to="/updates">Watch now</UpdateLink>
     </Updates>
     <Footer />
-  </Fragment>
+  </>
 )

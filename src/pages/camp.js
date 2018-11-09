@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { Fragment } from 'react'
+import React from 'react'
 import {
   Button,
   Container,
@@ -28,7 +28,7 @@ const Header = styled(Section.withComponent('header'))`
 Button.link = Button.withComponent(Link)
 
 export default () => (
-  <Fragment>
+  <>
     <Helmet title="Hack Camp – Hack Club" />
     <Nav />
     <Header align="center">
@@ -36,7 +36,9 @@ export default () => (
         <Heading.h1 fontSize={[5, 6]} mt={0} mb={2}>
           Hack Camp has been discontinued.
         </Heading.h1>
-        <Heading fontSize={[3, 4]}>We’ve replaced camps in favor of clubs!</Heading>
+        <Heading fontSize={[3, 4]}>
+          We’ve replaced camps in favor of clubs!
+        </Heading>
       </Container>
     </Header>
     <Container maxWidth={32} py={[3, 4]} color="black" align="center">
@@ -68,5 +70,5 @@ export default () => (
       </Text>
     </Container>
     <Footer />
-  </Fragment>
+  </>
 )

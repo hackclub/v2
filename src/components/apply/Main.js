@@ -209,13 +209,7 @@ const profileStatus = profile =>
     : 'incomplete'
 
 const Main = props => {
-  const {
-    id,
-    leader_profiles,
-    updated_at,
-    created_at,
-    point_of_contact_id
-  } = props.app
+  const { id, leader_profiles, updated_at, created_at } = props.app
   const { callback, app, resetCallback } = props
 
   const leaderProfile = leader_profiles.find(

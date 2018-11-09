@@ -130,7 +130,6 @@ class Posts extends Component {
 
   onUpvote(e, postId) {
     const { userId: authUser } = this.props
-    const { submitterIds } = this.state
     // Ignore the click if we're not authed
     if (authUser === undefined) return
     // You can only vote if you submitted a project
@@ -140,7 +139,7 @@ class Posts extends Component {
     if (post.loading) {
       return
     }
-    let postIndex = posts.indexOf(post)
+    // let postIndex = posts.indexOf(post)
     if (includes(upvotes, postId)) {
       // if this is nil, this means we've ran into a race where this.state.posts
       // hasn't finished updating (probably from a this.refreshPosts call) -

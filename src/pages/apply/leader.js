@@ -59,7 +59,10 @@ export default class extends Component {
               <LeaderApplicationForm params={formFields} id={id} />
             </Sheet>
             <Heading.h4 align="center">
-              Your form is automatically saved ✨
+              Your form is automatically saved{' '}
+              <span role="img" aria-label="sparkle emoji">
+                ✨
+              </span>
             </Heading.h4>
             <Container align="center" mt={4} mb={5}>
               <LargeButton.link to="/apply" chevronLeft>

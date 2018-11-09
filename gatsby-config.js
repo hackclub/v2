@@ -16,7 +16,7 @@ module.exports = {
         api: path.join(__dirname, 'src/api'),
         constants: path.join(__dirname, 'src/constants'),
         data: path.join(__dirname, 'src/data.json'),
-        helpers: path.join(__dirname, 'src/models'),
+        helpers: path.join(__dirname, 'src/helpers'),
         map: path.join(__dirname, 'src/map'),
         models: path.join(__dirname, 'src/models'),
         pulse: path.join(__dirname, 'src/pulse'),

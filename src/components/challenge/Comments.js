@@ -37,9 +37,9 @@ class Comments extends Component {
   })
 
   onSubmit = data => {
-    this.setState(state => {
+    this.setState(state => ({
       data: state.data.push(data)
-    })
+    }))
     this.forceUpdate()
   }
 

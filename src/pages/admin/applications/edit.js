@@ -1,13 +1,12 @@
 import styled from 'styled-components'
 import React, { Component } from 'react'
 import {
+  Badge,
   Box,
-  Flex,
-  Heading,
-  Text,
-  Container,
   Card,
-  Badge
+  Container,
+  Heading,
+  Text
 } from '@hackclub/design-system'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'

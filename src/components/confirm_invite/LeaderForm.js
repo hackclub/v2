@@ -185,6 +185,7 @@ export default withFormik({
       .string()
       .required('required')
       .test({
+        // eslint-disable-next-line
         message: '${path} should not be a single line',
         test: value => {
           try {

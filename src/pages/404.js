@@ -182,7 +182,12 @@ export default () => (
       <Text fontSize={4} mt={2} mb={4} color="muted">
         We couldn’t find that page.
       </Text>
-      <LargeButton href="/">Go Home 🏡</LargeButton>
+      <LargeButton href="/">
+        Go Home{' '}
+        <span role="img" aria-label="home emoji">
+          🏡
+        </span>
+      </LargeButton>
     </Container>
     <Footer dark />
   </>

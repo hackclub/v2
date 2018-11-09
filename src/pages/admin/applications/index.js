@@ -137,7 +137,7 @@ export default class extends Component {
   }
 
   render() {
-    const { status, clubApplications, selectType, filters } = this.state
+    const { status, clubApplications } = this.state
     switch (status) {
       case 'loading':
         return <LoadingBar fill />

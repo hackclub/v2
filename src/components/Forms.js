@@ -69,7 +69,7 @@ export class AutoSaver extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const intervalId = setInterval(this.autoSave, 1000)
     this.setState({ intervalId })
   }
@@ -139,7 +139,7 @@ export const Hint = styled(Text.span).attrs({
 `
 
 export class ConfirmClose extends Component {
-  componentWillMount() {
+  componentDidMount() {
     // https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm
     window.onbeforeunload = () => window.confirm()
   }
@@ -166,13 +166,13 @@ export const Optional = () => (
 )
 
 export class Field extends Component {
-  componentWillMount() {
-    const { type } = this.props
+  constructor(props) {
+    const { type } = props
     const Tag = Input.withComponent(
       ['textarea', 'select'].indexOf(type) === -1 ? 'input' : type
     )
 
-    this.setState({ Tag, isEditing: false })
+    this.state = { Tag, isEditing: false }
   }
 
   onBlur = e => {

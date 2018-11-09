@@ -57,6 +57,17 @@ const Header = styled(Section.withComponent('header'))`
   animation: ${pulse} 16s linear infinite;
 `
 
+const HeaderCard = styled(Sheet).attrs({ p: 3, mb: 0 })`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  h2,
+  p {
+    color: ${theme.colors.black} !important;
+  }
+`
+
 const HeaderAreaText = styled(Box)`
   grid-area: text;
 `
@@ -95,17 +106,6 @@ const HeaderContainer = styled(Container)`
               'info form';
           `};
     }
-  }
-`
-
-const HeaderCard = styled(Sheet).attrs({ p: 3, mb: 0 })`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: left;
-  h2,
-  p {
-    color: ${theme.colors.black} !important;
   }
 `
 

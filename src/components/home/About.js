@@ -159,8 +159,12 @@ export default () => (
           Read about a Hack Club
         </ActionLink>
       </IntroSheet>
-      <Photo src="/about_1.jpg" scale />
-      <Photo src="/about_2.jpg" scale />
+      <Photo
+        src="/about_1.jpg"
+        scale
+        aria-label="Students coding in San Francisco"
+      />
+      <Photo src="/about_2.jpg" scale aria-label="Hackathon team" />
       <ModulesSheet>
         <Featline>We help you get started.</Featline>
         <Modules my={3} width={1}>
@@ -217,8 +221,12 @@ export default () => (
           Our philosophy
         </Action>
       </Super>
-      <Photo src="/about_3.jpg" scale />
-      <Photo src="/about_4.jpg" scale />
+      <Photo src="/about_3.jpg" scale aria-label="Students coding" />
+      <Photo
+        src="/about_4.jpg"
+        scale
+        aria-label="Hack Clubbers helping each other with code"
+      />
       <Graph>
         <Featline>Grassroots & growing.</Featline>
         <Stats mt={3} mb={2}>

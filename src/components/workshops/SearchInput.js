@@ -27,7 +27,7 @@ const Search = styled(Input).attrs({
   max-width: 100%;
   border: 0;
   border-radius: ${theme.radii[2]};
-  ${({ theme }) => placeholder({ color: theme.colors.muted })};
+  ${placeholder({ color: theme.colors.muted })};
   font-size: ${theme.fontSizes[3]}px;
   box-shadow: ${theme.boxShadows[1]}, 0 16px 32px rgba(0, 0, 0, 0.0625);
   transition: ${theme.transition} box-shadow;

@@ -13,6 +13,10 @@ import {
 import Icon from '@hackclub/icons'
 import { Link } from 'gatsby'
 
+const BottomLine = styled(Box)`
+  border-top: 1px solid ${theme.colors.smoke};
+`
+
 const Base = styled(Box.withComponent('footer'))`
   background: ${props =>
     props.dark
@@ -86,10 +90,6 @@ const Pages = styled(Box)`
     color: inherit;
     margin-bottom: ${theme.space[2]}px;
   }
-`
-
-const BottomLine = styled(Box)`
-  border-top: 1px solid ${theme.colors.smoke};
 `
 
 const Footer = ({ dark = false, children, ...props }) => (

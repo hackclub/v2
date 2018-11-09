@@ -28,7 +28,7 @@ const Header = styled(Flex)`
     padding-left: 0;
     font-weight: bold;
     max-width: 100%;
-    ${({ theme }) => placeholder({ color: theme.colors.muted })};
+    ${placeholder({ color: theme.colors.muted })};
     &:focus {
       box-shadow: none;
     }

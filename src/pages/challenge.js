@@ -57,6 +57,21 @@ const Header = styled(Section.withComponent('header'))`
   animation: ${pulse} 16s linear infinite;
 `
 
+const HeaderAreaText = styled(Box)`
+  grid-area: text;
+`
+const HeaderAreaInfo = styled(HeaderCard)`
+  grid-area: info;
+  ${theme.mediaQueries.md} {
+    p {
+      line-height: 1.75;
+    }
+  }
+`
+const HeaderAreaForm = styled(HeaderCard)`
+  grid-area: form;
+`
+
 const HeaderContainer = styled(Container)`
   display: grid;
   grid-gap: ${theme.space[4]}px;
@@ -92,21 +107,6 @@ const HeaderCard = styled(Sheet).attrs({ p: 3, mb: 0 })`
   p {
     color: ${theme.colors.black} !important;
   }
-`
-
-const HeaderAreaText = styled(Box)`
-  grid-area: text;
-`
-const HeaderAreaInfo = styled(HeaderCard)`
-  grid-area: info;
-  ${theme.mediaQueries.md} {
-    p {
-      line-height: 1.75;
-    }
-  }
-`
-const HeaderAreaForm = styled(HeaderCard)`
-  grid-area: form;
 `
 
 const SubmissionsHeading = styled(Flex)`

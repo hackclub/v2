@@ -132,8 +132,12 @@ export default () => (
           Read about a Hack Club
         </ActionLink>
       </ColorSheet>
-      <Photo src="/about_1.jpg" scale />
-      <Photo src="/about_2.jpg" scale />
+      <Photo
+        src="/about_1.jpg"
+        scale
+        aria-label="Students coding in San Francisco"
+      />
+      <Photo src="/about_2.jpg" scale aria-label="Hackathon team" />
       <ColorSheet colors={['indigo.5', 'blue.5']}>
         <Featline>We help you get started.</Featline>
         <Modules my={3} width={1}>
@@ -190,8 +194,16 @@ export default () => (
           Our philosophy
         </Action>
       </ColorSheet>
-      <Photo src="/about_3.jpg" scale />
-      <Photo src="/about_4.jpg" scale />
+      <Photo
+        src="/about_3.jpg"
+        scale
+        aria-label="Hack Clubbers helping one another code"
+      />
+      <Photo
+        src="/about_4.jpg"
+        scale
+        aria-label="Hack Clubbers coding together"
+      />
       <Graph>
         <Featline>Grassroots & growing.</Featline>
         <Stats mt={3} mb={2}>

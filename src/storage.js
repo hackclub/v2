@@ -3,7 +3,12 @@ const stubbedStorage = {}
   .split(' ')
   .forEach(method => (stubbedStorage[method] = () => nil))
 
-const localStorage = (window && window.localStorage) ? window.localStorage : stubbedStorage
+let localStorage
+try {
+  localStorage = window.localStorage
+} catch(e if e instanceof ReferenceError) {
+  localStorage = stubbedStorage
+}
 
 const storage = {
   get: key => {

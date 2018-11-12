@@ -6,8 +6,10 @@ const stubbedStorage = {}
 let localStorage
 try {
   localStorage = window.localStorage
-} catch(e if e instanceof ReferenceError) {
-  localStorage = stubbedStorage
+} catch (e) {
+  if (e instanceof ReferenceError) {
+    localStorage = stubbedStorage
+  }
 }
 
 const storage = {

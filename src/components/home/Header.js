@@ -132,7 +132,7 @@ export default () => (
           <strong>New for leaders!</strong>
           <Hide xs sm ml={1}>
             {'– '}
-            get a subdomain for your club
+            share club marketing materials
           </Hide>
         </Flex>
         <A

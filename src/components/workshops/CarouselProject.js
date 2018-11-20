@@ -30,6 +30,10 @@ const ProjectOuter = styled(Flex).attrs({
   }
 `
 
+const ProjectOuterCenter = styled(ProjectOuter)`
+  border-radius: 10px 10px 10px 10px;
+`
+
 const ProjectOuterLeft = styled(ProjectOuter)`
   border-radius: 10px 0px 0px 10px;
   ${theme.mediaQueries.md} {

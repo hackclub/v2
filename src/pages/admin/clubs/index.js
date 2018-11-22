@@ -19,8 +19,7 @@ import api from 'api'
 import styled from 'styled-components'
 
 const FlexCardLink = styled(Flex.withComponent('a'))`
-  padding-top: ${theme.space[3]}px;
-  padding-bottom: ${theme.space[3]}px;
+  padding: ${theme.space[3]}px;
   border-top: 1px solid ${theme.colors.smoke};
   align-items: center;
 
@@ -133,7 +132,7 @@ export default class extends Component {
           <Fragment>
             <Helmet title="Club Dashboard – Hack Club" />
             <Nav />
-            <Container maxWidth={32}>
+            <Container maxWidth={32} p={1} w={1}>
               <Heading.h1 fontSize={[5, 6]}>Club Dashboard</Heading.h1>
               <Heading.h2 color="muted" fontSize={4} mt={2} regular>
                 Hello, it’s{' '}

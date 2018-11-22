@@ -16,8 +16,6 @@ import {
 
 const ProjectOuter = styled(Box).attrs({
   bg: 'white',
-  justify: 'flex-end',
-  flexDirection: 'column',
   mx: 1,
 })`
   flex-shrink: 0;

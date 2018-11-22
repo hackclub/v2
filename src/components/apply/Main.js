@@ -47,7 +47,12 @@ class ContactModal extends Component {
     const { open } = this.state
     return (
       <Fragment>
-        <Button bg="info" onClick={this.toggle} children="Contact us" fontSize={1} />
+        <Button
+          bg="info"
+          onClick={this.toggle}
+          children="Contact us"
+          fontSize={1}
+        />
         {open && (
           <Fragment>
             <Modal w="28rem" align="left" my={4} p={[3, 4]}>

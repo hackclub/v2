@@ -36,7 +36,11 @@ const Sponsors = props => (
     ].map(name => (
       <Sponsor name={name} key={name} />
     ))}
-    <Sponsor name="Fast Forward" href="https://ffwd.org" img="fastforward.png" />
+    <Sponsor
+      name="Fast Forward"
+      href="https://ffwd.org"
+      img="fastforward.png"
+    />
   </Base>
 )
 

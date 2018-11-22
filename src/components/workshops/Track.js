@@ -111,7 +111,9 @@ const descriptions = {
 const Track = ({ name, data, ...props }) => (
   <Root id={name} py={[3, 4]} {...props}>
     <Container maxWidth={32} align="center" px={3}>
-      {name && <Heading.h2 color="black" fontSize={4} children={capitalize(name)} />}
+      {name && (
+        <Heading.h2 color="black" fontSize={4} children={capitalize(name)} />
+      )}
       {descriptions[name] && (
         <Text color="slate" fontSize={2} children={descriptions[name]} />
       )}

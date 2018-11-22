@@ -51,7 +51,9 @@ export const ColoredHeadline = styled(Headline).attrs({ pb: 2, mb: 3 })`
   }
 `
 
-export const Lead = styled(Container.withComponent(Text)).attrs({ fontSize: 3 })``
+export const Lead = styled(Container.withComponent(Text)).attrs({
+  fontSize: 3
+})``
 
 export const Highlight = styled(Text.span)`
   border-radius: 1em;

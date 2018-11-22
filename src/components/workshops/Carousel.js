@@ -36,9 +36,7 @@ const CarouselOuter = styled(Flex).attrs({
   pb: [2, 3, 4],
   flexDirection: 'column',
   align: 'center',
-})`
-  flex-grow: 0;
-`
+})``
 
 const SliderWrapper = styled(Box).attrs({ mb: [2, 2, 3] })`
   position: relative;

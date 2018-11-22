@@ -10,6 +10,7 @@ import {
   Container,
   Flex,
   Label,
+  Text,
   Heading,
   Button,
   theme,
@@ -21,61 +22,45 @@ import CarouselSubmissionForm from 'components/workshops/CarouselSubmissionForm'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-const OriginalWrapper = styled(Flex).attrs({ mr: 1 })`
-  width: 200px;
-  flex-grow: 1;
-  flex-shrink: 1;
-  align-self: center;
-  overflow: hidden;
-  position: relative;
-
-  ${theme.mediaQueries.sm} {
-    width: 240px;
-  }
-  ${theme.mediaQueries.md} {
-    width: 350px;
-  }
-`
-
-const RehackWrapper = styled(Flex).attrs({ ml: 1 })`
-  width: 200px;
-  flex-direction: column;
-  flex-shrink: 1;
-  align-self: stretch;
-  overflow: hidden;
-  position: relative;
-
-  ${theme.mediaQueries.sm} {
-    width: 240px;
-  }
-  ${theme.mediaQueries.md} {
-    width: 350px;
-  }
-`
-
 const RehackSlider = styled(Slider)`
-  margin: 0;
-  overflow: hidden;
   position: absolute;
   top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  bottom: 0;
 `
 
 const CarouselOuter = styled(Flex).attrs({
   bg: 'smoke',
-  m: 0,
-  p: [2, 3, 4],
+  pt: [1, 2, 3],
+  pb: [2, 3, 4],
   flexDirection: 'column',
   align: 'center',
 })``
 
-const CarouselInner = styled(Flex).attrs({
+const SliderWrapper = styled(Box).attrs({ mb: [2, 2, 3] })`
+  position: relative;
+  align-self: stretch;
+`
+
+const ShowAllProjects = styled(Text).attrs({
+  fontSize: [1, 2, 3],
   mb: [2, 3, 4],
+  color: 'silver',
 })`
   flex-direction: column;
+  cursor: pointer;
 `
+
+const ShowAllGrid = styled(Flex).attrs({
+  justify: 'center',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  mb: 1,
+})`
+  flex-wrap: wrap;
+`
+
 class Carousel extends Component {
   state = {
     autoplay: false,
@@ -88,6 +73,7 @@ class Carousel extends Component {
     authData: {},
     liveFrameStatus: 'empty',
     liveFrameImage: null,
+    showAll: false,
   }
   emptyProject = {
     user: { username: '' },
@@ -119,8 +105,10 @@ class Carousel extends Component {
       let original = projects.find(
         project => project.user && project.user.username == 'prophetorpheus'
       )
-      if (original) remove(projects, original)
-      else original = this.emptyProject
+      if (original) {
+        remove(projects, original)
+        projects.unshift(original)
+      } else original = this.emptyProject
 
       this.setState({
         original,
@@ -159,6 +147,10 @@ class Carousel extends Component {
     this.setState({ submitting: true })
   }
 
+  onClickShowAll() {
+    this.setState({ showAll: !this.state.showAll })
+  }
+
   onSignOut() {
     console.log('Signing out')
     this.setState({ authed: false, authData: {} })
@@ -175,10 +167,12 @@ class Carousel extends Component {
       authData,
       liveFrameStatus,
       liveFrameImage,
+      showAll,
     } = this.state
 
     const setSubmissionData = this.setSubmissionData.bind(this)
     const onClickSubmitButton = this.onClickSubmitButton.bind(this)
+    const onClickShowAll = this.onClickShowAll.bind(this)
     const onSignOut = this.onSignOut.bind(this)
 
     const submissionProject = {
@@ -189,50 +183,56 @@ class Carousel extends Component {
     }
 
     const sliderSettings = {
-      dots: false,
       arrows: false,
-      vertical: true,
-      verticalSwiping: true,
-      infinite: true,
       speed: 500,
       autoplay: true,
-      initialSlide: projects.length - 1,
+      initialSlide: 0,
       autoplaySpeed: 5000,
       slidesToShow: 1,
       slidesToScroll: 1,
+      centerMode: true,
       pauseOnHover: true,
+      variableWidth: true,
+      focusOnSelect: true,
+      swipeToSlide: true,
     }
 
     return (
       <CarouselOuter>
-        <Heading.h3 mb={[2, 3, 4]}>
+        <Heading.h3>
           {projects.length} Rehack
           {projects.length != 1 && 's'}
         </Heading.h3>
-        <CarouselInner>
-          <Flex justify="space-between">
-            <OriginalWrapper>
-              <CarouselProject project={original} isOriginal />
-            </OriginalWrapper>
+        <ShowAllProjects onClick={onClickShowAll} mb={[1, 1, 2]}>
+          {showAll ? 'ok stack them back up' : 'Show All'}
+        </ShowAllProjects>
+        {showAll ? (
+          <ShowAllGrid>
+            {projects.map(project => (
+              <CarouselProject
+                project={project}
+                key={project.screenshot.id}
+                m={[1, 1, 2]}
+              />
+            ))}
+          </ShowAllGrid>
+        ) : liveFrameStatus != 'empty' ? (
+          <CarouselProject liveFrame project={submissionProject} />
+        ) : projects.length == 0 ? (
+          <CarouselProject project={this.emptyProject} />
+        ) : (
+          <SliderWrapper>
+            <RehackSlider {...sliderSettings}>
+              {projects.map(project => (
+                <CarouselProject
+                  project={project}
+                  key={project.screenshot.id}
+                />
+              ))}
+            </RehackSlider>
+          </SliderWrapper>
+        )}
 
-            <RehackWrapper>
-              {liveFrameStatus != 'empty' ? (
-                <CarouselProject liveFrame project={submissionProject} />
-              ) : projects.length == 0 ? (
-                <CarouselProject project={this.emptyProject} />
-              ) : (
-                <RehackSlider {...sliderSettings}>
-                  {projects.map(project => (
-                    <CarouselProject
-                      project={project}
-                      key={project.screenshot.id}
-                    />
-                  ))}
-                </RehackSlider>
-              )}
-            </RehackWrapper>
-          </Flex>
-        </CarouselInner>
         {submitting ? (
           <CarouselSubmissionForm
             authed={authed}

@@ -14,59 +14,36 @@ import {
   theme,
 } from '@hackclub/design-system'
 
-const ProjectOuter = styled(Flex).attrs({
-  p: [0, 0, 4],
+const ProjectOuter = styled(Box).attrs({
   bg: 'white',
-  justify: 'flex-end',
-  flexDirection: 'column',
+  mx: 1,
 })`
-  position: relative;
-  flex-basis: 0;
-  flex-grow: 1;
-  flex-shrink: 1;
+  flex-shrink: 0;
   overflow: hidden;
+
+  border-radius: 10px 10px 10px 10px;
+
+  width: 180px;
+  ${theme.mediaQueries.sm} {
+    width: 240px;
+  }
   ${theme.mediaQueries.md} {
+    width: 350px;
     align-items: stretch;
-  }
-`
-
-const ProjectOuterLeft = styled(ProjectOuter)`
-  border-radius: 10px 0px 0px 10px;
-  ${theme.mediaQueries.md} {
-    border-radius: 20px 5px 5px 20px;
-  }
-`
-
-const ProjectOuterRight = styled(ProjectOuter)`
-  border-radius: 0px 10px 10px 0px;
-  ${theme.mediaQueries.md} {
-    border-radius: 5px 20px 20px 5px;
   }
 `
 
 const TextBar = styled(Flex).attrs({
-  px: [1, 1, 0],
+  px: [1, null, 0],
   py: 0,
   justify: ['center', null, 'space-between'],
 })`
+  flex-grow: 0;
   flex-direction: column;
+  align-items: center;
   ${theme.mediaQueries.md} {
     align-items: stretch;
     justify-content: space-between;
-  }
-`
-
-const TextBarLeft = styled(TextBar)`
-  align-items: flex-end;
-  ${theme.mediaQueries.md} {
-    flex-direction: row-reverse;
-  }
-`
-
-const TextBarRight = styled(TextBar)`
-  align-items: flex-start;
-  ${theme.mediaQueries.md} {
-    flex-direction: row;
   }
 `
 
@@ -95,9 +72,6 @@ const ImageWrapper = styled(Box).attrs({
   overflow: hidden;
   border-radius: 5;
   border-bottom: 2px solid ${theme.colors.snow};
-  ${theme.mediaQueries.md} {
-    border: 2px solid ${theme.colors.snow};
-  }
 `
 
 const WrappedImage = styled(Image)`
@@ -118,23 +92,9 @@ const WrappedText = styled(Text).attrs({ color: 'muted' })`
   color: ${theme.colors.silver};
 `
 
-const orientProjectOuter = (left, inner) =>
-  left ? (
-    <ProjectOuterLeft>{inner}</ProjectOuterLeft>
-  ) : (
-    <ProjectOuterRight>{inner}</ProjectOuterRight>
-  )
-
-const orientTextBar = (left, inner) =>
-  left ? (
-    <TextBarLeft>{inner}</TextBarLeft>
-  ) : (
-    <TextBarRight>{inner}</TextBarRight>
-  )
-
 class CarouselProject extends Component {
   render() {
-    const { project, isOriginal = false, liveFrame = false } = this.props
+    const { project, liveFrame = false, m = 0 } = this.props
     const {
       user = null,
       empty = false,
@@ -154,9 +114,8 @@ class CarouselProject extends Component {
         })()
       : 'http://api.hackclub.com' + screenshot.file_path
 
-    return orientProjectOuter(
-      isOriginal,
-      <Fragment>
+    return (
+      <ProjectOuter m={m}>
         <ImageWrapper>
           {empty ? (
             <WrappedText>
@@ -168,29 +127,26 @@ class CarouselProject extends Component {
             <WrappedImage src={imageUrl} alt={authorString} />
           )}
         </ImageWrapper>
-        {orientTextBar(
-          isOriginal,
-          <Fragment>
-            <AuthorLabel>{authorString}</AuthorLabel>
-            <LinkBar>
-              {isURL(live_url) ? (
-                <A mr={2} fontSize={3} href={live_url}>
-                  Live
-                </A>
-              ) : (
-                <DeadLink mr={2}>Live</DeadLink>
-              )}
-              {isURL(code_url) ? (
-                <A ml={2} fontSize={3} href={code_url}>
-                  Code
-                </A>
-              ) : (
-                <DeadLink ml={2}>Code</DeadLink>
-              )}
-            </LinkBar>
-          </Fragment>
-        )}
-      </Fragment>
+        <TextBar>
+          <AuthorLabel>{authorString}</AuthorLabel>
+          <LinkBar>
+            {isURL(live_url) ? (
+              <A mr={2} fontSize={3} href={live_url}>
+                Live
+              </A>
+            ) : (
+              <DeadLink mr={2}>Live</DeadLink>
+            )}
+            {isURL(code_url) ? (
+              <A ml={2} fontSize={3} href={code_url}>
+                Code
+              </A>
+            ) : (
+              <DeadLink ml={2}>Code</DeadLink>
+            )}
+          </LinkBar>
+        </TextBar>
+      </ProjectOuter>
     )
   }
 }

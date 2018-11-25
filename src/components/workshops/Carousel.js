@@ -23,23 +23,18 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
 const RehackSlider = styled(Slider)`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  align-self: stretch;
 `
 
 const CarouselOuter = styled(Flex).attrs({
   bg: 'smoke',
   pt: [1, 2, 3],
-  pb: [2, 3, 4],
+  pb: [2, 2, 3],
   flexDirection: 'column',
   align: 'center',
 })``
 
 const SliderWrapper = styled(Box).attrs({ mb: [2, 2, 3] })`
-  position: relative;
   align-self: stretch;
 `
 
@@ -55,11 +50,9 @@ const ShowAllProjects = styled(Text).attrs({
 const ShowAllGrid = styled(Flex).attrs({
   justify: 'center',
   flexDirection: 'row',
-  flexWrap: 'wrap',
+  wrap: true,
   mb: 1,
-})`
-  flex-wrap: wrap;
-`
+})``
 
 class Carousel extends Component {
   state = {
@@ -194,7 +187,6 @@ class Carousel extends Component {
       pauseOnHover: true,
       variableWidth: true,
       focusOnSelect: true,
-      swipeToSlide: true,
     }
 
     return (
@@ -216,20 +208,22 @@ class Carousel extends Component {
               />
             ))}
           </ShowAllGrid>
-        ) : liveFrameStatus != 'empty' ? (
-          <CarouselProject liveFrame project={submissionProject} />
-        ) : projects.length == 0 ? (
-          <CarouselProject project={this.emptyProject} />
         ) : (
           <SliderWrapper>
-            <RehackSlider {...sliderSettings}>
-              {projects.map(project => (
-                <CarouselProject
-                  project={project}
-                  key={project.screenshot.id}
-                />
-              ))}
-            </RehackSlider>
+            {liveFrameStatus != 'empty' ? (
+              <CarouselProject liveFrame project={submissionProject} />
+            ) : projects.length == 0 ? (
+              <CarouselProject project={this.emptyProject} />
+            ) : (
+              <RehackSlider {...sliderSettings}>
+                {projects.map(project => (
+                  <CarouselProject
+                    project={project}
+                    key={project.screenshot.id}
+                  />
+                ))}
+              </RehackSlider>
+            )}
           </SliderWrapper>
         )}
 

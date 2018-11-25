@@ -28,19 +28,19 @@ const RehackSlider = styled(Slider)`
 
 const CarouselOuter = styled(Flex).attrs({
   bg: 'smoke',
-  pt: [1, 2, 3],
-  pb: [2, 2, 3],
+  pt: [2, 2, 3],
+  pb: [3, 3, 4],
   flexDirection: 'column',
   align: 'center',
 })``
 
-const SliderWrapper = styled(Box).attrs({ mb: [2, 2, 3] })`
+const SliderWrapper = styled(Box).attrs({ mb: [3, 3, 4] })`
   align-self: stretch;
 `
 
 const ShowAllProjects = styled(Text).attrs({
   fontSize: [1, 2, 3],
-  mb: [2, 3, 4],
+  mb: [3, 3, 4],
   color: 'silver',
 })`
   flex-direction: column;
@@ -197,7 +197,7 @@ class Carousel extends Component {
           {projectCount} Rehack
           {projectCount != 1 && 's'}
         </Heading.h3>
-        <ShowAllProjects onClick={onClickShowAll} mb={[1, 1, 2]}>
+        <ShowAllProjects onClick={onClickShowAll} mb={[2, 2, 3]}>
           {showAll ? 'ok stack them back up' : 'Show All'}
         </ShowAllProjects>
         {showAll ? (

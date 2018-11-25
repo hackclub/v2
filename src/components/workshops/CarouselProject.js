@@ -33,7 +33,7 @@ const ProjectOuter = styled(Box).attrs({
 `
 
 const TextBar = styled(Flex).attrs({
-  px: [1, null, 0],
+  px: 1,
   py: 0,
   justify: ['center', null, 'space-between'],
 })`

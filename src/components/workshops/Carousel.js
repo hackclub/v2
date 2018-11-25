@@ -189,11 +189,13 @@ class Carousel extends Component {
       focusOnSelect: true,
     }
 
+    const projectCount = projects.length - (original ? 0 : 1)
+
     return (
       <CarouselOuter>
         <Heading.h3>
-          {projects.length} Rehack
-          {projects.length != 1 && 's'}
+          {projectCount} Rehack
+          {projectCount != 1 && 's'}
         </Heading.h3>
         <ShowAllProjects onClick={onClickShowAll} mb={[1, 1, 2]}>
           {showAll ? 'ok stack them back up' : 'Show All'}

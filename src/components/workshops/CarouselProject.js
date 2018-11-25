@@ -29,7 +29,6 @@ const ProjectOuter = styled(Box).attrs({
   }
   ${theme.mediaQueries.md} {
     width: 350px;
-    align-items: stretch;
   }
 `
 
@@ -41,10 +40,6 @@ const TextBar = styled(Flex).attrs({
   flex-grow: 0;
   flex-direction: column;
   align-items: center;
-  ${theme.mediaQueries.md} {
-    align-items: stretch;
-    justify-content: space-between;
-  }
 `
 
 const LinkBar = styled(Flex).attrs({

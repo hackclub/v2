@@ -32,6 +32,7 @@ const LiveField = styled(Field).attrs({
   label: 'Live URL',
   name: 'Live URL',
   placeholder: '(where’s the final product?)',
+  type: 'url',
 })`
   min-width: 320px;
 `
@@ -40,6 +41,7 @@ const CodeField = styled(Field).attrs({
   label: 'Code URL',
   name: 'Code URL',
   placeholder: '(where’s the code?)',
+  type: 'url',
   mb: [1, 2, 3],
 })`
   min-width: 320px;

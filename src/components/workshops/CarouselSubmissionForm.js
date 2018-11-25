@@ -15,7 +15,7 @@ import {
 } from '@hackclub/design-system'
 
 const CarouselSubmissionFormOuter = styled(Flex).attrs({
-  p: [2, 3, 4],
+  p: [3, 3, 4],
   bg: theme.colors.white,
   align: 'center',
 })`

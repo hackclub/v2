@@ -34,6 +34,10 @@ const CarouselOuter = styled(Flex).attrs({
   align: 'center',
 })``
 
+const StaticWrapper = styled(Flex).attrs({ mb: [3, 3, 4], justify: 'center' })`
+  align-self: stretch;
+`
+
 const SliderWrapper = styled(Box).attrs({ mb: [3, 3, 4] })`
   align-self: stretch;
 `
@@ -210,22 +214,30 @@ class Carousel extends Component {
               />
             ))}
           </ShowAllGrid>
+        ) : liveFrameStatus != 'empty' ? (
+          <StaticWrapper>
+            <CarouselProject liveFrame project={submissionProject} />
+          </StaticWrapper>
+        ) : projects.length == 0 ? (
+          <StaticWrapper>
+            <CarouselProject project={this.emptyProject} />
+          </StaticWrapper>
+        ) : projects.length < 3 ? (
+          <StaticWrapper>
+            {projects.map(project => (
+              <CarouselProject project={project} key={project.screenshot.id} />
+            ))}
+          </StaticWrapper>
         ) : (
           <SliderWrapper>
-            {liveFrameStatus != 'empty' ? (
-              <CarouselProject liveFrame project={submissionProject} />
-            ) : projects.length == 0 ? (
-              <CarouselProject project={this.emptyProject} />
-            ) : (
-              <RehackSlider {...sliderSettings}>
-                {projects.map(project => (
-                  <CarouselProject
-                    project={project}
-                    key={project.screenshot.id}
-                  />
-                ))}
-              </RehackSlider>
-            )}
+            <RehackSlider {...sliderSettings}>
+              {projects.map(project => (
+                <CarouselProject
+                  project={project}
+                  key={project.screenshot.id}
+                />
+              ))}
+            </RehackSlider>
           </SliderWrapper>
         )}
 

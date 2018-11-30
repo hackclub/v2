@@ -13,7 +13,7 @@ class Login extends Component {
   submitCallback = data => {
     this.setState({
       ...data,
-      emailSent: true,
+      emailSent: true
     })
   }
 
@@ -25,7 +25,7 @@ class Login extends Component {
       userType = 'applicant',
       inputProps = {},
       textProps = {},
-      loginCallback = null,
+      loginCallback = null
     } = this.props
 
     return emailSent ? (

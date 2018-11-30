@@ -11,13 +11,13 @@ import {
   Text,
   Button,
   Field,
-  theme,
+  theme
 } from '@hackclub/design-system'
 
 const CarouselSubmissionFormOuter = styled(Flex).attrs({
   p: [3, 3, 4],
   bg: theme.colors.white,
-  align: 'center',
+  align: 'center'
 })`
   border-radius: 5px;
   flex-grow: 1;
@@ -32,7 +32,7 @@ const LiveField = styled(Field).attrs({
   label: 'Live URL',
   name: 'Live URL',
   placeholder: '(where’s the final product?)',
-  type: 'url',
+  type: 'url'
 })`
   min-width: 320px;
 `
@@ -42,7 +42,7 @@ const CodeField = styled(Field).attrs({
   name: 'Code URL',
   placeholder: '(where’s the code?)',
   type: 'url',
-  mb: [1, 2, 3],
+  mb: [1, 2, 3]
 })`
   min-width: 320px;
 `
@@ -64,11 +64,11 @@ class CarouselSubmissionForm extends Component {
         method: 'POST',
         body: JSON.stringify({
           live_url: liveUrl,
-          code_url: codeUrl,
+          code_url: codeUrl
           // Screenshot happens on backend for now
           // screenshot_id: screenshotId
         }),
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' }
       })
       // For now, just refresh the page. Needs a real Submssion Complete page eventually.
       .then(resp => location.reload())
@@ -96,7 +96,7 @@ class CarouselSubmissionForm extends Component {
       submissionData,
       authed,
       authData,
-      onSignOut,
+      onSignOut
     } = this.props
 
     const { verifying, requestingSubmission } = this.state
@@ -136,7 +136,7 @@ class CarouselSubmissionForm extends Component {
                 maxWidth: 20,
                 p: 3,
                 mb: 0,
-                bg: 'primary',
+                bg: 'primary'
               }}
             />
           </Fragment>
@@ -150,8 +150,8 @@ class CarouselSubmissionForm extends Component {
               disableSubmission
                 ? null
                 : authed
-                  ? onClickSubmitButton
-                  : onClickVeryifyButton
+                ? onClickSubmitButton
+                : onClickVeryifyButton
             }
           >
             {authed ? 'Submit My Thing' : 'Verify & Submit'}

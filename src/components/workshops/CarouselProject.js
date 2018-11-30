@@ -11,12 +11,12 @@ import {
   Text,
   Image,
   Button,
-  theme,
+  theme
 } from '@hackclub/design-system'
 
 const ProjectOuter = styled(Box).attrs({
   bg: 'white',
-  mx: 1,
+  mx: 1
 })`
   flex-shrink: 0;
   overflow: hidden;
@@ -35,7 +35,7 @@ const ProjectOuter = styled(Box).attrs({
 const TextBar = styled(Flex).attrs({
   px: 1,
   py: 0,
-  justify: ['center', null, 'space-between'],
+  justify: ['center', null, 'space-between']
 })`
   flex-grow: 0;
   flex-direction: column;
@@ -43,24 +43,24 @@ const TextBar = styled(Flex).attrs({
 `
 
 const LinkBar = styled(Flex).attrs({
-  mx: 1,
+  mx: 1
 })``
 
 const DeadLink = styled(Text).attrs({
   fontSize: 3,
-  color: theme.colors.silver,
+  color: theme.colors.silver
 })``
 
 const AuthorLabel = styled(Label).attrs({
   mx: 1,
-  fontSize: 3,
+  fontSize: 3
 })`
   white-space: nowrap;
 `
 
 const ImageWrapper = styled(Box).attrs({
   mb: [0, 0, 2],
-  justify: 'center',
+  justify: 'center'
 })`
   padding-bottom: 50%;
   position: relative;
@@ -95,7 +95,7 @@ class CarouselProject extends Component {
       empty = false,
       live_url,
       code_url,
-      screenshot,
+      screenshot
     } = project
 
     const authorString =

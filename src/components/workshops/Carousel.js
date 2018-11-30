@@ -13,7 +13,7 @@ import {
   Text,
   Heading,
   Button,
-  theme,
+  theme
 } from '@hackclub/design-system'
 
 import CarouselProject from 'components/workshops/CarouselProject'
@@ -31,7 +31,7 @@ const CarouselOuter = styled(Flex).attrs({
   pt: [2, 2, 3],
   pb: [3, 3, 4],
   flexDirection: 'column',
-  align: 'center',
+  align: 'center'
 })``
 
 const StaticWrapper = styled(Flex).attrs({ mb: [3, 3, 4], justify: 'center' })`
@@ -45,7 +45,7 @@ const SliderWrapper = styled(Box).attrs({ mb: [3, 3, 4] })`
 const ShowAllProjects = styled(Text).attrs({
   fontSize: [1, 2, 3],
   mb: [3, 3, 4],
-  color: 'silver',
+  color: 'silver'
 })`
   flex-direction: column;
   cursor: pointer;
@@ -55,7 +55,7 @@ const ShowAllGrid = styled(Flex).attrs({
   justify: 'center',
   flexDirection: 'row',
   wrap: true,
-  mb: 1,
+  mb: 1
 })``
 
 class Carousel extends Component {
@@ -64,13 +64,13 @@ class Carousel extends Component {
     submitting: false,
     submissionData: {
       liveUrl: '',
-      codeUrl: '',
+      codeUrl: ''
     },
     authed: false,
     authData: {},
     liveFrameStatus: 'empty',
     liveFrameImage: null,
-    showAll: false,
+    showAll: false
   }
   emptyProject = {
     user: { username: '' },
@@ -82,8 +82,8 @@ class Carousel extends Component {
       created_at: '',
       updated_at: '',
       type: '',
-      file_path: '',
-    },
+      file_path: ''
+    }
   }
 
   constructor(props) {
@@ -109,7 +109,7 @@ class Carousel extends Component {
 
       this.setState({
         original,
-        projects,
+        projects
       })
     })
 
@@ -121,7 +121,7 @@ class Carousel extends Component {
         )
         this.setState({
           authed: true,
-          authData: response,
+          authData: response
         })
       })
       .catch(error => {
@@ -164,7 +164,7 @@ class Carousel extends Component {
       authData,
       liveFrameStatus,
       liveFrameImage,
-      showAll,
+      showAll
     } = this.state
 
     const setSubmissionData = this.setSubmissionData.bind(this)
@@ -176,7 +176,7 @@ class Carousel extends Component {
       user: authData,
       live_url: submissionData.liveUrl,
       code_url: submissionData.codeUrl,
-      screenshot: {},
+      screenshot: {}
     }
 
     const sliderSettings = {
@@ -190,7 +190,7 @@ class Carousel extends Component {
       centerMode: true,
       pauseOnHover: true,
       variableWidth: true,
-      focusOnSelect: true,
+      focusOnSelect: true
     }
 
     const projectCount = projects.length - (original ? 0 : 1)

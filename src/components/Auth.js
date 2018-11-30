@@ -23,7 +23,7 @@ class Auth extends Component {
           )
           self.setState({
             authed: true,
-            authData: response,
+            authData: response
           })
         })
         .catch(error => {
@@ -56,7 +56,7 @@ class Auth extends Component {
       headline,
       preAuthed = false,
       preAuthData = {},
-      loginCallback = null,
+      loginCallback = null
     } = this.props
 
     const { authed, authData } = this.state
@@ -95,8 +95,8 @@ Auth.defaultProps = {
     maxWidth: 20,
     p: 3,
     mb: 4,
-    bg: 'primary',
-  },
+    bg: 'primary'
+  }
 }
 
 export default Auth

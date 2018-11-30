@@ -6,10 +6,7 @@ import api from 'api'
 import styled from 'styled-components'
 import {
   Box,
-  Card,
-  Container,
   Flex,
-  Label,
   Text,
   Heading,
   Button,
@@ -44,10 +41,9 @@ const SliderWrapper = styled(Box).attrs({ mb: [3, 3, 4] })`
 
 const ShowAllProjects = styled(Text).attrs({
   fontSize: [1, 2, 3],
-  mb: [3, 3, 4],
-  color: 'silver'
+  mb: [3, null, 4],
+  color: 'muted'
 })`
-  flex-direction: column;
   cursor: pointer;
 `
 
@@ -86,13 +82,9 @@ class Carousel extends Component {
     }
   }
 
-  constructor(props) {
-    super(props)
-
-    const { slug } = props
-
-    this.state.original = this.emptyProject
-    this.state.projects = []
+  state = {
+    original: this.emptyProject,
+    projects: []
   }
 
   componentDidMount() {
@@ -115,17 +107,14 @@ class Carousel extends Component {
 
     api
       .get(`v1/users/current`)
-      .then(response => {
+      .then(authData => {
         console.log(
-          'User is authorized! Auth data: ' + JSON.stringify(response)
+          `User is authorized! Auth data: ${JSON.stringify(authData)}`
         )
-        this.setState({
-          authed: true,
-          authData: response
-        })
+        this.setState({ authed: true, authData })
       })
       .catch(error => {
-        console.log('User is not authorized! Error: ' + error.toString())
+        console.log(`User is not authorized! Error: ${JSON.stringify(error)}`)
         this.setState({ authed: false, authData: {} })
       })
   }
@@ -134,21 +123,21 @@ class Carousel extends Component {
     this.setState({ liveFrameStatus })
   }
 
-  setSubmissionData(submissionData) {
+  setSubmissionData = submissionData => {
     // Disable "Live Frame" feature for now
     // this.setLiveFrameStatus(submissionData.liveUrl == '' ? 'empty' : 'loading')
     this.setState({ submissionData })
   }
 
-  onClickSubmitButton() {
+  onClickSubmitButton = () => {
     this.setState({ submitting: true })
   }
 
-  onClickShowAll() {
+  onClickShowAll = () => {
     this.setState({ showAll: !this.state.showAll })
   }
 
-  onSignOut() {
+  onSignOut = () => {
     console.log('Signing out')
     this.setState({ authed: false, authData: {} })
   }
@@ -163,14 +152,16 @@ class Carousel extends Component {
       authed,
       authData,
       liveFrameStatus,
-      liveFrameImage,
+      // liveFrameImage,
       showAll
     } = this.state
 
-    const setSubmissionData = this.setSubmissionData.bind(this)
-    const onClickSubmitButton = this.onClickSubmitButton.bind(this)
-    const onClickShowAll = this.onClickShowAll.bind(this)
-    const onSignOut = this.onSignOut.bind(this)
+    const {
+      setSubmissionData,
+      onClickSubmitButton,
+      onClickShowAll,
+      onSignOut
+    } = this
 
     const submissionProject = {
       user: authData,
@@ -210,7 +201,7 @@ class Carousel extends Component {
               <CarouselProject
                 project={project}
                 key={project.screenshot.id}
-                m={[1, 1, 2]}
+                m={[1, null, 2]}
               />
             ))}
           </ShowAllGrid>
@@ -252,8 +243,8 @@ class Carousel extends Component {
           />
         ) : (
           <Button
-            px={[3, 4, 4]}
-            py={[2, 3, 3]}
+            px={[3, null, 4]}
+            py={[2, null, 3]}
             scale
             fontSize={4}
             onClick={onClickSubmitButton}

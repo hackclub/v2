@@ -271,7 +271,9 @@ export default ({ data }) => {
           </Flex>
         </Header>
       </NotOnPrint>
-      <Carousel slug={slug.replace('/workshops/', '')} />
+      {group == 'start' ? (
+        <Carousel slug={slug.replace('/workshops/', '')} />
+      ) : null}
       <OnlyOnPrint p={3}>
         <Flex align="center" justify="flex-end" my={3}>
           <Image

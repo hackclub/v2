@@ -206,8 +206,8 @@ const profileStatus = profile =>
   profile.completed_at !== null
     ? 'complete'
     : profile.created_at === profile.updated_at
-      ? 'unopened'
-      : 'incomplete'
+    ? 'unopened'
+    : 'incomplete'
 
 const Main = props => {
   const {
@@ -243,8 +243,8 @@ const Main = props => {
     completeApplication
       ? 'complete'
       : created_at === updated_at
-        ? 'unopened'
-        : 'incomplete'
+      ? 'unopened'
+      : 'incomplete'
 
   const submitStatusProps = {
     unopened: { color: 'primary', children: 'ready for you!' },

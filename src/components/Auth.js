@@ -4,31 +4,65 @@ import { wordWrap } from 'polished'
 import Sheet from 'components/Sheet'
 import LoginForm from 'components/auth/LoginForm'
 import storage from 'storage'
+import api from 'api'
 import { isEmpty } from 'lodash'
 
 class Auth extends Component {
-  state = { email: '' }
+  state = { authed: false, authData: {} }
 
   componentDidMount() {
-    const email = storage.get('userEmail')
-    this.setState({ email })
+    const { preAuthData = null } = this.props
+    const self = this
+
+    if (!preAuthData) {
+      api
+        .get(`v1/users/current`)
+        .then(response => {
+          console.log(
+            'User is authorized! Auth data: ' + JSON.stringify(response)
+          )
+          self.setState({
+            authed: true,
+            authData: response
+          })
+        })
+        .catch(error => {
+          console.log('User is not authorized! Error: ' + error.toString())
+          self.setState({ authed: false, authData: {} })
+        })
+    }
   }
 
   signOut = e => {
+    const { signOutCallback } = this.props
+
     try {
       storage.remove('userEmail')
-      this.setState({ email: null })
+      storage.remove('authToken')
+
+      if (signOutCallback) signOutCallback()
+
+      this.setState({ authed: false, authData: {} })
     } catch (err) {
       console.error(err)
     }
   }
 
   render() {
-    const { textProps, type, cardProps, headline } = this.props
-    const { email } = this.state
-    const authed = !isEmpty(email)
+    const {
+      textProps,
+      type,
+      cardProps,
+      headline,
+      preAuthed = false,
+      preAuthData = {},
+      loginCallback = null
+    } = this.props
 
-    return authed ? (
+    const { authed, authData } = this.state
+    const { email } = preAuthData ? preAuthData : authData
+
+    return preAuthed || authed ? (
       <Flex align="baseline" {...textProps}>
         <Text color="inherit" mb={1} style={wordWrap('break-word')}>
           You’re <strong>{email}</strong> ({type}
@@ -58,6 +92,7 @@ class Auth extends Component {
           color="white"
           inputProps={{ width: 18 * 16 }}
           textProps={{ color: 'black', align: 'left' }}
+          loginCallback={loginCallback}
         />
       </Sheet>
     )

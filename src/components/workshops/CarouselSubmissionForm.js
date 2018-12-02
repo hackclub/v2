@@ -3,17 +3,26 @@ import api from 'api'
 import { isURL } from 'validator'
 import styled from 'styled-components'
 import Auth from 'components/Auth'
-import { Flex, Heading, Button, Field, theme } from '@hackclub/design-system'
+import {
+  Box,
+  Flex,
+  Label,
+  Heading,
+  Text,
+  Button,
+  Field,
+  theme
+} from '@hackclub/design-system'
 
 const CarouselSubmissionFormOuter = styled(Flex).attrs({
   p: [3, 3, 4],
-  bg: 'white',
-  align: 'center',
-  flexDirection: 'column'
+  bg: theme.colors.white,
+  align: 'center'
 })`
   border-radius: 5px;
   flex-grow: 1;
   flex-shrink: 1;
+  flex-direction: column;
   ${theme.mediaQueries.md} {
     border-radius: 10px;
   }
@@ -41,7 +50,7 @@ const CodeField = styled(Field).attrs({
 class CarouselSubmissionForm extends Component {
   state = { verifying: false, requestingSubmission: false }
 
-  onClickSubmitButton = () => {
+  onClickSubmitButton() {
     const { workshopSlug, submissionData } = this.props
     const { requestingSubmission } = this.state
     const { liveUrl, codeUrl } = submissionData
@@ -62,28 +71,28 @@ class CarouselSubmissionForm extends Component {
         headers: { 'Content-Type': 'application/json' }
       })
       // For now, just refresh the page. Needs a real Submssion Complete page eventually.
-      .then(() => location.reload())
+      .then(resp => location.reload())
   }
 
-  onChangeLiveURL = e => {
-    const liveUrl = e.target.value
+  onChangeLiveURL(event) {
+    const liveUrl = event.target.value
     const { submissionData } = this.props
     this.props.setSubmissionData({ ...submissionData, liveUrl })
   }
 
-  onChangeCodeURL = e => {
-    const codeUrl = e.target.value
+  onChangeCodeURL(event) {
+    const codeUrl = event.target.value
     const { submissionData } = this.props
     this.props.setSubmissionData({ ...submissionData, codeUrl })
   }
 
-  onClickVeryifyButton = () => {
+  onClickVeryifyButton() {
     this.setState({ verifying: true })
   }
 
   render() {
     const {
-      // workshopSlug,
+      workshopSlug,
       submissionData,
       authed,
       authData,
@@ -94,12 +103,11 @@ class CarouselSubmissionForm extends Component {
 
     const { liveUrl, codeUrl } = submissionData
 
-    const {
-      onClickSubmitButton,
-      onClickVeryifyButton,
-      onChangeLiveURL,
-      onChangeCodeURL
-    } = this
+    const onClickSubmitButton = this.onClickSubmitButton.bind(this)
+    const onClickVeryifyButton = this.onClickVeryifyButton.bind(this)
+
+    const onChangeLiveURL = this.onChangeLiveURL.bind(this)
+    const onChangeCodeURL = this.onChangeCodeURL.bind(this)
 
     const validURLs = isURL(liveUrl) && isURL(codeUrl)
 
@@ -123,7 +131,7 @@ class CarouselSubmissionForm extends Component {
               preAuthData={authData}
               signOutCallback={onSignOut}
               loginCallback={onClickSubmitButton}
-              headline="Show that you’re human"
+              headline={"Show that you're human"}
               cardProps={{
                 maxWidth: 20,
                 p: 3,

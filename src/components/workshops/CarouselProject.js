@@ -1,13 +1,16 @@
 import React, { Component, Fragment } from 'react'
+import api from 'api'
 import styled from 'styled-components'
 import { isURL } from 'validator'
 import {
   Box,
   Flex,
   Label,
+  Heading,
   Link as A,
   Text,
   Image,
+  Button,
   theme
 } from '@hackclub/design-system'
 
@@ -17,6 +20,7 @@ const ProjectOuter = styled(Box).attrs({
 })`
   flex-shrink: 0;
   overflow: hidden;
+
   border-radius: 10px 10px 10px 10px;
 
   width: 180px;
@@ -31,10 +35,10 @@ const ProjectOuter = styled(Box).attrs({
 const TextBar = styled(Flex).attrs({
   px: 1,
   py: 0,
-  flexDirection: 'column',
   justify: ['center', null, 'space-between']
 })`
   flex-grow: 0;
+  flex-direction: column;
   align-items: center;
 `
 
@@ -61,7 +65,7 @@ const ImageWrapper = styled(Box).attrs({
   padding-bottom: 50%;
   position: relative;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 5;
   border-bottom: 2px solid ${theme.colors.snow};
 `
 
@@ -73,12 +77,14 @@ const WrappedImage = styled(Image)`
   right: 0;
   bottom: 0;
 `
-const WrappedText = styled(Text).attrs({ color: 'muted', align: 'center' })`
+const WrappedText = styled(Text).attrs({ color: 'muted' })`
   transform: rotate(-3deg);
   position: absolute;
+  text-align: center;
   bottom: 30px;
   left: 0;
   right: 0;
+  color: ${theme.colors.silver};
 `
 
 class CarouselProject extends Component {
@@ -96,12 +102,12 @@ class CarouselProject extends Component {
       user && user.username ? `By ${user.username}` : '¯\\_(ツ)_/¯'
 
     const imageUrl = liveFrame
-      ? (() => {
-          const url = live_url.startsWith('http') ? url : `http://${url}`
+      ? (function() {
+          const url = live_url.startsWith('http') ? url : 'http://' + url
           const accessKey = 'd7d3cada424e0439f48de1a1b50160dd'
           return `http://api.screenshotlayer.com/api/capture?access_key=${accessKey}&url=${url}&viewport=1440x900&format=PNG`
         })()
-      : `http://api.hackclub.com${screenshot.file_path}`
+      : 'http://api.hackclub.com' + screenshot.file_path
 
     return (
       <ProjectOuter m={m}>
@@ -110,7 +116,7 @@ class CarouselProject extends Component {
             <WrappedText>
               no examples here yet…
               <br />
-              you should submit one!
+              you should submit one
             </WrappedText>
           ) : (
             <WrappedImage src={imageUrl} alt={authorString} />

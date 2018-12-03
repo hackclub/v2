@@ -66,7 +66,9 @@ class Carousel extends Component {
     authData: {},
     liveFrameStatus: 'empty',
     liveFrameImage: null,
-    showAll: false
+    showAll: false,
+    original: this.emptyProject,
+    projects: []
   }
   emptyProject = {
     user: { username: '' },
@@ -80,11 +82,6 @@ class Carousel extends Component {
       type: '',
       file_path: ''
     }
-  }
-
-  state = {
-    original: this.emptyProject,
-    projects: []
   }
 
   componentDidMount() {

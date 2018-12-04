@@ -10,7 +10,6 @@ import {
   Text,
   Heading,
   Button,
-  Loading,
   theme
 } from '@hackclub/design-system'
 
@@ -55,107 +54,9 @@ const ShowAllGrid = styled(Flex).attrs({
   mb: 1
 })``
 
-const LoadingWrapper = styled(Box)`
-  position: relative;
-  width: 140px;
-  height: 140px;
-`
-
-const LoadingCarousel = () => (
-  <Fragment>
-    <Heading.h3>Loading Projects...</Heading.h3>
-    <LoadingWrapper>
-      <Loading />
-    </LoadingWrapper>
-  </Fragment>
-)
-
-const AllProjects = projects => (
-  <ShowAllGrid>
-    {projects.map(project => (
-      <CarouselProject
-        project={project}
-        key={project.screenshot.id}
-        m={[1, null, 2]}
-      />
-    ))}
-  </ShowAllGrid>
-)
-
-const LiveProject = submissionProject => (
-  <StaticWrapper>
-    <CarouselProject liveFrame project={submissionProject} />
-  </StaticWrapper>
-)
-
-const EmptyProject = emptyProject => {
-  ;<StaticWrapper>
-    <CarouselProject project={emptyProject} />
-  </StaticWrapper>
-}
-
-const ShortList = projects => (
-  <StaticWrapper>
-    <CarouselProject project={emptyProject} />
-  </StaticWrapper>
-)
-
-const sliderSettings = {
-  arrows: false,
-  speed: 500,
-  autoplay: true,
-  initialSlide: 0,
-  autoplaySpeed: 5000,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  centerMode: true,
-  pauseOnHover: true,
-  variableWidth: true,
-  focusOnSelect: true
-}
-
-const SliderList = projects => (
-  <SliderWrapper>
-    <RehackSlider {...sliderSettings}>
-      {projects.map(project => (
-        <CarouselProject project={project} key={project.screenshot.id} />
-      ))}
-    </RehackSlider>
-  </SliderWrapper>
-)
-
-const LoadedCarousel = (
-  projects,
-  projectCount,
-  showAll,
-  onClickShowAll,
-  liveFrameStatus,
-  submissionProject,
-  emptyProject
-) => (
-  <Fragment>
-    <Heading.h3>
-      {projectCount} Rehack
-      {projectCount != 1 && 's'}
-    </Heading.h3>
-    <ShowAllProjects onClick={onClickShowAll} mb={[2, 2, 3]}>
-      {showAll ? 'ok stack them back up' : 'Show All'}
-    </ShowAllProjects>
-    {showAll
-      ? AllProjects(projects)
-      : liveFrameStatus != 'empty'
-        ? LiveProject(submissionProject)
-        : projects.length == 0
-          ? EmptyProject(emptyProject)
-          : projects.length < 3
-            ? ShortList(projects)
-            : SliderList(projects)}
-  </Fragment>
-)
-
 class Carousel extends Component {
   state = {
-    loading: true,
+    autoplay: false,
     submitting: false,
     submissionData: {
       liveUrl: '',
@@ -196,7 +97,6 @@ class Carousel extends Component {
       } else original = this.emptyProject
 
       this.setState({
-        loading: false,
         original,
         projects
       })
@@ -242,7 +142,6 @@ class Carousel extends Component {
   render() {
     const { slug } = this.props
     const {
-      loading,
       original,
       projects,
       submitting,
@@ -258,8 +157,7 @@ class Carousel extends Component {
       setSubmissionData,
       onClickSubmitButton,
       onClickShowAll,
-      onSignOut,
-      emptyProject
+      onSignOut
     } = this
 
     const submissionProject = {
@@ -269,21 +167,67 @@ class Carousel extends Component {
       screenshot: {}
     }
 
+    const sliderSettings = {
+      arrows: false,
+      speed: 500,
+      autoplay: true,
+      initialSlide: 0,
+      autoplaySpeed: 5000,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      centerMode: true,
+      pauseOnHover: true,
+      variableWidth: true,
+      focusOnSelect: true
+    }
+
     const projectCount = projects.length - (original ? 0 : 1)
 
     return (
       <CarouselOuter>
-        {loading
-          ? LoadingCarousel()
-          : LoadedCarousel(
-              projects,
-              projectCount,
-              showAll,
-              onClickShowAll,
-              liveFrameStatus,
-              submissionProject,
-              emptyProject
-            )}
+        <Heading.h3>
+          {projectCount} Rehack
+          {projectCount != 1 && 's'}
+        </Heading.h3>
+        <ShowAllProjects onClick={onClickShowAll} mb={[2, 2, 3]}>
+          {showAll ? 'ok stack them back up' : 'Show All'}
+        </ShowAllProjects>
+        {showAll ? (
+          <ShowAllGrid>
+            {projects.map(project => (
+              <CarouselProject
+                project={project}
+                key={project.screenshot.id}
+                m={[1, null, 2]}
+              />
+            ))}
+          </ShowAllGrid>
+        ) : liveFrameStatus != 'empty' ? (
+          <StaticWrapper>
+            <CarouselProject liveFrame project={submissionProject} />
+          </StaticWrapper>
+        ) : projects.length == 0 ? (
+          <StaticWrapper>
+            <CarouselProject project={this.emptyProject} />
+          </StaticWrapper>
+        ) : projects.length < 3 ? (
+          <StaticWrapper>
+            {projects.map(project => (
+              <CarouselProject project={project} key={project.screenshot.id} />
+            ))}
+          </StaticWrapper>
+        ) : (
+          <SliderWrapper>
+            <RehackSlider {...sliderSettings}>
+              {projects.map(project => (
+                <CarouselProject
+                  project={project}
+                  key={project.screenshot.id}
+                />
+              ))}
+            </RehackSlider>
+          </SliderWrapper>
+        )}
 
         {submitting ? (
           <CarouselSubmissionForm

@@ -1,34 +1,29 @@
 import React, { Component } from 'react'
-import { Box, Button, Flex, Heading, Text } from '@hackclub/design-system'
+import { Button, Flex, Heading, Text } from '@hackclub/design-system'
 import { wordWrap } from 'polished'
 import Sheet from 'components/Sheet'
 import LoginForm from 'components/auth/LoginForm'
 import storage from 'storage'
 import api from 'api'
-import { isEmpty } from 'lodash'
 
 class Auth extends Component {
   state = { authed: false, authData: {} }
 
   componentDidMount() {
     const { preAuthData = null } = this.props
-    const self = this
 
     if (!preAuthData) {
       api
         .get(`v1/users/current`)
-        .then(response => {
+        .then(authData => {
           console.log(
-            'User is authorized! Auth data: ' + JSON.stringify(response)
+            `User is authorized! Auth data: ${JSON.stringify(authData)}`
           )
-          self.setState({
-            authed: true,
-            authData: response
-          })
+          this.setState({ authed: true, authData })
         })
         .catch(error => {
-          console.log('User is not authorized! Error: ' + error.toString())
-          self.setState({ authed: false, authData: {} })
+          console.log(`User is not authorized! Error: ${error.toString()}`)
+          this.setState({ authed: false, authData: {} })
         })
     }
   }
@@ -65,8 +60,7 @@ class Auth extends Component {
     return preAuthed || authed ? (
       <Flex align="baseline" {...textProps}>
         <Text color="inherit" mb={1} style={wordWrap('break-word')}>
-          You’re <strong>{email}</strong> ({type}
-          ).
+          You’re <strong>{email}</strong> ({type}).
         </Text>
         <Button.button
           fontSize={2}

@@ -18,22 +18,16 @@ import {
 import { Modal, Overlay, CloseButton } from 'components/Modal'
 
 class Invite extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      status: props.accepted
-        ? 'accepted'
-        : props.rejected
-        ? 'rejected'
-        : 'undecided',
-      formActive: false
-    }
-    this.rejectInvite = this.rejectInvite.bind(this)
-    this.acceptInvite = this.acceptInvite.bind(this)
-    this.submitAcceptance = this.submitAcceptance.bind(this)
+  state = {
+    status: this.props.accepted
+      ? 'accepted'
+      : this.props.rejected
+      ? 'rejected'
+      : 'undecided',
+    formActive: false
   }
 
-  rejectInvite() {
+  rejectInvite = () => {
     const { invite } = this.props
     this.setState({ status: 'loading' })
     api
@@ -47,7 +41,7 @@ class Invite extends Component {
       })
   }
 
-  acceptInvite() {
+  acceptInvite = () => {
     const { user } = this.props
     if (user.new_leader) {
       this.setState({ status: 'loading' })
@@ -57,7 +51,7 @@ class Invite extends Component {
     }
   }
 
-  submitAcceptance(newLeader) {
+  submitAcceptance = (newLeader) => {
     const { invite, updateLeader } = this.props
     if (newLeader) {
       updateLeader(newLeader)

@@ -63,7 +63,8 @@ class InnerForm extends Component {
       bg,
       email,
       inputProps = {},
-      textProps = {}
+      textProps = {},
+      loginCallback = null
     } = this.props
     return (
       <form onSubmit={handleSubmit}>
@@ -127,6 +128,7 @@ const LoginCodeForm = withFormik({
       setSubmitting(false)
       return null
     }
+    const { loginCallback = null } = props
     const strippedLoginCode = unformattedData.loginCode.replace(/\D/g, '')
     const data = { login_code: strippedLoginCode }
     api
@@ -138,7 +140,9 @@ const LoginCodeForm = withFormik({
         // stored in analytics
         // eslint-disable-next-line
         analytics.identify(props.userId, { email: props.email })
-        window.location.reload()
+
+        if (loginCallback) loginCallback()
+        else window.location.reload()
       })
       .catch(e => {
         console.error(e)

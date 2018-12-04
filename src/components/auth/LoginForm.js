@@ -24,7 +24,8 @@ class Login extends Component {
       bg,
       userType = 'applicant',
       inputProps = {},
-      textProps = {}
+      textProps = {},
+      loginCallback = null
     } = this.props
 
     return emailSent ? (
@@ -35,6 +36,7 @@ class Login extends Component {
         bg={bg}
         inputProps={inputProps}
         textProps={textProps}
+        loginCallback={loginCallback}
       />
     ) : (
       <EmailLoginForm

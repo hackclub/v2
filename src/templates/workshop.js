@@ -23,6 +23,7 @@ import Invert from 'components/Invert'
 import IconButton from 'components/IconButton'
 import MarkdownBody from 'components/MarkdownBody'
 import FeedbackForm from 'components/workshops/FeedbackForm'
+import Carousel from 'components/workshops/Carousel'
 import DiscussOnSlack from 'components/DiscussOnSlack'
 import ShareButton from 'components/ShareButton'
 import Sheet from 'components/Sheet'
@@ -219,7 +220,10 @@ export default ({ data }) => {
           { property: 'og:title', content: title },
           { property: 'og:description', content: desc },
           { property: 'og:image', content: img },
-          { property: 'og:site_name', content: 'Hack Club Workshops' },
+          {
+            property: 'og:site_name',
+            content: 'Hack Club Workshops'
+          },
           { property: 'og:url', content: url }
         ]}
       >
@@ -232,7 +236,10 @@ export default ({ data }) => {
           color="white"
           p={0}
           align="center"
-          style={{ backgroundImage: `url('${bg}')`, position: 'relative' }}
+          style={{
+            backgroundImage: `url('${bg}')`,
+            position: 'relative'
+          }}
         >
           <Container pt={[5, 6]} px={2}>
             <Breadcrumbs align="center" justify="center" mt={3} mb={2} wrap>
@@ -270,6 +277,7 @@ export default ({ data }) => {
           </Flex>
         </Header>
       </NotOnPrint>
+      {group == 'start' && <Carousel slug={slug.replace('/workshops/', '')} />}
       <OnlyOnPrint p={3}>
         <Flex align="center" justify="flex-end" my={3}>
           <Image

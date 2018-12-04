@@ -11,6 +11,7 @@ const groupOrder = [
   'club',
   'challenges',
   'pi',
+  'react',
   'arduino',
   'experimental',
   'misc',

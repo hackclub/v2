@@ -12,7 +12,7 @@ const Form = ({ status, closed = false, challengeId }) => {
     case 'success':
       return closed ? (
         <Fragment>
-          <Heading.h2 mt={0} mb={2} f={4}>
+          <Heading.h2 mt={0} mb={2} fontSize={4}>
             Submissions closed
           </Heading.h2>
           <Text>
@@ -21,7 +21,7 @@ const Form = ({ status, closed = false, challengeId }) => {
         </Fragment>
       ) : (
         <Fragment>
-          <Heading.h2 mt={0} mb={2} f={4}>
+          <Heading.h2 mt={0} mb={2} fontSize={4}>
             Post your project
           </Heading.h2>
           <PostForm challengeId={challengeId} />
@@ -30,14 +30,14 @@ const Form = ({ status, closed = false, challengeId }) => {
     case 'needsToAuth':
       return (
         <Fragment>
-          <Heading.h2 mt={0} mb={3} f={[3, 4]}>
+          <Heading.h2 mt={0} mb={3} fontSize={[3, 4]}>
             Sign in to {!closed && 'post + '}
             upvote
           </Heading.h2>
           <LoginForm
             bg="black"
             color="white"
-            inputProps={{ w: 18 * 16 }}
+            inputProps={{ width: 18 * 16 }}
             textProps={{ color: 'black', align: 'left' }}
           />
         </Fragment>

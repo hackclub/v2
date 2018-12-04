@@ -47,7 +47,7 @@ const Login = ({ userType = 'applicant', color, heading, bg }) => {
       <Helmet title="Log in – Hack Club" />
       <FixedFlag />
       <Heading.h1
-        f={[4, 5]}
+        fontSize={[4, 5]}
         mb={3}
         color={resultColor}
         children={resultHeading}
@@ -55,8 +55,8 @@ const Login = ({ userType = 'applicant', color, heading, bg }) => {
       <LoginForm
         color={resultColor}
         bg={resultBg}
-        inputProps={{ mx: 'auto', w: 24 * 16 }}
-        textProps={{ align: 'center', f: 4 }}
+        inputProps={{ mx: 'auto', width: 24 * 16 }}
+        textProps={{ align: 'center', fontSize: 4 }}
       />
     </Base>
   )

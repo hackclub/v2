@@ -33,7 +33,7 @@ class BreadcrumbClass extends Component {
               <Crumb
                 to={runningPath.join('/')}
                 color={isLast ? 'black' : 'slate'}
-                f={3}
+                fontSize={3}
                 isLast={isLast}
               >
                 {humanizedSection}
@@ -57,13 +57,13 @@ const ApplyNav = ({ breadcrumb = true, ...props }) => (
     pb={2}
     justify="space-between"
     align="center"
-    w={1}
+    width={1}
     style={{ position: 'relative' }}
     {...props}
   >
     <Flag scrolled />
     {breadcrumb ? (
-      <Box f={[2, 4]} mt={2} w={32 * 16}>
+      <Box fontSize={[2, 4]} mt={2} width={32 * 16}>
         <Breadcrumb />
       </Box>
     ) : null}

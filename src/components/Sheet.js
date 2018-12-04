@@ -16,7 +16,7 @@ Sheet.defaultProps = {
   bg: 'rgba(255, 255, 255, 0.875)',
   p: [3, 4],
   color: 'black',
-  w: 1,
+  width: 1,
   mb: 4
 }
 Sheet.propTypes = {

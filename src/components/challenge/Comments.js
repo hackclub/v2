@@ -72,7 +72,7 @@ class Comments extends Component {
     return (
       <Fragment>
         <Header pb={1}>
-          <Heading.h2 f={[4, 5]} children={name} />
+          <Heading.h2 fontSize={[4, 5]} children={name} />
           <Link href={url} target="_blank" ml={2} color="info">
             <Icon glyph="external" size={32} />
           </Link>
@@ -89,7 +89,7 @@ class Comments extends Component {
             textProps={{
               justify: 'center',
               py: [2, 3],
-              f: [1, 2],
+              fontSize: [1, 2],
               color: 'muted'
             }}
           />

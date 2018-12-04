@@ -37,7 +37,7 @@ const attrs = {
   scale: true,
   py: 3,
   px: 4,
-  f: 2
+  fontSize: 2
 }
 const SubmitButton = styled(IconButton).attrs(attrs)`
   text-transform: uppercase;
@@ -85,9 +85,9 @@ export default ({
       <Nav />
       <Base>
         <Background px={3} pt={4}>
-          <Box.header align="center" pt={4} pb={3}>
-            <Name f={6}>Workshops</Name>
-            <Text color="violet.0" f={[3, 4]} mt={2} bold caps>
+          <Box.header align="center" pt={[4, 5, 6]} pb={3}>
+            <Name fontSize={6}>Workshops</Name>
+            <Text color="violet.0" fontSize={[3, 4]} mt={2} bold caps>
               By Hack Club
             </Text>
             <Text

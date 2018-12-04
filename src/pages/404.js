@@ -144,7 +144,7 @@ const animation2 = keyframes`
 `
 const Blinking = styled(Heading.h1).attrs({
   bold: true,
-  f: [96, 128],
+  fontSize: [96, 128],
   mt: [2, 4],
   color: 'white'
 })`
@@ -179,7 +179,7 @@ export default () => (
     <BG color="dark" />
     <Container maxWidth={48} px={2} py={6} align="center">
       <Blinking>404!</Blinking>
-      <Text f={4} mt={2} mb={4} color="muted">
+      <Text fontSize={4} mt={2} mb={4} color="muted">
         We couldn’t find that page.
       </Text>
       <LargeButton href="/">Go Home 🏡</LargeButton>

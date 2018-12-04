@@ -66,10 +66,10 @@ export default class extends Component {
           <Fragment>
             <Nav breadcrumb={false} />
             <Container color="black" p={3} maxWidth={36}>
-              <Heading.h2 f={5} mt={4}>
+              <Heading.h2 fontSize={5} mt={4}>
                 Update your club leadership team
               </Heading.h2>
-              <Heading.h3 f={4} mt={4} mb={2}>
+              <Heading.h3 fontSize={4} mt={4} mb={2}>
                 Your current team
               </Heading.h3>
               <LeadershipPositionsForm
@@ -77,7 +77,7 @@ export default class extends Component {
                 leaderId={user.new_leader.id}
                 callback={::this.refresh}
               />
-              <Heading.h3 f={4} mt={4} mb={2}>
+              <Heading.h3 fontSize={4} mt={4} mb={2}>
                 Add a new leader
               </Heading.h3>
               <LeaderInviteForm clubId={club.id} callback={::this.refresh} />
@@ -89,8 +89,8 @@ export default class extends Component {
                 bg="info"
                 href={`/checkup/finish?id=${club.id}`}
                 mt={3}
-                w={1}
-                f={4}
+                width={1}
+                fontSize={4}
               >
                 Continue
               </Button>

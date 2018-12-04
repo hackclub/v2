@@ -79,8 +79,12 @@ export default () => (
       ]}
     />
     <Nav color={theme.colors.nightMuted} dark />
-    <Hero src="/night.jpg" aria-label="Blood moon & stars in the night sky">
-      <Container px={3} py={[6, null, 7]}>
+    <Hero
+      src="/night.jpg"
+      aria-label="Blood moon & stars in the night sky"
+      bg="darker"
+    >
+      <Container px={3} py={[6, 7, 8]}>
         <Megaline>Join us for Hack Night.</Megaline>
         <Lead
           fontSize={[3, null, 4]}

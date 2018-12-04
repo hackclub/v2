@@ -63,7 +63,7 @@ const InnerForm = ({
       disabled={isSubmitting}
       onClick={handleSubmit}
       value={statusMessage(status)}
-      w={1}
+      width={1}
     />
   </Form>
 )

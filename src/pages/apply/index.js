@@ -116,10 +116,10 @@ export default class extends Component {
               align="left"
               style={{ mixBlendMode: 'multiply' }}
             >
-              <Heading.h1 f={6} style={{ lineHeight: '1.125' }}>
+              <Heading.h1 fontSize={6} style={{ lineHeight: '1.125' }}>
                 Welcome!
               </Heading.h1>
-              <Text f={4} mt={2} mb={3}>
+              <Text fontSize={4} mt={2} mb={3}>
                 We can’t wait to see your application.
                 <br />
                 Let’s get started!
@@ -127,7 +127,7 @@ export default class extends Component {
               <LoginForm
                 bg="black"
                 color="white"
-                textProps={{ color: 'black', align: 'left', f: 3 }}
+                textProps={{ color: 'black', align: 'left', fontSize: 3 }}
               />
             </Sheet>
           </Full>

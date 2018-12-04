@@ -29,7 +29,7 @@ export const QuotedCommentByline = styled(Byline)`
 
 export const commentStyle = css`
   font-size: ${theme.fontSizes[1]}px;
-  line-height: 1.375;
+  line-height: 1.25;
   vertical-align: middle;
   white-space: pre-line;
   word-wrap: break-word;

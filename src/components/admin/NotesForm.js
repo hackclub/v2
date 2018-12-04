@@ -79,7 +79,7 @@ class SingleNote extends Component {
             } = props
 
             return (
-              <Box.form w={1} onSubmit={handleSubmit}>
+              <Box.form width={1} onSubmit={handleSubmit}>
                 <Field
                   name="body"
                   label={`Note from ${values.author}`}

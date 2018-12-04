@@ -16,8 +16,8 @@ const Module = ({ icon, name, body, ...props }) => (
       style={{ flexShrink: 0 }}
     />
     <Box>
-      <Heading.h3 mb={1} f={3} children={name} />
-      <Text f={2} style={{ lineHeight: '1.375' }} children={body} />
+      <Heading.h3 mb={1} fontSize={3} children={name} />
+      <Text fontSize={2} style={{ lineHeight: '1.375' }} children={body} />
     </Box>
   </Flex>
 )

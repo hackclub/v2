@@ -87,8 +87,8 @@ const WorkshopItem = ({
 }) => (
   <Link to={slug} {...props}>
     <Item style={{ backgroundImage: `url('${bg}')` }}>
-      <Heading.h3 color="white" f={3} mb={[null, 3]} children={name} />
-      <Text color="snow" f={2} children={description} />
+      <Heading.h3 color="white" fontSize={3} mb={[null, 3]} children={name} />
+      <Text color="snow" fontSize={2} children={description} />
     </Item>
   </Link>
 )
@@ -111,9 +111,11 @@ const descriptions = {
 const Track = ({ name, data, ...props }) => (
   <Root id={name} py={[3, 4]} {...props}>
     <Container maxWidth={32} align="center" px={3}>
-      {name && <Heading.h2 color="black" f={4} children={capitalize(name)} />}
+      {name && (
+        <Heading.h2 color="black" fontSize={4} children={capitalize(name)} />
+      )}
       {descriptions[name] && (
-        <Text color="slate" f={2} children={descriptions[name]} />
+        <Text color="slate" fontSize={2} children={descriptions[name]} />
       )}
     </Container>
     <Grid>

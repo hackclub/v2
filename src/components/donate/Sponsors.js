@@ -13,10 +13,10 @@ const Base = styled(Box)`
   }
 `
 
-const Sponsor = ({ name, href, ...props }) => (
+const Sponsor = ({ name, href, img, ...props }) => (
   <Link href={href || `https://${name.toLowerCase()}.com`} target="_blank">
     <Image
-      src={`/inkind_logos/${name.toLowerCase()}.svg`}
+      src={`/inkind_logos/${img || name.toLowerCase() + '.svg'}`}
       alt={name}
       {...props}
     />
@@ -36,6 +36,11 @@ const Sponsors = props => (
     ].map(name => (
       <Sponsor name={name} key={name} />
     ))}
+    <Sponsor
+      name="Fast Forward"
+      href="https://ffwd.org"
+      img="fastforward.png"
+    />
   </Base>
 )
 

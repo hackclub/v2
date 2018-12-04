@@ -27,12 +27,12 @@ class DiscussOnSlack extends Component {
                 bg="red.0"
                 style={{ borderRadius: 4 }}
               >
-                <Text color="primary" f={2}>
+                <Text color="primary" fontSize={2}>
                   Already a member?
                 </Text>
                 <Button
                   ml="auto"
-                  f={2}
+                  fontSize={2}
                   href="https://hackclub.slack.com"
                   target="_blank"
                   chevronRight

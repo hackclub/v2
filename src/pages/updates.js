@@ -43,13 +43,13 @@ const Calendar = styled(Flex)`
   font-weight: ${theme.bold};
 `
 const Year = styled(Text).attrs({
-  f: 3,
+  fontSize: 3,
   py: 1,
   color: 'dark'
 })`
   line-height: 1;
 `
-const Month = styled(Text).attrs({ f: 4, mt: 1 })`
+const Month = styled(Text).attrs({ fontSize: 4, mt: 1 })`
   line-height: 2;
 `
 
@@ -131,12 +131,12 @@ export default () => (
     />
     <style children={styles} />
     <Nav dark />
-    <Box py={4} align="center" justify="center">
-      <Container mt={5} maxWidth={32}>
-        <Heading.h1 color="white" f={6}>
+    <Box py={[4, 5]} align="center" justify="center">
+      <Container pt={5} maxWidth={32}>
+        <Heading.h1 color="white" fontSize={6}>
           Updates
         </Heading.h1>
-        <Text f={4} color="muted" style={{ lineHeight: '1.25' }}>
+        <Text fontSize={4} color="muted" style={{ lineHeight: '1.25' }}>
           Every so often we produce video updates with what’s new at Hack Club.
           Here they all are!
         </Text>

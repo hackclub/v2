@@ -1,4 +1,18 @@
-export default {
+const stubbedStorage = {}
+'get set remove'
+  .split(' ')
+  .forEach(method => (stubbedStorage[method] = () => nil))
+
+let localStorage
+try {
+  localStorage = window.localStorage
+} catch (e) {
+  if (e instanceof ReferenceError) {
+    localStorage = stubbedStorage
+  }
+}
+
+const storage = {
   get: key => {
     try {
       // (max@maxwofford.com) Values that were set before values were stringified might fail to parse, so we return the raw storage item if we can't parse it
@@ -14,3 +28,5 @@ export default {
   set: (key, value) => localStorage.setItem(key, JSON.stringify(value)),
   remove: key => localStorage.removeItem(key)
 }
+
+export default storage

@@ -77,7 +77,6 @@ const Announcement = styled(Sheet).attrs({
 const Dark = styled(Box).attrs({ bg: 'dark', color: 'white' })``
 
 const Grid = styled(Container.withComponent(Flex)).attrs({
-  maxWidth: 64,
   px: [3, 4],
   wrap: true
 })`
@@ -109,6 +108,9 @@ const Channel = styled(Sheet).attrs({
   &:nth-of-type(9) img {
     left: auto;
     right: 0;
+  }
+  &:nth-of-type(12) img {
+    top: 0;
   }
   &:nth-of-type(6) img {
     left: auto;
@@ -160,7 +162,7 @@ const channels = [
   {
     name: 'linux',
     desc:
-      'Share your setup, find ideas, ask for help. We’ve got a community of enthusiasts.',
+      'Share your setup, find ideas, & get help with a community of enthusiasts.',
     color: 'blue'
   },
   {
@@ -183,6 +185,14 @@ const channels = [
   {
     name: 'challenges',
     color: 'yellow'
+  },
+  {
+    name: 'blockchain',
+    color: 'indigo'
+  },
+  {
+    name: 'counttoamillion',
+    color: 'red'
   }
 ]
 
@@ -209,7 +219,7 @@ export default () => (
     <Nav />
     <BackgroundGradient>
       <BackgroundVideo />
-      <Container px={3} pt={[5, 6]} color="white" align="center">
+      <Container px={3} pt={[5, 6, 7]} color="white" align="center">
         <Announcement>
           <Icon size={24} glyph="history" color="slate" />
           <Text color="black" fontSize={2} ml={1} bold>
@@ -229,10 +239,10 @@ export default () => (
             Sign in
           </Link>
         </Announcement>
-        <Heading.h1 f={[6, 7]} mt={[3, 4]} mb={2}>
+        <Heading.h1 fontSize={[6, 7]} mt={[3, 4]} mb={2}>
           Join the Hack Club Slack
         </Heading.h1>
-        <Heading.h2 color="pink.0" f={[4, 5]} mb={4} regular>
+        <Heading.h2 color="pink.0" fontSize={[4, 5]} mb={4} regular>
           Talk to our community, get coding help, have fun.
         </Heading.h2>
         {/* NOTE(@lachlanjc): Waiting on these endpoints
@@ -240,7 +250,7 @@ export default () => (
           <LiveStat
             url=""
             path="total_members"
-            f={7}
+            fontSize={7}
             mx={2}
             fallback="2K"
             label="total members"
@@ -248,7 +258,7 @@ export default () => (
           <LiveStat
             url=""
             path="new_members_this_month"
-            f={7}
+            fontSize={7}
             mx={2}
             fallback="256"
             label="new members this month"
@@ -256,7 +266,7 @@ export default () => (
           <LiveStat
             url=""
             path="new_messages_this_week"
-            f={7}
+            fontSize={7}
             mx={2}
             fallback="12K"
             label="messages this week"
@@ -274,8 +284,8 @@ export default () => (
         <Icon glyph="down-caret" size={48} />
       </Flex>
     </BackgroundGradient>
-    <Dark py={5}>
-      <Container maxWidth={36} px={3} mb={4} align="center">
+    <Dark py={[5, 6]}>
+      <Container maxWidth={36} px={3} mb={5} align="center">
         <ColoredHeadline colors={['fuschia.5', 'pink.5', 'orange.5']} mb={2}>
           Channels galore.
         </ColoredHeadline>

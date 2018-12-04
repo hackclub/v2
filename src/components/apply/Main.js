@@ -34,7 +34,7 @@ const A = styled(DSLink)`
   }
 `
 
-const Title = styled(Heading.h1).attrs({ f: 6 })`
+const Title = styled(Heading.h1).attrs({ fontSize: 6 })`
   line-height: 1.25;
 `
 
@@ -47,13 +47,18 @@ class ContactModal extends Component {
     const { open } = this.state
     return (
       <Fragment>
-        <Button bg="info" onClick={this.toggle} children="Contact us" f={1} />
+        <Button
+          bg="info"
+          onClick={this.toggle}
+          children="Contact us"
+          fontSize={1}
+        />
         {open && (
           <Fragment>
             <Modal w="28rem" align="left" my={4} p={[3, 4]}>
               <CloseButton onClick={this.toggle} />
               <Heading.h2>Contact Us</Heading.h2>
-              <Text f={2}>
+              <Text fontSize={2}>
                 Send any questions about the application process to{' '}
                 <A to="mailto:applications@hackclub.com">
                   applications@hackclub.com
@@ -110,7 +115,7 @@ const SectionBase = styled(Flex).attrs({
   min-height: ${props => (props.sm ? 6 : 10)}rem;
 `
 const SectionHeading = styled(Heading.h2).attrs({
-  f: props => (props.sm ? 4 : 5),
+  fontSize: props => (props.sm ? 4 : 5),
   regular: true,
   align: 'left'
 })`
@@ -201,8 +206,8 @@ const profileStatus = profile =>
   profile.completed_at !== null
     ? 'complete'
     : profile.created_at === profile.updated_at
-      ? 'unopened'
-      : 'incomplete'
+    ? 'unopened'
+    : 'incomplete'
 
 const Main = props => {
   const {
@@ -238,8 +243,8 @@ const Main = props => {
     completeApplication
       ? 'complete'
       : created_at === updated_at
-        ? 'unopened'
-        : 'incomplete'
+      ? 'unopened'
+      : 'incomplete'
 
   const submitStatusProps = {
     unopened: { color: 'primary', children: 'ready for you!' },
@@ -251,10 +256,10 @@ const Main = props => {
   return (
     <Container maxWidth={52} my={4}>
       <Sheet p={[3, 4, 5]}>
-        <Heading.h3 f={[4, 5]} mb={2}>
+        <Heading.h3 fontSize={[4, 5]} mb={2}>
           How to get into Hack Club
         </Heading.h3>
-        <P f={3}>
+        <P fontSize={3}>
           Our admissions process is very competitive, accepting less than 5% of
           applicants. Here’s what we look for:
         </P>
@@ -300,7 +305,7 @@ const Main = props => {
         />
         <LeaderInvite id={id} callback={callback} />
         {coLeaderProfiles.length === 0 && (
-          <Text py={3} color="muted" align="center" f={3}>
+          <Text py={3} color="muted" align="center" fontSize={3}>
             <Text.span bold>No co-leaders yet!</Text.span>
             <br />
             Tap the green button to add them.

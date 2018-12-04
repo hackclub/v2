@@ -88,11 +88,11 @@ const LiveProject = submissionProject => (
   </StaticWrapper>
 )
 
-const EmptyProject = emptyProject => {
-  ;<StaticWrapper>
+const EmptyProject = emptyProject => (
+  <StaticWrapper>
     <CarouselProject project={emptyProject} />
   </StaticWrapper>
-}
+)
 
 const ShortList = projects => (
   <StaticWrapper>

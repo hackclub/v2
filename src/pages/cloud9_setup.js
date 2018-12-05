@@ -5,7 +5,11 @@ import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Cloud9Form from 'components/Cloud9Form'
 
-const Header = styled(Section.withComponent('header'))`
+const Header = styled(Section.withComponent('header')).attrs({
+  px: 0,
+  align: 'center',
+  color: 'white'
+})`
   background-color: ${theme.colors.blue[6]};
   background-image: linear-gradient(
     -18deg,
@@ -19,7 +23,7 @@ export default () => (
   <Fragment>
     <Helmet title="Cloud9 – Hack Club" />
     <Nav />
-    <Header align="center">
+    <Header>
       <Container maxWidth={28} pt={4}>
         <Heading.h1 fontSize={[5, 6]} mt={0} mb={3}>
           Let’s get you coding on Cloud9.

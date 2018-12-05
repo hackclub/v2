@@ -17,14 +17,6 @@ import Sheet from 'components/Sheet'
 import SlackForm from 'components/SlackForm'
 import { ColoredHeadline } from '../components/Content'
 
-/*
-const Stats = styled(Flex)`
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-`
-*/
-
 const BackgroundGradient = styled(Box)`
   position: relative;
   overflow: hidden;

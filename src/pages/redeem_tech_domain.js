@@ -11,7 +11,11 @@ import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import RedeemTechDomainForm from 'components/RedeemTechDomainForm'
 
-const Header = styled(Section.withComponent('header'))`
+const Header = styled(Section.withComponent('header')).attrs({
+  px: 0,
+  align: 'center',
+  color: 'white'
+})`
   background-color: ${theme.colors.red[5]};
   background-image: linear-gradient(
     -32deg,
@@ -25,7 +29,7 @@ export default () => (
   <Fragment>
     <Helmet title="Free .TECH Domain – Hack Club" />
     <Nav />
-    <Header align="center" px={0}>
+    <Header>
       <Container maxWidth={32} pt={4} px={3}>
         <Heading.h1 fontSize={[5, 6]} mt={0} mb={2}>
           Free .TECH Domain!

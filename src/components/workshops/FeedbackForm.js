@@ -51,7 +51,7 @@ const InnerForm = ({
   </form>
 )
 const schema = map(keys(workshopFeedback), key => ({
-  [key]: yup.string()
+  [key]: yup.string().required('required')
 }))
 const FeedbackForm = withFormik({
   validationSchema: yup.object().shape(schema),

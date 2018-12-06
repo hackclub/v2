@@ -28,7 +28,7 @@ import DiscussOnSlack from 'components/DiscussOnSlack'
 import ShareButton from 'components/ShareButton'
 import Sheet from 'components/Sheet'
 import Footer from 'components/Footer'
-import { isEmpty } from 'lodash'
+import { isEmpty, includes } from 'lodash'
 import { org } from 'data.json'
 
 const NotOnPrint = styled(Box)`
@@ -273,8 +273,10 @@ export default ({ data }) => {
             />
           </Flex>
         </Header>
+        {includes(['start'], group) && (
+          <Carousel slug={slug.replace('/workshops/', '')} />
+        )}
       </NotOnPrint>
-      {group == 'start' && <Carousel slug={slug.replace('/workshops/', '')} />}
       <OnlyOnPrint p={3}>
         <Flex align="center" justify="flex-end" my={3}>
           <Image

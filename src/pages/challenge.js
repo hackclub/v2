@@ -104,10 +104,9 @@ const HeaderAreaText = styled(Box)`
 `
 const HeaderAreaInfo = styled(HeaderCard)`
   grid-area: info;
-  ${theme.mediaQueries.md} {
-    p {
-      line-height: 1.75;
-    }
+  p {
+    line-height: 1.375;
+    margin-bottom: ${theme.space[2]}px;
   }
 `
 const HeaderAreaForm = styled(HeaderCard)`
@@ -202,12 +201,13 @@ export default class extends Component {
             </HeaderAreaText>
             <HeaderAreaInfo>
               <Text fontSize={2}>
-                🌟 Challenge: <strong>{challenge.name}</strong>
-                <br />
-                🎁 {challenge.description}
-                <br />
+                🌟 <strong>{challenge.name}</strong>
+              </Text>
+              <Text fontSize={2}>🎁 {challenge.description}</Text>
+              <Text fontSize={2}>
                 ℹ️ Competition open to Hack Club community members
-                <br />
+              </Text>
+              <Text fontSize={2}>
                 🏅 Submissions due {dt(challenge.end)}. Top 3 voted win!
               </Text>
             </HeaderAreaInfo>

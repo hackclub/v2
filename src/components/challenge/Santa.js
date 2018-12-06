@@ -28,8 +28,8 @@ const Santa = () => (
     align="center"
     justify={['center', 'flex-start']}
     wrap
-    bg="teal.1"
-    color="teal.9"
+    bg="teal.7"
+    color="white"
   >
     <Flex
       justify={['center', 'flex-start']}
@@ -37,10 +37,10 @@ const Santa = () => (
       flex="1 1 auto"
       mb={[3, 0]}
     >
-      <Icon glyph="bag" size={48} color="primary" />
+      <Icon glyph="bag" size={48} />
       <Box align="left" ml={[2, 3]}>
         <Text fontSize={2}>This season we’re running a</Text>
-        <Text fontSize={3} bold color="primary">
+        <Text fontSize={3} bold>
           Hack&nbsp;Club Secret&nbsp;Santa
         </Text>
       </Box>

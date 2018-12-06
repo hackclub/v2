@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Link as A, Text, theme } from '@hackclub/design-system'
+import { Flex, Icon, Link as A, Text, theme } from '@hackclub/design-system'
 
 export const BreadcrumbList = styled(Flex.withComponent('ol'))`
   font-size: ${theme.fontSizes[3]}px;
@@ -36,5 +36,5 @@ export const Breadcrumb = ({ type = 'Thing', position, name, ...props }) => (
   </li>
 )
 export const BreadcrumbDivider = () => (
-  <Text.span mx={2} color="snow" fontSize={3} children="›" />
+  <Icon glyph="view-forward" size={28} color="snow" mx={1} />
 )

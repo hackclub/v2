@@ -261,7 +261,7 @@ export default class extends Component {
 export const pageQuery = graphql`
   query ChallengeQuery {
     allChallengesJson(
-      filter: { id: { eq: "4" } }
+      filter: { id: { eq: "7" } }
       sort: { fields: [start], order: DESC }
       limit: 1
     ) {

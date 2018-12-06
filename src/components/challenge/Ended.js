@@ -1,7 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
-import { Box, Text } from '@hackclub/design-system'
-import Icon from '@hackclub/icons'
+import { Box, Icon, Text } from '@hackclub/design-system'
 import Sheet from 'components/Sheet'
 
 const Root = styled(Sheet)`
@@ -17,7 +16,7 @@ const spin = keyframes`
     transform: rotate(360deg);
   }
 `
-const Indicator = styled(Box.withComponent(Icon))`
+const Indicator = styled(Icon)`
   animation: ${spin} 8s linear infinite;
 `
 

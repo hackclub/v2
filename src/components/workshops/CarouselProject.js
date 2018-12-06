@@ -48,7 +48,9 @@ const LinkBar = styled(Flex).attrs({
 const DeadLink = styled(Text.span).attrs({
   fontSize: 3,
   color: 'muted'
-})``
+})`
+  text-decoration: line-through;
+`
 
 const AuthorLabel = styled(Text).attrs({
   mx: 1,

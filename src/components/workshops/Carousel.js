@@ -63,7 +63,7 @@ const LoadingWrapper = styled(Box)`
 
 const LoadingCarousel = () => (
   <Fragment>
-    <Heading.h3>Loading Projects...</Heading.h3>
+    <Heading.h3>Loading Projects…</Heading.h3>
     <LoadingWrapper>
       <Loading />
     </LoadingWrapper>

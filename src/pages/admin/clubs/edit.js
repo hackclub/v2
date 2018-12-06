@@ -46,7 +46,7 @@ class OwnerForm extends Component {
       tempCache[value] = [
         {
           id: '',
-          label: 'loading...'
+          label: 'loading…'
         }
       ]
       this.setState({ cache: tempCache })

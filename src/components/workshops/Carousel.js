@@ -27,6 +27,7 @@ const RehackSlider = styled(Slider)`
 
 const CarouselOuter = styled(Flex).attrs({
   bg: 'smoke',
+  color: 'black',
   pt: [2, 3, 4],
   pb: [3, null, 4],
   flexDirection: 'column',
@@ -148,7 +149,7 @@ const LoadedCarousel = (
       align="center"
       mb={[2, null, 3]}
     >
-      <Heading.h3 fontSize={4} color="black" mr={[null, null, 3]}>
+      <Heading.h3 fontSize={4} mr={[null, null, 3]}>
         {projectCount} Rehack
         {projectCount != 1 && 's'}
       </Heading.h3>

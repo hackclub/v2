@@ -4,20 +4,23 @@ import { isURL } from 'validator'
 import {
   Box,
   Flex,
-  Label,
+  Card,
   Link as A,
   Text,
   Image,
   theme
 } from '@hackclub/design-system'
+import Sheet from 'components/Sheet'
 
-const ProjectOuter = styled(Box).attrs({
+const ProjectOuter = styled(Sheet).attrs({
   bg: 'white',
+  p: 0,
+  my: 0,
   mx: 1
 })`
   flex-shrink: 0;
   overflow: hidden;
-  border-radius: 10px 10px 10px 10px;
+  border-radius: ${theme.radii[2]};
 
   width: 180px;
   ${theme.mediaQueries.sm} {
@@ -42,12 +45,12 @@ const LinkBar = styled(Flex).attrs({
   mx: 1
 })``
 
-const DeadLink = styled(Text).attrs({
+const DeadLink = styled(Text.span).attrs({
   fontSize: 3,
-  color: theme.colors.silver
+  color: 'muted'
 })``
 
-const AuthorLabel = styled(Label).attrs({
+const AuthorLabel = styled(Text).attrs({
   mx: 1,
   fontSize: 3
 })`
@@ -55,7 +58,7 @@ const AuthorLabel = styled(Label).attrs({
 `
 
 const ImageWrapper = styled(Box).attrs({
-  mb: [0, 0, 2],
+  mb: [0, null, 2],
   justify: 'center'
 })`
   padding-bottom: 50%;

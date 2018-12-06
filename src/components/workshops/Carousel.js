@@ -9,7 +9,7 @@ import {
   Flex,
   Text,
   Heading,
-  Button,
+  LargeButton,
   Loading,
   theme
 } from '@hackclub/design-system'
@@ -26,8 +26,8 @@ const RehackSlider = styled(Slider)`
 
 const CarouselOuter = styled(Flex).attrs({
   bg: 'smoke',
-  pt: [2, 2, 3],
-  pb: [3, 3, 4],
+  pt: [2, 3, 4],
+  pb: [3, null, 4],
   flexDirection: 'column',
   align: 'center'
 })``
@@ -295,15 +295,9 @@ class Carousel extends Component {
             setSubmissionData={setSubmissionData}
           />
         ) : (
-          <Button
-            px={[3, null, 4]}
-            py={[2, null, 3]}
-            scale
-            fontSize={4}
-            onClick={onClickSubmitButton}
-          >
+          <LargeButton scale fontSize={4} onClick={onClickSubmitButton}>
             I made something
-          </Button>
+          </LargeButton>
         )}
       </CarouselOuter>
     )

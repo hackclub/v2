@@ -11,6 +11,7 @@ import {
   Heading,
   LargeButton,
   Loading,
+  Icon,
   theme
 } from '@hackclub/design-system'
 
@@ -40,12 +41,18 @@ const SliderWrapper = styled(Box).attrs({ mb: [3, 3, 4] })`
   align-self: stretch;
 `
 
-const ShowAllProjects = styled(Text).attrs({
+const ShowAllProjects = styled(Flex).attrs({
   fontSize: [1, 2, 3],
-  mb: [3, null, 4],
   color: 'muted'
 })`
   cursor: pointer;
+  svg {
+    transform: rotate(-90deg);
+    transition: ${theme.transition} transform;
+  }
+  &[aria-expanded='true'] svg {
+    transform: rotate(0deg);
+  }
 `
 
 const ShowAllGrid = styled(Flex).attrs({
@@ -96,7 +103,9 @@ const EmptyProject = emptyProject => (
 
 const ShortList = projects => (
   <StaticWrapper>
-    <CarouselProject project={emptyProject} />
+    {projects.map(project => (
+      <CarouselProject project={project} key={project.screenshot.id} />
+    ))}
   </StaticWrapper>
 )
 
@@ -134,13 +143,23 @@ const LoadedCarousel = (
   emptyProject
 ) => (
   <Fragment>
-    <Heading.h3>
-      {projectCount} Rehack
-      {projectCount != 1 && 's'}
-    </Heading.h3>
-    <ShowAllProjects onClick={onClickShowAll} mb={[2, 2, 3]}>
-      {showAll ? 'ok stack them back up' : 'Show All'}
-    </ShowAllProjects>
+    <Flex
+      flexDirection={['column', null, 'row']}
+      align="center"
+      mb={[2, null, 3]}
+    >
+      <Heading.h3 fontSize={4} color="black" mr={[null, null, 3]}>
+        {projectCount} Rehack
+        {projectCount != 1 && 's'}
+      </Heading.h3>
+      <ShowAllProjects onClick={onClickShowAll} aria-expanded={showAll}>
+        <Icon glyph="down-caret" size={32} />
+        <Text.span
+          ml={1}
+          children={showAll ? 'ok stack them back up' : 'Show All'}
+        />
+      </ShowAllProjects>
+    </Flex>
     {showAll
       ? AllProjects(projects)
       : liveFrameStatus != 'empty'

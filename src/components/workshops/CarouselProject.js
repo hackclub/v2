@@ -52,9 +52,13 @@ const DeadLink = styled(Text.span).attrs({
 
 const AuthorLabel = styled(Text).attrs({
   mx: 1,
-  fontSize: 3
+  fontSize: 3,
+  color: 'slate'
 })`
   white-space: nowrap;
+  strong {
+    color: ${theme.colors.black};
+  }
 `
 
 const ImageWrapper = styled(Box).attrs({
@@ -96,7 +100,13 @@ class CarouselProject extends Component {
     } = project
 
     const authorString =
-      user && user.username ? `By ${user.username}` : '¯\\_(ツ)_/¯'
+      user && user.username ? (
+        <Fragment>
+          By <strong>{user.username}</strong>
+        </Fragment>
+      ) : (
+        '¯\\_(ツ)_/¯'
+      )
 
     const imageUrl = liveFrame
       ? (() => {

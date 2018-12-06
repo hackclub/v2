@@ -2,11 +2,13 @@ import React, { Fragment, Component } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import {
   Box,
-  Flex,
   Container,
+  Flex,
   Heading,
-  Text,
+  Image,
+  Link,
   Section,
+  Text,
   theme,
   cx
 } from '@hackclub/design-system'
@@ -19,6 +21,7 @@ import IconButton from 'components/IconButton'
 import Help from 'components/challenge/Help'
 import Form from 'components/challenge/Form'
 import Ended from 'components/challenge/Ended'
+import Santa from 'components/challenge/Santa'
 import Posts from 'components/challenge/Posts'
 import DiscussChallenge from 'components/challenge/DiscussChallenge'
 import {
@@ -215,7 +218,7 @@ export default class extends Component {
           </HeaderContainer>
         </Header>
         <Container maxWidth={48} pt={4} pb={5} px={[0, 3]}>
-          {ended && <Ended />}
+          {ended ? <Ended /> : <Santa />}
           <SubmissionsHeading align="center" pb={2} px={[2, 0]}>
             <Flex align="center" flex="1 1 auto" wrap>
               <Heading.h2 color="black" fontSize={5} mr={2}>

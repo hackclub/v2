@@ -91,6 +91,9 @@ const HeaderCard = styled(Sheet).attrs({ p: 3, mb: 0 })`
   p {
     color: ${theme.colors.black} !important;
   }
+  input[type='submit'] {
+    color: ${theme.colors.info} !important;
+  }
 `
 
 const HeaderAreaText = styled(Box)`

@@ -174,16 +174,28 @@ export default class extends Component {
           >
             <HeaderAreaText align="center" pt={[4, 3]}>
               <Name fontSize={6}>Challenge</Name>
-              <Text
-                color="rgba(255, 255, 255, 0.875)"
-                fontSize={[3, 4]}
-                mt={2}
-                mx={3}
-                bold
-                caps
-              >
-                By Hack Club
-              </Text>
+              <Flex my={3} align="center" justify="center">
+                <Link href="https://repl.it" target="_blank">
+                  <Image
+                    alt="Sourcegraph logo"
+                    src="/sourcegraph-light.svg"
+                    width={[144, 224]}
+                  />
+                </Link>
+                <Text.span
+                  color="rgba(255, 255, 255, 0.875)"
+                  fontSize={4}
+                  mx={[2, 3]}
+                  children="+"
+                />
+                <Text.span
+                  color="white"
+                  fontSize={[3, 4]}
+                  bold
+                  caps
+                  children="Hack Club"
+                />
+              </Flex>
             </HeaderAreaText>
             <HeaderAreaInfo>
               <Text fontSize={2}>

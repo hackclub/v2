@@ -2,8 +2,11 @@ import styled from 'styled-components'
 import { Box, theme } from '@hackclub/design-system'
 import { range } from 'lodash'
 
+const system = theme.font.replace('"Phantom Sans",', '')
+
 const MarkdownBody = styled(Box)`
   color: ${theme.colors.black};
+  font-family: ${system};
   font-size: 112.5%;
   line-height: 1.625;
   word-wrap: break-word;

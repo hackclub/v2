@@ -64,8 +64,7 @@ const AuthorLabel = styled(Text).attrs({
 `
 
 const ImageWrapper = styled(Box).attrs({
-  mb: [0, null, 2],
-  justify: 'center'
+  mb: [0, null, 2]
 })`
   padding-bottom: 50%;
   position: relative;
@@ -85,7 +84,7 @@ const WrappedImage = styled(Image)`
 const WrappedText = styled(Text).attrs({ color: 'muted', align: 'center' })`
   transform: rotate(-3deg);
   position: absolute;
-  bottom: 30px;
+  bottom: 36px;
   left: 0;
   right: 0;
 `
@@ -133,18 +132,14 @@ class CarouselProject extends Component {
         </ImageWrapper>
         <TextBar>
           <AuthorLabel>{authorString}</AuthorLabel>
-          <LinkBar>
+          <LinkBar fontSize={3}>
             {isURL(live_url) ? (
-              <A mr={2} fontSize={3} href={live_url}>
-                Live
-              </A>
+              <A mr={2} href={live_url} children="Live" />
             ) : (
               <DeadLink mr={2}>Live</DeadLink>
             )}
             {isURL(code_url) ? (
-              <A ml={2} fontSize={3} href={code_url}>
-                Code
-              </A>
+              <A ml={2} href={code_url} children="Code" />
             ) : (
               <DeadLink ml={2}>Code</DeadLink>
             )}

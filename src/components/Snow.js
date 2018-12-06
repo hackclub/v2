@@ -1,9 +1,6 @@
 // Heavily inspired by https://github.com/jungledre/react-snow-effect
 import React, { Component } from 'react'
 
-const DEFAULT_WIDTH = 1024
-const DEFAULT_HEIGHT = 768
-
 class Snow extends Component {
   constructor(props) {
     super(props)
@@ -11,17 +8,26 @@ class Snow extends Component {
     this.state = {
       intervalTracker: null,
       canvasCtx: null,
-      height: props.height || window.innerHeight || DEFAULT_HEIGHT,
-      width: props.width || window.innerWidth || DEFAULT_WIDTH
+      height: props.height,
+      width: props.width
     }
 
     this.canvas = React.createRef()
+  }
+
+  defaultProps = {
+    width: 1024,
+    height: 768
   }
 
   componentDidMount() {
     // Canvas init
     const { canvas } = this
     const canvasCtx = canvas[0].getContext('2d')
+
+    if (window) {
+      this.setState({ height: window.innerHeight, width: window.innerWidth })
+    }
 
     this.setState({ canvasCtx })
     const { width: W, height: H } = this.state
@@ -62,17 +68,17 @@ class Snow extends Component {
       for (let i = 0; i < mp; i++) {
         const p = particles[i]
         // Updating X and Y coordinates
-        // We will add 1 to the cos function to prevent negative values which will lead flakes to move upwards
-        // Every particle has its own density which can be used to make the downward movement different for each flake
-        // Lets make it more random by adding in the radius
+        // Adding 1 to cos to prevent negative values (which would move flakes upwards)
+        // Every particle has its own density to make the downward movement different for each flake
+        // Make it more random by adding in the radius
         p.y += Math.cos(angle + p.d) + 1 + p.r / 2
         p.x += Math.sin(angle) * 2
 
         // Sending flakes back from the top when it exits
-        // Lets make it a bit more organic and let flakes enter from the left and right also.
+        // Make it more organic with flakes entering from both sides
         if (p.x > W + 5 || p.x < -5 || p.y > H) {
           if (i % 3 > 0) {
-            // 66.67% of the flakes
+            // 2/3 of the flakes
             particles[i] = { x: Math.random() * W, y: -10, r: p.r, d: p.d }
           } else {
             // If the flake is exitting from the right
@@ -100,7 +106,7 @@ class Snow extends Component {
   }
 
   render() {
-    const snowStyles = {
+    const style = {
       margin: 0,
       padding: 0,
       pointerEvents: 'none',
@@ -112,7 +118,7 @@ class Snow extends Component {
     return (
       <canvas
         ref={this.canvas}
-        style={snowStyles}
+        style={style}
         width={this.state.width}
         height={this.state.height}
       />

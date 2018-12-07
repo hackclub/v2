@@ -124,9 +124,9 @@ const SubmissionsHeading = styled(Flex)`
   border-bottom: 1px solid ${theme.colors.smoke};
 `
 
-const title = 'Hack Club Challenge'
+const title = 'Hack Club Challenge – Holiday 2018'
 const desc =
-  'Join Hack Club’s high school coding challenge. Submit your entry to compete in our monthly programming contest and win prizes.'
+  'Join Hack Club’s high school coding challenge. Submit your entry to compete in our monthly programming contest and win prizes, sponsored by Sourcegraph.'
 const img = 'https://hackclub.com/cards/challenge.png'
 
 export default class extends Component {

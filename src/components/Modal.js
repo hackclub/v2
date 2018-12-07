@@ -46,7 +46,7 @@ const Modal = styled(Sheet).attrs({ bg: 'white' })`
   }
 `
 
-const Overlayer = styled(Box)`
+const Overlay = styled(Box)`
   z-index: 1024;
   background-color: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(6px);
@@ -58,12 +58,14 @@ const Overlayer = styled(Box)`
   height: 100%;
 `
 
+/*
 const Overlay = props => (
   <Fragment>
     <Overlayer {...props} />
     <ScrollLock />
   </Fragment>
 )
+*/
 
 const ButtonReset = styled(Box.withComponent('button')).attrs({
   role: 'button',

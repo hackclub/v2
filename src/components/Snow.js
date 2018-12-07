@@ -5,8 +5,9 @@ class Snow extends Component {
   constructor(props) {
     super(props)
 
-    const width = window ? window.innerWidth : props.width
-    const height = window ? window.innerHeight : props.height
+    const browser = typeof window === 'object'
+    const width = browser ? window.innerWidth : props.width
+    const height = browser ? window.innerHeight : props.height
 
     this.state = {
       intervalTracker: null,

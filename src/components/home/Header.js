@@ -129,10 +129,10 @@ export default () => (
       <Announcement>
         <Icon size={24} glyph="notification" color="slate" mr={1} />
         <Flex color="black" fontSize={1}>
-          <strong>New for leaders!</strong>
+          <strong>New winter challenge</strong>
           <Hide xs sm ml={1}>
             {'– '}
-            share club marketing materials
+            ship a project & get gifts 🎁
           </Hide>
         </Flex>
         <A
@@ -142,7 +142,7 @@ export default () => (
           px={2}
           bold
           ml="auto"
-          href="https://leaders.hackclub.com/?ref=home"
+          href="/challenge"
           chevronRight
         >
           Learn more

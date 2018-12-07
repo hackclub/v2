@@ -21,6 +21,7 @@ import IconButton from 'components/IconButton'
 import Help from 'components/challenge/Help'
 import Form from 'components/challenge/Form'
 import Ended from 'components/challenge/Ended'
+import Story from 'components/challenge/Story'
 import Santa from 'components/challenge/Santa'
 import Posts from 'components/challenge/Posts'
 import DiscussChallenge from 'components/challenge/DiscussChallenge'
@@ -73,7 +74,9 @@ const HeaderContainer = styled(Container)`
               'info form';
             ${HeaderAreaText} {
               text-align: right;
-              margin-right: -${theme.space[2]}px;
+              h1 {
+                margin-right: -${theme.space[2]}px;
+              }
             }
           `
         : css`
@@ -94,9 +97,13 @@ const HeaderCard = styled(Sheet).attrs({ p: 3, mb: 0 })`
   p {
     color: ${theme.colors.black} !important;
   }
-  input[type='submit'] {
-    color: ${theme.colors.info} !important;
-  }
+  ${props =>
+    props.status === 'needsToAuth' &&
+    css`
+      input[type='submit'] {
+        color: ${theme.colors.info} !important;
+      }
+    `};
 `
 
 const HeaderAreaText = styled(Box)`
@@ -176,8 +183,14 @@ export default class extends Component {
           >
             <HeaderAreaText align="center" pt={[4, 3]}>
               <Name fontSize={6}>Challenge</Name>
-              <Flex my={3} align="center" justify="center">
-                <Link href="https://repl.it" target="_blank">
+              <Flex
+                my={3}
+                align="center"
+                justify={
+                  status === 'success' ? ['center', 'flex-end'] : 'center'
+                }
+              >
+                <Link href="https://sourcegraph.com" target="_blank">
                   <Image
                     alt="Sourcegraph logo"
                     src="/sourcegraph-light.svg"
@@ -211,15 +224,16 @@ export default class extends Component {
                 🏅 Submissions due {dt(challenge.end)}. Top 3 voted win!
               </Text>
             </HeaderAreaInfo>
-            <HeaderAreaForm>
+            <HeaderAreaForm status={status}>
               <Help />
               <Form challengeId={challenge.id} status={status} />
             </HeaderAreaForm>
           </HeaderContainer>
+          <Story />
         </Header>
         <Container maxWidth={48} pt={4} pb={5} px={[0, 3]}>
           {ended ? <Ended /> : <Santa />}
-          <SubmissionsHeading align="center" pb={2} px={[2, 0]}>
+          <SubmissionsHeading align="center" pb={2} pl={[2, 0]} pr={[2, 3]}>
             <Flex align="center" flex="1 1 auto" wrap>
               <Heading.h2 color="black" fontSize={5} mr={2}>
                 Submissions

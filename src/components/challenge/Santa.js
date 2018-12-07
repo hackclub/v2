@@ -13,9 +13,7 @@ const spin = keyframes`
     transform: rotate(360deg);
   }
 `
-const Root = styled(Sheet)`
-  display: flex;
-  align-items: center;
+const Root = styled(Sheet.withComponent(Flex))`
   a svg {
     animation: ${spin} 8s linear infinite;
   }
@@ -26,10 +24,10 @@ const Santa = () => (
     mb={4}
     p={[4, 3]}
     align="center"
-    justify={['center', 'flex-start']}
+    flexDirection={['column', 'row']}
     wrap
-    bg="teal.7"
-    color="white"
+    bg="red.0"
+    color="primary"
   >
     <Flex
       justify={['center', 'flex-start']}

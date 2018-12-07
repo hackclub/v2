@@ -5,29 +5,28 @@ class Snow extends Component {
   constructor(props) {
     super(props)
 
+    const width = window ? window.innerWidth : props.width
+    const height = window ? window.innerHeight : props.height
+
     this.state = {
       intervalTracker: null,
       canvasCtx: null,
-      height: props.height,
-      width: props.width
+      height,
+      width
     }
 
     this.canvas = React.createRef()
   }
 
-  defaultProps = {
+  static defaultProps = {
     width: 1024,
     height: 768
   }
 
   componentDidMount() {
     // Canvas init
-    const { canvas } = this
-    const canvasCtx = canvas[0].getContext('2d')
-
-    if (window) {
-      this.setState({ height: window.innerHeight, width: window.innerWidth })
-    }
+    const canvas = this.canvas.current
+    const canvasCtx = canvas.getContext('2d')
 
     this.setState({ canvasCtx })
     const { width: W, height: H } = this.state
@@ -50,7 +49,7 @@ class Snow extends Component {
 
       canvasCtx.fillStyle = 'rgba(255, 255, 255, 0.75)'
       canvasCtx.beginPath()
-      for (let i = 0; i < mp; i++) {
+      for (let i = 0; i < max; i++) {
         const p = particles[i]
         canvasCtx.moveTo(p.x, p.y)
         canvasCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true)
@@ -65,7 +64,7 @@ class Snow extends Component {
 
     const update = () => {
       angle += 0.01
-      for (let i = 0; i < mp; i++) {
+      for (let i = 0; i < max; i++) {
         const p = particles[i]
         // Updating X and Y coordinates
         // Adding 1 to cos to prevent negative values (which would move flakes upwards)

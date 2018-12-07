@@ -107,6 +107,6 @@ export default () => (
         </IconButton>
       </Container>
     </Hero>
-    <Footer dark />
+    <Footer />
   </Fragment>
 )

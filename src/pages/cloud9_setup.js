@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 import React, { Fragment } from 'react'
-import { Container, Heading, Section, theme } from '@hackclub/design-system'
+import { Container, Section, theme } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
+import { Headline, Lead } from 'components/Content'
 import Nav from 'components/Nav'
+import Sheet from 'components/Sheet'
 import Cloud9Form from 'components/Cloud9Form'
 
-const Header = styled(Section.withComponent('header')).attrs({
-  px: 0,
+const Base = styled(Section).attrs({
+  px: 3,
   align: 'center',
   color: 'white'
 })`
@@ -17,22 +19,23 @@ const Header = styled(Section.withComponent('header')).attrs({
     ${theme.colors.blue[6]},
     ${theme.colors.blue[7]}
   );
+  min-height: 100vh;
 `
 
 export default () => (
   <Fragment>
     <Helmet title="Cloud9 – Hack Club" />
     <Nav />
-    <Header>
-      <Container maxWidth={28} pt={4}>
-        <Heading.h1 fontSize={[5, 6]} mt={0} mb={3}>
-          Let’s get you coding on Cloud9.
-        </Heading.h1>
-        <Heading.h2 color="blue.0" fontSize={[3, 4]}>
-          Enter your email below and you’ll receive an invitation.
-        </Heading.h2>
+    <Base>
+      <Container maxWidth={28} pt={[5, 6]}>
+        <Headline mb={3}>Let’s get you coding on Cloud9.</Headline>
+        <Lead color="blue.0" maxWidth={20}>
+          Enter your email below & you’ll receive an invitation.
+        </Lead>
       </Container>
-    </Header>
-    <Cloud9Form />
+      <Sheet maxWidth={28} align="left" my={4} mx="auto">
+        <Cloud9Form />
+      </Sheet>
+    </Base>
   </Fragment>
 )

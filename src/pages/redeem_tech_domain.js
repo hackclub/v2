@@ -8,11 +8,13 @@ import {
   theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
+import { Headline, Lead } from 'components/Content'
 import Nav from 'components/Nav'
+import Sheet from 'components/Sheet'
 import RedeemTechDomainForm from 'components/RedeemTechDomainForm'
 
-const Header = styled(Section.withComponent('header')).attrs({
-  px: 0,
+const Base = styled(Section).attrs({
+  px: 3,
   align: 'center',
   color: 'white'
 })`
@@ -23,27 +25,28 @@ const Header = styled(Section.withComponent('header')).attrs({
     ${theme.colors.red[5]},
     ${theme.colors.red[6]}
   );
+  min-height: 100vh;
 `
 
 export default () => (
   <Fragment>
     <Helmet title="Free .TECH Domain – Hack Club" />
     <Nav />
-    <Header>
-      <Container maxWidth={32} pt={4} px={3}>
-        <Heading.h1 fontSize={[5, 6]} mt={0} mb={2}>
-          Free .TECH Domain!
-        </Heading.h1>
-        <Heading fontSize={[3, 4]}>
+    <Base>
+      <Container maxWidth={32} pt={[5, 6]}>
+        <Headline mb={3}>Free .TECH Domain!</Headline>
+        <Lead color="red.0" maxWidth={28} mb={2}>
           Every Hack Club member gets a free .TECH domain from our awesome
           partners.
-        </Heading>
-        <Text fontSize={3} mt={2} style={{ lineHeight: '1.25' }}>
+        </Lead>
+        <Lead color="red.0" maxWidth={28}>
           Submit your request below and the .TECH team will set you up—it
           generally takes about a day.
-        </Text>
+        </Lead>
       </Container>
-    </Header>
-    <RedeemTechDomainForm />
+      <Sheet maxWidth={28} align="left" my={4} mx="auto">
+        <RedeemTechDomainForm />
+      </Sheet>
+    </Base>
   </Fragment>
 )

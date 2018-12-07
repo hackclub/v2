@@ -216,7 +216,9 @@ export default class extends Component {
               <Text fontSize={2}>
                 🌟 <strong>{challenge.name}</strong>
               </Text>
-              <Text fontSize={2}>🎁 {challenge.description}</Text>
+              <Text fontSize={2}>
+                🎁 {challenge.description} (thank you <Link href="https://sourcegraph.com" target="_blank">Sourcegraph</Link>!)
+              </Text>
               <Text fontSize={2}>
                 ℹ️ Competition open to Hack Club community members
               </Text>

@@ -83,4 +83,4 @@ const CloseButton = props => (
   </ButtonReset>
 )
 
-export default { Modal, Overlay, Overlayer, CloseButton }
+export default { Modal, Overlay, CloseButton }

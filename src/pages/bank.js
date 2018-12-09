@@ -16,6 +16,7 @@ import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import Module from 'components/Module'
 import Sheet from 'components/Sheet'
+import { Lead } from 'components/Content'
 import BankStats from 'components/bank/BankStats'
 
 const styles = `
@@ -81,9 +82,6 @@ const Headline = styled(Heading.h2).attrs({
 `
 const subhline = { fontSize: [3, 4], style: { lineHeight: '1.375' } }
 
-const Lead = Container.withComponent(Text)
-Lead.defaultProps = { fontSize: 3, mx: 'auto' }
-
 const Banner = styled(Container).attrs({
   maxWidth: 48,
   mt: [5, 6],
@@ -124,8 +122,15 @@ export default () => (
     />
     <style children={styles} />
     <Nav dark />
-    <Box>
-      <Megaline pt={[6, 7]}>The bank for student hackers.</Megaline>
+    <Box pt={[6, 7]}>
+      <Image
+        src={require('../../static/bank/logo.svg')}
+        alt="Hack Club Bank logo"
+        width={128}
+        mx="auto"
+        mb={3}
+      />
+      <Megaline>The bank for student hackers.</Megaline>
       <Lead color="inherit" px={3} maxWidth={48} my={[3, 4]}>
         Hack Club Bank is the best place for high school hackers to store money
         for hackathons. Student organizers can invoice sponsors, issue physical
@@ -162,7 +167,7 @@ export default () => (
         body="Add notes to transactions, export data, issue reimbursements. Easy."
       />
     </Modules>
-    <Container maxWidth={48} my={4}>
+    <Container maxWidth={48} mt={[5, 6]} mb={4}>
       <Image
         width={1}
         src="/bank-screenshot.png"
@@ -236,6 +241,41 @@ export default () => (
         Hack Club does not directly provide banking services. Banking services
         provided by Silicon Valley Bank, an FDIC-certified institution.
       </Lead>
+    </Container>
+    <Container maxWidth={48} py={[4, 5]} px={3} color="snow">
+      <Headline align={['left', 'center']}>More organizer resources</Headline>
+      <Flex flexDirection={['column', 'row']} align="left" mt={4}>
+        <Container maxWidth={24} mb={3}>
+          <Heading.h3 {...subhline}>Hackathons Directory</Heading.h3>
+          <Text color="smoke" fontSize={2} mt={2} mb={3}>
+            We maintain an up-to-date directory of high school hackathons
+            happening all around the world. Attend some and add yours!
+          </Text>
+          <A
+            href="https://hackathons.hackclub.com"
+            chevronRight
+            hoverline
+            color="primary"
+          >
+            See the list
+          </A>
+        </Container>
+        <Container maxWidth={24} mb={3}>
+          <Heading.h3 {...subhline}>#organizers channel on Slack</Heading.h3>
+          <Text color="smoke" fontSize={2} mt={2} mb={3}>
+            On our Slack, we have a worldwide community of hundreds of event
+            organizers. Get advice and connect with fellow organizers.
+          </Text>
+          <A
+            href="https://slack.hackclub.com"
+            chevronRight
+            hoverline
+            color="primary"
+          >
+            Join our Slack
+          </A>
+        </Container>
+      </Flex>
     </Container>
     <Footer dark />
   </Box>

@@ -54,7 +54,7 @@ export default () => (
         Looking for the{' '}
         <A
           color={campTheme[0]}
-          href="https://hackclub.github.io/camp/"
+          href="https://hackclub-archive.github.io/camp/"
           children="old Hack Camp website"
         />
         ?

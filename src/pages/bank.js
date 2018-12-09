@@ -243,7 +243,7 @@ export default () => (
       </Lead>
     </Container>
     <Container maxWidth={48} py={[4, 5]} px={3} color="snow">
-      <Headline>More organizer resources</Headline>
+      <Headline align={['left', 'center']}>More organizer resources</Headline>
       <Flex flexDirection={['column', 'row']} align="left" mt={4}>
         <Container maxWidth={24} mb={3}>
           <Heading.h3 {...subhline}>Hackathons Directory</Heading.h3>

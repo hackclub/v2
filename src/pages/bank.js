@@ -124,8 +124,15 @@ export default () => (
     />
     <style children={styles} />
     <Nav dark />
-    <Box>
-      <Megaline pt={[6, 7]}>The bank for student hackers.</Megaline>
+    <Box pt={[6, 7]}>
+      <Image
+        src={require('../../static/bank/logo.svg')}
+        alt="Hack Club Bank logo"
+        width={128}
+        mx="auto"
+        mb={3}
+      />
+      <Megaline>The bank for student hackers.</Megaline>
       <Lead color="inherit" px={3} maxWidth={48} my={[3, 4]}>
         Hack Club Bank is the best place for high school hackers to store money
         for hackathons. Student organizers can invoice sponsors, issue physical

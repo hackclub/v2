@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 import React, { Fragment } from 'react'
 import {
-  Button,
   Container,
   Heading,
-  Text,
+  Icon,
+  LargeButton as Button,
+  Link as A,
   Section,
-  Link as A
+  Text
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
@@ -16,7 +17,7 @@ import Footer from 'components/Footer'
 // These 2 colors are from the gradient used on the original Hack Camp website
 const campTheme = ['rgb(255, 75, 85)', 'rgb(212, 78, 116)']
 
-const Header = styled(Section.withComponent('header'))`
+const Header = styled(Section)`
   background-color: ${campTheme[0]};
   background-image: linear-gradient(
     45deg,
@@ -32,8 +33,9 @@ export default () => (
     <Helmet title="Hack Camp – Hack Club" />
     <Nav />
     <Header align="center">
-      <Container maxWidth={32} pt={4}>
-        <Heading.h1 fontSize={[5, 6]} mt={0} mb={2}>
+      <Container maxWidth={32} pt={[5, 6]} pb={4} px={3} color="white">
+        <Icon glyph="history" size={64} />
+        <Heading.h1 fontSize={[5, 6]} mb={2}>
           Hack Camp has been discontinued.
         </Heading.h1>
         <Heading fontSize={[3, 4]}>
@@ -41,20 +43,29 @@ export default () => (
         </Heading>
       </Container>
     </Header>
-    <Container maxWidth={32} py={[3, 4]} color="black" align="center">
+    <Container maxWidth={36} py={[5, 6]} px={3} color="black" align="center">
       <Text fontSize={3}>
         Apply to our clubs program and we’ll help you launch and lead a coding
         club at your school. It’s like summer camp, except that it runs all year
         long!
       </Text>
-      <Button.link bg={campTheme[0]} color="white" to="/" my={4}>
-        Learn More + Apply »
+      <Button.link
+        bg={campTheme[0]}
+        color="white"
+        to="/"
+        my={4}
+        scale
+        chevronRight
+      >
+        Learn More + Apply
       </Button.link>
       <Text color="slate">
         Looking for the{' '}
         <A
           color={campTheme[0]}
-          href="https://hackclub-archive.github.io/camp/"
+          href="https://hackclub-archive.github.io/camp"
+          target="_blank"
+          rel="noopener"
           children="old Hack Camp website"
         />
         ?
@@ -64,6 +75,8 @@ export default () => (
         <A
           color={campTheme[0]}
           href="https://camp.masonhackclub.com/"
+          target="_blank"
+          rel="noopener"
           children="🚀 Mason Hack Camp"
         />
         .

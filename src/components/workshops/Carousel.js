@@ -96,7 +96,9 @@ const EmptyProject = emptyProject => (
 
 const ShortList = projects => (
   <StaticWrapper>
-    <CarouselProject project={emptyProject} />
+    {projects.map(project => (
+      <CarouselProject project={project} key={project.screenshot.id} />
+    ))}
   </StaticWrapper>
 )
 

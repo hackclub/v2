@@ -139,7 +139,7 @@ export default () => (
         <Featline>Go beyond club meetings.</Featline>
         <Text fontSize={3} mt={3}>
           Hack Clubs attend and run hackathons like{' '}
-          <Like href="https://hackchicago.io">Hack Chicago</Like> and{' '}
+          <Like href="https://hackpenn.com">Hack Pennsylvania</Like> and{' '}
           <Like href="http://outlooknewspapers.com/hackademia-aims-for-young-tech-devotees/">
             Hackademia
           </Like>

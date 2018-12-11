@@ -85,7 +85,7 @@ export default () => (
         <Lead fontSize={[3, null, 4]} color="snow" maxWidth={48} my={3} mx={0}>
           Sign up is now closed. Check your email for the next steps! 
           Santa's list will be finalized by December 12. You can also join #secret-santa
-          on Slack to participate in the discussion.
+          on Slack to participate in the discussion!
         </Lead>
         <IconButton
           is={LargeButton.withComponent(Link)}

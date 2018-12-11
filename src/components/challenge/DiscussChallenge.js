@@ -10,7 +10,6 @@ const Root = styled(Sheet.withComponent(Flex))``
 const DiscussChallenge = () => (
   <Root
     maxWidth={36}
-    mt={4}
     p={[4, 3]}
     align="center"
     justify={['center', 'flex-start']}

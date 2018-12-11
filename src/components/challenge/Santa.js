@@ -22,6 +22,7 @@ const Root = styled(Sheet.withComponent(Flex))`
 const Santa = () => (
   <Root
     mb={4}
+    mt={4}
     p={[4, 3]}
     align="center"
     flexDirection={['column', 'row']}

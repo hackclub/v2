@@ -83,20 +83,10 @@ export default () => (
           Find your holiday zen with Hack&nbsp;Club Secret&nbsp;Santa.
         </Megaline>
         <Lead fontSize={[3, null, 4]} color="snow" maxWidth={48} my={3} mx={0}>
-          Sign up below & join #secret-santa on our Slack to take part in Hack
-          Club’s 2018 Secret Santa. You’ll be notified on December 10.
+          Sign up is now closed. Check your email for the next steps! 
+          Santa's list will be finalized by December 12. You can also join #secret-santa
+          on Slack to participate in the discussion.
         </Lead>
-        <IconButton
-          is={LargeButton}
-          href="https://goo.gl/forms/gLyukOFigQl0DtZk2"
-          target="_blank"
-          glyph="external"
-          inverted
-          mr={3}
-          mt={3}
-        >
-          Sign up now
-        </IconButton>
         <IconButton
           is={LargeButton.withComponent(Link)}
           to="/slack_invite"

@@ -37,7 +37,7 @@ const Santa = () => (
     >
       <Icon glyph="bag" size={48} />
       <Box align="left" ml={[2, 3]}>
-        <Text fontSize={2}>This season we’re running a</Text>
+        <Text fontSize={2}>This season we’re also running a</Text>
         <Text fontSize={3} bold>
           Hack&nbsp;Club Secret&nbsp;Santa
         </Text>

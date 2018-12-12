@@ -129,7 +129,7 @@ export default () => (
       <Announcement>
         <Icon size={24} glyph="notification" color="slate" mr={1} />
         <Flex color="black" fontSize={1}>
-          <strong>New winter challenge</strong>
+          <strong>New challenge</strong>
           <Hide xs sm ml={1}>
             {'– '}
             ship a project & get gifts 🎁

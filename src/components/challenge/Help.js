@@ -36,7 +36,7 @@ class Help extends Component {
             </Text>
             */}
             <Text fontSize={2} my={3}>
-              Challenge is open to Hack Club members and repl.it users. It
+              Challenge is open to Hack Club community members. It
               strictly follows Hack Club’s{' '}
               <Link href="https://conduct.hackclub.com" target="_blank">
                 Code of Conduct

@@ -217,13 +217,13 @@ class Header extends Component {
     const baseColor = dark
       ? color || 'white'
       : color === 'white' && scrolled
-      ? 'black'
-      : color
+        ? 'black'
+        : color
     const toggleColor = dark
       ? color || 'snow'
       : toggled || (color === 'white' && scrolled)
-      ? 'slate'
-      : color
+        ? 'slate'
+        : color
 
     return (
       <Root

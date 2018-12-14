@@ -60,7 +60,8 @@ class Auth extends Component {
     return preAuthed || authed ? (
       <Flex align="baseline" {...textProps}>
         <Text color="inherit" mb={1} style={wordWrap('break-word')}>
-          You’re <strong>{email}</strong> ({type}).
+          You’re <strong>{email}</strong> ({type}
+          ).
         </Text>
         <Button.button
           fontSize={2}

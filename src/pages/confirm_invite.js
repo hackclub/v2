@@ -22,8 +22,8 @@ class Invite extends Component {
     status: this.props.accepted
       ? 'accepted'
       : this.props.rejected
-      ? 'rejected'
-      : 'undecided',
+        ? 'rejected'
+        : 'undecided',
     formActive: false
   }
 

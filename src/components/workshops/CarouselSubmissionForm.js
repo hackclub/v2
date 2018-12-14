@@ -142,8 +142,8 @@ class CarouselSubmissionForm extends Component {
               disableSubmission
                 ? null
                 : authed
-                ? onClickSubmitButton
-                : onClickVeryifyButton
+                  ? onClickSubmitButton
+                  : onClickVeryifyButton
             }
           >
             {authed ? 'Submit My Thing' : 'Verify & Submit'}

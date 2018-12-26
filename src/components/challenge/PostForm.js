@@ -1,7 +1,6 @@
 import React from 'react'
 import { Field, Submit } from 'components/Forms'
 import { withFormik } from 'formik'
-import storage from 'storage'
 import * as yup from 'yup'
 import api from 'api'
 
@@ -79,20 +78,20 @@ const PostForm = withFormik({
   }),
   enableReinitialize: true,
   handleSubmit: (data, { setSubmitting, setStatus, resetForm, props }) => {
-    const authToken = storage.get('authToken')
-    const headers = { Authorization: `Bearer ${authToken}` }
     const id = props.challengeId
     api
       .post(`v1/challenges/${id}/posts`, { data })
-      .then(res => {
-        resetForm()
-        setStatus('success')
-        setTimeout(() => {
-          if (typeof location !== 'undefined') {
-            location.reload()
-          }
-        }, 1024)
-      })
+      .then(project =>
+        api.post(`v1/posts/${project.id}/upvotes`).then(_ => {
+          resetForm()
+          setStatus('success')
+          setTimeout(() => {
+            if (typeof location !== 'undefined') {
+              location.reload()
+            }
+          }, 1024)
+        })
+      )
       .catch(e => {
         console.error(e)
         setSubmitting(false)

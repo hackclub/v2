@@ -13,6 +13,7 @@ import {
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
+import GithubSlugger from 'github-slugger'
 import Nav from 'components/Nav'
 import {
   Breadcrumbs,
@@ -28,7 +29,7 @@ import DiscussOnSlack from 'components/DiscussOnSlack'
 import ShareButton from 'components/ShareButton'
 import Sheet from 'components/Sheet'
 import Footer from 'components/Footer'
-import { isEmpty } from 'lodash'
+import { isEmpty, tail } from 'lodash'
 import { org } from 'data.json'
 
 const NotOnPrint = styled(Box)`
@@ -67,7 +68,36 @@ const Name = styled(Heading.h1)`
   }
 `
 
+const TOC = styled(Box).attrs({
+  bg: 'smoke',
+  fontSize: 3,
+  p: [3, 4]
+})`
+  max-height: 24rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ${theme.mediaQueries.md} {
+    background: none;
+    float: left;
+    position: fixed;
+    max-width: 18rem;
+    bottom: 0;
+    opacity: 0.75;
+    transition: ${theme.transition} opacity;
+    &:hover {
+      opacity: 1;
+    }
+  }
+`
+const TOCItem = styled(Text.withComponent('li')).attrs({ fontSize: 2, pb: 2 })``
+
 const Body = styled(Container.withComponent(MarkdownBody))`
+  position: relative;
   @media print {
     max-width: none !important;
   }
@@ -167,9 +197,13 @@ export default ({ data }) => {
 
   const {
     fields: { slug, bg },
+    headings,
     frontmatter: { name, description, author = '', group = 'start', order = 1 },
     html
   } = data.markdownRemark
+
+  // NOTE(@lachlanjc): Using this library because `gatsby-remark-autolink-headers`
+  const slugger = new GithubSlugger()
 
   const authorUsername = (author || '').match(/@(\S+)/)
     ? author.replace('@', '')
@@ -296,6 +330,24 @@ export default ({ data }) => {
         </Text>
       </OnlyOnPrint>
       <Box width={1} className="invert">
+        <TOC>
+          <Heading.h2 color="muted" fontSize={2} caps mb={2}>
+            Table of Contents
+          </Heading.h2>
+          <ul>
+            {tail(headings).map(heading => (
+              <TOCItem
+                key={heading.value}
+                ml={theme.space[(heading.depth - 2) * 2]}
+              >
+                <A
+                  href={`#${slugger.slug(heading.value)}`}
+                  children={heading.value}
+                />
+              </TOCItem>
+            ))}
+          </ul>
+        </TOC>
         <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
         <CardsSection py={4}>
           <Cards px={3}>
@@ -362,6 +414,10 @@ export const pageQuery = graphql`
       fields {
         slug
         bg
+      }
+      headings {
+        depth
+        value
       }
       frontmatter {
         name

@@ -5,10 +5,11 @@ import {
   Container,
   Flex,
   Heading,
-  Link as A,
-  Text,
-  Section,
+  Icon,
   Image,
+  Link as A,
+  Section,
+  Text,
   theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
@@ -68,21 +69,57 @@ const Name = styled(Heading.h1)`
   }
 `
 
-const TOC = styled(Box).attrs({
+const Toc = styled(Sheet.withComponent('details')).attrs({
+  id: 'toc',
   bg: 'smoke',
-  fontSize: 3,
-  p: [3, 4]
+  fontSize: 3
 })`
+  margin-bottom: ${theme.space[3]}px;
   max-height: 24rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  ul {
+  ol,
+  summary {
     list-style: none;
-    padding: 0;
-    margin: 0;
+  }
+  svg {
+    transform: rotate(-90deg);
+    transition: ${theme.transition} transform;
+  }
+  &[open] svg {
+    transform: rotate(0deg);
   }
 `
-const TOCItem = styled(Text.withComponent('li')).attrs({ fontSize: 2, pb: 2 })``
+
+const TocHeading = styled(Text.withComponent('summary')).attrs({
+  color: 'muted',
+  px: 3,
+  py: 2
+})`
+  cursor: pointer;
+  line-height: 1;
+  &::-webkit-details-marker {
+    display: none;
+  }
+  svg,
+  span {
+    display: inline-block;
+  }
+  span {
+    position: relative;
+    top: -10px;
+  }
+`
+
+const TocList = styled(Text.withComponent('ol')).attrs({ py: 2, pl: 0, m: 0 })`
+  border-top: 2px solid ${theme.colors.snow};
+`
+const TocItem = styled(Text.withComponent('li')).attrs({
+  fontSize: 2,
+  pt: 1
+})`
+  margin: 0 !important;
+`
 
 const Body = styled(Container.withComponent(MarkdownBody))`
   position: relative;
@@ -318,24 +355,32 @@ export default ({ data }) => {
         </Text>
       </OnlyOnPrint>
       <Body maxWidth={48} p={3} className="invert">
-        <TOC id="toc">
-          <Heading.h2 color="muted" fontSize={2} caps mb={2}>
-            Table of Contents
-          </Heading.h2>
-          <ul>
+        <Toc open>
+          <TocHeading>
+            <Icon glyph="down-caret" size={32} />
+            <Text.span
+              bold
+              caps
+              color="slate"
+              fontSize={2}
+              ml={1}
+              children="Table of Contents"
+            />
+          </TocHeading>
+          <TocList>
             {tail(headings).map(heading => (
-              <TOCItem
+              <TocItem
                 key={heading.value}
-                ml={theme.space[(heading.depth - 2) * 2]}
+                pl={theme.space[(heading.depth - 2) * 2]}
               >
                 <A
                   href={`#${slugger.slug(heading.value)}`}
                   children={heading.value}
                 />
-              </TOCItem>
+              </TocItem>
             ))}
-          </ul>
-        </TOC>
+          </TocList>
+        </Toc>
         <div dangerouslySetInnerHTML={{ __html: html }} />
       </Body>
       <CardsSection py={4}>

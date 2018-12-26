@@ -9,8 +9,9 @@ import {
   Flex,
   Text,
   Heading,
-  Button,
+  LargeButton,
   Loading,
+  Icon,
   theme
 } from '@hackclub/design-system'
 
@@ -22,12 +23,19 @@ import 'slick-carousel/slick/slick-theme.css'
 
 const RehackSlider = styled(Slider)`
   align-self: stretch;
+  .slick-center {
+    padding: 0 ${theme.space[3]}px;
+    ${theme.mediaQueries.md} {
+      padding: 0;
+    }
+  }
 `
 
 const CarouselOuter = styled(Flex).attrs({
   bg: 'smoke',
-  pt: [2, 2, 3],
-  pb: [3, 3, 4],
+  color: 'black',
+  pt: [2, 3, 4],
+  pb: [3, null, 4],
   flexDirection: 'column',
   align: 'center'
 })``
@@ -36,22 +44,30 @@ const StaticWrapper = styled(Flex).attrs({ mb: [3, 3, 4], justify: 'center' })`
   align-self: stretch;
 `
 
-const SliderWrapper = styled(Box).attrs({ mb: [3, 3, 4] })`
+const SliderWrapper = styled(Box).attrs({ mb: [0, 3, 4] })`
   align-self: stretch;
 `
 
-const ShowAllProjects = styled(Text).attrs({
-  fontSize: [1, 2, 3],
-  mb: [3, null, 4],
+const ShowAllProjects = styled(Flex).attrs({
+  align: 'center',
+  fontSize: [2, 3],
   color: 'muted'
 })`
   cursor: pointer;
+  svg {
+    transform: rotate(-90deg);
+    transition: ${theme.transition} transform;
+  }
+  &[aria-expanded='true'] svg {
+    transform: rotate(0deg);
+  }
 `
 
 const ShowAllGrid = styled(Flex).attrs({
   justify: 'center',
   flexDirection: 'row',
   wrap: true,
+  px: 3,
   mb: 1
 })``
 
@@ -63,7 +79,7 @@ const LoadingWrapper = styled(Box)`
 
 const LoadingCarousel = () => (
   <Fragment>
-    <Heading.h3>Loading Projects...</Heading.h3>
+    <Heading.h3>Loading Projects…</Heading.h3>
     <LoadingWrapper>
       <Loading />
     </LoadingWrapper>
@@ -136,13 +152,23 @@ const LoadedCarousel = (
   emptyProject
 ) => (
   <Fragment>
-    <Heading.h3>
-      {projectCount} Rehack
-      {projectCount != 1 && 's'}
-    </Heading.h3>
-    <ShowAllProjects onClick={onClickShowAll} mb={[2, 2, 3]}>
-      {showAll ? 'ok stack them back up' : 'Show All'}
-    </ShowAllProjects>
+    <Flex
+      flexDirection={['column', null, 'row']}
+      align="center"
+      mb={[0, null, 3]}
+    >
+      <Heading.h3 fontSize={4} mr={[null, null, 3]}>
+        {projectCount} Rehack
+        {projectCount != 1 && 's'}
+      </Heading.h3>
+      <ShowAllProjects onClick={onClickShowAll} aria-expanded={showAll}>
+        <Icon glyph="down-caret" size={32} />
+        <Text.span
+          ml={1}
+          children={showAll ? 'ok stack them back up' : 'Show All'}
+        />
+      </ShowAllProjects>
+    </Flex>
     {showAll
       ? AllProjects(projects)
       : liveFrameStatus != 'empty'
@@ -297,15 +323,9 @@ class Carousel extends Component {
             setSubmissionData={setSubmissionData}
           />
         ) : (
-          <Button
-            px={[3, null, 4]}
-            py={[2, null, 3]}
-            scale
-            fontSize={4}
-            onClick={onClickSubmitButton}
-          >
+          <LargeButton scale fontSize={4} onClick={onClickSubmitButton}>
             I made something
-          </Button>
+          </LargeButton>
         )}
       </CarouselOuter>
     )

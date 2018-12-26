@@ -4,33 +4,33 @@ import { isURL } from 'validator'
 import {
   Box,
   Flex,
-  Label,
+  Card,
   Link as A,
   Text,
   Image,
   theme
 } from '@hackclub/design-system'
+import Sheet from 'components/Sheet'
 
-const ProjectOuter = styled(Box).attrs({
+const ProjectOuter = styled(Sheet).attrs({
   bg: 'white',
-  mx: 1
+  p: 0,
+  mx: [0, 2],
+  mb: 2
 })`
   flex-shrink: 0;
-  overflow: hidden;
-  border-radius: 10px 10px 10px 10px;
-
-  width: 180px;
+  min-width: 16rem;
+  max-width: 100%;
   ${theme.mediaQueries.sm} {
-    width: 240px;
+    width: 20rem;
   }
   ${theme.mediaQueries.md} {
-    width: 350px;
+    width: 24rem;
   }
 `
 
 const TextBar = styled(Flex).attrs({
-  px: 1,
-  py: 0,
+  p: 1,
   flexDirection: 'column',
   justify: ['center', null, 'space-between']
 })`
@@ -42,26 +42,30 @@ const LinkBar = styled(Flex).attrs({
   mx: 1
 })``
 
-const DeadLink = styled(Text).attrs({
+const DeadLink = styled(Text.span).attrs({
   fontSize: 3,
-  color: theme.colors.silver
-})``
+  color: 'muted'
+})`
+  text-decoration: line-through;
+`
 
-const AuthorLabel = styled(Label).attrs({
+const AuthorLabel = styled(Text).attrs({
   mx: 1,
-  fontSize: 3
+  fontSize: 3,
+  color: 'slate'
 })`
   white-space: nowrap;
+  strong {
+    color: ${theme.colors.black};
+  }
 `
 
 const ImageWrapper = styled(Box).attrs({
-  mb: [0, 0, 2],
-  justify: 'center'
+  mb: [0, null, 2]
 })`
   padding-bottom: 50%;
   position: relative;
   overflow: hidden;
-  border-radius: 5px;
   border-bottom: 2px solid ${theme.colors.snow};
 `
 
@@ -76,68 +80,61 @@ const WrappedImage = styled(Image)`
 const WrappedText = styled(Text).attrs({ color: 'muted', align: 'center' })`
   transform: rotate(-3deg);
   position: absolute;
-  bottom: 30px;
+  bottom: 36px;
   left: 0;
   right: 0;
 `
 
-class CarouselProject extends Component {
-  render() {
-    const { project, liveFrame = false, m = 0 } = this.props
-    const {
-      user = null,
-      empty = false,
-      live_url,
-      code_url,
-      screenshot
-    } = project
+const CarouselProject = ({ project, liveFrame = false, m = 2 }) => {
+  const { user = null, empty = false, live_url, code_url, screenshot } = project
 
-    const authorString =
-      user && user.username ? `By ${user.username}` : '¯\\_(ツ)_/¯'
-
-    const imageUrl = liveFrame
-      ? (() => {
-          const url = live_url.startsWith('http') ? url : `http://${url}`
-          const accessKey = 'd7d3cada424e0439f48de1a1b50160dd'
-          return `http://api.screenshotlayer.com/api/capture?access_key=${accessKey}&url=${url}&viewport=1440x900&format=PNG`
-        })()
-      : `http://api.hackclub.com${screenshot.file_path}`
-
-    return (
-      <ProjectOuter m={m}>
-        <ImageWrapper>
-          {empty ? (
-            <WrappedText>
-              no examples here yet…
-              <br />
-              you should submit one!
-            </WrappedText>
-          ) : (
-            <WrappedImage src={imageUrl} alt={authorString} />
-          )}
-        </ImageWrapper>
-        <TextBar>
-          <AuthorLabel>{authorString}</AuthorLabel>
-          <LinkBar>
-            {isURL(live_url) ? (
-              <A mr={2} fontSize={3} href={live_url}>
-                Live
-              </A>
-            ) : (
-              <DeadLink mr={2}>Live</DeadLink>
-            )}
-            {isURL(code_url) ? (
-              <A ml={2} fontSize={3} href={code_url}>
-                Code
-              </A>
-            ) : (
-              <DeadLink ml={2}>Code</DeadLink>
-            )}
-          </LinkBar>
-        </TextBar>
-      </ProjectOuter>
+  const authorString =
+    user && user.username ? (
+      <Fragment>
+        By <strong>{user.username}</strong>
+      </Fragment>
+    ) : (
+      '¯\\_(ツ)_/¯'
     )
-  }
+
+  const imageUrl = liveFrame
+    ? (() => {
+        const url = live_url.startsWith('http') ? url : `http://${url}`
+        const accessKey = 'd7d3cada424e0439f48de1a1b50160dd'
+        return `http://api.screenshotlayer.com/api/capture?access_key=${accessKey}&url=${url}&viewport=1440x900&format=PNG`
+      })()
+    : `http://api.hackclub.com${screenshot.file_path}`
+
+  return (
+    <ProjectOuter m={m}>
+      <ImageWrapper>
+        {empty ? (
+          <WrappedText>
+            no examples here yet…
+            <br />
+            you should submit one!
+          </WrappedText>
+        ) : (
+          <WrappedImage src={imageUrl} alt={authorString} />
+        )}
+      </ImageWrapper>
+      <TextBar>
+        <AuthorLabel>{authorString}</AuthorLabel>
+        <LinkBar fontSize={3}>
+          {isURL(live_url) ? (
+            <A mr={2} href={live_url} children="Live" />
+          ) : (
+            <DeadLink mr={2}>Live</DeadLink>
+          )}
+          {isURL(code_url) ? (
+            <A ml={2} href={code_url} children="Code" />
+          ) : (
+            <DeadLink ml={2}>Code</DeadLink>
+          )}
+        </LinkBar>
+      </TextBar>
+    </ProjectOuter>
+  )
 }
 
 export default CarouselProject

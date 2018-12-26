@@ -15,25 +15,22 @@ import Sheet from 'components/Sheet'
 const ProjectOuter = styled(Sheet).attrs({
   bg: 'white',
   p: 0,
-  my: 0,
-  mx: 1
+  mx: 1,
+  mb: 2
 })`
   flex-shrink: 0;
-  overflow: hidden;
-  border-radius: ${theme.radii[2]};
-
-  width: 180px;
+  min-width: 16rem;
+  max-width: 100%;
   ${theme.mediaQueries.sm} {
-    width: 240px;
+    width: 20rem;
   }
   ${theme.mediaQueries.md} {
-    width: 350px;
+    width: 24rem;
   }
 `
 
 const TextBar = styled(Flex).attrs({
-  px: 1,
-  py: 0,
+  p: 1,
   flexDirection: 'column',
   justify: ['center', null, 'space-between']
 })`
@@ -69,7 +66,6 @@ const ImageWrapper = styled(Box).attrs({
   padding-bottom: 50%;
   position: relative;
   overflow: hidden;
-  border-radius: 5px;
   border-bottom: 2px solid ${theme.colors.snow};
 `
 
@@ -89,65 +85,56 @@ const WrappedText = styled(Text).attrs({ color: 'muted', align: 'center' })`
   right: 0;
 `
 
-class CarouselProject extends Component {
-  render() {
-    const { project, liveFrame = false, m = 0 } = this.props
-    const {
-      user = null,
-      empty = false,
-      live_url,
-      code_url,
-      screenshot
-    } = project
+const CarouselProject = ({ project, liveFrame = false, m = 2 }) => {
+  const { user = null, empty = false, live_url, code_url, screenshot } = project
 
-    const authorString =
-      user && user.username ? (
-        <Fragment>
-          By <strong>{user.username}</strong>
-        </Fragment>
-      ) : (
-        '¯\\_(ツ)_/¯'
-      )
-
-    const imageUrl = liveFrame
-      ? (() => {
-          const url = live_url.startsWith('http') ? url : `http://${url}`
-          const accessKey = 'd7d3cada424e0439f48de1a1b50160dd'
-          return `http://api.screenshotlayer.com/api/capture?access_key=${accessKey}&url=${url}&viewport=1440x900&format=PNG`
-        })()
-      : `http://api.hackclub.com${screenshot.file_path}`
-
-    return (
-      <ProjectOuter m={m}>
-        <ImageWrapper>
-          {empty ? (
-            <WrappedText>
-              no examples here yet…
-              <br />
-              you should submit one!
-            </WrappedText>
-          ) : (
-            <WrappedImage src={imageUrl} alt={authorString} />
-          )}
-        </ImageWrapper>
-        <TextBar>
-          <AuthorLabel>{authorString}</AuthorLabel>
-          <LinkBar fontSize={3}>
-            {isURL(live_url) ? (
-              <A mr={2} href={live_url} children="Live" />
-            ) : (
-              <DeadLink mr={2}>Live</DeadLink>
-            )}
-            {isURL(code_url) ? (
-              <A ml={2} href={code_url} children="Code" />
-            ) : (
-              <DeadLink ml={2}>Code</DeadLink>
-            )}
-          </LinkBar>
-        </TextBar>
-      </ProjectOuter>
+  const authorString =
+    user && user.username ? (
+      <Fragment>
+        By <strong>{user.username}</strong>
+      </Fragment>
+    ) : (
+      '¯\\_(ツ)_/¯'
     )
-  }
+
+  const imageUrl = liveFrame
+    ? (() => {
+        const url = live_url.startsWith('http') ? url : `http://${url}`
+        const accessKey = 'd7d3cada424e0439f48de1a1b50160dd'
+        return `http://api.screenshotlayer.com/api/capture?access_key=${accessKey}&url=${url}&viewport=1440x900&format=PNG`
+      })()
+    : `http://api.hackclub.com${screenshot.file_path}`
+
+  return (
+    <ProjectOuter m={m}>
+      <ImageWrapper>
+        {empty ? (
+          <WrappedText>
+            no examples here yet…
+            <br />
+            you should submit one!
+          </WrappedText>
+        ) : (
+          <WrappedImage src={imageUrl} alt={authorString} />
+        )}
+      </ImageWrapper>
+      <TextBar>
+        <AuthorLabel>{authorString}</AuthorLabel>
+        <LinkBar fontSize={3}>
+          {isURL(live_url) ? (
+            <A mr={2} href={live_url} children="Live" />
+          ) : (
+            <DeadLink mr={2}>Live</DeadLink>
+          )}
+          {isURL(code_url) ? (
+            <A ml={2} href={code_url} children="Code" />
+          ) : (
+            <DeadLink ml={2}>Code</DeadLink>
+          )}
+        </LinkBar>
+      </TextBar>
+    </ProjectOuter>
+  )
 }
 
 export default CarouselProject

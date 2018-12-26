@@ -43,7 +43,8 @@ const SliderWrapper = styled(Box).attrs({ mb: [3, 3, 4] })`
 `
 
 const ShowAllProjects = styled(Flex).attrs({
-  fontSize: [1, 2, 3],
+  align: 'center',
+  fontSize: [2, 3],
   color: 'muted'
 })`
   cursor: pointer;
@@ -60,6 +61,7 @@ const ShowAllGrid = styled(Flex).attrs({
   justify: 'center',
   flexDirection: 'row',
   wrap: true,
+  px: 3,
   mb: 1
 })``
 

@@ -27,7 +27,7 @@ const MarkdownBody = styled(Box)`
   }
 
   // hides title, assumes rendering separately
-  > h1:first-child {
+  div + h1:first-of-type {
     display: none;
   }
 

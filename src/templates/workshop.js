@@ -81,18 +81,6 @@ const TOC = styled(Box).attrs({
     padding: 0;
     margin: 0;
   }
-  ${theme.mediaQueries.md} {
-    background: none;
-    float: left;
-    position: fixed;
-    max-width: 18rem;
-    bottom: 0;
-    opacity: 0.75;
-    transition: ${theme.transition} opacity;
-    &:hover {
-      opacity: 1;
-    }
-  }
 `
 const TOCItem = styled(Text.withComponent('li')).attrs({ fontSize: 2, pb: 2 })``
 
@@ -329,8 +317,8 @@ export default ({ data }) => {
           You can find this tutorial online at <u>{url}</u>
         </Text>
       </OnlyOnPrint>
-      <Box width={1} className="invert">
-        <TOC>
+      <Body maxWidth={48} p={3} className="invert">
+        <TOC id="toc">
           <Heading.h2 color="muted" fontSize={2} caps mb={2}>
             Table of Contents
           </Heading.h2>
@@ -348,62 +336,62 @@ export default ({ data }) => {
             ))}
           </ul>
         </TOC>
-        <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
-        <CardsSection py={4}>
-          <Cards px={3}>
-            <Sheet align="left">
-              <Heading.h2 fontSize={4}>How was this workshop?</Heading.h2>
-              <Text color="muted" fontSize={1} mt={1} mb={3}>
-                (your feedback is anonymous + appreciated ❤️)
-              </Text>
-              <FeedbackForm slug={slug} />
-            </Sheet>
-            <Sheet>
-              <Heading.h2 fontSize={4} color="black" mb={3}>
-                Made something fabulous?
-              </Heading.h2>
-              <Flex justify="center">
-                <ShareButton
-                  service="Twitter"
-                  href={twitterURL(
-                    `I just built ${name} with a @hackclub workshop. Make yours:`,
-                    url
-                  )}
-                  bg="#1da1f2"
-                  mr={3}
-                />
-                <ShareButton
-                  service="Facebook"
-                  href={facebookURL(url)}
-                  bg="#3b5998"
-                />
-              </Flex>
-            </Sheet>
-            <Sheet>
-              <Heading.h2 fontSize={4} color="pink.5" mb={3}>
-                Questions?
-              </Heading.h2>
-              <DiscussOnSlack fontSize={2} />
-            </Sheet>
-            <Sheet>
-              <Heading.h2 fontSize={4} color="black" mb={3}>
-                Spotted an issue?
-              </Heading.h2>
+        <div dangerouslySetInnerHTML={{ __html: html }} />
+      </Body>
+      <CardsSection py={4}>
+        <Cards px={3}>
+          <Sheet align="left">
+            <Heading.h2 fontSize={4}>How was this workshop?</Heading.h2>
+            <Text color="muted" fontSize={1} mt={1} mb={3}>
+              (your feedback is anonymous + appreciated ❤️)
+            </Text>
+            <FeedbackForm slug={slug} />
+          </Sheet>
+          <Sheet>
+            <Heading.h2 fontSize={4} color="black" mb={3}>
+              Made something fabulous?
+            </Heading.h2>
+            <Flex justify="center">
               <ShareButton
-                service="GitHub"
-                bg="slate"
-                fontSize={2}
-                href={githubEditUrl(slug)}
-                target="_blank"
-                aria-label={null}
-                children="Suggest edits"
-                title="If you see something, say something."
+                service="Twitter"
+                href={twitterURL(
+                  `I just built ${name} with a @hackclub workshop. Make yours:`,
+                  url
+                )}
+                bg="#1da1f2"
+                mr={3}
               />
-            </Sheet>
-          </Cards>
-        </CardsSection>
-        <Footer />
-      </Box>
+              <ShareButton
+                service="Facebook"
+                href={facebookURL(url)}
+                bg="#3b5998"
+              />
+            </Flex>
+          </Sheet>
+          <Sheet>
+            <Heading.h2 fontSize={4} color="pink.5" mb={3}>
+              Questions?
+            </Heading.h2>
+            <DiscussOnSlack fontSize={2} />
+          </Sheet>
+          <Sheet>
+            <Heading.h2 fontSize={4} color="black" mb={3}>
+              Spotted an issue?
+            </Heading.h2>
+            <ShareButton
+              service="GitHub"
+              bg="slate"
+              fontSize={2}
+              href={githubEditUrl(slug)}
+              target="_blank"
+              aria-label={null}
+              children="Suggest edits"
+              title="If you see something, say something."
+            />
+          </Sheet>
+        </Cards>
+      </CardsSection>
+      <Footer />
     </Fragment>
   )
 }

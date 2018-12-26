@@ -23,6 +23,12 @@ import 'slick-carousel/slick/slick-theme.css'
 
 const RehackSlider = styled(Slider)`
   align-self: stretch;
+  .slick-center {
+    padding: 0 ${theme.space[3]}px;
+    ${theme.mediaQueries.md} {
+      padding: 0;
+    }
+  }
 `
 
 const CarouselOuter = styled(Flex).attrs({
@@ -38,7 +44,7 @@ const StaticWrapper = styled(Flex).attrs({ mb: [3, 3, 4], justify: 'center' })`
   align-self: stretch;
 `
 
-const SliderWrapper = styled(Box).attrs({ mb: [3, 3, 4] })`
+const SliderWrapper = styled(Box).attrs({ mb: [0, 3, 4] })`
   align-self: stretch;
 `
 
@@ -149,7 +155,7 @@ const LoadedCarousel = (
     <Flex
       flexDirection={['column', null, 'row']}
       align="center"
-      mb={[2, null, 3]}
+      mb={[0, null, 3]}
     >
       <Heading.h3 fontSize={4} mr={[null, null, 3]}>
         {projectCount} Rehack

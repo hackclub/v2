@@ -15,7 +15,7 @@ import Sheet from 'components/Sheet'
 const ProjectOuter = styled(Sheet).attrs({
   bg: 'white',
   p: 0,
-  mx: 1,
+  mx: [0, 2],
   mb: 2
 })`
   flex-shrink: 0;

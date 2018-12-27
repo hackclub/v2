@@ -30,7 +30,7 @@ import DiscussOnSlack from 'components/DiscussOnSlack'
 import ShareButton from 'components/ShareButton'
 import Sheet from 'components/Sheet'
 import Footer from 'components/Footer'
-import { isEmpty, tail } from 'lodash'
+import { isEmpty, tail, includes } from 'lodash'
 import { org } from 'data.json'
 
 const NotOnPrint = styled(Box)`
@@ -50,19 +50,16 @@ const Header = styled(Box.withComponent('header'))`
   li a,
   h2,
   p {
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.375);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   }
 `
 
-const Name = styled(Heading.h1)`
-  background-color: ${theme.colors.white};
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
+const Name = styled(Heading.h1).attrs({ px: 4, bg: 'white' })`
   color: black;
-  display: inline-block;
   mix-blend-mode: screen;
-  padding-left: ${theme.space[4]}px;
-  padding-right: ${theme.space[4]}px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.75);
+  clip-path: polygon(4% 0%, 100% 0%, 96% 100%, 0% 100%);
+  display: inline-block;
   width: min-content;
   ${theme.mediaQueries.sm} {
     width: max-content;
@@ -335,8 +332,10 @@ export default ({ data }) => {
             />
           </Flex>
         </Header>
+        {includes(['start'], group) && (
+          <Carousel slug={slug.replace('/workshops/', '')} />
+        )}
       </NotOnPrint>
-      {group == 'start' && <Carousel slug={slug.replace('/workshops/', '')} />}
       <OnlyOnPrint p={3}>
         <Flex align="center" justify="flex-end" my={3}>
           <Image

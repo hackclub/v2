@@ -17,9 +17,9 @@ export default () => (
         programming club curriculum
       </A.link>
       ,{' '}
-      <Link href="https://hackathons.hackclub.com" target="_blank">
+      <A href="https://hackathons.hackclub.com" target="_blank">
         access to high school hackathons
-      </Link>
+      </A>
       , &{' '}
       <A.link to="/hackers" target="_blank">
         a supportive hacker community.

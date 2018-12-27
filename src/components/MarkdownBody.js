@@ -11,11 +11,6 @@ const MarkdownBody = styled(Box)`
   line-height: 1.625;
   word-wrap: break-word;
 
-  .public-DraftEditorPlaceholder-inner {
-    color: ${theme.colors.muted};
-    font-size: ${theme.fontSizes[2]}px;
-  }
-
   a {
     color: ${theme.colors.info};
     em {
@@ -30,7 +25,7 @@ const MarkdownBody = styled(Box)`
   }
 
   // hides title, assumes rendering separately
-  > h1:first-child {
+  #toc + div h1:first-of-type {
     display: none;
   }
 

@@ -5,14 +5,16 @@ import {
   Container,
   Flex,
   Heading,
-  Link as A,
-  Text,
-  Section,
+  Icon,
   Image,
+  Link as A,
+  Section,
+  Text,
   theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
+import GithubSlugger from 'github-slugger'
 import Nav from 'components/Nav'
 import {
   Breadcrumbs,
@@ -28,7 +30,7 @@ import DiscussOnSlack from 'components/DiscussOnSlack'
 import ShareButton from 'components/ShareButton'
 import Sheet from 'components/Sheet'
 import Footer from 'components/Footer'
-import { isEmpty, includes } from 'lodash'
+import { isEmpty, tail, includes } from 'lodash'
 import { org } from 'data.json'
 
 const NotOnPrint = styled(Box)`
@@ -64,7 +66,60 @@ const Name = styled(Heading.h1).attrs({ px: 4, bg: 'white' })`
   }
 `
 
+const Toc = styled(Sheet.withComponent('details')).attrs({
+  id: 'toc',
+  bg: 'smoke',
+  fontSize: 3
+})`
+  margin-bottom: ${theme.space[3]}px;
+  max-height: 24rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  ol,
+  summary {
+    list-style: none;
+  }
+  svg {
+    transform: rotate(-90deg);
+    transition: ${theme.transition} transform;
+  }
+  &[open] svg {
+    transform: rotate(0deg);
+  }
+`
+
+const TocHeading = styled(Text.withComponent('summary')).attrs({
+  color: 'muted',
+  px: 3,
+  py: 2
+})`
+  cursor: pointer;
+  line-height: 1;
+  &::-webkit-details-marker {
+    display: none;
+  }
+  svg,
+  span {
+    display: inline-block;
+  }
+  span {
+    position: relative;
+    top: -10px;
+  }
+`
+
+const TocList = styled(Text.withComponent('ol')).attrs({ py: 2, pl: 0, m: 0 })`
+  border-top: 2px solid ${theme.colors.snow};
+`
+const TocItem = styled(Text.withComponent('li')).attrs({
+  fontSize: 2,
+  pt: 1
+})`
+  margin: 0 !important;
+`
+
 const Body = styled(Container.withComponent(MarkdownBody))`
+  position: relative;
   @media print {
     max-width: none !important;
   }
@@ -164,9 +219,13 @@ export default ({ data }) => {
 
   const {
     fields: { slug, bg },
+    headings,
     frontmatter: { name, description, author = '', group = 'start', order = 1 },
     html
   } = data.markdownRemark
+
+  // NOTE(@lachlanjc): Using this library because `gatsby-remark-autolink-headers`
+  const slugger = new GithubSlugger()
 
   const authorUsername = (author || '').match(/@(\S+)/)
     ? author.replace('@', '')
@@ -294,63 +353,89 @@ export default ({ data }) => {
           You can find this tutorial online at <u>{url}</u>
         </Text>
       </OnlyOnPrint>
-      <Box width={1} className="invert">
-        <Body maxWidth={48} p={3} dangerouslySetInnerHTML={{ __html: html }} />
-        <CardsSection py={4}>
-          <Cards px={3}>
-            <Sheet align="left">
-              <Heading.h2 fontSize={4}>How was this workshop?</Heading.h2>
-              <Text color="muted" fontSize={1} mt={1} mb={3}>
-                (your feedback is anonymous + appreciated ❤️)
-              </Text>
-              <FeedbackForm slug={slug} />
-            </Sheet>
-            <Sheet>
-              <Heading.h2 fontSize={4} color="black" mb={3}>
-                Made something fabulous?
-              </Heading.h2>
-              <Flex justify="center">
-                <ShareButton
-                  service="Twitter"
-                  href={twitterURL(
-                    `I just built ${name} with a @hackclub workshop. Make yours:`,
-                    url
-                  )}
-                  bg="#1da1f2"
-                  mr={3}
+      <Body maxWidth={48} p={3} className="invert">
+        <Toc open>
+          <TocHeading>
+            <Icon glyph="down-caret" size={32} />
+            <Text.span
+              bold
+              caps
+              color="slate"
+              fontSize={2}
+              ml={1}
+              children="Table of Contents"
+            />
+          </TocHeading>
+          <TocList>
+            {tail(headings).map(heading => (
+              <TocItem
+                key={heading.value}
+                pl={theme.space[(heading.depth - 2) * 2]}
+              >
+                <A
+                  href={`#${slugger.slug(heading.value)}`}
+                  children={heading.value}
                 />
-                <ShareButton
-                  service="Facebook"
-                  href={facebookURL(url)}
-                  bg="#3b5998"
-                />
-              </Flex>
-            </Sheet>
-            <Sheet>
-              <Heading.h2 fontSize={4} color="pink.5" mb={3}>
-                Questions?
-              </Heading.h2>
-              <DiscussOnSlack fontSize={2} />
-            </Sheet>
-            <Sheet>
-              <Heading.h2 fontSize={4} color="black" mb={3}>
-                Spotted an issue?
-              </Heading.h2>
+              </TocItem>
+            ))}
+          </TocList>
+        </Toc>
+        <div dangerouslySetInnerHTML={{ __html: html }} />
+      </Body>
+      <CardsSection py={4}>
+        <Cards px={3}>
+          <Sheet align="left">
+            <Heading.h2 fontSize={4}>How was this workshop?</Heading.h2>
+            <Text color="muted" fontSize={1} mt={1} mb={3}>
+              (your feedback is anonymous + appreciated ❤️)
+            </Text>
+            <FeedbackForm slug={slug} />
+          </Sheet>
+          <Sheet>
+            <Heading.h2 fontSize={4} color="black" mb={3}>
+              Made something fabulous?
+            </Heading.h2>
+            <Flex justify="center">
               <ShareButton
-                service="GitHub"
-                bg="slate"
-                fontSize={2}
-                href={githubEditUrl(slug)}
-                target="_blank"
-                aria-label={null}
-                children="Suggest edits"
-                title="If you see something, say something."
+                service="Twitter"
+                href={twitterURL(
+                  `I just built ${name} with a @hackclub workshop. Make yours:`,
+                  url
+                )}
+                bg="#1da1f2"
+                mr={3}
               />
-            </Sheet>
-          </Cards>
-        </CardsSection>
-        <Footer />
-      </Box>
+              <ShareButton
+                service="Facebook"
+                href={facebookURL(url)}
+                bg="#3b5998"
+              />
+            </Flex>
+          </Sheet>
+          <Sheet>
+            <Heading.h2 fontSize={4} color="pink.5" mb={3}>
+              Questions?
+            </Heading.h2>
+            <DiscussOnSlack fontSize={2} />
+          </Sheet>
+          <Sheet>
+            <Heading.h2 fontSize={4} color="black" mb={3}>
+              Spotted an issue?
+            </Heading.h2>
+            <ShareButton
+              service="GitHub"
+              bg="slate"
+              fontSize={2}
+              href={githubEditUrl(slug)}
+              target="_blank"
+              aria-label={null}
+              children="Suggest edits"
+              title="If you see something, say something."
+            />
+          </Sheet>
+        </Cards>
+      </CardsSection>
+      <Footer />
     </Fragment>
   )
 }
@@ -361,6 +446,10 @@ export const pageQuery = graphql`
       fields {
         slug
         bg
+      }
+      headings {
+        depth
+        value
       }
       frontmatter {
         name

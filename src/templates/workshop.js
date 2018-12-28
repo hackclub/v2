@@ -318,8 +318,8 @@ export default ({ data }) => {
               children={linkAuthor(author)}
             />
           </Container>
-          <Flex width={1} px={3} pb={3} justify="space-between">
-            <Invert fontSize={2} my={1} />
+          <Flex width={1} px={3} pb={3} justify="center">
+            {/* <Invert fontSize={2} my={1} /> */}
             <IconButton
               bg="slate"
               glyph="edit"

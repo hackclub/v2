@@ -60,7 +60,7 @@ export default () => (
     imageSrc="/action.jpg"
     imageAlt="Group of high school students coding together"
   >
-    <PromoBox py={[4, 5]} px={[3, 5]}>
+    <PromoBox py={[4, 5]} px={[3, 5]} style={{ margin: 0 }}>
       <PromoHeading fontSize={[5, 6]} my={0}>
         Join Hack Club.
       </PromoHeading>

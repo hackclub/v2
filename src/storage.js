@@ -1,7 +1,7 @@
 const stubbedStorage = {}
 'get set remove'
   .split(' ')
-  .forEach(method => (stubbedStorage[method] = () => nil))
+  .forEach(method => (stubbedStorage[method] = () => null))
 
 let localStorage
 try {

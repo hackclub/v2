@@ -165,7 +165,7 @@ const LoadedCarousel = (
         <Icon glyph="down-caret" size={32} />
         <Text.span
           ml={1}
-          children={showAll ? 'ok stack them back up' : 'Show All'}
+          children={showAll ? 'Show Less' : 'Show All'}
         />
       </ShowAllProjects>
     </Flex>

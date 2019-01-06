@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
-import { Container, Flex, Heading } from '@hackclub/design-system'
+import { Container, Flex, Box, Heading, Text } from '@hackclub/design-system'
+import ReactMarkdown from 'react-markdown'
 
 import storage from '../../storage'
 import BG from '../../components/BG'
@@ -14,6 +15,10 @@ const Card = styled(Sheet)`
   > div {
     justify-content: space-between;
     text-align: left;
+  }
+
+  p {
+    margin: 0;
   }
 
   svg {
@@ -30,11 +35,14 @@ const Card = styled(Sheet)`
   }
 `
 
-const Name = styled(Heading.h3).attrs({
-  fontSize: [3, 4]
-})`
+const Left = styled(Box)`
   max-width: 85%;
 `
+
+var truncate = (str, length) => {
+  const dots = str.length > length ? '...' : ''
+  return str.substring(0, length) + dots
+}
 
 export default () => (
   <Fragment>
@@ -44,7 +52,16 @@ export default () => (
         <Link to="/workshops/submit">
           <Card>
             <Flex align="center">
-              <Name>{key.replace(/-/g, ' ')}</Name>
+              <Left>
+                <Heading.h3 fontSize={[3, 4]}>
+                  {key.replace(/-/g, ' ')}
+                </Heading.h3>
+                <Text color="muted">
+                  <ReactMarkdown
+                    source={truncate(storage.get(key).content, 64)}
+                  />
+                </Text>
+              </Left>
               <FeatherIcon glyph="edit-3" />
             </Flex>
           </Card>

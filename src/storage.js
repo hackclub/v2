@@ -1,5 +1,5 @@
 const stubbedStorage = {}
-'get set remove'
+'get set remove keys'
   .split(' ')
   .forEach(method => (stubbedStorage[method] = () => null))
 
@@ -26,7 +26,8 @@ const storage = {
     }
   },
   set: (key, value) => localStorage.setItem(key, JSON.stringify(value)),
-  remove: key => localStorage.removeItem(key)
+  remove: key => localStorage.removeItem(key),
+  keys: () => Object.keys(localStorage)
 }
 
 export default storage

@@ -71,7 +71,7 @@ export default class extends Component {
 
   handleInputChange = e => {
     const data = {
-      body: this.state.value
+      body: e.target.value
     }
 
     try {

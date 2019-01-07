@@ -1,8 +1,10 @@
 /c9                   /cloud9_setup
-/workshops/slack      /slack_invite
 /slack                /slack_invite
+/workshops/slack      /slack_invite
 /hack_camp            /camp
 /repl                 /start
+/coc                  /conduct
+/code_of_conduct      /conduct
 /hackathons           https://hackathons.hackclub.com
 /find                 https://finder.hackclub.com
 /finder               https://finder.hackclub.com

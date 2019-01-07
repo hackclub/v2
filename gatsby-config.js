@@ -87,6 +87,7 @@ module.exports = {
       resolve: 'gatsby-plugin-netlify',
       options: {
         headers: {
+          '/banners/*': ['Access-Control-Allow-Origin: *'],
           '/fonts/**': ['Access-Control-Allow-Origin: *']
         }
       }

@@ -144,12 +144,13 @@ const animation2 = keyframes`
 `
 const Blinking = styled(Heading.h1).attrs({
   bold: true,
-  fontSize: [96, 128],
-  mt: [2, 4],
+  fontSize: [128, 256],
+  mt: [2, 4, 5],
   color: 'white'
 })`
   position: relative;
   display: inline-block;
+  line-height: 1;
   &:before,
   &:after {
     content: '${props => props.children}';
@@ -177,7 +178,7 @@ export default () => (
     <Helmet title="404 – Hack Club" />
     <Nav color="primary" dark />
     <BG color="dark" />
-    <Container maxWidth={48} px={2} py={6} align="center">
+    <Container maxWidth={48} px={2} py={[6, 7]} align="center">
       <Blinking>404!</Blinking>
       <Text fontSize={4} mt={2} mb={4} color="muted">
         We couldn’t find that page.

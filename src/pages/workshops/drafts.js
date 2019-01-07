@@ -87,12 +87,16 @@ export default class extends Component {
   constructor(props) {
     super(props)
 
-    const drafts = storage.keys().map(key => {
+    const draftKeys = storage
+      .keys()
+      .filter(key => new RegExp('draft-', 'g').test(key))
+
+    const drafts = draftKeys.map(key => {
       const data = storage.get(key)
 
       return {
         slug: key,
-        name: key.replace(/-/g, ' '),
+        name: key.replace(/-/g, ' ').replace('draft', ''),
         ...data
       }
     })
@@ -115,7 +119,7 @@ export default class extends Component {
   handleNewNameChange = e => this.setState({ newName: e.target.value })
 
   createPost = () => {
-    const slug = this.state.newName.replace(/ /g, '-')
+    const slug = 'draft-' + this.state.newName.replace(/ /g, '-')
 
     storage.set(slug, { body: '' })
 

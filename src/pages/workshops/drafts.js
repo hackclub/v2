@@ -39,7 +39,7 @@ const Left = styled(Box)`
   max-width: 85%;
 `
 
-var truncate = (str, length) => {
+const truncate = (str, length) => {
   const dots = str.length > length ? '...' : ''
   return str.substring(0, length) + dots
 }
@@ -57,9 +57,7 @@ export default () => (
                   {key.replace(/-/g, ' ')}
                 </Heading.h3>
                 <Text color="muted">
-                  <ReactMarkdown
-                    source={truncate(storage.get(key).content, 64)}
-                  />
+                  <ReactMarkdown source={truncate(storage.get(key).body, 64)} />
                 </Text>
               </Left>
               <FeatherIcon glyph="edit-3" />

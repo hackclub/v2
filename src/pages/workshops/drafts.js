@@ -142,7 +142,7 @@ export default class extends Component {
               mx="auto"
               mb={4}
             >
-              {creating ? 'Cancel' : 'Create post'}
+              {creating ? 'Cancel' : 'Create workshop'}
             </Add>
           </Flex>
           <Transition

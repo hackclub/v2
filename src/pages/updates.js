@@ -39,7 +39,7 @@ const Calendar = styled(Flex)`
   height: 96px;
   border-color: ${props => cx(props.color)};
   border-style: solid;
-  border-radius: 12px;
+  border-radius: 16px;
   font-weight: ${theme.bold};
 `
 const Year = styled(Text).attrs({
@@ -50,7 +50,7 @@ const Year = styled(Text).attrs({
   line-height: 1;
 `
 const Month = styled(Text).attrs({ fontSize: 4, mt: 1 })`
-  line-height: 2;
+  line-height: 1.5;
 `
 
 const Updater = styled(Container.withComponent(Flex))`
@@ -132,8 +132,8 @@ export default () => (
     <style children={styles} />
     <Nav dark />
     <Box py={[4, 5]} align="center" justify="center">
-      <Container pt={5} maxWidth={32}>
-        <Heading.h1 color="white" fontSize={6}>
+      <Container pt={[5, 6]} maxWidth={32}>
+        <Heading.h1 color="white" fontSize={[6, 7]}>
           Updates
         </Heading.h1>
         <Text fontSize={4} color="muted" style={{ lineHeight: '1.25' }}>

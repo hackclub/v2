@@ -13,6 +13,7 @@ import {
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
+import Footer from 'components/Footer'
 import Sheet from 'components/Sheet'
 import SlackForm from 'components/SlackForm'
 import { ColoredHeadline } from '../components/Content'
@@ -268,5 +269,6 @@ export default () => (
         ))}
       </Grid>
     </Dark>
+    <Footer dark />
   </Fragment>
 )

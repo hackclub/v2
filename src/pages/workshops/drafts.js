@@ -49,7 +49,7 @@ export default () => (
     <BG color="snow" />
     <Container maxWidth={42} p={4}>
       {storage.keys().map(key => (
-        <Link to="/workshops/submit">
+        <Link to={`/workshops/submit?id=${key}`}>
           <Card>
             <Flex align="center">
               <Left>

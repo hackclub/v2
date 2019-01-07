@@ -111,9 +111,9 @@ const Footer = ({ dark = false, children, ...props }) => (
           {/* <Link to="/" children="Home" /> */}
           <Link to="/donate" children="Donate" />
           <Link to="/team" children="Team" />
-          <Link to="/updates" children="Updates" />
           <Link to="/hackers" children="Hackers" />
           <Link to="/philosophy" children="Philosophy" />
+          <Link to="/night" children="Hack Night" />
         </Pages>
       </Box>
       <Box>
@@ -141,7 +141,6 @@ const Footer = ({ dark = false, children, ...props }) => (
           <a href="https://hackathons.hackclub.com" children="Hackathons" />
           <a href="https://shop.hackclub.com/?ref=footer" children="Shop" />
           <Link to="/bank" children="Bank" />
-          {/* <Link to="/night" children="Hack Night" /> */}
         </Pages>
       </Box>
       <Box>

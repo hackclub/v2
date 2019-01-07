@@ -33,11 +33,11 @@ const Bio = ({ img, name, role, pronouns, text, ...props }) => (
       />
     </Box>
     <Box>
-      <Flex align="center" wrap style={{ lineHeight: '1.25' }}>
+      <Flex align="center" wrap style={{ lineHeight: '1.125' }}>
         <Heading.h3 fontSize={4} m={0} mr={2} color="black" children={name} />
         <Badge px={2} fontSize={1} bg="primary" children={role} />
       </Flex>
-      <Text fontSize={2} mt={[1, 2]} mb={0} color="slate" children={text} />
+      <Text fontSize={2} mt={1} mb={0} color="slate" children={text} />
     </Box>
   </Base>
 )

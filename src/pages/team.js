@@ -119,6 +119,13 @@ export default () => (
         pronouns="he/him"
       />
       <Bio
+        img="/team/chris.jpg"
+        name="Chris Walker"
+        role="Hacker Resources"
+        text="Chris started programming games in middle school, and eventually left college to make educational software. In 2013 he accepted a Thiel Fellowship and moved to San Francisco, where he watched Hack Club grow from an early stage. He now works full-time on Hack Club’s learning resources."
+        pronouns="he/him"
+      />
+      <Bio
         img="/team/athul.jpg"
         name="Athul Blesson"
         role="Indian Region"

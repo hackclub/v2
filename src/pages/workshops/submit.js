@@ -71,11 +71,12 @@ export default class extends Component {
 
   handleInputChange = e => {
     const data = {
-      body: e.target.value
+      body: e.target.value,
+      edited: new Date() / 1000
     }
 
     try {
-      storage.set('Get-started-with-React-Hooks', data)
+      storage.set(this.state.name, data)
     } catch (error) {
       console.log(error)
     }

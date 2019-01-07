@@ -1,4 +1,17 @@
+const stubbedLocation = {}
+'set get'.split(' ').forEach(method => (stubbedLocation[method] = () => null))
+
+let location
+try {
+  location = window.location
+} catch (e) {
+  location = stubbedLocation
+}
+
 const searchToObject = search => {
+  if (!search) {
+    return null
+  }
   const result = {}
   const kvPairs = search.substr(1).split('&')
   for (let i = 0; i < kvPairs.length; i++) {
@@ -25,5 +38,6 @@ export default {
       throw 'history.pushState not supported the current in browser'
     }
   },
-  get: key => searchToObject(location.search)[key]
+  get: key =>
+    searchToObject(location.search) && searchToObject(location.search)[key]
 }

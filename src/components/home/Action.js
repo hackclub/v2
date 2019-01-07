@@ -1,9 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Heading, Text, LargeButton, theme } from '@hackclub/design-system'
+import {
+  Section,
+  BackgroundImage,
+  Heading,
+  Text,
+  LargeButton,
+  theme
+} from '@hackclub/design-system'
 import Link from 'gatsby-link'
 import Sheet from 'components/Sheet'
-import Framed from 'components/Framed'
+
+const Base = styled(Section.withComponent(BackgroundImage))`
+  position: relative;
+  min-height: 36rem;
+`
 
 const PromoBox = styled(Sheet)`
   position: absolute;
@@ -56,9 +67,9 @@ const Action = styled(LargeButton.withComponent(Link)).attrs({
 `
 
 export default () => (
-  <Framed
-    imageSrc="/action.jpg"
-    imageAlt="Group of high school students coding together"
+  <Base
+    src="/action.jpg"
+    aria-label="Group of high school students coding together"
   >
     <PromoBox py={[4, 5]} px={[3, 5]} style={{ margin: 0 }}>
       <PromoHeading fontSize={[5, 6]} my={0}>
@@ -73,5 +84,5 @@ export default () => (
       </Text>
       <Action to="/start" children="Get Started" />
     </PromoBox>
-  </Framed>
+  </Base>
 )

@@ -17,6 +17,7 @@ import { Transition } from 'react-spring'
 
 import storage from 'storage'
 import BG from 'components/BG'
+import Nav from 'components/Nav'
 import IconButton from 'components/IconButton'
 import Sheet from 'components/Sheet'
 import FeatherIcon from 'components/FeatherIcon'
@@ -141,7 +142,8 @@ export default class extends Component {
     return (
       <Fragment>
         <BG color="snow" />
-        <Container maxWidth={42} p={4}>
+        <Nav color="black" />
+        <Container maxWidth={42} p={4} pt={6}>
           <Flex>
             <Add
               onClick={creating ? this.cancelCreation : this.beginCreation}

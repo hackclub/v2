@@ -22,6 +22,7 @@ import IconButton from 'components/IconButton'
 import Sheet from 'components/Sheet'
 import FeatherIcon from 'components/FeatherIcon'
 import MarkdownBody from 'components/MarkdownBody'
+import Footer from 'components/Footer'
 
 const Add = styled(IconButton)`
   background-image: radial-gradient(
@@ -282,6 +283,7 @@ export default class extends Component {
               </Box>
             )}
         </Container>
+        <Footer />
       </Fragment>
     )
   }

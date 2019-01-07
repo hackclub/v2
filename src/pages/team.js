@@ -108,7 +108,7 @@ export default () => (
         img="/team/lachlan.jpg"
         name="Lachlan Campbell"
         role="Web/Design"
-        text="Lachlan, a club leader from State College, PA, joined to work on hackclub.com. Over a year later, they now manage Hack Club’s design and branding, and build the website and Design System."
+        text="Lachlan, an active club leader from State College, PA, joined to work on hackclub.com. 1.5 years later, they make Hack Club’s website, design (system), & branding, and work on projects including Bank & Leaders. They will soon study Interactive Media Arts @ NYU, fall 2019."
         pronouns="they/them"
       />
       <Bio
@@ -129,7 +129,7 @@ export default () => (
         img="/team/athul.jpg"
         name="Athul Blesson"
         role="Indian Region"
-        text="Athul leads some of the largest Hack Clubs in India. After graduating from high school, he joined as the Regional Manager in India, where he actively leads over a dozen clubs."
+        text="Athul leads some of the largest Hack Clubs in India. After graduating from high school, he joined as the Regional Manager in India, where he actively leads 30+ clubs."
         pronouns="he/him"
       />
       <Bio

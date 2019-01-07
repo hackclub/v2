@@ -14,6 +14,7 @@
     "map": "npx babel-node src/map.js"
   },
   "dependencies": {
+    "@hackclub/banner": "^1.0.0",
     "@hackclub/design-system": "^0.0.1-14",
     "@hackclub/icons": "^0.0.1",
     "axios": "^0.18.0",

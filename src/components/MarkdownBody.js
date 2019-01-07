@@ -79,11 +79,49 @@ const MarkdownBody = styled(Box)`
     border-radius: 4px;
   }
 
+  table {
+    width: 100%;
+    margin-top: ${theme.space[3]}px;
+    margin-bottom: ${theme.space[3]}px;
+    border-collapse: collapse;
+    border: 1px solid ${theme.colors.smoke};
+
+    th {
+      font-weight: ${theme.bold};
+      text-align: left;
+    }
+
+    td,
+    th {
+      padding: ${theme.space[2]}px;
+      border-right: 1px solid ${theme.colors.smoke};
+      border-bottom: 1px solid ${theme.colors.smoke};
+    }
+
+    tbody {
+      th {
+        width: 25%;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid ${theme.colors.smoke};
+      }
+
+      tr:last-child {
+        th,
+        td {
+          border-bottom: 1px solid ${theme.colors.smoke};
+        }
+      }
+    }
+  }
+
   pre,
   code,
   kbd {
     font-family: ${theme.mono};
-    font-size: ${theme.fontSizes[2]}px;
+    font-size: 100%;
     word-break: break-word;
   }
 

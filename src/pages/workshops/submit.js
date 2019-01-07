@@ -8,6 +8,7 @@ import {
   Icon,
   Text,
   IconButton as IconDot,
+  Container,
   theme,
   mediaQueries
 } from '@hackclub/design-system'
@@ -172,14 +173,16 @@ export default class extends Component {
         ) : (
           <ErrorContainer>
             <Sheet mx={4}>
-              <Icon glyph="important" size={64} />
+              <Icon glyph="important" size={64} color="muted" />
               <Text fontSize={4} bold>
                 We had trouble loading this workshop.
               </Text>
-              <Text fontSize={3} color="muted">
-                It may be private, or may have been deleted by an author or
-                moderator.
-              </Text>
+              <Container style={{ maxWidth: 512 }}>
+                <Text fontSize={3} color="muted">
+                  It may be private, or may have been deleted by an author or
+                  moderator.
+                </Text>
+              </Container>
               <Link to="/workshops/drafts">
                 <IconButton glyph="enter" mt={4}>
                   Back to drafts

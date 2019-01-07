@@ -1,7 +1,15 @@
 import React, { Component, Fragment } from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
-import { Box, Flex, Icon, Text, theme } from '@hackclub/design-system'
+import {
+  Box,
+  Flex,
+  Icon,
+  Text,
+  IconButton as IconDot,
+  theme,
+  mediaQueries
+} from '@hackclub/design-system'
 import ReactMarkdown from 'react-markdown'
 
 import search from '../../search'
@@ -15,17 +23,41 @@ const TwoColumn = styled(Box).attrs({
   p: 5
 })`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: ${theme.space[5]}px;
   min-height: 100vh;
+
+  ${mediaQueries.lg} {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   > div {
     height: 100%;
     color: ${theme.colors.black};
-    /* background-image: linear-gradient(
-      ${theme.colors.smoke} 30%,
-      ${theme.colors.white} 30% 100%
-    ); */
+  }
+
+  > div:first-child {
+    display: ${props => (props.view === 'edit' ? 'block' : 'none')};
+  }
+
+  > div:nth-child(2) {
+    display: ${props => (props.view === 'edit' ? 'none' : 'block')};
+
+    ${mediaQueries.lg} {
+      display: block;
+    }
+  }
+`
+
+const Toggle = styled(IconDot)`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  opacity: 0.3;
+  display: block;
+
+  ${mediaQueries.lg} {
+    display: none;
   }
 `
 
@@ -62,6 +94,7 @@ export default class extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      view: 'edit',
       name: search.get('id') || '',
       value:
         (storage.get(search.get('id')) && storage.get(search.get('id')).body) ||
@@ -92,15 +125,24 @@ export default class extends Component {
     this.setState({ value: e.target.value })
   }
 
+  toggleView = () =>
+    this.setState({ view: this.state.view === 'edit' ? 'preview ' : 'edit' })
+
   render() {
-    const { name, value } = this.state
+    const { view, name, value } = this.state
 
     return (
       <Fragment>
         <BG color="snow" />
         {storage.keys().includes(name) ? (
-          <TwoColumn>
+          <TwoColumn view={view}>
             <Sheet p={5}>
+              <Toggle
+                bg="slate"
+                circle
+                glyph="view"
+                onClick={this.toggleView}
+              />
               <Editor
                 autoFocus
                 autoCorrect
@@ -112,6 +154,12 @@ export default class extends Component {
               />
             </Sheet>
             <Sheet p={5}>
+              <Toggle
+                bg="slate"
+                circle
+                glyph="view"
+                onClick={this.toggleView}
+              />
               <p>Name: {this.state.name}</p>
               <MarkdownBody>
                 <ReactMarkdown source={value} />

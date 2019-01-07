@@ -107,7 +107,8 @@ export default class extends Component {
       ordered,
       cacheDrafts: ordered,
       creating: false,
-      newName: ''
+      newName: '',
+      arrange: 'list'
     }
   }
 
@@ -118,16 +119,19 @@ export default class extends Component {
 
   handleNewNameChange = e => this.setState({ newName: e.target.value })
 
-  createPost = () => {
+  createDraft = () => {
     const slug = 'draft-' + this.state.newName.replace(/ /g, '-')
 
-    storage.set(slug, { body: '' })
+    storage.set(slug, { body: '', edited: new Date() / 1000 })
 
     window.location = `/workshops/submit?id=${slug}`
   }
 
+  setArrange = () =>
+    this.setState({ arrange: this.state.arrange === 'list' ? 'grid' : 'list' })
+
   render() {
-    const { ordered, creating, newName } = this.state
+    const { ordered, creating, newName, arrange } = this.state
 
     return (
       <Fragment>
@@ -144,6 +148,27 @@ export default class extends Component {
             >
               {creating ? 'Cancel' : 'Create workshop'}
             </Add>
+          </Flex>
+          <Flex mb={3} align="center" color="muted">
+            <Text mr={2}>View as:</Text>
+            <FeatherIcon
+              onClick={this.setArrange}
+              glyph="list"
+              style={{
+                color: arrange === 'list' ? theme.colors.info : 'inherit',
+                marginRight: 16,
+                cursor: 'pointer'
+              }}
+            />
+            <FeatherIcon
+              style={{
+                color: arrange === 'grid' ? theme.colors.info : 'inherit',
+                cursor: 'pointer'
+              }}
+              onClick={this.setArrange}
+              glyph="grid"
+              size={22}
+            />
           </Flex>
           <Transition
             config={{ duration: 0 }}
@@ -173,7 +198,7 @@ export default class extends Component {
 
                   <Add
                     disabled={newName === ''}
-                    onClick={this.createPost}
+                    onClick={this.createDraft}
                     bg="success"
                     mt={4}
                     glyph="markdown"
@@ -185,29 +210,41 @@ export default class extends Component {
               ))
             }
           </Transition>
-          <Transition
-            items={ordered}
-            keys={draft => draft.slug}
-            from={{ opacity: 0, transform: 'translate3d(0, 128px, 0)' }}
-            enter={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
-            leave={{ opacity: 0, transform: 'translate3d(0, 128px, ,0)' }}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: arrange === 'list' ? '1fr' : '1fr 1fr',
+              gridColumnGap: 24
+            }}
           >
-            {draft => props => (
-              <Link to={`/workshops/submit?id=${draft.slug}`} key={draft.slug}>
-                <Card style={props}>
-                  <Flex align="center">
-                    <Left>
-                      <Heading.h3 fontSize={[3, 4]}>{draft.name}</Heading.h3>
-                      <Text color="muted">
-                        <ReactMarkdown source={truncate(draft.body, 64)} />
-                      </Text>
-                    </Left>
-                    <FeatherIcon glyph="edit-3" />
-                  </Flex>
-                </Card>
-              </Link>
-            )}
-          </Transition>
+            <Transition
+              items={ordered}
+              keys={draft => draft.slug}
+              from={{ opacity: 0, transform: 'translate3d(0, 128px, 0)' }}
+              enter={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
+              leave={{ opacity: 0, transform: 'translate3d(0, 128px, ,0)' }}
+            >
+              {draft => props => (
+                <Link
+                  to={`/workshops/submit?id=${draft.slug}`}
+                  key={draft.slug}
+                >
+                  <Card style={props}>
+                    <Flex align="center">
+                      <Left>
+                        <Heading.h3 fontSize={[3, 4]}>{draft.name}</Heading.h3>
+                        <Text color="muted">
+                          <ReactMarkdown source={truncate(draft.body, 64)} />
+                        </Text>
+                      </Left>
+                      <FeatherIcon glyph="edit-3" />
+                    </Flex>
+                  </Card>
+                </Link>
+              )}
+            </Transition>
+          </div>
+
           {ordered.length === 0 &&
             !creating && (
               <Box align="right" style={{ maxWidth: 300 }} mx="auto" mt={-5}>

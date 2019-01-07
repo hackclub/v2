@@ -115,7 +115,7 @@ export default () => (
         img="/team/mingjie.jpg"
         name="Mingjie Jiang"
         role="Community"
-        text="Mingjie leads a local club at Wootton High School in Rockville, Maryland. Aside from engaging more students into the world of hacking, he also cares about building a unique public identity for Hack Club."
+        text="Mingjie is a club leader from Rockville, Maryland. He started working with Hack Club in July 2017, currently working with community engagement and public identity of the organization. He also ran various programs like Hack Chicago & CodeDay DC to spread his passion for technology to fellow students."
         pronouns="he/him"
       />
       <Bio

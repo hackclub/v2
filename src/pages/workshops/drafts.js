@@ -15,12 +15,12 @@ import ReactMarkdown from 'react-markdown'
 import orderBy from 'lodash/orderBy'
 import { Transition } from 'react-spring'
 
-import storage from '../../storage'
-import BG from '../../components/BG'
-import IconButton from '../../components/IconButton'
-import Sheet from '../../components/Sheet'
-import FeatherIcon from '../../components/FeatherIcon'
-import MarkdownBody from '../../components/MarkdownBody'
+import storage from 'storage'
+import BG from 'components/BG'
+import IconButton from 'components/IconButton'
+import Sheet from 'components/Sheet'
+import FeatherIcon from 'components/FeatherIcon'
+import MarkdownBody from 'components/MarkdownBody'
 
 const Add = styled(IconButton)`
   background-image: radial-gradient(
@@ -84,7 +84,7 @@ const Left = styled(Box)`
 `
 
 const truncate = (str, length) => {
-  const dots = str.length > length ? '...' : ''
+  const dots = str.length > length ? '…' : ''
   return str.substring(0, length) + dots
 }
 

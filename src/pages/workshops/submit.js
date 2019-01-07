@@ -69,6 +69,14 @@ export default class extends Component {
     }
   }
 
+  componentDidMount() {
+    const slug = search.get('id')
+    this.setState({
+      name: slug || '',
+      value: (storage.get(slug) && storage.get(slug).body) || ''
+    })
+  }
+
   handleInputChange = e => {
     const data = {
       body: e.target.value,

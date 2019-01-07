@@ -94,6 +94,10 @@ export default class extends Component {
           <TwoColumn>
             <Sheet p={5}>
               <Editor
+                autoFocus
+                autoCorrect
+                autoCapitalize
+                autoComplete
                 placeholder="Write your *markdown* here..."
                 value={value}
                 onChange={this.handleInputChange}

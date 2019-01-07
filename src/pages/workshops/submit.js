@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
 import {
+  Heading,
   Box,
   Flex,
   Icon,
@@ -11,6 +12,7 @@ import {
   mediaQueries
 } from '@hackclub/design-system'
 import ReactMarkdown from 'react-markdown'
+import Prism from 'prismjs'
 
 import search from '../../search'
 import storage from '../../storage'
@@ -103,11 +105,11 @@ export default class extends Component {
   }
 
   componentDidMount() {
-    const slug = search.get('id')
-    this.setState({
-      name: slug || '',
-      value: (storage.get(slug) && storage.get(slug).body) || ''
-    })
+    Prism.highlightAll()
+  }
+
+  componentDidUpdate() {
+    Prism.highlightAll()
   }
 
   handleInputChange = e => {
@@ -160,7 +162,9 @@ export default class extends Component {
                 glyph="view"
                 onClick={this.toggleView}
               />
-              <p>Name: {this.state.name}</p>
+              <p>
+                Name: {this.state.name.replace(/-/g, ' ').replace('draft', '')}
+              </p>
               <MarkdownBody>
                 <ReactMarkdown source={value} />
               </MarkdownBody>

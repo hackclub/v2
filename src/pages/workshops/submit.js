@@ -14,12 +14,12 @@ import {
 import ReactMarkdown from 'react-markdown'
 import Prism from 'prismjs'
 
-import search from '../../search'
-import storage from '../../storage'
-import BG from '../../components/BG'
-import Sheet from '../../components/Sheet'
-import MarkdownBody from '../../components/MarkdownBody'
-import IconButton from '../../components/IconButton'
+import search from 'search'
+import storage from 'storage'
+import BG from 'components/BG'
+import Sheet from 'components/Sheet'
+import MarkdownBody from 'components/MarkdownBody'
+import IconButton from 'components/IconButton'
 
 const TwoColumn = styled(Box).attrs({
   p: 5
@@ -85,22 +85,21 @@ const ErrorContainer = styled(Flex).attrs({
     max-width: 42rem;
   }
 
-  a {
-    svg {
-      transform: rotate(180deg);
-    }
+  a svg {
+    transform: rotate(180deg);
   }
 `
 
 export default class extends Component {
   constructor(props) {
     super(props)
+
+    const slug = search.get('id')
+
     this.state = {
       view: 'edit',
-      name: search.get('id') || '',
-      value:
-        (storage.get(search.get('id')) && storage.get(search.get('id')).body) ||
-        ''
+      name: slug || '',
+      value: (storage.get(slug) && storage.get(slug).body) || ''
     }
   }
 

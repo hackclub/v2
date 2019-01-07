@@ -20,6 +20,7 @@ import BG from '../../components/BG'
 import IconButton from '../../components/IconButton'
 import Sheet from '../../components/Sheet'
 import FeatherIcon from '../../components/FeatherIcon'
+import MarkdownBody from '../../components/MarkdownBody'
 
 const Add = styled(IconButton)`
   background-image: radial-gradient(
@@ -71,6 +72,10 @@ const Card = styled(Sheet)`
     svg {
       display: block;
     }
+  }
+
+  code {
+    font-size: 14px;
   }
 `
 
@@ -149,27 +154,29 @@ export default class extends Component {
               {creating ? 'Cancel' : 'Create workshop'}
             </Add>
           </Flex>
-          <Flex mb={3} align="center" color="muted">
-            <Text mr={2}>View as:</Text>
-            <FeatherIcon
-              onClick={this.setArrange}
-              glyph="list"
-              style={{
-                color: arrange === 'list' ? theme.colors.info : 'inherit',
-                marginRight: 16,
-                cursor: 'pointer'
-              }}
-            />
-            <FeatherIcon
-              style={{
-                color: arrange === 'grid' ? theme.colors.info : 'inherit',
-                cursor: 'pointer'
-              }}
-              onClick={this.setArrange}
-              glyph="grid"
-              size={22}
-            />
-          </Flex>
+          {ordered.length !== 0 && (
+            <Flex mb={3} align="center" color="muted">
+              <Text mr={2}>View as:</Text>
+              <FeatherIcon
+                onClick={this.setArrange}
+                glyph="list"
+                style={{
+                  color: arrange === 'list' ? theme.colors.info : 'inherit',
+                  marginRight: 16,
+                  cursor: 'pointer'
+                }}
+              />
+              <FeatherIcon
+                style={{
+                  color: arrange === 'grid' ? theme.colors.info : 'inherit',
+                  cursor: 'pointer'
+                }}
+                onClick={this.setArrange}
+                glyph="grid"
+                size={22}
+              />
+            </Flex>
+          )}
           <Transition
             config={{ duration: 0 }}
             items={creating}
@@ -233,9 +240,13 @@ export default class extends Component {
                     <Flex align="center">
                       <Left>
                         <Heading.h3 fontSize={[3, 4]}>{draft.name}</Heading.h3>
-                        <Text color="muted">
-                          <ReactMarkdown source={truncate(draft.body, 64)} />
-                        </Text>
+                        <MarkdownBody
+                          style={{ fontFamily: theme.sans, fontSize: 16 }}
+                        >
+                          <Text color="muted">
+                            <ReactMarkdown source={truncate(draft.body, 64)} />
+                          </Text>
+                        </MarkdownBody>
                       </Left>
                       <FeatherIcon glyph="edit-3" />
                     </Flex>

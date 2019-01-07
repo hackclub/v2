@@ -67,7 +67,7 @@ const Editor = styled.textarea`
   border: 0;
   outline: 0;
   font-family: ${theme.mono};
-  font-size: ${theme.fontSizes[2]}px;
+  font-size: 18px;
   width: 100%;
   height: 100%;
   background: none;

@@ -16,10 +16,10 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
-"@hackclub/banner@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@hackclub/banner/-/banner-1.0.0.tgz#a015d619a0b4121468aeb3f4a74ed58e1f47131d"
-  integrity sha512-5o0OxhBtYkKUb8/OSVRQReURuSmhhmrB777/wJW4465hA/arsVtcUeyGWDhoC50QTMT66x6JNLjyNxTf51jUeg==
+"@hackclub/banner@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@hackclub/banner/-/banner-1.0.1.tgz#10f39c2b8859bb74afcd98f4990bd37be5dceb47"
+  integrity sha512-ABWVNRC5854USnxthVa+mXDQN2axkNu1RxRO5vS87QsfpQncmqTZDEy7V1LKNy9m1An36zLKm4/tPcir/jI8Ow==
 
 "@hackclub/design-system@^0.0.1-14":
   version "0.0.1-14"

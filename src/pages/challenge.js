@@ -227,7 +227,7 @@ export default class extends Component {
                 ℹ️ Competition open to Hack Club community members
               </Text>
               <Text fontSize={2}>
-                🏅 Submissions due {dt(challenge.end)}. Top 3 voted win!
+                🏅 Voting ends on {dt(challenge.end)}. Top 3 voted win!
               </Text>
             </HeaderAreaInfo>
             <HeaderAreaForm status={status}>

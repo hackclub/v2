@@ -7,6 +7,7 @@ import {
   Flex,
   Icon,
   Text,
+  LargeButton,
   IconButton as IconDot,
   Container,
   theme,
@@ -15,6 +16,7 @@ import {
 import ReactMarkdown from 'react-markdown'
 import Prism from 'prismjs'
 
+import api from 'api'
 import search from 'search'
 import storage from 'storage'
 import BG from 'components/BG'
@@ -22,13 +24,21 @@ import Sheet from 'components/Sheet'
 import MarkdownBody from 'components/MarkdownBody'
 import IconButton from 'components/IconButton'
 
+const FullHeight = styled(Flex).attrs({
+  flexDirection: 'column'
+})`
+  min-height: 100vh;
+`
+
 const TwoColumn = styled(Box).attrs({
   p: [0, 5]
 })`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: ${theme.space[5]}px;
-  min-height: 100vh;
+  height: 100%;
+  flex: 1;
+  padding-bottom: 0;
 
   ${mediaQueries.lg} {
     grid-template-columns: repeat(2, 1fr);
@@ -74,6 +84,21 @@ const Editor = styled.textarea`
   background: none;
 `
 
+const SubmitButton = styled(LargeButton).attrs({
+  m: 3,
+  scale: true,
+  py: 3,
+  px: 4,
+  fontSize: 2
+})`
+  background-image: radial-gradient(
+    ellipse farthest-corner at top left,
+    ${theme.colors.cyan[5]},
+    ${theme.colors.teal[6]},
+    ${theme.colors.green[7]}
+  );
+`
+
 const ErrorContainer = styled(Flex).attrs({
   bg: 'snow',
   align: 'center',
@@ -100,11 +125,29 @@ export default class extends Component {
     this.state = {
       view: 'edit',
       name: slug || '',
-      value: (storage.get(slug) && storage.get(slug).body) || ''
+      value: (storage.get(slug) && storage.get(slug).body) || '',
+      status: 'loading'
     }
   }
 
   componentDidMount() {
+    if (storage.get('authToken')) {
+      api
+        .get(`v1/users/current`)
+        .then(user => {
+          this.setState({ status: 'success', userId: user.id })
+        })
+        .catch(err => {
+          if (err.status === 401) {
+            this.setState({ status: 'needsToAuth' })
+          } else {
+            this.setState({ status: 'error' })
+          }
+        })
+    } else {
+      this.setState({ status: 'needsToAuth' })
+    }
+
     Prism.highlightAll()
   }
 
@@ -137,39 +180,45 @@ export default class extends Component {
       <Fragment>
         <BG color="snow" />
         {storage.keys().includes(name) ? (
-          <TwoColumn view={view}>
-            <Sheet p={5}>
-              <Toggle
-                bg="slate"
-                circle
-                glyph="view"
-                onClick={this.toggleView}
-              />
-              <Editor
-                autoFocus
-                autoCorrect
-                autoCapitalize
-                autoComplete
-                placeholder="Write your *markdown* here..."
-                value={value}
-                onChange={this.handleInputChange}
-              />
-            </Sheet>
-            <Sheet p={5}>
-              <Toggle
-                bg="slate"
-                circle
-                glyph="view"
-                onClick={this.toggleView}
-              />
-              <p>
-                Name: {this.state.name.replace(/-/g, ' ').replace('draft', '')}
-              </p>
-              <MarkdownBody>
-                <ReactMarkdown source={value} />
-              </MarkdownBody>
-            </Sheet>
-          </TwoColumn>
+          <FullHeight>
+            <TwoColumn view={view}>
+              <Sheet p={5}>
+                <Toggle
+                  bg="slate"
+                  circle
+                  glyph="view"
+                  onClick={this.toggleView}
+                />
+                <Editor
+                  autoFocus
+                  autoCorrect
+                  autoCapitalize
+                  autoComplete
+                  placeholder="Write your *markdown* here..."
+                  value={value}
+                  onChange={this.handleInputChange}
+                />
+              </Sheet>
+              <Sheet p={5}>
+                <Toggle
+                  bg="slate"
+                  circle
+                  glyph="view"
+                  onClick={this.toggleView}
+                />
+                <p>
+                  Name:{' '}
+                  {this.state.name.replace(/-/g, ' ').replace('draft', '')}
+                </p>
+                <MarkdownBody>
+                  <ReactMarkdown source={value} />
+                </MarkdownBody>
+              </Sheet>
+            </TwoColumn>
+            <Flex justify="center">
+              <SubmitButton>Submit Workshop</SubmitButton>
+            </Flex>
+          </FullHeight>
         ) : (
           <ErrorContainer>
             <Sheet mx={4}>

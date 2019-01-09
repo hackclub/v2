@@ -15,8 +15,8 @@ import {
   theme
 } from '@hackclub/design-system'
 
-import CarouselProject from 'components/workshops/CarouselProject'
-import CarouselSubmissionForm from 'components/workshops/CarouselSubmissionForm'
+import CarouselProject from './CarouselProject'
+import CarouselSubmissionForm from './CarouselSubmissionForm'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'

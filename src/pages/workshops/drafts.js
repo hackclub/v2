@@ -29,6 +29,10 @@ const Grid = styled(Box)`
   display: grid;
   grid-template-columns: 1fr;
 
+  div:first-child {
+    max-height: 213.75px;
+  }
+
   ${mediaQueries.md} {
     grid-gap: 1rem;
     grid-template-columns: 320px 1fr;
@@ -45,16 +49,11 @@ const Add = styled(IconButton)`
   ${props =>
     props.creating &&
     css`
-      background-image: radial-gradient(
-        ellipse farthest-corner at top left,
-        ${theme.colors.silver},
-        ${theme.colors.slate}
-      );
+      display: none !important;
     `};
 
   svg {
     ${props =>
-      !props.creating &&
       !props.noTilt &&
       css`
         transform: rotate(45deg);
@@ -160,14 +159,14 @@ export default class extends Component {
           <Container maxWidth={42} style={{ width: '100%' }}>
             <Flex>
               <Add
-                onClick={creating ? this.cancelCreation : this.beginCreation}
+                onClick={this.beginCreation}
                 creating={creating}
                 glyph="view-close-small"
                 bg="success"
                 mx="auto"
                 mb={4}
               >
-                {creating ? 'Cancel' : 'Create workshop'}
+                Create workshop
               </Add>
             </Flex>
             {ordered.length !== 0 && (
@@ -210,6 +209,15 @@ export default class extends Component {
                         <Text.span color="success">Create</Text.span> a workshop
                         here.
                       </Text>
+                      <IconButton
+                        glyph="view-close"
+                        bg="smoke"
+                        color="black"
+                        ml="auto"
+                        mb={1}
+                        onClick={this.cancelCreation}
+                        style={{ opacity: 0.5, padding: theme.space[1] }}
+                      />
                     </Flex>
                     <Field
                       name="name"

@@ -23,7 +23,7 @@ import MarkdownBody from 'components/MarkdownBody'
 import IconButton from 'components/IconButton'
 
 const TwoColumn = styled(Box).attrs({
-  p: 5
+  p: [0, 5]
 })`
   display: grid;
   grid-template-columns: 1fr;

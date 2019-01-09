@@ -24,7 +24,7 @@ import {
 import IconButton from 'components/IconButton'
 import MarkdownBody from 'components/MarkdownBody'
 import FeedbackForm from 'components/workshops/FeedbackForm'
-import Carousel from 'components/workshops/Carousel'
+import Carousel from 'components/workshops/carousel/Carousel'
 import DiscussOnSlack from 'components/DiscussOnSlack'
 import ShareButton from 'components/ShareButton'
 import Sheet from 'components/Sheet'

@@ -136,7 +136,7 @@ const Footer = ({ dark = false, children, ...props }) => (
           Resources
         </Heading.h2>
         <Pages>
-          <a href="https://conduct.hackclub.com" children="Code of Conduct" />
+          <Link to="/conduct" children="Code of Conduct" />
           <a href="https://finder.hackclub.com" children="Finder" />
           <a href="https://hackathons.hackclub.com" children="Hackathons" />
           <a href="https://shop.hackclub.com/?ref=footer" children="Shop" />

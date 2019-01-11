@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import { Field, Button, theme } from '@hackclub/design-system'
+import { Formik } from 'formik'
 
 import storage from 'storage'
 import { Modal, Overlay } from 'components/Modal'
@@ -21,45 +22,59 @@ const NiceField = styled(Field).attrs({
   }
 `
 
-export default class extends Component {
-  state = { name: this.props.name }
-
-  handleInputChange = e => this.setState({ name: e.target.value })
-
-  saveData = () => {
-    const slug = 'draft-' + this.state.name.replace(/ /g, '-')
-    const oldSlug = 'draft-' + this.props.name.replace(/ /g, '-')
-    const { body, edited } = storage.get(oldSlug)
-
-    storage.set(slug, { body, edited })
-    storage.remove(oldSlug)
-    window.location = `/workshops/submit?id=${slug}`
-  }
-
-  render() {
-    const { active, toggleModal } = this.props
-    const { name } = this.state
-
-    return (
+export default ({ active, toggleModal, name }) => (
+  <Fragment>
+    {active && (
       <Fragment>
-        {active && (
-          <Fragment>
-            <Modal align="left" my={4} p={[3, 4]}>
-              <NiceField
-                name="wname"
-                label="Workshop name"
-                placeholder="Getting started with React Hooks"
-                defaultValue={name}
-                onChange={this.handleInputChange}
-              />
-              <Button mt={3} bg="success" onClick={this.saveData}>
-                Save
-              </Button>
-            </Modal>
-            <Overlay onClick={toggleModal} />
-          </Fragment>
-        )}
+        <Modal align="left" my={4} p={[3, 4]}>
+          <Formik
+            initialValues={{ name }}
+            validate={values => {
+              let errors = {}
+              if (!values.name) {
+                errors.name = 'Required'
+              }
+              return errors
+            }}
+            onSubmit={values => {
+              const slug = 'draft-' + values.name.replace(/ /g, '-')
+              const oldSlug = 'draft-' + name.replace(/ /g, '-')
+              const { body, edited } = storage.get(oldSlug)
+
+              storage.set(slug, { body, edited })
+              storage.remove(oldSlug)
+              window.location = `/workshops/submit?id=${slug}`
+            }}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              isSubmitting
+              /* and other goodies */
+            }) => (
+              <form onSubmit={handleSubmit}>
+                <NiceField
+                  type="input"
+                  name="name"
+                  label="Workshop name"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.name}
+                  error={errors.name && touched.name && errors.name}
+                />
+                <Button mt={3} bg="success" onClick={handleSubmit}>
+                  Save
+                </Button>
+              </form>
+            )}
+          </Formik>
+        </Modal>
+        <Overlay onClick={toggleModal} />
       </Fragment>
-    )
-  }
-}
+    )}
+  </Fragment>
+)

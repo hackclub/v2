@@ -20,7 +20,6 @@ import BG from 'components/BG'
 import Nav from 'components/Nav'
 import IconButton from 'components/IconButton'
 import Sheet from 'components/Sheet'
-import FeatherIcon from 'components/FeatherIcon'
 import MarkdownBody from 'components/MarkdownBody'
 import Auth from 'components/Auth'
 import { mediaQueries } from '@hackclub/design-system/dist/theme'
@@ -73,6 +72,7 @@ const Card = styled(Sheet)`
   }
 
   svg {
+    transform: rotate(180deg);
     display: none;
     @media (hover: none) {
       display: block;
@@ -191,12 +191,12 @@ export default class extends Component {
                       <Left>
                         <Heading.h3 fontSize={[3, 4]}>{draft.name}</Heading.h3>
                         <MarkdownBody style={{ fontFamily: 'Phantom Sans' }}>
-                          <Text color="muted">
+                          <Text color="muted" style={{ lineHeight: 1.2 }}>
                             <ReactMarkdown source={truncate(draft.body, 64)} />
                           </Text>
                         </MarkdownBody>
                       </Left>
-                      <FeatherIcon glyph="edit-3" />
+                      <Icon size={32} color="black" glyph="view-back" />
                     </Flex>
                   </Card>
                 </Link>

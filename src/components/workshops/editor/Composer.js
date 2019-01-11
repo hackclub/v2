@@ -1,10 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, IconButton, theme, mediaQueries } from '@hackclub/design-system'
+import {
+  Box,
+  IconButton,
+  Heading,
+  theme,
+  mediaQueries
+} from '@hackclub/design-system'
 import ReactMarkdown from 'react-markdown'
 
 import Sheet from 'components/Sheet'
 import MarkdownBody from 'components/MarkdownBody'
+import Name from 'components/Name'
 
 const TwoColumn = styled(Box).attrs({
   p: [0, 5]
@@ -58,6 +65,12 @@ const Editor = styled.textarea`
   background: none;
 `
 
+const MetaPreview = styled(Box)`
+  background-image: url('/workshops/personal_website.svg');
+  text-align: center;
+  padding: 32px 16px;
+`
+
 export default ({
   view,
   toggleView,
@@ -79,13 +92,21 @@ export default ({
         onChange={handleInputChange}
       />
     </Sheet>
-    <Sheet p={5}>
+
+    <Sheet p={0}>
       <Toggle bg="slate" circle glyph="view" onClick={toggleView} />
-      <p>Name: {name.replace(/-/g, ' ').replace('draft ', '')}</p>
-      <p>{description}</p>
-      <MarkdownBody>
-        <ReactMarkdown source={value} />
-      </MarkdownBody>
+      <MetaPreview>
+        <Name>{name}</Name>
+        <Heading.h2 fontSize={[4, 5]} color="white" bold mt={1}>
+          {description}
+        </Heading.h2>
+      </MetaPreview>
+
+      <Box p={5} pt={1}>
+        <MarkdownBody>
+          <ReactMarkdown source={value} />
+        </MarkdownBody>
+      </Box>
     </Sheet>
   </TwoColumn>
 )

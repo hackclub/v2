@@ -74,7 +74,7 @@ export default ({ view, toggleView, value, handleInputChange, name }) => (
     </Sheet>
     <Sheet p={5}>
       <Toggle bg="slate" circle glyph="view" onClick={toggleView} />
-      <p>Name: {name.replace(/-/g, ' ').replace('draft', '')}</p>
+      <p>Name: {name.replace(/-/g, ' ').replace('draft ', '')}</p>
       <MarkdownBody>
         <ReactMarkdown source={value} />
       </MarkdownBody>

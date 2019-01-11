@@ -75,7 +75,7 @@ export default class extends Component {
   render() {
     const { view, name, value } = this.state
 
-    const cleanName = name.replace(/-/g, ' ').replace('draft', '')
+    const cleanName = name.replace(/-/g, ' ').replace('draft ', '')
 
     return (
       <Fragment>

@@ -57,11 +57,16 @@ export default class extends Component {
 
   render() {
     const { active } = this.state
-    const { name } = this.props
+    const { name, description } = this.props
 
     return (
       <Fragment>
-        <MetaModal active={active} toggleModal={this.toggleModal} name={name} />
+        <MetaModal
+          active={active}
+          toggleModal={this.toggleModal}
+          name={name}
+          description={description}
+        />
         <Base p={3} align="center" justify="space-between">
           <Link to="/workshops/drafts">
             <IconButton

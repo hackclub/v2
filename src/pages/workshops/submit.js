@@ -20,11 +20,13 @@ export default class extends Component {
     super(props)
 
     const slug = search.get('id')
+    const data = storage.get(slug)
 
     this.state = {
       view: 'edit',
       name: slug || '',
-      value: (storage.get(slug) && storage.get(slug).body) || '',
+      description: (data && data.description) || '',
+      value: (data && data.body) || '',
       status: 'loading'
     }
   }
@@ -73,7 +75,7 @@ export default class extends Component {
     this.setState({ view: this.state.view === 'edit' ? 'preview ' : 'edit' })
 
   render() {
-    const { view, name, value } = this.state
+    const { view, name, description, value } = this.state
 
     const cleanName = name.replace(/-/g, ' ').replace('draft ', '')
 
@@ -83,7 +85,7 @@ export default class extends Component {
         <FullHeight>
           {storage.keys().includes(name) ? (
             <Fragment>
-              <TitleBar name={cleanName} />
+              <TitleBar name={cleanName} description={description} />
 
               <Composer
                 view={view}
@@ -91,6 +93,7 @@ export default class extends Component {
                 value={value}
                 handleInputChange={this.handleInputChange}
                 name={cleanName}
+                description={description}
               />
             </Fragment>
           ) : (

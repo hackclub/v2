@@ -58,7 +58,14 @@ const Editor = styled.textarea`
   background: none;
 `
 
-export default ({ view, toggleView, value, handleInputChange, name }) => (
+export default ({
+  view,
+  toggleView,
+  value,
+  handleInputChange,
+  name,
+  description
+}) => (
   <TwoColumn view={view}>
     <Sheet p={5}>
       <Toggle bg="slate" circle glyph="view" onClick={toggleView} />
@@ -75,6 +82,7 @@ export default ({ view, toggleView, value, handleInputChange, name }) => (
     <Sheet p={5}>
       <Toggle bg="slate" circle glyph="view" onClick={toggleView} />
       <p>Name: {name.replace(/-/g, ' ').replace('draft ', '')}</p>
+      <p>{description}</p>
       <MarkdownBody>
         <ReactMarkdown source={value} />
       </MarkdownBody>

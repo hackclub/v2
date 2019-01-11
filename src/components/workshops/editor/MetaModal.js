@@ -22,17 +22,20 @@ const NiceField = styled(Field).attrs({
   }
 `
 
-export default ({ active, toggleModal, name }) => (
+export default ({ active, toggleModal, name, description }) => (
   <Fragment>
     {active && (
       <Fragment>
         <Modal align="left" my={4} p={[3, 4]}>
           <Formik
-            initialValues={{ name }}
+            initialValues={{ name, description }}
             validate={values => {
               let errors = {}
               if (!values.name) {
                 errors.name = 'Required'
+              }
+              if (!values.description) {
+                errors.description = 'Required'
               }
               return errors
             }}
@@ -41,9 +44,16 @@ export default ({ active, toggleModal, name }) => (
               const oldSlug = 'draft-' + name.replace(/ /g, '-')
               const { body, edited } = storage.get(oldSlug)
 
-              storage.set(slug, { body, edited })
-              storage.remove(oldSlug)
-              window.location = `/workshops/submit?id=${slug}`
+              storage.set(slug, {
+                body,
+                edited,
+                description: values.description
+              })
+              if (slug !== oldSlug) {
+                storage.remove(oldSlug)
+                window.location = `/workshops/submit?id=${slug}`
+              }
+              toggleModal()
             }}
           >
             {({
@@ -66,6 +76,21 @@ export default ({ active, toggleModal, name }) => (
                   value={values.name}
                   error={errors.name && touched.name && errors.name}
                 />
+
+                <NiceField
+                  type="input"
+                  name="description"
+                  label="Workshop description"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.description}
+                  error={
+                    errors.description &&
+                    touched.description &&
+                    errors.description
+                  }
+                />
+
                 <Button mt={3} bg="success" onClick={handleSubmit}>
                   Save
                 </Button>

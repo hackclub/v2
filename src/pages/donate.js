@@ -294,6 +294,7 @@ export default () => (
           </Box>
         </Flex>
       </FirstQuote>
+      {/*
       <WishShapes mt={3}>
         <Triangle size={128} rotate={64} />
         <Circle size={128} />
@@ -362,13 +363,14 @@ export default () => (
           </Financials>
         </Box>
       </Row>
-      <Container py={4}>
+      */}
+      <Container maxWidth={48} py={4}>
         <Subhline>Contribute beyond just dollars.</Subhline>
-        <Lead my={3} maxWidth={48} mx={0}>
+        <Lead my={3} mx={0}>
           We accept donations of time, technical or hard science fiction books,
           stocks/other securities, and cryptocurrency.
         </Lead>
-        <Lead my={3} maxWidth={48} mx={0}>
+        <Lead my={3} mx={0}>
           Please get in touch at{' '}
           <A href="mailto:donate@hackclub.com">donate@hackclub.com</A> if you’re
           interested in making a contribution with an unsupported token or have
@@ -379,8 +381,9 @@ export default () => (
             href="https://commerce.coinbase.com/checkout/ae7ad42d-0dcd-4e9d-8dc7-ba78648a58cd"
             target="_blank"
             bg="info"
+            chevronRight
           >
-            Donate with popular cryptocurrencies »
+            Donate with cryptocurrency
           </Button>
         </Box>
       </Container>

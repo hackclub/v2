@@ -126,6 +126,7 @@ const StartAction = styled(Action).attrs({ py: 3, px: 4 })`
 export default () => (
   <Root>
     <Wrapper>
+      {/*
       <Announcement>
         <Icon size={24} glyph="notification" color="slate" mr={1} />
         <Flex color="black" fontSize={1}>
@@ -148,6 +149,7 @@ export default () => (
           Learn more
         </A>
       </Announcement>
+      */}
       <Text
         fontSize={[3, 4]}
         mx="auto"

@@ -272,7 +272,7 @@ export default () => (
       </Container>
     </Header>
     <Container {...contentContainer}>
-      <FirstQuote mb={[5, 6]}>
+      <FirstQuote>
         <Text fontSize={4} mb={3}>
           When I took CS classes in high school, I always found myself
           disengaged and feeling like they were just another class. After
@@ -364,7 +364,7 @@ export default () => (
         </Box>
       </Row>
       */}
-      <Container maxWidth={48} py={4}>
+      <Container maxWidth={48} py={[4, 5]}>
         <Subhline>Contribute beyond just dollars.</Subhline>
         <Lead my={3} mx={0}>
           We accept donations of time, technical or hard science fiction books,

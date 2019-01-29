@@ -135,7 +135,7 @@ export default () => (
         Hack Club Bank is the best place for high school hackers to store money
         for hackathons. Student organizers can invoice sponsors, issue physical
         debit cards, and get access to their event’s financials through a live
-        dashboard all with the benefits of the backing of a 501(c)(3) nonprofit.
+        dashboard—all with the benefits of the backing of a 501(c)(3) nonprofit.
       </Lead>
     </Box>
     <Flex justify="center" mb={[3, 4]}>

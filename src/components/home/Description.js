@@ -9,13 +9,13 @@ export default () => (
     <Text color="slate" fontSize={[2, 3]}>
       Hack Club is a nonprofit network of high school CS clubs that teach
       beginners to code. We provide{' '}
-      <A href="https://guide.hackclub.com" target="_blank">
-        club activities
-      </A>
-      ,{' '}
       <A.link to="/workshops" target="_blank">
         programming club curriculum
       </A.link>
+      ,{' '}
+      <A.link to="/challenge" target="_blank">
+        club activities
+      </A>
       ,{' '}
       <A href="https://hackathons.hackclub.com" target="_blank">
         access to high school hackathons

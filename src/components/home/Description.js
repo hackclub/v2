@@ -15,7 +15,7 @@ export default () => (
       ,{' '}
       <A.link to="/challenge" target="_blank">
         club activities
-      </A>
+      </A.link>
       ,{' '}
       <A href="https://hackathons.hackclub.com" target="_blank">
         access to high school hackathons

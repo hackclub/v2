@@ -123,7 +123,8 @@ export default class extends Component {
       ordered,
       cacheDrafts: ordered,
       creating: false,
-      newName: ''
+      newName: '',
+      newDesc: ''
     }
   }
 
@@ -134,16 +135,22 @@ export default class extends Component {
 
   handleNewNameChange = e => this.setState({ newName: e.target.value })
 
+  handleNewDescChange = e => this.setState({ newDesc: e.target.value })
+
   createDraft = () => {
     const slug = 'draft-' + this.state.newName.replace(/ /g, '-')
 
-    storage.set(slug, { body: '', edited: new Date() / 1000 })
+    storage.set(slug, {
+      body: '',
+      edited: new Date() / 1000,
+      description: this.state.newDesc
+    })
 
     window.location = `/workshops/submit?id=${slug}`
   }
 
   render() {
-    const { ordered, creating, newName } = this.state
+    const { ordered, creating, newName, newDesc } = this.state
 
     return (
       <Fragment>
@@ -170,6 +177,8 @@ export default class extends Component {
                 cancelCreation={this.cancelCreation}
                 newName={newName}
                 handleNewNameChange={this.handleNewNameChange}
+                newDesc={newDesc}
+                handleNewDescChange={this.handleNewDescChange}
                 createDraft={this.createDraft}
               />
             )}

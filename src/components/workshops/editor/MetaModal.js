@@ -49,6 +49,7 @@ export default ({ active, toggleModal, name, description }) => (
                 edited,
                 description: values.description
               })
+              window.location.reload()
               if (slug !== oldSlug) {
                 storage.remove(oldSlug)
                 window.location = `/workshops/submit?id=${slug}`

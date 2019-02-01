@@ -71,6 +71,15 @@ const MetaPreview = styled(Box)`
   padding: 32px 16px;
 `
 
+const BodyPreview = styled(MarkdownBody)`
+  > div {
+    ${mediaQueries.lg} {
+      // half the screen - 36px * 3
+      max-width: calc(50vw - 108px);
+    }
+  }
+`
+
 export default ({
   view,
   toggleView,
@@ -103,9 +112,9 @@ export default ({
       </MetaPreview>
 
       <Box p={5} pt={1}>
-        <MarkdownBody>
+        <BodyPreview>
           <ReactMarkdown source={value} />
-        </MarkdownBody>
+        </BodyPreview>
       </Box>
     </Sheet>
   </TwoColumn>

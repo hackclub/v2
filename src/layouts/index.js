@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 import { name, title, description, img, url, org } from 'data.json'
 import { ThemeProvider, theme } from '@hackclub/design-system'
 import serviceWorkerKiller from '../../static/swkiller'
+import 'polyfill'
 
 const meta = tags =>
   tags.map((props, index) =>

@@ -32,10 +32,11 @@ class BankStats extends Component {
 
   render() {
     const { transactionsTotalVolume } = this.state
+    const { ...props } = this.props
     const launchDate = '2018-06-28'
     if (transactionsTotalVolume) {
       return (
-        <Container>
+        <Container {...props}>
           <Text fontSize={[3, 4]}>
             <Text.span bold>{transactionsTotalVolume}</Text.span> transacted in
             the past {timeSince(launchDate, true, new Date(), true)} (&

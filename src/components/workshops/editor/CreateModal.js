@@ -26,6 +26,8 @@ export default ({
   cancelCreation,
   newName,
   handleNewNameChange,
+  newDesc,
+  handleNewDescChange,
   createDraft
 }) => (
   <Sheet style={transitionStyle}>
@@ -52,6 +54,14 @@ export default ({
       placeholder="Getting started with React Hooks"
       value={newName}
       onChange={handleNewNameChange}
+    />
+
+    <Field
+      name="description"
+      label="Give your workshop a description."
+      placeholder="How to create amazing apps using Hooks."
+      value={newDesc}
+      onChange={handleNewDescChange}
     />
 
     <CreateButton

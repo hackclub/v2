@@ -74,6 +74,31 @@ export default class extends Component {
   toggleView = () =>
     this.setState({ view: this.state.view === 'edit' ? 'preview ' : 'edit' })
 
+  handlePublish = () => {
+    const { name, description, value } = this.state
+
+    const body = JSON.stringify({
+      workshop_slug: 'WORKSHOP_SUBMISSION',
+      feedback: { name, description, body: value }
+    })
+    console.log(body)
+    api
+      .post(`v1/workshop_feedbacks`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body
+      })
+      .then(res => {
+        if (localStorage) {
+          localStorage.removeItem(name)
+        }
+        window.location = `/workshops/success?name=${name}`
+      })
+      .catch(e => {
+        console.log(e)
+      })
+  }
+
   render() {
     const { view, name, description, value } = this.state
 
@@ -85,7 +110,11 @@ export default class extends Component {
         <FullHeight>
           {storage.keys().includes(name) ? (
             <Fragment>
-              <TitleBar name={cleanName} description={description} />
+              <TitleBar
+                name={cleanName}
+                description={description}
+                handlePublish={this.handlePublish}
+              />
 
               <Composer
                 view={view}

@@ -57,7 +57,7 @@ export default class extends Component {
 
   render() {
     const { active } = this.state
-    const { name, description } = this.props
+    const { name, description, handlePublish } = this.props
 
     return (
       <Fragment>
@@ -81,7 +81,7 @@ export default class extends Component {
           <Text onClick={this.toggleModal} fontSize={[2, 3]} bold mx={3}>
             {name}
           </Text>
-          <Button bg="info" scale>
+          <Button bg="info" scale onClick={handlePublish}>
             Publish
           </Button>
         </Base>

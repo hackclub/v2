@@ -22,7 +22,6 @@ import Help from 'components/challenge/Help'
 import Form from 'components/challenge/Form'
 import Ended from 'components/challenge/Ended'
 import Story from 'components/challenge/Story'
-import Santa from 'components/challenge/Santa'
 import Posts from 'components/challenge/Posts'
 import DiscussChallenge from 'components/challenge/DiscussChallenge'
 import {
@@ -238,7 +237,7 @@ export default class extends Component {
           <Story />
         </Header>
         <Container maxWidth={48} pt={4} pb={5} px={[0, 3]}>
-          <DiscussChallenge />
+          {ended && <Ended />}
           <SubmissionsHeading align="center" pb={2} pl={[2, 0]} pr={[2, 3]}>
             <Flex align="center" flex="1 1 auto" wrap>
               <Heading.h2 color="black" fontSize={5} mr={2}>
@@ -274,7 +273,7 @@ export default class extends Component {
             status={status}
             sortBy={sortBy}
           />
-          {ended ? <Ended /> : <Santa />}
+          <DiscussChallenge />
         </Container>
         <Footer />
       </Fragment>

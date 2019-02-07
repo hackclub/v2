@@ -219,7 +219,14 @@ export default ({ data }) => {
   const {
     fields: { slug, bg },
     headings,
-    frontmatter: { name, description, author = '', group = 'start', order = 1 },
+    frontmatter: {
+      name,
+      description,
+      author = '',
+      group = 'start',
+      order = 1,
+      canonical = null
+    },
     html
   } = data.markdownRemark
 
@@ -282,6 +289,7 @@ export default ({ data }) => {
           { property: 'og:url', content: url }
         ]}
       >
+        {canonical && <link rel="canonical" href={canonical} />}
         <script type="application/ld+json" children={JSON.stringify(schema)} />
       </Helmet>
       <Nav />

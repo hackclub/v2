@@ -3,8 +3,7 @@ import styled from 'styled-components'
 import { Flex, Icon, Link as A, Text, theme } from '@hackclub/design-system'
 
 export const BreadcrumbList = styled(Flex.withComponent('ol'))`
-  font-size: ${theme.fontSizes[3]}px;
-  font-weight: bold;
+  font-size: ${theme.fontSizes[2]}px;
   line-height: 1.25;
   list-style: none;
   padding-left: 0;
@@ -36,5 +35,5 @@ export const Breadcrumb = ({ type = 'Thing', position, name, ...props }) => (
   </li>
 )
 export const BreadcrumbDivider = () => (
-  <Icon glyph="view-forward" size={28} color="snow" mx={1} />
+  <Icon glyph="view-forward" size={28} color="muted" mx={1} />
 )

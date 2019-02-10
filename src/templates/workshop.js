@@ -24,8 +24,12 @@ import {
 } from 'components/Breadcrumbs'
 import IconButton from 'components/IconButton'
 import MarkdownBody from 'components/MarkdownBody'
+<<<<<<< HEAD
 import FeedbackForm from 'components/workshops/FeedbackForm'
 import Carousel from 'components/workshops/carousel/Carousel'
+=======
+import Carousel from 'components/workshops/Carousel'
+>>>>>>> Remove workshop feedback form
 import DiscussOnSlack from 'components/DiscussOnSlack'
 import ShareButton from 'components/ShareButton'
 import Sheet from 'components/Sheet'
@@ -162,20 +166,19 @@ const CardsSection = styled(Box)`
   );
 `
 
-const Cards = styled(Container.withComponent(NotOnPrint))`
+const Cards = styled(Container.withComponent(NotOnPrint)).attrs({
+  maxWidth: 48
+})`
   text-align: center;
   display: grid;
   grid-gap: ${theme.space[4]}px;
-  grid-template-areas: 'feedback' 'share' 'questions' 'contribute';
+  grid-template-areas: 'share' 'questions' 'contribute';
   width: 100%;
   > div {
     &:nth-child(1) {
-      grid-area: feedback;
-    }
-    &:nth-child(2) {
       grid-area: share;
     }
-    &:nth-child(3) {
+    &:nth-child(2) {
       grid-area: questions;
     }
     &:nth-child(3) {
@@ -184,8 +187,8 @@ const Cards = styled(Container.withComponent(NotOnPrint))`
   }
   ${theme.mediaQueries.md} {
     grid-template-areas:
-      'feedback feedback share share'
-      'feedback feedback questions contribute';
+      'share share'
+      'questions contribute';
   }
   ${Sheet} {
     background: ${theme.colors.white};
@@ -387,17 +390,6 @@ export default ({ data }) => {
       </Body>
       <CardsSection py={4}>
         <Cards px={3}>
-          <Sheet align="left">
-            <Heading.h2 fontSize={4}>How was this workshop?</Heading.h2>
-            <Text color="muted" fontSize={1} mt={1} mb={3}>
-              (your feedback is anonymous + appreciated{' '}
-              <span role="img" aria-label="">
-                ❤️
-              </span>
-              )
-            </Text>
-            <FeedbackForm slug={slug} />
-          </Sheet>
           <Sheet>
             <Heading.h2 fontSize={4} color="black" mb={3}>
               Made something fabulous?

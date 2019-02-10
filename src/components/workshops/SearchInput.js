@@ -19,6 +19,7 @@ const Absolute = styled(Flex)`
 
 const Search = styled(Input).attrs({
   bg: 'white',
+  color: 'black',
   py: 2,
   pr: 3
 })`

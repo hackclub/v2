@@ -104,7 +104,7 @@ const MarkdownBody = styled(Box)`
   code,
   kbd {
     font-family: ${theme.mono};
-    font-size: 100%;
+    font-size: ${theme.fontSizes[2]}px;
     word-break: break-word;
   }
   pre,
@@ -126,7 +126,7 @@ const MarkdownBody = styled(Box)`
   code,
   kbd {
     border-radius: 3px;
-    padding: ${theme.space[1]}px;
+    padding: ${theme.space[1] / 2}px ${theme.space[1]}px;
   }
   kbd {
     background-color: ${theme.colors.gray[8]};
@@ -134,7 +134,7 @@ const MarkdownBody = styled(Box)`
   }
   pre {
     border-radius: ${theme.radius};
-    line-height: 1.375;
+    line-height: 1.5;
     max-width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;

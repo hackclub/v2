@@ -47,7 +47,7 @@ export default ({ workshops }) => {
 
   return (
     <>
-      <Container maxWidth={42} mt={-4} px={3} style={{ zIndex: 2 }}>
+      <Container maxWidth={48} mt={-36} px={3} style={{ zIndex: 2 }}>
         <SearchInput
           placeholder="Search workshops"
           label="Search"

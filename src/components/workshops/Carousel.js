@@ -32,10 +32,9 @@ const RehackSlider = styled(Slider)`
 `
 
 const CarouselOuter = styled(Flex).attrs({
-  bg: 'smoke',
+  bg: 'snow',
   color: 'black',
-  pt: [2, 3, 4],
-  pb: [3, null, 4],
+  py: [4, 5],
   flexDirection: 'column',
   align: 'center'
 })``
@@ -152,11 +151,7 @@ const LoadedCarousel = (
   emptyProject
 ) => (
   <Fragment>
-    <Flex
-      flexDirection={['column', null, 'row']}
-      align="center"
-      mb={[0, null, 3]}
-    >
+    <Flex flexDirection={['column', null, 'row']} align="center">
       <Heading.h3 fontSize={4} mr={[null, null, 3]}>
         {projectCount} Rehack
         {projectCount !== 1 && 's'}

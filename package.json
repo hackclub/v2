@@ -64,7 +64,7 @@
     "react-scrolllock": "^3.0.1",
     "react-simple-maps": "^0.12.1",
     "react-slick": "^0.23.2",
-    "react-spring": "^7.2.8",
+    "react-spring": "^7.2.11",
     "react-vis": "^1.9.4",
     "serve": "^9.1.0",
     "slick-carousel": "^1.8.1",

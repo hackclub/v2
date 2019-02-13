@@ -16,6 +16,7 @@ import orderBy from 'lodash/orderBy'
 import { Transition } from 'react-spring'
 
 import storage from 'storage'
+import api from 'api'
 import BG from 'components/BG'
 import Nav from 'components/Nav'
 import IconButton from 'components/IconButton'
@@ -27,7 +28,7 @@ import CreateModal from 'components/workshops/editor/CreateModal'
 import EmptyDrafts from 'components/workshops/editor/EmptyDrafts'
 
 const Grid = styled(Box)`
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr;
 
   div:first-child {
@@ -37,7 +38,7 @@ const Grid = styled(Box)`
   ${mediaQueries.md} {
     grid-gap: 1rem;
     grid-template-columns: 320px 1fr;
-  }
+  } */
 `
 
 const Add = styled(IconButton)`
@@ -124,8 +125,26 @@ export default class extends Component {
       cacheDrafts: ordered,
       creating: false,
       newName: '',
-      newDesc: ''
+      newDesc: '',
+      user: null,
+      authed: false,
+      authData: {}
     }
+  }
+
+  componentDidMount() {
+    api
+      .get(`v1/users/current`)
+      .then(authData => {
+        console.log(
+          `User is authorized! Auth data: ${JSON.stringify(authData)}`
+        )
+        this.setState({ authed: true, authData })
+      })
+      .catch(error => {
+        console.log(`User is not authorized! Error: ${error.toString()}`)
+        this.setState({ authed: false, authData: {} })
+      })
   }
 
   beginCreation = () => this.setState({ ordered: [], creating: true })
@@ -150,70 +169,75 @@ export default class extends Component {
   }
 
   render() {
-    const { ordered, creating, newName, newDesc } = this.state
+    const { ordered, creating, newName, newDesc, authed } = this.state
 
     return (
       <Fragment>
-        <BG color="snow" />
-        <Nav color="black" />
-        <Grid p={4} pt={[6, 7]}>
-          <Auth />
-          <Container maxWidth={42} style={{ width: '100%' }}>
-            <Flex>
-              <Add
-                onClick={this.beginCreation}
-                creating={creating}
-                glyph="view-close-small"
-                bg="success"
-                mx="auto"
-                mb={4}
-              >
-                Create workshop
-              </Add>
-            </Flex>
-            {creating && (
-              <CreateModal
-                transitionStyle={null}
-                cancelCreation={this.cancelCreation}
-                newName={newName}
-                handleNewNameChange={this.handleNewNameChange}
-                newDesc={newDesc}
-                handleNewDescChange={this.handleNewDescChange}
-                createDraft={this.createDraft}
-              />
-            )}
-
-            <Transition
-              items={ordered}
-              keys={draft => draft.slug}
-              from={{ opacity: 0, transform: 'translate3d(0, 128px, 0)' }}
-              enter={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
-              leave={{ opacity: 0, transform: 'translate3d(0, 128px, ,0)' }}
-            >
-              {draft => props => (
-                <Link
-                  to={`/workshops/submit?id=${draft.slug}`}
-                  key={draft.slug}
+        <BG color="snow" /> <Nav color="black" />
+        <Box p={4} pt={[6, 7]}>
+          {authed ? (
+            <Container maxWidth={42} style={{ width: '100%' }}>
+              <Flex>
+                <Add
+                  onClick={this.beginCreation}
+                  creating={creating}
+                  glyph="view-close-small"
+                  bg="success"
+                  mx="auto"
+                  mb={4}
                 >
-                  <Card style={props}>
-                    <Flex align="center">
-                      <Left>
-                        <Heading.h3 fontSize={[3, 4]}>{draft.name}</Heading.h3>
-                        <MarkdownBody style={{ fontFamily: 'Phantom Sans' }}>
-                          <Text color="muted" style={{ lineHeight: 1.2 }}>
-                            <ReactMarkdown source={truncate(draft.body, 64)} />
-                          </Text>
-                        </MarkdownBody>
-                      </Left>
-                      <Icon size={32} color="black" glyph="view-back" />
-                    </Flex>
-                  </Card>
-                </Link>
+                  Create workshop
+                </Add>
+              </Flex>
+              {creating && (
+                <CreateModal
+                  transitionStyle={null}
+                  cancelCreation={this.cancelCreation}
+                  newName={newName}
+                  handleNewNameChange={this.handleNewNameChange}
+                  newDesc={newDesc}
+                  handleNewDescChange={this.handleNewDescChange}
+                  createDraft={this.createDraft}
+                />
               )}
-            </Transition>
-            {ordered.length === 0 && !creating && <EmptyDrafts />}
-          </Container>
-        </Grid>
+              <Transition
+                items={ordered}
+                keys={draft => draft.slug}
+                from={{ opacity: 0, transform: 'translate3d(0, 128px, 0)' }}
+                enter={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
+                leave={{ opacity: 0, transform: 'translate3d(0, 128px, ,0)' }}
+              >
+                {draft => props => (
+                  <Link
+                    to={`/workshops/submit?id=${draft.slug}`}
+                    key={draft.slug}
+                  >
+                    <Card style={props}>
+                      <Flex align="center">
+                        <Left>
+                          <Heading.h3 fontSize={[3, 4]}>
+                            {draft.name}
+                          </Heading.h3>
+                          <MarkdownBody style={{ fontFamily: 'Phantom Sans' }}>
+                            <Text color="muted" style={{ lineHeight: 1.2 }}>
+                              <ReactMarkdown
+                                source={truncate(draft.body, 64)}
+                              />
+                            </Text>
+                          </MarkdownBody>
+                        </Left>
+                        <Icon size={32} color="black" glyph="view-back" />
+                      </Flex>
+                    </Card>
+                  </Link>
+                )}
+              </Transition>
+              {ordered.length === 0 && !creating && <EmptyDrafts />}
+            </Container>
+          ) : (
+            <Auth />
+          )}
+        </Box>
       </Fragment>
     )
   }

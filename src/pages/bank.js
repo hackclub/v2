@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import {
   Box,
@@ -14,22 +14,27 @@ import {
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
-import Module from 'components/Module'
 import Sheet from 'components/Sheet'
 import { Lead } from 'components/Content'
-import BankStats from 'components/bank/BankStats'
+// import Carousel from 'components/bank/Carousel'
+import Landing from 'components/bank/LandingBottom'
+import Run from 'components/bank/Run'
+// import Events from 'components/bank/Events'
+import Features from 'components/bank/Features'
+import Testimonials from 'components/bank/Testimonials'
+import Everything from 'components/bank/Everything'
+import Timeline from 'components/bank/Timeline'
+import BankStats from 'components/bank/Stats'
 
 const styles = `
   body {
     width: 100%;
     max-width: 100vw;
-    background-color: ${theme.colors.dark};
-    color: ${theme.colors.gray[3]};
-    background-image: radial-gradient(circle, ${theme.colors.black}, ${
-  theme.colors.black
-} 1px,
-      ${theme.colors.dark} 1px, ${theme.colors.dark});
-    background-size: 2rem 2rem;
+    background: ${theme.colors.dark};
+  }
+  ::selection {
+    background: ${theme.colors.primary};
+    color: ${theme.colors.white};
   }
 `
 
@@ -41,30 +46,6 @@ const CTA = styled(Button).attrs({
 })`
   background: ${theme.gradient('teal.6', 'teal.7', 'teal.8')};
 `
-
-const Modules = styled(Container)`
-  display: grid;
-  grid-gap: ${theme.space[3]}px;
-  h3,
-  svg {
-    color: ${theme.colors.white};
-  }
-  ${theme.mediaQueries.md} {
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: ${theme.space[4]}px;
-    > div {
-      align-items: center;
-    }
-  }
-`
-Modules.defaultProps = {
-  px: 3,
-  mt: [4, null, 3],
-  mb: 3,
-  mx: 'auto',
-  maxWidth: 72,
-  align: ['left', null, 'center']
-}
 
 const Megaline = styled(Heading.h1).attrs({
   fontSize: [6, 7, 8],
@@ -91,37 +72,13 @@ const Banner = styled(Container).attrs({
   align: ['left', 'center']
 })``
 
-const Join = styled(Sheet)`
-  display: grid;
-  grid-gap: ${theme.space[3]}px;
-  align-items: flex-start;
-  ${theme.mediaQueries.md} {
-    grid-template-columns: 32rem auto;
-  }
-`
-
 const title = 'Hack Club Bank – The Bank For Student Hackers'
 const desc =
-  'Get a bank account for your high school coding event or hackathon with the backing of a 501(c)(3) non-profit. Student organizers can invoice sponsors, issue physical debit cards, and get access to their event’s financials through a real-time dashboard.'
+  'Hack Club Bank provides a 501(c)(3) status-backed bank account optimized for high school hackathons that includes invoicing, debit cards, pre-written legal forms, seamless receipt collection, and automated tax filing to help organizers focus on running great events.'
 const img = 'https://hackclub.com/cards/bank.png'
 
-export default () => (
-  <Box align="center">
-    <Helmet
-      title={title}
-      meta={[
-        { name: 'description', content: desc },
-        { name: 'twitter:title', content: title },
-        { name: 'twitter:description', content: desc },
-        { name: 'twitter:image', content: img },
-        { property: 'og:title', content: title },
-        { property: 'og:description', content: desc },
-        { property: 'og:image', content: img },
-        { property: 'og:url', content: 'https://hackclub.com/bank' }
-      ]}
-    />
-    <style children={styles} />
-    <Nav dark />
+const Page = ({ handleThemeChange }) => (
+  <Box color="gray.3">
     <Box pt={[6, 7]}>
       <Image
         src={require('../../static/bank/logo.svg')}
@@ -131,12 +88,7 @@ export default () => (
         mb={3}
       />
       <Megaline>The bank for student hackers.</Megaline>
-      <Lead color="inherit" px={3} maxWidth={48} my={[3, 4]}>
-        Hack Club Bank is the best place for high school hackers to store money
-        for hackathons. Student organizers can invoice sponsors, issue physical
-        debit cards, and get access to their event’s financials through a live
-        dashboard—all with the benefits of the backing of a 501(c)(3) nonprofit.
-      </Lead>
+      <Lead color="inherit" px={3} maxWidth={48} my={[3, 4]} children={desc} />
     </Box>
     <Flex justify="center" mb={[3, 4]}>
       <CTA href="https://medium.com/hackclub/a-bank-for-student-hackers-e5d894ea5375">
@@ -223,25 +175,6 @@ export default () => (
         body="Talk to our community of experienced event organizers anytime."
       />
     </Modules>
-    <Container maxWidth={48} py={[4, 5]} px={3}>
-      <Join align="left" bg="black">
-        <Container maxWidth={32} mx={0}>
-          <Heading.h2 {...subhline} color="white">
-            Ready to join Hack Club Bank?
-          </Heading.h2>
-          <Text color="smoke">
-            You can join immediately with an invitation from an existing Bank
-            user or a member of the Hack Club community. Otherwise, tell us
-            about your event and we’ll get back to you within two weeks.
-          </Text>
-        </Container>
-        <CTA href="https://goo.gl/forms/1UzFR4zkljL7dHQ32">Apply</CTA>
-      </Join>
-      <Lead maxWidth={32} color="slate" fontSize={1} mt={3}>
-        Hack Club does not directly provide banking services. Banking services
-        provided by Silicon Valley Bank, an FDIC-certified institution.
-      </Lead>
-    </Container>
     <Container maxWidth={48} py={[4, 5]} px={3} color="snow">
       <Headline align={['left', 'center']}>More organizer resources</Headline>
       <Flex flexDirection={['column', 'row']} align="left" mt={4}>
@@ -277,6 +210,34 @@ export default () => (
         </Container>
       </Flex>
     </Container>
-    <Footer dark />
   </Box>
+)
+
+export default () => (
+  <Fragment>
+    <Helmet
+      title={title}
+      meta={[
+        { name: 'description', content: desc },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: desc },
+        { name: 'twitter:image', content: img },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: desc },
+        { property: 'og:image', content: img },
+        { property: 'og:url', content: 'https://hackclub.com/bank' }
+      ]}
+    />
+    <style children={styles} />
+    <Nav dark />
+    <Landing />
+    <Features />
+    <Testimonials />
+    <Timeline />
+    <Run />
+    {/* <Start /> */}
+    {/* <Events /> */}
+    <Everything />
+    <Footer dark />
+  </Fragment>
 )

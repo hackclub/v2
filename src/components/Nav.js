@@ -35,8 +35,16 @@ const Root = styled(Box.withComponent('header'))`
       background-color: ${rgbaBgColor(props, 0.96875)};
       border-bottom: 1px solid rgba(48, 48, 48, 0.125);
       @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-        background-color: ${rgbaBgColor(props, 0.75)};
-        -webkit-backdrop-filter: saturate(180%) blur(16px);
+        background-color: ${props.transparent
+          ? 'transparent'
+          : rgbaBgColor(props, 0.75)};
+        ${props.dark
+          ? css`
+              -webkit-backdrop-filter: saturate(90%) blur(20px);
+            `
+          : css`
+              -webkit-backdrop-filter: saturate(180%) blur(20px);
+            `};
       }
       ${theme.mediaQueries.reduceTransparency} {
         -webkit-backdrop-filter: auto !important;
@@ -168,6 +176,7 @@ class Header extends Component {
     color: PropTypes.string,
     bgColor: PropTypes.arrayOf(PropTypes.number),
     dark: PropTypes.bool,
+    transparent: PropTypes.bool,
     fixed: PropTypes.bool
   }
 
@@ -231,7 +240,8 @@ class Header extends Component {
         fixed={fixed}
         scrolled={scrolled}
         toggled={toggled}
-        bgColor={bgColor || (dark ? [32, 32, 32] : [255, 255, 255])}
+        dark={dark}
+        bgColor={bgColor || (dark ? [32, 34, 36] : [255, 255, 255])}
       >
         <Content>
           <Flag scrolled={scrolled || fixed} />
@@ -245,10 +255,6 @@ class Header extends Component {
       </Root>
     )
   }
-}
-Header.propTypes = {
-  color: PropTypes.string,
-  fixed: PropTypes.bool
 }
 
 export default Header

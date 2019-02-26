@@ -116,7 +116,16 @@ export default () => (
           No upfront costs.
         </Text>
       </Flex>
-      <Text fontSize={[2]}>Hack Club Bank is a fiscal sponsor (link: https://en.wikipedia.org/wiki/Fiscal_sponsorship) for your event. Industry standard varies between 7-14% of revenue.</Text>
+      <Lead maxWidth={32} color="slate" fontSize={2} align="center" mt={[4, 5]}>
+        Hack Club Bank is a{' '}
+        <A
+          color="smoke"
+          href="https://en.wikipedia.org/wiki/Fiscal_sponsorship"
+        >
+          fiscal sponsor
+        </A>{' '}
+        for your event. Industry standard varies between 7-14% of revenue.
+      </Lead>
     </Container>
   </Base>
 )

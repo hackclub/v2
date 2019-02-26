@@ -17,6 +17,7 @@ const Base = styled.svg`
     display: block;
     width: 256px;
     height: 128px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
     path {
       animation: ${dash} 2.5s cubic-bezier(0.625, 0.25, 0.25, 0.875) forwards;
       stroke: #fff;

@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import { Container, Text } from '@hackclub/design-system'
-import Sheet from 'components/Sheet'
+import Stat from 'components/Stat'
 import api from 'api'
 import { timeSince } from 'helpers'
 
-class BankStats extends Component {
+class Stats extends Component {
   state = {}
 
   loadStats = () => {
-    api.get('https://bank.hackclub.com/transactions/stats').then(stats => {
+    api.get('https://bank.hackclub.com/stats').then(stats => {
+      const { transactions, events } = stats
       const transactionsTotalVolume = (stats.total_volume / 100).toLocaleString(
         'en-US',
         {
@@ -16,13 +16,13 @@ class BankStats extends Component {
           currency: 'USD'
         }
       )
-      this.setState({ transactionsTotalVolume })
+      this.setState({ transactions, events, transactionsTotalVolume })
     })
   }
 
   componentDidMount() {
     this.loadStats()
-    const intervalId = setInterval(this.loadStats, 10000)
+    const intervalId = setInterval(this.loadStats, 12000)
     this.setState({ intervalId })
   }
 
@@ -31,17 +31,28 @@ class BankStats extends Component {
   }
 
   render() {
-    const { transactionsTotalVolume } = this.state
+    const { props } = this
+    const { transactionsTotalVolume, events, transactions } = this.state
     const launchDate = '2018-06-28'
-    return transactionsTotalVolume ? (
-      <Container>
-        <Text fontSize={[3, 4]}>
-          <Text.span bold>{transactionsTotalVolume}</Text.span> transacted in
-          the past {timeSince(launchDate, true, new Date(), true)} (& counting)
-        </Text>
-      </Container>
-    ) : null
+    const stats = []
+    if (transactionsTotalVolume)
+      stats.push(
+        <Stat
+          {...props}
+          value={transactionsTotalVolume}
+          label={`transacted in the past ${timeSince(
+            launchDate,
+            true,
+            new Date(),
+            true
+          )}`}
+        />
+      )
+    if (events) stats.push(<Stat {...props} value={events} label="events" />)
+    if (transactions)
+      stats.push(<Stat {...props} value={transactions} label="transactions" />)
+    return stats
   }
 }
 
-export default BankStats
+export default Stats

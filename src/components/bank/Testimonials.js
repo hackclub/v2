@@ -17,7 +17,7 @@ import { Fade } from 'react-reveal'
 import Sheet from 'components/Sheet'
 import Stat from 'components/Stat'
 import kebabCase from 'lodash/kebabCase'
-import { backgroundImages } from 'polished'
+import Stats from 'components/bank/Stats'
 
 const events = [
   {
@@ -96,12 +96,12 @@ const Details = styled(Box).attrs({ mt: [2, 0], px: [3, 4], pb: [4, 5] })`
 const Quote = styled(Text).attrs({ fontSize: [3, 4], color: 'muted' })`
   text-indent: -0.375em;
 `
-const Stats = styled(Flex).attrs({ wrap: true, justify: 'start' })`
+const DetailStats = styled(Flex).attrs({ wrap: true, justify: 'start' })`
   p {
     color: ${theme.colors.muted};
   }
 `
-Stats.Item = props => (
+DetailStats.Item = props => (
   <Stat align={['left', 'right']} mt={0} mb={3} {...props} />
 )
 
@@ -124,10 +124,10 @@ const Event = ({
     <Text fontSize={[4, 5]} bold color="white" children={name} />
   </Box>,
   <Details key={organizer}>
-    <Stats>
-      <Stats.Item value={attendees} label="attendees" />
-      <Stats.Item value={`$${budget}k`} label="budget" />
-    </Stats>
+    <DetailStats>
+      <DetailStats.Item value={attendees} label="attendees" />
+      <DetailStats.Item value={`$${budget}k`} label="budget" />
+    </DetailStats>
     <Box>
       <Quote>“{testimonial}”</Quote>
       <Flex align="center" mt={3}>
@@ -180,5 +180,10 @@ export default () => (
         })}
       </Carousel>
     </Main>
+    <Fade bottom>
+      <Container align="center" maxWidth={36} mt={4} px={3}>
+        <Stats />
+      </Container>
+    </Fade>
   </Base>
 )

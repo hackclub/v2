@@ -66,12 +66,9 @@ export default () => (
         </Lead>
       </Container>
       <List>
-        <List.Item icon="docs" body="We handle ongoing tax filings" />
-        <List.Item icon="flag" body="Connect you with event insurance broker" />
-        <List.Item
-          icon="history"
-          body="Keep using your account for future events"
-        />
+        <List.Item icon="docs" body="We handle ongoing tax filings including end-of-year taxes" />
+        <List.Item icon="payment" body="Our accountants regularly reconcile your books" />
+        <List.Item icon="history" body="You always have access to historical financial data" />
       </List>
     </Main>
   </Base>

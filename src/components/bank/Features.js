@@ -119,9 +119,9 @@ export default () => (
       <Box>
         <Headline>A powerful toolkit for organizing your event.</Headline>
         <Lead fontSize={[3, 4]} color="muted" maxWidth={48} mx={0}>
-          Everything you need to get off the ground in days, not weeks.
+          Everything you need to start receiving money in days.
           <br />
-          Ongoing support so you can focus on your event, not filing taxes.
+          Ongoing support so you can focus on your event, not the IRS.
         </Lead>
       </Box>
       <Box>

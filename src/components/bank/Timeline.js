@@ -116,7 +116,7 @@ export default () => (
               bold
             >
               <Avatar
-                src="/hackers/michael.jpg"
+                src={require('../../../static/hackers/michael.jpg')}
                 size={32}
                 alt="Michael’s avatar"
                 mr={1}

@@ -132,7 +132,9 @@ const Event = ({
       <Quote>“{testimonial}”</Quote>
       <Flex align="center" mt={3}>
         <Avatar
-          src={`/hackers/${organizer.split(' ')[0].toLowerCase()}.jpg`}
+          src={require(`../../../static/hackers/${organizer
+            .split(' ')[0]
+            .toLowerCase()}.jpg`)}
           size={48}
           mr={2}
         />

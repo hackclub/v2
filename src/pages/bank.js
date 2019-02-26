@@ -27,7 +27,7 @@ const styles = `
 const title = 'Hack Club Bank – The Bank For Student Hackers'
 const desc =
   'Hack Club Bank provides a 501(c)(3) status-backed bank account optimized for high school hackathons that includes invoicing, debit cards, pre-written legal forms, seamless receipt collection, and automated tax filing to help organizers focus on running great events.'
-const img = 'https://hackclub.com/cards/bank.png'
+const img = 'https://hackclub.com/cards/bank_one.png'
 
 export default () => (
   <Fragment>

@@ -36,7 +36,7 @@ const events = [
     budget: 15,
     attendees: 115,
     testimonial:
-      'I’d never have started organizing hackathons without Hack Club Bank. It solves a critical issue for my team.'
+      'For me, Hack Club Bank unlocked organizing hackathons. Even after as a club leader, raising money seemed insurmountable. Bank directly enabled organizing events in my community with event bank accounts & a supportive community. I couldn’t recommend it more highly.'
   },
   {
     name: 'SLO Hacks',
@@ -46,6 +46,24 @@ const events = [
     attendees: 300,
     testimonial:
       'Hack Club Bank significantly improved the fiscal sponsorship process for SLO Hacks, through a beautifully-designed platform full of useful features, in addition to a responsive team that made sure our questions were addressed as quickly as possible.'
+  },
+  {
+    name: 'MAHacks',
+    location: 'Boston, MA',
+    organizer: 'Kat Huang',
+    budget: 1.5,
+    attendees: 70,
+    testimonial:
+      'Hack Club Bank removed the barriers to starting fundraising for MAHacks. In mere days, vs months of nonprofit paperwork, Bank enabled my team to invoice sponsors professionally and manage our finances on a clear, up-to-date dashboard. I highly recommend using Bank & joining the Hack Club community.'
+  },
+  {
+    name: 'DV Hacks',
+    location: 'Santa Clara, CA',
+    organizer: 'Khushi Wadhwa',
+    budget: 12,
+    attendees: 150,
+    testimonial:
+      'Hack Club Bank is an essential platform for any hackathon organizer! It made us look both professional and credible in front of our sponsors and it relieved us of legal/financial burdens. Hack Club Bank was there for us every step of the way and for a first-year hackathon, that support was priceless.'
   }
 ]
 

@@ -16,7 +16,7 @@ class Stats extends Component {
   }
 
   loadStats = () => {
-    api.get('https://bank-hackclub-pr-49.herokuapp.com/stats').then(stats => {
+    api.get('https://bank.hackclub.com/stats').then(stats => {
       const { transactions_count, events_count } = stats
       const transactions_volume = Math.floor(stats.transactions_volume / 100)
         .toLocaleString('en-US', {

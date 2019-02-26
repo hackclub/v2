@@ -15,9 +15,6 @@ const styles = `
     width: 100%;
     max-width: 100vw;
     background: ${theme.colors.dark};
-    /*-webkit-transform-style: preserve-3d;
-    -webkit-transform:translate3d(0,0,0);
-    -webkit-backface-visibility: hidden;*/
   }
   ::selection {
     background: ${theme.colors.primary};

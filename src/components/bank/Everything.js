@@ -3,16 +3,14 @@ import styled from 'styled-components'
 import {
   Box,
   Container,
-  Heading,
+  Link as A,
   Flex,
   Icon,
   Text,
-  Hide,
   theme
 } from '@hackclub/design-system'
-import { Headline, Subhline, Lead } from 'components/Content'
+import { Headline, Lead } from 'components/Content'
 import { Fade } from 'react-reveal'
-import Sheet from 'components/Sheet'
 
 const Base = styled(Box.section).attrs({
   bg: 'darker',
@@ -24,11 +22,11 @@ const Percentage = styled(Flex).attrs({
   justify: 'center',
   bg: 'black',
   color: 'success',
-  fontSize: [8, 84]
+  fontSize: [5, 84]
 })`
-  width: 6rem;
-  height: 6rem;
-  line-height: 6rem;
+  width: 4rem;
+  height: 4rem;
+  line-height: 4rem;
   border-radius: ${theme.pill};
   font-weight: bold;
   text-align: center;
@@ -36,8 +34,8 @@ const Percentage = styled(Flex).attrs({
   &:after {
     content: '%';
     vertical-align: super;
-    line-height: 6rem;
-    font-size: 37.5%;
+    line-height: 4rem;
+    font-size: 50%;
     font-weight: normal;
     margin-left: ${theme.space[1]}px;
     color: ${theme.colors.muted};
@@ -79,14 +77,9 @@ List.Item = props => (
 export default () => (
   <Base>
     <Container px={3}>
-      <Box mb={[4, 5]}>
+      <Container align="center" mb={[4, 5]}>
         <Headline>Everything you’ll need.</Headline>
-        {/* <Lead fontSize={[3, 4]} color="muted" maxWidth={48} mx={0}>
-          Everything you need to start an amazing hackathon.
-          <br />
-          Fill out a simple form and we help handle the rest.
-        </Lead> */}
-      </Box>
+      </Container>
       <List>
         {[
           'Physical debit cards',
@@ -110,16 +103,18 @@ export default () => (
         ))}
       </List>
     </Container>
-    <Container px={3} mt={[5, 6]}>
+    <Container px={3} mt={4}>
       <Flex justify="center" align="center" wrap>
         <Text fontSize={[4, 5]} mr={3}>
           You pay just
         </Text>
         <Percentage>7</Percentage>
-        <Text fontSize={[4, 5]} mr={3}>
+        <Text fontSize={[4, 5]} ml={3} mr={2}>
           of revenue.
         </Text>
-        <Text fontSize={[4, 5]}>No upfront costs.</Text>
+        <Text fontSize={[4, 5]} mt={[3, 0]}>
+          No upfront costs.
+        </Text>
       </Flex>
       <Text fontSize={[2]}>Hack Club Bank is a fiscal sponsor (link: https://en.wikipedia.org/wiki/Fiscal_sponsorship) for your event. Industry standard varies between 7-14% of revenue.</Text>
     </Container>

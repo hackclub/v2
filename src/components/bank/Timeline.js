@@ -94,7 +94,7 @@ Timeline.Step = ({ icon, name, duration, mb = 4 }) => (
 
 export default () => (
   <Box.section bg="dark" pt={[5, 6, 7]} pb={[4, 5]}>
-    <Container align="center" maxWidth={36} mb={[4, 5, 6]}>
+    <Container align="center" maxWidth={36} px={3} mb={[4, 5, 6]}>
       <Subhline color="white">How long does it take?</Subhline>
       <Lead color="muted">
         With Hack Club Bank, your bank account can be set up within days. We

@@ -85,6 +85,9 @@ const Main = styled(Sheet).attrs({
   ${theme.mediaQueries.md} {
     border-radius: ${theme.radii[2]};
   }
+  ul {
+    cursor: grab !important;
+  }
 `
 
 const SideControl = styled.button`
@@ -92,9 +95,24 @@ const SideControl = styled.button`
   border: none;
   background: transparent;
   cursor: pointer;
-  display: none;
-  ${theme.mediaQueries.md} {
-    display: block;
+  display: inline-block;
+  margin: 0;
+  svg {
+    transform: scale(1);
+    transition: ${theme.transition} all;
+  }
+  &:first-child {
+    transform-origin: center left;
+  }
+  &:last-child {
+    transform-origin: center right;
+  }
+  &:hover,
+  &:focus {
+    svg {
+      transform: scale(1.125);
+      fill: ${theme.colors.white};
+    }
   }
 `
 
@@ -184,16 +202,17 @@ export default () => (
         autoplayInterval={5000}
         wrapAround
         enableKeyboardControls
-        renderCenterLeftControls={({ previousSlide }) => (
-          <SideControl onClick={previousSlide}>
-            <Icon glyph="view-back" color="white" size={48} mt={5} />
+        renderCenterLeftControls
+        renderCenterRightControls
+        renderBottomCenterControls
+        renderBottomRightControls={({ previousSlide, nextSlide }) => [
+          <SideControl onClick={previousSlide} key="prev">
+            <Icon glyph="view-back" color="smoke" size={48} pb={3} />
+          </SideControl>,
+          <SideControl onClick={nextSlide} key="next">
+            <Icon glyph="view-forward" color="smoke" size={48} pb={3} pr={3} />
           </SideControl>
-        )}
-        renderCenterRightControls={({ nextSlide }) => (
-          <SideControl onClick={nextSlide}>
-            <Icon glyph="view-forward" color="white" size={48} mt={5} />
-          </SideControl>
-        )}
+        ]}
       >
         {events.map(event => {
           const id = kebabCase(event.name)

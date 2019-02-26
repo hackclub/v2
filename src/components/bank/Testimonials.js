@@ -114,13 +114,16 @@ const Details = styled(Box).attrs({ mt: [2, 0], px: [3, 4], pb: [4, 5] })`
 const Quote = styled(Text).attrs({ fontSize: [3, 4], color: 'muted' })`
   text-indent: -0.375em;
 `
-const DetailStats = styled(Flex).attrs({ wrap: true, justify: 'start' })`
+const DetailStats = styled(Flex).attrs({
+  flexDirection: ['row', null, 'column'],
+  justify: ['start', null, 'end']
+})`
   p {
     color: ${theme.colors.muted};
   }
 `
 DetailStats.Item = props => (
-  <Stat align={['left', 'right']} mt={0} mb={3} {...props} />
+  <Stat align={['left', null, 'right']} width={1} mt={0} mb={3} {...props} />
 )
 
 const Event = ({
@@ -139,7 +142,7 @@ const Event = ({
     pl={[null, null, 128 + theme.space[5] + theme.space[4]]}
     key={name}
   >
-    <Text fontSize={[4, 5]} bold color="white" children={name} />
+    <Text fontSize={5} bold color="white" children={name} />
   </Box>,
   <Details key={organizer}>
     <DetailStats>
@@ -171,8 +174,8 @@ export default () => (
         The best events across the country run on Bank.
       </Subhline>
       <Lead color="muted">
-        From Philadelphia to Phoenix to Portland, Hack Club Bank is powering
-        high school hackathons of all sizes.
+        Everywhere from Philadelphia to Phoenix to Portland,
+        Hack&nbsp;Club&nbsp;Bank is powering hackathons of all sizes.
       </Lead>
     </Container>
     <Main maxWidth={60}>

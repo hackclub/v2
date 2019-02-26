@@ -85,9 +85,9 @@ export default () => (
           hackathons <Underline>in the world</Underline>.
         </Heading.h1>
         <Lead maxWidth={48} my={4} fontSize={[3, 4]}>
-          The team behind <strong>Los Altos Hacks</strong> is one of dozens of
-          teams using <strong>Hack&nbsp;Club Bank</strong> to make the awesomest
-          hackathons.
+          The team behind <strong>Los Altos Hacks</strong> (link) is one of dozens
+          of teams using <strong>Hack&nbsp;Club Bank</strong> to make
+          world-class hackathons.
         </Lead>
       </Fade>
     </Container>

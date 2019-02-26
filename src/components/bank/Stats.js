@@ -1,24 +1,9 @@
 import React, { Component } from 'react'
 import Stat from 'components/Stat'
 import api from 'api'
-import { timeSince } from 'helpers'
 
 class Stats extends Component {
   state = {}
-
-  loadStats = () => {
-    api.get('https://bank.hackclub.com/stats').then(stats => {
-      const { transactions, events } = stats
-      const transactionsTotalVolume = (stats.total_volume / 100).toLocaleString(
-        'en-US',
-        {
-          style: 'currency',
-          currency: 'USD'
-        }
-      )
-      this.setState({ transactions, events, transactionsTotalVolume })
-    })
-  }
 
   componentDidMount() {
     this.loadStats()
@@ -30,28 +15,35 @@ class Stats extends Component {
     clearInterval(this.state.intervalId)
   }
 
+  loadStats = () => {
+    api.get('https://bank-hackclub-pr-49.herokuapp.com/stats').then(stats => {
+      const { transactions_count, events_count } = stats
+      const transactions_volume = Math.floor(stats.transactions_volume / 100)
+        .toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD'
+        })
+        .replace('.00', '')
+      this.setState({
+        transactions_volume,
+        events_count,
+        transactions_count
+      })
+    })
+  }
+
   render() {
-    const { props } = this
-    const { transactionsTotalVolume, events, transactions } = this.state
-    const launchDate = '2018-06-28'
-    const stats = []
-    if (transactionsTotalVolume)
-      stats.push(
-        <Stat
-          {...props}
-          value={transactionsTotalVolume}
-          label={`transacted in the past ${timeSince(
-            launchDate,
-            true,
-            new Date(),
-            true
-          )}`}
-        />
-      )
-    if (events) stats.push(<Stat {...props} value={events} label="events" />)
-    if (transactions)
-      stats.push(<Stat {...props} value={transactions} label="transactions" />)
-    return stats
+    const { state, props } = this
+    const stats = {
+      transactions_volume: 'total transacted'
+      // events_count: 'events',
+      // transactions_count: 'transactions'
+    }
+    return Object.keys(state).length > 1
+      ? Object.keys(stats).map(key => (
+          <Stat {...props} value={state[key]} label={stats[key]} key={key} />
+        ))
+      : null
   }
 }
 

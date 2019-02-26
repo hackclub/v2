@@ -25,9 +25,10 @@ const TimelineStep = styled(Flex).attrs({
   align: 'center'
 })`
   border-radius: ${theme.pill};
-  z-index: 2;
   line-height: 1.125;
+  max-width: 18rem;
   position: relative;
+  z-index: 2;
   &:before {
     content: '';
     background: ${theme.colors.black};
@@ -111,8 +112,7 @@ export default () => (
             <Flex
               align="center"
               justify={['start', 'center']}
-              fontSize={2}
-              color="gray.3"
+              fontSize={3}
               bold
             >
               <Avatar
@@ -127,12 +127,11 @@ export default () => (
         }
         duration="Day 3"
       />
-      <Timeline.Step icon="post" name={
-        <Fragment>
-          Sign the contract<br/>
-          and get online access
-        </Fragment>
-      } duration="Day 4" />
+      <Timeline.Step
+        icon="post"
+        name={<Fragment>Sign the contract & get online access</Fragment>}
+        duration="Day 4"
+      />
       <Timeline.Step
         icon="card"
         name="Receive debit cards"

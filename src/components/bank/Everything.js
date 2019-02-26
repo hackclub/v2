@@ -91,9 +91,9 @@ export default () => (
         {[
           'Physical debit cards',
           'G Suite with domain email addresses',
-          'Tax filings',
-          'Legal entity',
-          '501(c)(3) status-backed bank account',
+          'Automated tax filings',
+          'Legal entity with 501(c)(3) status',
+          'Bank account backed by Silicon Valley Bank',
           'Instant invoice sending',
           'Collect donations via card, check, or ACH',
           'Real-time dashboard of finances',
@@ -103,7 +103,7 @@ export default () => (
           'Transaction data export',
           'Dedicated point of contact',
           '12-hour response support',
-          'Community of dozens of experienced organizers',
+          'Negotiated nonprofit rates with Stripe',
           'Reimbursement process'
         ].map(item => (
           <List.Item key={item} children={item} />
@@ -116,11 +116,12 @@ export default () => (
           You pay just
         </Text>
         <Percentage>7</Percentage>
-        <Hide fontSize={[4, 5]} xs sm mr={3}>
-          {'. '}
-        </Hide>
-        <Text fontSize={[4, 5]}>No hidden fees, ever.</Text>
+        <Text fontSize={[4, 5]} mr={3}>
+          of revenue.
+        </Text>
+        <Text fontSize={[4, 5]}>No upfront costs.</Text>
       </Flex>
+      <Text fontSize={[2]}>Hack Club Bank is a fiscal sponsor (link: https://en.wikipedia.org/wiki/Fiscal_sponsorship) for your event. Industry standard varies between 7-14% of revenue.</Text>
     </Container>
   </Base>
 )

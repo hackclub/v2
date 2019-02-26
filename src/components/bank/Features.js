@@ -119,72 +119,64 @@ export default () => (
       <Box>
         <Headline>A powerful toolkit for organizing your event.</Headline>
         <Lead fontSize={[3, 4]} color="muted" maxWidth={48} mx={0}>
-          Everything you need to start an amazing hackathon.
+          Everything you need to get off the ground in days, not weeks.
           <br />
-          Fill out a simple form and we help handle the rest.
+          Ongoing support so you can focus on your event, not filing taxes.
         </Lead>
       </Box>
       <Box>
         <Module
           icon="bank-account"
           name="Bank account"
-          body="Get a 501(c)(3) non-profit bank account (income is tax-deductible)."
+          body="Backed by Silicon Valley Bank with a custom, beautiful dashboard."
         />
         <ModuleDetails>
           <Document
-            name="501(c)(3) status"
-            cost="costs $3k, takes ~40hrs + months"
+            name="501(c)(3) nonprofit status"
+            cost="Become part of Hack Club's legal entity, getting the benefits of our tax status."
           />
           <Document
-            name="Tax filing (990, 1099, end-of-year)"
-            cost="accountant costs $150/hr, takes ~5hrs"
+            name="Tax filings (990, end-of-year)"
+            cost="We handle every filing with the IRS, so you can focus on your event, not hiring CPAs."
           />
-          <Document name="White-glove help" align="center" />
         </ModuleDetails>
       </Box>
       <Laptop />
+      <Module
+        icon="card"
+        name="Debit cards"
+        body="Issue physical debit cards to all your teammates—no reimbursements."
+      />
       <Module
         icon="analytics"
         name="Balance + history"
         body="Check real-time account balance + transaction history online anytime."
       />
       <Module
-        icon="settings"
-        name="Manage your finances"
-        body="Add notes to transactions, export data, issue reimbursements. Easy."
+        icon="payment"
+        name="Built-in invoicing"
+        body="Accept sponsor payments with low negotiated rates from Stripe."
       />
       <Module
         icon="docs"
         name="Pre-written forms"
-        body="Download consent + photo forms for event attendees—skip the lawyers."
+        body="Download liability + photo forms custom written by expert lawyers."
       />
       <Module
-        icon="card"
-        name="Debit cards"
-        body="Issue physical debit cards to all your team members—not reimbursements."
+        icon="settings"
+        name="Manage your finances"
+        body="Add notes to transactions, export data, issue reimbursements."
       />
       <Module
         icon="google"
         name="G Suite"
-        body="Get our free G Suite + email addresses (like joy@hackpenn.com) for everyone."
-      />
-      <Module
-        icon="payment"
-        name="Taxes + accounting"
-        body="We’ll handle end-of-year taxes and accounting in the background."
+        body="Get free G Suite + email addresses (like joy@hackpenn.com) for everyone."
       />
       <Module
         icon="support"
         name="Support anytime"
         body="Questions? We’ll never leave you in the dark. Best-effort 12hr response time."
       />
-      {/*
-      <Module
-        icon="message"
-        name="Community"
-        body="Talk to our community of experienced event organizers anytime."
-      />
-      */}
     </Modules>
   </Base>
 )

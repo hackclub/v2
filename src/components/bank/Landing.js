@@ -6,22 +6,26 @@ import {
   Container,
   Box,
   Flex,
-  Heading,
   Text,
-  theme
+  Avatar,
+  Heading,
+  theme,
+  BackgroundImage,
+  Icon
 } from '@hackclub/design-system'
 import Fade from 'react-reveal/Fade'
+import Sheet from 'components/Sheet'
 import { Lead } from 'components/Content'
 
 const Slide = styled(Flex).attrs({
   flexDirection: 'column',
-  justify: 'start',
+  justify: 'end',
   bg: 'snow',
   width: '100vw'
 })`
   background: url('/bank/bg.jpg');
   box-shadow: inset 0 0 4rem 4rem rgba(0, 0, 0, 0.5);
-  background-position: center top;
+  background-position: center;
   background-size: cover;
   width: 100vw;
   min-height: 100vh;
@@ -29,7 +33,7 @@ const Slide = styled(Flex).attrs({
 
   h1 {
     line-height: 1.125;
-    text-shadow: 0 0 16px rgba(0, 0, 0, 0.25);
+    text-shadow: 0 0 16px rgba(0, 0, 0, 1);
   }
   p {
     text-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
@@ -37,13 +41,17 @@ const Slide = styled(Flex).attrs({
 `
 
 const Vignette = styled.div`
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.25) 25%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+  height: 50vh;
   left: 0;
   right: 0;
   position: absolute;
-  top: 0;
-  border-radius: 0;
+  bottom: 0;
 `
 
 const Underline = styled.span`
@@ -58,11 +66,12 @@ const LocationPill = styled(Flex).attrs({
   py: 1,
   px: 3,
   mb: [3, 4],
-  color: 'black'
+  color: 'dark'
 })`
   border-radius: ${theme.pill};
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.875);
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    background: rgba(255, 255, 255, 0.5) !important;
     -webkit-backdrop-filter: saturate(180%) blur(2px);
   }
   ${theme.mediaQueries.reduceTransparency} {
@@ -75,28 +84,26 @@ export default () => (
     <Vignette />
     <Container
       pt={[6, 7, 8]}
-      pb={[4, 5, 6, 7]}
+      pb={[4, 5]}
       px={3}
       align="center"
       color="white"
+      mt="auto"
     >
-      <Fade top>
-        <Fragment>
-          <Heading.h1 fontSize={[5, 6, 7, 8]}>
-            A bank for the <Underline>largest</Underline> high&nbsp;school
-            hackathon <Underline>in the world</Underline>!
-          </Heading.h1>
-          <Lead my={4} fontSize={[3, 4]}>
-            The team behind <strong>Los Altos Hacks</strong> is one of hundreds
-            of teams around the world using <strong>Hack Club Bank</strong> to
-            make their working lives simpler, more pleasant, and more
-            productive.
-          </Lead>
-        </Fragment>
+      <Fade bottom>
+        <Heading.h1 fontSize={[5, 6, 7, 8]}>
+          The bank for the <Underline>best</Underline> high&nbsp;school
+          hackathons <Underline>in the world</Underline>.
+        </Heading.h1>
+        <Lead maxWidth={48} my={4} fontSize={[3, 4]}>
+          The team behind <strong>Los Altos Hacks</strong> is one of dozens of
+          teams using <strong>Hack&nbsp;Club Bank</strong> to make the awesomest
+          hackathons.
+        </Lead>
       </Fade>
     </Container>
-    {/* <Flex justify={['center']} px={3} style={{ justifySelf: 'flex-end' }}>
-      <LocationPill>Mountain View, CA</LocationPill>
-    </Flex> */}
+    <Flex justify={['center', 'flex-end']} px={3}>
+      <LocationPill>Sunnyvale, CA</LocationPill>
+    </Flex>
   </Slide>
 )

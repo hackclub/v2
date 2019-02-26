@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Container, Flex, Heading, theme } from '@hackclub/design-system'
 import { Lead } from 'components/Content'
+import Possibility from 'components/bank/Possibility'
 import Fade from 'react-reveal/Fade'
 
 const Slide = styled(Flex).attrs({
@@ -69,6 +70,7 @@ const LocationPill = styled(Flex).attrs({
 export default () => (
   <Slide>
     <Vignette />
+    <Possibility />
     <Container
       pt={[6, 7, 8]}
       pb={[4, 5]}

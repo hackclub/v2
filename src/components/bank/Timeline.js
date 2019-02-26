@@ -97,12 +97,12 @@ export default () => (
     <Container align="center" maxWidth={36} px={3} mb={[4, 5, 6]}>
       <Subhline color="white">How long does it take?</Subhline>
       <Lead color="muted">
-        With Hack Club Bank, your bank account can be set up within days. We
-        help with all the paperwork.
+        With Hack Club Bank, your account can be set up within days. We help
+        with all the paperwork.
       </Lead>
     </Container>
     <Timeline px={3}>
-      <Timeline.Step icon="send" name="Apply for your event" duration="Day 1" />
+      <Timeline.Step icon="send" name="Submit sign-up form" duration="Day 1" />
       <Timeline.Step
         icon="welcome"
         name={
@@ -127,7 +127,12 @@ export default () => (
         }
         duration="Day 3"
       />
-      <Timeline.Step icon="post" name="Sign the contract" duration="Day 4" />
+      <Timeline.Step icon="post" name={
+        <Fragment>
+          Sign the contract<br/>
+          and get online access
+        </Fragment>
+      } duration="Day 4" />
       <Timeline.Step
         icon="card"
         name="Receive debit cards"

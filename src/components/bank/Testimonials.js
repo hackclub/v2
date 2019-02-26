@@ -184,8 +184,16 @@ export default () => (
         autoplayInterval={5000}
         wrapAround
         enableKeyboardControls
-        renderCenterLeftControls
-        renderCenterRightControls
+        renderCenterLeftControls={({ previousSlide }) => (
+          <SideControl onClick={previousSlide}>
+            <Icon glyph="view-back" color="white" size={48} />
+          </SideControl>
+        )}
+        renderCenterRightControls={({ nextSlide }) => (
+          <SideControl onClick={nextSlide}>
+            <Icon glyph="view-forward" color="white" size={48} />
+          </SideControl>
+        )}
       >
         {events.map(event => {
           const id = kebabCase(event.name)

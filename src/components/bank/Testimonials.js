@@ -186,12 +186,12 @@ export default () => (
         enableKeyboardControls
         renderCenterLeftControls={({ previousSlide }) => (
           <SideControl onClick={previousSlide}>
-            <Icon glyph="view-back" color="white" size={48} />
+            <Icon glyph="view-back" color="white" size={48} mt={5} />
           </SideControl>
         )}
         renderCenterRightControls={({ nextSlide }) => (
           <SideControl onClick={nextSlide}>
-            <Icon glyph="view-forward" color="white" size={48} />
+            <Icon glyph="view-forward" color="white" size={48} mt={5} />
           </SideControl>
         )}
       >

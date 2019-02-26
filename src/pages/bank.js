@@ -19,6 +19,7 @@ const styles = `
   ::selection {
     background: ${theme.colors.primary};
     color: ${theme.colors.white};
+    text-shadow: none;
   }
 `
 

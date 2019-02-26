@@ -14,7 +14,7 @@ import { Fade } from 'react-reveal'
 import Sheet from 'components/Sheet'
 import Module from 'components/Module'
 
-const Base = styled(Box.section).attrs({ bg: 'dark', pb: [4, 5, 6] })``
+const Base = styled(Box.section).attrs({ bg: 'dark', px: 3, pb: [4, 5, 6] })``
 
 const Main = styled(Sheet).attrs({
   bg: '#252429',
@@ -25,19 +25,10 @@ const Main = styled(Sheet).attrs({
 })`
   border-radius: ${theme.radii[2]};
   position: relative;
-  // background-image: radial-gradient(
-  //   circle,
-  //   ${theme.colors.black},
-  //   ${theme.colors.black} 1px,
-  //   transparent 1px,
-  //   transparent
-  // );
-  // background-size: 2rem 2rem;
-
+  display: grid;
+  grid-gap: ${theme.space[4]}px;
   ${theme.mediaQueries.md} {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: ${theme.space[4]}px;
   }
 `
 

@@ -61,9 +61,12 @@ const Main = styled(Sheet).attrs({
   p: 0,
   mt: 2
 })`
-  border-radius: ${theme.radii[2]};
+  border-radius: 0;
   position: relative;
   overflow: hidden;
+  ${theme.mediaQueries.md} {
+    border-radius: ${theme.radii[2]};
+  }
 `
 
 const SideControl = styled.button`
@@ -82,23 +85,25 @@ const Photo = styled(BackgroundImage)`
   border-radius: ${theme.radii[2]};
 `
 
-const Details = styled(Box).attrs({ px: [3, 4], pb: [4, 5] })`
+const Details = styled(Box).attrs({ mt: [2, 0], px: [3, 4], pb: [4, 5] })`
   ${theme.mediaQueries.md} {
     display: grid;
     grid-template-columns: 128px 1fr;
     grid-gap: ${theme.space[5]}px;
     align-items: start;
   }
-  ${Text} {
-    text-indent: -0.375em;
-  }
+`
+const Quote = styled(Text).attrs({ fontSize: [3, 4], color: 'muted' })`
+  text-indent: -0.375em;
 `
 const Stats = styled(Flex).attrs({ wrap: true, justify: 'start' })`
   p {
     color: ${theme.colors.muted};
   }
 `
-Stats.Item = props => <Stat align="right" mt={0} mb={3} {...props} />
+Stats.Item = props => (
+  <Stat align={['left', 'right']} mt={0} mb={3} {...props} />
+)
 
 const Event = ({
   img,
@@ -116,7 +121,7 @@ const Event = ({
     pl={[null, null, 128 + theme.space[5] + theme.space[4]]}
     key={name}
   >
-    <Text fontSize={[3, 4, 5]} bold color="white" children={name} />
+    <Text fontSize={[4, 5]} bold color="white" children={name} />
   </Box>,
   <Details key={organizer}>
     <Stats>
@@ -124,9 +129,7 @@ const Event = ({
       <Stats.Item value={`$${budget}k`} label="budget" />
     </Stats>
     <Box>
-      <Text color="muted" fontSize={[3, 4]}>
-        “{testimonial}”
-      </Text>
+      <Quote>“{testimonial}”</Quote>
       <Flex align="center" mt={3}>
         <Avatar
           src={`/hackers/${organizer.split(' ')[0].toLowerCase()}.jpg`}
@@ -143,13 +146,13 @@ const Event = ({
 
 export default () => (
   <Base>
-    <Container align="center" maxWidth={36} mb={[4, 5]}>
+    <Container align="center" maxWidth={36} mb={[4, 5]} px={3}>
       <Subhline color="white">
         The best events across the country run on Bank.
       </Subhline>
       <Lead color="muted">
-        With Hack Club Bank, your bank account can be set up within days. We
-        help with all the paperwork.
+        From Philadelphia to Phoenix to Portland, Hack Club Bank is powering
+        high school hackathons of all sizes.
       </Lead>
     </Container>
     <Main maxWidth={60}>

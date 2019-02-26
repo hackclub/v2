@@ -22,9 +22,9 @@ const Modules = styled(Container)`
   ${theme.mediaQueries.md} {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: ${theme.space[5]}px ${theme.space[4]}px;
-  }
-  > div:first-child {
-    grid-column: span 3;
+    > div:first-child {
+      grid-column: span 3;
+    }
   }
 `
 Modules.defaultProps = {
@@ -101,14 +101,16 @@ const Document = ({ name, cost }) => (
 )
 
 const Laptop = styled.div`
-  grid-row: span 2;
-  grid-column: span 2;
   width: 100%;
   height: 100%;
   background-size: auto 115%;
   background-image: url('/bank/mac.png');
   background-position: center top;
   background-repeat: no-repeat;
+  ${theme.mediaQueries.md} {
+    grid-row: span 2;
+    grid-column: span 2;
+  }
 `
 
 export default () => (

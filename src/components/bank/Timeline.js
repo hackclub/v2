@@ -33,7 +33,7 @@ const TimelineStep = styled(Flex).attrs({
     background: ${theme.colors.black};
     height: 100%;
     width: 4px;
-    margin-left: 34px;
+    margin-left: 26px;
     position: absolute;
     z-index: -1;
   }
@@ -65,22 +65,28 @@ const Circle = styled(Box).attrs({ p: 2, bg: 'primary', color: 'white' })`
   display: inline-block;
   line-height: 0;
   z-index: 9999;
+  ${theme.mediaQueries.md} {
+    svg {
+      width: 48px;
+      height: 48px;
+    }
+  }
 `
-Timeline.Step = ({ icon, name, duration, mb = [3, 4] }) => (
-  <TimelineStep mb={mb}>
+Timeline.Step = ({ icon, name, duration, mb = 4 }) => (
+  <TimelineStep pb={mb}>
     <Slide left>
       <Circle mr={[3, null, 0]} mb={[null, null, 4]}>
-        <Icon glyph={icon} size={48} />
+        <Icon glyph={icon} size={32} />
       </Circle>
       <Box align={['left', null, 'center']}>
         <Badge
           bg="muted"
           color="darker"
-          fontSize={2}
-          mb={2}
+          fontSize={[0, 2]}
+          mb={[1, 2]}
           children={duration}
         />
-        <Text color="white" fontSize={4} children={name} />
+        <Text color="white" fontSize={[3, 4]} children={name} />
       </Box>
     </Slide>
   </TimelineStep>
@@ -104,7 +110,7 @@ export default () => (
             Interview call with{' '}
             <Flex
               align="center"
-              justify="center"
+              justify={['start', 'center']}
               fontSize={2}
               color="gray.3"
               bold

@@ -38,6 +38,12 @@ const TimelineStep = styled(Flex).attrs({
     position: absolute;
     z-index: -1;
   }
+  &:first-of-type:before {
+    top: 50%;
+  }
+  &:last-of-type:before {
+    bottom: 50%;
+  }
   ${theme.mediaQueries.md} {
     &:before {
       width: 100%;
@@ -48,10 +54,12 @@ const TimelineStep = styled(Flex).attrs({
     &:first-of-type:before {
       width: 50%;
       left: 50%;
+      top: auto;
     }
     &:last-of-type:before {
       width: 50%;
       left: 0;
+      bottom: auto;
     }
   }
 `

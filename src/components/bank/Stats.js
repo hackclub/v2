@@ -7,7 +7,7 @@ class Stats extends Component {
 
   componentDidMount() {
     this.loadStats()
-    const intervalId = setInterval(this.loadStats, 12000)
+    const intervalId = setInterval(this.loadStats, 8000)
     this.setState({ intervalId })
   }
 

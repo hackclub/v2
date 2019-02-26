@@ -9,6 +9,7 @@ import Features from 'components/bank/Features'
 import Testimonials from 'components/bank/Testimonials'
 import Everything from 'components/bank/Everything'
 import Timeline from 'components/bank/Timeline'
+import Start from 'components/bank/Start'
 
 const styles = `
   body {
@@ -50,9 +51,8 @@ export default () => (
     <Testimonials />
     <Timeline />
     <Run />
-    {/* <Start /> */}
-    {/* <Events /> */}
     <Everything />
+    <Start />
     <Footer dark />
   </Fragment>
 )

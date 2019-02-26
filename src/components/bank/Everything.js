@@ -116,15 +116,18 @@ export default () => (
           No upfront costs.
         </Text>
       </Flex>
-      <Lead maxWidth={32} color="slate" fontSize={2} align="center" mt={[4, 5]}>
+      <Lead maxWidth={28} color="slate" fontSize={2} align="center" mt={[4, 5]}>
         Hack Club Bank is a{' '}
         <A
-          color="smoke"
+          color="primary"
           href="https://en.wikipedia.org/wiki/Fiscal_sponsorship"
+          hoverline
         >
           fiscal sponsor
         </A>{' '}
-        for your event. Industry standard varies between 7-14% of revenue.
+        for your event.
+        <br />
+        Industry standard varies between 7-14% of revenue.
       </Lead>
     </Container>
   </Base>

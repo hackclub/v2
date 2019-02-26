@@ -28,7 +28,7 @@ const Base = styled.svg`
       stroke-dashoffset: 72;
     }
   }
-  @media screen and (min-width: 64em) and (min-height: 48em) {
+  @media screen and (min-width: 72em) and (min-height: 56em) {
     top: 33%;
   }
 `
@@ -39,7 +39,7 @@ class Possibility extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.setState({ visible: true })
-    }, 4000)
+    }, 2000)
   }
 
   render() {

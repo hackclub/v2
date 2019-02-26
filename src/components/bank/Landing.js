@@ -1,6 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Container, Flex, Heading, theme } from '@hackclub/design-system'
+import {
+  Container,
+  Flex,
+  Heading,
+  Link as A,
+  theme
+} from '@hackclub/design-system'
 import { Lead } from 'components/Content'
 import Possibility from 'components/bank/Possibility'
 import Fade from 'react-reveal/Fade'
@@ -85,9 +91,17 @@ export default () => (
           hackathons <Underline>in the world</Underline>.
         </Heading.h1>
         <Lead maxWidth={48} my={4} fontSize={[3, 4]}>
-          The team behind <strong>Los Altos Hacks</strong> (link) is one of
-          dozens of teams using <strong>Hack&nbsp;Club Bank</strong> to run
-          world-class hackathons.
+          The team behind{' '}
+          <A
+            href="https://www.losaltoshacks.com/?ref=bank"
+            color="inherit"
+            bold
+            hoverline
+          >
+            Los Altos Hacks
+          </A>{' '}
+          is one of dozens of teams using <strong>Hack&nbsp;Club Bank</strong>{' '}
+          to run world-class hackathons.
         </Lead>
       </Fade>
     </Container>

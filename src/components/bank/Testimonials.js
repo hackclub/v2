@@ -220,10 +220,5 @@ export default () => (
         })}
       </Carousel>
     </Main>
-    <Fade bottom>
-      <Container align="center" maxWidth={36} mt={4} px={3}>
-        <Stats />
-      </Container>
-    </Fade>
   </Base>
 )

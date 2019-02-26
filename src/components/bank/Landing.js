@@ -1,21 +1,8 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import kebabCase from 'lodash/kebabCase'
-// import times from 'lodash/times'
-import {
-  Container,
-  Box,
-  Flex,
-  Text,
-  Avatar,
-  Heading,
-  theme,
-  BackgroundImage,
-  Icon
-} from '@hackclub/design-system'
-import Fade from 'react-reveal/Fade'
-import Sheet from 'components/Sheet'
+import { Container, Flex, Heading, theme } from '@hackclub/design-system'
 import { Lead } from 'components/Content'
+import Fade from 'react-reveal/Fade'
 
 const Slide = styled(Flex).attrs({
   flexDirection: 'column',

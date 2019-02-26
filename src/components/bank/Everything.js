@@ -68,7 +68,7 @@ const List = styled(Text.withComponent('ol')).attrs({ pl: 0 })`
 `
 
 List.Item = props => (
-  <Fade bottom>
+  <Fade left>
     <li>
       <Icon glyph="enter" color="muted" size={32} mr={2} />
       <Text.span fontSize={3} {...props} />

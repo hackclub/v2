@@ -16,7 +16,7 @@
   "dependencies": {
     "@hackclub/banner": "^1.0.1",
     "@hackclub/design-system": "^0.0.1-14",
-    "@hackclub/icons": "^0.0.1",
+    "@hackclub/icons": "^0.0.2",
     "axios": "^0.18.0",
     "comma-number": "^2.0.0",
     "draft-js": "^0.10.5",

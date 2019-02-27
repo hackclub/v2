@@ -5,13 +5,13 @@ import {
   Flex,
   Heading,
   Hide,
-  Icon,
   LargeButton,
   Link as A,
   Text,
   theme
 } from '@hackclub/design-system'
 import Link from 'gatsby-link'
+import Icon from '@hackclub/icons'
 import Sheet from 'components/Sheet'
 import { stats } from 'data.json'
 

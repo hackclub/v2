@@ -5,13 +5,13 @@ import {
   Flex,
   Heading,
   Hide,
+  Icon,
   LargeButton,
   Link as A,
   Text,
   theme
 } from '@hackclub/design-system'
 import Link from 'gatsby-link'
-import Icon from '@hackclub/icons'
 import Sheet from 'components/Sheet'
 import { stats } from 'data.json'
 
@@ -99,41 +99,28 @@ const Action = styled(LargeButton.withComponent(Link)).attrs({
   fontSize: 2
 })``
 const DonateAction = styled(Action)`
-  background-image: linear-gradient(
-    to bottom,
-    ${theme.colors.lime[6]},
-    ${theme.colors.teal[6]}
-  );
+  background-image: ${theme.gradient('lime.6', 'teal.6')};
   @media screen and (max-width: 512px) {
     display: none;
   }
 `
 const SlackAction = styled(Action)`
-  background-image: linear-gradient(
-    to bottom,
-    ${theme.colors.cyan[6]},
-    ${theme.colors.blue[6]}
-  );
+  background-image: ${theme.gradient('cyan.6', 'blue.6')};
 `
 const StartAction = styled(Action).attrs({ py: 3, px: 4 })`
-  background-image: linear-gradient(
-    to bottom,
-    ${theme.colors.orange[5]},
-    ${theme.colors.red[5]}
-  );
+  background-image: ${theme.gradient('orange.5', 'red.5')};
 `
 
 export default () => (
   <Root>
     <Wrapper>
-      {/*
       <Announcement>
-        <Icon size={24} glyph="notification" color="slate" mr={1} />
-        <Flex color="black" fontSize={1}>
-          <strong>New challenge</strong>
+        <Icon size={24} glyph="bank-circle" />
+        <Flex color="black" fontSize={1} ml={1}>
+          <strong>Hack Club Bank 1.0</strong>
           <Hide xs sm ml={1}>
             {'– '}
-            ship a project & get gifts 🎁
+            redesigned & open to all
           </Hide>
         </Flex>
         <A
@@ -143,13 +130,12 @@ export default () => (
           px={2}
           bold
           ml="auto"
-          href="/challenge"
+          href="/bank"
           chevronRight
         >
           Learn more
         </A>
       </Announcement>
-      */}
       <Text
         fontSize={[3, 4]}
         mx="auto"

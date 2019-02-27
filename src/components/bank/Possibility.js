@@ -29,7 +29,7 @@ const Base = styled.svg`
     }
   }
   @media screen and (min-width: 72em) and (min-height: 56em) {
-    top: 33%;
+    top: 28%;
   }
 `
 

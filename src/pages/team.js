@@ -133,6 +133,13 @@ export default () => (
         pronouns="he/him"
       />
       <Bio
+        img="/team/michael.png"
+        name="Michael Destefanis"
+        role="Hack Club Bank"
+        text="After graduating high school, Michael moved to California where he began working with Hack Club. He now leads Hack Club Bank and loves helping passionate people bring their ideas to reality."
+        pronouns="he/him"
+      />
+      <Bio
         img="/team/orpheus.jpg"
         name="Prophet Orpheus"
         role="Mascot"

@@ -69,14 +69,6 @@ const InnerForm = ({ values, errors, touched, handleChange, handleBlur }) => (
   </Base>
 )
 const Signup = withFormik({
-  validationSchema: yup.object().shape({
-    name: yup.string().required('required'),
-    url: yup
-      .string()
-      .url()
-      .required('required'),
-    about_event: yup.string()
-  }),
   enableReinitialize: true,
   displayName: 'Signup'
 })(InnerForm)

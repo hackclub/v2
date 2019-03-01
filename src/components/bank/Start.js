@@ -73,7 +73,7 @@ export default () => (
   <Box.section bg="dark" py={[5, 6, 7]}>
     <Container maxWidth={48} px={3} align="center">
       <Headline color="white" mb={2}>
-        Sign up for Hack&nbsp;Club Bank.
+        Apply for Hack&nbsp;Club Bank.
       </Headline>
       <Lead maxWidth={32} color="muted">
         Open to all Hack Clubs and student-led, US-based high school &
@@ -83,7 +83,7 @@ export default () => (
     <Grid mt={[4, 5]} mb={[3, 4]} px={3}>
       <Fade bottom>
         <Sheet bg="#252429" color="snow" maxWidth={32} p={[3, 4, 5]}>
-          <Subhline fontSize={[4, 5]}>Apply for your event</Subhline>
+          <Subhline fontSize={[3, 4]}>Your event</Subhline>
           <Form />
         </Sheet>
       </Fade>

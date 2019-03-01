@@ -1,11 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Field, LargeButton, theme } from '@hackclub/design-system'
+import { Field, theme } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import { placeholder } from 'polished'
 import { Submit } from 'components/Forms'
-import * as yup from 'yup'
-import api from 'api'
 
 const Base = styled.form`
   label {
@@ -14,11 +12,12 @@ const Base = styled.form`
   input[type='text'],
   input[type='url'],
   input[type='number'] {
-    background: ${theme.colors.black} !important;
-    border-color: ${theme.colors.slate} !important;
+    background: ${theme.colors.dark} !important;
+    border-color: ${theme.colors.dark};
     color: ${theme.colors.white} !important;
     &:focus {
-      box-shadow: 0 0 0 2px ${theme.colors.slate};
+      border-color: ${theme.colors.info};
+      box-shadow: none;
     }
     ${placeholder({ color: theme.colors.muted })};
   }

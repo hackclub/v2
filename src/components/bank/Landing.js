@@ -69,7 +69,7 @@ const LocationPill = styled(Flex).attrs({
     -webkit-backdrop-filter: saturate(180%) blur(2px);
   }
   ${theme.mediaQueries.reduceTransparency} {
-    background: ${theme.colors.white} !important;
+    background: ${theme.colors.muted} !important;
   }
 `
 

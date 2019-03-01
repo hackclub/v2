@@ -49,9 +49,9 @@ export default () => (
     <Landing />
     <Features />
     <Testimonials />
+    <Everything />
     <Timeline />
     <Run />
-    <Everything />
     <Start />
     <Footer dark />
   </Fragment>

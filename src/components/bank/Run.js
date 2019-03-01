@@ -1,27 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import {
-  Box,
-  Container,
-  Heading,
-  Flex,
-  Icon,
-  Text,
-  theme
-} from '@hackclub/design-system'
-import { Headline, Subhline, Lead } from 'components/Content'
+import { Box, Container, Icon, Text, theme } from '@hackclub/design-system'
+import { Subhline, Lead } from 'components/Content'
 import { Fade } from 'react-reveal'
 import Sheet from 'components/Sheet'
-import Module from 'components/Module'
 
-const Base = styled(Box.section).attrs({ bg: 'dark', px: 3, pb: [4, 5, 6] })``
+const Base = styled(Box.section).attrs({ bg: 'darker', px: 3, pb: [4, 5, 6] })``
 
 const Main = styled(Sheet).attrs({
   bg: '#252429',
   color: 'smoke',
-  p: [3, 4, 5],
-  mt: 2,
-  ml: 3
+  p: [3, 4, 5]
 })`
   border-radius: ${theme.radii[2]};
   position: relative;
@@ -50,7 +39,7 @@ List.Item = ({ icon, body }) => (
   <Fade bottom>
     <li>
       <Icon glyph={icon} color="primary" size={32} mr={2} />
-      <Text.span fontSize={3} children={body} />
+      <Text.span fontSize={[2, 3]} children={body} />
     </li>
   </Fade>
 )
@@ -66,9 +55,18 @@ export default () => (
         </Lead>
       </Container>
       <List>
-        <List.Item icon="docs" body="We handle ongoing tax filings including end-of-year taxes" />
-        <List.Item icon="payment" body="Our accountants regularly reconcile your books" />
-        <List.Item icon="history" body="You always have access to historical financial data" />
+        <List.Item
+          icon="docs"
+          body="We handle ongoing tax filings including end-of-year taxes"
+        />
+        <List.Item
+          icon="payment"
+          body="Our accountants regularly reconcile your books"
+        />
+        <List.Item
+          icon="history"
+          body="You always have access to historical financial data"
+        />
       </List>
     </Main>
   </Base>

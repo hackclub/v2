@@ -13,7 +13,7 @@ const Base = styled.form`
   }
   input[type='text'],
   input[type='url'],
-  textarea {
+  input[type='number'] {
     background: ${theme.colors.black} !important;
     border-color: ${theme.colors.slate} !important;
     color: ${theme.colors.white} !important;
@@ -21,6 +21,11 @@ const Base = styled.form`
       box-shadow: 0 0 0 2px ${theme.colors.slate};
     }
     ${placeholder({ color: theme.colors.muted })};
+  }
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 `
 
@@ -57,10 +62,11 @@ const InnerForm = ({ values, errors, touched, handleChange, handleBlur }) => (
       mb={2}
     />
     <Field
-      label="Tell us about your event"
-      name="about_event"
-      value={values.about_event}
-      type="textarea"
+      label="Estimated attendance"
+      name="expected_attendance"
+      value={values.expected_attendance}
+      type="number"
+      placeholder={200}
       onChange={handleChange}
       onBlur={handleBlur}
       mb={[3, 4]}

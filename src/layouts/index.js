@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 import { name, title, description, img, url, org } from 'data.json'
 import { ThemeProvider, theme } from '@hackclub/design-system'
 import serviceWorkerKiller from '../../static/swkiller'
+import PureImagination from 'components/PureImagination'
 
 const meta = tags =>
   tags.map((props, index) =>
@@ -39,5 +40,6 @@ export default props => (
       <script type="application/ld+json" children={JSON.stringify(org)} />
     </Helmet>
     {props.children()}
+    <PureImagination />
   </ThemeProvider>
 )

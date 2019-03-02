@@ -163,10 +163,7 @@ const LoadedCarousel = (
       </Heading.h3>
       <ShowAllProjects onClick={onClickShowAll} aria-expanded={showAll}>
         <Icon glyph="down-caret" size={32} />
-        <Text.span
-          ml={1}
-          children={showAll ? 'Show Fewer' : 'Show All'}
-        />
+        <Text.span ml={1} children={showAll ? 'Show Fewer' : 'Show All'} />
       </ShowAllProjects>
     </Flex>
     {showAll

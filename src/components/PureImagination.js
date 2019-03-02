@@ -5,7 +5,7 @@ export default class extends Component {
 
   state = { progress: 0 }
 
-  componentWillMount() {
+  componentDidMount() {
     window.document.onkeypress = e => {
       let shouldProgress = e.key == this.codeword[this.state.progress]
       this.setState({ progress: shouldProgress ? this.state.progress + 1 : 0 })

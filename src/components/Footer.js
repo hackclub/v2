@@ -176,7 +176,9 @@ const Footer = ({ dark = false, children, ...props }) => (
     <Container px={3} mt={[3, 4]}>
       <Box fontSize={2}>
         <Text>Office: 576 Natoma St, San Francisco, CA 94103</Text>
-        <Text>Mail: 8605 Santa Monica Blvd #86294, West Hollywood, CA 90069</Text>
+        <Text>
+          Mail: 8605 Santa Monica Blvd #86294, West Hollywood, CA 90069
+        </Text>
       </Box>
       <BottomLine mt={3}>
         <Text fontSize={1} mt={2} color="muted">

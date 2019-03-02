@@ -1,11 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Field, LargeButton, theme } from '@hackclub/design-system'
+import { Field, theme } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import { placeholder } from 'polished'
 import { Submit } from 'components/Forms'
-import * as yup from 'yup'
-import api from 'api'
 
 const Base = styled.form`
   label {
@@ -13,14 +11,20 @@ const Base = styled.form`
   }
   input[type='text'],
   input[type='url'],
-  textarea {
-    background: ${theme.colors.black} !important;
-    border-color: ${theme.colors.slate} !important;
+  input[type='number'] {
+    background: ${theme.colors.dark} !important;
+    border-color: ${theme.colors.dark};
     color: ${theme.colors.white} !important;
     &:focus {
-      box-shadow: 0 0 0 2px ${theme.colors.slate};
+      border-color: ${theme.colors.info};
+      box-shadow: none;
     }
     ${placeholder({ color: theme.colors.muted })};
+  }
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 `
 
@@ -57,10 +61,11 @@ const InnerForm = ({ values, errors, touched, handleChange, handleBlur }) => (
       mb={2}
     />
     <Field
-      label="Tell us about your event"
-      name="about_event"
-      value={values.about_event}
-      type="textarea"
+      label="Estimated attendance"
+      name="expected_attendance"
+      value={values.expected_attendance}
+      type="number"
+      placeholder={200}
       onChange={handleChange}
       onBlur={handleBlur}
       mb={[3, 4]}
@@ -69,14 +74,6 @@ const InnerForm = ({ values, errors, touched, handleChange, handleBlur }) => (
   </Base>
 )
 const Signup = withFormik({
-  validationSchema: yup.object().shape({
-    name: yup.string().required('required'),
-    url: yup
-      .string()
-      .url()
-      .required('required'),
-    about_event: yup.string()
-  }),
   enableReinitialize: true,
   displayName: 'Signup'
 })(InnerForm)

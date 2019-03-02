@@ -13,7 +13,7 @@ import { Headline, Lead } from 'components/Content'
 import { Fade } from 'react-reveal'
 
 const Base = styled(Box.section).attrs({
-  bg: 'darker',
+  bg: 'dark',
   color: 'gray.3',
   py: [5, 6, 7]
 })``

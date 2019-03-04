@@ -12,6 +12,7 @@ import {
 } from '@hackclub/design-system'
 import Icon from '@hackclub/icons'
 import Link from 'gatsby-link'
+import PureImagination from 'components/PureImagination'
 
 const Base = styled(Box.withComponent('footer'))`
   background: ${props =>
@@ -46,7 +47,6 @@ const Columns = styled(Container)`
     grid-template-columns: repeat(4, 1fr);
   }
 `
-const SocialColumn = styled(Box)``
 
 const Services = styled(Flex)`
   a {
@@ -102,6 +102,7 @@ const Footer = ({ dark = false, children, ...props }) => (
     {...props}
   >
     {children}
+    <PureImagination />
     <Columns px={3}>
       <Box>
         <Heading.h2 fontSize={3} mb={3}>

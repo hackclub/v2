@@ -1,32 +1,31 @@
 import React, { Component } from 'react'
 
 export default class extends Component {
-  codeword = 'pure imagination'
+  codeword = 'pi'
 
   state = { progress: 0 }
 
   componentDidMount() {
     window.document.onkeypress = e => {
-      let shouldProgress = e.key == this.codeword[this.state.progress]
-      this.setState(state => ({ progress: shouldProgress ? state.progress + 1 : 0 }))
+      const shouldProgress = e.key == this.codeword[this.state.progress]
+      this.setState(state => ({
+        progress: shouldProgress ? state.progress + 1 : 0
+      }))
     }
   }
 
   render() {
-    if (this.state.progress == this.codeword.length) {
-      return (
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/knIfoQW_mZg?autoplay=1"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          style={{ display: 'none' }}
-        />
-      )
-    } else {
-      return null
-    }
+    console.log(this.state.progress)
+    return this.state.progress == this.codeword.length ? (
+      <iframe
+        width={560}
+        height={315}
+        src="https://www.youtube.com/embed/knIfoQW_mZg?autoplay=1"
+        frameborder={0}
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        style={{ display: 'none' }}
+      />
+    ) : null
   }
 }

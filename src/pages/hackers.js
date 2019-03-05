@@ -192,7 +192,7 @@ export default () => (
       <Container px={3} pt={5}>
         <ColoredHeadline colors={['orange.5', 'pink.5', 'red.5']}>
           Join an incredible worldwide community of hackers.
-          <HeadlineIcon glyph="like-fill" color="pink.5" size={48} ml={2} />
+          <HeadlineIcon glyph="like-fill" color="pink.5" size={36} ml={2} />
         </ColoredHeadline>
         <Text color="smoke" fontSize={4} mb={3} style={{ maxWidth: '48rem' }}>
           Hack Club gives you a community of thousands of other young makers to
@@ -277,7 +277,7 @@ export default () => (
           Grow as a programmer & human with our resources.
         </ColoredHeadline>
         <Text color="smoke" fontSize={4} mb={4} style={{ maxWidth: '48rem' }}>
-          We run monthly <A href="/challenge">Challenges</A>, coding
+          We run seasonal <A href="/challenge">Challenges</A>, coding
           competitions around a theme with cash prizes. We offer dozens of{' '}
           <A href="/workshops">free, open-source coding tutorials</A>. We{' '}
           <A href="https://medium.com/hackclub/how-to-start-a-computer-science-club-at-your-high-school-ff32264f225a">
@@ -330,7 +330,7 @@ export default () => (
           Come to Hack&nbsp;Night, our weekly nighttime hackathons.
         </ColoredHeadline>
         <Text color="#a56a3b" fontSize={4} mb={3} style={{ maxWidth: '48rem' }}>
-          Every Saturday night at 6pm PST, a group from our community comes
+          On Saturday nights at 6pm PST, a group from our community comes
           together for Hack Night. It’s a remote hackathon, social hangout, and
           a ton of fun. Build, learn, and share together.
         </Text>

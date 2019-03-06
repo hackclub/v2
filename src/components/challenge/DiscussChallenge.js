@@ -16,6 +16,7 @@ const DiscussChallenge = () => (
     wrap
     bg="pink.0"
     color="pink.6"
+    mt={[3, 4]}
   >
     <Flex
       justify={['center', 'flex-start']}

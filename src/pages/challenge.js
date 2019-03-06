@@ -21,7 +21,6 @@ import IconButton from 'components/IconButton'
 import Help from 'components/challenge/Help'
 import Form from 'components/challenge/Form'
 import Ended from 'components/challenge/Ended'
-import Story from 'components/challenge/Story'
 import Posts from 'components/challenge/Posts'
 import DiscussChallenge from 'components/challenge/DiscussChallenge'
 import {
@@ -234,7 +233,6 @@ export default class extends Component {
               <Form challengeId={challenge.id} status={status} />
             </HeaderAreaForm>
           </HeaderContainer>
-          <Story />
         </Header>
         <Container maxWidth={48} pt={4} pb={5} px={[0, 3]}>
           {ended && <Ended />}

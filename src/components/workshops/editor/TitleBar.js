@@ -14,8 +14,8 @@ import Link from 'gatsby-link'
 import MetaModal from './MetaModal'
 
 const Base = styled(Flex)`
-  background-color: rgba(255, 255, 255, 0.7);
   box-shadow: ${theme.boxShadows[0]};
+  background-color: ${theme.colors.white};
 
   p {
     overflow: hidden;
@@ -41,11 +41,6 @@ const Base = styled(Flex)`
       }
     }
   }
-
-  a:nth-of-type(2) {
-    background-color: ${hexa('info', 0.2)} !important;
-    color: ${theme.colors.info};
-  }
 `
 
 export default class extends Component {
@@ -67,7 +62,7 @@ export default class extends Component {
           name={name}
           description={description}
         />
-        <Base p={3} align="center" justify="space-between">
+        <Base py={3} px={[3, 4, 5]} align="center" justify="space-between">
           <Link to="/workshops/drafts">
             <IconButton
               glyph="view-back"

@@ -37,7 +37,7 @@ export default ({
         <Text.span color="success">Create</Text.span> a workshop here.
       </Text>
       <IconButton
-        glyph="view-close"
+        glyph="view-close-small"
         bg="smoke"
         color="black"
         ml="auto"

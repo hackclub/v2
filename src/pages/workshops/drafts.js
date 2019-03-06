@@ -23,7 +23,6 @@ import IconButton from 'components/IconButton'
 import Sheet from 'components/Sheet'
 import MarkdownBody from 'components/MarkdownBody'
 import Auth from 'components/Auth'
-import { mediaQueries } from '@hackclub/design-system/dist/theme'
 import CreateModal from 'components/workshops/editor/CreateModal'
 import EmptyDrafts from 'components/workshops/editor/EmptyDrafts'
 
@@ -204,7 +203,7 @@ export default class extends Component {
                           <Heading.h3 fontSize={[3, 4]}>
                             {draft.name}
                           </Heading.h3>
-                          <MarkdownBody style={{ fontFamily: 'Phantom Sans' }}>
+                          <MarkdownBody>
                             <Text color="muted" style={{ lineHeight: 1.2 }}>
                               <ReactMarkdown
                                 source={truncate(draft.body, 64)}

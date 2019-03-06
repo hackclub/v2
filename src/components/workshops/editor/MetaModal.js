@@ -1,31 +1,18 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { Field, Button, theme } from '@hackclub/design-system'
 import { Formik } from 'formik'
+import GithubSlugger from 'github-slugger'
 
 import storage from 'storage'
 import { Modal, Overlay } from 'components/Modal'
-
-const NiceField = styled(Field).attrs({
-  bg: 'snow'
-})`
-  border: 2px solid ${theme.colors.smoke};
-
-  &:hover {
-    border: 2px solid ${theme.colors.slate};
-  }
-
-  &:focus {
-    outline: 0;
-    box-shadow: none;
-    border: 2px solid ${theme.colors.info};
-  }
-`
+import { Subhline } from 'components/Content'
 
 export default ({ active, toggleModal, name, description }) =>
   active ? (
     <Fragment>
       <Modal align="left" my={4} p={[3, 4]}>
+        <Subhline fontSize={[3, 4]}>Workshop info</Subhline>
         <Formik
           initialValues={{ name, description }}
           validate={values => {
@@ -39,8 +26,9 @@ export default ({ active, toggleModal, name, description }) =>
             return errors
           }}
           onSubmit={values => {
-            const slug = 'draft-' + values.name.replace(/ /g, '-')
-            const oldSlug = 'draft-' + name.replace(/ /g, '-')
+            const slugger = new GithubSlugger()
+            const slug = 'draft-' + slugger.slug(values.name)
+            const oldSlug = 'draft-' + slugger.slug(name)
             const { body, edited } = storage.get(oldSlug)
 
             storage.set(slug, {
@@ -67,7 +55,7 @@ export default ({ active, toggleModal, name, description }) =>
             /* and other goodies */
           }) => (
             <form onSubmit={handleSubmit}>
-              <NiceField
+              <Field
                 type="input"
                 name="name"
                 label="Workshop name"
@@ -76,11 +64,10 @@ export default ({ active, toggleModal, name, description }) =>
                 value={values.name}
                 error={errors.name && touched.name && errors.name}
               />
-
-              <NiceField
+              <Field
                 type="input"
                 name="description"
-                label="Workshop description"
+                label="Description"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.description}
@@ -90,8 +77,7 @@ export default ({ active, toggleModal, name, description }) =>
                   errors.description
                 }
               />
-
-              <Button mt={3} bg="success" onClick={handleSubmit}>
+              <Button mt={1} bg="info" onClick={handleSubmit}>
                 Save
               </Button>
             </form>

@@ -115,14 +115,13 @@ export default class extends Component {
                 description={description}
                 handlePublish={this.handlePublish}
               />
-
               <Composer
                 view={view}
-                toggleView={this.toggleView}
-                value={value}
-                handleInputChange={this.handleInputChange}
                 name={cleanName}
                 description={description}
+                value={value}
+                toggleView={this.toggleView}
+                handleInputChange={this.handleInputChange}
               />
             </Fragment>
           ) : (

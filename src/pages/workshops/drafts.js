@@ -27,20 +27,6 @@ import { mediaQueries } from '@hackclub/design-system/dist/theme'
 import CreateModal from 'components/workshops/editor/CreateModal'
 import EmptyDrafts from 'components/workshops/editor/EmptyDrafts'
 
-const Grid = styled(Box)`
-  /* display: grid;
-  grid-template-columns: 1fr;
-
-  div:first-child {
-    max-height: 213.75px;
-  }
-
-  ${mediaQueries.md} {
-    grid-gap: 1rem;
-    grid-template-columns: 320px 1fr;
-  } */
-`
-
 const Add = styled(IconButton)`
   background-image: radial-gradient(
     ellipse farthest-corner at top left,

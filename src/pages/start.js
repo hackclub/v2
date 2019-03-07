@@ -485,7 +485,7 @@ export default () => (
             <Module
               icon="edit"
               name="1. Application"
-              body="Submit your info to get the ball rolling, right here."
+              body="Submit your info to get the ball rolling, right below."
               color="white"
             />
           </StepOne>

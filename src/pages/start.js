@@ -41,7 +41,13 @@ const PhotoSection = styled(Section)`
     url(${props => props.src});
   background-position: center;
   background-size: cover;
-  ${props => props.fixed && { backgroundAttachment: 'fixed' }};
+  ${props =>
+    props.fixed &&
+    css`
+      @media (hover: hover) {
+        background-attachment: fixed;
+      }
+    `};
   ${shadows};
 `
 PhotoSection.defaultProps = {
@@ -118,13 +124,13 @@ const FeatureLink = styled(A.link).attrs({
   display: block;
 `
 
-const Module = ({ icon, name, body, ...props }) => (
-  <Flex flexDirection="column" {...props}>
+const Module = ({ icon, name, body, color = 'white', ...props }) => (
+  <Flex flexDirection="column" color={color} {...props}>
     <Icon
       size={64}
       mb={2}
       glyph={icon}
-      color="white"
+      color={props.iconColor || color}
       style={{ flexShrink: 0 }}
     />
     <Box>
@@ -146,7 +152,7 @@ const TwoUp = styled(Box)`
   }
 `
 
-const Steps = styled(Box)`
+const Steps = styled(Box).attrs({ color: 'white' })`
   display: grid;
   grid-gap: ${theme.space[3]}px;
   ${theme.mediaQueries.md} {
@@ -268,7 +274,7 @@ export default () => (
         </Heading.h2>
       </Container>
     </PhotoSection>
-    <Box bg="white" py={[4, 5]}>
+    <Box bg="white" py={[4, 5, null, 6]}>
       <Container {...styles.contentContainer}>
         <Text fontSize={4} caps bold color="muted">
           Imagine
@@ -280,15 +286,15 @@ export default () => (
         <TextBox mb={4}>
           <Text {...styles.lead}>
             Hack Clubs meet weekly at their high schools, typically for 1.5
-            hours. Meetings look like mini-hackathons, where members learn to
-            code through building projects. Check out{' '}
+            hours. Meetings look like mini-hackathons—members learn to code by
+            building projects. Check out{' '}
             <A href="https://sohuang.github.io/" target="_blank">
               a website
             </A>
             {' & '}
             <A href="https://messy-wool.surge.sh/catch.html" target="_blank">
               a game
-            </A>
+            </A>{' '}
             built by members.
           </Text>
         </TextBox>
@@ -312,7 +318,7 @@ export default () => (
         </HourFeatures>
       </Container>
     </Box>
-    <Flex flexDirection="column" bg="snow" py={[4, 5]}>
+    <Flex flexDirection="column" bg="snow" py={[4, 5, null, 6]}>
       <Container {...styles.contentContainer}>
         <TextBox maxWidth={48}>
           <Text fontSize={4} caps bold color="muted">
@@ -323,9 +329,9 @@ export default () => (
             <Text.span color="teal.6">going & growing</Text.span>.
           </Headline>
           <Text {...styles.lead}>
-            From working with our {stats.school_count} Hack Clubs at high
-            schools around the world, we’ve assembled the resources you’ll need
-            for a successful club.
+            From working with our {stats.school_count} clubs at high schools
+            around the world, we’ve assembled the resources you’ll need for a
+            successful club.
           </Text>
         </TextBox>
         <Features mt={4}>
@@ -351,11 +357,12 @@ export default () => (
             </FeatureLink>
           </TextFeature>
           <TextFeature>
-            <Icon glyph="idea" size={64} color="warning" mb={2} />
-            <Text>
-              <Text.span color="warning">Learn from all our clubs</Text.span>
-              —we’ve got information, advice, & experience to share.
-            </Text>
+            <Module
+              icon="idea"
+              name="Learn from all our clubs"
+              body="We’ve got advice, information, & experience to share."
+              iconColor="warning"
+            />
           </TextFeature>
           <PhotoFeature src="/start/call.jpg">
             <Text color="white">
@@ -417,7 +424,7 @@ export default () => (
         </Box>
       </Flex>
     </Container>
-    <Flex flexDirection="column" bg="snow" py={[4, 5]}>
+    <Flex flexDirection="column" bg="snow" py={[4, 5, null, 6]}>
       <Container {...styles.contentContainer}>
         <TextBox>
           <Text fontSize={4} caps bold color="muted">
@@ -465,7 +472,7 @@ export default () => (
         </TwoUp>
       </Container>
     </Flex>
-    <Box py={[4, 5]}>
+    <Box py={[4, 5, null, 6]}>
       <Container {...styles.contentContainer}>
         <TextBox maxWidth={48} mb={4}>
           <Text fontSize={4} caps bold color="muted">
@@ -476,34 +483,27 @@ export default () => (
             <Text.span color="primary">start your club</Text.span> at your high
             school.
           </Headline>
-          <Text {...styles.lead}>
-            You’ll be joining hundreds of other applicants to our program from
-            around the world. Your application is all online and totally free.
-          </Text>
         </TextBox>
         <Steps>
           <StepOne>
             <Module
-              icon="edit"
+              icon="send"
               name="1. Application"
-              body="Submit your info to get the ball rolling, right below."
-              color="white"
+              body="Start by submitting your info—all free & online."
             />
           </StepOne>
           <StepTwo>
             <Module
               icon="emoji"
               name="2. Training call"
-              body="We’ll chat and begin a plan for your club and marketing."
-              color="white"
+              body="We’ll chat and begin a plan for your club & marketing."
             />
           </StepTwo>
           <StepThree>
             <Module
-              icon="checkmark"
+              icon="event-code"
               name="3. First meeting"
-              body="Schedule your first meeting and get ready to lead!"
-              color="white"
+              body="Schedule your first meeting & get ready to lead!"
             />
           </StepThree>
         </Steps>

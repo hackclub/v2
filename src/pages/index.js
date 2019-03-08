@@ -4,7 +4,6 @@ import Nav from 'components/Nav'
 import Header from 'components/home/Header'
 import About from 'components/home/About'
 import Action from 'components/home/Action'
-import Description from 'components/home/Description'
 import Footer from 'components/Footer'
 
 export default () => (
@@ -19,8 +18,6 @@ export default () => (
     <Header />
     <About />
     <Action />
-    <Footer>
-      <Description />
-    </Footer>
+    <Footer />
   </Fragment>
 )

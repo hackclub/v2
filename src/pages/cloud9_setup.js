@@ -1,41 +1,53 @@
 import styled from 'styled-components'
 import React, { Fragment } from 'react'
-import { Container, Section, theme } from '@hackclub/design-system'
+import {
+  Container,
+  Heading,
+  Icon,
+  LargeButton as Button,
+  Link as A,
+  Section,
+  Text,
+  theme
+} from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import { Headline, Lead } from 'components/Content'
+import Link from 'gatsby-link'
 import Nav from 'components/Nav'
-import Sheet from 'components/Sheet'
-import Cloud9Form from 'components/Cloud9Form'
+import Footer from 'components/Footer'
 
-const Base = styled(Section).attrs({
-  px: 3,
-  align: 'center',
-  color: 'white'
-})`
-  background-color: ${theme.colors.blue[6]};
-  background-image: linear-gradient(
-    -18deg,
-    ${theme.colors.indigo[4]},
-    ${theme.colors.blue[6]},
-    ${theme.colors.blue[7]}
-  );
-  min-height: 100vh;
+const Header = styled(Section)`
+  background-color: ${theme.colors.primary};
+  background-image: ${theme.gradient('blue.6', 'blue.7')};
 `
+
+A.link = A.withComponent(Link)
 
 export default () => (
   <Fragment>
     <Helmet title="Cloud9 – Hack Club" />
     <Nav />
-    <Base>
-      <Container maxWidth={28} pt={[5, 6]}>
-        <Headline mb={3}>Let’s get you coding on Cloud9.</Headline>
-        <Lead color="blue.0" maxWidth={20}>
-          Enter your email below & you’ll receive an invitation.
-        </Lead>
+    <Header align="center">
+      <Container maxWidth={32} pt={[5, 6]} pb={4} px={3} color="white">
+        <Icon glyph="history" size={64} />
+        <Heading.h1 fontSize={[5, 6]}>
+          Cloud9 has been discontinued.
+        </Heading.h1>
       </Container>
-      <Sheet maxWidth={28} align="left" my={4} mx="auto">
-        <Cloud9Form />
-      </Sheet>
-    </Base>
+    </Header>
+    <Container maxWidth={36} py={[5, 6]} px={3} color="black" align="center">
+      <Text fontSize={3}>
+        In the past, some of our <A.link to="/workshops/">Workshops</A.link> used an online IDE called Cloud9. The service is no longer recommended. Instead, check out repl.it!
+      </Text>
+      <Button
+        bg="info"
+        href="https://repl.it/?ref=hackclub
+        my={4}
+        scale
+        chevronRight
+      >
+        repl.it
+      </Button.link>
+    </Container>
+    <Footer />
   </Fragment>
 )

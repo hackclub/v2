@@ -62,7 +62,7 @@ const Features = styled(Container)`
     ${featureStyles};
   }
   ${Icon} {
-    margin-left: -${theme.space[2]}px;
+    margin-left: -${theme.space[1]}px;
   }
   ${theme.mediaQueries.sm} {
     grid-gap: ${theme.space[4]}px;
@@ -278,17 +278,17 @@ export default () => (
         </Headline>
         <TextBox mb={4}>
           <Text {...styles.lead}>
-            Hack Clubs meet weekly, typically for 1.5 hours. Meetings resemble
+            Hack Clubs meet weekly at their high schools, typically for 1.5 hours. Meetings look like
             mini-hackathons, where members learn to code through building
-            projects like{' '}
+            projects. Check out{' '}
             <A href="https://sohuang.github.io/" target="_blank">
-              websites
-            </A>{' '}
-            and{' '}
-            <A href="https://messy-wool.surge.sh/catch.html" target="_blank">
-              games
+              a website
             </A>
-            .
+            {' & '}
+            <A href="https://messy-wool.surge.sh/catch.html" target="_blank">
+              a game
+            </A>
+            built by members.
           </Text>
         </TextBox>
         <HourFeatures>

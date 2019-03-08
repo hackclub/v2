@@ -60,7 +60,7 @@ const CTA = styled(IconButton).attrs({
 
 const title = 'Hack Night – a weekly online hackathon by Hack Club'
 const desc =
-  'Every Saturday night, the Hack Club community of high school hackers gathers for Hack Night, a distributed nighttime hackathon and hangout.'
+  'On Saturday nights, the Hack Club community of high school hackers gathers for Hack Night, a distributed nighttime hackathon and hangout.'
 const img = 'https://hackclub.com/cards/night.png'
 
 export default () => (
@@ -93,7 +93,7 @@ export default () => (
           my={3}
           mx={0}
         >
-          Every Saturday night, the Hack Club community of high school hackers
+          On Saturday nights, the Hack Club community of high school hackers
           gathers for Hack Night, a distributed nighttime hackathon and hangout.
         </Lead>
         <Lead color="nightMuted" maxWidth={36} mb={4} mx={0}>

@@ -40,7 +40,7 @@ export default () => (
       </Text>
       <Button
         bg="info"
-        href="https://repl.it/?ref=hackclub
+        href="https://repl.it/?ref=hackclub"
         my={4}
         scale
         chevronRight

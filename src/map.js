@@ -50,18 +50,17 @@ const Map = props =>
 const args = require('minimist')(process.argv.slice(2), {
   default: {
     fill: colors.black,
-    stroke: colors.gray[8],
     pin: colors.info,
     path: './static/map.svg'
   }
 })
-const { fill, stroke, pin, path } = args
+const { fill, pin, path } = args
 const css = `.rsm-svg{width:100vw;height:100vh;object-fit:cover}
-.rsm-geographies path{fill:${fill};stroke:${stroke};stroke-width:.25;outline:none}
+.rsm-geographies path{fill:${fill};stroke-width:0;outline:none}
 .rsm-markers circle{fill:${pin};stroke-width:0;opacity:.667}`
 
 const API = 'https://api.hackclub.com/v1/new_clubs'
-const GEO = 'https://unpkg.com/world-atlas@1.1.4/world/50m.json'
+const GEO = 'https://unpkg.com/world-atlas@1.1.4/world/110m.json'
 const locations = []
 axios(API)
   .then(res => {

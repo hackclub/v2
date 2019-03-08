@@ -264,7 +264,7 @@ export default () => (
           style={{ fontWeight: 'normal', maxWidth: '48rem' }}
         >
           Whether you’re interested in starting a new chapter or joining Hack
-          Club’s network with an existing CS club, we should talk.
+          Club’s network with an existing programming club, we should talk.
         </Heading.h2>
       </Container>
     </PhotoSection>

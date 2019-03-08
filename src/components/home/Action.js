@@ -59,11 +59,7 @@ const Action = styled(LargeButton.withComponent(Link)).attrs({
   scale: true,
   fontSize: [2, 3]
 })`
-  background-image: linear-gradient(
-    to bottom,
-    ${theme.colors.pink[5]},
-    ${theme.colors.red[5]}
-  );
+  background-image: ${theme.gradient('pink.5', 'red.5');
 `
 
 export default () => (
@@ -76,13 +72,12 @@ export default () => (
         Join Hack Club.
       </PromoHeading>
       <Text fontSize={[3, 4]} mt={3} mb={2}>
-        Start a new chapter or join the network with an existing computer
-        science club.
+        Start a new chapter or join the network with an existing coding club.
       </Text>
       <Text fontSize={[3, 4]} mb={4}>
         We’re excited to meet you.
       </Text>
-      <Action to="/start" children="Get Started" />
+      <Action to="/start/" children="Get Started" />
     </PromoBox>
   </Base>
 )

@@ -20,7 +20,6 @@ import Status from 'components/apply/Status'
 import Link from 'gatsby-link'
 import { timeSince } from 'helpers'
 import api from 'api'
-import { Modal, CloseButton, Overlay } from 'components/Modal'
 import storage from 'storage'
 
 const authToken = storage.get('authToken')
@@ -37,42 +36,6 @@ const A = styled(DSLink)`
 const Title = styled(Heading.h1).attrs({ fontSize: 6 })`
   line-height: 1.25;
 `
-
-class ContactModal extends Component {
-  state = { open: false }
-
-  toggle = () => this.setState(({ open }) => ({ open: !open }))
-
-  render() {
-    const { open } = this.state
-    return (
-      <Fragment>
-        <Button
-          bg="info"
-          onClick={this.toggle}
-          children="Contact us"
-          fontSize={1}
-        />
-        {open && (
-          <Fragment>
-            <Modal w="28rem" align="left" my={4} p={[3, 4]}>
-              <CloseButton onClick={this.toggle} />
-              <Heading.h2>Contact Us</Heading.h2>
-              <Text fontSize={2}>
-                Send any questions about the application process to{' '}
-                <A to="mailto:applications@hackclub.com">
-                  applications@hackclub.com
-                </A>
-                .
-              </Text>
-            </Modal>
-            <Overlay onClick={this.toggle} />
-          </Fragment>
-        )}
-      </Fragment>
-    )
-  }
-}
 
 // NOTE(@lachlanjc): for use if/when we have a slideshow experience
 // const PrimaryButton = styled(IconButton).attrs({
@@ -173,7 +136,7 @@ class Section extends Component {
 
 const HelpSheet = styled(Container).attrs({
   mt: [3, 4],
-  p: 0,
+  mb: [3, 0],
   px: [3, 4],
   py: 3,
   bg: 'blue.0'
@@ -186,13 +149,19 @@ const HelpSheet = styled(Container).attrs({
 
 const Help = () => (
   <HelpSheet>
-    <Flex align="center" flex="1 1 auto" mb={[3, 0]}>
-      <Icon glyph="support" size={36} mr={[2, 3]} color="info" />
-      <Text color="info" fontSize={2} align="left">
+    <Icon glyph="support" size={36} mr={[2, 3]} color="info" />
+    <Box color="info" fontSize={2} align="left">
+      <Text>
         Have any questions? <strong>We’re here to help out.</strong>
       </Text>
-    </Flex>
-    <ContactModal />
+      <Text>
+        Send any questions about the application process to{' '}
+        <A to="mailto:applications@hackclub.com">
+          applications@hackclub.com
+        </A>
+        .
+      </Text>
+    </Box>
   </HelpSheet>
 )
 

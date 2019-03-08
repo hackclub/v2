@@ -10,20 +10,20 @@ import {
 } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 import Sheet from 'components/Sheet'
+import { ColoredHeadline } from 'components/Content'
 
-const Base = styled(Section.withComponent(BackgroundImage))`
+const Base = styled(Section.withComponent(BackgroundImage)).attrs({
+  py: [7, 8]
+})`
   position: relative;
-  min-height: 36rem;
 `
 
-const PromoBox = styled(Sheet)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  width: calc(100% - 12vw);
-  max-width: 40rem;
-  text-align: center;
+const PromoBox = styled(Sheet).attrs({
+  maxWidth: 32,
+  align: 'center',
+  mb: 0,
+  m: 'auto'
+})`
   z-index: 2;
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     background-color: rgba(255, 255, 255, 0.75);
@@ -36,21 +36,6 @@ const PromoBox = styled(Sheet)`
     br {
       display: none;
     }
-  }
-`
-
-const PromoHeading = styled(Heading.h2)`
-  color: ${theme.colors.primary};
-  @supports (-webkit-background-clip: text) {
-    background: linear-gradient(
-      48deg,
-      ${theme.colors.pink[5]},
-      ${theme.colors.red[5]},
-      ${theme.colors.orange[5]}
-    );
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 `
 
@@ -67,11 +52,11 @@ export default () => (
     src="/action.jpg"
     aria-label="Group of high school students coding together"
   >
-    <PromoBox py={[4, 5]} px={[3, 5]} style={{ margin: 0 }}>
-      <PromoHeading fontSize={[5, 6]} my={0}>
-        Join Hack Club.
-      </PromoHeading>
-      <Text fontSize={[3, 4]} mt={3} mb={2}>
+    <PromoBox py={[4, 5]} px={[3, 5]}>
+      <ColoredHeadline colors={['pink.5', 'red.5', 'orange.5']} my={0}>
+        Join Hack&nbsp;Club.
+      </ColoredHeadline>
+      <Text fontSize={[3, 4]} mb={2}>
         Start a new chapter or join the network with an existing coding club.
       </Text>
       <Text fontSize={[3, 4]} mb={4}>

@@ -4,7 +4,6 @@ import {
   Container,
   Flex,
   Heading,
-  Hide,
   Icon,
   LargeButton,
   Link as A,
@@ -29,7 +28,7 @@ const Root = styled(Flex.withComponent('section')).attrs({
   p,
   h1,
   h2 {
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
   }
   p,
   h2 {
@@ -40,6 +39,12 @@ const Root = styled(Flex.withComponent('section')).attrs({
   }
   p {
     max-width: 36rem;
+  }
+
+  ${theme.mediaQueries.sm} {
+    br {
+      display: none;
+    }
   }
 `
 
@@ -56,7 +61,6 @@ const Announcement = styled(Sheet).attrs({
   width: 1,
   maxWidth: 36,
   p: 2,
-  px: [3, 2],
   mt: [null, -3, -4],
   mb: 3,
   color: 'slate'
@@ -64,9 +68,26 @@ const Announcement = styled(Sheet).attrs({
   display: flex;
   align-items: center;
   justify-content: center;
+  p {
+    text-shadow: none;
+  }
+  span {
+    display: none;
+    ${theme.mediaQueries.sm} {
+      display: inline;
+    }
+  }
 `
+Announcement.Link = styled(A.withComponent(Link)).attrs({
+  caps: true,
+  color: 'info',
+  bold: true,
+  fontSize: 2,
+  ml: 'auto',
+  chevronRight: true
+})``
 
-const HeaderStats = styled(Text.withComponent('ul')).attrs({
+const Stats = styled(Text.withComponent('ul')).attrs({
   color: 'blue.1',
   mt: 0,
   ml: -2,
@@ -75,19 +96,18 @@ const HeaderStats = styled(Text.withComponent('ul')).attrs({
 })`
   line-height: 1;
 `
-
-const HeaderStat = styled(Text.withComponent('li')).attrs({
+Stats.Stat = styled(Text.withComponent('li')).attrs({
   fontSize: [2, 3],
   ml: 2
 })`
   display: inline;
   &:not(:last-child):after {
+    content: '\00b7';
     position: relative;
     top: 6px;
     margin-left: ${theme.space[2]}px;
     margin-right: -2px;
     font-size: ${theme.fontSizes[4]}px;
-    content: '\00b7';
   }
 `
 
@@ -98,14 +118,13 @@ const Action = styled(LargeButton.withComponent(Link)).attrs({
   px: [3, 4],
   fontSize: 2
 })``
-const DonateAction = styled(Action)`
-  background-image: ${theme.gradient('lime.6', 'teal.6')};
-  @media screen and (max-width: 512px) {
-    display: none;
-  }
-`
 const SlackAction = styled(Action)`
-  background-image: ${theme.gradient('cyan.6', 'blue.6')};
+  background-image: ${theme.gradient('fuschia.5', 'pink.5')};
+  @media screen and (max-width: 22em) {
+    span {
+      display: none;
+    }
+  }
 `
 const StartAction = styled(Action).attrs({ py: 3, px: 4 })`
   background-image: ${theme.gradient('orange.5', 'red.5')};
@@ -116,25 +135,14 @@ export default () => (
     <Wrapper>
       <Announcement>
         <Icon size={24} glyph="bank-circle" />
-        <Flex color="black" fontSize={1} ml={1}>
+        <Text color="black" fontSize={1} ml={1}>
           <strong>Hack Club Bank 1.0</strong>
-          <Hide xs sm ml={1}>
+          <Text.span ml={1}>
             {'– '}
             redesigned & open to all
-          </Hide>
-        </Flex>
-        <A
-          caps
-          color="info"
-          fontSize={2}
-          px={2}
-          bold
-          ml="auto"
-          href="/bank"
-          chevronRight
-        >
-          Learn more
-        </A>
+          </Text.span>
+        </Text>
+        <Announcement.Link to="/bank/">Learn more</Announcement.Link>
       </Announcement>
       <Text
         fontSize={[3, 4]}
@@ -144,31 +152,29 @@ export default () => (
         caps
         style={{ letterSpacing: '.05em' }}
       >
-        By the students, for the students.
+        By the students
+        {', '}
+        <br />
+        for the students.
       </Text>
       <Heading.h1 fontSize={[7, 8]} mx={[0, null, -3, -5]} my={2}>
         High school coding clubs.
       </Heading.h1>
-      <HeaderStats>
-        <HeaderStat>{stats.school_count} schools</HeaderStat>
-        <HeaderStat>{stats.state_count} states</HeaderStat>
-        <HeaderStat>{stats.country_count} countries</HeaderStat>
-      </HeaderStats>
+      <Stats>
+        <Stats.Stat>{stats.school_count} schools</Stats.Stat>
+        <Stats.Stat>{stats.state_count} states</Stats.Stat>
+        <Stats.Stat>{stats.country_count} countries</Stats.Stat>
+      </Stats>
       <Text fontSize={[3, 4]} mx="auto">
         Hack Club is a nonprofit network of computer science clubs where members
         learn to code through tinkering and building projects.
       </Text>
       <Flex justify="center" align="center" mx={[-1, -2]} mt={[3, 4]}>
-        <DonateAction to="/donate" bg="teal.6">
-          Donate
-        </DonateAction>
-        <SlackAction to="/slack_invite" bg="info">
-          <Hide xs style={{ display: 'inline' }}>
-            Join{' '}
-          </Hide>
+        <SlackAction to="/slack_invite/" bg="pink.5">
+          <span>Join </span>
           Slack
         </SlackAction>
-        <StartAction to="/start" fontSize={[3, null, 4]} chevronRight>
+        <StartAction to="/start/" fontSize={[3, null, 4]} chevronRight>
           Get Started
         </StartAction>
       </Flex>

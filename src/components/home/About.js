@@ -35,12 +35,8 @@ const Grid = styled(Box)`
   }
 `
 
-const IntroSheet = styled(Sheet).attrs({ color: 'white', p: 4 })`
-  background: ${theme.gradient('orange.5', 'red.5')};
-`
-
-const ModulesSheet = styled(Sheet).attrs({ color: 'white', p: 4 })`
-  background: ${theme.gradient('indigo.5', 'blue.5')};
+const ColorSheet = styled(Sheet).attrs({ color: 'white', p: 4 })`
+  background: ${props => theme.gradient(...props.colors)};
 `
 
 const Modules = styled(Box)`
@@ -51,27 +47,6 @@ const Modules = styled(Box)`
   }
   svg {
     margin-left: -${theme.space[1]}px;
-  }
-`
-
-const Super = styled(Sheet).attrs({ color: 'white', p: 4 })`
-  background: ${theme.gradient('cyan.6', 'blue.6')};
-  position: relative;
-
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url(/diagonal.svg) top right repeat-x;
-    background-size: auto 100%;
-    background-position-x: 25%;
-  }
-
-  > * {
-    position: relative;
   }
 `
 
@@ -135,11 +110,11 @@ export default () => (
       </Text>
     </Container>
     <Grid mt={[4, 5]} mb={[5, 6]}>
-      <IntroSheet>
+      <ColorSheet colors={['orange.5', 'red.5']}>
         <Featline>Go beyond club meetings.</Featline>
         <Text fontSize={3} mt={3}>
           Hack Clubs attend and run hackathons like{' '}
-          <Like href="https://hackpenn.com">Hack Pennsylvania</Like> and{' '}
+          <Like href="https://hackchicago.io">Hack&nbsp;Chicago</Like> and{' '}
           <Like href="http://outlooknewspapers.com/hackademia-aims-for-young-tech-devotees/">
             Hackademia
           </Like>
@@ -158,10 +133,10 @@ export default () => (
         >
           Read about a Hack Club
         </ActionLink>
-      </IntroSheet>
+      </ColorSheet>
       <Photo src="/about_1.jpg" scale />
       <Photo src="/about_2.jpg" scale />
-      <ModulesSheet>
+      <ColorSheet colors={['indigo.5', 'blue.5']}>
         <Featline>We help you get started.</Featline>
         <Modules my={3} width={1}>
           <Module
@@ -185,7 +160,7 @@ export default () => (
             body="Get materials and ideas for spreading your club."
           />
         </Modules>
-      </ModulesSheet>
+      </ColorSheet>
     </Grid>
     <Box mx={0} mt={5} color="black">
       <Heading.h2 style={{ maxWidth: '64rem' }} fontSize={[5, 6]} mb={3}>
@@ -206,17 +181,17 @@ export default () => (
       </Container>
     </Box>
     <Grid mt={[4, 5]} mb={[5, 6]} color="white">
-      <Super>
+      <ColorSheet colors={['cyan.5', 'blue.5']}>
         <Featline>Coding is a superpower.</Featline>
-        <Text fontSize={3} my={3}>
+        <Text fontSize={3} mt={3}>
           Coding is a superpower and we believe that the way we teach it should
-          reflect that. Students should learn through building projects, not
-          listening to boring lectures.
+          reflect that. Students should learn through building self-motivated
+          projects, not listening to classroom lectures.
         </Text>
         <Action to="/philosophy" bg="info">
           Our philosophy
         </Action>
-      </Super>
+      </ColorSheet>
       <Photo src="/about_3.jpg" scale />
       <Photo src="/about_4.jpg" scale />
       <Graph>

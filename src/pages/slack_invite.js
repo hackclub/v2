@@ -215,7 +215,7 @@ export default () => (
       <Container px={3} pt={[5, 6, 7]} color="white" align="center">
         <Announcement>
           <Icon size={24} glyph="history" color="slate" />
-          <Text color="black" fontSize={2} ml={1} bold>
+          <Text color="black" fontSize={2} ml={1}>
             Already have an account?
           </Text>
           <Link

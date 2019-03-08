@@ -126,21 +126,16 @@ const NavBar = styled(Box.withComponent('nav'))`
 
 const Navigation = props => (
   <NavBar role="navigation" {...props}>
-    <Link to="/donate" children="Donate" />
+    <Link to="/donate/" children="Donate" />
+    <Link to="/workshops/" children="Workshops" />
     <a
-      href="https://shop.hackclub.com/?ref=nav"
-      children="Shop"
-      target="_blank"
-    />
-    <Link to="/challenge" children="Challenge" />
-    <Link to="/workshops" children="Workshops" />
-    <a
-      href="https://hackathons.hackclub.com/?ref=nav"
+      href="https://hackathons.hackclub.com/"
       children="Hackathons"
       target="_blank"
     />
-    <Link to="/bank" children="Bank" />
-    <Link to="/start" children="Get&nbsp;Started&nbsp;»" />
+    <Link to="/bank/" children="Bank" />
+    <Link to="/hackers/" children="Hackers" />
+    <Link to="/start/" children="Get&nbsp;Started&nbsp;»" />
   </NavBar>
 )
 
@@ -183,7 +178,7 @@ class Header extends Component {
   componentDidMount() {
     this.bindScroll(true)
     if (typeof window !== 'undefined') {
-      const mobileQuery = window.matchMedia('(max-width: 56em)')
+      const mobileQuery = window.matchMedia('(max-width: 48em)')
       mobileQuery.addListener(() => {
         this.setState({ toggled: false })
       })

@@ -179,7 +179,7 @@ const Footer = ({ dark = false, children, ...props }) => (
       </Box>
       <BottomLine mt={3}>
         <Text fontSize={1} mt={2} color="muted">
-          © {new Date().getFullYear()} Hack Club. Nonprofit EIN: 81-2908499.
+          © {new Date().getFullYear()} Hack Club. 501(c)(3) nonprofit (EIN: 81-2908499)
         </Text>
       </BottomLine>
     </Container>

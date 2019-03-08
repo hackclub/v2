@@ -59,7 +59,7 @@ const Action = styled(LargeButton.withComponent(Link)).attrs({
   scale: true,
   fontSize: [2, 3]
 })`
-  background-image: ${theme.gradient('pink.5', 'red.5');
+  background-image: ${theme.gradient('pink.5', 'red.5')};
 `
 
 export default () => (

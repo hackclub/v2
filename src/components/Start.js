@@ -27,7 +27,7 @@ const Start = ({ buttonProps = {}, ...props }) => (
   <Base px={[2, 4, 5]} py={[4, 5, 6]} my={4} {...props}>
     <Box align={['center', null, 'right']}>
       <Heading.h2 color="white" fontSize={[5, 6]} m={0}>
-        Winter applications now open.
+        Spring applications now open.
       </Heading.h2>
       <Text color="red.0" fontSize={[3, 4]} my={2}>
         Build the class you wish you took.

@@ -29,14 +29,14 @@ export default () => (
     <Header align="center">
       <Container maxWidth={32} pt={[5, 6]} pb={4} px={3} color="white">
         <Icon glyph="history" size={64} />
-        <Heading.h1 fontSize={[5, 6]}>
-          Cloud9 has been discontinued.
-        </Heading.h1>
+        <Heading.h1 fontSize={[5, 6]}>Cloud9 has been discontinued.</Heading.h1>
       </Container>
     </Header>
     <Container maxWidth={36} py={[5, 6]} px={3} color="black" align="center">
       <Text fontSize={3}>
-        In the past, some of our <A.link to="/workshops/">Workshops</A.link> used an online IDE called Cloud9. The service is no longer recommended. Instead, check out repl.it!
+        In the past, some of our <A.link to="/workshops/">Workshops</A.link>{' '}
+        used an online IDE called Cloud9. The service is no longer recommended.
+        Instead, check out repl.it!
       </Text>
       <Button
         bg="info"
@@ -46,7 +46,7 @@ export default () => (
         chevronRight
       >
         repl.it
-      </Button.link>
+      </Button>
     </Container>
     <Footer />
   </Fragment>

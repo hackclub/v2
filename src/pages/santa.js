@@ -83,7 +83,9 @@ export default () => (
           Find your holiday zen with Hack&nbsp;Club Secret&nbsp;Santa.
         </Megaline>
         <Lead fontSize={[3, null, 4]} color="snow" maxWidth={48} my={3} mx={0}>
-          Dozens of community members from around the world made our Secret Santa experiment awesome, but the holidays are past. See you next winter!
+          Dozens of community members from around the world made our Secret
+          Santa experiment awesome, but the holidays are past. See you next
+          winter!
         </Lead>
         <IconButton
           is={LargeButton.withComponent(Link)}

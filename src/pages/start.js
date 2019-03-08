@@ -279,9 +279,9 @@ export default () => (
         </Headline>
         <TextBox mb={4}>
           <Text {...styles.lead}>
-            Hack Clubs meet weekly at their high schools, typically for 1.5 hours. Meetings look like
-            mini-hackathons, where members learn to code through building
-            projects. Check out{' '}
+            Hack Clubs meet weekly at their high schools, typically for 1.5
+            hours. Meetings look like mini-hackathons, where members learn to
+            code through building projects. Check out{' '}
             <A href="https://sohuang.github.io/" target="_blank">
               a website
             </A>
@@ -323,9 +323,9 @@ export default () => (
             <Text.span color="teal.6">going & growing</Text.span>.
           </Headline>
           <Text {...styles.lead}>
-            From working with our {stats.school_count} Hack Clubs at high schools around the
-            world, we’ve assembled the resources you’ll need for a successful
-            club.
+            From working with our {stats.school_count} Hack Clubs at high
+            schools around the world, we’ve assembled the resources you’ll need
+            for a successful club.
           </Text>
         </TextBox>
         <Features mt={4}>
@@ -397,19 +397,19 @@ export default () => (
             Start a new club, or bring your own. We’re excited to meet you.
           </Headline>
           <Text {...styles.lead} mt={3}>
-            When established CS clubs join, they get the full benefits of the
-            network. While Hack Club is currently optimized for new chapters,
-            we’re increasing the benefits for existing clubs every day by
-            launching new projects like{' '}
-            <A.link to="/challenge" target="_blank">
+            When established programming clubs join, they get the full benefits
+            of the network. While Hack Club is currently optimized for new
+            chapters, we’re increasing the benefits for existing clubs every day
+            by launching new projects like{' '}
+            <A.link to="/challenge/" target="_blank">
               Challenge
             </A.link>
             ,{' '}
-            <A href="https://hackathons.hackclub.com" target="_blank">
+            <A href="https://hackathons.hackclub.com/" target="_blank">
               Hackathons
             </A>
             , &{' '}
-            <A.link to="/bank" target="_blank">
+            <A.link to="/bank/" target="_blank">
               Bank
             </A.link>
             .

@@ -61,12 +61,12 @@ const ApplyNav = ({ breadcrumb = true, ...props }) => (
     style={{ position: 'relative' }}
     {...props}
   >
-    <Flag scrolled />
-    {breadcrumb ? (
+    <Flag />
+    {breadcrumb && (
       <Box fontSize={[2, 4]} mt={2} width={32 * 16}>
         <Breadcrumb />
       </Box>
-    ) : null}
+    )}
     <LogoutButton mt={2} inverted />
   </Flex>
 )

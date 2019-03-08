@@ -19,6 +19,7 @@ import Nav from 'components/Nav'
 import Sheet from 'components/Sheet'
 import { Headline, Featline } from 'components/Content'
 import Footer from 'components/Footer'
+import { stats } from 'data.json'
 
 const shadows = css`
   h2,
@@ -322,7 +323,7 @@ export default () => (
             <Text.span color="teal.6">going & growing</Text.span>.
           </Headline>
           <Text {...styles.lead}>
-            From working with our 200+ Hack Clubs at high schools around the
+            From working with our {stats.school_count} Hack Clubs at high schools around the
             world, we’ve assembled the resources you’ll need for a successful
             club.
           </Text>

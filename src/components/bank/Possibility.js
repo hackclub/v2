@@ -39,7 +39,7 @@ class Possibility extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.setState({ visible: true })
-    }, 2000)
+    }, 3250)
   }
 
   render() {

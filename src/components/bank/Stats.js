@@ -35,7 +35,7 @@ class Stats extends Component {
   render() {
     const { state, props } = this
     const stats = {
-      transactions_volume: 'total transacted'
+      transactions_volume: 'total transactions to date'
       // events_count: 'events',
       // transactions_count: 'transactions'
     }

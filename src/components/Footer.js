@@ -109,12 +109,11 @@ const Footer = ({ dark = false, children, ...props }) => (
           Hack Club
         </Heading.h2>
         <Pages>
-          {/* <Link to="/" children="Home" /> */}
-          <Link to="/donate" children="Donate" />
-          <Link to="/team" children="Team" />
-          <Link to="/hackers" children="Hackers" />
-          <Link to="/philosophy" children="Philosophy" />
-          <Link to="/night" children="Hack Night" />
+          <Link to="/" children="Home" />
+          <Link to="/donate/" children="Donate" />
+          <Link to="/team/" children="Team" />
+          <Link to="/hackers/" children="Hackers" />
+          <Link to="/philosophy/" children="Philosophy" />
         </Pages>
       </Box>
       <Box>
@@ -122,14 +121,11 @@ const Footer = ({ dark = false, children, ...props }) => (
           For Clubs
         </Heading.h2>
         <Pages>
-          <Link to="/start" children="Start" />
-          <Link to="/apply" children="Apply" />
-          <Link to="/challenge" children="Challenge" />
-          <Link to="/workshops" children="Workshops" />
-          <a
-            href="https://leaders.hackclub.com/?ref=footer"
-            children="Leaders"
-          />
+          <Link to="/start/" children="Start" />
+          <Link to="/apply/" children="Apply" />
+          <Link to="/challenge/" children="Challenge" />
+          <Link to="/workshops/" children="Workshops" />
+          <a href="https://finder.hackclub.com/" children="Find Clubs" />
         </Pages>
       </Box>
       <Box>
@@ -137,11 +133,11 @@ const Footer = ({ dark = false, children, ...props }) => (
           Resources
         </Heading.h2>
         <Pages>
-          <Link to="/conduct" children="Code of Conduct" />
-          <a href="https://finder.hackclub.com" children="Finder" />
-          <a href="https://hackathons.hackclub.com" children="Hackathons" />
-          <a href="https://shop.hackclub.com/?ref=footer" children="Shop" />
-          <Link to="/bank" children="Bank" />
+          <Link to="/conduct/" children="Code of Conduct" />
+          <Link to="/night/" children="Hack Night" />
+          <a href="https://hackathons.hackclub.com/" children="Hackathons" />
+          <a href="https://shop.hackclub.com/" children="Shop" />
+          <Link to="/bank/" children="Bank" />
         </Pages>
       </Box>
       <Box>
@@ -149,7 +145,7 @@ const Footer = ({ dark = false, children, ...props }) => (
           Join the Club
         </Heading.h2>
         <Services>
-          <Service href="/slack_invite" icon="slack" />
+          <Service href="/slack_invite/" icon="slack-fill" />
           <Service href="https://twitter.com/hackclub" icon="twitter" />
           <Service href="https://github.com/hackclub" icon="github" />
           <Service

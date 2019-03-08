@@ -209,7 +209,7 @@ export default () => (
         { property: 'og:url', content: 'https://hackclub.com/slack_invite' }
       ]}
     />
-    <Nav />
+    <Nav dark />
     <BackgroundGradient>
       <BackgroundVideo />
       <Container px={3} pt={[5, 6, 7]} color="white" align="center">

@@ -361,6 +361,7 @@ export default () => (
               icon="idea"
               name="Learn from all our clubs"
               body="We’ve got advice, information, & experience to share."
+              color="black"
               iconColor="warning"
             />
           </TextFeature>

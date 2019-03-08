@@ -83,9 +83,7 @@ export default () => (
           Find your holiday zen with Hack&nbsp;Club Secret&nbsp;Santa.
         </Megaline>
         <Lead fontSize={[3, null, 4]} color="snow" maxWidth={48} my={3} mx={0}>
-          Signup is now closed. Check your email for the next steps! Santa’s
-          list will be finalized by December 12. You can also join #secret-santa
-          on Slack to participate in the discussion.
+          Dozens of community members from around the world made our Secret Santa experiment awesome, but the holidays are past. See you next winter!
         </Lead>
         <IconButton
           is={LargeButton.withComponent(Link)}

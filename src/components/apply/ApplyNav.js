@@ -10,7 +10,7 @@ const Crumb = ({ isLast, ...props }) => {
   return <Tag {...props} />
 }
 
-class BreadcrumbClass extends Component {
+class Breadcrumb extends Component {
   state = { path: [] }
 
   componentDidMount() {
@@ -49,8 +49,6 @@ class BreadcrumbClass extends Component {
     )
   }
 }
-
-const Breadcrumb = BreadcrumbClass
 
 const ApplyNav = ({ breadcrumb = true, ...props }) => (
   <Flex

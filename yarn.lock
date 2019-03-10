@@ -10551,7 +10551,7 @@ react-dom-core@0.0.3:
     fbjs "*"
     object-assign "*"
 
-react-dom@^16.5.1, react-dom@^16.8.4:
+react-dom@^16.5.1:
   version "16.8.4"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.8.4.tgz#1061a8e01a2b3b0c8160037441c3bf00a0e3bc48"
   integrity sha512-Ob2wK7XG2tUDt7ps7LtLzGYYB6DXMCLj0G5fO6WeEICtT4/HdpOi7W/xLzZnR6RCG1tYza60nMdqtxzA8FaPJQ==

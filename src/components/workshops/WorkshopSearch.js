@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container } from '@hackclub/design-system'
 import SearchInput from './SearchInput'
 import Track from './Track'
@@ -19,63 +19,64 @@ const groupOrder = [
 ]
 const keys = ['node.frontmatter.name', 'node.frontmatter.description']
 
-class WorkshopSearch extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      value: ''
-    }
-    this.fuse = new Fuse(props.workshops, { threshold: 0.4, keys })
-  }
+export default ({ workshops }) => {
+  // state and setters for ...
+  // value
+  const [value, setValue] = useState('')
+  const handleInputChange = e => setValue(e.target.value)
 
-  handleInputChange = e => this.setState({ value: e.target.value })
+  // fuse search results
+  const [groups, setGroups] = useState([])
 
-  render() {
-    const results =
-      this.state.value === ''
-        ? this.props.workshops
-        : this.fuse.search(this.state.value)
-    const groups = groupBy(results, 'node.frontmatter.group')
+  // fuse instance
+  const fuse = new Fuse(workshops, { threshold: 0.4, keys })
 
-    // sort groups based on groupOrder
-    const sortedGroups = toPairs(groups).sort((a, b) => {
-      // if a group isn't found in groupOrder, ensure it appears last in the
-      // sorted list
-      if (groupOrder.indexOf(a[0]) === -1) {
-        return 1
-      } else if (groupOrder.indexOf(b[0]) === -1) {
-        return -1
-      }
+  // Effect for fuse search
+  useEffect(
+    () => {
+      const results = value === '' ? workshops : fuse.search(value)
+      const grouped = groupBy(results, 'node.frontmatter.group')
 
-      return groupOrder.indexOf(a[0]) - groupOrder.indexOf(b[0])
-    })
+      // sort groups based on groupOrder
+      const sorted = toPairs(grouped).sort((a, b) => {
+        // if a group isn't found in groupOrder, ensure it appears last in the
+        // sorted list
+        if (groupOrder.indexOf(a[0]) === -1) {
+          return 1
+        } else if (groupOrder.indexOf(b[0]) === -1) {
+          return -1
+        }
 
-    return (
-      <Fragment>
-        <Container maxWidth={42} mt={-4} px={3} style={{ zIndex: 2 }}>
-          <SearchInput
-            placeholder="Search workshops"
-            label="Search"
-            value={this.state.value}
-            onChange={this.handleInputChange}
-          />
-        </Container>
-        {results.length !== 0 ? (
-          <Fragment>
-            {sortedGroups.map(group => (
-              <Track
-                key={`workshops-${group[0]}`}
-                name={group[0]}
-                data={group[1]}
-              />
-            ))}
-          </Fragment>
-        ) : (
-          <NoResults value={this.state.value} />
-        )}
-      </Fragment>
-    )
-  }
+        return groupOrder.indexOf(a[0]) - groupOrder.indexOf(b[0])
+      })
+      setGroups(sorted)
+    },
+    [value] // Only call effect if search value changes
+  )
+
+  return (
+    <>
+      <Container maxWidth={42} mt={-4} px={3} style={{ zIndex: 2 }}>
+        <SearchInput
+          placeholder="Search workshops"
+          label="Search"
+          value={value}
+          onChange={handleInputChange}
+        />
+      </Container>
+      {groups.length !== 0 ? (
+        <>
+          {groups.map(group => (
+            <Track
+              key={`workshops-${group[0]}`}
+              name={group[0]}
+              data={group[1]}
+            />
+          ))}
+        </>
+      ) : (
+        <NoResults value={value} />
+      )}
+    </>
+  )
 }
-
-export default WorkshopSearch

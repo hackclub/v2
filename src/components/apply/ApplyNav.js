@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import { Text, Flex, Box, Link as A } from '@hackclub/design-system'
 import Flag from 'components/Flag'
 import LogoutButton from 'components/auth/LogoutButton'

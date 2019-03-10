@@ -13,7 +13,7 @@ import {
   theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import GithubSlugger from 'github-slugger'
 import Nav from 'components/Nav'
 import {

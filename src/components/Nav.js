@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components'
 import { Box, Flex, Container, cx, theme } from '@hackclub/design-system'
 import Icon from '@hackclub/icons'
 import Flag from 'components/Flag'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import ScrollLock from 'react-scrolllock'
 
 const rgbaBgColor = (props, opacity) =>

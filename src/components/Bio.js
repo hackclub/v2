@@ -20,7 +20,7 @@ const Base = styled(Sheet)`
   }
 `
 
-const Bio = ({ img, name, role, pronouns, text, ...props }) => (
+const Bio = ({ img, name, teamRole, pronouns, text, ...props }) => (
   <Base mb={0} {...props}>
     <Box mr={[2, 3]}>
       <Avatar size="64px" src={img} alt={name} />
@@ -35,7 +35,7 @@ const Bio = ({ img, name, role, pronouns, text, ...props }) => (
     <Box>
       <Flex align="center" wrap style={{ lineHeight: '1.125' }}>
         <Heading.h3 fontSize={4} m={0} mr={2} color="black" children={name} />
-        <Badge px={2} fontSize={1} bg="primary" children={role} />
+        <Badge px={2} fontSize={1} bg="primary" children={teamRole} />
       </Flex>
       <Text fontSize={2} mt={1} mb={0} color="slate" children={text} />
     </Box>

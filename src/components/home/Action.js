@@ -3,12 +3,11 @@ import styled from 'styled-components'
 import {
   Section,
   BackgroundImage,
-  Heading,
   Text,
   LargeButton,
   theme
 } from '@hackclub/design-system'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Sheet from 'components/Sheet'
 import { ColoredHeadline } from 'components/Content'
 

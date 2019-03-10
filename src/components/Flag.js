@@ -1,7 +1,6 @@
-import React from 'react'
 import { theme } from '@hackclub/design-system'
 import styled, { css } from 'styled-components'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 
 const Flag = styled(Link)`
   background: url(/orpheus_flag.svg) no-repeat;

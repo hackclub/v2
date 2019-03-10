@@ -38,6 +38,6 @@ export default props => (
       />
       <script type="application/ld+json" children={JSON.stringify(org)} />
     </Helmet>
-    {props.children()}
+    {props.children}
   </ThemeProvider>
 )

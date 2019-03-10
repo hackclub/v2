@@ -10,7 +10,7 @@ import {
   Text,
   theme
 } from '@hackclub/design-system'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Sheet from 'components/Sheet'
 import { stats } from 'data.json'
 
@@ -26,7 +26,6 @@ const Root = styled(Flex.withComponent('section')).attrs({
   background-size: cover;
   background-position: center top;
   max-width: 100%;
-
   p,
   h1,
   h2 {
@@ -42,7 +41,6 @@ const Root = styled(Flex.withComponent('section')).attrs({
   p {
     max-width: 36rem;
   }
-
   ${theme.mediaQueries.sm} {
     br {
       display: none;

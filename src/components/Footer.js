@@ -11,7 +11,7 @@ import {
   theme
 } from '@hackclub/design-system'
 import Icon from '@hackclub/icons'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import PureImagination from 'components/PureImagination'
 
 const Base = styled(Box.withComponent('footer'))`
@@ -41,7 +41,6 @@ const Columns = styled(Container)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: ${theme.space[2]}px;
-
   ${theme.mediaQueries.md} {
     grid-gap: ${theme.space[4]}px;
     grid-template-columns: repeat(4, 1fr);
@@ -145,7 +144,7 @@ const Footer = ({ dark = false, children, ...props }) => (
           Join the Club
         </Heading.h2>
         <Services>
-          <Service href="/slack_invite/" icon="slack-fill" target="_self" />
+          <Service href="/slack_invite/" icon="slack" target="_self" />
           <Service href="https://twitter.com/hackclub" icon="twitter" />
           <Service href="https://github.com/hackclub" icon="github" />
           <Service

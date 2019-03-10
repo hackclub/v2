@@ -7,7 +7,7 @@ export default class extends Component {
 
   componentDidMount() {
     window.document.onkeypress = e => {
-      const shouldProgress = e.key == this.codeword[this.state.progress]
+      const shouldProgress = e.key === this.codeword[this.state.progress]
       this.setState(state => ({
         progress: shouldProgress ? state.progress + 1 : 0
       }))
@@ -15,9 +15,9 @@ export default class extends Component {
   }
 
   render() {
-    console.log(this.state.progress)
-    return this.state.progress == this.codeword.length ? (
+    return this.state.progress === this.codeword.length ? (
       <iframe
+        title="pi"
         width={560}
         height={315}
         src="https://www.youtube.com/embed/knIfoQW_mZg?autoplay=1"

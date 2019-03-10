@@ -10,7 +10,7 @@ import {
   Link as A,
   theme
 } from '@hackclub/design-system'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Module from 'components/Module'
 import Stat from 'components/Stat'
 import Sheet from 'components/Sheet'
@@ -21,14 +21,12 @@ const Grid = styled(Box)`
   display: grid;
   grid-gap: ${theme.space[3]}px;
   width: 100%;
-
   > div {
     margin-bottom: 0;
     width: 100%;
     min-height: 16rem;
     max-width: 100%;
   }
-
   ${theme.mediaQueries.md} {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: ${theme.space[4]}px;

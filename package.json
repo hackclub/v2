@@ -11,6 +11,7 @@
     "map": "npx babel-node src/map.js"
   },
   "dependencies": {
+    "@hackclub/banner": "^1.0.1",
     "@hackclub/design-system": "^0.0.1-14",
     "babel-plugin-styled-components": "^1.10.0",
     "comma-number": "^2.0.0",
@@ -25,11 +26,13 @@
     "gatsby-plugin-segment": "^1.0.2",
     "gatsby-plugin-sitemap": "^2.0.6",
     "gatsby-plugin-styled-components": "^3.0.6",
+    "nuka-carousel": "^4.5.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-helmet": "^5.2.0",
     "react-markdown": "^4.0.6",
     "react-player": "^1.9.3",
+    "react-reveal": "^1.2.2",
     "react-scrolllock": "^4.0.1",
     "react-simple-maps": "^0.12.1",
     "react-slick": "^0.23.2",

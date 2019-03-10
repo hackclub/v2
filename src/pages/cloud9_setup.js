@@ -11,7 +11,7 @@ import {
 } from '@hackclub/design-system'
 import Layout from 'components/Layout'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import { Headline } from 'components/Content'

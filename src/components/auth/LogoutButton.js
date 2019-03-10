@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '@hackclub/design-system'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import storage from 'storage'
 
 export const destroySession = () => {

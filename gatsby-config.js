@@ -66,6 +66,32 @@ module.exports = {
         path: `${__dirname}/public/challenges.json`,
         name: 'challenges'
       }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/workshops`,
+        name: 'workshops'
+      }
+    },
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          'gatsby-remark-autolink-headers',
+          'gatsby-remark-copy-linked-files',
+          'gatsby-remark-images',
+          'gatsby-remark-prismjs',
+          'gatsby-remark-smartypants',
+          {
+            resolve: 'gatsby-remark-external-links',
+            options: {
+              target: '_blank',
+              rel: 'noreferrer noopener'
+            }
+          }
+        ]
+      }
     }
   ]
 }

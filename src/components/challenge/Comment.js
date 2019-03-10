@@ -122,6 +122,7 @@ const ReplyButton = props => (
     p={1}
     circle
     aria-label="Reply to this comment"
+    style={{ marginTop: 0, marginLeft: 0 }}
     {...props}
   />
 )

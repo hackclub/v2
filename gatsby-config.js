@@ -9,6 +9,7 @@ module.exports = {
     'gatsby-plugin-resolve-src',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-styled-components',
+    'gatsby-transformer-json',
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
@@ -57,6 +58,13 @@ module.exports = {
       resolve: 'gatsby-plugin-segment',
       options: {
         writeKey: '35oTlU4UqlhIN8VGYmBxAzyDdfzhcscw'
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/public/challenges.json`,
+        name: 'challenges'
       }
     }
   ]

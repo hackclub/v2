@@ -20,7 +20,9 @@ const Root = styled(Flex.withComponent('section')).attrs({
   flexDirection: 'column'
 })`
   text-align: center;
-  background: ${theme.colors.dark} url('/map.svg') no-repeat;
+  background-color: ${theme.colors.dark};
+  background-image: url('/map.svg');
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center top;
   max-width: 100%;

@@ -8,6 +8,9 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
+    "start": "serve public",
+    "fmt": "prettier \"{src/**,}/*.js\" --single-quote --no-semi --write",
+    "social": "repng src/components/Social.js -w 512 -h 512 -o public -f social",
     "map": "npx babel-node src/map.js"
   },
   "dependencies": {
@@ -67,8 +70,8 @@
   "devDependencies": {
     "cheerio": "^1.0.0-rc.2",
     "minimist": "^1.2.0",
-    "prettier": "^1.13.6",
-    "svgo": "^1.0.5"
+    "prettier": "^1.16.4",
+    "svgo": "^1.2.0"
   },
   "keywords": [
     "gatsby"

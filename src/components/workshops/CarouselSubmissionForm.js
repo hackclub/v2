@@ -62,7 +62,7 @@ class CarouselSubmissionForm extends Component {
         headers: { 'Content-Type': 'application/json' }
       })
       // For now, just refresh the page. Needs a real Submssion Complete page eventually.
-      .then(() => window.locaction.reload())
+      .then(() => window.location.reload())
   }
 
   onChangeLiveURL = e => {

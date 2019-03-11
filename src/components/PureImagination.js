@@ -7,12 +7,12 @@ export default () => {
 
   useEffect(() => {
     window.document.onkeypress = e => {
-      const shouldProgress = e.key === codeword[this.state.progress]
+      const shouldProgress = e.key === codeword[progress]
       setProgress(shouldProgress ? progress + 1 : 0)
     }
   })
 
-  return this.state.progress === this.codeword.length ? (
+  return progress === codeword.length ? (
     <iframe
       title="pi"
       width={560}

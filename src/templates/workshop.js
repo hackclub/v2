@@ -15,6 +15,7 @@ import {
 import Helmet from 'react-helmet'
 import { Link } from 'gatsby'
 import GithubSlugger from 'github-slugger'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import {
   Breadcrumbs,
@@ -267,7 +268,7 @@ export default ({ data }) => {
   }
 
   return (
-    <Fragment>
+    <Layout>
       <Helmet
         title={title}
         meta={[
@@ -442,7 +443,7 @@ export default ({ data }) => {
         </Cards>
       </CardsSection>
       <Footer />
-    </Fragment>
+    </Layout>
   )
 }
 export const pageQuery = graphql`

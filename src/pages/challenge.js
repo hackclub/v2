@@ -12,6 +12,7 @@ import {
   theme,
   cx
 } from '@hackclub/design-system'
+import { graphql } from 'gatsby'
 import Layout from 'components/Layout'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'

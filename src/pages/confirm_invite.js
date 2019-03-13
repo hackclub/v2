@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import ErrorPage from 'components/admin/ErrorPage'
+import ErrorPage from 'components/ErrorPage'
 import LoadingBar from 'components/LoadingBar'
 import LoginPage from 'components/auth/Login'
 import LeaderForm from 'components/confirm_invite/LeaderForm'

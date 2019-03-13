@@ -18,7 +18,6 @@ const total = sum(values(segments))
 
 const Row = styled(Flex)`
   align-items: center;
-
   span {
     flex: 1 1 auto;
     line-height: 1.25;

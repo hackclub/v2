@@ -12,19 +12,16 @@ import {
   Text,
   Card,
   Container,
-  Link,
   Icon,
   Flex,
   Box,
-  Field,
-  Heading
+  Field
 } from '@hackclub/design-system'
 import api from 'api'
 
 const FlexCardLink = styled(Card.withComponent('a'))`
   display: flex;
   align-items: center;
-
   div {
     flex: 1 1 auto;
   }
@@ -91,7 +88,7 @@ class ClubCard extends Component {
   }
 
   renderSwitch() {
-    const { status, checkIns } = this.state
+    const { status } = this.state
     switch (status) {
       case 'success':
         return this.mostRecentCheckin()
@@ -177,7 +174,7 @@ export default class extends Component {
         const visibleClubIds = fuse.search(searchQuery).map(club => club.id)
         return (
           <Fragment>
-            <Helmet title="🛠 Dumb Operations Dashboard – Hack Club" />
+            <Helmet title="🛠 Dumb Operations Dashboard – Hack Club" />
             <Nav />
             <Container maxWidth={32}>
               {clubs.length > 8 && (

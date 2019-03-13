@@ -8,11 +8,11 @@ import api from 'api'
 import {
   Container,
   Card,
-  Link,
   Text,
   Heading,
   Section
 } from '@hackclub/design-system'
+import Layout from 'components/Layout'
 
 export default class extends Component {
   state = {
@@ -28,7 +28,7 @@ export default class extends Component {
           .get(`v1/new_leaders/${user.new_leader.id}/new_clubs`)
           .then(clubs => {
             if (clubs.length > 0) {
-              const urlBase = location.origin + location.pathname
+              const urlBase = window.location.origin + window.location.pathname
               const clubUrl = `${urlBase}/club?id=${clubs[0].id}`
               const clubsUrl = `${urlBase}/clubs`
               this.setState({
@@ -57,11 +57,14 @@ export default class extends Component {
         return <LoadingBar fill />
       case 'success':
         return (
-          <Fragment>
+          <Layout>
             <Nav breadcrumb={false} />
             <Section bg="primary" color="white">
               <Heading.h1 fontSize={[5, 6]} mb={[2, 3]}>
-                It’s the end of the school year! 🎉
+                It’s the end of the school year!{' '}
+                <span role="img" aria-label="">
+                  🎉
+                </span>
               </Heading.h1>
               <Text fontSize={[2, 3]}>
                 Time to update your club and leader’s info.
@@ -78,7 +81,7 @@ export default class extends Component {
                 <LeaderForm {...this.state.user} redirectUrl={redirectUrl} />
               </Card>
             </Container>
-          </Fragment>
+          </Layout>
         )
       case 'noClubs':
         return (

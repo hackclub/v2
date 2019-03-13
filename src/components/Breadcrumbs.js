@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Icon, Link as A, Text, theme } from '@hackclub/design-system'
+import { Flex, Icon, Link as A, theme } from '@hackclub/design-system'
 
 export const BreadcrumbList = styled(Flex.withComponent('ol'))`
   font-size: ${theme.fontSizes[3]}px;

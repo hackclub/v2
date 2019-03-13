@@ -1,17 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import {
-  Box,
-  Flex,
-  Link as A,
-  Container,
-  cx,
-  theme
-} from '@hackclub/design-system'
+import { Box, Flex, Container, cx, theme } from '@hackclub/design-system'
 import Icon from '@hackclub/icons'
 import Flag from 'components/Flag'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import ScrollLock from 'react-scrolllock'
 
 const rgbaBgColor = (props, opacity) =>
@@ -27,7 +20,6 @@ const Root = styled(Box.withComponent('header'))`
   top: 0;
   width: 100%;
   z-index: 1000;
-
   ${props =>
     (props.scrolled || props.toggled || props.fixed) &&
     css`
@@ -132,6 +124,7 @@ const Navigation = props => (
       href="https://hackathons.hackclub.com/"
       children="Hackathons"
       target="_blank"
+      rel="noopener noreferrer"
     />
     <Link to="/bank/" children="Bank" />
     <Link to="/hackers/" children="Hackers" />
@@ -221,13 +214,13 @@ class Header extends Component {
     const baseColor = dark
       ? color || 'white'
       : color === 'white' && scrolled
-        ? 'black'
-        : color
+      ? 'black'
+      : color
     const toggleColor = dark
       ? color || 'snow'
       : toggled || (color === 'white' && scrolled)
-        ? 'slate'
-        : color
+      ? 'slate'
+      : color
 
     return (
       <Root

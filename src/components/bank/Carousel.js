@@ -49,7 +49,6 @@ const Slide = styled(Box).attrs({ bg: 'snow', width: '100vw' })`
   width: 100vw;
   min-height: 90vh;
   cursor: initial;
-
   h1:first-child {
     line-height: 1;
   }
@@ -57,7 +56,6 @@ const Slide = styled(Box).attrs({ bg: 'snow', width: '100vw' })`
   h1 + p {
     text-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
   }
-
   ${Sheet} {
     background: rgba(255, 255, 255, 0.875);
     @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {

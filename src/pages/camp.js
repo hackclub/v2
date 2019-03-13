@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { Fragment } from 'react'
+import React from 'react'
 import {
   Container,
   Heading,
@@ -9,8 +9,9 @@ import {
   Section,
   Text
 } from '@hackclub/design-system'
+import Layout from 'components/Layout'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 
@@ -29,7 +30,7 @@ const Header = styled(Section)`
 Button.link = Button.withComponent(Link)
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet title="Hack Camp – Hack Club" />
     <Nav />
     <Header align="center">
@@ -83,5 +84,5 @@ export default () => (
       </Text>
     </Container>
     <Footer />
-  </Fragment>
+  </Layout>
 )

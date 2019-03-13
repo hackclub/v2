@@ -62,7 +62,7 @@ class CarouselSubmissionForm extends Component {
         headers: { 'Content-Type': 'application/json' }
       })
       // For now, just refresh the page. Needs a real Submssion Complete page eventually.
-      .then(() => location.reload())
+      .then(() => window.location.reload())
   }
 
   onChangeLiveURL = e => {
@@ -142,8 +142,8 @@ class CarouselSubmissionForm extends Component {
               disableSubmission
                 ? null
                 : authed
-                  ? onClickSubmitButton
-                  : onClickVeryifyButton
+                ? onClickSubmitButton
+                : onClickVeryifyButton
             }
           >
             {authed ? 'Submit My Thing' : 'Verify & Submit'}

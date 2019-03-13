@@ -15,7 +15,6 @@ export const timeSince = (
   current = new Date(),
   longForm = false
 ) => {
-  const msPerSecond = 1000
   const msPerMinute = 60 * 1000
   const msPerHour = msPerMinute * 60
   const msPerDay = msPerHour * 24
@@ -103,6 +102,8 @@ function formatChunk(type, date) {
       return date.getFullYear().toString()
     case 'yy':
       return formatChunk('yyyy', date).slice(-2)
+    default:
+      return null
   }
 }
 export const formatDate = (format, date, divider = ' ') => {

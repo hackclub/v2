@@ -1,12 +1,7 @@
 import styled from 'styled-components'
-import React, { Fragment } from 'react'
-import {
-  Container,
-  Heading,
-  Text,
-  Section,
-  theme
-} from '@hackclub/design-system'
+import React from 'react'
+import { Container, Section, theme } from '@hackclub/design-system'
+import Layout from 'components/Layout'
 import Helmet from 'react-helmet'
 import { Headline, Lead } from 'components/Content'
 import Nav from 'components/Nav'
@@ -29,7 +24,7 @@ const Base = styled(Section).attrs({
 `
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet title="Free .TECH Domain – Hack Club" />
     <Nav />
     <Base>
@@ -48,5 +43,5 @@ export default () => (
         <RedeemTechDomainForm />
       </Sheet>
     </Base>
-  </Fragment>
+  </Layout>
 )

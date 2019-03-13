@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Field } from '@hackclub/design-system'
 import { SendForm, SendButton } from '../SendForm'
 import api from 'api'
@@ -8,7 +8,7 @@ class LeaderInviteForm extends Component {
   state = { errors: undefined }
 
   render() {
-    const { id, authToken, callback } = this.props
+    const { id, callback } = this.props
     const { error } = this.state
 
     const handleChange = e => {

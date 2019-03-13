@@ -3,7 +3,6 @@ import Login from 'components/auth/Login'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 import Nav from 'components/apply/ApplyNav'
-import LeaderForm from 'components/checkup/LeaderForm'
 import api from 'api'
 import search from 'search'
 import {
@@ -43,7 +42,6 @@ class SelfForm extends Component {
 
   render() {
     const { status } = this.state
-    const { user, club, position } = this.props
     switch (status) {
       case 'ready':
         return (

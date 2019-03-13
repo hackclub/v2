@@ -22,7 +22,6 @@ const FlexCardLink = styled(Flex.withComponent('a'))`
   padding: ${theme.space[3]}px;
   border-top: 1px solid ${theme.colors.smoke};
   align-items: center;
-
   div {
     flex: 1 1 auto;
   }
@@ -130,7 +129,7 @@ export default class extends Component {
         const visibleClubIds = fuse.search(searchQuery).map(club => club.id)
         return (
           <Fragment>
-            <Helmet title="Club Dashboard – Hack Club" />
+            <Helmet title="Club Dashboard – Hack Club" />
             <Nav />
             <Container maxWidth={32} p={1} w={1}>
               <Heading.h1 fontSize={[5, 6]}>Club Dashboard</Heading.h1>

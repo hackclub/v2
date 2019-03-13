@@ -1,15 +1,9 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import {
-  Box,
-  LargeButton,
-  Link as A,
-  Section,
-  Text,
-  theme
-} from '@hackclub/design-system'
+import { Box, LargeButton, Section, Text, theme } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link, graphql } from 'gatsby'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Name from 'components/Name'
 import IconButton from 'components/IconButton'
@@ -58,7 +52,7 @@ export default ({
   const img = 'https://hackclub.com/cards/workshops.png'
 
   return (
-    <Fragment>
+    <Layout>
       <Helmet
         title={title}
         meta={[
@@ -102,7 +96,7 @@ export default ({
         <WorkshopSearch workshops={edges} />
         <Footer />
       </Base>
-    </Fragment>
+    </Layout>
   )
 }
 

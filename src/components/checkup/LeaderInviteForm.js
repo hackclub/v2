@@ -39,10 +39,13 @@ const InnerForm = ({
       error={touched.email && errors.email}
     />
     <SendButton
-      disabled={isSubmitting || !(status === 'success' || isValid)}
+      disabled={
+        isEmpty(values.email) ||
+        isSubmitting ||
+        !(status === 'success' || isValid)
+      }
       onClick={handleSubmit}
       aria-label="Send this invitation"
-      disabled={isEmpty(values.email)}
       bg={getStatus.bg[status] || 'info'}
       glyph={getStatus.icon[status] || 'send'}
     />

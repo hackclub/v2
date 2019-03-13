@@ -1,10 +1,9 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { isURL } from 'validator'
 import {
   Box,
   Flex,
-  Card,
   Link as A,
   Text,
   Image,
@@ -99,7 +98,8 @@ const CarouselProject = ({ project, liveFrame = false, m = 2 }) => {
 
   const imageUrl = liveFrame
     ? (() => {
-        const url = live_url.startsWith('http') ? url : `http://${url}`
+        let url
+        url = live_url.startsWith('http') ? url : `http://${url}`
         const accessKey = 'd7d3cada424e0439f48de1a1b50160dd'
         return `http://api.screenshotlayer.com/api/capture?access_key=${accessKey}&url=${url}&viewport=1440x900&format=PNG`
       })()

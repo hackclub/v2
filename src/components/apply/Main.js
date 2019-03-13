@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import styled, { css } from 'styled-components'
 import {
   Box,
-  Button,
   Container,
   Flex,
   Heading,
@@ -18,7 +17,6 @@ import Sheet from 'components/Sheet'
 import SubmitButton from 'components/apply/SubmitButton'
 import Status from 'components/apply/Status'
 import Link from 'gatsby-link'
-import { timeSince } from 'helpers'
 import api from 'api'
 import storage from 'storage'
 
@@ -172,26 +170,19 @@ const profileStatus = profile =>
   profile.completed_at !== null
     ? 'complete'
     : profile.created_at === profile.updated_at
-      ? 'unopened'
-      : 'incomplete'
+    ? 'unopened'
+    : 'incomplete'
 
 const Main = props => {
-  const {
-    id,
-    leader_profiles,
-    updated_at,
-    created_at,
-    point_of_contact_id
-  } = props.app
+  const { id, leader_profiles, updated_at, created_at } = props.app
   const { callback, app, resetCallback } = props
 
   const leaderProfile = leader_profiles.find(
-    profile => profile.user.id == props.userId
+    profile => profile.user.id === props.userId
   )
   const coLeaderProfiles = leader_profiles.filter(
-    profile => profile.user.id != props.userId
+    profile => profile.user.id !== props.userId
   )
-  const isPoc = leaderProfile.user.id === point_of_contact_id
 
   const completeProfiles = leader_profiles.every(
     profile => profile.completed_at
@@ -209,8 +200,8 @@ const Main = props => {
     completeApplication
       ? 'complete'
       : created_at === updated_at
-        ? 'unopened'
-        : 'incomplete'
+      ? 'unopened'
+      : 'incomplete'
 
   const submitStatusProps = {
     unopened: { color: 'primary', children: 'ready for you!' },
@@ -290,6 +281,7 @@ const Main = props => {
               glyph="member-remove"
               onClick={e => {
                 if (
+                  // eslint-disable-next-line
                   confirm(
                     `Are you sure you want to remove ${
                       profile.user.email

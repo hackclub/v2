@@ -53,6 +53,7 @@ const generateMethod = method => (path, options = {}, fetchOptions = {}) => {
       } else {
         if (res.status === 422) {
           return res.json().then(json => {
+            // eslint-disable-next-line
             throw { ...res, errors: json.errors }
           })
         } else {

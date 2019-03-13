@@ -10,20 +10,26 @@ const searchToObject = search => {
   return result
 }
 
+function Exception(err) {
+  this.err = err
+}
+
 export default {
   set: (key, value) => {
-    const { search, protocol, host, pathname } = location
-    if (history.pushState) {
+    const { search, protocol, host, pathname } = window.location
+    if (window.history.pushState) {
       const modifiedObject = { ...searchToObject(search), [key]: value }
       const modifiedArray = Object.keys(modifiedObject).map(
         key => `${key}=${modifiedObject[key]}`
       )
       const modifiedString = modifiedArray.join('&')
       const newUrl = `${protocol}//${host}${pathname}?${modifiedString}`
-      return history.pushState({ path: newUrl }, '', newUrl)
+      return window.history.pushState({ path: newUrl }, '', newUrl)
     } else {
-      throw 'history.pushState not supported the current in browser'
+      throw new Exception(
+        'history.pushState not supported the current in browser'
+      )
     }
   },
-  get: key => searchToObject(location.search)[key]
+  get: key => searchToObject(window.location.search)[key]
 }

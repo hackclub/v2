@@ -246,7 +246,7 @@ export default withFormik({
       .string()
       .required('required')
       .test({
-        message: '${path} should not be a single line',
+        message: 'path should not be a single line',
         test: value => {
           try {
             return value.trim().split(/\r\n|\r|\n/).length > 1
@@ -322,7 +322,7 @@ export default withFormik({
         setSubmitting(false)
         setStatus('success')
         setTimeout(() => {
-          location.href = props.redirectUrl
+          window.location.href = props.redirectUrl
         }, 1000)
         setTimeout(() => {
           setStatus('redirecting')

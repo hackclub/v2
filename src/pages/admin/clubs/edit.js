@@ -7,16 +7,8 @@ import ErrorPage from 'components/admin/ErrorPage'
 import LoadingBar from 'components/LoadingBar'
 import IsTestForm from 'components/admin/IsTestForm'
 import Nav from 'components/apply/ApplyNav'
-import {
-  Heading,
-  Text,
-  Link,
-  Input,
-  Container,
-  Box
-} from '@hackclub/design-system'
+import { Heading, Text, Link, Container, Box } from '@hackclub/design-system'
 import Autocomplete from 'react-autocomplete'
-import styled from 'styled-components'
 
 class OwnerForm extends Component {
   state = {
@@ -26,8 +18,6 @@ class OwnerForm extends Component {
   }
 
   removeOwner() {
-    const { club } = this.props
-
     NewClub.get(search.get('id'))
       .then(() =>
         NewClub.update({ owner_id: null }).then(() => window.location.reload())
@@ -66,7 +56,6 @@ class OwnerForm extends Component {
     e.preventDefault()
     this.setState({ isLoading: true })
 
-    const { cache, value } = this.state
     api.get(`v1/users?email=${this.state.value}`).then(users => {
       const newOwner = users.find(user => user.email === this.state.value)
       if (newOwner) {

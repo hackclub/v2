@@ -13,7 +13,6 @@ const Base = styled.section`
   overflow-y: visible;
   padding-top: 1.25rem;
   background: ${theme.colors.white};
-
   @-moz-document url-prefix() {
     grid-template-columns: repeat(auto-fill, 33.3333vw);
     li {
@@ -37,7 +36,6 @@ const Base = styled.section`
 const Item = styled.li`
   margin: 20% 0 36% 0;
   overflow: hidden;
-
   &:before {
     content: '';
     display: block;
@@ -56,14 +54,12 @@ const Item = styled.li`
     width: 100%;
     height: 104%;
   }
-
   &:nth-child(2n + 1) {
     transform: skewY(30deg);
   }
   &:nth-child(2n) {
     transform: skewY(-30deg);
   }
-
   &:nth-child(2n):after {
     background-image: linear-gradient(
       135deg,
@@ -80,7 +76,6 @@ const Item = styled.li`
       rgba(0, 0, 0, 0.75) 100%
     );
   }
-
   // 1
   &:nth-child(6n):before {
     background-image: linear-gradient(
@@ -92,7 +87,6 @@ const Item = styled.li`
     transform-origin: 0 0;
     transform: skewY(30deg) rotatez(-120deg) skewY(-30deg);
   }
-
   &:nth-child(6n + 5):before {
     background-image: linear-gradient(
       45deg,
@@ -103,7 +97,6 @@ const Item = styled.li`
     transform-origin: 100% 0;
     transform: skewY(-30deg) rotatez(120deg) skewY(30deg);
   }
-
   // 2
   &:nth-child(6n + 2):before {
     background-image: linear-gradient(
@@ -115,7 +108,6 @@ const Item = styled.li`
     transform-origin: 0 0;
     transform: skewY(30deg) rotatez(-120deg) skewY(-30deg);
   }
-
   &:nth-child(6n + 1):before {
     background-image: linear-gradient(
       45deg,
@@ -126,7 +118,6 @@ const Item = styled.li`
     transform-origin: 100% 0;
     transform: skewY(-30deg) rotatez(120deg) skewY(30deg);
   }
-
   // 3
   &:nth-child(6n + 4):before {
     background-image: linear-gradient(
@@ -138,7 +129,6 @@ const Item = styled.li`
     transform-origin: 0 0;
     transform: skewY(30deg) rotatez(-120deg) skewY(-30deg);
   }
-
   &:nth-child(6n + 3):before {
     background-image: linear-gradient(
       45deg,
@@ -149,7 +139,6 @@ const Item = styled.li`
     transform-origin: 100% 0;
     transform: skewY(-30deg) rotatez(120deg) skewY(30deg);
   }
-
   img {
     transform: scaleY(1.1547);
     object-fit: cover;

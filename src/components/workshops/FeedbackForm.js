@@ -59,6 +59,7 @@ const FeedbackForm = withFormik({
   handleSubmit: (data, { props, setStatus, setSubmitting, resetForm }) => {
     const feedback = {}
     map(omit(data, 'slug'), (res, id) => {
+      // eslint-disable-next-line
       feedback[questions[id]] = res
     })
     const body = JSON.stringify({

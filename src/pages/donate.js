@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {
   Box,
@@ -7,23 +7,19 @@ import {
   Flex,
   Heading,
   Link as A,
-  Section,
   Text,
   Avatar,
   theme
 } from '@hackclub/design-system'
+import Layout from 'components/Layout'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import Sheet from 'components/Sheet'
-import Stat from 'components/Stat'
-import { Triangle, Pentagon, Circle } from 'components/Shapes'
 import { Headline, Subhline, Lead } from 'components/Content'
 import DonateForm from 'components/donate/DonateForm'
-import Spent from 'components/donate/Spent'
 import Sponsors from 'components/donate/Sponsors'
-import commaNumber from 'comma-number'
 import donors from 'components/donate/donors.json'
 
 const Header = styled(Box.withComponent('header'))`
@@ -94,74 +90,8 @@ const SecondQuote = styled(Quote)`
     ${theme.colors.violet[5]}
   );
 `
-
-const Financials = styled(Sheet)`
-  display: grid;
-  ${theme.mediaQueries.md} {
-    grid-template-columns: 2fr 3fr;
-  }
-`
-
-const Stats = styled(Box)`
-  background-image: radial-gradient(
-    ellipse farthest-corner at top left,
-    ${theme.colors.teal[6]},
-    ${theme.colors.cyan[6]}
-  );
-  div {
-    width: 100%;
-    display: block;
-    text-align: left !important;
-  }
-  span:before {
-    content: '$';
-    font-size: ${theme.fontSizes[4]}px;
-    margin-left: -12px;
-    vertical-align: super;
-  }
-  p {
-    color: ${theme.colors.teal[1]};
-  }
-`
-
-const Shapes = styled(Box)`
-  display: none;
-  ${theme.mediaQueries.md} {
-    display: block;
-    float: right;
-    position: relative;
-    z-index: -1;
-    svg {
-      position: absolute;
-    }
-  }
-`
-const WishShapes = styled(Shapes)`
-  svg {
-    &:first-child {
-      top: 0;
-      right: 0;
-      color: rgba(115, 45, 228, 0.75);
-      z-index: 1;
-    }
-    &:last-child {
-      top: 0;
-      right: 4rem;
-      color: rgba(45, 228, 207, 0.75);
-    }
-  }
-`
-const ContributionShapes = styled(Shapes)`
-  svg {
-    right: 12rem;
-    top: 1rem;
-    color: ${theme.colors.yellow[4]};
-  }
-`
-
 const headline = { fontSize: [5, 6], mb: 3, style: { lineHeight: '1.125' } }
 const subhline = { fontSize: [3, 4], style: { lineHeight: '1.375' } }
-const subtext = { fontSize: [3, 4], style: { lineHeight: '1.5' } }
 
 const contentContainer = {
   maxWidth: 72,
@@ -177,12 +107,6 @@ A.link = A.withComponent(Link)
 const title = 'Donate to Hack Club'
 const description =
   'Contribute today to empower the next generation and help start a coding club at every high school.'
-
-const stats = {
-  monthly: 6742.71,
-  student: 3,
-  club: 60
-}
 
 const DonorGrid = styled(Box)`
   display: grid;
@@ -227,7 +151,7 @@ const DonorListing = ({ name, url }) => {
 }
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet
       title={title}
       meta={[
@@ -294,76 +218,6 @@ export default () => (
           </Box>
         </Flex>
       </FirstQuote>
-      {/*
-      <WishShapes mt={3}>
-        <Triangle size={128} rotate={64} />
-        <Circle size={128} />
-      </WishShapes>
-      <Container {...content}>
-        <Headline>Transparent, free, & open.</Headline>
-        <Text my={3} {...subtext}>
-          Hack Club is a new kind of non-profit with{' '}
-          <strong>total transparency</strong>. We open source all of our{' '}
-          <A href="https://github.com/hackclub/hackclub">content</A>
-          {' and '}
-          <A href="https://github.com/hackclub">code</A>. Many of our leaders
-          and members are also available on{' '}
-          <A href="https://slack.hackclub.com">our Slack</A>.
-        </Text>
-        <Text my={3} {...subtext}>
-          You deserve to know exactly where your contribution will go—so{' '}
-          <A href="https://github.com/hackclub/ledger">
-            all of our financials are public
-          </A>
-          .
-        </Text>
-      </Container>
-      <Row my={5} {...content}>
-        <Box>
-          <Subhline>Every last contribution is for our clubs.</Subhline>
-          <ContributionShapes>
-            <Pentagon size={128} rotate={16} />
-          </ContributionShapes>
-        </Box>
-        <Box>
-          <Text {...subtext}>
-            We strive to build a maximally-efficient organization, spending 98%
-            of funds given directly on our clubs.
-          </Text>
-          <Text mt={3} {...subtext}>
-            When you give to Hack Club, your money goes where students need it
-            most.
-          </Text>
-          <Financials p={0} mt={4}>
-            <Stats bg="success" color="white" p={[3, 4]} pr={2}>
-              <Heading.h3 fontSize={4} mb={2} caps>
-                Financials
-              </Heading.h3>
-              <Stat
-                fontSize={6}
-                value={commaNumber(stats.monthly)}
-                label="monthly spend"
-                width={1}
-              />
-              <Stat
-                fontSize={6}
-                mt={3}
-                mb={2}
-                value={stats.club}
-                label="per club"
-              />
-              <Stat fontSize={6} value={stats.student} label="per student" />
-            </Stats>
-            <Box p={[3, 4]}>
-              <Heading.h3 fontSize={4} my={0} caps>
-                Spending breakdown
-              </Heading.h3>
-              <Spent />
-            </Box>
-          </Financials>
-        </Box>
-      </Row>
-      */}
       <Container maxWidth={48} py={[4, 5]}>
         <Subhline>Contribute beyond just dollars.</Subhline>
         <Lead my={3} mx={0}>
@@ -429,5 +283,5 @@ export default () => (
       </Row>
     </Container>
     <Footer />
-  </Fragment>
+  </Layout>
 )

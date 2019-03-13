@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 export const SendForm = styled(Flex.withComponent('form'))`
   position: relative;
   z-index: 4;
-
   > div:first-child,
   > label:first-child {
     flex: 1 1 auto;

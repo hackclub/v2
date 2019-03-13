@@ -2,7 +2,7 @@ import React from 'react'
 import { AutoSaver, Field, Fieldset, Form, FormWrapper } from 'components/Forms'
 import { LargeButton } from '@hackclub/design-system'
 import { withFormik } from 'formik'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import * as yup from 'yup'
 import api from 'api'
 
@@ -36,7 +36,6 @@ const InnerForm = props => {
     handleBlur,
     handleSubmit,
     isSubmitting,
-    id,
     disableAutosave
   } = props
   return (

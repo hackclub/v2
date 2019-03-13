@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import Layout from 'components/Layout'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import { Container } from '@hackclub/design-system'
@@ -11,12 +12,12 @@ import content from 'raw-loader!../../node_modules/@hackclub/banner/README.md'
 const Body = styled(Container.withComponent(MarkdownBody))``
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet title="@hackclub/banners" />
     <Banner />
     <Body maxWidth={48} py={[4, 5]} px={3}>
       <ReactMarkdown source={content} escapeHtml={false} />
     </Body>
     <Footer />
-  </Fragment>
+  </Layout>
 )

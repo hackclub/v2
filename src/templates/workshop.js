@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import {
   Box,
@@ -13,8 +13,9 @@ import {
   theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link, graphql } from 'gatsby'
 import GithubSlugger from 'github-slugger'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import {
   Breadcrumbs,
@@ -167,7 +168,6 @@ const Cards = styled(Container.withComponent(NotOnPrint))`
   grid-gap: ${theme.space[4]}px;
   grid-template-areas: 'feedback' 'share' 'questions' 'contribute';
   width: 100%;
-
   > div {
     &:nth-child(1) {
       grid-area: feedback;
@@ -182,13 +182,11 @@ const Cards = styled(Container.withComponent(NotOnPrint))`
       grid-area: contribute;
     }
   }
-
   ${theme.mediaQueries.md} {
     grid-template-areas:
       'feedback feedback share share'
       'feedback feedback questions contribute';
   }
-
   ${Sheet} {
     background: ${theme.colors.white};
     margin-bottom: 0 !important;
@@ -196,7 +194,6 @@ const Cards = styled(Container.withComponent(NotOnPrint))`
     flex-direction: column;
     justify-content: center;
   }
-
   textarea {
     resize: vertical;
   }
@@ -271,7 +268,7 @@ export default ({ data }) => {
   }
 
   return (
-    <Fragment>
+    <Layout>
       <Helmet
         title={title}
         meta={[
@@ -393,7 +390,11 @@ export default ({ data }) => {
           <Sheet align="left">
             <Heading.h2 fontSize={4}>How was this workshop?</Heading.h2>
             <Text color="muted" fontSize={1} mt={1} mb={3}>
-              (your feedback is anonymous + appreciated ❤️)
+              (your feedback is anonymous + appreciated{' '}
+              <span role="img" aria-label="">
+                ❤️
+              </span>
+              )
             </Text>
             <FeedbackForm slug={slug} />
           </Sheet>
@@ -442,7 +443,7 @@ export default ({ data }) => {
         </Cards>
       </CardsSection>
       <Footer />
-    </Fragment>
+    </Layout>
   )
 }
 export const pageQuery = graphql`

@@ -159,7 +159,7 @@ const LoadedCarousel = (
     >
       <Heading.h3 fontSize={4} mr={[null, null, 3]}>
         {projectCount} Rehack
-        {projectCount != 1 && 's'}
+        {projectCount !== 1 && 's'}
       </Heading.h3>
       <ShowAllProjects onClick={onClickShowAll} aria-expanded={showAll}>
         <Icon glyph="down-caret" size={32} />
@@ -168,13 +168,13 @@ const LoadedCarousel = (
     </Flex>
     {showAll
       ? AllProjects(projects)
-      : liveFrameStatus != 'empty'
-        ? LiveProject(submissionProject)
-        : projects.length == 0
-          ? EmptyProject(emptyProject)
-          : projects.length < 3
-            ? ShortList(projects)
-            : SliderList(projects)}
+      : liveFrameStatus !== 'empty'
+      ? LiveProject(submissionProject)
+      : projects.length === 0
+      ? EmptyProject(emptyProject)
+      : projects.length < 3
+      ? ShortList(projects)
+      : SliderList(projects)}
   </Fragment>
 )
 
@@ -213,7 +213,7 @@ class Carousel extends Component {
 
     api.get(`v1/workshops/${slug}/projects`).then(projects => {
       let original = projects.find(
-        project => project.user && project.user.username == 'prophetorpheus'
+        project => project.user && project.user.username === 'prophetorpheus'
       )
       if (original) {
         remove(projects, original)

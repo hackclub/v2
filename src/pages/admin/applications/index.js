@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import {
   Container,
   Button,
-  Box,
   Flex,
   Heading,
   Text,
@@ -133,7 +132,7 @@ export default class extends Component {
   }
 
   render() {
-    const { status, clubApplications, selectType, filters } = this.state
+    const { status, clubApplications } = this.state
     switch (status) {
       case 'loading':
         return <LoadingBar fill />
@@ -162,7 +161,7 @@ export default class extends Component {
                 {Object.keys(colorMap).map((status, index) => (
                   <FilterButton
                     key={index}
-                    toggleFilter={::this.toggleFilter}
+                    toggleFilter={this.toggleFilter}
                     status={status}
                     toggled={this.state.filters.indexOf(status) === -1}
                   />
@@ -185,33 +184,32 @@ export default class extends Component {
                     ),
                     'lastStageUpdate',
                     'desc'
-                  ).map(
-                    application =>
-                      application.visible ? (
-                        <Tr
-                          key={application.id}
-                          onClick={e => {
-                            location.href = `/admin/applications/edit?id=${
-                              application.id
-                            }`
-                          }}
-                        >
-                          <Td>
-                            <Badge
-                              bg={application.color}
-                              children={application.id}
-                            />
-                          </Td>
-                          <Td>{application.high_school_name}</Td>
-                          <Td>{this.pointOfContact(application)}</Td>
-                          <Td>{application.timeInStage}</Td>
-                          <Td>
-                            {application.owner !== null && (
-                              <Assignment owner={application.owner.email} />
-                            )}
-                          </Td>
-                        </Tr>
-                      ) : null
+                  ).map(application =>
+                    application.visible ? (
+                      <Tr
+                        key={application.id}
+                        onClick={e => {
+                          window.location.href = `/admin/applications/edit?id=${
+                            application.id
+                          }`
+                        }}
+                      >
+                        <Td>
+                          <Badge
+                            bg={application.color}
+                            children={application.id}
+                          />
+                        </Td>
+                        <Td>{application.high_school_name}</Td>
+                        <Td>{this.pointOfContact(application)}</Td>
+                        <Td>{application.timeInStage}</Td>
+                        <Td>
+                          {application.owner !== null && (
+                            <Assignment owner={application.owner.email} />
+                          )}
+                        </Td>
+                      </Tr>
+                    ) : null
                   )}
                 </tbody>
               </table>

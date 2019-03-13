@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {
   Box,
@@ -12,6 +12,7 @@ import {
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import YouTubePlayer from 'react-player/lib/players/YouTube'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import { kebabCase } from 'lodash'
@@ -115,7 +116,7 @@ const desc =
 const img = 'https://hackclub.com/cards/updates.png'
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet
       title={title}
       meta={[
@@ -169,5 +170,5 @@ export default () => (
       />
     </Container>
     <Footer dark />
-  </Fragment>
+  </Layout>
 )

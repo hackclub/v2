@@ -28,25 +28,21 @@ const Body = styled(Box)`
   div > :last-child {
     margin-bottom: 0 !important;
   }
-
   h1,
   h2,
   h3 {
     margin-top: 0;
     margin-bottom: ${theme.space[2]}px;
   }
-
   ol,
   ul {
     padding-left: ${theme.space[3]}px;
   }
-
   p,
   li {
     margin-top: ${theme.space[2]}px;
     margin-bottom: ${theme.space[2]}px;
   }
-
   hr {
     border: 0;
     height: 2px;

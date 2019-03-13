@@ -9,7 +9,6 @@ import {
   Badge,
   Box,
   Heading,
-  Link,
   Button,
   Flex,
   Field
@@ -60,6 +59,8 @@ const StatusBadge = ({ status }) => {
           Not leading
         </Badge>
       )
+    default:
+      return null
   }
 }
 
@@ -72,6 +73,8 @@ const LeaderStatus = ({ status }) => (
 const LeaderInvite = ({ position }) => {
   const status = position.rejected_at ? 'rejected' : 'invited'
   switch (status) {
+    default:
+      return null
     case 'invited':
       return (
         <Fragment>

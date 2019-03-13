@@ -40,6 +40,7 @@ const EventCard = ({ meeting_date, attendance, notes }) => (
 )
 
 const removeLeadershipPosition = (positionId, name) => {
+  // eslint-disable-next-line
   const confirmation = confirm(
     `Are you sure you want to remove ${name} from the club?`
   )
@@ -64,18 +65,6 @@ const LeaderCard = ({ name, id, email, position }) => (
     />
   </Fragment>
 )
-
-const removeInvite = (id, email) => {
-  const confirmation = confirm(
-    `Are you sure you want to remove ${email}’s invite?`
-  )
-  if (confirmation) {
-    api.delete(`v1/leadership_position_invites/${id}`).then(() => {
-      window.location.reload()
-    })
-  }
-}
-
 const InviteCard = ({ email, id }) => (
   <li>
     {email}
@@ -126,6 +115,8 @@ export default class extends Component {
   render() {
     const { status, club, checkIns, showInviteModal } = this.state
     switch (status) {
+      default:
+        return <LoadingBar fill />
       case 'loading':
         return <LoadingBar fill />
       case 'success':

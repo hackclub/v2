@@ -8,7 +8,7 @@ import {
   Text,
   theme
 } from '@hackclub/design-system'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import { capitalize, map } from 'lodash'
 
 const Root = styled(Box.section)`

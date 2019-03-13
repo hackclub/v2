@@ -1,14 +1,13 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import Login from 'components/auth/Login'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/admin/ErrorPage'
 import Nav from 'components/apply/ApplyNav'
 import ClubForm from 'components/checkup/ClubForm'
-import LeadershipPositionsForm from 'components/checkup/LeadershipPositionsForm'
-import LeaderInviteForm from 'components/checkup/LeaderInviteForm'
 import api from 'api'
 import search from 'search'
-import { Container, Link, Card, Heading, Text } from '@hackclub/design-system'
+import { Container, Card, Heading } from '@hackclub/design-system'
+import Layout from 'components/Layout'
 
 export default class extends Component {
   state = {
@@ -36,13 +35,13 @@ export default class extends Component {
   }
 
   render() {
-    const { status, club, user } = this.state
+    const { status, club } = this.state
     switch (status) {
       case 'loading':
         return <LoadingBar fill />
       case 'success':
         return (
-          <Fragment>
+          <Layout>
             <Nav breadcrumb={false} />
             <Container color="black" p={3} maxWidth={36}>
               <Heading.h2 fontSize={5} mt={4}>
@@ -51,13 +50,13 @@ export default class extends Component {
               <Card boxShadowSize="md" p={3} my={3}>
                 <ClubForm
                   {...club}
-                  redirectUrl={`${location.origin}/checkup/leaders?id=${
+                  redirectUrl={`${window.location.origin}/checkup/leaders?id=${
                     club.id
                   }`}
                 />
               </Card>
             </Container>
-          </Fragment>
+          </Layout>
         )
       case 'needsToAuth':
         return <Login heading="Sign in to view" />

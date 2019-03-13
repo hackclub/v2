@@ -86,8 +86,8 @@ const PostForm = withFormik({
           resetForm()
           setStatus('success')
           setTimeout(() => {
-            if (typeof location !== 'undefined') {
-              location.reload()
+            if (typeof window.location !== 'undefined') {
+              window.location.reload()
             }
           }, 1024)
         })

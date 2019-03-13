@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import React, { Component, Fragment } from 'react'
 import {
   Box,
-  Flex,
   Heading,
   Text,
   Container,
@@ -21,9 +20,7 @@ import Information from 'components/admin/Information'
 import LeaderProfileInfo from 'components/admin/LeaderProfileInfo'
 import Nav from 'components/apply/ApplyNav'
 import search from 'search'
-import api from 'api'
 import { NewClubApplication, LeaderProfile } from 'models'
-import { timeSince } from 'helpers'
 
 const colorMap = {
   unsubmitted: 'gray.3',
@@ -128,6 +125,8 @@ export default class extends Component {
   render() {
     const { status, error, app } = this.state
     switch (status) {
+      default:
+        return null
       case 'loading':
         return <LoadingBar fill />
       case 'success':
@@ -143,7 +142,7 @@ export default class extends Component {
               <Collapsable heading="Reject">
                 <RejectionForm
                   application={app}
-                  updateApplication={::this.updateApplication}
+                  updateApplication={this.updateApplication}
                 />
               </Collapsable>
               <Collapsable heading="Notes">
@@ -152,7 +151,7 @@ export default class extends Component {
               <Collapsable heading="Interview">
                 <InterviewForm
                   application={app}
-                  updateApplication={::this.updateApplication}
+                  updateApplication={this.updateApplication}
                 />
               </Collapsable>
               <Collapsable heading="Application">

@@ -7,7 +7,7 @@ import ErrorPage from 'components/admin/ErrorPage'
 import Nav from 'components/apply/ApplyNav'
 import api from 'api'
 import search from 'search'
-import { Text, Image, BackgroundImage } from '@hackclub/design-system'
+import { Image, BackgroundImage } from '@hackclub/design-system'
 
 export default class extends Component {
   state = {
@@ -45,6 +45,7 @@ export default class extends Component {
                   status: 'success'
                 })
               } else {
+                // eslint-disable-next-line
                 throw 'Event not found'
               }
             })
@@ -75,7 +76,7 @@ export default class extends Component {
             <Nav />
             <ImageForm
               type="logo"
-              updateEvent={::this.updateEvent}
+              updateEvent={this.updateEvent}
               image={event && event.logo}
               previewTag={({ imageUrl }) => (
                 <Image src={imageUrl} height="60px !important" />
@@ -83,7 +84,7 @@ export default class extends Component {
             />
             <ImageForm
               type="banner"
-              updateEvent={::this.updateEvent}
+              updateEvent={this.updateEvent}
               image={event && event.banner}
               previewTag={({ imageUrl }) => (
                 <BackgroundImage
@@ -94,7 +95,7 @@ export default class extends Component {
                 />
               )}
             />
-            <EventForm event={event} updateEvent={::this.updateEvent} />
+            <EventForm event={event} updateEvent={this.updateEvent} />
           </Fragment>
         )
       default:

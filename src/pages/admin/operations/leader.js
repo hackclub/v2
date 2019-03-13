@@ -35,6 +35,8 @@ export default class extends Component {
   render() {
     const { status, leader } = this.state
     switch (status) {
+      default:
+        return <LoadingBar fill />
       case 'loading':
         return <LoadingBar fill />
       case 'success':

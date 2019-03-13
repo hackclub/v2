@@ -73,7 +73,7 @@ class IsTestForm extends Component {
               m={2}
               style={{ WebkitAppearance: 'checkbox' }}
               checked={this.state.test}
-              onChange={::this.toggle}
+              onChange={this.bind(this.toggle)}
             />
           </Base>
         )

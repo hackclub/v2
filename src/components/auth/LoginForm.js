@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import EmailLoginForm from 'components/auth/EmailLoginForm'
 import LoginCodeForm from 'components/auth/LoginCodeForm'
 import search from 'search'

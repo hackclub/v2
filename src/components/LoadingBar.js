@@ -15,7 +15,7 @@ const LoadingBar = props => (
 )
 
 LoadingBar.propTypes = {
-  fill: PropTypes.boolean
+  fill: PropTypes.bool
 }
 
 export default LoadingBar

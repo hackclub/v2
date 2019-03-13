@@ -37,8 +37,9 @@ class Comments extends Component {
   })
 
   onSubmit = data => {
-    this.setState(state => {
-      data: state.data.push(data)
+    const newData = this.state.data.push(data)
+    this.setState({
+      data: newData
     })
     this.forceUpdate()
   }
@@ -55,7 +56,6 @@ class Comments extends Component {
   }
 
   onDelete = id => {
-    const { data } = this.state
     api
       .delete(`v1/post_comments/${id}`)
       .then(() => {

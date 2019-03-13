@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {
   Box,
@@ -12,6 +12,7 @@ import {
   cx
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import Sheet from 'components/Sheet'
@@ -195,7 +196,7 @@ const desc =
 const img = 'https://hackclub.com/cards/slack_invite.png'
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet
       title={title}
       meta={[
@@ -270,5 +271,5 @@ export default () => (
       </Grid>
     </Dark>
     <Footer dark />
-  </Fragment>
+  </Layout>
 )

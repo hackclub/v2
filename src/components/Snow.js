@@ -97,7 +97,7 @@ class Snow extends Component {
     this.setState({ intervalTracker: setInterval(draw, 32) })
 
     // Animation loop
-    this.state.intervalTracker
+    return this.state.intervalTracker
   }
 
   componentWillUnmount() {

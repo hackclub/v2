@@ -13,6 +13,7 @@ export default props => {
         if (application.accepted_at) {
           return
         }
+        // eslint-disable-next-line
         if (!confirm('Are you sure you want to accept this club?')) {
           return
         }

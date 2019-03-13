@@ -13,7 +13,7 @@ import {
   theme
 } from '@hackclub/design-system'
 import { placeholder } from 'polished'
-import { CLIENT_URL, PUBLIC_STRIPE_KEY } from 'constants'
+import { PUBLIC_STRIPE_KEY } from 'constants.js'
 import { toNumber } from 'lodash'
 import api from 'api'
 
@@ -81,7 +81,7 @@ class DonateForm extends Component {
   }
 
   render() {
-    const { custom, recurring, amount } = this.state
+    const { recurring } = this.state
     return (
       <Box align="center" style={{ position: 'relative' }}>
         <Box bg="primary" color="white" mx={[-3, -4]} pb={4} mb={3}>
@@ -163,7 +163,7 @@ class DonateForm extends Component {
     this.loadStripe(() => {
       this.stripeHandler = window.StripeCheckout.configure({
         key: PUBLIC_STRIPE_KEY,
-        image: `${CLIENT_URL}/twitter-avatar.png`,
+        image: 'https://hackclub.com/twitter-avatar.png',
         locale: 'auto',
         amount: this.amountInCents(),
         token: this.handleToken

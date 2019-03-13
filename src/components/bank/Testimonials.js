@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import {
   Box,
   Container,
-  Heading,
   BackgroundImage,
   Flex,
   Avatar,
@@ -12,12 +11,10 @@ import {
   theme
 } from '@hackclub/design-system'
 import Carousel from 'nuka-carousel'
-import { Headline, Subhline, Lead } from 'components/Content'
-import { Fade } from 'react-reveal'
+import { Subhline, Lead } from 'components/Content'
 import Sheet from 'components/Sheet'
 import Stat from 'components/Stat'
 import kebabCase from 'lodash/kebabCase'
-import Stats from 'components/bank/Stats'
 
 const events = [
   {

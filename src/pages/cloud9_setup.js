@@ -1,8 +1,7 @@
 import styled from 'styled-components'
-import React, { Fragment } from 'react'
+import React from 'react'
 import {
   Container,
-  Heading,
   Icon,
   LargeButton as Button,
   Link as A,
@@ -10,8 +9,9 @@ import {
   Text,
   theme
 } from '@hackclub/design-system'
+import Layout from 'components/Layout'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import { Headline } from 'components/Content'
@@ -24,7 +24,7 @@ const Header = styled(Section)`
 A.link = A.withComponent(Link)
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet title="Cloud9 – Hack Club" />
     <Nav />
     <Header align="center" color="white">
@@ -54,5 +54,5 @@ export default () => (
       </Container>
     </Header>
     <Footer />
-  </Fragment>
+  </Layout>
 )

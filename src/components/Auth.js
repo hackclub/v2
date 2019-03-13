@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Button, Flex, Heading, Text } from '@hackclub/design-system'
-import { wordWrap } from 'polished'
 import Sheet from 'components/Sheet'
 import LoginForm from 'components/auth/LoginForm'
 import storage from 'storage'
@@ -59,7 +58,15 @@ class Auth extends Component {
 
     return preAuthed || authed ? (
       <Flex align="baseline" {...textProps}>
-        <Text color="inherit" mb={1} style={wordWrap('break-word')}>
+        <Text
+          color="inherit"
+          mb={1}
+          style={{
+            overflowWrap: 'break-word',
+            wordWrap: 'break-word',
+            wordBreak: 'break-all'
+          }}
+        >
           You’re <strong>{email}</strong> ({type}
           ).
         </Text>

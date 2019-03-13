@@ -10,7 +10,6 @@ import {
   Icon,
   theme
 } from '@hackclub/design-system'
-import { wordWrap } from 'polished'
 import LeaderInvite from 'components/apply/LeaderInvite'
 import { clubApplicationSchema } from 'components/apply/ClubApplicationForm'
 import { Headline } from 'components/Content'
@@ -31,25 +30,6 @@ const A = styled(DSLink)`
     text-decoration: underline;
   }
 `
-
-// NOTE(@lachlanjc): for use if/when we have a slideshow experience
-// const PrimaryButton = styled(IconButton).attrs({
-//   name: 'edit',
-//   bg: 'primary',
-//   circle: true,
-//   size: 36,
-//   p: 3
-// })`
-//   position: absolute;
-//   right: 0;
-//   bottom: -64px;
-//   box-shadow: ${theme.boxShadows[1]} !important;
-//   transition: ${theme.transition} box-shadow;
-//   &:hover,
-//   &:focus {
-//     box-shadow: ${theme.boxShadows[2]} !important;
-//   }
-// `
 
 const Rejected = ({ resetCallback }) => (
   <Box mb={4}>
@@ -82,7 +62,9 @@ const SectionHeading = styled(Heading.h2).attrs({
   align-items: center;
   line-height: 1.25;
   max-width: 32rem;
-  ${wordWrap('break-word')};
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 `
 const SectionIcon = styled(Icon).attrs({
   color: props => (props.open ? 'gray.5' : 'gray.4'),
@@ -106,7 +88,7 @@ const SectionIcon = styled(Icon).attrs({
 class Section extends Component {
   state = { open: false }
 
-  toggle = e =>
+  toggle = () =>
     this.setState(({ open }) => ({ open: this.props.to ? open : !open }))
 
   render() {

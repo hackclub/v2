@@ -12,7 +12,6 @@ import {
   Text,
   theme
 } from '@hackclub/design-system'
-import { placeholder } from 'polished'
 import { PUBLIC_STRIPE_KEY } from 'constants.js'
 import { toNumber } from 'lodash'
 import api from 'api'
@@ -63,7 +62,9 @@ const Option = ({ amount, ...props }) => [
 
 const Other = styled(Input)`
   color: ${theme.colors.black};
-  ${placeholder({ color: theme.colors.muted })};
+  &::-webkit-input-placeholder {
+    color: ${theme.colors.muted};
+  }
 `
 
 class DonateForm extends Component {

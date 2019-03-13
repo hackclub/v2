@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Field, theme } from '@hackclub/design-system'
 import { withFormik } from 'formik'
-import { placeholder } from 'polished'
 import { Submit } from 'components/Forms'
 
 const Base = styled.form`
@@ -19,7 +18,9 @@ const Base = styled.form`
       border-color: ${theme.colors.info};
       box-shadow: none;
     }
-    ${placeholder({ color: theme.colors.slate })};
+    &::-webkit-input-placeholder {
+      color: ${theme.colors.slate};
+    }
   }
   input[type='number']::-webkit-inner-spin-button,
   input[type='number']::-webkit-outer-spin-button {

@@ -3,7 +3,7 @@ import { Heading, Text } from '@hackclub/design-system'
 import LoginForm from 'components/auth/LoginForm'
 import PostForm from 'components/challenge/PostForm'
 import LoadingBar from 'components/LoadingBar'
-import ErrorMessage from 'components/admin/ErrorPage'
+import ErrorMessage from 'components/ErrorPage'
 
 const Form = ({ status, closed = false, challengeId }) => {
   switch (status) {

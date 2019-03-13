@@ -63,7 +63,7 @@ const description =
   'Meet the team that runs Hack Club, a global nonprofit network of high school computer science clubs.'
 
 export default () => (
-  <Layout>
+  <Layout bg="snow">
     <Helmet
       title={title}
       meta={[
@@ -75,7 +75,6 @@ export default () => (
         { property: 'og:url', content: 'https://hackclub.com/team' }
       ]}
     />
-    <BG color="snow" />
     <Nav />
     <Header color="white">
       <Container maxWidth={36} align="center" py={[3, 4]}>

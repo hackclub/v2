@@ -1,6 +1,6 @@
 import React from 'react'
-import { Container } from '@hackclub/design-system'
-import { Field, Submit } from 'components/Forms'
+import { Container, Field } from '@hackclub/design-system'
+import { Submit } from 'components/Forms'
 import { withFormik } from 'formik'
 import * as yup from 'yup'
 import api from 'api'
@@ -19,7 +19,7 @@ const InnerForm = ({
 }) => (
   <Form p={3} maxWidth={24} onSubmit={handleSubmit}>
     <Field
-      label="Your Name"
+      label="Your name"
       name="name"
       placeholder="Prof Orpheus"
       value={values.name}
@@ -29,7 +29,7 @@ const InnerForm = ({
       mb={2}
     />
     <Field
-      label="Your Email"
+      label="Your email"
       name="email"
       type="email"
       placeholder="orpheus@hackclub.com"

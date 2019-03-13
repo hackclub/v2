@@ -23,12 +23,12 @@ class Invite extends Component {
     status: this.props.accepted
       ? 'accepted'
       : this.props.rejected
-      ? 'rejected'
-      : 'undecided',
+        ? 'rejected'
+        : 'undecided',
     formActive: false
   }
 
-  rejectInvite() {
+  rejectInvite = () => {
     const { invite } = this.props
     this.setState({ status: 'loading' })
     api
@@ -42,7 +42,7 @@ class Invite extends Component {
       })
   }
 
-  acceptInvite() {
+  acceptInvite = () => {
     const { user } = this.props
     if (user.new_leader) {
       this.setState({ status: 'loading' })
@@ -52,7 +52,7 @@ class Invite extends Component {
     }
   }
 
-  submitAcceptance(newLeader) {
+  submitAcceptance = newLeader => {
     const { invite, updateLeader } = this.props
     if (newLeader) {
       updateLeader(newLeader)
@@ -85,7 +85,7 @@ class Invite extends Component {
                     email={user.email}
                     userId={user.id}
                     clubId={invite.new_club.id}
-                    callback={this.bind(this.submitAcceptance)}
+                    callback={this.submitAcceptance}
                   />
                 </Modal>
                 <Overlay
@@ -108,7 +108,7 @@ class Invite extends Component {
               color="white"
               bg="primary"
               mx={2}
-              onClick={this.bind(this.acceptInvite)}
+              onClick={this.acceptInvite}
             >
               Accept
             </Button>
@@ -116,7 +116,7 @@ class Invite extends Component {
               color="white"
               bg="primary"
               mx={2}
-              onClick={this.bind(this.rejectInvite)}
+              onClick={this.rejectInvite}
               inverted
             >
               Reject
@@ -179,7 +179,7 @@ export default class extends Component {
       })
   }
 
-  updateLeader(newLeader) {
+  updateLeader = newLeader => {
     this.setState({
       user: {
         ...this.state.user,
@@ -214,7 +214,7 @@ export default class extends Component {
                   key={invite.id}
                   invite={invite}
                   user={user}
-                  updateLeader={this.bind(this.updateLeader)}
+                  updateLeader={this.updateLeader}
                   rejected={invite.rejected_at !== null}
                   accepted={invite.accepted_at !== null}
                 />

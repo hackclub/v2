@@ -47,7 +47,7 @@ const SaveStatusLine = styled(Box)`
   border-top-width: 1px;
   opacity: ${props => (props.saved ? 2 / 3 : 1)};
   transition-duration: 1s;
-  color: ${props => props.theme.colors[props.saved ? 'slate' : 'primary']};
+  color: ${props => theme.colors[props.saved ? 'slate' : 'primary']};
   box-shadow: 0 0 4px ${props => (props.saved ? '0px' : '2px')};
 `
 
@@ -61,9 +61,12 @@ const SaveStatus = ({ saved, type = 'all' }) => (
 )
 
 export class AutoSaver extends Component {
-  state = { previousValues: this.props.values }
+  constructor(props) {
+    super(props)
+    this.state = { previousValues: props.values }
+  }
 
-  componentWillMount() {
+  componentDidMount() {
     const intervalId = setInterval(this.autoSave.bind(this), 1000)
     this.setState({ intervalId })
   }
@@ -72,7 +75,7 @@ export class AutoSaver extends Component {
     clearInterval(this.state.intervalId)
   }
 
-  autoSave() {
+  autoSave = () => {
     const { handleSubmit, isSubmitting, values } = this.props
     const { previousValues } = this.state
     const unsavedChanges = previousValues !== values
@@ -158,10 +161,10 @@ export const Optional = () => (
 )
 
 export class Field extends Component {
-  componentWillMount() {
-    const { type } = this.props
+  constructor(props) {
+    super(props)
     const Tag = Input.withComponent(
-      ['textarea', 'select'].indexOf(type) === -1 ? 'input' : type
+      ['textarea', 'select'].indexOf(props.type) === -1 ? 'input' : props.type
     )
 
     this.setState({ Tag, isEditing: false })
@@ -240,6 +243,7 @@ export class Field extends Component {
     )
   }
 }
+
 export const Submit = styled(Button.withComponent('input')).attrs({
   type: 'submit',
   color: 'white',

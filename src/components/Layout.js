@@ -2,6 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { name, title, description, img, url, org } from 'data.json'
 import { ThemeProvider, theme } from '@hackclub/design-system'
+import BG from 'components/BG'
 import serviceWorkerKiller from '../../static/swkiller'
 
 const meta = tags =>
@@ -9,7 +10,7 @@ const meta = tags =>
     React.createElement('meta', { ...props, key: index })
   )
 
-export default props => (
+export default ({ bg, children }) => (
   <ThemeProvider webfonts>
     <Helmet defaultTitle={title}>
       <html lang="en" />
@@ -38,6 +39,7 @@ export default props => (
       />
       <script type="application/ld+json" children={JSON.stringify(org)} />
     </Helmet>
-    {props.children}
+    {bg && <BG color={bg} />}
+    {children}
   </ThemeProvider>
 )

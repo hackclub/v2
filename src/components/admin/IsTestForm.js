@@ -22,7 +22,7 @@ Base.defaultProps = {
 class IsTestForm extends Component {
   state = { status: 'loading' }
 
-  toggle() {
+  toggle = () => {
     console.log(this.state.test)
     const data = { test: !this.state.test }
     this.setState({ status: 'loading' })
@@ -73,7 +73,7 @@ class IsTestForm extends Component {
               m={2}
               style={{ WebkitAppearance: 'checkbox' }}
               checked={this.state.test}
-              onChange={this.bind(this.toggle)}
+              onChange={this.toggle}
             />
           </Base>
         )

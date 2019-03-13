@@ -23,13 +23,13 @@ class SingleNote extends Component {
     }
   }
 
-  deleteNote(id) {
+  deleteNote = id => {
     api.delete(`v1/notes/${id}`).then(json => {
       this.setState({ deleted: true })
     })
   }
 
-  handleSubmit(values, { setSubmitting }) {
+  handleSubmit = (values, { setSubmitting }) => {
     const { modelType, modelId } = this.props
     const { id } = this.state
     if (id) {
@@ -66,7 +66,7 @@ class SingleNote extends Component {
         <Formik
           initialValues={note}
           enableReinitialize={true}
-          onSubmit={this.bind(this.handleSubmit)}
+          onSubmit={this.handleSubmit}
         >
           {props => {
             const {
@@ -115,15 +115,18 @@ export default class NotesForm extends Component {
     status: 'loading',
     authors: {}
   }
+
   componentDidMount() {
     this.loadNotes(this.props.modelId)
   }
+
   componentWillReceiveProps(nextProps) {
     if (this.props.modelId !== nextProps.modelId) {
       this.loadNotes(nextProps.modelId)
     }
   }
-  loadNotes(id) {
+
+  loadNotes = id => {
     const { authors } = this.state
     const { modelType, modelId } = this.props
 
@@ -168,12 +171,14 @@ export default class NotesForm extends Component {
           this.setState({ status: 'success' })
         })
       })
-      .catch(err => {
+      .catch(() => {
         this.setState({ status: 'error' })
       })
   }
-  addNote() {
-    this.setState({ notes: [...this.state.notes, { created_at: new Date() }] })
+  addNote = () => {
+    this.setState(state => ({
+      notes: [...state.notes, { created_at: new Date() }]
+    }))
   }
   render() {
     const { modelType, modelId } = this.props
@@ -188,7 +193,7 @@ export default class NotesForm extends Component {
               glyph="post"
               bg="success"
               circle
-              onClick={this.bind(this.addNote)}
+              onClick={this.addNote}
             />
             {notes
               .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))

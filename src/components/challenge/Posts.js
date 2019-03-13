@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Text } from '@hackclub/design-system'
 import Post from 'components/challenge/Post'
 import LoadingBar from 'components/LoadingBar'
-import ErrorPage from 'components/admin/ErrorPage'
+import ErrorPage from 'components/ErrorPage'
 import api from 'api'
 import { includes, isEmpty, get, orderBy } from 'lodash'
 

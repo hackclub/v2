@@ -11,7 +11,6 @@ import {
 import Helmet from 'react-helmet'
 import { Link } from 'gatsby'
 import Layout from 'components/Layout'
-import BG from 'components/BG'
 import Nav from 'components/Nav'
 import Name from 'components/Name'
 import Bio from 'components/Bio'

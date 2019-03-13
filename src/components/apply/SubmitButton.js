@@ -10,11 +10,7 @@ const Root = styled(LargeButton).attrs({
   fontSize: [3, 4],
   width: 1
 })`
-  background-image: linear-gradient(
-    to bottom,
-    ${theme.colors.orange[5]},
-    ${theme.colors.red[5]}
-  );
+  background-image: ${theme.gradient('orange.5', 'red.5')};
 `
 
 class SubmitButton extends Component {

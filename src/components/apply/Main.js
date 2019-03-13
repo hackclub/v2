@@ -13,6 +13,7 @@ import {
 import { wordWrap } from 'polished'
 import LeaderInvite from 'components/apply/LeaderInvite'
 import { clubApplicationSchema } from 'components/apply/ClubApplicationForm'
+import { Headline } from 'components/Content'
 import Sheet from 'components/Sheet'
 import SubmitButton from 'components/apply/SubmitButton'
 import Status from 'components/apply/Status'
@@ -29,10 +30,6 @@ const A = styled(DSLink)`
   &:hover {
     text-decoration: underline;
   }
-`
-
-const Title = styled(Heading.h1).attrs({ fontSize: 6 })`
-  line-height: 1.25;
 `
 
 // NOTE(@lachlanjc): for use if/when we have a slideshow experience
@@ -76,7 +73,7 @@ const SectionBase = styled(Flex).attrs({
   min-height: ${props => (props.sm ? 6 : 10)}rem;
 `
 const SectionHeading = styled(Heading.h2).attrs({
-  fontSize: props => (props.sm ? 4 : 5),
+  fontSize: props => (props.sm ? [3, 4] : [4, 5]),
   regular: true,
   align: 'left'
 })`
@@ -141,8 +138,9 @@ const HelpSheet = styled(Container).attrs({
 })`
   border-radius: ${theme.radii[2]};
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  ${theme.mediaQueries.md} {
+    align-items: center;
+  }
 `
 
 const Help = () => (
@@ -170,8 +168,8 @@ const profileStatus = profile =>
   profile.completed_at !== null
     ? 'complete'
     : profile.created_at === profile.updated_at
-    ? 'unopened'
-    : 'incomplete'
+      ? 'unopened'
+      : 'incomplete'
 
 const Main = props => {
   const { id, leader_profiles, updated_at, created_at } = props.app
@@ -200,8 +198,8 @@ const Main = props => {
     completeApplication
       ? 'complete'
       : created_at === updated_at
-      ? 'unopened'
-      : 'incomplete'
+        ? 'unopened'
+        : 'incomplete'
 
   const submitStatusProps = {
     unopened: { color: 'primary', children: 'ready for you!' },
@@ -238,16 +236,20 @@ const Main = props => {
         <Help />
       </Sheet>
       <Sheet p={[3, 4, 5]}>
-        <Title mb={4} style={{ position: 'relative' }}>
-          Your application to Hack Club is{' '}
+        <Headline mb={4} style={{ position: 'relative' }}>
+          <Text.span style={{ display: 'block' }}>
+            Your application to Hack Club is
+          </Text.span>
           <SubmitStatus {...submitStatusProps} />
-        </Title>
+        </Headline>
         <Section
           to={`/apply/club?id=${id}`}
           name={
             <Fragment>
-              <Text.span bold>Club application</Text.span>
-              <Status type={applicationStatus()} ml={[2, 3]} />
+              <Text.span bold mr={3}>
+                Club application
+              </Text.span>
+              <Status type={applicationStatus()} />
             </Fragment>
           }
         />
@@ -255,8 +257,10 @@ const Main = props => {
           to={`/apply/leader?id=${leaderProfile.id}`}
           name={
             <Fragment>
-              <Text.span bold>My personal profile</Text.span>
-              <Status type={profileStatus(leaderProfile)} ml={[2, 3]} />
+              <Text.span bold mr={3}>
+                My personal profile
+              </Text.span>
+              <Status type={profileStatus(leaderProfile)} />
             </Fragment>
           }
         />

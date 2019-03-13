@@ -136,7 +136,7 @@ export const Hint = styled(Text.span).attrs({
 `
 
 export class ConfirmClose extends Component {
-  componentWillMount() {
+  componentDidMount() {
     // https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm
     window.onbeforeunload = () => window.confirm()
   }
@@ -167,7 +167,7 @@ export class Field extends Component {
       ['textarea', 'select'].indexOf(props.type) === -1 ? 'input' : props.type
     )
 
-    this.setState({ Tag, isEditing: false })
+    this.state = { Tag, isEditing: false }
   }
 
   onBlur = e => {
@@ -301,7 +301,7 @@ const HeadingBox = styled(Box).attrs({
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: auto;
-  ${theme.mediaQueries[1]} {
+  ${theme.mediaQueries.md} {
     flex-basis: 7rem;
     text-align: right;
   }

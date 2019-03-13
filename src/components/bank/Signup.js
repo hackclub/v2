@@ -19,7 +19,7 @@ const Base = styled.form`
       border-color: ${theme.colors.info};
       box-shadow: none;
     }
-    ${placeholder({ color: theme.colors.muted })};
+    ${placeholder({ color: theme.colors.slate })};
   }
   input[type='number']::-webkit-inner-spin-button,
   input[type='number']::-webkit-outer-spin-button {

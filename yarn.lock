@@ -2961,6 +2961,11 @@ command-exists@^1.2.2:
   resolved "https://registry.yarnpkg.com/command-exists/-/command-exists-1.2.7.tgz#16828f0c3ff2b0c58805861ef211b64fc15692a8"
   integrity sha512-doWDvhXCcW5LK0cIUWrOQ8oMFXJv3lEQCkJpGVjM8v9SV0uhqYXB943538tEA2CiaWqSyuYUGAm5ezDwEx9xlw==
 
+commander@2:
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
+  integrity sha512-6tvAOO+D6OENvRAh524Dh9jcfKTYDQAqvqezbCW82xj5X0pSrcpxtvRKHLG0yBY6SD7PSDrJaj+0AiOcKVd1Xg==
+
 commander@^2.11.0:
   version "2.18.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.18.0.tgz#2bf063ddee7c7891176981a2cc798e5754bc6970"
@@ -3563,10 +3568,38 @@ cyclist@~0.2.2:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
   integrity sha1-GzN5LhHpFKL9bW7WRHRkRE5fpkA=
 
+d3-array@1:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-1.2.4.tgz#635ce4d5eea759f6f605863dbcfc30edc737f71f"
+  integrity sha512-KHW6M86R+FUPYGb3R5XiYjXPq7VzwxZ22buHhAEVG5ztoEcZZMLov530mmccaqA1GghZArjQV46fuc8kUqhhHw==
+
 d3-ease@^1.0.3:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/d3-ease/-/d3-ease-1.0.5.tgz#8ce59276d81241b1b72042d6af2d40e76d936ffb"
   integrity sha512-Ct1O//ly5y5lFM9YTdu+ygq7LleSgSE4oj7vUt9tPLHUi8VCV7QoizGpdWRWAwCO9LdYzIrQDg97+hGVdsSGPQ==
+
+d3-geo-projection@1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/d3-geo-projection/-/d3-geo-projection-1.2.2.tgz#ef0e6cdcfa0df236d0e23f2ca7750462ca331f72"
+  integrity sha1-7w5s3PoN8jbQ4j8sp3UEYsozH3I=
+  dependencies:
+    commander "2"
+    d3-array "1"
+    d3-geo "^1.1.0"
+
+d3-geo@1.6.3:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/d3-geo/-/d3-geo-1.6.3.tgz#21683a43a061eaba21a7f254b51d5937eb640756"
+  integrity sha1-IWg6Q6Bh6rohp/JUtR1ZN+tkB1Y=
+  dependencies:
+    d3-array "1"
+
+d3-geo@^1.1.0:
+  version "1.11.3"
+  resolved "https://registry.yarnpkg.com/d3-geo/-/d3-geo-1.11.3.tgz#5bb08388f45e4b281491faa72d3abd43215dbd1c"
+  integrity sha512-n30yN9qSKREvV2fxcrhmHUdXP9TNH7ZZj3C/qnaoU0cVf/Ea85+yT7HY7i8ySPwkwjCNYtmKqQFTvLFngfkItQ==
+  dependencies:
+    d3-array "1"
 
 d3-timer@^1.0.9:
   version "1.0.9"
@@ -10557,6 +10590,15 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
+react-simple-maps@^0.12.1:
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/react-simple-maps/-/react-simple-maps-0.12.1.tgz#afc732362bb8eb2e5609a61d33bf6567d0fdd02a"
+  integrity sha512-htW2qQCnppGAUvWttf8ugZsVD896AfAjJNz3sgQT5zpdLNC+n2xegiNtn5inkD0aLuQWZ43i5cTlhPe0n6hvNQ==
+  dependencies:
+    d3-geo "1.6.3"
+    d3-geo-projection "1.2.2"
+    topojson-client "2.1.0"
+
 react-slick@^0.23.2:
   version "0.23.2"
   resolved "https://registry.yarnpkg.com/react-slick/-/react-slick-0.23.2.tgz#8d8bdbc77a6678e8ad36f50c32578c7c0f1c54f6"
@@ -10568,6 +10610,13 @@ react-slick@^0.23.2:
     lodash.debounce "^4.0.8"
     prettier "^1.14.3"
     resize-observer-polyfill "^1.5.0"
+
+react-spring@^7.2.11:
+  version "7.2.11"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-7.2.11.tgz#90962121c925c8a3181801b926eaf94c9b5c942e"
+  integrity sha512-VHoN34MTZFkvamy7Vlmcx2HR5WVSuaQQjFNlVRNyWNi+rcjYT8OcsggzeDltFycseBh8cZveYTc/iPCEe6O0Sw==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
 
 react@*, react@>=16.0.0, react@^16.4.2, react@^16.5.1, react@^16.8.4:
   version "16.8.4"
@@ -12517,6 +12566,13 @@ topo@2.x.x:
   integrity sha1-zVYVdSU5BXwNwEkaYhw7xvvh0YI=
   dependencies:
     hoek "4.x.x"
+
+topojson-client@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/topojson-client/-/topojson-client-2.1.0.tgz#ff9f7bf38991185e0b4284c2b06ae834f0eac6c8"
+  integrity sha1-/59784mRGF4LQoTCsGroNPDqxsg=
+  dependencies:
+    commander "2"
 
 toposort@^2.0.2:
   version "2.0.2"

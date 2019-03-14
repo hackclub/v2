@@ -25,6 +25,22 @@ const Background = styled(Section)`
     );
 `
 
+const attrs = {
+  is: LargeButton.withComponent(Link),
+  m: 2,
+  scale: true,
+  py: 3,
+  px: 4,
+  fontSize: 2
+}
+const SubmitButton = styled(IconButton).attrs(attrs)`
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    to bottom,
+    ${theme.colors.cyan[6]},
+    ${theme.colors.blue[6]}
+  );
+`
 const PhilosophyButton = styled(IconButton).attrs({
   is: LargeButton.withComponent(Link),
   m: 2,
@@ -86,6 +102,12 @@ export default ({
               Learn to code with this collection of community-contributed,
               self-guided coding tutorials + ideas.
             </Text>
+            <SubmitButton
+              glyph="post"
+              to="/workshops/drafts"
+              children="Submit your own"
+              bg="cyan.6"
+            />
             <PhilosophyButton
               glyph="quote"
               to="/philosophy"

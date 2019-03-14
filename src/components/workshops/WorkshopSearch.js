@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Container } from '@hackclub/design-system'
-import SearchInput from './SearchInput'
-import Track from './Track'
-import NoResults from './NoResults'
+import SearchInput from './search/SearchInput'
+import Track from './search/Track'
+import NoResults from './search/NoResults'
 import Fuse from 'fuse.js'
 import { groupBy, toPairs } from 'lodash'
 

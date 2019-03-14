@@ -18,7 +18,7 @@ const Base = styled.form`
       border-color: ${theme.colors.info};
       box-shadow: none;
     }
-    &::-webkit-input-placeholder {
+    &::placeholder {
       color: ${theme.colors.slate};
     }
   }

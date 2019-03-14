@@ -37,7 +37,7 @@ const Search = styled(Input).attrs({
   ${theme.mediaQueries.md} {
     font-size: ${theme.fontSizes[4]}px;
   }
-  &::-webkit-input-placeholder {
+  &::placeholder {
     color: ${theme.colors.muted};
   }
 `

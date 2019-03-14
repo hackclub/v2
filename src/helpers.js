@@ -71,7 +71,7 @@ function formatChunk(type, date) {
     'January',
     'Febuary',
     'March',
-    ' April',
+    'April',
     'May',
     'June',
     'July',

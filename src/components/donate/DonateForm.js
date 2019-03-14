@@ -62,7 +62,7 @@ const Option = ({ amount, ...props }) => [
 
 const Other = styled(Input)`
   color: ${theme.colors.black};
-  &::-webkit-input-placeholder {
+  &::placeholder {
     color: ${theme.colors.muted};
   }
 `

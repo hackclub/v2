@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import {
   Box,
   Button,
-  Card,
   Container,
   Flex,
   Heading,
@@ -13,7 +12,6 @@ import {
   Text,
   theme
 } from '@hackclub/design-system'
-import MarkdownRenderer from 'components/MarkdownRenderer'
 import styled from 'styled-components'
 
 const SaveBaseIcon = styled(Icon)`
@@ -170,22 +168,6 @@ export class Field extends Component {
     this.state = { Tag, isEditing: false }
   }
 
-  onBlur = e => {
-    const { renderMarkdown, onBlur } = this.props
-    if (renderMarkdown) {
-      this.setState({ isEditing: false })
-    }
-    if (onBlur) {
-      return onBlur(e)
-    }
-  }
-
-  onFocus = () => {
-    if (this.props.renderMarkdown) {
-      this.setState({ isEditing: true })
-    }
-  }
-
   render() {
     const {
       type = 'text',
@@ -197,12 +179,12 @@ export class Field extends Component {
       hint,
       optional,
       value,
-      renderMarkdown,
       bg,
-      mb = 3
+      mb = 3,
+      props
     } = this.props
 
-    const { Tag, isEditing } = this.state
+    const { Tag } = this.state
 
     return (
       <Label className={type} mb={mb} id={name}>
@@ -211,34 +193,18 @@ export class Field extends Component {
           {optional ? <Optional /> : null}
           {error && <Error children={error} />}
         </Flex>
-        {renderMarkdown && (
-          <Card
-            onClick={this.onFocus}
-            hidden={isEditing}
-            boxShadowSize="sm"
-            mt={1}
-            p={[2, 3]}
-            width={1}
-            bg={bg}
-            style={{ cursor: 'pointer' }}
-          >
-            <MarkdownRenderer content={value || ' '} />
-          </Card>
-        )}
         <Tag
           name={name}
           type={type}
           rows={type === 'textarea' ? 5 : null}
           placeholder={p}
           children={children}
-          {...this.props}
+          {...props}
           onBlur={this.onBlur}
           value={value}
           bg={bg}
-          hidden={renderMarkdown && !isEditing ? true : false}
         />
         {hint && <Hint children={hint} />}
-        {renderMarkdown && <Hint children="click to edit" />}
       </Label>
     )
   }

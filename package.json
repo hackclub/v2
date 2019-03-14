@@ -8,9 +8,7 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
-    "start": "serve public",
-    "fmt": "prettier \"{src/**,}/*.js\" --single-quote --no-semi --write",
-    "social": "repng src/components/Social.js -w 512 -h 512 -o public -f social",
+    "fmt": "npx prettier \"{src/**,}/*.js\" --single-quote --no-semi --write",
     "map": "npx babel-node src/map.js"
   },
   "dependencies": {
@@ -18,10 +16,12 @@
     "@hackclub/design-system": "^0.0.1-14",
     "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.10.0",
+    "draft-js": "^0.10.5",
     "draft-js-code-editor-plugin": "^0.2.1",
     "draft-js-markdown-plugin": "^3.0.5",
     "draft-js-plugins-editor": "^2.1.1",
     "draftjs-md-converter": "^1.1.2",
+    "emoji-regex": "^8.0.0",
     "formik": "^1.5.1",
     "fuse.js": "^3.4.4",
     "gatsby": "^2.1.32",
@@ -48,8 +48,10 @@
     "lodash": "^4.17.11",
     "nuka-carousel": "^4.5.2",
     "prismjs": "^1.15.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-autocomplete": "^1.8.1",
+    "react-dom": "^16.8.4",
     "react-flip-move": "^3.0.3",
     "react-gravatar": "^2.6.3",
     "react-helmet": "^5.2.0",
@@ -66,13 +68,9 @@
     "validator": "^10.11.0",
     "yup": "^0.26.10"
   },
-  "keywords": [
-    "gatsby"
-  ],
   "devDependencies": {
     "cheerio": "^1.0.0-rc.2",
     "minimist": "^1.2.0",
-    "prettier": "^1.16.4",
     "svgo": "^1.2.0"
   },
   "keywords": [

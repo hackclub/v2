@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box } from '@hackclub/design-system'
-import { Field, Submit } from 'components/Forms'
+import { Box, Field } from '@hackclub/design-system'
+import { Submit } from 'components/Forms'
 import { withFormik } from 'formik'
 import * as yup from 'yup'
 import api from 'api'
@@ -27,6 +27,7 @@ const InnerForm = ({
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.email && errors.email}
+      mb={3}
     />
     <Submit.lg
       disabled={isSubmitting}

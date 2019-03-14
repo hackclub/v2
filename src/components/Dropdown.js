@@ -6,18 +6,16 @@ const zoom = keyframes`
     box-shadow: ${theme.boxShadows[1]};
     transform: scale(0);
   }
-
   85% {
     transform: scale(1.025);
   }
-
   100% {
     box-shadow: ${theme.boxShadows[2]};
     transform: scale(1);
   }
 `
 
-const DropdownContainer = styled(Box)`
+export const DropdownContainer = styled(Box)`
   position: relative;
   &:hover > div {
     display: block;
@@ -26,7 +24,7 @@ const DropdownContainer = styled(Box)`
   }
 `
 
-const DropdownMenu = styled(Card.withComponent(Flex))`
+export const DropdownMenu = styled(Card.withComponent(Flex))`
   display: none;
   opacity: 0;
   flex-direction: column;
@@ -45,7 +43,7 @@ const DropdownMenu = styled(Card.withComponent(Flex))`
   -webkit-overflow-scrolling: touch;
 `
 
-const DropdownMenuOption = styled(Box)`
+export const DropdownMenuOption = styled(Box)`
   padding: ${theme.space[2]}px ${theme.space[3]}px;
   cursor: pointer;
   width: 100%;
@@ -60,5 +58,3 @@ const DropdownMenuOption = styled(Box)`
     background-color: ${theme.colors.blue[0]};
   }
 `
-
-export default { DropdownContainer, DropdownMenu, DropdownMenuOption }

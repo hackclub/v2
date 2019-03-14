@@ -25,11 +25,9 @@ const Root = styled(MarkdownBody)`
   border: 1px solid ${theme.colors.smoke};
   border-radius: 21px;
   padding: ${theme.space[1]}px;
-
   .DraftEditor-root {
     position: relative;
   }
-
   .public-DraftEditorPlaceholder-inner {
     position: absolute;
     top: 2px;
@@ -37,7 +35,6 @@ const Root = styled(MarkdownBody)`
     color: ${theme.colors.muted};
     font-size: ${theme.fontSizes[1]}px;
   }
-
   .DraftEditor-editorContainer > div {
     padding: 4px 8px;
     ${commentStyle};

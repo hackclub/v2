@@ -1,5 +1,6 @@
 import React from 'react'
-import { Field, Submit } from 'components/Forms'
+import { Field } from '@hackclub/design-system'
+import { Submit } from 'components/Forms'
 import { withFormik } from 'formik'
 import * as yup from 'yup'
 import api from 'api'
@@ -86,8 +87,8 @@ const PostForm = withFormik({
           resetForm()
           setStatus('success')
           setTimeout(() => {
-            if (typeof location !== 'undefined') {
-              location.reload()
+            if (typeof window.location !== 'undefined') {
+              window.location.reload()
             }
           }, 1024)
         })

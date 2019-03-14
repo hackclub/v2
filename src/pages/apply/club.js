@@ -4,6 +4,7 @@ import search from 'search'
 import api from 'api'
 import { Heading, Container, LargeButton } from '@hackclub/design-system'
 
+import Layout from 'components/Layout'
 import Login from 'components/auth/Login'
 import Sheet from 'components/Sheet'
 import ApplyNav from 'components/apply/ApplyNav'
@@ -56,7 +57,10 @@ export default class extends Component {
               <ClubApplicationForm params={formFields} id={id} />
             </Sheet>
             <Heading.h4 align="center">
-              Your form is automatically saved ✨
+              Your form is automatically saved{' '}
+              <span role="img" aria-label="">
+                ✨
+              </span>
             </Heading.h4>
             <Container align="center" mt={4} mb={5}>
               <LargeButton.link to="/apply" chevronLeft>
@@ -70,10 +74,10 @@ export default class extends Component {
 
   render() {
     return (
-      <Fragment>
+      <Layout>
         <Helmet title="Edit Club Application – Hack Club" />
         {this.content()}
-      </Fragment>
+      </Layout>
     )
   }
 }

@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import {
   Box,
   Button,
-  Card,
   Container,
   Flex,
   Heading,
@@ -13,8 +12,6 @@ import {
   Text,
   theme
 } from '@hackclub/design-system'
-import { Prompt } from 'react-router'
-import MarkdownRenderer from 'components/MarkdownRenderer'
 import styled from 'styled-components'
 
 const SaveBaseIcon = styled(Icon)`
@@ -48,7 +45,7 @@ const SaveStatusLine = styled(Box)`
   border-top-width: 1px;
   opacity: ${props => (props.saved ? 2 / 3 : 1)};
   transition-duration: 1s;
-  color: ${props => props.theme.colors[props.saved ? 'slate' : 'primary']};
+  color: ${props => theme.colors[props.saved ? 'slate' : 'primary']};
   box-shadow: 0 0 4px ${props => (props.saved ? '0px' : '2px')};
 `
 
@@ -62,10 +59,13 @@ const SaveStatus = ({ saved, type = 'all' }) => (
 )
 
 export class AutoSaver extends Component {
-  state = { previousValues: this.props.values }
+  constructor(props) {
+    super(props)
+    this.state = { previousValues: props.values }
+  }
 
-  componentWillMount() {
-    const intervalId = setInterval(::this.autoSave, 1000)
+  componentDidMount() {
+    const intervalId = setInterval(this.autoSave.bind(this), 1000)
     this.setState({ intervalId })
   }
 
@@ -73,7 +73,7 @@ export class AutoSaver extends Component {
     clearInterval(this.state.intervalId)
   }
 
-  autoSave() {
+  autoSave = () => {
     const { handleSubmit, isSubmitting, values } = this.props
     const { previousValues } = this.state
     const unsavedChanges = previousValues !== values
@@ -134,7 +134,7 @@ export const Hint = styled(Text.span).attrs({
 `
 
 export class ConfirmClose extends Component {
-  componentWillMount() {
+  componentDidMount() {
     // https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm
     window.onbeforeunload = () => window.confirm()
   }
@@ -144,9 +144,7 @@ export class ConfirmClose extends Component {
   }
 
   render() {
-    return (
-      <Prompt message="Hold on, you're about to lose unsaved changes! Sure you want to leave?" />
-    )
+    return null
   }
 }
 
@@ -161,29 +159,13 @@ export const Optional = () => (
 )
 
 export class Field extends Component {
-  componentWillMount() {
-    const { type, renderMarkdown } = this.props
+  constructor(props) {
+    super(props)
     const Tag = Input.withComponent(
-      ['textarea', 'select'].indexOf(type) === -1 ? 'input' : type
+      ['textarea', 'select'].indexOf(props.type) === -1 ? 'input' : props.type
     )
 
-    this.setState({ Tag, isEditing: false })
-  }
-
-  onBlur = e => {
-    const { renderMarkdown, onBlur } = this.props
-    if (renderMarkdown) {
-      this.setState({ isEditing: false })
-    }
-    if (onBlur) {
-      return onBlur(e)
-    }
-  }
-
-  onFocus = () => {
-    if (this.props.renderMarkdown) {
-      this.setState({ isEditing: true })
-    }
+    this.state = { Tag, isEditing: false }
   }
 
   render() {
@@ -197,13 +179,12 @@ export class Field extends Component {
       hint,
       optional,
       value,
-      renderMarkdown,
       bg,
       mb = 3,
-      ...props
+      props
     } = this.props
 
-    const { Tag, isEditing } = this.state
+    const { Tag } = this.state
 
     return (
       <Label className={type} mb={mb} id={name}>
@@ -212,38 +193,23 @@ export class Field extends Component {
           {optional ? <Optional /> : null}
           {error && <Error children={error} />}
         </Flex>
-        {renderMarkdown && (
-          <Card
-            onClick={this.onFocus}
-            hidden={isEditing}
-            boxShadowSize="sm"
-            mt={1}
-            p={[2, 3]}
-            width={1}
-            bg={bg}
-            style={{ cursor: 'pointer' }}
-          >
-            <MarkdownRenderer content={value || ' '} />
-          </Card>
-        )}
         <Tag
           name={name}
           type={type}
           rows={type === 'textarea' ? 5 : null}
           placeholder={p}
           children={children}
-          {...this.props}
+          {...props}
           onBlur={this.onBlur}
           value={value}
           bg={bg}
-          hidden={renderMarkdown && !isEditing ? true : false}
         />
         {hint && <Hint children={hint} />}
-        {renderMarkdown && <Hint children="click to edit" />}
       </Label>
     )
   }
 }
+
 export const Submit = styled(Button.withComponent('input')).attrs({
   type: 'submit',
   color: 'white',
@@ -301,7 +267,7 @@ const HeadingBox = styled(Box).attrs({
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: auto;
-  ${theme.mediaQueries[1]} {
+  ${theme.mediaQueries.md} {
     flex-basis: 7rem;
     text-align: right;
   }

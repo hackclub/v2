@@ -20,7 +20,7 @@ Sheet.defaultProps = {
   mb: 4
 }
 Sheet.propTypes = {
-  flat: PropTypes.boolean
+  flat: PropTypes.bool
 }
 
 export default Sheet

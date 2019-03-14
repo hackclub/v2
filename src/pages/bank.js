@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { theme } from '@hackclub/design-system'
+import Layout from 'components/Layout'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
@@ -30,7 +31,7 @@ const desc =
 const img = 'https://hackclub.com/cards/bank_one.png'
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet
       title={title}
       meta={[
@@ -54,5 +55,5 @@ export default () => (
     <Run />
     <Start />
     <Footer dark />
-  </Fragment>
+  </Layout>
 )

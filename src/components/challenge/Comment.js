@@ -15,7 +15,6 @@ import PropTypes from 'prop-types'
 import { CommentByline, commentStyle } from 'components/challenge/style'
 import { onlyContainsEmoji, timeSince } from 'helpers'
 import { isEmpty } from 'lodash'
-import { wordWrap } from 'polished'
 import styled, { css } from 'styled-components'
 
 const gradient = (a, b) =>
@@ -111,7 +110,9 @@ const Body = styled(Box.withComponent(ReactMarkdown))`
 
 const Megamoji = styled(Text)`
   font-size: ${theme.fontSizes[5]}px;
-  ${wordWrap('break-word')};
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 `
 
 const ReplyButton = props => (
@@ -151,8 +152,7 @@ class Comment extends Component {
       user,
       body,
       onReply,
-      onDelete,
-      ...props
+      onDelete
     } = this.props
     const emoji = onlyContainsEmoji(body)
     return (

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box } from '@hackclub/design-system'
-import { Field, Submit } from 'components/Forms'
+import { Box, Field } from '@hackclub/design-system'
+import { Submit } from 'components/Forms'
 import { withFormik } from 'formik'
 import * as yup from 'yup'
 import api from 'api'
@@ -27,6 +27,7 @@ const InnerForm = ({
       onChange={handleChange}
       onBlur={handleBlur}
       error={touched.email && errors.email}
+      mb={3}
     />
     <Submit.lg
       disabled={isSubmitting}
@@ -66,8 +67,11 @@ const SlackForm = withFormik({
         setStatus('success')
         // associate submitted email with analytics if there isn't already an
         // email set - this will let us track workshop users
+        // eslint-disable-next-line
         analytics.ready(() => {
+          // eslint-disable-next-line
           if (!analytics.user().traits().email) {
+            // eslint-disable-next-line
             analytics.identify({ email: data.email })
           }
         })

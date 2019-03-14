@@ -10,7 +10,6 @@ const MarkdownBody = styled(Box)`
   font-size: 112.5%;
   line-height: 1.625;
   word-wrap: break-word;
-
   a {
     color: ${theme.colors.info};
     em {
@@ -23,18 +22,15 @@ const MarkdownBody = styled(Box)`
       }
     }
   }
-
   // hides title, assumes rendering separately
   #toc + div h1:first-of-type {
     display: none;
   }
-
   h1,
   h2 {
     padding-bottom: ${theme.space[2]}px;
     border-bottom: 1px solid ${theme.colors.smoke};
   }
-
   h1,
   h2,
   h3,
@@ -42,34 +38,28 @@ const MarkdownBody = styled(Box)`
   strong {
     font-weight: bold;
   }
-
   ${range(1, 6)
     .map(n => `h${n} { font-size: ${theme.fontSizes[6 - n]}px; }`)
     .join('')};
-
   img {
     max-width: 100%;
     border-radius: ${theme.radii[2]};
   }
-
   ol,
   ul {
     padding-left: ${theme.space[3] * 1.5}px;
   }
-
   blockquote {
     border-left: 4px solid ${theme.colors.smoke};
     color: ${theme.colors.slate};
     padding-left: ${theme.space[3]}px;
     margin-left: 0;
   }
-
   p,
   li {
     margin-top: ${theme.space[2]}px;
     margin-bottom: ${theme.space[2]}px;
   }
-
   hr {
     border: 0;
     height: 4px;
@@ -78,36 +68,30 @@ const MarkdownBody = styled(Box)`
     margin: ${theme.space[4]}px auto;
     border-radius: 4px;
   }
-
   table {
     width: 100%;
     margin-top: ${theme.space[3]}px;
     margin-bottom: ${theme.space[3]}px;
     border-collapse: collapse;
     border: 1px solid ${theme.colors.smoke};
-
     th {
       font-weight: ${theme.bold};
       text-align: left;
     }
-
     td,
     th {
       padding: ${theme.space[2]}px;
       border-right: 1px solid ${theme.colors.smoke};
       border-bottom: 1px solid ${theme.colors.smoke};
     }
-
     tbody {
       th {
         width: 25%;
       }
-
       th,
       td {
         border-bottom: 1px solid ${theme.colors.smoke};
       }
-
       tr:last-child {
         th,
         td {
@@ -116,7 +100,6 @@ const MarkdownBody = styled(Box)`
       }
     }
   }
-
   pre,
   code,
   kbd {
@@ -124,7 +107,6 @@ const MarkdownBody = styled(Box)`
     font-size: 100%;
     word-break: break-word;
   }
-
   pre,
   code {
     background-color: ${theme.colors.gray[1]};
@@ -141,18 +123,15 @@ const MarkdownBody = styled(Box)`
   pre code {
     padding: 0;
   }
-
   code,
   kbd {
     border-radius: 3px;
     padding: ${theme.space[1]}px;
   }
-
   kbd {
     background-color: ${theme.colors.gray[8]};
     color: ${theme.colors.white};
   }
-
   pre {
     border-radius: ${theme.radius};
     line-height: 1.375;
@@ -163,7 +142,6 @@ const MarkdownBody = styled(Box)`
     position: relative;
     word-wrap: normal;
   }
-
   // Custom syntax highlighting
   .namespace {
     opacity: 0.75;
@@ -225,7 +203,6 @@ const MarkdownBody = styled(Box)`
   .token.entity {
     cursor: help;
   }
-
   /* Line highlighting */
   pre[data-line] {
     position: relative;

@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import { Box, Text } from '@hackclub/design-system'
+import { Text } from '@hackclub/design-system'
 import Post from 'components/challenge/Post'
 import LoadingBar from 'components/LoadingBar'
-import ErrorPage from 'components/admin/ErrorPage'
+import ErrorPage from 'components/ErrorPage'
 import api from 'api'
 import { includes, isEmpty, get, orderBy } from 'lodash'
 
@@ -67,13 +67,13 @@ class Posts extends Component {
     posts.forEach(post => {
       let sum = 0
       post.upvotes.forEach(upvote => {
-        if (upvote.user.id == userId) {
+        if (upvote.user.id === userId) {
           upvotes.push(post.id)
         }
-        if (submitterIds.indexOf(upvote.user.id) == -1) {
+        if (submitterIds.indexOf(upvote.user.id) === -1) {
           // votes by non-submitters count as 1
           sum++
-        } else if (upvote.user.id == post.creator.id) {
+        } else if (upvote.user.id === post.creator.id) {
           // votes by subitters to their own work count as 1
           sum++
         } else {
@@ -130,25 +130,23 @@ class Posts extends Component {
 
   onUpvote(e, postId) {
     const { userId: authUser } = this.props
-    const { submitterIds } = this.state
     // Ignore the click if we're not authed
     if (authUser === undefined) return
     // You can only vote if you submitted a project
     let { upvotes, posts } = this.state
-    let post = posts.find(post => post.id == postId)
+    let post = posts.find(post => post.id === postId)
     // You can't click on posts that are still loading
     if (post.loading) {
       return
     }
-    let postIndex = posts.indexOf(post)
     if (includes(upvotes, postId)) {
       // if this is nil, this means we've ran into a race where this.state.posts
       // hasn't finished updating (probably from a this.refreshPosts call) -
       // just ignore the user action for the time being and let them retry once
       // it actually updates
       const upvote = posts
-        .find(post => post.id == postId)
-        .upvotes.find(upvote => upvote.user.id == authUser)
+        .find(post => post.id === postId)
+        .upvotes.find(upvote => upvote.user.id === authUser)
 
       if (!upvote) return
 
@@ -165,7 +163,7 @@ class Posts extends Component {
       const updatedPosts = posts.map(post => {
         if (post.id === postId) {
           const modifiedUpvotes = post.upvotes.filter(
-            upvote => upvote.user.id != authUser
+            upvote => upvote.user.id !== authUser
           )
           return { ...post, loading: true, upvotes: modifiedUpvotes }
         } else {

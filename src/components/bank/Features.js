@@ -7,12 +7,9 @@ import {
   Flex,
   Icon,
   Text,
-  Hide,
   theme
 } from '@hackclub/design-system'
-import { Headline, Subhline, Lead } from 'components/Content'
-import { Fade } from 'react-reveal'
-import Sheet from 'components/Sheet'
+import { Headline, Lead } from 'components/Content'
 
 const Base = styled(Box.section).attrs({ bg: 'dark', color: 'gray.3' })``
 

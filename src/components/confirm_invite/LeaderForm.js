@@ -185,7 +185,7 @@ export default withFormik({
       .string()
       .required('required')
       .test({
-        message: '${path} should not be a single line',
+        message: 'path should not be a single line',
         test: value => {
           try {
             return value.trim().split(/\r\n|\r|\n/).length > 1

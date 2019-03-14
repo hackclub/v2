@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled, { css } from 'styled-components'
 import {
   BackgroundImage,
@@ -14,12 +14,23 @@ import {
   theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
+import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Sheet from 'components/Sheet'
 import { Headline, Featline } from 'components/Content'
 import Footer from 'components/Footer'
 import { stats } from 'data.json'
+
+A.link = A.withComponent(Link)
+const FeatureLink = styled(A.link).attrs({
+  mt: [3, 4],
+  fontSize: 3,
+  underline: true,
+  chevronRight: true
+})`
+  display: block;
+`
 
 const shadows = css`
   h2,
@@ -112,16 +123,6 @@ const PhotoFeature = styled(PhotoSection.withComponent(TextFeature))`
   > p {
     color: ${theme.colors.white};
   }
-`
-
-A.link = A.withComponent(Link)
-const FeatureLink = styled(A.link).attrs({
-  mt: [3, 4],
-  fontSize: 3,
-  underline: true,
-  chevronRight: true
-})`
-  display: block;
 `
 
 const Module = ({ icon, name, body, color = 'white', ...props }) => (
@@ -238,7 +239,7 @@ const description =
   'Learn how to start a coding club at your high school through Hack Club. Get programming club ideas, curriculum, activities, and more.'
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet
       title={title}
       meta={[
@@ -538,5 +539,5 @@ export default () => (
       </PhotoFeature>
     </Box>
     <Footer />
-  </Fragment>
+  </Layout>
 )

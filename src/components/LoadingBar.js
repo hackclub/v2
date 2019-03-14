@@ -6,6 +6,9 @@ import PropTypes from 'prop-types'
 const Base = styled(Box)`
   position: relative;
   ${props => props.fill && { height: '100vh' }};
+  div {
+    border-radius: 50%;
+  }
 `
 
 const LoadingBar = props => (
@@ -15,7 +18,7 @@ const LoadingBar = props => (
 )
 
 LoadingBar.propTypes = {
-  fill: PropTypes.boolean
+  fill: PropTypes.bool
 }
 
 export default LoadingBar

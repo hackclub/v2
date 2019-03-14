@@ -1,52 +1,31 @@
+import React from 'react'
 import styled from 'styled-components'
-import React, { Fragment } from 'react'
-import {
-  Container,
-  Heading,
-  Text,
-  Section,
-  theme
-} from '@hackclub/design-system'
+import { Container, Icon, Section, theme } from '@hackclub/design-system'
+import Layout from 'components/Layout'
 import Helmet from 'react-helmet'
-import { Headline, Lead } from 'components/Content'
 import Nav from 'components/Nav'
-import Sheet from 'components/Sheet'
-import RedeemTechDomainForm from 'components/RedeemTechDomainForm'
+import Footer from 'components/Footer'
+import { Headline, Lead } from 'components/Content'
 
-const Base = styled(Section).attrs({
-  px: 3,
-  align: 'center',
-  color: 'white'
-})`
-  background-color: ${theme.colors.red[5]};
-  background-image: linear-gradient(
-    -32deg,
-    ${theme.colors.orange[4]},
-    ${theme.colors.red[5]},
-    ${theme.colors.red[6]}
-  );
-  min-height: 100vh;
+const Header = styled(Section)`
+  background-color: ${theme.colors.primary};
+  background-image: ${theme.gradient('cyan.6', 'teal.6')};
 `
 
 export default () => (
-  <Fragment>
-    <Helmet title="Free .TECH Domain – Hack Club" />
+  <Layout>
+    <Helmet title=".TECH domains – Hack Club" />
     <Nav />
-    <Base>
-      <Container maxWidth={32} pt={[5, 6]}>
-        <Headline mb={3}>Free .TECH Domain!</Headline>
-        <Lead color="red.0" maxWidth={28} mb={2}>
-          Every Hack Club member gets a free .TECH domain from our awesome
-          partners.
-        </Lead>
-        <Lead color="red.0" maxWidth={28}>
-          Submit your request below and the .TECH team will set you up—it
-          generally takes about a day.
-        </Lead>
+    <Header align="center" color="white" px={0}>
+      <Container maxWidth={32} p={3} mt={[5, 6]}>
+        <Icon glyph="history" size={64} />
+        <Headline mb={0}>Our .TECH domain offer expired.</Headline>
       </Container>
-      <Sheet maxWidth={28} align="left" my={4} mx="auto">
-        <RedeemTechDomainForm />
-      </Sheet>
-    </Base>
-  </Fragment>
+      <Lead maxWidth={32} px={3} mb={[4, 5]} fontSize={3}>
+        We used to have a partnership with .TECH domains to give Hack Clubbers
+        free domains. Sadly, that offer is no longer available.
+      </Lead>
+    </Header>
+    <Footer />
+  </Layout>
 )

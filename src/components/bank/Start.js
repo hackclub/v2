@@ -1,13 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {
-  Box,
-  Container,
-  Link as A,
-  Flex,
-  Text,
-  theme
-} from '@hackclub/design-system'
+import { Box, Container, Flex, Text, theme } from '@hackclub/design-system'
 import { Fade } from 'react-reveal'
 import { Headline, Subhline, Lead } from 'components/Content'
 import Sheet from 'components/Sheet'
@@ -29,7 +22,6 @@ const Timeline = styled(Flex).attrs({
 })`
   line-height: 1.125;
   position: relative;
-
   &:before {
     content: '';
     background: linear-gradient(

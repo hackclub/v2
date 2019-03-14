@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Box, Flex, Input, theme } from '@hackclub/design-system'
 import Icon from '@hackclub/icons'
-import { placeholder } from 'polished'
 
 const Relative = styled(Box)`
   position: relative;
@@ -27,7 +26,6 @@ const Search = styled(Input).attrs({
   max-width: 100%;
   border: 0;
   border-radius: ${theme.radii[2]};
-  ${({ theme }) => placeholder({ color: theme.colors.muted })};
   font-size: ${theme.fontSizes[3]}px;
   box-shadow: ${theme.boxShadows[1]}, 0 16px 32px rgba(0, 0, 0, 0.0625);
   transition: ${theme.transition} box-shadow;
@@ -37,6 +35,9 @@ const Search = styled(Input).attrs({
   }
   ${theme.mediaQueries.md} {
     font-size: ${theme.fontSizes[4]}px;
+  }
+  ::placeholder {
+    color: ${theme.colors.muted};
   }
 `
 

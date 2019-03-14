@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {
   Box,
@@ -8,13 +8,13 @@ import {
   Text,
   theme
 } from '@hackclub/design-system'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
+import Layout from 'components/Layout'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import IconButton from 'components/IconButton'
-import Snow from 'components/Snow'
-import { Headline, Lead } from 'components/Content'
+import { Lead } from 'components/Content'
 
 const Hero = styled(Box.withComponent('article'))`
   background: linear-gradient(
@@ -46,19 +46,12 @@ const Megaline = styled(Heading.h1).attrs({
   }
 `
 
-const CTA = styled(IconButton).attrs({
-  is: LargeButton,
-  inverted: true,
-  color: 'white',
-  glyph: 'slack'
-})``
-
 const title = 'Hack Club Secret Santa – Holiday 2018'
 const desc = 'Find your holiday zen this year with Hack Club’s Secret Santa.'
 const img = 'https://hackclub.com/cards/santa.png'
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet
       title={title}
       meta={[
@@ -72,7 +65,6 @@ export default () => (
         { property: 'og:url', content: 'https://hackclub.com/santa' }
       ]}
     />
-    <Snow />
     <Nav />
     <Hero py={[4, 5]}>
       <Container px={3} py={[6, 7, 8]}>
@@ -98,5 +90,5 @@ export default () => (
       </Container>
     </Hero>
     <Footer />
-  </Fragment>
+  </Layout>
 )

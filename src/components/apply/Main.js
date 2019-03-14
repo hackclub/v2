@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import styled, { css } from 'styled-components'
 import {
   Box,
-  Button,
   Container,
   Flex,
   Heading,
@@ -11,14 +10,13 @@ import {
   Icon,
   theme
 } from '@hackclub/design-system'
-import { wordWrap } from 'polished'
 import LeaderInvite from 'components/apply/LeaderInvite'
 import { clubApplicationSchema } from 'components/apply/ClubApplicationForm'
+import { Headline } from 'components/Content'
 import Sheet from 'components/Sheet'
 import SubmitButton from 'components/apply/SubmitButton'
 import Status from 'components/apply/Status'
 import Link from 'gatsby-link'
-import { timeSince } from 'helpers'
 import api from 'api'
 import storage from 'storage'
 
@@ -32,29 +30,6 @@ const A = styled(DSLink)`
     text-decoration: underline;
   }
 `
-
-const Title = styled(Heading.h1).attrs({ fontSize: 6 })`
-  line-height: 1.25;
-`
-
-// NOTE(@lachlanjc): for use if/when we have a slideshow experience
-// const PrimaryButton = styled(IconButton).attrs({
-//   name: 'edit',
-//   bg: 'primary',
-//   circle: true,
-//   size: 36,
-//   p: 3
-// })`
-//   position: absolute;
-//   right: 0;
-//   bottom: -64px;
-//   box-shadow: ${theme.boxShadows[1]} !important;
-//   transition: ${theme.transition} box-shadow;
-//   &:hover,
-//   &:focus {
-//     box-shadow: ${theme.boxShadows[2]} !important;
-//   }
-// `
 
 const Rejected = ({ resetCallback }) => (
   <Box mb={4}>
@@ -78,7 +53,7 @@ const SectionBase = styled(Flex).attrs({
   min-height: ${props => (props.sm ? 6 : 10)}rem;
 `
 const SectionHeading = styled(Heading.h2).attrs({
-  fontSize: props => (props.sm ? 4 : 5),
+  fontSize: props => (props.sm ? [3, 4] : [4, 5]),
   regular: true,
   align: 'left'
 })`
@@ -87,7 +62,9 @@ const SectionHeading = styled(Heading.h2).attrs({
   align-items: center;
   line-height: 1.25;
   max-width: 32rem;
-  ${wordWrap('break-word')};
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 `
 const SectionIcon = styled(Icon).attrs({
   color: props => (props.open ? 'gray.5' : 'gray.4'),
@@ -111,7 +88,7 @@ const SectionIcon = styled(Icon).attrs({
 class Section extends Component {
   state = { open: false }
 
-  toggle = e =>
+  toggle = () =>
     this.setState(({ open }) => ({ open: this.props.to ? open : !open }))
 
   render() {
@@ -143,8 +120,9 @@ const HelpSheet = styled(Container).attrs({
 })`
   border-radius: ${theme.radii[2]};
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  ${theme.mediaQueries.md} {
+    align-items: center;
+  }
 `
 
 const Help = () => (
@@ -176,22 +154,15 @@ const profileStatus = profile =>
       : 'incomplete'
 
 const Main = props => {
-  const {
-    id,
-    leader_profiles,
-    updated_at,
-    created_at,
-    point_of_contact_id
-  } = props.app
+  const { id, leader_profiles, updated_at, created_at } = props.app
   const { callback, app, resetCallback } = props
 
   const leaderProfile = leader_profiles.find(
-    profile => profile.user.id == props.userId
+    profile => profile.user.id === props.userId
   )
   const coLeaderProfiles = leader_profiles.filter(
-    profile => profile.user.id != props.userId
+    profile => profile.user.id !== props.userId
   )
-  const isPoc = leaderProfile.user.id === point_of_contact_id
 
   const completeProfiles = leader_profiles.every(
     profile => profile.completed_at
@@ -247,16 +218,20 @@ const Main = props => {
         <Help />
       </Sheet>
       <Sheet p={[3, 4, 5]}>
-        <Title mb={4} style={{ position: 'relative' }}>
-          Your application to Hack Club is{' '}
+        <Headline mb={4} style={{ position: 'relative' }}>
+          <Text.span style={{ display: 'block' }}>
+            Your application to Hack Club is
+          </Text.span>
           <SubmitStatus {...submitStatusProps} />
-        </Title>
+        </Headline>
         <Section
           to={`/apply/club?id=${id}`}
           name={
             <Fragment>
-              <Text.span bold>Club application</Text.span>
-              <Status type={applicationStatus()} ml={[2, 3]} />
+              <Text.span bold mr={3}>
+                Club application
+              </Text.span>
+              <Status type={applicationStatus()} />
             </Fragment>
           }
         />
@@ -264,8 +239,10 @@ const Main = props => {
           to={`/apply/leader?id=${leaderProfile.id}`}
           name={
             <Fragment>
-              <Text.span bold>My personal profile</Text.span>
-              <Status type={profileStatus(leaderProfile)} ml={[2, 3]} />
+              <Text.span bold mr={3}>
+                My personal profile
+              </Text.span>
+              <Status type={profileStatus(leaderProfile)} />
             </Fragment>
           }
         />
@@ -290,6 +267,7 @@ const Main = props => {
               glyph="member-remove"
               onClick={e => {
                 if (
+                  // eslint-disable-next-line
                   confirm(
                     `Are you sure you want to remove ${
                       profile.user.email

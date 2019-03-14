@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {
   Heading,
@@ -9,8 +9,9 @@ import {
   Link as A,
   theme
 } from '@hackclub/design-system'
+import Layout from 'components/Layout'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Nav from 'components/Nav'
 import Start from 'components/Start'
 import Footer from 'components/Footer'
@@ -113,7 +114,7 @@ const desc =
   'We want to make building apps and websites accessible to everyone through programming clubs at every high school.'
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet
       title={title}
       meta={[
@@ -211,5 +212,5 @@ export default () => (
     </Row>
     <Start mt={3} />
     <Footer mt={5} />
-  </Fragment>
+  </Layout>
 )

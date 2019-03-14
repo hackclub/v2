@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {
   Container,
@@ -7,12 +7,13 @@ import {
   LargeButton,
   theme
 } from '@hackclub/design-system'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
+import Layout from 'components/Layout'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import IconButton from 'components/IconButton'
-import { Headline, Lead } from 'components/Content'
+import { Lead } from 'components/Content'
 
 theme.colors.night = '#c57206'
 theme.colors.nightMuted = '#a56a3b'
@@ -64,7 +65,7 @@ const desc =
 const img = 'https://hackclub.com/cards/night.png'
 
 export default () => (
-  <Fragment>
+  <Layout>
     <Helmet
       title={title}
       meta={[
@@ -104,5 +105,5 @@ export default () => (
       </Container>
     </Hero>
     <Footer dark />
-  </Fragment>
+  </Layout>
 )

@@ -15,8 +15,7 @@ const InnerForm = props => {
     handleChange,
     handleBlur,
     handleSubmit,
-    isSubmitting,
-    params
+    isSubmitting
   } = props
   return (
     <FormWrapper>
@@ -212,6 +211,7 @@ const InnerForm = props => {
                 <a
                   href="https://www.quora.com/When-have-you-most-successfully-hacked-a-non-computer-system-to-your-advantage"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Here are examples
                 </a>{' '}
@@ -273,8 +273,11 @@ const LeaderApplicationForm = withFormik({
       .then(json => {
         setSubmitting(false)
         // update name stored in analytics w/ latest value if it's changed
+        // eslint-disable-next-line
         analytics.ready(() => {
+          // eslint-disable-next-line
           if (analytics.user().traits().email != json.leader_name) {
+            // eslint-disable-next-line
             analytics.identify({ name: json.leader_name })
           }
         })

@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import { Text, Flex, Box, Link as A } from '@hackclub/design-system'
 import Flag from 'components/Flag'
 import LogoutButton from 'components/auth/LogoutButton'
-import { withRouter } from 'react-router-dom'
 import { startCase, toLower } from 'lodash'
 
 const Crumb = ({ isLast, ...props }) => {
@@ -11,11 +10,13 @@ const Crumb = ({ isLast, ...props }) => {
   return <Tag {...props} />
 }
 
-class BreadcrumbClass extends Component {
+class Breadcrumb extends Component {
   state = { path: [] }
 
   componentDidMount() {
-    const path = location.pathname.split('/').filter(chunk => chunk != '')
+    const path = window.location.pathname
+      .split('/')
+      .filter(chunk => chunk !== '')
     this.setState({ path })
   }
 
@@ -48,8 +49,6 @@ class BreadcrumbClass extends Component {
     )
   }
 }
-
-const Breadcrumb = withRouter(BreadcrumbClass)
 
 const ApplyNav = ({ breadcrumb = true, ...props }) => (
   <Flex

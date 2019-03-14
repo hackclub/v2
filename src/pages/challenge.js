@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react'
+import React, { Component } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import {
   Box,
@@ -12,6 +12,8 @@ import {
   theme,
   cx
 } from '@hackclub/design-system'
+import { graphql } from 'gatsby'
+import Layout from 'components/Layout'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
@@ -156,7 +158,7 @@ export default class extends Component {
     const challenge = data.allChallengesJson.edges[0].node
     const ended = Date.parse(new Date()) > Date.parse(challenge.end)
     return (
-      <Fragment>
+      <Layout>
         <Helmet
           title={title}
           meta={[
@@ -212,20 +214,32 @@ export default class extends Component {
             </HeaderAreaText>
             <HeaderAreaInfo>
               <Text fontSize={2}>
-                🌟 <strong>{challenge.name}</strong>
+                <span role="img" aria-label="">
+                  🌟
+                </span>{' '}
+                <strong>{challenge.name}</strong>
               </Text>
               <Text fontSize={2}>
-                🎁 {challenge.description} (thank you{' '}
+                <span role="img" aria-label="">
+                  🎁
+                </span>{' '}
+                {challenge.description} (thank you{' '}
                 <Link href="https://sourcegraph.com" target="_blank">
                   Sourcegraph
                 </Link>
                 !)
               </Text>
               <Text fontSize={2}>
-                ℹ️ Competition open to Hack Club community members
+                <span role="img" aria-label="">
+                  ℹ️
+                </span>{' '}
+                Competition open to Hack Club community members
               </Text>
               <Text fontSize={2}>
-                🏅 Voting ends on {dt(challenge.end)}. Top 3 voted win!
+                <span role="img" aria-label="">
+                  🏅
+                </span>{' '}
+                Voting ends on {dt(challenge.end)}. Top 3 voted win!
               </Text>
             </HeaderAreaInfo>
             <HeaderAreaForm status={status}>
@@ -274,7 +288,7 @@ export default class extends Component {
           <DiscussChallenge />
         </Container>
         <Footer />
-      </Fragment>
+      </Layout>
     )
   }
 }

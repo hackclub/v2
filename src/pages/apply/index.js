@@ -2,17 +2,12 @@ import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
 import api from 'api'
 import storage from 'storage'
-import {
-  Flex,
-  Heading,
-  LargeButton,
-  Link as DSLink,
-  Text
-} from '@hackclub/design-system'
+import { Flex, Heading, LargeButton, Text } from '@hackclub/design-system'
 import styled from 'styled-components'
 
 import Pulse from 'pulse'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
+import Layout from 'components/Layout'
 import ApplyNav from 'components/apply/ApplyNav'
 import Sheet from 'components/Sheet'
 import Main from 'components/apply/Main'
@@ -41,7 +36,8 @@ export default class extends Component {
   createNewApplication = (firstTime = false) => {
     const msg =
       'If you start a new application you won’t be able to access this one. Continue?'
-    if (!firstTime && !confirm(msg)) {
+    // eslint-disable-next-line
+    if (!firstTime && !window.confirm(msg)) {
       return Promise.resolve(null)
     }
     return api
@@ -137,7 +133,7 @@ export default class extends Component {
       case 'finished':
         return (
           <Fragment>
-            <ApplyNav breadcrumb={0} />
+            <ApplyNav breadcrumb={false} />
             <Pulse />
             <Main
               app={app}
@@ -158,10 +154,10 @@ export default class extends Component {
 
   render() {
     return (
-      <Fragment>
+      <Layout>
         <Helmet title="Apply – Hack Club" />
         {this.content()}
-      </Fragment>
+      </Layout>
     )
   }
 }

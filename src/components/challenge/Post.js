@@ -12,7 +12,6 @@ import {
   Text,
   theme
 } from '@hackclub/design-system'
-import { wordWrap } from 'polished'
 import PropTypes from 'prop-types'
 import { Modal, Overlay, CloseButton } from 'components/Modal'
 import Comments from 'components/challenge/Comments'
@@ -36,7 +35,9 @@ const Index = styled(Hide)`
 `
 
 const Description = styled(Text)`
-  ${wordWrap('break-word')};
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
 `
 
 const UpvoteButton = styled(Button.button)`
@@ -336,7 +337,7 @@ class Post extends Component {
       .catch(err => {
         if (err.status !== 401) {
           this.setState({ status: 'error' })
-          console.log(error)
+          console.log(err)
         }
       })
       .then(user =>

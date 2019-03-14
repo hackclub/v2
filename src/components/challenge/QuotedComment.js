@@ -27,7 +27,6 @@ const DeleteButton = props => (
 const Root = styled(Flex)`
   border-radius: 15px;
   align-items: flex-start;
-
   ~ .public-DraftEditorPlaceholder-inner {
     top: ${theme.space[2]}px !important;
   }

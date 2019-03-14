@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react'
-import ErrorPage from 'components/admin/ErrorPage'
+import ErrorPage from 'components/ErrorPage'
 import LoadingBar from 'components/LoadingBar'
 import LoginPage from 'components/auth/Login'
 import LeaderForm from 'components/confirm_invite/LeaderForm'
+import Layout from 'components/Layout'
 import Nav from 'components/apply/ApplyNav'
 import api from 'api'
 import Helmet from 'react-helmet'
@@ -27,7 +28,7 @@ class Invite extends Component {
     formActive: false
   }
 
-  rejectInvite() {
+  rejectInvite = () => {
     const { invite } = this.props
     this.setState({ status: 'loading' })
     api
@@ -41,8 +42,8 @@ class Invite extends Component {
       })
   }
 
-  acceptInvite() {
-    const { invite, user } = this.props
+  acceptInvite = () => {
+    const { user } = this.props
     if (user.new_leader) {
       this.setState({ status: 'loading' })
       this.submitAcceptance()
@@ -51,7 +52,7 @@ class Invite extends Component {
     }
   }
 
-  submitAcceptance(newLeader) {
+  submitAcceptance = newLeader => {
     const { invite, updateLeader } = this.props
     if (newLeader) {
       updateLeader(newLeader)
@@ -84,7 +85,7 @@ class Invite extends Component {
                     email={user.email}
                     userId={user.id}
                     clubId={invite.new_club.id}
-                    callback={::this.submitAcceptance}
+                    callback={this.submitAcceptance}
                   />
                 </Modal>
                 <Overlay
@@ -107,7 +108,7 @@ class Invite extends Component {
               color="white"
               bg="primary"
               mx={2}
-              onClick={::this.acceptInvite}
+              onClick={this.acceptInvite}
             >
               Accept
             </Button>
@@ -115,7 +116,7 @@ class Invite extends Component {
               color="white"
               bg="primary"
               mx={2}
-              onClick={::this.rejectInvite}
+              onClick={this.rejectInvite}
               inverted
             >
               Reject
@@ -178,7 +179,7 @@ export default class extends Component {
       })
   }
 
-  updateLeader(newLeader) {
+  updateLeader = newLeader => {
     this.setState({
       user: {
         ...this.state.user,
@@ -188,13 +189,13 @@ export default class extends Component {
   }
 
   render() {
-    const { status, invites, pendingInviteCount, leader, user } = this.state
+    const { status, invites, pendingInviteCount, user } = this.state
     switch (status) {
       case 'loading':
         return <LoadingBar fill />
       case 'success':
         return (
-          <Fragment>
+          <Layout>
             <Helmet title="Confirm Invitation – Hack Club" />
             <Nav />
             <Container maxWidth={32}>
@@ -213,7 +214,7 @@ export default class extends Component {
                   key={invite.id}
                   invite={invite}
                   user={user}
-                  updateLeader={::this.updateLeader}
+                  updateLeader={this.updateLeader}
                   rejected={invite.rejected_at !== null}
                   accepted={invite.accepted_at !== null}
                 />
@@ -232,10 +233,14 @@ export default class extends Component {
                 </Box>
               )}
             </Container>
-          </Fragment>
+          </Layout>
         )
       case 'needsToAuth':
-        return <LoginPage heading="Confirm your invite" />
+        return (
+          <Layout>
+            <LoginPage heading="Confirm your invite" />
+          </Layout>
+        )
       default:
         return <ErrorPage />
     }

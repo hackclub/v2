@@ -66,6 +66,9 @@
     "validator": "^10.11.0",
     "yup": "^0.26.10"
   },
+  "keywords": [
+    "gatsby"
+  ],
   "devDependencies": {
     "cheerio": "^1.0.0-rc.2",
     "minimist": "^1.2.0",

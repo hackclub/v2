@@ -23,9 +23,13 @@ const searchToObject = search => {
   return result
 }
 
+function Exception(err) {
+  this.err = err
+}
+
 export default {
   set: (key, value) => {
-    const { search, protocol, host, pathname } = location
+    const { search, protocol, host, pathname } = window.location
     if (window.history.pushState) {
       const modifiedObject = { ...searchToObject(search), [key]: value }
       const modifiedArray = Object.keys(modifiedObject).map(
@@ -40,6 +44,5 @@ export default {
       )
     }
   },
-  get: key =>
-    searchToObject(location.search) && searchToObject(location.search)[key]
+  get: key => searchToObject(window.location.search)[key]
 }

@@ -14,7 +14,6 @@ import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import IconButton from 'components/IconButton'
-import Snow from 'components/Snow'
 import { Lead } from 'components/Content'
 
 const Hero = styled(Box.withComponent('article'))`
@@ -66,7 +65,6 @@ export default () => (
         { property: 'og:url', content: 'https://hackclub.com/santa' }
       ]}
     />
-    <Snow />
     <Nav />
     <Hero py={[4, 5]}>
       <Container px={3} py={[6, 7, 8]}>

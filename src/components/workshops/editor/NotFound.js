@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Icon, Text, Container } from '@hackclub/design-system'
+import { Flex, Icon, Text } from '@hackclub/design-system'
 import Link from 'gatsby-link'
 
 import Sheet from 'components/Sheet'
@@ -13,12 +13,10 @@ const ErrorContainer = styled(Flex).attrs({
   justify: 'center'
 })`
   min-height: 100vh;
-
   div {
     height: fit-content;
     max-width: 42rem;
   }
-
   a svg {
     transform: rotate(180deg);
   }

@@ -24,12 +24,7 @@ import {
 } from 'components/Breadcrumbs'
 import IconButton from 'components/IconButton'
 import MarkdownBody from 'components/MarkdownBody'
-<<<<<<< HEAD
-import FeedbackForm from 'components/workshops/FeedbackForm'
-import Carousel from 'components/workshops/carousel/Carousel'
-=======
 import Carousel from 'components/workshops/Carousel'
->>>>>>> Remove workshop feedback form
 import DiscussOnSlack from 'components/DiscussOnSlack'
 import ShareButton from 'components/ShareButton'
 import Sheet from 'components/Sheet'

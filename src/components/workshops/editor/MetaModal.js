@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
-import styled from 'styled-components'
-import { Field, Button, theme } from '@hackclub/design-system'
+import { Field, Button } from '@hackclub/design-system'
 import { Formik } from 'formik'
 import GithubSlugger from 'github-slugger'
 

@@ -44,5 +44,6 @@ export default {
       )
     }
   },
-  get: key => searchToObject(window.location.search)[key]
+  get: key =>
+    searchToObject(location.search) && searchToObject(location.search)[key]
 }

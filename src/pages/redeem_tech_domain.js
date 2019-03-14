@@ -1,17 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import {
-  Container,
-  Icon,
-  LargeButton as Button,
-  Link as A,
-  Section,
-  Text,
-  theme
-} from '@hackclub/design-system'
+import { Container, Icon, Section, theme } from '@hackclub/design-system'
 import Layout from 'components/Layout'
 import Helmet from 'react-helmet'
-import { Link } from 'gatsby'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import { Headline, Lead } from 'components/Content'
@@ -20,8 +11,6 @@ const Header = styled(Section)`
   background-color: ${theme.colors.primary};
   background-image: ${theme.gradient('cyan.6', 'teal.6')};
 `
-
-A.link = A.withComponent(Link)
 
 export default () => (
   <Layout>

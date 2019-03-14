@@ -4,7 +4,6 @@ import { isURL } from 'validator'
 import {
   Box,
   Flex,
-  Card,
   Link as A,
   Text,
   Image,

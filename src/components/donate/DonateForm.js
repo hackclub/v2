@@ -103,7 +103,7 @@ class DonateForm extends Component {
           <Text fontSize={3} bold>
             Select an amount
           </Text>
-          <Text.span mx={2} children="—" />
+          <Text.span mx={[1, 2]} children="—" />
           <Label>
             <input
               name="recurring"

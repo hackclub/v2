@@ -22,6 +22,7 @@ const Hero = styled(Box.withComponent('article'))`
     ${theme.colors.blue[5]},
     ${theme.colors.blue[6]}
   );
+  min-height: 100vh;
 `
 
 const Megaline = styled(Heading.h1).attrs({

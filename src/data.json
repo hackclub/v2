@@ -1,13 +1,13 @@
 {
   "name": "Hack Club",
-  "title": "Hack Club: High school computer science clubs",
+  "title": "Hack Club: Teenagers with superpowers",
   "description": "Hack Club is a global nonprofit network of high school programming clubs. Start a coding club with our guidance, activities, ideas, curriculum, and community.",
   "url": "https://hackclub.com",
   "twitter": "@hackclub",
-  "img": "https://hackclub.com/social-photo.jpg",
+  "img": "https://hackclub.com/social-photo_2.jpg",
   "stats": {
     "percentage_of_us_high_schools": "2%",
-    "school_count": 300,
+    "school_count": 315,
     "state_count": 35,
     "country_count": 17,
     "approximate_members": "3K+"

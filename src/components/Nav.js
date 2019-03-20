@@ -118,7 +118,7 @@ const NavBar = styled(Box.withComponent('nav'))`
 
 const Navigation = props => (
   <NavBar role="navigation" {...props}>
-    <Link to="/donate/" children="Donate" />
+    <Link to="/start/" children="Clubs" />
     <Link to="/workshops/" children="Workshops" />
     <a
       href="https://hackathons.hackclub.com/"
@@ -127,8 +127,7 @@ const Navigation = props => (
       rel="noopener noreferrer"
     />
     <Link to="/bank/" children="Bank" />
-    <Link to="/hackers/" children="Hackers" />
-    <Link to="/start/" children="Get&nbsp;Started&nbsp;»" />
+    <Link to="/donate/" children="Donate" />
   </NavBar>
 )
 
@@ -238,7 +237,7 @@ class Header extends Component {
             <Toggle glyph={toggled ? 'view-close' : 'menu'} toggled={toggled} />
           </ToggleContainer>
         </Content>
-        <Navigation isMobile toggled={toggled} color={baseColor} tdark={dark} />
+        <Navigation isMobile toggled={toggled} color={baseColor} dark={dark} />
         {toggled && <ScrollLock />}
       </Root>
     )

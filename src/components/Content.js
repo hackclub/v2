@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Heading, Text, Container, hexa, cx } from '@hackclub/design-system'
+import { Heading, Text, Container, theme } from '@hackclub/design-system'
 
 export const Title = styled(Heading.h1).attrs({
   fontSize: [7, 8, 9],
@@ -17,6 +17,9 @@ export const Headline = styled(Heading.h2).attrs({
   display: block;
   line-height: 1;
   width: 100%;
+  ${theme.mediaQueries.lg} {
+    line-height: 0.9375;
+  }
 `
 
 export const Subhline = styled(Heading.h3).attrs({
@@ -36,14 +39,14 @@ export const Featline = styled(Heading.h3).attrs({
 `
 
 export const ColoredHeadline = styled(Headline).attrs({ pb: 2, mb: 3 })`
-  color: ${({ colors }) => cx(colors[2])};
+  color: ${({ colors }) => theme.cx(colors[2])};
   max-width: 54rem;
   @supports (-webkit-background-clip: text) {
     background: linear-gradient(
       to right,
-      ${({ colors }) => cx(colors[0])} 25%,
-      ${({ colors }) => cx(colors[1])} 50%,
-      ${({ colors }) => cx(colors[2])}
+      ${({ colors }) => theme.cx(colors[0])} 25%,
+      ${({ colors }) => theme.cx(colors[1])} 50%,
+      ${({ colors }) => theme.cx(colors[2])}
     );
     background-repeat: no-repeat;
     -webkit-background-clip: text;
@@ -59,8 +62,8 @@ export const Highlight = styled(Text.span)`
   border-radius: 1em;
   background-image: linear-gradient(
     -100deg,
-    ${hexa('yellow.2', 0.33)},
-    ${hexa('yellow.2', 0.95)},
-    ${hexa('yellow.2', 0.1)}
+    ${theme.hexa('yellow.2', 0.33)},
+    ${theme.hexa('yellow.2', 0.95)},
+    ${theme.hexa('yellow.2', 0.1)}
   );
 `

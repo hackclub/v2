@@ -23,10 +23,6 @@ const searchToObject = search => {
   return result
 }
 
-function Exception(err) {
-  this.err = err
-}
-
 export default {
   set: (key, value) => {
     const { search, protocol, host, pathname } = window.location

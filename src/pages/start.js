@@ -18,31 +18,64 @@ import { Link } from 'gatsby'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Sheet from 'components/Sheet'
-import { Headline, Featline } from 'components/Content'
+import { Headline, Highlight, Lead } from 'components/Content'
 import Footer from 'components/Footer'
 import { stats } from 'data.json'
 
 A.link = A.withComponent(Link)
 const FeatureLink = styled(A.link).attrs({
-  mt: [3, 4],
+  mt: 3,
   fontSize: 3,
-  underline: true,
+  hoverline: true,
   chevronRight: true
 })`
   display: block;
 `
 
+const Stats = styled(Flex.withComponent('ul')).attrs({
+  align: 'center',
+  justify: 'center',
+  wrap: true
+})`
+  line-height: 1;
+  list-style: none;
+  padding: 0;
+`
+Stats.Stat = styled(Text.withComponent('li')).attrs({
+  fontSize: [2, 3],
+  color: 'smoke',
+  pl: 0
+})`
+  + li:before {
+    content: '\00b7';
+    position: relative;
+    top: ${theme.space[1]}px;
+    margin: 0 ${theme.space[1]}px;
+    font-size: ${theme.fontSizes[4]}px;
+  }
+`
+
 const shadows = css`
+  h1,
   h2,
   h3,
   p,
+  li,
   ${FeatureLink} {
     color: ${theme.colors.white};
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.75);
   }
 `
-const PhotoSection = styled(Section)`
-  position: relative;
+
+const photoSection = css`
+  border-radius: ${theme.radii[2]};
+  background-size: cover;
+  @media (hover: hover) {
+    background-attachment: fixed;
+  }
+`
+const PhotoHeader = styled(Section).attrs({ px: 0 })`
+  background-color: ${theme.colors.primary};
   background: linear-gradient(
       ${props =>
         props.inverted
@@ -51,89 +84,109 @@ const PhotoSection = styled(Section)`
     ),
     url(${props => props.src});
   background-position: center;
-  background-size: cover;
-  ${props =>
-    props.fixed &&
-    css`
-      @media (hover: hover) {
-        background-attachment: fixed;
-      }
-    `};
+  ${photoSection};
   ${shadows};
 `
-PhotoSection.defaultProps = {
-  py: 4
-}
+const MapBox = styled(PhotoHeader).attrs({ px: 0 })`
+  background-color: ${theme.colors.dark};
+  background-image: url('/map.svg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  ${photoSection};
+`
 
 const featureStyles = css`
   min-height: 24rem;
   margin-bottom: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
-`
-const Features = styled(Container)`
-  display: grid;
-  grid-gap: ${theme.space[3]}px;
-  > div {
-    ${featureStyles};
+  justify-content: center;
+
+  p:first-child,
+  h3 {
+    line-height: 1.125;
   }
-  ${Icon} {
-    margin-left: -${theme.space[1]}px;
-  }
-  ${theme.mediaQueries.sm} {
-    grid-gap: ${theme.space[4]}px;
-    grid-template-columns: repeat(5, 1fr);
-    > div {
-      &:nth-child(1),
-      &:nth-child(5) {
-        grid-column: 1 / span 3;
-      }
-      &:nth-child(2),
-      &:nth-child(6) {
-        grid-column: 4 / span 2;
-      }
-      &:nth-child(3) {
-        grid-column: 1 / span 2;
-      }
-      &:nth-child(4) {
-        grid-column: 3 / span 3;
-      }
-    }
-  }
-`
-const MarketingFeature = styled(Sheet)`
-  background: ${theme.colors.indigo[5]};
-  background: ${theme.colors.indigo[5]}f0;
-  background: linear-gradient(
-    32deg,
-    ${theme.colors.indigo[5]}f0,
-    ${theme.colors.violet[5]}c0
-  );
 `
 const TextFeature = styled(Sheet)`
   > p {
     font-weight: bold;
     font-size: ${theme.fontSizes[5]}px;
-    line-height: 1.25;
+    line-height: 1.125;
   }
 `
-const PhotoFeature = styled(PhotoSection.withComponent(TextFeature))`
-  > p {
-    color: ${theme.colors.white};
+const PhotoFeature = styled(TextFeature).attrs({
+  color: 'white'
+})`
+  position: relative;
+  ${props =>
+    props.inverted
+      ? css`
+          justify-content: flex-end !important;
+          background: linear-gradient(
+              transparent,
+              rgba(0, 0, 0, 0.25) 50%,
+              rgba(0, 0, 0, 0.5) 100%
+            ),
+            url(${props.src});
+        `
+      : css`
+          background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 50%),
+            url(${props.src});
+        `};
+  background-position: center;
+  background-size: cover;
+  ${shadows};
+`
+const BankFeature = styled(Sheet)`
+  background-color: ${theme.colors.primary};
+  background: ${theme.gradient('red.5', 'red.7')};
+`
+const MarketingFeature = styled(Sheet)`
+  background-color: ${theme.colors.indigo[5]};
+  background: ${theme.gradient('indigo.4', 'indigo.6')};
+  position: relative;
+  overflow: visible;
+  ${Icon} {
+    margin-left: -${theme.space[1]}px;
+  }
+  &:before,
+  &:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+  &:before {
+    top: -1rem;
+    right: 8rem;
+    transform: rotate(12deg);
+    background-image: url(${require('../../static/stickers/enjoy.svg')});
+    width: 12rem;
+    height: 8rem;
+  }
+  &:after {
+    top: -1rem;
+    right: 0;
+    transform: rotate(-12deg);
+    background-image: url(${require('../../static/stickers/mac.svg')});
+    width: 6rem;
+    height: 8rem;
   }
 `
 
 const Module = ({ icon, name, body, color = 'white', ...props }) => (
   <Flex flexDirection="column" color={color} {...props}>
-    <Icon
-      size={64}
-      mb={2}
-      glyph={icon}
-      color={props.iconColor || color}
-      style={{ flexShrink: 0 }}
-    />
+    {icon && (
+      <Icon
+        size={64}
+        mb={2}
+        glyph={icon}
+        color={props.iconColor || color}
+        style={{ flexShrink: 0 }}
+      />
+    )}
     <Box>
       <Heading.h3 mb={1} fontSize={5} children={name} />
       <Text fontSize={4} style={{ lineHeight: '1.375' }} children={body} />
@@ -141,17 +194,22 @@ const Module = ({ icon, name, body, color = 'white', ...props }) => (
   </Flex>
 )
 
-const TwoUp = styled(Box)`
+const Cols = styled(Box)`
   display: grid;
   grid-gap: ${theme.space[3]}px;
   ${theme.mediaQueries.sm} {
     grid-gap: ${theme.space[4]}px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: ${props => props.cols};
   }
-  > div {
+  > div,
+  > section > div {
     ${featureStyles};
   }
 `
+Cols.defaultProps = {
+  cols: '1fr 1fr',
+  my: [3, 4]
+}
 
 const Steps = styled(Box).attrs({ color: 'white' })`
   display: grid;
@@ -164,15 +222,15 @@ const Steps = styled(Box).attrs({ color: 'white' })`
     ${featureStyles};
   }
 `
+
 const HourFeatures = styled(Steps)`
-  > div {
+  section div {
     min-height: 32rem;
     justify-content: flex-start;
   }
-`
-
-const TextBox = styled(Box).attrs({ maxWidth: 48 })`
-  max-width: ${props => props.maxWidth}rem;
+  div + p {
+    margin-bottom: ${theme.space[4]}px;
+  }
 `
 
 const StepOne = styled(Sheet)`
@@ -211,13 +269,41 @@ const ApplyButton = styled(LargeButton.withComponent(Link)).attrs({
   );
 `
 
-const ImageSheet = styled(Sheet.withComponent(BackgroundImage))`
-  width: 100%;
-  height: auto;
+const SectionEyebrow = styled(Text).attrs({
+  fontSize: [4, 5],
+  bold: true,
+  color: 'muted'
+})``
+const SectionHeadline = styled(Headline).attrs({
+  fontSize: [7, 8],
+  mt: 1,
+  mb: 4
+})`
+  line-height: 1;
 `
+const SectionLead = styled(Lead).attrs({
+  fontSize: [3, 4],
+  maxWidth: 48,
+  mx: 0,
+  pb: 3,
+  mb: [4, 5]
+})``
+
+const like = {
+  underline: true,
+  target: '_blank'
+}
+A.link = A.withComponent(Link)
+const Like = props => <A {...like} {...props} />
+const LikeLink = props => <A.link {...like} {...props} />
+
+const Photo = styled(BackgroundImage.withComponent(Sheet)).attrs({
+  role: 'img',
+  scale: true
+})``
 
 const styles = {
-  ultraline: { fontSize: [6, 7], style: { lineHeight: '1' } },
+  ultraline: { fontSize: [6, 7, 8], style: { lineHeight: '1' } },
   headline: { fontSize: [5, 6], style: { lineHeight: '1.125' } },
   miniline: { fontSize: [4, 5], mb: 2, style: { lineHeight: '1.25' } },
   lead: {
@@ -234,7 +320,7 @@ const styles = {
   }
 }
 
-const title = 'Start – Hack Club'
+const title = 'Start a Club – Hack Club'
 const description =
   'Learn how to start a coding club at your high school through Hack Club. Get programming club ideas, curriculum, activities, and more.'
 
@@ -251,94 +337,158 @@ export default () => (
         { property: 'og:url', content: 'https://hackclub.com/start' }
       ]}
     />
-    <Nav />
-    <PhotoSection inverted src="/start/header.jpg" style={{ padding: 0 }}>
-      <Container
-        maxWidth={56}
-        px={[2, 3]}
-        py={[4, 5, 6]}
-        mt={[5, 6]}
-        mb={[4, 5]}
+    <Nav color="slate" fixed />
+    <Box mt={[44, 55]} p={3} bg="snow">
+      <PhotoHeader
+        py={[3, 6, 7, 8]}
+        src={require('../../static/photos/hackpenn_full.jpg')}
+        aria-label="Students at a coding event"
+        align={['left', 'center']}
         color="white"
       >
-        <Heading.h1 {...styles.ultraline} fontSize={[6, 7, 8]}>
-          You’re about to start an incredible coding club.
-        </Heading.h1>
-        <Heading.h2
-          fontSize={[3, 4]}
-          mt={3}
-          mx="auto"
-          style={{ fontWeight: 'normal', maxWidth: '48rem' }}
-        >
-          Whether you’re interested in starting a new chapter or joining Hack
-          Club’s network with an existing programming club, we should talk.
-        </Heading.h2>
-      </Container>
-    </PhotoSection>
-    <Box bg="white" py={[4, 5, null, 6]}>
+        <Container width={1} maxWidth={72} px={3} mt={[5, 6]} mb={[4, 5]}>
+          <Heading.h1 {...styles.ultraline}>
+            We’re high schoolers leading the best coding clubs in the world.
+          </Heading.h1>
+          <SectionLead fontSize={[3, 4]} mt={3} mb={3} mx="auto">
+            Hack Club is a global network of programming clubs where members
+            learn to code through tinkering and building projects.
+          </SectionLead>
+          <Stats>
+            <Stats.Stat>{stats.school_count}&nbsp;schools</Stats.Stat>
+            <Stats.Stat>{stats.state_count}&nbsp;states</Stats.Stat>
+            <Stats.Stat>{stats.country_count}&nbsp;countries</Stats.Stat>
+          </Stats>
+        </Container>
+      </PhotoHeader>
+      <Flex justify="center" color="muted" mt={3}>
+        <Icon glyph="down-caret" size={64} />
+      </Flex>
+    </Box>
+    <Box bg="white" py={[4, 5, 6]}>
       <Container {...styles.contentContainer}>
-        <Text fontSize={4} caps bold color="muted">
-          Imagine
-        </Text>
-        <Headline my={3}>
-          Here’s <Text.span color="accent">an hour</Text.span> of a club
-          meeting.
-        </Headline>
-        <TextBox mb={4}>
-          <Text {...styles.lead}>
-            Hack Clubs meet weekly at their high schools, typically for 1.5
-            hours. Meetings look like mini-hackathons—members learn to code by
-            building projects. Check out{' '}
-            <A href="https://sohuang.github.io/" target="_blank">
-              a website
-            </A>
-            {' & '}
-            <A href="https://messy-wool.surge.sh/catch.html" target="_blank">
-              a game
-            </A>{' '}
-            built by members.
-          </Text>
-        </TextBox>
+        <SectionEyebrow>Clubs in action</SectionEyebrow>
+        <SectionHeadline>Build superpowers at your club.</SectionHeadline>
+        <SectionLead>
+          Hack Clubs{' '}
+          <Highlight>
+            meet weekly at their high schools, typically for 1.5 hours
+          </Highlight>{' '}
+          after school. There are no teachers or lectures—members work at their
+          own pace making websites, apps, & games, and presenting them to the
+          group. As a club leader, you act as a{' '}
+          <Like href="https://en.wikipedia.org/wiki/Constructionism_(learning_theory)">
+            facilitator
+          </Like>
+          , mentoring members and building a supportive community.
+        </SectionLead>
         <HourFeatures>
-          <PhotoFeature src="/start/group.jpg" inverted>
-            <Text>
-              A group of students come together to start coding. Many are
-              beginners.
+          <section>
+            <PhotoFeature src="/start/group.jpg">
+              <Text>
+                A group of students gather to start coding. Many are beginners.
+              </Text>
+            </PhotoFeature>
+            <Text color="black" fontSize={3}>
+              <strong>Everyone starts hacking.</strong> At the first few
+              meetings, members follow{' '}
+              <LikeLink to="/workshops/">our tutorials</LikeLink> as a runway
+              before taking off with their own projects.
             </Text>
-          </PhotoFeature>
-          <PhotoFeature src="/start/coding_2.jpg" inverted>
-            <Text>
-              Members work on self-directed coding projects, learning by making.
+          </section>
+          <section>
+            <PhotoFeature src="/start/coding_2.jpg">
+              <Text>
+                Members work on self-directed coding projects, learning by
+                making.
+              </Text>
+            </PhotoFeature>
+            <Text color="black" fontSize={3}>
+              <strong>Members leave every meeting with a project</strong>
+              —including their first day. Check out{' '}
+              <Like href="https://messy-wool.surge.sh/catch.html">
+                a first website
+              </Like>
+              {' & '}
+              <Like href="https://messy-wool.surge.sh/catch.html">
+                game
+              </Like>{' '}
+              built at Hack Clubs.
             </Text>
-          </PhotoFeature>
-          <PhotoFeature src="/start/demo.jpg" inverted>
-            <Text>
-              At the end, everyone demos their projects for the group.
+          </section>
+          <section>
+            <PhotoFeature src="/photos/hhv_demo_edit.jpg">
+              <Text>
+                At the end, everyone demos their projects for the club.
+              </Text>
+            </PhotoFeature>
+            <Text color="black" fontSize={3}>
+              <strong>Demos bring the club together.</strong> Presentations
+              highlight new work and momentum. As a leader, you’re{' '}
+              <Highlight>cultivating a community</Highlight> of makers.
             </Text>
-          </PhotoFeature>
+          </section>
         </HourFeatures>
+        <Cols cols="1fr 3fr" mx={-3} mt={[4, 5, 6]}>
+          <Headline px={3}>Go beyond club&nbsp;meetings.</Headline>
+          <SectionLead pl={[3, 0]} pr={3} mb={0}>
+            Hack Clubs attend and run hackathons like{' '}
+            <Like href="https://windyhacks.com">
+              Windy&nbsp;City&nbsp;Hacks
+            </Like>{' '}
+            &{' '}
+            <Like href="http://outlooknewspapers.com/hackademia-aims-for-young-tech-devotees/">
+              Hackademia
+            </Like>
+            , run summer programs like{' '}
+            <Like href="http://thecspn.com/?p=43434">Hack Camp</Like>, and
+            compete in events like the{' '}
+            <Like href="http://www.congressionalappchallenge.us">
+              Congressional App Challenge
+            </Like>
+            . The&nbsp;hack’s the limit.
+          </SectionLead>
+        </Cols>
       </Container>
     </Box>
-    <Flex flexDirection="column" bg="snow" py={[4, 5, null, 6]}>
+    <Flex flexDirection="column" bg="snow" py={[4, 5, 6]}>
       <Container {...styles.contentContainer}>
-        <TextBox maxWidth={48}>
-          <Text fontSize={4} caps bold color="muted">
-            Resources
-          </Text>
-          <Headline my={3}>
-            We’ll provide support to get your club{' '}
-            <Text.span color="teal.6">going & growing</Text.span>.
-          </Headline>
-          <Text {...styles.lead}>
-            From working with our {stats.school_count} clubs at high schools
-            around the world, we’ve assembled the resources you’ll need for a
-            successful club.
-          </Text>
-        </TextBox>
-        <Features mt={4}>
-          <PhotoFeature src="/start/community.jpg" justify="flex-start">
+        <SectionEyebrow>Resources from HQ</SectionEyebrow>
+        <SectionHeadline>
+          We’ll provide support to get your&nbsp;club{' '}
+          <Text.span color="teal.6">going & growing</Text.span>.
+        </SectionHeadline>
+        <SectionLead>
+          From working with our {stats.school_count} clubs at high schools
+          around the world, we’ve assembled the resources you’ll need for a
+          successful club. Get&nbsp;training, marketing materials (stickers!),
+          curriculum, a&nbsp;community of fellow leaders, a network of events,
+          and more.
+        </SectionLead>
+        <Cols cols="2fr 3fr">
+          <MarketingFeature>
+            {/* TODO: change icon to "sticker" after next @hackclub/icons release */}
             <Module
-              icon="member-add"
+              icon="challenge"
+              name="Stickers!"
+              body="We’ll ship your club a box of our famous stickers for successful marketing from day one."
+              color="white"
+            />
+            {/* <FeatureLink to="/stickers" color="white">
+              Get a sample pack
+            </FeatureLink> */}
+          </MarketingFeature>
+          <PhotoFeature src="/start/call.jpg" inverted>
+            <Text color="white">
+              Talk to our team over a call or on Slack for{' '}
+              <Text.span color="success">guidance & assistance</Text.span>{' '}
+              whenever you need it.
+            </Text>
+          </PhotoFeature>
+        </Cols>
+        <Cols cols="3fr 2fr">
+          <PhotoFeature src="/start/community.jpg" inverted>
+            <Module
               name="Community"
               body="In our Slack, come chat with hundreds of other club leaders and members around the world."
               color="white"
@@ -349,49 +499,38 @@ export default () => (
           </PhotoFeature>
           <TextFeature>
             <Text>
-              Our <Text.span color="primary">curriculum</Text.span> gives your
-              members dozens of free tutorials for making websites, apps, &
-              games.
+              Our <Text.span color="info">curriculum</Text.span> gives your
+              members dozens of free tutorials for making websites, games, and
+              beyond.
             </Text>
             <FeatureLink to="/workshops" color="info">
               Check out workshops
             </FeatureLink>
           </TextFeature>
-          <TextFeature>
-            <Module
-              icon="idea"
-              name="Learn from all our clubs"
-              body="We’ve got advice, information, & experience to share."
-              color="black"
-              iconColor="warning"
-            />
-          </TextFeature>
-          <PhotoFeature src="/start/call.jpg">
-            <Text color="white">
-              Talk to our team over a call or on Slack for{' '}
-              <Text.span color="success">guidance & assistance</Text.span>{' '}
-              whenever you need it.
-            </Text>
-          </PhotoFeature>
-          <PhotoFeature src="/start/events.jpg">
+        </Cols>
+        <Cols>
+          <PhotoFeature src="/photos/hackpenn_meme.jpg" inverted>
             <Text>
               Attend hackathons, workshops, & other{' '}
-              <Text.span color="cyan.5">local events</Text.span> from Hack Clubs
-              near yours.
+              <Text.span color="cyan.5">local events</Text.span> from
+              Hack&nbsp;Clubs near yours.
             </Text>
             <FeatureLink to="/hackathons" color="white">
-              See what’s happening nearby
+              See nearby events
             </FeatureLink>
           </PhotoFeature>
-          <MarketingFeature>
+          <BankFeature>
             <Module
-              icon="photo"
-              name="Marketing"
-              body="Get stickers, posters, & ideas for spreading the word about your incredible club meetings."
+              icon="bank-circle"
+              name="Finances: fully accounted for."
+              body="Store money in a non-profit bank account, get debit cards, & collect donations online."
               color="white"
             />
-          </MarketingFeature>
-        </Features>
+            <FeatureLink to="/bank" color="white">
+              Learn more
+            </FeatureLink>
+          </BankFeature>
+        </Cols>
       </Container>
     </Flex>
     <Container {...styles.contentContainer} maxWidth={64}>
@@ -426,72 +565,26 @@ export default () => (
         </Box>
       </Flex>
     </Container>
-    <Flex flexDirection="column" bg="snow" py={[4, 5, null, 6]}>
+    <Box bg="snow" pt={[4, 5, 6]} pb={3}>
       <Container {...styles.contentContainer}>
-        <TextBox>
-          <Text fontSize={4} caps bold color="muted">
-            About
-          </Text>
-          <Headline my={3}>Teach coding, bring together a community.</Headline>
-          <Text {...styles.lead}>
-            Clubs are led by teams of 2-3 students (sorry, no parents or
-            teachers). We ask that at least 1 leader be technically adept enough
-            to write and customize{' '}
-            <A href="/workshops" target="_blank">
-              workshops
-            </A>
-            .
-          </Text>
-        </TextBox>
-        <TwoUp mt={4}>
-          <Sheet>
-            <Featline>What happens outside of club meetings?</Featline>
-            <Text fontSize={3}>
-              After Hack Clubs establish a dedicated base of members, they begin
-              to attend{' '}
-              <A href="https://hackathons.hackclub.com" target="_blank">
-                nearby hackathons
-              </A>{' '}
-              and eventually host their own (sometimes with{' '}
-              <A href="/bank" target="_blank">
-                Hack Club Bank
-              </A>
-              ).
-            </Text>
-          </Sheet>
-          <ImageSheet src="/start/meeting_1.jpg" />
-          <ImageSheet src="/start/meeting_2.jpg" />
-          <Sheet>
-            <Featline>
-              Will you provide everything to make my club a success?
-            </Featline>
-            <Text fontSize={3}>
-              No. Every school is different and you’re going to need to heavily
-              customize our advice and resources. We try our best, but you know
-              your school better than we do.
-            </Text>
-          </Sheet>
-        </TwoUp>
-      </Container>
-    </Flex>
-    <Box py={[4, 5, null, 6]}>
-      <Container {...styles.contentContainer}>
-        <TextBox maxWidth={48} mb={4}>
-          <Text fontSize={4} caps bold color="muted">
-            Application
-          </Text>
-          <Headline my={3}>
-            Apply today to{' '}
-            <Text.span color="primary">start your club</Text.span> at your high
-            school.
-          </Headline>
-        </TextBox>
+        <SectionEyebrow>Application</SectionEyebrow>
+        <SectionHeadline>
+          Apply today to{' '}
+          <Text.span color="primary">
+            start your high&nbsp;school’s club
+          </Text.span>
+          .
+        </SectionHeadline>
+        <SectionLead>
+          It’s all-online, free, & takes about an hour. We’ll help you from
+          there!
+        </SectionLead>
         <Steps>
           <StepOne>
             <Module
               icon="send"
               name="1. Application"
-              body="Start by submitting your info—all free & online."
+              body="Start by telling us about your ideas for the club."
             />
           </StepOne>
           <StepTwo>
@@ -505,38 +598,38 @@ export default () => (
             <Module
               icon="event-code"
               name="3. First meeting"
-              body="Schedule your first meeting & get ready to lead!"
+              body="Schedule your club’s first meeting & get going!"
             />
           </StepThree>
         </Steps>
       </Container>
+      <Flex justify="center" color="muted">
+        <Icon glyph="down-caret" size={64} />
+      </Flex>
     </Box>
-    <Flex justify="center" color="muted" mt={-3}>
-      <Icon glyph="down-caret" size={64} />
-    </Flex>
     <Box p={[3, 4, 5]}>
-      <PhotoFeature
-        py={[4, 5, 6]}
-        fixed
-        src="/start/action.jpg"
+      <MapBox
+        py={[3, 5, 6]}
+        bg="darker"
+        src="/map.svg"
         aria-label="Students at a coding event"
-        style={{ maxWidth: '100%', minHeight: '32rem' }}
         align={['left', 'center']}
         color="white"
-        mb={0}
       >
-        <Headline>Begin your application.</Headline>
-        <Box
-          fontSize={[3, 4, 5]}
-          my={3}
-          style={{ fontWeight: 'normal', lineHeight: '1.75' }}
-        >
-          Build the class you wish you had.
-          <br />
-          Bring the movement to your school.
-        </Box>
-        <ApplyButton to="/apply" children="Apply to Hack Club" mt={4} />
-      </PhotoFeature>
+        <Container width={1} maxWidth={72} px={3} mt={[5, 6]} mb={[4, 5]}>
+          <Headline>Begin your application.</Headline>
+          <Box
+            fontSize={[3, 4, 5]}
+            my={3}
+            style={{ fontWeight: 'normal', lineHeight: '1.75' }}
+          >
+            Build the class you wish you had.
+            <br />
+            Bring the movement to your school.
+          </Box>
+          <ApplyButton to="/apply" children="Apply to Hack Club" mt={4} />
+        </Container>
+      </MapBox>
     </Box>
     <Footer />
   </Layout>

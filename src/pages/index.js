@@ -128,7 +128,10 @@ const FeatureLine = styled(Box).attrs({ bg: 'primary', width: 1, mb: -2 })`
 const Photo = styled(Sheet.withComponent(BackgroundImage)).attrs({
   scale: true
 })`
-  min-height: 25rem;
+  min-height: 16rem;
+  ${theme.mediaQueries.md} {
+    min-height: 25rem;
+  }
 `
 const CommunityLine = styled(FeatureLine)`
   background: linear-gradient(

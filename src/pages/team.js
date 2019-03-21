@@ -5,7 +5,6 @@ import {
   Heading,
   Text,
   Container,
-  Button,
   theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
@@ -14,7 +13,6 @@ import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Name from 'components/Name'
 import Bio from 'components/Bio'
-import Sheet from 'components/Sheet'
 import Footer from 'components/Footer'
 
 const Header = styled(Section)`
@@ -30,31 +28,6 @@ const Base = styled(Container)`
     grid-gap: 2rem;
     grid-template-columns: repeat(2, 1fr);
   }
-`
-
-const Updates = styled(Sheet)`
-  display: grid;
-  grid-gap: ${theme.space[3]}px;
-  align-items: flex-start;
-  ${theme.mediaQueries.md} {
-    grid-template-columns: 1fr auto;
-  }
-`
-const UpdateLink = styled(Button.withComponent(Link)).attrs({
-  scale: true,
-  chevronRight: true,
-  bg: 'info',
-  color: 'white',
-  py: 3,
-  px: 4,
-  fontSize: 2
-})`
-  text-transform: uppercase;
-  background-image: linear-gradient(
-    to bottom,
-    ${theme.colors.cyan[6]},
-    ${theme.colors.blue[6]}
-  );
 `
 
 const title = 'Hack Club Team'
@@ -146,17 +119,6 @@ export default () => (
         pronouns="she/her"
       />
     </Base>
-    <Updates maxWidth={48} align="left" bg="black">
-      <Container maxWidth={32} mx={0}>
-        <Heading.h2 fontSize={[3, 4]} color="white">
-          What’ve we been doing recently?
-        </Heading.h2>
-        <Text color="smoke">
-          Check out our latest update videos to see our work.
-        </Text>
-      </Container>
-      <UpdateLink to="/updates">Watch now</UpdateLink>
-    </Updates>
     <Footer />
   </Layout>
 )

@@ -49,7 +49,7 @@ const HeadlineIcon = styled(GlowingIcon)`
   }
 `
 const SubhlineIcon = styled(GlowingIcon)`
-  top: ${theme.space[2]}px;
+  top: ${theme.space[1]}px;
   ${theme.mediaQueries.md} {
     top: ${theme.space[2]}px;
     width: 48px;
@@ -133,11 +133,33 @@ const FeatureLine = styled(Box).attrs({
   height: 4px;
 `
 const Photo = styled(Sheet.withComponent(BackgroundImage)).attrs({
-  scale: true
+  scale: true,
+  role: 'img',
+  p: 0
 })`
   min-height: 16rem;
+  position: relative;
   ${theme.mediaQueries.md} {
     min-height: 25rem;
+  }
+  &:after {
+    content: attr(aria-label);
+    background-color: rgba(0, 0, 0, 0.875);
+    bottom: 0;
+    color: ${theme.colors.white};
+    display: block;
+    font-size: ${theme.fontSizes[2]}px;
+    padding: ${theme.space[2]}px ${theme.space[3]}px;
+    position: absolute;
+    width: 100%;
+    border-radius: 0 0 ${theme.radii[2]} ${theme.radii[2]};
+    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+      background-color: rgba(0, 0, 0, 0.75);
+      -webkit-backdrop-filter: saturate(180%) blur(16px);
+    }
+    ${theme.mediaQueries.reduceTransparency} {
+      -webkit-backdrop-filter: auto !important;
+    }
   }
 `
 const CommunityLine = styled(FeatureLine)`
@@ -220,11 +242,11 @@ export default () => (
           </Text>
           <Text color="smoke" fontSize={4} mb={4} style={{ maxWidth: '48rem' }}>
             Have a coding question? Looking for feedback on your project? Trying
-            to start a local meetup group? You’ll find some phenomenal people to
-            talk to in our Slack community with 3,000+ members around the world,
-            active at all hours.
+            to start a local meetup? You’ll find some phenomenal people to talk
+            to in our Slack community (online groupchat, Discord-style) with
+            3,000+ members around the world, active at all hours.
           </Text>
-          <CTA to="/slack_invite">Get your invitation</CTA>
+          <CTA to="/slack_invite">Sign me up</CTA>
           <Features mt={[4, 5]}>
             <Box>
               <CommunityLine />
@@ -250,11 +272,11 @@ export default () => (
             </Box>
             <Photo
               src="/photos/dena_cover.jpg"
-              aria-label="Hack Club members at PennApps"
+              aria-label="A Hack Club meeting near Toronto, Canada"
             />
             <Photo
               src="/photos/hackpenn_crew.jpg"
-              aria-label="Hack Club members posing at GitHub"
+              aria-label="Organizers of PA’s largest high school hackathon met in our Slack"
             />
           </Features>
         </Container>

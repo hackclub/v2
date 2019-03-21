@@ -90,6 +90,10 @@ const Quote = styled(Sheet).attrs({ maxWidth: 48, bg: 'primary', fontSize: 3 })`
     position: absolute;
     left: 0;
     top: 0;
+    ${theme.mediaQueries.md} {
+      width: 36px;
+      height: 36px;
+    }
   }
 `
 const MegaQuote = styled(Quote).attrs({
@@ -364,7 +368,7 @@ export default () => (
             Start your club
           </StartCTA>
           <MegaQuote mt={6}>
-            <GlowingIcon glyph="quote" size={24} />
+            <GlowingIcon glyph="quote" size={28} />
             <Text fontSize={[5, 6]} mt={[null, 5]} bold>
               Before I started Hack Club in sophomore year, I didn’t believe in
               myself. I didn’t think I could do big things.

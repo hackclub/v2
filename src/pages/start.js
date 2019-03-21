@@ -90,8 +90,11 @@ const MapBox = styled(PhotoHeader).attrs({ px: 0 })`
   background-color: ${theme.colors.dark};
   background-image: url('/map.svg');
   background-repeat: no-repeat;
-  background-position: center top;
+  background-position: 20% top;
   ${photoSection};
+  ${theme.mediaQueries.md} {
+    background-position: center 20%;
+  }
 `
 
 const featureStyles = css`
@@ -599,17 +602,14 @@ export default () => (
         align={['left', 'center']}
         color="white"
       >
-        <Container width={1} maxWidth={72} px={3} mt={[5, 6]} mb={[4, 5]}>
+        <Container width={1} maxWidth={72} px={2} mt={[4, 5, 6]} mb={[3, 4, 5]}>
           <Headline>Begin your application.</Headline>
-          <Box
-            fontSize={[3, 4, 5]}
-            my={3}
-            style={{ fontWeight: 'normal', lineHeight: '1.75' }}
-          >
-            Build the class you wish you had.
-            <br />
-            Bring the movement to your school.
-          </Box>
+          <Text fontSize={[3, 5]} my={[1, 2]}>
+            Build the class you wish you&nbsp;had.
+          </Text>
+          <Text fontSize={[3, 5]} my={[1, 2]}>
+            Bring the movement to your&nbsp;school.
+          </Text>
           <ApplyButton to="/apply" children="Apply to Hack Club" mt={4} />
         </Container>
       </MapBox>

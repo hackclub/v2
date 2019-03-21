@@ -1,16 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import {
+  Avatar,
+  BackgroundImage,
   Box,
-  Flex,
   Container,
-  Text,
+  Flex,
   Heading,
   LargeButton as Button,
-  OutlineButton,
-  BackgroundImage,
   Link as A,
-  Avatar,
+  OutlineButton,
+  Text,
   theme,
   hexa
 } from '@hackclub/design-system'

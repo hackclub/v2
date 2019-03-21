@@ -1,16 +1,15 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import {
-  BackgroundImage,
   Box,
   Container,
   Flex,
   Heading,
+  Icon,
+  LargeButton,
   Link as A,
   Section,
   Text,
-  LargeButton,
-  Icon,
   theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
@@ -297,27 +296,11 @@ A.link = A.withComponent(Link)
 const Like = props => <A {...like} {...props} />
 const LikeLink = props => <A.link {...like} {...props} />
 
-const Photo = styled(BackgroundImage.withComponent(Sheet)).attrs({
-  role: 'img',
-  scale: true
-})``
-
-const styles = {
-  ultraline: { fontSize: [6, 7, 8], style: { lineHeight: '1' } },
-  headline: { fontSize: [5, 6], style: { lineHeight: '1.125' } },
-  miniline: { fontSize: [4, 5], mb: 2, style: { lineHeight: '1.25' } },
-  lead: {
-    fontSize: [3, 4],
-    my: 3,
-    regular: true,
-    style: { lineHeight: '1.5' }
-  },
-  contentContainer: {
-    maxWidth: 72,
-    width: 1,
-    p: 3,
-    color: 'black'
-  }
+const contentContainer = {
+  maxWidth: 72,
+  width: 1,
+  p: 3,
+  color: 'black'
 }
 
 const title = 'Start a Club – Hack Club'
@@ -347,9 +330,9 @@ export default () => (
         color="white"
       >
         <Container width={1} maxWidth={72} px={3} mt={[5, 6]} mb={[4, 5]}>
-          <Heading.h1 {...styles.ultraline}>
+          <Headline fontSize={[6, 7, 8]}>
             We’re high schoolers leading the best coding clubs in the world.
-          </Heading.h1>
+          </Headline>
           <SectionLead fontSize={[3, 4]} mt={3} mb={3} mx="auto">
             Hack Club is a global network of programming clubs where members
             learn to code through tinkering and building projects.
@@ -366,7 +349,7 @@ export default () => (
       </Flex>
     </Box>
     <Box bg="white" py={[4, 5, 6]}>
-      <Container {...styles.contentContainer}>
+      <Container {...contentContainer}>
         <SectionEyebrow>Clubs in action</SectionEyebrow>
         <SectionHeadline>Build superpowers at your club.</SectionHeadline>
         <SectionLead>
@@ -452,7 +435,7 @@ export default () => (
       </Container>
     </Box>
     <Flex flexDirection="column" bg="snow" py={[4, 5, 6]}>
-      <Container {...styles.contentContainer}>
+      <Container {...contentContainer}>
         <SectionEyebrow>Resources from HQ</SectionEyebrow>
         <SectionHeadline>
           We’ll provide support to get your&nbsp;club{' '}
@@ -533,7 +516,7 @@ export default () => (
         </Cols>
       </Container>
     </Flex>
-    <Container {...styles.contentContainer} maxWidth={64}>
+    <Container {...contentContainer} maxWidth={64}>
       <Flex
         flexDirection={['column', null, 'row']}
         justify="center"
@@ -544,7 +527,7 @@ export default () => (
           <Headline>
             Start a new club, or bring your own. We’re excited to meet you.
           </Headline>
-          <Text {...styles.lead} mt={3}>
+          <Lead fontSize={[3, 4]} mt={3}>
             When established programming clubs join, they get the full benefits
             of the network. While Hack Club is currently optimized for new
             chapters, we’re increasing the benefits for existing clubs every day
@@ -561,12 +544,12 @@ export default () => (
               Bank
             </A.link>
             .
-          </Text>
+          </Lead>
         </Box>
       </Flex>
     </Container>
     <Box bg="snow" pt={[4, 5, 6]} pb={3}>
-      <Container {...styles.contentContainer}>
+      <Container {...contentContainer}>
         <SectionEyebrow>Application</SectionEyebrow>
         <SectionHeadline>
           Apply today to{' '}

@@ -41,8 +41,9 @@ const GlowingIcon = styled(Box.withComponent(Icon))`
   position: relative;
 `
 const HeadlineIcon = styled(GlowingIcon)`
-  top: ${theme.space[2]}px;
+  top: ${theme.space[1]}px;
   ${theme.mediaQueries.md} {
+    top: ${theme.space[2]}px;
     width: 64px;
     height: 64px;
   }
@@ -50,6 +51,7 @@ const HeadlineIcon = styled(GlowingIcon)`
 const SubhlineIcon = styled(GlowingIcon)`
   top: ${theme.space[2]}px;
   ${theme.mediaQueries.md} {
+    top: ${theme.space[2]}px;
     width: 48px;
     height: 48px;
   }
@@ -121,7 +123,12 @@ const Features = styled(Box)`
     grid-template-columns: repeat(2, 1fr);
   }
 `
-const FeatureLine = styled(Box).attrs({ bg: 'primary', width: 1, mb: -2 })`
+const FeatureLine = styled(Box).attrs({
+  bg: 'primary',
+  width: 1,
+  mt: 2,
+  mb: -2
+})`
   border-radius: ${theme.radius};
   height: 4px;
 `
@@ -301,9 +308,9 @@ export default () => (
                   glyph="bank-circle"
                   color="red.5"
                   aria-label="hack club bank icon"
-                  size={24}
+                  size={32}
                   ml={2}
-                  mt={-4}
+                  mt={-2}
                 />
               </Subhline>
               <Text color="muted" fontSize={4}>
@@ -315,8 +322,8 @@ export default () => (
           </Features>
         </Container>
       </Box>
-      <Box bg="darker" py={[5, 6]}>
-        <Container px={3} py={4}>
+      <Box bg="darker" py={[5, 6, 7]}>
+        <Container px={3}>
           <ColoredHeadline
             fontSize={[6, 7, 8]}
             colors={['red.5', 'orange.5', 'yellow.5']}
@@ -333,8 +340,8 @@ export default () => (
           <StartCTA to="/start" mt={3}>
             Start your club
           </StartCTA>
-          <MegaQuote mt={5}>
-            <GlowingIcon glyph="quote" size={42} />
+          <MegaQuote mt={6}>
+            <GlowingIcon glyph="quote" size={24} />
             <Text fontSize={[5, 6]} mt={[null, 5]} bold>
               Before I started Hack Club in sophomore year, I didn’t believe in
               myself. I didn’t think I could do big things.

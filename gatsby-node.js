@@ -1,8 +1,6 @@
 const path = require('path')
 const fs = require('fs')
 const _ = require('lodash')
-const GeoPattern = require('geopattern')
-const { colors } = require('@hackclub/design-system')
 const writeFile = require('fs').writeFile
 const axios = require('axios')
 
@@ -22,13 +20,6 @@ exports.onPreBootstrap = () =>
       console.error(e)
     })
 
-const pattern = (text = 'Hack Club', color = colors.primary) =>
-  GeoPattern.generate(text, { baseColor: color }).toString()
-const writePattern = (path, name) =>
-  fs.writeFile(path, pattern(_.camelCase(name), colors.blue[6]), (err, a) => {
-    if (err) console.error(err)
-  })
-
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
@@ -39,12 +30,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     if (!!parsedFilePath.dir && _.includes(fileNode.relativePath, 'README')) {
       const value = `/workshops/${parsedFilePath.dir}`
       createNodeField({ node, name: 'slug', value })
-      createNodeField({ node, name: 'bg', value: `${value}.svg` })
-
-      const dir = './public/workshops'
-      if (!fs.existsSync(dir)) fs.mkdirSync(dir)
-      const path = `./public${_.replace(value, '/lib', '')}.svg`
-      writePattern(path, node.frontmatter.name)
     }
   }
 }

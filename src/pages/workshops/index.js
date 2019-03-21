@@ -133,7 +133,6 @@ export const pageQuery = graphql`
         node {
           fields {
             slug
-            bg
           }
           frontmatter {
             name

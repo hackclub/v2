@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {
   Box,
@@ -21,6 +21,7 @@ import {
   Breadcrumb,
   BreadcrumbDivider
 } from 'components/Breadcrumbs'
+import { Headline } from 'components/Content'
 import MarkdownBody from 'components/MarkdownBody'
 import Author from 'components/workshops/Author'
 import DiscussOnSlack from 'components/DiscussOnSlack'
@@ -46,7 +47,7 @@ const OnlyOnPrint = styled(Box)`
 const Header = styled(Box.withComponent('header'))`
   border-bottom: 1px solid ${theme.colors.smoke};
 
-  h2 {
+  h2:last-of-type {
     font-weight: 400;
   }
 `
@@ -261,9 +262,9 @@ export default ({ data }) => {
               />
               <BreadcrumbDivider />
             </Breadcrumbs>
-            <Heading.h1 fontSize={6} mb={2} children={name} />
+            <Headline mb={2} children={name} />
             <Heading.h2 fontSize={4} children={description} />
-            <Text fontSize={2} color="muted" mt={3} mb={[3, 0]}>
+            <Text fontSize={2} color="muted" my={3}>
               <Author text={author} />
             </Text>
           </Container>
@@ -285,7 +286,7 @@ export default ({ data }) => {
           </Text>
         </Header>
       </OnlyOnPrint>
-      <Body maxWidth={48} p={3} className="invert">
+      <Body maxWidth={48} p={3} mt={3}>
         {!isEmpty(tail(headings)) && (
           <Toc open>
             <TocHeading>

@@ -12,9 +12,27 @@
     "country_count": 17,
     "approximate_members": "3K+"
   },
-  "workshopFeedback": {
-    "thoughts": "Overall thoughts?",
-    "improve": "How would you improve this workshop?"
+  "workshopTrackOrder": [
+    "start",
+    "react",
+    "pi",
+    "arduino",
+    "experimental",
+    "misc",
+    "club",
+    "challenge",
+    "retired"
+  ],
+  "workshopTrackDescriptions": {
+    "arduino": "Bring projects from cyberspace to the real world with this small hardware platform.",
+    "challenge": "Supplemental material for Hack Club Challenges.",
+    "club": "Launching your own Hack Club? Here are a few pointers.",
+    "experimental": "As is/no warranty. These workshops haven’t been fully tested yet, so we don’t know just will happen if you try building things with them.",
+    "misc": "The odd ones out. Workshops not yet properly categorized.",
+    "pi": "Start building with the coolest credit card-sized computer.",
+    "retired": "These workshops are no longer maintained. They may contain errors and are not recommended for club use. Here be dragons.",
+    "react": "React.js is a popular open source JavaScript view library built by Facebook.",
+    "start": "Set out on your journey by building your own website, then move on to multiplayer games and collaborative web apps."
   },
   "org": {
     "@context": "http://schema.org",

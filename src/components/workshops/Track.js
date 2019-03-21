@@ -9,6 +9,7 @@ import {
   theme
 } from '@hackclub/design-system'
 import { Link } from 'gatsby'
+import { workshopTrackDescriptions as descriptions } from 'data.json'
 import { capitalize, map } from 'lodash'
 
 const Root = styled(Box.section)`
@@ -93,26 +94,15 @@ const WorkshopItem = ({
   </Link>
 )
 
-const descriptions = {
-  arduino:
-    'Bring projects from cyberspace to the real world with this small hardware platform.',
-  challenge: 'Supplemental material for Hack Club Challenges.',
-  club: 'Launching your own Hack Club? Here are a few pointers.',
-  experimental:
-    'As is/no warranty. These workshops haven’t been fully tested yet, so we don’t know just will happen if you try building things with them.',
-  misc: 'The odd ones out. Workshops not yet properly categorized.',
-  pi: 'Start building projects on the coolest credit card-sized computer.',
-  retired:
-    'These workshops are no longer maintained. They may contain errors and are not recommended for club use. Here be dragons.',
-  start:
-    'Set out on your journey by building your own website, then move on to multiplayer games and collaborative web apps.'
-}
-
 const Track = ({ name, data, ...props }) => (
-  <Root id={name} py={[3, 4]} {...props}>
+  <Root id={name} py={[3, 4, 5]} {...props}>
     <Container maxWidth={32} align="center" px={3}>
       {name && (
-        <Heading.h2 color="black" fontSize={4} children={capitalize(name)} />
+        <Heading.h2
+          color="black"
+          fontSize={[4, 5]}
+          children={capitalize(name)}
+        />
       )}
       {descriptions[name] && (
         <Text color="slate" fontSize={2} children={descriptions[name]} />

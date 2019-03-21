@@ -5,18 +5,8 @@ import Track from './search/Track'
 import NoResults from './search/NoResults'
 import Fuse from 'fuse.js'
 import { groupBy, toPairs } from 'lodash'
+import { workshopTrackOrder as groupOrder } from 'data.json'
 
-const groupOrder = [
-  'start',
-  'club',
-  'challenges',
-  'pi',
-  'react',
-  'arduino',
-  'experimental',
-  'misc',
-  'retired'
-]
 const keys = ['node.frontmatter.name', 'node.frontmatter.description']
 
 export default ({ workshops }) => {

@@ -1,30 +1,34 @@
 import React from 'react'
 import styled from 'styled-components'
 import {
+  BackgroundImage,
   Box,
   Heading,
   Container,
   Flex,
   Text,
-  Link,
+  Link as A,
+  OutlineButton,
   Icon,
   theme,
   cx
 } from '@hackclub/design-system'
+import { Link } from 'gatsby'
 import Helmet from 'react-helmet'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import Sheet from 'components/Sheet'
+import GlowingIcon from 'components/GlowingIcon'
 import SlackForm from 'components/SlackForm'
-import { ColoredHeadline } from '../components/Content'
+import { ColoredHeadline } from 'components/Content'
 
 const BackgroundGradient = styled(Box)`
   position: relative;
   overflow: hidden;
-  // Support for browsers that don't support alpha hex codes
+  // Support for browsers that don’t support alpha hex codes
   background: ${theme.colors.fuschia[5]};
-  // Support for browsers that don't support gradients
+  // Support for browsers that don’t support gradients
   background: ${theme.colors.fuschia[5]}f0;
   background: linear-gradient(
     -32deg,
@@ -68,7 +72,7 @@ const Announcement = styled(Sheet).attrs({
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.0625);
 `
 
-const Dark = styled(Box).attrs({ bg: 'dark', color: 'white' })``
+OutlineButton.link = OutlineButton.withComponent(Link)
 
 const Grid = styled(Container.withComponent(Flex)).attrs({
   px: [3, 4],
@@ -196,7 +200,7 @@ const desc =
 const img = 'https://hackclub.com/cards/slack_invite.png'
 
 export default () => (
-  <Layout>
+  <Layout bg="dark">
     <Helmet
       title={title}
       meta={[
@@ -219,7 +223,7 @@ export default () => (
           <Text color="black" fontSize={2} ml={1}>
             Already have an account?
           </Text>
-          <Link
+          <A
             caps
             color="accent"
             fontSize={2}
@@ -231,7 +235,7 @@ export default () => (
             chevronRight
           >
             Sign in
-          </Link>
+          </A>
         </Announcement>
         <Heading.h1 fontSize={[6, 7]} mt={[3, 4]} mb={2}>
           Join the Hack Club Slack
@@ -250,7 +254,7 @@ export default () => (
         <Icon glyph="down-caret" size={48} />
       </Flex>
     </BackgroundGradient>
-    <Dark py={[5, 6]}>
+    <Box py={[5, 6]}>
       <Container maxWidth={36} px={3} mb={5} align="center">
         <ColoredHeadline colors={['fuschia.5', 'pink.5', 'orange.5']} mb={2}>
           Channels galore.
@@ -269,7 +273,27 @@ export default () => (
           </Channel>
         ))}
       </Grid>
-    </Dark>
+    </Box>
+    <BackgroundImage
+      bg="darker"
+      src="/photos/night.jpg"
+      style={{ backgroundPosition: 'top center' }}
+    >
+      <Container px={3} py={[5, 6]}>
+        <GlowingIcon glyph="explore" color="#c57206" size={96} ml={-2} />
+        <ColoredHeadline colors={['#d98b38', '#c57206', '#7c3b00']}>
+          Come to Hack&nbsp;Night, our weekly nighttime hackathons.
+        </ColoredHeadline>
+        <Text color="#a56a3b" fontSize={4} mb={3} style={{ maxWidth: '48rem' }}>
+          On Saturday nights at 6pm PST, a group from our community comes
+          together for Hack Night. It’s a remote hackathon, social hangout, and
+          a ton of fun. Build, learn, and share together.
+        </Text>
+        <OutlineButton.link bg="#c57206" to="/night" mt={3}>
+          Learn more
+        </OutlineButton.link>
+      </Container>
+    </BackgroundImage>
     <Footer dark />
   </Layout>
 )

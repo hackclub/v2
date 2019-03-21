@@ -21,6 +21,7 @@ import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import Sheet from 'components/Sheet'
+import GlowingIcon from 'components/GlowingIcon'
 import { ColoredHeadline, Subhline, Featline } from 'components/Content'
 // import Announcement from 'components/home/Announcement'
 
@@ -36,10 +37,6 @@ const StartCTA = styled(Button.withComponent(Link)).attrs(cta)`
 `
 OutlineButton.link = OutlineButton.withComponent(Link)
 
-const GlowingIcon = styled(Box.withComponent(Icon))`
-  filter: drop-shadow(0 0 4px ${({ color }) => hexa(color, 0.75)});
-  position: relative;
-`
 const HeadlineIcon = styled(GlowingIcon)`
   top: ${theme.space[1]}px;
   ${theme.mediaQueries.md} {

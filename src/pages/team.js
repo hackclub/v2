@@ -99,14 +99,14 @@ export default () => (
       <Bio
         img="/team/max.jpg"
         name="Max Wofford"
-        teamteamRole="Operations"
+        teamRole="Operations"
         text="After teaching himself to code in junior year of high school, Max joined a group of nomadic hackers in Costa Rica to experience coding in a real-world setting. He has been with Hack Club since day one and is now working full-time in San Francisco to grow the movement."
         pronouns="he/him"
       />
       <Bio
         img="/team/lachlan.jpg"
         name="Lachlan Campbell"
-        teamteamRole="Web/Design"
+        teamRole="Web/Design"
         text="Lachlan, an active club leader from State College, PA, joined to work on hackclub.com. 1.5 years later, they make Hack Club’s website, design (system), & branding, and work on projects including Bank & Leaders. They will soon study Interactive Media Arts @ NYU, fall 2019."
         pronouns="they/them"
       />

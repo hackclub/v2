@@ -479,7 +479,7 @@ export default () => (
               body="In our Slack, come chat with hundreds of other club leaders and members around the world."
               color="white"
             />
-            <FeatureLink to="/slack_invite" color="white">
+            <FeatureLink to="/community/" color="white">
               Join our Slack
             </FeatureLink>
           </PhotoFeature>

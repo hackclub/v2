@@ -101,7 +101,7 @@ export default () => (
           Meet some new people, build something cool, talk about it. There are
           no prizes or expectations—just have fun!
         </Lead>
-        <CTA to="/slack_invite">Join #hack-night on Slack</CTA>
+        <CTA to="/community/">Join #hack-night on Slack</CTA>
       </Container>
     </Hero>
     <Footer dark />

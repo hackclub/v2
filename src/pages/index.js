@@ -207,7 +207,7 @@ export default () => (
             coding clubs. We make together, learn together, organize hackathons
             together. <strong>This is your home.</strong>
           </Lead>
-          <OutlineButton.link bg="orange.1" to="/slack_invite" m={[1, 2]}>
+          <OutlineButton.link bg="orange.1" to="/community" m={[1, 2]}>
             Join the community
           </OutlineButton.link>
           <StartCTA to="/start" m={[1, 2]}>
@@ -248,7 +248,7 @@ export default () => (
             to in our Slack community (online groupchat, Discord-style) with
             3,000+ members around the world, active at all hours.
           </Text>
-          <CTA to="/slack_invite">Sign me up</CTA>
+          <CTA to="/community">Sign me up</CTA>
           <Features mt={[4, 5]}>
             <Box>
               <CommunityLine />

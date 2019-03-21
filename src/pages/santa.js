@@ -82,7 +82,7 @@ export default () => (
         </Lead>
         <IconButton
           is={LargeButton.withComponent(Link)}
-          to="/slack_invite"
+          to="/community/"
           glyph="slack"
           mt={3}
         >

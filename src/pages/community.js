@@ -211,7 +211,7 @@ export default () => (
         { property: 'og:title', content: title },
         { property: 'og:description', content: desc },
         { property: 'og:image', content: img },
-        { property: 'og:url', content: 'https://hackclub.com/slack_invite' }
+        { property: 'og:url', content: 'https://hackclub.com/community' }
       ]}
     />
     <Nav dark />

@@ -1,6 +1,7 @@
 /c9                   /cloud9_setup
-/slack                /slack_invite
-/workshops/slack      /slack_invite
+/slack                /community
+/slack_invite         /community
+/workshops/slack      /community
 /hack_camp            /camp
 /repl                 /start
 /coc                  /conduct

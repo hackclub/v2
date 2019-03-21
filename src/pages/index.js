@@ -150,27 +150,10 @@ const ResourcesLine = styled(FeatureLine)`
   );
 `
 
-const title = 'Hack Club – a community of high school hackers'
-const desc =
-  'Get a bank account for your high school coding event or hackathon with the backing of a 501(c)(3) non-profit. Student organizers can invoice sponsors, issue physical debit cards, and get access to their event’s financials through a real-time dashboard.'
-const img = 'https://hackclub.com/cards/hackers.png'
-
 export default () => (
   <Layout bg="dark">
     <Box.main color="white">
-      <Helmet
-        title={title}
-        meta={[
-          { name: 'description', content: desc },
-          { name: 'twitter:title', content: title },
-          { name: 'twitter:description', content: desc },
-          { name: 'twitter:image', content: img },
-          { property: 'og:title', content: title },
-          { property: 'og:description', content: desc },
-          { property: 'og:image', content: img },
-          { property: 'og:url', content: 'https://hackclub.com/hackers' }
-        ]}
-      >
+      <Helmet>
         <meta
           name="google-site-verification"
           content="f7cxVyFnrTxN9Q-HnpP-ueNWuWF5VgIEKF0C3tSnsnc"

@@ -111,7 +111,7 @@ const Footer = ({ dark = false, children, ...props }) => (
           <Link to="/" children="Home" />
           <Link to="/donate/" children="Donate" />
           <Link to="/team/" children="Team" />
-          <Link to="/hackers/" children="Hackers" />
+          <Link to="/community/" children="Community" />
           <Link to="/philosophy/" children="Philosophy" />
         </Pages>
       </Box>
@@ -120,7 +120,7 @@ const Footer = ({ dark = false, children, ...props }) => (
           For Clubs
         </Heading.h2>
         <Pages>
-          <Link to="/start/" children="Get Started" />
+          <Link to="/start/" children="Start a Club" />
           <Link to="/apply/" children="Apply" />
           <Link to="/challenge/" children="Challenge" />
           <Link to="/workshops/" children="Workshops" />

@@ -12,6 +12,8 @@
 /component---src*     /swkiller.js  200
 /admin                https://5c8804a629a378000833619c--hackclub.netlify.com/admin/
 /admin/*              https://5c8804a629a378000833619c--hackclub.netlify.com/admin/:splat
+/apply                https://5c8804a629a378000833619c--hackclub.netlify.com/admin/
+/apply/*              https://5c8804a629a378000833619c--hackclub.netlify.com/admin/:splat
 /checkup              https://5c8804a629a378000833619c--hackclub.netlify.com/checkup/
 /checkup/*            https://5c8804a629a378000833619c--hackclub.netlify.com/checkup/:splat
 /workshops/*          https://5c8804a629a378000833619c--hackclub.netlify.com/workshops/:splat

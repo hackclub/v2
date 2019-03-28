@@ -11,10 +11,8 @@ import {
   Link as A,
   OutlineButton,
   Text,
-  theme,
-  hexa
+  theme
 } from '@hackclub/design-system'
-import Icon from '@hackclub/icons'
 import { Link } from 'gatsby'
 import Layout from 'components/Layout'
 import Helmet from 'react-helmet'

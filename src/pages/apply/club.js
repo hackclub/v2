@@ -1,16 +1,18 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import search from 'search'
 import api from 'api'
-import { Heading, Container, LargeButton } from '@hackclub/design-system'
+import { Container, Heading, LargeButton } from '@hackclub/design-system'
 
+import { Link } from 'gatsby'
 import Layout from 'components/Layout'
 import Login from 'components/auth/Login'
 import Sheet from 'components/Sheet'
 import ApplyNav from 'components/apply/ApplyNav'
 import LoadingBar from 'components/LoadingBar'
-import BG from 'components/BG'
 import ClubApplicationForm from 'components/apply/ClubApplicationForm'
+
+LargeButton.link = LargeButton.withComponent(Link)
 
 export default class extends Component {
   state = {
@@ -40,44 +42,41 @@ export default class extends Component {
       })
   }
 
-  content() {
-    const { status, formFields, id } = this.state
-
-    switch (status) {
-      case 'needsToAuth':
-        return <Login />
-      case 'loading':
-        return <LoadingBar fill />
-      default:
-        return (
-          <Fragment>
-            <BG color="snow" />
-            <ApplyNav />
-            <Sheet maxWidth={48} mt={3} mb={5}>
-              <ClubApplicationForm params={formFields} id={id} />
-            </Sheet>
-            <Heading.h4 align="center">
-              Your form is automatically saved{' '}
-              <span role="img" aria-label="">
-                ✨
-              </span>
-            </Heading.h4>
-            <Container align="center" mt={4} mb={5}>
-              <LargeButton.link to="/apply" chevronLeft>
-                Back
-              </LargeButton.link>
-            </Container>
-          </Fragment>
-        )
-    }
-  }
-
   render() {
     return (
-      <Layout>
+      <Layout bg="snow">
         <Helmet title="Edit Club Application – Hack Club" />
-        {this.content()}
+        <Content {...this.state} />
       </Layout>
     )
+  }
+}
+
+const Content = ({ status, formFields, id }) => {
+  switch (status) {
+    case 'needsToAuth':
+      return <Login />
+    case 'loading':
+      return <LoadingBar fill />
+    default:
+      return (
+        <>
+          <ApplyNav />
+          <Sheet maxWidth={48} mt={3} mb={5}>
+            <ClubApplicationForm params={formFields} id={id} />
+          </Sheet>
+          <Heading.h4 align="center">
+            Your form is automatically saved{' '}
+            <span role="img" aria-label="">
+              ✨
+            </span>
+          </Heading.h4>
+          <Container align="center" mt={4} mb={5}>
+            <LargeButton.link to="/apply" chevronLeft>
+              Back
+            </LargeButton.link>
+          </Container>
+        </>
+      )
   }
 }

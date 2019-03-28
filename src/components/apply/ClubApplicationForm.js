@@ -1,8 +1,6 @@
 import React from 'react'
-import { AutoSaver, Field, Fieldset, Form, FormWrapper } from 'components/Forms'
-import { LargeButton } from '@hackclub/design-system'
+import { AutoSaver, Fieldset, Field, Form, FormWrapper } from 'components/Forms'
 import { withFormik } from 'formik'
-import { Link } from 'gatsby'
 import * as yup from 'yup'
 import api from 'api'
 
@@ -25,51 +23,39 @@ export const clubApplicationSchema = yup.object().shape({
   point_of_contact_id: yup.number().required()
 })
 
-LargeButton.link = LargeButton.withComponent(Link)
-
-const InnerForm = props => {
-  const {
-    values,
-    errors,
-    touched,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-    isSubmitting,
-    disableAutosave
-  } = props
+const InnerForm = ({
+  values,
+  errors,
+  touched,
+  handleChange,
+  handleBlur,
+  handleSubmit,
+  isSubmitting
+}) => {
+  console.log(handleChange)
+  const field = name => ({
+    name,
+    value: values[name] === null ? '' : values[name],
+    onChange: handleChange,
+    onBlur: handleBlur,
+    error: touched[name] && errors[name],
+    disabled: values.submitted_at !== null
+  })
   return (
     <FormWrapper>
       <Form onSubmit={handleSubmit}>
         <Fieldset section="school">
+          <Field {...field('high_school_name')} label="Name of high school" />
           <Field
-            name="high_school_name"
-            label="Name of high school"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.high_school_name}
-            error={touched.high_school_name && errors.high_school_name}
-            disabled={values.submitted_at !== null}
-          />
-          <Field
-            name="high_school_url"
+            {...field('high_school_url')}
             label="Link to your high school’s website, if any"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.high_school_url}
-            error={touched.high_school_url && errors.high_school_url}
-            disabled={values.submitted_at !== null}
+            type="url"
             optional
           />
           <Field
-            name="high_school_type"
+            {...field('high_school_type')}
             label="Type of school"
             type="select"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.high_school_type || 'select'}
-            error={touched.high_school_type && errors.high_school_type}
-            disabled={values.submitted_at !== null}
           >
             <option disabled value="select">
               Select One
@@ -79,27 +65,17 @@ const InnerForm = props => {
             <option value="charter_school">Charter school</option>
           </Field>
           <Field
-            name="high_school_address"
+            {...field('high_school_address')}
             label="High school’s full address"
             hint="Please include city, state / province, country, and postal code."
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.high_school_address}
-            error={touched.high_school_address && errors.high_school_address}
             type="textarea"
-            disabled={values.submitted_at !== null}
           />
         </Fieldset>
         <Fieldset section="leaders">
           <Field
-            name="point_of_contact_id"
+            {...field('point_of_contact_id')}
             label="President / equivalent position"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.point_of_contact_id || 'select'}
-            error={touched.point_of_contact_id && errors.point_of_contact_id}
             type="select"
-            disabled={values.submitted_at !== null}
           >
             <option disabled value="select">
               Select One
@@ -111,179 +87,100 @@ const InnerForm = props => {
             ))}
           </Field>
           <Field
-            name="leaders_team_origin_story"
+            {...field('leaders_team_origin_story')}
             label="How long have you known your other club leaders and how did you meet?"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.leaders_team_origin_story}
-            error={
-              touched.leaders_team_origin_story &&
-              errors.leaders_team_origin_story
-            }
             type="textarea"
-            disabled={values.submitted_at !== null}
           />
         </Fieldset>
         <Fieldset section="progress">
           <Field
-            name="progress_general"
+            {...field('progress_general')}
             label="How far along are you in starting your club?"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.progress_general}
-            error={touched.progress_general && errors.progress_general}
             type="textarea"
-            disabled={values.submitted_at !== null}
           />
           <Field
-            name="progress_student_interest"
+            {...field('progress_student_interest')}
             label="Have you already polled for interest at your school? Are students interested? If you’ve already had meetings, how many people came?"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.progress_student_interest}
-            error={
-              touched.progress_student_interest &&
-              errors.progress_student_interest
-            }
             type="textarea"
-            disabled={values.submitted_at !== null}
           />
           <Field
-            name="progress_meeting_yet"
+            {...field('progress_meeting_yet')}
             label="Have you begun meeting yet?"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.progress_meeting_yet}
-            error={touched.progress_meeting_yet && errors.progress_meeting_yet}
             type="textarea"
-            disabled={values.submitted_at !== null}
           />
         </Fieldset>
         <Fieldset section="idea">
           <Field
-            name="idea_why"
+            {...field('idea_why')}
             label="Why did you decide to start a Hack Club? Have you run anything like a Hack Club before? Why do you think the club is going to work?"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.idea_why}
-            error={touched.idea_why && errors.idea_why}
             type="textarea"
-            disabled={values.submitted_at !== null}
           />
           <Field
-            name="idea_other_coding_clubs"
+            {...field('idea_other_coding_clubs')}
             label="Has your school had coding clubs before? What’s going to be new about your Hack Club?"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.idea_other_coding_clubs}
-            error={
-              touched.idea_other_coding_clubs && errors.idea_other_coding_clubs
-            }
             type="textarea"
-            disabled={values.submitted_at !== null}
           />
           <Field
-            name="idea_other_general_clubs"
+            {...field('idea_other_general_clubs')}
             label="What successful clubs exist at your school? What makes them successful? Why will you be just as successful, if not more, than them?"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.idea_other_general_clubs}
-            error={
-              touched.idea_other_general_clubs &&
-              errors.idea_other_general_clubs
-            }
             type="textarea"
-            disabled={values.submitted_at !== null}
           />
         </Fieldset>
         <Fieldset section="formation">
           <Field
-            name="formation_registered"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.formation_registered}
-            error={touched.formation_registered && errors.formation_registered}
+            {...field('formation_registered')}
             label="Have you already registered your club with your school?"
-            disabled={values.submitted_at !== null}
           />
           <Field
-            name="formation_misc"
+            {...field('formation_misc')}
             label="Please provide any other relevant information about your relationship with the school. For example, do you already have a teacher sponsor?"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.formation_misc}
-            error={touched.formation_misc && errors.formation_misc}
             type="textarea"
-            disabled={values.submitted_at !== null}
             optional
           />
         </Fieldset>
         <Fieldset section="other">
           <Field
-            name="other_surprising_or_amusing_discovery"
+            {...field('other_surprising_or_amusing_discovery')}
             label="What is something surprising or amusing you discovered?"
             hint="Doesn’t have to be about Hack Club or coding."
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.other_surprising_or_amusing_discovery}
-            error={
-              touched.other_surprising_or_amusing_discovery &&
-              errors.other_surprising_or_amusing_discovery
-            }
             type="textarea"
-            disabled={values.submitted_at !== null}
           />
         </Fieldset>
         <Fieldset section="curious">
           <Field
-            name="curious_what_convinced"
+            {...field('curious_what_convinced')}
             label="What convinced you to start a Hack Club?"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.curious_what_convinced}
-            error={
-              touched.curious_what_convinced && errors.curious_what_convinced
-            }
             type="textarea"
-            disabled={values.submitted_at !== null}
             optional
           />
           <Field
-            name="curious_how_did_hear"
+            {...field('curious_how_did_hear')}
             label="How did you hear about Hack Club? If you heard about us at an event, mention it here."
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.curious_how_did_hear}
-            error={touched.curious_how_did_hear && errors.curious_how_did_hear}
             type="textarea"
-            disabled={values.submitted_at !== null}
             optional
           />
         </Fieldset>
-        {!disableAutosave && (
-          <AutoSaver
-            handleSubmit={handleSubmit}
-            isSubmitting={isSubmitting}
-            values={values}
-          />
-        )}
+        <AutoSaver
+          handleSubmit={handleSubmit}
+          isSubmitting={isSubmitting}
+          values={values}
+        />
       </Form>
     </FormWrapper>
   )
 }
 
 const ClubApplicationForm = withFormik({
-  mapPropsToValues: props => props.params,
+  mapPropsToValues: ({ params }) => params,
   enableReinitialize: true,
-  handleSubmit: (data, { setSubmitting, props, resetForm }) => {
+  handleSubmit: (data, { setSubmitting, props }) => {
     api
       .patch(`v1/new_club_applications/${props.id}`, { data })
-      .then(json => {
+      .then(() => {
         setSubmitting(false)
       })
       .catch(e => {
         console.error(e)
-        alert(e)
         setSubmitting(false)
       })
   },

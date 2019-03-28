@@ -212,7 +212,7 @@ class Header extends Component {
     const { scrolled, toggled } = this.state
     const baseColor = dark
       ? color || 'white'
-      : color === 'white'
+      : color === 'white' && scrolled
       ? 'black'
       : color
     const toggleColor = dark

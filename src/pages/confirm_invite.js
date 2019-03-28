@@ -4,7 +4,6 @@ import LoadingBar from 'components/LoadingBar'
 import LoginPage from 'components/auth/Login'
 import LeaderForm from 'components/confirm_invite/LeaderForm'
 import Layout from 'components/Layout'
-import Nav from 'components/apply/ApplyNav'
 import api from 'api'
 import Helmet from 'react-helmet'
 import {
@@ -197,7 +196,6 @@ export default class extends Component {
         return (
           <Layout>
             <Helmet title="Confirm Invitation – Hack Club" />
-            <Nav />
             <Container maxWidth={32}>
               {pendingInviteCount === 0 && (
                 <Box>

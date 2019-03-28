@@ -324,7 +324,7 @@ export default () => (
       ]}
     />
     <Nav color="slate" fixed />
-    <Box mt={[44, 55]} p={3} bg="snow">
+    <Box mt={[44, 55]} p={3} bg="white">
       <PhotoHeader
         py={[3, 6, 7, 8]}
         src={require('../../static/photos/hackpenn_full.jpg')}
@@ -347,9 +347,6 @@ export default () => (
           </Stats>
         </Container>
       </PhotoHeader>
-      <Flex justify="center" color="muted" mt={3}>
-        <Icon glyph="down-caret" size={64} />
-      </Flex>
     </Box>
     <Box bg="white" py={[4, 5, 6]}>
       <Container {...contentContainer}>

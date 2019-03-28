@@ -25,7 +25,8 @@ import { ColoredHeadline, Subhline, Featline } from 'components/Content'
 
 const cta = {
   chevronRight: true,
-  color: 'white'
+  color: 'white',
+  scale: true
 }
 const CTA = styled(Button.withComponent(Link)).attrs(cta)`
   background: ${theme.gradient('pink.5', 'red.6')};

@@ -259,7 +259,7 @@ const StepThree = styled(Sheet)`
     ${theme.colors.indigo[6]}
   );
 `
-const ApplyButton = styled(LargeButton.withComponent(Link)).attrs({
+const ApplyButton = styled(LargeButton).attrs({
   scale: true,
   chevronRight: true
 })`
@@ -610,7 +610,11 @@ export default () => (
           <Text fontSize={[3, 5]} my={[1, 2]}>
             Bring the movement to your&nbsp;school.
           </Text>
-          <ApplyButton to="/apply" children="Apply to Hack Club" mt={4} />
+          <ApplyButton
+            href="https://apply.hackclub.com/"
+            children="Apply to Hack Club"
+            mt={4}
+          />
         </Container>
       </MapBox>
     </Box>

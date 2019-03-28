@@ -134,7 +134,7 @@ const Help = () => (
       </Text>
       <Text>
         Send any questions about the application process to{' '}
-        <A to="mailto:applications@hackclub.com">applications@hackclub.com</A>.
+        <A href="mailto:applications@hackclub.com">applications@hackclub.com</A>.
       </Text>
     </Box>
   </HelpSheet>

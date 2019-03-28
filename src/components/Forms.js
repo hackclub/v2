@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import {
   Box,
   Button,
@@ -12,24 +12,29 @@ import {
   Text,
   theme
 } from '@hackclub/design-system'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  } 
+  to {
+    transform: rotate(360deg);
+  } 
+`
 const SaveBaseIcon = styled(Icon)`
   position: fixed;
   bottom: 0;
   left: 0;
-  opacity: ${props => (props.saved ? 0 : 0.25)};
-  transition-duration: ${props => (props.saved ? 2 : 1)}s;
-  transition-delay: ${props => (props.saved ? 4 : 0)}s;
-  transition-property: opacity;
-  transition-timing-function: ease-in-out;
+  ${props => !props.saved && { animation: `4s ${spin} infinite` }}
 `
 
 const SaveStatusIcon = ({ saved }) => (
   <SaveBaseIcon
-    name={saved ? 'cloud_done' : 'cloud_upload'}
-    color={saved ? 'slate' : 'slate'}
-    size={32}
+    glyph={saved ? 'checkmark' : 'community'}
+    color={saved ? 'muted' : 'primary'}
+    title={saved ? 'Saved!' : 'Saving, gimme a sec…'}
+    size={36}
     m={2}
     saved={saved}
   />
@@ -49,13 +54,11 @@ const SaveStatusLine = styled(Box)`
   box-shadow: 0 0 4px ${props => (props.saved ? '0px' : '2px')};
 `
 
-const SaveStatus = ({ saved, type = 'all' }) => (
-  <Fragment>
-    {['all', 'text'].indexOf(type) !== -1 && <SaveStatusIcon saved={saved} />}
-    {['all', 'underline'].indexOf(type) !== -1 && (
-      <SaveStatusLine saved={saved} />
-    )}
-  </Fragment>
+const SaveStatus = props => (
+  <>
+    <SaveStatusIcon {...props} />
+    <SaveStatusLine {...props} />
+  </>
 )
 
 export class AutoSaver extends Component {
@@ -65,7 +68,7 @@ export class AutoSaver extends Component {
   }
 
   componentDidMount() {
-    const intervalId = setInterval(this.autoSave.bind(this), 1000)
+    const intervalId = setInterval(this.autoSave, 1000)
     this.setState({ intervalId })
   }
 
@@ -93,21 +96,14 @@ export class AutoSaver extends Component {
         handleSubmit({ preventDefault: () => null })
       }
 
-      this.setState({
-        previousValues: values
-      })
+      this.setState({ previousValues: values })
     }
   }
 
   render() {
     const { unsavedChanges } = this.state
-    const { saveNotification } = this.props
-    return (
-      <Fragment>
-        <SaveStatus type={saveNotification} saved={!unsavedChanges} />
-        {unsavedChanges && <ConfirmClose />}
-      </Fragment>
-    )
+    // {unsavedChanges && <ConfirmClose />}
+    return <SaveStatus saved={!unsavedChanges} />
   }
 }
 
@@ -136,7 +132,10 @@ export const Hint = styled(Text.span).attrs({
 export class ConfirmClose extends Component {
   componentDidMount() {
     // https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm
-    window.onbeforeunload = () => window.confirm()
+    window.onbeforeunload = () =>
+      window.confirm(
+        'Hold on, you’re about to lose unsaved changes! Sure you want to leave?'
+      )
   }
 
   componentWillUnmount() {
@@ -159,18 +158,20 @@ export const Optional = () => (
 )
 
 export class Field extends Component {
+  static defaultProps = {
+    type: 'text'
+  }
+
   constructor(props) {
     super(props)
-    const Tag = Input.withComponent(
+    this.tag = Input.withComponent(
       ['textarea', 'select'].indexOf(props.type) === -1 ? 'input' : props.type
     )
-
-    this.state = { Tag, isEditing: false }
   }
 
   render() {
     const {
-      type = 'text',
+      type,
       name = 'name',
       label,
       p,
@@ -181,10 +182,10 @@ export class Field extends Component {
       value,
       bg,
       mb = 3,
-      props
+      ...props
     } = this.props
 
-    const { Tag } = this.state
+    const Tag = this.tag
 
     return (
       <Label className={type} mb={mb} id={name}>
@@ -200,7 +201,6 @@ export class Field extends Component {
           placeholder={p}
           children={children}
           {...props}
-          onBlur={this.onBlur}
           value={value}
           bg={bg}
         />
@@ -276,6 +276,10 @@ const HeadingBox = styled(Box).attrs({
 const FieldsBox = styled(Box).attrs({})`
   order: 2;
   flex-grow: 1;
+  label div {
+    text-align: left !important;
+    line-height: 1.375;
+  }
 `
 
 export const Fieldset = props => (

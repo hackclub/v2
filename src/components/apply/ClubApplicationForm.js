@@ -32,7 +32,6 @@ const InnerForm = ({
   handleSubmit,
   isSubmitting
 }) => {
-  console.log(handleChange)
   const field = name => ({
     name,
     value: values[name] === null ? '' : values[name],

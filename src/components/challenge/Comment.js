@@ -24,8 +24,8 @@ const Root = styled(Flex)`
   button {
     transform: scale(0);
     will-change: transform;
-    transition: 0.25s ease-out all;
-    margin: 2px;
+    transition: 0.25s ${theme.transition} all;
+    margin: 0;
   }
   &:hover button {
     transform: scale(1);
@@ -78,10 +78,7 @@ const Byline = CommentByline
 const Time = styled(Text.withComponent('time'))`
   margin: 0 ${theme.space[2]}px;
   opacity: 0;
-  transition: opacity 0.25s ease-out;
-  &:hover {
-    transition: opacity 0.25s ease-in;
-  }
+  transition: opacity 0.25s ${theme.transition};
 `
 
 const Bubble = styled(Box)`

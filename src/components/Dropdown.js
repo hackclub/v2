@@ -19,7 +19,7 @@ export const DropdownContainer = styled(Box)`
   position: relative;
   &:hover > div {
     display: block;
-    animation: 0.1875s ease-out ${zoom};
+    animation: 0.1875s ${theme.transition} ${zoom};
     opacity: 1;
   }
 `

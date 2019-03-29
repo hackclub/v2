@@ -73,7 +73,7 @@ const Sheet = styled(Card)`
   padding-top: 55%;
   overflow: hidden;
   box-shadow: ${theme.boxShadows[1]};
-  transition: 0.25s ease-out box-shadow;
+  transition: 0.25s ${theme.transition} box-shadow;
   &:hover {
     box-shadow: ${theme.boxShadows[2]};
   }

@@ -48,7 +48,7 @@ const UpvoteButton = styled(Button.button)`
   box-shadow: none !important;
   cursor: ${props => props.cursor};
   svg {
-    margin: -${theme.space[1]}px 0;
+    margin: -${theme.space[1]}px;
   }
 `
 

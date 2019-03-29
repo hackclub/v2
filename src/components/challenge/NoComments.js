@@ -1,8 +1,10 @@
 import React from 'react'
-import { Container, Flex, Text } from '@hackclub/design-system'
-import Icon from '@hackclub/icons'
+import styled from 'styled-components'
+import { Container, Flex, Text, Icon } from '@hackclub/design-system'
 
-const Base = Flex.withComponent(Container)
+const Base = styled(Flex.withComponent(Container))`
+  line-height: 1.25;
+`
 
 const NoComments = () => (
   <Base
@@ -13,8 +15,8 @@ const NoComments = () => (
     py={4}
   >
     <Icon glyph="message-new" size={64} />
-    <Text color="gray.6" fontSize={[2, 3]} mt={2} bold>
-      No comments here yet—want to start the conversation below?
+    <Text color="gray.6" fontSize={[2, 3]} bold>
+      No comments here yet—start the conversation below!
     </Text>
   </Base>
 )

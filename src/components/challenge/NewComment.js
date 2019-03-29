@@ -1,7 +1,7 @@
 import React from 'react'
 import { withFormik } from 'formik'
 import { isEmpty } from 'lodash'
-import Composer, { LS_BODY_KEY } from './CommentComposer'
+import Composer from './CommentComposer'
 import { SendForm, SendButton } from '../SendForm'
 import * as yup from 'yup'
 import api from 'api'
@@ -27,9 +27,6 @@ const InnerForm = ({
     <Composer
       value={values.body}
       clear={isEmpty(values.body) && touched.body}
-      handleReturn={e => {
-        !e.shiftKey && handleSubmit(e)
-      }}
       onChange={setFieldValue}
       onBlur={handleBlur}
       parent={parent}
@@ -66,7 +63,6 @@ const CommentForm = withFormik({
         setValues({ body: '', parent_id: null })
         props.onUnparent()
         props.onSubmit(res)
-        if (localStorage) localStorage.removeItem(LS_BODY_KEY)
         setStatus('success')
         setTimeout(() => setStatus(null), 1536)
       })

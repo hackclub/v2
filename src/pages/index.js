@@ -237,15 +237,15 @@ export default () => (
             mb={3}
             style={{ maxWidth: '48rem' }}
           >
-            Hack Club gives you a community of thousands of other young makers
-            to talk to. We’re artists, writers, engineers, tinkerers,
-            filmmakers, volunteers. We make things. We help one another.
+            Hack Club is an online community of thousands of other young makers.
+            We’re artists, writers, tinkerers, filmmakers, volunteers.
+            We&nbsp;make & learn together.{' '}
+            <strong>You’ve found your place.</strong>
           </Text>
           <Text color="smoke" fontSize={4} mb={4} style={{ maxWidth: '48rem' }}>
-            Have a coding question? Looking for feedback on your project? Trying
-            to start a local meetup? You’ll find some phenomenal people to talk
-            to in our Slack community (online groupchat, Discord-style) with
-            3,000+ members around the world, active at all hours.
+            Have a coding question? Looking for project feedback? You’ll find
+            some fabulous people to talk to in our global Slack (Discord-style
+            online groupchat) with 3,000+ members, active at all hours.
           </Text>
           <CTA to="/community">Sign me up</CTA>
           <Features mt={[4, 5]}>

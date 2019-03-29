@@ -30,7 +30,7 @@ const Megaline = styled(Heading.h1).attrs({
   line-height: 1.125;
   max-width: 20rem;
   @supports (-webkit-background-clip: text) {
-    background: linear-gradient(
+    background-image: linear-gradient(
       to bottom right,
       #d98b38 25%,
       ${theme.colors.night} 50%,
@@ -51,7 +51,7 @@ const CTA = styled(IconButton).attrs({
   color: 'white',
   glyph: 'slack'
 })`
-  background: radial-gradient(
+  background-image: radial-gradient(
     ellipse farthest-corner at top left,
     #d98b38 25%,
     ${theme.colors.night} 50%,

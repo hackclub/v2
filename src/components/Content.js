@@ -42,7 +42,7 @@ export const ColoredHeadline = styled(Headline).attrs({ pb: 2, mb: 3 })`
   color: ${({ colors }) => theme.cx(colors[2])};
   max-width: 54rem;
   @supports (-webkit-background-clip: text) {
-    background: linear-gradient(
+    background-image: linear-gradient(
       to right,
       ${({ colors }) => theme.cx(colors[0])} 25%,
       ${({ colors }) => theme.cx(colors[1])} 50%,

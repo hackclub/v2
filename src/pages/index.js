@@ -29,10 +29,10 @@ const cta = {
   scale: true
 }
 const CTA = styled(Button.withComponent(Link)).attrs(cta)`
-  background: ${theme.gradient('pink.5', 'red.6')};
+  background-image: ${theme.gradient('pink.5', 'red.6')};
 `
 const StartCTA = styled(Button.withComponent(Link)).attrs(cta)`
-  background: ${theme.gradient('orange.5', 'red.6')};
+  background-image: ${theme.gradient('orange.5', 'red.6')};
 `
 OutlineButton.link = OutlineButton.withComponent(Link)
 
@@ -60,7 +60,7 @@ const Megaline = styled(Heading.h1).attrs({
   line-height: 1.125;
   color: ${theme.colors.success};
   @supports (-webkit-background-clip: text) {
-    background: linear-gradient(
+    background-image: linear-gradient(
       to bottom right,
       ${theme.colors.cyan[5]} 25%,
       ${theme.colors.teal[5]} 50%,
@@ -164,7 +164,7 @@ const Photo = styled(Sheet.withComponent(BackgroundImage)).attrs({
   }
 `
 const CommunityLine = styled(FeatureLine)`
-  background: linear-gradient(
+  background-image: linear-gradient(
     to right,
     ${theme.colors.orange[5]},
     ${theme.colors.pink[5]},
@@ -172,7 +172,7 @@ const CommunityLine = styled(FeatureLine)`
   );
 `
 const ResourcesLine = styled(FeatureLine)`
-  background: linear-gradient(
+  background-image: linear-gradient(
     to right,
     ${theme.colors.fuschia[5]},
     ${theme.colors.violet[5]},

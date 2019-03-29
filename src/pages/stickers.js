@@ -10,7 +10,7 @@ import { random } from 'lodash'
 import { Lead } from 'components/Content'
 
 const Hero = styled(Flex.withComponent('article')).attrs({ align: 'center' })`
-  background: ${theme.gradient('dark', 'darker')};
+  background-image: ${theme.gradient('dark', 'darker')};
   min-height: 100vh;
   position: relative;
   overflow: hidden;
@@ -23,7 +23,7 @@ const Megaline = styled(Heading.h1).attrs({
 })`
   line-height: 1;
   @supports (-webkit-background-clip: text) {
-    background: ${theme.gradient('pink.5', 'red.5', 'red.6')};
+    background-image: ${theme.gradient('pink.5', 'red.5', 'red.6')};
     background-repeat: no-repeat;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

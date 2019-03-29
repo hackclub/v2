@@ -75,7 +75,7 @@ const photoSection = css`
 `
 const PhotoHeader = styled(Section).attrs({ px: 0 })`
   background-color: ${theme.colors.primary};
-  background: linear-gradient(
+  background-image: linear-gradient(
       ${props =>
         props.inverted
           ? 'rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)'
@@ -125,7 +125,7 @@ const PhotoFeature = styled(TextFeature).attrs({
     props.inverted
       ? css`
           justify-content: flex-end !important;
-          background: linear-gradient(
+          background-image: linear-gradient(
               transparent,
               rgba(0, 0, 0, 0.25) 50%,
               rgba(0, 0, 0, 0.5) 100%
@@ -133,7 +133,10 @@ const PhotoFeature = styled(TextFeature).attrs({
             url(${props.src});
         `
       : css`
-          background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 50%),
+          background-image: linear-gradient(
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0) 50%
+            ),
             url(${props.src});
         `};
   background-position: center;
@@ -142,11 +145,11 @@ const PhotoFeature = styled(TextFeature).attrs({
 `
 const BankFeature = styled(Sheet)`
   background-color: ${theme.colors.primary};
-  background: ${theme.gradient('red.5', 'red.7')};
+  background-image: ${theme.gradient('red.5', 'red.7')};
 `
 const MarketingFeature = styled(Sheet)`
   background-color: ${theme.colors.indigo[5]};
-  background: ${theme.gradient('indigo.4', 'indigo.6')};
+  background-image: ${theme.gradient('indigo.4', 'indigo.6')};
   position: relative;
   overflow: visible;
   ${Icon} {
@@ -237,7 +240,7 @@ const HourFeatures = styled(Steps)`
 
 const StepOne = styled(Sheet)`
   background: ${theme.colors.red[6]};
-  background: linear-gradient(
+  background-image: linear-gradient(
     to bottom,
     ${theme.colors.orange[5]},
     ${theme.colors.pink[6]}
@@ -245,7 +248,7 @@ const StepOne = styled(Sheet)`
 `
 const StepTwo = styled(Sheet)`
   background: ${theme.colors.teal[6]};
-  background: linear-gradient(
+  background-image: linear-gradient(
     to bottom,
     ${theme.colors.cyan[5]},
     ${theme.colors.blue[6]}
@@ -253,7 +256,7 @@ const StepTwo = styled(Sheet)`
 `
 const StepThree = styled(Sheet)`
   background: ${theme.colors.violet[6]};
-  background: linear-gradient(
+  background-image: linear-gradient(
     to bottom,
     ${theme.colors.fuschia[5]},
     ${theme.colors.indigo[6]}

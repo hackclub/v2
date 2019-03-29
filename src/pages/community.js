@@ -27,10 +27,10 @@ const BackgroundGradient = styled(Box)`
   position: relative;
   overflow: hidden;
   // Support for browsers that don’t support alpha hex codes
-  background: ${theme.colors.fuschia[5]};
+  background-color: ${theme.colors.fuschia[5]};
   // Support for browsers that don’t support gradients
-  background: ${theme.colors.fuschia[5]}f0;
-  background: linear-gradient(
+  background-color: ${theme.colors.fuschia[5]}f0;
+  background-image: linear-gradient(
     -32deg,
     ${theme.colors.fuschia[5]}f0,
     ${theme.colors.orange[5]}c0

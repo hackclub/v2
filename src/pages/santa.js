@@ -17,7 +17,7 @@ import IconButton from 'components/IconButton'
 import { Lead } from 'components/Content'
 
 const Hero = styled(Box.withComponent('article'))`
-  background: linear-gradient(
+  background-image: linear-gradient(
     to bottom right,
     ${theme.colors.blue[5]},
     ${theme.colors.blue[6]}
@@ -33,7 +33,7 @@ const Megaline = styled(Heading.h1).attrs({
   line-height: 1.125;
   max-width: 20rem;
   @supports (-webkit-background-clip: text) {
-    background: linear-gradient(
+    background-image: linear-gradient(
       to bottom right,
       ${theme.colors.gray[0]},
       ${theme.colors.gray[3]}

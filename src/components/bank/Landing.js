@@ -34,7 +34,7 @@ const Slide = styled(Flex).attrs({
 `
 
 const Vignette = styled.div`
-  background: linear-gradient(
+  background-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0),
     rgba(0, 0, 0, 0.25) 25%,

@@ -24,7 +24,7 @@ const Timeline = styled(Flex).attrs({
   position: relative;
   &:before {
     content: '';
-    background: linear-gradient(
+    background-image: linear-gradient(
       to bottom,
       ${theme.colors.dark} 0%,
       ${theme.colors.slate} 15%,

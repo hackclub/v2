@@ -28,6 +28,7 @@ export const Subhline = styled(Heading.h3).attrs({
   bold: true
 })`
   line-height: 1;
+  letter-spacing: -0.006em;
 `
 
 export const Featline = styled(Heading.h3).attrs({
@@ -36,11 +37,13 @@ export const Featline = styled(Heading.h3).attrs({
   bold: true
 })`
   line-height: 1;
+  letter-spacing: -0.006em;
 `
 
 export const ColoredHeadline = styled(Headline).attrs({ pb: 2, mb: 3 })`
   color: ${({ colors }) => theme.cx(colors[2])};
   max-width: 54rem;
+  letter-spacing: -0.009em;
   @supports (-webkit-background-clip: text) {
     background-image: linear-gradient(
       to right,
@@ -56,7 +59,9 @@ export const ColoredHeadline = styled(Headline).attrs({ pb: 2, mb: 3 })`
 
 export const Lead = styled(Container.withComponent(Text)).attrs({
   fontSize: 3
-})``
+})`
+  letter-spacing: 0.006em;
+`
 
 export const Highlight = styled(Text.span)`
   border-radius: 1em;

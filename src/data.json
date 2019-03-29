@@ -16,6 +16,11 @@
     "thoughts": "Overall thoughts?",
     "improve": "How would you improve this workshop?"
   },
+  "springPromo": {
+    "currentApplications": 0,
+    "applicationSlots": 100,
+    "daedline": "2019-04-14"
+  },
   "org": {
     "@context": "http://schema.org",
     "@type": "Organization",

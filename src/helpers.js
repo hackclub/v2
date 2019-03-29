@@ -32,6 +32,8 @@ export const timeSince = (
   } else if (elapsed < msPerDay) {
     const now = Math.round(elapsed / msPerHour)
     humanizedTime = longForm ? `${now} hours` : `${now}h`
+    // } else if (elapsed < msPerWeek) {
+    // NOTE(@lachlanjc): changing this for usage on spring 19 promo materials
   } else if (elapsed < msPerWeek) {
     const now = Math.round(elapsed / msPerDay)
     humanizedTime = longForm ? `${now} days` : `${now}d`
@@ -46,7 +48,9 @@ export const timeSince = (
   if (absoluteDuration) {
     return humanizedTime
   } else {
-    return elapsed > 0 ? `${humanizedTime} ago` : `in ${humanizedTime}`
+    // return elapsed > 0 ? `${humanizedTime} ago` : `in ${humanizedTime}`
+    // NOTE(@lachlanjc): also for the promo
+    return elapsed > 0 ? `${humanizedTime} ago` : humanizedTime
   }
 }
 

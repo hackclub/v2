@@ -20,7 +20,15 @@ import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import Sheet from 'components/Sheet'
 import GlowingIcon from 'components/GlowingIcon'
-import { ColoredHeadline, Subhline, Featline } from 'components/Content'
+import {
+  ColoredHeadline,
+  Subhline,
+  Featline,
+  Lead,
+  Highlight
+} from 'components/Content'
+import { timeSince } from 'helpers'
+import { springPromo } from 'data.json'
 // import Announcement from 'components/home/Announcement'
 
 const cta = {
@@ -31,8 +39,12 @@ const cta = {
 const CTA = styled(Button.withComponent(Link)).attrs(cta)`
   background-image: ${theme.gradient('pink.5', 'red.6')};
 `
-const StartCTA = styled(Button.withComponent(Link)).attrs(cta)`
-  background-image: ${theme.gradient('orange.5', 'red.6')};
+const StartCTA = styled(Button.withComponent(Link)).attrs({
+  ...cta,
+  fontSize: [4, 5],
+  px: [4, 5]
+})`
+  background-image: ${theme.gradient('orange.5', 'red.5')};
 `
 OutlineButton.link = OutlineButton.withComponent(Link)
 
@@ -53,6 +65,7 @@ const SubhlineIcon = styled(GlowingIcon)`
   }
 `
 
+/*
 const Megaline = styled(Heading.h1).attrs({
   fontSize: [6, 7, 8],
   mx: 'auto'
@@ -74,9 +87,7 @@ const Megaline = styled(Heading.h1).attrs({
     line-height: 1;
   }
 `
-
-const Lead = Container.withComponent(Text)
-Lead.defaultProps = { fontSize: 3, mx: 'auto' }
+*/
 
 const Quote = styled(Sheet).attrs({ maxWidth: 48, bg: 'primary', fontSize: 3 })`
   border-radius: ${theme.radii[2]};
@@ -87,8 +98,8 @@ const Quote = styled(Sheet).attrs({ maxWidth: 48, bg: 'primary', fontSize: 3 })`
     left: 0;
     top: 0;
     ${theme.mediaQueries.md} {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
     }
   }
 `
@@ -180,6 +191,31 @@ const ResourcesLine = styled(FeatureLine)`
   );
 `
 
+const Promo = styled(Box.withComponent('section')).attrs({
+  bg: 'primary',
+  align: 'center',
+  pt: [4, 5, 6]
+})`
+  // background-image: radial-gradient(
+  //   ellipse farthest-corner at top left,
+  //   ${theme.colors.green[6]},
+  //   ${theme.colors.teal[8]}
+  // );
+  background-image: radial-gradient(ellipse farthest-corner at top left, rgb(26, 211, 191), rgb(17, 195, 109));
+`
+const PromoMegaline = styled(Heading.h1).attrs({
+  color: 'white',
+  fontSize: [7, 8, 9],
+  pb: 2
+})`
+  letter-spacing: -0.015em;
+  line-height: 1;
+  + ${Lead} {
+    line-height: 1.25;
+    letter-spacing: 0.006em;
+  }
+`
+
 export default () => (
   <Layout bg="dark">
     <Box.main color="white">
@@ -190,26 +226,51 @@ export default () => (
         />
       </Helmet>
       <Nav dark />
-      <Box align="center" pt={[4, 5, 6]}>
+      <Promo>
         <Container maxWidth={72} px={3} py={[5, 6]}>
-          <Megaline color="smoke" mt={4} pb={1}>
-            Welcome, high school hackers. You’ve found your place.
-          </Megaline>
+          <PromoMegaline mt={4} pb={1}>
+            Start a coding club at your high&nbsp;school this spring.
+          </PromoMegaline>
           <Lead
-            fontSize={[3, 4]}
-            color="smoke"
-            maxWidth={44}
+            fontSize={[3, 4, 5]}
+            color="white"
+            maxWidth={42}
             mt={[3, 4]}
             mb={[4, 5]}
           >
-            Hack Club is a worldwide community of young hackers and high school
-            coding clubs. We make together, learn together, organize hackathons
-            together. <strong>This is your home.</strong>
+            Hack Club is a global, nonprofit network of high school coding
+            clubs. Apply now for{' '}
+            <strong>
+              early&nbsp;admissions—open for{' '}
+              {timeSince(springPromo.deadline, true, new Date(), true)}
+            </strong>
+            .
           </Lead>
-          <OutlineButton.link bg="orange.1" to="/community" m={[1, 2]}>
+          {/* <OutlineButton.link bg="teal.1" to="/community" m={[1, 2]}>
             Join the community
-          </OutlineButton.link>
+          </OutlineButton.link> */}
           <StartCTA to="/start" m={[1, 2]}>
+            Start your club
+          </StartCTA>
+        </Container>
+      </Promo>
+      <Box bg="dark" py={[5, 6, 7]}>
+        <Container px={3}>
+          <ColoredHeadline
+            fontSize={[6, 7, 8]}
+            // colors={['green.5', 'teal.5', 'teal.7']}
+            colors={['teal.5', 'cyan.5', 'blue.5']}
+          >
+            Start a coding club at your high&nbsp;school, or bring yours.
+          </ColoredHeadline>
+          <Text color="smoke" fontSize={4} mb={3} style={{ maxWidth: '48rem' }}>
+            Beyond our community, Hack Club is a nonprofit collective of coding
+            clubs led by high schoolers everywhere. If you’ve already got a
+            coding club, you’re welcome to join our network! If you’re
+            interested in starting your own, we’ll help you out every step of
+            the way.
+          </Text>
+          <StartCTA to="/start" mt={3}>
             Start your club
           </StartCTA>
         </Container>
@@ -286,25 +347,23 @@ export default () => (
         <Container px={3}>
           <ColoredHeadline
             fontSize={[6, 7, 8]}
-            colors={['fuschia.5', 'violet.5', 'blue.5']}
+            colors={['pink.5', 'fuschia.5', 'indigo.5']}
           >
             Grow as a programmer & human with our resources.
           </ColoredHeadline>
           <Text color="smoke" fontSize={4} mb={4} style={{ maxWidth: '48rem' }}>
-            We offer dozens of{' '}
+            We offer of{' '}
             <A href="/workshops">free, open-source coding tutorials</A>. We
-            write{' '}
+            write about{' '}
             <A
               target="_blank"
               href="https://medium.com/hackclub/how-to-start-a-computer-science-club-at-your-high-school-ff32264f225a"
             >
-              articles about running coding clubs
+              running coding clubs
             </A>{' '}
-            and student events. We run seasonal{' '}
-            <A href="/challenge">Challenges</A>, coding competitions around a
-            theme with cash prizes. We’re deeply committed to improving the high
-            school hacking community, & are constantly building services to
-            help.
+            and hackathons. We run seasonal <A href="/challenge">Challenges</A>,
+            themed coding competitions with cash prizes. We’re deeply committed
+            to improving the world of high&nbsp;school hacking.
           </Text>
           <Features mt={[4, 5, 6]}>
             <Box>
@@ -337,34 +396,14 @@ export default () => (
                 />
               </Subhline>
               <Text color="muted" fontSize={4}>
-                Organizing a hackathon is tough. Luckily,{' '}
-                <A href="/bank">Hack&nbsp;Club Bank</A> offers best-in-class
-                fiscal sponsorship & support for high school events.
+                Running a hackathon is tough.{' '}
+                <A href="/bank">Hack&nbsp;Club Bank</A> offers a straightforward
+                financial platform for high school events.
               </Text>
             </Box>
           </Features>
-        </Container>
-      </Box>
-      <Box bg="darker" py={[5, 6, 7]}>
-        <Container px={3}>
-          <ColoredHeadline
-            fontSize={[6, 7, 8]}
-            colors={['red.5', 'orange.5', 'yellow.5']}
-          >
-            Start a coding club at your high&nbsp;school, or bring yours.
-          </ColoredHeadline>
-          <Text color="smoke" fontSize={4} mb={3} style={{ maxWidth: '48rem' }}>
-            Beyond our community, Hack Club is a nonprofit collective of coding
-            clubs led by high schoolers everywhere. If you’ve already got a
-            coding club, you’re welcome to join our network! If you’re
-            interested in starting your own, we’ll help you out every step of
-            the way.
-          </Text>
-          <StartCTA to="/start" mt={3}>
-            Start your club
-          </StartCTA>
           <MegaQuote mt={6}>
-            <GlowingIcon glyph="quote" size={28} />
+            <GlowingIcon glyph="quote" size={24} />
             <Text fontSize={[5, 6]} mt={[null, 5]} bold>
               Before I started Hack Club in sophomore year, I didn’t believe in
               myself. I didn’t think I could do big things.

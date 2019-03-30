@@ -9,6 +9,7 @@ const Base = styled(Box)`
   align-items: center;
   justify-content: center;
   img {
+    margin: auto;
     max-width: 12rem;
   }
 `

@@ -2,7 +2,6 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import {
   Avatar,
-  BackgroundImage,
   Box,
   Container,
   Flex,
@@ -11,6 +10,7 @@ import {
   Link as A,
   OutlineButton,
   Text,
+  Sheet,
   theme
 } from '@hackclub/design-system'
 import { Link } from 'gatsby'
@@ -18,8 +18,8 @@ import Layout from 'components/Layout'
 import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
-import Sheet from 'components/Sheet'
 import GlowingIcon from 'components/GlowingIcon'
+import Photo from 'components/Photo'
 import {
   ColoredHeadline,
   Subhline,
@@ -142,37 +142,6 @@ const FeatureLine = styled(Box).attrs({
 })`
   border-radius: ${theme.radius};
   height: 4px;
-`
-const Photo = styled(Sheet.withComponent(BackgroundImage)).attrs({
-  role: 'img',
-  p: 0
-})`
-  min-height: 18rem;
-  position: relative;
-  ${theme.mediaQueries.md} {
-    min-height: 25rem;
-  }
-  &:after {
-    content: attr(aria-label);
-    box-sizing: border-box;
-    background-color: rgba(0, 0, 0, 0.875);
-    border-radius: 0 0 ${theme.radii[2]} ${theme.radii[2]};
-    bottom: 0;
-    color: ${theme.colors.white};
-    display: block;
-    font-size: ${theme.fontSizes[2]}px;
-    padding: ${theme.space[2]}px ${theme.space[3]}px;
-    position: absolute;
-    width: 100%;
-    max-width: 100%;
-    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-      background-color: rgba(0, 0, 0, 0.75);
-      -webkit-backdrop-filter: saturate(180%) blur(16px);
-    }
-    ${theme.mediaQueries.reduceTransparency} {
-      -webkit-backdrop-filter: auto !important;
-    }
-  }
 `
 const CommunityLine = styled(FeatureLine)`
   background-image: linear-gradient(
@@ -329,11 +298,11 @@ export default () => (
           </Box>
           <Photo
             src="/photos/dena_cover.jpg"
-            aria-label="A Hack Club meeting near Toronto, Canada"
+            alt="A Hack Club meeting near Toronto, Canada"
           />
           <Photo
             src="/photos/hackpenn_crew.jpg"
-            aria-label="Organizers of PA’s largest high school hackathon met in our Slack"
+            alt="Organizers of PA’s largest high school hackathon met in our Slack"
           />
         </Features>
       </Container>

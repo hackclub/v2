@@ -7,6 +7,7 @@ export const Title = styled(Heading.h1).attrs({
   mb: [3, 4]
 })`
   line-height: 1;
+  letter-spacing: -0.015em;
   width: 100%;
 `
 
@@ -17,6 +18,7 @@ export const Headline = styled(Heading.h2).attrs({
   display: block;
   line-height: 1;
   width: 100%;
+  letter-spacing: -0.009em;
   ${theme.mediaQueries.lg} {
     line-height: 0.9375;
   }

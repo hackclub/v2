@@ -19,6 +19,7 @@ import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import GlowingIcon from 'components/GlowingIcon'
+import Stat from 'components/Stat'
 import Photo from 'components/Photo'
 import {
   ColoredHeadline,
@@ -28,7 +29,7 @@ import {
   AnimatedHighlight
 } from 'components/Content'
 import { timeTo } from 'helpers'
-import { springPromo } from 'data.json'
+import { stats, springPromo } from 'data.json'
 // import Announcement from 'components/home/Announcement'
 
 const cta = {
@@ -47,6 +48,39 @@ const StartCTA = styled(Button.withComponent(Link)).attrs({
   background-image: ${theme.gradient('orange.5', 'red.5')};
 `
 OutlineButton.link = OutlineButton.withComponent(Link)
+
+const promoBG = css`
+  background-image: radial-gradient(
+    ellipse farthest-corner at top left,
+    rgb(26, 211, 191),
+    rgb(17, 195, 109)
+  );
+`
+const Promo = styled(Box.withComponent('section')).attrs({
+  bg: 'teal.6',
+  align: 'center',
+  pt: [4, 5, 6]
+})`
+  ${promoBG};
+`
+const PromoMegaline = styled(Heading.h1).attrs({
+  color: 'white',
+  fontSize: [7, 8, 9],
+  pb: 2
+})`
+  letter-spacing: -0.015em;
+  line-height: 1;
+  + ${Lead} {
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+  }
+`
+const PromoSmallCTA = styled(Button.withComponent(Link)).attrs({
+  ...cta,
+  bg: 'teal.6'
+})`
+  ${promoBG};
+`
 
 const HeadlineIcon = styled(GlowingIcon)`
   top: ${theme.space[1]}px;
@@ -88,6 +122,29 @@ const Megaline = styled(Heading.h1).attrs({
   }
 `
 */
+
+const Stats = styled(Flex.withComponent('ul')).attrs({
+  align: 'center',
+  justify: 'center',
+  wrap: true
+})`
+  line-height: 1;
+  list-style: none;
+  padding: 0;
+`
+Stats.Stat = styled(Text.withComponent('li')).attrs({
+  color: 'teal.0',
+  fontSize: [2, 3],
+  pl: 0
+})`
+  + li:before {
+    content: '\00b7';
+    position: relative;
+    top: ${theme.space[1]}px;
+    margin: 0 ${theme.space[1]}px;
+    font-size: ${theme.fontSizes[4]}px;
+  }
+`
 
 const Quote = styled(Sheet).attrs({ maxWidth: 48, bg: 'primary', fontSize: 3 })`
   border-radius: ${theme.radii[2]};
@@ -160,39 +217,6 @@ const ResourcesLine = styled(FeatureLine)`
   );
 `
 
-const promoBG = css`
-  background-image: radial-gradient(
-    ellipse farthest-corner at top left,
-    rgb(26, 211, 191),
-    rgb(17, 195, 109)
-  );
-`
-const Promo = styled(Box.withComponent('section')).attrs({
-  bg: 'teal.6',
-  align: 'center',
-  pt: [4, 5, 6]
-})`
-  ${promoBG};
-`
-const PromoMegaline = styled(Heading.h1).attrs({
-  color: 'white',
-  fontSize: [7, 8, 9],
-  pb: 2
-})`
-  letter-spacing: -0.015em;
-  line-height: 1;
-  + ${Lead} {
-    line-height: 1.25;
-    letter-spacing: -0.005em;
-  }
-`
-const PromoSmallCTA = styled(Button.withComponent(Link)).attrs({
-  ...cta,
-  bg: 'teal.6'
-})`
-  ${promoBG};
-`
-
 export default () => (
   <Layout>
     <Helmet>
@@ -231,7 +255,12 @@ export default () => (
     </Promo>
     <Box bg="white" color="black" align="center" py={[5, 6, 7]}>
       <Container px={3}>
-        <Text fontSize={4} mb={4} mx="auto" maxWidth={48}>
+        <Flex align="center" justify="center" wrap>
+          <Stat value={stats.school_count} label="schools" color="teal.6" />
+          <Stat value={stats.state_count} label="states" color="cyan.6" />
+          <Stat value={stats.country_count} label="countries" color="blue.6" />
+        </Flex>
+        <Text fontSize={4} my={4} mx="auto" maxWidth={48}>
           <strong>
             We’re high schoolers running weekly afterschool coding clubs.
           </strong>{' '}

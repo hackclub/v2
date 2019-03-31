@@ -300,8 +300,7 @@ export default () => (
         <Text fontSize={4} mt={0} mb={3} style={{ maxWidth: '48rem' }}>
           Hack Club is an online community of thousands of other young makers.
           We’re artists, writers, tinkerers, filmmakers, volunteers.
-          We&nbsp;make & learn together.{' '}
-          <strong>You’ve found your place.</strong>
+          We&nbsp;make & learn together. You’ll be at home here.
         </Text>
         <Text fontSize={4} mb={4} style={{ maxWidth: '48rem' }}>
           Have a coding question? Looking for project feedback? You’ll find some
@@ -392,8 +391,8 @@ export default () => (
             </Subhline>
             <Text color="slate" fontSize={4}>
               Running a hackathon is tough.{' '}
-              <A href="/bank">Hack&nbsp;Club Bank</A> offers a straightforward
-              financial platform for high school events.
+              <A href="/bank">Hack&nbsp;Club Bank</A> offers a straightforward,
+              batteries-included financial platform for high school events.
             </Text>
           </Box>
         </Features>

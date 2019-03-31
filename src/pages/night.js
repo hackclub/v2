@@ -49,7 +49,7 @@ const CTA = styled(IconButton).attrs({
   is: LargeButton.withComponent(Link),
   bg: 'night',
   color: 'white',
-  glyph: 'slack'
+  glyph: 'slack-fill'
 })`
   background-image: radial-gradient(
     ellipse farthest-corner at top left,

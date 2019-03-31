@@ -83,7 +83,7 @@ export default () => (
         <IconButton
           is={LargeButton.withComponent(Link)}
           to="/community/"
-          glyph="slack"
+          glyph="slack-fill"
           mt={3}
         >
           Join Slack

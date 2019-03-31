@@ -1,8 +1,7 @@
 import styled from 'styled-components'
-import { Box, hexa } from '@hackclub/design-system'
-import Icon from '@hackclub/icons'
+import { Icon, hexa } from '@hackclub/design-system'
 
-const GlowingIcon = styled(Box.withComponent(Icon))`
+const GlowingIcon = styled(Icon)`
   filter: drop-shadow(0 0 4px ${({ color }) => hexa(color, 0.5)});
   position: relative;
 `

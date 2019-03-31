@@ -1,6 +1,5 @@
 import React from 'react'
-import { Container, Flex, Text } from '@hackclub/design-system'
-import Icon from '@hackclub/icons'
+import { Container, Flex, Icon, Text } from '@hackclub/design-system'
 
 const Base = Flex.withComponent(Container)
 

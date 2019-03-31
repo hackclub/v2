@@ -1,16 +1,16 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import {
-  Flex,
   Box,
-  Heading,
-  Text,
-  Link as A,
   Container,
+  Flex,
+  Heading,
+  Icon,
+  Link as A,
+  Text,
   hexa,
   theme
 } from '@hackclub/design-system'
-import Icon from '@hackclub/icons'
 import { Link } from 'gatsby'
 import PureImagination from 'components/PureImagination'
 

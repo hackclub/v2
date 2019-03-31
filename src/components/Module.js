@@ -1,6 +1,5 @@
 import React from 'react'
-import { Box, Flex, Heading, Text } from '@hackclub/design-system'
-import Icon from '@hackclub/icons'
+import { Box, Flex, Heading, Icon, Text } from '@hackclub/design-system'
 import PropTypes from 'prop-types'
 
 const ModuleIcon = Box.withComponent(Icon)

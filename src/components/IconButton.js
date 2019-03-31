@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Button, Text } from '@hackclub/design-system'
-import Icon from '@hackclub/icons'
+import { Button, Icon, Text } from '@hackclub/design-system'
 
 const IconButton = ({ is = Button, glyph, size = 24, children, ...props }) => {
   const Component = styled(is)`

@@ -13,6 +13,7 @@ import Layout from 'components/Layout'
 import Helmet from 'react-helmet'
 import { Link } from 'gatsby'
 import Nav from 'components/Nav'
+import { Headline, Lead } from 'components/Content'
 import Start from 'components/Start'
 import Footer from 'components/Footer'
 
@@ -50,8 +51,8 @@ const Seal = styled(Box)`
   }
 `
 
-const HeadLine = styled(Heading.h1).attrs({
-  fontSize: [5, 7, 8],
+const Ultraline = styled(Heading.h1).attrs({
+  fontSize: [5, 7, 8, 9],
   color: 'white',
   caps: true
 })`
@@ -93,7 +94,7 @@ const Row = styled(Container).attrs({ px: 3, py: [4, 5], color: 'black' })`
     margin-bottom: ${theme.space[3]}px;
   }
   ${theme.mediaQueries.md} {
-    grid-gap: ${theme.space[3]}px;
+    grid-gap: ${theme.space[4]}px;
     grid-template-columns: 2fr 3fr;
   }
 `
@@ -129,10 +130,10 @@ export default () => (
     <Nav />
     <Header>
       <Container width={1} maxWidth={56} py={[6]} px={3} align="left">
-        <HeadLine children="We’re" />
-        <HeadLine children="at our best" />
-        <HeadLine children="when we’re" />
-        <HeadLine children="making." />
+        <Ultraline children="We’re" />
+        <Ultraline children="at our best" />
+        <Ultraline children="when we’re" />
+        <Ultraline children="making." />
         <Seal pt={[3, 4]}>
           <Text fontSize={[1, 2]} caps>
             The Hack Club
@@ -144,71 +145,61 @@ export default () => (
       </Container>
     </Header>
     <Row py={4} mt={[0, 4]}>
-      <Heading.h2 fontSize={[5, 6]} color="red.5">
+      <Headline color="red.5">
         Coding is a <Super>superpower.</Super>
-      </Heading.h2>
-      <Text fontSize={[3, 4]}>
+      </Headline>
+      <Lead>
         Learning to code is uniquely like gaining a superpower: it converts you
         from a consumer to a creator. Suddenly, computers become a tool for
         creating.
-      </Text>
+      </Lead>
     </Row>
     <Row>
-      <Heading.h2 fontSize={[5, 6]} color="fuschia.5">
-        Make, from anywhere.
-      </Heading.h2>
-      <Text fontSize={[3, 4]}>
+      <Headline color="fuschia.5">Make, from anywhere.</Headline>
+      <Lead>
         There’s never been a better time for making: anywhere in the world,
         anyone with a laptop and an internet connection can learn to make an
         app. Building things has never been so globally democratized.
-      </Text>
+      </Lead>
     </Row>
     <Row>
-      <Heading.h2 fontSize={[5, 6]} color="violet.5">
-        Hack, hack, hack.
-      </Heading.h2>
-      <Text fontSize={[3, 4]}>
+      <Headline color="violet.5">Hack, hack, hack.</Headline>
+      <Lead>
         <strong>The goal of Hack Club is to help you become a hacker.</strong>{' '}
         We want a space at every school where people are making interesting
         things with code, every week. Schools don’t provide that, so we’re
         creating it in every school to make building things accessible to
         everyone.
-      </Text>
+      </Lead>
     </Row>
     <Row>
-      <Heading.h2 fontSize={[5, 6]} color="indigo.5">
-        Start building.
-      </Heading.h2>
-      <Text fontSize={[3, 4]}>
+      <Headline color="indigo.5">Start building.</Headline>
+      <Lead>
         Most coding classes teach you programming concepts instead of how to
         write real code—it’s like trying to learn carpentry without any wood. So
         at Hack Club, you learn to code entirely through building things. You
         start with no experience and build and ship a project every meeting.
-      </Text>
+      </Lead>
     </Row>
     <Row>
-      <Heading.h2 fontSize={[5, 6]} color="blue.6">
-        Learn as you build.
-      </Heading.h2>
-      <Text fontSize={[3, 4]}>
+      <Headline color="blue.6">Learn as you build.</Headline>
+      <Lead>
         Just as the best carpenters didn’t learn in the classroom, neither did
         the best programmers. Through our{' '}
         <A.link to="/workshops">workshops</A.link>, you’ll be walked through
         building projects. Starting out, you won’t understand how the code
         works, but you’ll build understanding as you go. You’ll get stuck along
         the way, but we’re here to help.
-      </Text>
+      </Lead>
     </Row>
     <Row>
-      <Heading.h2 fontSize={[5, 6]} color="cyan.7">
-        Be part of a community.
-      </Heading.h2>
-      <Text fontSize={[3, 4]}>
+      <Headline color="cyan.7">Be part of a community.</Headline>
+      <Lead>
         Hack Club gives you a worldwide community of thousands of other young
         makers to talk to. We’re artists, writers, engineers, tinkerers,
         campers, filmmakers, volunteers. We make things. We help one another. We
         have fun. Join us.
-      </Text>
+      </Lead>
     </Row>
     <Start mt={3} />
     <Footer mt={5} />

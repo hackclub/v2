@@ -1,6 +1,5 @@
 import React from 'react'
-import { Field } from '@hackclub/design-system'
-import { Submit } from 'components/Forms'
+import { Field, Submit } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 import * as yup from 'yup'
 import api from 'api'

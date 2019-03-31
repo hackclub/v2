@@ -25,9 +25,9 @@ import {
   Subhline,
   Featline,
   Lead,
-  Highlight
+  AnimatedHighlight
 } from 'components/Content'
-import { timeSince } from 'helpers'
+import { timeTo } from 'helpers'
 import { springPromo } from 'data.json'
 // import Announcement from 'components/home/Announcement'
 
@@ -196,12 +196,11 @@ const Promo = styled(Box.withComponent('section')).attrs({
   align: 'center',
   pt: [4, 5, 6]
 })`
-  // background-image: radial-gradient(
-  //   ellipse farthest-corner at top left,
-  //   ${theme.colors.green[6]},
-  //   ${theme.colors.teal[8]}
-  // );
-  background-image: radial-gradient(ellipse farthest-corner at top left, rgb(26, 211, 191), rgb(17, 195, 109));
+  background-image: radial-gradient(
+    ellipse farthest-corner at top left,
+    rgb(26, 211, 191),
+    rgb(17, 195, 109)
+  );
 `
 const PromoMegaline = styled(Heading.h1).attrs({
   color: 'white',
@@ -212,7 +211,7 @@ const PromoMegaline = styled(Heading.h1).attrs({
   line-height: 1;
   + ${Lead} {
     line-height: 1.25;
-    letter-spacing: 0.006em;
+    letter-spacing: -0.005em;
   }
 `
 
@@ -225,7 +224,7 @@ export default () => (
           content="f7cxVyFnrTxN9Q-HnpP-ueNWuWF5VgIEKF0C3tSnsnc"
         />
       </Helmet>
-      <Nav dark />
+      <Nav />
       <Promo>
         <Container maxWidth={72} px={3} py={[5, 6]}>
           <PromoMegaline mt={4} pb={1}>
@@ -241,8 +240,7 @@ export default () => (
             Hack Club is a global, nonprofit network of high school coding
             clubs. Apply now for{' '}
             <strong>
-              early&nbsp;admissions—open for{' '}
-              {timeSince(springPromo.deadline, true, new Date(), true)}
+              early&nbsp;admissions—open for {timeTo(springPromo.deadline)}
             </strong>
             .
           </Lead>
@@ -254,28 +252,38 @@ export default () => (
           </StartCTA>
         </Container>
       </Promo>
-      <Box bg="dark" py={[5, 6, 7]}>
+      <Box bg="white" color="black" align="center" py={[5, 6, 7]}>
         <Container px={3}>
           <ColoredHeadline
             fontSize={[6, 7, 8]}
             // colors={['green.5', 'teal.5', 'teal.7']}
-            colors={['teal.5', 'cyan.5', 'blue.5']}
-          >
-            Start a coding club at your high&nbsp;school, or bring yours.
-          </ColoredHeadline>
-          <Text color="smoke" fontSize={4} mb={3} style={{ maxWidth: '48rem' }}>
-            Beyond our community, Hack Club is a nonprofit collective of coding
-            clubs led by high schoolers everywhere. If you’ve already got a
-            coding club, you’re welcome to join our network! If you’re
-            interested in starting your own, we’ll help you out every step of
-            the way.
+            colors={['teal.6', 'cyan.6', 'blue.6']}
+            mx="auto"
+          />
+          <Text fontSize={4} mb={3} mx="auto" style={{ maxWidth: '44rem' }}>
+            We’re high schoolers running weekly afterschool coding clubs. For 2
+            weeks, we’re running an exclusive campaign to help new&nbsp;
+            <AnimatedHighlight>
+              leaders start their clubs before the year ends
+            </AnimatedHighlight>
+            . You’ll learn a ton about leading your club, & be off to the races
+            next fall.
           </Text>
-          <StartCTA to="/start" mt={3}>
+          <OutlineButton.link to="/start" mt={3}>
             Start your club
-          </StartCTA>
+          </OutlineButton.link>
+          <Text
+            fontSize={[1, 2]}
+            color="slate"
+            mt={3}
+            mx="auto"
+            style={{ maxWidth: '44rem' }}
+          >
+            Start a club, or bring yours—existing clubs are welcome too!
+          </Text>
         </Container>
       </Box>
-      <Box bg="darker" py={[5, 6]}>
+      <Box bg="snow" color="black" py={[5, 6, 7]}>
         <Container px={3}>
           <ColoredHeadline
             fontSize={[6, 7, 8]}
@@ -291,19 +299,13 @@ export default () => (
               mt={-4}
             />
           </ColoredHeadline>
-          <Text
-            color="smoke"
-            fontSize={4}
-            mt={0}
-            mb={3}
-            style={{ maxWidth: '48rem' }}
-          >
+          <Text fontSize={4} mt={0} mb={3} style={{ maxWidth: '48rem' }}>
             Hack Club is an online community of thousands of other young makers.
             We’re artists, writers, tinkerers, filmmakers, volunteers.
             We&nbsp;make & learn together.{' '}
             <strong>You’ve found your place.</strong>
           </Text>
-          <Text color="smoke" fontSize={4} mb={4} style={{ maxWidth: '48rem' }}>
+          <Text fontSize={4} mb={4} style={{ maxWidth: '48rem' }}>
             Have a coding question? Looking for project feedback? You’ll find
             some fabulous people to talk to in our global Slack (Discord-style
             online groupchat) with 3,000+ members, active at all hours.
@@ -312,10 +314,8 @@ export default () => (
           <Features mt={[4, 5]}>
             <Box>
               <CommunityLine />
-              <Featline color="smoke" mt={5}>
-                Join forces with the best hackers.
-              </Featline>
-              <Lead color="muted">
+              <Featline mt={5}>Join forces with the best hackers.</Featline>
+              <Lead color="slate">
                 Making projects on your own can be isolating—we’ve been there.
                 In the Slack community, you’ll find friends, supporters, and
                 collaborators for your work.
@@ -323,10 +323,8 @@ export default () => (
             </Box>
             <Box>
               <CommunityLine />
-              <Featline color="smoke" mt={5}>
-                Meet some truly incredible people.
-              </Featline>
-              <Lead color="muted">
+              <Featline mt={5}>Meet some truly incredible people.</Featline>
+              <Lead color="slate">
                 You’re going to meet super talented people, who organize
                 hackathons, start coding clubs, build apps, lead camps, classes,
                 and more.
@@ -343,7 +341,7 @@ export default () => (
           </Features>
         </Container>
       </Box>
-      <Box bg="dark" py={[5, 6]}>
+      <Box bg="white" color="black" py={[5, 6, 7]}>
         <Container px={3}>
           <ColoredHeadline
             fontSize={[6, 7, 8]}
@@ -351,7 +349,7 @@ export default () => (
           >
             Grow as a programmer & human with our resources.
           </ColoredHeadline>
-          <Text color="smoke" fontSize={4} mb={4} style={{ maxWidth: '48rem' }}>
+          <Text fontSize={4} mb={4} style={{ maxWidth: '48rem' }}>
             We offer of{' '}
             <A href="/workshops">free, open-source coding tutorials</A>. We
             write about{' '}
@@ -368,10 +366,10 @@ export default () => (
           <Features mt={[4, 5, 6]}>
             <Box>
               <ResourcesLine />
-              <Subhline color="smoke" mt={5}>
+              <Subhline mt={5}>
                 Learn as you build at hackathons & events.
               </Subhline>
-              <Text color="muted" fontSize={4}>
+              <Text color="slate" fontSize={4}>
                 We maintain an open source, up-to-date list of all the{' '}
                 <A href="https://hackathons.hackclub.com">
                   high school hackathons
@@ -382,7 +380,7 @@ export default () => (
             </Box>
             <Box>
               <ResourcesLine />
-              <Subhline color="smoke" mt={5}>
+              <Subhline mt={5}>
                 Running an event?
                 <br />
                 We can help.
@@ -395,7 +393,7 @@ export default () => (
                   mt={-2}
                 />
               </Subhline>
-              <Text color="muted" fontSize={4}>
+              <Text color="slate" fontSize={4}>
                 Running a hackathon is tough.{' '}
                 <A href="/bank">Hack&nbsp;Club Bank</A> offers a straightforward
                 financial platform for high school events.
@@ -421,7 +419,7 @@ export default () => (
           </MegaQuote>
         </Container>
       </Box>
-      <Footer dark />
+      <Footer />
     </Box.main>
   </Layout>
 )

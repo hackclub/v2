@@ -19,7 +19,7 @@
   "springPromo": {
     "currentApplications": 0,
     "applicationSlots": 100,
-    "daedline": "2019-04-14"
+    "deadline": "2019-04-14"
   },
   "org": {
     "@context": "http://schema.org",

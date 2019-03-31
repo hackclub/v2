@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { Heading, Text, Container, theme } from '@hackclub/design-system'
 
 export const Title = styled(Heading.h1).attrs({
@@ -71,4 +71,24 @@ export const Highlight = styled(Text.span)`
     ${theme.hexa('yellow.2', 0.95)},
     ${theme.hexa('yellow.2', 0.1)}
   );
+`
+
+const highlighter = keyframes`
+  from { background-size: 0; }
+  to {
+    background-size: 100% 100%;
+  }
+`
+
+export const AnimatedHighlight = styled(Text.span)`
+  border-radius: 1em;
+  animation: ${highlighter} 4s ease forwards;
+  animation-delay: ${props => props.delay || 6}s;
+  background-image: linear-gradient(
+    -100deg,
+    ${theme.hexa('yellow.2', 0.33)},
+    ${theme.hexa('yellow.2', 0.95)},
+    ${theme.hexa('yellow.2', 0.1)}
+  );
+  background-size: 0 100%;
 `

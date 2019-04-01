@@ -18,6 +18,7 @@ import { Link } from 'gatsby'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Photo from 'components/Photo'
+import SpringPromo from 'components/SpringPromo'
 import { Headline, Highlight, Lead } from 'components/Content'
 import Footer from 'components/Footer'
 import { stats } from 'data.json'
@@ -310,7 +311,7 @@ export default () => (
       ]}
     />
     <Nav color="slate" fixed />
-    <Box mt={[44, 55]} p={3} bg="white">
+    <Box mt={[44, 55]} p={3} bg="snow">
       <PhotoHeader
         py={[3, 6, 7, 8]}
         src={require('../../static/photos/hackpenn_full.jpg')}
@@ -328,6 +329,7 @@ export default () => (
           </SectionLead>
         </Container>
       </PhotoHeader>
+      <SpringPromo />
     </Box>
     <Box bg="white" py={[4, 5, 6]}>
       <Container color="black" px={3}>

@@ -8,6 +8,7 @@ import {
   Text,
   theme
 } from '@hackclub/design-system'
+import { Link } from 'gatsby'
 import { capitalize, map } from 'lodash'
 
 const Root = styled(Box.section)`
@@ -84,15 +85,12 @@ const WorkshopItem = ({
   },
   ...props
 }) => (
-  <a
-    href={`https://5c8804a629a378000833619c--hackclub.netlify.com${slug}`}
-    {...props}
-  >
+  <Link to={slug} {...props}>
     <Item style={{ backgroundImage: `url('${bg}')` }}>
       <Heading.h3 color="white" fontSize={3} mb={[null, 3]} children={name} />
       <Text color="snow" fontSize={2} children={description} />
     </Item>
-  </a>
+  </Link>
 )
 
 const descriptions = {

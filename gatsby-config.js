@@ -79,8 +79,13 @@ module.exports = {
       options: {
         plugins: [
           'gatsby-remark-autolink-headers',
-          'gatsby-remark-copy-linked-files',
-          'gatsby-remark-images',
+          {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              ignoreFileExtensions: []
+            }
+          },
+          // 'gatsby-remark-images',
           'gatsby-remark-prismjs',
           'gatsby-remark-smartypants',
           {

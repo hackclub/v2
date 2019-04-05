@@ -15,4 +15,3 @@
 /admin/*              https://5c8804a629a378000833619c--hackclub.netlify.com/admin/:splat
 /checkup              https://5c8804a629a378000833619c--hackclub.netlify.com/checkup/
 /checkup/*            https://5c8804a629a378000833619c--hackclub.netlify.com/checkup/:splat
-/workshops/*          https://5c8804a629a378000833619c--hackclub.netlify.com/workshops/:splat

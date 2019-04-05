@@ -562,11 +562,13 @@ export default () => (
         </SectionLead>
         <Steps color="white">
           <StepOne>
-            <Module
-              icon="send"
-              name="1. Application"
-              body="Start by telling us about your ideas for the club."
-            />
+            <A href="https://apply.hackclub.com/">
+              <Module
+                icon="send"
+                name="1. Application"
+                body="Start by telling us about your ideas for the club."
+              />
+            </A>
           </StepOne>
           <StepTwo>
             <Module

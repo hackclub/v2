@@ -6,12 +6,12 @@ import Sheet from 'components/Sheet'
 
 const Announcement = styled(Sheet).attrs({
   width: 1,
-  maxWidth: 36,
+  maxWidth: 42,
   p: 2,
   mt: [null, -3, -4, -5],
   mb: [3, 4, 5],
-  bg: 'dark',
-  color: 'smoke'
+  bg: 'yellow.3',
+  color: 'gray.9'
 })`
   display: flex;
   align-items: center;
@@ -37,14 +37,14 @@ Announcement.Link = styled(A.withComponent(Link)).attrs({
 
 export default () => (
   <Announcement>
-    <Icon size={24} glyph="bank-circle" />
+    <Icon size={24} glyph="bolt" />
     <Text fontSize={1} ml={1}>
-      <strong>Hack Club Bank 1.0</strong>
+      <strong>Teachers:</strong>
       <Text.span ml={1}>
-        {'– '}
-        redesigned & open to all
+        {' '}
+        Encourage students who can make good leaders to apply
       </Text.span>
     </Text>
-    <Announcement.Link to="/bank/">Learn more</Announcement.Link>
+    <Announcement.Link to="/flyer.pdf">Download flyer</Announcement.Link>
   </Announcement>
 )

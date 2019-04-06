@@ -30,7 +30,7 @@ import {
 } from 'components/Content'
 import { timeTo } from 'helpers'
 import { stats, springPromo } from 'data.json'
-// import Announcement from 'components/home/Announcement'
+import Announcement from 'components/home/Announcement'
 
 const cta = {
   chevronRight: true,
@@ -228,6 +228,7 @@ export default () => (
     <Nav />
     <Promo>
       <Container maxWidth={72} px={3} py={[5, 6]}>
+        <Announcement />
         <PromoMegaline mt={4} pb={1}>
           Start a coding club at your high&nbsp;school this spring.
         </PromoMegaline>

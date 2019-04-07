@@ -5,8 +5,7 @@ import { Link } from 'gatsby'
 import Sheet from 'components/Sheet'
 
 const Announcement = styled(Sheet).attrs({
-  width: 1,
-  maxWidth: 42,
+  maxWidth: 38,
   p: 2,
   mt: [null, -3, -4, -5],
   mb: [3, 4, 5],
@@ -38,13 +37,15 @@ Announcement.Link = styled(A.withComponent(Link)).attrs({
 export default () => (
   <Announcement>
     <Icon size={24} glyph="bolt" />
-    <Text fontSize={1} ml={1}>
+    <Text fontSize={1} mr={1}>
       <strong>Teachers:</strong>
-      <Text.span ml={1}>
-        {' '}
-        Encourage students who can make good leaders to apply
-      </Text.span>
     </Text>
-    <Announcement.Link to="/flyer.pdf">Download flyer</Announcement.Link>
+      <Text ml={1} align="left">
+        {' '}
+        Know motivated students that would make good leaders?
+        <br />
+        Encourage them to apply below!
+      </Text>
+    {/*<Announcement.Link to="/flyer.pdf">Download flyer</Announcement.Link>*/}
   </Announcement>
 )

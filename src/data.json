@@ -10,11 +10,13 @@
     "school_count": 315,
     "state_count": 35,
     "country_count": 17,
+    "slack_count": 3809,
     "approximate_members": "3K+"
   },
-  "workshopFeedback": {
-    "thoughts": "Overall thoughts?",
-    "improve": "How would you improve this workshop?"
+  "springPromo": {
+    "currentApplications": 0,
+    "applicationSlots": 100,
+    "deadline": "2019-04-26"
   },
   "org": {
     "@context": "http://schema.org",

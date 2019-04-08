@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Field, theme } from '@hackclub/design-system'
+import { Field, Submit, theme } from '@hackclub/design-system'
 import { withFormik } from 'formik'
-import { Submit } from 'components/Forms'
 
 const Base = styled.form`
   label {

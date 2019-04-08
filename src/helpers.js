@@ -50,6 +50,41 @@ export const timeSince = (
   }
 }
 
+// NOTE(@lachlanjc): I know this is bad, I’m trying to get it out the door okay???
+export const timeTo = (time, current = new Date(), longForm = true) => {
+  const msPerMinute = 60 * 1000
+  const msPerHour = msPerMinute * 60
+  const msPerDay = msPerHour * 24
+  const msPerWeek = msPerDay * 7
+  const msPerYear = msPerDay * 365
+
+  const elapsed = new Date(time) - new Date(current)
+
+  let humanizedTime
+  if (elapsed < msPerMinute) {
+    humanizedTime = '< 1m'
+  } else if (elapsed < msPerHour) {
+    const now = Math.round(elapsed / msPerMinute)
+    humanizedTime = longForm ? `${now} minutes` : `${now}m`
+  } else if (elapsed < msPerDay) {
+    const now = Math.round(elapsed / msPerHour)
+    humanizedTime = longForm ? `${now} hours` : `${now}h`
+    // } else if (elapsed < msPerWeek) {
+    // NOTE(@lachlanjc): changing this for usage on spring 19 promo materials
+  } else if (elapsed < msPerWeek) {
+    const now = Math.round(elapsed / msPerDay)
+    humanizedTime = longForm ? `${now} days` : `${now}d`
+  } else if (elapsed < msPerYear) {
+    const now = Math.round(elapsed / msPerWeek)
+    humanizedTime = longForm ? `${now} weeks` : `${now}w`
+  } else {
+    const now = Math.round(elapsed / msPerYear)
+    humanizedTime = longForm ? `${now} years` : `${now}y`
+  }
+
+  return humanizedTime
+}
+
 // via https://github.com/withspectrum/spectrum/blob/alpha/src/helpers/utils.js#L58
 const originalEmojiRegex = createEmojiRegex()
 const regex = new RegExp(

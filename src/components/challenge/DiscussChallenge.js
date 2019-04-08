@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Flex, Text } from '@hackclub/design-system'
-import Icon from '@hackclub/icons'
+import { Box, Flex, Icon, Text } from '@hackclub/design-system'
 import Sheet from 'components/Sheet'
 import DiscussOnSlack from 'components/DiscussOnSlack'
 

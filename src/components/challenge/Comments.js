@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
-import { Box, Flex, Heading, Link, theme } from '@hackclub/design-system'
-import Icon from '@hackclub/icons'
+import { Box, Flex, Heading, Link, Icon, theme } from '@hackclub/design-system'
 import FlipMove from 'react-flip-move'
 import Auth from 'components/Auth'
 import LoadingBar from 'components/LoadingBar'

@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@hackclub/banner": "^1.0.1",
-    "@hackclub/design-system": "^0.0.1-14",
+    "@hackclub/design-system": "^0.0.1-16",
     "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.10.0",
     "emoji-regex": "^8.0.0",

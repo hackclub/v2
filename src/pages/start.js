@@ -10,13 +10,15 @@ import {
   Link as A,
   Section,
   Text,
+  Sheet,
   theme
 } from '@hackclub/design-system'
 import Helmet from 'react-helmet'
 import { Link } from 'gatsby'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
-import Sheet from 'components/Sheet'
+import Photo from 'components/Photo'
+import SpringPromo from 'components/SpringPromo'
 import { Headline, Highlight, Lead } from 'components/Content'
 import Footer from 'components/Footer'
 import { stats } from 'data.json'
@@ -29,29 +31,6 @@ const FeatureLink = styled(A.link).attrs({
   chevronRight: true
 })`
   display: block;
-`
-
-const Stats = styled(Flex.withComponent('ul')).attrs({
-  align: 'center',
-  justify: 'center',
-  wrap: true
-})`
-  line-height: 1;
-  list-style: none;
-  padding: 0;
-`
-Stats.Stat = styled(Text.withComponent('li')).attrs({
-  fontSize: [2, 3],
-  color: 'smoke',
-  pl: 0
-})`
-  + li:before {
-    content: '\00b7';
-    position: relative;
-    top: ${theme.space[1]}px;
-    margin: 0 ${theme.space[1]}px;
-    font-size: ${theme.fontSizes[4]}px;
-  }
 `
 
 const shadows = css`
@@ -142,6 +121,11 @@ const PhotoFeature = styled(TextFeature).attrs({
   background-position: center;
   background-size: cover;
   ${shadows};
+  + ${Text} {
+    color: ${theme.colors.black};
+    font-size: ${theme.fontSizes[3]}px;
+    margin-top: ${theme.space[3]}px;
+  }
 `
 const BankFeature = styled(Sheet)`
   background-color: ${theme.colors.primary};
@@ -216,7 +200,7 @@ Cols.defaultProps = {
   my: [3, 4]
 }
 
-const Steps = styled(Box).attrs({ color: 'white' })`
+const Steps = styled(Box)`
   display: grid;
   grid-gap: ${theme.space[3]}px;
   ${theme.mediaQueries.md} {
@@ -327,7 +311,7 @@ export default () => (
       ]}
     />
     <Nav color="slate" fixed />
-    <Box mt={[44, 55]} p={3} bg="white">
+    <Box mt={[44, 55]} p={3} bg="snow">
       <PhotoHeader
         py={[3, 6, 7, 8]}
         src={require('../../static/photos/hackpenn_full.jpg')}
@@ -343,22 +327,18 @@ export default () => (
             Hack Club is a global network of programming clubs where members
             learn to code through tinkering and building projects.
           </SectionLead>
-          <Stats>
-            <Stats.Stat>{stats.school_count}&nbsp;schools</Stats.Stat>
-            <Stats.Stat>{stats.state_count}&nbsp;states</Stats.Stat>
-            <Stats.Stat>{stats.country_count}&nbsp;countries</Stats.Stat>
-          </Stats>
         </Container>
       </PhotoHeader>
+      <SpringPromo />
     </Box>
     <Box bg="white" py={[4, 5, 6]}>
-      <Container {...contentContainer}>
+      <Container color="black" px={3}>
         <SectionEyebrow>Clubs in action</SectionEyebrow>
         <SectionHeadline>Build superpowers at your club.</SectionHeadline>
         <SectionLead>
           Hack Clubs{' '}
           <Highlight>
-            meet weekly at their high schools, typically for 1.5 hours
+            meet weekly at their high schools, typically for 1.5hrs
           </Highlight>{' '}
           after school. There are no teachers or lectures—members work at their
           own pace making websites, apps, & games, and presenting them to the
@@ -375,7 +355,7 @@ export default () => (
                 A group of students gather to start coding. Many are beginners.
               </Text>
             </PhotoFeature>
-            <Text color="black" fontSize={3}>
+            <Text>
               <strong>Everyone starts hacking.</strong> At the first few
               meetings, members follow{' '}
               <LikeLink to="/workshops/">our tutorials</LikeLink> as a runway
@@ -389,7 +369,7 @@ export default () => (
                 making.
               </Text>
             </PhotoFeature>
-            <Text color="black" fontSize={3}>
+            <Text>
               <strong>Members leave every meeting with a project</strong>
               —including their first day. Check out{' '}
               <Like href="https://messy-wool.surge.sh/catch.html">
@@ -408,10 +388,10 @@ export default () => (
                 At the end, everyone demos their projects for the club.
               </Text>
             </PhotoFeature>
-            <Text color="black" fontSize={3}>
-              <strong>Demos bring the club together.</strong> Presentations
-              highlight new work and momentum. As a leader, you’re{' '}
-              <Highlight>cultivating a community</Highlight> of makers.
+            <Text>
+              <strong>Demos bring the club together.</strong> As the leader,
+              you’re cultivating a community of makers. Demos highlight new work
+              & momentum.
             </Text>
           </section>
         </HourFeatures>
@@ -489,7 +469,7 @@ export default () => (
               members dozens of free tutorials for making websites, games, and
               beyond.
             </Text>
-            <FeatureLink to="/workshops" color="info">
+            <FeatureLink to="/workshops/" color="info">
               Check out workshops
             </FeatureLink>
           </TextFeature>
@@ -501,7 +481,7 @@ export default () => (
               <Text.span color="cyan.5">local events</Text.span> from
               Hack&nbsp;Clubs near yours.
             </Text>
-            <FeatureLink to="/hackathons" color="white">
+            <FeatureLink to="/hackathons/" color="white">
               See nearby events
             </FeatureLink>
           </PhotoFeature>
@@ -512,7 +492,7 @@ export default () => (
               body="Store money in a non-profit bank account, get debit cards, & collect donations online."
               color="white"
             />
-            <FeatureLink to="/bank" color="white">
+            <FeatureLink to="/bank/" color="white">
               Learn more
             </FeatureLink>
           </BankFeature>
@@ -531,47 +511,64 @@ export default () => (
             Start a new club, or bring your own. We’re excited to meet you.
           </Headline>
           <Lead fontSize={[3, 4]} mt={3}>
-            When established programming clubs join, they get the full benefits
-            of the network. While Hack Club is currently optimized for new
-            chapters, we’re increasing the benefits for existing clubs every day
-            by launching new projects like{' '}
-            <A.link to="/challenge/" target="_blank">
-              Challenge
-            </A.link>
-            ,{' '}
-            <A href="https://hackathons.hackclub.com/" target="_blank">
-              Hackathons
-            </A>
-            , &{' '}
+            When established CS clubs join, they get all the benefits of the
+            network. While we’re currently optimized for new clubs, we’re
+            continually increasing benefits for existing clubs through new
+            projects like{' '}
             <A.link to="/bank/" target="_blank">
               Bank
             </A.link>
+            {' & '}
+            <A href="https://hackathons.hackclub.com/" target="_blank">
+              Hackathons
+            </A>
             .
           </Lead>
         </Box>
       </Flex>
     </Container>
-    <Box bg="snow" pt={[4, 5, 6]} pb={3}>
-      <Container {...contentContainer}>
-        <SectionEyebrow>Application</SectionEyebrow>
+    <Box bg="snow" color="black" py={[4, 5, 6]}>
+      <Container px={3}>
+        <SectionEyebrow>Philosophy</SectionEyebrow>
         <SectionHeadline>
-          Apply today to{' '}
-          <Text.span color="primary">
-            start your high&nbsp;school’s club
-          </Text.span>
-          .
+          By the students,{' '}
+          <Text.span color="warning">for the students</Text.span>.
         </SectionHeadline>
         <SectionLead>
-          It’s all-online, free, & takes about an hour. We’ll help you from
-          there!
+          <Highlight>Every Hack Club is always student-led.</Highlight> Students
+          naturally build the culture of empowerment so key to success. Teachers
+          can help by marketing the club & getting access to school resources.
         </SectionLead>
-        <Steps>
+        <Cols cols="1fr 1fr">
+          <Photo
+            alt="Building a robot at a Hack Club event"
+            src="/photos/hackpenn_focus.jpg"
+          />
+          <Photo
+            alt="Photo by Janet Fang, Los Altos Hacks"
+            src="/photos/lah_1.jpg"
+          />
+        </Cols>
+      </Container>
+    </Box>
+    <Box bg="white" color="black" pt={[4, 5, 6]} pb={3}>
+      <Container px={3}>
+        <SectionEyebrow>Application</SectionEyebrow>
+        <SectionHeadline>
+          Apply today to <Text.span color="primary">start your club</Text.span>.
+        </SectionHeadline>
+        <SectionLead>
+          It’s all-online, free, & takes about an hour. We’ll help from there!
+        </SectionLead>
+        <Steps color="white">
           <StepOne>
-            <Module
-              icon="send"
-              name="1. Application"
-              body="Start by telling us about your ideas for the club."
-            />
+            <A href="https://apply.hackclub.com/">
+              <Module
+                icon="send"
+                name="1. Application"
+                body="Start by telling us about your ideas for the club."
+              />
+            </A>
           </StepOne>
           <StepTwo>
             <Module
@@ -582,16 +579,13 @@ export default () => (
           </StepTwo>
           <StepThree>
             <Module
-              icon="event-code"
+              icon="event-check"
               name="3. First meeting"
               body="Schedule your club’s first meeting & get going!"
             />
           </StepThree>
         </Steps>
       </Container>
-      <Flex justify="center" color="muted">
-        <Icon glyph="down-caret" size={64} />
-      </Flex>
     </Box>
     <Box p={[3, 4, 5]}>
       <MapBox

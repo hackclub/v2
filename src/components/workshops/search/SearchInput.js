@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Flex, Input, theme } from '@hackclub/design-system'
-import Icon from '@hackclub/icons'
+import { Box, Flex, Icon, Input, theme } from '@hackclub/design-system'
 
 const Relative = styled(Box)`
   position: relative;

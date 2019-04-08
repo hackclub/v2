@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Container, Flex, Text, Icon } from '@hackclub/design-system'
+import { Container, Flex, Icon, Text } from '@hackclub/design-system'
 
 const Base = styled(Flex.withComponent(Container))`
   line-height: 1.25;

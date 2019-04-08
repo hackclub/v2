@@ -1,16 +1,16 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import {
-  Flex,
   Box,
-  Heading,
-  Text,
-  Link as A,
   Container,
+  Flex,
+  Heading,
+  Icon,
+  Link as A,
+  Text,
   hexa,
   theme
 } from '@hackclub/design-system'
-import Icon from '@hackclub/icons'
 import { Link } from 'gatsby'
 import PureImagination from 'components/PureImagination'
 
@@ -144,7 +144,7 @@ const Footer = ({ dark = false, children, ...props }) => (
           Join the Club
         </Heading.h2>
         <Services>
-          <Service href="/community/" icon="slack" target="_self" />
+          <Service href="/community/" icon="slack-fill" target="_self" />
           <Service href="https://twitter.com/hackclub" icon="twitter" />
           <Service href="https://github.com/hackclub" icon="github" />
           <Service

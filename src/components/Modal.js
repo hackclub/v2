@@ -1,7 +1,6 @@
 import React from 'react'
-import { Box, theme } from '@hackclub/design-system'
+import { Box, Icon, theme } from '@hackclub/design-system'
 import styled, { keyframes } from 'styled-components'
-import Icon from '@hackclub/icons'
 import Sheet from 'components/Sheet'
 
 const modalKeyframes = keyframes`

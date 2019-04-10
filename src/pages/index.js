@@ -346,7 +346,7 @@ export default () => (
           Grow as a programmer & human with our resources.
         </ColoredHeadline>
         <Text fontSize={4} mb={4} style={{ maxWidth: '48rem' }}>
-          We offer of{' '}
+          We offer{' '}
           <A href="/workshops">free, open-source coding tutorials</A>. We write
           about{' '}
           <A

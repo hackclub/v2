@@ -69,14 +69,13 @@ export const timeTo = (time, current = new Date(), longForm = true) => {
   } else if (elapsed < msPerDay) {
     const now = Math.round(elapsed / msPerHour)
     humanizedTime = longForm ? `${now} hours` : `${now}h`
-    // } else if (elapsed < msPerWeek) {
-    // NOTE(@lachlanjc): changing this for usage on spring 19 promo materials
   } else if (elapsed < msPerWeek) {
     const now = Math.round(elapsed / msPerDay)
     humanizedTime = longForm ? `${now} days` : `${now}d`
   } else if (elapsed < msPerYear) {
     const now = Math.round(elapsed / msPerWeek)
-    humanizedTime = longForm ? `${now} weeks` : `${now}w`
+    // NOTE(@lachlanjc): temporary fix for 1 week
+    humanizedTime = longForm ? `${now} week` : `${now}w`
   } else {
     const now = Math.round(elapsed / msPerYear)
     humanizedTime = longForm ? `${now} years` : `${now}y`

@@ -69,19 +69,15 @@ export const timeTo = (time, current = new Date(), longForm = true) => {
   } else if (elapsed < msPerDay) {
     const now = Math.round(elapsed / msPerHour)
     humanizedTime = longForm ? `${now} hours` : `${now}h`
-  } else if (elapsed < msPerWeek) {
-    const now = Math.round(elapsed / msPerDay)
-    humanizedTime = longForm ? `${now} days` : `${now}d`
   } else if (elapsed < msPerYear) {
-    const now = Math.round(elapsed / msPerWeek)
-    // NOTE(@lachlanjc): temporary fix for 1 week
-    humanizedTime = longForm ? `${now} week` : `${now}w`
+    const now = Math.round(elapsed / msPerDay)
+    humanizedTime = longForm ? (now === 1 ? '1 day' : `${now} days`) : `${now}d`
   } else {
     const now = Math.round(elapsed / msPerYear)
     humanizedTime = longForm ? `${now} years` : `${now}y`
   }
 
-  return humanizedTime
+  return 'the next ' + humanizedTime
 }
 
 // via https://github.com/withspectrum/spectrum/blob/alpha/src/helpers/utils.js#L58

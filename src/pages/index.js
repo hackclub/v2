@@ -30,7 +30,7 @@ import {
 } from 'components/Content'
 import { timeTo } from 'helpers'
 import { stats, springPromo } from 'data.json'
-import Announcement from 'components/home/Announcement'
+// import Announcement from 'components/home/Announcement'
 
 const cta = {
   chevronRight: true,
@@ -228,7 +228,6 @@ export default () => (
     <Nav />
     <Promo>
       <Container maxWidth={72} px={3} py={[5, 6]}>
-        <Announcement />
         <PromoMegaline mt={4} pb={1}>
           Start a coding club at your high&nbsp;school this spring.
         </PromoMegaline>
@@ -276,7 +275,7 @@ export default () => (
           Start your club
         </PromoSmallCTA>
         <Text fontSize={[1, 2]} color="slate" mt={2}>
-          Start a club, or bring yours—existing clubs are welcome too!
+          Start a club, or bring yours—existing clubs are welcome&nbsp;too!
         </Text>
       </Container>
     </Box>
@@ -296,12 +295,12 @@ export default () => (
             mt={-4}
           />
         </ColoredHeadline>
-        <Text fontSize={4} mt={0} mb={3} style={{ maxWidth: '48rem' }}>
+        <Text fontSize={4} mt={0} mb={3} maxWidth={48}>
           Hack Club is an online community of thousands of other young makers.
           We’re artists, writers, tinkerers, filmmakers, volunteers.
           We&nbsp;make & learn together. You’ll be at home here.
         </Text>
-        <Text fontSize={4} mb={4} style={{ maxWidth: '48rem' }}>
+        <Text fontSize={4} mb={4} maxWidth={48}>
           Have a coding question? Looking for project feedback? You’ll find some
           fabulous people to talk to in our global Slack (Discord-style online
           groupchat) with 3,000+ members, active at all hours.

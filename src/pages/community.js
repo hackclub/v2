@@ -217,7 +217,7 @@ export default () => (
     <Nav dark />
     <BackgroundGradient>
       <BackgroundVideo />
-      <Container px={3} pt={[5, 6, 7]} color="white" align="center">
+      <Container px={3} pt={[6, 7]} color="white" align="center">
         <Announcement>
           <Icon size={24} glyph="history" color="slate" />
           <Text color="black" fontSize={2} ml={1}>
@@ -247,7 +247,7 @@ export default () => (
           <SlackForm />
         </Sheet>
       </Container>
-      <Text color="pink.0" align="center" fontSize={5} bold mt={[3, 4, 5]}>
+      <Text color="pink.0" align="center" fontSize={[4, 5]} bold mt={[3, 4, 5]}>
         Explore
       </Text>
       <Flex align="center" justify="center" color="pink.1" mt={-2} pb={[3, 4]}>
@@ -282,9 +282,9 @@ export default () => (
       <Container px={3} py={[5, 6]}>
         <GlowingIcon glyph="explore" color="#c57206" size={96} ml={-2} />
         <ColoredHeadline colors={['#d98b38', '#c57206', '#7c3b00']}>
-          Come to Hack&nbsp;Night, our weekly nighttime hackathons.
+          Come to Hack&nbsp;Night, our weekly nighttime hackathon.
         </ColoredHeadline>
-        <Text color="#a56a3b" fontSize={4} mb={3} style={{ maxWidth: '48rem' }}>
+        <Text color="#a56a3b" fontSize={4} mb={3} maxWidth={48rem}>
           On Saturday nights at 6pm PST, a group from our community comes
           together for Hack Night. It’s a remote hackathon, social hangout, and
           a ton of fun. Build, learn, and share together.

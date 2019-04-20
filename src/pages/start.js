@@ -331,7 +331,7 @@ export default () => (
       </PhotoHeader>
       <SpringPromo />
     </Box>
-    <Box bg="white" py={[4, 5, 6]}>
+    <Box bg="white" py={[5, 6]}>
       <Container color="black" px={3}>
         <SectionEyebrow>Clubs in action</SectionEyebrow>
         <SectionHeadline>Build superpowers at your club.</SectionHeadline>
@@ -417,7 +417,7 @@ export default () => (
         </Cols>
       </Container>
     </Box>
-    <Flex flexDirection="column" bg="snow" py={[4, 5, 6]}>
+    <Flex flexDirection="column" bg="snow" py={[5, 6]}>
       <Container {...contentContainer}>
         <SectionEyebrow>Resources from HQ</SectionEyebrow>
         <SectionHeadline>
@@ -503,7 +503,7 @@ export default () => (
       <Flex
         flexDirection={['column', null, 'row']}
         justify="center"
-        py={[4, 5, 6]}
+        py={[5, 6]}
       >
         <Icon glyph="welcome" color="pink.5" size={96} m={[null, null, 3]} />
         <Box align="left">
@@ -527,7 +527,7 @@ export default () => (
         </Box>
       </Flex>
     </Container>
-    <Box bg="snow" color="black" py={[4, 5, 6]}>
+    <Box bg="snow" color="black" py={[5, 6]}>
       <Container px={3}>
         <SectionEyebrow>Philosophy</SectionEyebrow>
         <SectionHeadline>
@@ -551,7 +551,7 @@ export default () => (
         </Cols>
       </Container>
     </Box>
-    <Box bg="white" color="black" pt={[4, 5, 6]} pb={3}>
+    <Box bg="white" color="black" pt={[5, 6]} pb={3}>
       <Container px={3}>
         <SectionEyebrow>Application</SectionEyebrow>
         <SectionHeadline>

@@ -284,7 +284,7 @@ export default () => (
         <ColoredHeadline colors={['#d98b38', '#c57206', '#7c3b00']}>
           Come to Hack&nbsp;Night, our weekly nighttime hackathon.
         </ColoredHeadline>
-        <Text color="#a56a3b" fontSize={4} mb={3} maxWidth={48rem}>
+        <Text color="#a56a3b" fontSize={4} mb={3} maxWidth={48}>
           On Saturday nights at 6pm PST, a group from our community comes
           together for Hack Night. It’s a remote hackathon, social hangout, and
           a ton of fun. Build, learn, and share together.

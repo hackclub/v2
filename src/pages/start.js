@@ -223,7 +223,7 @@ const HourFeatures = styled(Steps)`
 `
 
 const StepOne = styled(Sheet)`
-  background: ${theme.colors.red[6]};
+  background-color: ${theme.colors.red[6]};
   background-image: linear-gradient(
     to bottom,
     ${theme.colors.orange[5]},
@@ -231,7 +231,7 @@ const StepOne = styled(Sheet)`
   );
 `
 const StepTwo = styled(Sheet)`
-  background: ${theme.colors.teal[6]};
+  background-color: ${theme.colors.teal[6]};
   background-image: linear-gradient(
     to bottom,
     ${theme.colors.cyan[5]},
@@ -239,7 +239,7 @@ const StepTwo = styled(Sheet)`
   );
 `
 const StepThree = styled(Sheet)`
-  background: ${theme.colors.violet[6]};
+  background-color: ${theme.colors.violet[6]};
   background-image: linear-gradient(
     to bottom,
     ${theme.colors.fuschia[5]},
@@ -251,11 +251,7 @@ const ApplyButton = styled(LargeButton).attrs({
   chevronRight: true
 })`
   text-transform: uppercase;
-  background-image: linear-gradient(
-    to bottom,
-    ${theme.colors.orange[5]},
-    ${theme.colors.red[5]}
-  );
+  background-image: ${theme.gradient('warning', 'primary')};
 `
 
 const SectionEyebrow = styled(Text).attrs({
@@ -508,7 +504,7 @@ export default () => (
         <Icon glyph="welcome" color="pink.5" size={96} m={[null, null, 3]} />
         <Box align="left">
           <Headline>
-            Start a new club, or bring your own. We’re excited to meet you.
+            Start a new club, or bring yours. We’re excited to meet you.
           </Headline>
           <Lead fontSize={[3, 4]} mt={3}>
             When established CS clubs join, they get all the benefits of the

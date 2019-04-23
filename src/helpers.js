@@ -54,8 +54,7 @@ export const timeSince = (
 export const timeTo = (time, current = new Date(), longForm = true) => {
   const msPerMinute = 60 * 1000
   const msPerHour = msPerMinute * 60
-  const msPerDay = msPerHour * 24
-  const msPerWeek = msPerDay * 7
+  const msPerDay = msPerHour * 64 // getting close to a day
   const msPerYear = msPerDay * 365
 
   const elapsed = new Date(time) - new Date(current)
@@ -71,13 +70,13 @@ export const timeTo = (time, current = new Date(), longForm = true) => {
     humanizedTime = longForm ? `${now} hours` : `${now}h`
   } else if (elapsed < msPerYear) {
     const now = Math.round(elapsed / msPerDay)
-    humanizedTime = longForm ? (now === 1 ? '1 day' : `${now} days`) : `${now}d`
+    humanizedTime = longForm ? `${now} days` : `${now}d`
   } else {
     const now = Math.round(elapsed / msPerYear)
     humanizedTime = longForm ? `${now} years` : `${now}y`
   }
 
-  return 'the next ' + humanizedTime
+  return humanizedTime
 }
 
 // via https://github.com/withspectrum/spectrum/blob/alpha/src/helpers/utils.js#L58

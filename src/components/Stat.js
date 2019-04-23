@@ -29,7 +29,7 @@ const Stat = ({
         color={labelColor}
         fontSize={2}
         m={0}
-        style={{ letterSpacing: '.05em' }}
+        width={1}
         caps
         children={label}
       />

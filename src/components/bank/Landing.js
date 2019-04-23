@@ -26,6 +26,7 @@ const Slide = styled(Flex).attrs({
   position: relative;
   h1 {
     line-height: 1.125;
+    letter-spacing: -0.02em;
     text-shadow: 0 0 16px rgba(0, 0, 0, 1);
   }
   p {
@@ -38,6 +39,7 @@ const Vignette = styled.div`
     to bottom,
     rgba(0, 0, 0, 0),
     rgba(0, 0, 0, 0.25) 25%,
+    rgba(0, 0, 0, 0.625) 50%,
     rgba(0, 0, 0, 0.75) 100%
   );
   height: 50vh;
@@ -83,6 +85,7 @@ export default () => (
       align="center"
       color="white"
       mt="auto"
+      maxWidth={75}
     >
       <Fade bottom>
         <Heading.h1 fontSize={[5, 6, 7, 8]}>

@@ -138,7 +138,15 @@ const DetailStats = styled(Flex).attrs({
   }
 `
 DetailStats.Item = props => (
-  <Stat align={['left', null, 'right']} width={1} mt={0} mb={3} {...props} />
+  <Stat
+    align={['left', null, 'right']}
+    fontSize={6}
+    width={1}
+    mt={0}
+    mb={3}
+    px={0}
+    {...props}
+  />
 )
 
 const Event = ({

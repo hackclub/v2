@@ -114,7 +114,7 @@ export default () => (
   <Base pt={[5, 6, 7]} pb={[4, 5, 6]} color="snow">
     <Modules px={3}>
       <Box>
-        <Headline>A powerful toolkit for organizing your event.</Headline>
+        <Headline>A powerful toolkit for organizing.</Headline>
         <Lead fontSize={[3, 4]} color="muted" maxWidth={48} mx={0}>
           Everything you need to start receiving money in days.
           <br />
@@ -134,7 +134,7 @@ export default () => (
           />
           <Document
             name="Tax filings (990, end-of-year)"
-            cost="We handle every filing with the IRS, so you can focus on your event, not hiring CPAs."
+            cost="We handle all filings with the IRS, so you can focus on your event, not hiring CPAs."
           />
         </ModuleDetails>
       </Box>
@@ -172,7 +172,7 @@ export default () => (
       <Module
         icon="support"
         name="Support anytime"
-        body="Questions? We’ll never leave you in the dark. Best-effort 12hr response time."
+        body="We’ll never leave you in the dark. Best-effort 12hr response time."
       />
     </Modules>
   </Base>

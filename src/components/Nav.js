@@ -163,7 +163,8 @@ class Header extends Component {
     bgColor: PropTypes.arrayOf(PropTypes.number),
     dark: PropTypes.bool,
     transparent: PropTypes.bool,
-    fixed: PropTypes.bool
+    fixed: PropTypes.bool,
+    unfixed: PropTypes.bool
   }
 
   componentDidMount() {
@@ -181,7 +182,7 @@ class Header extends Component {
   }
 
   bindScroll = add => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && !this.props.unfixed) {
       window[add ? 'addEventListener' : 'removeEventListener'](
         'scroll',
         this.onScroll

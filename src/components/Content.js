@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { Heading, Text, Container, theme } from '@hackclub/design-system'
 
 export const Title = styled(Heading.h1).attrs({
@@ -53,6 +53,19 @@ export const ColoredHeadline = styled(Headline).attrs({
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+`
+export const ColoredArea = styled(Container)`
+  ${color}
+`
+export const ColoredTitle = styled(Title)`
+  ${color}
+`
+export const ColoredHeadline = styled(Headline).attrs({
+  pb: 2,
+  mb: [2, 3],
+  maxWidth: 54
+})`
+  ${color}
 `
 
 export const Lead = styled(Container.withComponent(Text)).attrs({

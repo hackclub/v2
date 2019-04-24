@@ -42,14 +42,10 @@ const Row = styled(Box)`
   }
 `
 
-const DonateSheet = styled(Sheet)`
+const DonateSheet = styled(Sheet).attrs({ bg: 'snow' })`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.0625), 0 16px 32px rgba(0, 0, 0, 0.125) !important;
   > div > div:first-child {
-    background-image: radial-gradient(
-      ellipse farthest-corner at top left,
-      ${theme.colors.orange[5]},
-      ${theme.colors.red[5]}
-    );
+    background-image: ${theme.gradient('warning', 'primary')};
   }
 `
 
@@ -165,9 +161,9 @@ export default () => (
           <Heading.h1 color="primary" fontSize={[3, 4]} caps>
             Donate to Hack Club
           </Heading.h1>
-          <Heading.h2 mt={2} mb={3} {...headline} fontSize={[6, 7]}>
+          <Headline maxWidth={32} mt={2} mb={3}>
             We rely on people like you to bring coding to the world.
-          </Heading.h2>
+          </Headline>
           <Lead>
             Contribute today to empower the next generation. Help start a Hack
             Club at every high school.
@@ -178,7 +174,7 @@ export default () => (
             Hack Club is a 501(c)(3) non-profit with the EIN 81-2908499.
           </Text>
         </Container>
-        <DonateSheet bg="snow" mt={[0, -3, -4]}>
+        <DonateSheet mt={[0, -3, -4]}>
           <DonateForm />
         </DonateSheet>
       </Container>
@@ -208,15 +204,15 @@ export default () => (
       </FirstQuote>
       <Container maxWidth={48} py={[4, 5]}>
         <Subhline>Contribute beyond just dollars.</Subhline>
-        <Lead my={3} mx={0}>
+        <Lead mt={3} mb={2}>
           We accept donations of time, technical or hard science fiction books,
           stocks/other securities, and cryptocurrency.
         </Lead>
-        <Lead my={3} mx={0}>
+        <Lead mb={4}>
           Please get in touch at{' '}
           <A href="mailto:donate@hackclub.com">donate@hackclub.com</A> if you’re
           interested in making a contribution with an unsupported token or have
-          any questions.
+          questions.
         </Lead>
         <Box>
           <Button
@@ -249,7 +245,7 @@ export default () => (
     </Container>
     <Flex justify="center" bg="snow" color="black">
       <Container width={1} py={[4, 5]} align={['left', 'center']}>
-        <Headline px={3} mt={[3, 4]} mb={[4, 5]}>
+        <Headline px={3} mt={[3, 4]} mb={[4, 5]} mx="auto">
           A few of our amazing donors.
         </Headline>
         <DonorGrid mt={4} mb={3}>

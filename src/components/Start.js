@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Box, Heading, Text, LargeButton, theme } from '@hackclub/design-system'
 import Sheet from 'components/Sheet'
+import { Subhline, Lead } from 'components/Content'
 import { Link } from 'gatsby'
 
 const Base = styled(Sheet).attrs({ maxWidth: 72 - 2 })`
@@ -12,12 +13,7 @@ const Base = styled(Sheet).attrs({ maxWidth: 72 - 2 })`
   align-items: center;
   ${theme.mediaQueries.md} {
     grid-gap: ${theme.space[5]}px;
-    grid-template-columns: 4fr 2fr;
-  }
-  h3 {
-    font-weight: normal;
-    line-height: 1.5;
-    opacity: 0.875;
+    grid-template-columns: 2fr 1fr;
   }
 `
 
@@ -26,15 +22,15 @@ LargeButton.link = LargeButton.withComponent(Link)
 const Start = ({ buttonProps = {}, ...props }) => (
   <Base px={[2, 4, 5]} py={[4, 5, 6]} my={4} {...props}>
     <Box align={['center', null, 'right']}>
-      <Heading.h2 color="white" fontSize={[5, 6]} m={0}>
-        Spring applications now open.
-      </Heading.h2>
-      <Text color="red.0" fontSize={[3, 4]} my={2}>
+      <Subhline color="white" mb={3}>
+        Apply now & start your club.
+      </Subhline>
+      <Lead color="red.0" fontSize={[3, 4]} mb={2}>
         Build the class you wish you took.
-      </Text>
-      <Text color="red.0" fontSize={[3, 4]} m={0}>
+      </Lead>
+      <Lead color="red.0" fontSize={[3, 4]}>
         Bring the movement to your school.
-      </Text>
+      </Lead>
     </Box>
     <Box align={['center', null, 'left']}>
       <LargeButton.link

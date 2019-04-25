@@ -54,10 +54,8 @@ export const ColoredHeadline = styled(Headline).attrs({
     -webkit-text-fill-color: transparent;
   }
 `
-export const ColoredArea = styled(Container)`
-  ${color}
-`
-export const ColoredTitle = styled(Title)`
+// Colored text needs pb: 2 to avoid cropping descenders
+export const ColoredTitle = styled(Title).attrs({ pb: 2 })`
   ${color}
 `
 export const ColoredHeadline = styled(Headline).attrs({

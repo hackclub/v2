@@ -15,8 +15,12 @@ const rgbaBgColor = (props, opacity) =>
   )`
 
 const Root = styled(Box.withComponent('header'))`
-  position: absolute;
-  top: 0;
+  ${props =>
+    !props.unfixed &&
+    css`
+      position: absolute;
+      top: 0;
+    `};
   width: 100%;
   z-index: 1000;
   ${props =>
@@ -45,7 +49,7 @@ const Root = styled(Box.withComponent('header'))`
   }
 `
 
-const Content = styled(Container)`
+export const Content = styled(Container)`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -138,10 +142,6 @@ const ToggleContainer = styled(Flex)`
   cursor: pointer;
   user-select: none;
   margin-left: auto;
-`
-
-const Toggle = styled(Icon)`
-  display: block;
   ${theme.mediaQueries.md} {
     display: none;
   }
@@ -234,7 +234,7 @@ class Header extends Component {
           <Flag scrolled={scrolled || fixed} />
           <Navigation color={baseColor} dark={dark} />
           <ToggleContainer color={toggleColor} onClick={this.handleToggleMenu}>
-            <Toggle glyph={toggled ? 'view-close' : 'menu'} toggled={toggled} />
+            <Icon glyph={toggled ? 'view-close' : 'menu'} toggled={toggled} />
           </ToggleContainer>
         </Content>
         <Navigation isMobile toggled={toggled} color={baseColor} dark={dark} />

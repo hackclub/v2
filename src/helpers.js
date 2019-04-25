@@ -64,10 +64,10 @@ export const timeTo = (time, current = new Date(), longForm = true) => {
     humanizedTime = '< 1m'
   } else if (elapsed < msPerHour) {
     const now = Math.round(elapsed / msPerMinute)
-    humanizedTime = longForm ? `${now} minutes` : `${now}m`
+    humanizedTime = longForm ? `${now} more minutes` : `${now}m`
   } else if (elapsed < msPerDay) {
     const now = Math.round(elapsed / msPerHour)
-    humanizedTime = longForm ? `${now} hours` : `${now}h`
+    humanizedTime = longForm ? `${now} more hours` : `${now}h`
   } else if (elapsed < msPerYear) {
     const now = Math.round(elapsed / msPerDay)
     humanizedTime = longForm ? `${now} days` : `${now}d`

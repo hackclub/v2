@@ -7,7 +7,14 @@ import {
   theme
 } from '@hackclub/design-system'
 import { Section, SectionTitle, Cols } from './Content'
-import { Headline, Subhline, Highlight, Title, Lead } from 'components/Content'
+import {
+  Headline,
+  Subhline,
+  Featline,
+  Highlight,
+  Title,
+  Lead
+} from 'components/Content'
 import Photo from 'components/Photo'
 import Schedule from './Schedule'
 
@@ -124,10 +131,7 @@ export default () => (
       <Photo src="/camp/library.jpg" alt="HQ’s library" />
     </Gallery>
     <Container maxWidth={48} px={3}>
-      <Lead mb={4}>
-        We’ll have speakers every other day. Robert from Radiolab May-Li from
-        Khan Academy Tom from GitHub
-      </Lead>
+      <Featline>Daily schedule</Featline>
       <Schedule
         events={[
           { start: '7:30am', length: 1, name: 'Wake up' },
@@ -146,6 +150,10 @@ export default () => (
           { start: '11:00pm', length: 1, name: 'Bedtime' }
         ]}
       />
+      <Lead mb={4}>
+        We’ll have speakers every other day. Robert from Radiolab May-Li from
+        Khan Academy Tom from GitHub
+      </Lead>
     </Container>
   </Section>
 )

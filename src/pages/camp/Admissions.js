@@ -8,7 +8,7 @@ export default () => (
     <Container maxWidth={61.25}>
       <SectionTitle>Admissions</SectionTitle>
       <Cols cols="1fr 3fr" mt={[4, 5, 6]}>
-        <Headline pr={3}>15 spots. ∞&nbsp;opportunity.</Headline>
+        <Headline pr={3}>15 high schoolers.</Headline>
         <Lead pl={[3, 0]}>
           We have 15 spots for currently-enrolled high&nbsp;school students.
           We’re not a college looking for just technical skill or

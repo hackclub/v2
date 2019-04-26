@@ -9,6 +9,7 @@ import {
 import { Section, SectionTitle, Cols } from './Content'
 import { Headline, Subhline, Highlight, Title, Lead } from 'components/Content'
 import Photo from 'components/Photo'
+import Schedule from './Schedule'
 
 const FullBleed = styled(BackgroundImage)`
   position: relative;
@@ -125,6 +126,24 @@ export default () => (
         We’ll have speakers every other day. Robert from Radiolab May-Li from
         Khan Academy Tom from GitHub
       </Lead>
+      <Schedule
+        events={[
+          { start: '7:30', length: 1, name: 'Wake up' },
+          { start: '8:30', length: 0.5, name: 'Travel to HQ' },
+          { start: '9:00', length: 1, name: 'Breakfast at HQ' },
+          { start: '10:00', length: 2, name: 'Hacker Workshop' },
+          { start: '12:00', length: 0.5, name: 'Project Demos' },
+          { start: '12:30', length: 1, name: 'Lunch' },
+          { start: '1:30', length: 1, name: 'Speaker' },
+          { start: '2:30', length: 2.5, name: 'Challenge' },
+          { start: '5:00', length: 0.5, name: 'Travel to Home Base' },
+          { start: '5:30', length: 1.5, name: 'Cooking' },
+          { start: '7:00', length: 1, name: 'Dinner' },
+          { start: '8:00', length: 1, name: 'Cleanup' },
+          { start: '9:00', length: 2, name: 'Free Time' },
+          { start: '11:00', length: 1, name: 'Bedtime' }
+        ]}
+      />
     </Container>
   </Section>
 )

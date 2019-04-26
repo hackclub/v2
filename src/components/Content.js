@@ -97,3 +97,5 @@ export const AnimatedHighlight = styled(Text.span)`
   );
   background-size: 0 100%;
 `
+
+export default () => <></>

@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import { Box, Text, theme } from '@hackclub/design-system'
 import { Title, Headline, Lead } from 'components/Content'
@@ -38,3 +39,5 @@ export const SectionLead = styled(Lead).attrs({
   pb: 3,
   mb: [4, 5]
 })``
+
+export default () => <></>

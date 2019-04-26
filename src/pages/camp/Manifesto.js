@@ -17,14 +17,15 @@ const Background = styled.span`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 32rem;
   background-image: radial-gradient(
     ellipse farthest-corner at top center,
     ${theme.colors.pink[3]},
     ${theme.colors.pink[0]} 50%,
-    ${theme.colors.white} 90%
+    ${theme.colors.snow} 90%,
+    ${theme.colors.snow} 100%
   );
-  background-size: 100%;
+  background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: top center;
   z-index: 0;

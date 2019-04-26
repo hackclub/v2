@@ -191,23 +191,24 @@ export default () => (
     {/* <Nav color="slate" unfixed /> */}
     <PageNav />
     <style>{`body { color: #222; }`}</style>
-    <Box p={3} bg="white">
+    <Box bg="white">
       <Container
         width={1}
         maxWidth={64}
         align="center"
         px={3}
-        mt={[4, 5, 6]}
-        mb={[5, 6, 7]}
+        mt={[5, 6, 7]}
+        mb={[6, 7, 8]}
       >
         <ColoredTitle
-          fontSize={[7, 8, 9, 128]}
+          fontSize={[9, 128]}
           mb={0}
           colors={['pink.5', 'red.5', 'red.6']}
+          style={{ lineHeight: '0.875' }}
         >
-          Hack&nbsp;Camp
+          Hack Camp
         </ColoredTitle>
-        <Headline fontSize={[5, 6, 7]} maxWidth={40} mx="auto">
+        <Headline color="red.6" fontSize={[5, 6, 7]} maxWidth={40} mx="auto">
           3&nbsp;weeks. 15&nbsp;students.
           <br />
           1&nbsp;life-changing camp.

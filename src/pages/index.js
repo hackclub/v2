@@ -5,7 +5,6 @@ import {
   Box,
   Container,
   Flex,
-  Heading,
   LargeButton as Button,
   Link as A,
   OutlineButton,

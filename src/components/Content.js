@@ -1,3 +1,4 @@
+import React from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import { Heading, Text, Container, theme } from '@hackclub/design-system'
 

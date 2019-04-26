@@ -22,7 +22,6 @@ exports.onPreBootstrap = () =>
       console.error(e)
     })
 
-/*
 const pattern = (text = 'Hack Club', color = colors.primary) =>
   GeoPattern.generate(text, { baseColor: color }).toString()
 const writePattern = (path, name) =>
@@ -50,6 +49,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
+/*
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 

@@ -84,7 +84,7 @@ export default () => (
       my={[4, 5, 6]}
     >
       <Subhline mb={0}>Welcome to</Subhline>
-      <Title mb={0}>San&nbsp;Francisco.</Title>
+      <Title mb={0}>San&nbsp;Francisco</Title>
       <FullBleedCaption>Mission Dolores Park</FullBleedCaption>
     </FullBleed>
     <Container maxWidth={48} px={3}>

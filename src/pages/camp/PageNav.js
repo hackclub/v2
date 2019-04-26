@@ -33,7 +33,13 @@ const Item = styled(Link).attrs({ color: 'slate', mx: 2, fontSize: 1 })`
   }
 `
 
-const CTA = styled(Button).attrs({ fontSize: 1, px: 2, py: 1, ml: 3 })``
+const CTA = styled(Button).attrs({
+  fontSize: 1,
+  px: 2,
+  py: 1,
+  ml: 3,
+  mr: [2, null, 0]
+})``
 
 export default () => (
   <Base>

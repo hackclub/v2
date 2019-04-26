@@ -191,7 +191,7 @@ export default () => (
     {/* <Nav color="slate" unfixed /> */}
     <PageNav />
     <style>{`body { color: #222; }`}</style>
-    <Box p={3} bg="snow">
+    <Box p={3} bg="white">
       <Container
         width={1}
         maxWidth={64}
@@ -201,7 +201,7 @@ export default () => (
         mb={[5, 6, 7]}
       >
         <ColoredTitle
-          fontSize={[7, 8, 9, 10]}
+          fontSize={[7, 8, 9, 128]}
           mb={0}
           colors={['pink.5', 'red.5', 'red.6']}
         >

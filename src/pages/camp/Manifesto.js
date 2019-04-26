@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Box, Container, Text, theme } from '@hackclub/design-system'
 import { Subhline, Lead } from 'components/Content'
 
-const Base = styled(Box).attrs({ bg: 'white', py: [5, 6] })`
+const Base = styled(Box).attrs({ bg: 'snow', py: [5, 6] })`
   position: relative;
   > div {
     position: relative;

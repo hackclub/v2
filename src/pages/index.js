@@ -234,16 +234,12 @@ export default () => (
         <Lead
           fontSize={[3, 4, 5]}
           color="white"
-          maxWidth={42}
+          maxWidth={36}
           mt={[3, 4]}
           mb={[4, 5]}
         >
-          Hack Club is a global, nonprofit network of high school coding clubs.
-          Apply now for{' '}
-          <strong>
-            early&nbsp;admissions
-          </strong>
-          .
+          Hack Club is a global, nonprofit network of high school coding clubs.{' '}
+          <strong>Apply now for early&nbsp;admissions.</strong>
         </Lead>
         {/* <OutlineButton.link bg="teal.1" to="/community" m={[1, 2]}>
             Join the community

@@ -241,7 +241,7 @@ export default () => (
           Hack Club is a global, nonprofit network of high school coding clubs.
           Apply now for{' '}
           <strong>
-            early&nbsp;admissions—open for {timeTo(springPromo.deadline)}
+            early&nbsp;admissions
           </strong>
           .
         </Lead>

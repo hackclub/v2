@@ -36,11 +36,7 @@ export const Featline = styled(Heading.h3).attrs({
   letter-spacing: -0.01em;
 `
 
-export const ColoredHeadline = styled(Headline).attrs({
-  pb: 2,
-  mb: [2, 3],
-  maxWidth: 54
-})`
+const color = css`
   color: ${({ colors }) => theme.cx(colors[2])};
   @supports (-webkit-background-clip: text) {
     background-image: linear-gradient(

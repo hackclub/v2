@@ -30,7 +30,8 @@ import Footer from 'components/Footer'
 
 import PageNav from './PageNav'
 import Manifesto from './Manifesto'
-import Schedule from './Schedule'
+import Activities from './Activities'
+import Admissions from './Admissions'
 
 A.link = A.withComponent(Link)
 const FeatureLink = styled(A.link).attrs({
@@ -155,68 +156,13 @@ const Module = ({ icon, name, body, color = 'white', ...props }) => (
   </Flex>
 )
 
-const Cols = styled(Box)`
-  display: grid;
-  grid-gap: ${theme.space[3]}px;
-  ${theme.mediaQueries.sm} {
-    grid-gap: ${theme.space[4]}px;
-    grid-template-columns: ${props => props.cols};
-  }
-  > div,
-  > section > div {
-    ${featureStyles};
-  }
-`
-Cols.defaultProps = {
-  cols: '1fr 1fr',
-  my: [3, 4]
-}
-
-const HourFeatures = styled(Box)`
-  section div {
-    min-height: 32rem;
-    justify-content: flex-start;
-  }
-  div + p {
-    margin-bottom: ${theme.space[4]}px;
-  }
-`
-
 const ApplyButton = styled(LargeButton).attrs({
   scale: true,
   chevronRight: true
 })`
   text-transform: uppercase;
-  background-image: ${theme.gradient('warning', 'primary')};
+  background-image: ${theme.gradient('pink.5', 'red.5')};
 `
-
-const SectionEyebrow = styled(Text).attrs({
-  fontSize: [4, 5],
-  bold: true,
-  color: 'muted'
-})``
-const SectionHeadline = styled(Headline).attrs({
-  fontSize: [7, 8],
-  mt: 1,
-  mb: 4
-})`
-  line-height: 1;
-`
-const SectionLead = styled(Lead).attrs({
-  fontSize: [3, 4],
-  maxWidth: 48,
-  mx: 0,
-  pb: 3,
-  mb: [4, 5]
-})``
-
-const like = {
-  underline: true,
-  target: '_blank'
-}
-A.link = A.withComponent(Link)
-const Like = props => <A {...like} {...props} />
-const LikeLink = props => <A.link {...like} {...props} />
 
 const contentContainer = {
   maxWidth: 72,
@@ -251,45 +197,27 @@ export default () => (
         maxWidth={64}
         align="center"
         px={3}
-        mt={[5, 6, 7]}
-        mb={[4, 5, 6]}
-      >
-        <Flex color="pink.5" align="center" justify="center" mb={4}>
-          <Icon glyph="clubs-fill" size={48} mr={3} />
-          <Text fontSize={[4, 5]} bold caps>
-            Hack Camp
-          </Text>
-        </Flex>
-        <ColoredTitle colors={['fuschia.5', 'pink.5', 'red.5']}>
-          3&nbsp;weeks. 15&nbsp;students. 1&nbsp;life-changing camp.
-        </ColoredTitle>
-        <SectionLead maxWidth={40} fontSize={[3, 4]} mt={4} mx="auto">
-          Hack Camp is a completely new kind of summer camp, built by and for
-          student hackers.
-        </SectionLead>
-      </Container>
-      <Container
-        width={1}
-        maxWidth={64}
-        align="center"
-        px={3}
-        mt={[5, 6, 7]}
-        mb={[4, 5, 6]}
+        mt={[4, 5, 6]}
+        mb={[5, 6, 7]}
       >
         <ColoredTitle
           fontSize={[7, 8, 9, 10]}
           mb={0}
           colors={['pink.5', 'red.5', 'red.6']}
         >
-          Hack Camp
+          Hack&nbsp;Camp
         </ColoredTitle>
-        <Headline maxWidth={40} mx="auto">
-          3&nbsp;weeks. 15&nbsp;students. 1&nbsp;life-changing camp.
+        <Headline fontSize={[5, 6, 7]} maxWidth={40} mx="auto">
+          3&nbsp;weeks. 15&nbsp;students.
+          <br />
+          1&nbsp;life-changing camp.
         </Headline>
         <Lead>San Francisco, CA – July 8–26</Lead>
       </Container>
     </Box>
     <Manifesto />
+    <Activities />
+    <Admissions />
     {/*
         <Cols cols="1fr 3fr" mx={-3} mt={[4, 5, 6]}>
           <Headline px={3}>Go beyond club&nbsp;meetings.</Headline>

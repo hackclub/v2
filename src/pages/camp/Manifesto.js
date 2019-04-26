@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Box, Container, Text, theme } from '@hackclub/design-system'
 import { Subhline, Lead } from 'components/Content'
 
-const Base = styled(Box).attrs({ bg: 'white', py: [5, 6, 7] })`
+const Base = styled(Box).attrs({ bg: 'white', py: [5, 6] })`
   position: relative;
   > div {
     position: relative;
@@ -18,7 +18,6 @@ const Background = styled.span`
   left: 0;
   width: 100%;
   height: 100%;
-  max-height: 75vh;
   background-image: radial-gradient(
     ellipse farthest-corner at top center,
     ${theme.colors.pink[3]},
@@ -45,19 +44,19 @@ export default () => (
       </Subhline>
     </Container>
     <Container maxWidth={48} px={3}>
-      <Lead>
-        Each student will come to camp with a technical workshop they’ve
+      <Lead mb={4}>
+        Each student will come to Camp with a technical workshop they’ve
         designed and built themselves. Each day a different student will lead
         the camp in their workshop. This is a blank slate to teach whatever you
         want; a 100% student-led curriculum.
       </Lead>
-      <Lead>
+      <Lead mb={4}>
         You’ll visit the world’s most innovative companies—and talk to their
         founders. You’ll explore San Francisco in challenges that span the
         entire city. You’ll grow as a coder, a leader, and most importantly, an
         independent adult.
       </Lead>
-      <Lead>
+      <Lead mb={4}>
         This camp is not for everyone. On the first day, you will start with
         empty bedrooms and a stack of mattresses, blankets, & PVC piping. Then
         you will build the ultimate community pillow fort and live there for 3

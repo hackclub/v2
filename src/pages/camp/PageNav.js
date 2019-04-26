@@ -1,13 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {
-  Box,
-  Button,
-  Flex,
-  Container,
-  Text,
-  Link
-} from '@hackclub/design-system'
+import { Box, Button, Flex, Text, Link, theme } from '@hackclub/design-system'
 import { Content } from 'components/Nav'
 
 const Base = styled(Flex)`
@@ -33,19 +26,23 @@ const Nav = styled(Flex).attrs({ align: 'center' })``
 
 const Logo = styled(Text).attrs({ color: 'black', bold: true, fontSize: 4 })``
 
-const Item = styled(Link).attrs({ color: 'slate', mx: 2, fontSize: 1 })``
+const Item = styled(Link).attrs({ color: 'slate', mx: 2, fontSize: 1 })`
+  display: none;
+  ${theme.mediaQueries.md} {
+    display: block;
+  }
+`
 
 const CTA = styled(Button).attrs({ fontSize: 1, px: 2, py: 1, ml: 3 })``
 
 export default () => (
   <Base>
-    <Content>
+    <Content maxWidth={61.25}>
       <Logo>Hack Camp</Logo>
       <Nav>
         <Item href="#overview">Overview</Item>
-        <Item href="#overview">Overview</Item>
-        <Item href="#overview">Overview</Item>
-        <Item href="#overview">Overview</Item>
+        <Item href="#overview">Schedule</Item>
+        <Item href="#overview">Details</Item>
         <CTA href="https://apply.hackclub.com">Apply</CTA>
       </Nav>
     </Content>

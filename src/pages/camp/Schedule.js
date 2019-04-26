@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Box, Text, theme } from '@hackclub/design-system'
 
-const Tile = styled(Box).attrs({ p: 3 })`
+const Tile = styled(Box).attrs({ px: 3, py: 2 })`
   display: flex;
   align-items: center;
   min-height: 24px;
@@ -12,7 +12,9 @@ const Name = styled(Text)``
 
 export const Event = ({ start, name, length = 1, color = 'red' }) => (
   <li>
-    <Text color="muted">{start}</Text>
+    <Text fontSize={2} pt={1} color="muted">
+      {start}
+    </Text>
     <Tile bg={`${color}.0`} color="black" style={{ height: 24 + length * 24 }}>
       <Name>{name}</Name>
     </Tile>
@@ -29,7 +31,7 @@ const Calendar = styled(Box.withComponent('ol'))`
   }
 `
 
-export default ({ events }) => (
+export default ({ events = [] }) => (
   <Calendar>
     {events.map(event => (
       <Event {...event} />

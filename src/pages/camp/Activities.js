@@ -47,12 +47,14 @@ const FullBleedCaption = styled(Flex).attrs({
 const Gallery = styled(Container).attrs({ maxWidth: 84, px: [3, 4] })`
   display: grid;
   grid-gap: ${theme.space[3]}px;
-  grid-template-columns: repeat(8, 1fr);
-  > div {
-    grid-column: span 4;
-    min-height: 32rem;
-    &[data-vertical] {
-      grid-column: span 2;
+  ${theme.mediaQueries.md} {
+    grid-template-columns: repeat(8, 1fr);
+    > div {
+      grid-column: span 4;
+      min-height: 32rem;
+      &[data-vertical] {
+        grid-column: span 2;
+      }
     }
   }
 `
@@ -128,20 +130,20 @@ export default () => (
       </Lead>
       <Schedule
         events={[
-          { start: '7:30', length: 1, name: 'Wake up' },
-          { start: '8:30', length: 0.5, name: 'Travel to HQ' },
-          { start: '9:00', length: 1, name: 'Breakfast at HQ' },
-          { start: '10:00', length: 2, name: 'Hacker Workshop' },
-          { start: '12:00', length: 0.5, name: 'Project Demos' },
-          { start: '12:30', length: 1, name: 'Lunch' },
-          { start: '1:30', length: 1, name: 'Speaker' },
-          { start: '2:30', length: 2.5, name: 'Challenge' },
-          { start: '5:00', length: 0.5, name: 'Travel to Home Base' },
-          { start: '5:30', length: 1.5, name: 'Cooking' },
-          { start: '7:00', length: 1, name: 'Dinner' },
-          { start: '8:00', length: 1, name: 'Cleanup' },
-          { start: '9:00', length: 2, name: 'Free Time' },
-          { start: '11:00', length: 1, name: 'Bedtime' }
+          { start: '7:30am', length: 1, name: 'Wake up' },
+          { start: '8:30am', length: 0.5, name: 'Travel to HQ' },
+          { start: '9:00am', length: 1, name: 'Breakfast at HQ' },
+          { start: '10:00am', length: 2, name: 'Hacker Workshop' },
+          { start: '12:00pm', length: 0.5, name: 'Project Demos' },
+          { start: '12:30pm', length: 1, name: 'Lunch' },
+          { start: '1:30pm', length: 1, name: 'Speaker' },
+          { start: '2:30pm', length: 2.5, name: 'Challenge' },
+          { start: '5:00pm', length: 0.5, name: 'Travel to Home Base' },
+          { start: '5:30pm', length: 1.5, name: 'Cooking' },
+          { start: '7:00pm', length: 1, name: 'Dinner' },
+          { start: '8:00pm', length: 1, name: 'Cleanup' },
+          { start: '9:00pm', length: 2, name: 'Free Time' },
+          { start: '11:00pm', length: 1, name: 'Bedtime' }
         ]}
       />
     </Container>

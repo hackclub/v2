@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Box, Text, theme } from '@hackclub/design-system'
 
-const Tile = styled(Box).attrs({ p: 2 })`
+const Tile = styled(Box).attrs({ px: 2 })`
   display: flex;
   align-items: center;
   min-height: 24px;
@@ -10,7 +10,7 @@ const Tile = styled(Box).attrs({ p: 2 })`
 
 export const Event = ({ start, name, length = 1, color = 'red' }) => (
   <li>
-    <Text fontSize={1} pt={1} color="muted">
+    <Text fontSize={1} p={1} color="muted">
       {start}
     </Text>
     <Tile bg={`${color}.0`} color="black" style={{ height: 24 + length * 24 }}>

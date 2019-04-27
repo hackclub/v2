@@ -4,17 +4,11 @@ import {
   BackgroundImage,
   Flex,
   Container,
+  Text,
   theme
 } from '@hackclub/design-system'
 import { Section, SectionTitle, Cols } from './Content'
-import {
-  Headline,
-  Subhline,
-  Featline,
-  Highlight,
-  Title,
-  Lead
-} from 'components/Content'
+import { Headline, Subhline, Featline, Title, Lead } from 'components/Content'
 import Photo from 'components/Photo'
 import Schedule from './Schedule'
 
@@ -104,15 +98,19 @@ export default () => (
         Every day, new challenges will await campers, encompassing everything
         from adulting & high-level engineering to safe-cracking & sewing. You’ll
         have to leverage your diverse skill sets and communication skills as you
-        learn to be independent. <Highlight>Expect the unexpected.</Highlight>
+        learn to be independent. Expect the unexpected.
+      </Lead>
+      <Lead mb={4}>
+        Industry-leading creatives and entrepreneurs will join us several times
+        a week for fresh discussions.
       </Lead>
       <Lead>
-        On weekends, we’ll go on adventures, like touring the Facebook campus in
-        Menlo Park, taking a trip to Angel Island outside San Francisco, and
-        visiting the Exploratorium museum.
+        On weekends, we’ll go on adventures. We’ll tour Facebook’s campus in
+        Menlo Park and Tesla’s factory in Fremont, take a trip to Angel Island
+        across the Bay, visit the Exploratorium science museum, and more.
       </Lead>
     </Container>
-    <Gallery my={[4, 5, 6]}>
+    <Gallery my={[5, 6]}>
       <Photo
         src="/camp/street.jpg"
         alt="Natoma St, HQ on the left"
@@ -132,28 +130,37 @@ export default () => (
     </Gallery>
     <Container maxWidth={48} px={3}>
       <Featline>Daily schedule</Featline>
+      <Text fontSize={[2, 3]} mb={[3, 4]}>
+        We’ll change it up every day, but here’s what you can expect.
+      </Text>
       <Schedule
         events={[
-          { start: '7:30am', length: 1, name: 'Wake up' },
-          { start: '8:30am', length: 0.5, name: 'Travel to HQ' },
-          { start: '9:00am', length: 1, name: 'Breakfast at HQ' },
+          { start: '7:30am', color: 'white', name: 'Wake up' },
+          {
+            start: '8:30am',
+            length: 0.5,
+            color: 'yellow',
+            name: 'Travel to HQ'
+          },
+          { start: '9:00am', color: 'teal', name: 'Breakfast at HQ' },
           { start: '10:00am', length: 2, name: 'Hacker Workshop' },
           { start: '12:00pm', length: 0.5, name: 'Project Demos' },
-          { start: '12:30pm', length: 1, name: 'Lunch' },
+          { start: '12:30pm', color: 'teal', name: 'Lunch' },
           { start: '1:30pm', length: 1, name: 'Speaker' },
-          { start: '2:30pm', length: 2.5, name: 'Challenge' },
-          { start: '5:00pm', length: 0.5, name: 'Travel to Home Base' },
-          { start: '5:30pm', length: 1.5, name: 'Cooking' },
-          { start: '7:00pm', length: 1, name: 'Dinner' },
-          { start: '8:00pm', length: 1, name: 'Cleanup' },
-          { start: '9:00pm', length: 2, name: 'Free Time' },
-          { start: '11:00pm', length: 1, name: 'Bedtime' }
+          { start: '2:30pm', length: 2, name: 'Challenge' },
+          {
+            start: '5:00pm',
+            length: 0.5,
+            color: 'yellow',
+            name: 'Travel to Home Base'
+          },
+          { start: '5:30pm', length: 1.5, color: 'teal', name: 'Cooking' },
+          { start: '7:00pm', color: 'teal', name: 'Dinner' },
+          { start: '8:00pm', length: 0.5, color: 'yellow', name: 'Cleanup' },
+          { start: '9:00pm', color: 'white', name: 'Free Time' },
+          { start: '11:00pm', length: 0.5, color: 'white', name: 'Bedtime' }
         ]}
       />
-      <Lead mb={4}>
-        We’ll have speakers every other day. Robert from Radiolab May-Li from
-        Khan Academy Tom from GitHub
-      </Lead>
     </Container>
   </Section>
 )

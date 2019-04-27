@@ -65,13 +65,17 @@ export default () => (
   <Section>
     <Container maxWidth={61.25} px={3}>
       <SectionTitle>Activities</SectionTitle>
-      <Cols cols="1fr 3fr" mt={[4, 5, 6]}>
-        <Box pr={[null, null, 3]}>
-          <Featline>Daily schedule</Featline>
-          <Text fontSize={[2, 3]} mt={[3, 4]}>
-            We’ll change it up every day, but here’s what you can expect.
-          </Text>
-        </Box>
+      <Cols cols="1fr 3fr">
+        <Headline>By leaders, for&nbsp;leaders.</Headline>
+        <Lead>
+          In the weeks leading up to Camp, we’ll work one-on-one with every
+          attendee to prepare a 2-hour workshop about something technical they
+          love. They’ll share these at Camp, one every morning—so the main
+          “instructional” sessions are all led by leaders.
+        </Lead>
+      </Cols>
+      <Headline mb={2}>Weekday schedule</Headline>
+      <Cols cols="4fr 1fr" mt={4} mb={[5, 6]}>
         <Schedule
           events={[
             { start: '7:30am', color: 'white', name: 'Wake up' },
@@ -100,14 +104,16 @@ export default () => (
             { start: '11:00pm', length: 0.5, color: 'white', name: 'Bedtime' }
           ]}
         />
+        <Text fontSize={2}>
+          We’ll change it up every&nbsp;day! But here’s what you can expect.
+        </Text>
       </Cols>
-      <Cols cols="1fr 3fr" mt={[4, 5, 6]}>
-        <Headline pr={[0, null, 3]}>By leaders, for&nbsp;leaders.</Headline>
+      <Cols cols="1fr 2fr">
+        <Headline>Better every day. Literally.</Headline>
         <Lead>
-          In the weeks leading up to Camp, we’ll work one-on-one with every
-          attendee to prepare a 2-hour workshop about something technical they
-          love. They’ll share these at Camp, one every morning—so the main
-          “instructional” sessions are all led by leaders.
+          Every night, we’ll poll for feedback on all activities. We’ll build
+          the next day’s program around that feedback. So your Camp experience
+          will only improve.
         </Lead>
       </Cols>
     </Container>
@@ -138,8 +144,8 @@ export default () => (
         learn to be independent. Expect the unexpected.
       </Lead>
       <Lead mb={4}>
-        Industry-leading creatives and entrepreneurs will join us several times
-        a week for fresh discussions.
+        Industry-leading creatives and entrepreneurs from diverse industries
+        will join us several times a week for discussions.
       </Lead>
       <Lead>
         On weekends, we’ll go on adventures. We’ll tour Facebook’s campus in

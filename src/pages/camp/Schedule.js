@@ -22,6 +22,7 @@ export const Event = ({ start, name, length = 1, color = 'red' }) => (
 const Calendar = styled(Box.withComponent('ol'))`
   list-style: none;
   padding-left: 0;
+  margin: 0;
   ${theme.mediaQueries.md} {
     column-count: 2;
     column-gap: ${theme.space[4]}px;

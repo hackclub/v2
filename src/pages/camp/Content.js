@@ -14,10 +14,14 @@ export const Cols = styled(Box)`
     grid-gap: ${theme.space[4]}px;
     grid-template-columns: ${props => props.cols};
   }
+  ${Headline}:first-child {
+    margin-bottom: 0;
+  }
 `
 Cols.defaultProps = {
   cols: '1fr 1fr',
-  my: [3, 4]
+  mt: [4, 5],
+  mb: [4, 5]
 }
 
 export const SectionEyebrow = styled(Text).attrs({

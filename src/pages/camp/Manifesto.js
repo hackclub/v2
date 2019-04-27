@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Container, Text, theme } from '@hackclub/design-system'
-import { Subhline, Lead } from 'components/Content'
+import { Box, Container, Text, Sheet, theme } from '@hackclub/design-system'
+import { Subhline, Featline, Lead } from 'components/Content'
+import { Cols } from './Content'
 
 const Base = styled(Box).attrs({ bg: 'snow', py: [5, 6] })`
   position: relative;
@@ -35,6 +36,26 @@ const Background = styled.span`
 
 // const Lead = styled(Text).attrs({ fontSize: [3, 4], mb: 4 })``
 
+const Concepts = styled(Box).attrs({ my: [4, 5] })`
+  display: grid;
+  grid-gap: ${theme.space[2]}px;
+  ${theme.mediaQueries.md} {
+    grid-gap: ${theme.space[4]}px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+`
+
+const Name = styled(Text).attrs({
+  fontSize: 3,
+  bold: true
+})``
+const Concept = ({ name, desc }) => (
+  <Sheet>
+    <Name>{name}</Name>
+    <Text color="black">{desc}</Text>
+  </Sheet>
+)
+
 export default () => (
   <Base>
     <Background />
@@ -63,11 +84,38 @@ export default () => (
         you will build the ultimate community pillow fort and live there for 3
         weeks. (We’re not kidding!)
       </Lead>
-      <Lead>
-        We use the term Hacker according to its traditional definition:
-        technically skilled individuals who find creative solutions to complex
-        problems. We do not break into internet banks.
-      </Lead>
+    </Container>
+    <Container maxWidth={61.25} px={3}>
+      <Concepts>
+        <Concept
+          name="Participation"
+          desc="Every activity is optional, but the whole experience will depend on the investment of individual participants. You will teach, Campers will get out what they put in."
+        />
+        <Concept
+          name="Civic responsibility"
+          desc="Technology is a tool—it’s up to us as hackers to think critically, ask hard questions, and ultimately ensure that the tools we create are used for good."
+        />
+        <Concept
+          name="Radical self-reliance"
+          desc="This is not a vacation. You will have to rely on yourself for things that you take for granted elsewhere."
+        />
+        <Concept
+          name="Communal effort"
+          desc="Campers will frequently be required to work together for the benefit of the community."
+        />
+      </Concepts>
+    </Container>
+    <Container maxWidth={61.25} px={3}>
+      <Cols cols="1fr auto" style={{ alignItems: 'center' }}>
+        <Featline color="accent" mb={0}>
+          Hacking‽
+        </Featline>
+        <Text fontSize={2}>
+          We use the traditional definition of “hacker”: technically-skilled
+          individuals who find creative solutions to complex problems. We don’t
+          break into banks.
+        </Text>
+      </Cols>
     </Container>
   </Base>
 )

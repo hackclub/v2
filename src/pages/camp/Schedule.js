@@ -10,9 +10,9 @@ const Tile = styled(Box).attrs({ px: 2 })`
 
 export const Event = ({ start, name, length = 1, color = 'red' }) => (
   <li>
-    <Text fontSize={1} p={1} color="muted">
+    <Text.span fontSize={1} p={1} color="muted">
       {start}
-    </Text>
+    </Text.span>
     <Tile bg={`${color}.0`} color="black" style={{ height: 24 + length * 24 }}>
       <Text fontSize={2}>{name}</Text>
     </Tile>

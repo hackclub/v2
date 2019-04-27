@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {
   BackgroundImage,
+  Box,
   Flex,
   Container,
   Text,
@@ -64,6 +65,42 @@ export default () => (
   <Section>
     <Container maxWidth={61.25} px={3}>
       <SectionTitle>Activities</SectionTitle>
+      <Cols cols="1fr 3fr" mt={[4, 5, 6]}>
+        <Box pr={[null, null, 3]}>
+          <Featline>Daily schedule</Featline>
+          <Text fontSize={[2, 3]} mt={[3, 4]}>
+            We’ll change it up every day, but here’s what you can expect.
+          </Text>
+        </Box>
+        <Schedule
+          events={[
+            { start: '7:30am', color: 'white', name: 'Wake up' },
+            {
+              start: '8:30am',
+              length: 0.5,
+              color: 'yellow',
+              name: 'Travel to HQ'
+            },
+            { start: '9:00am', color: 'teal', name: 'Breakfast at HQ' },
+            { start: '10:00am', length: 2, name: 'Hacker Workshop' },
+            { start: '12:00pm', length: 0.5, name: 'Project Demos' },
+            { start: '12:30pm', color: 'teal', name: 'Lunch' },
+            { start: '1:30pm', length: 1, name: 'Speaker' },
+            { start: '2:30pm', length: 2, name: 'Challenge' },
+            {
+              start: '5:00pm',
+              length: 0.5,
+              color: 'yellow',
+              name: 'Travel to Home Base'
+            },
+            { start: '5:30pm', length: 1.5, color: 'teal', name: 'Cooking' },
+            { start: '7:00pm', color: 'teal', name: 'Dinner' },
+            { start: '8:00pm', length: 0.5, color: 'yellow', name: 'Cleanup' },
+            { start: '9:00pm', color: 'white', name: 'Free Time' },
+            { start: '11:00pm', length: 0.5, color: 'white', name: 'Bedtime' }
+          ]}
+        />
+      </Cols>
       <Cols cols="1fr 3fr" mt={[4, 5, 6]}>
         <Headline pr={[0, null, 3]}>By leaders, for&nbsp;leaders.</Headline>
         <Lead>
@@ -128,39 +165,5 @@ export default () => (
       <Photo src="/camp/conference.jpg" alt="HQ’s conference room" />
       <Photo src="/camp/library.jpg" alt="HQ’s library" />
     </Gallery>
-    <Container maxWidth={48} px={3}>
-      <Featline>Daily schedule</Featline>
-      <Text fontSize={[2, 3]} mb={[3, 4]}>
-        We’ll change it up every day, but here’s what you can expect.
-      </Text>
-      <Schedule
-        events={[
-          { start: '7:30am', color: 'white', name: 'Wake up' },
-          {
-            start: '8:30am',
-            length: 0.5,
-            color: 'yellow',
-            name: 'Travel to HQ'
-          },
-          { start: '9:00am', color: 'teal', name: 'Breakfast at HQ' },
-          { start: '10:00am', length: 2, name: 'Hacker Workshop' },
-          { start: '12:00pm', length: 0.5, name: 'Project Demos' },
-          { start: '12:30pm', color: 'teal', name: 'Lunch' },
-          { start: '1:30pm', length: 1, name: 'Speaker' },
-          { start: '2:30pm', length: 2, name: 'Challenge' },
-          {
-            start: '5:00pm',
-            length: 0.5,
-            color: 'yellow',
-            name: 'Travel to Home Base'
-          },
-          { start: '5:30pm', length: 1.5, color: 'teal', name: 'Cooking' },
-          { start: '7:00pm', color: 'teal', name: 'Dinner' },
-          { start: '8:00pm', length: 0.5, color: 'yellow', name: 'Cleanup' },
-          { start: '9:00pm', color: 'white', name: 'Free Time' },
-          { start: '11:00pm', length: 0.5, color: 'white', name: 'Bedtime' }
-        ]}
-      />
-    </Container>
   </Section>
 )

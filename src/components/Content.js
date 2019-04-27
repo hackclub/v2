@@ -66,7 +66,7 @@ export const ColoredHeadline = styled(Headline).attrs({
 export const Lead = styled(Container.withComponent(Text)).attrs({
   fontSize: [3, 4]
 })`
-  letter-spacing: 0.006em;
+  letter-spacing: 0.004em;
 `
 
 export const Highlight = styled(Text.span)`

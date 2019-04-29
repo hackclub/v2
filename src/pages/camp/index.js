@@ -29,6 +29,7 @@ import {
 import Footer from 'components/Footer'
 
 import PageNav from './PageNav'
+import Landing from './Landing'
 import Manifesto from './Manifesto'
 import Activities from './Activities'
 import Admissions from './Admissions'
@@ -176,7 +177,7 @@ const description =
   'Learn how to start a coding club at your high school through Hack Club. Get programming club ideas, curriculum, activities, and more.'
 
 export default () => (
-  <Layout>
+  <Layout bg="dark">
     <Helmet
       title={title}
       meta={[
@@ -190,32 +191,19 @@ export default () => (
     />
     {/* <Nav color="slate" unfixed /> */}
     <PageNav />
-    <style>{`body { color: #222; }`}</style>
-    <Box bg="white">
-      <Container
-        width={1}
-        maxWidth={64}
-        align="center"
-        px={3}
-        mt={[5, 6, 7]}
-        mb={[6, 7, 8]}
-      >
-        <ColoredTitle
-          fontSize={[9, 128]}
-          mb={0}
-          colors={['pink.5', 'red.5', 'red.6']}
-          style={{ lineHeight: '0.875' }}
-        >
-          Hack Camp
-        </ColoredTitle>
-        <Headline color="red.6" fontSize={[5, 6, 7]} maxWidth={40} mx="auto">
-          3&nbsp;weeks. 15&nbsp;students.
-          <br />
-          1&nbsp;life-changing camp.
-        </Headline>
-        <Lead>San Francisco, CA – July 8–26</Lead>
-      </Container>
-    </Box>
+    <style>{`
+      body {
+        width: 100%;
+        max-width: 100vw;
+        color: ${theme.colors.smoke};
+      }
+      ::selection {
+        background: #FF8C37;
+        color: ${theme.colors.white};
+        text-shadow: none;
+      }
+    `}</style>
+    <Landing />
     <Manifesto />
     <Activities />
     <Admissions />
@@ -316,6 +304,6 @@ export default () => (
       </MapBox>
     </Box>
         */}
-    <Footer />
+    <Footer dark />
   </Layout>
 )

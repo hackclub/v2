@@ -5,7 +5,10 @@ import { Title, Headline, Lead } from 'components/Content'
 
 export const Section = styled(Box.section).attrs({ py: [5, 6, 7, 8] })``
 
-export const SectionTitle = styled(Title).attrs({ fontSize: [8, 9, 128] })``
+export const SectionTitle = styled(Title).attrs({
+  color: 'white',
+  fontSize: [8, 9, 128]
+})``
 
 export const Cols = styled(Box)`
   display: grid;
@@ -15,6 +18,7 @@ export const Cols = styled(Box)`
     grid-template-columns: ${props => props.cols};
   }
   ${Headline}:first-child {
+    color: ${theme.colors.white};
     margin-bottom: 0;
   }
 `

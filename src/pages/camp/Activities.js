@@ -62,19 +62,10 @@ const Gallery = styled(Container).attrs({ maxWidth: 84, px: [3, 4] })`
 `
 
 export default () => (
-  <Section>
+  <Section bg="darker">
     <Container maxWidth={61.25} px={3}>
       <SectionTitle>Activities</SectionTitle>
-      <Cols cols="1fr 3fr">
-        <Headline>By leaders, for&nbsp;leaders.</Headline>
-        <Lead>
-          In the weeks leading up to Camp, we’ll work one-on-one with every
-          attendee to prepare a 2-hour workshop about something technical they
-          love. They’ll share these at Camp, one every morning—so the main
-          “instructional” sessions are all led by leaders.
-        </Lead>
-      </Cols>
-      <Headline mb={2}>Weekday schedule</Headline>
+      <Headline mb={2}>Schedule</Headline>
       <Cols cols="4fr 1fr" mt={4} mb={[5, 6]}>
         <Schedule
           events={[
@@ -117,59 +108,26 @@ export default () => (
         </Lead>
       </Cols>
     </Container>
-    <FullBleed
-      src="/camp/dolores.jpg"
-      aria-label="Mission Dolores Park, San Francisco"
-      style={{ minHeight: '32rem' }}
-      align="center"
-      color="white"
-      px={3}
-      pb={[4, null, 6]}
-      my={[4, 5, 6]}
-    >
-      <Subhline mb={0}>Welcome to</Subhline>
-      <Title mb={0}>San&nbsp;Francisco</Title>
-      <FullBleedCaption>Mission Dolores Park</FullBleedCaption>
-    </FullBleed>
-    <Container maxWidth={48} px={3}>
-      <Lead mb={4}>
-        Hack Camp takes place entirely in San Francisco. You’ll live with your
-        fellow campers at Home Base, a house in the Sunset. During the day,
-        you’ll be at HQ, our office in SoMA.
-      </Lead>
-      <Lead mb={4}>
-        Every day, new challenges will await campers, encompassing everything
-        from adulting & high-level engineering to safe-cracking & sewing. You’ll
-        have to leverage your diverse skill sets and communication skills as you
-        learn to be independent. Expect the unexpected.
-      </Lead>
-      <Lead mb={4}>
-        Industry-leading creatives and entrepreneurs from diverse industries
-        will join us several times a week for discussions.
-      </Lead>
-      <Lead>
-        On weekends, we’ll go on adventures. We’ll tour Facebook’s campus in
-        Menlo Park and Tesla’s factory in Fremont, take a trip to Angel Island
-        across the Bay, visit the Exploratorium science museum, and more.
-      </Lead>
-    </Container>
     <Gallery my={[5, 6]}>
       <Photo
         src="/camp/street.jpg"
         alt="Natoma St, HQ on the left"
+        dark
         data-vertical
       />
       <Photo
         src="/camp/neighborhood.jpg"
         alt="Neighborhood, two blocks from HQ"
+        dark
       />
       <Photo
         src="/camp/classroom.jpg"
         alt="HQ’s classroom space"
+        dark
         data-vertical
       />
-      <Photo src="/camp/conference.jpg" alt="HQ’s conference room" />
-      <Photo src="/camp/library.jpg" alt="HQ’s library" />
+      <Photo src="/camp/conference.jpg" alt="HQ’s conference room" dark />
+      <Photo src="/camp/library.jpg" alt="HQ’s library" dark />
     </Gallery>
   </Section>
 )

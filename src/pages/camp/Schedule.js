@@ -13,7 +13,7 @@ export const Event = ({ start, name, length = 1, color = 'red' }) => (
     <Text.span fontSize={1} p={1} color="muted">
       {start}
     </Text.span>
-    <Tile bg={`${color}.0`} color="black" style={{ height: 24 + length * 24 }}>
+    <Tile bg={`${color}.7`} color="white" style={{ height: 24 + length * 24 }}>
       <Text fontSize={2}>{name}</Text>
     </Tile>
   </li>
@@ -28,7 +28,7 @@ const Calendar = styled(Box.withComponent('ol'))`
     column-gap: ${theme.space[4]}px;
   }
   li {
-    border-top: 1px solid ${theme.colors.smoke};
+    border-top: 1px solid ${theme.colors.black};
     break-inside: avoid;
     display: grid;
     grid-template-columns: 1fr 2fr;

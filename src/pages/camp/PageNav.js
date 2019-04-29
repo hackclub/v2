@@ -5,28 +5,26 @@ import { Content } from 'components/Nav'
 
 const Base = styled(Flex)`
   align-items: center;
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 52px;
+  height: 56px;
   z-index: 9997;
-  background-color: rgba(255, 255, 255, 0.98);
   border-bottom: 1px solid rgba(48, 48, 48, 0.125);
-  @supports (position: -webkit-sticky) or (postition: sticky) {
-    position: sticky;
-  }
+  background-color: rgba(0, 0, 0, 0.875);
+  color: ${theme.colors.white};
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    background-color: rgba(255, 255, 255, 0.75);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    background-color: rgba(32, 34, 36, 0.875);
+    -webkit-backdrop-filter: saturate(180%) blur(16px);
   }
 `
 
 const Nav = styled(Flex).attrs({ align: 'center' })``
 
-const Logo = styled(Text).attrs({ color: 'black', bold: true, fontSize: 4 })``
+const Logo = styled(Text).attrs({ color: 'white', bold: true, fontSize: 4 })``
 
-const Item = styled(Link).attrs({ color: 'slate', mx: 2, fontSize: 1 })`
+const Item = styled(Link).attrs({ color: 'smoke', mx: 2, fontSize: 1 })`
   display: none;
   ${theme.mediaQueries.md} {
     display: block;
@@ -34,6 +32,7 @@ const Item = styled(Link).attrs({ color: 'slate', mx: 2, fontSize: 1 })`
 `
 
 const CTA = styled(Button).attrs({
+  bg: '#FF8C37',
   fontSize: 1,
   px: 2,
   py: 1,
@@ -49,7 +48,7 @@ export default () => (
         <Item href="#overview">Overview</Item>
         <Item href="#overview">Schedule</Item>
         <Item href="#overview">Details</Item>
-        <CTA href="https://apply.hackclub.com">Apply</CTA>
+        <CTA href="https://apply.hackclub.com">Register</CTA>
       </Nav>
     </Content>
   </Base>

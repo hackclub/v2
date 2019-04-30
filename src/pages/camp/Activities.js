@@ -8,6 +8,7 @@ import {
   Text,
   theme
 } from '@hackclub/design-system'
+import { Link } from 'gatsby'
 import { Section, SectionTitle, Cols } from './Content'
 import { Headline, Subhline, Featline, Title, Lead } from 'components/Content'
 import Photo from 'components/Photo'
@@ -65,50 +66,70 @@ export default () => (
   <Section bg="darker">
     <Container maxWidth={61.25} px={3}>
       <SectionTitle>Activities</SectionTitle>
-      <Headline mb={2}>Schedule</Headline>
-      <Cols cols="4fr 1fr" mt={4} mb={[5, 6]}>
-        <Schedule
-          events={[
-            { start: '7:30am', color: 'white', name: 'Wake up' },
-            {
-              start: '8:30am',
-              length: 0.5,
-              color: 'yellow',
-              name: 'Travel to HQ'
-            },
-            { start: '9:00am', color: 'teal', name: 'Breakfast at HQ' },
-            { start: '10:00am', length: 2, name: 'Hacker Workshop' },
-            { start: '12:00pm', length: 0.5, name: 'Project Demos' },
-            { start: '12:30pm', color: 'teal', name: 'Lunch' },
-            { start: '1:30pm', length: 1, name: 'Speaker' },
-            { start: '2:30pm', length: 2, name: 'Challenge' },
-            {
-              start: '5:00pm',
-              length: 0.5,
-              color: 'yellow',
-              name: 'Travel to Home Base'
-            },
-            { start: '5:30pm', length: 1.5, color: 'teal', name: 'Cooking' },
-            { start: '7:00pm', color: 'teal', name: 'Dinner' },
-            { start: '8:00pm', length: 0.5, color: 'yellow', name: 'Cleanup' },
-            { start: '9:00pm', color: 'white', name: 'Free Time' },
-            { start: '11:00pm', length: 0.5, color: 'white', name: 'Bedtime' }
-          ]}
-        />
-        <Text fontSize={2}>
-          We’ll change it up every&nbsp;day! But here’s what you can expect.
-        </Text>
-      </Cols>
-      <Cols cols="1fr 2fr">
-        <Headline>Better every day. Literally.</Headline>
-        <Lead>
-          Every night, we’ll poll for feedback on all activities. We’ll build
-          the next day’s program around that feedback. So your Camp experience
-          will only improve.
-        </Lead>
+      <Headline mb={4}>Schedule</Headline>
+      <Schedule
+        events={[
+          { start: '7:30am', color: 'white', name: 'Wake up' },
+          {
+            start: '8:30am',
+            length: 0.5,
+            color: 'yellow',
+            name: 'Travel to HQ'
+          },
+          { start: '9:00am', color: 'teal', name: 'Breakfast at HQ' },
+          { start: '10:00am', length: 2, name: 'Hacker Workshop' },
+          { start: '12:00pm', length: 0.5, name: 'Project Demos' },
+          { start: '12:30pm', color: 'teal', name: 'Lunch' },
+          { start: '1:30pm', length: 1, name: 'Speaker' },
+          { start: '2:30pm', length: 2, name: 'Challenge' },
+          {
+            start: '5:00pm',
+            length: 0.5,
+            color: 'yellow',
+            name: 'Travel to Home Base'
+          },
+          { start: '5:30pm', length: 1.5, color: 'teal', name: 'Cooking' },
+          { start: '7:00pm', color: 'teal', name: 'Dinner' },
+          { start: '8:00pm', length: 0.5, color: 'yellow', name: 'Cleanup' },
+          { start: '9:00pm', color: 'white', name: 'Free Time' },
+          { start: '11:00pm', length: 0.5, color: 'white', name: 'Bedtime' }
+        ]}
+      />
+      <Cols mt={[5, 6]}>
+        <div>
+          <Featline>Coding? Just a starting point.</Featline>
+          <Lead color="muted">
+            Hack Camp is so much more than just “learn to code.” You’ll build a
+            radio with a pencil, go on field trips, design games. There’s
+            something for everyone.
+          </Lead>
+        </div>
+        <div>
+          <Featline>Better every day. Literally.</Featline>
+          <Lead color="muted">
+            To end each day, we’ll ask for honest feedback on all activities.
+            We’ll update the next day’s program accordingly—so&nbsp;Camp
+            continually improves.
+          </Lead>
+        </div>
       </Cols>
     </Container>
-    <Gallery my={[5, 6]}>
+    <Container align="center" maxWidth={48} px={3}>
+      <Headline color="white" mt={[6, 7]} mb={2}>
+        Welcome to Hack Club HQ.
+      </Headline>
+      <Lead color="muted">
+        We’re{' '}
+        <Link style={{ color: theme.colors.primary }} to="/">
+          Hack Club
+        </Link>
+        , a global nonprofit network of high school hackers with coding clubs at
+        2% of US high schools. We’re&nbsp;running Hack&nbsp;Camp right at our
+        office in San Francisco (576 Natoma St) so we can X, Y, Z. Here’s the
+        space.
+      </Lead>
+    </Container>
+    <Gallery my={5}>
       <Photo
         src="/camp/street.jpg"
         alt="Natoma St, HQ on the left"

@@ -46,8 +46,8 @@ export default () => (
       <Logo>Hack Camp</Logo>
       <Nav>
         <Item href="#overview">Overview</Item>
-        <Item href="#overview">Schedule</Item>
-        <Item href="#overview">Details</Item>
+        <Item href="#activities">Activities</Item>
+        <Item href="#logistics">Logistics</Item>
         <CTA href="https://apply.hackclub.com">Register</CTA>
       </Nav>
     </Content>

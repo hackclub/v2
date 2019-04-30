@@ -77,7 +77,7 @@ const first = i => includes([1, 15, 29], i)
 const last = i => includes([5, 19], i)
 
 export default () => [
-  <Section>
+  <Section id="logistics">
     <Container maxWidth={61.25} px={3}>
       <SectionTitle>Registration</SectionTitle>
       <Cols cols="2fr 1fr" gap={[4, 5]}>
@@ -129,8 +129,8 @@ export default () => [
           </Lead>
         </div>
         <div>
-          <Featline>Hi there.</Featline>
-          <Lead color="muted">Something</Lead>
+          <Featline>Lunch is included.</Featline>
+          <Lead color="muted">I hope it’s tasty!</Lead>
         </div>
       </Cols>
     </Container>

@@ -48,7 +48,7 @@ export default () => [
   <SmallContainer px={3}>
     <UltraSmall>Learn to build with the best.</UltraSmall>
   </SmallContainer>,
-  <Base>
+  <Base id="overview">
     <UltraLarge>Learn to Build</UltraLarge>
     <UltraLarge>with the Best.</UltraLarge>
     <Container maxWidth={48} px={3}>

@@ -61,7 +61,7 @@ const Gallery = styled(Container).attrs({ maxWidth: 84, px: [3, 4] })`
 `
 
 export default () => (
-  <Section bg="darker">
+  <Section bg="darker" id="activities">
     <Container maxWidth={61.25} px={3}>
       <SectionTitle>Activities</SectionTitle>
       <Cols cols="1fr 2fr" mb={[4, 5]}>

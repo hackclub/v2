@@ -1,6 +1,6 @@
 import React from 'react'
-import { Container } from '@hackclub/design-system'
-import { Section, SectionTitle, Cols } from './Content'
+import { Box, Text, Sheet, Container } from '@hackclub/design-system'
+import { Section, SectionTitle, Cols, theme } from './style'
 import { Headline, Lead } from 'components/Content'
 
 export default () => [

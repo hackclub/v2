@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Text, theme } from '@hackclub/design-system'
+import { Box, Text } from '@hackclub/design-system'
+import { theme } from './style'
 
 const Tile = styled(Box).attrs({ px: 2 })`
   display: flex;

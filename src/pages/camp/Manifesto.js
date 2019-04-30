@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Container, Text, theme } from '@hackclub/design-system'
+import { Box, Container, Text } from '@hackclub/design-system'
 import { Headline, Featline, Lead } from 'components/Content'
-import { Cols } from './Content'
+import { Cols, theme } from './style'
 
 const Base = styled(Box).attrs({ py: [5, 6] })`
   position: relative;

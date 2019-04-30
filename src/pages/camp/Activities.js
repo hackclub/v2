@@ -5,11 +5,10 @@ import {
   Box,
   Flex,
   Container,
-  Text,
-  theme
+  Text
 } from '@hackclub/design-system'
 import { Link } from 'gatsby'
-import { Section, SectionTitle, Cols } from './Content'
+import { Section, SectionTitle, Cols, theme } from './style'
 import { Headline, Subhline, Featline, Title, Lead } from 'components/Content'
 import Photo from 'components/Photo'
 import Schedule from './Schedule'

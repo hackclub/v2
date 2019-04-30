@@ -1,7 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Text, theme } from '@hackclub/design-system'
+import { Box, Text, theme as base } from '@hackclub/design-system'
 import { Title, Headline, Lead } from 'components/Content'
+
+export const theme = {
+  ...base,
+  colors: {
+    ...base.colors,
+    darkless: '#252429',
+    primary: '#33d6a6',
+    red: '#ec3750',
+    yellow: '#f1c40f',
+    green: '#33d6a6',
+    cyan: '#5bc0de',
+    blue: '#338eda'
+  }
+}
 
 export const Section = styled(Box.section).attrs({ py: [5, 6, 7, 8] })``
 

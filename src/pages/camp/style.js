@@ -8,7 +8,7 @@ export const theme = {
   colors: {
     ...base.colors,
     darkless: '#252429',
-    primary: '#33d6a6',
+    primary: '#ff8c37',
     red: '#ec3750',
     yellow: '#f1c40f',
     green: '#33d6a6',
@@ -26,18 +26,19 @@ export const SectionTitle = styled(Title).attrs({
 
 export const Cols = styled(Box)`
   display: grid;
-  grid-gap: ${theme.space[3]}px;
+  grid-gap: ${props => theme.space[props.gap[0]]}px;
   ${theme.mediaQueries.sm} {
-    grid-gap: ${theme.space[4]}px;
+    grid-gap: ${props => theme.space[props.gap[1]]}px;
     grid-template-columns: ${props => props.cols};
   }
-  ${Headline}:first-child {
+  > ${Headline}:first-child {
     color: ${theme.colors.white};
     margin-bottom: 0;
   }
 `
 Cols.defaultProps = {
   cols: '1fr 1fr',
+  gap: [3, 4],
   mt: [4, 5],
   mb: [4, 5]
 }

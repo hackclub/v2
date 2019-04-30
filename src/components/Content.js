@@ -7,7 +7,7 @@ export const Title = styled(Heading.h1).attrs({
   mb: [3, 4]
 })`
   letter-spacing: -0.03125em;
-  line-height: 1.125;
+  line-height: 1;
 `
 
 export const Headline = styled(Heading.h2).attrs({

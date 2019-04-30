@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Box, Container, Text } from '@hackclub/design-system'
-import { Headline, Featline, Lead } from 'components/Content'
-import { Cols, theme } from './style'
+import { ColoredTitle, Featline, Lead } from 'components/Content'
+import { theme } from './style'
 
-const Base = styled(Box).attrs({ py: [5, 6] })`
+const Base = styled(Box).attrs({ pt: [6, 7, 8], pb: [6, 7] })`
   position: relative;
   > div {
     position: relative;
@@ -12,59 +12,48 @@ const Base = styled(Box).attrs({ py: [5, 6] })`
   }
 `
 
-const Background = styled.span`
+const Ultra = styled(ColoredTitle).attrs({
+  colors: [theme.colors.green, theme.colors.cyan, theme.colors.blue],
+  fontSize: [6, 7, 8],
+  caps: true
+})`
   position: absolute;
-  display: block;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 32rem;
-  background-image: radial-gradient(
-    ellipse farthest-corner at top center,
-    ${theme.colors.pink[9]},
-    ${theme.colors.dark} 90%,
-    ${theme.colors.dark} 100%
-  );
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-  background-position: top center;
-  z-index: 0;
+  top: 2rem;
+  right: 2rem;
+  letter-spacing: 0.06em;
+  &:last-of-type {
+    writing-mode: vertical-rl;
+    margin-top: 5rem;
+  }
 `
 
 export default () => (
   <Base>
-    {/* <Background /> */}
+    <Ultra>Learn to Build</Ultra>
+    <Ultra> with the Best.</Ultra>
     <Container maxWidth={48} px={3}>
-      <Headline>
-        Hack Camp is a summer camp built by & for student hackers.
-      </Headline>
+      <Featline>
+        Create anything you can imagine with Code, Electronics, 3D Models, and
+        more.
+      </Featline>
       <Lead mb={4}>
-        Each student will come to Camp with a technical workshop they’ve
-        designed and built themselves. Each day a different student will lead
-        the camp in their workshop. This is a blank slate to teach whatever you
-        want; a 100% student-led curriculum.
+        Have you ever met someone who knows how to do everything? Someone who
+        doesn’t need classes to learn? This is what we call a hacker.
       </Lead>
       <Lead mb={4}>
-        You’ll visit the world’s most innovative companies—and talk to their
-        founders. You’ll explore San Francisco in challenges that span the
-        entire city. You’ll grow as a coder, a leader, and most importantly, an
-        independent adult.
+        Hackers have a superpower: the ability to teach themselves. Anyone can
+        learn to do anything online, and schools just haven’t caught up. The
+        modern world was built by hackers—we’ll show you how to be one.
       </Lead>
       <Lead mb={4}>
-        Every activity is optional, but the whole experience will depend on the
-        investment of individual participants. You will teach, Campers will get
-        out what they put in."
+        At Hack Camp you’ll make your first website, build your first video
+        game, solder your first circuit, and join a global community of students
+        who carry the standard of Hacker Culture.
       </Lead>
-      <Cols cols="1fr auto" style={{ alignItems: 'center' }}>
-        <Featline color="accent" mb={0}>
-          Hacking‽
-        </Featline>
-        <Text fontSize={2}>
-          We use the traditional definition of “hacker”: technically-skilled
-          individuals who find creative solutions to complex problems. We don’t
-          break into banks.
-        </Text>
-      </Cols>
+      <Text fontSize={[2, 3]} color="muted">
+        Just to be clear: we don’t break in to internet banks. Some hackers
+        specialize in cyber-security; we’re not especially focused on it.
+      </Text>
     </Container>
   </Base>
 )

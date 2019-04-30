@@ -119,7 +119,7 @@ export default () => (
       </Headline>
       <Lead color="muted">
         We’re{' '}
-        <Link style={{ color: theme.colors.primary }} to="/">
+        <Link style={{ color: theme.colors.red }} to="/">
           Hack Club
         </Link>
         , a global nonprofit network of high school hackers with coding clubs at

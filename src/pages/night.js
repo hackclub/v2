@@ -9,7 +9,6 @@ import {
 } from '@hackclub/design-system'
 import { Link } from 'gatsby'
 import Layout from 'components/Layout'
-import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import IconButton from 'components/IconButton'
@@ -62,23 +61,9 @@ const CTA = styled(IconButton).attrs({
 const title = 'Hack Night – a weekly online hackathon by Hack Club'
 const desc =
   'On Saturday nights, the Hack Club community of high school hackers gathers for Hack Night, a distributed nighttime hackathon and hangout.'
-const img = 'https://hackclub.com/cards/night.png'
 
 export default () => (
-  <Layout>
-    <Helmet
-      title={title}
-      meta={[
-        { name: 'description', content: desc },
-        { name: 'twitter:title', content: title },
-        { name: 'twitter:description', content: desc },
-        { name: 'twitter:image', content: img },
-        { property: 'og:title', content: title },
-        { property: 'og:description', content: desc },
-        { property: 'og:image', content: img },
-        { property: 'og:url', content: 'https://hackclub.com/night' }
-      ]}
-    />
+  <Layout title={title} desc={desc} path="/night/" img="/cards/night.png">
     <Nav color={theme.colors.nightMuted} dark />
     <Hero
       src="/night.jpg"

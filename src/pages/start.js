@@ -13,7 +13,6 @@ import {
   Sheet,
   theme
 } from '@hackclub/design-system'
-import Helmet from 'react-helmet'
 import { Link } from 'gatsby'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
@@ -290,22 +289,11 @@ const contentContainer = {
 }
 
 const title = 'Start a Club – Hack Club'
-const description =
+const desc =
   'Learn how to start a coding club at your high school through Hack Club. Get programming club ideas, curriculum, activities, and more.'
 
 export default () => (
-  <Layout>
-    <Helmet
-      title={title}
-      meta={[
-        { name: 'twitter:title', content: title },
-        { name: 'description', content: description },
-        { name: 'twitter:description', content: description },
-        { property: 'og:title', content: title },
-        { property: 'og:description', content: description },
-        { property: 'og:url', content: 'https://hackclub.com/start' }
-      ]}
-    />
+  <Layout title={title} desc={desc} path="/start/" img="/cards/start/png">
     <Nav color="slate" fixed />
     <Box mt={[44, 55]} p={3} bg="snow">
       <PhotoHeader

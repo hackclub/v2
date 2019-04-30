@@ -12,7 +12,6 @@ import {
   theme
 } from '@hackclub/design-system'
 import Layout from 'components/Layout'
-import Helmet from 'react-helmet'
 import { Link } from 'gatsby'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
@@ -90,7 +89,6 @@ const SecondQuote = styled(Quote)`
     ${theme.colors.violet[5]}
   );
 `
-const headline = { fontSize: [5, 6], mb: 3, style: { lineHeight: '1.125' } }
 const subhline = { fontSize: [3, 4], style: { lineHeight: '1.375' } }
 
 const contentContainer = {
@@ -104,8 +102,8 @@ const content = { maxWidth: 48, mx: 0, color: 'black' }
 
 A.link = A.withComponent(Link)
 
-const title = 'Donate to Hack Club'
-const description =
+const title = 'Donate – Hack Club'
+const desc =
   'Contribute today to empower the next generation and help start a coding club at every high school.'
 
 const DonorGrid = styled(Box)`
@@ -151,18 +149,7 @@ const DonorListing = ({ name, url }) => {
 }
 
 export default () => (
-  <Layout>
-    <Helmet
-      title={title}
-      meta={[
-        { name: 'twitter:title', content: title },
-        { name: 'description', content: description },
-        { name: 'twitter:description', content: description },
-        { property: 'og:title', content: title },
-        { property: 'og:description', content: description },
-        { property: 'og:url', content: 'https://hackclub.com/donate' }
-      ]}
-    />
+  <Layout title={title} desc={desc} path="/donate/">
     <Nav color="muted" />
     <Header pt={[4, 5, 6]}>
       <Container

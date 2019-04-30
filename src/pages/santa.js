@@ -10,7 +10,6 @@ import {
 } from '@hackclub/design-system'
 import { Link } from 'gatsby'
 import Layout from 'components/Layout'
-import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import IconButton from 'components/IconButton'
@@ -49,23 +48,9 @@ const Megaline = styled(Heading.h1).attrs({
 
 const title = 'Hack Club Secret Santa – Holiday 2018'
 const desc = 'Find your holiday zen this year with Hack Club’s Secret Santa.'
-const img = 'https://hackclub.com/cards/santa.png'
 
 export default () => (
-  <Layout>
-    <Helmet
-      title={title}
-      meta={[
-        { name: 'description', content: desc },
-        { name: 'twitter:title', content: title },
-        { name: 'twitter:description', content: desc },
-        { name: 'twitter:image', content: img },
-        { property: 'og:title', content: title },
-        { property: 'og:description', content: desc },
-        { property: 'og:image', content: img },
-        { property: 'og:url', content: 'https://hackclub.com/santa' }
-      ]}
-    />
+  <Layout title={title} desc={desc} path="/santa/" img="/cards/santa.png">
     <Nav />
     <Hero py={[4, 5]}>
       <Container px={3} py={[6, 7, 8]}>

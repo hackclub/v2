@@ -10,7 +10,6 @@ import {
   theme,
   cx
 } from '@hackclub/design-system'
-import Helmet from 'react-helmet'
 import YouTubePlayer from 'react-player/lib/players/YouTube'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
@@ -113,23 +112,9 @@ const Update = ({ month, year, color = 'primary', url, ...props }) => (
 const title = 'Update Videos – Hack Club'
 const desc =
   'Watch all of Hack Club’s update videos on what’s new in our community of high school coding clubs.'
-const img = 'https://hackclub.com/cards/updates.png'
 
 export default () => (
-  <Layout>
-    <Helmet
-      title={title}
-      meta={[
-        { name: 'description', content: desc },
-        { name: 'twitter:title', content: title },
-        { name: 'twitter:description', content: desc },
-        { name: 'twitter:image', content: img },
-        { property: 'og:title', content: title },
-        { property: 'og:description', content: desc },
-        { property: 'og:image', content: img },
-        { property: 'og:url', content: 'https://hackclub.com/updates' }
-      ]}
-    />
+  <Layout title={title} desc={desc} img="/cards/updates.png" path="/updates/">
     <style children={styles} />
     <Nav dark />
     <Box py={[4, 5]} align="center" justify="center">

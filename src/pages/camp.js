@@ -1,16 +1,7 @@
-import styled from 'styled-components'
 import React from 'react'
-import {
-  Container,
-  Icon,
-  LargeButton as Button,
-  Link as A,
-  Section,
-  theme
-} from '@hackclub/design-system'
+import styled from 'styled-components'
+import { Container, Icon, Section, theme } from '@hackclub/design-system'
 import Layout from 'components/Layout'
-import Helmet from 'react-helmet'
-import { Link } from 'gatsby'
 import { Headline, Lead } from 'components/Content'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
@@ -24,11 +15,12 @@ const Header = styled(Section)`
   min-height: 80vh;
 `
 
-Button.link = Button.withComponent(Link)
-
 export default () => (
-  <Layout>
-    <Helmet title="Hack Camp – Hack Club" />
+  <Layout
+    title="Hack Camp – Hack Club"
+    desc="Hack Camp is coming soon."
+    path="/camp/"
+  >
     <Nav />
     <Header align="center">
       <Container maxWidth={32} pt={[5, 6]} pb={4} px={3} color="white">

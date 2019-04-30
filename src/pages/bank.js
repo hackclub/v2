@@ -1,7 +1,6 @@
 import React from 'react'
 import { theme } from '@hackclub/design-system'
 import Layout from 'components/Layout'
-import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import Landing from 'components/bank/Landing'
@@ -28,23 +27,9 @@ const styles = `
 const title = 'Hack Club Bank – The Bank For Student Hackers'
 const desc =
   'Hack Club Bank provides a 501(c)(3) status-backed bank account optimized for high school hackathons that includes invoicing, debit cards, pre-written legal forms, seamless receipt collection, and automated tax filing to help organizers focus on running great events.'
-const img = 'https://hackclub.com/cards/bank_one.png'
 
 export default () => (
-  <Layout>
-    <Helmet
-      title={title}
-      meta={[
-        { name: 'description', content: desc },
-        { name: 'twitter:title', content: title },
-        { name: 'twitter:description', content: desc },
-        { name: 'twitter:image', content: img },
-        { property: 'og:title', content: title },
-        { property: 'og:description', content: desc },
-        { property: 'og:image', content: img },
-        { property: 'og:url', content: 'https://hackclub.com/bank' }
-      ]}
-    />
+  <Layout title={title} desc={desc} img="/cards/bank_one.png" path="/bank/">
     <style children={styles} />
     <Nav dark />
     <Landing />

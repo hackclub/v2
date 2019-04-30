@@ -14,7 +14,6 @@ import {
   cx
 } from '@hackclub/design-system'
 import { Link } from 'gatsby'
-import Helmet from 'react-helmet'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
@@ -197,23 +196,15 @@ const channels = [
 const title = 'Hack Club – Join our Slack'
 const desc =
   'Hack Club’s Slack community is a group of high school hackers around the world. Chat, meet new friends, code together, share your work.'
-const img = 'https://hackclub.com/cards/slack_invite.png'
 
 export default () => (
-  <Layout bg="dark">
-    <Helmet
-      title={title}
-      meta={[
-        { name: 'description', content: desc },
-        { name: 'twitter:title', content: title },
-        { name: 'twitter:description', content: desc },
-        { name: 'twitter:image', content: img },
-        { property: 'og:title', content: title },
-        { property: 'og:description', content: desc },
-        { property: 'og:image', content: img },
-        { property: 'og:url', content: 'https://hackclub.com/community' }
-      ]}
-    />
+  <Layout
+    bg="dark"
+    title={title}
+    desc={desc}
+    img="/cards/community.png"
+    path="/community/"
+  >
     <Nav dark />
     <BackgroundGradient>
       <BackgroundVideo />

@@ -5,6 +5,8 @@ import {
   Box,
   Flex,
   Container,
+  Icon,
+  Sheet,
   Text
 } from '@hackclub/design-system'
 import { Link } from 'gatsby'
@@ -13,37 +15,34 @@ import { Headline, Subhline, Featline, Title, Lead } from 'components/Content'
 import Photo from 'components/Photo'
 import Schedule from './Schedule'
 
-const FullBleed = styled(BackgroundImage)`
-  position: relative;
-  width: 100%;
-  min-height: 24rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.75);
+const Module = ({ icon, name, body, color = 'white', ...props }) => (
+  <Flex flexDirection="column" color={color} {...props}>
+    {icon && (
+      <Icon
+        size={64}
+        mb={2}
+        glyph={icon}
+        color={props.iconColor || color}
+        style={{ flexShrink: 0 }}
+      />
+    )}
+    <Box>
+      <Featline mb={1} children={name} />
+      <Lead fontSize={3} children={body} />
+    </Box>
+  </Flex>
+)
+const ProjectOne = styled(Sheet)`
+  background-color: ${theme.colors.red};
+  background-image: ${theme.gradient(theme.colors.primary, theme.colors.red)};
 `
-const FullBleedCaption = styled(Flex).attrs({
-  fontSize: 1,
-  py: 1,
-  px: 3,
-  m: [3, 4],
-  align: 'center',
-  color: 'dark'
-})`
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  border-radius: ${theme.pill};
-  background: rgba(255, 255, 255, 0.875);
-  text-shadow: none;
-  line-height: 1.75;
-  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    background: rgba(255, 255, 255, 0.75) !important;
-    -webkit-backdrop-filter: saturate(180%) blur(2px);
-  }
-  ${theme.mediaQueries.reduceTransparency} {
-    background: ${theme.colors.muted} !important;
-  }
+const ProjectTwo = styled(Sheet)`
+  background-color: ${theme.colors.green};
+  background-image: ${theme.gradient(theme.colors.yellow, theme.colors.green)};
+`
+const ProjectThree = styled(Sheet)`
+  background-color: ${theme.colors.blue};
+  background-image: ${theme.gradient(theme.colors.cyan, theme.colors.blue)};
 `
 
 const Gallery = styled(Container).attrs({ maxWidth: 84, px: [3, 4] })`
@@ -65,7 +64,61 @@ export default () => (
   <Section bg="darker">
     <Container maxWidth={61.25} px={3}>
       <SectionTitle>Activities</SectionTitle>
-      <Headline mb={4}>Schedule</Headline>
+      <Cols cols="1fr 2fr" mb={[4, 5]}>
+        <Subhline>Camp is all about building.</Subhline>
+        <Lead>
+          Every day at Hack Camp you’ll go home with a new finished project. We
+          want some projects to be a surprise, but here are a few you’ll
+          certainly tackle:
+        </Lead>
+      </Cols>
+    </Container>
+    <Container px={3}>
+      <Cols cols="1fr 1fr 1fr">
+        <ProjectOne>
+          <Module
+            icon="web"
+            name="Your First Website"
+            body="The website you’re reading right now was built by
+        us from scratch. We taught ourselves this stuff years ago—we’ll show you how to do the same."
+          />
+        </ProjectOne>
+        <ProjectTwo>
+          <Module
+            icon="announcement"
+            name="Your First Radio"
+            body="A month ago, none of us knew anything about radios. We thought it would be cool to build one at Camp, so we learned how."
+          />
+        </ProjectTwo>
+        <ProjectThree>
+          <Module
+            icon="challenge"
+            name="Your First Game"
+            body="Making a game is one of the best intros to code, & it’s easier than ever. Several of us started with games & became professional game devs!"
+          />
+        </ProjectThree>
+      </Cols>
+    </Container>
+    <Container maxWidth={61.25} px={3}>
+      <Cols mt={[5, 6]} mb={[6, 7]}>
+        <div>
+          <Featline>Coding? Just a starting point.</Featline>
+          <Lead color="muted">
+            Hack Camp is so much more than just “learn to code.” You’ll build a
+            radio with a pencil, go on field trips, design games. There’s
+            something for everyone.
+          </Lead>
+        </div>
+        <div>
+          <Featline>Better every day. Literally.</Featline>
+          <Lead color="muted">
+            To end each day, we’ll ask for honest feedback on all activities.
+            We’ll update the next day’s program accordingly—so&nbsp;Camp
+            continually improves.
+          </Lead>
+        </div>
+      </Cols>
+      <Headline mb={4}>A day in the life of Camp</Headline>
       <Schedule
         events={[
           { start: '7:30am', color: 'white', name: 'Wake up' },
@@ -94,24 +147,6 @@ export default () => (
           { start: '11:00pm', length: 0.5, color: 'white', name: 'Bedtime' }
         ]}
       />
-      <Cols mt={[5, 6]}>
-        <div>
-          <Featline>Coding? Just a starting point.</Featline>
-          <Lead color="muted">
-            Hack Camp is so much more than just “learn to code.” You’ll build a
-            radio with a pencil, go on field trips, design games. There’s
-            something for everyone.
-          </Lead>
-        </div>
-        <div>
-          <Featline>Better every day. Literally.</Featline>
-          <Lead color="muted">
-            To end each day, we’ll ask for honest feedback on all activities.
-            We’ll update the next day’s program accordingly—so&nbsp;Camp
-            continually improves.
-          </Lead>
-        </div>
-      </Cols>
     </Container>
     <Container align="center" maxWidth={48} px={3}>
       <Headline color="white" mt={[6, 7]} mb={2}>

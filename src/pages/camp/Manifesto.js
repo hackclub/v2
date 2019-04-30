@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Container, Text } from '@hackclub/design-system'
-import { ColoredTitle, Featline, Lead } from 'components/Content'
+import { Box, Container, Hide, Text } from '@hackclub/design-system'
+import { Title, ColoredTitle, Featline, Lead } from 'components/Content'
 import { theme } from './style'
 
-const Base = styled(Box).attrs({ pt: [6, 7, 8], pb: [6, 7] })`
+const Base = styled(Box).attrs({ pt: [5, 6, 8], pb: [6, 7] })`
   position: relative;
   > div {
     position: relative;
@@ -12,11 +12,28 @@ const Base = styled(Box).attrs({ pt: [6, 7, 8], pb: [6, 7] })`
   }
 `
 
-const Ultra = styled(ColoredTitle).attrs({
-  colors: [theme.colors.green, theme.colors.cyan, theme.colors.blue],
-  fontSize: [6, 7, 8],
+const mediaQuery = '@media screen and (min-width: 60em)'
+const SmallContainer = styled(Container).attrs({ py: 5, align: 'center' })`
+  background-image: ${theme.gradient(theme.colors.green, theme.colors.blue)};
+  ${mediaQuery} {
+    display: none !important;
+  }
+`
+const UltraSmall = styled(Title).attrs({
+  fontSize: 6,
   caps: true
 })`
+  margin: 0;
+`
+const UltraLarge = styled(ColoredTitle).attrs({
+  colors: [theme.colors.green, theme.colors.cyan, theme.colors.blue],
+  fontSize: [null, 7, 8],
+  caps: true
+})`
+  display: none;
+  ${mediaQuery} {
+    display: block;
+  }
   position: absolute;
   top: 2rem;
   right: 2rem;
@@ -27,10 +44,13 @@ const Ultra = styled(ColoredTitle).attrs({
   }
 `
 
-export default () => (
+export default () => [
+  <SmallContainer px={3}>
+    <UltraSmall>Learn to build with the best.</UltraSmall>
+  </SmallContainer>,
   <Base>
-    <Ultra>Learn to Build</Ultra>
-    <Ultra> with the Best.</Ultra>
+    <UltraLarge>Learn to Build</UltraLarge>
+    <UltraLarge>with the Best.</UltraLarge>
     <Container maxWidth={48} px={3}>
       <Featline>
         Create anything you can imagine with Code, Electronics, 3D Models, and
@@ -56,4 +76,4 @@ export default () => (
       </Text>
     </Container>
   </Base>
-)
+]

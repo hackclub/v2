@@ -9,6 +9,15 @@ import Manifesto from './Manifesto'
 import Activities from './Activities'
 import Admissions from './Admissions'
 
+console.log(`
+  ██╗  ██╗ █████╗  ██████╗██╗  ██╗     ██████╗ █████╗ ███╗   ███╗██████╗
+  ██║  ██║██╔══██╗██╔════╝██║ ██╔╝    ██╔════╝██╔══██╗████╗ ████║██╔══██╗
+  ███████║███████║██║     █████╔╝     ██║     ███████║██╔████╔██║██████╔╝
+  ██╔══██║██╔══██║██║     ██╔═██╗     ██║     ██╔══██║██║╚██╔╝██║██╔═══╝
+  ██║  ██║██║  ██║╚██████╗██║  ██╗    ╚██████╗██║  ██║██║ ╚═╝ ██║██║
+  ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝     ╚═════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝
+`)
+
 const title = 'Hack Camp – Summer 2019 High School Coding Camp'
 const desc =
   'July 2019, Hack Club’s high school learn-to-code summer camp returns to San Francisco.'

@@ -7,7 +7,6 @@ import {
   Container,
   theme
 } from '@hackclub/design-system'
-import Helmet from 'react-helmet'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Name from 'components/Name'
@@ -29,23 +28,12 @@ const Base = styled(Container)`
   }
 `
 
-const title = 'Hack Club Team'
-const description =
+const title = 'Team – Hack Club'
+const desc =
   'Meet the team that runs Hack Club, a global nonprofit network of high school computer science clubs.'
 
 export default () => (
-  <Layout bg="snow">
-    <Helmet
-      title={title}
-      meta={[
-        { name: 'twitter:title', content: title },
-        { name: 'description', content: description },
-        { name: 'twitter:description', content: description },
-        { property: 'og:title', content: title },
-        { property: 'og:description', content: description },
-        { property: 'og:url', content: 'https://hackclub.com/team' }
-      ]}
-    />
+  <Layout bg="snow" title={title} desc={desc} path="/team/">
     <Nav />
     <Header color="white">
       <Container maxWidth={36} align="center" py={[3, 4]}>

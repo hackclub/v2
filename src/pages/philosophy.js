@@ -10,7 +10,6 @@ import {
   theme
 } from '@hackclub/design-system'
 import Layout from 'components/Layout'
-import Helmet from 'react-helmet'
 import { Link } from 'gatsby'
 import Nav from 'components/Nav'
 import { Headline, Lead } from 'components/Content'
@@ -109,24 +108,12 @@ const Super = styled(Text.withComponent('mark'))`
   padding-right: ${theme.space[3]}px;
 `
 
-const title = 'Hack Club Philosophy'
+const title = 'Philosophy – Hack Club'
 const desc =
-  'Read about Hack Club, a network of high school computer science clubs. ' +
-  'We want to make building apps and websites accessible to everyone through programming clubs at every high school.'
+  'Read about Hack Club, a network of high school computer science clubs. We want to make building apps and websites accessible to everyone through programming clubs at every high school.'
 
 export default () => (
-  <Layout>
-    <Helmet
-      title={title}
-      meta={[
-        { name: 'twitter:title', content: title },
-        { name: 'description', content: desc },
-        { name: 'twitter:description', content: desc },
-        { property: 'og:title', content: title },
-        { property: 'og:description', content: desc },
-        { property: 'og:url', content: 'https://hackclub.com/philosophy' }
-      ]}
-    />
+  <Layout title={title} desc={desc} path="/philosophy/">
     <Nav />
     <Header>
       <Container width={1} maxWidth={56} py={[6]} px={3} align="left">

@@ -14,7 +14,6 @@ import {
 } from '@hackclub/design-system'
 import { graphql } from 'gatsby'
 import Layout from 'components/Layout'
-import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import Name from 'components/Name'
@@ -127,7 +126,6 @@ const SubmissionsHeading = styled(Flex)`
 const title = 'Hack Club Challenge – Holiday 2018'
 const desc =
   'Join Hack Club’s high school coding challenge. Submit your entry to compete in our monthly programming contest and win prizes, sponsored by Sourcegraph.'
-const img = 'https://hackclub.com/cards/challenge.png'
 
 export default class extends Component {
   state = { status: 'loading', sortBy: 'trending' }
@@ -158,20 +156,12 @@ export default class extends Component {
     const challenge = data.allChallengesJson.edges[0].node
     const ended = Date.parse(new Date()) > Date.parse(challenge.end)
     return (
-      <Layout>
-        <Helmet
-          title={title}
-          meta={[
-            { name: 'description', content: desc },
-            { name: 'twitter:title', content: title },
-            { name: 'twitter:description', content: desc },
-            { name: 'twitter:image', content: img },
-            { property: 'og:title', content: title },
-            { property: 'og:description', content: desc },
-            { property: 'og:image', content: img },
-            { property: 'og:url', content: 'https://hackclub.com/challenge' }
-          ]}
-        />
+      <Layout
+        title={title}
+        desc={desc}
+        path="/challenge/"
+        img="/cards/challenge.png"
+      >
         <Nav />
         <Header p={3}>
           <HeaderContainer

@@ -5,6 +5,7 @@ import {
   Text,
   Sheet,
   Container,
+  Link as A,
   LargeButton
 } from '@hackclub/design-system'
 import { Link } from 'gatsby'
@@ -131,6 +132,37 @@ export default () => [
         <div>
           <Featline>Lunch is included.</Featline>
           <Lead color="muted">I hope it’s tasty!</Lead>
+        </div>
+        <div>
+          <Featline>I don’t know how to code!</Featline>
+          <Lead color="muted">
+            Perfect! Hack Camp was built with beginners in mind. You’ll be up to
+            speed in no time.
+          </Lead>
+        </div>
+        <div>
+          <Featline>I already know how to code.</Featline>
+          <Lead color="muted">
+            There’s always more to learn—why not surround yourself with awesome
+            makers and doers with similar interests?
+          </Lead>
+        </div>
+        <div>
+          <Featline>What do I need to bring?</Featline>
+          <Lead color="muted">
+            You should bring your laptop & a thirst for knowledge. Let us know
+            if you don’t have a laptop and we’ll do our best to accomodate you.
+          </Lead>
+        </div>
+        <div>
+          <Featline>Have any questions?</Featline>
+          <Lead color="muted">
+            Please reach out! We can be reached anytime at{' '}
+            <A href="mailto:summer@hackclub.com" color={theme.colors.red}>
+              summer@hackclub.com
+            </A>
+            .
+          </Lead>
         </div>
       </Cols>
     </Container>

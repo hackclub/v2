@@ -7,7 +7,7 @@ import PageNav from './PageNav'
 import Landing from './Landing'
 import Manifesto from './Manifesto'
 import Activities from './Activities'
-import Admissions from './Admissions'
+import Registration from './Registration'
 
 console.log(`
   ██╗  ██╗ █████╗  ██████╗██╗  ██╗     ██████╗ █████╗ ███╗   ███╗██████╗
@@ -46,7 +46,7 @@ export default () => (
     <Landing />
     <Manifesto />
     <Activities />
-    <Admissions />
+    <Registration />
     <Footer dark />
   </Layout>
 )

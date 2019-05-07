@@ -43,21 +43,6 @@ const ProjectThree = styled(Sheet)`
   background-image: ${theme.gradient(theme.colors.cyan, theme.colors.blue)};
 `
 
-const Gallery = styled(Container).attrs({ maxWidth: 84, px: [3, 4] })`
-  display: grid;
-  grid-gap: ${theme.space[3]}px;
-  ${theme.mediaQueries.md} {
-    grid-template-columns: repeat(8, 1fr);
-    > div {
-      grid-column: span 4;
-      min-height: 32rem;
-      &[data-vertical] {
-        grid-column: span 2;
-      }
-    }
-  }
-`
-
 export default () => (
   <Section bg="darker" id="activities">
     <Container maxWidth={61.25} px={3}>
@@ -151,40 +136,5 @@ export default () => (
         </Quote>
       </Cols>
     </Container>
-    <Container align="center" maxWidth={48} px={3}>
-      <Headline color="white" mt={[6, 7]} mb={2}>
-        Welcome to Hack Club HQ.
-      </Headline>
-      <Lead color="muted">
-        We’re{' '}
-        <Link style={{ color: theme.colors.red }} to="/">
-          Hack Club
-        </Link>
-        , a global nonprofit network of high school hackers with coding clubs at
-        2% of US high schools. We’re&nbsp;running Hack&nbsp;Camp right at our
-        office in San Francisco (576 Natoma St). Here’s exactly where you’ll be.
-      </Lead>
-    </Container>
-    <Gallery my={5}>
-      <Photo
-        src="/camp/street.jpg"
-        alt="Natoma St, HQ on the left"
-        dark
-        data-vertical
-      />
-      <Photo
-        src="/camp/neighborhood.jpg"
-        alt="Neighborhood, two blocks from HQ"
-        dark
-      />
-      <Photo
-        src="/camp/classroom.jpg"
-        alt="HQ’s classroom space"
-        dark
-        data-vertical
-      />
-      <Photo src="/camp/conference.jpg" alt="HQ’s conference room" dark />
-      <Photo src="/camp/library.jpg" alt="HQ’s library" dark />
-    </Gallery>
   </Section>
 )

@@ -7,6 +7,7 @@ import PageNav from './PageNav'
 import Landing from './Landing'
 import Manifesto from './Manifesto'
 import Activities from './Activities'
+import About from './About'
 import Registration from './Registration'
 
 console.log(`
@@ -46,6 +47,7 @@ export default () => (
     <Landing />
     <Manifesto />
     <Activities />
+    <About />
     <Registration />
     <Footer dark />
   </Layout>

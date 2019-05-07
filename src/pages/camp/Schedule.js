@@ -9,7 +9,8 @@ const Label = styled(Text.span).attrs({ fontSize: 1, p: 1, color: 'muted' })`
 
 const Tile = styled(Box).attrs({ bg: theme.colors.darkless, px: 2 })`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   min-height: 24px;
   border-top: 1px solid ${theme.colors.dark};
 `
@@ -36,13 +37,14 @@ const Calendar = styled(Box.withComponent('ol'))`
   }
 `
 
-const Event = ({ start, name, length = 1, color = 'smoke' }) => (
+const Event = ({ start, name, desc, length = 1, color = 'smoke' }) => (
   <li>
     <Label>{start}</Label>
     <Tile style={{ height: 32 + length * 24 }}>
       <Text fontSize={2} color={theme.colors[color]}>
         {name}
       </Text>
+      {desc && <Text color="muted" fontSize={1} children={desc} />}
     </Tile>
   </li>
 )

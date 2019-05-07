@@ -88,24 +88,32 @@ export default () => (
           <Headline mb={4}>A day in the life</Headline>
           <Schedule
             events={[
-              { start: '9:00am', color: 'primary', name: 'Morning discussion' },
+              {
+                start: '9:00am',
+                color: 'primary',
+                name: 'Morning discussion',
+                desc: 'What are we doing today?'
+              },
               {
                 start: '10:00am',
                 length: 2,
                 color: 'green',
-                name: 'Morning workshop'
+                name: 'Morning workshop',
+                desc: 'Let’s build something awesome together.'
               },
               { start: '12:00pm', length: 0.5, name: 'Lunch' },
               {
                 start: '1:00pm',
                 length: 2,
                 color: 'green',
-                name: 'Afternoon workshop'
+                name: 'Afternoon workshop',
+                desc: 'Progress resumes on incredible stuff.'
               },
               {
                 start: '3:00pm',
-                color: 'primary',
-                name: 'Afternoon discussion'
+                color: 'red',
+                name: 'Project demos',
+                desc: 'Woah, you built that today??'
               },
               { start: '4:00pm', length: 0.5, name: 'Camp dismissed' }
             ]}

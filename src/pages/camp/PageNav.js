@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Button, Flex, Text, Link, theme } from '@hackclub/design-system'
+import { Button, Flex, Text, Link, theme } from '@hackclub/design-system'
 import { Content } from 'components/Nav'
 
 const Base = styled(Flex)`
@@ -32,7 +32,8 @@ const Item = styled(Link).attrs({ color: 'smoke', mx: 2, fontSize: 1 })`
 `
 
 const CTA = styled(Button).attrs({
-  bg: '#FF8C37',
+  target: '_blank',
+  bg: theme.colors.primary,
   fontSize: 1,
   px: 2,
   py: 1,

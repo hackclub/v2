@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button, Flex, Text, Link } from '@hackclub/design-system'
+import { Button, Flex, Text, Link as A } from '@hackclub/design-system'
+import { Link } from 'gatsby'
 import { theme } from './style'
 import { Content } from 'components/Nav'
 
@@ -23,9 +24,17 @@ const Base = styled(Flex)`
 
 const Nav = styled(Flex).attrs({ align: 'center' })``
 
-const Logo = styled(Text).attrs({ color: 'white', bold: true, fontSize: 4 })``
+const Logo = styled(Text).attrs({})`
+  a {
+    transition: ${theme.transition} color;
+  }
+  &:hover a {
+    color: ${theme.colors.red};
+  }
+`
+A.link = A.withComponent(Link)
 
-const Item = styled(Link).attrs({ color: 'smoke', mx: 2, fontSize: 1 })`
+const Item = styled(A).attrs({ color: 'smoke', mx: 2, fontSize: 1 })`
   display: none;
   ${theme.mediaQueries.md} {
     display: block;
@@ -45,7 +54,17 @@ const CTA = styled(Button).attrs({
 export default () => (
   <Base>
     <Content maxWidth={61.25}>
-      <Logo>Hack Camp</Logo>
+      <Logo>
+        <Text.span color="white" bold fontSize={4}>
+          Hack Camp
+        </Text.span>
+        <Text.span color="muted" fontSize={1} ml={1}>
+          by{' '}
+        </Text.span>
+        <A.link to="/" fontSize={2} color="muted">
+          Hack Club
+        </A.link>
+      </Logo>
       <Nav>
         <Item href="#overview">Overview</Item>
         <Item href="#activities">Activities</Item>

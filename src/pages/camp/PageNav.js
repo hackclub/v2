@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button, Flex, Text, Link, theme } from '@hackclub/design-system'
+import { Button, Flex, Text, Link } from '@hackclub/design-system'
+import { theme } from './style'
 import { Content } from 'components/Nav'
 
 const Base = styled(Flex)`
@@ -49,7 +50,7 @@ export default () => (
         <Item href="#overview">Overview</Item>
         <Item href="#activities">Activities</Item>
         <Item href="#logistics">Logistics</Item>
-        <CTA href="https://apply.hackclub.com">Register</CTA>
+        <CTA href="https://camp-apply.hackclub.com">Apply</CTA>
       </Nav>
     </Content>
   </Base>

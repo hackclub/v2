@@ -11,20 +11,22 @@ import {
 } from '@hackclub/design-system'
 import { Link } from 'gatsby'
 import { Section, SectionTitle, Cols, theme } from './style'
-import { Headline, Subhline, Featline, Title, Lead } from 'components/Content'
+import { Headline, Subhline, Featline, Lead } from 'components/Content'
 import Photo from 'components/Photo'
-import Schedule from './Schedule'
 
 const BioSheet = styled(Sheet).attrs({ p: 3, bg: theme.colors.darkless })`
   display: grid;
-  grid-template-columns: 12rem 1fr;
+  grid-template-columns: 8rem 1fr;
+  ${theme.mediaQueries.md} {
+    grid-template-columns: 10rem 1fr;
+  }
   grid-template-areas:
     'img name'
     'bio bio';
-  grid-row-gap: ${theme.space[3]}px;
+  grid-gap: ${theme.space[3]}px;
   img {
     grid-area: img;
-    border-radius: 0 0 ${theme.radii[2]} 0;
+    border-radius: ${theme.radii[2]};
   }
   div {
     grid-area: name;
@@ -42,7 +44,7 @@ const BioSheet = styled(Sheet).attrs({ p: 3, bg: theme.colors.darkless })`
 
 const Bio = ({ img, name, pronouns, text, ...props }) => (
   <BioSheet mb={0} {...props}>
-    <Image src={img} ml={[-3, -4]} mt={[-3, -4]} alt={name} />
+    <Image src={img} alt={name} />
     <Box>
       <Heading.h3 fontSize={4} mb={1} color="white" children={name} />
       <Text.span
@@ -72,24 +74,25 @@ const Gallery = styled(Container).attrs({ maxWidth: 84, px: [3, 4] })`
 `
 
 export default () => [
-  <Section bg="dark" id="about" py={0} pb={[4, 5, 6, 7]} pt={[5, 6, 7, 8]}>
+  <Section bg="dark" id="about">
     <Container maxWidth={61.25} px={3}>
       <SectionTitle>About Us</SectionTitle>
-      <Cols cols="1fr 2fr" mb={[4, 5, 6]}>
-        <Subhline>We are Hack&nbsp;Club.</Subhline>
+      <Cols cols="1fr 2fr" mb={[4, 5]}>
+        <Subhline>
+          Hack Club is a&nbsp;worldwide network of coding clubs.
+        </Subhline>
         <Lead>
           We’re{' '}
           <Link style={{ color: theme.colors.red }} to="/">
             Hack Club
           </Link>
-          , a global nonprofit network of high school coding clubs (now at 2% of
+          , a global nonprofit network of high school coding clubs (now in 2% of
           US high schools). Hack Camp has been a part of Hack Club since the
           beginning. It’s a great way for us to try out the best ideas from our
           community, develop curriculum, and stay sharp as teachers. We also
           just love doing it!
         </Lead>
       </Cols>
-      <Subhline align="center">Meet your hosts</Subhline>
     </Container>
     <Container px={3}>
       <Cols cols="1fr 1fr 1fr">
@@ -132,10 +135,10 @@ export default () => [
       </Cols>
     </Container>
   </Section>,
-  <Section bg="darker" id="about" py={0} pt={[4, 5, 6]} pb={[5, 6, 7]}>
+  <Section bg="darker" id="about" py={[4, 5, 6]}>
     <Container maxWidth={61.25} px={3}>
       <Cols cols="1fr 2fr" mb={[4, 5]}>
-        <Subhline mb={0}>Welcome to Hack&nbsp;Club HQ.</Subhline>
+        <Subhline mb={0}>Welcome to Hack&nbsp;Club&nbsp;HQ.</Subhline>
         <Lead>
           We’re&nbsp;running Hack&nbsp;Camp right at our office in
           San&nbsp;Francisco (576 Natoma St). Here’s the space.

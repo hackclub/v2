@@ -1,6 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Text, theme as base } from '@hackclub/design-system'
+import {
+  Box,
+  Text,
+  Flex,
+  Icon,
+  Avatar,
+  theme as base
+} from '@hackclub/design-system'
 import { Title, Headline, Lead } from 'components/Content'
 
 export const theme = {
@@ -63,7 +70,7 @@ export const SectionLead = styled(Lead).attrs({
   mb: [4, 5]
 })``
 
-export const Quote = styled(Box)`
+const QuoteBase = styled(Box)`
   ${theme.mediaQueries.md} {
     svg {
       width: 48px;
@@ -75,5 +82,22 @@ export const Quote = styled(Box)`
     line-height: 1.25;
   }
 `
+
+export const Quote = ({ body, img, name, detail, credential, ...props }) => (
+  <QuoteBase {...props}>
+    <Icon glyph="quote" color={theme.colors.primary} size={32} />
+    <Lead color="muted" children={body} />
+    <Flex align="center" mt={3}>
+      <Avatar src={`/hackers/${img}`} size={48} mr={3} />
+      <Box color="muted" align="left" fontSize={3}>
+        <Text.span color="smoke" bold>
+          {name}
+        </Text.span>
+        {detail && <Text.span>, {detail}</Text.span>}
+        {credential && <Text fontSize={2}>{credential}</Text>}
+      </Box>
+    </Flex>
+  </QuoteBase>
+)
 
 export default () => <></>

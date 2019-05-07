@@ -111,29 +111,18 @@ export default () => (
             ]}
           />
         </div>
-        <Quote>
-          <Icon glyph="quote" color={theme.colors.primary} size={32} mt={2} />
-          <Lead color="smoke">
-            Hack Camp was the single factor that completely shifted my view of
+        <Quote
+          body="Hack Camp was the single factor that completely shifted my view of
             CS. I met an unbelievably accepting & kind community of creators &
             learners that introduced me to an entirely novel approach to
             hacking, changing not just the way I regard technology, but the way
-            I approach the world at large.
-          </Lead>
-          <Flex align="center" mt={3}>
-            <Avatar src="/hackers/connie.jpg" size={48} mr={3} />
-            <Box color="muted" align="left" fontSize={3}>
-              <Text.span color="smoke" bold>
-                Connie Liu
-              </Text.span>
-              , San Francisco
-              <br />
-              <Text fontSize={2} color="muted">
-                Hack Camp attendee, 2016
-              </Text>
-            </Box>
-          </Flex>
-        </Quote>
+            I approach the world at large."
+          img="connie.jpg"
+          name="Connie Liu"
+          detail="San Francisco"
+          credential="Hack Camp attendee, 2016"
+          mt={2}
+        />
       </Cols>
     </Container>
   </Section>

@@ -10,7 +10,7 @@ import {
   Sheet
 } from '@hackclub/design-system'
 import { Link } from 'gatsby'
-import { Section, SectionTitle, Cols, theme } from './style'
+import { Section, SectionTitle, Cols, Quote, theme } from './style'
 import { Headline, Subhline, Featline, Lead } from 'components/Content'
 import Photo from 'components/Photo'
 
@@ -104,9 +104,19 @@ Timeline.Step = ({ name, duration, first = false, color = 'red' }) => (
   </TimelineStep>
 )
 
+const Pinboard = styled(Container).attrs({ maxWidth: 72, px: [3, 4] })`
+  display: grid;
+  grid-gap: ${theme.space[4]}px;
+  ${theme.mediaQueries.md} {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: ${theme.space[5]}px;
+    align-items: center;
+  }
+`
+
 const Gallery = styled(Container).attrs({ maxWidth: 84, px: [3, 4] })`
   display: grid;
-  grid-gap: ${theme.space[3]}px;
+  grid-gap: ${theme.space[4]}px;
   ${theme.mediaQueries.md} {
     grid-template-columns: repeat(8, 1fr);
     > div {
@@ -203,32 +213,36 @@ export default () => [
           />
           <Timeline.Step name="Hack Camp returns to HQ!" duration="2019" />
         </Timeline>
-        <Photo
-          src="/camp/mason1.jpg"
-          alt="A Hack Camp workshop in Mason, Ohio"
-          dark
-          style={{ minHeight: '18rem' }}
-        />
-        <Photo
-          src="/camp/sf.jpg"
-          alt="Presenting at the first Hack Camp"
-          dark
-          style={{ minHeight: '18rem' }}
-        />
-        <Photo
-          src="/camp/mason2.jpg"
-          alt="Coding at Mason Hack Camp, 2018"
-          dark
-          style={{ minHeight: '18rem' }}
-        />
-        <Photo
-          src="/camp/india.jpg"
-          alt="Hack Camp in Kerala, India"
-          dark
-          style={{ minHeight: '18rem' }}
-        />
       </Cols>
     </Container>
+    <Pinboard mt={[5, 6]}>
+      <Photo
+        src="/camp/mason1.jpg"
+        alt="A Hack Camp workshop in Mason, Ohio"
+        dark
+      />
+      <Photo src="/camp/sf.jpg" alt="Presenting at the first Hack Camp" dark />
+      <Quote
+        body="Hack Camp is a chance for young students to discover their ability to build using code. Your youth is the most defining time of your life, and Hack Camp helped us reach out to students around the community to expose them to the most beautiful, empowering parts of technology."
+        img="megan.png"
+        name="Megan Cui"
+        detail="Mason, OH"
+        credential="Camp leader, Harvard ’23"
+      />
+      <Photo
+        src="/camp/mason2.jpg"
+        alt="Coding at Mason Hack Camp, 2018"
+        dark
+      />
+      <Photo src="/camp/india.jpg" alt="Hack Camp in Kerala, India" dark />
+      <Quote
+        body="I was worried campers might lose interest since coding was new to them. But when we got them started, they blew us away. They started learning by themselves during the camp and built things we never taught them."
+        img="athul.jpg"
+        name="Athul Blesson"
+        detail="Kerala, India"
+        credential="Camp leader, ASIET ’21"
+      />
+    </Pinboard>
   </Section>,
   <Section bg="darker" id="about" py={[4, 5, 6]}>
     <Container maxWidth={61.25} px={3}>

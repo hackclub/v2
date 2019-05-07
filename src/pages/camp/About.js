@@ -58,6 +58,52 @@ const Bio = ({ img, name, pronouns, text, ...props }) => (
   </BioSheet>
 )
 
+const Timeline = styled(Flex).attrs({
+  flexDirection: 'column',
+  mb: [4, 0]
+})`
+  line-height: 1.125;
+  position: relative;
+  &:before {
+    content: '';
+    background-image: linear-gradient(
+      to bottom,
+      ${theme.colors.dark} 0%,
+      ${theme.colors.slate} 15%,
+      ${theme.colors.slate} 85%,
+      ${theme.colors.dark} 100%
+    );
+    height: 100%;
+    width: 3px;
+    margin-left: 4px;
+    position: absolute;
+    z-index: 0;
+  }
+`
+const TimelineStep = styled(Flex).attrs({
+  align: 'center',
+  pt: props => (props.first ? 0 : [2, 3])
+})`
+  line-height: 1.125;
+  position: relative;
+  z-index: 1;
+`
+const Circle = styled(Box).attrs({ p: 1 })`
+  border-radius: ${theme.pill};
+  display: inline-block;
+  line-height: 0;
+`
+
+Timeline.Step = ({ name, duration, first = false, color = 'red' }) => (
+  <TimelineStep first={first}>
+    <Circle bg={theme.colors[color]} mr={3} />
+    <Box align="left">
+      <Text color="muted" fontSize={1} caps children={duration} />
+      <Text color="smoke" fontSize={[3, 4]} children={name} />
+    </Box>
+  </TimelineStep>
+)
+
 const Gallery = styled(Container).attrs({ maxWidth: 84, px: [3, 4] })`
   display: grid;
   grid-gap: ${theme.space[3]}px;
@@ -117,18 +163,67 @@ export default () => [
       </Cols>
     </Container>
     <Container maxWidth={61.25} px={3}>
-      <Cols gap={[3, 5]} mt={[5, 6]} mb={0}>
+      <Subhline mt={[5, 6]} mb={4}>
+        A brief history of Hack&nbsp;Camp
+      </Subhline>
+      <Cols gap={[3, 5]} mt={0} mb={0}>
         <div>
-          <Featline>Not our first go-round.</Featline>
           <Lead color="muted">
-            We’ve run Hack Camp twice in previous summers. After seeing that
-            success, multiple students in our community organized similar
-            camps—all the way from a Cincinnati suburb to India.
+            Hack Camp began as an experiment to discover new ways of teaching
+            coding at our clubs around the world. 
+          </Lead>
+          <Lead color="muted" mt={[2, 3]}>
+             After our first year, something incredible happened—our students
+            began running their own camps! They’ve&nbsp;sprung up in a suburb of
+            Cincinnati & Southern India.
+          </Lead>
+          <Lead color="muted" mt={[2, 3]}>
+            This was so inspiring to watch that we’re following their lead to
+            bring Hack Camp back in 2019. 
           </Lead>
         </div>
+        <Timeline>
+          <Timeline.Step name="Hack Club is born" duration="2015" first />
+          <Timeline.Step name="First Hack Camp in SF" duration="2016" />
+          <Timeline.Step name="SF Hack Camp v2" duration="2017" />
+          <Timeline.Step
+            name="A Camp appears in Mason, OH"
+            duration="2017"
+            color="cyan"
+          />
+          <Timeline.Step
+            name="Camp runs again in Mason"
+            duration="2018"
+            color="cyan"
+          />
+          <Timeline.Step
+            name="A Camp appears in Kerala, India"
+            duration="2018"
+            color="yellow"
+          />
+          <Timeline.Step name="Hack Camp returns to HQ!" duration="2019" />
+        </Timeline>
+        <Photo
+          src="/camp/mason1.jpg"
+          alt="A Hack Camp workshop in Mason, Ohio"
+          dark
+          style={{ minHeight: '18rem' }}
+        />
+        <Photo
+          src="/camp/sf.jpg"
+          alt="Presenting at the first Hack Camp"
+          dark
+          style={{ minHeight: '18rem' }}
+        />
+        <Photo
+          src="/camp/mason2.jpg"
+          alt="Coding at Mason Hack Camp, 2018"
+          dark
+          style={{ minHeight: '18rem' }}
+        />
         <Photo
           src="/camp/india.jpg"
-          alt="Camp in Kerala, India"
+          alt="Hack Camp in Kerala, India"
           dark
           style={{ minHeight: '18rem' }}
         />

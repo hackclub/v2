@@ -16,20 +16,12 @@ import Photo from 'components/Photo'
 
 const BioSheet = styled(Sheet).attrs({ p: 3, bg: theme.colors.darkless })`
   display: grid;
-  grid-template-columns: 8rem 1fr;
-  ${theme.mediaQueries.md} {
-    grid-template-columns: 10rem 1fr;
-  }
-  grid-template-areas:
-    'img name'
-    'bio bio';
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: ${theme.space[3]}px;
   img {
-    grid-area: img;
     border-radius: ${theme.radii[2]};
   }
   div {
-    grid-area: name;
     align-self: flex-end;
     text-align: left;
   }
@@ -38,7 +30,7 @@ const BioSheet = styled(Sheet).attrs({ p: 3, bg: theme.colors.darkless })`
     line-height: 1;
   }
   p {
-    grid-area: bio;
+    grid-column: span 2;
   }
 `
 

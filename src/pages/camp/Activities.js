@@ -101,14 +101,14 @@ export default () => (
               {
                 start: '10:00am',
                 length: 2,
-                color: 'primary',
+                color: 'green',
                 name: 'Morning workshop'
               },
               { start: '12:00pm', length: 0.5, name: 'Lunch' },
               {
                 start: '1:00pm',
                 length: 2,
-                color: 'primary',
+                color: 'green',
                 name: 'Afternoon workshop'
               },
               {

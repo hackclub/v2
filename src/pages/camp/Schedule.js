@@ -39,7 +39,7 @@ const Calendar = styled(Box.withComponent('ol'))`
 const Event = ({ start, name, length = 1, color = 'smoke' }) => (
   <li>
     <Label>{start}</Label>
-    <Tile style={{ height: 24 + length * 24 }}>
+    <Tile style={{ height: 32 + length * 24 }}>
       <Text fontSize={2} color={theme.colors[color]}>
         {name}
       </Text>

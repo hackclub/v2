@@ -1,10 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Flex, Container, Icon, Sheet } from '@hackclub/design-system'
-import { Link } from 'gatsby'
-import { Section, SectionTitle, Cols, theme } from './style'
-import { Headline, Subhline, Featline, Title, Lead } from 'components/Content'
-import Photo from 'components/Photo'
+import {
+  Avatar,
+  Text,
+  Box,
+  Flex,
+  Container,
+  Icon,
+  Sheet
+} from '@hackclub/design-system'
+import { Section, SectionTitle, Cols, Quote, theme } from './style'
+import { Headline, Subhline, Featline, Lead } from 'components/Content'
 import Schedule from './Schedule'
 
 const Module = ({ icon, name, body, color = 'white', ...props }) => (
@@ -92,12 +98,12 @@ export default () => (
       </Cols>
     </Container>
     <Container maxWidth={61.25} px={3}>
-      <Cols mt={[5, 6]} mb={[6, 7]} gap={[3, 5]}>
+      <Cols mt={[5, 6]} mb={0} gap={[3, 5]}>
         <div>
           <Headline mb={4}>A day in the life</Headline>
           <Schedule
             events={[
-              { start: '9:00am', color: 'yellow', name: 'Morning discussion' },
+              { start: '9:00am', color: 'primary', name: 'Morning discussion' },
               {
                 start: '10:00am',
                 length: 2,
@@ -113,21 +119,36 @@ export default () => (
               },
               {
                 start: '3:00pm',
-                color: 'yellow',
+                color: 'primary',
                 name: 'Afternoon discussion'
               },
               { start: '4:00pm', length: 0.5, name: 'Camp dismissed' }
             ]}
           />
         </div>
-        <div>
-          <Featline mt={[null, null, 6]}>Better every day. Literally.</Featline>
-          <Lead color="muted">
-            To end each day, we’ll ask for honest feedback on all activities.
-            We’ll update the next day’s program accordingly—so&nbsp;Camp
-            continually improves.
+        <Quote>
+          <Icon glyph="quote" color={theme.colors.primary} size={32} mt={2} />
+          <Lead color="smoke">
+            Hack Camp was the single factor that completely shifted my view of
+            CS. I met an unbelievably accepting & kind community of creators &
+            learners that introduced me to an entirely novel approach to
+            hacking, changing not just the way I regard technology, but the way
+            I approach the world at large.
           </Lead>
-        </div>
+          <Flex align="center" mt={3}>
+            <Avatar src="/hackers/connie.jpg" size={48} mr={3} />
+            <Box color="muted" align="left" fontSize={3}>
+              <Text.span color="smoke" bold>
+                Connie Liu
+              </Text.span>
+              , San Francisco
+              <br />
+              <Text fontSize={2} color="muted">
+                Hack Camp attendee, 2016
+              </Text>
+            </Box>
+          </Flex>
+        </Quote>
       </Cols>
     </Container>
     <Container align="center" maxWidth={48} px={3}>

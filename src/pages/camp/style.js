@@ -63,4 +63,17 @@ export const SectionLead = styled(Lead).attrs({
   mb: [4, 5]
 })``
 
+export const Quote = styled(Box)`
+  ${theme.mediaQueries.md} {
+    svg {
+      width: 48px;
+      height: 48px;
+      margin-left: -${theme.space[1]}px;
+    }
+  }
+  img + div {
+    line-height: 1.25;
+  }
+`
+
 export default () => <></>

@@ -125,8 +125,7 @@ export default () => [
         <div>
           <Featline>Tuition is $500.</Featline>
           <Lead color="muted">
-            Need-based financial aid is available for Camp—let us know in your
-            registration.
+            Need-based financial aid is available for Hack Camp after you apply.
           </Lead>
         </div>
         <div>

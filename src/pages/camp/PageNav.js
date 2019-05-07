@@ -49,6 +49,7 @@ export default () => (
       <Nav>
         <Item href="#overview">Overview</Item>
         <Item href="#activities">Activities</Item>
+        <Item href="#about">About Us</Item>
         <Item href="#logistics">Logistics</Item>
         <CTA href="https://camp-apply.hackclub.com">Apply</CTA>
       </Nav>

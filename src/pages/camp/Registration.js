@@ -130,28 +130,29 @@ export default () => [
           </Lead>
         </div>
         <div>
-          <Featline>Lunch is included.</Featline>
-          <Lead color="muted">I hope it’s tasty!</Lead>
-        </div>
-        <div>
-          <Featline>I don’t know how to code!</Featline>
+          <Featline>What food is included?</Featline>
           <Lead color="muted">
-            Perfect! Hack Camp was built with beginners in mind. You’ll be up to
-            speed in no time.
+            Lunch is! We’ll serve a healthy lunch & snacks every day at Camp.
           </Lead>
         </div>
         <div>
-          <Featline>I already know how to code.</Featline>
+          <Featline>I know nothing about code!</Featline>
           <Lead color="muted">
-            There’s always more to learn—why not surround yourself with awesome
-            makers and doers with similar interests?
+            Perfect! You’ll be up to speed in no time. We made this with
+            beginners in mind.
+          </Lead>
+        </div>
+        <div>
+          <Featline>What if I can already code?</Featline>
+          <Lead color="muted">
+            We will cover lots of stuff you don’t know yet—I guarantee it!
           </Lead>
         </div>
         <div>
           <Featline>What do I need to bring?</Featline>
           <Lead color="muted">
-            You should bring your laptop & a thirst for knowledge. Let us know
-            if you don’t have a laptop and we’ll do our best to accomodate you.
+            A laptop and an open mind. We can help with the laptop. The mind
+            thing is on you.
           </Lead>
         </div>
         <div>

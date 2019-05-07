@@ -6,20 +6,26 @@ import {
   Sheet,
   Container,
   Link as A,
+  BlockLink,
   LargeButton
 } from '@hackclub/design-system'
-import { Link } from 'gatsby'
 import { Headline, Featline, Lead } from 'components/Content'
 import { Section, SectionTitle, Cols, theme } from './style'
 import range from 'lodash/range'
 import includes from 'lodash/includes'
 
+const SheetLink = styled(Sheet.withComponent(BlockLink)).attrs({
+  target: '_blank',
+  bg: theme.colors.darkless
+})``
+
 const cta = {
+  target: '_blank',
   chevronRight: true,
   scale: true,
   fontSize: [3, 4]
 }
-const CTA = styled(LargeButton.withComponent(Link)).attrs(cta)`
+const CTA = styled(LargeButton).attrs(cta)`
   background-image: ${theme.gradient(
     theme.colors.yellow,
     theme.colors.primary
@@ -91,9 +97,9 @@ export default () => [
             1–5th, 15–19th, or July 29th–August 2nd. Camp runs 9am–5pm
             (weekdays).
           </Lead>
-          <CTA to="/camp/register">Register now</CTA>
+          <CTA href="https://camp-apply.hackclub.com/">Apply now</CTA>
         </div>
-        <Sheet bg={theme.colors.darkless}>
+        <SheetLink href="https://camp-apply.hackclub.com/">
           <Text color="white" bold fontSize={3} mt={-1} mb={1}>
             July 2019
           </Text>
@@ -119,7 +125,7 @@ export default () => [
               />
             ))}
           </Calendar>
-        </Sheet>
+        </SheetLink>
       </Cols>
       <Cols mt={[5, 6]}>
         <div>

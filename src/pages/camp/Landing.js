@@ -1,14 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import {
-  Container,
-  Flex,
-  Link as A,
-  Text,
-  Sheet,
-  theme
-} from '@hackclub/design-system'
-import { ColoredTitle, Featline, Lead } from 'components/Content'
+import { Flex, Text, Sheet } from '@hackclub/design-system'
+import { ColoredTitle, Lead } from 'components/Content'
 import Slide from 'react-reveal/Slide'
 
 const Screen = styled(Flex).attrs({
@@ -18,7 +11,6 @@ const Screen = styled(Flex).attrs({
   py: [3, 4]
 })`
   background: url('/camp/landing.jpg');
-  // box-shadow: inset 0 0 4rem 4rem rgba(0, 0, 0, 0.5);
   background-position: center;
   background-size: cover;
   width: 100vw;
@@ -58,7 +50,6 @@ const Content = styled(Sheet).attrs({
 
 export default () => (
   <Screen>
-    {/* <Vignette /> */}
     <Slide top>
       <Content>
         <ColoredTitle colors={['#FF8C37', '#F1C40F', '#33D6A6']} mb={0}>

@@ -9,12 +9,16 @@ const Tile = styled(Box).attrs({ px: 2 })`
   min-height: 24px;
 `
 
-export const Event = ({ start, name, length = 1, color = 'red' }) => (
+export const Event = ({ start, name, length = 1, color = 'darkless' }) => (
   <li>
     <Text.span fontSize={1} p={1} color="muted">
       {start}
     </Text.span>
-    <Tile bg={`${color}.7`} color="white" style={{ height: 24 + length * 24 }}>
+    <Tile
+      bg={theme.colors.dark}
+      // color="sm"
+      style={{ height: 24 + length * 24 }}
+    >
       <Text fontSize={2}>{name}</Text>
     </Tile>
   </li>
@@ -24,15 +28,18 @@ const Calendar = styled(Box.withComponent('ol'))`
   list-style: none;
   padding-left: 0;
   margin: 0;
-  ${theme.mediaQueries.md} {
-    column-count: 2;
-    column-gap: ${theme.space[4]}px;
-  }
   li {
-    border-top: 1px solid ${theme.colors.black};
+    border-top: 1px solid ${theme.colors.darkless};
     break-inside: avoid;
     display: grid;
     grid-template-columns: 1fr 2fr;
+    overflow: hidden;
+    &:first-child {
+      border-radius: 0 ${theme.radii[2]} 0 0;
+    }
+    &:last-child ${Tile} {
+      border-radius: 0 0 ${theme.radii[2]} ${theme.radii[2]};
+    }
   }
 `
 

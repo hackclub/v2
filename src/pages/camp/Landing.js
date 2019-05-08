@@ -10,6 +10,7 @@ const Screen = styled(Flex).attrs({
   justify: 'center',
   bg: 'dark',
   py: [3, 4],
+  px: 2,
   width: 1
 })`
   background: url('/camp/landing.jpg');

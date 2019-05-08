@@ -24,12 +24,17 @@ const Base = styled(Flex)`
 
 const Nav = styled(Flex).attrs({ align: 'center' })``
 
-const Logo = styled(Text).attrs({})`
+const Logo = styled(Text)`
   a {
     transition: ${theme.transition} color;
   }
   &:hover a {
     color: ${theme.colors.red};
+  }
+  @media screen and (max-width: 22em) {
+    span {
+      font-size: ${theme.fontSizes[2]}px;
+    }
   }
 `
 A.link = A.withComponent(Link)

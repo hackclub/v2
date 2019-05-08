@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Flex, Text, Sheet } from '@hackclub/design-system'
+import { theme } from './style'
 import { ColoredTitle, Lead } from 'components/Content'
 import Slide from 'react-reveal/Slide'
 
@@ -8,12 +9,13 @@ const Screen = styled(Flex).attrs({
   flexDirection: 'column',
   justify: 'center',
   bg: 'dark',
-  py: [3, 4]
+  py: [3, 4],
+  width: 1
 })`
   background: url('/camp/landing.jpg');
   background-position: center;
   background-size: cover;
-  width: 100vw;
+  max-width: 100vw;
   height: 100vh;
   position: relative;
   p {
@@ -24,27 +26,12 @@ const Screen = styled(Flex).attrs({
 const Content = styled(Sheet).attrs({
   align: 'center',
   maxWidth: 36,
-  p: [null, 4, 5]
+  p: [3, 4, 5]
 })`
-  @media screen and (max-width: 32em) {
-    background: none;
-    box-shadow: none;
-    ${ColoredTitle} {
-      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5));
-    }
-    p {
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
-    }
-    ${Lead} {
-      font-weight: bold;
-    }
-  }
-  @media screen and (min-width: 32em) {
-    background-color: rgba(0, 0, 0, 0.875);
-    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-      background-color: rgba(32, 34, 36, 0.875);
-      -webkit-backdrop-filter: saturate(180%) blur(16px);
-    }
+  background-color: rgba(0, 0, 0, 0.75);
+  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    background-color: rgba(32, 34, 36, 0.875);
+    -webkit-backdrop-filter: saturate(180%) blur(16px);
   }
 `
 
@@ -52,14 +39,21 @@ export default () => (
   <Screen>
     <Slide top>
       <Content>
-        <ColoredTitle colors={['#FF8C37', '#F1C40F', '#33D6A6']} mb={0}>
+        <ColoredTitle
+          colors={[
+            theme.colors.primary,
+            theme.colors.yellow,
+            theme.colors.green
+          ]}
+          mb={0}
+        >
           Hack Camp
         </ColoredTitle>
         <Lead
           color="white"
           fontSize={[3, 4, 5]}
           maxWidth={32}
-          mt={-2}
+          mt={[-1, -2]}
           mb={4}
           mx="auto"
         >

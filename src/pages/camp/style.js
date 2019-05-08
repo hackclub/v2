@@ -24,7 +24,7 @@ export const theme = {
   }
 }
 
-export const Section = styled(Box.section).attrs({ py: [5, 6, 7, 8] })``
+export const Section = styled(Box.section).attrs({ py: [6, 7, 8] })``
 
 export const SectionTitle = styled(Title).attrs({
   color: 'white',

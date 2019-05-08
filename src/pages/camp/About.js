@@ -240,7 +240,7 @@ export default () => [
     <Container maxWidth={61.25} px={3}>
       <Cols cols="1fr 2fr" mb={[4, 5]}>
         <Subhline mb={0}>Welcome to Hack&nbsp;Club&nbsp;HQ.</Subhline>
-        <Lead>
+        <Lead mt="auto">
           We’re&nbsp;running Hack&nbsp;Camp right at our office in
           San&nbsp;Francisco (576 Natoma St). Here’s the space.
         </Lead>

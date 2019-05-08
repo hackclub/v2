@@ -5,7 +5,6 @@ import {
   Box,
   Container,
   Flex,
-  Heading,
   LargeButton as Button,
   Link as A,
   OutlineButton,
@@ -22,6 +21,7 @@ import GlowingIcon from 'components/GlowingIcon'
 import Stat from 'components/Stat'
 import Photo from 'components/Photo'
 import {
+  Title,
   ColoredHeadline,
   Subhline,
   Featline,
@@ -63,16 +63,13 @@ const Promo = styled(Box.withComponent('section')).attrs({
 })`
   ${promoBG};
 `
-const PromoMegaline = styled(Heading.h1).attrs({
+const PromoMegaline = styled(Title).attrs({
   color: 'white',
-  fontSize: [7, 8, 9],
   pb: 2
 })`
-  letter-spacing: -0.015em;
-  line-height: 1;
   + ${Lead} {
-    line-height: 1.25;
-    letter-spacing: -0.005em;
+    line-height: 1.375;
+    letter-spacing: -0.01em;
   }
 `
 const PromoSmallCTA = styled(Button.withComponent(Link)).attrs({
@@ -227,7 +224,7 @@ export default () => (
     </Helmet>
     <Nav />
     <Promo>
-      <Container maxWidth={72} px={3} py={[5, 6]}>
+      <Container maxWidth={81} px={3} py={[5, 6]}>
         <PromoMegaline mt={4} pb={1}>
           Start a coding club at your high&nbsp;school this spring.
         </PromoMegaline>
@@ -256,7 +253,7 @@ export default () => (
           <Stat value={stats.state_count} label="states" color="cyan.6" />
           <Stat value={stats.country_count} label="countries" color="blue.6" />
         </Flex>
-        <Text fontSize={4} my={4} mx="auto" maxWidth={48}>
+        <Text fontSize={4} my={4} mx="auto" maxWidth={46}>
           <strong>
             We’re high schoolers running weekly afterschool coding clubs.
           </strong>{' '}
@@ -270,7 +267,7 @@ export default () => (
         <PromoSmallCTA bg="teal.7" to="/start" chevronRight>
           Start your club
         </PromoSmallCTA>
-        <Text fontSize={[1, 2]} color="slate" mt={2}>
+        <Text fontSize={[1, 2]} color="black" mt={2}>
           Start a club, or bring yours—existing clubs are welcome&nbsp;too!
         </Text>
       </Container>
@@ -306,7 +303,7 @@ export default () => (
           <Box>
             <CommunityLine />
             <Featline mt={5}>Join forces with the best hackers.</Featline>
-            <Lead color="slate">
+            <Lead color="black">
               Making projects on your own can be isolating—we’ve been there. In
               the Slack community, you’ll find friends, supporters, and
               collaborators for your work.
@@ -315,7 +312,7 @@ export default () => (
           <Box>
             <CommunityLine />
             <Featline mt={5}>Meet some truly incredible people.</Featline>
-            <Lead color="slate">
+            <Lead color="black">
               You’re going to meet super talented people, who organize
               hackathons, start coding clubs, build apps, lead camps, classes,
               and more.
@@ -337,13 +334,13 @@ export default () => (
         <ColoredHeadline
           fontSize={[6, 7, 8]}
           colors={['pink.5', 'fuschia.5', 'indigo.5']}
+          maxWidth={58}
         >
           Grow as a programmer & human with our resources.
         </ColoredHeadline>
         <Text fontSize={4} mb={4} style={{ maxWidth: '48rem' }}>
-          We offer{' '}
-          <A href="/workshops">free, open-source coding tutorials</A>. We write
-          about{' '}
+          We offer <A href="/workshops">free, open-source coding tutorials</A>.
+          We write about{' '}
           <A
             target="_blank"
             href="https://medium.com/hackclub/how-to-start-a-computer-science-club-at-your-high-school-ff32264f225a"
@@ -360,13 +357,13 @@ export default () => (
             <Subhline mt={5}>
               Learn as you build at hackathons & events.
             </Subhline>
-            <Text color="slate" fontSize={4}>
+            <Lead>
               We maintain an open source, up-to-date list of all the{' '}
               <A href="https://hackathons.hackclub.com">
                 high school hackathons
               </A>{' '}
               happening soon. Check out all those events! (& totally go to one.)
-            </Text>
+            </Lead>
           </Box>
           <Box>
             <ResourcesLine />
@@ -383,11 +380,11 @@ export default () => (
                 mt={-2}
               />
             </Subhline>
-            <Text color="slate" fontSize={4}>
+            <Lead>
               Running a hackathon is tough.{' '}
               <A href="/bank">Hack&nbsp;Club Bank</A> offers a straightforward,
               batteries-included financial platform for high school events.
-            </Text>
+            </Lead>
           </Box>
         </Features>
         <MegaQuote mt={6}>

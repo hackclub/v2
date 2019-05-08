@@ -172,7 +172,7 @@ export default () => (
       <Module
         icon="support"
         name="Support anytime"
-        body="We’ll never leave you in the dark. Best-effort 12hr response time."
+        body="We’ll never leave you hanging with best-effort 12hr response time."
       />
     </Modules>
   </Base>

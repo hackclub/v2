@@ -85,14 +85,14 @@ const featureStyles = css`
 
   p:first-child,
   h3 {
-    line-height: 1.125;
+    line-height: 1.25;
   }
 `
 const TextFeature = styled(Sheet)`
   > p {
     font-weight: bold;
     font-size: ${theme.fontSizes[5]}px;
-    line-height: 1.125;
+    line-height: 1.25;
   }
 `
 const PhotoFeature = styled(TextFeature).attrs({
@@ -259,9 +259,9 @@ const SectionEyebrow = styled(Text).attrs({
   color: 'muted'
 })``
 const SectionHeadline = styled(Headline).attrs({
-  fontSize: [7, 8],
-  mt: 1,
-  mb: 4
+  fontSize: [6, 7, 8],
+  mt: 2,
+  mb: 3
 })`
   line-height: 1;
 `
@@ -297,17 +297,17 @@ export default () => (
     <Nav color="slate" fixed />
     <Box mt={[44, 55]} p={3} bg="snow">
       <PhotoHeader
-        py={[3, 6, 7, 8]}
+        py={[3, 6, 7]}
         src={require('../../static/photos/hackpenn_full.jpg')}
         aria-label="Students at a coding event"
         align={['left', 'center']}
         color="white"
       >
         <Container width={1} maxWidth={72} px={3} mt={[5, 6]} mb={[4, 5]}>
-          <Headline fontSize={[6, 7, 8]}>
+          <Headline maxWidth={54} mx="auto" fontSize={[6, 7, 8]} mb={2}>
             We’re high schoolers leading the best coding clubs in the world.
           </Headline>
-          <SectionLead fontSize={[3, 4]} mt={3} mb={3} mx="auto">
+          <SectionLead fontSize={[3, 4]} mx="auto">
             Hack Club is a global network of programming clubs where members
             learn to code through tinkering and building projects.
           </SectionLead>

@@ -165,7 +165,7 @@ const Event = ({
     pl={[null, null, 128 + theme.space[5] + theme.space[4]]}
     key={name}
   >
-    <Text fontSize={5} bold color="white" children={name} />
+    <Subhline color="white" children={name} />
   </Box>,
   <Details key={organizer}>
     <DetailStats>
@@ -192,11 +192,11 @@ const Event = ({
 
 export default () => (
   <Base>
-    <Container align="center" maxWidth={36} mb={[4, 5]} px={3}>
+    <Container align="center" maxWidth={42} mb={[4, 5]} px={3}>
       <Subhline color="white">
         The best events across the country run on Bank.
       </Subhline>
-      <Lead color="muted">
+      <Lead maxWidth={36} color="muted">
         Everywhere from Philadelphia to Phoenix to Portland,
         Hack&nbsp;Club&nbsp;Bank is powering hackathons of all sizes.
       </Lead>

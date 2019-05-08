@@ -8,7 +8,7 @@ import {
   LargeButton,
   theme
 } from '@hackclub/design-system'
-import { Headline, Lead } from 'components/Content'
+import { Subhline, Lead } from 'components/Content'
 import { Link } from 'gatsby'
 import { Fade } from 'react-reveal'
 
@@ -98,9 +98,9 @@ LargeButton.link = LargeButton.withComponent(Link)
 const SpringPromo = ({ buttonProps = {}, ...props }) => (
   <Base {...props}>
     <Green>
-      <Headline maxWidth={28} mx="auto">
+      <Subhline maxWidth={28} mx="auto">
         Apply for spring early admissions.
-      </Headline>
+      </Subhline>
       <Lead maxWidth={36} mx="auto" color="white" fontSize={[3, 4]} my={2}>
         Launching a club at the start of the school year is tough—so apply as
         part of our exclusive early admissions. Run a club pilot this spring,

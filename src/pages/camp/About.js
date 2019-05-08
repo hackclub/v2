@@ -186,8 +186,8 @@ export default () => [
         </div>
         <Timeline>
           <Timeline.Step name="Hack Club is born" duration="2015" first />
-          <Timeline.Step name="First Hack Camp in SF" duration="2016" />
-          <Timeline.Step name="SF Hack Camp v2" duration="2017" />
+          <Timeline.Step name="First Hack Camp in SF" duration="2015" />
+          <Timeline.Step name="SF Hack Camp v2" duration="2016" />
           <Timeline.Step
             name="A Camp appears in Mason, OH"
             duration="2017"

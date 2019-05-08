@@ -147,7 +147,7 @@ export default () => [
         <Bio
           img="/camp/fernanda.jpg"
           name="Fernanda Lozano"
-          text="Fernanda is a computational neuroscience student, an entrepreneur, and an organizer with years of experience running programs and events for students in Mexico. This summer Fernanda will take charge of Hack Camp’s logistics and serve as your primary point of contact."
+          text="Fernanda is a student of computational neuroscience, entrepreneur, and organizer with years of experience running events and programs like the Entrepreneurial Learning Academy for students in Mexico. This summer, she’ll run Hack Camp’s logistics and be your primary contact."
           pronouns="she/her"
         />
         <Bio

@@ -62,8 +62,8 @@ const InnerForm = ({ values, errors, touched, handleChange, handleBlur }) => (
     />
     <Field
       label="Estimated attendance"
-      name="expected_attendance"
-      value={values.expected_attendance}
+      name="expected_attendees"
+      value={values.expected_attendees}
       type="number"
       placeholder={200}
       onChange={handleChange}

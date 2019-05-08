@@ -9,7 +9,7 @@ import Landing from './Landing'
 import Manifesto from './Manifesto'
 import Activities from './Activities'
 import About from './About'
-import Registration from './Registration'
+import Logistics from './Logistics'
 
 const title = 'Hack Camp – Summer 2019 High School Coding Camp'
 const desc =
@@ -74,7 +74,7 @@ export default () => (
     <Manifesto />
     <Activities />
     <About />
-    <Registration />
+    <Logistics />
     <Footer dark />
   </Layout>
 )

@@ -90,11 +90,11 @@ export default () => [
       <Cols cols="2fr 1fr" gap={[4, 5]}>
         <div>
           <Headline color="white" mb={3}>
-            3 sessions. Pick yours.
+            3 sessions. Pick&nbsp;yours.
           </Headline>
           <Lead mb={4}>
             We’re running three identical weeks of Hack Camp. Join us July
-            1–5th, 15–19th, or July 29th–August 2nd. Camp runs 9am–5pm
+            1–5th, 15–19th, or July 29th–August 2nd. Camp runs 9am–4pm
             (weekdays).
           </Lead>
           <CTA href="https://camp-apply.hackclub.com/">Apply now</CTA>

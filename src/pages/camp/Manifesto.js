@@ -49,30 +49,31 @@ export default () => [
     <UltraSmall>Learn to build with the best.</UltraSmall>
   </SmallContainer>,
   <Base id="overview">
-    <UltraLarge>Learn to Build</UltraLarge>
-    <UltraLarge>with the Best.</UltraLarge>
+    <UltraLarge>Welcome to</UltraLarge>
+    <UltraLarge>Hackerland</UltraLarge>
     <Container maxWidth={48} px={3}>
-      <Featline>
-        Create anything you can imagine with Code, Electronics, 3D Models, and
+      <Featline mb={[3, 4]}>
+        Create anything you can imagine with code, electronics, 3D models, and
         more.
       </Featline>
-      <Lead mb={4}>
-        Have you ever met someone who knows how to do everything? Someone who
-        doesn’t need classes to learn? This is what we call a hacker.
+      <Lead mb={[3, 4]}>
+        Computers give us superpowers. Anyone, anywhere, can create beautiful
+        things and solve real problems for people everywhere.
       </Lead>
-      <Lead mb={4}>
-        Hackers have a superpower: the ability to teach themselves. Anyone can
-        learn to do anything online, and schools just haven’t caught up. The
-        modern world was built by hackers—we’ll show you how to be one.
+      <Lead mb={[3, 4]}>
+        Learning to code is your way into this world. Crossing this bridge
+        unlocks the power to make stories, drawings, or wires into websites,
+        games, robots, and things nobody but you imagine.
       </Lead>
-      <Lead mb={4}>
-        At Hack Camp you’ll make your first website, build your first video
-        game, solder your first circuit, and join a global community of students
-        who carry the standard of Hacker Culture.
+      <Lead mb={[3, 4]}>
+        It’s not about learning a programming framework—it’s about learning to
+        teach yourself. Best of all, you can join a worldwide community of
+        people doing the same. This is Hacker Culture, & it&nbsp;brings out the
+        best in us all.
       </Lead>
       <Text fontSize={[2, 3]} color="muted">
         Just to be clear: we don’t break in to internet banks. Some hackers
-        specialize in cyber-security; we’re not especially focused on it.
+        specialize in cybersecurity; we’re not especially focused on it.
       </Text>
     </Container>
   </Base>

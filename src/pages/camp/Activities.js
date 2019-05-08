@@ -62,22 +62,21 @@ export default () => (
           <Module
             icon="web"
             name="Your First Website"
-            body="The website you’re reading right now was built by
-        us from scratch. We taught ourselves this stuff years ago—we’ll show you how to do the same."
+            body="A teenager in our community built the website you’re reading from scratch. The first day, it’ll be your turn."
           />
         </ProjectOne>
         <ProjectTwo>
           <Module
             icon="announcement"
             name="Your First Radio"
-            body="A month ago, none of us knew anything about radios. We thought it would be cool to build one at Camp, so we learned how."
+            body="Radios are the basis of Wi-Fi & satellites. You’ll build one yourself—but with a pencil, razor blade, & copper wire."
           />
         </ProjectTwo>
         <ProjectThree>
           <Module
             icon="challenge"
             name="Your First Game"
-            body="Making a game is one of the best intros to code, & it’s easier than ever. Several of us started with games & became professional game devs!"
+            body="Making a game is a great intro to code, and it’s never been easier. You’ll go home with your own 3D world."
           />
         </ProjectThree>
       </Cols>

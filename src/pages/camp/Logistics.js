@@ -129,7 +129,7 @@ export default () => [
       </Cols>
       <Cols mt={[5, 6]}>
         <div>
-          <Featline>Tuition is $500.</Featline>
+          <Featline>Tuition is $650.</Featline>
           <Lead color="muted">
             Need-based financial aid is available for Hack Camp after you apply.
           </Lead>

@@ -46,7 +46,7 @@ const UltraLarge = styled(ColoredTitle).attrs({
 
 export default () => [
   <SmallContainer px={3}>
-    <UltraSmall>Learn to build with the best.</UltraSmall>
+    <UltraSmall>Welcome to Hackerland</UltraSmall>
   </SmallContainer>,
   <Base id="overview">
     <UltraLarge>Welcome to</UltraLarge>

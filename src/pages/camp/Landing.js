@@ -27,7 +27,8 @@ const Screen = styled(Flex).attrs({
 const Content = styled(Sheet).attrs({
   align: 'center',
   maxWidth: 36,
-  p: [3, 4, 5]
+  py: [3, 4, 5],
+  px: [1, 4, 5]
 })`
   background-color: rgba(0, 0, 0, 0.75);
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {

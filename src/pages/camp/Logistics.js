@@ -168,10 +168,10 @@ export default () => [
           </Lead>
         </div>
         <div>
-          <Featline>I'm not from the Bay Area…</Featline>
+          <Featline>I’m not from the Bay Area…</Featline>
           <Lead color="muted">
             Sadly we can’t offer official housing, but 
-            you’re welcome to come if you find your own!
+            you’re welcome to find your own & come!
           </Lead>
         </div>
         <div>

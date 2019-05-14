@@ -55,13 +55,16 @@ export default () => (
           fontSize={[3, 4, 5]}
           maxWidth={32}
           mt={[-1, -2]}
-          mb={4}
+          mb={3}
           mx="auto"
         >
           A 1-week summer camp to get started coding & engineering.
         </Lead>
-        <Text color="smoke" fontSize={2}>
           July 2019 – Grades 8–12 – San Francisco, CA
+        <Text color="smoke" fontSize={2} mb={3}>
+        </Text>
+        <Text color="primary" fontSize={[3, 4]} bold={true}>
+          Apply by May 26th for $75 off!
         </Text>
       </Content>
     </Slide>

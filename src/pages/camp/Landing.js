@@ -58,7 +58,7 @@ export default () => (
           mb={3}
           mx="auto"
         >
-          A 1-week summer camp to get started coding & engineering.
+          A 1-week summer camp<br></br>to get started coding.
         </Lead>
           July 2019 – Grades 8–12 – San Francisco, CA
         <Text color="smoke" fontSize={2} mb={3}>

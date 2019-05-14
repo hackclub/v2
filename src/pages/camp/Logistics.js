@@ -163,15 +163,15 @@ export default () => [
         <div>
           <Featline>How big is each session?</Featline>
           <Lead color="muted">
-            About 15 students each. We're shooting 
+            About 15 students each. We’re shooting 
             for a 5:1 student-to-instructor ratio.
           </Lead>
         </div>
         <div>
           <Featline>I'm not from the Bay Area…</Featline>
           <Lead color="muted">
-            Sadly we can't offer official housing, but 
-            you can still come if you find your own!
+            Sadly we can’t offer official housing, but 
+            you’re welcome to come if you find your own!
           </Lead>
         </div>
         <div>

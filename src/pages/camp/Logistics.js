@@ -161,6 +161,20 @@ export default () => [
           </Lead>
         </div>
         <div>
+          <Featline>How big is each session?</Featline>
+          <Lead color="muted">
+            About 15 students each. We’re shooting 
+            for a 5:1 student-to-instructor ratio.
+          </Lead>
+        </div>
+        <div>
+          <Featline>I’m not from the Bay Area…</Featline>
+          <Lead color="muted">
+            Sadly we can’t offer official housing, but 
+            you’re welcome to find your own & come!
+          </Lead>
+        </div>
+        <div>
           <Featline>Have any questions?</Featline>
           <Lead color="muted">
             Please reach out! We can be reached anytime at{' '}

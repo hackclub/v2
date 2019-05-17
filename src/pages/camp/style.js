@@ -50,26 +50,6 @@ Cols.defaultProps = {
   mb: [4, 5]
 }
 
-export const SectionEyebrow = styled(Text).attrs({
-  fontSize: [4, 5],
-  bold: true,
-  color: 'muted'
-})``
-export const SectionHeadline = styled(Headline).attrs({
-  fontSize: [7, 8],
-  mt: 1,
-  mb: 4
-})`
-  line-height: 1;
-`
-export const SectionLead = styled(Lead).attrs({
-  fontSize: [3, 4],
-  maxWidth: 48,
-  mx: 0,
-  pb: 3,
-  mb: [4, 5]
-})``
-
 const QuoteBase = styled(Box)`
   ${theme.mediaQueries.md} {
     svg {

@@ -14,8 +14,7 @@ import Bio from 'components/Bio'
 import Footer from 'components/Footer'
 
 const Header = styled(Section)`
-  background: url('/pattern.svg'),
-    linear-gradient(-64deg, ${theme.colors.orange[5]}, ${theme.colors.red[5]});
+  background: url('/pattern.svg'), ${theme.gradient('warning', 'primary')};
   background-repeat: repeat;
 `
 
@@ -37,7 +36,7 @@ export default () => (
     <Nav />
     <Header color="white">
       <Container maxWidth={36} align="center" py={[3, 4]}>
-        <Heading.h1 fontSize={[3, 4]} regular caps mt={4} mb={2}>
+        <Heading.h1 fontSize={[3, 4]} regular caps mt={5} mb={2}>
           Hack Club Team
         </Heading.h1>
         <Name fontSize={6}>We the students.</Name>
@@ -97,13 +96,6 @@ export default () => (
         teamRole="Hack Club Bank"
         text="After graduating high school, Michael moved to California where he began working with Hack Club. He now leads Hack Club Bank and loves helping passionate people bring their ideas to reality."
         pronouns="he/him"
-      />
-      <Bio
-        img="/team/orpheus.jpg"
-        name="Prophet Orpheus"
-        teamRole="Mascot"
-        text="Prophet Orpheus is Hack Club’s mascot who takes the form of a nondescript dinosaur. She is always working to help more students to learn to code, and has always been the most active contributor of Hack Club."
-        pronouns="she/her"
       />
     </Base>
     <Footer />

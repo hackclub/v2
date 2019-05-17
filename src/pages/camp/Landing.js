@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Text, Sheet } from '@hackclub/design-system'
+import { Box, Flex, Text, Sheet } from '@hackclub/design-system'
 import { theme } from './style'
 import { ColoredTitle, Lead } from 'components/Content'
 import Slide from 'react-reveal/Slide'
@@ -37,6 +37,15 @@ const Content = styled(Sheet).attrs({
   }
 `
 
+const Promo = styled(Box).attrs({
+  bg: theme.colors.red,
+  color: theme.colors.white,
+  mt: [3, 4, 5],
+  mb: [-3, -4, -5],
+  mx: [-1, -4, -5],
+  p: 2
+})``
+
 export default () => (
   <Screen>
     <Slide top>
@@ -59,14 +68,18 @@ export default () => (
           mb={3}
           mx="auto"
         >
-          A 1-week summer camp<br></br>to get started coding.
+          A 1-week summer camp
+          <br />
+          to get started coding.
         </Lead>
         <Text color="smoke" fontSize={2} mb={3}>
           July 2019 · Grades 8–12 · San Francisco, CA
         </Text>
-        <Text color="primary" fontSize={[3, 4]} bold={true}>
-          Apply by May 26th for $75 off!
-        </Text>
+        <Promo>
+          <Text fontSize={[2, 3]} bold>
+            Apply by May 26th for $75 off!
+          </Text>
+        </Promo>
       </Content>
     </Slide>
   </Screen>

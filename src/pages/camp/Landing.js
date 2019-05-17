@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Text, Sheet } from '@hackclub/design-system'
+import { Box, Flex, Text, Sheet } from '@hackclub/design-system'
 import { theme } from './style'
 import { ColoredTitle, Lead } from 'components/Content'
 import Slide from 'react-reveal/Slide'
@@ -27,7 +27,8 @@ const Screen = styled(Flex).attrs({
 const Content = styled(Sheet).attrs({
   align: 'center',
   maxWidth: 36,
-  p: [3, 4, 5]
+  py: [3, 4, 5],
+  px: [1, 4, 5]
 })`
   background-color: rgba(0, 0, 0, 0.75);
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
@@ -35,6 +36,15 @@ const Content = styled(Sheet).attrs({
     -webkit-backdrop-filter: saturate(180%) blur(16px);
   }
 `
+
+const Promo = styled(Box).attrs({
+  bg: theme.colors.red,
+  color: theme.colors.white,
+  mt: [3, 4, 5],
+  mb: [-3, -4, -5],
+  mx: [-1, -4, -5],
+  p: 2
+})``
 
 export default () => (
   <Screen>
@@ -55,14 +65,21 @@ export default () => (
           fontSize={[3, 4, 5]}
           maxWidth={32}
           mt={[-1, -2]}
-          mb={4}
+          mb={3}
           mx="auto"
         >
-          A 1-week summer camp to get started coding & engineering.
+          A 1-week summer camp
+          <br />
+          to get started coding.
         </Lead>
-        <Text color="smoke" fontSize={2}>
-          July 2019 – Grades 8–12 – San Francisco, CA
+        <Text color="smoke" fontSize={2} mb={3}>
+          July 2019 · Grades 8–12 · San Francisco, CA
         </Text>
+        <Promo>
+          <Text fontSize={[2, 3]} bold>
+            Apply by May 26th for $75 off!
+          </Text>
+        </Promo>
       </Content>
     </Slide>
   </Screen>

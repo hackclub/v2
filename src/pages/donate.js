@@ -85,7 +85,6 @@ const SecondQuote = styled(Quote)`
     ${theme.colors.violet[5]}
   );
 `
-const headline = { fontSize: [5, 6], mb: 3, style: { lineHeight: '1.125' } }
 const subhline = { fontSize: [3, 4], style: { lineHeight: '1.375' } }
 
 const contentContainer = {

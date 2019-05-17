@@ -1,14 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {
-  Avatar,
-  Text,
-  Box,
-  Flex,
-  Container,
-  Icon,
-  Sheet
-} from '@hackclub/design-system'
+import { Box, Flex, Container, Icon, Sheet } from '@hackclub/design-system'
 import { Section, SectionTitle, Cols, Quote, theme } from './style'
 import { Headline, Subhline, Featline, Lead } from 'components/Content'
 import Schedule from './Schedule'

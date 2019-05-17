@@ -28,8 +28,7 @@ import {
   Lead,
   AnimatedHighlight
 } from 'components/Content'
-import { timeTo } from 'helpers'
-import { stats, springPromo } from 'data.json'
+import { stats } from 'data.json'
 // import Announcement from 'components/home/Announcement'
 
 const cta = {

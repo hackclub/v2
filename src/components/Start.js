@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Heading, Text, LargeButton, theme } from '@hackclub/design-system'
-import Sheet from 'components/Sheet'
+import { Box, LargeButton, Sheet, theme } from '@hackclub/design-system'
 import { Subhline, Lead } from 'components/Content'
 import { Link } from 'gatsby'
 

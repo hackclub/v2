@@ -11,7 +11,7 @@ import {
 } from '@hackclub/design-system'
 import { Link } from 'gatsby'
 import { Section, SectionTitle, Cols, Quote, theme } from './style'
-import { Headline, Subhline, Featline, Lead } from 'components/Content'
+import { Subhline, Lead } from 'components/Content'
 import Photo from 'components/Photo'
 
 const BioSheet = styled(Sheet).attrs({ p: 3, bg: theme.colors.darkless })`

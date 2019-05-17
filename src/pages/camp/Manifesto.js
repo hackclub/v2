@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Container, Hide, Text } from '@hackclub/design-system'
+import { Box, Container, Text } from '@hackclub/design-system'
 import { Title, ColoredTitle, Featline, Lead } from 'components/Content'
 import { theme } from './style'
 

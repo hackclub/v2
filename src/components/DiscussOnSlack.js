@@ -47,7 +47,7 @@ class DiscussOnSlack extends Component {
         <ShareButton
           bg="pink.5"
           {...this.props}
-          service="slack"
+          service="slack-fill"
           onClick={this.toggle}
         >
           <Box mr={2} />

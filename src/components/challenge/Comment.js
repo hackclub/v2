@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {
   Avatar,
   Box,
@@ -136,67 +136,62 @@ const DeleteButton = props => (
   />
 )
 
-// NOTE(@lachlanjc): this would be nicer as stateless, but react-flip-move needs
-// refs, so it has to be a class.
-class Comment extends Component {
-  render() {
-    const {
-      id,
-      following,
-      createdAt,
-      mine,
-      parent,
-      user,
-      body,
-      onReply,
-      onDelete
-    } = this.props
-    const emoji = onlyContainsEmoji(body)
-    return (
-      <Root
-        mt={following ? 0 : 3}
-        flexDirection={mine ? 'row-reverse' : 'row'}
-        align="center"
-      >
-        {following ? (
-          mine ? (
-            <DeleteButton bg="red.0" onClick={e => onDelete(id)} />
-          ) : (
-            <ReplyButton bg="blue.0" onClick={e => onReply(id)} />
-          )
-        ) : mine ? (
-          <NestedAvi>
-            <DeleteButton onClick={e => onDelete(id)} />
-            <Avi email={user.email} size={28} />
-          </NestedAvi>
+const Comment = ({
+  id,
+  following,
+  createdAt,
+  mine,
+  parent,
+  user,
+  body,
+  onReply,
+  onDelete
+}) => {
+  const emoji = onlyContainsEmoji(body)
+  return (
+    <Root
+      mt={following ? 0 : 3}
+      flexDirection={mine ? 'row-reverse' : 'row'}
+      align="center"
+    >
+      {following ? (
+        mine ? (
+          <DeleteButton bg="red.0" onClick={e => onDelete(id)} />
         ) : (
-          <NestedAvi>
-            <ReplyButton onClick={e => onReply(id)} />
-            <Avi email={user.email} size={28} />
-          </NestedAvi>
+          <ReplyButton bg="blue.0" onClick={e => onReply(id)} />
+        )
+      ) : mine ? (
+        <NestedAvi>
+          <DeleteButton onClick={e => onDelete(id)} />
+          <Avi email={user.email} size={28} />
+        </NestedAvi>
+      ) : (
+        <NestedAvi>
+          <ReplyButton onClick={e => onReply(id)} />
+          <Avi email={user.email} size={28} />
+        </NestedAvi>
+      )}
+      <Group mine={mine}>
+        {!following && (
+          <Byline mine={mine}>
+            <Text.span bold>{user.username}</Text.span>
+            <Time title={createdAt} children={timeSince(createdAt)} />
+          </Byline>
         )}
-        <Group mine={mine}>
-          {!following && (
-            <Byline mine={mine}>
-              <Text.span bold>{user.username}</Text.span>
-              <Time title={createdAt} children={timeSince(createdAt)} />
-            </Byline>
+        <Bubble emoji={emoji} mine={mine}>
+          {!isEmpty(parent) && (
+            <QuotedComment
+              bg={emoji ? 'snow' : 'white'}
+              px={3}
+              py={2}
+              data={parent}
+            />
           )}
-          <Bubble emoji={emoji} mine={mine}>
-            {!isEmpty(parent) && (
-              <QuotedComment
-                bg={emoji ? 'snow' : 'white'}
-                px={3}
-                py={2}
-                data={parent}
-              />
-            )}
-            {emoji ? <Megamoji children={body} /> : <Body source={body} />}
-          </Bubble>
-        </Group>
-      </Root>
-    )
-  }
+          {emoji ? <Megamoji children={body} /> : <Body source={body} />}
+        </Bubble>
+      </Group>
+    </Root>
+  )
 }
 
 export default Comment

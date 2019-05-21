@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import { Box, Flex, Heading, Link, Icon, theme } from '@hackclub/design-system'
-import FlipMove from 'react-flip-move'
 import Auth from 'components/Auth'
 import LoadingBar from 'components/LoadingBar'
 import ErrorPage from 'components/ErrorPage'
@@ -98,33 +97,26 @@ class Comments extends Component {
             isEmpty(data) && <NoComments />
           )}
           {status === 'error' && <ErrorPage />}
-          <FlipMove
-            typeName={null}
-            duration={256}
-            enterAnimation="accordionVertical"
-            leaveAnimation="accordionVertical"
-          >
-            {data.map((c, i) => (
-              <Comment
-                key={`post-${c.id}`}
-                id={c.id}
-                createdAt={c.created_at}
-                mine={c.user.email === email}
-                following={
-                  i > 0
-                    ? data[i - 1].user.email === c.user.email &&
-                      new Date(c.created_at).getDate() ===
-                        new Date(data[i - 1].created_at).getDate()
-                    : false
-                }
-                parent={this.getParent(c.parent_id)}
-                user={c.user}
-                body={c.body}
-                onReply={e => this.onReply(c.id)}
-                onDelete={this.onDelete}
-              />
-            ))}
-          </FlipMove>
+          {data.map((c, i) => (
+            <Comment
+              key={`post-${c.id}`}
+              id={c.id}
+              createdAt={c.created_at}
+              mine={c.user.email === email}
+              following={
+                i > 0
+                  ? data[i - 1].user.email === c.user.email &&
+                    new Date(c.created_at).getDate() ===
+                      new Date(data[i - 1].created_at).getDate()
+                  : false
+              }
+              parent={this.getParent(c.parent_id)}
+              user={c.user}
+              body={c.body}
+              onReply={e => this.onReply(c.id)}
+              onDelete={this.onDelete}
+            />
+          ))}
         </Container>
         {status === 'success' && (
           <NewComment

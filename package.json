@@ -47,7 +47,6 @@
     "react": "^16.8.4",
     "react-autocomplete": "^1.8.1",
     "react-dom": "^16.8.4",
-    "react-flip-move": "^3.0.3",
     "react-gravatar": "^2.6.3",
     "react-helmet": "^5.2.0",
     "react-markdown": "^4.0.6",

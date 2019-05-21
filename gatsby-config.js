@@ -85,7 +85,6 @@ module.exports = {
               ignoreFileExtensions: []
             }
           },
-          // 'gatsby-remark-images',
           'gatsby-remark-prismjs',
           'gatsby-remark-smartypants',
           {

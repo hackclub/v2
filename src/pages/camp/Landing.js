@@ -17,7 +17,7 @@ const Screen = styled(Flex).attrs({
   background-position: center;
   background-size: cover;
   max-width: 100vw;
-  height: 100vh;
+  height: 94vh;
   position: relative;
   p {
     line-height: 1.125;
@@ -36,15 +36,6 @@ const Content = styled(Sheet).attrs({
     -webkit-backdrop-filter: saturate(180%) blur(16px);
   }
 `
-
-const Promo = styled(Box).attrs({
-  bg: theme.colors.red,
-  color: theme.colors.white,
-  mt: [3, 4, 5],
-  mb: [-3, -4, -5],
-  mx: [-1, -4, -5],
-  p: 2
-})``
 
 export default () => (
   <Screen>
@@ -72,14 +63,17 @@ export default () => (
           <br />
           to get started coding.
         </Lead>
-        <Text color="smoke" fontSize={2} mb={3}>
+        <Text color="smoke" fontSize={[1, 2]} mb={[3, 4]}>
           July 2019 · Grades 8–12 · San Francisco, CA
         </Text>
-        <Promo>
-          <Text fontSize={[2, 3]} bold>
-            Apply by May 26th for $75 off!
-          </Text>
-        </Promo>
+        <Text
+          color={theme.colors.red}
+          fontSize={[2, 3]}
+          mb={[0, null, -2]}
+          bold
+        >
+          Apply by May 26th for $75 off!
+        </Text>
       </Content>
     </Slide>
   </Screen>

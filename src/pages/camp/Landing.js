@@ -72,7 +72,7 @@ export default () => (
           mb={[0, null, -2]}
           bold
         >
-          Apply by May 26th for $75 off!
+          Apply by June 15th for $50 off!
         </Text>
       </Content>
     </Slide>

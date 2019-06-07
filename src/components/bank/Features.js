@@ -3,9 +3,10 @@ import styled from 'styled-components'
 import {
   Box,
   Container,
-  Heading,
   Flex,
+  Heading,
   Icon,
+  Link as A,
   Text,
   theme
 } from '@hackclub/design-system'
@@ -142,7 +143,7 @@ export default () => (
       <Module
         icon="card"
         name="Debit cards"
-        body="Issue physical debit cards to all your teammates—no reimbursements."
+        body={<>Issue physical debit cards to all your teammates, backed by <A href="https://www.emburse.com/solutions/non-profits/" color="smoke" hoverline target="_blank">Emburse</A>.</>}
       />
       <Module
         icon="analytics"

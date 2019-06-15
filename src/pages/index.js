@@ -256,7 +256,7 @@ export default () => (
           <strong>
             We’re high schoolers running weekly afterschool coding clubs.
           </strong>{' '}
-          For&nbsp;2 weeks, we’re running an exclusive campaign to help next-gen{' '}
+          We’re running an exclusive campaign to help next-gen{' '}
           <AnimatedHighlight>
             leaders start their clubs before the year ends
           </AnimatedHighlight>

@@ -115,9 +115,9 @@ export default () => (
   <Base pt={[5, 6, 7]} pb={[4, 5, 6]} color="snow">
     <Modules px={3}>
       <Box>
-        <Headline>Invoice sponsors, issue debit cards to your team, and view history.</Headline>
+        <Headline>A full-stack toolkit for running hackathons.</Headline>
         <Lead fontSize={[3, 4]} color="muted" maxWidth={48} mx={0}>
-          Everything you need to start receiving money in days.
+          Invoice sponsors, issue debit cards to your team, and view history.
           <br />
           Ongoing support so you can focus on your event, not the IRS.
         </Lead>

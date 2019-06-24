@@ -80,24 +80,36 @@ export const Highlight = styled(Text.span)`
 `
 
 const highlighter = keyframes`
-  from {
+  0% {
+    background-image: linear-gradient(
+      -100deg,
+      ${theme.hexa('yellow.2', 0.33)},
+      ${theme.hexa('yellow.2', 0.33)}
+    );
     background-size: 0 100%;
   }
-  to {
+  50% {
+    background-image: linear-gradient(
+      -100deg,
+      ${theme.hexa('yellow.2', 0.33)},
+      ${theme.hexa('yellow.2', 0.95)},
+    );
+  }
+  100% {
+    background-image: linear-gradient(
+      -100deg,
+      ${theme.hexa('yellow.2', 0.33)},
+      ${theme.hexa('yellow.2', 0.95)},
+      ${theme.hexa('yellow.2', 0.1)}
+    );
     background-size: 100% 100%;
   }
 `
 
 export const AnimatedHighlight = styled(Text.span)`
   border-radius: 1em;
-  animation: ${highlighter} 4s ease forwards;
+  animation: ${highlighter} 3s ease forwards;
   animation-delay: ${props => props.delay || 6}s;
-  background-image: linear-gradient(
-    -100deg,
-    ${theme.hexa('yellow.2', 0.33)},
-    ${theme.hexa('yellow.2', 0.95)},
-    ${theme.hexa('yellow.2', 0.1)}
-  );
   background-repeat: no-repeat;
   background-size: 0 100%;
 `

@@ -109,7 +109,7 @@ const FallPromo = ({ buttonProps = {}, ...props }) => (
   <Base {...props}>
     <Red>
       <Subhline maxWidth={28} mx="auto">
-        Start a club in the fall.
+        Start a club in the&nbsp;fall.
       </Subhline>
       <Lead maxWidth={36} mx="auto" color="white" fontSize={[3, 4]} my={2}>
         Launching a club at the start of the school year is tough—so get a

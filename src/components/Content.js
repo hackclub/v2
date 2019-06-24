@@ -80,7 +80,9 @@ export const Highlight = styled(Text.span)`
 `
 
 const highlighter = keyframes`
-  from { background-size: 0; }
+  from {
+    background-size: 0 100%;
+  }
   to {
     background-size: 100% 100%;
   }
@@ -96,6 +98,7 @@ export const AnimatedHighlight = styled(Text.span)`
     ${theme.hexa('yellow.2', 0.95)},
     ${theme.hexa('yellow.2', 0.1)}
   );
+  background-repeat: no-repeat;
   background-size: 0 100%;
 `
 

@@ -225,7 +225,7 @@ export default () => (
     <Promo>
       <Container maxWidth={81} px={3} py={[5, 6]}>
         <PromoMegaline mt={4} pb={1}>
-          Start a coding club at your high&nbsp;school this spring.
+          Start a coding club at your high&nbsp;school this fall.
         </PromoMegaline>
         <Lead
           fontSize={[3, 4, 5]}
@@ -235,13 +235,13 @@ export default () => (
           mb={[4, 5]}
         >
           Hack Club is a global, nonprofit network of high school coding clubs.{' '}
-          <strong>Apply now for early&nbsp;admissions.</strong>
+          <strong>Applications&nbsp;resume in&nbsp;fall.</strong>
         </Lead>
         {/* <OutlineButton.link bg="teal.1" to="/community" m={[1, 2]}>
             Join the community
           </OutlineButton.link> */}
         <StartCTA to="/start" m={[1, 2]}>
-          Start your club
+          Join the waitlist
         </StartCTA>
       </Container>
     </Promo>
@@ -256,18 +256,18 @@ export default () => (
           <strong>
             We’re high schoolers running weekly afterschool coding clubs.
           </strong>{' '}
-          We’re running an exclusive campaign to help next-gen{' '}
+          Applications to start a club open at the start of the school year
           <AnimatedHighlight>
-            leaders start their clubs before the year ends
-          </AnimatedHighlight>
-          . With a spring pilot, you’ll start off great next fall with runway
-          experience & members.
+            , but you can get started early.
+          </AnimatedHighlight>{' '}
+          Join the waitlist and we’ll send you resources to plan out your first meeting.
+          You’ll also be notified once applications open.
         </Text>
         <PromoSmallCTA bg="teal.7" to="/start" chevronRight>
-          Start your club
+          Join the list
         </PromoSmallCTA>
         <Text fontSize={[1, 2]} color="black" mt={2}>
-          Start a club, or bring yours—existing clubs are welcome&nbsp;too!
+          Start a club, or bring your own—existing clubs are welcome&nbsp;too!
         </Text>
       </Container>
     </Box>

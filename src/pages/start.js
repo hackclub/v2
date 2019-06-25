@@ -17,7 +17,7 @@ import { Link } from 'gatsby'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Photo from 'components/Photo'
-import SpringPromo from 'components/SpringPromo'
+import FallPromo from 'components/FallPromo'
 import { Headline, Highlight, Lead } from 'components/Content'
 import Footer from 'components/Footer'
 import { stats } from 'data.json'
@@ -313,7 +313,7 @@ export default () => (
           </SectionLead>
         </Container>
       </PhotoHeader>
-      <SpringPromo />
+      <FallPromo />
     </Box>
     <Box bg="white" py={[5, 6]}>
       <Container color="black" px={3}>
@@ -535,7 +535,7 @@ export default () => (
         </Cols>
       </Container>
     </Box>
-    <Box bg="white" color="black" pt={[5, 6]} pb={3}>
+    {/* <Box bg="white" color="black" pt={[5, 6]} pb={3}>
       <Container px={3}>
         <SectionEyebrow>Application</SectionEyebrow>
         <SectionHeadline>
@@ -570,7 +570,7 @@ export default () => (
           </StepThree>
         </Steps>
       </Container>
-    </Box>
+    </Box> */}
     <Box p={[3, 4, 5]}>
       <MapBox
         py={[3, 5, 6]}
@@ -581,7 +581,7 @@ export default () => (
         color="white"
       >
         <Container width={1} maxWidth={72} px={2} mt={[4, 5, 6]} mb={[3, 4, 5]}>
-          <Headline>Begin your application.</Headline>
+          <Headline>Start leading your club.</Headline>
           <Text fontSize={[3, 5]} my={[1, 2]}>
             Build the class you wish you&nbsp;had.
           </Text>
@@ -590,7 +590,7 @@ export default () => (
           </Text>
           <ApplyButton
             href="https://apply.hackclub.com/"
-            children="Apply to Hack Club"
+            children="Join the waitlist"
             mt={4}
           />
         </Container>

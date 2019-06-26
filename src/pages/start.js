@@ -221,30 +221,6 @@ const HourFeatures = styled(Steps)`
   }
 `
 
-const StepOne = styled(Sheet)`
-  background-color: ${theme.colors.red[6]};
-  background-image: linear-gradient(
-    to bottom,
-    ${theme.colors.orange[5]},
-    ${theme.colors.pink[6]}
-  );
-`
-const StepTwo = styled(Sheet)`
-  background-color: ${theme.colors.teal[6]};
-  background-image: linear-gradient(
-    to bottom,
-    ${theme.colors.cyan[5]},
-    ${theme.colors.blue[6]}
-  );
-`
-const StepThree = styled(Sheet)`
-  background-color: ${theme.colors.violet[6]};
-  background-image: linear-gradient(
-    to bottom,
-    ${theme.colors.fuschia[5]},
-    ${theme.colors.indigo[6]}
-  );
-`
 const ApplyButton = styled(LargeButton).attrs({
   scale: true,
   chevronRight: true

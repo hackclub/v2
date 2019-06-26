@@ -142,7 +142,7 @@ const ToggleContainer = styled(Flex)`
   cursor: pointer;
   user-select: none;
   margin-left: auto;
-  ${theme.mediaQueries.md} {
+  @media (min-width: 56em) {
     display: none;
   }
 `

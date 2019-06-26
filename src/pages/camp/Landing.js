@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Flex, Text, Sheet } from '@hackclub/design-system'
+import { Flex, Text, Sheet } from '@hackclub/design-system'
 import { theme } from './style'
 import { ColoredTitle, Lead } from 'components/Content'
 import Slide from 'react-reveal/Slide'

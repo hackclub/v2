@@ -13,7 +13,7 @@ import {
   Sheet,
   theme
 } from '@hackclub/design-system'
-import { Link } from 'gatsby'
+import Link from 'components/Link'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Photo from 'components/Photo'
@@ -441,7 +441,7 @@ export default () => (
               <Text.span color="cyan.5">local events</Text.span> from
               Hack&nbsp;Clubs near yours.
             </Text>
-            <FeatureLink to="/hackathons/" color="white">
+            <FeatureLink to="https://hackathons.hackclub.com" color="white">
               See nearby events
             </FeatureLink>
           </PhotoFeature>

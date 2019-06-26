@@ -23,8 +23,6 @@ const Root = styled(Container).attrs({ pt: [6, 7], px: 4 })`
   /* remove default spacing on Sheets  */
   > a > div {
     margin-bottom: 0;
-    background-image: url('/dark-pattern.svg');
-    color: #fff;
     height: 200px;
   }
 `

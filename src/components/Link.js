@@ -8,9 +8,9 @@ const isExternalLink = path => path.startsWith('http') || path.startsWith('//:')
 
 const Link = ({ to, children, ...props }) =>
   isExternalLink(to) ? (
-    <Link href={to} {...props}>
+    <DSLink href={to} {...props}>
       {children}
-    </Link>
+    </DSLink>
   ) : (
     <GatsbyLink to={to} {...props}>
       {children}

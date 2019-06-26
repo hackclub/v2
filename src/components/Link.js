@@ -1,14 +1,16 @@
 // Based on https://sven-roettering.de/external-gatsby-links/
 import React from 'react'
+import { Link as DSLink } from 'gatsby'
 import { Link as GatsbyLink } from 'gatsby'
+
 
 const isExternalLink = path => path.startsWith('http') || path.startsWith('//:')
 
 const Link = ({ to, children, ...props }) =>
   isExternalLink(to) ? (
-    <a href={to} {...props}>
+    <Link href={to} {...props}>
       {children}
-    </a>
+    </Link>
   ) : (
     <GatsbyLink to={to} {...props}>
       {children}

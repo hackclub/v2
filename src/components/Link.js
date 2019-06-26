@@ -1,6 +1,6 @@
 // Based on https://sven-roettering.de/external-gatsby-links/
 import React from 'react'
-import { Link as DSLink } from 'gatsby'
+import { Link as DSLink } from '@hackclub/design-system'
 import { Link as GatsbyLink } from 'gatsby'
 
 

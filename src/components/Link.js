@@ -6,15 +6,17 @@ import { Link as GatsbyLink } from 'gatsby'
 
 const isExternalLink = path => path.startsWith('http') || path.startsWith('//:')
 
+const DSGatsbyLink = DSLink.withComponent(GatsbyLink)
+
 const Link = ({ to, children, ...props }) =>
   isExternalLink(to) ? (
     <DSLink href={to} {...props}>
       {children}
     </DSLink>
   ) : (
-    <GatsbyLink to={to} {...props}>
+    <DSGatsbyLink to={to} {...props}>
       {children}
-    </GatsbyLink>
+    </DSGatsbyLink>
   )
 
 export default Link

@@ -87,6 +87,7 @@ const NavBar = styled(Box.withComponent('nav'))`
           text-align: left;
           height: 100vh;
           a {
+            color: ${props.dark ? 'white' : 'black'};
             padding: 0;
             margin: 0 auto;
             height: 64px;

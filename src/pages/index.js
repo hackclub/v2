@@ -7,7 +7,6 @@ import {
   Flex,
   LargeButton as Button,
   Link as A,
-  OutlineButton,
   Text,
   Sheet,
   theme
@@ -44,8 +43,21 @@ const StartCTA = styled(Button.withComponent(Link)).attrs({
   inverted: true,
   fontSize: [4, 5],
   px: [4, 5]
+<<<<<<< HEAD
 })``
 OutlineButton.link = OutlineButton.withComponent(Link)
+=======
+})`
+  background-image: ${theme.gradient('orange.5', 'red.5')};
+`
+const CommunityCTA = styled(Button.withComponent(Link)).attrs({
+  ...cta,
+  fontSize: [4, 5],
+  px: [4, 5]
+})`
+  background-image: ${theme.gradient('orange.5', 'fuschia.5')};
+`
+>>>>>>> Initial changes for starting school year
 
 const promoBG = css`
   background-image: ${theme.gradient('orange.5', 'red.5')};
@@ -219,7 +231,7 @@ export default () => (
     <Promo>
       <Container maxWidth={81} px={3} py={[5, 6]}>
         <PromoMegaline mt={4} pb={1}>
-          Start a coding club at your high&nbsp;school this fall.
+          Start a coding club at your high&nbsp;school in 2 weeks.
         </PromoMegaline>
         <Lead
           fontSize={[3, 4, 5]}
@@ -228,14 +240,13 @@ export default () => (
           mt={[3, 4]}
           mb={[4, 5]}
         >
-          Hack Club is a global, nonprofit network of high school coding clubs.{' '}
-          <strong>Applications&nbsp;resume in&nbsp;fall.</strong>
+          Hack Club is a global, nonprofit network of high school coding clubs.
         </Lead>
-        {/* <OutlineButton.link bg="teal.1" to="/community" m={[1, 2]}>
-            Join the community
-          </OutlineButton.link> */}
+        <CommunityCTA to="/community" m={[1, 2]}>
+          Join the community
+        </CommunityCTA>
         <StartCTA to="/start" m={[1, 2]}>
-          Join the waitlist
+          Start your club
         </StartCTA>
       </Container>
     </Promo>
@@ -250,19 +261,21 @@ export default () => (
           <strong>
             We’re high schoolers running weekly afterschool coding clubs.
           </strong>{' '}
-          Applications to start a club open at the start of the school year
-          <AnimatedHighlight>
-            , but you can get started early.
-          </AnimatedHighlight>{' '}
-          Join the waitlist and we’ll send you resources to plan out your first meeting.
-          You’ll also be notified once applications open.
+          Applications to start a club are reviewed on a rolling basis.
         </Text>
+<<<<<<< HEAD
         <PromoSmallCTA to="/start" chevronRight>
           Join the list
         </PromoSmallCTA>
         <Text fontSize={[1, 2]} color="black" mt={2}>
+=======
+        <Text fontSize={[1, 2]} color="black" mb={4}>
+>>>>>>> Initial changes for starting school year
           Start a club, or bring your own—existing clubs are welcome&nbsp;too!
         </Text>
+        <PromoSmallCTA bg="teal.7" to="/start" chevronRight>
+          Start your club
+        </PromoSmallCTA>
       </Container>
     </Box>
     <Box bg="snow" color="black" py={[5, 6, 7]}>

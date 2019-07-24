@@ -157,9 +157,9 @@ const channels = [
     color: 'pink'
   },
   {
-    name: 'linux',
+    name: 'homelab',
     desc:
-      'Share your setup, find ideas, & get help with a community of enthusiasts.',
+      'Share your setup, find ideas, & learn from a community of enthusiasts.',
     color: 'blue'
   },
   {
@@ -184,7 +184,7 @@ const channels = [
     color: 'yellow'
   },
   {
-    name: 'blockchain',
+    name: 'minecraft',
     color: 'indigo'
   },
   {

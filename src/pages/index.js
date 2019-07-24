@@ -41,19 +41,14 @@ const CTA = styled(Button.withComponent(Link)).attrs(cta)`
 `
 const StartCTA = styled(Button.withComponent(Link)).attrs({
   ...cta,
+  inverted: true,
   fontSize: [4, 5],
   px: [4, 5]
-})`
-  background-image: ${theme.gradient('orange.5', 'red.5')};
-`
+})``
 OutlineButton.link = OutlineButton.withComponent(Link)
 
 const promoBG = css`
-  background-image: radial-gradient(
-    ellipse farthest-corner at top left,
-    rgb(26, 211, 191),
-    rgb(17, 195, 109)
-  );
+  background-image: ${theme.gradient('orange.5', 'red.5')};
 `
 const Promo = styled(Box.withComponent('section')).attrs({
   bg: 'teal.6',
@@ -72,8 +67,7 @@ const PromoMegaline = styled(Title).attrs({
   }
 `
 const PromoSmallCTA = styled(Button.withComponent(Link)).attrs({
-  ...cta,
-  bg: 'teal.6'
+  ...cta
 })`
   ${promoBG};
 `
@@ -263,7 +257,7 @@ export default () => (
           Join the waitlist and we’ll send you resources to plan out your first meeting.
           You’ll also be notified once applications open.
         </Text>
-        <PromoSmallCTA bg="teal.7" to="/start" chevronRight>
+        <PromoSmallCTA to="/start" chevronRight>
           Join the list
         </PromoSmallCTA>
         <Text fontSize={[1, 2]} color="black" mt={2}>

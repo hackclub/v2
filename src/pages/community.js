@@ -184,7 +184,7 @@ const channels = [
     color: 'yellow'
   },
   {
-    name: 'blockchain',
+    name: 'minecraft',
     color: 'indigo'
   },
   {

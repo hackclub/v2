@@ -242,9 +242,9 @@ export default () => (
     <Box bg="white" color="black" align="center" py={[5, 6, 7]}>
       <Container px={3}>
         <Flex align="center" justify="center" wrap>
-          <Stat value={stats.school_count} label="schools" color="teal.6" />
-          <Stat value={stats.state_count} label="states" color="cyan.6" />
-          <Stat value={stats.country_count} label="countries" color="blue.6" />
+          <Stat value={stats.school_count} label="schools" color="red.5" />
+          <Stat value={stats.state_count} label="states" color="orange.5" />
+          <Stat value={stats.country_count} label="countries" color="yellow.6" />
         </Flex>
         <Text fontSize={4} my={4} mx="auto" maxWidth={46}>
           <strong>

@@ -282,7 +282,7 @@ export default () => (
           />
         </ColoredHeadline>
         <Text fontSize={4} mt={0} mb={3} maxWidth={48}>
-          Hack Club is an online community of thousands of other young makers.
+          Hack Club is a community of thousands of other young makers.
           We’re artists, writers, tinkerers, filmmakers, volunteers.
           We&nbsp;make & learn together. You’ll be at home here.
         </Text>

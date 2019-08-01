@@ -40,18 +40,17 @@ const CTA = styled(Button.withComponent(Link)).attrs(cta)`
 `
 const StartCTA = styled(Button.withComponent(Link)).attrs({
   ...cta,
-  inverted: true,
   fontSize: [4, 5],
   px: [4, 5]
 })`
-  background-image: ${theme.gradient('orange.5', 'red.5')};
+  background-image: ${theme.gradient('green.5', 'blue.6')};
 `
 const CommunityCTA = styled(Button.withComponent(Link)).attrs({
   ...cta,
   fontSize: [4, 5],
   px: [4, 5]
 })`
-  background-image: ${theme.gradient('orange.5', 'fuschia.5')};
+  background-image: ${theme.gradient('fuschia.3', 'fuschia.5')};
 `
 
 const promoBG = css`

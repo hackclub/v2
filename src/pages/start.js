@@ -17,7 +17,6 @@ import Link from 'components/Link'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Photo from 'components/Photo'
-import FallPromo from 'components/FallPromo'
 import { Headline, Highlight, Lead } from 'components/Content'
 import Footer from 'components/Footer'
 import { stats } from 'data.json'
@@ -314,7 +313,6 @@ export default () => (
           </SectionLead>
         </Container>
       </PhotoHeader>
-      <FallPromo />
     </Box>
     <Box bg="white" py={[5, 6]}>
       <Container color="black" px={3}>

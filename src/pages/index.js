@@ -43,10 +43,6 @@ const StartCTA = styled(Button.withComponent(Link)).attrs({
   inverted: true,
   fontSize: [4, 5],
   px: [4, 5]
-<<<<<<< HEAD
-})``
-OutlineButton.link = OutlineButton.withComponent(Link)
-=======
 })`
   background-image: ${theme.gradient('orange.5', 'red.5')};
 `
@@ -57,7 +53,6 @@ const CommunityCTA = styled(Button.withComponent(Link)).attrs({
 })`
   background-image: ${theme.gradient('orange.5', 'fuschia.5')};
 `
->>>>>>> Initial changes for starting school year
 
 const promoBG = css`
   background-image: ${theme.gradient('orange.5', 'red.5')};
@@ -263,14 +258,7 @@ export default () => (
           </strong>{' '}
           Applications to start a club are reviewed on a rolling basis.
         </Text>
-<<<<<<< HEAD
-        <PromoSmallCTA to="/start" chevronRight>
-          Join the list
-        </PromoSmallCTA>
-        <Text fontSize={[1, 2]} color="black" mt={2}>
-=======
         <Text fontSize={[1, 2]} color="black" mb={4}>
->>>>>>> Initial changes for starting school year
           Start a club, or bring your own—existing clubs are welcome&nbsp;too!
         </Text>
         <PromoSmallCTA bg="teal.7" to="/start" chevronRight>

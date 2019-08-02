@@ -6,6 +6,7 @@ import {
   Flex,
   Heading,
   Icon,
+  Button,
   LargeButton,
   Link as A,
   Section,
@@ -29,6 +30,17 @@ const FeatureLink = styled(A.link).attrs({
   chevronRight: true
 })`
   display: block;
+`
+
+const CTA = styled(Button.withComponent(Link)).attrs({
+  chevronRight: true,
+  color: 'white',
+  fontSize: [4, 5],
+  px: [4, 5],
+  m: [1, 2],
+  scale: true
+})`
+  background-image: ${props => theme.gradient(props.g1, props.g2)};
 `
 
 const shadows = css`
@@ -311,6 +323,9 @@ export default () => (
             Hack Club is a global network of programming clubs where members
             learn to code through tinkering and building projects.
           </SectionLead>
+          <CTA to="https://hackclub.com/community" g1="orange.5" g2="fuschia.6">Join the Slack</CTA>
+          <CTA to="https://apply.hackclub.com" g1="orange.6" g2="primary">Apply now</CTA>
+          <Text fontSize={[3, 4, 5]} mt={[2, 4]}>Applications close on August 19th</Text>
         </Container>
       </PhotoHeader>
     </Box>

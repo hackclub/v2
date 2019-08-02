@@ -196,7 +196,7 @@ export default () => (
       <Subhline color="white">
         The best events across the country run on Bank.
       </Subhline>
-      <Lead maxWidth={36} color="muted">
+      <Lead maxWidth={40} color="muted">
         Everywhere from Philadelphia to Phoenix to Portland,
         Hack&nbsp;Club&nbsp;Bank is powering hackathons of all sizes.
       </Lead>

@@ -220,7 +220,6 @@ const Steps = styled(Box)`
   > div {
     ${featureStyles};
   }
-  const StepOne = 
 `
 
 const HourFeatures = styled(Steps)`

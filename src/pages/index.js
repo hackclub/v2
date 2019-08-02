@@ -355,7 +355,7 @@ export default () => (
             <Text>
               <strong>Members leave every meeting with a project</strong>
               —including their first day. Check out{' '}
-              <Like href="https://messy-wool.surge.sh/catch.html">
+              <Like href="https://sohuang.github.io">
                 a first website
               </Like>
               {' & '}

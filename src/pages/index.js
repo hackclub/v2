@@ -6,8 +6,8 @@ import {
   Flex,
   Heading,
   Icon,
-  Button,
   LargeButton,
+  OutlineButton,
   Link as A,
   Section,
   Text,
@@ -18,7 +18,7 @@ import Link from 'components/Link'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Photo from 'components/Photo'
-import { Headline, Highlight, Lead } from 'components/Content'
+import { Headline, Highlight, Lead, gradientText } from 'components/Content'
 import Footer from 'components/Footer'
 import { stats } from 'data.json'
 
@@ -32,16 +32,43 @@ const FeatureLink = styled(A.link).attrs({
   display: block;
 `
 
-const CTA = styled(Button.withComponent(Link)).attrs({
+const CTA = styled(LargeButton.withComponent(Link)).attrs({
   chevronRight: true,
-  color: 'white',
-  fontSize: [4, 5],
-  px: [4, 5],
+  bg: ['warning', 'primary'],
+  fontSize: [2, 3],
   m: [1, 2],
   scale: true
 })`
-  background-image: ${props => theme.gradient(props.g1, props.g2)};
+  background-image: ${props => theme.gradient(props.bg[0], props.bg[1])};
+  text-transform: uppercase;
 `
+const SecondaryCTA = styled(OutlineButton.withComponent(Link)).attrs({
+  chevronRight: true,
+  bg: 'white',
+  fontSize: 2,
+  m: [1, 2],
+  scale: true
+})`
+  background-color: rgba(0, 0, 0, 0.325);
+  text-transform: uppercase;
+`
+
+/*
+const Violator = styled(Text).attrs({
+  fontSize: [1, 2],
+  py: 1,
+  px: [2, 3],
+  mx: 'auto',
+  bold: true
+})`
+  background-color: rgba(0, 0, 0, 0.325);
+  border-radius: ${theme.radii[2]};
+  border: 2px solid currentColor;=
+  text-shadow: none !important;
+  white-space: nowrap;
+  width: intrinsic;
+`
+*/
 
 const shadows = css`
   h1,
@@ -51,7 +78,7 @@ const shadows = css`
   li,
   ${FeatureLink} {
     color: ${theme.colors.white};
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.75);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 1);
   }
 `
 
@@ -68,7 +95,7 @@ const PhotoHeader = styled(Section).attrs({ px: 0 })`
       ${props =>
         props.inverted
           ? 'rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)'
-          : 'rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.5)'}
+          : 'rgba(0, 0, 0, 0.325), rgba(0, 0, 0, 0.5)'}
     ),
     url(${props => props.src});
   background-position: center;
@@ -308,7 +335,7 @@ export default () => (
     <Nav color="slate" fixed />
     <Box mt={[44, 55]} p={3} bg="snow">
       <PhotoHeader
-        py={[3, 6, 7]}
+        py={[3, 5, 6]}
         src={require('../../static/photos/hackpenn_full.jpg')}
         aria-label="Students at a coding event"
         align={['left', 'center']}
@@ -316,15 +343,18 @@ export default () => (
       >
         <Container width={1} maxWidth={72} px={3} mt={[5, 6]} mb={[4, 5]}>
           <Headline maxWidth={48} mx="auto" fontSize={[6, 7, 8]} mb={2}>
-            We’re high schoolers leading the best coding clubs in&nbsp;the&nbsp;world.
+            We’re high schoolers leading the best coding clubs
+            in&nbsp;the&nbsp;world.
           </Headline>
-          <SectionLead fontSize={[3, 4]} mx="auto">
-            Hack Club is a global network of programming clubs where members
-            learn to code through tinkering and building projects.
+          <SectionLead fontSize={[3, 4]} mx="auto" mb={0}>
+            Hack&nbsp;Club is a global network of programming clubs where
+            members learn to code through tinkering and building projects.{' '}
+            <strong>Applications close August 19th.</strong>
           </SectionLead>
-          <CTA to="https://hackclub.com/community" g1="orange.5" g2="fuschia.6">Join the Slack</CTA>
-          <CTA to="https://apply.hackclub.com" g1="orange.6" g2="primary">Apply now</CTA>
-          <Text fontSize={[3, 4, 5]} mt={[2, 4]}>Applications close on August 19th</Text>
+          <SecondaryCTA to="https://hackclub.com/community">
+            Join the Slack
+          </SecondaryCTA>
+          <CTA to="https://apply.hackclub.com">Apply now</CTA>
         </Container>
       </PhotoHeader>
     </Box>
@@ -333,7 +363,7 @@ export default () => (
         <SectionEyebrow>Clubs in action</SectionEyebrow>
         <SectionHeadline>Build superpowers at your club.</SectionHeadline>
         <SectionLead>
-          Hack Clubs{' '}
+          Hack&nbsp;Clubs{' '}
           <Highlight>
             meet weekly at their high schools, typically for 1.5hrs
           </Highlight>{' '}
@@ -369,14 +399,12 @@ export default () => (
             <Text>
               <strong>Members leave every meeting with a project</strong>
               —including their first day. Check out{' '}
-              <Like href="https://sohuang.github.io">
-                a first website
-              </Like>
+              <Like href="https://sohuang.github.io">a first website</Like>
               {' & '}
               <Like href="https://messy-wool.surge.sh/catch.html">
                 game
               </Like>{' '}
-              built at Hack Clubs.
+              built at Hack&nbsp;Clubs.
             </Text>
           </section>
           <section>
@@ -400,8 +428,8 @@ export default () => (
               Windy&nbsp;City&nbsp;Hacks
             </Like>{' '}
             &{' '}
-            <Like href="http://outlooknewspapers.com/hackademia-aims-for-young-tech-devotees/">
-              Hackademia
+            <Like href="https://www.sfchronicle.com/bayarea/article/Hack-the-Fog-makes-history-as-San-12729895.php">
+              Hack the Fog
             </Like>
             , run summer programs like{' '}
             <Like href="http://thecspn.com/?p=43434">Hack Camp</Like>, and
@@ -532,9 +560,10 @@ export default () => (
           <Text.span color="warning">for the students</Text.span>.
         </SectionHeadline>
         <SectionLead>
-          <Highlight>Every Hack Club is always student-led.</Highlight> Students
-          naturally build the culture of empowerment so key to success. Teachers
-          can help by marketing the club & getting access to school resources.
+          <Highlight>Every Hack&nbsp;Club is always student-led.</Highlight>{' '}
+          Students naturally build the culture of empowerment so key to success.
+          Teachers can help by marketing the club & getting access to school
+          resources.
         </SectionLead>
         <Cols cols="1fr 1fr">
           <Photo

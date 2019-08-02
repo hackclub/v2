@@ -37,7 +37,7 @@ export const Featline = styled(Heading.h3).attrs({
   letter-spacing: -0.01em;
 `
 
-const color = css`
+export const gradientText = css`
   color: ${({ colors }) => theme.cx(colors[2])};
   @supports (-webkit-background-clip: text) {
     background-image: linear-gradient(
@@ -53,21 +53,19 @@ const color = css`
 `
 // Colored text needs pb: 2 to avoid cropping descenders
 export const ColoredTitle = styled(Title).attrs({ pb: 2 })`
-  ${color}
+  ${gradientText}
 `
 export const ColoredHeadline = styled(Headline).attrs({
   pb: 2,
   mb: [2, 3],
   maxWidth: 54
 })`
-  ${color}
+  ${gradientText}
 `
 
 export const Lead = styled(Container.withComponent(Text)).attrs({
   fontSize: [3, 4]
-})`
-  // letter-spacing: 0.004em;
-`
+})``
 
 export const Highlight = styled(Text.span)`
   border-radius: 1em;

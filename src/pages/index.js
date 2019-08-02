@@ -1,403 +1,599 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import {
-  Avatar,
   Box,
   Container,
   Flex,
-  LargeButton as Button,
+  Heading,
+  Icon,
+  LargeButton,
   Link as A,
+  Section,
   Text,
   Sheet,
   theme
 } from '@hackclub/design-system'
-import { Link } from 'gatsby'
+import Link from 'components/Link'
 import Layout from 'components/Layout'
-import Helmet from 'react-helmet'
 import Nav from 'components/Nav'
-import Footer from 'components/Footer'
-import GlowingIcon from 'components/GlowingIcon'
-import Stat from 'components/Stat'
 import Photo from 'components/Photo'
-import {
-  Title,
-  ColoredHeadline,
-  Subhline,
-  Featline,
-  Lead,
-  AnimatedHighlight
-} from 'components/Content'
+import { Headline, Highlight, Lead } from 'components/Content'
+import Footer from 'components/Footer'
 import { stats } from 'data.json'
-// import Announcement from 'components/home/Announcement'
 
-const cta = {
-  chevronRight: true,
-  color: 'white',
-  scale: true
-}
-const CTA = styled(Button.withComponent(Link)).attrs(cta)`
-  background-image: ${theme.gradient('pink.5', 'red.6')};
-`
-const StartCTA = styled(Button.withComponent(Link)).attrs({
-  ...cta,
-  fontSize: [4, 5],
-  px: [4, 5]
+A.link = A.withComponent(Link)
+const FeatureLink = styled(A.link).attrs({
+  mt: 3,
+  fontSize: 3,
+  hoverline: true,
+  chevronRight: true
 })`
-  background-image: ${theme.gradient('green.5', 'blue.6')};
-`
-const CommunityCTA = styled(Button.withComponent(Link)).attrs({
-  ...cta,
-  fontSize: [4, 5],
-  px: [4, 5]
-})`
-  background-image: ${theme.gradient('fuschia.3', 'fuschia.5')};
+  display: block;
 `
 
-const promoBG = css`
-  background-image: ${theme.gradient('orange.5', 'red.5')};
-`
-const Promo = styled(Box.withComponent('section')).attrs({
-  bg: 'teal.6',
-  align: 'center',
-  pt: [4, 5, 6]
-})`
-  ${promoBG};
-`
-const PromoMegaline = styled(Title).attrs({
-  color: 'white',
-  pb: 2
-})`
-  + ${Lead} {
-    line-height: 1.375;
-    letter-spacing: -0.01em;
-  }
-`
-const PromoSmallCTA = styled(Button.withComponent(Link)).attrs({
-  ...cta
-})`
-  ${promoBG};
-`
-
-const HeadlineIcon = styled(GlowingIcon)`
-  top: ${theme.space[1]}px;
-  ${theme.mediaQueries.md} {
-    top: ${theme.space[2]}px;
-    width: 64px;
-    height: 64px;
-  }
-`
-const SubhlineIcon = styled(GlowingIcon)`
-  top: ${theme.space[1]}px;
-  ${theme.mediaQueries.md} {
-    top: ${theme.space[2]}px;
-    width: 48px;
-    height: 48px;
+const shadows = css`
+  h1,
+  h2,
+  h3,
+  p,
+  li,
+  ${FeatureLink} {
+    color: ${theme.colors.white};
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.75);
   }
 `
 
-/*
-const Megaline = styled(Heading.h1).attrs({
-  fontSize: [6, 7, 8],
-  mx: 'auto'
-})`
-  line-height: 1.125;
-  color: ${theme.colors.success};
-  @supports (-webkit-background-clip: text) {
-    background-image: linear-gradient(
-      to bottom right,
-      ${theme.colors.cyan[5]} 25%,
-      ${theme.colors.teal[5]} 50%,
-      ${theme.colors.green[5]}
-    );
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  ${theme.mediaQueries.md} {
-    line-height: 1;
-  }
-`
-*/
-
-const Stats = styled(Flex.withComponent('ul')).attrs({
-  align: 'center',
-  justify: 'center',
-  wrap: true
-})`
-  line-height: 1;
-  list-style: none;
-  padding: 0;
-`
-Stats.Stat = styled(Text.withComponent('li')).attrs({
-  color: 'teal.0',
-  fontSize: [2, 3],
-  pl: 0
-})`
-  + li:before {
-    content: '\00b7';
-    position: relative;
-    top: ${theme.space[1]}px;
-    margin: 0 ${theme.space[1]}px;
-    font-size: ${theme.fontSizes[4]}px;
-  }
-`
-
-const Quote = styled(Sheet).attrs({ maxWidth: 48, bg: 'primary', fontSize: 3 })`
+const photoSection = css`
   border-radius: ${theme.radii[2]};
-  position: relative;
-  ${GlowingIcon} {
-    opacity: 0.75;
-    position: absolute;
-    left: 0;
-    top: 0;
-    ${theme.mediaQueries.md} {
-      width: 32px;
-      height: 32px;
-    }
+  background-size: cover;
+  @media (hover: hover) {
+    background-attachment: fixed;
   }
 `
-const MegaQuote = styled(Quote).attrs({
-  px: [3, 4, 5],
-  pt: 6,
-  pb: [4, 5],
+const PhotoHeader = styled(Section).attrs({ px: 0 })`
+  background-color: ${theme.colors.primary};
+  background-image: linear-gradient(
+      ${props =>
+        props.inverted
+          ? 'rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)'
+          : 'rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.5)'}
+    ),
+    url(${props => props.src});
+  background-position: center;
+  ${photoSection};
+  ${shadows};
+`
+const MapBox = styled(PhotoHeader).attrs({ px: 0 })`
+  background-color: ${theme.colors.dark};
+  background-image: url('/map.svg');
+  background-repeat: no-repeat;
+  background-position: 20% top;
+  ${photoSection};
+  ${theme.mediaQueries.md} {
+    background-position: center 20%;
+  }
+`
+
+const featureStyles = css`
+  min-height: 24rem;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  p:first-child,
+  h3 {
+    line-height: 1.25;
+  }
+`
+const TextFeature = styled(Sheet)`
+  > p {
+    font-weight: bold;
+    font-size: ${theme.fontSizes[5]}px;
+    line-height: 1.25;
+  }
+`
+const PhotoFeature = styled(TextFeature).attrs({
   color: 'white'
 })`
-  background-image: radial-gradient(
-    ellipse farthest-corner at top left,
-    ${theme.colors.pink[5]},
-    ${theme.colors.fuschia[5]},
-    ${theme.colors.indigo[5]}
-  );
-  &:before {
-    color: ${theme.colors.pink[2]};
+  position: relative;
+  ${props =>
+    props.inverted
+      ? css`
+          justify-content: flex-end !important;
+          background-image: linear-gradient(
+              transparent,
+              rgba(0, 0, 0, 0.25) 50%,
+              rgba(0, 0, 0, 0.5) 100%
+            ),
+            url(${props.src});
+        `
+      : css`
+          background-image: linear-gradient(
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0) 50%
+            ),
+            url(${props.src});
+        `};
+  background-position: center;
+  background-size: cover;
+  ${shadows};
+  + ${Text} {
+    color: ${theme.colors.black};
+    font-size: ${theme.fontSizes[3]}px;
+    margin-top: ${theme.space[3]}px;
   }
-  ${Text} {
-    line-height: 1.125;
-    ${theme.mediaQueries.md} {
-      line-height: 1.25;
-    }
+`
+const BankFeature = styled(Sheet)`
+  background-color: ${theme.colors.primary};
+  background-image: ${theme.gradient('red.5', 'red.7')};
+`
+const MarketingFeature = styled(Sheet)`
+  background-color: ${theme.colors.indigo[5]};
+  background-image: ${theme.gradient('indigo.4', 'indigo.6')};
+  position: relative;
+  overflow: visible;
+  ${Icon} {
+    margin-left: -${theme.space[1]}px;
+  }
+  &:before,
+  &:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+  &:before {
+    top: -1rem;
+    right: 8rem;
+    transform: rotate(12deg);
+    background-image: url(${require('../../static/stickers/enjoy.svg')});
+    width: 12rem;
+    height: 8rem;
+  }
+  &:after {
+    top: -1rem;
+    right: 0;
+    transform: rotate(-12deg);
+    background-image: url(${require('../../static/stickers/mac.svg')});
+    width: 6rem;
+    height: 8rem;
   }
 `
 
-const Features = styled(Box)`
+const Module = ({ icon, name, body, color = 'white', ...props }) => (
+  <Flex flexDirection="column" color={color} {...props}>
+    {icon && (
+      <Icon
+        size={64}
+        mb={2}
+        glyph={icon}
+        color={props.iconColor || color}
+        style={{ flexShrink: 0 }}
+      />
+    )}
+    <Box>
+      <Heading.h3 mb={1} fontSize={5} children={name} />
+      <Text fontSize={4} style={{ lineHeight: '1.375' }} children={body} />
+    </Box>
+  </Flex>
+)
+
+const Cols = styled(Box)`
+  display: grid;
+  grid-gap: ${theme.space[3]}px;
+  ${theme.mediaQueries.sm} {
+    grid-gap: ${theme.space[4]}px;
+    grid-template-columns: ${props => props.cols};
+  }
+  > div,
+  > section > div {
+    ${featureStyles};
+  }
+`
+Cols.defaultProps = {
+  cols: '1fr 1fr',
+  my: [3, 4]
+}
+
+const Steps = styled(Box)`
   display: grid;
   grid-gap: ${theme.space[3]}px;
   ${theme.mediaQueries.md} {
     grid-gap: ${theme.space[4]}px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+  > div {
+    ${featureStyles};
+  }
+  const StepOne = 
+`
+
+const HourFeatures = styled(Steps)`
+  section div {
+    min-height: 32rem;
+    justify-content: flex-start;
+  }
+  div + p {
+    margin-bottom: ${theme.space[4]}px;
   }
 `
-const FeatureLine = styled(Box).attrs({
-  bg: 'primary',
-  width: 1,
-  mt: 2,
-  mb: -2
+
+const ApplyButton = styled(LargeButton).attrs({
+  scale: true,
+  chevronRight: true
 })`
-  border-radius: ${theme.radius};
-  height: 4px;
+  text-transform: uppercase;
+  background-image: ${theme.gradient('warning', 'primary')};
 `
-const CommunityLine = styled(FeatureLine)`
+const StepOne = styled(Sheet)`
+  background-color: ${theme.colors.red[6]};
   background-image: linear-gradient(
-    to right,
+    to bottom,
     ${theme.colors.orange[5]},
-    ${theme.colors.pink[5]},
-    ${theme.colors.red[5]}
+    ${theme.colors.pink[6]}
   );
 `
-const ResourcesLine = styled(FeatureLine)`
+const StepTwo = styled(Sheet)`
+  background-color: ${theme.colors.violet[6]};
   background-image: linear-gradient(
-    to right,
+    to bottom,
     ${theme.colors.fuschia[5]},
-    ${theme.colors.violet[5]},
-    ${theme.colors.blue[5]}
+    ${theme.colors.indigo[6]}
+  );
+`
+const StepThree = styled(Sheet)`
+  background-color: ${theme.colors.teal[6]};
+  background-image: linear-gradient(
+    to bottom,
+    ${theme.colors.cyan[5]},
+    ${theme.colors.blue[6]}
   );
 `
 
+const SectionEyebrow = styled(Text).attrs({
+  fontSize: [4, 5],
+  bold: true,
+  color: 'muted'
+})``
+const SectionHeadline = styled(Headline).attrs({
+  fontSize: [6, 7, 8],
+  mt: 2,
+  mb: 3
+})`
+  line-height: 1;
+`
+const SectionLead = styled(Lead).attrs({
+  fontSize: [3, 4],
+  maxWidth: 48,
+  mx: 0,
+  pb: 3,
+  mb: [4, 5]
+})``
+
+const like = {
+  underline: true,
+  target: '_blank'
+}
+A.link = A.withComponent(Link)
+const Like = props => <A {...like} {...props} />
+const LikeLink = props => <A.link {...like} {...props} />
+
+const contentContainer = {
+  maxWidth: 72,
+  width: 1,
+  p: 3,
+  color: 'black'
+}
+
+const title = 'Hack Club'
+const desc =
+  'Learn how to start a coding club at your high school through Hack Club. Get programming club ideas, curriculum, activities, and more.'
+
 export default () => (
-  <Layout>
-    <Helmet>
-      <meta
-        name="google-site-verification"
-        content="f7cxVyFnrTxN9Q-HnpP-ueNWuWF5VgIEKF0C3tSnsnc"
-      />
-    </Helmet>
-    <Nav />
-    <Promo>
-      <Container maxWidth={81} px={3} py={[5, 6]}>
-        <PromoMegaline mt={4} pb={1}>
-          Start a coding club at your high&nbsp;school in 2 weeks.
-        </PromoMegaline>
-        <Lead
-          fontSize={[3, 4, 5]}
-          color="white"
-          maxWidth={36}
-          mt={[3, 4]}
-          mb={[4, 5]}
-        >
-          Hack Club is a global, nonprofit network of high school coding clubs.
-        </Lead>
-        <CommunityCTA to="/community" m={[1, 2]}>
-          Join the community
-        </CommunityCTA>
-        <StartCTA to="/start" m={[1, 2]}>
-          Start your club
-        </StartCTA>
-      </Container>
-    </Promo>
-    <Box bg="white" color="black" align="center" py={[5, 6, 7]}>
-      <Container px={3}>
-        <Flex align="center" justify="center" wrap>
-          <Stat value={stats.school_count} label="schools" color="red.5" />
-          <Stat value={stats.state_count} label="states" color="orange.5" />
-          <Stat value={stats.country_count} label="countries" color="yellow.6" />
-        </Flex>
-        <Text fontSize={4} my={4} mx="auto" maxWidth={46}>
-          <strong>
-            We’re high schoolers running weekly afterschool coding clubs.
-          </strong>{' '}
-          Applications to start a club are reviewed on a rolling basis.
-        </Text>
-        <Text fontSize={[1, 2]} color="black" mb={4}>
-          Start a club, or bring your own—existing clubs are welcome&nbsp;too!
-        </Text>
-        <PromoSmallCTA bg="teal.7" to="/start" chevronRight>
-          Start your club
-        </PromoSmallCTA>
-      </Container>
+  <Layout title={title} desc={desc} path="/">
+    <Nav color="slate" fixed />
+    <Box mt={[44, 55]} p={3} bg="snow">
+      <PhotoHeader
+        py={[3, 6, 7]}
+        src={require('../../static/photos/hackpenn_full.jpg')}
+        aria-label="Students at a coding event"
+        align={['left', 'center']}
+        color="white"
+      >
+        <Container width={1} maxWidth={72} px={3} mt={[5, 6]} mb={[4, 5]}>
+          <Headline maxWidth={48} mx="auto" fontSize={[6, 7, 8]} mb={2}>
+            We’re high schoolers leading the best coding clubs in&nbsp;the&nbsp;world.
+          </Headline>
+          <SectionLead fontSize={[3, 4]} mx="auto">
+            Hack Club is a global network of programming clubs where members
+            learn to code through tinkering and building projects.
+          </SectionLead>
+        </Container>
+      </PhotoHeader>
     </Box>
-    <Box bg="snow" color="black" py={[5, 6, 7]}>
-      <Container px={3}>
-        <ColoredHeadline
-          fontSize={[6, 7, 8]}
-          colors={['orange.5', 'pink.5', 'red.5']}
-        >
-          Join an incredible global community&nbsp;of hackers.
-          <HeadlineIcon
-            glyph="like-fill"
-            color="pink.5"
-            aria-label="heart icon"
-            size={36}
-            ml={2}
-            mt={-4}
-          />
-        </ColoredHeadline>
-        <Text fontSize={4} mt={0} mb={3} maxWidth={48}>
-          Hack Club is a community of thousands of other young makers.
-          We’re artists, writers, tinkerers, filmmakers, volunteers.
-          We&nbsp;make & learn together. You’ll be at home here.
-        </Text>
-        <Text fontSize={4} mb={4} maxWidth={48}>
-          Have a coding question? Looking for project feedback? You’ll find some
-          fabulous people to talk to in our global Slack (Discord-style online
-          groupchat) with 3,000+ members, active at all hours.
-        </Text>
-        <CTA to="/community">Sign me up</CTA>
-        <Features mt={[4, 5]}>
-          <Box>
-            <CommunityLine />
-            <Featline mt={5}>Join forces with the best hackers.</Featline>
-            <Lead color="black">
-              Making projects on your own can be isolating—we’ve been there. In
-              the Slack community, you’ll find friends, supporters, and
-              collaborators for your work.
-            </Lead>
-          </Box>
-          <Box>
-            <CommunityLine />
-            <Featline mt={5}>Meet some truly incredible people.</Featline>
-            <Lead color="black">
-              You’re going to meet super talented people, who organize
-              hackathons, start coding clubs, build apps, lead camps, classes,
-              and more.
-            </Lead>
-          </Box>
-          <Photo
-            src="/photos/dena_cover.jpg"
-            alt="A Hack Club meeting near Toronto, Canada"
-          />
-          <Photo
-            src="/photos/hackpenn_crew.jpg"
-            alt="Organizers of PA’s largest high school hackathon met in our Slack"
-          />
-        </Features>
-      </Container>
-    </Box>
-    <Box bg="white" color="black" py={[5, 6, 7]}>
-      <Container px={3}>
-        <ColoredHeadline
-          fontSize={[6, 7, 8]}
-          colors={['pink.5', 'fuschia.5', 'indigo.5']}
-          maxWidth={58}
-        >
-          Grow as a programmer & human with our resources.
-        </ColoredHeadline>
-        <Text fontSize={4} mb={4} style={{ maxWidth: '48rem' }}>
-          We offer <A href="/workshops">free, open-source coding tutorials</A>.
-          We write about{' '}
-          <A
-            target="_blank"
-            href="https://medium.com/hackclub/how-to-start-a-computer-science-club-at-your-high-school-ff32264f225a"
-          >
-            running coding clubs
-          </A>{' '}
-          and hackathons. We run seasonal <A href="/challenge">Challenges</A>,
-          themed coding competitions with cash prizes. We’re deeply committed to
-          improving the world of high&nbsp;school hacking.
-        </Text>
-        <Features mt={[4, 5, 6]}>
-          <Box>
-            <ResourcesLine />
-            <Subhline mt={5}>
-              Learn as you build at hackathons & events.
-            </Subhline>
-            <Lead>
-              We maintain an open source, up-to-date list of all the{' '}
-              <A href="https://hackathons.hackclub.com">
-                high school hackathons
-              </A>{' '}
-              happening soon. Check out all those events! (& totally go to one.)
-            </Lead>
-          </Box>
-          <Box>
-            <ResourcesLine />
-            <Subhline mt={5}>
-              Running an event?
-              <br />
-              We can help.
-              <SubhlineIcon
-                glyph="bank-circle"
-                color="red.5"
-                aria-label="hack club bank icon"
-                size={32}
-                ml={2}
-                mt={-2}
-              />
-            </Subhline>
-            <Lead>
-              Running a hackathon is tough.{' '}
-              <A href="/bank">Hack&nbsp;Club Bank</A> offers a straightforward,
-              batteries-included financial platform for high school events.
-            </Lead>
-          </Box>
-        </Features>
-        <MegaQuote mt={6}>
-          <GlowingIcon glyph="quote" size={24} />
-          <Text fontSize={[5, 6]} mt={[null, 5]} bold>
-            Before I started Hack Club in sophomore year, I didn’t believe in
-            myself. I didn’t think I could do big things.
-          </Text>
-          <Flex align="center" mt={[4, 5]}>
-            <Avatar src="/hackers/megan.png" size={48} mr={3} />
-            <Box align="left" fontSize={3}>
-              <Text.span bold>Megan Cui</Text.span>, Cincinnati, OH
-              <br />
-              <Text fontSize={2} color="smoke">
-                (@megan on Slack)
+    <Box bg="white" py={[5, 6]}>
+      <Container color="black" px={3}>
+        <SectionEyebrow>Clubs in action</SectionEyebrow>
+        <SectionHeadline>Build superpowers at your club.</SectionHeadline>
+        <SectionLead>
+          Hack Clubs{' '}
+          <Highlight>
+            meet weekly at their high schools, typically for 1.5hrs
+          </Highlight>{' '}
+          after school. There are no teachers or lectures—members work at their
+          own pace making websites, apps, & games, and presenting them to the
+          group. As a club leader, you act as a{' '}
+          <Like href="https://en.wikipedia.org/wiki/Constructionism_(learning_theory)">
+            facilitator
+          </Like>
+          , mentoring members and building a supportive community.
+        </SectionLead>
+        <HourFeatures>
+          <section>
+            <PhotoFeature src="/start/group.jpg">
+              <Text>
+                A group of students gather to start coding. Many are beginners.
               </Text>
-            </Box>
-          </Flex>
-        </MegaQuote>
+            </PhotoFeature>
+            <Text>
+              <strong>Everyone starts hacking.</strong> At the first few
+              meetings, members follow{' '}
+              <LikeLink to="/workshops/">our tutorials</LikeLink> as a runway
+              before taking off with their own projects.
+            </Text>
+          </section>
+          <section>
+            <PhotoFeature src="/start/coding_2.jpg">
+              <Text>
+                Members work on self-directed coding projects, learning by
+                making.
+              </Text>
+            </PhotoFeature>
+            <Text>
+              <strong>Members leave every meeting with a project</strong>
+              —including their first day. Check out{' '}
+              <Like href="https://messy-wool.surge.sh/catch.html">
+                a first website
+              </Like>
+              {' & '}
+              <Like href="https://messy-wool.surge.sh/catch.html">
+                game
+              </Like>{' '}
+              built at Hack Clubs.
+            </Text>
+          </section>
+          <section>
+            <PhotoFeature src="/photos/hhv_demo_edit.jpg">
+              <Text>
+                At the end, everyone demos their projects for the club.
+              </Text>
+            </PhotoFeature>
+            <Text>
+              <strong>Demos bring the club together.</strong> As the leader,
+              you’re cultivating a community of makers. Demos highlight new work
+              & momentum.
+            </Text>
+          </section>
+        </HourFeatures>
+        <Cols cols="1fr 3fr" mx={-3} mt={[4, 5, 6]}>
+          <Headline px={3}>Go beyond club&nbsp;meetings.</Headline>
+          <SectionLead pl={[3, 0]} pr={3} mb={0}>
+            Hack Clubs attend and run hackathons like{' '}
+            <Like href="https://windyhacks.com">
+              Windy&nbsp;City&nbsp;Hacks
+            </Like>{' '}
+            &{' '}
+            <Like href="http://outlooknewspapers.com/hackademia-aims-for-young-tech-devotees/">
+              Hackademia
+            </Like>
+            , run summer programs like{' '}
+            <Like href="http://thecspn.com/?p=43434">Hack Camp</Like>, and
+            compete in events like the{' '}
+            <Like href="http://www.congressionalappchallenge.us">
+              Congressional App Challenge
+            </Like>
+            . The&nbsp;hack’s the limit.
+          </SectionLead>
+        </Cols>
       </Container>
+    </Box>
+    <Flex flexDirection="column" bg="snow" py={[5, 6]}>
+      <Container {...contentContainer}>
+        <SectionEyebrow>Resources from HQ</SectionEyebrow>
+        <SectionHeadline>
+          We’ll provide support to get your&nbsp;club{' '}
+          <Text.span color="teal.6">going & growing</Text.span>.
+        </SectionHeadline>
+        <SectionLead>
+          From working with our {stats.school_count} clubs at high schools
+          around the world, we’ve assembled the resources you’ll need for a
+          successful club. Get&nbsp;training, marketing materials (stickers!),
+          curriculum, a&nbsp;community of fellow leaders, a network of events,
+          and more.
+        </SectionLead>
+        <Cols cols="2fr 3fr">
+          <MarketingFeature>
+            {/* TODO: change icon to "sticker" after next @hackclub/icons release */}
+            <Module
+              icon="challenge"
+              name="Stickers!"
+              body="We’ll ship your club a box of our famous stickers for successful marketing from day one."
+              color="white"
+            />
+            {/* <FeatureLink to="/stickers" color="white">
+              Get a sample pack
+            </FeatureLink> */}
+          </MarketingFeature>
+          <PhotoFeature src="/start/call.jpg" inverted>
+            <Text color="white">
+              Talk to our team over a call or on Slack for{' '}
+              <Text.span color="success">guidance & assistance</Text.span>{' '}
+              whenever you need it.
+            </Text>
+          </PhotoFeature>
+        </Cols>
+        <Cols cols="3fr 2fr">
+          <PhotoFeature src="/start/community.jpg" inverted>
+            <Module
+              name="Community"
+              body="In our Slack, come chat with hundreds of other club leaders and members around the world."
+              color="white"
+            />
+            <FeatureLink to="/community/" color="white">
+              Join our Slack
+            </FeatureLink>
+          </PhotoFeature>
+          <TextFeature>
+            <Text>
+              Our <Text.span color="info">curriculum</Text.span> gives your
+              members dozens of free tutorials for making websites, games, and
+              beyond.
+            </Text>
+            <FeatureLink to="/workshops/" color="info">
+              Check out workshops
+            </FeatureLink>
+          </TextFeature>
+        </Cols>
+        <Cols>
+          <PhotoFeature src="/photos/hackpenn_meme.jpg" inverted>
+            <Text>
+              Attend hackathons, workshops, & other{' '}
+              <Text.span color="cyan.5">local events</Text.span> from
+              Hack&nbsp;Clubs near yours.
+            </Text>
+            <FeatureLink to="https://hackathons.hackclub.com" color="white">
+              See nearby events
+            </FeatureLink>
+          </PhotoFeature>
+          <BankFeature>
+            <Module
+              icon="bank-circle"
+              name="Finances: fully accounted for."
+              body="Store money in a non-profit bank account, get debit cards, & collect donations online."
+              color="white"
+            />
+            <FeatureLink to="/bank/" color="white">
+              Learn more
+            </FeatureLink>
+          </BankFeature>
+        </Cols>
+      </Container>
+    </Flex>
+    <Container {...contentContainer} maxWidth={64}>
+      <Flex
+        flexDirection={['column', null, 'row']}
+        justify="center"
+        py={[5, 6]}
+      >
+        <Icon glyph="welcome" color="pink.5" size={96} m={[null, null, 3]} />
+        <Box align="left">
+          <Headline>
+            Start a new club, or bring yours. We’re excited to meet you.
+          </Headline>
+          <Lead fontSize={[3, 4]} mt={3}>
+            When established CS clubs join, they get all the benefits of the
+            network. While we’re currently optimized for new clubs, we’re
+            continually increasing benefits for existing clubs through new
+            projects like{' '}
+            <A.link to="/bank/" target="_blank">
+              Bank
+            </A.link>
+            {' & '}
+            <A href="https://hackathons.hackclub.com/" target="_blank">
+              Hackathons
+            </A>
+            .
+          </Lead>
+        </Box>
+      </Flex>
+    </Container>
+    <Box bg="snow" color="black" py={[5, 6]}>
+      <Container px={3}>
+        <SectionEyebrow>Philosophy</SectionEyebrow>
+        <SectionHeadline>
+          By the students,{' '}
+          <Text.span color="warning">for the students</Text.span>.
+        </SectionHeadline>
+        <SectionLead>
+          <Highlight>Every Hack Club is always student-led.</Highlight> Students
+          naturally build the culture of empowerment so key to success. Teachers
+          can help by marketing the club & getting access to school resources.
+        </SectionLead>
+        <Cols cols="1fr 1fr">
+          <Photo
+            alt="Building a robot at a Hack Club event"
+            src="/photos/hackpenn_focus.jpg"
+          />
+          <Photo
+            alt="Photo by Janet Fang, Los Altos Hacks"
+            src="/photos/lah_1.jpg"
+          />
+        </Cols>
+      </Container>
+    </Box>
+    <Box bg="white" color="black" pt={[5, 6]} pb={3}>
+      <Container px={3}>
+        <SectionEyebrow>Application</SectionEyebrow>
+        <SectionHeadline>
+          Apply today to <Text.span color="primary">start your club</Text.span>.
+        </SectionHeadline>
+        <SectionLead>
+          It’s all-online, free, & takes about an hour. We’ll help from there!
+        </SectionLead>
+        <Steps color="white">
+          <StepOne>
+            <A href="https://apply.hackclub.com/">
+              <Module
+                icon="send"
+                name="1. Application"
+                body="Start by telling us about your ideas for the club."
+              />
+            </A>
+          </StepOne>
+          <StepTwo>
+            <Module
+              icon="emoji"
+              name="2. Training call"
+              body="We’ll chat and begin a plan for your club & marketing."
+            />
+          </StepTwo>
+          <StepThree>
+            <Module
+              icon="event-check"
+              name="3. First meeting"
+              body="Schedule your club’s first meeting & get going!"
+            />
+          </StepThree>
+        </Steps>
+      </Container>
+    </Box>
+    <Box p={[3, 4, 5]}>
+      <MapBox
+        py={[3, 5, 6]}
+        bg="darker"
+        src="/map.svg"
+        aria-label="Students at a coding event"
+        align={['left', 'center']}
+        color="white"
+      >
+        <Container width={1} maxWidth={72} px={2} mt={[4, 5, 6]} mb={[3, 4, 5]}>
+          <Headline>Start leading your club.</Headline>
+          <Text fontSize={[3, 5]} my={[1, 2]}>
+            Build the class you wish you&nbsp;had.
+          </Text>
+          <Text fontSize={[3, 5]} my={[1, 2]}>
+            Bring the movement to your&nbsp;school.
+          </Text>
+          <ApplyButton
+            href="https://apply.hackclub.com/"
+            children="Apply to Hack Club"
+            mt={4}
+          />
+        </Container>
+      </MapBox>
     </Box>
     <Footer />
   </Layout>

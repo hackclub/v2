@@ -17,7 +17,6 @@ import Link from 'components/Link'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Photo from 'components/Photo'
-import FallPromo from 'components/FallPromo'
 import { Headline, Highlight, Lead } from 'components/Content'
 import Footer from 'components/Footer'
 import { stats } from 'data.json'
@@ -209,6 +208,7 @@ const Steps = styled(Box)`
   > div {
     ${featureStyles};
   }
+  const StepOne = 
 `
 
 const HourFeatures = styled(Steps)`
@@ -227,6 +227,30 @@ const ApplyButton = styled(LargeButton).attrs({
 })`
   text-transform: uppercase;
   background-image: ${theme.gradient('warning', 'primary')};
+`
+const StepOne = styled(Sheet)`
+  background-color: ${theme.colors.red[6]};
+  background-image: linear-gradient(
+    to bottom,
+    ${theme.colors.orange[5]},
+    ${theme.colors.pink[6]}
+  );
+`
+const StepTwo = styled(Sheet)`
+  background-color: ${theme.colors.violet[6]};
+  background-image: linear-gradient(
+    to bottom,
+    ${theme.colors.fuschia[5]},
+    ${theme.colors.indigo[6]}
+  );
+`
+const StepThree = styled(Sheet)`
+  background-color: ${theme.colors.teal[6]};
+  background-image: linear-gradient(
+    to bottom,
+    ${theme.colors.cyan[5]},
+    ${theme.colors.blue[6]}
+  );
 `
 
 const SectionEyebrow = styled(Text).attrs({
@@ -289,7 +313,6 @@ export default () => (
           </SectionLead>
         </Container>
       </PhotoHeader>
-      <FallPromo />
     </Box>
     <Box bg="white" py={[5, 6]}>
       <Container color="black" px={3}>
@@ -511,7 +534,7 @@ export default () => (
         </Cols>
       </Container>
     </Box>
-    {/* <Box bg="white" color="black" pt={[5, 6]} pb={3}>
+    <Box bg="white" color="black" pt={[5, 6]} pb={3}>
       <Container px={3}>
         <SectionEyebrow>Application</SectionEyebrow>
         <SectionHeadline>
@@ -546,7 +569,7 @@ export default () => (
           </StepThree>
         </Steps>
       </Container>
-    </Box> */}
+    </Box>
     <Box p={[3, 4, 5]}>
       <MapBox
         py={[3, 5, 6]}
@@ -566,7 +589,7 @@ export default () => (
           </Text>
           <ApplyButton
             href="https://apply.hackclub.com/"
-            children="Join the waitlist"
+            children="Apply to Hack Club"
             mt={4}
           />
         </Container>

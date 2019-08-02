@@ -33,7 +33,7 @@ const Start = ({ buttonProps = {}, ...props }) => (
     </Box>
     <Box align={['center', null, 'left']}>
       <LargeButton.link
-        to="/start"
+        to="/"
         inverted
         children="Get started"
         chevronRight

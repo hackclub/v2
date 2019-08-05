@@ -17,7 +17,11 @@
     "c": "community",
     "g": "github.com",
     "r": "repl.it",
-    "t": "teacher",
+    "t": "teacher default",
+    "t1": "teacher a/b test #1 - coding clubs @ school",
+    "t2": "teacher a/b test #2 - general apps are now open",
+    "t3": "teacher a/b test #3 - tbd",
+    "t4": "teacher a/b test #4 - tbd",
     "s": "student",
     "u": "direct teacher outreach",
     "v": "direct student outreach"

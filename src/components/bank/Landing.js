@@ -88,9 +88,8 @@ export default () => (
       maxWidth={75}
     >
       <Fade bottom>
-        <Heading.h1 fontSize={[5, 6, 7, 8]}>
-          The bank for the <Underline>best</Underline> high&nbsp;school
-          hackathons <Underline>in the world</Underline>.
+        <Heading.h1 fontSize={[6, 7, 8, 9]}>
+          The bank for the <Underline>best</Underline> hackathons <Underline>in the world</Underline>.
         </Heading.h1>
         <Lead maxWidth={48} my={4} fontSize={[3, 4]}>
           The team behind{' '}

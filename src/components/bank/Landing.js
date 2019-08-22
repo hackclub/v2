@@ -88,7 +88,8 @@ export default () => (
     >
       <Fade bottom>
         <Heading.h1 fontSize={[6, 7, 8, 9]}>
-          The bank for the <Underline>best</Underline> hackathons <Underline>in the world</Underline>.
+          The bank for the <Underline>best</Underline> hackathons{' '}
+          <Underline>in the world</Underline>.
         </Heading.h1>
         <Lead maxWidth={48} my={4} fontSize={[3, 4]}>
           The team behind{' '}
@@ -100,12 +101,12 @@ export default () => (
           >
             Cal&nbsp;Hacks
           </A>{' '}
-          is one of 75+ teams using <strong>Hack&nbsp;Club&nbsp;Bank</strong>{' '}
-          to run world-class hackathons.
+          is one of 75+ teams using <strong>Hack&nbsp;Club&nbsp;Bank</strong> to
+          run world-class hackathons.
         </Lead>
       </Fade>
     </Container>
-    <ScrollHint/>
+    <ScrollHint />
     <Flex justify={['center', 'flex-end']} px={3}>
       <LocationPill>Berkeley, CA</LocationPill>
     </Flex>

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import AnimatedValue from 'animated-value'
 
 const ScrollCaret = styled.div`
   display: block;
@@ -12,27 +13,32 @@ const ScrollCaret = styled.div`
   border-bottom: 2px solid #fff;
   border-right: 2px solid #fff;
   transform: rotate(45deg);
-  opacity: .6;
+  opacity: 0.6;
   cursor: pointer;
-  transition: transform .3s;
+  transition: transform 0.3s;
 
   &:hover {
-    transform: translateY(4px) rotate(45deg) ;
+    transform: translateY(4px) rotate(45deg);
   }
 
   &:active {
-    transform: translateY(6px) rotate(45deg) ;
+    transform: translateY(6px) rotate(45deg);
   }
 `
 
 export default function ScrollHint() {
-  return <ScrollCaret onClick={() => {
-    const scrollTo = () => {
-      if (document.scrollingElement.scrollTop < window.innerHeight) {
-        document.scrollingElement.scrollTop += 50;
-        requestAnimationFrame(scrollTo);
-      }
-    }
-    requestAnimationFrame(scrollTo);
-  }}/>
+  return (
+    <ScrollCaret
+      onClick={() => {
+        const scrollValue = new AnimatedValue({
+          start: document.scrollingElement.scrollTop,
+          end: window.innerHeight,
+          ease: AnimatedValue.CURVES.EXPO_OUT
+        })
+        scrollValue.play(1000, () => {
+          document.scrollingElement.scrollTop = scrollValue.value()
+        })
+      }}
+    />
+  )
 }

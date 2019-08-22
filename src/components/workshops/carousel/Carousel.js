@@ -169,12 +169,12 @@ const LoadedCarousel = (
     {showAll
       ? AllProjects(projects)
       : liveFrameStatus != 'empty'
-        ? LiveProject(submissionProject)
-        : projects.length == 0
-          ? EmptyProject(emptyProject)
-          : projects.length < 3
-            ? ShortList(projects)
-            : SliderList(projects)}
+      ? LiveProject(submissionProject)
+      : projects.length == 0
+      ? EmptyProject(emptyProject)
+      : projects.length < 3
+      ? ShortList(projects)
+      : SliderList(projects)}
   </Fragment>
 )
 

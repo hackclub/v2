@@ -29,7 +29,7 @@ const Base = styled(Sheet).attrs({
 
 const CTAButton = styled(LargeButton).attrs({
   scale: true,
-  chevronRight: true,
+  chevronRight: true
 })`
   text-transform: uppercase;
   color: ${theme.colors.primary};
@@ -112,23 +112,31 @@ const FallPromo = ({ buttonProps = {}, ...props }) => (
         Start a club in the&nbsp;fall.
       </Subhline>
       <Lead maxWidth={36} mx="auto" color="white" fontSize={[3, 4]} my={2}>
-        Launching a club at the start of the school year is tough—so get a
-        head start by joining our waitlist. We'll send you resources to plan,
-        from marketing to running your first meeting, over summer.
+        Launching a club at the start of the school year is tough—so get a head
+        start by joining our waitlist. We'll send you resources to plan, from
+        marketing to running your first meeting, over summer.
       </Lead>
       <CTAButton
         href="https://apply.hackclub.com"
         children="Join the waitlist"
         mt={[0, 2]}
-        />
+      />
     </Red>
     <White>
       <Timeline>
-        <Timeline.Step icon="send" name="Join the list" duration="Right now" first />
+        <Timeline.Step
+          icon="send"
+          name="Join the list"
+          duration="Right now"
+          first
+        />
         <Timeline.Step name="Plan your club" duration="Over summer" />
         <Timeline.Step name="Apply to Hack Club" duration="Next fall" />
         <Timeline.Step name="Interview call" duration="Within 2 days" />
-        <Timeline.Step name="Run your first meeting" duration="Within 2 weeks" />
+        <Timeline.Step
+          name="Run your first meeting"
+          duration="Within 2 weeks"
+        />
       </Timeline>
     </White>
   </Base>

@@ -3,7 +3,6 @@ import React from 'react'
 import { Link as DSLink } from '@hackclub/design-system'
 import { Link as GatsbyLink } from 'gatsby'
 
-
 const isExternalLink = path => path.startsWith('http') || path.startsWith('//:')
 
 const DSGatsbyLink = DSLink.withComponent(GatsbyLink)

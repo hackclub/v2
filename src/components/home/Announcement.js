@@ -40,12 +40,12 @@ export default () => (
     <Text fontSize={1} mr={1}>
       <strong>Teachers:</strong>
     </Text>
-      <Text ml={1} align="left">
-        {' '}
-        Know motivated students that would make good leaders?
-        <br />
-        Encourage them to apply below!
-      </Text>
+    <Text ml={1} align="left">
+      {' '}
+      Know motivated students that would make good leaders?
+      <br />
+      Encourage them to apply below!
+    </Text>
     {/*<Announcement.Link to="/flyer.pdf">Download flyer</Announcement.Link>*/}
   </Announcement>
 )

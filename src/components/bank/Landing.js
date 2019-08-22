@@ -8,7 +8,6 @@ import {
   theme
 } from '@hackclub/design-system'
 import { Lead } from 'components/Content'
-import Possibility from 'components/bank/Possibility'
 import Fade from 'react-reveal/Fade'
 
 const Slide = styled(Flex).attrs({
@@ -77,7 +76,6 @@ const LocationPill = styled(Flex).attrs({
 export default () => (
   <Slide>
     <Vignette />
-    <Possibility />
     <Container
       pt={[6, 7, 8]}
       pb={[4, 5]}
@@ -94,20 +92,20 @@ export default () => (
         <Lead maxWidth={48} my={4} fontSize={[3, 4]}>
           The team behind{' '}
           <A
-            href="https://www.losaltoshacks.com/?ref=bank"
+            href="https://calhacks.io/?ref=bank"
             color="inherit"
             bold
             hoverline
           >
-            Los Altos Hacks
+            Cal&nbsp;Hacks
           </A>{' '}
-          is one of dozens of teams using <strong>Hack&nbsp;Club Bank</strong>{' '}
+          is one of 75+ teams using <strong>Hack&nbsp;Club&nbsp;Bank</strong>{' '}
           to run world-class hackathons.
         </Lead>
       </Fade>
     </Container>
     <Flex justify={['center', 'flex-end']} px={3}>
-      <LocationPill>Sunnyvale, CA</LocationPill>
+      <LocationPill>Berkeley, CA</LocationPill>
     </Flex>
   </Slide>
 )

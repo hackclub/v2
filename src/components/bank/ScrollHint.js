@@ -35,7 +35,7 @@ export default function ScrollHint() {
           end: window.innerHeight,
           ease: AnimatedValue.CURVES.EXPO_OUT
         })
-        scrollValue.play(1000, () => {
+        scrollValue.play(800, () => {
           document.scrollingElement.scrollTop = scrollValue.value()
         })
       }}

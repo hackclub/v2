@@ -9,6 +9,7 @@ import {
 } from '@hackclub/design-system'
 import { Lead } from 'components/Content'
 import Fade from 'react-reveal/Fade'
+import ScrollHint from './ScrollHint'
 
 const Slide = styled(Flex).attrs({
   flexDirection: 'column',
@@ -104,6 +105,7 @@ export default () => (
         </Lead>
       </Fade>
     </Container>
+    <ScrollHint/>
     <Flex justify={['center', 'flex-end']} px={3}>
       <LocationPill>Berkeley, CA</LocationPill>
     </Flex>

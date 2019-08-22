@@ -63,6 +63,7 @@ const LocationPill = styled(Flex).attrs({
   mb: [3, 4],
   color: 'dark'
 })`
+  z-index: 1;
   border-radius: ${theme.pill};
   background: rgba(255, 255, 255, 0.875);
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
@@ -107,7 +108,7 @@ export default () => (
       </Fade>
     </Container>
     <ScrollHint />
-    <Flex justify={['center', 'flex-end']} px={3}>
+    <Flex justify={['flex-end']} px={3}>
       <LocationPill>Berkeley, CA</LocationPill>
     </Flex>
   </Slide>

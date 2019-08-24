@@ -43,7 +43,7 @@ const InnerForm = ({ values, errors, touched, handleChange, handleBlur }) => (
     <Field
       label="Event name"
       name="name"
-      placeholder="Windy City Hacks"
+      placeholder="Cal Hacks"
       value={values.name}
       onChange={handleChange}
       onBlur={handleBlur}
@@ -53,7 +53,7 @@ const InnerForm = ({ values, errors, touched, handleChange, handleBlur }) => (
     <Field
       label="URL"
       name="url"
-      placeholder="https://windyhacks.com"
+      placeholder="https://calhacks.io"
       value={values.url}
       onChange={handleChange}
       onBlur={handleBlur}
@@ -65,7 +65,7 @@ const InnerForm = ({ values, errors, touched, handleChange, handleBlur }) => (
       name="expected_attendees"
       value={values.expected_attendees}
       type="number"
-      placeholder={200}
+      placeholder={2200}
       onChange={handleChange}
       onBlur={handleBlur}
       mb={[3, 4]}

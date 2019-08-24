@@ -8,8 +8,8 @@ import {
   theme
 } from '@hackclub/design-system'
 import { Lead } from 'components/Content'
-import Possibility from 'components/bank/Possibility'
 import Fade from 'react-reveal/Fade'
+import ScrollHint from './ScrollHint'
 
 const Slide = styled(Flex).attrs({
   flexDirection: 'column',
@@ -63,6 +63,7 @@ const LocationPill = styled(Flex).attrs({
   mb: [3, 4],
   color: 'dark'
 })`
+  z-index: 1;
   border-radius: ${theme.pill};
   background: rgba(255, 255, 255, 0.875);
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
@@ -77,7 +78,6 @@ const LocationPill = styled(Flex).attrs({
 export default () => (
   <Slide>
     <Vignette />
-    <Possibility />
     <Container
       pt={[6, 7, 8]}
       pb={[4, 5]}
@@ -89,25 +89,27 @@ export default () => (
     >
       <Fade bottom>
         <Heading.h1 fontSize={[6, 7, 8, 9]}>
-          The bank for the <Underline>best</Underline> hackathons <Underline>in the world</Underline>.
+          The bank for the <Underline>best</Underline> hackathons{' '}
+          <Underline>in the world</Underline>.
         </Heading.h1>
         <Lead maxWidth={48} my={4} fontSize={[3, 4]}>
           The team behind{' '}
           <A
-            href="https://www.losaltoshacks.com/?ref=bank"
+            href="https://calhacks.io/?ref=bank"
             color="inherit"
             bold
             hoverline
           >
-            Los Altos Hacks
+            Cal&nbsp;Hacks
           </A>{' '}
-          is one of dozens of teams using <strong>Hack&nbsp;Club Bank</strong>{' '}
-          to run world-class hackathons.
+          is one of 75+ teams using <strong>Hack&nbsp;Club&nbsp;Bank</strong> to
+          run world-class hackathons.
         </Lead>
       </Fade>
     </Container>
-    <Flex justify={['center', 'flex-end']} px={3}>
-      <LocationPill>Sunnyvale, CA</LocationPill>
+    <ScrollHint />
+    <Flex justify={['flex-end']} px={3}>
+      <LocationPill>Berkeley, CA</LocationPill>
     </Flex>
   </Slide>
 )

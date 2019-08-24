@@ -1636,6 +1636,13 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
+animated-value@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/animated-value/-/animated-value-0.2.3.tgz#edfc1bc951229debce16e1c058a27492ba52b172"
+  integrity sha512-TQZ/nM48TdiXOauqm+X3O7Xly1TQLvDIK17CdF1rTmhm4rqdg91kAMFHlKPeYgBcuMlMwZjSW1HeuiUcPgmTXg==
+  dependencies:
+    bezier-easing "^2.1.0"
+
 ansi-align@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-2.0.0.tgz#c36aeccba563b89ceb556f3690f0b1d9e3547f7f"
@@ -2177,6 +2184,11 @@ better-queue@^3.8.6, better-queue@^3.8.7:
     better-queue-memory "^1.0.1"
     node-eta "^0.9.0"
     uuid "^3.0.0"
+
+bezier-easing@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/bezier-easing/-/bezier-easing-2.1.0.tgz#c04dfe8b926d6ecaca1813d69ff179b7c2025d86"
+  integrity sha1-wE3+i5JtbsrKGBPWn/F5t8ICXYY=
 
 big.js@^3.1.3:
   version "3.2.0"

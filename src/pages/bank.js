@@ -3,6 +3,7 @@ import { theme } from '@hackclub/design-system'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
+import AnnouncementBanner from 'components/bank/AnnouncementBanner'
 import Landing from 'components/bank/Landing'
 import Run from 'components/bank/Run'
 import Features from 'components/bank/Features'
@@ -32,6 +33,7 @@ export default () => (
   <Layout title={title} desc={desc} img="/cards/bank_one.png" path="/bank/">
     <style children={styles} />
     <Nav dark />
+    <AnnouncementBanner />
     <Landing />
     <Features />
     <Testimonials />

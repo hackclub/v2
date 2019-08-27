@@ -8,9 +8,11 @@ class Segmenter extends Component {
     const userType = this.props.pageContext.userType
     storage.set('userType', userType)
     window.analytics.identify({ userType })
-    navigate("/")
+    navigate('/')
   }
-  render() { return <Index /> }
+  render() {
+    return <Index />
+  }
 }
 
 export default Segmenter

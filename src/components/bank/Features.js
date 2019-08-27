@@ -143,7 +143,20 @@ export default () => (
       <Module
         icon="card"
         name="Debit cards"
-        body={<>Issue physical debit cards to all your teammates, backed by <A href="https://www.emburse.com/solutions/non-profits/" color="smoke" hoverline target="_blank">Emburse</A>.</>}
+        body={
+          <>
+            Issue physical debit cards to all your teammates, backed by{' '}
+            <A
+              href="https://www.emburse.com/solutions/non-profits/"
+              color="smoke"
+              hoverline
+              target="_blank"
+            >
+              Emburse
+            </A>
+            .
+          </>
+        }
       />
       <Module
         icon="analytics"

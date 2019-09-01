@@ -21,7 +21,7 @@ const Slide = styled(Flex).attrs({
   box-shadow: inset 0 0 4rem 4rem rgba(0, 0, 0, 0.5);
   background-position: center;
   background-size: cover;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   position: relative;
   h1 {

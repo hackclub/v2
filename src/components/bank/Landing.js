@@ -5,6 +5,7 @@ import {
   Flex,
   Heading,
   Link as A,
+  Button,
   theme
 } from '@hackclub/design-system'
 import { Lead } from 'components/Content'
@@ -86,6 +87,7 @@ export default () => (
       color="white"
       mt="auto"
       maxWidth={75}
+      style={{ zIndex: 100 }}
     >
       <Fade bottom>
         <Heading.h1 fontSize={[6, 7, 8, 9]}>
@@ -106,6 +108,12 @@ export default () => (
           run world-class hackathons.
         </Lead>
       </Fade>
+      <Flex justify="center" align="center">
+        <Button href="#apply">Apply with your event</Button>
+        <Button href="https://bank.hackclub.com" ml={3} bg="snow" color="black">
+          Sign in
+        </Button>
+      </Flex>
     </Container>
     <ScrollHint />
     <Flex justify={['flex-end']} px={3}>

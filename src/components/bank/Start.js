@@ -62,7 +62,7 @@ Timeline.Step = ({ name, duration, first = false }) => (
 )
 
 export default () => (
-  <Box.section bg="dark" py={[5, 6, 7]}>
+  <Box.section bg="dark" py={[5, 6, 7]} id="apply">
     <Container maxWidth={48} px={3} align="center">
       <Headline color="white" mb={2}>
         Apply for Hack&nbsp;Club Bank.

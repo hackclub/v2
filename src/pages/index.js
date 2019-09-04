@@ -169,11 +169,13 @@ const BankFeature = styled(Sheet)`
   background-image: ${theme.gradient('red.5', 'red.7')};
 `
 const GrantFeature = styled(Sheet)`
-  background-color: ${theme.colors.blue[4]};
-  background-image: ${theme.gradient('blue.3', 'blue.5')};
   position: relative;
   overflow: visible;
-  &:before {
+  background-image: url(${require('../../static/github/swoosh.svg')});
+  background-position: bottom right;
+  background-size: 22em;
+  background-repeat: no-repeat;
+  &:after {
     content: '';
     display: inline-block;
     position: absolute;
@@ -186,8 +188,12 @@ const GrantFeature = styled(Sheet)`
     width: 12rem;
     height: 12rem;
   }
+  > p {
+    font-weight: bold;
+    font-size: ${theme.fontSizes[5]}px;
+    line-height: 1.25;
+  }
 `
-
 const PackFeature = styled(Sheet)`
   background-color: ${theme.colors.blue[4]};
   background-image: ${theme.gradient('indigo.3', 'fuschia.6')};
@@ -495,24 +501,6 @@ export default () => (
           curriculum, a&nbsp;community of fellow leaders, a network of events,
           and more.
         </SectionLead>
-        <Cols>
-          <PackFeature>
-            <Module
-              name="Use real tools."
-              body="Get access to the GitHub Student Developer Pack with over $45,000 in developer tools."
-              color="white"
-            />
-            <FeatureLink to="https://education.github.com/pack" color="white" ml={7}>See what's inside</FeatureLink>
-          </PackFeature>
-          <GrantFeature>
-            <Module
-              name="Lift-off with sponsorship."
-              body="We've partnered with GitHub to give up to $150 in grants for clubs and a $500 sponsorship for events."
-              color="white"
-            />
-            <FeatureLink to="https://github.blog/2019-09-04-github-and-hack-club-bring-computer-science-resources-to-high-schools/" color="white">Read about the partnership</FeatureLink>
-          </GrantFeature>
-        </Cols>
         <Cols cols="2fr 3fr">
           <MarketingFeature>
             {/* TODO: change icon to "sticker" after next @hackclub/icons release */}
@@ -533,6 +521,30 @@ export default () => (
               whenever you need it.
             </Text>
           </PhotoFeature>
+        </Cols>
+        <Cols>
+          <GrantFeature>
+            <Text>
+              Up to <Text.span color="success">$150&nbsp;in&nbsp;grants</Text.span> for clubs and up to <Text.span color="success">$500&nbsp;in&nbsp;sponsorships</Text.span> for events.
+            </Text>
+            <FeatureLink to="https://github.blog/2019-09-04-github-and-hack-club-bring-computer-science-resources-to-high-schools/" color="info">GitHub's partnership</FeatureLink>
+          </GrantFeature>
+          <PackFeature>
+            <Module
+              name="You've got the tools."
+              body="Accelerated access to the GitHub Student Developer Pack with $45,000 in developer tools."
+              color="white"
+            />
+            <FeatureLink to="https://education.github.com/pack" color="white" ml={7}>See what's inside</FeatureLink>
+          </PackFeature>
+          {/* <GrantFeature>
+            <Module
+              name="Launch your project with sponsorship."
+              body={<><strong>$150&nbsp;in&nbsp;grants</strong> for clubs and a <strong>$500&nbsp;sponsorship</strong> for events.</>}
+              color="white"
+            />
+            <FeatureLink to="https://github.blog/2019-09-04-github-and-hack-club-bring-computer-science-resources-to-high-schools/" color="white">GitHub's partnership</FeatureLink>
+          </GrantFeature> */}
         </Cols>
         <Cols cols="3fr 2fr">
           <PhotoFeature src="/start/community.jpg" inverted>

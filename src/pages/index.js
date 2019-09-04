@@ -400,7 +400,10 @@ export default () => (
           </Headline>
           <SectionLead fontSize={[3, 4]} mx="auto" mb={0}>
             Hack&nbsp;Club is a global network of programming clubs where
-            members learn to code through tinkering and building projects.{' '}
+            members learn to code through tinkering and building&nbsp;projects.{' '}
+            <OnlyDesktop>
+              <br />
+            </OnlyDesktop>
             <strong>Fall 2019 applications due September 13th.</strong>
           </SectionLead>
           <SecondaryCTA to="https://hackclub.com/community">
@@ -532,9 +535,17 @@ export default () => (
         <Cols>
           <GrantFeature>
             <Text>
-              Up to <Text.span color="info">$150&nbsp;in&nbsp;grants</Text.span> for clubs and <Text.span color="info">$500&nbsp;in&nbsp;sponsorships</Text.span> for events.
+              Up to <Text.span color="info">$150&nbsp;in&nbsp;grants</Text.span>{' '}
+              for clubs and{' '}
+              <Text.span color="info">$500&nbsp;in&nbsp;sponsorships</Text.span>{' '}
+              for events.
             </Text>
-            <FeatureLink to="https://github.blog/2019-09-04-github-and-hack-club-bring-computer-science-resources-to-high-schools/" color="info">GitHub exclusive</FeatureLink>
+            <FeatureLink
+              to="https://github.blog/2019-09-04-github-and-hack-club-bring-computer-science-resources-to-high-schools/"
+              color="info"
+            >
+              GitHub exclusive
+            </FeatureLink>
           </GrantFeature>
           <PackFeature>
             <Module
@@ -542,7 +553,13 @@ export default () => (
               body="Rapid access to the GitHub Student Developer Pack with $45,000 in developer tools for everyone in your club."
               color="white"
             />
-            <FeatureLink to="https://education.github.com/pack" color="white" ml={7}>See what’s inside</FeatureLink>
+            <FeatureLink
+              to="https://education.github.com/pack"
+              color="white"
+              ml={7}
+            >
+              See what’s inside
+            </FeatureLink>
           </PackFeature>
         </Cols>
         <Cols cols="3fr 2fr">

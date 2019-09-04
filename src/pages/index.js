@@ -427,7 +427,7 @@ export default () => (
           </section>
         </HourFeatures>
         <Cols cols="1fr 3fr" mx={-3} mt={[4, 5, 6]}>
-          <Headline px={3}>Go beyond club&nbsp;meetings.</Headline>
+          <Headline px={3}>Go beyond club meetings.</Headline>
           <SectionLead pl={[3, 0]} pr={3} mb={0}>
             Hack Clubs attend and run hackathons like{' '}
             <Like href="https://windyhacks.com">

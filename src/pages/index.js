@@ -541,7 +541,7 @@ export default () => (
               for events.
             </Text>
             <FeatureLink
-              to="https://github.blog/2019-09-04-github-and-hack-club-bring-computer-science-resources-to-high-schools/"
+              to="https://medium.com/hackclub/github-hack-club-grants-for-your-club-custom-merch-more-f64d6da0d782"
               color="info"
             >
               GitHub exclusive

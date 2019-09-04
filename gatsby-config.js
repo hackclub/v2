@@ -19,6 +19,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-favicon',
       options: {
+        appName: 'Hack Club',
         logo: './static/favicon.png',
         injectHTML: true,
         icons: {

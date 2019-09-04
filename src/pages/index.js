@@ -17,6 +17,7 @@ import {
 import Link from 'components/Link'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
+import AnnouncementBanner from 'components/AnnouncementBanner'
 import Photo from 'components/Photo'
 import { Headline, Highlight, Lead } from 'components/Content'
 import Footer from 'components/Footer'
@@ -45,6 +46,7 @@ const CTA = styled(LargeButton.withComponent(Link)).attrs({
 const SecondaryCTA = styled(OutlineButton.withComponent(Link)).attrs({
   chevronRight: true,
   bg: 'white',
+  color: 'black',
   fontSize: 2,
   m: [1, 2],
   scale: true
@@ -52,23 +54,6 @@ const SecondaryCTA = styled(OutlineButton.withComponent(Link)).attrs({
   background-color: rgba(0, 0, 0, 0.325);
   text-transform: uppercase;
 `
-
-/*
-const Violator = styled(Text).attrs({
-  fontSize: [1, 2],
-  py: 1,
-  px: [2, 3],
-  mx: 'auto',
-  bold: true
-})`
-  background-color: rgba(0, 0, 0, 0.325);
-  border-radius: ${theme.radii[2]};
-  border: 2px solid currentColor;=
-  text-shadow: none !important;
-  white-space: nowrap;
-  width: intrinsic;
-`
-*/
 
 const shadows = css`
   h1,
@@ -167,6 +152,51 @@ const PhotoFeature = styled(TextFeature).attrs({
 const BankFeature = styled(Sheet)`
   background-color: ${theme.colors.primary};
   background-image: ${theme.gradient('red.5', 'red.7')};
+`
+const GrantFeature = styled(Sheet)`
+  position: relative;
+  overflow: visible;
+  background-image: url(${require('../../static/github/swoosh.svg')});
+  background-position: bottom right;
+  background-size: 22em;
+  background-repeat: no-repeat;
+  &:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    bottom: -2rem;
+    right: -2rem;
+    transform: rotate(24deg);
+    background-image: url(${require('../../static/github/jetpacktocat.png')});
+    width: 12rem;
+    height: 12rem;
+  }
+  > p {
+    font-weight: bold;
+    font-size: ${theme.fontSizes[5]}px;
+    line-height: 1.25;
+  }
+`
+const PackFeature = styled(Sheet)`
+  background-color: ${theme.colors.blue[4]};
+  background-image: ${theme.gradient('indigo.3', 'fuschia.6')};
+  position: relative;
+  overflow: visible;
+  &:after {
+    content: '';
+    z-index: 2;
+    display: inline-block;
+    position: absolute;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    bottom: -4rem;
+    left: 0rem;
+    background-image: url(${require('../../static/github/backpack.png')});
+    width: 8rem;
+    height: 12rem;
+  }
 `
 const MarketingFeature = styled(Sheet)`
   background-color: ${theme.colors.indigo[5]};
@@ -330,11 +360,33 @@ const title = 'Hack Club'
 const desc =
   'Learn how to start a coding club at your high school through Hack Club. Get programming club ideas, curriculum, activities, and more.'
 
+const OnlyDesktop = styled.span`
+  display: none;
+  ${theme.mediaQueries.md} {
+    display: initial;
+  }
+`
+
 export default () => (
   <Layout title={title} desc={desc} path="/">
     <Nav color="slate" fixed />
+    <AnnouncementBanner top={36}>
+      <OnlyDesktop>
+        Grants for your club, custom merch, &amp;&nbsp;more.
+        <br />
+      </OnlyDesktop>
+      <A
+        color="primary"
+        href="https://medium.com/hackclub/f64d6da0d782"
+        target="_blank"
+        style={{ whiteSpace: 'nowrap' }}
+      >
+        Read about GitHub + Hack Club&nbsp;&rarr;
+      </A>
+    </AnnouncementBanner>
     <Box mt={[44, 55]} p={3} bg="snow">
       <PhotoHeader
+        style={{ paddingTop: 50 }}
         py={[3, 5, 6]}
         src={require('../../static/photos/hackpenn_full.jpg')}
         aria-label="Students at a coding event"
@@ -348,8 +400,11 @@ export default () => (
           </Headline>
           <SectionLead fontSize={[3, 4]} mx="auto" mb={0}>
             Hack&nbsp;Club is a global network of programming clubs where
-            members learn to code through tinkering and building projects.{' '}
-            <strong>Applications due by September 1st.</strong>
+            members learn to code through tinkering and building&nbsp;projects.{' '}
+            <OnlyDesktop>
+              <br />
+            </OnlyDesktop>
+            <strong>Fall 2019 applications due September 13th.</strong>
           </SectionLead>
           <SecondaryCTA to="https://hackclub.com/community">
             Join the Slack
@@ -421,7 +476,7 @@ export default () => (
           </section>
         </HourFeatures>
         <Cols cols="1fr 3fr" mx={-3} mt={[4, 5, 6]}>
-          <Headline px={3}>Go beyond club&nbsp;meetings.</Headline>
+          <Headline px={3}>Go beyond club meetings.</Headline>
           <SectionLead pl={[3, 0]} pr={3} mb={0}>
             Hack Clubs attend and run hackathons like{' '}
             <Like href="https://windyhacks.com">
@@ -476,6 +531,36 @@ export default () => (
               whenever you need it.
             </Text>
           </PhotoFeature>
+        </Cols>
+        <Cols>
+          <GrantFeature>
+            <Text>
+              Up to <Text.span color="info">$150&nbsp;in&nbsp;grants</Text.span>{' '}
+              for clubs and{' '}
+              <Text.span color="info">$500&nbsp;in&nbsp;sponsorships</Text.span>{' '}
+              for events.
+            </Text>
+            <FeatureLink
+              to="https://github.blog/2019-09-04-github-and-hack-club-bring-computer-science-resources-to-high-schools/"
+              color="info"
+            >
+              GitHub exclusive
+            </FeatureLink>
+          </GrantFeature>
+          <PackFeature>
+            <Module
+              name="You’ve got the tools."
+              body="Rapid access to the GitHub Student Developer Pack with $45,000 in developer tools for everyone in your club."
+              color="white"
+            />
+            <FeatureLink
+              to="https://education.github.com/pack"
+              color="white"
+              ml={7}
+            >
+              See what’s inside
+            </FeatureLink>
+          </PackFeature>
         </Cols>
         <Cols cols="3fr 2fr">
           <PhotoFeature src="/start/community.jpg" inverted>

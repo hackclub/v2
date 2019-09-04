@@ -17,6 +17,7 @@ import {
 import Link from 'components/Link'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
+import AnnouncementBanner from 'components/AnnouncementBanner'
 import Photo from 'components/Photo'
 import { Headline, Highlight, Lead } from 'components/Content'
 import Footer from 'components/Footer'
@@ -52,23 +53,6 @@ const SecondaryCTA = styled(OutlineButton.withComponent(Link)).attrs({
   background-color: rgba(0, 0, 0, 0.325);
   text-transform: uppercase;
 `
-
-/*
-const Violator = styled(Text).attrs({
-  fontSize: [1, 2],
-  py: 1,
-  px: [2, 3],
-  mx: 'auto',
-  bold: true
-})`
-  background-color: rgba(0, 0, 0, 0.325);
-  border-radius: ${theme.radii[2]};
-  border: 2px solid currentColor;=
-  text-shadow: none !important;
-  white-space: nowrap;
-  width: intrinsic;
-`
-*/
 
 const shadows = css`
   h1,
@@ -330,11 +314,40 @@ const title = 'Hack Club'
 const desc =
   'Learn how to start a coding club at your high school through Hack Club. Get programming club ideas, curriculum, activities, and more.'
 
+const OnlyDesktop = styled.span`
+  display: none;
+  ${theme.mediaQueries.md} {
+    display: initial;
+  }
+`
+
 export default () => (
   <Layout title={title} desc={desc} path="/">
     <Nav color="slate" fixed />
+    <AnnouncementBanner top={36}>
+      <p
+        style={{
+          textAlign: 'center',
+          margin: 0
+        }}
+      >
+        <OnlyDesktop>
+          Grants for your club, custom merch, &amp;&nbsp;more.
+          <br />
+        </OnlyDesktop>
+        <A
+          color="primary"
+          href="https://medium.com/hackclub/f64d6da0d782"
+          target="_blank"
+          style={{ whiteSpace: 'nowrap' }}
+        >
+          Read about GitHub + Hack Club&nbsp;&rarr;
+        </A>
+      </p>
+    </AnnouncementBanner>
     <Box mt={[44, 55]} p={3} bg="snow">
       <PhotoHeader
+        style={{ paddingTop: 50 }}
         py={[3, 5, 6]}
         src={require('../../static/photos/hackpenn_full.jpg')}
         aria-label="Students at a coding event"

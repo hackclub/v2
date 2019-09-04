@@ -9,6 +9,7 @@ const BannerSheet = styled(Sheet)`
   transform: translateX(-50%);
   z-index: 100;
   background: ${theme.colors.white};
+  text-align: center;
 `
 
 export default ({ children, top }) => {

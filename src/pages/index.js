@@ -325,25 +325,18 @@ export default () => (
   <Layout title={title} desc={desc} path="/">
     <Nav color="slate" fixed />
     <AnnouncementBanner top={36}>
-      <p
-        style={{
-          textAlign: 'center',
-          margin: 0
-        }}
+      <OnlyDesktop>
+        Grants for your club, custom merch, &amp;&nbsp;more.
+        <br />
+      </OnlyDesktop>
+      <A
+        color="primary"
+        href="https://medium.com/hackclub/f64d6da0d782"
+        target="_blank"
+        style={{ whiteSpace: 'nowrap' }}
       >
-        <OnlyDesktop>
-          Grants for your club, custom merch, &amp;&nbsp;more.
-          <br />
-        </OnlyDesktop>
-        <A
-          color="primary"
-          href="https://medium.com/hackclub/f64d6da0d782"
-          target="_blank"
-          style={{ whiteSpace: 'nowrap' }}
-        >
-          Read about GitHub + Hack Club&nbsp;&rarr;
-        </A>
-      </p>
+        Read about GitHub + Hack Club&nbsp;&rarr;
+      </A>
     </AnnouncementBanner>
     <Box mt={[44, 55]} p={3} bg="snow">
       <PhotoHeader

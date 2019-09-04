@@ -42,24 +42,17 @@ export default () => (
     <style children={styles} />
     <Nav dark />
     <AnnouncementBanner>
-      <p
-        style={{
-          textAlign: 'center',
-          margin: 0
-        }}
+      <OnlyDesktop>
+        Hack Club Bank and MLH are combining forces!
+        <br />
+      </OnlyDesktop>{' '}
+      <Link
+        color="primary"
+        href="https://medium.com/hackclub/hack-club-bank-and-mlh-are-combining-forces-c65ecb52f226"
+        target="_blank"
       >
-        <OnlyDesktop>
-          Hack Club Bank and MLH are combining forces!
-          <br />
-        </OnlyDesktop>{' '}
-        <Link
-          color="primary"
-          href="https://medium.com/hackclub/hack-club-bank-and-mlh-are-combining-forces-c65ecb52f226"
-          target="_blank"
-        >
-          See our latest announcement&nbsp;&rarr;
-        </Link>
-      </p>
+        See our latest announcement&nbsp;&rarr;
+      </Link>
     </AnnouncementBanner>
     <Landing />
     <Features />

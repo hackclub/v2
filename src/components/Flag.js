@@ -32,8 +32,12 @@ const Flag = styled(Link)`
     width: 144px;
     height: 72px;
   }
-  &:hover {
+  &:hover,
+  &:focus {
     animation: ${waveFlag} 0.5s linear infinite alternate;
+  }
+  ${theme.mediaQueries.reduceMotion} {
+    animation: none;
   }
   ${props =>
     props.scrolled &&
@@ -43,8 +47,12 @@ const Flag = styled(Link)`
       ${theme.mediaQueries.md} {
         height: 54px !important;
       }
-      &:hover {
+      &:hover,
+      &:focus {
         animation: ${waveFlagScaled} 0.5s linear infinite alternate;
+      }
+      ${theme.mediaQueries.reduceMotion} {
+        animation: none;
       }
     `};
 `

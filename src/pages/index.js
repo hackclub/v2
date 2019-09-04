@@ -525,26 +525,18 @@ export default () => (
         <Cols>
           <GrantFeature>
             <Text>
-              Up to <Text.span color="success">$150&nbsp;in&nbsp;grants</Text.span> for clubs and up to <Text.span color="success">$500&nbsp;in&nbsp;sponsorships</Text.span> for events.
+              Up to <Text.span color="info">$150&nbsp;in&nbsp;grants</Text.span> for clubs and <Text.span color="info">$500&nbsp;in&nbsp;sponsorships</Text.span> for events.
             </Text>
-            <FeatureLink to="https://github.blog/2019-09-04-github-and-hack-club-bring-computer-science-resources-to-high-schools/" color="info">GitHub's partnership</FeatureLink>
+            <FeatureLink to="https://github.blog/2019-09-04-github-and-hack-club-bring-computer-science-resources-to-high-schools/" color="info">GitHub exclusive</FeatureLink>
           </GrantFeature>
           <PackFeature>
             <Module
-              name="You've got the tools."
-              body="Accelerated access to the GitHub Student Developer Pack with $45,000 in developer tools."
+              name="You’ve got the tools."
+              body="Rapid access to the GitHub Student Developer Pack with $45,000 in developer tools for everyone in your club."
               color="white"
             />
-            <FeatureLink to="https://education.github.com/pack" color="white" ml={7}>See what's inside</FeatureLink>
+            <FeatureLink to="https://education.github.com/pack" color="white" ml={7}>See what’s inside</FeatureLink>
           </PackFeature>
-          {/* <GrantFeature>
-            <Module
-              name="Launch your project with sponsorship."
-              body={<><strong>$150&nbsp;in&nbsp;grants</strong> for clubs and a <strong>$500&nbsp;sponsorship</strong> for events.</>}
-              color="white"
-            />
-            <FeatureLink to="https://github.blog/2019-09-04-github-and-hack-club-bring-computer-science-resources-to-high-schools/" color="white">GitHub's partnership</FeatureLink>
-          </GrantFeature> */}
         </Cols>
         <Cols cols="3fr 2fr">
           <PhotoFeature src="/start/community.jpg" inverted>

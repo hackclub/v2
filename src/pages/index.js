@@ -180,37 +180,27 @@ const GrantFeature = styled(Sheet)`
     background-size: 100%;
     background-repeat: no-repeat;
     bottom: -2rem;
-    right: -1rem;
-    transform: rotate(12deg);
+    right: -2rem;
+    transform: rotate(24deg);
     background-image: url(${require('../../static/github/jetpacktocat.png')});
     width: 12rem;
     height: 12rem;
   }
 `
 
-const SDPFeature = styled(Sheet)`
+const PackFeature = styled(Sheet)`
   background-color: ${theme.colors.blue[4]};
-  background-image: ${theme.gradient('indigo.4', 'fuschia.6')};
+  background-image: ${theme.gradient('indigo.3', 'fuschia.6')};
   position: relative;
-  &:before {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    bottom: 0rem;
-    left: 0rem;
-    right: 0rem;
-    background-image: url(${require('../../static/github/ground.png')});
-    height: 15%;
-  }
+  overflow: visible;
   &:after {
     content: '';
+    z-index: 2;
     display: inline-block;
     position: absolute;
     background-size: 100%;
     background-repeat: no-repeat;
-    bottom: -3rem;
+    bottom: -4rem;
     left: 0rem;
     background-image: url(${require('../../static/github/backpack.png')});
     width: 8rem;
@@ -506,21 +496,21 @@ export default () => (
           and more.
         </SectionLead>
         <Cols>
-          <SDPFeature>
+          <PackFeature>
             <Module
               name="Use real tools."
-              body="Get access to the GitHub Student Developer Pack with over $45K worth of developer tools."
+              body="Get access to the GitHub Student Developer Pack with over $45,000 in developer tools."
               color="white"
             />
             <FeatureLink to="https://education.github.com/pack" color="white" ml={7}>See what's inside</FeatureLink>
-          </SDPFeature>
+          </PackFeature>
           <GrantFeature>
             <Module
               name="Lift-off with sponsorship."
-              body="We've partnered with GitHub to provide grants for your club or hackathon. Up to $150 for your club and $500 for your hackathon."
+              body="We've partnered with GitHub to give up to $150 in grants for clubs and a $500 sponsorship for events."
               color="white"
             />
-            <FeatureLink to="https://github.blog/2019-09-04-github-and-hack-club-bring-computer-science-resources-to-high-schools/" color="white">Learn more</FeatureLink>
+            <FeatureLink to="https://github.blog/2019-09-04-github-and-hack-club-bring-computer-science-resources-to-high-schools/" color="white">Read about the partnership</FeatureLink>
           </GrantFeature>
         </Cols>
         <Cols cols="2fr 3fr">

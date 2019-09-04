@@ -46,6 +46,7 @@ const CTA = styled(LargeButton.withComponent(Link)).attrs({
 const SecondaryCTA = styled(OutlineButton.withComponent(Link)).attrs({
   chevronRight: true,
   bg: 'white',
+  color: 'black',
   fontSize: 2,
   m: [1, 2],
   scale: true

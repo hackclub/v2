@@ -377,7 +377,7 @@ export default () => (
       </OnlyDesktop>
       <A
         color="primary"
-        href="https://medium.com/hackclub/f64d6da0d782"
+        href="https://medium.com/hackclub/github-hack-club-grants-for-your-club-custom-merch-more-f64d6da0d782"
         target="_blank"
         style={{ whiteSpace: 'nowrap' }}
       >

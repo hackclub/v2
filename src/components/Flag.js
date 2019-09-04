@@ -1,6 +1,24 @@
 import { theme } from '@hackclub/design-system'
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { Link } from 'gatsby'
+
+const waveFlag = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-5deg);
+  }
+`
+
+const waveFlagScaled = keyframes`
+  from {
+    transform: scale(.75) rotate(0deg);
+  }
+  to {
+    transform: scale(.75) rotate(-5deg);
+  }
+`
 
 const Flag = styled(Link)`
   background: url(/orpheus_flag.svg) no-repeat;
@@ -14,6 +32,9 @@ const Flag = styled(Link)`
     width: 144px;
     height: 72px;
   }
+  &:hover {
+    animation: ${waveFlag} 0.5s linear infinite alternate;
+  }
   ${props =>
     props.scrolled &&
     css`
@@ -21,6 +42,9 @@ const Flag = styled(Link)`
       height: 44px !important;
       ${theme.mediaQueries.md} {
         height: 54px !important;
+      }
+      &:hover {
+        animation: ${waveFlagScaled} 0.5s linear infinite alternate;
       }
     `};
 `

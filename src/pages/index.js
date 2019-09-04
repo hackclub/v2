@@ -400,7 +400,7 @@ export default () => (
           <SectionLead fontSize={[3, 4]} mx="auto" mb={0}>
             Hack&nbsp;Club is a global network of programming clubs where
             members learn to code through tinkering and building projects.{' '}
-            <strong>Fall 2019 applications due September 13th</strong>
+            <strong>Fall 2019 applications due September 13th.</strong>
           </SectionLead>
           <SecondaryCTA to="https://hackclub.com/community">
             Join the Slack

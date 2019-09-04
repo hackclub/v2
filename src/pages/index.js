@@ -168,6 +168,55 @@ const BankFeature = styled(Sheet)`
   background-color: ${theme.colors.primary};
   background-image: ${theme.gradient('red.5', 'red.7')};
 `
+const GrantFeature = styled(Sheet)`
+  background-color: ${theme.colors.blue[4]};
+  background-image: ${theme.gradient('blue.3', 'blue.5')};
+  position: relative;
+  overflow: visible;
+  &:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    bottom: -2rem;
+    right: -1rem;
+    transform: rotate(12deg);
+    background-image: url(${require('../../static/github/jetpacktocat.png')});
+    width: 12rem;
+    height: 12rem;
+  }
+`
+
+const SDPFeature = styled(Sheet)`
+  background-color: ${theme.colors.blue[4]};
+  background-image: ${theme.gradient('indigo.4', 'fuschia.6')};
+  position: relative;
+  &:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    bottom: 0rem;
+    left: 0rem;
+    right: 0rem;
+    background-image: url(${require('../../static/github/ground.png')});
+    height: 15%;
+  }
+  &:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    bottom: -3rem;
+    left: 0rem;
+    background-image: url(${require('../../static/github/backpack.png')});
+    width: 8rem;
+    height: 12rem;
+  }
+`
 const MarketingFeature = styled(Sheet)`
   background-color: ${theme.colors.indigo[5]};
   background-image: ${theme.gradient('indigo.4', 'indigo.6')};
@@ -456,6 +505,24 @@ export default () => (
           curriculum, a&nbsp;community of fellow leaders, a network of events,
           and more.
         </SectionLead>
+        <Cols>
+          <SDPFeature>
+            <Module
+              name="Use real tools."
+              body="Get access to the GitHub Student Developer Pack with over $45K worth of developer tools."
+              color="white"
+            />
+            <FeatureLink to="https://education.github.com/pack" color="white" ml={7}>See what's inside</FeatureLink>
+          </SDPFeature>
+          <GrantFeature>
+            <Module
+              name="Lift-off with sponsorship."
+              body="We've partnered with GitHub to provide grants for your club or hackathon. Up to $150 for your club and $500 for your hackathon."
+              color="white"
+            />
+            <FeatureLink to="https://github.blog/2019-09-04-github-and-hack-club-bring-computer-science-resources-to-high-schools/" color="white">Learn more</FeatureLink>
+          </GrantFeature>
+        </Cols>
         <Cols cols="2fr 3fr">
           <MarketingFeature>
             {/* TODO: change icon to "sticker" after next @hackclub/icons release */}

@@ -37,7 +37,7 @@ const Flag = styled(Link)`
     animation: ${waveFlag} 0.5s linear infinite alternate;
   }
   ${theme.mediaQueries.reduceMotion} {
-    animation: none;
+    animation: none !important;
   }
   ${props =>
     props.scrolled &&

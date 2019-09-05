@@ -51,9 +51,6 @@ const Flag = styled(Link)`
       &:focus {
         animation: ${waveFlagScaled} 0.5s linear infinite alternate;
       }
-      ${theme.mediaQueries.reduceMotion} {
-        animation: none;
-      }
     `};
 `
 Flag.defaultProps = {

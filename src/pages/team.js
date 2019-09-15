@@ -97,6 +97,13 @@ export default () => (
         text="After graduating high school, Michael moved to California where he began working with Hack Club. He now leads Hack Club Bank and loves helping passionate people bring their ideas to reality."
         pronouns="he/him"
       />
+      <Bio
+        img="/team/linus.jpg"
+        name="Linus Lee"
+        teamRole="Hack Club Bank"
+        text="Linus spends most of his free time working on side projects ranging from an audio travel diary to creative coding tools to his own programming language. He brings his experience in product and community from Cal Hacks and Dorm Room Fund to grow Hack Club Bank into the platform he wishes he had when he was in high school."
+        pronouns="he/him"
+      />
     </Base>
     <Footer />
   </Layout>

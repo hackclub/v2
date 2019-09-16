@@ -97,27 +97,27 @@ export default () => (
         <Lead maxWidth={48} my={4} fontSize={[3, 4]}>
           The team behind{' '}
           <A
-            href="https://calhacks.io/?ref=bank"
+            href="https://www.losaltoshacks.com/?ref=bank"
             color="inherit"
             bold
             hoverline
           >
-            Cal&nbsp;Hacks
+            Los&nbsp;Altos&nbsp;Hacks
           </A>{' '}
-          is one of 75+ teams using <strong>Hack&nbsp;Club&nbsp;Bank</strong> to
+          is one of 75+ teams who used <strong>Hack&nbsp;Club&nbsp;Bank</strong> to
           run world-class hackathons.
         </Lead>
       </Fade>
       <Flex justify="center" align="center">
         <Button href="#apply">Apply with your event</Button>
         <Button href="https://bank.hackclub.com" ml={3} bg="snow" color="black">
-          Sign in
+          Have an account? Sign in
         </Button>
       </Flex>
     </Container>
     <ScrollHint />
     <Flex justify={['flex-end']} px={3}>
-      <LocationPill>Berkeley, CA</LocationPill>
+      <LocationPill>Sunnyvale, CA</LocationPill>
     </Flex>
   </Slide>
 )

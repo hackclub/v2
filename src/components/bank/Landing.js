@@ -97,14 +97,14 @@ export default () => (
         <Lead maxWidth={48} my={4} fontSize={[3, 4]}>
           The team behind{' '}
           <A
-            href="https://www.losaltoshacks.com/?ref=bank"
+            href="https://hackarizona.org/?ref=bank"
             color="inherit"
             bold
             hoverline
           >
-            Los&nbsp;Altos&nbsp;Hacks
+            Hack&nbsp;Arizona
           </A>{' '}
-          is one of 75+ teams who used <strong>Hack&nbsp;Club&nbsp;Bank</strong> to
+          is one of 80+ teams who used <strong>Hack&nbsp;Club&nbsp;Bank</strong> to
           run world-class hackathons.
         </Lead>
       </Fade>
@@ -117,7 +117,7 @@ export default () => (
     </Container>
     <ScrollHint />
     <Flex justify={['flex-end']} px={3}>
-      <LocationPill>Sunnyvale, CA</LocationPill>
+      <LocationPill>Tucson, AZ</LocationPill>
     </Flex>
   </Slide>
 )

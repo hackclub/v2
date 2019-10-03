@@ -104,7 +104,7 @@ export default () => (
           >
             Hack&nbsp;Arizona
           </A>{' '}
-          is one of 80+ teams who used <strong>Hack&nbsp;Club&nbsp;Bank</strong> to
+          is one of 80+ teams who uses <strong>Hack&nbsp;Club&nbsp;Bank</strong> to
           run world-class hackathons.
         </Lead>
       </Fade>

@@ -104,6 +104,13 @@ export default () => (
         text="Linus spends most of his free time working on side projects ranging from an audio travel diary to creative coding tools to his own programming language. He brings his experience in product and community from Cal Hacks and Dorm Room Fund to grow Hack Club Bank into the platform he wishes he had when he was in high school."
         pronouns="he/him"
       />
+      <Bio
+        img="/team/theo.jpg"
+        name="Theo Bleier"
+        teamRole="Hack Club Bank"
+        text="Theo is a sophomore in high school & joined the Hack Club community in Summer 2018 after reading about Bank online. Since then, he's run multiple events on it & is now working on the product as a software engineer."
+        pronouns="he/him"
+      />
     </Base>
     <Footer />
   </Layout>

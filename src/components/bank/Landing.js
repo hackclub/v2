@@ -104,15 +104,12 @@ export default () => (
           >
             Hack&nbsp;Arizona
           </A>{' '}
-          is one of 80+ teams who uses <strong>Hack&nbsp;Club&nbsp;Bank</strong> to
+          is one of 100+ teams who uses <strong>Hack&nbsp;Club&nbsp;Bank</strong> to
           run world-class hackathons.
         </Lead>
       </Fade>
       <Flex justify="center" align="center">
-        <Button href="#apply">Apply with your event</Button>
-        <Button href="https://bank.hackclub.com" ml={3} bg="snow" color="black">
-          Have an account? Sign in
-        </Button>
+        <Button href="#apply">Apply with your event!</Button>
       </Flex>
     </Container>
     <ScrollHint />

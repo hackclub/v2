@@ -4,7 +4,6 @@ import { Link, theme } from '@hackclub/design-system'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
-import AnnouncementBanner from 'components/AnnouncementBanner'
 import Landing from 'components/bank/Landing'
 import Run from 'components/bank/Run'
 import Features from 'components/bank/Features'
@@ -41,19 +40,6 @@ export default () => (
   <Layout title={title} desc={desc} img="/cards/bank_one.png" path="/bank/">
     <style children={styles} />
     <Nav dark />
-    <AnnouncementBanner>
-      <OnlyDesktop>
-        Hack Club Bank and MLH are combining forces!
-        <br />
-      </OnlyDesktop>{' '}
-      <Link
-        color="primary"
-        href="https://medium.com/hackclub/hack-club-bank-and-mlh-are-combining-forces-c65ecb52f226"
-        target="_blank"
-      >
-        See our latest announcement&nbsp;&rarr;
-      </Link>
-    </AnnouncementBanner>
     <Landing />
     <Features />
     <Testimonials />

@@ -13,7 +13,7 @@ cd site
 ```
 2. Update submodules (this may take a little while)
 ```
-git submodule init && git submodule update
+git submodule init && git submodule update --depth 1
 ```
 3. Install packages & run
 ```

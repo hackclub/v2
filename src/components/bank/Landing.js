@@ -104,8 +104,9 @@ export default () => (
           >
             Hack&nbsp;Arizona
           </A>{' '}
-          is one of 100+ teams who uses <strong>Hack&nbsp;Club&nbsp;Bank</strong> to
-          run world-class hackathons.
+          is one of 100+ teams who uses{' '}
+          <strong>Hack&nbsp;Club&nbsp;Bank</strong> to run world-class
+          hackathons.
         </Lead>
       </Fade>
       <Flex justify="center" align="center">

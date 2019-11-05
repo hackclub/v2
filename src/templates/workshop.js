@@ -166,23 +166,9 @@ const Cards = styled(Container.withComponent(NotOnPrint)).attrs({
   text-align: center;
   display: grid;
   grid-gap: ${theme.space[4]}px;
-  grid-template-areas: 'share' 'questions' 'contribute';
   width: 100%;
-  > div {
-    &:nth-child(1) {
-      grid-area: share;
-    }
-    &:nth-child(2) {
-      grid-area: questions;
-    }
-    &:nth-child(3) {
-      grid-area: contribute;
-    }
-  }
   ${theme.mediaQueries.md} {
-    grid-template-areas:
-      'share share'
-      'questions contribute';
+    grid-template-columns: 1fr 1fr;
   }
   ${Sheet} {
     background: ${theme.colors.white};
@@ -198,12 +184,6 @@ const Cards = styled(Container.withComponent(NotOnPrint)).attrs({
 
 const githubEditUrl = slug =>
   `https://github.com/hackclub/hackclub/edit/master${slug}/README.md`
-const twitterURL = (text, url) =>
-  `https://twitter.com/intent/tweet?text=${text
-    .split(' ')
-    .join('%20')}&url=${url}`
-const facebookURL = (text, url) =>
-  `https://www.facebook.com/sharer/sharer.php?u=${url}`
 
 const makeUrl = (domain, slug) => `https://${domain}${slug}`
 
@@ -381,27 +361,6 @@ export default ({ data }) => {
       </Body>
       <CardsSection py={4}>
         <Cards px={3}>
-          <Sheet>
-            <Heading.h2 fontSize={4} color="black" mb={3}>
-              Made something fabulous?
-            </Heading.h2>
-            <Flex justify="center">
-              <ShareButton
-                service="Twitter"
-                href={twitterURL(
-                  `I just built ${name} with a @hackclub workshop. Make yours:`,
-                  url
-                )}
-                bg="#1da1f2"
-                mr={3}
-              />
-              <ShareButton
-                service="Facebook"
-                href={facebookURL(url)}
-                bg="#3b5998"
-              />
-            </Flex>
-          </Sheet>
           <Sheet>
             <Heading.h2 fontSize={4} color="pink.5" mb={3}>
               Questions?

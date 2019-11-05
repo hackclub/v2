@@ -404,7 +404,9 @@ export default () => (
             <OnlyDesktop>
               <br />
             </OnlyDesktop>
-            <strong>Late Fall 2019 applications accepted on a rolling basis.</strong>
+            <strong>
+              Late Fall 2019 applications accepted on a rolling basis.
+            </strong>
           </SectionLead>
           <SecondaryCTA to="https://hackclub.com/community">
             Join the Slack

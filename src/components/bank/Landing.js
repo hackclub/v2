@@ -97,7 +97,7 @@ export default () => (
         <Lead maxWidth={48} my={4} fontSize={[3, 4]}>
           The team behind{' '}
           <A
-            href="https://hackarizona.org/?ref=bank"
+            href="https://hackaz.io/?ref=bank"
             color="inherit"
             bold
             hoverline

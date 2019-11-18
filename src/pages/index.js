@@ -18,6 +18,7 @@ import Link from 'components/Link'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import AnnouncementBanner from 'components/AnnouncementBanner'
+import SantaBanner from 'components/home/SantaBanner'
 import Photo from 'components/Photo'
 import { Headline, Highlight, Lead } from 'components/Content'
 import Footer from 'components/Footer'
@@ -370,6 +371,7 @@ const OnlyDesktop = styled.span`
 export default () => (
   <Layout title={title} desc={desc} path="/">
     <Nav color="slate" fixed />
+    {/*
     <AnnouncementBanner top={36}>
       <OnlyDesktop>
         Grants for your club, custom merch, &amp;&nbsp;more.
@@ -384,7 +386,9 @@ export default () => (
         Read about GitHub + Hack Club&nbsp;&rarr;
       </A>
     </AnnouncementBanner>
+    */}
     <Box mt={[44, 55]} p={3} bg="snow">
+      <SantaBanner />
       <PhotoHeader
         style={{ paddingTop: 50 }}
         py={[3, 5, 6]}
@@ -405,7 +409,7 @@ export default () => (
               <br />
             </OnlyDesktop>
             <strong>
-              Late Fall 2019 applications accepted on a rolling basis.
+              Winter 2019 applications accepted on a rolling basis.
             </strong>
           </SectionLead>
           <SecondaryCTA to="https://hackclub.com/community">

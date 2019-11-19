@@ -24,15 +24,16 @@ const Base = styled(Box.withComponent(Link)).attrs({
     position: absolute;
     z-index: 0;
     &:first-of-type {
-      left: ${theme.space[4]}px;
+      left: ${theme.space[1]}px;
       top: ${theme.space[2]}px;
       ${theme.mediaQueries.md} {
+        left: ${theme.space[4]}px;
         width: ${42 * 1.25}px;
         height: ${50 * 1.25}px;
       }
     }
     &:last-of-type {
-      right: ${theme.space[5]}px;
+      right: ${theme.space[2]}px;
       bottom: ${theme.space[1]}px;
       ${theme.mediaQueries.md} {
         right: ${theme.space[7]}px;
@@ -42,6 +43,7 @@ const Base = styled(Box.withComponent(Link)).attrs({
     }
   }
   span {
+    position: relative;
     z-index: 2;
   }
   + div {

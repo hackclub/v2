@@ -81,7 +81,7 @@ export default () => (
           glyph="freeze"
           mt={3}
         >
-          Join Slack
+          Register Now
         </IconButton>
       </Container>
     </Hero>

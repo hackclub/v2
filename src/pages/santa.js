@@ -4,7 +4,7 @@ import {
   Box,
   Container,
   Heading,
-  LargeButton,
+  Button,
   Text,
   theme
 } from '@hackclub/design-system'
@@ -75,14 +75,12 @@ export default () => (
           You’ll be assigned a partner, send them something fun, & you’ll get
           your own gift in the mail just in time for the holidays! 🎁
         </Lead>
-        <IconButton
-          is={LargeButton.withComponent(Link)}
-          to="/community/"
-          glyph="slack-fill"
-          mt={3}
-        >
-          Join Slack
-        </IconButton>
+        <Button
+            href="https://santa.hackclub.com"
+            chevronRight
+          >
+            Register Now
+        </Button>
       </Container>
     </Hero>
     <Footer />

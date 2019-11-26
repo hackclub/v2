@@ -4,7 +4,7 @@ import {
   Box,
   Container,
   Heading,
-  LargeButton,
+  Button,
   Text,
   theme
 } from '@hackclub/design-system'

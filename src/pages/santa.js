@@ -75,14 +75,12 @@ export default () => (
           You’ll be assigned a partner, send them something fun, & you’ll get
           your own gift in the mail just in time for the holidays! 🎁
         </Lead>
-        <IconButton
-          is={LargeButton.withComponent(Link)}
-          href="https://santa.hackclub.com"
-          glyph="freeze"
-          mt={3}
-        >
-          Register Now
-        </IconButton>
+        <Button
+            href="https://santa.hackclub.com"
+            chevronRight
+          >
+            Register Now
+        </Button>
       </Container>
     </Hero>
     <Footer />

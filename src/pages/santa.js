@@ -77,8 +77,8 @@ export default () => (
         </Lead>
         <IconButton
           is={LargeButton.withComponent(Link)}
-          to="/community/"
-          glyph="slack-fill"
+          to="https://santa.hackclub.com"
+          glyph="freeze"
           mt={3}
         >
           Join Slack

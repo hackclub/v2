@@ -77,7 +77,7 @@ export default () => (
         </Lead>
         <IconButton
           is={LargeButton.withComponent(Link)}
-          to="https://santa.hackclub.com"
+          href="https://santa.hackclub.com"
           glyph="freeze"
           mt={3}
         >

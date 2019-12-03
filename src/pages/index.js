@@ -18,7 +18,6 @@ import Link from 'components/Link'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import AnnouncementBanner from 'components/AnnouncementBanner'
-import SantaBanner from 'components/home/SantaBanner'
 import Photo from 'components/Photo'
 import { Headline, Highlight, Lead } from 'components/Content'
 import Footer from 'components/Footer'
@@ -371,24 +370,7 @@ const OnlyDesktop = styled.span`
 export default () => (
   <Layout title={title} desc={desc} path="/">
     <Nav color="slate" fixed />
-    {/*
-    <AnnouncementBanner top={36}>
-      <OnlyDesktop>
-        Grants for your club, custom merch, &amp;&nbsp;more.
-        <br />
-      </OnlyDesktop>
-      <A
-        color="primary"
-        href="https://medium.com/hackclub/github-hack-club-grants-for-your-club-custom-merch-more-f64d6da0d782"
-        target="_blank"
-        style={{ whiteSpace: 'nowrap' }}
-      >
-        Read about GitHub + Hack Club&nbsp;&rarr;
-      </A>
-    </AnnouncementBanner>
-    */}
     <Box mt={[44, 55]} p={3} bg="snow">
-      <SantaBanner />
       <PhotoHeader
         style={{ paddingTop: 50 }}
         py={[3, 5, 6]}

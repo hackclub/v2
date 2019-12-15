@@ -207,7 +207,7 @@ export default () => (
       </Subhline>
       <Lead maxWidth={40} color="muted">
         Everywhere from Philadelphia to Phoenix to Portland,
-        Hack&nbsp;Club&nbsp;Bank is powering hackathons of all sizes.
+        Hack&nbsp;Club&nbsp;Bank is powering events of all sizes.
       </Lead>
     </Container>
     <Main maxWidth={60}>

@@ -65,11 +65,10 @@ export default () => (
   <Box.section bg="dark" py={[5, 6, 7]} id="apply">
     <Container maxWidth={48} px={3} align="center">
       <Headline color="white" mb={2}>
-        Apply for Hack&nbsp;Club Bank.
+        Sign up for Hack&nbsp;Club Bank.
       </Headline>
       <Lead maxWidth={32} color="muted">
-        Open to all Hack Clubs and student-led, US-based high school &
-        collegiate hackathons.
+        Open to all US-based registered Hack Clubs, hackathons, and your next amazing event.
       </Lead>
     </Container>
     <Grid mt={[4, 5]} mb={[3, 4]} px={3}>

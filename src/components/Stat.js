@@ -4,13 +4,13 @@ import styled from 'styled-components'
 import { Box, Text } from '@hackclub/design-system'
 
 const Base = styled(Box).attrs({
-  mt: 1,
-  mb: 1,
   px: [2, 3, 4],
   align: 'center'
 })`
   display: inline-block;
   line-height: 1;
+  margin-top: 1.5em;
+  margin-bottom: 0;
 `
 
 const Stat = ({

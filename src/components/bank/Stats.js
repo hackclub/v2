@@ -35,7 +35,12 @@ export default props => {
   return (
     <div>
       <Stat {...props} value={raised} label="raised on Hack Club Bank" />
-      <Stat {...props} fontSize={[3, 4, 5]} value={volume} label="total amount transacted" />
+      <Stat
+        {...props}
+        fontSize={[3, 4, 5]}
+        value={volume}
+        label="total amount transacted"
+      />
     </div>
   )
 }

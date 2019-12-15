@@ -68,7 +68,8 @@ export default () => (
         Sign up for Hack&nbsp;Club Bank.
       </Headline>
       <Lead maxWidth={32} color="muted">
-        Open to all US-based registered Hack Clubs, hackathons, and your next amazing event.
+        Open to all US-based registered Hack Clubs, hackathons, and your next
+        amazing event.
       </Lead>
     </Container>
     <Grid mt={[4, 5]} mb={[3, 4]} px={3}>

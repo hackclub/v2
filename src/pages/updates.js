@@ -22,9 +22,7 @@ const styles = `
     max-width: 100vw;
     background-color: ${theme.colors.dark};
     color: ${theme.colors.gray[3]};
-    background-image: radial-gradient(circle, ${theme.colors.black}, ${
-  theme.colors.black
-} 1px,
+    background-image: radial-gradient(circle, ${theme.colors.black}, ${theme.colors.black} 1px,
       ${theme.colors.dark} 1px, ${theme.colors.dark});
     background-size: 2rem 2rem;
   }

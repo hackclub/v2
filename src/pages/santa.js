@@ -75,11 +75,8 @@ export default () => (
           You’ll be assigned a partner, send them something fun, & you’ll get
           your own gift in the mail just in time for the holidays! 🎁
         </Lead>
-        <Button
-            href="https://santa.hackclub.com"
-            chevronRight
-          >
-            Register Now
+        <Button href="https://santa.hackclub.com" chevronRight>
+          Register Now
         </Button>
       </Container>
     </Hero>

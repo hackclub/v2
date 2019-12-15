@@ -189,5 +189,16 @@ export default () => (
         body="We’ll never leave you hanging with best-effort 12hr response time."
       />
     </Modules>
+
+    <Lead maxWidth={28} color="slate" fontSize={3} align="center" mt={[4, 5]}>
+      Have more questions?
+      <br/>
+      Check out the{' '}
+      <A
+        href="https://bank.hackclub.com/faq"
+        color="primary"
+        hoverline
+      >Hack Club Bank FAQ</A>.
+    </Lead>
   </Base>
 )

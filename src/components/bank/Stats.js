@@ -4,8 +4,18 @@ import api from 'api'
 
 import { useInterval } from 'hooks'
 
+function renderMoney(amount) {
+  return Math.floor(amount / 100)
+    .toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    })
+    .replace('.00', '')
+}
+
 export default props => {
-  const [volume, setVolume] = useState(0)
+  const [volume, setVolume] = useState(100 * 1000 * 1000) // 1MM default
+  const [raised, setRaised] = useState(100 * 1000 * 500) // half million default
 
   useEffect(() => {
     loadStats()
@@ -17,15 +27,15 @@ export default props => {
 
   const loadStats = () => {
     api.get('https://bank.hackclub.com/stats').then(stats => {
-      const transactions_volume = Math.floor(stats.transactions_volume / 100)
-        .toLocaleString('en-US', {
-          style: 'currency',
-          currency: 'USD'
-        })
-        .replace('.00', '')
-      setVolume(transactions_volume)
+      setVolume(renderMoney(stats.transactions_volume))
+      setRaised(renderMoney(stats.raised))
     })
   }
 
-  return <Stat {...props} value={volume} label="total amount transacted" />
+  return (
+    <div>
+      <Stat {...props} value={raised} label="raised on Hack Club Bank" />
+      <Stat {...props} fontSize={[3, 4, 5]} value={volume} label="total amount transacted" />
+    </div>
+  )
 }

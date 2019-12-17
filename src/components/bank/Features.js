@@ -192,13 +192,17 @@ export default () => (
 
     <Lead maxWidth={28} color="slate" fontSize={3} align="center" mt={[4, 5]}>
       Have more questions?
-      <br/>
+      <br />
       Check out the{' '}
       <A
         href="https://bank.hackclub.com/faq"
+        target="_blank"
         color="primary"
         hoverline
-      >Hack Club Bank FAQ</A>.
+      >
+        Hack Club Bank FAQ
+      </A>
+      .
     </Lead>
   </Base>
 )

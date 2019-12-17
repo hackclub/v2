@@ -96,7 +96,13 @@ export default () => (
         </Heading.h1>
         <Lead maxWidth={48} my={4} fontSize={[3, 4]}>
           The team behind{' '}
-          <A href="https://hackaz.io/?ref=bank" color="inherit" bold hoverline>
+          <A
+            href="https://hackaz.io/?ref=bank"
+            target="_blank"
+            color="inherit"
+            bold
+            hoverline
+          >
             Hack&nbsp;Arizona
           </A>{' '}
           is one of 100+ teams who uses{' '}

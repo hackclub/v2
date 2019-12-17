@@ -27,7 +27,7 @@ const events = [
       'Hack Club Bank has been very helpful in helping us manage our finances and allowing my team to send easy and professional invoices to sponsors. The platform is seamlessly easy to use and the Bank team is constantly improving it for event organizers and club leaders everywhere. Highly recommend jumping on Hack Club Bank to handle your next project.'
   },
   {
-    name: 'Los Altos Hacks',
+    name: 'Los Altos Hacks 2019',
     location: 'Sunnyvale, CA',
     organizer: 'Jamsheed Mistri',
     budget: 30,

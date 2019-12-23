@@ -3,7 +3,6 @@ import Helmet from 'react-helmet'
 import data, { url, org } from 'data.json'
 import { ThemeProvider, theme } from '@hackclub/design-system'
 import BG from 'components/BG'
-import serviceWorkerKiller from '../../static/swkiller'
 
 const meta = tags =>
   tags.map((props, index) =>
@@ -41,9 +40,6 @@ export default ({
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: url + path }
       ])}
-      <script
-        children={`${serviceWorkerKiller.toString()}; serviceWorkerKiller()`}
-      />
       <script type="application/ld+json" children={JSON.stringify(org)} />
     </Helmet>
     {bg && <BG color={bg} />}

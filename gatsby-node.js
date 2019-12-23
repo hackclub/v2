@@ -6,22 +6,6 @@ const { colors } = require('@hackclub/design-system')
 const writeFile = require('fs').writeFile
 const axios = require('axios')
 
-exports.onPreBootstrap = () =>
-  axios
-    .get('https://api.hackclub.com/v1/challenges')
-    .then(res => res.data)
-    .then(challenges => {
-      challenges.forEach(data => {
-        data.id = data.id.toString() // for Gatsby
-      })
-      writeFile('./public/challenges.json', JSON.stringify(challenges), err => {
-        if (err) throw err
-      })
-    })
-    .catch(e => {
-      console.error(e)
-    })
-
 const pattern = (text = 'Hack Club', color = colors.primary) =>
   GeoPattern.generate(text, { baseColor: color }).toString()
 const writePattern = (path, name) =>
@@ -72,7 +56,9 @@ exports.createPages = ({ graphql, actions }) => {
         graphql(
           `
             {
-              allMarkdownRemark(filter: { frontmatter: { name: { ne: null } } }) {
+              allMarkdownRemark(
+                filter: { frontmatter: { name: { ne: null } } }
+              ) {
                 edges {
                   node {
                     frontmatter {

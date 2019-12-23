@@ -463,7 +463,7 @@ export default () => (
             </Text>
           </section>
         </HourFeatures>
-        <Cols cols="1fr 3fr" mx={-3} mt={[4, 5, 6]}>
+        <Cols cols="1fr 2fr" mx={-3} mt={[4, 5, 6]}>
           <Headline px={3}>Go beyond club meetings.</Headline>
           <SectionLead pl={[3, 0]} pr={3} mb={0}>
             Hack Clubs attend and run hackathons like{' '}

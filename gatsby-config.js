@@ -64,13 +64,6 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/public/challenges.json`,
-        name: 'challenges'
-      }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
         path: `${__dirname}/content/workshops`,
         name: 'workshops'
       }

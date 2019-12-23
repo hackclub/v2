@@ -17,7 +17,7 @@ import {
 import Link from 'components/Link'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
-import AnnouncementBanner from 'components/AnnouncementBanner'
+// import AnnouncementBanner from 'components/AnnouncementBanner'
 import Photo from 'components/Photo'
 import { Headline, Highlight, Lead } from 'components/Content'
 import Footer from 'components/Footer'

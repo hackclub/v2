@@ -8,11 +8,9 @@ import {
   Text,
   theme
 } from '@hackclub/design-system'
-import { Link } from 'gatsby'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
-import IconButton from 'components/IconButton'
 import Snow from 'resnow'
 import { Lead } from 'components/Content'
 
@@ -73,7 +71,8 @@ export default () => (
         <Lead fontSize={[3, null, 4]} color="snow" maxWidth={48} my={3} mx={0}>
           Get your gift-giving game on in the #secret-santa channel on Slack.
           You’ll be assigned a partner, send them something fun, & you’ll get
-          your own gift in the mail just in time for the holidays! 🎁
+          your own gift in the mail just in time for the holidays!
+          <span role="img" aria-label="Present emoji" children={' 🎁'} />
         </Lead>
         <Button href="https://santa.hackclub.com" chevronRight>
           Register Now

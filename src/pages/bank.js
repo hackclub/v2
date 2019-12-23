@@ -1,6 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
-import { Link, theme } from '@hackclub/design-system'
+import { theme } from '@hackclub/design-system'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
@@ -22,13 +21,6 @@ const styles = `
     background: ${theme.colors.primary};
     color: ${theme.colors.white};
     text-shadow: none;
-  }
-`
-
-const OnlyDesktop = styled.span`
-  display: none;
-  ${theme.mediaQueries.md} {
-    display: initial;
   }
 `
 

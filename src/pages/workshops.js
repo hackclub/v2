@@ -24,14 +24,6 @@ const Background = styled(Section)`
     );
 `
 
-const attrs = {
-  is: LargeButton.withComponent(Link),
-  m: 2,
-  scale: true,
-  py: 3,
-  px: 4,
-  fontSize: 2
-}
 const PhilosophyButton = styled(IconButton).attrs({
   is: LargeButton.withComponent(Link),
   m: 2,

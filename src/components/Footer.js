@@ -37,13 +37,19 @@ const Base = styled(Box.withComponent('footer'))`
   }
 `
 
-const Columns = styled(Container)`
+const Columns = styled(Container).attrs({ maxWidth: 48, mx: 0 })`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: ${theme.space[2]}px;
+  > div:last-of-type {
+    grid-column: span 2;
+  }
   ${theme.mediaQueries.md} {
     grid-gap: ${theme.space[4]}px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    > div:last-of-type {
+      grid-column: span 1;
+    }
   }
 `
 
@@ -102,73 +108,65 @@ const Footer = ({ dark = false, children, ...props }) => (
   >
     {children}
     <PureImagination />
-    <Columns px={3}>
-      <Box>
-        <Heading.h2 fontSize={3} mb={3}>
-          Hack Club
-        </Heading.h2>
-        <Pages>
-          <Link to="/" children="Home" />
-          <Link to="/donate/" children="Donate" />
-          <Link to="/team/" children="Team" />
-          <Link to="/community/" children="Community" />
-          <Link to="/philosophy/" children="Philosophy" />
-        </Pages>
-      </Box>
-      <Box>
-        <Heading.h2 fontSize={3} mb={3}>
-          For Clubs
-        </Heading.h2>
-        <Pages>
-          <a href="https://apply.hackclub.com/" children="Apply" />
-          <Link to="/workshops/" children="Workshops" />
-          <a href="https://finder.hackclub.com/" children="Find Clubs" />
-        </Pages>
-      </Box>
-      <Box>
-        <Heading.h2 fontSize={3} mb={3}>
-          Resources
-        </Heading.h2>
-        <Pages>
-          <Link to="/conduct/" children="Code of Conduct" />
-          <Link to="/night/" children="Hack Night" />
-          <a href="https://hackathons.hackclub.com/" children="Hackathons" />
-          <a href="https://shop.hackclub.com/" children="Shop" />
-          <Link to="/bank/" children="Bank" />
-        </Pages>
-      </Box>
-      <Box>
-        <Heading.h2 fontSize={3} mb={3}>
-          Join the Club
-        </Heading.h2>
-        <Services>
-          <Service href="/community/" icon="slack-fill" target="_self" />
-          <Service href="https://twitter.com/hackclub" icon="twitter" />
-          <Service href="https://github.com/hackclub" icon="github" />
-          <Service
-            href="https://www.facebook.com/Hack-Club-741805665870458"
-            icon="facebook"
-          />
-          <Service href="https://medium.com/hackclub" icon="medium" />
-          <Service
-            href="https://www.youtube.com/channel/UCQzO0jpcRkP-9eWKMpJyB0w"
-            icon="youtube"
-          />
-          <Service
-            href="https://www.instagram.com/starthackclub"
-            icon="instagram"
-          />
-          <Service href="mailto:team@hackclub.com" icon="email" />
-        </Services>
-        <Text my={2}>
-          <a href="tel:1-855-625-HACK">1-855-625-HACK</a>
-          <br />
-          <Text.span color="muted" children="(call toll-free)" />
-        </Text>
-      </Box>
-    </Columns>
-    <Container px={3} mt={[3, 4]}>
-      <Box fontSize={2}>
+    <Container px={3}>
+      <Columns>
+        <Box>
+          <Heading.h2 fontSize={3} mb={3}>
+            Hack Club
+          </Heading.h2>
+          <Pages>
+            <Link to="/" children="Home" />
+            <a href="https://apply.hackclub.com/" children="Apply" />
+            <Link to="/donate/" children="Donate" />
+            <Link to="/team/" children="Team" />
+            <Link to="/community/" children="Community" />
+            <Link to="/philosophy/" children="Philosophy" />
+          </Pages>
+        </Box>
+        <Box>
+          <Heading.h2 fontSize={3} mb={3}>
+            Resources
+          </Heading.h2>
+          <Pages>
+            <Link to="/conduct/" children="Code of Conduct" />
+            <Link to="/workshops/" children="Workshops" />
+            <Link to="/night/" children="Hack Night" />
+            <a href="https://hackathons.hackclub.com/" children="Hackathons" />
+            <a href="https://shop.hackclub.com/" children="Shop" />
+            <Link to="/bank/" children="Bank" />
+          </Pages>
+        </Box>
+        <Box>
+          <Heading.h2 fontSize={3} mb={3}>
+            Join the Club
+          </Heading.h2>
+          <Services>
+            <Service href="/community/" icon="slack-fill" target="_self" />
+            <Service href="https://twitter.com/hackclub" icon="twitter" />
+            <Service href="https://github.com/hackclub" icon="github" />
+            <Service
+              href="https://www.facebook.com/Hack-Club-741805665870458"
+              icon="facebook"
+            />
+            <Service href="https://medium.com/hackclub" icon="medium" />
+            <Service
+              href="https://www.youtube.com/channel/UCQzO0jpcRkP-9eWKMpJyB0w"
+              icon="youtube"
+            />
+            <Service
+              href="https://www.instagram.com/starthackclub"
+              icon="instagram"
+            />
+            <Service href="mailto:team@hackclub.com" icon="email" />
+          </Services>
+          <Text my={2}>
+            <a href="tel:1-855-625-HACK">1-855-625-HACK</a>
+            <br />
+            <Text.span color="muted" children="(call toll-free)" />
+          </Text>
+        </Box>
+      </Columns>
+      <Box fontSize={2} mt={[3, 4]}>
         <Text>Office: 576 Natoma St, San Francisco, CA 94103</Text>
         <Text>
           Mail: 8605 Santa Monica Blvd #86294, West Hollywood, CA 90069

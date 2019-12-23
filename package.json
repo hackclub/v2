@@ -8,7 +8,7 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
-    "fmt": "npx prettier \"{src/**,}/*.js\" --single-quote --no-semi --write",
+    "fmt": "npx prettier \"{src/**,}/*.js\" --write",
     "map": "npx babel-node src/map.js"
   },
   "dependencies": {

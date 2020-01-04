@@ -1,5 +1,3 @@
-import createEmojiRegex from 'emoji-regex'
-
 export const dt = d => new Date(d).toLocaleDateString()
 
 const year = new Date().getFullYear()
@@ -78,13 +76,6 @@ export const timeTo = (time, current = new Date(), longForm = true) => {
 
   return humanizedTime
 }
-
-// via https://github.com/withspectrum/spectrum/blob/alpha/src/helpers/utils.js#L58
-const originalEmojiRegex = createEmojiRegex()
-const regex = new RegExp(
-  `^(${originalEmojiRegex.toString().replace(/\/g$/, '')}|\\s)+$`
-)
-export const onlyContainsEmoji = text => regex.test(text)
 
 function formatChunk(type, date) {
   const days = [

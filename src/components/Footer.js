@@ -165,6 +165,11 @@ const Footer = ({ dark = false, children, ...props }) => (
             <Text.span color="muted" children="(call toll-free)" />
           </Text>
         </Box>
+        <Box>
+          <a href="https://www.netlify.com">
+            <img src="https://www.netlify.com/img/global/badges/netlify-dark.svg"/>
+          </a>
+        </Box>
       </Columns>
       <Box fontSize={2} mt={[3, 4]}>
         <Text>Office: 576 Natoma St, San Francisco, CA 94103</Text>

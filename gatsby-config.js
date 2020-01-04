@@ -1,4 +1,3 @@
-// configure plugins here
 module.exports = {
   siteMetadata: {
     title: 'Hack Club',
@@ -14,25 +13,6 @@ module.exports = {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
         siteUrl: 'https://hackclub.com'
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-favicon',
-      options: {
-        appName: 'Hack Club',
-        logo: './static/favicon.png',
-        injectHTML: true,
-        icons: {
-          android: true,
-          appleIcon: true,
-          appleStartup: true,
-          coast: false,
-          favicons: true,
-          firefox: true,
-          twitter: false,
-          yandex: false,
-          windows: false
-        }
       }
     },
     {

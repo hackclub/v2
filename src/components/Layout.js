@@ -24,7 +24,6 @@ export default ({
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width,initial-scale=1" />
       <meta name="format-detection" content="telephone=no" />
-      <meta name="theme-color" content={theme.colors.primary} />
       {meta([
         { name: 'description', content: desc },
         { name: 'twitter:card', content: 'summary_large_image' },
@@ -41,6 +40,32 @@ export default ({
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: url + path }
       ])}
+      <meta name="theme-color" content={theme.colors.primary} />
+      <meta name="msapplication-TileColor" content={color} />
+      <meta name="application-name" content="Hack Club" />
+      <meta name="apple-mobile-web-app-title" content="Hack Club" />
+      <link
+        rel="mask-icon"
+        href="/safari-pinned-tab.svg"
+        color={theme.colors.primary}
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/apple-touch-icon.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/favicon-32x32.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="/favicon-16x16.png"
+      />
       <script
         children={`${serviceWorkerKiller.toString()}; serviceWorkerKiller()`}
       />

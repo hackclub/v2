@@ -41,7 +41,7 @@ export default ({
         { property: 'og:url', content: url + path }
       ])}
       <meta name="theme-color" content={theme.colors.primary} />
-      <meta name="msapplication-TileColor" content={color} />
+      <meta name="msapplication-TileColor" content={theme.colors.primary} />
       <meta name="application-name" content="Hack Club" />
       <meta name="apple-mobile-web-app-title" content="Hack Club" />
       <link

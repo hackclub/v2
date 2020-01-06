@@ -42,6 +42,7 @@ export default ({
       ])}
       <meta name="theme-color" content={theme.colors.primary} />
       <meta name="msapplication-TileColor" content={theme.colors.primary} />
+      <link rel="manifest" href="/manifest.webmanifest" />
       <meta name="application-name" content="Hack Club" />
       <meta name="apple-mobile-web-app-title" content="Hack Club" />
       <link

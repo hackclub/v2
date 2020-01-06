@@ -14,6 +14,7 @@ import {
   Sheet,
   theme
 } from '@hackclub/design-system'
+import { getCurrentSeason } from 'helpers'
 import Link from 'components/Link'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
@@ -391,7 +392,7 @@ export default () => (
               <br />
             </OnlyDesktop>
             <strong>
-              Winter 2019 applications accepted on a rolling basis.
+              {getCurrentSeason()} applications accepted on a rolling basis.
             </strong>
           </SectionLead>
           <SecondaryCTA to="https://hackclub.com/community">

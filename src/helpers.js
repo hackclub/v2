@@ -6,6 +6,18 @@ export const tinyDt = d =>
     .replace(`/${year}`, '')
     .replace(`${year}-`, '')
 
+const getSeason = month => {
+  if (3 <= month <= 5) return 'Spring'
+  if (6 <= month <= 8) return 'Summer'
+  if (9 <= month <= 11) return 'Fall'
+  return 'Winter' // 12, 01, 02
+}
+
+export const getCurrentSeason = () => {
+  const dt = new Date()
+  return `${getSeason(dt.getMonth())} ${dt.getFullYear()}`
+}
+
 // based on https://github.com/withspectrum/spectrum/blob/alpha/src/helpers/utils.js#L146
 export const timeSince = (
   previous,

@@ -21,8 +21,6 @@
     "fuse.js": "^3.4.6",
     "gatsby": "^2.18.16",
     "gatsby-plugin-canonical-urls": "^2.1.18",
-    "gatsby-plugin-favicon": "^3.1.6",
-    "gatsby-plugin-manifest": "^2.2.34",
     "gatsby-plugin-netlify": "^2.1.30",
     "gatsby-plugin-react-helmet": "^3.1.18",
     "gatsby-plugin-resolve-src": "^2.0.0",

@@ -19,7 +19,7 @@ function renderMoney(amount) {
 function getTimeDistance(jsDate) {
   const delta = (Date.now() - jsDate) / 1000 // in seconds
   if (delta < 3600) {
-    return 'less than an hour ago'
+    return `${Math.floor(delta / 60)} minutes ago`
   } else if (delta < 86400) {
     return `${Math.floor(delta / 3600)} hours ago`
   } else if (delta < 86400 * 2) {

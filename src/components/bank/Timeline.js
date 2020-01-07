@@ -81,6 +81,7 @@ const Circle = styled(Box).attrs({ p: 2, bg: 'primary', color: 'white' })`
     }
   }
 `
+
 Timeline.Step = ({ icon, name, duration, mb = 4 }) => (
   <TimelineStep pb={mb}>
     <Slide left>

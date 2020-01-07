@@ -74,17 +74,27 @@ export default props => {
 
   return (
     <div>
-      <Lead fontSize={[2, 3]} color={props.labelColor} my={[2, 3]}>
-        <Dot />
-        As of {getTimeDistance(lastUpdated)}...
-      </Lead>
-      <Stat {...props} value={raised} label="raised on Hack Club Bank" />
-      <Stat
-        {...props}
-        fontSize={[3, 4, 5]}
-        value={volume}
-        label="total amount transacted"
-      />
+      {/* styled-components has a rendering bug that applies classes
+          to incorrect components in this particular tree, but I didn't
+          have time to upgrade styled-components or fix root cause.
+          This <div> soup seemed to remove the symptoms in the UI for now.
+          - @thesephist */}
+      <div>
+        <Lead fontSize={[2, 3]} color={props.labelColor} my={[2, 3]}>
+          <span></span>
+          <Dot />
+          As of {getTimeDistance(lastUpdated)}...
+        </Lead>
+      </div>
+      <div>
+        <Stat {...props} value={raised} label="raised on Hack Club Bank" />
+        <Stat
+          {...props}
+          fontSize={[3, 4, 5]}
+          value={volume}
+          label="total amount transacted"
+        />
+      </div>
     </div>
   )
 }

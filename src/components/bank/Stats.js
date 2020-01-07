@@ -5,8 +5,6 @@ import { Box, theme } from '@hackclub/design-system'
 import Stat from 'components/Stat'
 import api from 'api'
 
-import { useInterval } from 'hooks'
-
 function renderMoney(amount) {
   return Math.floor(amount / 100)
     .toLocaleString('en-US', {
@@ -63,10 +61,6 @@ export default props => {
   useEffect(() => {
     loadStats()
   })
-
-  useInterval(() => {
-    loadStats()
-  }, 8000)
 
   // stats.json reports last TX time in PST, JS accepts UTC
   const PSTTimeOffset = 8 * 3600 * 1000

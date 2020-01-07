@@ -68,7 +68,7 @@ const InnerForm = ({ values, errors, touched, handleChange, handleBlur }) => (
       placeholder={200}
       onChange={handleChange}
       onBlur={handleBlur}
-      mb={[3, 4]}
+      mb={[4, 5]}
     />
     <Submit.lg bg="info" width={1} value="Continue your application" />
   </Base>

@@ -9,8 +9,8 @@ const Base = styled(Box).attrs({
 })`
   display: inline-block;
   line-height: 1;
-  margin-top: 1.5em;
-  margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 1.5em;
 `
 
 const Stat = ({

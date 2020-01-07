@@ -75,7 +75,9 @@ export default () => (
     <Grid mt={[4, 5]} mb={[3, 4]} px={3}>
       <Fade bottom>
         <Sheet bg="#252429" color="snow" maxWidth={32} p={[3, 4, 5]}>
-          <Subhline fontSize={[3, 4]}>Your event</Subhline>
+          <Subhline fontSize={[3, 4]} mb={[4, 5]}>
+            Your event
+          </Subhline>
           <Form />
         </Sheet>
       </Fade>
@@ -90,7 +92,8 @@ export default () => (
           color="smoke"
           labelColor="muted"
           fontSize={[7, 8]}
-          my={[4, 5]}
+          my={[3, 4]}
+          px={[0, 0]}
           width="auto"
           align="left"
         />

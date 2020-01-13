@@ -180,16 +180,8 @@ const channels = [
     color: 'fuschia'
   },
   {
-    name: 'challenges',
-    color: 'yellow'
-  },
-  {
     name: 'minecraft',
     color: 'indigo'
-  },
-  {
-    name: 'counttoamillion',
-    color: 'red'
   }
 ]
 

@@ -916,6 +916,11 @@
   dependencies:
     react "^16.8.3"
 
+"@hackclub/season@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@hackclub/season/-/season-0.0.2.tgz#009830c325d3eb58c0b006ad9c8fe85ff89ed573"
+  integrity sha512-xPh/ZAvkNCa9H4AYvZ6NZspiZvtGYicfxzAOL3EmbGHwqBuKw8GFQp3tK7CBcVpStI5H0jTeF8fnhnkXhMm2Dg==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"

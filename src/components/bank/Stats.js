@@ -62,13 +62,11 @@ export default props => {
     loadStats()
   })
 
-  // stats.json reports last TX time in PST, JS accepts UTC
-  const PSTTimeOffset = 8 * 3600 * 1000
   const loadStats = () => {
     api.get('https://bank.hackclub.com/stats').then(stats => {
       setVolume(renderMoney(stats.transactions_volume))
       setRaised(renderMoney(stats.raised))
-      setLastUpdated(stats.last_transaction_date * 1000 + PSTTimeOffset)
+      setLastUpdated(stats.last_transaction_date * 1000)
     })
   }
 

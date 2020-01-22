@@ -21,7 +21,6 @@
     "formik": "^1.5.1",
     "gatsby": "^2.19.1",
     "gatsby-plugin-canonical-urls": "^2.1.19",
-    "gatsby-plugin-netlify": "^2.1.31",
     "gatsby-plugin-react-helmet": "^3.1.21",
     "gatsby-plugin-resolve-src": "^2.0.0",
     "gatsby-plugin-segment-js": "^3.1.0",

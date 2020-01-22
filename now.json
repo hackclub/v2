@@ -1,0 +1,70 @@
+{
+  "version": 2,
+  "name": "hackclub",
+  "public": true,
+  "redirects": [
+    { "source": "/c9", "destination": "/cloud9_setup" },
+    { "source": "/slack", "destination": "/community" },
+    { "source": "/slack_invite", "destination": "/community" },
+    { "source": "/workshops/slack", "destination": "/community" },
+    { "source": "/hack_camp", "destination": "/camp" },
+    { "source": "/repl", "destination": "/" },
+    {
+      "source": "/coc",
+      "destination": "https://github.com/hackclub/hackclub/blob/master/CONDUCT.md",
+      "statusCode": 307
+    },
+    {
+      "source": "/conduct",
+      "destination": "https://github.com/hackclub/hackclub/blob/master/CONDUCT.md",
+      "statusCode": 307
+    },
+    {
+      "source": "/code_of_conduct",
+      "destination": "https://github.com/hackclub/hackclub/blob/master/CONDUCT.md",
+      "statusCode": 307
+    },
+    {
+      "source": "/hackathons",
+      "destination": "https://hackathons.hackclub.com"
+    },
+    { "source": "/finder", "destination": "https://finder.hackclub.com" },
+    { "source": "/apply", "destination": "https://apply.hackclub.com" },
+    {
+      "source": "/admin",
+      "destination": "https://5c8804a629a378000833619c--hackclub.netlify.com/admin/"
+    },
+    {
+      "source": "/checkup",
+      "destination": "https://5c8804a629a378000833619c--hackclub.netlify.com/checkup/"
+    },
+    {
+      "source": "/component---src*",
+      "destination": "/swkiller.js",
+      "statusCode": 200
+    }
+  ],
+  "headers": [
+    {
+      "source": "/banners/*",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/fonnts/**",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    }
+  ],
+  "github": {
+    "silent": true
+  }
+}

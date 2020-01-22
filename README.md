@@ -2,8 +2,6 @@
 
 The new Hack Club website, built with [React](https://reactjs.org/) and [Gatsby](https://www.gatsbyjs.org/).
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/aaa825c5-8ca1-4f2a-b8ec-d33fefbf3da2/deploy-status)](https://app.netlify.com/sites/hackclub/deploys)
-
 ## Setup
 
 1. Clone the repository and enter it

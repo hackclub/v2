@@ -15,15 +15,6 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-netlify',
-      options: {
-        headers: {
-          '/banners/*': ['Access-Control-Allow-Origin: *'],
-          '/fonts/**': ['Access-Control-Allow-Origin: *']
-        }
-      }
-    },
-    {
       resolve: 'gatsby-plugin-segment-js',
       options: {
         prodKey: '35oTlU4UqlhIN8VGYmBxAzyDdfzhcscw',

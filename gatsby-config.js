@@ -8,7 +8,6 @@ module.exports = {
     'gatsby-plugin-resolve-src',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-styled-components',
-    'gatsby-transformer-json',
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
@@ -25,39 +24,10 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-segment',
+      resolve: 'gatsby-plugin-segment-js',
       options: {
-        writeKey: '35oTlU4UqlhIN8VGYmBxAzyDdfzhcscw'
-      }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/content/workshops`,
-        name: 'workshops'
-      }
-    },
-    {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [
-          'gatsby-remark-autolink-headers',
-          {
-            resolve: 'gatsby-remark-copy-linked-files',
-            options: {
-              ignoreFileExtensions: []
-            }
-          },
-          'gatsby-remark-prismjs',
-          'gatsby-remark-smartypants',
-          {
-            resolve: 'gatsby-remark-external-links',
-            options: {
-              target: '_blank',
-              rel: 'noreferrer noopener'
-            }
-          }
-        ]
+        prodKey: '35oTlU4UqlhIN8VGYmBxAzyDdfzhcscw',
+        trackPage: true
       }
     }
   ]

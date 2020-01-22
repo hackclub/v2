@@ -39,14 +39,14 @@
       "destination": "https://5c8804a629a378000833619c--hackclub.netlify.com/checkup/"
     },
     {
-      "source": "/component---src*",
+      "source": "/component---src(.*)",
       "destination": "/swkiller.js",
       "statusCode": 200
     }
   ],
   "headers": [
     {
-      "source": "/banners/*",
+      "source": "/banners/(.*)",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
@@ -55,7 +55,7 @@
       ]
     },
     {
-      "source": "/fonnts/**",
+      "source": "/fonts/(.*)",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",

@@ -66,7 +66,7 @@ export default () => (
         </ProjectTwo>
         <ProjectThree>
           <Module
-            icon="challenge"
+            icon="sticker"
             name="Your First Game"
             body="Making a game is a great intro to code, and it’s never been easier. You’ll go home with your own 3D world."
           />

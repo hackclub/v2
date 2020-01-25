@@ -502,9 +502,8 @@ export default () => (
         </SectionLead>
         <Cols cols="2fr 3fr">
           <MarketingFeature>
-            {/* TODO: change icon to "sticker" after next @hackclub/icons release */}
             <Module
-              icon="challenge"
+              icon="sticker"
               name="Stickers!"
               body="We’ll ship your club a box of our famous stickers for successful marketing from day one."
               color="white"

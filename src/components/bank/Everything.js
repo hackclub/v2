@@ -95,7 +95,7 @@ export default () => (
           'Record shared notes on transactions',
           'Transaction data export',
           'Dedicated point of contact',
-          '12-hour response support',
+          '24-hour response support',
           'Negotiated nonprofit rates with Stripe',
           'Reimbursement process'
         ].map(item => (

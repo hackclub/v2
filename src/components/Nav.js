@@ -123,13 +123,8 @@ const NavBar = styled(Box.withComponent('nav'))`
 const Navigation = props => (
   <NavBar role="navigation" {...props}>
     <Link to="/community/" children="Slack" />
-    <Link to="/workshops/" children="Workshops" />
-    <a
-      href="https://hackathons.hackclub.com/"
-      children="Hackathons"
-      target="_blank"
-      rel="noopener noreferrer"
-    />
+    <a href="https://workshops.hackclub.com/" children="Workshops" />
+    <a href="https://hackathons.hackclub.com/" children="Hackathons" />
     <Link to="/bank/" children="Bank" />
     <Link to="/donate/" children="Donate" />
   </NavBar>

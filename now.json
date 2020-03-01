@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "hackclub",
   "public": true,
   "redirects": [
     { "source": "/c9", "destination": "/cloud9_setup" },
@@ -11,18 +10,11 @@
     { "source": "/repl", "destination": "/" },
     {
       "source": "/coc",
-      "destination": "https://github.com/hackclub/hackclub/blob/master/CONDUCT.md",
-      "statusCode": 307
-    },
-    {
-      "source": "/conduct",
-      "destination": "https://github.com/hackclub/hackclub/blob/master/CONDUCT.md",
-      "statusCode": 307
+      "destination": "/conduct"
     },
     {
       "source": "/code_of_conduct",
-      "destination": "https://github.com/hackclub/hackclub/blob/master/CONDUCT.md",
-      "statusCode": 307
+      "destination": "/conduct"
     },
     {
       "source": "/hackathons",
@@ -42,6 +34,20 @@
       "source": "/component---src(.*)",
       "destination": "/swkiller.js",
       "statusCode": 200
+    },
+    {
+      "source": "/workshops",
+      "destination": "https://workshops.hackclub.com/"
+    },
+    {
+      "source": "/workshops/(.*)",
+      "destination": "https://workshops.hackclub.com/$1"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/conduct",
+      "destination": "https://workshops.hackclub.com/conduct"
     }
   ],
   "headers": [

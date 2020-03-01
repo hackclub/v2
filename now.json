@@ -3,20 +3,14 @@
   "public": true,
   "trailingSlash": true,
   "redirects": [
-    { "source": "/c9", "destination": "/cloud9_setup" },
-    { "source": "/slack", "destination": "/community" },
-    { "source": "/slack_invite", "destination": "/community" },
-    { "source": "/workshops/slack", "destination": "/community" },
-    { "source": "/hack_camp", "destination": "/camp" },
+    { "source": "/c9", "destination": "/cloud9_setup/" },
+    { "source": "/slack", "destination": "/community/" },
+    { "source": "/slack_invite", "destination": "/community/" },
+    { "source": "/workshops/slack", "destination": "/community/" },
+    { "source": "/hack_camp", "destination": "/camp/" },
     { "source": "/repl", "destination": "/" },
-    {
-      "source": "/coc",
-      "destination": "/conduct"
-    },
-    {
-      "source": "/code_of_conduct",
-      "destination": "/conduct"
-    },
+    { "source": "/coc", "destination": "/conduct/" },
+    { "source": "/code_of_conduct", "destination": "/conduct/" },
     {
       "source": "/hackathons",
       "destination": "https://hackathons.hackclub.com"
@@ -29,7 +23,8 @@
     },
     {
       "source": "/checkup",
-      "destination": "https://5c8804a629a378000833619c--hackclub.netlify.com/checkup/"
+      "destination": "https://5c8804a629a378000833619c--hackclub.netlify.com/checkup/",
+      "statusCode": 302
     },
     {
       "source": "/component---src(.*)",
@@ -48,26 +43,24 @@
   "rewrites": [
     {
       "source": "/conduct",
-      "destination": "https://workshops.hackclub.com/conduct"
+      "destination": "https://workshops.hackclub.com/conduct/"
+    },
+    {
+      "source": "/conduct/",
+      "destination": "https://workshops.hackclub.com/conduct/"
     }
   ],
   "headers": [
     {
       "source": "/banners/(.*)",
       "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        }
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
       ]
     },
     {
       "source": "/fonts/(.*)",
       "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        }
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
       ]
     }
   ],

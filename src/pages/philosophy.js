@@ -10,13 +10,10 @@ import {
   theme
 } from '@hackclub/design-system'
 import Layout from 'components/Layout'
-import { Link } from 'gatsby'
 import Nav from 'components/Nav'
 import { Headline, Lead } from 'components/Content'
 import Start from 'components/Start'
 import Footer from 'components/Footer'
-
-A.link = A.withComponent(Link)
 
 const Header = styled(Section.withComponent('header')).attrs({
   bg: 'fuschia.6'
@@ -173,7 +170,7 @@ export default () => (
       <Lead>
         Just as the best carpenters didn’t learn in the classroom, neither did
         the best programmers. Through our{' '}
-        <A.link to="/workshops">workshops</A.link>, you’ll be walked through
+        <A href="/workshops">workshops</A>, you’ll be walked through
         building projects. Starting out, you won’t understand how the code
         works, but you’ll build understanding as you go. You’ll get stuck along
         the way, but we’re here to help.

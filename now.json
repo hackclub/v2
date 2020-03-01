@@ -1,6 +1,7 @@
 {
   "version": 2,
   "public": true,
+  "trailingSlash": true,
   "redirects": [
     { "source": "/c9", "destination": "/cloud9_setup" },
     { "source": "/slack", "destination": "/community" },

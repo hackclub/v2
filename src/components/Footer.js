@@ -132,7 +132,7 @@ const Footer = ({ dark = false, children, ...props }) => (
             <a href="https://workshops.hackclub.com/" children="Workshops" />
             <Link to="/night/" children="Hack Night" />
             <a href="https://hackathons.hackclub.com/" children="Hackathons" />
-            <a href="https://shop.hackclub.com/" children="Shop" />
+            <a href="https://help.hackclub.com/" children="Guides" />
             <Link to="/bank/" children="Bank" />
           </Pages>
         </Box>

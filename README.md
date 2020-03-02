@@ -1,22 +1,48 @@
-# Hack Club
+<p align="center"><img width="200px" height="200px" alt="Hack Club icon" src="https://hackclub.com/icon/icon-masked.png"></a>
+<h1 align="center"><a href="https://hackclub.com/">Hack Club Site</a></h1>
+<p align="center"><i>The source code for hackclub.com</i></p>
 
-The new Hack Club website, built with [React](https://reactjs.org/) and [Gatsby](https://www.gatsbyjs.org/).
+Website internals:
 
-## Setup
+- [hackclub/design-system](https://github.com/hackclub/design-system)
+- [hackclub/icons](https://github.com/hackclub/icons)
+- [hackclub/season](https://github.com/hackclub/season)
+- [hackclub/banner](https://github.com/hackclub/banner)
 
-1. Clone the repository and enter it
-```
-git clone https://github.com/hackclub/site.git
-cd site
-```
-2. Update submodules (this may take a little while)
-```
-git submodule init && git submodule update --depth 1
-```
-3. Install packages & run
-```
-yarn && yarn run dev
-```
-4. It should now be running, open [localhost:8000](http://localhost:8000) to view it
+Our other website repos:
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for more!
+- [hackclub/hackathons](https://github.com/hackclub/hackathons)
+- [hackclub/workshops](https://github.com/hackclub/workshops)
+- [hackclub/apply](https://github.com/hackclub/apply)
+
+### Development environment setup
+
+The stack: [React](https://reactjs.org/) and [Gatsby](https://www.gatsbyjs.org/) with the [Hack Club Design System](https://github.com/hackclub/design-system).
+
+Stuff you need installed ahead of time:
+
+- Git
+- Yarn
+- An operating system (we hope)
+
+Clone it!
+
+    $ git clone https://github.com/hackclub/site
+
+Go into the directory!
+
+    $ cd site
+
+Install dependencies!
+
+    $ yarn
+
+Run it!
+
+    $ yarn run dev
+
+### License
+
+This project is licensed under the MIT license. Please see [`LICENSE.md`](LICENSE.md) for the full text.
+
+MIT License

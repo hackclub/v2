@@ -3,26 +3,17 @@
 First, thank you for contributing! Here’s some basics about our codebase.
 
 ## Quick Start
-
+ 
 1. Clone the repository and enter it
 ```sh
 git clone https://github.com/hackclub/site.git
 cd site
 ```sh
-2. Update submodules (this may take a little while)
-```sh
-git submodule init && git submodule update
-```
-3. Install packages & run
+2. Install packages & run
 ```sh
 yarn && yarn run dev
 ```
-4. It should now be running, open [localhost:8000](http://localhost:8000) to view
-
-## Submodules
-
-The Git submodule to [hackclub/hackclub](https://github.com/hackclub/hackclub)
-is for including the Workshop source files.
+3. It should now be running, open [localhost:8000](http://localhost:8000) to view
 
 ## Organization
 
@@ -55,5 +46,3 @@ all UI primitives (Text, Buttons, etc).
 
 Before adding images (in `static/`), resize them to a logical size and run
 [Guetzli](https://github.com/google/guetzli/) on them for optimization.
-
-Improvements to image serving are planned but not yet in place.

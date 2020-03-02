@@ -8,8 +8,7 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
-    "fmt": "npx prettier \"{src/**,}/*.js\" --write",
-    "map": "npx babel-node src/map.js"
+    "fmt": "npx prettier \"{src/**,}/*.js\" --write"
   },
   "dependencies": {
     "@hackclub/banner": "^1.0.1",
@@ -41,12 +40,6 @@
     "unfetch": "^4.1.0",
     "validator": "^12.2.0",
     "yup": "^0.28.0"
-  },
-  "devDependencies": {
-    "cheerio": "^1.0.0-rc.3",
-    "minimist": "^1.2.0",
-    "react-simple-maps": "^0.12.1",
-    "svgo": "^1.3.2"
   },
   "keywords": [
     "gatsby"

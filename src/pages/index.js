@@ -24,8 +24,7 @@ import { Headline, Highlight, Lead } from 'components/Content'
 import Footer from 'components/Footer'
 import { stats } from 'data.json'
 
-A.link = A.withComponent(Link)
-const FeatureLink = styled(A.link).attrs({
+const FeatureLink = styled(A).attrs({
   mt: 3,
   fontSize: 3,
   hoverline: true,
@@ -33,6 +32,7 @@ const FeatureLink = styled(A.link).attrs({
 })`
   display: block;
 `
+FeatureLink.link = FeatureLink.withComponent(Link)
 
 const CTA = styled(LargeButton.withComponent(Link)).attrs({
   chevronRight: true,
@@ -429,7 +429,7 @@ export default () => (
             <Text>
               <strong>Everyone starts hacking.</strong> At the first few
               meetings, members follow{' '}
-              <LikeLink to="/workshops/">our tutorials</LikeLink> as a runway
+              <Like href="/workshops/">our tutorials</Like> as a runway
               before taking off with their own projects.
             </Text>
           </section>
@@ -529,7 +529,7 @@ export default () => (
               for events.
             </Text>
             <FeatureLink
-              to="https://medium.com/hackclub/github-hack-club-grants-for-your-club-custom-merch-more-f64d6da0d782"
+              href="https://medium.com/hackclub/github-hack-club-grants-for-your-club-custom-merch-more-f64d6da0d782"
               color="info"
             >
               GitHub exclusive
@@ -542,7 +542,7 @@ export default () => (
               color="white"
             />
             <FeatureLink
-              to="https://education.github.com/pack"
+              href="https://education.github.com/pack"
               color="white"
               ml={7}
             >
@@ -557,9 +557,9 @@ export default () => (
               body="In our Slack, come chat with hundreds of other club leaders and members around the world."
               color="white"
             />
-            <FeatureLink to="/community/" color="white">
+            <FeatureLink.link to="/community/" color="white">
               Join our Slack
-            </FeatureLink>
+            </FeatureLink.link>
           </PhotoFeature>
           <TextFeature>
             <Text>
@@ -567,7 +567,7 @@ export default () => (
               members dozens of free tutorials for making websites, games, and
               beyond.
             </Text>
-            <FeatureLink to="/workshops/" color="info">
+            <FeatureLink href="https://workshops.hackclub.com/" color="info">
               Check out workshops
             </FeatureLink>
           </TextFeature>
@@ -579,7 +579,7 @@ export default () => (
               <Text.span color="cyan.5">local events</Text.span> from
               Hack&nbsp;Clubs near yours.
             </Text>
-            <FeatureLink to="https://hackathons.hackclub.com" color="white">
+            <FeatureLink to="https://hackathons.hackclub.com/" color="white">
               See nearby events
             </FeatureLink>
           </PhotoFeature>
@@ -590,9 +590,9 @@ export default () => (
               body="Store money in a non-profit bank account, get debit cards, & collect donations online."
               color="white"
             />
-            <FeatureLink to="/bank/" color="white">
+            <FeatureLink.link to="/bank/" color="white">
               Learn more
-            </FeatureLink>
+            </FeatureLink.link>
           </BankFeature>
         </Cols>
       </Container>
@@ -613,14 +613,9 @@ export default () => (
             network. While we’re currently optimized for new clubs, we’re
             continually increasing benefits for existing clubs through new
             projects like{' '}
-            <A.link to="/bank/" target="_blank">
-              Bank
-            </A.link>
+            <A.link to="/bank/">Bank</A.link>
             {' & '}
-            <A href="https://hackathons.hackclub.com/" target="_blank">
-              Hackathons
-            </A>
-            .
+            <A href="https://hackathons.hackclub.com/">Hackathons</A>.
           </Lead>
         </Box>
       </Flex>

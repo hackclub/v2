@@ -28,21 +28,15 @@ const Base = styled.form`
   }
 `
 
-const params = values =>
-  '?' +
-  Object.keys(values)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(values[key]))
-    .join('&')
-
 const InnerForm = ({ values, errors, touched, handleChange, handleBlur }) => (
   <Base
     method="get"
     target="_blank"
-    action={`https://bank.hackclub.com/apply${params(values)}`}
+    action={`https://airtable.com/shrW33gWaPnSDBhYj`}
   >
     <Field
       label="Event name"
-      name="name"
+      name="prefill_Event Name"
       placeholder="Windy City Hacks"
       value={values.name}
       onChange={handleChange}
@@ -51,23 +45,23 @@ const InnerForm = ({ values, errors, touched, handleChange, handleBlur }) => (
       mb={2}
     />
     <Field
-      label="URL"
-      name="url"
-      placeholder="https://windyhacks.com"
-      value={values.url}
+      label="First name"
+      name="prefill_First Name"
+      placeholder="Sam"
+      value={values.first_name}
       onChange={handleChange}
       onBlur={handleBlur}
-      error={touched.url && errors.url}
+      error={touched.first_name && errors.first_name}
       mb={2}
     />
     <Field
-      label="Estimated attendance"
-      name="expected_attendees"
-      value={values.expected_attendees}
-      type="number"
-      placeholder={200}
+      label="Last name"
+      name="prefill_Last Name"
+      placeholder="Davis"
+      value={values.last_name}
       onChange={handleChange}
       onBlur={handleBlur}
+      error={touched.last_name && errors.last_name}
       mb={[4, 5]}
     />
     <Submit.lg bg="info" width={1} value="Continue your application" />

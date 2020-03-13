@@ -9,7 +9,7 @@ const BannerSheet = styled(Sheet.withComponent(Link)).attrs({
   bg: 'white',
   color: 'black',
   align: 'center',
-  py: 1,
+  py: 2,
   px: 2
 })`
   display: inline-block;

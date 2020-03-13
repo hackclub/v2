@@ -376,10 +376,12 @@ export default () => (
         align={['left', 'center']}
         color="white"
       >
-        <AnnouncementBanner href="/covid19/">
-          🦠 We’ve released our guidelines for organizers in response to
-          COVID-19 →
-        </AnnouncementBanner>
+        <Container px={3}>
+          <AnnouncementBanner href="/covid19/">
+            🦠 We’ve released our guidelines for organizers in response to
+            COVID-19 →
+          </AnnouncementBanner>
+        </Container>
         <Container width={1} maxWidth={72} px={3} mt={[4, 5]} mb={[4, 5]}>
           <Headline maxWidth={48} mx="auto" fontSize={[6, 7, 8]} mb={2}>
             We’re high schoolers leading the best coding clubs

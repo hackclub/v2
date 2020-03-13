@@ -1,21 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Sheet, theme } from '@hackclub/design-system'
+import { Sheet, Link } from '@hackclub/design-system'
 
-const BannerSheet = styled(Sheet)`
-  padding: 14px 20px;
-  position: absolute;
-  left: 50vw;
-  transform: translateX(-50%);
-  z-index: 100;
-  background: ${theme.colors.white};
-  text-align: center;
+const BannerSheet = styled(Sheet.withComponent(Link)).attrs({
+  mt: 0,
+  mx: 'auto',
+  mb: 4,
+  bg: 'white',
+  color: 'black',
+  align: 'center',
+  py: 1,
+  px: 2
+})`
+  display: inline-block;
 `
 
-export default ({ children, top }) => {
-  return (
-    <BannerSheet maxWidth={30} width="auto" style={{ top: top ? top : '96px' }}>
-      {children}
-    </BannerSheet>
-  )
-}
+export default ({ children, top, ...props }) => (
+  <BannerSheet maxWidth={24} width="auto" {...props}>
+    {children}
+  </BannerSheet>
+)

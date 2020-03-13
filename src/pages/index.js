@@ -18,7 +18,7 @@ import getSeason from '@hackclub/season'
 import Link from 'components/Link'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
-// import AnnouncementBanner from 'components/AnnouncementBanner'
+import AnnouncementBanner from 'components/AnnouncementBanner'
 import Photo from 'components/Photo'
 import { Headline, Highlight, Lead } from 'components/Content'
 import Footer from 'components/Footer'
@@ -342,13 +342,9 @@ const SectionLead = styled(Lead).attrs({
   mb: [4, 5]
 })``
 
-const like = {
-  underline: true,
-  target: '_blank'
-}
+const like = { underline: true, target: '_blank' }
 A.link = A.withComponent(Link)
 const Like = props => <A {...like} {...props} />
-const LikeLink = props => <A.link {...like} {...props} />
 
 const contentContainer = {
   maxWidth: 72,
@@ -373,14 +369,18 @@ export default () => (
     <Nav color="slate" fixed />
     <Box mt={[44, 55]} p={3} bg="snow">
       <PhotoHeader
-        style={{ paddingTop: 50 }}
+        style={{ paddingTop: 48 }}
         py={[3, 5, 6]}
         src={require('../../static/photos/hackpenn_full.jpg')}
         aria-label="Students at a coding event"
         align={['left', 'center']}
         color="white"
       >
-        <Container width={1} maxWidth={72} px={3} mt={[5, 6]} mb={[4, 5]}>
+        <AnnouncementBanner href="/covid19/">
+          🦠 We’ve released our guidelines for organizers in response to
+          COVID-19 →
+        </AnnouncementBanner>
+        <Container width={1} maxWidth={72} px={3} mt={[4, 5]} mb={[4, 5]}>
           <Headline maxWidth={48} mx="auto" fontSize={[6, 7, 8]} mb={2}>
             We’re high schoolers leading the best coding clubs
             in&nbsp;the&nbsp;world.
@@ -429,8 +429,8 @@ export default () => (
             <Text>
               <strong>Everyone starts hacking.</strong> At the first few
               meetings, members follow{' '}
-              <Like href="/workshops/">our tutorials</Like> as a runway
-              before taking off with their own projects.
+              <Like href="/workshops/">our tutorials</Like> as a runway before
+              taking off with their own projects.
             </Text>
           </section>
           <section>
@@ -612,8 +612,7 @@ export default () => (
             When established CS clubs join, they get all the benefits of the
             network. While we’re currently optimized for new clubs, we’re
             continually increasing benefits for existing clubs through new
-            projects like{' '}
-            <A.link to="/bank/">Bank</A.link>
+            projects like <A.link to="/bank/">Bank</A.link>
             {' & '}
             <A href="https://hackathons.hackclub.com/">Hackathons</A>.
           </Lead>

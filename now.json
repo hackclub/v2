@@ -42,6 +42,10 @@
   ],
   "rewrites": [
     {
+      "source": "/covid19/",
+      "destination": "https://workshops.hackclub.com/covid19/"
+    },
+    {
       "source": "/conduct/",
       "destination": "https://workshops.hackclub.com/conduct/"
     }
@@ -49,15 +53,11 @@
   "headers": [
     {
       "source": "/banners/(.*)",
-      "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" }
-      ]
+      "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
     },
     {
       "source": "/fonts/(.*)",
-      "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" }
-      ]
+      "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
     }
   ],
   "github": {

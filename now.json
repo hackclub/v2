@@ -46,6 +46,10 @@
       "destination": "https://workshops.hackclub.com/covid19/"
     },
     {
+      "source": "/banner/",
+      "destination": "https://workshops.hackclub.com/banner/"
+    },
+    {
       "source": "/conduct/",
       "destination": "https://workshops.hackclub.com/conduct/"
     }

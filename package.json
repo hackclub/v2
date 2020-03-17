@@ -11,7 +11,6 @@
     "fmt": "npx prettier \"{src/**,}/*.js\" --write"
   },
   "dependencies": {
-    "@hackclub/banner": "^1.0.1",
     "@hackclub/design-system": "^0.0.1-18",
     "@hackclub/season": "^0.0.2",
     "animated-value": "^0.2.4",
@@ -31,7 +30,6 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
-    "react-markdown": "^4.3.1",
     "react-player": "^1.14.2",
     "react-reveal": "^1.2.2",
     "react-scrolllock": "^5.0.0",

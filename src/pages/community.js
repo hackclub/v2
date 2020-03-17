@@ -20,7 +20,7 @@ import Footer from 'components/Footer'
 import Sheet from 'components/Sheet'
 import GlowingIcon from 'components/GlowingIcon'
 import SlackForm from 'components/SlackForm'
-import { ColoredHeadline } from 'components/Content'
+import { Title, Subhline, ColoredHeadline } from 'components/Content'
 
 const BackgroundGradient = styled(Box)`
   position: relative;
@@ -220,13 +220,13 @@ export default () => (
             Sign in
           </A>
         </Announcement>
-        <Heading.h1 fontSize={[6, 7]} mt={[3, 4]} mb={2}>
+        <Title mt={[4, 5, null, 6]} mb={2}>
           Join the Hack Club Slack
-        </Heading.h1>
-        <Heading.h2 color="pink.0" fontSize={[4, 5]} mb={4} regular>
+        </Title>
+        <Subhline color="pink.0" fontSize={[4, 5]} mb={4}>
           Talk to our community, get coding help, have fun.
-        </Heading.h2>
         <Sheet maxWidth={28} align="left" my={4} mx="auto">
+        </Subhline>
           <SlackForm />
         </Sheet>
       </Container>

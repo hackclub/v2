@@ -225,8 +225,8 @@ export default () => (
         </Title>
         <Subhline color="pink.0" fontSize={[4, 5]} mb={4}>
           Talk to our community, get coding help, have fun.
-        <Sheet maxWidth={28} align="left" my={4} mx="auto">
         </Subhline>
+        <Sheet maxWidth={28} align="left" my={4} mx="auto">
           <SlackForm />
         </Sheet>
       </Container>

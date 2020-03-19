@@ -83,7 +83,7 @@ export default () => (
       <List>
         {[
           'Physical debit cards',
-          'G Suite with domain email addresses',
+          'G Suite accounts & email addresses',
           'Automated tax filings',
           'Legal entity with 501(c)(3) status',
           'Bank account backed by Silicon Valley Bank',

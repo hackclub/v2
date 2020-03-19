@@ -180,8 +180,8 @@ export default () => (
       />
       <Module
         icon="google"
-        name="G Suite"
-        body="Get free G Suite + email addresses (like joy@hackpenn.com) for everyone."
+        name="G Suite accounts"
+        body="Get free G Suite accounts & email addresses (like joy@hackpenn.com) for everyone."
       />
       <Module
         icon="support"

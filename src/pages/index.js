@@ -382,7 +382,7 @@ export default () => (
             COVID-19 →
           </AnnouncementBanner>
         </Container>
-        <Container width={1} maxWidth={72} px={3} mt={[4, 5]} mb={[4, 5]}>
+        <Container width={1} maxWidth={72} px={3} my={[3, 4]}>
           <Headline maxWidth={48} mx="auto" fontSize={[6, 7, 8]} mb={2}>
             We’re high schoolers leading the best coding clubs
             in&nbsp;the&nbsp;world.
@@ -394,13 +394,12 @@ export default () => (
               <br />
             </OnlyDesktop>
             <strong>
-              {getSeason()} applications accepted on a rolling basis.
-            </strong>
+              During COVID-19, join the community on Slack to participate.
+            </strong>{' '}
+            We’re also still accepting club applications on a rolling basis.
           </SectionLead>
-          <SecondaryCTA to="https://hackclub.com/community">
-            Join the Slack
-          </SecondaryCTA>
-          <CTA to="https://apply.hackclub.com">Apply now</CTA>
+          <SecondaryCTA to="https://apply.hackclub.com">Apply now</SecondaryCTA>
+          <CTA to="https://hackclub.com/community">Join our Slack</CTA>
         </Container>
       </PhotoHeader>
     </Box>

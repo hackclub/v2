@@ -1,44 +1,56 @@
 import React from 'react'
 import styled from 'styled-components'
-import {
-  Flex,
-  Box,
-  Heading,
-  Text,
-  Avatar,
-  Badge,
-  theme
-} from '@hackclub/design-system'
+import { Box, Heading, Text, Avatar, theme } from '@hackclub/design-system'
 import Sheet from 'components/Sheet'
 
 const Base = styled(Sheet)`
-  display: flex;
-  border-radius: ${theme.radii[2]};
+  border-radius: 0;
   max-width: 36rem;
   img {
-    flex-shrink: 0;
+    transition: transform 0.125s ease-in-out;
+  }
+  img:hover {
+    transform: rotate(-8deg) scale(1.25);
+  }
+  h3 {
+    line-height: 1;
+  }
+  p {
+    align-self: start;
+  }
+  ${theme.mediaQueries.sm} {
+    border-radius: ${theme.radii[2]};
+    display: grid;
+    grid-row-gap: ${theme.space[1]}px;
+    grid-column-gap: ${theme.space[3]}px;
+    grid-template-columns: 64px 1fr;
+    align-items: center;
+    p {
+      grid-column: span 2;
+    }
+  }
+  ${theme.mediaQueries.md} {
+    p {
+      grid-column: 2;
+    }
   }
 `
 
 const Bio = ({ img, name, teamRole, pronouns, text, ...props }) => (
   <Base mb={0} {...props}>
-    <Box mr={[2, 3]}>
-      <Avatar size="64px" src={img} alt={name} />
-      <Text
-        fontSize={1}
-        color="muted"
-        align="center"
-        mt={-1}
-        children={pronouns}
-      />
-    </Box>
+    <Avatar
+      size="64px"
+      src={img || `/team/${name.split(' ')[0].toLowerCase()}.jpg`}
+      alt={name}
+    />
     <Box>
-      <Flex align="center" wrap style={{ lineHeight: '1.125' }}>
-        <Heading.h3 fontSize={4} m={0} mr={2} color="black" children={name} />
-        <Badge px={2} fontSize={1} bg="primary" children={teamRole} />
-      </Flex>
-      <Text fontSize={2} mt={1} mb={0} color="slate" children={text} />
+      <Heading.h3 fontSize={[4, 5]} color="black" children={name} />
+      <Text.span color="cyan.7" bold fontSize={2} mr={2} children={teamRole} />
+      <Text.span fontSize={1} color="muted" align="center">
+        ({pronouns})
+      </Text.span>
     </Box>
+    <Text fontSize={2} mt={1} mb={0} color="black" children={text} />
   </Base>
 )
 

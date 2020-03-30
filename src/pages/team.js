@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Section, Box, Container, theme } from '@hackclub/design-system'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
-import { Title, Headline, Lead } from 'components/content'
+import { Title, Headline, Lead } from 'components/Content'
 import Bio from 'components/Bio'
 import Footer from 'components/Footer'
 
@@ -91,6 +91,13 @@ export default () => (
           text="After graduating high school, Michael moved to California where he began working with Hack Club. He now leads Hack Club Bank and loves helping passionate people bring their ideas to reality."
           pronouns="he/him"
         />
+        <Bio
+          img="/team/athul.jpg"
+          name="Athul Blesson"
+          teamRole="Indian Region"
+          text="Athul leads some of the largest Hack Clubs in India. After graduating from high school, he joined as the Regional Manager in India, where he actively leads 30+ clubs."
+          pronouns="he/him"
+        />
       </Base>
       <Headline color="cyan.7" mt={[4, 5, 6]} mb={[3, 4]} pl={[3, 0]}>
         Acknowledgements
@@ -108,13 +115,6 @@ export default () => (
           name="Linus Lee"
           teamRole="Hack Club Bank"
           text="Linus spends most of his free time working on side projects ranging from an audio travel diary to creative coding tools to his own programming language. He brought his experience in product & community from Cal Hacks & Dorm Room Fund to grow Hack Club Bank."
-          pronouns="he/him"
-        />
-        <Bio
-          img="/team/athul.jpg"
-          name="Athul Blesson"
-          teamRole="Indian Region"
-          text="Athul leads some of the largest Hack Clubs in India. After graduating from high school, he joined as the Regional Manager in India, where he actively leads 30+ clubs."
           pronouns="he/him"
         />
         <Bio

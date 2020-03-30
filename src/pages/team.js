@@ -92,7 +92,6 @@ export default () => (
           pronouns="he/him"
         />
         <Bio
-          img="/team/athul.jpg"
           name="Athul Blesson"
           teamRole="Indian Region"
           text="Athul leads some of the largest Hack Clubs in India. After graduating from high school, he joined as the Regional Manager in India, where he actively leads 30+ clubs."
@@ -111,7 +110,6 @@ export default () => (
           pronouns="he/him"
         />
         <Bio
-          img="/team/linus.jpg"
           name="Linus Lee"
           teamRole="Hack Club Bank"
           text="Linus spends most of his free time working on side projects ranging from an audio travel diary to creative coding tools to his own programming language. He brought his experience in product & community from Cal Hacks & Dorm Room Fund to grow Hack Club Bank."

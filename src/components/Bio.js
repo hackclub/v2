@@ -39,8 +39,13 @@ const Base = styled(Sheet)`
 const Bio = ({ img, name, teamRole, pronouns, text, ...props }) => (
   <Base mb={0} {...props}>
     <Avatar
-      size="64px"
-      src={img || `/team/${name.split(' ')[0].toLowerCase()}.jpg`}
+      size={64}
+      width={64}
+      height={64}
+      src={
+        img ||
+        require(`../../static/team/${name.split(' ')[0].toLowerCase()}.jpg`)
+      }
       alt={name}
     />
     <Box>

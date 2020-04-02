@@ -365,10 +365,12 @@ const OnlyDesktop = styled.span`
 `
 
 export default () => (
-  <iframe src="https://maxwofford.com"></iframe>
+  <iframe src="https://maxwofford.com" width="100vw" style={{
+position:'fixed', top:0, left:0, bottom:0, right:0, width:'100%', height: '100%', border:'none', margin:0, padding:0, overflow:'hidden'
+  }}></iframe>
 )
 
-const old = () => (
+const old =  () => (
   <Layout title={title} desc={desc} path="/">
     <Nav color="slate" fixed />
     <Box mt={[44, 55]} p={3} bg="snow">

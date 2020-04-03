@@ -93,8 +93,8 @@ export default () => (
         />
         <Bio
           name="Athul Blesson"
-          teamRole="Indian Region"
-          text="Athul leads some of the largest Hack Clubs in India. After graduating from high school, he joined as the Regional Manager in India, where he actively leads 30+ clubs."
+          teamRole="Asia-Pacific Region"
+          text="Athul started dozens of the largest Hack Clubs in India. After graduating from high school, he joined as the Regional Manager of Asia-Pacific & Africa, where he actively manages 117 clubs."
           pronouns="he/him"
         />
       </Base>

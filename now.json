@@ -59,7 +59,7 @@
     },
     {
       "source": "/map/(.*)/",
-      "destination": "https://hc-map.nowh.sh/$1"
+      "destination": "https://hc-map.now.sh/$1"
     }
   ],
   "headers": [

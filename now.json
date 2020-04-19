@@ -52,6 +52,14 @@
     {
       "source": "/conduct/",
       "destination": "https://workshops.hackclub.com/conduct/"
+    },
+    {
+      "source": "/map/",
+      "destination": "https://hc-map.now.sh/"
+    },
+    {
+      "source": "/map/(.*)/",
+      "destination": "https://hc-map.nowh.sh/$1"
     }
   ],
   "headers": [

@@ -10,7 +10,7 @@ import {
   theme
 } from '@hackclub/design-system'
 import Layout from 'components/Layout'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import { Headline } from 'components/Content'

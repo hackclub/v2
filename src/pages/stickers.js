@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { Box, Flex, Heading, Image, Text, theme } from '@hackclub/design-system'
 import Layout from 'components/Layout'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import Nav from 'components/Nav'
 import Sheet from 'components/Sheet'
 import Footer from 'components/Footer'
@@ -64,13 +64,13 @@ const Grid = styled(Box).attrs({ px: 3, py: [0, 6] })`
 const Sticker = styled(Image).attrs({ width: 1 })`
   object-fit: contain;
   margin: auto;
-  transform: rotate(${props => random(-12, 16)}deg);
-  ${props =>
+  transform: rotate(${(props) => random(-12, 16)}deg);
+  ${(props) =>
     props.cols &&
     css`
       grid-column: span ${props.cols};
     `}
-  ${props =>
+  ${(props) =>
     props.rows &&
     css`
       grid-row: span ${props.rows};

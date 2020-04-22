@@ -7,7 +7,7 @@ import {
   Text,
   theme
 } from '@hackclub/design-system'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import BG from 'components/BG'
@@ -153,7 +153,7 @@ const Blinking = styled(Heading.h1).attrs({
   line-height: 1;
   &:before,
   &:after {
-    content: '${props => props.children}';
+    content: '${(props) => props.children}';
     position: absolute;
     top: 0;
     color: ${theme.colors.smoke};

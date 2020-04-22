@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Heading } from '@hackclub/design-system'
 import styled from 'styled-components'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import Flag from 'components/Flag'
 import LoginForm from 'components/auth/LoginForm'
 

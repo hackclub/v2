@@ -115,12 +115,12 @@ const Footer = ({ dark = false, children, ...props }) => (
             Hack Club
           </Heading.h2>
           <Pages>
-            <Link to="/" children="Home" />
             <a href="https://apply.hackclub.com/" children="Apply" />
             <Link to="/donate/" children="Donate" />
             <Link to="/team/" children="Team" />
             <Link to="/community/" children="Community" />
             <Link to="/philosophy/" children="Philosophy" />
+            <a href="https://hackclub.com/brand/" children="Brand" />
           </Pages>
         </Box>
         <Box>
@@ -132,8 +132,8 @@ const Footer = ({ dark = false, children, ...props }) => (
             <a href="https://workshops.hackclub.com/" children="Workshops" />
             <Link to="/night/" children="Hack Night" />
             <a href="https://hackathons.hackclub.com/" children="Hackathons" />
-            <a href="https://help.hackclub.com/" children="Guides" />
             <Link to="/bank/" children="Bank" />
+            <a href="https://hackclub.com/map/" children="Map" />
           </Pages>
         </Box>
         <Box>
@@ -167,7 +167,6 @@ const Footer = ({ dark = false, children, ...props }) => (
         </Box>
       </Columns>
       <Box fontSize={2} mt={[3, 4]}>
-        <Text>Office: 576 Natoma St, San Francisco, CA 94103</Text>
         <Text>
           Mail: 8605 Santa Monica Blvd #86294, West Hollywood, CA 90069
         </Text>

@@ -11,12 +11,9 @@
     { "source": "/repl/", "destination": "/" },
     { "source": "/coc/", "destination": "/conduct/" },
     { "source": "/code_of_conduct/", "destination": "/conduct/" },
-    {
-      "source": "/hackathons/",
-      "destination": "https://hackathons.hackclub.com"
-    },
     { "source": "/finder/", "destination": "https://finder.hackclub.com" },
     { "source": "/apply/", "destination": "https://apply.hackclub.com" },
+    { "source": "/icons/", "destination": "https://icons.hackclub.com" },
     {
       "source": "/admin/",
       "destination": "https://5c8804a629a378000833619c--hackclub.netlify.com/admin/"
@@ -58,8 +55,8 @@
       "destination": "https://hc-map.now.sh/"
     },
     {
-      "source": "/map/(.*)/",
-      "destination": "https://hc-map.now.sh/$1"
+      "source": "/brand/",
+      "destination": "https://theme.hackclub.com/brand/"
     }
   ],
   "headers": [

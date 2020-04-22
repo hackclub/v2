@@ -227,7 +227,9 @@ export default () => (
           Talk to our community, get coding help, have fun.
         </Subhline>
         <Sheet maxWidth={28} align="left" my={4} mx="auto">
-          <SlackForm />
+          Due to high demand from the Elon Musk AMA, we’ve temporarily suspended
+          Slack invitations. Check back soon to join our Slack!
+          {/* <SlackForm /> */}
         </Sheet>
       </Container>
       <Text color="pink.0" align="center" fontSize={[4, 5]} bold mt={[3, 4, 5]}>
@@ -248,7 +250,7 @@ export default () => (
         </Text>
       </Container>
       <Grid>
-        {channels.map(channel => (
+        {channels.map((channel) => (
           <Channel bg={channel.color} key={channel.name}>
             <ChannelArt src={`/slacks/${channel.name}.png`} />
             <ChannelName>#{channel.name}</ChannelName>

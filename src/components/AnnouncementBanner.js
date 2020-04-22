@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Sheet, Link } from '@hackclub/design-system'
+import { Sheet } from '@hackclub/design-system'
 
-const BannerSheet = styled(Sheet.withComponent(Link)).attrs({
+const BannerSheet = styled(Sheet).attrs({
   mt: 0,
   mx: 'auto',
   mb: 4,

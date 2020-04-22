@@ -41,7 +41,7 @@ const CTA = styled(LargeButton.withComponent(Link)).attrs({
   m: [1, 2],
   scale: true
 })`
-  background-image: ${props => theme.gradient(props.bg[0], props.bg[1])};
+  background-image: ${(props) => theme.gradient(props.bg[0], props.bg[1])};
   text-transform: uppercase;
 `
 const SecondaryCTA = styled(OutlineButton.withComponent(Link)).attrs({
@@ -78,12 +78,12 @@ const photoSection = css`
 const PhotoHeader = styled(Section).attrs({ px: 0 })`
   background-color: ${theme.colors.primary};
   background-image: linear-gradient(
-      ${props =>
+      ${(props) =>
         props.inverted
           ? 'rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)'
           : 'rgba(0, 0, 0, 0.325), rgba(0, 0, 0, 0.5)'}
     ),
-    url(${props => props.src});
+    url(${(props) => props.src});
   background-position: center;
   ${photoSection};
   ${shadows};
@@ -123,7 +123,7 @@ const PhotoFeature = styled(TextFeature).attrs({
   color: 'white'
 })`
   position: relative;
-  ${props =>
+  ${(props) =>
     props.inverted
       ? css`
           justify-content: flex-end !important;
@@ -256,7 +256,7 @@ const Cols = styled(Box)`
   grid-gap: ${theme.space[3]}px;
   ${theme.mediaQueries.sm} {
     grid-gap: ${theme.space[4]}px;
-    grid-template-columns: ${props => props.cols};
+    grid-template-columns: ${(props) => props.cols};
   }
   > div,
   > section > div {
@@ -344,7 +344,7 @@ const SectionLead = styled(Lead).attrs({
 
 const like = { underline: true, target: '_blank' }
 A.link = A.withComponent(Link)
-const Like = props => <A {...like} {...props} />
+const Like = (props) => <A {...like} {...props} />
 
 const contentContainer = {
   maxWidth: 72,
@@ -377,9 +377,9 @@ export default () => (
         color="white"
       >
         <Container px={3}>
-          <AnnouncementBanner href="/covid19/">
-            🦠 We’ve released our guidelines for organizers in response to
-            COVID-19 →
+          <AnnouncementBanner>
+            🚀 Our next event: <strong>AMA with Elon Musk</strong>{' '}
+            on&nbsp;Friday, April 24 @ 1PM PT/4PM ET
           </AnnouncementBanner>
         </Container>
         <Container width={1} maxWidth={72} px={3} my={[3, 4]}>

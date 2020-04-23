@@ -15,14 +15,14 @@ import { Link } from 'gatsby'
 import PureImagination from 'components/PureImagination'
 
 const Base = styled(Box.withComponent('footer'))`
-  background: ${props =>
+  background: ${(props) =>
     props.dark
       ? `${theme.colors.darker} radial-gradient(${hexa(
           theme.colors.black,
           0.5
         )} 1px, transparent 1px)`
       : `${theme.colors.snow} url('/pattern.svg') repeat`};
-  ${props =>
+  ${(props) =>
     props.dark &&
     css`
       background-size: ${theme.space[4]}px ${theme.space[4]}px;
@@ -120,7 +120,7 @@ const Footer = ({ dark = false, children, ...props }) => (
             <Link to="/team/" children="Team" />
             <Link to="/community/" children="Community" />
             <Link to="/philosophy/" children="Philosophy" />
-            <a href="https://hackclub.com/brand/" children="Brand" />
+            <a href="https://hackclub.com/brand/" children="Branding" />
           </Pages>
         </Box>
         <Box>
@@ -128,7 +128,10 @@ const Footer = ({ dark = false, children, ...props }) => (
             Resources
           </Heading.h2>
           <Pages>
-            <a href="/conduct/" children="Code of Conduct" />
+            <a
+              href="https://hackclub.com/conduct/"
+              children="Code of Conduct"
+            />
             <a href="https://workshops.hackclub.com/" children="Workshops" />
             <Link to="/night/" children="Hack Night" />
             <a href="https://hackathons.hackclub.com/" children="Hackathons" />
@@ -163,6 +166,9 @@ const Footer = ({ dark = false, children, ...props }) => (
             <a href="tel:1-855-625-HACK">1-855-625-HACK</a>
             <br />
             <Text.span color="muted" children="(call toll-free)" />
+          </Text>
+          <Text mt={[3, 4]}>
+            <a href="https://hackclub.com/press/" children="Press Inquiries" />
           </Text>
         </Box>
       </Columns>

@@ -56,7 +56,11 @@
     },
     {
       "source": "/brand/",
-      "destination": "https://theme.hackclub.com/brand/"
+      "destination": "https://v3.hackclub.com/brand/"
+    },
+    {
+      "source": "/press/",
+      "destination": "https://v3.hackclub.com/press/"
     }
   ],
   "headers": [

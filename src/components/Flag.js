@@ -21,16 +21,17 @@ const waveFlagScaled = keyframes`
 `
 
 const Flag = styled(Link)`
-  background: url(/orpheus_flag.svg) no-repeat;
+  background: url(https://assets.hackclub.com/flag-orpheus-top.svg) no-repeat;
   background-position: top center;
+  background-size: contain;
   flex-shrink: 0;
   width: 112px;
   height: 48px;
   transition: ${theme.transition} transform;
   transform-origin: top left;
   ${theme.mediaQueries.md} {
-    width: 144px;
-    height: 72px;
+    width: 172px;
+    height: 64px;
   }
   &:hover,
   &:focus {
@@ -39,14 +40,11 @@ const Flag = styled(Link)`
   ${theme.mediaQueries.reduceMotion} {
     animation: none !important;
   }
-  ${props =>
+  ${(props) =>
     props.scrolled &&
     css`
-      transform: scale(0.75);
-      height: 44px !important;
-      ${theme.mediaQueries.md} {
-        height: 54px !important;
-      }
+      transform: scale(0.875);
+      height: 56px;
       &:hover,
       &:focus {
         animation: ${waveFlagScaled} 0.5s linear infinite alternate;

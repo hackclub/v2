@@ -7,11 +7,11 @@
   "img": "/social-photo_2.jpg",
   "stats": {
     "percentage_of_us_high_schools": "2%",
-    "school_count": 315,
-    "state_count": 35,
+    "school_count": 400,
+    "state_count": 40,
     "country_count": 17,
-    "slack_count": 3809,
-    "approximate_members": "3K+"
+    "slack_count": 8500,
+    "approximate_members": "8K+"
   },
   "userSegmentPages": {
     "c": "community",

@@ -74,7 +74,7 @@ const Timeline = styled(Flex).attrs({
 `
 const TimelineStep = styled(Flex).attrs({
   align: 'center',
-  pt: props => (props.first ? 0 : [2, 3])
+  pt: (props) => (props.first ? 0 : [2, 3])
 })`
   line-height: 1.125;
   position: relative;
@@ -131,9 +131,9 @@ export default () => [
         </Subhline>
         <Lead>
           We’re{' '}
-          <Link style={{ color: theme.colors.red }} to="/">
+          <a style={{ color: theme.colors.red }} href="/">
             Hack Club
-          </Link>
+          </a>
           , a global nonprofit network of high school coding clubs (now in 2% of
           US high schools). Hack Camp has been a part of Hack Club since the
           beginning. It’s a great way for us to try out the best ideas from our

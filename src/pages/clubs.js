@@ -14,11 +14,11 @@ import {
   Sheet,
   theme
 } from '@hackclub/design-system'
-import getSeason from '@hackclub/season'
+// import getSeason from '@hackclub/season'
 import Link from 'components/Link'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
-import AnnouncementBanner from 'components/AnnouncementBanner'
+// import AnnouncementBanner from 'components/AnnouncementBanner'
 import Photo from 'components/Photo'
 import { Headline, Highlight, Lead } from 'components/Content'
 import Footer from 'components/Footer'
@@ -376,12 +376,6 @@ export default () => (
         align={['left', 'center']}
         color="white"
       >
-        <Container px={3}>
-          <AnnouncementBanner>
-            🚀 Our next event: <strong>AMA with Elon Musk</strong>{' '}
-            on&nbsp;Friday, April 24 @ 1PM PT/4PM ET
-          </AnnouncementBanner>
-        </Container>
         <Container width={1} maxWidth={72} px={3} my={[3, 4]}>
           <Headline maxWidth={48} mx="auto" fontSize={[6, 7, 8]} mb={2}>
             We’re high schoolers leading the best coding clubs
@@ -393,13 +387,9 @@ export default () => (
             <OnlyDesktop>
               <br />
             </OnlyDesktop>
-            <strong>
-              During COVID-19, join the community on Slack to participate.
-            </strong>{' '}
-            We’re also still accepting club applications on a rolling basis.
+            We’re accepting club applications on a rolling basis.
           </SectionLead>
-          <SecondaryCTA to="https://apply.hackclub.com">Apply now</SecondaryCTA>
-          <CTA to="https://hackclub.com/community">Join our Slack</CTA>
+          <CTA to="https://apply.hackclub.com">Apply now</CTA>
         </Container>
       </PhotoHeader>
     </Box>

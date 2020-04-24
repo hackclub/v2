@@ -66,9 +66,9 @@ export default () => (
         <Text.span color="muted" fontSize={1} ml={1}>
           by{' '}
         </Text.span>
-        <A.link to="/" fontSize={2} color="muted">
+        <A href="/" fontSize={2} color="muted">
           Hack Club
-        </A.link>
+        </A>
       </Logo>
       <Nav>
         <Item href="#overview">Overview</Item>

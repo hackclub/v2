@@ -19,7 +19,7 @@ import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import Sheet from 'components/Sheet'
 import GlowingIcon from 'components/GlowingIcon'
-import SlackForm from 'components/SlackForm'
+// import SlackForm from 'components/SlackForm'
 import { Title, Subhline, ColoredHeadline } from 'components/Content'
 
 const BackgroundGradient = styled(Box)`

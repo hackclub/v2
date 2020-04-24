@@ -1,6 +1,5 @@
 import { theme } from '@hackclub/design-system'
 import styled, { css, keyframes } from 'styled-components'
-import { Link } from 'gatsby'
 
 const waveFlag = keyframes`
   from {
@@ -20,7 +19,7 @@ const waveFlagScaled = keyframes`
   }
 `
 
-const Flag = styled(Link)`
+const Flag = styled.a`
   background: url(https://assets.hackclub.com/flag-orpheus-top.svg) no-repeat;
   background-position: top center;
   background-size: contain;
@@ -52,7 +51,7 @@ const Flag = styled(Link)`
     `};
 `
 Flag.defaultProps = {
-  to: '/',
+  href: 'https://hackclub.com/',
   'aria-label': 'Homepage'
 }
 

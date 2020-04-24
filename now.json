@@ -39,6 +39,10 @@
   ],
   "rewrites": [
     {
+      "source": "/",
+      "destination": "https://v3.hackclub.com/"
+    },
+    {
       "source": "/covid19/",
       "destination": "https://workshops.hackclub.com/covid19/"
     },

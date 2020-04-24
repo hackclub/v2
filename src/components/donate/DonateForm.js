@@ -14,6 +14,7 @@ import {
 } from '@hackclub/design-system'
 import { PUBLIC_STRIPE_KEY } from 'constants.js'
 import { toNumber } from 'lodash'
+import { Headline } from 'components/Content'
 import api from 'api'
 
 const Secure = styled(Flex)`
@@ -83,21 +84,41 @@ class DonateForm extends Component {
 
   render() {
     const { recurring } = this.state
+    /*      <Box align="center" style={{ position: 'relative' }}> */
     return (
-      <Box align="center" style={{ position: 'relative' }}>
-        <Box bg="primary" color="white" mx={[-3, -4]} pb={4} mb={3}>
-          <Secure p={2} mr={[-3, -4]}>
-            <Text fontSize={0} color="red.1" caps bold>
-              Secure
-            </Text>
-            <Icon size={16} glyph="private" color="red.1" ml={2} />
-          </Secure>
-          <Heading.h2 mt={[-3, -4]} pt={4} px={3} fontSize={5}>
-            Become a patron
-          </Heading.h2>
-          <Text color="snow" mt={1} fontSize={1}>
-            Just $3 supports a student for a month
+      <Box
+        bg="primary"
+        color="white"
+        py={4}
+        px={3}
+        align="center"
+        style={{
+          backgroundImage: theme.gradient('warning', 'primary'),
+          position: 'relative'
+        }}
+      >
+        {/* <Secure p={2} mr={[-3, -4]}>
+          <Text fontSize={0} color="red.1" caps bold>
+            Secure
           </Text>
+          <Icon size={16} glyph="private" color="red.1" ml={2} />
+        </Secure> */}
+        <Headline mt={[-3, -4]} pt={4} fontSize={5}>
+          Become a patron
+        </Headline>
+        <Text color="snow" mt={1} mb={4} fontSize={1}>
+          Just $3 supports a student for a month
+        </Text>
+        <LargeButton
+          href="https://bank.hackclub.com/donations/start/hq"
+          width={1}
+          chevronRight
+          inverted
+        >
+          Donate now
+        </LargeButton>
+
+        {/*
         </Box>
         <Flex align="center" justify="center" color="black">
           <Text fontSize={3} bold>
@@ -143,11 +164,12 @@ class DonateForm extends Component {
           children={this.buttonText()}
           width={1}
         />
+          */}
       </Box>
     )
   }
 
-  loadStripe = onload => {
+  loadStripe = (onload) => {
     if (!window.StripeCheckout) {
       const script = document.createElement('script')
       script.onload = () => {
@@ -160,7 +182,7 @@ class DonateForm extends Component {
     }
   }
 
-  startStripe = e => {
+  startStripe = (e) => {
     this.loadStripe(() => {
       this.stripeHandler = window.StripeCheckout.configure({
         key: PUBLIC_STRIPE_KEY,
@@ -180,7 +202,7 @@ class DonateForm extends Component {
     })
   }
 
-  onStripeUpdate = e => {
+  onStripeUpdate = (e) => {
     this.stripeHandler.open({
       name: 'Hack Club',
       description: this.state.recurring
@@ -195,7 +217,7 @@ class DonateForm extends Component {
     e.preventDefault()
   }
 
-  handleToken = token => {
+  handleToken = (token) => {
     this.setState({ loading: true })
 
     const data = new FormData()
@@ -209,7 +231,7 @@ class DonateForm extends Component {
 
     api
       .post('v1/donations', { data })
-      .then(data => {
+      .then((data) => {
         if (data.donation_successful) {
           this.setState({ status: 'done' })
         } else {
@@ -221,12 +243,12 @@ class DonateForm extends Component {
       })
   }
 
-  handleAmountChange = a => {
+  handleAmountChange = (a) => {
     const amount = toNumber(a || 1)
     this.setState({ amount })
   }
 
-  handleRecurringChange = v => {
+  handleRecurringChange = (v) => {
     this.setState({ recurring: v.target.checked })
   }
 
@@ -243,7 +265,7 @@ class DonateForm extends Component {
         return this.state.recurring ? `${msg} a month` : msg
     }
   }
-  setAmount = amount => v => {
+  setAmount = (amount) => (v) => {
     this.setState({ amount, custom: false })
   }
   amountInCents = () => this.state.amount * 100

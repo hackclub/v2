@@ -26,6 +26,7 @@ const Header = styled(Box.withComponent('header'))`
   > div {
     display: grid;
     grid-gap: ${theme.space[4]}px;
+    align-items: center;
     ${theme.mediaQueries.md} {
       grid-template-columns: 3fr 2fr;
     }
@@ -44,9 +45,7 @@ const Row = styled(Box)`
 
 const DonateSheet = styled(Sheet).attrs({ bg: 'snow' })`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.0625), 0 16px 32px rgba(0, 0, 0, 0.125) !important;
-  > div > div:first-child {
-    background-image: ${theme.gradient('warning', 'primary')};
-  }
+  padding: 0 !important;
 `
 
 const Quote = styled(Sheet).attrs({
@@ -173,7 +172,7 @@ export default () => (
             Hack Club is a 501(c)(3) non-profit with the EIN 81-2908499.
           </Text>
         </Container>
-        <DonateSheet mt={[0, -3, -4]}>
+        <DonateSheet>
           <DonateForm />
         </DonateSheet>
       </Container>
@@ -248,7 +247,7 @@ export default () => (
           A few of our amazing donors.
         </Headline>
         <DonorGrid mt={4} mb={3}>
-          {Object.keys(donors).map(name => (
+          {Object.keys(donors).map((name) => (
             <DonorListing key={name} name={name} url={donors[name]} />
           ))}
         </DonorGrid>

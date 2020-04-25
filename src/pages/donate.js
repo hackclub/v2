@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {
   Box,
   Button,
+  LargeButton,
   Container,
   Flex,
   Heading,
@@ -17,7 +18,6 @@ import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import Sheet from 'components/Sheet'
 import { Headline, Subhline, Lead } from 'components/Content'
-import DonateForm from 'components/donate/DonateForm'
 import Sponsors from 'components/donate/Sponsors'
 import donors from 'components/donate/donors.json'
 
@@ -43,9 +43,8 @@ const Row = styled(Box)`
   }
 `
 
-const DonateSheet = styled(Sheet).attrs({ bg: 'snow' })`
+const DonateSheet = styled(Sheet)`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.0625), 0 16px 32px rgba(0, 0, 0, 0.125) !important;
-  padding: 0 !important;
 `
 
 const Quote = styled(Sheet).attrs({
@@ -151,7 +150,7 @@ export default () => (
         color="black"
         maxWidth={64}
         align="left"
-        pt={[6, 7]}
+        pt={[5, 6]}
         pb={6}
         px={3}
       >
@@ -172,8 +171,29 @@ export default () => (
             Hack Club is a 501(c)(3) non-profit with the EIN 81-2908499.
           </Text>
         </Container>
-        <DonateSheet>
-          <DonateForm />
+        <DonateSheet
+          bg="primary"
+          color="white"
+          align="center"
+          style={{
+            backgroundImage: theme.gradient('warning', 'primary'),
+            position: 'relative'
+          }}
+        >
+          <Headline mb={2} fontSize={5}>
+            Become a patron
+          </Headline>
+          <Text color="snow" mb={4} fontSize={1}>
+            Just $3 supports a student for a month
+          </Text>
+          <LargeButton
+            href="https://bank.hackclub.com/donations/start/hq"
+            width={1}
+            chevronRight
+            inverted
+          >
+            Donate now
+          </LargeButton>
         </DonateSheet>
       </Container>
     </Header>

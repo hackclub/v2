@@ -7,7 +7,7 @@ import {
   Heading,
   Icon,
   LargeButton,
-  OutlineButton,
+  // OutlineButton,
   Link as A,
   Section,
   Text,
@@ -44,17 +44,17 @@ const CTA = styled(LargeButton.withComponent(Link)).attrs({
   background-image: ${(props) => theme.gradient(props.bg[0], props.bg[1])};
   text-transform: uppercase;
 `
-const SecondaryCTA = styled(OutlineButton.withComponent(Link)).attrs({
-  chevronRight: true,
-  bg: 'white',
-  color: 'black',
-  fontSize: 2,
-  m: [1, 2],
-  scale: true
-})`
-  background-color: rgba(0, 0, 0, 0.325);
-  text-transform: uppercase;
-`
+// const SecondaryCTA = styled(OutlineButton.withComponent(Link)).attrs({
+//   chevronRight: true,
+//   bg: 'white',
+//   color: 'black',
+//   fontSize: 2,
+//   m: [1, 2],
+//   scale: true
+// })`
+//   background-color: rgba(0, 0, 0, 0.325);
+//   text-transform: uppercase;
+// `
 
 const shadows = css`
   h1,

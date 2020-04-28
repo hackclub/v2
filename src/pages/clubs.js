@@ -369,8 +369,8 @@ export default () => (
     <Nav color="slate" fixed />
     <Box mt={[44, 55]} p={3} bg="snow">
       <PhotoHeader
-        style={{ paddingTop: 48 }}
-        py={[3, 5, 6]}
+        pt={[3, 5, 6, 7]}
+        pb={[3, 5, 6]}
         src={require('../../static/photos/hackpenn_full.jpg')}
         aria-label="Students at a coding event"
         align={['left', 'center']}

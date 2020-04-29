@@ -11,6 +11,8 @@ Website internals:
 
 Our other website repos:
 
+- [hackclub/v3](https://github.com/hackclub/v3) (where our website is migrating)
+- [hackclub/events](https://github.com/hackclub/events)
 - [hackclub/hackathons](https://github.com/hackclub/hackathons)
 - [hackclub/workshops](https://github.com/hackclub/workshops)
 - [hackclub/apply](https://github.com/hackclub/apply)

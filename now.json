@@ -4,9 +4,9 @@
   "trailingSlash": true,
   "redirects": [
     { "source": "/c9/", "destination": "/cloud9_setup/" },
-    { "source": "/slack/", "destination": "/" },
-    { "source": "/slack_invite/", "destination": "/" },
-    { "source": "/workshops/slack/", "destination": "/" },
+    { "source": "/slack/", "destination": "/#slack" },
+    { "source": "/slack_invite/", "destination": "/#slack" },
+    { "source": "/workshops/slack/", "destination": "/#slack" },
     { "source": "/community/", "destination": "/" },
     { "source": "/hack_camp/", "destination": "/camp/" },
     { "source": "/repl/", "destination": "/" },

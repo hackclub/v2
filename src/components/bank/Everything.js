@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {
+  Avatar,
   Badge,
   Box,
   Container,
@@ -68,14 +69,16 @@ const List = styled(Text.withComponent('ol')).attrs({ pl: 0 })`
   }
 `
 
-List.Item = (props) => (
+List.Item = ({ icon = 'enter', start, ...props }) => (
   <Fade left>
-    <li>
-      <Icon glyph="enter" color="muted" size={32} mr={2} />
+    <li style={{ display: 'flex', alignItems: 'center' }}>
+      {start || <Icon glyph={icon} color="muted" size={32} mr={2} />}
       <Text.span fontSize={3} {...props} />
     </li>
   </Fade>
 )
+
+const thisMonth = new Date().toISOString().substring(0, 7)
 
 export default () => (
   <Base>
@@ -84,36 +87,61 @@ export default () => (
         <Headline>Everything you’ll need.</Headline>
       </Container>
       <List>
-        {[
-          'Automated tax filings',
-          'Legal entity with 501(c)(3) status',
-          'Bank account backed by Silicon Valley Bank',
-          'Instant invoice sending',
-          'Collect donations via card, check, or ACH',
-          'Real-time dashboard of finances',
-          'Share access with your whole team',
-          'Record shared notes on transactions',
-          'Transaction data export',
-          'Dedicated point of contact',
-          '24-hour response support',
-          'Negotiated nonprofit rates with Stripe',
-          'Reimbursement process'
-        ].map((item) => (
-          <List.Item key={item} children={item} />
-        ))}
         {Object.entries({
-          'Immediate legal forms for attendees': '2020-01-15',
-          'Online embeddable donation form': '2020-03-10',
-          'Instant check sending & voiding': '2019-09-18',
+          'Legal entity with 501(c)(3) status': 'briefcase',
+          'Automated tax filings': 'enter',
+          'Collect donations via card, check, or ACH': 'enter',
+          'Share access with your whole team': 'member-add',
+          'Bank account backed by Silicon Valley Bank': 'bank-account',
+          'Negotiated nonprofit rates with Stripe': 'enter',
+          'Instant invoice sending': 'transactions',
+          'Real-time dashboard of finances': 'analytics',
+          'Transaction data export': 'download',
+          'Record shared notes on transactions': 'docs',
+          '24-hour response support': 'clock',
+          'Reimbursement process': 'enter'
+        }).map(([item, icon = 'enter']) => (
+          <List.Item icon={icon}>{item}</List.Item>
+        ))}
+        <List.Item
+          start={
+            <Avatar
+              src={require('../../../static/hackers/michael.jpg')}
+              size={32}
+              alt="Michael’s avatar"
+              mr={2}
+            />
+          }
+        >
+          Dedicated point of contact
+        </List.Item>
+        {Object.entries({
+          'Physical check sending & voiding': '2019-09-18',
           'Online ACH transfers': '2019-09-18',
+          'Generate attendee legal waivers': '2020-01-15',
           'Instant G Suite & email addresses': '2020-01-15',
-          'Instant virtual debit cards': '2020-03-08',
-          'Card transactions paper trail': '2020-03-10',
+          'Online embeddable donation form': '2020-03-10',
+          'Virtual debit cards (with Apple Pay)': '2020-03-08',
+          'Debit card transaction paper trail': '2020-03-10',
           'Transparency Mode (optional)': '2020-05-05',
-          'Instant, no-contract account setup': '2020-05-05'
+          'Self-serve, no-contract signup': '2020-05-05'
         }).map(([item, date]) => (
-          <List.Item key={item}>
-            <Badge mr={1}>{timeSince(date)}</Badge> {item}
+          <List.Item
+            key={item}
+            icon={
+              item.startsWith('Instant')
+                ? 'bolt'
+                : item.includes('card')
+                  ? 'card'
+                  : item.includes('Transparency')
+                    ? 'explore'
+                    : 'enter'
+            }
+          >
+            {item}{' '}
+            <Badge bg={date.startsWith(thisMonth) ? 'primary' : 'muted'} ml={1}>
+              {timeSince(date)}
+            </Badge>
           </List.Item>
         ))}
       </List>
@@ -147,3 +175,4 @@ export default () => (
     </Container>
   </Base>
 )
+

@@ -1,16 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import {
+  Avatar,
   Box,
   Container,
-  BackgroundImage,
   Flex,
-  Avatar,
-  Icon,
+  Image,
   Text,
   theme
 } from '@hackclub/design-system'
-import Carousel from 'nuka-carousel'
 import { Subhline, Lead } from 'components/Content'
 import Sheet from 'components/Sheet'
 import Stat from 'components/Stat'
@@ -27,7 +25,7 @@ const events = [
       'Hack Club Bank has been very helpful in helping us manage our finances and allowing my team to send easy and professional invoices to sponsors. The platform is seamlessly easy to use and the Bank team is constantly improving it for event organizers and club leaders everywhere. Highly recommend jumping on Hack Club Bank to handle your next project.'
   },
   {
-    name: 'Los Altos Hacks 2019',
+    name: 'Los Altos Hacks',
     location: 'Sunnyvale, CA',
     organizer: 'Jamsheed Mistri',
     budget: 30,
@@ -79,84 +77,52 @@ const Base = styled(Box.section).attrs({
   pb: [4, 5, 6]
 })``
 
-const Main = styled(Sheet).attrs({
-  bg: '#252429',
+const Main = styled(Container).attrs({
   color: 'smoke',
   p: 0,
-  mt: 2
+  mt: 2,
+  maxWidth: 84
 })`
   border-radius: 0;
   position: relative;
   overflow: hidden;
+  display: grid;
+  grid-gap: ${theme.space[3]}px;
   ${theme.mediaQueries.md} {
     border-radius: ${theme.radii[2]};
-  }
-  ul {
-    cursor: grab !important;
-  }
-`
-
-const SideControl = styled.button`
-  appearance: none;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  display: inline-block;
-  margin: 0;
-  svg {
-    transform: scale(1);
-    transition: ${theme.transition} all;
-  }
-  &:first-child {
-    transform-origin: center left;
-  }
-  &:last-child {
-    transform-origin: center right;
-  }
-  &:hover,
-  &:focus {
-    svg {
-      transform: scale(1.125);
-      fill: ${theme.colors.white};
-    }
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: ${theme.space[5]}px;
   }
 `
 
-const Photo = styled(BackgroundImage)`
-  min-height: 20rem;
+const EventHeader = styled(Box).attrs({ mb: [3, 0] })`
+  display: grid;
+  aside {
+    display: flex;
+  }
+  aside div:last-child {
+    margin-left: ${theme.space[3]}px;
+  }
+  ${theme.mediaQueries.md} {
+    grid-template-columns: 1fr auto;
+  }
+`
+
+const Photo = styled(Image).attrs({ width: 1 })`
+  max-height: 20rem;
+  object-fit: cover;
   border-radius: ${theme.radii[2]};
 `
 
-const Details = styled(Box).attrs({ mt: [2, 0], px: [3, 4], pb: [4, 5] })`
-  ${theme.mediaQueries.md} {
-    display: grid;
-    grid-template-columns: 128px 1fr;
-    grid-gap: ${theme.space[5]}px;
-    align-items: start;
-  }
-`
-const Quote = styled(Text).attrs({ fontSize: [3, 4], color: 'muted' })`
+const Quote = styled(Text).attrs({ fontSize: 2, color: 'muted' })`
   text-indent: -0.375em;
 `
-const DetailStats = styled(Flex).attrs({
-  flexDirection: ['row', null, 'column'],
-  justify: ['start', null, 'end']
-})`
-  p {
-    color: ${theme.colors.muted};
-  }
-`
-DetailStats.Item = props => (
-  <Stat
-    align={['left', null, 'right']}
-    fontSize={6}
-    width={1}
-    mt={0}
-    mb={3}
-    px={0}
-    {...props}
-  />
-)
+const DetailStat = styled(Box.withComponent(Stat)).attrs({
+  align: 'left',
+  fontSize: 5,
+  px: 0,
+  mb: 0
+})``
 
 const Event = ({
   img,
@@ -167,21 +133,16 @@ const Event = ({
   organizer,
   testimonial
 }) => [
-  <Photo key={img} src={img} />,
-  <Box
-    px={[3, 4]}
-    mt={[3, 4]}
-    pl={[null, null, 128 + theme.space[5] + theme.space[4]]}
-    key={name}
-  >
-    <Subhline color="white" children={name} />
-  </Box>,
-  <Details key={organizer}>
-    <DetailStats>
-      <DetailStats.Item value={attendees} label="attendees" />
-      <DetailStats.Item value={`$${budget}k`} label="budget" />
-    </DetailStats>
-    <Box>
+  <Sheet bg="#252429" color="smoke" p={0} mb={0}>
+    <Photo alt={location} src={img} />
+    <Box p={[3, 4]}>
+      <EventHeader>
+        <Subhline align="left" color="white" children={name} />
+        <aside>
+          <DetailStat value={attendees} label="attendees" />
+          <DetailStat value={`$${budget}k`} label="budget" />
+        </aside>
+      </EventHeader>
       <Quote>“{testimonial}”</Quote>
       <Flex align="center" mt={3}>
         <Avatar
@@ -196,7 +157,7 @@ const Event = ({
         </Text>
       </Flex>
     </Box>
-  </Details>
+  </Sheet>
 ]
 
 export default () => (
@@ -207,32 +168,14 @@ export default () => (
       </Subhline>
       <Lead maxWidth={40} color="muted">
         Everywhere from Philadelphia to Phoenix to Portland,
-        Hack&nbsp;Club&nbsp;Bank is powering events of all sizes.
+        Hack&nbsp;Club&nbsp;Bank powers events of all sizes.
       </Lead>
     </Container>
-    <Main maxWidth={60}>
-      <Carousel
-        autoplay
-        autoplayInterval={5000}
-        wrapAround
-        enableKeyboardControls
-        renderCenterLeftControls
-        renderCenterRightControls
-        renderBottomCenterControls
-        renderBottomRightControls={({ previousSlide, nextSlide }) => [
-          <SideControl onClick={previousSlide} key="prev">
-            <Icon glyph="view-back" color="smoke" size={48} pb={3} />
-          </SideControl>,
-          <SideControl onClick={nextSlide} key="next">
-            <Icon glyph="view-forward" color="smoke" size={48} pb={3} pr={3} />
-          </SideControl>
-        ]}
-      >
-        {events.map(event => {
-          const id = kebabCase(event.name)
-          return <Event {...event} img={`/bank/events/${id}.jpg`} key={id} />
-        })}
-      </Carousel>
+    <Main>
+      {events.map((event) => {
+        const id = kebabCase(event.name)
+        return <Event {...event} img={`/bank/events/${id}.jpg`} key={id} />
+      })}
     </Main>
   </Base>
 )

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Lead } from 'components/Content'
-import { Box, theme } from '@hackclub/design-system'
+import { Text, theme } from '@hackclub/design-system'
 import Stat from 'components/Stat'
 import api from 'api'
 
@@ -42,7 +42,7 @@ const flashing = keyframes`
   }
 `
 
-const Dot = styled(Box).attrs({ bg: 'success', color: 'white' })`
+const Dot = styled(Text.span).attrs({ bg: 'success', color: 'white' })`
   border-radius: ${theme.pill};
   display: inline-block;
   line-height: 0;
@@ -53,7 +53,7 @@ const Dot = styled(Box).attrs({ bg: 'success', color: 'white' })`
   animation: 3s ${flashing} ease-in-out infinite;
 `
 
-export default props => {
+export default (props) => {
   const [volume, setVolume] = useState(100 * 1000 * 1000) // 1MM default
   const [raised, setRaised] = useState(100 * 1000 * 500) // half million default
   const [lastUpdated, setLastUpdated] = useState(Date.now()) // now default
@@ -63,7 +63,7 @@ export default props => {
   })
 
   const loadStats = () => {
-    api.get('https://bank.hackclub.com/stats').then(stats => {
+    api.get('https://bank.hackclub.com/stats').then((stats) => {
       setVolume(renderMoney(stats.transactions_volume))
       setRaised(renderMoney(stats.raised))
       setLastUpdated(stats.last_transaction_date * 1000)

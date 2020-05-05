@@ -233,7 +233,7 @@ class Header extends Component {
           <Flag scrolled={scrolled || fixed} />
           <Navigation color={baseColor} dark={dark} />
           <ToggleContainer color={toggleColor} onClick={this.handleToggleMenu}>
-            <Icon glyph={toggled ? 'view-close' : 'menu'} toggled={toggled} />
+            <Icon glyph={toggled ? 'view-close' : 'menu'} />
           </ToggleContainer>
         </Content>
         <Navigation isMobile toggled={toggled} color={baseColor} dark={dark} />

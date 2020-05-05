@@ -174,14 +174,14 @@ export default () => (
         body="Download liability + photo forms custom written by expert lawyers."
       />
       <Module
-        icon="settings"
-        name="Manage your finances"
-        body="Add notes to transactions, export data, issue reimbursements."
+        icon="explore"
+        name="Transparency Mode"
+        body="If you’d like, show your finances on public pages for full transparency."
       />
       <Module
         icon="google"
         name="G Suite accounts"
-        body="Get free G Suite accounts & email addresses (like joy@hackpenn.com) for everyone."
+        body="Get instant, free G Suite & team email addresses (like joy@hackpenn.com)."
       />
       <Module
         icon="support"

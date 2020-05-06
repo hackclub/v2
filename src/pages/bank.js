@@ -26,7 +26,7 @@ const styles = `
 
 const title = 'Hack Club Bank – The Bank For Student Hackers'
 const desc =
-  'Hack Club Bank provides a 501(c)(3) status-backed bank account optimized for high school hackathons that includes invoicing, debit cards, pre-written legal forms, seamless receipt collection, and automated tax filing to help organizers focus on running great events.'
+  'Hack Club Bank provides a 501(c)(3) status-backed bank account optimized for high school hackathons including invoicing, debit cards, check sending, pre-written legal forms, automated tax filing, and transparent finances. Get fiscal sponsorship designed to help you run great events.'
 
 export default () => (
   <Layout title={title} desc={desc} img="/cards/bank_one.png" path="/bank/">

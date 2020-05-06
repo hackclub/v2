@@ -39,7 +39,7 @@ const Timeline = styled(Flex).attrs({
 `
 const TimelineStep = styled(Flex).attrs({
   align: 'center',
-  pt: props => (props.first ? 0 : [2, 3])
+  pt: (props) => (props.first ? 0 : [2, 3])
 })`
   line-height: 1.125;
 `
@@ -83,7 +83,7 @@ export default () => (
       </Fade>
       <div>
         <Timeline>
-          <Timeline.Step icon="send" name="Apply" duration="Right now" first />
+          <Timeline.Step name="Apply" duration="Right now" first />
           <Timeline.Step name="Interview call" duration="In 2 days" />
           <Timeline.Step name="Sign the contract" duration="Same day" />
           <Timeline.Step name="Receive debit cards" duration="1 week later" />

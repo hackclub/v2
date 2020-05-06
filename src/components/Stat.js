@@ -39,7 +39,11 @@ const Stat = ({
 
 Stat.propTypes = {
   label: PropTypes.string,
-  value: PropTypes.element.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.element
+  ]).isRequired,
   children: PropTypes.element,
   labelColor: PropTypes.string,
   fontSize: PropTypes.oneOfType([

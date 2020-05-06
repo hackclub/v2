@@ -17,6 +17,7 @@ export const timeSince = (
   const msPerHour = msPerMinute * 60
   const msPerDay = msPerHour * 24
   const msPerWeek = msPerDay * 7
+  const msPerMonth = msPerDay * 30 * 2
   const msPerYear = msPerDay * 365
 
   const elapsed = new Date(current) - new Date(previous)
@@ -33,6 +34,9 @@ export const timeSince = (
   } else if (elapsed < msPerWeek) {
     const now = Math.round(elapsed / msPerDay)
     humanizedTime = longForm ? `${now} days` : `${now}d`
+  } else if (elapsed < msPerYear) {
+    const now = Math.round(elapsed / msPerMonth)
+    humanizedTime = longForm ? `${now} months` : `${now}mo`
   } else if (elapsed < msPerYear) {
     const now = Math.round(elapsed / msPerWeek)
     humanizedTime = longForm ? `${now} weeks` : `${now}w`

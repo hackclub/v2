@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
+import { useEffect } from 'react'
 
 const dash = keyframes`
   to {
@@ -36,9 +37,11 @@ const Base = styled.svg`
 export default () => {
   const [visible, setVisible] = useState(false)
 
-  setTimeout(() => {
-    setVisible(true)
-  }, 3250)
+  useEffect(() => {
+    setTimeout(() => {
+      setVisible(true)
+    }, 3250)
+  }, [])
 
   return (
     visible && (

@@ -84,7 +84,7 @@ export default () => (
   <Base>
     <Container px={3}>
       <Container align="center" mb={[4, 5]}>
-        <Headline>Everything you’ll need.</Headline>
+        <Headline>Everything you’ll&nbsp;need.</Headline>
       </Container>
       <List>
         {Object.entries({
@@ -120,8 +120,8 @@ export default () => (
           'Online ACH transfers': '2019-09-18',
           'Generate attendee legal waivers': '2020-01-15',
           'Instant G Suite & email addresses': '2020-01-15',
-          'Online embeddable donation form': '2020-03-10',
           'Virtual debit cards (with Apple Pay)': '2020-03-08',
+          'Online embeddable donation form': '2020-03-10',
           'Debit card transaction paper trail': '2020-03-10',
           'Transparency Mode (optional)': '2020-05-05',
           'Self-serve, no-contract signup': '2020-05-05'
@@ -129,18 +129,20 @@ export default () => (
           <List.Item
             key={item}
             icon={
-              item.startsWith('Instant')
+              item.startsWith('Instant') || item.includes('signup')
                 ? 'bolt'
                 : item.includes('card')
                   ? 'card'
                   : item.includes('Transparency')
                     ? 'explore'
-                    : 'enter'
+                    : item.includes('form')
+                      ? 'embed'
+                      : item.includes('Physical') ? 'email' : 'enter'
             }
           >
             {item}{' '}
-            <Badge bg={date.startsWith(thisMonth) ? 'primary' : 'muted'} ml={1}>
-              {timeSince(date)}
+            <Badge bg={date.startsWith(thisMonth) ? 'primary' : 'slate'} fontSize={0} ml={1}>
+              Added {timeSince(date)}
             </Badge>
           </List.Item>
         ))}
@@ -148,11 +150,11 @@ export default () => (
     </Container>
     <Container px={3} mt={4}>
       <Flex justify="center" align="center" wrap>
-        <Text fontSize={[4, 5]} mr={3}>
+        <Text fontSize={[4, 5]} mr={[2, 3]}>
           You pay just
         </Text>
         <Percentage>7</Percentage>
-        <Text fontSize={[4, 5]} ml={3} mr={2}>
+        <Text fontSize={[4, 5]} ml={[2, 3]} mr={2}>
           of revenue.
         </Text>
         <Text fontSize={[4, 5]} mt={[3, 0]}>
@@ -168,9 +170,9 @@ export default () => (
         >
           fiscal sponsor
         </A>{' '}
-        for your event.
+        for your&nbsp;project.
         <br />
-        Industry standard varies between 7-14% of revenue.
+        Industry standard varies between 7-14% of&nbsp;revenue.
       </Lead>
     </Container>
   </Base>

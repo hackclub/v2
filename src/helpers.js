@@ -34,12 +34,12 @@ export const timeSince = (
   } else if (elapsed < msPerWeek) {
     const now = Math.round(elapsed / msPerDay)
     humanizedTime = longForm ? `${now} days` : `${now}d`
+  } else if (elapsed < msPerMonth) {
+    const now = Math.round(elapsed / msPerWeek)
+    humanizedTime = longForm ? `${now} weeks` : `${now}w`
   } else if (elapsed < msPerYear) {
     const now = Math.round(elapsed / msPerMonth)
     humanizedTime = longForm ? `${now} months` : `${now}mo`
-  } else if (elapsed < msPerYear) {
-    const now = Math.round(elapsed / msPerWeek)
-    humanizedTime = longForm ? `${now} weeks` : `${now}w`
   } else {
     const now = Math.round(elapsed / msPerYear)
     humanizedTime = longForm ? `${now} years` : `${now}y`

@@ -13,6 +13,7 @@ import { Subhline, Lead } from 'components/Content'
 import Sheet from 'components/Sheet'
 import Stat from 'components/Stat'
 import kebabCase from 'lodash/kebabCase'
+import { Slide } from 'react-reveal'
 
 const events = [
   {
@@ -132,33 +133,35 @@ const Event = ({
   attendees,
   organizer,
   testimonial
-}) => [
-    <Sheet bg="#252429" color="smoke" p={0} mb={0}>
-      <Photo alt={location} src={img} />
-      <Box p={[3, 4]}>
-        <EventHeader>
-          <Subhline align="left" color="white" children={name} />
-          <aside>
-            <DetailStat value={attendees} label="attendees" />
-            <DetailStat value={`$${budget}k`} label="budget" />
-          </aside>
-        </EventHeader>
-        <Quote>“{testimonial}”</Quote>
-        <Flex align="center" mt={3}>
-          <Avatar
-            src={require(`../../../static/hackers/${organizer
-              .split(' ')[0]
-              .toLowerCase()}.jpg`)}
-            size={48}
-            mr={2}
-          />
-          <Text color="white">
-            <strong>{organizer}</strong>, Lead Organizer
+}) => (
+    <Slide bottom>
+      <Sheet bg="#252429" color="smoke" p={0} mb={0}>
+        <Photo alt={location} src={img} />
+        <Box p={[3, 4]}>
+          <EventHeader>
+            <Subhline align="left" color="white" children={name} />
+            <aside>
+              <DetailStat value={attendees} label="attendees" />
+              <DetailStat value={`$${budget}k`} label="budget" />
+            </aside>
+          </EventHeader>
+          <Quote>“{testimonial}”</Quote>
+          <Flex align="center" mt={3}>
+            <Avatar
+              src={require(`../../../static/hackers/${organizer
+                .split(' ')[0]
+                .toLowerCase()}.jpg`)}
+              size={48}
+              mr={2}
+            />
+            <Text color="white">
+              <strong>{organizer}</strong>, Lead Organizer
         </Text>
-        </Flex>
-      </Box>
-    </Sheet>
-  ]
+          </Flex>
+        </Box>
+      </Sheet>
+    </Slide>
+  )
 
 export default () => (
   <Base>

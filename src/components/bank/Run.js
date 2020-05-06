@@ -31,7 +31,7 @@ const List = styled(Text.withComponent('ol')).attrs({ pl: 0 })`
     break-inside: avoid;
     display: flex;
     align-items: center;
-    padding-bottom: ${theme.space[2]}px;
+    padding: ${theme.space[1]}px 0;
   }
   svg {
     flex-shrink: none;
@@ -63,7 +63,7 @@ export default () => (
           body="We handle ongoing tax filings including end-of-year taxes"
         />
         <List.Item
-          icon="payment"
+          icon="payment-docs"
           body="Our accountants regularly reconcile your books"
         />
         <List.Item

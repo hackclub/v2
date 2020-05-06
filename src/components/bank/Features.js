@@ -98,7 +98,8 @@ const Document = ({ name, cost }) => (
   </ModuleDetailsDocument>
 )
 
-const Laptop = styled.div`
+const Laptop = styled.a`
+  display: block;
   width: 100%;
   height: 100%;
   background-size: auto 115%;
@@ -142,7 +143,7 @@ export default () => (
           />
         </ModuleDetails>
       </Box>
-      <Laptop />
+      <Laptop href="https://bank.hackclub.com/hackpenn" target="_blank" title="See Hack Pennsylvania’s finances in public" />
       <Module
         icon="card"
         name="Debit cards"

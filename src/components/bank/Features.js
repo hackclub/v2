@@ -102,6 +102,7 @@ const Laptop = styled.a`
   display: block;
   width: 100%;
   height: 100%;
+  min-height: 16rem;
   background-size: auto 115%;
   background-image: url('/bank/laptop-light.png');
   background-position: center top;
@@ -143,7 +144,11 @@ export default () => (
           />
         </ModuleDetails>
       </Box>
-      <Laptop href="https://bank.hackclub.com/hackpenn" target="_blank" title="See Hack Pennsylvania’s finances in public" />
+      <Laptop
+        href="https://bank.hackclub.com/hackpenn"
+        target="_blank"
+        title="See Hack Pennsylvania’s finances in public"
+      />
       <Module
         icon="card"
         name="Debit cards"

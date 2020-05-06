@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {
   Avatar,
   Box,
+  Button,
   Container,
   Flex,
   Image,
@@ -17,13 +18,23 @@ import { Slide } from 'react-reveal'
 
 const events = [
   {
+    transparency: 'hackpenn',
+    name: 'Hack Pennsylvania',
+    location: 'State College, PA',
+    organizer: 'Joy Liu',
+    budget: 15,
+    attendees: 115,
+    testimonial:
+      'For me, Hack Club Bank unlocked organizing hackathons. Even after as a club leader, raising money seemed insurmountable. Bank directly enabled organizing events in my community with event bank accounts & a supportive community. I couldn’t recommend it more highly.'
+  },
+  {
     name: 'Teenhacks LI',
     location: 'Long Island, NY',
     organizer: 'Snigdha Roy',
     budget: 25,
     attendees: 300,
     testimonial:
-      'Hack Club Bank has been very helpful in helping us manage our finances and allowing my team to send easy and professional invoices to sponsors. The platform is seamlessly easy to use and the Bank team is constantly improving it for event organizers and club leaders everywhere. Highly recommend jumping on Hack Club Bank to handle your next project.'
+      'Hack Club Bank has been very helpful in helping us manage our finances and allowing my team to send easy and professional invoices to sponsors. The platform is seamlessly easy to use and the Bank team is constantly improving it. Highly recommend jumping on Hack Club Bank to handle your next project.'
   },
   {
     name: 'Los Altos Hacks',
@@ -35,22 +46,13 @@ const events = [
       'Hack Club Bank has made it incredibly easy to handle our event’s funds and has provided countless tools to increase our productivity. With Bank, I can focus on making the event the best it can be.'
   },
   {
-    name: 'Hack Pennsylvania',
-    location: 'State College, PA',
-    organizer: 'Joy Liu',
-    budget: 15,
-    attendees: 115,
-    testimonial:
-      'For me, Hack Club Bank unlocked organizing hackathons. Even after as a club leader, raising money seemed insurmountable. Bank directly enabled organizing events in my community with event bank accounts & a supportive community. I couldn’t recommend it more highly.'
-  },
-  {
     name: 'SLO Hacks',
     location: 'San Luis Obispo, CA',
     organizer: 'Selynna Sun',
     budget: 50,
     attendees: 300,
     testimonial:
-      'Hack Club Bank significantly improved the fiscal sponsorship process for SLO Hacks, through a beautifully-designed platform full of useful features, in addition to a responsive team that made sure our questions were addressed as quickly as possible.'
+      'Hack Club Bank significantly improved the fiscal sponsorship process for SLO Hacks, through a beautifully-designed platform full of useful features, in addition to a responsive team addressed our questions as quickly as possible.'
   },
   {
     name: 'MAHacks',
@@ -132,36 +134,47 @@ const Event = ({
   budget,
   attendees,
   organizer,
-  testimonial
+  testimonial,
+  transparency
 }) => (
-    <Slide bottom>
-      <Sheet bg="#252429" color="smoke" p={0} mb={0}>
-        <Photo alt={location} src={img} />
-        <Box p={[3, 4]}>
-          <EventHeader>
-            <Subhline align="left" color="white" children={name} />
-            <aside>
-              <DetailStat value={attendees} label="attendees" />
-              <DetailStat value={`$${budget}k`} label="budget" />
-            </aside>
-          </EventHeader>
-          <Quote>“{testimonial}”</Quote>
-          <Flex align="center" mt={3}>
-            <Avatar
-              src={require(`../../../static/hackers/${organizer
-                .split(' ')[0]
-                .toLowerCase()}.jpg`)}
-              size={48}
-              mr={2}
-            />
-            <Text color="white">
-              <strong>{organizer}</strong>, Lead Organizer
-        </Text>
-          </Flex>
-        </Box>
-      </Sheet>
-    </Slide>
-  )
+  <Slide bottom>
+    <Sheet bg="#252429" color="smoke" p={0} mb={0}>
+      <Photo alt={location} src={img} />
+      <Box p={[3, 4]}>
+        <EventHeader>
+          <Subhline align="left" color="white" children={name} />
+          <aside>
+            <DetailStat value={attendees} label="attendees" />
+            <DetailStat value={`$${budget}k`} label="budget" />
+          </aside>
+        </EventHeader>
+        <Quote>“{testimonial}”</Quote>
+        <Flex align="center" mt={3} wrap>
+          <Avatar
+            src={require(`../../../static/hackers/${organizer
+              .split(' ')[0]
+              .toLowerCase()}.jpg`)}
+            size={48}
+            mr={2}
+          />
+          <Text color="white">
+            <strong>{organizer}</strong>, Lead Organizer
+          </Text>
+          {transparency && (
+            <Button
+              href={`https://bank.hackclub.com/${transparency}`}
+              target="_blank"
+              ml={[0, 'auto']}
+              mt={[2, 0]}
+            >
+              See Finances
+            </Button>
+          )}
+        </Flex>
+      </Box>
+    </Sheet>
+  </Slide>
+)
 
 export default () => (
   <Base>

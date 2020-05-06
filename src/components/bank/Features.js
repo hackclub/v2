@@ -102,9 +102,12 @@ const Laptop = styled.div`
   width: 100%;
   height: 100%;
   background-size: auto 115%;
-  background-image: url('/bank/mac.png');
+  background-image: url('/bank/laptop-light.png');
   background-position: center top;
   background-repeat: no-repeat;
+  @media (prefers-color-scheme: dark) {
+    background-image: url('/bank/laptop-dark.png');
+  }
   ${theme.mediaQueries.md} {
     grid-row: span 2;
     grid-column: span 2;

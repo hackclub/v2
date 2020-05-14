@@ -44,6 +44,10 @@
       "destination": "https://v3.hackclub.com/"
     },
     {
+      "source": "/api/(.*)/",
+      "destination": "https://v3.hackclub.com/api/$1"
+    },
+    {
       "source": "/covid19/",
       "destination": "https://workshops.hackclub.com/covid19/"
     },
@@ -69,6 +73,10 @@
     }
   ],
   "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
+    },
     {
       "source": "/banners/(.*)",
       "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]

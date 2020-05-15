@@ -123,8 +123,8 @@ export default () => (
           'Virtual debit cards (with Apple Pay)': '2020-03-08',
           'Online embeddable donation form': '2020-03-10',
           'Debit card transaction paper trail': '2020-03-10',
-          'Transparency Mode (optional)': '2020-05-05',
-          'Self-serve, no-contract signup': '2020-05-05'
+          'Self-serve, no-contract signup': '2020-05-05',
+          'Transparency Mode (optional)': '2020-05-15'
         }).map(([item, date]) => (
           <List.Item
             key={item}

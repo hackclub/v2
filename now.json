@@ -70,6 +70,10 @@
     {
       "source": "/press/",
       "destination": "https://v3.hackclub.com/press/"
+    },
+    {
+      "source": "/elon/",
+      "destination": "https://v3.hackclub.com/elon/"
     }
   ],
   "headers": [

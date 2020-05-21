@@ -112,7 +112,7 @@ export default () => (
       </Lead>
     </Container>
     <Timeline px={3}>
-      <Timeline.Step icon="send" name="Submit sign-up form" duration="Day 1" />
+      <Timeline.Step icon="send" name="Sign up, explore, order debit cards" duration="Day 1" />
       <Timeline.Step
         icon="welcome"
         name={
@@ -138,12 +138,12 @@ export default () => (
       />
       <Timeline.Step
         icon="post"
-        name={<Fragment>Sign the contract & get online access</Fragment>}
+        name="Sign the contract & unlock full access"
         duration="Day 4"
       />
       <Timeline.Step
         icon="card"
-        name="Receive debit cards"
+        name="Receive debit cards in the mail"
         duration="Day 10"
         mb={0}
       />

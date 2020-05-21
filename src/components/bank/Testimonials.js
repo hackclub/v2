@@ -82,7 +82,7 @@ const Base = styled(Box.section).attrs({
 
 const Main = styled(Container).attrs({
   color: 'smoke',
-  p: 0,
+  px: [3, null, 4],
   mt: 2,
   maxWidth: 84
 })`

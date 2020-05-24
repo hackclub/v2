@@ -12,10 +12,10 @@ const waveFlag = keyframes`
 
 const waveFlagScaled = keyframes`
   from {
-    transform: scale(.75) rotate(0deg);
+    transform: scale(.875) rotate(0deg);
   }
   to {
-    transform: scale(.75) rotate(-5deg);
+    transform: scale(.875) rotate(-5deg);
   }
 `
 

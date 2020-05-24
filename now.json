@@ -4,10 +4,10 @@
   "trailingSlash": true,
   "redirects": [
     { "source": "/c9/", "destination": "/cloud9_setup/" },
-    { "source": "/slack/", "destination": "/#slack" },
-    { "source": "/slack_invite/", "destination": "/#slack" },
-    { "source": "/workshops/slack/", "destination": "/#slack" },
-    { "source": "/community/", "destination": "/" },
+    { "source": "/slack/", "destination": "/slack/" },
+    { "source": "/slack_invite/", "destination": "/slack/" },
+    { "source": "/workshops/slack/", "destination": "/slack/" },
+    { "source": "/community/", "destination": "/slack/" },
     { "source": "/hack_camp/", "destination": "/camp/" },
     { "source": "/repl/", "destination": "/" },
     { "source": "/coc/", "destination": "/conduct/" },
@@ -64,16 +64,8 @@
       "destination": "https://hc-map.now.sh/"
     },
     {
-      "source": "/brand/",
-      "destination": "https://v3.hackclub.com/brand/"
-    },
-    {
-      "source": "/press/",
-      "destination": "https://v3.hackclub.com/press/"
-    },
-    {
-      "source": "/elon/",
-      "destination": "https://v3.hackclub.com/elon/"
+      "source": "/(.*)/",
+      "destination": "https://v3.hackclub.com/$1/"
     }
   ],
   "headers": [

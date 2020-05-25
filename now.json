@@ -4,7 +4,6 @@
   "trailingSlash": true,
   "redirects": [
     { "source": "/c9/", "destination": "/cloud9_setup/" },
-    { "source": "/slack/", "destination": "/slack/" },
     { "source": "/slack_invite/", "destination": "/slack/" },
     { "source": "/workshops/slack/", "destination": "/slack/" },
     { "source": "/community/", "destination": "/slack/" },

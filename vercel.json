@@ -29,8 +29,12 @@
       "statusCode": 200
     },
     {
+      "source": "/workshops/",
+      "destination": "https://workshops.hackclub.com/"
+    },
+    {
       "source": "/workshops/(.*)/",
-      "destination": "https://workshops.hackclub.com/$1"
+      "destination": "https://workshops.hackclub.com/$1/"
     }
   ],
   "rewrites": [
@@ -55,8 +59,12 @@
       "destination": "https://workshops.hackclub.com/conduct/"
     },
     {
+      "source": "/vip-newsletters/",
+      "destination": "https://workshops.hackclub.com/vip-newsletters/"
+    },
+    {
       "source": "/vip-newsletters/(.*)/",
-      "destination": "https://workshops.hackclub.com/vip-newsletters/$1"
+      "destination": "https://workshops.hackclub.com/vip-newsletters/$1/"
     },
     {
       "source": "/map/",
@@ -81,7 +89,5 @@
       "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
     }
   ],
-  "github": {
-    "silent": true
-  }
+  "github": { "silent": true }
 }

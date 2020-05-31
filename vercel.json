@@ -63,8 +63,8 @@
       "destination": "https://workshops.hackclub.com/vip-newsletters/"
     },
     {
-      "source": "/vip-newsletters/(.*)/",
-      "destination": "https://workshops.hackclub.com/vip-newsletters/$1/"
+      "source": "/vip-newsletters/(.*)",
+      "destination": "https://workshops.hackclub.com/vip-newsletters/$1"
     },
     {
       "source": "/map/",

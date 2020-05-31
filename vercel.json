@@ -34,7 +34,7 @@
     },
     {
       "source": "/workshops/(.*)/",
-      "destination": "https://workshops.hackclub.com/$1"
+      "destination": "https://workshops.hackclub.com/$1/"
     }
   ],
   "rewrites": [
@@ -59,6 +59,14 @@
       "destination": "https://workshops.hackclub.com/conduct/"
     },
     {
+      "source": "/vip-newsletters/",
+      "destination": "https://workshops.hackclub.com/vip-newsletters/"
+    },
+    {
+      "source": "/vip-newsletters/(.*)",
+      "destination": "https://workshops.hackclub.com/vip-newsletters/$1"
+    },
+    {
       "source": "/map/",
       "destination": "https://hc-map.now.sh/"
     },
@@ -81,7 +89,5 @@
       "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
     }
   ],
-  "github": {
-    "silent": true
-  }
+  "github": { "silent": true }
 }

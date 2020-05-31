@@ -29,10 +29,6 @@
       "statusCode": 200
     },
     {
-      "source": "/workshops/",
-      "destination": "https://workshops.hackclub.com/"
-    },
-    {
       "source": "/workshops/(.*)/",
       "destination": "https://workshops.hackclub.com/$1"
     }
@@ -57,6 +53,10 @@
     {
       "source": "/conduct/",
       "destination": "https://workshops.hackclub.com/conduct/"
+    },
+    {
+      "source": "/vip-newsletters/(.*)/",
+      "destination": "https://workshops.hackclub.com/vip-newsletters/$1"
     },
     {
       "source": "/map/",

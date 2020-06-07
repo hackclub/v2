@@ -29,6 +29,11 @@
       "statusCode": 200
     },
     {
+      "source": "/dog/",
+      "destination": "https://hacc-nite.glitch.me/",
+      "statusCode": 302
+    },
+    {
       "source": "/workshops/",
       "destination": "https://workshops.hackclub.com/"
     },

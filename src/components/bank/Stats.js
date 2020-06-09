@@ -6,41 +6,18 @@ import Stat from 'components/Stat'
 import api from 'api'
 import { timeSince } from 'helpers'
 
-function renderMoney(amount) {
-  return Math.floor(amount / 100)
+const renderMoney = amount =>
+  Math.floor(amount / 100)
     .toLocaleString('en-US', {
       style: 'currency',
       currency: 'USD'
     })
     .replace('.00', '')
-}
-
-function getTimeDistance(jsDate) {
-  const delta = (Date.now() - jsDate) / 1000 // in seconds
-  if (delta < 3600) {
-    return `${Math.floor(delta / 60)} minutes ago`
-  } else if (delta < 86400) {
-    return `${Math.floor(delta / 3600)} hours ago`
-  } else if (delta < 86400 * 2) {
-    return 'two days ago'
-  } else if (delta < 86400 * 7) {
-    return 'this week'
-  } else {
-    // should basically never show
-    return new Date(jsDate).toLocaleDateString()
-  }
-}
 
 const flashing = keyframes`
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
 `
 
 const Dot = styled(Text.span).attrs({ bg: 'success', color: 'white' })`
@@ -79,7 +56,12 @@ export default props => {
           This <div> soup seemed to remove the symptoms in the UI for now.
           - @thesephist */}
       <div>
-        <Lead fontSize={[2, 3]} color={props.labelColor} my={[2, 3]}>
+        <Lead
+          fontSize={[2, 3]}
+          color={props.labelColor}
+          mt={[2, 4]}
+          mb={[2, 3]}
+        >
           <span></span>
           <Dot />
           As of {timeSince(lastUpdated, false, true)}...

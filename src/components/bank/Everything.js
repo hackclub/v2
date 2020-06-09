@@ -11,9 +11,10 @@ import {
   Text,
   theme
 } from '@hackclub/design-system'
-import { Headline, Lead } from 'components/Content'
+import { Title, Lead } from 'components/Content'
 import { Fade } from 'react-reveal'
 import { timeSince } from 'helpers'
+import Run from 'components/bank/Run'
 
 const Base = styled(Box.section).attrs({
   bg: 'dark',
@@ -53,7 +54,7 @@ const Percentage = styled(Flex).attrs({
   }
 `
 
-const List = styled(Text.withComponent('ol')).attrs({ pl: 0 })`
+const List = styled(Container.withComponent('ol')).attrs({ pl: 0 })`
   list-style: none;
   ${theme.mediaQueries.md} {
     display: grid;
@@ -86,14 +87,14 @@ const recent = dt => {
 
 export default () => (
   <Base>
+    <Container align="center" mb={[4, 5]} px={3}>
+      <Title>Everything you’ll&nbsp;need.</Title>
+    </Container>
     <Container px={3}>
-      <Container align="center" mb={[4, 5]}>
-        <Headline>Everything you’ll&nbsp;need.</Headline>
-      </Container>
       <List>
         {Object.entries({
           'Legal entity with 501(c)(3) status': 'briefcase',
-          'Automated tax filings': 'enter',
+          'We do your taxes': 'checkmark',
           'Collect donations via card, check, or ACH': 'enter',
           'Share access with your whole team': 'member-add',
           'Bank account backed by Silicon Valley Bank': 'bank-account',
@@ -154,6 +155,7 @@ export default () => (
         ))}
       </List>
     </Container>
+    <Run />
     <Container px={3} mt={4}>
       <Flex justify="center" align="center" wrap>
         <Text fontSize={[4, 5]} mr={[2, 3]}>

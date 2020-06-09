@@ -5,7 +5,7 @@ import {
   Flex,
   Heading,
   Link as A,
-  Button,
+  OutlineButton as Button,
   theme
 } from '@hackclub/design-system'
 import { Lead } from 'components/Content'
@@ -19,7 +19,7 @@ const Slide = styled(Flex).attrs({
   width: '100vw'
 })`
   background: url('/bank/bg.jpg');
-  box-shadow: inset 0 0 4rem 4rem rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 4rem 1rem rgba(0, 0, 0, 0.5);
   background-position: center;
   background-size: cover;
   width: 100%;
@@ -89,10 +89,9 @@ export default () => (
       maxWidth={75}
       style={{ zIndex: 100 }}
     >
-      <Fade bottom>
+      <Fade duration={625} bottom>
         <Heading.h1 fontSize={[6, 7, 8, 9]}>
-          For the <Underline>most ambitious</Underline> events{' '}
-          <Underline>in the world</Underline>.
+          The bank for hackers to&nbsp;<Underline>make ideas real</Underline>.
         </Heading.h1>
         <Lead maxWidth={48} my={4} fontSize={[3, 4]}>
           The team behind{' '}
@@ -111,7 +110,9 @@ export default () => (
         </Lead>
       </Fade>
       <Flex justify="center" align="center">
-        <Button href="#apply">Apply with your event!</Button>
+        <Button href="#apply" scale>
+          Apply now
+        </Button>
       </Flex>
     </Container>
     <ScrollHint />

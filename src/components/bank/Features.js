@@ -120,11 +120,11 @@ export default () => (
   <Base pt={[5, 6, 7]} pb={[4, 5, 6]} color="snow">
     <Modules px={3}>
       <Box>
-        <Headline>A full-stack toolkit for organizing events.</Headline>
+        <Headline>A full-stack toolkit for organizing anything.</Headline>
         <Lead fontSize={[3, 4]} color="muted" maxWidth={48} mx={0}>
           Invoice sponsors, issue debit cards to your team, and view history.
           <br />
-          Ongoing support so you can focus on your event, not the paperwork.
+          Ongoing support so you can focus on organizing, not the paperwork.
         </Lead>
       </Box>
       <Box>

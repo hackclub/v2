@@ -4,11 +4,9 @@ import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import Landing from 'components/bank/Landing'
-import Run from 'components/bank/Run'
 import Features from 'components/bank/Features'
 import Testimonials from 'components/bank/Testimonials'
 import Everything from 'components/bank/Everything'
-import Timeline from 'components/bank/Timeline'
 import Start from 'components/bank/Start'
 
 const styles = `
@@ -36,8 +34,6 @@ export default () => (
     <Features />
     <Testimonials />
     <Everything />
-    <Timeline />
-    <Run />
     <Start />
     <Footer dark />
   </Layout>

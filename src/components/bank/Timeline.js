@@ -2,7 +2,6 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import {
   Box,
-  Container,
   Flex,
   Icon,
   Avatar,
@@ -11,7 +10,6 @@ import {
   theme
 } from '@hackclub/design-system'
 import { Slide } from 'react-reveal'
-import { Subhline, Lead } from 'components/Content'
 
 const Timeline = styled(Flex).attrs({
   flexDirection: ['column', null, 'row'],
@@ -102,7 +100,7 @@ Timeline.Step = ({ icon, name, duration, mb = 4 }) => (
   </TimelineStep>
 )
 
-export default () => (
+/*
   <Box.section bg="darker" pt={[5, 6, 7]} pb={[4, 5]}>
     <Container align="center" maxWidth={36} px={3} mb={[4, 5, 6]}>
       <Subhline color="white">How long does it take?</Subhline>
@@ -111,42 +109,43 @@ export default () => (
         with all the paperwork.
       </Lead>
     </Container>
-    <Timeline px={3}>
-      <Timeline.Step icon="send" name="Sign up, explore, order debit cards" duration="Day 1" />
-      <Timeline.Step
-        icon="welcome"
-        name={
-          <Fragment>
-            Interview call with{' '}
-            <Flex
-              align="center"
-              justify={['start', 'center']}
-              fontSize={3}
-              bold
-            >
-              <Avatar
-                src={require('../../../static/hackers/michael.jpg')}
-                size={32}
-                alt="Michael’s avatar"
-                mr={1}
-              />
-              Michael
-            </Flex>
-          </Fragment>
-        }
-        duration="Day 3"
-      />
-      <Timeline.Step
-        icon="post"
-        name="Sign the contract & unlock full access"
-        duration="Day 4"
-      />
-      <Timeline.Step
-        icon="card"
-        name="Receive debit cards in the mail"
-        duration="Day 10"
-        mb={0}
-      />
-    </Timeline>
   </Box.section>
+*/
+export default () => (
+  <Timeline px={3}>
+    <Timeline.Step
+      icon="send"
+      name="Sign up, explore, order debit cards"
+      duration="Day 1"
+    />
+    <Timeline.Step
+      icon="welcome"
+      name={
+        <Fragment>
+          Interview call with{' '}
+          <Flex align="center" justify={['start', 'center']} fontSize={3} bold>
+            <Avatar
+              src={require('../../../static/hackers/michael.jpg')}
+              size={32}
+              alt="Michael’s avatar"
+              mr={1}
+            />
+            Michael
+          </Flex>
+        </Fragment>
+      }
+      duration="Day 3"
+    />
+    <Timeline.Step
+      icon="post"
+      name="Sign the contract & unlock full access"
+      duration="Day 4"
+    />
+    <Timeline.Step
+      icon="card"
+      name="Receive debit cards in the mail"
+      duration="Day 10"
+      mb={0}
+    />
+  </Timeline>
 )

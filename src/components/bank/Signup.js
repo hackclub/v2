@@ -4,10 +4,23 @@ import { Field, Submit, theme } from '@hackclub/design-system'
 import { withFormik } from 'formik'
 
 const Base = styled.form`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: ${theme.space[2]}px;
+  input[type='submit'],
   label {
+    grid-column: span 2;
+    margin-bottom: 0;
+  }
+  label div {
     color: ${theme.colors.gray[3]} !important;
   }
+  label[id$='First Name'],
+  label[id$='Last Name'] {
+    grid-column: span 1 !important;
+  }
   input[type='text'],
+  input[type='email'],
   input[type='url'],
   input[type='number'] {
     background: ${theme.colors.dark} !important;
@@ -41,7 +54,6 @@ const InnerForm = ({ values, errors, touched, handleChange, handleBlur }) => (
       value={values.name}
       onChange={handleChange}
       onBlur={handleBlur}
-      mb={2}
     />
     <Field
       label="First name"
@@ -50,7 +62,6 @@ const InnerForm = ({ values, errors, touched, handleChange, handleBlur }) => (
       value={values.first_name}
       onChange={handleChange}
       onBlur={handleBlur}
-      mb={2}
     />
     <Field
       label="Last name"
@@ -59,9 +70,24 @@ const InnerForm = ({ values, errors, touched, handleChange, handleBlur }) => (
       value={values.last_name}
       onChange={handleChange}
       onBlur={handleBlur}
-      mb={[4, 5]}
     />
-    <Submit.lg bg="info" width={1} value="Finish your application" />
+    <Field
+      label="Email address"
+      name="prefill_Email Address"
+      placeholder="fiona@hackclub.com"
+      type="email"
+      value={values.email}
+      onChange={handleChange}
+      onBlur={handleBlur}
+    />
+    <Submit.lg
+      bg="info"
+      width={1}
+      mt={[2, 3]}
+      value={`Finish ${
+        10 - Object.values(values).filter(n => n !== '').length
+      } fields to apply`}
+    />
   </Base>
 )
 const Signup = withFormik({

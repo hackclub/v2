@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Container, Flex, Text, theme } from '@hackclub/design-system'
+import { Box, Container, Link, theme } from '@hackclub/design-system'
 import { Fade } from 'react-reveal'
-import { Headline, Subhline, Lead } from 'components/Content'
+import { Title, Subhline, Lead } from 'components/Content'
 import Sheet from 'components/Sheet'
+import Timeline from 'components/bank/Timeline'
 import Form from 'components/bank/Signup'
 import Stats from 'components/bank/Stats'
 
@@ -17,6 +18,7 @@ const Grid = styled(Container).attrs({ maxWidth: 48 })`
   }
 `
 
+/*
 const Timeline = styled(Flex).attrs({
   flexDirection: 'column'
 })`
@@ -39,7 +41,7 @@ const Timeline = styled(Flex).attrs({
 `
 const TimelineStep = styled(Flex).attrs({
   align: 'center',
-  pt: (props) => (props.first ? 0 : [2, 3])
+  pt: props => (props.first ? 0 : [2, 3])
 })`
   line-height: 1.125;
 `
@@ -60,34 +62,38 @@ Timeline.Step = ({ name, duration, first = false }) => (
     </TimelineStep>
   </Fade>
 )
+*/
 
 export default () => (
-  <Box.section bg="dark" py={[5, 6, 7]} id="apply">
-    <Container maxWidth={48} px={3} align="center">
-      <Headline color="white" mb={2}>
+  <Box.section bg="darker" py={[5, 6, 7]} id="apply">
+    <Container px={3} mb={[4, 5]} align="center">
+      <Title color="white" mb={2}>
         Sign up for Hack&nbsp;Club Bank.
-      </Headline>
+      </Title>
       <Lead maxWidth={32} color="muted">
         Open to all US-based registered Hack Clubs, hackathons, and your next
-        amazing event.
+        amazing project.
       </Lead>
     </Container>
+    <Timeline />
     <Grid mt={[4, 5]} mb={[3, 4]} px={3}>
+      {/* 
+      <Timeline>
+        <Timeline.Step name="Apply" duration="Right now" first />
+        <Timeline.Step name="Interview call" duration="In 2 days" />
+        <Timeline.Step name="Sign the contract" duration="Same day" />
+        <Timeline.Step name="Receive debit cards" duration="1 week later" />
+      </Timeline>
+      */}
       <Fade bottom>
         <Sheet bg="#252429" color="snow" maxWidth={32} p={[3, 4, 5]}>
-          <Subhline fontSize={[3, 4]} mb={[4, 5]}>
-            Your event
+          <Subhline fontSize={[3, 4]} mb={3}>
+            Your project
           </Subhline>
           <Form />
         </Sheet>
       </Fade>
       <div>
-        <Timeline>
-          <Timeline.Step name="Apply" duration="Right now" first />
-          <Timeline.Step name="Interview call" duration="In 2 days" />
-          <Timeline.Step name="Sign the contract" duration="Same day" />
-          <Timeline.Step name="Receive debit cards" duration="1 week later" />
-        </Timeline>
         <Stats
           color="smoke"
           labelColor="muted"
@@ -97,6 +103,13 @@ export default () => (
           width="auto"
           align="left"
         />
+        <Lead color="slate" fontSize={2}>
+          Starting in February 2020, we started running Hack Club HQ on Bank (&
+          we don’t count our numbers in these stats).{' '}
+          <Link href="https://bank.hackclub.com/hq" color="primary">
+            See our finances here.
+          </Link>
+        </Lead>
       </div>
     </Grid>
     <Lead maxWidth={36} color="slate" align="center" fontSize={2}>

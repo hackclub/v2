@@ -10,7 +10,7 @@ import {
   Text,
   theme
 } from '@hackclub/design-system'
-import { Subhline, Lead } from 'components/Content'
+import { Headline, Subhline, Lead } from 'components/Content'
 import Sheet from 'components/Sheet'
 import Stat from 'components/Stat'
 import kebabCase from 'lodash/kebabCase'
@@ -179,16 +179,16 @@ const Event = ({
 export default () => (
   <Base>
     <Container align="center" maxWidth={42} mb={[4, 5]} px={3}>
-      <Subhline color="white">
+      <Headline color="white" mb={2}>
         The best events across the country run on Bank.
-      </Subhline>
+      </Headline>
       <Lead maxWidth={40} color="muted">
         Everywhere from Philadelphia to Phoenix to Portland,
         Hack&nbsp;Club&nbsp;Bank powers events of all sizes.
       </Lead>
     </Container>
     <Main>
-      {events.map((event) => {
+      {events.map(event => {
         const id = kebabCase(event.name)
         return <Event {...event} img={`/bank/events/${id}.jpg`} key={id} />
       })}

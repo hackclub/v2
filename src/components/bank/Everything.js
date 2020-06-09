@@ -78,7 +78,11 @@ List.Item = ({ icon = 'enter', start, ...props }) => (
   </Fade>
 )
 
-const thisMonth = new Date().toISOString().substring(0, 7)
+const recent = dt => {
+  const past = new Date()
+  past.setMonth(past.getMonth() - 2)
+  return new Date(dt) > past
+}
 
 export default () => (
   <Base>
@@ -121,8 +125,8 @@ export default () => (
           'Generate attendee legal waivers': '2020-01-15',
           'Instant G Suite & email addresses': '2020-01-15',
           'Virtual debit cards (with Apple Pay)': '2020-03-08',
-          'Online donation form': '2020-03-10',
           'Debit card transaction paper trail': '2020-03-10',
+          'Online donation form': '2020-03-10',
           'Self-serve, no-contract signup': '2020-05-05',
           'Transparency Mode (optional)': '2020-05-15'
         }).map(([item, date]) => (
@@ -132,16 +136,18 @@ export default () => (
               item.startsWith('Instant') || item.includes('signup')
                 ? 'bolt'
                 : item.includes('card')
-                  ? 'card'
-                  : item.includes('Transparency')
-                    ? 'explore'
-                    : item.includes('form')
-                      ? 'embed'
-                      : item.includes('Physical') ? 'email' : 'enter'
+                ? 'card'
+                : item.includes('Transparency')
+                ? 'explore'
+                : item.includes('form')
+                ? 'link'
+                : item.includes('Physical')
+                ? 'email'
+                : 'enter'
             }
           >
             {item}{' '}
-            <Badge bg={date.startsWith(thisMonth) ? 'primary' : 'slate'} fontSize={0} ml={1}>
+            <Badge bg={recent(date) ? 'primary' : 'slate'} fontSize={0} ml={1}>
               Added {timeSince(date)}
             </Badge>
           </List.Item>
@@ -177,4 +183,3 @@ export default () => (
     </Container>
   </Base>
 )
-

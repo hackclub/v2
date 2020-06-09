@@ -32,7 +32,7 @@ const InnerForm = ({ values, errors, touched, handleChange, handleBlur }) => (
   <Base
     method="get"
     target="_blank"
-    action={`https://airtable.com/shrW33gWaPnSDBhYj`}
+    action="https://airtable.com/shrW33gWaPnSDBhYj"
   >
     <Field
       label="Event name"
@@ -41,30 +41,27 @@ const InnerForm = ({ values, errors, touched, handleChange, handleBlur }) => (
       value={values.name}
       onChange={handleChange}
       onBlur={handleBlur}
-      error={touched.name && errors.name}
       mb={2}
     />
     <Field
       label="First name"
       name="prefill_First Name"
-      placeholder="Sam"
+      placeholder="Fiona"
       value={values.first_name}
       onChange={handleChange}
       onBlur={handleBlur}
-      error={touched.first_name && errors.first_name}
       mb={2}
     />
     <Field
       label="Last name"
       name="prefill_Last Name"
-      placeholder="Davis"
+      placeholder="Hackworth"
       value={values.last_name}
       onChange={handleChange}
       onBlur={handleBlur}
-      error={touched.last_name && errors.last_name}
       mb={[4, 5]}
     />
-    <Submit.lg bg="info" width={1} value="Continue your application" />
+    <Submit.lg bg="info" width={1} value="Finish your application" />
   </Base>
 )
 const Signup = withFormik({

@@ -27,8 +27,9 @@ const Sponsor = ({ name, href, img, ...props }) => (
 const Sponsors = props => (
   <Base maxWidth={48} {...props}>
     {[
-      'Netlify',
+      'Vercel',
       'Slack',
+      'Netlify',
       'FullStory',
       'BrowserStack',
       'Stripe',

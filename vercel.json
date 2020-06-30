@@ -33,7 +33,7 @@
       "destination": "https://workshops.hackclub.com/"
     },
     {
-      "source": "/workshops/(.*)/",
+      "source": "/workshops/([a-z_]+)/",
       "destination": "https://workshops.hackclub.com/$1/"
     }
   ],
@@ -45,6 +45,10 @@
     {
       "source": "/api/(.*)/",
       "destination": "https://v3.hackclub.com/api/$1"
+    },
+    {
+      "source": "/v3/_next/:path*",
+      "destination": "https://v3.hackclub.com/_next/:path*"
     },
     {
       "source": "/covid19/",
@@ -69,6 +73,10 @@
     {
       "source": "/transparency/may-2020/",
       "destination": "https://workshops.hackclub.com/transparency-may/"
+    },
+    {
+      "source": "/workshops/_next/:path*",
+      "destination": "https://workshops.hackclub.com/_next/:path*"
     },
     {
       "source": "/map/",

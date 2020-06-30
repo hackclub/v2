@@ -48,7 +48,7 @@ const InnerForm = ({ values, errors, touched, handleChange, handleBlur }) => (
     action="https://airtable.com/shrW33gWaPnSDBhYj"
   >
     <Field
-      label="Event name"
+      label="Project name"
       name="prefill_Event Name"
       placeholder="Windy City Hacks"
       value={values.name}

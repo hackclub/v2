@@ -40,7 +40,11 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "https://v3.hackclub.com/"
+      "destination": "https://summer.hackclub.com/"
+    },
+    {
+      "source": "/summer/_next/:path*",
+      "destination": "https://summer.hackclub.com/_next/:path*"
     },
     {
       "source": "/api/(.*)/",

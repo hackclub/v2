@@ -28,13 +28,13 @@ const events = [
       'For me, Hack Club Bank unlocked organizing hackathons. Even after as a club leader, raising money seemed insurmountable. Bank directly enabled organizing events in my community with event bank accounts & a supportive community. I couldn’t recommend it more highly.'
   },
   {
-    name: 'Teenhacks LI',
+    name: 'TeenHacks LI',
     location: 'Long Island, NY',
-    organizer: 'Snigdha Roy',
-    budget: 25,
+    organizer: 'Wesley Pergament',
+    budget: 35,
     attendees: 300,
     testimonial:
-      'Hack Club Bank has been very helpful in helping us manage our finances and allowing my team to send easy and professional invoices to sponsors. The platform is seamlessly easy to use and the Bank team is constantly improving it. Highly recommend jumping on Hack Club Bank to handle your next project.'
+      'For our hackathon, Hack Club Bank has given us the tools to make sure our organization is run professionally when dealing with sponsors. Bank and their team have created an easily manageable resource to make sure any event is run successfully. We would highly recommend any organization to be a part of the Hack Club ecosystem.'
   },
   {
     name: 'Los Altos Hacks',

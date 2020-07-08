@@ -92,6 +92,12 @@ export default () => (
           pronouns="he/him"
         />
         <Bio
+          name="Dina Elhanan"
+          teamRole="2020 Summer Intern"
+          text="Dina started a club in Canada in 2018. Since then she’s run a local hackathon, organized club events & trips, and spoke at Hack Club’s Flagship 2019 Summit. After graduating high school, Dina joined HQ as a ✨Vibes Influencer✨ summer intern. She also studies Electrical Engineering at McMaster University, class of 2024."
+          pronouns="she/her"
+        />
+        <Bio
           name="Athul Blesson"
           teamRole="Asia-Pacific Region"
           text="Athul started dozens of the largest Hack Clubs in India. After graduating from high school, he joined as the Regional Manager of Asia-Pacific & Africa, where he actively manages 117 clubs."

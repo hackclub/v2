@@ -25,7 +25,13 @@ const desc =
   'Meet the team that runs Hack Club, a global nonprofit network of high school computer science clubs.'
 
 export default () => (
-  <Layout bg="snow" title={title} desc={desc} path="/team/">
+  <Layout
+    bg="snow"
+    title={title}
+    desc={desc}
+    path="/team/"
+    img="/cards/team.jpg"
+  >
     <Nav />
     <Header bg="cyan.9">
       <Container pt={[5, 6]} pb={[3, 4]}>

@@ -970,6 +970,13 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@7.9.6":
+  version "7.9.6"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.6.tgz#a9102eb5cadedf3f31d08a9ecf294af7827ea29f"
+  integrity sha512-64AF1xY3OAkFHqOb9s4jpgk1Mm5vDZ4L3acHvAml+53nO1XbXLuDodsVpO4OIUsmemlUHMxNdYMNJmsvOwLrvQ==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.3", "@babel/runtime@^7.9.6":
   version "7.10.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.10.5.tgz#303d8bd440ecd5a491eae6117fd3367698674c5c"
@@ -5437,6 +5444,14 @@ gatsby-plugin-canonical-urls@^2.3.10:
   dependencies:
     "@babel/runtime" "^7.10.3"
 
+gatsby-plugin-fathom@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-fathom/-/gatsby-plugin-fathom-1.3.0.tgz#bde3948a6a0841c7eac81353ff6ff5237d847ecd"
+  integrity sha512-3K5Ramhx6I8hH1j0qG5beJqHLDCqSmgSq/DRJjGcLLLGf+tdYFYdUm8CDBeNAhRQa4flAVO7p/cRbkTAYzXE0g==
+  dependencies:
+    "@babel/runtime" "7.9.6"
+    react "16.x"
+
 gatsby-plugin-page-creator@^2.3.17:
   version "2.3.17"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-page-creator/-/gatsby-plugin-page-creator-2.3.17.tgz#9e63af4bb78342fbdd7a0c0f01c9f13409274c5b"
@@ -5461,11 +5476,6 @@ gatsby-plugin-resolve-src@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-resolve-src/-/gatsby-plugin-resolve-src-2.1.0.tgz#290fec7dc7b55d05a41827b106aa04968b7549ba"
   integrity sha512-uffIv/7VD4HLvMlxl6J9zzK9Y5L2jhrU+uDXzpAKHp6kWH/zNjgbnuE1UD05Z/xo7o4ngDkk2+GWOmcbQQRIXw==
-
-gatsby-plugin-segment-js@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-segment-js/-/gatsby-plugin-segment-js-3.1.0.tgz#df467aec38555a9cf71bacd34352b2dfbaba3687"
-  integrity sha512-oBcIY+riNehfyQXp8PEGVQTz/VPt/+k2aXCh/bNZSR4HhjEAXafcSCReS2xzs/3IJRa3gH0+NOZvRU8peXDb/w==
 
 gatsby-plugin-sitemap@^2.4.11:
   version "2.4.11"
@@ -10123,19 +10133,19 @@ react-side-effect@^2.1.0:
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.0.tgz#1ce4a8b4445168c487ed24dab886421f74d380d3"
   integrity sha512-IgmcegOSi5SNX+2Snh1vqmF0Vg/CbkycU9XZbOHJlZ6kMzTmi3yc254oB1WCkgA7OQtIAoLmcSFuHTc/tlcqXg==
 
-react@^16.12.0:
-  version "16.12.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
-  integrity sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==
+react@16.x, react@^16.13.1:
+  version "16.13.1"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
+  integrity sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
 
-react@^16.13.1:
-  version "16.13.1"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
-  integrity sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w==
+react@^16.12.0:
+  version "16.12.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
+  integrity sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"

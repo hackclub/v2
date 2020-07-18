@@ -15,10 +15,11 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-segment-js',
+      resolve: 'gatsby-plugin-fathom',
       options: {
-        prodKey: '35oTlU4UqlhIN8VGYmBxAzyDdfzhcscw',
-        trackPage: true
+        trackingUrl: 'aardvark.hackclub.com',
+        siteId: 'OGIMJEFA',
+        whitelistHostnames: ['hackclub.com']
       }
     }
   ]

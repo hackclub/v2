@@ -8,7 +8,8 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
-    "fmt": "npx prettier \"{src/**,}/*.js\" --write"
+    "format": "prettier --write .",
+    "checkFormat": "prettier --check ."
   },
   "dependencies": {
     "@hackclub/design-system": "^0.0.1-18",

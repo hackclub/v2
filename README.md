@@ -2,6 +2,9 @@
 <h1 align="center"><a href="https://hackclub.com/">Hack Club Site</a></h1>
 <p align="center"><i>The source code for hackclub.com</i></p>
 
+![format](https://github.com/hackclub/site/workflows/format/badge.svg)
+![build](https://github.com/hackclub/site/workflows/build/badge.svg)
+
 Website internals:
 
 - [hackclub/design-system](https://github.com/hackclub/design-system)

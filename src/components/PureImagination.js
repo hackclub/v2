@@ -6,7 +6,7 @@ export default () => {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    window.document.onkeypress = e => {
+    window.document.onkeypress = (e) => {
       const shouldProgress = e.key === codeword[progress]
       setProgress(shouldProgress ? progress + 1 : 0)
     }

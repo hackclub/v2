@@ -4,7 +4,7 @@ import storage from 'storage'
 export const url = 'https://api.hackclub.com/'
 const methods = ['GET', 'PUT', 'POST', 'PATCH', 'DELETE']
 
-const generateMethod = method => (path, options = {}, fetchOptions = {}) => {
+const generateMethod = (method) => (path, options = {}, fetchOptions = {}) => {
   let filteredOptions = {}
   const authToken = storage.get('authToken')
   if (authToken) {
@@ -42,7 +42,7 @@ const generateMethod = method => (path, options = {}, fetchOptions = {}) => {
   const urlPath = foreignUrl ? path : url + path
 
   return fetch(urlPath, { method, ...filteredOptions })
-    .then(res => {
+    .then((res) => {
       if (res.ok) {
         const contentType = res.headers.get('content-type')
         if (contentType && contentType.indexOf('application/json') !== -1) {
@@ -52,7 +52,7 @@ const generateMethod = method => (path, options = {}, fetchOptions = {}) => {
         }
       } else {
         if (res.status === 422) {
-          return res.json().then(json => {
+          return res.json().then((json) => {
             // eslint-disable-next-line
             throw { ...res, errors: json.errors }
           })
@@ -61,14 +61,14 @@ const generateMethod = method => (path, options = {}, fetchOptions = {}) => {
         }
       }
     })
-    .catch(err => {
+    .catch((err) => {
       throw err
     })
 }
 
 let api = {}
 
-methods.forEach(method => {
+methods.forEach((method) => {
   api[method.toLowerCase()] = generateMethod(method)
 })
 

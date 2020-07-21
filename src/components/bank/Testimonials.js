@@ -188,7 +188,7 @@ export default () => (
       </Lead>
     </Container>
     <Main>
-      {events.map(event => {
+      {events.map((event) => {
         const id = kebabCase(event.name)
         return <Event {...event} img={`/bank/events/${id}.jpg`} key={id} />
       })}

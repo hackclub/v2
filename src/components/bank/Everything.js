@@ -79,7 +79,7 @@ List.Item = ({ icon = 'enter', start, ...props }) => (
   </Fade>
 )
 
-const recent = dt => {
+const recent = (dt) => {
   const past = new Date()
   past.setMonth(past.getMonth() - 2)
   return new Date(dt) > past

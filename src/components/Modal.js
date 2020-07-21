@@ -26,7 +26,7 @@ export const Modal = styled(Sheet).attrs({ bg: 'white' })`
     animation: ${modalKeyframes} ease-in 0.25s;
   }
   // Responsive size control
-  width: ${props => props.w || props.width || '36rem'};
+  width: ${(props) => props.w || props.width || '36rem'};
   max-width: 95vw;
   max-height: 95vh;
   margin: 0 auto;
@@ -60,7 +60,7 @@ const ButtonReset = styled(Box.withComponent('button')).attrs({
   border-radius: ${theme.pill};
   cursor: pointer;
 `
-export const CloseButton = props => (
+export const CloseButton = (props) => (
   <ButtonReset aria-label="Close" color="muted" {...props}>
     <Icon glyph="view-close-small" size={24} />
   </ButtonReset>

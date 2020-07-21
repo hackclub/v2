@@ -1,7 +1,7 @@
 const stubbedStorage = {}
 'get set remove keys'
   .split(' ')
-  .forEach(method => (stubbedStorage[method] = () => null))
+  .forEach((method) => (stubbedStorage[method] = () => null))
 
 let localStorage
 try {
@@ -13,7 +13,7 @@ try {
 }
 
 const storage = {
-  get: key => {
+  get: (key) => {
     try {
       // (max@maxwofford.com) Values that were set before values were stringified might fail to parse, so we return the raw storage item if we can't parse it
       return JSON.parse(localStorage.getItem(key))
@@ -26,7 +26,7 @@ const storage = {
     }
   },
   set: (key, value) => localStorage.setItem(key, JSON.stringify(value)),
-  remove: key => localStorage.removeItem(key),
+  remove: (key) => localStorage.removeItem(key),
   keys: () => Object.keys(localStorage)
 }
 

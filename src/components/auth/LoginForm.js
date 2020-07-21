@@ -10,7 +10,7 @@ class Login extends Component {
     this.setState({ email: search.get('email') })
   }
 
-  submitCallback = data => {
+  submitCallback = (data) => {
     this.setState({
       ...data,
       emailSent: true

@@ -11,7 +11,7 @@ const Photo = styled(Sheet.withComponent(BackgroundImage)).attrs({
   ${theme.mediaQueries.md} {
     min-height: 25rem;
   }
-  ${props =>
+  ${(props) =>
     props.captioned &&
     css`
       &:after {
@@ -31,7 +31,7 @@ const Photo = styled(Sheet.withComponent(BackgroundImage)).attrs({
             `};
         width: 100%;
         max-width: 100%;
-        ${props =>
+        ${(props) =>
           props.dark
             ? css`
                 background-color: rgba(0, 0, 0, 0.875);

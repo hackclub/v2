@@ -33,10 +33,10 @@ export const SectionTitle = styled(Title).attrs({
 
 export const Cols = styled(Box)`
   display: grid;
-  grid-gap: ${props => theme.space[props.gap[0]]}px;
+  grid-gap: ${(props) => theme.space[props.gap[0]]}px;
   ${theme.mediaQueries.sm} {
-    grid-gap: ${props => theme.space[props.gap[1]]}px;
-    grid-template-columns: ${props => props.cols};
+    grid-gap: ${(props) => theme.space[props.gap[1]]}px;
+    grid-template-columns: ${(props) => props.cols};
   }
   > ${Headline}:first-child {
     color: ${theme.colors.white};

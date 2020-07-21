@@ -38,7 +38,7 @@ const InnerForm = ({
   </Form>
 )
 
-const statusMessage = status =>
+const statusMessage = (status) =>
   status
     ? {
         success: 'Sent! Check your email 📬',
@@ -61,7 +61,7 @@ const SlackForm = withFormik({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       })
-      .then(res => {
+      .then((res) => {
         resetForm()
         setStatus('success')
         // associate submitted email with analytics if there isn't already an
@@ -75,7 +75,7 @@ const SlackForm = withFormik({
           }
         })
       })
-      .catch(e => {
+      .catch((e) => {
         console.error(e)
         setSubmitting(false)
         setStatus('error')

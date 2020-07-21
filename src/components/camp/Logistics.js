@@ -57,7 +57,7 @@ const CalDay = styled(Text.span).attrs({ color: 'smoke', bold: true })`
 const CalDate = styled(Text.span).attrs({ color: 'muted' })`
   line-height: 1.25;
 
-  ${props =>
+  ${(props) =>
     props.active
       ? css`
           color: ${theme.colors.white};
@@ -66,21 +66,21 @@ const CalDate = styled(Text.span).attrs({ color: 'muted' })`
       : css`
           user-select: none;
         `}
-  ${props =>
+  ${(props) =>
     props.first &&
     css`
       border-radius: ${theme.pill} 0 0 ${theme.pill};
       font-weight: ${theme.bold};
     `}
-  ${props =>
+  ${(props) =>
     props.last &&
     css`
       border-radius: 0 ${theme.pill} ${theme.pill} 0;
     `}
 `
-const active = i => (i >= 1 && i <= 5) || (i >= 15 && i <= 19) || i >= 29
-const first = i => includes([1, 15, 29], i)
-const last = i => includes([5, 19], i)
+const active = (i) => (i >= 1 && i <= 5) || (i >= 15 && i <= 19) || i >= 29
+const first = (i) => includes([1, 15, 29], i)
+const last = (i) => includes([5, 19], i)
 
 export default () => [
   <Section id="logistics">
@@ -106,7 +106,7 @@ export default () => [
             {'M T W T F S S'.split(' ').map((i, n) => (
               <CalDay children={i} key={i + n} />
             ))}
-            {range(1, 32).map(i => (
+            {range(1, 32).map((i) => (
               <CalDate
                 active={active(i)}
                 first={first(i)}
@@ -115,7 +115,7 @@ export default () => [
                 key={i}
               />
             ))}
-            {range(1, 5).map(i => (
+            {range(1, 5).map((i) => (
               <CalDate
                 active={i <= 2}
                 last={i === 2}

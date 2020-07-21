@@ -1,5 +1,5 @@
 const stubbedLocation = {}
-'set get'.split(' ').forEach(method => (stubbedLocation[method] = () => null))
+'set get'.split(' ').forEach((method) => (stubbedLocation[method] = () => null))
 
 let location
 try {
@@ -8,7 +8,7 @@ try {
   location = stubbedLocation
 }
 
-const searchToObject = search => {
+const searchToObject = (search) => {
   if (!search) {
     return null
   }
@@ -29,7 +29,7 @@ export default {
     if (window.history.pushState) {
       const modifiedObject = { ...searchToObject(search), [key]: value }
       const modifiedArray = Object.keys(modifiedObject).map(
-        key => `${key}=${modifiedObject[key]}`
+        (key) => `${key}=${modifiedObject[key]}`
       )
       const modifiedString = modifiedArray.join('&')
       const newUrl = `${protocol}//${host}${pathname}?${modifiedString}`
@@ -40,6 +40,6 @@ export default {
       )
     }
   },
-  get: key =>
+  get: (key) =>
     searchToObject(location.search) && searchToObject(location.search)[key]
 }

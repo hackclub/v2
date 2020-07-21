@@ -85,7 +85,7 @@ const InnerForm = ({ values, errors, touched, handleChange, handleBlur }) => (
       width={1}
       mt={[2, 3]}
       value={`Finish ${
-        10 - Object.values(values).filter(n => n !== '').length
+        10 - Object.values(values).filter((n) => n !== '').length
       } fields to apply`}
     />
   </Base>

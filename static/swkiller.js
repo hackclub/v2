@@ -1,4 +1,4 @@
-;(function() {
+;(function () {
   /*
   NOTE(max@maxwofford.com):
   For a few months we used the Gatsby Offline plugin (https://www.gatsbyjs.org/packages/gatsby-plugin-offline/), which registered a service workers on browser clients.
@@ -11,7 +11,7 @@
   var sw_supported = navigator && navigator.serviceWorker
 
   if (sw_supported) {
-    navigator.serviceWorker.getRegistrations().then(registrations => {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
       if (registrations.length > 0) {
         console.log('Unregistering service workers')
 

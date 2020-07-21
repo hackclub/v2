@@ -6,7 +6,7 @@ import Stat from 'components/Stat'
 import api from 'api'
 import { timeSince } from 'helpers'
 
-const renderMoney = amount =>
+const renderMoney = (amount) =>
   Math.floor(amount / 100)
     .toLocaleString('en-US', {
       style: 'currency',
@@ -31,7 +31,7 @@ const Dot = styled(Text.span).attrs({ bg: 'success', color: 'white' })`
   animation: 3s ${flashing} ease-in-out infinite;
 `
 
-export default props => {
+export default (props) => {
   const [volume, setVolume] = useState(100 * 1000 * 1000) // 1MM default
   const [raised, setRaised] = useState(100 * 1000 * 500) // half million default
   const [lastUpdated, setLastUpdated] = useState(Date.now()) // now default
@@ -41,7 +41,7 @@ export default props => {
   })
 
   const loadStats = () => {
-    api.get('https://bank.hackclub.com/stats').then(stats => {
+    api.get('https://bank.hackclub.com/stats').then((stats) => {
       setVolume(renderMoney(stats.transactions_volume))
       setRaised(renderMoney(stats.raised))
       setLastUpdated(stats.last_transaction_date * 1000)

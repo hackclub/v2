@@ -8,15 +8,15 @@ import storage from 'storage'
 
 const StyledInput = styled(Input)`
   text-align: inherit;
-  background: ${props => cx(props.color)};
-  color: ${props => cx(props.bg)};
+  background: ${(props) => cx(props.color)};
+  color: ${(props) => cx(props.bg)};
   border: none;
   :focus {
     box-shadow: none !important;
   }
   ::placeholder {
     text-align: inherit;
-    color: ${props => cx(props.bg)};
+    color: ${(props) => cx(props.bg)};
     opacity: 0.5;
   }
 `
@@ -47,7 +47,7 @@ const InnerForm = ({
         color={color}
         bg={bg}
         value={values.email}
-        onChange={e => {
+        onChange={(e) => {
           e.target.value = e.target.value.trim()
           handleChange(e)
         }}
@@ -93,13 +93,13 @@ const EmailLoginForm = withFormik({
     }
     api
       .post('v1/users/auth', { data })
-      .then(user => {
+      .then((user) => {
         storage.set('userId', user.id)
         storage.set('userEmail', user.email)
         setSubmitting(false)
         props.submitCallback({ userId: user.id, email: user.email })
       })
-      .catch(e => {
+      .catch((e) => {
         console.error(e)
         setSubmitting(false)
       })

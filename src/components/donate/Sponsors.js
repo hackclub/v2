@@ -24,7 +24,7 @@ const Sponsor = ({ name, href, img, ...props }) => (
   </Link>
 )
 
-const Sponsors = props => (
+const Sponsors = (props) => (
   <Base maxWidth={48} {...props}>
     {[
       'Vercel',
@@ -38,7 +38,7 @@ const Sponsors = props => (
       'Google',
       'Dialpad',
       'Figma'
-    ].map(name => (
+    ].map((name) => (
       <Sponsor name={name} key={name} />
     ))}
     <Sponsor

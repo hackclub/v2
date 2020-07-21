@@ -51,7 +51,7 @@ const Event = ({ start, name, desc, length = 1, color = 'smoke' }) => (
 
 export default ({ events = [] }) => (
   <Calendar>
-    {events.map(event => (
+    {events.map((event) => (
       <Event {...event} />
     ))}
   </Calendar>

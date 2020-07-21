@@ -35,7 +35,7 @@ const Calendar = styled(Flex)`
   border-width: 4px;
   width: 96px;
   height: 96px;
-  border-color: ${props => cx(props.color)};
+  border-color: ${(props) => cx(props.color)};
   border-style: solid;
   border-radius: 16px;
   font-weight: ${theme.bold};

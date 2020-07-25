@@ -15,14 +15,14 @@ import { Link } from 'gatsby'
 import PureImagination from 'components/PureImagination'
 
 const Base = styled(Box.withComponent('footer'))`
-  background: ${(props) =>
+  background: ${props =>
     props.dark
       ? `${theme.colors.darker} radial-gradient(${hexa(
           theme.colors.black,
           0.5
         )} 1px, transparent 1px)`
       : `${theme.colors.snow} url('/pattern.svg') repeat`};
-  ${(props) =>
+  ${props =>
     props.dark &&
     css`
       background-size: ${theme.space[4]}px ${theme.space[4]}px;
@@ -115,12 +115,12 @@ const Footer = ({ dark = false, children, ...props }) => (
             Hack Club
           </Heading.h2>
           <Pages>
-            <a href="https://apply.hackclub.com/" children="Apply" />
+            <a href="https://hackclub.com/slack/" children="Slack" />
             <Link to="/donate/" children="Donate" />
             <Link to="/team/" children="Team" />
-            <Link to="/community/" children="Community" />
             <Link to="/philosophy/" children="Philosophy" />
             <a href="https://hackclub.com/brand/" children="Branding" />
+            <a href="https://hackclub.com/press/" children="Press Inquiries" />
           </Pages>
         </Box>
         <Box>
@@ -132,11 +132,11 @@ const Footer = ({ dark = false, children, ...props }) => (
               href="https://hackclub.com/conduct/"
               children="Code of Conduct"
             />
+            <a href="https://events.hackclub.com/" children="Events" />
             <a href="https://workshops.hackclub.com/" children="Workshops" />
-            <Link to="/night/" children="Hack Night" />
             <a href="https://hackathons.hackclub.com/" children="Hackathons" />
             <Link to="/bank/" children="Bank" />
-            <a href="https://hackclub.com/map/" children="Map" />
+            <a href="https://hackclub.com/map/" children="Clubs Map" />
           </Pages>
         </Box>
         <Box>
@@ -162,27 +162,17 @@ const Footer = ({ dark = false, children, ...props }) => (
             />
             <Service href="mailto:team@hackclub.com" icon="email" />
           </Services>
-          <Text my={2}>
+          <Text mt={2}>
             <a href="tel:1-855-625-HACK">1-855-625-HACK</a>
             <br />
             <Text.span color="muted" children="(call toll-free)" />
           </Text>
-          <Text mt={[3, 4]}>
-            <a href="https://hackclub.com/press/" children="Press Inquiries" />
-          </Text>
         </Box>
       </Columns>
-      <Box fontSize={2} mt={[3, 4]}>
-        <Text>
-          Mail: 8605 Santa Monica Blvd #86294, West Hollywood, CA 90069
-        </Text>
-      </Box>
-      <BottomLine mt={3}>
-        <Text fontSize={1} mt={2} color="muted">
-          © {new Date().getFullYear()} Hack Club. 501(c)(3) nonprofit (EIN:
-          81-2908499)
-        </Text>
-      </BottomLine>
+      <Text fontSize={1} mt={[3, 4]} color="muted">
+        © {new Date().getFullYear()} Hack Club. 501(c)(3) nonprofit (EIN:
+        81-2908499)
+      </Text>
     </Container>
   </Base>
 )

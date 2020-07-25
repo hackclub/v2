@@ -11,11 +11,12 @@
     { "source": "/repl/", "destination": "/" },
     { "source": "/coc/", "destination": "/conduct/" },
     { "source": "/code_of_conduct/", "destination": "/conduct/" },
+    { "source": "/branding/", "destination": "/brand/" },
+    { "source": "/ama/", "destination": "/amas/" },
     { "source": "/finder/", "destination": "https://finder.hackclub.com" },
     { "source": "/apply/", "destination": "https://apply.hackclub.com" },
     { "source": "/icons/", "destination": "https://icons.hackclub.com" },
-    { "source": "/branding/", "destination": "https://hackclub.com/brand/" },
-    { "source": "/ama/", "destination": "https://hackclub.com/amas/" },
+    { "source": "/updates/", "destination": "https://www.youtube.com/playlist?list=PLbNbddgD-XxEC5-_KQTye6nFPBLtI_mds" },
     {
       "source": "/admin/",
       "destination": "https://5c8804a629a378000833619c--hackclub.netlify.com/admin/"

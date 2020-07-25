@@ -15,6 +15,7 @@
     { "source": "/apply/", "destination": "https://apply.hackclub.com" },
     { "source": "/icons/", "destination": "https://icons.hackclub.com" },
     { "source": "/branding/", "destination": "https://hackclub.com/brand/" },
+    { "source": "/ama/", "destination": "https://hackclub.com/amas/" },
     {
       "source": "/admin/",
       "destination": "https://5c8804a629a378000833619c--hackclub.netlify.com/admin/"

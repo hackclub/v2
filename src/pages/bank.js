@@ -27,7 +27,7 @@ const desc =
   'Hack Club Bank provides a 501(c)(3) status-backed bank account optimized for high school hackathons including invoicing, debit cards, check sending, pre-written legal forms, automated tax filing, and transparent finances. Get fiscal sponsorship designed to help you run great events.'
 
 export default () => (
-  <Layout title={title} desc={desc} img="/cards/bank_one.png" path="/bank/">
+  <Layout title={title} desc={desc} img="https://cloud-jjiw4lhcn.vercel.app/2020-08-08_edbp3wzddj5rn9nvz5vuqjzm4dezyvr8.jpeg" path="/bank/">
     <style children={styles} />
     <Nav dark />
     <Landing />

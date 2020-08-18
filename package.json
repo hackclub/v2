@@ -20,7 +20,6 @@
     "gatsby": "^2.24.11",
     "gatsby-plugin-canonical-urls": "^2.3.10",
     "gatsby-plugin-fathom": "^1.3.0",
-    "gatsby-plugin-force-trailing-slashes": "^1.0.4",
     "gatsby-plugin-react-helmet": "^3.3.10",
     "gatsby-plugin-resolve-src": "^2.1.0",
     "gatsby-plugin-sitemap": "^2.4.11",

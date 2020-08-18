@@ -8,6 +8,7 @@ module.exports = {
     'gatsby-plugin-resolve-src',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-force-trailing-slashes',
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {

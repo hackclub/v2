@@ -58,6 +58,10 @@
       "destination": "https://v3.hackclub.com/_next/:path*"
     },
     {
+      "source": "/sponsorship/",
+      "destination": "https://workshops.hackclub.com/sponsorship/"
+    },
+    {
       "source": "/covid19/",
       "destination": "https://workshops.hackclub.com/covid19/"
     },

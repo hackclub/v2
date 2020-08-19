@@ -16,7 +16,10 @@
     { "source": "/finder/", "destination": "https://finder.hackclub.com" },
     { "source": "/apply/", "destination": "https://apply.hackclub.com" },
     { "source": "/icons/", "destination": "https://icons.hackclub.com" },
-    { "source": "/updates/", "destination": "https://www.youtube.com/playlist?list=PLbNbddgD-XxEC5-_KQTye6nFPBLtI_mds" },
+    {
+      "source": "/updates/",
+      "destination": "https://www.youtube.com/playlist?list=PLbNbddgD-XxEC5-_KQTye6nFPBLtI_mds"
+    },
     {
       "source": "/admin/",
       "destination": "https://5c8804a629a378000833619c--hackclub.netlify.com/admin/"
@@ -51,7 +54,7 @@
     },
     {
       "source": "/api/(.*)/",
-      "destination": "https://v3.hackclub.com/api/$1"
+      "destination": "https://v3.hackclub.com/api/$1/"
     },
     {
       "source": "/v3/_next/:path*",

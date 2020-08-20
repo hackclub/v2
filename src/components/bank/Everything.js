@@ -127,9 +127,9 @@ export default () => (
           'Instant G Suite & email addresses': '2020-01-15',
           'Virtual debit cards (with Apple Pay)': '2020-03-08',
           'Debit card transaction paper trail': '2020-03-10',
-          'Online donation form': '2020-03-10',
           'Self-serve, no-contract signup': '2020-05-05',
-          'Transparency Mode (optional)': '2020-05-15'
+          'Transparency Mode (optional)': '2020-05-15',
+          'Online, embeddable donation form': '2020-08-20',
         }).map(([item, date]) => (
           <List.Item
             key={item}

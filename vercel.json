@@ -69,6 +69,10 @@
       "destination": "https://workshops.hackclub.com/covid19/"
     },
     {
+      "source": "/sunsetting-som/",
+      "destination": "https://workshops.hackclub.com/sunsetting-som/"
+    },
+    {
       "source": "/banner/",
       "destination": "https://workshops.hackclub.com/banner/"
     },

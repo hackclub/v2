@@ -36,11 +36,11 @@ const Sponsors = props => (
       'Segment',
       'Bugsnag',
       'Google',
-      'Dialpad',
-      'Figma'
+      'Dialpad'
     ].map(name => (
       <Sponsor name={name} key={name} />
     ))}
+    <Sponsor name="Checkly" href="https://checklyhq.com" img="checkly.svg" />
     <Sponsor
       name="Fast Forward"
       href="https://ffwd.org"

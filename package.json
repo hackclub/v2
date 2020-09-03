@@ -1,7 +1,7 @@
 {
   "name": "@hackclub/site",
   "description": "hackclub.com",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "author": "Lachlan Campbell <lachlan@hackclub.com>",
   "license": "MIT",
   "private": true,
@@ -14,17 +14,16 @@
     "@hackclub/design-system": "^0.0.1-18",
     "@hackclub/season": "^0.0.3",
     "animated-value": "^0.2.4",
-    "axios": "^0.19.2",
+    "axios": "^0.20.0",
     "babel-plugin-styled-components": "^1.10.7",
     "formik": "^1.5.1",
-    "gatsby": "^2.24.11",
+    "gatsby": "^2.24.53",
     "gatsby-plugin-canonical-urls": "^2.3.10",
     "gatsby-plugin-fathom": "^1.3.0",
     "gatsby-plugin-react-helmet": "^3.3.10",
     "gatsby-plugin-resolve-src": "^2.1.0",
-    "gatsby-plugin-sitemap": "^2.4.11",
     "gatsby-plugin-styled-components": "^3.3.10",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.20",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -36,7 +35,5 @@
     "unfetch": "^4.1.0",
     "yup": "^0.29.1"
   },
-  "keywords": [
-    "gatsby"
-  ]
+  "keywords": ["gatsby"]
 }

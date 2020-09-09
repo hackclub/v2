@@ -81,6 +81,10 @@
       "destination": "https://workshops.hackclub.com/conduct/"
     },
     {
+      "source": "/workshop-bounty/",
+      "destination": "https://workshops.hackclub.com/workshop-bounty/"
+    },
+    {
       "source": "/vip-newsletters/",
       "destination": "https://workshops.hackclub.com/vip-newsletters/"
     },

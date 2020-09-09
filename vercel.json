@@ -3,6 +3,7 @@
   "public": true,
   "trailingSlash": true,
   "redirects": [
+    { "source": "/clubs/", "destination": "/", "permanent": false },
     { "source": "/c9/", "destination": "/cloud9_setup/" },
     { "source": "/slack_invite/", "destination": "/slack/" },
     { "source": "/workshops/slack/", "destination": "/slack/" },

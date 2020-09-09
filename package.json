@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@hackclub/design-system": "^0.0.1-18",
+    "@hackclub/icons": "^0.0.4",
     "@hackclub/season": "^0.0.3",
     "animated-value": "^0.2.4",
     "axios": "^0.20.0",
@@ -35,5 +36,7 @@
     "unfetch": "^4.1.0",
     "yup": "^0.29.1"
   },
-  "keywords": ["gatsby"]
+  "keywords": [
+    "gatsby"
+  ]
 }

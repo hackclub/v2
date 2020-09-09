@@ -144,14 +144,14 @@ const Footer = ({ dark = false, children, ...props }) => (
             Join the Club
           </Heading.h2>
           <Services>
-            <Service href="/community/" icon="slack-fill" target="_self" />
+            <Service href="/slack/" icon="slack-fill" target="_self" />
             <Service href="https://twitter.com/hackclub" icon="twitter" />
             <Service href="https://github.com/hackclub" icon="github" />
             <Service
               href="https://www.facebook.com/Hack-Club-741805665870458"
               icon="facebook"
             />
-            <Service href="https://medium.com/hackclub" icon="medium" />
+            <Service href="https://twitch.tv/HackClubHQ" icon="twitch" />
             <Service
               href="https://www.youtube.com/channel/UCQzO0jpcRkP-9eWKMpJyB0w"
               icon="youtube"

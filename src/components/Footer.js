@@ -5,12 +5,12 @@ import {
   Container,
   Flex,
   Heading,
-  Icon,
   Link as A,
   Text,
   hexa,
   theme
 } from '@hackclub/design-system'
+import Icon from '@hackclub/icons'
 import { Link } from 'gatsby'
 import PureImagination from 'components/PureImagination'
 

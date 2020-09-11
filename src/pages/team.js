@@ -30,7 +30,7 @@ export default () => (
     title={title}
     desc={desc}
     path="/team/"
-    img="/cards/team.jpg"
+    img="https://cloud-lt25dobcx.vercel.app/2020-09-11_def8zqqjm1f9mn9jb75zza3mwcvdy83v.jpeg"
   >
     <Nav />
     <Header bg="cyan.9">
@@ -70,14 +70,8 @@ export default () => (
         <Bio
           name="Lachlan Campbell"
           teamRole="Storytelling"
-          text="Lachlan joined as a club leader from State College, PA to make hackclub.com. 3 years later, as Head of Storytelling, they work on Hack Club’s website, design (system), open source, & communications. They previously designed Hack Club Bank. They also study Interactive Media Arts @ NYU, class of 2023."
+          text="Lachlan joined as a club leader from State College, PA to make hackclub.com. 3 years later, as Head of Storytelling, they work on Hack Club’s website, design, frontend, open source, & communications. They’re currently on COVID leave from NYU ’23, majoring in Interactive Media Arts."
           pronouns="they/them"
-        />
-        <Bio
-          name="Chris Walker"
-          teamRole="Hacker Resources"
-          text="Chris started programming games in middle school, a hobby that developed into a deep passion for educational software. In 2013 he accepted a Thiel Fellowship and moved to San Francisco, where he watched Hack Club grow from an early stage. He now works full-time on Hack Club’s learning resources."
-          pronouns="he/him"
         />
         <Bio
           name="Matthew Stanciu"
@@ -86,9 +80,9 @@ export default () => (
           pronouns="he/him"
         />
         <Bio
-          name="Theo Bleier"
-          teamRole="Hack Club Bank"
-          text="Theo is a sophomore in high school & joined the Hack Club community in Summer 2018 after reading about Bank online. Since then, he's run multiple events on it & is now working on the product as a software engineer."
+          name="Chris Walker"
+          teamRole="Hacker Resources"
+          text="Chris started programming games in middle school, a hobby that developed into a deep passion for educational software. In 2013 he accepted a Thiel Fellowship and moved to San Francisco, where he watched Hack Club grow from an early stage. He now works full-time on Hack Club’s learning resources."
           pronouns="he/him"
         />
         <Bio
@@ -98,10 +92,9 @@ export default () => (
           pronouns="he/him"
         />
         <Bio
-          name="Dina Elhanan"
-          teamRole="2020 Summer Intern"
-          text="Dina started a club in Canada in 2018. Since then she’s run a local hackathon, organized club events & trips, and spoke at Hack Club’s Flagship 2019 Summit. After graduating high school, Dina joined HQ as a ✨Vibes Influencer✨ summer intern. She also studies Electrical Engineering at McMaster University, class of 2024."
-          pronouns="she/her"
+          name="Chaleb Pommells"
+          teamRole="Hack Club Bank"
+          text="Chaleb joined the community in 2018 and has run a club in South Florida. Chaleb also attended the 2019 Flagship Summit. Now working with Michael, Chaleb helps with the day-to-day operations of Hack Club Bank."
         />
         <Bio
           name="Athul Blesson"
@@ -110,10 +103,33 @@ export default () => (
           pronouns="he/him"
         />
       </Base>
-      <Headline color="cyan.7" mt={[4, 5, 6]} mb={[3, 4]} pl={[3, 0]}>
+      <Headline color="orange.5" mt={[4, 5, 6]} mb={[3, 4]} pl={[3, 0]}>
+        Contractors
+      </Headline>
+      <Base mb={[4, 5]}>
+        <Bio
+          name="Scott Motte"
+          teamRole="Hack Club Bank"
+          text="After teaching himself to code in college, Scott went on to lead an exciting software life with multiple startups. Now a father, he joined Hack Club to help build the program he wants available to his children—when they reach high school age."
+          pronouns="he/him"
+        />
+      </Base>
+      <Headline color="pink.5" mt={[4, 5, 6]} mb={[3, 4]} pl={[3, 0]}>
         Acknowledgements
       </Headline>
       <Base mb={[4, 5]}>
+        <Bio
+          name="Dina Elhanan"
+          teamRole="2020 Summer Intern"
+          text="Dina started a club in Canada in 2018. Since then she’s run a local hackathon, organized club events & trips, and spoke at Hack Club’s Flagship 2019 Summit. After graduating high school, Dina joined HQ as a ✨Vibes Influencer✨ summer intern. e Shnow studies Electrical Engineering at McMaster University, class of 2024."
+          pronouns="she/her"
+        />
+        <Bio
+          name="Theo Bleier"
+          teamRole="Special Projects"
+          text="Theo, a high schooler, joined the Hack Club community in Summer 2018 after reading about Bank online. Since then, he’s run multiple events on Bank & worked on coding it. In 2020, Theo worked on AMAs & distributing laptop grants to students."
+          pronouns="he/him"
+        />
         <Bio
           img="/camp/mingjie.jpg"
           name="Mingjie Jiang"

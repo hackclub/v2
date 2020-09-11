@@ -51,9 +51,11 @@ const Bio = ({ img, name, teamRole, pronouns, text, ...props }) => (
     <Box>
       <Heading.h3 fontSize={[4, 5]} color="black" children={name} />
       <Text.span color="cyan.7" bold fontSize={2} mr={2} children={teamRole} />
-      <Text.span fontSize={1} color="muted" align="center">
-        ({pronouns})
-      </Text.span>
+      {pronouns && (
+        <Text.span fontSize={1} color="muted" align="center">
+          ({pronouns})
+        </Text.span>
+      )}
     </Box>
     <Text fontSize={2} mt={1} mb={0} color="black" children={text} />
   </Base>

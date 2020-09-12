@@ -104,7 +104,7 @@ export default () => (
         />
       </Base>
       <Headline color="orange.5" mt={[4, 5, 6]} mb={[3, 4]} pl={[3, 0]}>
-        Contractors
+        Behind the Scenes
       </Headline>
       <Base mb={[4, 5]}>
         <Bio

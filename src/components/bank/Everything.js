@@ -118,7 +118,7 @@ export default () => (
             />
           }
         >
-          Dedicated point of contact
+          Amazing support team
         </List.Item>
         {Object.entries({
           'Physical check sending & voiding': '2019-09-18',

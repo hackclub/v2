@@ -76,7 +76,13 @@ export default () => (
         <Bio
           name="Matthew Stanciu"
           teamRole="Clubs"
-          text="After leading a successful club in West Lafayette, Indiana, & organizing multiple hackathons with Hack Club Bank, Matthew joined the team to work with clubs around the world. He now writes Hack Club’s curriculum & recently drove across North America to visit clubs."
+          text="After leading a successful club in West Lafayette, Indiana, & organizing multiple hackathons with Hack Club Bank, Matthew joined the team to work with clubs around the world. He now writes Hack Club’s curriculum, helps clubs around the world, & last spring drove across the U.S. to visit clubs."
+          pronouns="he/him"
+        />
+        <Bio
+          name="Amogh Chaubey"
+          teamRole="Community + Events"
+          text="Amogh is all about having fun. Whether it’s running an art showcase on the Slack or massive Kahoots at hackathons, he loves to run awesome events. Amogh joined HQ to run spectacular community events, to make Hack Club the best place to be a teenager on the internet, and as Hack Club’s second best rapper."
           pronouns="he/him"
         />
         <Bio
@@ -112,6 +118,12 @@ export default () => (
           teamRole="Hack Club Bank"
           text="After teaching himself to code in college, Scott went on to lead an exciting software life with multiple startups. Now a father, he joined Hack Club to help build the program he wants available to his children—when they reach high school age."
           pronouns="he/him"
+        />
+        <Bio
+          name="Tina Soriano"
+          teamRole="Assistant"
+          text="Philippine bred and settled with family in the U.S., Tina shifted her career from marketing and film production to teaching kids in the Clark County School District. Now she is happy to help high school students hack their way to a fabulous future."
+          pronouns="she/her"
         />
       </Base>
       <Headline color="pink.5" mt={[4, 5, 6]} mb={[3, 4]} pl={[3, 0]}>

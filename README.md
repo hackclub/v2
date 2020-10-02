@@ -2,14 +2,14 @@
 <h1 align="center"><a href="https://hackclub.com/">Hack Club Site</a></h1>
 <p align="center"><i>The source code for hackclub.com</i></p>
 
-Website internals:
+* Website internals:
 
 - [hackclub/design-system](https://github.com/hackclub/design-system)
 - [hackclub/icons](https://github.com/hackclub/icons)
 - [hackclub/season](https://github.com/hackclub/season)
 - [hackclub/banner](https://github.com/hackclub/banner)
 
-Our other website repos:
+* Our other website repos:
 
 - [hackclub/v3](https://github.com/hackclub/v3) (where our website is migrating)
 - [hackclub/events](https://github.com/hackclub/events)
@@ -17,7 +17,7 @@ Our other website repos:
 - [hackclub/workshops](https://github.com/hackclub/workshops)
 - [hackclub/apply](https://github.com/hackclub/apply)
 
-### Development environment setup
+# Development environment setup
 
 The stack: [React](https://reactjs.org/) and [Gatsby](https://www.gatsbyjs.org/) with the [Hack Club Design System](https://github.com/hackclub/design-system).
 
@@ -42,8 +42,7 @@ Install dependencies!
 Run it!
 
     $ yarn run dev
-
-### License
+* License
 
 This project is licensed under the MIT license. Please see [`LICENSE.md`](LICENSE.md) for the full text.
 

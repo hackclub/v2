@@ -80,18 +80,6 @@ export default () => (
           pronouns="he/him"
         />
         <Bio
-          name="Amogh Chaubey"
-          teamRole="Community + Events"
-          text="Amogh is all about having fun. Whether it’s running an art showcase on the Slack or massive Kahoots at hackathons, he loves to run awesome events. Amogh joined HQ to run spectacular community events, to make Hack Club the best place to be a teenager on the internet, and as Hack Club’s second best rapper."
-          pronouns="he/him"
-        />
-        <Bio
-          name="Chris Walker"
-          teamRole="Hacker Resources"
-          text="Chris started programming games in middle school, a hobby that developed into a deep passion for educational software. In 2013 he accepted a Thiel Fellowship and moved to San Francisco, where he watched Hack Club grow from an early stage. He now works full-time on Hack Club’s learning resources."
-          pronouns="he/him"
-        />
-        <Bio
           name="Michael Destefanis"
           teamRole="Hack Club Bank"
           text="After graduating high school, Michael moved to California where he began working with Hack Club. He now leads Hack Club Bank and loves helping passionate people bring their ideas to reality."
@@ -120,16 +108,35 @@ export default () => (
           pronouns="he/him"
         />
         <Bio
+          name="Amogh Chaubey"
+          teamRole="Community + Events"
+          text="Amogh is all about having fun. Whether it’s running an art showcase on the Slack or massive Kahoots at hackathons, he loves to run awesome events. Amogh joined HQ to run spectacular community events, to make Hack Club the best place to be a teenager on the internet, and as Hack Club’s second best rapper."
+          pronouns="he/him"
+        />
+        <Bio
           name="Tina Soriano"
           teamRole="Assistant"
           text="Philippine bred and settled with family in the U.S., Tina shifted her career from marketing and film production to teaching kids in the Clark County School District. Now she is happy to help high school students hack their way to a fabulous future."
           pronouns="she/her"
+        />
+        <Bio
+          name="Chris Newton"
+          teamRole="Accountant"
+          text="After finding her love of accounting at an early age, Chris spent most of her accounting career in construction, but recently branched out to nonprofits. Chris is married (Bryan) with a young daughter (Brylee), and lives in Des Moines, Iowa."
+          pronouns="she/her"
+          img="/team/cnewton.jpg"
         />
       </Base>
       <Headline color="pink.5" mt={[4, 5, 6]} mb={[3, 4]} pl={[3, 0]}>
         Acknowledgements
       </Headline>
       <Base mb={[4, 5]}>
+        <Bio
+          name="Chris Walker"
+          teamRole="Hacker Resources"
+          text="Chris started programming games in middle school, a hobby that developed into a deep passion for educational software. In 2013 he accepted a Thiel Fellowship and moved to San Francisco, where he watched Hack Club grow from an early stage. He worked on Hack Club’s learning resources & clubs program for two years."
+          pronouns="he/him"
+        />
         <Bio
           name="Dina Elhanan"
           teamRole="2020 Summer Intern"

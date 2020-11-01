@@ -47,7 +47,7 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "https://v3.hackclub.com/"
+      "destination": "https://v3.hackclub.dev/"
     },
     {
       "source": "/summer/_next/:path*",
@@ -59,7 +59,7 @@
     },
     {
       "source": "/v3/_next/:path*",
-      "destination": "https://v3.hackclub.com/_next/:path*"
+      "destination": "https://v3.hackclub.dev/_next/:path*"
     },
     {
       "source": "/sponsorship/",
@@ -107,7 +107,7 @@
     },
     {
       "source": "/(.*)/",
-      "destination": "https://v3.hackclub.com/$1/"
+      "destination": "https://v3.hackclub.dev/$1/"
     }
   ],
   "headers": [

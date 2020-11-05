@@ -58,6 +58,10 @@
       "destination": "https://v3.hackclub.com/api/$1/"
     },
     {
+      "source": "/_next/:path*",
+      "destination": "https://v3.hackclub.dev/_next/:path*"
+    },
+    {
       "source": "/v3/_next/:path*",
       "destination": "https://v3.hackclub.dev/_next/:path*"
     },
@@ -103,7 +107,7 @@
     },
     {
       "source": "/map/",
-      "destination": "https://hc-map.now.sh/"
+      "destination": "https://map.hackclub.dev/"
     },
     {
       "source": "/(.*)/",

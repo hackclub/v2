@@ -1,6 +1,6 @@
-<p align="center"><img width="200px" height="200px" alt="Hack Club icon" src="https://hackclub.com/icon/icon-masked.png"></a>
-<h1 align="center"><a href="https://hackclub.com/">Hack Club Site</a></h1>
-<p align="center"><i>The source code for hackclub.com</i></p>
+<p align="center"><img width="192px" alt="Hack Club icon" src="https://assets.hackclub.com/flag-standalone.svg"></a>
+<h1 align="center"><a href="https://hackclub.com/">Hack Club v2 Site</a></h1>
+<p align="center"><i>The old source code for hackclub.com</i></p>
 
 Website internals:
 

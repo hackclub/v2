@@ -156,12 +156,12 @@ export default () => (
           <>
             Issue physical debit cards to all your teammates, backed by{' '}
             <A
-              href="https://www.emburse.com/solutions/non-profits/"
+              href="https://stripe.com/issuing"
               color="smoke"
               hoverline
               target="_blank"
             >
-              Emburse
+              Stripe
             </A>
             .
           </>

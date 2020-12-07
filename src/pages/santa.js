@@ -22,6 +22,7 @@ const Hero = styled(Box.withComponent('article'))`
   );
   min-height: 100vh;
   position: relative;
+  text-align: center;
   canvas {
     position: absolute;
     top: 0;
@@ -57,30 +58,32 @@ const title = 'Hack Club Secret Santa – Holiday 2020'
 const desc = 'Find your holiday zen this year with Hack Club’s Secret Santa.'
 
 export default () => (
-  <Layout title={title} desc={desc} path="/santa/" img="/cards/santa.png" >
+  <Layout title={title} desc={desc} path="/santa/" img="/cards/santa.png">
     <Nav />
-    <Hero py={[4, 5]}>
-      <Snow height={typeof window === 'object' ? window.innerHeight : 512} />
-      <center>
-        <Container px={3} py={[6, 7, 8]}>
-              <Text color="rgba(255, 255, 255, 0.875)" fontSize={[3, 4]} bold caps>
-                2020 holidays
-              </Text>
-              <Megaline>
-               Hack Club Secret Santa
-              </Megaline>
-              <img src="https://cloud-1isd1cqi1.vercel.app/0image_from_ios__4_.png" alt="Illustration of a holiday themed Orpheus" width="312" class="css-tugr73"></img>
-              <Lead fontSize={[3, null, 4]} color="snow" maxWidth={48} my={3} mx={0}>
-                Christmas time has come and it's time for some fun! The holiday season is among us and the elves have assembled, which means its time for gift-giving to begin! 
-                The magical elf will assign you a partner, send them something fun, & you’ll get
-                your own gift in the mail just in time for the holidays!
-                <span role="img" aria-label="Present emoji" children={' 🎁'} />
-              </Lead>
-              <Button href="https://airtable.com/shrnRJ3YxQYawSDW0" chevronRight>
-                Register Now
-              </Button>
-            </Container>
-      </center>
+    <Hero py={4}>
+      <Snow />
+      <Container px={3} py={[6, 7, 8]}>
+        <Text color="rgba(255, 255, 255, 0.875)" fontSize={[3, 4]} bold caps>
+          2020 holidays
+        </Text>
+        <Megaline>Hack Club Secret Santa</Megaline>
+        <img
+          src="https://cloud-k3gxm6uem.vercel.app/2020-12-07_0vmfbtyfzec2kqeujbwmp3q4bu50pr0y.png"
+          alt="Illustration of a holiday themed Orpheus"
+          width="312"
+        />
+        <Lead fontSize={[3, null, 4]} color="snow" maxWidth={48} my={3} mx={0}>
+          Christmas time has come and it's time for some fun! The holiday season
+          is among us and the elves have assembled, which means its time for
+          gift-giving to begin! The magical elf will assign you a partner, send
+          them something fun, & you’ll get your own gift in the mail just in
+          time for the holidays!
+          <span role="img" aria-label="Present emoji" children={' 🎁'} />
+        </Lead>
+        <Button href="https://airtable.com/shrnRJ3YxQYawSDW0" chevronRight>
+          Register Now
+        </Button>
+      </Container>
     </Hero>
     <Footer />
   </Layout>

@@ -61,24 +61,26 @@ export default () => (
     <Nav />
     <Hero py={[4, 5]}>
       <Snow height={typeof window === 'object' ? window.innerHeight : 512} />
-      <center><Container px={3} py={[6, 7, 8]}>
-        <Text color="rgba(255, 255, 255, 0.875)" fontSize={[3, 4]} bold caps>
-          2020 holidays
-        </Text>
-        <Megaline>
-         Hack Club Secret Santa
-        </Megaline>
-        <img src="https://cloud-9pj8ga86m.vercel.app/2020-07-24_zdd8ycnkp9q0bbf1fj8a1amjv3zndufz.png" alt="Illustration of Orpheus with a moon" width="312" class="css-tugr73"></img>
-        <Lead fontSize={[3, null, 4]} color="snow" maxWidth={48} my={3} mx={0}>
-          Christmas time has come and it's time for some fun! The holiday season is among us and the elves have assembled, which means its time for gift-giving to begin! 
-          The magical elf will assign you a partner, send them something fun, & you’ll get
-          your own gift in the mail just in time for the holidays!
-          <span role="img" aria-label="Present emoji" children={' 🎁'} />
-        </Lead>
-        <Button href="https://airtable.com/shrnRJ3YxQYawSDW0" chevronRight>
-          Register Now
-        </Button>
-      </Container></center>
+      <center>
+        <Container px={3} py={[6, 7, 8]}>
+              <Text color="rgba(255, 255, 255, 0.875)" fontSize={[3, 4]} bold caps>
+                2020 holidays
+              </Text>
+              <Megaline>
+               Hack Club Secret Santa
+              </Megaline>
+              <img src="https://cloud-9pj8ga86m.vercel.app/2020-07-24_zdd8ycnkp9q0bbf1fj8a1amjv3zndufz.png" alt="Illustration of Orpheus with a moon" width="312" class="css-tugr73"></img>
+              <Lead fontSize={[3, null, 4]} color="snow" maxWidth={48} my={3} mx={0}>
+                Christmas time has come and it's time for some fun! The holiday season is among us and the elves have assembled, which means its time for gift-giving to begin! 
+                The magical elf will assign you a partner, send them something fun, & you’ll get
+                your own gift in the mail just in time for the holidays!
+                <span role="img" aria-label="Present emoji" children={' 🎁'} />
+              </Lead>
+              <Button href="https://airtable.com/shrnRJ3YxQYawSDW0" chevronRight>
+                Register Now
+              </Button>
+            </Container>
+      </center>
     </Hero>
     <Footer />
   </Layout>

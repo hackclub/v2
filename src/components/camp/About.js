@@ -73,7 +73,7 @@ const Timeline = styled(Flex).attrs({
 `
 const TimelineStep = styled(Flex).attrs({
   align: 'center',
-  pt: (props) => (props.first ? 0 : [2, 3])
+  pt: props => (props.first ? 0 : [2, 3])
 })`
   line-height: 1.125;
   position: relative;

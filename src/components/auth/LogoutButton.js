@@ -10,6 +10,6 @@ export const destroySession = () => {
 
 Button.link = Button.withComponent(Link)
 
-export default (props) => (
+export default props => (
   <Button href="/" onClick={destroySession} children="Logout" {...props} />
 )

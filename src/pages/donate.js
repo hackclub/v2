@@ -267,7 +267,7 @@ export default () => (
           A few of our amazing donors.
         </Headline>
         <DonorGrid mt={4} mb={3}>
-          {Object.keys(donors).map((name) => (
+          {Object.keys(donors).map(name => (
             <DonorListing key={name} name={name} url={donors[name]} />
           ))}
         </DonorGrid>

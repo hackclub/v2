@@ -169,11 +169,10 @@ export default () => (
       <Headline color="blue.6">Learn as you build.</Headline>
       <Lead>
         Just as the best carpenters didn’t learn in the classroom, neither did
-        the best programmers. Through our{' '}
-        <A href="/workshops">workshops</A>, you’ll be walked through
-        building projects. Starting out, you won’t understand how the code
-        works, but you’ll build understanding as you go. You’ll get stuck along
-        the way, but we’re here to help.
+        the best programmers. Through our <A href="/workshops">workshops</A>,
+        you’ll be walked through building projects. Starting out, you won’t
+        understand how the code works, but you’ll build understanding as you go.
+        You’ll get stuck along the way, but we’re here to help.
       </Lead>
     </Row>
     <Row>

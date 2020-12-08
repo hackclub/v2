@@ -5,7 +5,7 @@ import { ThemeProvider, theme } from '@hackclub/design-system'
 import BG from 'components/BG'
 import serviceWorkerKiller from '../../static/swkiller'
 
-const meta = (tags) =>
+const meta = tags =>
   tags.map((props, index) =>
     React.createElement('meta', { ...props, key: index })
   )

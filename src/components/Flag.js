@@ -39,7 +39,7 @@ const Flag = styled.a`
   ${theme.mediaQueries.reduceMotion} {
     animation: none !important;
   }
-  ${(props) =>
+  ${props =>
     props.scrolled &&
     css`
       transform: scale(0.875);

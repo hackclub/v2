@@ -15,7 +15,7 @@ const rgbaBgColor = (props, opacity) =>
   )`
 
 const Root = styled(Box.withComponent('header'))`
-  ${props =>
+  ${(props) =>
     !props.unfixed &&
     css`
       position: absolute;
@@ -23,7 +23,7 @@ const Root = styled(Box.withComponent('header'))`
     `};
   width: 100%;
   z-index: 1000;
-  ${props =>
+  ${(props) =>
     (props.scrolled || props.toggled || props.fixed) &&
     css`
       position: fixed;
@@ -63,7 +63,7 @@ export const Content = styled(Container)`
   }
 `
 
-const hoverColor = name =>
+const hoverColor = (name) =>
   ({
     white: 'smoke',
     smoke: 'muted',
@@ -76,12 +76,12 @@ const hoverColor = name =>
 const NavBar = styled(Box.withComponent('nav'))`
   display: none;
   a {
-    color: ${props => cx(props.color)};
+    color: ${(props) => cx(props.color)};
     margin-left: ${theme.space[2]}px;
     padding: ${theme.space[2]}px;
     text-decoration: none;
   }
-  ${props =>
+  ${(props) =>
     props.isMobile
       ? css`
           display: ${props.toggled ? 'flex' : 'none'};
@@ -123,7 +123,7 @@ const NavBar = styled(Box.withComponent('nav'))`
         `};
 `
 
-const Navigation = props => (
+const Navigation = (props) => (
   <NavBar role="navigation" {...props}>
     <a href="https://hackclub.com/slack/" children="Slack" />
     <a href="https://workshops.hackclub.com/" children="Workshops" />
@@ -180,7 +180,7 @@ class Header extends Component {
     this.bindScroll(false)
   }
 
-  bindScroll = add => {
+  bindScroll = (add) => {
     if (typeof window !== 'undefined' && !this.props.unfixed) {
       window[add ? 'addEventListener' : 'removeEventListener'](
         'scroll',
@@ -201,7 +201,7 @@ class Header extends Component {
   }
 
   handleToggleMenu = () => {
-    this.setState(state => ({
+    this.setState((state) => ({
       toggled: !state.toggled
     }))
   }

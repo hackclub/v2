@@ -4,15 +4,17 @@ import {
   Box,
   Container,
   Heading,
-  Button,
   Text,
+  LargeButton,
+  Sheet,
   theme
 } from '@hackclub/design-system'
 import Layout from 'components/Layout'
 import Nav from 'components/Nav'
 import Footer from 'components/Footer'
 import Snow from 'resnow'
-import { Lead } from 'components/Content'
+import { Subhline, Lead } from 'components/Content'
+import { Link } from 'gatsby'
 
 const Hero = styled(Box.withComponent('article'))`
   background-image: linear-gradient(
@@ -21,7 +23,6 @@ const Hero = styled(Box.withComponent('article'))`
     ${theme.colors.blue[6]}
   );
   min-height: 100vh;
-  position: relative;
   text-align: center;
   canvas {
     position: absolute;
@@ -29,6 +30,19 @@ const Hero = styled(Box.withComponent('article'))`
     left: 0;
     right: 0;
     bottom: 0;
+  }
+`
+
+const Base = styled(Sheet).attrs({ maxWidth: 72 - 2 })`
+  background-color: ${theme.colors.blue};
+  background-image: ${theme.gradient('blue.5', 'blue.3', 'blue.1')};
+  display: grid;
+  color: "red"
+  grid-gap: ${theme.space[4]}px;
+  align-items: center;
+  ${theme.mediaQueries.md} {
+    grid-gap: ${theme.space[5]}px;
+    grid-template-columns: 2fr 1fr;
   }
 `
 
@@ -72,7 +86,7 @@ export default () => (
           alt="Illustration of a holiday themed Orpheus"
           width="312"
         />
-        <Lead fontSize={[3, null, 4]} color="snow" maxWidth={48} my={3} mx={0}>
+        <Lead fontSize={[3, null, 4]} color="snow" my={3} mx={0}>
           Christmas time has come and it's time for some fun! The holiday season
           is among us and the elves have assembled, which means its time for
           gift-giving to begin! The magical elf will assign you a partner, send
@@ -80,10 +94,38 @@ export default () => (
           time for the holidays!
           <span role="img" aria-label="Present emoji" children={' 🎁'} />
         </Lead>
-        <Button href="https://airtable.com/shrnRJ3YxQYawSDW0" chevronRight>
-          Register Now
-        </Button>
+        <Snow width={'100%'} height={'100%'} />
+        <Base my={4} width={'75%'} height={'25%'}>
+          <Box align={['center']} mt={'15px'}>
+            <Subhline>
+              <span>
+                <Text color="white">Remember To Check Our</Text>
+              </span>
+              <Link
+                href="http://hack.af/santa-rules"
+                color="cyan.7"
+                target="_blank"
+              >
+                Rules
+              </Link>
+              <span role="img" aria-label="Present emoji" children={'👀'} />
+            </Subhline>
+            <Snow />
+          </Box>
+          <Box align={['center', null, 'left']}>
+            <LargeButton
+              href="https://airtable.com/shrnRJ3YxQYawSDW0"
+              children="Register"
+              chevronRight
+              fontSize={[3, 4]}
+              scale
+              target="_blank"
+            />
+          </Box>
+        </Base>
+        <Snow />
       </Container>
+      <Snow />
     </Hero>
     <Footer />
   </Layout>

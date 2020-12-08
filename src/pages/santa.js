@@ -62,17 +62,18 @@ export default () => (
     <Nav />
     <Hero py={4}>
       <Snow />
-      <Container px={3} py={[6, 7, 8]}>
+      <Container px={3} py={[6, 7]}>
+        <img
+          src="https://cloud-k3gxm6uem.vercel.app/2020-12-07_0vmfbtyfzec2kqeujbwmp3q4bu50pr0y.png"
+          alt="Illustration of a holiday themed Orpheus"
+          width={384}
+          height={384}
+        />
         <Text color="rgba(255, 255, 255, 0.875)" fontSize={[3, 4]} bold caps>
           2020 holidays
         </Text>
         <Megaline>Hack Club Secret Santa</Megaline>
-        <img
-          src="https://cloud-k3gxm6uem.vercel.app/2020-12-07_0vmfbtyfzec2kqeujbwmp3q4bu50pr0y.png"
-          alt="Illustration of a holiday themed Orpheus"
-          width="312"
-        />
-        <Lead fontSize={[3, null, 4]} color="snow" maxWidth={48} my={3} mx={0}>
+        <Lead fontSize={[3, null, 4]} color="snow" maxWidth={48} my={3} mx="auto">
           Christmas time has come and it's time for some fun! The holiday season
           is among us and the elves have assembled, which means its time for
           gift-giving to begin! The magical elf will assign you a partner, send

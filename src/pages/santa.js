@@ -4,7 +4,6 @@ import {
   Box,
   Container,
   Heading,
-  Button,
   Text,
   LargeButton,
   Sheet,
@@ -76,7 +75,7 @@ export default () => (
   <Layout title={title} desc={desc} path="/santa/" img="/cards/santa.png">
     <Nav />
     <Hero py={4}>
-      <Snow height={(window.innerHeight = 1500)} />
+      <Snow />
       <Container px={3} py={[6, 7, 8]}>
         <Text color="rgba(255, 255, 255, 0.875)" fontSize={[3, 4]} bold caps>
           2020 holidays
@@ -95,6 +94,7 @@ export default () => (
           time for the holidays!
           <span role="img" aria-label="Present emoji" children={' 🎁'} />
         </Lead>
+        <Snow />
         <Base my={4} width={'75%'} height={'25%'}>
           <Box align={['center']} mt={'15px'}>
             <Subhline>
@@ -110,11 +110,11 @@ export default () => (
               </Link>
               <span role="img" aria-label="Present emoji" children={'👀'} />
             </Subhline>
+            <Snow />
           </Box>
           <Box align={['center', null, 'left']}>
             <LargeButton
               href="https://airtable.com/shrnRJ3YxQYawSDW0"
-              inverted
               children="Register"
               chevronRight
               fontSize={[3, 4]}
@@ -123,7 +123,9 @@ export default () => (
             />
           </Box>
         </Base>
+        <Snow />
       </Container>
+      <Snow />
     </Hero>
     <Footer />
   </Layout>

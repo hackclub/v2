@@ -94,7 +94,7 @@ export default () => (
           time for the holidays!
           <span role="img" aria-label="Present emoji" children={' 🎁'} />
         </Lead>
-        <Snow />
+        <Snow width={'100%'} height={'100%'} />
         <Base my={4} width={'75%'} height={'25%'}>
           <Box align={['center']} mt={'15px'}>
             <Subhline>

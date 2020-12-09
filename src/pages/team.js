@@ -56,27 +56,21 @@ export default () => (
           pronouns="he/him"
         />
         <Bio
-          name="Max Wofford"
-          teamRole="Operations"
-          text="After teaching himself to code in junior year of high school, Max joined a group of nomadic hackers in Costa Rica to experience coding in a real-world setting. He has been with Hack Club since day one and is now working full-time in San Francisco to grow the movement."
-          pronouns="he/him"
-        />
-        <Bio
           name="Christina Asquith"
           teamRole="COO"
           text="Christina is founder & former editor-in-chief of Fuller Project, a global journalism nonprofit reporting on issues impacting women. A journalist since college, she’s reported from eight countries for the New York Times, Guardian, TIME, the Washington Post & others. She taught as a public school teacher in 2000, which inspired her book “The Emergency Teacher.”"
           pronouns="she/her"
         />
         <Bio
-          name="Lachlan Campbell"
-          teamRole="Storytelling"
-          text="Lachlan joined as a club leader from State College, PA to make hackclub.com. 3 years later, as Head of Storytelling, they work on Hack Club’s website, design, frontend, open source, & communications. They’re currently on COVID leave from NYU ’23, majoring in Interactive Media Arts."
-          pronouns="they/them"
+          name="Max Wofford"
+          teamRole="Operations"
+          text="After teaching himself to code in junior year of high school, Max joined a group of nomadic hackers in Costa Rica to experience coding in a real-world setting. He has been with Hack Club since day one and is now working full-time in San Francisco to grow the movement."
+          pronouns="he/him"
         />
         <Bio
           name="Matthew Stanciu"
           teamRole="Clubs"
-          text="After leading a successful club in West Lafayette, Indiana, & organizing multiple hackathons with Hack Club Bank, Matthew joined the team to work with clubs around the world. He now writes Hack Club’s curriculum, helps clubs around the world, & last spring drove across the U.S. to visit clubs."
+          text="After leading a successful Hack Club in West Lafayette, Indiana, & organizing multiple hackathons with Hack Club Bank, Matthew joined the team to work with clubs around the world. He now writes Hack Club’s curriculum, helps clubs around the world, & last spring drove across the U.S. to visit clubs."
           pronouns="he/him"
         />
         <Bio
@@ -131,6 +125,12 @@ export default () => (
         Acknowledgements
       </Headline>
       <Base mb={[4, 5]}>
+        <Bio
+          name="Lachlan Campbell"
+          teamRole="Storytelling"
+          text="Lachlan joined as a club leader from State College, PA to make hackclub.com. 3 years later, as Head of Storytelling, they work on Hack Club’s website, design, frontend, open source, & communications. They’re currently on COVID leave from NYU ’23, majoring in Interactive Media Arts."
+          pronouns="they/them"
+        />
         <Bio
           name="Chris Walker"
           teamRole="Hacker Resources"

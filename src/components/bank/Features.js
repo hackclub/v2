@@ -189,8 +189,8 @@ export default () => (
       />
       <Module
         icon="google"
-        name="G Suite accounts"
-        body="Get instant, free G Suite & team email addresses (like joy@hackpenn.com)."
+        name="Google Workspace"
+        body="Get instant, free accounts for your team (like joy@hackpenn.com)."
       />
       <Module
         icon="support"

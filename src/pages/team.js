@@ -91,6 +91,13 @@ export default () => (
           text="Julie joined Hack Club as a Community Game Designer after several years as a software engineer, hackathon organizer, and adjunct professor. Julie started learning to code in 8th grade, and seeks to share the superpower of coding with everyone."
           pronouns="she/her"
         />
+        <Bio
+          name="Zach Fogg"
+          teamRole="Community Game Designer"
+          text="Before he helped start Bitcamp, one of the largest & longest-running annual collegic hackathons, Zach Fogg was homeschooled in Maryland. He's been a mentor at tons of student hackathons and worked as software engineer for the past 8 years in SF."
+          pronouns="he/him"
+          img="/team/zfogg.jpg"
+        />
       </Base>
       <Headline color="orange.5" mt={[4, 5, 6]} mb={[3, 4]} pl={[3, 0]}>
         Behind the Scenes

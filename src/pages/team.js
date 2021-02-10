@@ -95,6 +95,7 @@ export default () => (
           name="Zach Fogg"
           teamRole="Community Game Designer"
           text="Before he helped start Bitcamp, one of the largest & longest-running annual collegic hackathons, Zach Fogg was homeschooled in Maryland. He's been a mentor at tons of student hackathons. Worked as software engineer for the past 8 years in SF."
+          pronouns="he/him"
           img="/team/zfogg.jpg"
         />
       </Base>

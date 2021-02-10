@@ -85,6 +85,12 @@ export default () => (
           text="Athul started dozens of the largest Hack Clubs in India. After graduating from high school, he joined as the Regional Manager of Asia-Pacific & Africa, where he actively manages 117 clubs."
           pronouns="he/him"
         />
+        <Bio
+          name="Julie Gauthier"
+          teamRole="Community Game Designer"
+          text="Julie is joining Hack Club as a Community Game Designer after several years as a software engineer, hackathon organizer, and adjunct professor. Julie started learning to code in 8th grade, and seeks to share the superpower of coding with everyone."
+          pronouns="she/her"
+        />
       </Base>
       <Headline color="orange.5" mt={[4, 5, 6]} mb={[3, 4]} pl={[3, 0]}>
         Behind the Scenes

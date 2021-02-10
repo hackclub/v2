@@ -88,7 +88,7 @@ export default () => (
         <Bio
           name="Julie Gauthier"
           teamRole="Community Game Designer"
-          text="Julie is joining Hack Club as a Community Game Designer after several years as a software engineer, hackathon organizer, and adjunct professor. Julie started learning to code in 8th grade, and seeks to share the superpower of coding with everyone."
+          text="Julie joined Hack Club as a Community Game Designer after several years as a software engineer, hackathon organizer, and adjunct professor. Julie started learning to code in 8th grade, and seeks to share the superpower of coding with everyone."
           pronouns="she/her"
         />
       </Base>

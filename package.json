@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@hackclub/design-system": "^0.0.1-18",
-    "@hackclub/icons": "^0.0.4",
+    "@hackclub/icons": "^0.0.9",
     "@hackclub/season": "^0.0.3",
     "animated-value": "^0.2.4",
     "axios": "^0.21.1",

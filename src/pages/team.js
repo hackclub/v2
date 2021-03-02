@@ -177,12 +177,6 @@ export default () => (
           text="Fernanda is a student of computational neuroscience, entrepreneur, & organizer of events like the Entrepreneurial Learning Academy for students in Mexico. In summer 2019, she helped organize the Flagship Summit in San Francisco."
           pronouns="she/her"
         />
-        <Bio
-          name="Chaleb Pommells"
-          teamRole="Hack Club Bank"
-          text="Chaleb joined the community in 2018 and has run a club in South Florida. Chaleb also attended the 2019 Flagship Summit. Working with Michael, Chaleb helped with the day-to-day operations of Hack Club Bank."
-          pronouns="they/them"
-        />
       </Base>
     </Container>
     <Footer />

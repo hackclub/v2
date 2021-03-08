@@ -33,7 +33,7 @@
     "react-scrolllock": "^5.0.1",
     "resnow": "^1.0.0",
     "styled-components": "3.4.10",
-    "unfetch": "^4.1.0",
+    "unfetch": "^4.2.0",
     "yup": "^0.29.1"
   },
   "keywords": [

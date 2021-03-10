@@ -122,16 +122,7 @@ export default () => (
       icon="welcome"
       name={
         <Fragment>
-          Interview call with{' '}
-          <Flex align="center" justify={['start', 'center']} fontSize={3} bold>
-            <Avatar
-              src={require('../../../static/hackers/michael.jpg')}
-              size={32}
-              alt="Michael’s avatar"
-              mr={1}
-            />
-            Michael
-          </Flex>
+          Intro call with a Hack Club Bank team member
         </Fragment>
       }
       duration="Day 3"

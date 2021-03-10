@@ -120,11 +120,7 @@ export default () => (
     />
     <Timeline.Step
       icon="welcome"
-      name={
-        <Fragment>
-          Intro call with a Hack Club Bank team member
-        </Fragment>
-      }
+      name="Intro meeting with Hack Club Bank"
       duration="Day 3"
     />
     <Timeline.Step

@@ -120,20 +120,7 @@ export default () => (
     />
     <Timeline.Step
       icon="welcome"
-      name={
-        <Fragment>
-          Interview call with{' '}
-          <Flex align="center" justify={['start', 'center']} fontSize={3} bold>
-            <Avatar
-              src={require('../../../static/hackers/michael.jpg')}
-              size={32}
-              alt="Michael’s avatar"
-              mr={1}
-            />
-            Michael
-          </Flex>
-        </Fragment>
-      }
+      name="Intro meeting with Hack Club Bank"
       duration="Day 3"
     />
     <Timeline.Step

@@ -24,7 +24,7 @@
     "gatsby-plugin-react-helmet": "^3.10.0",
     "gatsby-plugin-resolve-src": "^2.1.0",
     "gatsby-plugin-styled-components": "^3.3.10",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-dom": "^16.13.1",

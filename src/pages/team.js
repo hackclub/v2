@@ -74,12 +74,6 @@ export default () => (
           pronouns="he/him"
         />
         <Bio
-          name="Michael Destefanis"
-          teamRole="Hack Club Bank"
-          text="After graduating high school, Michael moved to California where he began working with Hack Club. He now leads Hack Club Bank and loves helping passionate people bring their ideas to reality."
-          pronouns="he/him"
-        />
-        <Bio
           name="Athul Blesson"
           teamRole="Asia-Pacific Region"
           text="Athul started dozens of the largest Hack Clubs in India. After graduating from high school, he joined as the Regional Manager of Asia-Pacific & Africa, where he actively manages 117 clubs."
@@ -176,6 +170,12 @@ export default () => (
           teamRole="Flagship"
           text="Fernanda is a student of computational neuroscience, entrepreneur, & organizer of events like the Entrepreneurial Learning Academy for students in Mexico. In summer 2019, she helped organize the Flagship Summit in San Francisco."
           pronouns="she/her"
+        />
+        <Bio
+          name="Michael Destefanis"
+          teamRole="Hack Club Bank"
+          text="After graduating high school, Michael moved to California where he began working with Hack Club. He handled the day-to-day operations of Hack Club Bank from its start starting to its first million dollars in transactions."
+          pronouns="he/him"
         />
       </Base>
     </Container>

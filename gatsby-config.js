@@ -12,14 +12,6 @@ module.exports = {
       options: {
         siteUrl: 'https://hackclub.com'
       }
-    },
-    {
-      resolve: 'gatsby-plugin-fathom',
-      options: {
-        trackingUrl: 'aardvark.hackclub.com',
-        siteId: 'OGIMJEFA',
-        whitelistHostnames: ['hackclub.com']
-      }
     }
   ]
 }

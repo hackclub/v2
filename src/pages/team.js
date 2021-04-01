@@ -92,6 +92,12 @@ export default () => (
           pronouns="he/him"
           img="/team/zfogg.jpg"
         />
+        <Bio
+          name="Melanie Smith"
+          teamRole="Bank Operations Lead"
+          text="Melanie grew up in northern New England where she obtained a degree in Marine Biology. She then spent several years running a pet store with 20+ employees and recently decided to change career paths. This led her to Hack Club where she is excited about helping students pursue their dreams."
+          img="/team/mel.png"
+        />
       </Base>
       <Headline color="orange.5" mt={[4, 5, 6]} mb={[3, 4]} pl={[3, 0]}>
         Behind the Scenes

@@ -64,7 +64,7 @@ export default () => (
         <Bio
           name="Max Wofford"
           teamRole="Operations"
-          text="After teaching himself to code in junior year of high school, Max joined a group of nomadic hackers in Costa Rica to experience coding in a real-world setting. He has been with Hack Club since day one and is now working full-time in San Francisco to grow the movement."
+          text="After teaching himself to code in junior year of high school, Max joined a group of nomadic hackers in Costa Rica to experience coding in a real-world setting. He has been with Hack Club since day one and is now working full-time in Vermont to grow the movement."
           pronouns="he/him"
         />
         <Bio
@@ -148,7 +148,7 @@ export default () => (
         <Bio
           name="Dina Elhanan"
           teamRole="2020 Summer Intern"
-          text="Dina started a club in Canada in 2018. Since then she’s run a local hackathon, organized club events & trips, and spoke at Hack Club’s Flagship 2019 Summit. After graduating high school, Dina joined HQ as a ✨Vibes Influencer✨ summer intern. e Shnow studies Electrical Engineering at McMaster University, class of 2024."
+          text="Dina started a club in Canada in 2018. Since then she’s run a local hackathon, organized club events & trips, and spoke at Hack Club’s Flagship 2019 Summit. After graduating high school, Dina joined HQ as a ✨Vibes Influencer✨ summer intern. She now studies Electrical Engineering at McMaster University, class of 2024."
           pronouns="she/her"
         />
         <Bio

@@ -98,6 +98,12 @@ export default () => (
           text="Melanie grew up in northern New England where she obtained a degree in Marine Biology. She then spent several years running a pet store with 20+ employees and recently decided to change career paths. This led her to Hack Club where she is excited about helping students pursue their dreams."
           img="/team/mel.png"
         />
+        <Bio
+          name="Gary Tou"
+          teamRole="Bank Operations"
+          text="Gary lives in Washington and is currently completing his High Schooling. He used Hack Club Bank to form the synHacks organization and help his local community. Now, he is helping make the product (HCB) that enabled him to do great things even greater for others. "
+          img="/team/gary.jpeg"
+        />
       </Base>
       <Headline color="orange.5" mt={[4, 5, 6]} mb={[3, 4]} pl={[3, 0]}>
         Behind the Scenes

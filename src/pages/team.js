@@ -101,7 +101,7 @@ export default () => (
         <Bio
           name="Gary Tou"
           teamRole="Bank Operations"
-          text="Gary lives in Washington and is currently completing his High Schooling. He used Hack Club Bank to form the synHacks organization and help his local community. Now, he is helping make the product (HCB) that enabled him to do great things even greater for others. "
+          text="Gary is an aspiring developer from Seattle who loves everything tech. After using Hack Club Bank to launch the synHacks organization and inspire students to help the global community, Gary joined Hack Club to make the product that enabled him to do great things even greater for others."
           img="/team/gary.jpeg"
         />
       </Base>

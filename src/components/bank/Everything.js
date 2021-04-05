@@ -79,80 +79,34 @@ List.Item = ({ icon = 'enter', start, ...props }) => (
   </Fade>
 )
 
-const recent = dt => {
-  const past = new Date()
-  past.setMonth(past.getMonth() - 2)
-  return new Date(dt) > past
-}
-
 export default () => (
   <Base>
     <Container align="center" mb={[4, 5]} px={3}>
       <Title>Everything you’ll&nbsp;need.</Title>
+      <Text.span>(and a little more...)</Text.span>
     </Container>
     <Container px={3}>
       <List>
-        {Object.entries({
-          'Legal entity with 501(c)(3) status': 'briefcase',
-          'We do your taxes': 'checkmark',
-          'Collect donations via card, check, or ACH': 'enter',
-          'Share access with your whole team': 'member-add',
-          'Bank account backed by Silicon Valley Bank': 'bank-account',
-          'Negotiated nonprofit rates with Stripe': 'enter',
-          'Instant invoice sending': 'transactions',
-          'Real-time dashboard of finances': 'analytics',
-          'Transaction data export': 'download',
-          'Record shared notes on transactions': 'docs',
-          '24-hour response support': 'clock',
-          'Reimbursement process': 'enter'
-        }).map(([item, icon = 'enter']) => (
-          <List.Item icon={icon}>{item}</List.Item>
-        ))}
-        <List.Item
-          start={
-            <Avatar
-              src={require('../../../static/hackers/michael.jpg')}
-              size={32}
-              alt="Michael’s avatar"
-              mr={2}
-            />
-          }
-        >
-          Amazing support team
-        </List.Item>
-        {Object.entries({
-          'Physical check sending & voiding': '2019-09-18',
-          'Online ACH transfers': '2019-09-18',
-          'Generate attendee legal waivers': '2020-01-15',
-          'Instant Google Workspace & email addresses': '2020-01-15',
-          'Virtual debit cards (with Apple Pay)': '2020-03-08',
-          'Debit card transaction paper trail': '2020-03-10',
-          'Self-serve, no-contract signup': '2020-05-05',
-          'Transparency Mode (optional)': '2020-05-15',
-          'Online, embeddable donation form': '2020-08-20'
-        }).map(([item, date]) => (
-          <List.Item
-            key={item}
-            icon={
-              item.startsWith('Instant') || item.includes('signup')
-                ? 'bolt'
-                : item.includes('card')
-                ? 'card'
-                : item.includes('Transparency')
-                ? 'explore'
-                : item.includes('form')
-                ? 'link'
-                : item.includes('Physical')
-                ? 'email'
-                : 'enter'
-            }
-          >
-            {item}{' '}
-            <Badge bg={recent(date) ? 'primary' : 'slate'} fontSize={0} ml={1}>
-              Added {timeSince(date)}
-            </Badge>
-          </List.Item>
-        ))}
+        <List.Item icon="briefcase">Legal entity with 501(c)(3) status</List.Item>
+        <List.Item icon="checkmark">We do your taxes</List.Item>
+        <List.Item icon="enter">Collect donations via card, check, or ACH</List.Item>
+        <List.Item icon="member-add">Share access with your whole team</List.Item>
+        <List.Item icon="bank-account">Bank account backed by SVB</List.Item>
+        <List.Item icon="transactions">Instant invoice sending</List.Item>
+        <List.Item icon="analytics">Real-time dashboard of finances</List.Item>
+        <List.Item icon="download">Transaction data export</List.Item>
+        <List.Item icon="docs">Record shared notes on transactions</List.Item>
+        <List.Item icon="clock">24-hour response support</List.Item>
+        <List.Item icon="enter">Reimburse work payments</List.Item>
+        <List.Item icon="email">Send & void physical checks</List.Item>
+        <List.Item icon="enter">Online direct deposit / ACH transfers</List.Item>
+        <List.Item icon="enter">Generate attendee legal waivers</List.Item>
+        <List.Item icon="bolt">Google Workspace & email addresses</List.Item>
+        <List.Item icon="card">Virtual debit cards (with Apple Pay)</List.Item>
+        <List.Item icon="card">Debit card transaction paper trail</List.Item>
+        <List.Item icon="bolt">Self-service, no-contract signup</List.Item>
+        <List.Item icon="explore">Transparency Mode (optional)</List.Item>
+        <List.Item icon="link">Online, embeddable donation form</List.Item>
       </List>
     </Container>
     <Run />

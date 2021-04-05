@@ -88,12 +88,11 @@ const Main = styled(Container).attrs({
 })`
   border-radius: 0;
   position: relative;
-  overflow: hidden;
   display: grid;
   grid-gap: ${theme.space[3]}px;
   ${theme.mediaQueries.md} {
     border-radius: ${theme.radii[2]};
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(${theme.breakpoints[0]}em, 1fr));
     grid-gap: ${theme.space[5]}px;
   }
 `

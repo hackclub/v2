@@ -30,7 +30,7 @@ const orgs = [
     bankID: 'girlgeniusmagazine',
     url: 'https://girlgeniusmag.tech',
     defaultRaised: 200*5000,
-    description: 'lorem ipsum'
+    description: "Girl Genius fosters an inclusive community where everyone is given a voice to empower the next generation of female leaders in STEAM. They've released 5 issues."
   },
   {
     name: 'Execute Big',
@@ -44,7 +44,7 @@ const orgs = [
     bankID: 'techshift',
     url: 'https://techshift.org',
     defaultRaised: 50000*100,
-    description: "TechShift supports student groups to organize initiatives in their communities. Their community organizing model includes colleges, students, and their campus organizations leading initiatives in their local communities."
+    description: "TechShift supports student groups at colleges across the country. Their 30+ groups lead initiatives in their local communities."
   },
 ]
 

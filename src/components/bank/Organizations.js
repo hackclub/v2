@@ -189,9 +189,7 @@ export default () => (
         Not a problem.
       </Headline>
       <Lead maxWidth={40} color="muted">
-
-        Everywhere from Philadelphia to Phoenix to Portland,
-        Hack&nbsp;Club&nbsp;Bank powers events of all sizes.
+        The financial tools for you to start a non-profit that actually does something.
       </Lead>
     </Container>
     <Main>

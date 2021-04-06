@@ -107,9 +107,12 @@ const BankStat = ({bankID, defaultRaised}) => {
   const [transparent, setTransparent] = useState(false)
 
   useEffect(() => {
-    api.get(`http://zapdos.servers.hackclub.com:3002/project_stats?slug=${bankID}`).then(stats => {
-      setRaised(stats.raised)
-      setTransparent(true)
+    api.get(`https://bank.hackclub.com/project_stats?slug=${bankID}`).then(stats => {
+      if (stats.raised) {
+        console.log({raised: stats.raised})
+        setRaised(stats.raised)
+        setTransparent(true)
+      }
       // setLastUpdated(stats.last_transaction_date * 1000)
     })
   })

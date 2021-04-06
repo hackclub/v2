@@ -126,6 +126,7 @@ const BankStat = ({bankID, defaultRaised}) => {
           target="_blank"
           py={1}
           px={1}
+          verticalAlign="top"
         >
           See Finances
         </Button>

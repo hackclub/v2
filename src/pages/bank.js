@@ -6,6 +6,7 @@ import Footer from 'components/Footer'
 import Landing from 'components/bank/Landing'
 import Features from 'components/bank/Features'
 import Testimonials from 'components/bank/Testimonials'
+import Organizations from 'components/bank/Organizations'
 import Everything from 'components/bank/Everything'
 import Start from 'components/bank/Start'
 
@@ -33,6 +34,7 @@ export default () => (
     <Landing />
     <Features />
     <Testimonials />
+    <Organizations />
     <Everything />
     <Start />
     <Footer dark />

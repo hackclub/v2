@@ -109,7 +109,6 @@ const BankStat = ({bankID, defaultRaised}) => {
   useEffect(() => {
     api.get(`https://bank.hackclub.com/project_stats?slug=${bankID}`).then(stats => {
       if (stats.raised) {
-        console.log({raised: stats.raised})
         setRaised(stats.raised)
         setTransparent(true)
       }

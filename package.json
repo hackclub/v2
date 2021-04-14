@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "build": "gatsby build",
-    "dev": "gatsby develop",
+    "dev": "gatsby develop --host=0.0.0.0",
     "fmt": "npx prettier \"{src/**,}/*.js\" --write"
   },
   "dependencies": {

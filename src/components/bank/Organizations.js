@@ -23,7 +23,7 @@ const orgs = [
     stat: {
       'Hardware recipients': 50
     },
-    description: "Run by high schoolers in NYC, Project Boom accepts and distributes donated hardware and laptops to give to ..."
+    description: "Founded by a high schooler in NYC, Project Boom accepts and distributes donated hardware and laptops. To date they've sent laptops to 50+ recipients."
   },
   {
     name: 'Girl Genius',
@@ -102,6 +102,15 @@ const renderMoney = amount => {
   }
 }
 
+const TransparencyButton = styled(Button).attrs({
+  py: 1,
+  px: 1,
+  mr: 1,
+})`
+  vertical-align: top;
+  // font-weight: normal;
+`
+
 const BankStat = ({bankID, defaultRaised}) => {
   const [raised, setRaised] = useState(defaultRaised)
   const [transparent, setTransparent] = useState(false)
@@ -120,15 +129,12 @@ const BankStat = ({bankID, defaultRaised}) => {
     <>
     <Box>
       {transparent && (
-        <Button
+        <TransparencyButton
           href={`https://bank.hackclub.com/${bankID}`}
           target="_blank"
-          py={1}
-          px={1}
-          verticalAlign="top"
         >
           See Finances
-        </Button>
+        </TransparencyButton>
       )}
       <DetailStat value={renderMoney(raised)} label="raised" />
     </Box>
@@ -140,9 +146,6 @@ const EventHeader = styled(Box).attrs({ mb: [3, 0] })`
   display: grid;
   aside {
     display: flex;
-  }
-  aside div:last-child {
-    margin-left: ${theme.space[3]}px;
   }
   ${theme.mediaQueries.md} {
     grid-template-columns: 1fr auto;
@@ -185,11 +188,11 @@ export default () => (
   <Base>
     <Container align="center" maxWidth={42} mb={[4,5]} px={3}>
       <Headline color="white" mb={2}>
-        Not a for-profit?<br/>
+        Not for-profit?<br/>
         Not a problem.
       </Headline>
       <Lead maxWidth={40} color="muted">
-        The financial tools for you to start a non-profit that actually does something.
+        The financial tools for you to found a non-profit that actually does something.
       </Lead>
     </Container>
     <Main>

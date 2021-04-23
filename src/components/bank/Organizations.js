@@ -126,6 +126,8 @@ const BankStat = ({bankID, defaultRaised}) => {
         setTransparent(true)
       }
       // setLastUpdated(stats.last_transaction_date * 1000)
+    }).catch(err => {
+      // ignore fetch errors here b/c that probably means the event's finances aren't public
     })
   })
 

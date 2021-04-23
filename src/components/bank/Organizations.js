@@ -6,6 +6,7 @@ import {
   Button,
   Container,
   Text,
+  Image,
   Link as A,
   theme
 } from '@hackclub/design-system'
@@ -164,10 +165,20 @@ const Base = styled(Box.section).attrs({
   pb: [4, 5, 6]
 })``
 
+const Logo = styled(Image).attrs({
+  position: 'relative',
+  display: 'block',
+  right: 0,
+  width: 0.2,
+})`
+  border-radius: ${theme.radii[2]};
+`
+
 const Organization = ({
   name,
   side,
   url,
+  logo,
   bankID,
   description,
   defaultRaised
@@ -175,6 +186,7 @@ const Organization = ({
   <Slide left={side==='left'} right={side==='right'}>
     <Sheet bg="#252429" color="smoke" p={0} mb={0}>
       <Box p={[3,4]}>
+        {logo && (<Logo src={logo} />)}
         <EventHeader>
           <Box mb={2}>
             <Subhline align="left" color="white" children={name} mb={0} />

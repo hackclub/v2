@@ -20,27 +20,27 @@ const orgs = [
     name: 'Project Boom',
     bankID: 'projectboom',
     url: 'https://projectboom.org',
-    logo: 'https://cloud-ckvn8yn11-hack-club-bot.vercel.app/2project-boom-blue.png',
+    logo: 'https://cloud-pnfgfi9qb-hack-club-bot.vercel.app/0pb.svg',
+    logoBg: '#266DD3',
     defaultRaised: 100*3000,
-    stat: {
-      'Hardware recipients': 50
-    },
-  },
-  {
-    name: 'Girl Genius',
-    bankID: 'girlgeniusmagazine',
-    url: 'https://girlgeniusmag.tech',
-    logo: 'https://cloud-ckvn8yn11-hack-club-bot.vercel.app/0girl-genius-mag.png',
-    defaultRaised: 200*5000,
     description: "In spring of 2020 Kunal started sending used laptops to students in need. With his tech background, the only thing holding him back was the ability to accept and store donations. Fiscal sponsorship helped him raise funds to repair computers otherwise designated for electronic waste and donate them to 50+ students."
   },
   {
     name: 'Execute Big',
     bankID: 'executebig',
     url: 'https://executebig.org',
-    logo: 'https://cloud-ckvn8yn11-hack-club-bot.vercel.app/5execute-big.svg',
+    logo: 'https://cloud-8m4q106ih-hack-club-bot.vercel.app/0frame_1.svg',
+    logoBg: '#266DD3',
     defaultRaised: 100*4000,
     description: "One of the our earliest fiscally sponsored projects, Execute Big was founded on Hack Club Bank providing travel grants to high schoolers attending hackathons. They've since been granted their own 501(c)(3) and have expanded to running many additional programs."
+  },
+  {
+    name: 'Girl Genius',
+    bankID: 'girlgeniusmagazine',
+    url: 'https://girlgeniusmag.tech',
+    logo: 'https://cloud-ncfcbc8w7-hack-club-bot.vercel.app/1ggm_trimmed.png',
+    logoBg: '#fff',
+    defaultRaised: 100*5000,
     description: "Girl Genius was founded by a high schooler in California running an online community of female and non-binary leaders in STEAM. They joined Hack Club Bank to publish their magazine, now 5 issues deep with 11k+ readers."
   },
   {
@@ -48,7 +48,8 @@ const orgs = [
     bankID: 'techshift',
     url: 'https://techshift.org',
     logo: 'https://cloud-ckvn8yn11-hack-club-bot.vercel.app/4techshift.png',
-    defaultRaised: 50000*100,
+    logoBg: '#211',
+    defaultRaised: 100*50000,
     description: "TechShift supports student groups at colleges across the United States by providing mentorship and microgrants for local initiatives. The 30+ student-run chapters launch programs in their communities, both on and off campus."
   },
 ]
@@ -166,11 +167,12 @@ const Base = styled(Box.section).attrs({
 })``
 
 const Logo = styled(Image).attrs({
-  position: 'relative',
-  display: 'block',
-  right: 0,
-  width: 0.2,
+  mr: 1,
+  p:1,
 })`
+  display: inline-block;
+  vertical-align: sub;
+  height: 1em;
   border-radius: ${theme.radii[2]};
 `
 
@@ -179,6 +181,7 @@ const Organization = ({
   side,
   url,
   logo,
+  logoBg,
   bankID,
   description,
   defaultRaised
@@ -186,10 +189,12 @@ const Organization = ({
   <Slide left={side==='left'} right={side==='right'}>
     <Sheet bg="#252429" color="smoke" p={0} mb={0}>
       <Box p={[3,4]}>
-        {logo && (<Logo src={logo} />)}
         <EventHeader>
           <Box mb={2}>
-            <Subhline align="left" color="white" children={name} mb={0} />
+            <Subhline align="left" color="white" mb={0}>
+              {logo && (<Logo src={logo} bg={logoBg} />)}
+              {name}
+            </Subhline>
             <A color="slate" href={url} hoverline>{url}</A>
           </Box>
           <aside>

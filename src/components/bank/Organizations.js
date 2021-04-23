@@ -19,6 +19,7 @@ const orgs = [
     name: 'Project Boom',
     bankID: 'projectboom',
     url: 'https://projectboom.org',
+    logo: 'https://cloud-ckvn8yn11-hack-club-bot.vercel.app/2project-boom-blue.png',
     defaultRaised: 100*3000,
     stat: {
       'Hardware recipients': 50
@@ -29,6 +30,7 @@ const orgs = [
     name: 'Girl Genius',
     bankID: 'girlgeniusmagazine',
     url: 'https://girlgeniusmag.tech',
+    logo: 'https://cloud-ckvn8yn11-hack-club-bot.vercel.app/0girl-genius-mag.png',
     defaultRaised: 200*5000,
     description: "Girl Genius fosters an inclusive community where everyone is given a voice to empower the next generation of female leaders in STEAM. They've released 5 issues."
   },
@@ -36,6 +38,7 @@ const orgs = [
     name: 'Execute Big',
     bankID: 'executebig',
     url: 'https://executebig.org',
+    logo: 'https://cloud-ckvn8yn11-hack-club-bot.vercel.app/5execute-big.svg',
     defaultRaised: 100*4000,
     description: "Now under its own non-profit entity, Execute Big was founded on Hack Club Bank providing travel grants to high schoolers attending hackathons."
   },
@@ -43,6 +46,7 @@ const orgs = [
     name: 'TechShift',
     bankID: 'techshift',
     url: 'https://techshift.org',
+    logo: 'https://cloud-ckvn8yn11-hack-club-bot.vercel.app/4techshift.png',
     defaultRaised: 50000*100,
     description: "TechShift supports student groups at colleges across the country. Their 30+ groups lead initiatives in their local communities."
   },

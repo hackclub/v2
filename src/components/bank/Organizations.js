@@ -25,7 +25,6 @@ const orgs = [
     stat: {
       'Hardware recipients': 50
     },
-    description: "Founded by a high schooler in NYC, Project Boom accepts and distributes donated hardware and laptops. To date they've sent laptops to 50+ recipients."
   },
   {
     name: 'Girl Genius',
@@ -33,7 +32,7 @@ const orgs = [
     url: 'https://girlgeniusmag.tech',
     logo: 'https://cloud-ckvn8yn11-hack-club-bot.vercel.app/0girl-genius-mag.png',
     defaultRaised: 200*5000,
-    description: "Girl Genius fosters an inclusive community where everyone is given a voice to empower the next generation of female leaders in STEAM. They've released 5 issues."
+    description: "In spring of 2020 Kunal started sending used laptops to students in need. With his tech background, the only thing holding him back was the ability to accept and store donations. Fiscal sponsorship helped him raise funds to repair computers otherwise designated for electronic waste and donate them to 50+ students."
   },
   {
     name: 'Execute Big',
@@ -41,7 +40,8 @@ const orgs = [
     url: 'https://executebig.org',
     logo: 'https://cloud-ckvn8yn11-hack-club-bot.vercel.app/5execute-big.svg',
     defaultRaised: 100*4000,
-    description: "Now under its own non-profit entity, Execute Big was founded on Hack Club Bank providing travel grants to high schoolers attending hackathons."
+    description: "One of the our earliest fiscally sponsored projects, Execute Big was founded on Hack Club Bank providing travel grants to high schoolers attending hackathons. They've since been granted their own 501(c)(3) and have expanded to running many additional programs."
+    description: "Girl Genius was founded by a high schooler in California running an online community of female and non-binary leaders in STEAM. They joined Hack Club Bank to publish their magazine, now 5 issues deep with 11k+ readers."
   },
   {
     name: 'TechShift',
@@ -49,7 +49,7 @@ const orgs = [
     url: 'https://techshift.org',
     logo: 'https://cloud-ckvn8yn11-hack-club-bot.vercel.app/4techshift.png',
     defaultRaised: 50000*100,
-    description: "TechShift supports student groups at colleges across the country. Their 30+ groups lead initiatives in their local communities."
+    description: "TechShift supports student groups at colleges across the United States by providing mentorship and microgrants for local initiatives. The 30+ student-run chapters launch programs in their communities, both on and off campus."
   },
 ]
 

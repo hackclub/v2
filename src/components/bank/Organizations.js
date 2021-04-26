@@ -28,6 +28,7 @@ const orgs = [
   {
     name: 'Execute Big',
     bankID: 'executebig',
+    raisedVerb: 'Funded',
     url: 'https://executebig.org',
     logo: 'https://cloud-8m4q106ih-hack-club-bot.vercel.app/0frame_1.svg',
     logoBg: '#266DD3',
@@ -117,7 +118,7 @@ const TransparencyButton = styled(Button).attrs({
   // font-weight: normal;
 `
 
-const BankStat = ({bankID, defaultRaised}) => {
+const BankStat = ({bankID, defaultRaised, raisedVerb = "raised"}) => {
   const [raised, setRaised] = useState(defaultRaised)
   const [transparent, setTransparent] = useState(false)
 
@@ -144,7 +145,7 @@ const BankStat = ({bankID, defaultRaised}) => {
           See Finances
         </TransparencyButton>
       )}
-      <DetailStat value={renderMoney(raised)} label="raised" />
+      <DetailStat value={renderMoney(raised)} label={raisedVerb} />
     </Box>
     </>
   )
@@ -184,7 +185,8 @@ const Organization = ({
   logoBg,
   bankID,
   description,
-  defaultRaised
+  defaultRaised,
+  raisedVerb,
 }) => (
   <Slide left={side==='left'} right={side==='right'}>
     <Sheet bg="#252429" color="smoke" p={0} mb={0}>
@@ -198,7 +200,7 @@ const Organization = ({
             <A color="slate" href={url} hoverline>{url}</A>
           </Box>
           <aside>
-            <BankStat bankID={bankID} defaultRaised={defaultRaised} />
+            <BankStat {...{bankID, defaultRaised, raisedVerb}} />
           </aside>
         </EventHeader>
         <Text.p>{description}</Text.p>

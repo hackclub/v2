@@ -141,6 +141,7 @@ const BankStat = ({bankID, defaultRaised, raisedVerb = "raised"}) => {
         <TransparencyButton
           href={`https://bank.hackclub.com/${bankID}`}
           target="_blank"
+          title="🎶 take a look, it's in our books 🎵"
         >
           See Finances
         </TransparencyButton>

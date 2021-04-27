@@ -99,6 +99,13 @@ export default () => (
           img="/team/mel.png"
           pronouns="she/her"
         />
+        <Bio
+          name="Gary Tou"
+          teamRole="Bank Operations"
+          text="Gary is an aspiring developer from Seattle who loves everything tech. After using Hack Club Bank to launch the synHacks organization and inspire students to help the global community, Gary joined Hack Club to make the product that enabled him to do great things even greater for others."
+          pronouns="he/him"
+          img="/team/gary.jpeg"
+        />
       </Base>
       <Headline color="orange.5" mt={[4, 5, 6]} mb={[3, 4]} pl={[3, 0]}>
         Behind the Scenes

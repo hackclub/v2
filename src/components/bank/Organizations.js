@@ -23,7 +23,7 @@ const orgs = [
     logo: 'https://cloud-pnfgfi9qb-hack-club-bot.vercel.app/0pb.svg',
     logoBg: '#266DD3',
     defaultRaised: 100*3000,
-    description: "In spring of 2020 Kunal started sending used laptops to students in need. With his tech background, the only thing holding him back was the ability to accept and store donations. Fiscal sponsorship helped him raise funds to repair computers otherwise designated for electronic waste and donate them to 50+ students."
+    description: "Founded by a high schooler in New York, Project Boom repairs old laptops that are donated by companies. They joined Hack Club Bank to raise funds for computer parts and have since donated 50+ laptops globally to students in need."
   },
   {
     name: 'Execute Big',

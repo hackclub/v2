@@ -111,9 +111,9 @@ export default () => (
         <List.Item
           start={
             <Avatar
-              src={require('../../../static/hackers/michael.jpg')}
+              src={require('../../../static/team/mel.png')}
               size={32}
-              alt="Michael’s avatar"
+              alt="Mel’s avatar"
               mr={2}
             />
           }

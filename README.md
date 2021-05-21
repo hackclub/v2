@@ -33,7 +33,7 @@ Clone it!
 
 Go into the directory!
 
-    $ cd site
+    $ cd v2
 
 Install dependencies!
 

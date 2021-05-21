@@ -29,7 +29,7 @@ Stuff you need installed ahead of time:
 
 Clone it!
 
-    $ git clone https://github.com/hackclub/site
+    $ git clone https://github.com/hackclub/v2.git
 
 Go into the directory!
 

@@ -111,9 +111,9 @@ export default () => (
         <List.Item
           start={
             <Avatar
-              src={require('../../../static/hackers/michael.jpg')}
+              img="https://cloud-pwcbafyg3-hack-club-bot.vercel.app/0mel.png"
               size={32}
-              alt="Michael’s avatar"
+              alt="Melanie’s avatar"
               mr={2}
             />
           }

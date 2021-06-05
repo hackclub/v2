@@ -111,7 +111,7 @@ export default () => (
         <List.Item
           start={
             <Avatar
-              img="https://cloud-pwcbafyg3-hack-club-bot.vercel.app/0mel.png"
+              image="https://cloud-pwcbafyg3-hack-club-bot.vercel.app/0mel.png"
               size={32}
               alt="Melanie’s avatar"
               mr={2}

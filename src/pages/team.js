@@ -68,22 +68,10 @@ export default () => (
           pronouns="he/him"
         />
         <Bio
-          name="Matthew Stanciu"
-          teamRole="Clubs"
-          text="After leading a successful Hack Club in West Lafayette, Indiana, & organizing multiple hackathons with Hack Club Bank, Matthew joined the team to work with clubs around the world. He now writes Hack Club’s curriculum, helps clubs around the world, & last spring drove across the U.S. to visit clubs."
-          pronouns="he/him"
-        />
-        <Bio
           name="Athul Blesson"
           teamRole="Asia-Pacific Region"
           text="Athul started dozens of the largest Hack Clubs in India. After graduating from high school, he joined as the Regional Manager of Asia-Pacific & Africa, where he actively manages 117 clubs."
           pronouns="he/him"
-        />
-        <Bio
-          name="Julie Gauthier"
-          teamRole="Community Game Designer"
-          text="Julie joined Hack Club as a Community Game Designer after several years as a software engineer, hackathon organizer, and adjunct professor. Julie started learning to code in 8th grade, and seeks to share the superpower of coding with everyone."
-          pronouns="she/her"
         />
         <Bio
           name="Zach Fogg"
@@ -134,6 +122,12 @@ export default () => (
         Acknowledgements
       </Headline>
       <Base mb={[4, 5]}>
+        <Bio
+          name="Matthew Stanciu"
+          teamRole="Clubs"
+          text="After leading a successful Hack Club in West Lafayette, Indiana, & organizing multiple hackathons with Hack Club Bank, Matthew joined the team to lead the clubs program. He wrote curriculum, helped mentor club leaders around the world, & in spring 2020 drove across the U.S. to visit clubs."
+          pronouns="he/him"
+        />
         <Bio
           name="Lachlan Campbell"
           teamRole="Storytelling"

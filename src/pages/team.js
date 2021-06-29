@@ -90,7 +90,7 @@ export default () => (
         <Bio
           name="Leo McElroy"
           teamRole="Clubs Lead"
-          text="Leo builds digital systems, physical tools, and communities to help people express themselves and pursue their creativity. He's created tools for democratizing personal automation (including progamming languages for designing stuff), travelled the world visiting makerspaces on a Watson Fellowship, and created and ran a few makerspaces himself."
+          text="Leo builds digital systems, physical tools, and communities to help people express themselves and pursue their curiosity. He's created tools for democratizing personal automation (including programming languages for designing stuff), travelled the world visiting makerspaces on a Watson Fellowship, and created and ran a few makerspaces himself."
           img="/team/leo.png"
           pronouns="he/him"
         />

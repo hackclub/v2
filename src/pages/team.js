@@ -106,12 +106,6 @@ export default () => (
           pronouns="he/him"
         />
         <Bio
-          name="Amogh Chaubey"
-          teamRole="Community + Events"
-          text="Amogh is all about having fun. Whether it’s running an art showcase on the Slack or massive Kahoots at hackathons, he loves to run awesome events. Amogh joined HQ to run spectacular community events, to make Hack Club the best place to be a teenager on the internet, and as Hack Club’s second best rapper."
-          pronouns="he/him"
-        />
-        <Bio
           name="Tina Soriano"
           teamRole="Assistant"
           text="Philippine bred and settled with family in the U.S., Tina shifted her career from marketing and film production to teaching kids in the Clark County School District. Now she is happy to help high school students hack their way to a fabulous future."
@@ -183,6 +177,12 @@ export default () => (
           name="Michael Destefanis"
           teamRole="Hack Club Bank"
           text="After graduating high school, Michael moved to California where he began working with Hack Club. He handled the day-to-day operations of Hack Club Bank from its start starting to its first million dollars in transactions."
+          pronouns="he/him"
+        />
+        <Bio
+          name="Amogh Chaubey"
+          teamRole="Community + Events"
+          text="Amogh is all about having fun. Whether it’s running an art showcase on the Slack or massive Kahoots at hackathons, he loves to run awesome events. Amogh joined HQ to run spectacular community events, to make Hack Club the best place to be a teenager on the internet, and as Hack Club’s second best rapper."
           pronouns="he/him"
         />
       </Base>

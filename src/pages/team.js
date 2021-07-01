@@ -87,6 +87,13 @@ export default () => (
           img="/team/mel.png"
           pronouns="she/her"
         />
+        <Bio
+          name="Leo McElroy"
+          teamRole="Clubs Lead"
+          text="Leo builds digital systems, physical tools, and communities to help people express themselves and pursue their curiosity. He's created tools for democratizing personal automation (including programming languages for designing stuff), travelled the world visiting makerspaces on a Watson Fellowship, and created and ran a few makerspaces himself."
+          img="/team/leo.png"
+          pronouns="he/him"
+        />
       </Base>
       <Headline color="orange.5" mt={[4, 5, 6]} mb={[3, 4]} pl={[3, 0]}>
         Behind the Scenes

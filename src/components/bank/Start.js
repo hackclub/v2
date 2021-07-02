@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Container, Link, theme } from '@hackclub/design-system'
+import { Box, Container, Link as A, theme } from '@hackclub/design-system'
 import { Fade } from 'react-reveal'
 import { Title, Subhline, Lead } from 'components/Content'
 import Sheet from 'components/Sheet'
@@ -106,9 +106,9 @@ export default () => (
         <Lead color="slate" fontSize={2}>
           Starting in February 2020, we started running Hack Club HQ on Bank (&
           we don’t count our numbers in these stats).{' '}
-          <Link href="https://bank.hackclub.com/hq" color="primary">
+          <A href="https://bank.hackclub.com/hq" color="primary" hoverline>
             See our finances here.
-          </Link>
+          </A>
         </Lead>
       </div>
     </Grid>

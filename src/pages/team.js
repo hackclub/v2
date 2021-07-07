@@ -99,6 +99,12 @@ export default () => (
         Behind the Scenes
       </Headline>
       <Base mb={[4, 5]}>
+        <Bio 
+          name="Robert Caldwell"
+          teamRole="Philanthropy"
+          text="Robert is from Canada and lives in Charlotte, Vermont with his wife and children.   A senior grassroots executive with 25+ years of diversified business and nonprofit experience, Robert has led organizations in the US, UK and Canada, as well as providing entrepreneurial advisory and coaching to business and organization startups. Robert is energized and motivated to help Hack Club realize its vision to provide students with 21st century technical skills and develop a new generation of programmers, coders and makers."
+          pronouns="he/him"
+        />
         <Bio
           name="Scott Motte"
           teamRole="Hack Club Bank"

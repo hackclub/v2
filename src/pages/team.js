@@ -102,7 +102,7 @@ export default () => (
         <Bio 
           name="Robert Caldwell"
           teamRole="Philanthropy"
-          text="Robert is from Canada and lives in Charlotte, Vermont with his wife and children.   A senior grassroots executive with 25+ years of diversified business and nonprofit experience, Robert has led organizations in the US, UK and Canada, as well as providing entrepreneurial advisory and coaching to business and organization startups. Robert is energized and motivated to help Hack Club realize its vision to provide students with 21st century technical skills and develop a new generation of programmers, coders and makers."
+          text=" After serving for thirty-two years in education management and advancement, Robert joined Hack Club to help raise the resources necessary to provide students with 21st century technical skills and develop a new generation of programmers, coders and makers. Robert is from Canada and lives in Charlotte, Vermont with his wife and children."
           pronouns="he/him"
         />
         <Bio

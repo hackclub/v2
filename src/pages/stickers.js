@@ -1,3 +1,5 @@
+// IMPORTANT NOTE: this pages has moved to hackclub/v3. This page remains here as an archive.
+
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { Box, Flex, Heading, Image, Text, theme } from '@hackclub/design-system'

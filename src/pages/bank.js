@@ -1,3 +1,5 @@
+// IMPORTANT NOTE: this pages has moved to hackclub/v3. This page remains here as an archive.
+
 import React from 'react'
 import { theme } from '@hackclub/design-system'
 import Layout from 'components/Layout'

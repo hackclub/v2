@@ -1,3 +1,5 @@
+// IMPORTANT NOTE: this pages has moved to hackclub/camp. This page remains here as an archive.
+
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import Layout from 'components/Layout'
